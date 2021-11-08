@@ -256,51 +256,6 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$allow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$context \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$disallow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$oneHundredRel \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$sorceryId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$t38Udptl \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$t38UdptlEc \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$t38UdptlMaxdatagram \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointDtoAbstract\\:\\:\\$t38UdptlNat \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/PsEndpoint/PsEndpointInterface.php
@@ -461,16 +416,6 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:\\$sorceryId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyDtoAbstract\\:\\:\\$srvLookups \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsIdentify\\\\PsIdentifyInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyInterface.php
@@ -607,21 +552,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:\\$autopause \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:\\$ringinuse \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/Queue/QueueDtoAbstract.php
 
@@ -897,16 +827,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:\\$context \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:\\$mailbox \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
 
@@ -1246,41 +1166,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$account \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$allowNegative \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$disabled \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$loadid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$tenant \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountActionInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionInterface.php
@@ -1312,11 +1197,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdr\\:\\:getCostDetailsFirstTimespan\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdr.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdr\\:\\:getDuration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdr.php
 
@@ -1626,107 +1506,7 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$account \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$answerTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$category \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$cgrid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$cost \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$costDetails \\(array\\) does not accept array\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
 			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$costDetails type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$costSource \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$destination \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$extraFields \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$extraInfo \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$originHost \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$originId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$requestType \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$runId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$setupTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$source \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$subject \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$tenant \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$tor \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrDtoAbstract\\:\\:\\$usage \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrDtoAbstract.php
 
@@ -1737,11 +1517,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrInterface\\:\\:getCostDetailsFirstTimespan\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrInterface\\:\\:getDuration\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpCdr/TpCdrInterface.php
 
@@ -2086,141 +1861,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$accounts \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$actionTriggers \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$categories \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$cdrHosts \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$cdrSources \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$costInterval \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$destinationIds \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$directions \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$disconnectCauses \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$mediationRunids \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$metrics \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$ppdInterval \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$queueLength \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$ratedAccounts \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$ratedSubjects \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$reqTypes \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$saveInterval \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$setupInterval \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$subjects \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$suppliers \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$tag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$tenants \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$timeWindow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$tors \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatDtoAbstract\\:\\:\\$usageInterval \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdrStat\\\\TpCdrStatInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatInterface.php
@@ -2546,126 +2186,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$account \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$accountField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$answerTimeField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$category \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$categoryField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$costField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$destinationField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$direction \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$directionField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$disconnectCauseField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$loadid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$pddField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$ratedTimeField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$reqTypeField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$runFilters \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$runid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$setupTimeField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$subjectField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$supplierField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$tenant \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$tenantField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerDtoAbstract\\:\\:\\$usageField \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDerivedCharger\\\\TpDerivedChargerInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerInterface.php
@@ -2772,21 +2292,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestination\\\\TpDestinationDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestination\\\\TpDestinationDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestination\\\\TpDestinationDtoAbstract\\:\\:\\$prefix \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestination\\\\TpDestinationDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDestination/TpDestinationDtoAbstract.php
 
@@ -2942,36 +2447,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:\\$maxCost \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:\\$maxCostStrategy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:\\$roundingDecimals \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:\\$roundingMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpDestinationRate\\\\TpDestinationRateDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpDestinationRate/TpDestinationRateDtoAbstract.php
 
@@ -3171,56 +2646,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$account \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$activationTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$category \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$direction \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$rpCategory \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$strategy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$tenant \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleDtoAbstract\\:\\:\\$weight \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpLcrRule\\\\TpLcrRuleInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleInterface.php
@@ -3371,41 +2796,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$connectFee \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$groupIntervalStart \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$rateCost \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$rateIncrement \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$rateUnit \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRate\\\\TpRateInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRate/TpRateInterface.php
@@ -3527,26 +2917,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:\\$timingTag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingPlan\\\\TpRatingPlanDtoAbstract\\:\\:\\$weight \\(float\\) does not accept float\\|null\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanDtoAbstract.php
 
@@ -3746,36 +3116,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:\\$activationTime \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:\\$category \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:\\$direction \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:\\$loadid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfileInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileInterface.php
@@ -3917,41 +3257,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$createdAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$monthDays \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$months \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$time \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$tpid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$weekDays \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpTiming\\\\TpTimingDtoAbstract\\:\\:\\$years \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpTiming/TpTimingDtoAbstract.php
 
@@ -4561,36 +3866,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:\\$attrs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:\\$destination \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:\\$flags \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherDtoAbstract\\:\\:\\$setid \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\DispatcherInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/Dispatcher/DispatcherInterface.php
@@ -4731,31 +4006,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:\\$disabled \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:\\$setid \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:\\$stamp \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:\\$url \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineDtoAbstract\\:\\:\\$weight \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Rtpengine\\\\RtpengineInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/Rtpengine/RtpengineInterface.php
@@ -4867,21 +4117,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressDtoAbstract\\:\\:\\$grp \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressDtoAbstract\\:\\:\\$mask \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksAddress\\\\TrunksAddressDtoAbstract\\:\\:\\$port \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressDtoAbstract.php
 
@@ -5201,26 +4436,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:\\$duration \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:\\$endTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:\\$parserScheduledAt \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrDtoAbstract\\:\\:\\$startTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrInterface\\:\\:isOutboundCall\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrInterface.php
@@ -5346,31 +4561,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksDomainAttr\\\\TrunksDomainAttrDtoAbstract\\:\\:\\$did \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksDomainAttr\\\\TrunksDomainAttrDtoAbstract\\:\\:\\$lastModified \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksDomainAttr\\\\TrunksDomainAttrDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksDomainAttr\\\\TrunksDomainAttrDtoAbstract\\:\\:\\$type \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksDomainAttr\\\\TrunksDomainAttrDtoAbstract\\:\\:\\$value \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrDtoAbstract.php
-
-		-
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksDomainAttr\\\\TrunksDomainAttrRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksDomainAttr/TrunksDomainAttrRepository.php
@@ -5472,31 +4662,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksHtable\\\\TrunksHtableDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksHtable\\\\TrunksHtableDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksHtable\\\\TrunksHtableDtoAbstract\\:\\:\\$keyName \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksHtable\\\\TrunksHtableDtoAbstract\\:\\:\\$keyType \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksHtable\\\\TrunksHtableDtoAbstract\\:\\:\\$keyValue \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksHtable\\\\TrunksHtableDtoAbstract\\:\\:\\$valueType \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksHtable/TrunksHtableDtoAbstract.php
 
@@ -5647,16 +4812,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrGateway\\\\TrunksLcrGatewayDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrGateway\\\\TrunksLcrGatewayDtoAbstract\\:\\:\\$gwName \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrGateway\\\\TrunksLcrGatewayDtoAbstract\\:\\:\\$lcrId \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayDtoAbstract.php
 
@@ -5826,21 +4981,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:\\$enabled \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:\\$lcrId \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleDtoAbstract\\:\\:\\$stopper \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRule\\\\TrunksLcrRuleInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleInterface.php
@@ -5967,21 +5107,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:\\$lcrId \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksLcrRuleTarget\\\\TrunksLcrRuleTargetDtoAbstract\\:\\:\\$weight \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetDtoAbstract.php
 
@@ -6246,81 +5371,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$authHa1 \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$authPassword \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$authProxy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$authUsername \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$contactAddr \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$flags \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$lDomain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$lUsername \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$lUuid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$rDomain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$rUsername \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$realm \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$regDelay \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregDtoAbstract\\:\\:\\$socket \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregInterface.php
@@ -6437,11 +5487,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Trusted\\\\TrustedDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/Trusted/TrustedDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Trusted\\\\TrustedDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/Trusted/TrustedDtoAbstract.php
 
@@ -6751,121 +5796,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$callid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$contact \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$event \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$flags \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$fromDomain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$fromTag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$fromUser \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$localContact \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$localCseq \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$presentityUri \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$remoteCseq \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$socketInfo \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$status \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$toDomain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$toTag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$toUser \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$updated \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$updatedWinfo \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$userAgent \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$version \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$watcherDomain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:\\$watcherUsername \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherRepository.php
@@ -6987,21 +5917,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressDtoAbstract\\:\\:\\$mask \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressDtoAbstract\\:\\:\\$port \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddressDtoAbstract\\:\\:\\$sourceAddress \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressDtoAbstract.php
 
@@ -7251,26 +6166,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:\\$duration \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:\\$endTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:\\$hidden \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:\\$startTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrRepository.php
@@ -7372,31 +6267,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersHtable\\\\UsersHtableDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersHtable\\\\UsersHtableDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersHtable\\\\UsersHtableDtoAbstract\\:\\:\\$keyName \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersHtable\\\\UsersHtableDtoAbstract\\:\\:\\$keyType \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersHtable\\\\UsersHtableDtoAbstract\\:\\:\\$keyValue \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersHtable\\\\UsersHtableDtoAbstract\\:\\:\\$valueType \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersHtable/UsersHtableDtoAbstract.php
 
@@ -7651,86 +6521,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$callid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$cflags \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$connectionId \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$contact \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$cseq \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$expires \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$flags \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$keepalive \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$lastModified \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$partition \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$q \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$regId \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$ruid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$serverId \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$userAgent \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationDtoAbstract\\:\\:\\$username \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationDtoAbstract.php
-
-		-
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocation\\\\UsersLocationRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersLocation/UsersLocationRepository.php
@@ -7842,36 +6632,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:\\$aname \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:\\$atype \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:\\$avalue \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:\\$lastModified \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:\\$ruid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrDtoAbstract\\:\\:\\$username \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrDtoAbstract.php
 
@@ -8022,51 +6782,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$body \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$domain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$etag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$event \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$receivedTime \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$sender \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:\\$username \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
 
@@ -8296,86 +7011,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$callId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$contact \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$cseq \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$desiredExpires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$etag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$event \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$extraHeaders \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$flag \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$fromTag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$presId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$presUri \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$remoteContact \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$toTag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$version \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:\\$watcherUri \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaRepository.php
@@ -8492,36 +7127,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:\\$event \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:\\$insertedTime \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:\\$presentityUri \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:\\$status \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:\\$watcherDomain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:\\$watcherUsername \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
 
@@ -8657,46 +7262,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$doc \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$docType \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$docUri \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$domain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$etag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$port \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$source \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:\\$username \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
 
@@ -9561,31 +8126,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:\\$active \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:\\$email \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:\\$pass \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:\\$restricted \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:\\$username \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorInterface\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorInterface.php
@@ -9746,26 +8286,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:\\$create \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:\\$delete \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:\\$read \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityDtoAbstract\\:\\:\\$update \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityInterface.php
@@ -9847,11 +8367,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ApplicationServer\\\\ApplicationServerDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ApplicationServer/ApplicationServerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ApplicationServer\\\\ApplicationServerDtoAbstract\\:\\:\\$ip \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ApplicationServer/ApplicationServerDtoAbstract.php
 
@@ -10576,11 +9091,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:\\$duration \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
-
-		-
 			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallDtoAbstract\\:\\:\\$priceDetails type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallDtoAbstract.php
@@ -10947,11 +9457,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCallHistoric\\\\BillableCallHistoricDtoAbstract\\:\\:\\$duration \\(float\\) does not accept float\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricDtoAbstract.php
 
@@ -11556,46 +10061,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$invoiceCountry \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$invoiceNif \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$invoicePostalAddress \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$invoicePostalCode \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$invoiceProvince \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$invoiceTown \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$maxCalls \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandInterface.php
@@ -11871,11 +10336,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceDtoAbstract\\:\\:\\$code \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceInterface.php
@@ -12027,11 +10487,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDtoAbstract.php
 
@@ -12272,16 +10727,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:\\$endDate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:\\$startDate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
 
@@ -12541,16 +10986,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDtoAbstract\\:\\:\\$defaultPolicy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclInterface.php
@@ -12672,16 +11107,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAclRelMatchList\\\\CallAclRelMatchListDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAclRelMatchList\\\\CallAclRelMatchListDtoAbstract\\:\\:\\$policy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAclRelMatchList\\\\CallAclRelMatchListDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListDtoAbstract.php
 
@@ -12887,26 +11312,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:\\$createdOn \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:\\$inDate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:\\$outDate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:\\$sentTo \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
 
@@ -13371,26 +11776,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:\\$email \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:\\$frequency \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDtoAbstract\\:\\:\\$unit \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerInterface.php
@@ -13667,26 +12052,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:\\$callForwardType \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:\\$callTypeFilter \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:\\$enabled \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:\\$noAnswerTimeout \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
@@ -14036,16 +12401,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierInterface.php
@@ -14311,11 +12666,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDtoAbstract\\:\\:\\$authNeeded \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerInterface.php
@@ -14451,27 +12801,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:\\$createdOn \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
 			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:\\$entity \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:\\$entityId \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:\\$microtime \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
 
@@ -14567,21 +12897,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Codec\\\\CodecDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Codec/CodecDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Codec\\\\CodecDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Codec/CodecDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Codec\\\\CodecDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Codec/CodecDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Codec\\\\CodecDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Codec/CodecDtoAbstract.php
 
@@ -14747,26 +13062,6 @@ parameters:
 
 		-
 			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$arguments type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$class \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$createdOn \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$microtime \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$requestId \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
 
@@ -15671,71 +13966,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$allowRecordingRemoval \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$billingMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$countryName \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$distributeMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$maxCalls \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$maxDailyUsage \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$nif \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$postalAddress \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$postalCode \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$province \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$town \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyInterface.php
@@ -16256,11 +14486,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceDtoAbstract\\:\\:\\$code \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceInterface.php
@@ -16537,11 +14762,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
@@ -16947,11 +15167,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
 
@@ -17491,21 +15706,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDtoAbstract\\:\\:\\$maxMembers \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDtoAbstract\\:\\:\\$pinProtected \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomInterface.php
@@ -17617,31 +15817,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:\\$code \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:\\$zoneCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:\\$zoneEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:\\$zoneEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:\\$zoneIt \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Country/CountryDtoAbstract.php
 
@@ -17807,36 +15982,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyDtoAbstract\\:\\:\\$symbol \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Currency/CurrencyDtoAbstract.php
 
@@ -18266,21 +16411,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:\\$billInboundCalls \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:\\$ddi \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDtoAbstract\\:\\:\\$recordCalls \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiInterface.php
@@ -18492,16 +16622,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
 
@@ -18836,46 +16956,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$authPassword \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$authProxy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$authUsername \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$contactUsername \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$domain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$expires \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$realm \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:\\$username \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationInterface.php
@@ -19012,11 +17092,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:\\$prefix \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
 
@@ -19212,26 +17287,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:\\$connectFee \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:\\$cost \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:\\$groupIntervalStart \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateDtoAbstract\\:\\:\\$rateIncrement \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateDtoAbstract.php
 
@@ -19501,52 +17556,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$deductibleConnectionFee \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$descriptionCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$descriptionEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$descriptionEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$descriptionIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
 			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$fileImporterArguments type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
 
@@ -19822,16 +17832,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:\\$domain \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainDtoAbstract\\:\\:\\$pointsTo \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Domain/DomainDtoAbstract.php
 
@@ -20122,11 +18122,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:\\$number \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
 
@@ -20532,11 +18527,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
@@ -21096,16 +19086,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDtoAbstract\\:\\:\\$sendByEmail \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Fax/FaxInterface.php
@@ -21271,11 +19251,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutDtoAbstract\\:\\:\\$calldate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutInterface.php
@@ -21412,31 +19387,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Feature/FeatureDtoAbstract.php
 
@@ -21767,11 +19717,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCost/FixedCostDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FixedCost/FixedCostDtoAbstract.php
 
@@ -22421,76 +20366,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$allow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$alwaysApplyTransformations \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$calleridUpdateHeader \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$ddiIn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$directConnectivity \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$directMediaMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$disallow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$multiContact \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$rtpEncryption \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$t38Passthrough \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:\\$updateCallerid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendInterface.php
@@ -22597,16 +20472,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FriendsPattern\\\\FriendsPatternDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FriendsPattern\\\\FriendsPatternDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FriendsPattern\\\\FriendsPatternDtoAbstract\\:\\:\\$regExp \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternDtoAbstract.php
 
@@ -22817,21 +20682,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:\\$eventDate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:\\$wholeDayEvent \\(bool\\) does not accept bool\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
 
@@ -23091,31 +20941,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:\\$allowCallForwards \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:\\$preventMissedCalls \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:\\$strategy \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupInterface.php
@@ -23277,11 +21102,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:\\$routeType \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
 
@@ -23736,36 +21556,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:\\$increment \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:\\$iteration \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:\\$prefix \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:\\$sequenceLength \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:\\$version \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceInterface.php
@@ -23986,26 +21776,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:\\$email \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:\\$frequency \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerDtoAbstract\\:\\:\\$unit \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceScheduler\\\\InvoiceSchedulerInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerInterface.php
@@ -24152,16 +21922,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDtoAbstract\\:\\:\\$template \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDtoAbstract.php
 
@@ -24516,26 +22276,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:\\$allowExtensions \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:\\$maxDigits \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:\\$timeout \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrInterface.php
@@ -24756,16 +22496,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:\\$entry \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:\\$routeType \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryInterface.php
@@ -24966,31 +22696,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Language/LanguageDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Language/LanguageInterface.php
@@ -25181,11 +22886,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Locution/LocutionDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionInterface\\:\\:addTmpFile\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionInterface.php
@@ -25366,11 +23066,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MatchList/MatchListInterface.php
@@ -25507,11 +23202,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchListPattern\\\\MatchListPatternDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchListPattern\\\\MatchListPatternDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternDtoAbstract.php
 
@@ -25716,11 +23406,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MediaRelaySet/MediaRelaySetDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MediaRelaySet\\\\MediaRelaySetDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MediaRelaySet/MediaRelaySetDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MediaRelaySet\\\\MediaRelaySetInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MediaRelaySet/MediaRelaySetInterface.php
@@ -25906,11 +23591,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldInterface\\:\\:addTmpFile\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldInterface.php
@@ -26086,16 +23766,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateInterface.php
@@ -26237,21 +23907,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:\\$body \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:\\$bodyType \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentDtoAbstract\\:\\:\\$subject \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentDtoAbstract.php
 
@@ -26402,16 +24057,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:\\$defaultAction \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDtoAbstract.php
 
@@ -26572,21 +24217,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:\\$action \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRulesPattern\\\\OutgoingDdiRulesPatternDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternDtoAbstract.php
 
@@ -26941,21 +24571,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:\\$priority \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:\\$stopper \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDtoAbstract\\:\\:\\$weight \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingInterface.php
@@ -27261,11 +24876,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupInterface.php
@@ -27457,11 +25067,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ProxyTrunk\\\\ProxyTrunkDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunkDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ProxyTrunk\\\\ProxyTrunkDtoAbstract\\:\\:\\$ip \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ProxyTrunk/ProxyTrunkDtoAbstract.php
 
@@ -27786,26 +25391,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PublicEntity\\\\PublicEntityDtoAbstract\\:\\:\\$brand \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PublicEntity\\\\PublicEntityDtoAbstract\\:\\:\\$client \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PublicEntity\\\\PublicEntityDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PublicEntity\\\\PublicEntityDtoAbstract\\:\\:\\$platform \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PublicEntity\\\\PublicEntityInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/PublicEntity/PublicEntityInterface.php
@@ -28077,11 +25662,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:\\$preventMissedCalls \\(int\\) does not accept int\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
@@ -28371,16 +25951,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:\\$timeIn \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanDtoAbstract\\:\\:\\$weight \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlan\\\\RatingPlanInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanInterface.php
@@ -28611,46 +26181,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$descriptionCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$descriptionEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$descriptionEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$descriptionIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupInterface.php
@@ -28851,11 +26381,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDtoAbstract\\:\\:\\$activationTime \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileInterface.php
@@ -29037,21 +26562,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:\\$calldate \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:\\$duration \\(float\\) does not accept float\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php
 
@@ -29511,76 +27021,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$allow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$authNeeded \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$calleridUpdateHeader \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$ddiIn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$directConnectivity \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$directMediaMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$disallow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$maxCalls \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$multiContact \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$rtpEncryption \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$t38Passthrough \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:\\$updateCallerid \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceInterface\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceInterface.php
@@ -29961,41 +27401,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$ddiIn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$directConnectivity \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$multiContact \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$rtpEncryption \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDtoAbstract\\:\\:\\$t38Passthrough \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountInterface\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountInterface.php
@@ -30137,21 +27542,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:\\$open \\(bool\\) does not accept bool\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
 
@@ -30426,31 +27816,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:\\$prefix \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternInterface.php
@@ -30652,11 +28017,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDtoAbstract.php
 
@@ -30946,16 +28306,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:\\$tag \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagInterface.php
@@ -31127,21 +28477,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:\\$timeIn \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:\\$timeout \\(DateTimeInterface\\|string\\) does not accept DateTimeInterface\\|string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php
 
@@ -31346,61 +28681,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$defaultCode \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$descriptionCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$descriptionEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$descriptionEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$descriptionIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$extraArgs \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Service/ServiceDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Service/ServiceInterface.php
@@ -31532,16 +28812,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDtoAbstract\\:\\:\\$disableCDR \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDtoAbstract\\:\\:\\$number \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDtoAbstract.php
 
@@ -31831,41 +29101,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$allowAudio \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$directMediaMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$disallow \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$password \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$rtpEncryption \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:\\$t38Passthrough \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Terminal/TerminalInterface.php
@@ -31977,21 +29212,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalManufacturer\\\\TerminalManufacturerDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalManufacturer/TerminalManufacturerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalManufacturer\\\\TerminalManufacturerDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalManufacturer/TerminalManufacturerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalManufacturer\\\\TerminalManufacturerDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalManufacturer/TerminalManufacturerDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalManufacturer\\\\TerminalManufacturerDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TerminalManufacturer/TerminalManufacturerDtoAbstract.php
 
@@ -32161,21 +29381,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelDtoAbstract\\:\\:\\$iden \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TerminalModel\\\\TerminalModelInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TerminalModel/TerminalModelInterface.php
@@ -32326,31 +29531,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:\\$labelCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:\\$labelEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:\\$labelEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:\\$labelIt \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneDtoAbstract\\:\\:\\$tz \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Timezone/TimezoneInterface.php
@@ -32467,16 +29647,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRule\\\\TransformationRuleDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRule\\\\TransformationRuleDtoAbstract\\:\\:\\$description \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRule\\\\TransformationRuleDtoAbstract\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleDtoAbstract.php
 
@@ -32702,26 +29872,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:\\$nameCa \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:\\$nameEn \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:\\$nameEs \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:\\$nameIt \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
 
@@ -33266,71 +30416,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$active \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$doNotDisturb \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$externalIpCalls \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$gsQRCode \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$isBoss \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$lastname \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$maxCalls \\(int\\) does not accept int\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$multiContact \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$name \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$rejectCallMethod \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$voicemailAttachSound \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$voicemailEnabled \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:\\$voicemailSendMail \\(bool\\) does not accept bool\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserInterface.php
@@ -33557,16 +30642,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:\\$url \\(string\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:\\$urlType \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php
 
