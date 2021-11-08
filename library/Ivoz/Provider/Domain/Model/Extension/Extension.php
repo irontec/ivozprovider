@@ -79,6 +79,11 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
         return parent::setNumberValue($numberValue);
     }
 
+    /**
+     * @return (int|string)[]
+     *
+     * @psalm-return array{id: int, number: string}
+     */
     public function toArrayPortal()
     {
         return [

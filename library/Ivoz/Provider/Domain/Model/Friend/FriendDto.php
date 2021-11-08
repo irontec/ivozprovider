@@ -28,14 +28,14 @@ class FriendDto extends FriendDtoAbstract
      */
     private $domainName;
 
-    public function addStatus(RegistrationStatus $status)
+    public function addStatus(RegistrationStatus $status): static
     {
         $this->status[] = $status;
 
         return $this;
     }
 
-    public function setDomainName(string $name)
+    public function setDomainName(string $name): void
     {
         $this->domainName = $name;
     }

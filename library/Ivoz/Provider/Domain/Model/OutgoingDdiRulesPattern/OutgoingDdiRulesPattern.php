@@ -72,9 +72,10 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 
     /**
      * Return forced Ddi for this rule pattern
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     *
+     * @return DdiInterface|null
      */
-    public function getForcedDdi(): DdiInterface
+    public function getForcedDdi(): ?DdiInterface
     {
         $ddi = parent::getForcedDdi();
         if ($ddi) {

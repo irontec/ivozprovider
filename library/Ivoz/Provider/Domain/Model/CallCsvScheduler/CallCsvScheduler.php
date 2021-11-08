@@ -119,9 +119,9 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface|null
      */
-    public function getTimezone()
+    public function getTimezone(): ?\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
     {
         $timeZone = $this->getCompany()
             ? $this->getCompany()->getDefaultTimezone()

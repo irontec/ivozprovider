@@ -33,9 +33,12 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
 
     /**
      * @param Criteria|null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
+     *
+     * @return (\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface|null)[]
+     *
+     * @psalm-return list<\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface|null>
      */
-    public function getRoutingPatterns(Criteria $criteria = null)
+    public function getRoutingPatterns(Criteria $criteria = null): array
     {
         $patterns = array();
         $rels = $this->getRelPatterns($criteria);

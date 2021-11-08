@@ -80,8 +80,10 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 
     /**
      * @param int[] $carrierIds
+     *
+     * @return void
      */
-    public function setCarrierIds(array $carrierIds)
+    public function setCarrierIds(array $carrierIds): void
     {
         $this->carrierIds = $carrierIds;
 

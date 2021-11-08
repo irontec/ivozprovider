@@ -157,6 +157,8 @@ trait AdministratorSecurityTrait
 
     /**
      * @see UserInterface::eraseCredentials()
+     *
+     * @return void
      */
     public function eraseCredentials()
     {

@@ -46,7 +46,12 @@ class InvoiceDto extends InvoiceDtoAbstract
         );
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'pdf'

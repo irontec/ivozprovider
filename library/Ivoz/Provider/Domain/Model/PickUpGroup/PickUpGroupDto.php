@@ -82,8 +82,10 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
 
     /**
      * @param int[] $userIds
+     *
+     * @return void
      */
-    public function setUserIds(array $userIds)
+    public function setUserIds(array $userIds): void
     {
         $this->userIds = $userIds;
 

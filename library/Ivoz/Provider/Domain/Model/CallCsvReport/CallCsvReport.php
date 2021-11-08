@@ -50,9 +50,9 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface|null
      */
-    public function getTimezone()
+    public function getTimezone(): ?\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
     {
         $timeZone = $this->getBrand()
             ? $this->getBrand()->getDefaultTimezone()

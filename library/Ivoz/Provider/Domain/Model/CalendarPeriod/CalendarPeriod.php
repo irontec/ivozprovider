@@ -58,6 +58,9 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
     }
 
 
+    /**
+     * @return bool
+     */
     public function isOutOfSchedule()
     {
         $calendar = $this->getCalendar();

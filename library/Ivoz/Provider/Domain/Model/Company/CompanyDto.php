@@ -61,8 +61,10 @@ class CompanyDto extends CompanyDtoAbstract
 
     /**
      * @param int[] $featureIds
+     *
+     * @return void
      */
-    public function setFeatureIds(array $featureIds)
+    public function setFeatureIds(array $featureIds): void
     {
         $this->featureIds = $featureIds;
         $relFeatures = [];

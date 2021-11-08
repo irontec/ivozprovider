@@ -148,6 +148,9 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
 
+    /**
+     * @return Friend|null
+     */
     public function getFriend($exten)
     {
         $criteria = Criteria::create();

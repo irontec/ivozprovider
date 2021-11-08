@@ -99,7 +99,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         }
     }
 
-    protected function sanitizeNew()
+    protected function sanitizeNew(): void
     {
         if ($this->getEmail()) {
             $this->setVoicemailSendMail(true);
@@ -270,9 +270,11 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface[]
+     * @return (\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null)[]
+     *
+     * @psalm-return array<array-key, \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null>
      */
-    public function getPickUpGroups()
+    public function getPickUpGroups(): array
     {
         $pickUpGroups = array();
 

@@ -26,7 +26,12 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'file'

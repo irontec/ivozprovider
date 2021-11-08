@@ -94,8 +94,10 @@ class IvrDto extends IvrDtoAbstract
 
     /**
      * @param int[] $extensionIds
+     *
+     * @return void
      */
-    public function setExcludedExtensionIds(array $extensionIds)
+    public function setExcludedExtensionIds(array $extensionIds): void
     {
         $this->excludedExtensionIds = $extensionIds;
 

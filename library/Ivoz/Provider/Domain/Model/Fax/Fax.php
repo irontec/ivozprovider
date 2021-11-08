@@ -53,9 +53,9 @@ class Fax extends FaxAbstract implements FaxInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return DdiInterface|null
      */
-    public function getOutgoingDdi(): DdiInterface
+    public function getOutgoingDdi(): ?DdiInterface
     {
         if (!is_null($this->outgoingDdi)) {
             return parent::getOutgoingDdi();

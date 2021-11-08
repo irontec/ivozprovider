@@ -100,6 +100,8 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
 
     /**
      * Get the size in bytes for disk usage limit on this brand
+     *
+     * @return int
      */
     public function getRecordingsLimit()
     {

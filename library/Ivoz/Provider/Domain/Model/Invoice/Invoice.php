@@ -52,7 +52,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
         }
     }
 
-    private function reset()
+    private function reset(): void
     {
         $this
             ->setTotal(null)
@@ -62,7 +62,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
             ->setPdf(new Pdf(null, null, null));
     }
 
-    private function sanitizeOutDate()
+    private function sanitizeOutDate(): void
     {
         $tz = $this
             ->getCompany()
