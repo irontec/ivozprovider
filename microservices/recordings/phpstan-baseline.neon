@@ -1,16 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method EncoderController\\:\\:index\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/EncoderController.php
-
-		-
-			message: "#^Method EncoderController\\:\\:registerCommand\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/EncoderController.php
-
-		-
 			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Kernel.php
@@ -26,11 +16,6 @@ parameters:
 			path: src/Recording/Encoder.php
 
 		-
-			message: "#^Method Recording\\\\Encoder\\:\\:processAction\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Recording/Encoder.php
-
-		-
 			message: "#^Parameter \\#1 \\$ddiE164 of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiRepository\\:\\:findOneByDdiE164\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Recording/Encoder.php
@@ -42,11 +27,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
-			count: 1
-			path: src/Service/Encoder.php
-
-		-
-			message: "#^Method Service\\\\Encoder\\:\\:processAction\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Service/Encoder.php
 

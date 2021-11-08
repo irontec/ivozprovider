@@ -40,15 +40,6 @@
     <InvalidScalarArgument occurrences="1">
       <code>$code</code>
     </InvalidScalarArgument>
-    <MissingReturnType occurrences="1">
-      <code>run</code>
-    </MissingReturnType>
-    <MixedInferredReturnType occurrences="1">
-      <code>Response</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;run()</code>
-    </MixedReturnStatement>
   </file>
   <file src="src/Controller/My/ActiveCallsAction.php">
     <MixedArgument occurrences="1">
@@ -59,15 +50,13 @@
     </MixedAssignment>
   </file>
   <file src="src/Controller/My/RegistrationSummaryAction.php">
-    <MixedArgument occurrences="3">
+    <MixedArgument occurrences="2">
       <code>$brand-&gt;getId()</code>
       <code>$company</code>
-      <code>$total</code>
     </MixedArgument>
-    <MixedAssignment occurrences="3">
+    <MixedAssignment occurrences="2">
       <code>$company</code>
       <code>$companyId</code>
-      <code>$total</code>
     </MixedAssignment>
   </file>
   <file src="src/Controller/Provider/PostUsersMassImportAction.php">
@@ -141,12 +130,6 @@
       <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
     </UnresolvableInclude>
   </file>
-  <file src="src/Model/ActiveCalls.php">
-    <MissingReturnType occurrences="2">
-      <code>setInbound</code>
-      <code>setOutbound</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Service/AuthEndpointDecorator.php">
     <MixedArgument occurrences="3">
       <code>$paths</code>
@@ -176,10 +159,6 @@
     <DeprecatedInterface occurrences="1">
       <code>FeatureContext</code>
     </DeprecatedInterface>
-    <MissingReturnType occurrences="2">
-      <code>setBrandAuthorizationHeader</code>
-      <code>setBrandAuthorizationHeaderByExchange</code>
-    </MissingReturnType>
     <PropertyNotSetInConstructor occurrences="1">
       <code>FeatureContext</code>
     </PropertyNotSetInConstructor>

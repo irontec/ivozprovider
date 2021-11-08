@@ -21,11 +21,6 @@ parameters:
 			path: src/Controller/My/CallHistoryAction.php
 
 		-
-			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:setUserTimezone\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/My/CallHistoryAction.php
-
-		-
 			message: "#^Method Controller\\\\My\\\\CallHistoryAction\\:\\:setUserTimezone\\(\\) has parameter \\$calls with no value type specified in iterable type Traversable\\.$#"
 			count: 1
 			path: src/Controller/My/CallHistoryAction.php
@@ -121,26 +116,6 @@ parameters:
 			path: src/Controller/My/StatusAction.php
 
 		-
-			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setCompanyData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/My/StatusAction.php
-
-		-
-			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setExtensionData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/My/StatusAction.php
-
-		-
-			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setTerminalData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/My/StatusAction.php
-
-		-
-			message: "#^Method Controller\\\\My\\\\StatusAction\\:\\:setUserLocationData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/My/StatusAction.php
-
-		-
 			message: "#^Cannot access property \\$server on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
 			count: 2
 			path: src/Controller/My/WebThemeAction.php
@@ -154,11 +129,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$string of function urlencode expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Controller/My/WebThemeAction.php
-
-		-
-			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
 
 		-
 			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
@@ -179,11 +149,6 @@ parameters:
 			message: "#^Method Model\\\\CallStats\\:\\:__construct\\(\\) has parameter \\$totalDetours with no typehint specified\\.$#"
 			count: 1
 			path: src/Model/CallStats.php
-
-		-
-			message: "#^Method Model\\\\UserStatus\\:\\:setLanguage\\(\\) has parameter \\$language with no typehint specified\\.$#"
-			count: 1
-			path: src/Model/UserStatus.php
 
 		-
 			message: "#^Method Model\\\\WebTheme\\:\\:__construct\\(\\) has parameter \\$brandName with no typehint specified\\.$#"
@@ -226,11 +191,6 @@ parameters:
 			path: src/Service/AuthEndpointDecorator.php
 
 		-
-			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setBrandAuthorizationHeaderByExchange\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Service/Behat/FeatureContext.php
-
-		-
 			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Service/Behat/FeatureContext.php
@@ -242,11 +202,6 @@ parameters:
 
 		-
 			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setRetailCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Service/Behat/FeatureContext.php
-
-		-
-			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setUserApiContext\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Service/Behat/FeatureContext.php
 
