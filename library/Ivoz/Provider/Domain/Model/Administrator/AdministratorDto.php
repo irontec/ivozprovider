@@ -26,6 +26,7 @@ class AdministratorDto extends AdministratorDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+            unset($response['internal']);
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {

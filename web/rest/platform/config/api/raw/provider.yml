@@ -92,6 +92,8 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
       ROLE_SUPER_ADMIN:
         id:
           neq: "0"
+        internal:
+          neq: "1"
         company:
           isNull: ~
     write_access_control:
