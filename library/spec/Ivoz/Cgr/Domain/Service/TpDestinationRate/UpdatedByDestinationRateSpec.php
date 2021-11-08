@@ -54,6 +54,13 @@ class UpdatedByDestinationRateSpec extends ObjectBehavior
             DestinationRateGroupInterface::class,
             true
         );
+        $this->getterProphecy(
+            $this->destinationRateGroup,
+            [
+                'getRoundingMethod' => TpDestinationRateInterface::ROUNDINGMETHOD_UP
+            ],
+            false
+        );
 
         $this->brand = $this->getTestDouble(
             BrandInterface::class,
