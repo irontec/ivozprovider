@@ -1,4 +1,14 @@
 # Changelog
+## 2.19.0
+* Endpoints:
+    - /brands:
+        - Removed currency[exists] filter parameter
+
+* Models:
+    - Brand:
+        - Set currency as required
+    - Brand-detailed:
+        - Set currency as required
 
 ## 2.18.1
 * Endpoints:
