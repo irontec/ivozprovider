@@ -27,12 +27,7 @@ class CreatedByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @param BrandInterface $brand
-     *
-     * @return void
-     */
-    public function execute(BrandInterface $brand)
+    public function execute(BrandInterface $brand): void
     {
         $isNew = $brand->isNew();
         if (!$isNew) {
