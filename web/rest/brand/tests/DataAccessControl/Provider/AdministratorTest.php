@@ -35,6 +35,7 @@ class AdministratorTest extends KernelTestCase
             $accessControl,
             [
                 ['company', 'in', 'companyRepository.getSupervisedCompanyIdsByAdmin(user)'],
+                ['internal', 'neq', '1'],
             ]
         );
     }

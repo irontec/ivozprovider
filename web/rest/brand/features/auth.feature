@@ -22,3 +22,10 @@ Feature: Authorization checking
     And  I send a "GET" request to "companies"
     Then the response status code should be 200
     And  the response should be in JSON
+
+  Scenario: A higher order admin can exchange internal token
+    When I exchange internal Brand Authorization header
+    And  I add "Accept" header equal to "application/ld+json"
+    And  I send a "GET" request to "companies"
+    Then the response status code should be 200
+    And  the response should be in JSON
