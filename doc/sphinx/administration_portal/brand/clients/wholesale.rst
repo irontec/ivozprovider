@@ -82,6 +82,10 @@ When **editing** a client, these additional fields can be configured:
         This field allows enabling codecs for this specific client. This codecs will be added to
         the ones offered by the client in its SDP.
 
+.. error:: Selecting codecs in **Audio transcoding** may lead to uneeded transcoding. Selecting ALL codecs is
+           always a horrible idea. Do not select any codec unless this client does not support an specific codec
+           that is compulsory for a needed destination/carrier.
+
 .. note:: Apart from these fields, main operator (*aka* God) will also see a **Platform data** group that allows:
 
     - Choosing an specific media relay set for the client.
