@@ -109,7 +109,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setPresentityUri(?string $presentityUri): static
+    public function setPresentityUri(string $presentityUri): static
     {
         $this->presentityUri = $presentityUri;
 
@@ -121,7 +121,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $this->presentityUri;
     }
 
-    public function setWatcherUsername(?string $watcherUsername): static
+    public function setWatcherUsername(string $watcherUsername): static
     {
         $this->watcherUsername = $watcherUsername;
 
@@ -133,7 +133,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $this->watcherUsername;
     }
 
-    public function setWatcherDomain(?string $watcherDomain): static
+    public function setWatcherDomain(string $watcherDomain): static
     {
         $this->watcherDomain = $watcherDomain;
 
@@ -145,7 +145,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $this->watcherDomain;
     }
 
-    public function setEvent(?string $event): static
+    public function setEvent(string $event): static
     {
         $this->event = $event;
 
@@ -157,7 +157,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $this->event;
     }
 
-    public function setStatus(?int $status): static
+    public function setStatus(int $status): static
     {
         $this->status = $status;
 
@@ -181,7 +181,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $this->reason;
     }
 
-    public function setInsertedTime(?int $insertedTime): static
+    public function setInsertedTime(int $insertedTime): static
     {
         $this->insertedTime = $insertedTime;
 

@@ -284,11 +284,6 @@ abstract class RatingPlanAbstract
 
     protected function setMonday(?bool $monday = null): static
     {
-        if (!is_null($monday)) {
-            Assertion::between((int) $monday, 0, 1, 'monday provided "%s" is not a valid boolean value.');
-            $monday = (bool) $monday;
-        }
-
         $this->monday = $monday;
 
         return $this;
@@ -301,11 +296,6 @@ abstract class RatingPlanAbstract
 
     protected function setTuesday(?bool $tuesday = null): static
     {
-        if (!is_null($tuesday)) {
-            Assertion::between((int) $tuesday, 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
-            $tuesday = (bool) $tuesday;
-        }
-
         $this->tuesday = $tuesday;
 
         return $this;
@@ -318,11 +308,6 @@ abstract class RatingPlanAbstract
 
     protected function setWednesday(?bool $wednesday = null): static
     {
-        if (!is_null($wednesday)) {
-            Assertion::between((int) $wednesday, 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
-            $wednesday = (bool) $wednesday;
-        }
-
         $this->wednesday = $wednesday;
 
         return $this;
@@ -335,11 +320,6 @@ abstract class RatingPlanAbstract
 
     protected function setThursday(?bool $thursday = null): static
     {
-        if (!is_null($thursday)) {
-            Assertion::between((int) $thursday, 0, 1, 'thursday provided "%s" is not a valid boolean value.');
-            $thursday = (bool) $thursday;
-        }
-
         $this->thursday = $thursday;
 
         return $this;
@@ -352,11 +332,6 @@ abstract class RatingPlanAbstract
 
     protected function setFriday(?bool $friday = null): static
     {
-        if (!is_null($friday)) {
-            Assertion::between((int) $friday, 0, 1, 'friday provided "%s" is not a valid boolean value.');
-            $friday = (bool) $friday;
-        }
-
         $this->friday = $friday;
 
         return $this;
@@ -369,11 +344,6 @@ abstract class RatingPlanAbstract
 
     protected function setSaturday(?bool $saturday = null): static
     {
-        if (!is_null($saturday)) {
-            Assertion::between((int) $saturday, 0, 1, 'saturday provided "%s" is not a valid boolean value.');
-            $saturday = (bool) $saturday;
-        }
-
         $this->saturday = $saturday;
 
         return $this;
@@ -386,11 +356,6 @@ abstract class RatingPlanAbstract
 
     protected function setSunday(?bool $sunday = null): static
     {
-        if (!is_null($sunday)) {
-            Assertion::between((int) $sunday, 0, 1, 'sunday provided "%s" is not a valid boolean value.');
-            $sunday = (bool) $sunday;
-        }
-
         $this->sunday = $sunday;
 
         return $this;

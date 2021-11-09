@@ -97,7 +97,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setNumber(?string $number): static
+    public function setNumber(string $number): static
     {
         $this->number = $number;
 
@@ -121,7 +121,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this->numberE164;
     }
 
-    public function setDisableCDR(?int $disableCDR): static
+    public function setDisableCDR(int $disableCDR): static
     {
         $this->disableCDR = $disableCDR;
 

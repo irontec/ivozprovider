@@ -456,9 +456,6 @@ abstract class UserAbstract
 
     protected function setDoNotDisturb(bool $doNotDisturb): static
     {
-        Assertion::between((int) $doNotDisturb, 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
-        $doNotDisturb = (bool) $doNotDisturb;
-
         $this->doNotDisturb = $doNotDisturb;
 
         return $this;
@@ -471,9 +468,6 @@ abstract class UserAbstract
 
     protected function setIsBoss(bool $isBoss): static
     {
-        Assertion::between((int) $isBoss, 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
-        $isBoss = (bool) $isBoss;
-
         $this->isBoss = $isBoss;
 
         return $this;
@@ -486,9 +480,6 @@ abstract class UserAbstract
 
     protected function setActive(bool $active): static
     {
-        Assertion::between((int) $active, 0, 1, 'active provided "%s" is not a valid boolean value.');
-        $active = (bool) $active;
-
         $this->active = $active;
 
         return $this;
@@ -562,9 +553,6 @@ abstract class UserAbstract
 
     protected function setVoicemailEnabled(bool $voicemailEnabled): static
     {
-        Assertion::between((int) $voicemailEnabled, 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
-        $voicemailEnabled = (bool) $voicemailEnabled;
-
         $this->voicemailEnabled = $voicemailEnabled;
 
         return $this;
@@ -577,9 +565,6 @@ abstract class UserAbstract
 
     protected function setVoicemailSendMail(bool $voicemailSendMail): static
     {
-        Assertion::between((int) $voicemailSendMail, 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
-        $voicemailSendMail = (bool) $voicemailSendMail;
-
         $this->voicemailSendMail = $voicemailSendMail;
 
         return $this;
@@ -592,9 +577,6 @@ abstract class UserAbstract
 
     protected function setVoicemailAttachSound(bool $voicemailAttachSound): static
     {
-        Assertion::between((int) $voicemailAttachSound, 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
-        $voicemailAttachSound = (bool) $voicemailAttachSound;
-
         $this->voicemailAttachSound = $voicemailAttachSound;
 
         return $this;
@@ -607,9 +589,6 @@ abstract class UserAbstract
 
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between((int) $multiContact, 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
-        $multiContact = (bool) $multiContact;
-
         $this->multiContact = $multiContact;
 
         return $this;
@@ -622,9 +601,6 @@ abstract class UserAbstract
 
     protected function setGsQRCode(bool $gsQRCode): static
     {
-        Assertion::between((int) $gsQRCode, 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');
-        $gsQRCode = (bool) $gsQRCode;
-
         $this->gsQRCode = $gsQRCode;
 
         return $this;

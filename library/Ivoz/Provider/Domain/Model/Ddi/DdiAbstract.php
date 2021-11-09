@@ -468,9 +468,6 @@ abstract class DdiAbstract
 
     protected function setBillInboundCalls(bool $billInboundCalls): static
     {
-        Assertion::between((int) $billInboundCalls, 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
-        $billInboundCalls = (bool) $billInboundCalls;
-
         $this->billInboundCalls = $billInboundCalls;
 
         return $this;

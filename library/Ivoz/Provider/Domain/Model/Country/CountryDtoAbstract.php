@@ -138,7 +138,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCode(?string $code): static
+    public function setCode(string $code): static
     {
         $this->code = $code;
 
@@ -222,7 +222,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->nameIt;
     }
 
-    public function setZoneEn(?string $zoneEn): static
+    public function setZoneEn(string $zoneEn): static
     {
         $this->zoneEn = $zoneEn;
 
@@ -234,7 +234,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->zoneEn;
     }
 
-    public function setZoneEs(?string $zoneEs): static
+    public function setZoneEs(string $zoneEs): static
     {
         $this->zoneEs = $zoneEs;
 
@@ -246,7 +246,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->zoneEs;
     }
 
-    public function setZoneCa(?string $zoneCa): static
+    public function setZoneCa(string $zoneCa): static
     {
         $this->zoneCa = $zoneCa;
 
@@ -258,7 +258,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->zoneCa;
     }
 
-    public function setZoneIt(?string $zoneIt): static
+    public function setZoneIt(string $zoneIt): static
     {
         $this->zoneIt = $zoneIt;
 

@@ -149,7 +149,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -161,7 +161,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setEventDate(null|\DateTimeInterface|string $eventDate): static
+    public function setEventDate(\DateTimeInterface|string $eventDate): static
     {
         $this->eventDate = $eventDate;
 
@@ -173,7 +173,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->eventDate;
     }
 
-    public function setWholeDayEvent(?bool $wholeDayEvent): static
+    public function setWholeDayEvent(bool $wholeDayEvent): static
     {
         $this->wholeDayEvent = $wholeDayEvent;
 

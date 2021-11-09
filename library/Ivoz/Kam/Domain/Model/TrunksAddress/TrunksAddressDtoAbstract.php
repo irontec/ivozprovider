@@ -103,7 +103,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setGrp(?int $grp): static
+    public function setGrp(int $grp): static
     {
         $this->grp = $grp;
 
@@ -127,7 +127,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this->ipAddr;
     }
 
-    public function setMask(?int $mask): static
+    public function setMask(int $mask): static
     {
         $this->mask = $mask;
 
@@ -139,7 +139,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this->mask;
     }
 
-    public function setPort(?int $port): static
+    public function setPort(int $port): static
     {
         $this->port = $port;
 

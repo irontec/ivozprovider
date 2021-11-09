@@ -193,9 +193,6 @@ abstract class ConferenceRoomAbstract
 
     protected function setPinProtected(bool $pinProtected): static
     {
-        Assertion::between((int) $pinProtected, 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
-        $pinProtected = (bool) $pinProtected;
-
         $this->pinProtected = $pinProtected;
 
         return $this;

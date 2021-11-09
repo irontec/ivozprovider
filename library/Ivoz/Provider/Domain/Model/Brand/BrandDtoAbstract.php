@@ -304,7 +304,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -352,7 +352,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->recordingsLimitEmail;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -412,7 +412,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->logoBaseName;
     }
 
-    public function setInvoiceNif(?string $invoiceNif): static
+    public function setInvoiceNif(string $invoiceNif): static
     {
         $this->invoiceNif = $invoiceNif;
 
@@ -424,7 +424,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceNif;
     }
 
-    public function setInvoicePostalAddress(?string $invoicePostalAddress): static
+    public function setInvoicePostalAddress(string $invoicePostalAddress): static
     {
         $this->invoicePostalAddress = $invoicePostalAddress;
 
@@ -436,7 +436,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoicePostalAddress;
     }
 
-    public function setInvoicePostalCode(?string $invoicePostalCode): static
+    public function setInvoicePostalCode(string $invoicePostalCode): static
     {
         $this->invoicePostalCode = $invoicePostalCode;
 
@@ -448,7 +448,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoicePostalCode;
     }
 
-    public function setInvoiceTown(?string $invoiceTown): static
+    public function setInvoiceTown(string $invoiceTown): static
     {
         $this->invoiceTown = $invoiceTown;
 
@@ -460,7 +460,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceTown;
     }
 
-    public function setInvoiceProvince(?string $invoiceProvince): static
+    public function setInvoiceProvince(string $invoiceProvince): static
     {
         $this->invoiceProvince = $invoiceProvince;
 
@@ -472,7 +472,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceProvince;
     }
 
-    public function setInvoiceCountry(?string $invoiceCountry): static
+    public function setInvoiceCountry(string $invoiceCountry): static
     {
         $this->invoiceCountry = $invoiceCountry;
 

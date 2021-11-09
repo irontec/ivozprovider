@@ -135,7 +135,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->fromAddress;
     }
 
-    public function setSubject(?string $subject): static
+    public function setSubject(string $subject): static
     {
         $this->subject = $subject;
 
@@ -147,7 +147,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->subject;
     }
 
-    public function setBody(?string $body): static
+    public function setBody(string $body): static
     {
         $this->body = $body;
 
@@ -159,7 +159,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->body;
     }
 
-    public function setBodyType(?string $bodyType): static
+    public function setBodyType(string $bodyType): static
     {
         $this->bodyType = $bodyType;
 

@@ -106,7 +106,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -118,7 +118,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
         return $this->iden;
     }
 
-    public function setSymbol(?string $symbol): static
+    public function setSymbol(string $symbol): static
     {
         $this->symbol = $symbol;
 
@@ -142,7 +142,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -154,7 +154,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -166,7 +166,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -178,7 +178,7 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 

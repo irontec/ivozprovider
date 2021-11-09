@@ -316,11 +316,6 @@ abstract class DdiProviderRegistrationAbstract
 
     protected function setMultiDdi(?bool $multiDdi = null): static
     {
-        if (!is_null($multiDdi)) {
-            Assertion::between((int) $multiDdi, 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
-            $multiDdi = (bool) $multiDdi;
-        }
-
         $this->multiDdi = $multiDdi;
 
         return $this;

@@ -139,7 +139,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -151,7 +151,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->tpid;
     }
 
-    public function setLoadid(?string $loadid): static
+    public function setLoadid(string $loadid): static
     {
         $this->loadid = $loadid;
 
@@ -163,7 +163,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->loadid;
     }
 
-    public function setTenant(?string $tenant): static
+    public function setTenant(string $tenant): static
     {
         $this->tenant = $tenant;
 
@@ -175,7 +175,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->tenant;
     }
 
-    public function setAccount(?string $account): static
+    public function setAccount(string $account): static
     {
         $this->account = $account;
 
@@ -211,7 +211,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->actionTriggersTag;
     }
 
-    public function setAllowNegative(?bool $allowNegative): static
+    public function setAllowNegative(bool $allowNegative): static
     {
         $this->allowNegative = $allowNegative;
 
@@ -223,7 +223,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->allowNegative;
     }
 
-    public function setDisabled(?bool $disabled): static
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
 
@@ -235,7 +235,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->disabled;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

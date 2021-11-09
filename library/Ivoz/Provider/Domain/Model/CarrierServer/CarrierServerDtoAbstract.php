@@ -266,7 +266,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this->sendRPID;
     }
 
-    public function setAuthNeeded(?string $authNeeded): static
+    public function setAuthNeeded(string $authNeeded): static
     {
         $this->authNeeded = $authNeeded;
 

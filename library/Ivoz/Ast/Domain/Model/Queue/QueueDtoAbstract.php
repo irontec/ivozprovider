@@ -138,7 +138,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -186,7 +186,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeout;
     }
 
-    public function setAutopause(?string $autopause): static
+    public function setAutopause(string $autopause): static
     {
         $this->autopause = $autopause;
 
@@ -198,7 +198,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->autopause;
     }
 
-    public function setRinginuse(?string $ringinuse): static
+    public function setRinginuse(string $ringinuse): static
     {
         $this->ringinuse = $ringinuse;
 

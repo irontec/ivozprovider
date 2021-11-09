@@ -127,7 +127,7 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -151,7 +151,7 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         return $this->fqdn;
     }
 
-    public function setPlatform(?bool $platform): static
+    public function setPlatform(bool $platform): static
     {
         $this->platform = $platform;
 
@@ -163,7 +163,7 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         return $this->platform;
     }
 
-    public function setBrand(?bool $brand): static
+    public function setBrand(bool $brand): static
     {
         $this->brand = $brand;
 
@@ -175,7 +175,7 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-    public function setClient(?bool $client): static
+    public function setClient(bool $client): static
     {
         $this->client = $client;
 

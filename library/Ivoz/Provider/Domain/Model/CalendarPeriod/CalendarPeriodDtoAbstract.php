@@ -135,7 +135,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartDate(null|\DateTimeInterface|string $startDate): static
+    public function setStartDate(\DateTimeInterface|string $startDate): static
     {
         $this->startDate = $startDate;
 
@@ -147,7 +147,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this->startDate;
     }
 
-    public function setEndDate(null|\DateTimeInterface|string $endDate): static
+    public function setEndDate(\DateTimeInterface|string $endDate): static
     {
         $this->endDate = $endDate;
 

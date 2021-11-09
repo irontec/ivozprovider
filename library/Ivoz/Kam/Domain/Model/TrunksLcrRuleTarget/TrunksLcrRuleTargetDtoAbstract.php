@@ -105,7 +105,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    public function setLcrId(?int $lcrId): static
+    public function setLcrId(int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
@@ -117,7 +117,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->lcrId;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -129,7 +129,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->priority;
     }
 
-    public function setWeight(?int $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
 

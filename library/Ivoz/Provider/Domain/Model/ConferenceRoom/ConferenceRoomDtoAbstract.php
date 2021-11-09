@@ -96,7 +96,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -108,7 +108,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setPinProtected(?bool $pinProtected): static
+    public function setPinProtected(bool $pinProtected): static
     {
         $this->pinProtected = $pinProtected;
 
@@ -132,7 +132,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->pinCode;
     }
 
-    public function setMaxMembers(?int $maxMembers): static
+    public function setMaxMembers(int $maxMembers): static
     {
         $this->maxMembers = $maxMembers;
 

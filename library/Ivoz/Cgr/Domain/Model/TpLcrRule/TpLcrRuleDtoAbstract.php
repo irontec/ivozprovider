@@ -159,7 +159,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -171,7 +171,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->tpid;
     }
 
-    public function setDirection(?string $direction): static
+    public function setDirection(string $direction): static
     {
         $this->direction = $direction;
 
@@ -183,7 +183,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->direction;
     }
 
-    public function setTenant(?string $tenant): static
+    public function setTenant(string $tenant): static
     {
         $this->tenant = $tenant;
 
@@ -195,7 +195,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->tenant;
     }
 
-    public function setCategory(?string $category): static
+    public function setCategory(string $category): static
     {
         $this->category = $category;
 
@@ -207,7 +207,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->category;
     }
 
-    public function setAccount(?string $account): static
+    public function setAccount(string $account): static
     {
         $this->account = $account;
 
@@ -243,7 +243,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->destinationTag;
     }
 
-    public function setRpCategory(?string $rpCategory): static
+    public function setRpCategory(string $rpCategory): static
     {
         $this->rpCategory = $rpCategory;
 
@@ -255,7 +255,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->rpCategory;
     }
 
-    public function setStrategy(?string $strategy): static
+    public function setStrategy(string $strategy): static
     {
         $this->strategy = $strategy;
 
@@ -279,7 +279,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->strategyParams;
     }
 
-    public function setActivationTime(null|\DateTimeInterface|string $activationTime): static
+    public function setActivationTime(\DateTimeInterface|string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
@@ -291,7 +291,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->activationTime;
     }
 
-    public function setWeight(?float $weight): static
+    public function setWeight(float $weight): static
     {
         $this->weight = $weight;
 
@@ -303,7 +303,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->weight;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

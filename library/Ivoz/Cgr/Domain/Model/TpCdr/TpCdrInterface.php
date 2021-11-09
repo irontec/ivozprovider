@@ -10,7 +10,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpCdrInterface extends EntityInterface
 {
 
-    public function getDuration();
+    public function getDuration(): ?float;
 
     /**
      * @return array|null

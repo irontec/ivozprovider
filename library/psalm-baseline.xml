@@ -142,17 +142,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="9">
-      <code>$allow</code>
-      <code>$context</code>
-      <code>$disallow</code>
-      <code>$oneHundredRel</code>
-      <code>$sorceryId</code>
-      <code>$t38Udptl</code>
-      <code>$t38UdptlEc</code>
-      <code>$t38UdptlMaxdatagram</code>
-      <code>$t38UdptlNat</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$sorceryId</code>
@@ -262,10 +251,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$sorceryId</code>
-      <code>$srvLookups</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$sorceryId</code>
@@ -372,11 +357,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$autopause</code>
-      <code>$name</code>
-      <code>$ringinuse</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -559,10 +539,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$context</code>
-      <code>$mailbox</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$context</code>
       <code>$id</code>
@@ -711,10 +687,6 @@
       <code>$dto-&gt;getTpid()</code>
       <code>$dto-&gt;getTpid()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="2">
-      <code>(bool) $allowNegative</code>
-      <code>(bool) $disabled</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -738,15 +710,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="7">
-      <code>$account</code>
-      <code>$allowNegative</code>
-      <code>$createdAt</code>
-      <code>$disabled</code>
-      <code>$loadid</code>
-      <code>$tenant</code>
-      <code>$tpid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$account</code>
       <code>$id</code>
@@ -957,28 +920,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="20">
-      <code>$account</code>
-      <code>$answerTime</code>
-      <code>$category</code>
-      <code>$cgrid</code>
-      <code>$cost</code>
-      <code>$costDetails</code>
-      <code>$costSource</code>
-      <code>$destination</code>
-      <code>$extraFields</code>
-      <code>$extraInfo</code>
-      <code>$originHost</code>
-      <code>$originId</code>
-      <code>$requestType</code>
-      <code>$runId</code>
-      <code>$setupTime</code>
-      <code>$source</code>
-      <code>$subject</code>
-      <code>$tenant</code>
-      <code>$tor</code>
-      <code>$usage</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="21">
       <code>$account</code>
       <code>$answerTime</code>
@@ -1216,35 +1157,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="27">
-      <code>$accounts</code>
-      <code>$actionTriggers</code>
-      <code>$categories</code>
-      <code>$cdrHosts</code>
-      <code>$cdrSources</code>
-      <code>$costInterval</code>
-      <code>$createdAt</code>
-      <code>$destinationIds</code>
-      <code>$directions</code>
-      <code>$disconnectCauses</code>
-      <code>$mediationRunids</code>
-      <code>$metrics</code>
-      <code>$ppdInterval</code>
-      <code>$queueLength</code>
-      <code>$ratedAccounts</code>
-      <code>$ratedSubjects</code>
-      <code>$reqTypes</code>
-      <code>$saveInterval</code>
-      <code>$setupInterval</code>
-      <code>$subjects</code>
-      <code>$suppliers</code>
-      <code>$tag</code>
-      <code>$tenants</code>
-      <code>$timeWindow</code>
-      <code>$tors</code>
-      <code>$tpid</code>
-      <code>$usageInterval</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$metrics</code>
@@ -1447,32 +1359,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="24">
-      <code>$account</code>
-      <code>$accountField</code>
-      <code>$answerTimeField</code>
-      <code>$category</code>
-      <code>$categoryField</code>
-      <code>$costField</code>
-      <code>$createdAt</code>
-      <code>$destinationField</code>
-      <code>$direction</code>
-      <code>$directionField</code>
-      <code>$disconnectCauseField</code>
-      <code>$loadid</code>
-      <code>$pddField</code>
-      <code>$ratedTimeField</code>
-      <code>$reqTypeField</code>
-      <code>$runFilters</code>
-      <code>$runid</code>
-      <code>$setupTimeField</code>
-      <code>$subjectField</code>
-      <code>$supplierField</code>
-      <code>$tenant</code>
-      <code>$tenantField</code>
-      <code>$tpid</code>
-      <code>$usageField</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$tenant</code>
@@ -1569,11 +1455,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$createdAt</code>
-      <code>$prefix</code>
-      <code>$tpid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$prefix</code>
@@ -1696,14 +1577,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$createdAt</code>
-      <code>$maxCost</code>
-      <code>$maxCostStrategy</code>
-      <code>$roundingDecimals</code>
-      <code>$roundingMethod</code>
-      <code>$tpid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -1837,18 +1710,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="10">
-      <code>$account</code>
-      <code>$activationTime</code>
-      <code>$category</code>
-      <code>$createdAt</code>
-      <code>$direction</code>
-      <code>$rpCategory</code>
-      <code>$strategy</code>
-      <code>$tenant</code>
-      <code>$tpid</code>
-      <code>$weight</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$category</code>
       <code>$id</code>
@@ -1975,15 +1836,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="7">
-      <code>$connectFee</code>
-      <code>$createdAt</code>
-      <code>$groupIntervalStart</code>
-      <code>$rateCost</code>
-      <code>$rateIncrement</code>
-      <code>$rateUnit</code>
-      <code>$tpid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$connectFee</code>
       <code>$id</code>
@@ -2090,12 +1942,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$createdAt</code>
-      <code>$timingTag</code>
-      <code>$tpid</code>
-      <code>$weight</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -2311,14 +2157,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$activationTime</code>
-      <code>$category</code>
-      <code>$createdAt</code>
-      <code>$direction</code>
-      <code>$loadid</code>
-      <code>$tpid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -2434,15 +2272,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="7">
-      <code>$createdAt</code>
-      <code>$monthDays</code>
-      <code>$months</code>
-      <code>$time</code>
-      <code>$tpid</code>
-      <code>$weekDays</code>
-      <code>$years</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="5">
       <code>$id</code>
       <code>$monthDays</code>
@@ -3018,14 +2847,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$attrs</code>
-      <code>$description</code>
-      <code>$destination</code>
-      <code>$flags</code>
-      <code>$priority</code>
-      <code>$setid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -3112,9 +2933,6 @@
       <code>$dto-&gt;getWeight()</code>
       <code>$dto-&gt;getWeight()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="1">
-      <code>(bool) $disabled</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -3141,13 +2959,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$disabled</code>
-      <code>$setid</code>
-      <code>$stamp</code>
-      <code>$url</code>
-      <code>$weight</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$url</code>
@@ -3242,11 +3053,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$grp</code>
-      <code>$mask</code>
-      <code>$port</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -3379,10 +3185,6 @@
       <code>$dto-&gt;getParserScheduledAt()</code>
       <code>$dto-&gt;getStartTime()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="2">
-      <code>(bool) $bounced</code>
-      <code>(bool) $parsed</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -3422,12 +3224,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$duration</code>
-      <code>$endTime</code>
-      <code>$parserScheduledAt</code>
-      <code>$startTime</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -3524,13 +3320,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$did</code>
-      <code>$lastModified</code>
-      <code>$name</code>
-      <code>$type</code>
-      <code>$value</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="5">
       <code>$did</code>
       <code>$id</code>
@@ -3621,13 +3410,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$expires</code>
-      <code>$keyName</code>
-      <code>$keyType</code>
-      <code>$keyValue</code>
-      <code>$valueType</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -3715,9 +3497,6 @@
       <code>$dto-&gt;getLcrId()</code>
       <code>$dto-&gt;getLcrId()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="1">
-      <code>(bool) $strip</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -3744,10 +3523,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$gwName</code>
-      <code>$lcrId</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$gwName</code>
       <code>$id</code>
@@ -3871,11 +3646,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$enabled</code>
-      <code>$lcrId</code>
-      <code>$stopper</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -3980,11 +3750,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$lcrId</code>
-      <code>$priority</code>
-      <code>$weight</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$priority</code>
@@ -4169,23 +3934,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="15">
-      <code>$authHa1</code>
-      <code>$authPassword</code>
-      <code>$authProxy</code>
-      <code>$authUsername</code>
-      <code>$contactAddr</code>
-      <code>$expires</code>
-      <code>$flags</code>
-      <code>$lDomain</code>
-      <code>$lUsername</code>
-      <code>$lUuid</code>
-      <code>$rDomain</code>
-      <code>$rUsername</code>
-      <code>$realm</code>
-      <code>$regDelay</code>
-      <code>$socket</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -4287,9 +4035,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$priority</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -4475,31 +4220,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="23">
-      <code>$callid</code>
-      <code>$contact</code>
-      <code>$event</code>
-      <code>$expires</code>
-      <code>$flags</code>
-      <code>$fromDomain</code>
-      <code>$fromTag</code>
-      <code>$fromUser</code>
-      <code>$localContact</code>
-      <code>$localCseq</code>
-      <code>$presentityUri</code>
-      <code>$remoteCseq</code>
-      <code>$socketInfo</code>
-      <code>$status</code>
-      <code>$toDomain</code>
-      <code>$toTag</code>
-      <code>$toUser</code>
-      <code>$updated</code>
-      <code>$updatedWinfo</code>
-      <code>$userAgent</code>
-      <code>$version</code>
-      <code>$watcherDomain</code>
-      <code>$watcherUsername</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="19">
       <code>$callid</code>
       <code>$contact</code>
@@ -4622,11 +4342,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$mask</code>
-      <code>$port</code>
-      <code>$sourceAddress</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$sourceAddress</code>
@@ -4735,9 +4450,6 @@
       <code>$dto-&gt;getHidden()</code>
       <code>$dto-&gt;getStartTime()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="1">
-      <code>(bool) $hidden</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -4774,12 +4486,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$duration</code>
-      <code>$endTime</code>
-      <code>$hidden</code>
-      <code>$startTime</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -4866,13 +4572,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$expires</code>
-      <code>$keyName</code>
-      <code>$keyType</code>
-      <code>$keyValue</code>
-      <code>$valueType</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -5044,24 +4743,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="16">
-      <code>$callid</code>
-      <code>$cflags</code>
-      <code>$connectionId</code>
-      <code>$contact</code>
-      <code>$cseq</code>
-      <code>$expires</code>
-      <code>$flags</code>
-      <code>$keepalive</code>
-      <code>$lastModified</code>
-      <code>$partition</code>
-      <code>$q</code>
-      <code>$regId</code>
-      <code>$ruid</code>
-      <code>$serverId</code>
-      <code>$userAgent</code>
-      <code>$username</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -5161,14 +4842,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$aname</code>
-      <code>$atype</code>
-      <code>$avalue</code>
-      <code>$lastModified</code>
-      <code>$ruid</code>
-      <code>$username</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -5278,17 +4951,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="9">
-      <code>$body</code>
-      <code>$domain</code>
-      <code>$etag</code>
-      <code>$event</code>
-      <code>$expires</code>
-      <code>$priority</code>
-      <code>$receivedTime</code>
-      <code>$sender</code>
-      <code>$username</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="9">
       <code>$body</code>
       <code>$domain</code>
@@ -5444,24 +5106,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="16">
-      <code>$callId</code>
-      <code>$contact</code>
-      <code>$cseq</code>
-      <code>$desiredExpires</code>
-      <code>$etag</code>
-      <code>$event</code>
-      <code>$expires</code>
-      <code>$extraHeaders</code>
-      <code>$flag</code>
-      <code>$fromTag</code>
-      <code>$presId</code>
-      <code>$presUri</code>
-      <code>$remoteContact</code>
-      <code>$toTag</code>
-      <code>$version</code>
-      <code>$watcherUri</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="17">
       <code>$callId</code>
       <code>$contact</code>
@@ -5572,14 +5216,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$event</code>
-      <code>$insertedTime</code>
-      <code>$presentityUri</code>
-      <code>$status</code>
-      <code>$watcherDomain</code>
-      <code>$watcherUsername</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="6">
       <code>$id</code>
       <code>$insertedTime</code>
@@ -5686,16 +5322,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="8">
-      <code>$doc</code>
-      <code>$docType</code>
-      <code>$docUri</code>
-      <code>$domain</code>
-      <code>$etag</code>
-      <code>$port</code>
-      <code>$source</code>
-      <code>$username</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="9">
       <code>$doc</code>
       <code>$docType</code>
@@ -6707,10 +6333,6 @@
       <code>$dto-&gt;getUsername()</code>
       <code>$dto-&gt;getUsername()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="2">
-      <code>(bool) $active</code>
-      <code>(bool) $restricted</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -6744,13 +6366,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relPublicEntities</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$active</code>
-      <code>$email</code>
-      <code>$pass</code>
-      <code>$restricted</code>
-      <code>$username</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$pass</code>
@@ -6883,12 +6498,6 @@
       <code>$administrator</code>
       <code>$publicEntity</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="4">
-      <code>(bool) $create</code>
-      <code>(bool) $delete</code>
-      <code>(bool) $read</code>
-      <code>(bool) $update</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -6912,12 +6521,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$create</code>
-      <code>$delete</code>
-      <code>$read</code>
-      <code>$update</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -6992,9 +6595,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$ip</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$ip</code>
@@ -7428,9 +7028,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$duration</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -7585,9 +7182,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$duration</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -7815,16 +7409,6 @@
       <code>$services</code>
       <code>$urls</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="8">
-      <code>$invoiceCountry</code>
-      <code>$invoiceNif</code>
-      <code>$invoicePostalAddress</code>
-      <code>$invoicePostalCode</code>
-      <code>$invoiceProvince</code>
-      <code>$invoiceTown</code>
-      <code>$maxCalls</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="8">
       <code>$id</code>
       <code>$invoiceCountry</code>
@@ -8174,9 +7758,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$code</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$code</code>
       <code>$id</code>
@@ -8267,9 +7848,6 @@
       <code>$calendarPeriods</code>
       <code>$holidayDates</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -8447,10 +8025,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relSchedules</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$endDate</code>
-      <code>$startDate</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$endDate</code>
       <code>$id</code>
@@ -8650,10 +8224,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relMatchLists</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$defaultPolicy</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$defaultPolicy</code>
       <code>$id</code>
@@ -8774,10 +8344,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$policy</code>
-      <code>$priority</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$policy</code>
@@ -8912,12 +8478,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$createdOn</code>
-      <code>$inDate</code>
-      <code>$outDate</code>
-      <code>$sentTo</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$createdOn</code>
       <code>$id</code>
@@ -9136,12 +8696,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$email</code>
-      <code>$frequency</code>
-      <code>$name</code>
-      <code>$unit</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$email</code>
       <code>$frequency</code>
@@ -9263,9 +8817,6 @@
       <code>$dto-&gt;getNoAnswerTimeout()</code>
       <code>$dto-&gt;getNoAnswerTimeout()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="1">
-      <code>(bool) $enabled</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -9301,12 +8852,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$callForwardType</code>
-      <code>$callTypeFilter</code>
-      <code>$enabled</code>
-      <code>$noAnswerTimeout</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$callForwardType</code>
       <code>$callTypeFilter</code>
@@ -9401,9 +8946,7 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$brand</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="3">
-      <code>(bool) $calculateCost</code>
-      <code>(bool) $externallyRated</code>
+    <RedundantCast occurrences="1">
       <code>(float) $balance</code>
     </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
@@ -9447,10 +8990,6 @@
       <code>$servers</code>
       <code>$tpCdrStats</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$description</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -9690,10 +9229,6 @@
       <code>$brand</code>
       <code>$carrier</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="2">
-      <code>(bool) $sendPAI</code>
-      <code>(bool) $sendRPID</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -9724,9 +9259,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$authNeeded</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -9837,12 +9369,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$createdOn</code>
-      <code>$entity</code>
-      <code>$entityId</code>
-      <code>$microtime</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="5">
       <code>$createdOn</code>
       <code>$entity</code>
@@ -9923,11 +9449,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$iden</code>
-      <code>$name</code>
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$iden</code>
@@ -10034,12 +9555,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$class</code>
-      <code>$createdOn</code>
-      <code>$microtime</code>
-      <code>$requestId</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="5">
       <code>$class</code>
       <code>$createdOn</code>
@@ -10305,10 +9820,7 @@
       <code>$brand</code>
       <code>$country</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="5">
-      <code>(bool) $allowRecordingRemoval</code>
-      <code>(bool) $ipfilter</code>
-      <code>(bool) $showInvoices</code>
+    <RedundantCast occurrences="2">
       <code>(float) $balance</code>
       <code>(float) $currentDayUsage</code>
     </RedundantCast>
@@ -10386,21 +9898,6 @@
       <code>$relRoutingTags</code>
       <code>$terminals</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="13">
-      <code>$allowRecordingRemoval</code>
-      <code>$billingMethod</code>
-      <code>$countryName</code>
-      <code>$distributeMethod</code>
-      <code>$maxCalls</code>
-      <code>$maxDailyUsage</code>
-      <code>$name</code>
-      <code>$nif</code>
-      <code>$postalAddress</code>
-      <code>$postalCode</code>
-      <code>$province</code>
-      <code>$town</code>
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="8">
       <code>$countryName</code>
       <code>$id</code>
@@ -10987,9 +10484,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$code</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$code</code>
       <code>$id</code>
@@ -11122,9 +10616,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$conditions</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -11302,9 +10793,6 @@
       <code>$relRouteLocks</code>
       <code>$relSchedules</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$priority</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -11753,9 +11241,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $pinProtected</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -11782,11 +11267,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$maxMembers</code>
-      <code>$name</code>
-      <code>$pinProtected</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -11878,13 +11358,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$code</code>
-      <code>$zoneCa</code>
-      <code>$zoneEn</code>
-      <code>$zoneEs</code>
-      <code>$zoneIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -12021,14 +11494,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$iden</code>
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-      <code>$symbol</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$iden</code>
@@ -12172,9 +11637,6 @@
       <code>$brand</code>
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $billInboundCalls</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -12232,11 +11694,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$billInboundCalls</code>
-      <code>$ddi</code>
-      <code>$recordCalls</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$ddi</code>
       <code>$id</code>
@@ -12311,9 +11768,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$brand</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $externallyRated</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -12350,10 +11804,6 @@
       <code>$ddiProviderAddresses</code>
       <code>$ddiProviderRegistrations</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$description</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -12599,9 +12049,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$ddiProvider</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $multiDdi</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -12643,16 +12090,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="8">
-      <code>$authPassword</code>
-      <code>$authProxy</code>
-      <code>$authUsername</code>
-      <code>$contactUsername</code>
-      <code>$domain</code>
-      <code>$expires</code>
-      <code>$realm</code>
-      <code>$username</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -12759,9 +12196,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$destinationRates</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$prefix</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$prefix</code>
@@ -12941,12 +12375,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$connectFee</code>
-      <code>$cost</code>
-      <code>$groupIntervalStart</code>
-      <code>$rateIncrement</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$connectFee</code>
       <code>$cost</code>
@@ -13082,9 +12510,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$brand</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $deductibleConnectionFee</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -13131,17 +12556,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$destinationRates</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="9">
-      <code>$deductibleConnectionFee</code>
-      <code>$descriptionCa</code>
-      <code>$descriptionEn</code>
-      <code>$descriptionEs</code>
-      <code>$descriptionIt</code>
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="9">
       <code>$descriptionCa</code>
       <code>$descriptionEn</code>
@@ -13315,10 +12729,6 @@
       <code>$residentialDevices</code>
       <code>$terminals</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$domain</code>
-      <code>$pointsTo</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$domain</code>
       <code>$id</code>
@@ -13526,9 +12936,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$users</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$number</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$number</code>
@@ -13733,9 +13140,6 @@
       <code>$schedules</code>
       <code>$whiteLists</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -14204,9 +13608,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $sendByEmail</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -14235,10 +13636,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$name</code>
-      <code>$sendByEmail</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -14379,9 +13776,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$calldate</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$calldate</code>
       <code>$id</code>
@@ -14494,13 +13888,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$iden</code>
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$iden</code>
@@ -14763,9 +14150,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -15118,11 +14502,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="3">
-      <code>(bool) $alwaysApplyTransformations</code>
-      <code>(bool) $multiContact</code>
-      <code>(bool) $rtpEncryption</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -15182,22 +14561,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="14">
-      <code>$allow</code>
-      <code>$alwaysApplyTransformations</code>
-      <code>$calleridUpdateHeader</code>
-      <code>$ddiIn</code>
-      <code>$description</code>
-      <code>$directConnectivity</code>
-      <code>$directMediaMethod</code>
-      <code>$disallow</code>
-      <code>$multiContact</code>
-      <code>$name</code>
-      <code>$priority</code>
-      <code>$rtpEncryption</code>
-      <code>$t38Passthrough</code>
-      <code>$updateCallerid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -15321,10 +14684,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$name</code>
-      <code>$regExp</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$name</code>
@@ -15426,9 +14785,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$calendar</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $wholeDayEvent</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -15463,11 +14819,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$eventDate</code>
-      <code>$name</code>
-      <code>$wholeDayEvent</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$eventDate</code>
       <code>$id</code>
@@ -15606,13 +14957,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$huntGroupsRelUsers</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$allowCallForwards</code>
-      <code>$description</code>
-      <code>$name</code>
-      <code>$preventMissedCalls</code>
-      <code>$strategy</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$strategy</code>
@@ -15740,9 +15084,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$routeType</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$routeType</code>
@@ -16073,14 +15414,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="6">
-      <code>$increment</code>
-      <code>$iteration</code>
-      <code>$name</code>
-      <code>$prefix</code>
-      <code>$sequenceLength</code>
-      <code>$version</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$id</code>
       <code>$increment</code>
@@ -16229,12 +15562,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relFixedCosts</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$email</code>
-      <code>$frequency</code>
-      <code>$name</code>
-      <code>$unit</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$email</code>
       <code>$frequency</code>
@@ -16377,10 +15704,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$name</code>
-      <code>$template</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$name</code>
@@ -16493,9 +15816,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $allowExtensions</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -16549,12 +15869,6 @@
       <code>$entries</code>
       <code>$excludedExtensions</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$allowExtensions</code>
-      <code>$maxDigits</code>
-      <code>$name</code>
-      <code>$timeout</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$id</code>
       <code>$maxDigits</code>
@@ -16725,10 +16039,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$entry</code>
-      <code>$routeType</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$entry</code>
       <code>$id</code>
@@ -16891,13 +16201,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$iden</code>
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$iden</code>
@@ -17046,9 +16349,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -17166,9 +16466,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -17296,9 +16593,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$type</code>
@@ -17461,9 +16755,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -17602,9 +16893,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -17723,10 +17011,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$contents</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$name</code>
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$name</code>
@@ -17858,11 +17142,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$body</code>
-      <code>$bodyType</code>
-      <code>$subject</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$body</code>
       <code>$id</code>
@@ -17976,10 +17255,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$defaultAction</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$defaultAction</code>
       <code>$id</code>
@@ -18122,11 +17397,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$action</code>
-      <code>$priority</code>
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$action</code>
       <code>$id</code>
@@ -18239,10 +17509,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$brand</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="2">
-      <code>(bool) $forceClid</code>
-      <code>(bool) $stopper</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -18288,11 +17554,6 @@
       <code>$lcrRules</code>
       <code>$relCarriers</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$priority</code>
-      <code>$stopper</code>
-      <code>$weight</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$priority</code>
@@ -18552,9 +17813,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relUsers</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -18734,9 +17992,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$ip</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$ip</code>
@@ -18979,11 +18234,6 @@
       <code>$dto-&gt;getPlatform()</code>
       <code>$dto-&gt;getPlatform()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="3">
-      <code>(bool) $brand</code>
-      <code>(bool) $client</code>
-      <code>(bool) $platform</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -19003,12 +18253,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$brand</code>
-      <code>$client</code>
-      <code>$iden</code>
-      <code>$platform</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$iden</code>
@@ -19184,9 +18428,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$preventMissedCalls</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -19417,15 +18658,6 @@
       <code>$destinationRateGroup</code>
       <code>$ratingPlanGroup</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="7">
-      <code>(bool) $friday</code>
-      <code>(bool) $monday</code>
-      <code>(bool) $saturday</code>
-      <code>(bool) $sunday</code>
-      <code>(bool) $thursday</code>
-      <code>(bool) $tuesday</code>
-      <code>(bool) $wednesday</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -19464,10 +18696,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$timeIn</code>
-      <code>$weight</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$timeIn</code>
@@ -19636,16 +18864,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$ratingPlan</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="8">
-      <code>$descriptionCa</code>
-      <code>$descriptionEn</code>
-      <code>$descriptionEs</code>
-      <code>$descriptionIt</code>
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="9">
       <code>$descriptionCa</code>
       <code>$descriptionEn</code>
@@ -19791,9 +19009,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$tpRatingProfiles</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$activationTime</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -19968,11 +19183,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$calldate</code>
-      <code>$duration</code>
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$id</code>
     </PropertyNotSetInConstructor>
@@ -20162,10 +19372,6 @@
       <code>$brand</code>
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="2">
-      <code>(bool) $multiContact</code>
-      <code>(bool) $rtpEncryption</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -20224,22 +19430,6 @@
       <code>$callForwardSettings</code>
       <code>$ddis</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="14">
-      <code>$allow</code>
-      <code>$authNeeded</code>
-      <code>$calleridUpdateHeader</code>
-      <code>$ddiIn</code>
-      <code>$description</code>
-      <code>$directConnectivity</code>
-      <code>$directMediaMethod</code>
-      <code>$disallow</code>
-      <code>$maxCalls</code>
-      <code>$multiContact</code>
-      <code>$name</code>
-      <code>$rtpEncryption</code>
-      <code>$t38Passthrough</code>
-      <code>$updateCallerid</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -20436,10 +19626,6 @@
       <code>$brand</code>
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="2">
-      <code>(bool) $multiContact</code>
-      <code>(bool) $rtpEncryption</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -20493,15 +19679,6 @@
       <code>$callForwardSettings</code>
       <code>$ddis</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="7">
-      <code>$ddiIn</code>
-      <code>$description</code>
-      <code>$directConnectivity</code>
-      <code>$multiContact</code>
-      <code>$name</code>
-      <code>$rtpEncryption</code>
-      <code>$t38Passthrough</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -20621,9 +19798,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $open</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -20653,11 +19827,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$description</code>
-      <code>$name</code>
-      <code>$open</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -20814,13 +19983,6 @@
       <code>$outgoingRoutings</code>
       <code>$relPatternGroups</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-      <code>$prefix</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="6">
       <code>$id</code>
       <code>$nameCa</code>
@@ -20988,9 +20150,6 @@
       <code>$outgoingRoutings</code>
       <code>$relPatterns</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -21204,10 +20363,6 @@
       <code>$outgoingRoutings</code>
       <code>$relCompanies</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$name</code>
-      <code>$tag</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$name</code>
@@ -21347,15 +20502,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="7">
-      <code>(bool) $friday</code>
-      <code>(bool) $monday</code>
-      <code>(bool) $saturday</code>
-      <code>(bool) $sunday</code>
-      <code>(bool) $thursday</code>
-      <code>(bool) $tuesday</code>
-      <code>(bool) $wednesday</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -21382,11 +20528,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$name</code>
-      <code>$timeIn</code>
-      <code>$timeout</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="4">
       <code>$id</code>
       <code>$name</code>
@@ -21523,9 +20664,6 @@
       <code>$dto-&gt;getNameIt()</code>
       <code>$dto-&gt;getNameIt()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="1">
-      <code>(bool) $extraArgs</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -21550,19 +20688,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="11">
-      <code>$defaultCode</code>
-      <code>$descriptionCa</code>
-      <code>$descriptionEn</code>
-      <code>$descriptionEs</code>
-      <code>$descriptionIt</code>
-      <code>$extraArgs</code>
-      <code>$iden</code>
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$defaultCode</code>
       <code>$id</code>
@@ -21661,10 +20786,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$disableCDR</code>
-      <code>$number</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$number</code>
@@ -21803,9 +20924,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="1">
-      <code>(bool) $rtpEncryption</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -21853,15 +20971,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$users</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="7">
-      <code>$allowAudio</code>
-      <code>$directMediaMethod</code>
-      <code>$disallow</code>
-      <code>$name</code>
-      <code>$password</code>
-      <code>$rtpEncryption</code>
-      <code>$t38Passthrough</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$name</code>
@@ -21984,11 +21093,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$description</code>
-      <code>$iden</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$iden</code>
@@ -22106,11 +21210,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$description</code>
-      <code>$iden</code>
-      <code>$name</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$iden</code>
@@ -22227,13 +21326,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="5">
-      <code>$labelCa</code>
-      <code>$labelEn</code>
-      <code>$labelEs</code>
-      <code>$labelIt</code>
-      <code>$tz</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$tz</code>
@@ -22333,10 +21425,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$description</code>
-      <code>$type</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$id</code>
       <code>$type</code>
@@ -22461,9 +21549,6 @@
       <code>$dto-&gt;getNameIt()</code>
       <code>$dto-&gt;getNameIt()</code>
     </PossiblyNullArgument>
-    <RedundantCast occurrences="1">
-      <code>(bool) $generateRules</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -22495,12 +21580,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$rules</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="4">
-      <code>$nameCa</code>
-      <code>$nameEn</code>
-      <code>$nameEs</code>
-      <code>$nameIt</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="5">
       <code>$id</code>
       <code>$nameCa</code>
@@ -22706,16 +21785,6 @@
     <PropertyNotSetInConstructor occurrences="1">
       <code>$company</code>
     </PropertyNotSetInConstructor>
-    <RedundantCast occurrences="8">
-      <code>(bool) $active</code>
-      <code>(bool) $doNotDisturb</code>
-      <code>(bool) $gsQRCode</code>
-      <code>(bool) $isBoss</code>
-      <code>(bool) $multiContact</code>
-      <code>(bool) $voicemailAttachSound</code>
-      <code>(bool) $voicemailEnabled</code>
-      <code>(bool) $voicemailSendMail</code>
-    </RedundantCast>
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>isInstanceOf</code>
       <code>isInstanceOf</code>
@@ -22776,21 +21845,6 @@
       <code>$pickUpRelUsers</code>
       <code>$queueMembers</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="13">
-      <code>$active</code>
-      <code>$doNotDisturb</code>
-      <code>$externalIpCalls</code>
-      <code>$gsQRCode</code>
-      <code>$isBoss</code>
-      <code>$lastname</code>
-      <code>$maxCalls</code>
-      <code>$multiContact</code>
-      <code>$name</code>
-      <code>$rejectCallMethod</code>
-      <code>$voicemailAttachSound</code>
-      <code>$voicemailEnabled</code>
-      <code>$voicemailSendMail</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$lastname</code>
@@ -23020,10 +22074,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;id</code>
     </MixedAssignment>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>$url</code>
-      <code>$urlType</code>
-    </PossiblyNullPropertyAssignmentValue>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$id</code>
       <code>$url</code>

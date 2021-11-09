@@ -109,7 +109,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setRuid(?string $ruid): static
+    public function setRuid(string $ruid): static
     {
         $this->ruid = $ruid;
 
@@ -121,7 +121,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->ruid;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -145,7 +145,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->domain;
     }
 
-    public function setAname(?string $aname): static
+    public function setAname(string $aname): static
     {
         $this->aname = $aname;
 
@@ -157,7 +157,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->aname;
     }
 
-    public function setAtype(?int $atype): static
+    public function setAtype(int $atype): static
     {
         $this->atype = $atype;
 
@@ -169,7 +169,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->atype;
     }
 
-    public function setAvalue(?string $avalue): static
+    public function setAvalue(string $avalue): static
     {
         $this->avalue = $avalue;
 
@@ -181,7 +181,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->avalue;
     }
 
-    public function setLastModified(null|\DateTimeInterface|string $lastModified): static
+    public function setLastModified(\DateTimeInterface|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 

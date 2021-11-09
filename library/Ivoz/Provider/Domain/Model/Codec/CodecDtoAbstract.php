@@ -81,7 +81,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -93,7 +93,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -105,7 +105,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
         return $this->iden;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 

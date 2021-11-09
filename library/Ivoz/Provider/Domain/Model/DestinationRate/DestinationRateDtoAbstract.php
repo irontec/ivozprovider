@@ -120,7 +120,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCost(?float $cost): static
+    public function setCost(float $cost): static
     {
         $this->cost = $cost;
 
@@ -132,7 +132,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->cost;
     }
 
-    public function setConnectFee(?float $connectFee): static
+    public function setConnectFee(float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
@@ -144,7 +144,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->connectFee;
     }
 
-    public function setRateIncrement(?string $rateIncrement): static
+    public function setRateIncrement(string $rateIncrement): static
     {
         $this->rateIncrement = $rateIncrement;
 
@@ -156,7 +156,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateIncrement;
     }
 
-    public function setGroupIntervalStart(?string $groupIntervalStart): static
+    public function setGroupIntervalStart(string $groupIntervalStart): static
     {
         $this->groupIntervalStart = $groupIntervalStart;
 

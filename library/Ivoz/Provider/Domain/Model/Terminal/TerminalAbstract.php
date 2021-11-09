@@ -425,9 +425,6 @@ abstract class TerminalAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between((int) $rtpEncryption, 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
-        $rtpEncryption = (bool) $rtpEncryption;
-
         $this->rtpEncryption = $rtpEncryption;
 
         return $this;

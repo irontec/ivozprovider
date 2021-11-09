@@ -143,7 +143,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCalldate(null|\DateTimeInterface|string $calldate): static
+    public function setCalldate(\DateTimeInterface|string $calldate): static
     {
         $this->calldate = $calldate;
 

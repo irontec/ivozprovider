@@ -435,7 +435,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -447,7 +447,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -471,7 +471,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->domainUsers;
     }
 
-    public function setNif(?string $nif): static
+    public function setNif(string $nif): static
     {
         $this->nif = $nif;
 
@@ -483,7 +483,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->nif;
     }
 
-    public function setDistributeMethod(?string $distributeMethod): static
+    public function setDistributeMethod(string $distributeMethod): static
     {
         $this->distributeMethod = $distributeMethod;
 
@@ -495,7 +495,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->distributeMethod;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -507,7 +507,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->maxCalls;
     }
 
-    public function setMaxDailyUsage(?int $maxDailyUsage): static
+    public function setMaxDailyUsage(int $maxDailyUsage): static
     {
         $this->maxDailyUsage = $maxDailyUsage;
 
@@ -543,7 +543,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->maxDailyUsageEmail;
     }
 
-    public function setPostalAddress(?string $postalAddress): static
+    public function setPostalAddress(string $postalAddress): static
     {
         $this->postalAddress = $postalAddress;
 
@@ -555,7 +555,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->postalAddress;
     }
 
-    public function setPostalCode(?string $postalCode): static
+    public function setPostalCode(string $postalCode): static
     {
         $this->postalCode = $postalCode;
 
@@ -567,7 +567,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->postalCode;
     }
 
-    public function setTown(?string $town): static
+    public function setTown(string $town): static
     {
         $this->town = $town;
 
@@ -579,7 +579,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->town;
     }
 
-    public function setProvince(?string $province): static
+    public function setProvince(string $province): static
     {
         $this->province = $province;
 
@@ -591,7 +591,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->province;
     }
 
-    public function setCountryName(?string $countryName): static
+    public function setCountryName(string $countryName): static
     {
         $this->countryName = $countryName;
 
@@ -627,7 +627,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->onDemandRecord;
     }
 
-    public function setAllowRecordingRemoval(?bool $allowRecordingRemoval): static
+    public function setAllowRecordingRemoval(bool $allowRecordingRemoval): static
     {
         $this->allowRecordingRemoval = $allowRecordingRemoval;
 
@@ -687,7 +687,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->recordingsLimitEmail;
     }
 
-    public function setBillingMethod(?string $billingMethod): static
+    public function setBillingMethod(string $billingMethod): static
     {
         $this->billingMethod = $billingMethod;
 

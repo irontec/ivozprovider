@@ -308,11 +308,6 @@ abstract class TransformationRuleSetAbstract
 
     protected function setGenerateRules(?bool $generateRules = null): static
     {
-        if (!is_null($generateRules)) {
-            Assertion::between((int) $generateRules, 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
-            $generateRules = (bool) $generateRules;
-        }
-
         $this->generateRules = $generateRules;
 
         return $this;

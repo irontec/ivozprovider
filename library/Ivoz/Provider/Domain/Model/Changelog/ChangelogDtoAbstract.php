@@ -103,7 +103,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setEntity(?string $entity): static
+    public function setEntity(string $entity): static
     {
         $this->entity = $entity;
 
@@ -115,7 +115,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this->entity;
     }
 
-    public function setEntityId(?string $entityId): static
+    public function setEntityId(string $entityId): static
     {
         $this->entityId = $entityId;
 
@@ -139,7 +139,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this->data;
     }
 
-    public function setCreatedOn(null|\DateTimeInterface|string $createdOn): static
+    public function setCreatedOn(\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
@@ -151,7 +151,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this->createdOn;
     }
 
-    public function setMicrotime(?int $microtime): static
+    public function setMicrotime(int $microtime): static
     {
         $this->microtime = $microtime;
 

@@ -213,7 +213,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -225,7 +225,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -297,7 +297,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->fromDomain;
     }
 
-    public function setDirectConnectivity(?string $directConnectivity): static
+    public function setDirectConnectivity(string $directConnectivity): static
     {
         $this->directConnectivity = $directConnectivity;
 
@@ -309,7 +309,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->directConnectivity;
     }
 
-    public function setDdiIn(?string $ddiIn): static
+    public function setDdiIn(string $ddiIn): static
     {
         $this->ddiIn = $ddiIn;
 
@@ -321,7 +321,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->ddiIn;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -333,7 +333,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->t38Passthrough;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -345,7 +345,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->rtpEncryption;
     }
 
-    public function setMultiContact(?bool $multiContact): static
+    public function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 

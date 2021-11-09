@@ -270,7 +270,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -282,7 +282,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -330,7 +330,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->port;
     }
 
-    public function setAuthNeeded(?string $authNeeded): static
+    public function setAuthNeeded(string $authNeeded): static
     {
         $this->authNeeded = $authNeeded;
 
@@ -354,7 +354,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->password;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -366,7 +366,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->disallow;
     }
 
-    public function setAllow(?string $allow): static
+    public function setAllow(string $allow): static
     {
         $this->allow = $allow;
 
@@ -378,7 +378,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->allow;
     }
 
-    public function setDirectMediaMethod(?string $directMediaMethod): static
+    public function setDirectMediaMethod(string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
@@ -390,7 +390,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->directMediaMethod;
     }
 
-    public function setCalleridUpdateHeader(?string $calleridUpdateHeader): static
+    public function setCalleridUpdateHeader(string $calleridUpdateHeader): static
     {
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
@@ -402,7 +402,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->calleridUpdateHeader;
     }
 
-    public function setUpdateCallerid(?string $updateCallerid): static
+    public function setUpdateCallerid(string $updateCallerid): static
     {
         $this->updateCallerid = $updateCallerid;
 
@@ -426,7 +426,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->fromDomain;
     }
 
-    public function setDirectConnectivity(?string $directConnectivity): static
+    public function setDirectConnectivity(string $directConnectivity): static
     {
         $this->directConnectivity = $directConnectivity;
 
@@ -438,7 +438,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->directConnectivity;
     }
 
-    public function setDdiIn(?string $ddiIn): static
+    public function setDdiIn(string $ddiIn): static
     {
         $this->ddiIn = $ddiIn;
 
@@ -450,7 +450,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->ddiIn;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -462,7 +462,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->maxCalls;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -474,7 +474,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->t38Passthrough;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -486,7 +486,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->rtpEncryption;
     }
 
-    public function setMultiContact(?bool $multiContact): static
+    public function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 

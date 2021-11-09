@@ -124,7 +124,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -148,7 +148,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setConnectFee(?float $connectFee): static
+    public function setConnectFee(float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
@@ -160,7 +160,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->connectFee;
     }
 
-    public function setRateCost(?float $rateCost): static
+    public function setRateCost(float $rateCost): static
     {
         $this->rateCost = $rateCost;
 
@@ -172,7 +172,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateCost;
     }
 
-    public function setRateUnit(?string $rateUnit): static
+    public function setRateUnit(string $rateUnit): static
     {
         $this->rateUnit = $rateUnit;
 
@@ -184,7 +184,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateUnit;
     }
 
-    public function setRateIncrement(?string $rateIncrement): static
+    public function setRateIncrement(string $rateIncrement): static
     {
         $this->rateIncrement = $rateIncrement;
 
@@ -196,7 +196,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateIncrement;
     }
 
-    public function setGroupIntervalStart(?string $groupIntervalStart): static
+    public function setGroupIntervalStart(string $groupIntervalStart): static
     {
         $this->groupIntervalStart = $groupIntervalStart;
 
@@ -208,7 +208,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->groupIntervalStart;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

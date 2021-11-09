@@ -66,6 +66,7 @@ class TerminalFactory
             : new TerminalDto();
 
         if (empty($password)) {
+            /** @var string $password */
             $password = $terminalDto->getPassword() !== ''
                 ? $terminalDto->getPassword()
                 : Terminal::randomPassword();

@@ -124,7 +124,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -148,7 +148,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setYears(?string $years): static
+    public function setYears(string $years): static
     {
         $this->years = $years;
 
@@ -160,7 +160,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->years;
     }
 
-    public function setMonths(?string $months): static
+    public function setMonths(string $months): static
     {
         $this->months = $months;
 
@@ -172,7 +172,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->months;
     }
 
-    public function setMonthDays(?string $monthDays): static
+    public function setMonthDays(string $monthDays): static
     {
         $this->monthDays = $monthDays;
 
@@ -184,7 +184,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->monthDays;
     }
 
-    public function setWeekDays(?string $weekDays): static
+    public function setWeekDays(string $weekDays): static
     {
         $this->weekDays = $weekDays;
 
@@ -196,7 +196,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->weekDays;
     }
 
-    public function setTime(?string $time): static
+    public function setTime(string $time): static
     {
         $this->time = $time;
 
@@ -208,7 +208,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->time;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

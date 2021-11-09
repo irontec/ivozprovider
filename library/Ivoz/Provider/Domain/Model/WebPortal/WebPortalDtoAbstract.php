@@ -128,7 +128,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setUrl(?string $url): static
+    public function setUrl(string $url): static
     {
         $this->url = $url;
 
@@ -152,7 +152,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this->klearTheme;
     }
 
-    public function setUrlType(?string $urlType): static
+    public function setUrlType(string $urlType): static
     {
         $this->urlType = $urlType;
 

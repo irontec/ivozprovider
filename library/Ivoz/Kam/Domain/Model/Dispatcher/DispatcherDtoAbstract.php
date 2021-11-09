@@ -110,7 +110,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSetid(?int $setid): static
+    public function setSetid(int $setid): static
     {
         $this->setid = $setid;
 
@@ -122,7 +122,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->setid;
     }
 
-    public function setDestination(?string $destination): static
+    public function setDestination(string $destination): static
     {
         $this->destination = $destination;
 
@@ -134,7 +134,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->destination;
     }
 
-    public function setFlags(?int $flags): static
+    public function setFlags(int $flags): static
     {
         $this->flags = $flags;
 
@@ -146,7 +146,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->flags;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -158,7 +158,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->priority;
     }
 
-    public function setAttrs(?string $attrs): static
+    public function setAttrs(string $attrs): static
     {
         $this->attrs = $attrs;
 
@@ -170,7 +170,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->attrs;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 

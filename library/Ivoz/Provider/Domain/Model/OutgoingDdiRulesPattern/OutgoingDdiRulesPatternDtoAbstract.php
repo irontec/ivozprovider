@@ -112,7 +112,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $response;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -136,7 +136,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->prefix;
     }
 
-    public function setAction(?string $action): static
+    public function setAction(string $action): static
     {
         $this->action = $action;
 
@@ -148,7 +148,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->action;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 

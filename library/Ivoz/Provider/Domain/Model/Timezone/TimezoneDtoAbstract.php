@@ -114,7 +114,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTz(?string $tz): static
+    public function setTz(string $tz): static
     {
         $this->tz = $tz;
 
@@ -150,7 +150,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 
-    public function setLabelEn(?string $labelEn): static
+    public function setLabelEn(string $labelEn): static
     {
         $this->labelEn = $labelEn;
 
@@ -162,7 +162,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->labelEn;
     }
 
-    public function setLabelEs(?string $labelEs): static
+    public function setLabelEs(string $labelEs): static
     {
         $this->labelEs = $labelEs;
 
@@ -174,7 +174,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->labelEs;
     }
 
-    public function setLabelCa(?string $labelCa): static
+    public function setLabelCa(string $labelCa): static
     {
         $this->labelCa = $labelCa;
 
@@ -186,7 +186,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->labelCa;
     }
 
-    public function setLabelIt(?string $labelIt): static
+    public function setLabelIt(string $labelIt): static
     {
         $this->labelIt = $labelIt;
 

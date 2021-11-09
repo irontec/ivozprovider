@@ -257,7 +257,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -269,7 +269,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->tpid;
     }
 
-    public function setTag(?string $tag): static
+    public function setTag(string $tag): static
     {
         $this->tag = $tag;
 
@@ -281,7 +281,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setQueueLength(?int $queueLength): static
+    public function setQueueLength(int $queueLength): static
     {
         $this->queueLength = $queueLength;
 
@@ -293,7 +293,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->queueLength;
     }
 
-    public function setTimeWindow(?string $timeWindow): static
+    public function setTimeWindow(string $timeWindow): static
     {
         $this->timeWindow = $timeWindow;
 
@@ -305,7 +305,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->timeWindow;
     }
 
-    public function setSaveInterval(?string $saveInterval): static
+    public function setSaveInterval(string $saveInterval): static
     {
         $this->saveInterval = $saveInterval;
 
@@ -317,7 +317,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->saveInterval;
     }
 
-    public function setMetrics(?string $metrics): static
+    public function setMetrics(string $metrics): static
     {
         $this->metrics = $metrics;
 
@@ -329,7 +329,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->metrics;
     }
 
-    public function setSetupInterval(?string $setupInterval): static
+    public function setSetupInterval(string $setupInterval): static
     {
         $this->setupInterval = $setupInterval;
 
@@ -341,7 +341,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->setupInterval;
     }
 
-    public function setTors(?string $tors): static
+    public function setTors(string $tors): static
     {
         $this->tors = $tors;
 
@@ -353,7 +353,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->tors;
     }
 
-    public function setCdrHosts(?string $cdrHosts): static
+    public function setCdrHosts(string $cdrHosts): static
     {
         $this->cdrHosts = $cdrHosts;
 
@@ -365,7 +365,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->cdrHosts;
     }
 
-    public function setCdrSources(?string $cdrSources): static
+    public function setCdrSources(string $cdrSources): static
     {
         $this->cdrSources = $cdrSources;
 
@@ -377,7 +377,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->cdrSources;
     }
 
-    public function setReqTypes(?string $reqTypes): static
+    public function setReqTypes(string $reqTypes): static
     {
         $this->reqTypes = $reqTypes;
 
@@ -389,7 +389,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->reqTypes;
     }
 
-    public function setDirections(?string $directions): static
+    public function setDirections(string $directions): static
     {
         $this->directions = $directions;
 
@@ -401,7 +401,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->directions;
     }
 
-    public function setTenants(?string $tenants): static
+    public function setTenants(string $tenants): static
     {
         $this->tenants = $tenants;
 
@@ -413,7 +413,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->tenants;
     }
 
-    public function setCategories(?string $categories): static
+    public function setCategories(string $categories): static
     {
         $this->categories = $categories;
 
@@ -425,7 +425,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->categories;
     }
 
-    public function setAccounts(?string $accounts): static
+    public function setAccounts(string $accounts): static
     {
         $this->accounts = $accounts;
 
@@ -437,7 +437,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->accounts;
     }
 
-    public function setSubjects(?string $subjects): static
+    public function setSubjects(string $subjects): static
     {
         $this->subjects = $subjects;
 
@@ -449,7 +449,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->subjects;
     }
 
-    public function setDestinationIds(?string $destinationIds): static
+    public function setDestinationIds(string $destinationIds): static
     {
         $this->destinationIds = $destinationIds;
 
@@ -461,7 +461,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->destinationIds;
     }
 
-    public function setPpdInterval(?string $ppdInterval): static
+    public function setPpdInterval(string $ppdInterval): static
     {
         $this->ppdInterval = $ppdInterval;
 
@@ -473,7 +473,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->ppdInterval;
     }
 
-    public function setUsageInterval(?string $usageInterval): static
+    public function setUsageInterval(string $usageInterval): static
     {
         $this->usageInterval = $usageInterval;
 
@@ -485,7 +485,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->usageInterval;
     }
 
-    public function setSuppliers(?string $suppliers): static
+    public function setSuppliers(string $suppliers): static
     {
         $this->suppliers = $suppliers;
 
@@ -497,7 +497,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->suppliers;
     }
 
-    public function setDisconnectCauses(?string $disconnectCauses): static
+    public function setDisconnectCauses(string $disconnectCauses): static
     {
         $this->disconnectCauses = $disconnectCauses;
 
@@ -509,7 +509,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->disconnectCauses;
     }
 
-    public function setMediationRunids(?string $mediationRunids): static
+    public function setMediationRunids(string $mediationRunids): static
     {
         $this->mediationRunids = $mediationRunids;
 
@@ -521,7 +521,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->mediationRunids;
     }
 
-    public function setRatedAccounts(?string $ratedAccounts): static
+    public function setRatedAccounts(string $ratedAccounts): static
     {
         $this->ratedAccounts = $ratedAccounts;
 
@@ -533,7 +533,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->ratedAccounts;
     }
 
-    public function setRatedSubjects(?string $ratedSubjects): static
+    public function setRatedSubjects(string $ratedSubjects): static
     {
         $this->ratedSubjects = $ratedSubjects;
 
@@ -545,7 +545,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->ratedSubjects;
     }
 
-    public function setCostInterval(?string $costInterval): static
+    public function setCostInterval(string $costInterval): static
     {
         $this->costInterval = $costInterval;
 
@@ -557,7 +557,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->costInterval;
     }
 
-    public function setActionTriggers(?string $actionTriggers): static
+    public function setActionTriggers(string $actionTriggers): static
     {
         $this->actionTriggers = $actionTriggers;
 
@@ -569,7 +569,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this->actionTriggers;
     }
 
-    public function setCreatedAt(null|\DateTimeInterface|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 

@@ -122,7 +122,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 

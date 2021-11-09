@@ -89,7 +89,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -101,7 +101,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $this->name;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 

@@ -89,7 +89,7 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -101,7 +101,7 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDefaultPolicy(?string $defaultPolicy): static
+    public function setDefaultPolicy(string $defaultPolicy): static
     {
         $this->defaultPolicy = $defaultPolicy;
 

@@ -133,7 +133,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setLcrId(?int $lcrId): static
+    public function setLcrId(int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
@@ -193,7 +193,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->mtTvalue;
     }
 
-    public function setStopper(?int $stopper): static
+    public function setStopper(int $stopper): static
     {
         $this->stopper = $stopper;
 
@@ -205,7 +205,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->stopper;
     }
 
-    public function setEnabled(?int $enabled): static
+    public function setEnabled(int $enabled): static
     {
         $this->enabled = $enabled;
 

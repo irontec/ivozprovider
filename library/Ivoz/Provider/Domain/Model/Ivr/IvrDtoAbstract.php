@@ -212,7 +212,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -224,7 +224,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTimeout(?int $timeout): static
+    public function setTimeout(int $timeout): static
     {
         $this->timeout = $timeout;
 
@@ -236,7 +236,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->timeout;
     }
 
-    public function setMaxDigits(?int $maxDigits): static
+    public function setMaxDigits(int $maxDigits): static
     {
         $this->maxDigits = $maxDigits;
 
@@ -248,7 +248,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->maxDigits;
     }
 
-    public function setAllowExtensions(?bool $allowExtensions): static
+    public function setAllowExtensions(bool $allowExtensions): static
     {
         $this->allowExtensions = $allowExtensions;
 

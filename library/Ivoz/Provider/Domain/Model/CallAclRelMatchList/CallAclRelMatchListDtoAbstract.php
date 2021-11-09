@@ -90,7 +90,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -102,7 +102,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->priority;
     }
 
-    public function setPolicy(?string $policy): static
+    public function setPolicy(string $policy): static
     {
         $this->policy = $policy;
 

@@ -158,7 +158,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setNumber(?string $number): static
+    public function setNumber(string $number): static
     {
         $this->number = $number;
 

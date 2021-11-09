@@ -254,9 +254,6 @@ abstract class ServiceAbstract
 
     protected function setExtraArgs(bool $extraArgs): static
     {
-        Assertion::between((int) $extraArgs, 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
-        $extraArgs = (bool) $extraArgs;
-
         $this->extraArgs = $extraArgs;
 
         return $this;

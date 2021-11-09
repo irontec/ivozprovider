@@ -78,7 +78,7 @@ class TpCdrSpec extends ObjectBehavior
 
         $this
             ->getDuration()
-            ->shouldReturn(9);
+            ->shouldReturn(9.0);
     }
 
     function it_extracts_cost_details_savely()

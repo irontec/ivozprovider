@@ -255,11 +255,6 @@ abstract class CarrierAbstract
 
     protected function setExternallyRated(?bool $externallyRated = null): static
     {
-        if (!is_null($externallyRated)) {
-            Assertion::between((int) $externallyRated, 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
-            $externallyRated = (bool) $externallyRated;
-        }
-
         $this->externallyRated = $externallyRated;
 
         return $this;
@@ -288,11 +283,6 @@ abstract class CarrierAbstract
 
     protected function setCalculateCost(?bool $calculateCost = null): static
     {
-        if (!is_null($calculateCost)) {
-            Assertion::between((int) $calculateCost, 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
-            $calculateCost = (bool) $calculateCost;
-        }
-
         $this->calculateCost = $calculateCost;
 
         return $this;

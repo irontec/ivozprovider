@@ -82,7 +82,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -94,7 +94,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setRegExp(?string $regExp): static
+    public function setRegExp(string $regExp): static
     {
         $this->regExp = $regExp;
 

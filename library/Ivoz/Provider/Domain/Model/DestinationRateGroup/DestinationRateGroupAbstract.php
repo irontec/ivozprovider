@@ -321,9 +321,6 @@ abstract class DestinationRateGroupAbstract
 
     protected function setDeductibleConnectionFee(bool $deductibleConnectionFee): static
     {
-        Assertion::between((int) $deductibleConnectionFee, 0, 1, 'deductibleConnectionFee provided "%s" is not a valid boolean value.');
-        $deductibleConnectionFee = (bool) $deductibleConnectionFee;
-
         $this->deductibleConnectionFee = $deductibleConnectionFee;
 
         return $this;

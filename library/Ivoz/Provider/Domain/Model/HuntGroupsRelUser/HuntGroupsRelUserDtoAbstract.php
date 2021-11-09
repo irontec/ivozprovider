@@ -136,7 +136,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this->priority;
     }
 
-    public function setRouteType(?string $routeType): static
+    public function setRouteType(string $routeType): static
     {
         $this->routeType = $routeType;
 

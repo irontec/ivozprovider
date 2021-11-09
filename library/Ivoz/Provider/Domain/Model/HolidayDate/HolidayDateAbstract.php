@@ -275,9 +275,6 @@ abstract class HolidayDateAbstract
 
     protected function setWholeDayEvent(bool $wholeDayEvent): static
     {
-        Assertion::between((int) $wholeDayEvent, 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
-        $wholeDayEvent = (bool) $wholeDayEvent;
-
         $this->wholeDayEvent = $wholeDayEvent;
 
         return $this;

@@ -152,7 +152,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    public function setLcrId(?int $lcrId): static
+    public function setLcrId(int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
@@ -164,7 +164,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this->lcrId;
     }
 
-    public function setGwName(?string $gwName): static
+    public function setGwName(string $gwName): static
     {
         $this->gwName = $gwName;
 

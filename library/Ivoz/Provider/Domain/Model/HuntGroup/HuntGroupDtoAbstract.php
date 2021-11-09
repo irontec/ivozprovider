@@ -163,7 +163,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -175,7 +175,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -187,7 +187,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setStrategy(?string $strategy): static
+    public function setStrategy(string $strategy): static
     {
         $this->strategy = $strategy;
 
@@ -235,7 +235,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerNumberValue;
     }
 
-    public function setPreventMissedCalls(?int $preventMissedCalls): static
+    public function setPreventMissedCalls(int $preventMissedCalls): static
     {
         $this->preventMissedCalls = $preventMissedCalls;
 
@@ -247,7 +247,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->preventMissedCalls;
     }
 
-    public function setAllowCallForwards(?int $allowCallForwards): static
+    public function setAllowCallForwards(int $allowCallForwards): static
     {
         $this->allowCallForwards = $allowCallForwards;
 

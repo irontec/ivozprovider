@@ -189,7 +189,7 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 

@@ -238,9 +238,6 @@ abstract class PublicEntityAbstract
 
     protected function setPlatform(bool $platform): static
     {
-        Assertion::between((int) $platform, 0, 1, 'platform provided "%s" is not a valid boolean value.');
-        $platform = (bool) $platform;
-
         $this->platform = $platform;
 
         return $this;
@@ -253,9 +250,6 @@ abstract class PublicEntityAbstract
 
     protected function setBrand(bool $brand): static
     {
-        Assertion::between((int) $brand, 0, 1, 'brand provided "%s" is not a valid boolean value.');
-        $brand = (bool) $brand;
-
         $this->brand = $brand;
 
         return $this;
@@ -268,9 +262,6 @@ abstract class PublicEntityAbstract
 
     protected function setClient(bool $client): static
     {
-        Assertion::between((int) $client, 0, 1, 'client provided "%s" is not a valid boolean value.');
-        $client = (bool) $client;
-
         $this->client = $client;
 
         return $this;

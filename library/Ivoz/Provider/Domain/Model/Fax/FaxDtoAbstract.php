@@ -97,7 +97,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -121,7 +121,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $this->email;
     }
 
-    public function setSendByEmail(?bool $sendByEmail): static
+    public function setSendByEmail(bool $sendByEmail): static
     {
         $this->sendByEmail = $sendByEmail;
 
