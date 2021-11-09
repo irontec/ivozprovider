@@ -1,3 +1,19 @@
+Tue, 09 Nov 2021 13:26:18 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.19.0 released
+
+    * API
+        - Active Calls information is now retrieved from redis
+
+    * User Portal
+        - Ignore non-ascii characters while generating GSWave QR code
+
+    * Proxies
+        - Added maintenance mode for graceful restarts
+        - Improve realtime message handling after proxy restart
+        - Properly close XMLRpc connections after replying
+        - Fixed SDP mangling in multisocket setups during parallel-forking
+
 Tue, 28 Sep 2021 11:47:06 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.18.1 released

@@ -1,4 +1,4 @@
-![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](web/admin/public/images/stable-2.18-blue.png) ![release](web/admin/public/images/release-artemis-14b9bc.png)
+![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](web/admin/public/images/stable-2.19-blue.png) ![release](web/admin/public/images/release-artemis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -51,7 +51,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |oldstable (oasis 1.7) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-i386.iso)|
-|stable (artemis 2.18.1) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.18~2.18.1-artemis-amd64.iso)| |
+|stable (artemis 2.19.0) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.19~2.19.0-artemis-amd64.iso)| |
 |testing (halliday 3.x) | |
 
 
