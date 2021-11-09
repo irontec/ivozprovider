@@ -223,6 +223,10 @@
                     );
 
                     var hours = parseInt(seconds / 60 / 60);
+                    if (hours >= 3) {
+                        item.parents('tr').remove();
+                        return;
+                    }
                     var minutes = parseInt(seconds / 60);
 
                     minutes -= hours * 60;
