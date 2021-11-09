@@ -7876,6 +7876,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php
 
 		-
+			message: "#^Parameter \\#1 \\$internal of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorAbstract\\:\\:setInternal\\(\\) expects bool, bool\\|null given\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php
+
+		-
 			message: "#^Parameter \\#1 \\$pass of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorAbstract\\:\\:setPass\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php
@@ -7897,6 +7902,11 @@ parameters:
 
 		-
 			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorAbstract\\:\\:\\$email has no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php
+
+		-
+			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorAbstract\\:\\:\\$internal has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorAbstract.php
 
@@ -30394,11 +30404,6 @@ parameters:
 			message: "#^Cannot call method getLanguageCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Brand\\\\BrandLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Brand/BrandLifecycleEventHandlerInterface.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Brand\\\\BrandLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"

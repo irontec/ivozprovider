@@ -6199,9 +6199,10 @@
     <ImplementedReturnTypeMismatch occurrences="1">
       <code>AdministratorDto</code>
     </ImplementedReturnTypeMismatch>
-    <MissingPropertyType occurrences="7">
+    <MissingPropertyType occurrences="8">
       <code>$active</code>
       <code>$email</code>
+      <code>$internal</code>
       <code>$lastname</code>
       <code>$name</code>
       <code>$pass</code>
@@ -6220,18 +6221,20 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getTimezone())</code>
       <code>$this-&gt;getId()</code>
     </MixedArgument>
-    <MixedInferredReturnType occurrences="7">
+    <MixedInferredReturnType occurrences="8">
       <code>?string</code>
       <code>?string</code>
+      <code>bool</code>
       <code>bool</code>
       <code>bool</code>
       <code>string</code>
       <code>string</code>
       <code>string</code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="7">
+    <MixedReturnStatement occurrences="8">
       <code>$this-&gt;active</code>
       <code>$this-&gt;email</code>
+      <code>$this-&gt;internal</code>
       <code>$this-&gt;lastname</code>
       <code>$this-&gt;name</code>
       <code>$this-&gt;pass</code>
@@ -6241,11 +6244,13 @@
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$entity</code>
     </MoreSpecificImplementedParamType>
-    <PossiblyNullArgument occurrences="10">
+    <PossiblyNullArgument occurrences="12">
       <code>$dto-&gt;getActive()</code>
       <code>$dto-&gt;getActive()</code>
       <code>$dto-&gt;getEmail()</code>
       <code>$dto-&gt;getEmail()</code>
+      <code>$dto-&gt;getInternal()</code>
+      <code>$dto-&gt;getInternal()</code>
       <code>$dto-&gt;getPass()</code>
       <code>$dto-&gt;getPass()</code>
       <code>$dto-&gt;getRestricted()</code>
@@ -22013,11 +22018,6 @@
     <TypeDoesNotContainNull occurrences="1">
       <code>isset($untilId)</code>
     </TypeDoesNotContainNull>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/Brand/BrandLifecycleEventHandlerInterface.php">
-    <MissingReturnType occurrences="1">
-      <code>execute</code>
-    </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Brand/BrandLifecycleServiceCollection.php">
     <MissingParamType occurrences="1">

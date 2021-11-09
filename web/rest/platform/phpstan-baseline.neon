@@ -61,11 +61,6 @@ parameters:
 			path: src/Service/AuthEndpointDecorator.php
 
 		-
-			message: "#^Method Service\\\\UserProvider\\:\\:findUser\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Service/UserProvider.php
-
-		-
 			message: "#^Method Service\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
 			count: 1
 			path: src/Service/UserProvider.php
