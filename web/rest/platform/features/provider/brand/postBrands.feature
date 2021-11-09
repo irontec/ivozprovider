@@ -22,7 +22,8 @@ Feature: Manage brands
           "country": "Spain",
           "registryData": "registryData"
         },
-        "defaultTimezone": 145
+        "defaultTimezone": 145,
+        "currency": 1
       }
     """
     Then the response status code should be 201
@@ -61,6 +62,17 @@ Feature: Manage brands
                   "it": "it"
               },
               "country": 68
+          },
+          "currency": {
+              "iden": "EUR",
+              "symbol": "\u20ac",
+              "id": 1,
+              "name": {
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro"
+              }
           },
           "features": []
       }
@@ -107,6 +119,17 @@ Feature: Manage brands
               },
               "country": 68
           },
+          "currency": {
+              "iden": "EUR",
+              "symbol": "\u20ac",
+              "id": 1,
+              "name": {
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro"
+              }
+          },
           "features": []
       }
     """
@@ -136,6 +159,7 @@ Content-Disposition: form-data; name="brand"
           "registryData": "registryData"
         },
         "defaultTimezone": 145,
+        "currency": 1,
         "features": [1]
       }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
@@ -182,6 +206,17 @@ This is file content
                   "it": "it"
               },
               "country": 68
+          },
+          "currency": {
+              "iden": "EUR",
+              "symbol": "\u20ac",
+              "id": 1,
+              "name": {
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro"
+              }
           },
           "features": [
               1

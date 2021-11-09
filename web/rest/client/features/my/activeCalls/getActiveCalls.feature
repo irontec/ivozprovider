@@ -11,8 +11,8 @@ Feature: Retrieve active calls
       And the JSON should be equal to:
     """
       {
-          "inbound": -1,
-          "outbound": -1,
-          "total": -2
+          "inbound": 1,
+          "outbound": 1,
+          "total": 2
       }
     """

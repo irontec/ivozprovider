@@ -22,6 +22,11 @@ RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
 # Add jenkins to sudoers file
 RUN echo 'jenkins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+# Update debian keyring
+RUN wget -q http://ftp.us.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2021.07.26_all.deb
+RUN wget -q http://ftp.us.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2021.1.1_all.deb
+RUN dpkg -i debian-*keyring*.deb
+
 # Base project
 USER $UNAME
 

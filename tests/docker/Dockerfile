@@ -29,6 +29,7 @@ RUN apt-get install --assume-yes --force-yes \
         php7.0-fpm \
         php-yaml \
         php-gearman \
+        php-redis \
         php-mailparse \
         php-imagick \
         php-xdebug \

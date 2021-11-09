@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Brand;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
@@ -37,6 +38,11 @@ class BrandSpec extends ObjectBehavior
      */
     protected $timezone;
 
+    /**
+     * @var CurrencyInterface
+     */
+    protected $currency;
+
     public function let()
     {
         $this->prepareExecution();
@@ -52,6 +58,7 @@ class BrandSpec extends ObjectBehavior
         $this->domain =  $this->getTestDouble(DomainInterface::class);
         $this->language =  $this->getTestDouble(LanguageInterface::class);
         $this->timezone = $this->getTestDouble(TimezoneInterface::class);
+        $this->currency = $this->getTestDouble(CurrencyInterface::class);
 
         $this->dto = new BrandDto();
 
@@ -66,7 +73,8 @@ class BrandSpec extends ObjectBehavior
                 'invoiceProvince' => '',
                 'invoiceCountry' => '',
                 'invoiceRegistryData' => '',
-                'defaultTimezone' => $this->timezone->reveal()
+                'defaultTimezone' => $this->timezone->reveal(),
+                'currency' => $this->currency->reveal(),
             ]
         );
     }

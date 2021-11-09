@@ -36,7 +36,8 @@ Feature: Retrieve proxy trunks rel brands
                       "registryData": ""
                   },
                   "language": 1,
-                  "defaultTimezone": 145
+                  "defaultTimezone": 145,
+                  "currency": 1
               },
               "proxyTrunk": {
                   "name": "proxytrunks",
@@ -78,7 +79,8 @@ Feature: Retrieve proxy trunks rel brands
                   "registryData": ""
               },
               "language": 1,
-              "defaultTimezone": 145
+              "defaultTimezone": 145,
+              "currency": 1
           },
           "proxyTrunk": {
               "name": "proxytrunks",
