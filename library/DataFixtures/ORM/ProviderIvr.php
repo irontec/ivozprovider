@@ -31,7 +31,7 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
             $this->setNoInputNumberValue("946002020");
             $this->setErrorRouteType("voicemail");
 
-            $this->setErrorVoiceMailUser($fixture->getReference('_reference_ProviderUser1'));
+            $this->setErrorVoicemail($fixture->getReference('_reference_ProviderVoicemail1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setWelcomeLocution($fixture->getReference('_reference_ProviderLocution1'));
             $this->setSuccessLocution($fixture->getReference('_reference_ProviderLocution1'));
@@ -55,7 +55,7 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
                 $fixture->getReference('_reference_ProviderExtension1')
             );
 
-            $this->setErrorVoiceMailUser($fixture->getReference('_reference_ProviderUser1'));
+            $this->setErrorVoicemail($fixture->getReference('_reference_ProviderVoicemail1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setWelcomeLocution($fixture->getReference('_reference_ProviderLocution1'));
             $this->setSuccessLocution($fixture->getReference('_reference_ProviderLocution1'));
@@ -75,6 +75,7 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
         return array(
             ProviderCompany::class,
             ProviderUser::class,
+            ProviderVoicemail::class,
             ProviderExtension::class,
             ProviderLocution::class,
             ProviderCountry::class
