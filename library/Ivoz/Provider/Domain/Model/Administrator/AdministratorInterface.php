@@ -59,6 +59,8 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function getActive(): bool;
 
+    public function getInternal(): bool;
+
     public function getRestricted(): bool;
 
     public function getName(): ?string;

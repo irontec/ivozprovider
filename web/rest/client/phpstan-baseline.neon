@@ -156,12 +156,17 @@ parameters:
 			path: src/Service/BillableCallNormalizer.php
 
 		-
-			message: "#^Method Service\\\\UserProvider\\:\\:findUser\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			message: "#^Cannot call method getShowInvoices\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
 			count: 1
 			path: src/Service/UserProvider.php
 
 		-
 			message: "#^Method Service\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
+			count: 1
+			path: src/Service/UserProvider.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$criteria$#"
 			count: 1
 			path: src/Service/UserProvider.php
 

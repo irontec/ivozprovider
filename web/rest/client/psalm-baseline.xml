@@ -179,19 +179,5 @@
       <code>$class</code>
       <code>$class</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$admin</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>null | AdministratorInterface</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="3">
-      <code>findOneBy</code>
-      <code>getCompany</code>
-      <code>getShowInvoices</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$admin</code>
-    </MixedReturnStatement>
   </file>
 </files>

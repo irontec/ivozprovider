@@ -1,9 +1,9 @@
 <?php
 
-namespace Ivoz\Cgr\Domain\Service\TpDerivedCharger;
+namespace Ivoz\Provider\Domain\Service\Administrator;
 
-use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedCharger;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
@@ -17,8 +17,7 @@ class CreatedByBrand implements BrandLifecycleEventHandlerInterface
     }
 
     /**
-     *
-     * @return array
+     * @return array<string, int>
      */
     public static function getSubscribedEvents()
     {
@@ -35,12 +34,23 @@ class CreatedByBrand implements BrandLifecycleEventHandlerInterface
         }
 
         // Create a new TpDerivedCharger when brand is created
-        $tpDerivedChargeDto = TpDerivedCharger::createDto();
-        $tpDerivedChargeDto
-            ->setTpid($brand->getCgrTenant())
-            ->setTenant($brand->getCgrTenant())
-            ->setBrandId($brand->getId());
+        $administratorDto = Administrator::createDto();
+        /** @var int $brandId */
+        $brandId = $brand->getId();
+        $administratorDto
+            ->setUsername(
+                '__b' . $brandId . '_internal'
+            )
+            ->setPass(
+                '[internal]'
+            )
+            ->setBrandId(
+                $brandId
+            )
+            ->setActive(false)
+            ->setRestricted(false)
+            ->setInternal(true);
 
-        $this->entityTools->persistDto($tpDerivedChargeDto, null);
+        $this->entityTools->persistDto($administratorDto, null);
     }
 }

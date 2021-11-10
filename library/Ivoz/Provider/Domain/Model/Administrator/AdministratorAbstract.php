@@ -35,6 +35,8 @@ abstract class AdministratorAbstract
 
     protected $active = true;
 
+    protected $internal = false;
+
     protected $restricted = false;
 
     protected $name;
@@ -64,12 +66,14 @@ abstract class AdministratorAbstract
         string $pass,
         string $email,
         bool $active,
+        bool $internal,
         bool $restricted
     ) {
         $this->setUsername($username);
         $this->setPass($pass);
         $this->setEmail($email);
         $this->setActive($active);
+        $this->setInternal($internal);
         $this->setRestricted($restricted);
     }
 
@@ -145,6 +149,7 @@ abstract class AdministratorAbstract
             $dto->getPass(),
             $dto->getEmail(),
             $dto->getActive(),
+            $dto->getInternal(),
             $dto->getRestricted()
         );
 
@@ -176,6 +181,7 @@ abstract class AdministratorAbstract
             ->setPass($dto->getPass())
             ->setEmail($dto->getEmail())
             ->setActive($dto->getActive())
+            ->setInternal($dto->getInternal())
             ->setRestricted($dto->getRestricted())
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
@@ -197,6 +203,7 @@ abstract class AdministratorAbstract
             ->setPass(self::getPass())
             ->setEmail(self::getEmail())
             ->setActive(self::getActive())
+            ->setInternal(self::getInternal())
             ->setRestricted(self::getRestricted())
             ->setName(self::getName())
             ->setLastname(self::getLastname())
@@ -215,6 +222,7 @@ abstract class AdministratorAbstract
             'pass' => self::getPass(),
             'email' => self::getEmail(),
             'active' => self::getActive(),
+            'internal' => self::getInternal(),
             'restricted' => self::getRestricted(),
             'name' => self::getName(),
             'lastname' => self::getLastname(),
@@ -276,6 +284,18 @@ abstract class AdministratorAbstract
     public function getActive(): bool
     {
         return $this->active;
+    }
+
+    protected function setInternal(bool $internal): static
+    {
+        $this->internal = $internal;
+
+        return $this;
+    }
+
+    public function getInternal(): bool
+    {
+        return $this->internal;
     }
 
     protected function setRestricted(bool $restricted): static

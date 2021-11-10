@@ -25,4 +25,14 @@ class FeatureContext extends BaseFeatureContext
     {
         $this->exchangeAuthorizationHeader('admin', 'test_brand_admin');
     }
+
+    /**
+     * @Given I exchange internal Brand Authorization header
+     *
+     * @return void
+     */
+    public function setInternalBrandAuthorizationHeaderByExchange(): void
+    {
+        $this->exchangeAuthorizationHeader('admin', '__b1_internal');
+    }
 }

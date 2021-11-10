@@ -27,7 +27,6 @@ services:
     Service\UserProvider:
         class: Service\UserProvider
         arguments:
-            $identifierField: 'username'
             $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
 
     Service\AuthEndpointDecorator:

@@ -171,6 +171,33 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item9);
         $manager->persist($item9);
 
+        $item10 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("__b1_internal");
+            $this->setPass("[internal]");
+            $this->setActive(false);
+            $this->setRestricted(false);
+            $this->setInternal(true);
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item10);
+        $this->addReference('_reference_ProviderAdministrator10', $item10);
+        $this->sanitizeEntityValues($item10);
+        $manager->persist($item10);
+
+        $item11 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("__c1_internal");
+            $this->setPass("[internal]");
+            $this->setActive(false);
+            $this->setRestricted(false);
+            $this->setInternal(true);
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+        })->call($item11);
+        $this->addReference('_reference_ProviderAdministrator11', $item11);
+        $this->sanitizeEntityValues($item11);
+        $manager->persist($item11);
+
         $manager->flush();
     }
 

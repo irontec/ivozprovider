@@ -18,6 +18,12 @@ class AdminLoginChecker implements UserCheckerInterface
             return;
         }
 
+        if ($admin->getInternal()) {
+            throw new CustomUserMessageAccountStatusException(
+                'Unable to login as an internal admin'
+            );
+        }
+
         if (!$admin->isEnabled()) {
             throw new CustomUserMessageAccountStatusException(
                 'Your admin account is disabled.'

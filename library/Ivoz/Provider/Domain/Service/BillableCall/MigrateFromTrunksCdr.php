@@ -7,7 +7,6 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Service\TrunksCdr\SetParsed;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 
 class MigrateFromTrunksCdr

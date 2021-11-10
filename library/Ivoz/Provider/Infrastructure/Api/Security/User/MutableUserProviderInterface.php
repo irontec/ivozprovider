@@ -6,8 +6,5 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 interface MutableUserProviderInterface extends UserProviderInterface
 {
-
     public function setEntityClass(string $class): self;
-
-    public function setUserIdentityField(string $identifierField): self;
 }

@@ -40,6 +40,11 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
      * @var bool
      */
+    private $internal = false;
+
+    /**
+     * @var bool
+     */
     private $restricted = false;
 
     /**
@@ -96,6 +101,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'pass' => 'pass',
             'email' => 'email',
             'active' => 'active',
+            'internal' => 'internal',
             'restricted' => 'restricted',
             'name' => 'name',
             'lastname' => 'lastname',
@@ -116,6 +122,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'pass' => $this->getPass(),
             'email' => $this->getEmail(),
             'active' => $this->getActive(),
+            'internal' => $this->getInternal(),
             'restricted' => $this->getRestricted(),
             'name' => $this->getName(),
             'lastname' => $this->getLastname(),
@@ -186,6 +193,18 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     public function getActive(): ?bool
     {
         return $this->active;
+    }
+
+    public function setInternal(bool $internal): static
+    {
+        $this->internal = $internal;
+
+        return $this;
+    }
+
+    public function getInternal(): ?bool
+    {
+        return $this->internal;
     }
 
     public function setRestricted(bool $restricted): static

@@ -2,6 +2,7 @@
 
 namespace Tests\Provider\Brand;
 
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
@@ -234,6 +235,7 @@ class BrandLifeCycleTest extends KernelTestCase
             BrandService::class,
             TpDerivedCharger::class,
             RoutingPatternGroupsRelPattern::class,
+            Administrator::class,
         ]);
     }
 

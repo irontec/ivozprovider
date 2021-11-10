@@ -15,7 +15,7 @@ production:
       <<: *Administrators
       class: ui-silk-tux
       title: _("List of %s %2s", ngettext('Main operator', 'Main operators', 0), "[format| (%parent%)]")
-      rawCondition: "Administrator.id != 0"
+      rawCondition: "Administrator.id != 0 AND Administrator.internal != 1"
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/main_operators.html"

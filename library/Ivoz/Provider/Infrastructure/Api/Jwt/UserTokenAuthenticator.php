@@ -105,8 +105,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
 
         /** @var MutableUserProviderInterface $userProvider */
         $provider
-            ->setEntityClass(User::class)
-            ->setUserIdentityField('email');
+            ->setEntityClass(User::class);
 
         return $provider->loadUserByUsername($identity);
     }
