@@ -1938,11 +1938,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.5.1",
+            "version": "4.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "1e5507dd015421ec6b6fcd2887ec444101ca1501"
+                "reference": "569544ae295d1135d71a988db76fce7ccaeb6ab4"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -2033,16 +2033,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.5",
+            "version": "5.6",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "ec7b86769124940be94573ef064c70d2d9d0fb35"
+                "reference": "f9c2e5e0b6d908051d76971de0733caf2538f6f2"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/orm": "^2.5",
-                "irontec/ivoz-core": "^4.5.1",
+                "irontec/ivoz-core": "^4.6",
                 "php": ">=8.0",
                 "symfony/console": "^5.1",
                 "symfony/maker-bundle": "^1.33"
