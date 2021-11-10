@@ -16,37 +16,12 @@ parameters:
 			path: src/Worker/Cgrates.php
 
 		-
-			message: "#^Method Worker\\\\Cgrates\\:\\:reload\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Worker/Cgrates.php
-
-		-
-			message: "#^Method Worker\\\\Invoices\\:\\:create\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Worker/Invoices.php
-
-		-
-			message: "#^Method Worker\\\\Invoices\\:\\:getInvoiceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Worker/Invoices.php
-
-		-
-			message: "#^Method Worker\\\\KamRpc\\:\\:delayed\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Worker/KamRpc.php
-
-		-
 			message: "#^Method Worker\\\\KamRpc\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Worker/KamRpc.php
 
 		-
 			message: "#^Method Worker\\\\KamRpc\\:\\:reEnqueueJob\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Worker/KamRpc.php
-
-		-
-			message: "#^Method Worker\\\\KamRpc\\:\\:send\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Worker/KamRpc.php
 
@@ -71,11 +46,6 @@ parameters:
 			path: src/Worker/KamRpc.php
 
 		-
-			message: "#^Method Worker\\\\Multimedia\\:\\:encode\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Worker/Multimedia.php
-
-		-
 			message: "#^Method Worker\\\\Multimedia\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Worker/Multimedia.php
@@ -87,11 +57,6 @@ parameters:
 
 		-
 			message: "#^Method Worker\\\\Rates\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Worker/Rates.php
-
-		-
-			message: "#^Method Worker\\\\Rates\\:\\:import\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Worker/Rates.php
 

@@ -21,6 +21,9 @@ class InvoiceAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $invoiceDto,
         EntityInterface $invoice,

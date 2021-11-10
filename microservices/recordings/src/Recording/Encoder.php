@@ -34,7 +34,7 @@ class Encoder
     ) {
     }
 
-    public function processAction()
+    public function processAction(): void
     {
         // Store statistics
         $stats = array(

@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Controller\\\\Auth\\\\TokenExchangeAction\\:\\:run\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/Auth/TokenExchangeAction.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
 			count: 1
 			path: src/Controller/My/ActiveCallsAction.php
@@ -76,16 +71,6 @@ parameters:
 			path: src/Kernel.php
 
 		-
-			message: "#^Method Model\\\\ActiveCalls\\:\\:setInbound\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/ActiveCalls.php
-
-		-
-			message: "#^Method Model\\\\ActiveCalls\\:\\:setOutbound\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/ActiveCalls.php
-
-		-
 			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
 			count: 2
 			path: src/Service/AuthEndpointDecorator.php
@@ -109,16 +94,6 @@ parameters:
 			message: "#^Property Service\\\\AuthEndpointDecorator\\:\\:\\$definitions with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/Service/AuthEndpointDecorator.php
-
-		-
-			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setBrandAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Service/Behat/FeatureContext.php
-
-		-
-			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setBrandAuthorizationHeaderByExchange\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Service/Behat/FeatureContext.php
 
 		-
 			message: "#^Method Service\\\\UserProvider\\:\\:findUser\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"

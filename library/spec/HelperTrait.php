@@ -114,7 +114,10 @@ trait HelperTrait
                 $arguments[] = Argument::any();
             }
 
-            if (strpos($methodName, 'set') === 0) {
+            $returnType = $publicMethod->getReturnType();
+            $isVoidReturnType = $returnType && $returnType->__toString() === 'void';
+
+            if (strpos($methodName, 'set') === 0 && !$isVoidReturnType) {
                 $collaborator
                     ->{$methodName}(...$arguments)
                     ->willReturn(

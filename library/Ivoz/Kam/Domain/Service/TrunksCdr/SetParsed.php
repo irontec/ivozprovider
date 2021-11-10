@@ -13,13 +13,10 @@ class SetParsed
     ) {
     }
 
-    /**
-     * @return void
-     */
     public function execute(
         TrunksCdrInterface $trunksCdr,
-        $dispatchImmediately = false
-    ) {
+        bool $dispatchImmediately = false
+    ): void {
         /**
          * @var TrunksCdrDto $trunksCdrDto
          */

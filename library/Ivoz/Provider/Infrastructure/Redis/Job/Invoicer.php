@@ -23,6 +23,9 @@ class Invoicer implements InvoicerJobInterface
         $this->logger = $logger;
     }
 
+    /**
+     * @return static
+     */
     public function setId(int $id)
     {
         $this->id = $id;

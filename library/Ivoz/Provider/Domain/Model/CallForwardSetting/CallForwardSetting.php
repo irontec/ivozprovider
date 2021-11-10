@@ -91,6 +91,11 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         return parent::setNumberValue($numberValue);
     }
 
+    /**
+     * @return (int|mixed|null|string)[]
+     *
+     * @psalm-return array{id: int, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     */
     public function toArrayPortal()
     {
         $response = [];
@@ -153,7 +158,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         return $this->getTargetType();
     }
 
-    public function getCallForwardTarget()
+    public function getCallForwardTarget(): ?string
     {
         if ($this->getRouteType() == CallForwardSettingInterface::TARGETTYPE_RETAIL) {
             return $this->getCfwToRetailAccount()->getName();

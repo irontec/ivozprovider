@@ -54,9 +54,11 @@ class Ivr extends IvrAbstract implements IvrInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface[] with key=>value
+     * @return (\Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null)[] with key=>value
+     *
+     * @psalm-return array{welcome: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, noanswer: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, error: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, success: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null}
      */
-    public function getAllLocutions()
+    public function getAllLocutions(): array
     {
         return [
             'welcome' => $this->getWelcomeLocution(),

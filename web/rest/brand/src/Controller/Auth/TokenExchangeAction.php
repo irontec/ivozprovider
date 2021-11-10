@@ -18,10 +18,11 @@ class TokenExchangeAction
     }
 
     /**
-     * @return Response
+     * @return Response|Token
+     *
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke()
+    public function __invoke(): Response|Token
     {
         try {
             return $this->run();
@@ -44,7 +45,7 @@ class TokenExchangeAction
         }
     }
 
-    private function run()
+    private function run(): Token
     {
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();

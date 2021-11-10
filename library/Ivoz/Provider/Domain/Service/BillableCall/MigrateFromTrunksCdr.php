@@ -21,10 +21,7 @@ class MigrateFromTrunksCdr
     ) {
     }
 
-    /**
-     * @return void
-     */
-    public function execute(TrunksCdrInterface $trunksCdr, $dispatchImmediately = false)
+    public function execute(TrunksCdrInterface $trunksCdr, bool $dispatchImmediately = false): void
     {
         $billableCall = $this->billableCallRepository->findOneByTrunksCdrId(
             $trunksCdr->getId()

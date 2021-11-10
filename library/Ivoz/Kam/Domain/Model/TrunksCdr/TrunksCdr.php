@@ -19,7 +19,7 @@ class TrunksCdr extends TrunksCdrAbstract implements TrunksCdrInterface
         return $this->id;
     }
 
-    public function isOutboundCall()
+    public function isOutboundCall(): bool
     {
         return $this->getDirection() === self::DIRECTION_OUTBOUND;
     }

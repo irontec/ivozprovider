@@ -21,6 +21,9 @@ class LocutionAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $locutionDto,
         EntityInterface $locution,

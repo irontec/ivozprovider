@@ -35,7 +35,7 @@ class Invoices
         $this->requestId = $requestId;
     }
 
-    public function create()
+    public function create(): ?Response
     {
         try {
             $id = $this->getInvoiceId();
@@ -109,7 +109,7 @@ class Invoices
         }
     }
 
-    private function getInvoiceId()
+    private function getInvoiceId(): int
     {
         $redisMaster = $this
             ->redisMasterFactory

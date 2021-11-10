@@ -36,16 +36,6 @@ parameters:
 			path: src/Kernel.php
 
 		-
-			message: "#^Method Model\\\\ActiveCalls\\:\\:setInbound\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/ActiveCalls.php
-
-		-
-			message: "#^Method Model\\\\ActiveCalls\\:\\:setOutbound\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/ActiveCalls.php
-
-		-
 			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
 			count: 2
 			path: src/Service/AuthEndpointDecorator.php

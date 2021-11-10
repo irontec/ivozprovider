@@ -36,7 +36,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    public function isOutOfSchedule();
+    public function isOutOfSchedule(): bool;
 
     /**
      * @return \DateTime|\DateTimeImmutable

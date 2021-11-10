@@ -163,8 +163,10 @@ class UserDto extends UserDtoAbstract
 
     /**
      * @param int[] $pickupGroupIds
+     *
+     * @return void
      */
-    public function setPickupGroupIds(array $pickupGroupIds)
+    public function setPickupGroupIds(array $pickupGroupIds): void
     {
         $this->pickupGroupIds = $pickupGroupIds;
 

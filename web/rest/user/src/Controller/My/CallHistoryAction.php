@@ -74,7 +74,7 @@ class CallHistoryAction
         return $response;
     }
 
-    protected function setUserTimezone(UserInterface $user, \Traversable $calls)
+    protected function setUserTimezone(UserInterface $user, \Traversable $calls): void
     {
         $userTimeZone = $user->getTimezone();
         $timezone = new \DateTimeZone(

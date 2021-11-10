@@ -18,10 +18,7 @@ class SendCgratesUpdateRequest extends CgratesReloadNotificator implements Compa
         parent::__construct($cgratesReloadJob);
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         if ($company->hasBeenDeleted()) {
             return;
@@ -53,6 +50,9 @@ class SendCgratesUpdateRequest extends CgratesReloadNotificator implements Compa
             );
     }
 
+    /**
+     * @return void
+     */
     private function sendReloadJob(
         CompanyInterface $company
     ) {

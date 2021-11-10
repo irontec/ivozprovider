@@ -23,7 +23,7 @@ interface TrunksCdrInterface extends EntityInterface
 
     public const DIRECTION_OUTBOUND = 'outbound';
 
-    public function isOutboundCall();
+    public function isOutboundCall(): bool;
 
     /**
      * @return \DateTime|\DateTimeImmutable

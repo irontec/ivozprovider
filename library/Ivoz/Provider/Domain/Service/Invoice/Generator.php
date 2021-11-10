@@ -74,7 +74,7 @@ class Generator
         $this->vendorDir = $vendorDir;
     }
 
-    public function setInvoiceId($id): self
+    public function setInvoiceId(int $id): self
     {
         $this->invoiceId = $id;
         return $this;
@@ -391,7 +391,10 @@ class Generator
         );
     }
 
-    protected function _timeFormat($seconds): string
+    /**
+     * @param float|int $seconds
+     */
+    protected function _timeFormat(int|float $seconds): string
     {
         $hours = floor($seconds / 3600);
         $mins = floor($seconds / 60 % 60);

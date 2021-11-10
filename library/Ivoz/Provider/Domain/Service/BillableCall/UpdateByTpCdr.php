@@ -51,7 +51,7 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
         if ($isNotOutbound) {
             $msg = sprintf(
                 'Skipping %s call #%d',
-                $billableCall->getDirection(),
+                $billableCall->getDirection() ?? '',
                 $billableCall->getId()
             );
             $this->logger->info($msg);

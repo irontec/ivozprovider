@@ -64,6 +64,8 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     /**
      * Get the size in bytes for disk usage limit on this brand
+     *
+     * @return int
      */
     public function getRecordingsLimit();
 

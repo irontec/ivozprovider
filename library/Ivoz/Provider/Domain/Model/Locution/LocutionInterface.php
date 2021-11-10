@@ -36,6 +36,8 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
      *
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file);
 

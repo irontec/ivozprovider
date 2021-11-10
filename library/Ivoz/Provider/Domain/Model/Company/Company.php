@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Company;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
-use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
@@ -147,15 +147,13 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($ddis);
     }
 
-
-    public function getFriend($exten)
+    public function getFriend($exten): ?FriendInterface
     {
         $criteria = Criteria::create();
         $criteria->orderBy(['priority' => Criteria::ASC]);
+        /** @var FriendInterface[] $friends */
         $friends = $this->getFriends($criteria);
-        /**
-         * @var Friend $friend
-         */
+
         foreach ($friends as $friend) {
             if ($friend->checkExtension($exten)) {
                 return $friend;

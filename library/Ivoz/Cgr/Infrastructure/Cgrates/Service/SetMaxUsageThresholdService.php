@@ -56,7 +56,7 @@ class SetMaxUsageThresholdService extends AbstractApiBasedService
         }
     }
 
-    private function isReassembleNeeded(string $tenant, string $account, int $threshold)
+    private function isReassembleNeeded(string $tenant, string $account, int $threshold): bool
     {
         $brandId = substr($tenant, 1);
         $companyId = substr($account, 1);
@@ -73,8 +73,10 @@ class SetMaxUsageThresholdService extends AbstractApiBasedService
      * @param string $tenant
      * @param string $account
      * @param int $threshold
+     *
+     * @return void
      */
-    private function setNewThreshold(string $tenant, string $account, int $threshold)
+    private function setNewThreshold(string $tenant, string $account, int $threshold): void
     {
         $payload = [
             'Tenant' => $tenant,

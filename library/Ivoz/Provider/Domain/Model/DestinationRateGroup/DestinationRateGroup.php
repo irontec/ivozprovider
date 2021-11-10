@@ -62,6 +62,8 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      *
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file)
     {

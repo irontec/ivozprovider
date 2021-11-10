@@ -21,7 +21,7 @@ class SendUsersAddressPermissionsReloadRequest implements CompanyLifecycleEventH
         ];
     }
 
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $wasRemoved = $company->hasBeenDeleted();
         if (!$wasRemoved) {

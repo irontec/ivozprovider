@@ -47,7 +47,7 @@ class CompanyRegistrationSummary
         );
     }
 
-    public function getDeviceNumber(CompanyInterface $company)
+    public function getDeviceNumber(CompanyInterface $company): int
     {
         $ids = [$company->getId()];
 

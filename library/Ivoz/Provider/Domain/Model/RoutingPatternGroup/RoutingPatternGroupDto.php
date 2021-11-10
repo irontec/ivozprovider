@@ -80,8 +80,10 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 
     /**
      * @param int[] $patternIds
+     *
+     * @return void
      */
-    public function setPatternIds(array $patternIds)
+    public function setPatternIds(array $patternIds): void
     {
         $this->patternIds = $patternIds;
 

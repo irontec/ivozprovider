@@ -21,6 +21,9 @@ class CallCsvReportAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $callCsvReportDto,
         EntityInterface $callCsvReport,

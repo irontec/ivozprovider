@@ -87,12 +87,6 @@
       <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
     </UnresolvableInclude>
   </file>
-  <file src="src/Model/ActiveCalls.php">
-    <MissingReturnType occurrences="2">
-      <code>setInbound</code>
-      <code>setOutbound</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Service/AuthEndpointDecorator.php">
     <MixedArgument occurrences="3">
       <code>$paths</code>

@@ -32,7 +32,10 @@ class Multimedia
         $this->requestId = $requestId;
     }
 
-    public function encode()
+    /**
+     * @return Response|false
+     */
+    public function encode(): bool|Response
     {
         try {
             $this->registerCommand('Worker', 'multimedia');

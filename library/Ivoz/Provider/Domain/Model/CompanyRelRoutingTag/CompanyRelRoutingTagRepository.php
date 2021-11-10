@@ -9,7 +9,8 @@ interface CompanyRelRoutingTagRepository extends ObjectRepository, Selectable
 {
     /**
      * Used by client API access controls
-     * @return int[]
+     *
+     * @return (int|null)[]
      */
     public function getRoutingTagIdsByCompany(int $companyId): array;
 }

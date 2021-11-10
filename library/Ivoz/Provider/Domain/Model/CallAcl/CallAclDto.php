@@ -80,7 +80,7 @@ class CallAclDto extends CallAclDtoAbstract
     /**
      * @param int[] $ids
      */
-    public function setMatchListIds(array $ids)
+    public function setMatchListIds(array $ids): void
     {
         $this->matchListIds = $ids;
 

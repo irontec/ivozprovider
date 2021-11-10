@@ -223,7 +223,7 @@ class TrunksClient implements TrunksClientInterface
         return $response->result;
     }
 
-    public function isCgrEnabled()
+    public function isCgrEnabled(): bool
     {
         $response = $this->sendRequest(
             self::CGRATES_ENABLED_ACTION,
@@ -234,7 +234,7 @@ class TrunksClient implements TrunksClientInterface
         );
 
         if (!isset($response->result)) {
-            return -1;
+            return false;
         }
 
         return $response->result === 0;

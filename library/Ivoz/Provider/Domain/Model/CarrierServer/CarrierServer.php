@@ -36,7 +36,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         $this->sanitizeProxyLogic();
     }
 
-    protected function sanitizeBrandByCarrier()
+    protected function sanitizeBrandByCarrier(): void
     {
         $isNew = !$this->getId();
         $isNotNewAndCarrierHasChanged =
@@ -52,7 +52,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         }
     }
 
-    protected function sanitizeAuth()
+    protected function sanitizeAuth(): void
     {
         if ($this->getAuthNeeded() === 'no') {
             $this->setAuthUser(null);
@@ -60,7 +60,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         }
     }
 
-    protected function sanitizeProxyLogic()
+    protected function sanitizeProxyLogic(): void
     {
         $sip_proxy = explode(':', $this->getSipProxy());
         $hostname = array_shift($sip_proxy);

@@ -20,9 +20,9 @@ interface FaxInterface extends LoggableEntityInterface
     public function setSendByEmail(bool $sendByEmail): static;
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return DdiInterface|null
      */
-    public function getOutgoingDdi(): DdiInterface;
+    public function getOutgoingDdi(): ?DdiInterface;
 
     public function getName(): string;
 

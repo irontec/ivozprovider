@@ -35,7 +35,7 @@ class KamRpc
         $this->requestId = $requestId;
     }
 
-    public function send()
+    public function send(): Response
     {
         try {
             $this->registerCommand('Worker', 'rpc::immediate');
@@ -60,7 +60,7 @@ class KamRpc
         return new Response('');
     }
 
-    public function delayed()
+    public function delayed(): Response
     {
         try {
             $this->registerCommand('Worker', 'rpc::delayed');

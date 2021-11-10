@@ -26,7 +26,12 @@ class BrandDto extends BrandDtoAbstract
      */
     private $features = [];
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'logo'
@@ -149,8 +154,10 @@ class BrandDto extends BrandDtoAbstract
 
     /**
      * @param int[] $featureIds
+     *
+     * @return void
      */
-    public function setFeatures(array $featureIds)
+    public function setFeatures(array $featureIds): void
     {
         $this->features = $featureIds;
 

@@ -57,8 +57,7 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
             $this->getNumberValue();
     }
 
-
-    public function isOutOfSchedule()
+    public function isOutOfSchedule(): bool
     {
         $calendar = $this->getCalendar();
         $company = $calendar->getCompany();

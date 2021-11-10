@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Controller\\\\Auth\\\\TokenExchangeAction\\:\\:run\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/Auth/TokenExchangeAction.php
-
-		-
 			message: "#^Cannot call method getBrand\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
 			count: 1
 			path: src/Controller/Provider/RatingPlanPricesAction.php
@@ -76,11 +71,6 @@ parameters:
 			path: src/Controller/Provider/ServicesUnassignedAction.php
 
 		-
-			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
 			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Kernel.php
@@ -89,21 +79,6 @@ parameters:
 			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Kernel.php
-
-		-
-			message: "#^Method Model\\\\ActiveCalls\\:\\:setInbound\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/ActiveCalls.php
-
-		-
-			message: "#^Method Model\\\\ActiveCalls\\:\\:setOutbound\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/ActiveCalls.php
-
-		-
-			message: "#^Method Model\\\\RatingPlanPrices\\:\\:fromArray\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Model/RatingPlanPrices.php
 
 		-
 			message: "#^Method Model\\\\RatingPlanPrices\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -136,11 +111,6 @@ parameters:
 			path: src/Service/AuthEndpointDecorator.php
 
 		-
-			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setBrandAuthorizationHeaderByExchange\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Service/Behat/FeatureContext.php
-
-		-
 			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Service/Behat/FeatureContext.php
@@ -152,11 +122,6 @@ parameters:
 
 		-
 			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setRetailCompanyAuthorizationHeader\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Service/Behat/FeatureContext.php
-
-		-
-			message: "#^Method Service\\\\Behat\\\\FeatureContext\\:\\:setUserApiContext\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Service/Behat/FeatureContext.php
 

@@ -70,8 +70,10 @@ class LocutionDto extends LocutionDtoAbstract
 
     /**
      * @param string $originalFilePath
+     *
+     * @return static
      */
-    public function setOriginalFilePath(string $originalFilePath = null)
+    public function setOriginalFilePath(string $originalFilePath = null): static
     {
         $this->originalFilePath = $originalFilePath;
         return $this;
@@ -87,8 +89,10 @@ class LocutionDto extends LocutionDtoAbstract
 
     /**
      * @param string $encodedFilePath
+     *
+     * @return static
      */
-    public function setEncodedFilePath(string $encodedFilePath = null)
+    public function setEncodedFilePath(string $encodedFilePath = null): static
     {
         $this->encodedFilePath = $encodedFilePath;
         return $this;

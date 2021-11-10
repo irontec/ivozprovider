@@ -84,7 +84,12 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
         return $this->encodedFilePath;
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string, 1: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'encodedFile',

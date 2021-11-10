@@ -37,9 +37,11 @@ interface IvrInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface[] with key=>value
+     * @return (\Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null)[] with key=>value
+     *
+     * @psalm-return array{welcome: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, noanswer: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, error: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, success: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null}
      */
-    public function getAllLocutions();
+    public function getAllLocutions(): array;
 
     /**
      * Get the timeout numberValue in E.164 format when routing to 'number'

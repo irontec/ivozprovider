@@ -17,7 +17,7 @@ class CreateByCompany
         CompanyInterface $company,
         ?float $amount,
         ?float $balance
-    ) {
+    ): void {
         // Store this transaction in a BalanceMovement
         $balanceMovementDto = BalanceMovement::createDto();
         $balanceMovementDto

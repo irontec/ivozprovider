@@ -16,7 +16,7 @@ class GenerateInRules
     /**
      * @return void
      */
-    public function execute(TransformationRuleSetInterface $entity, $type)
+    public function execute(TransformationRuleSetInterface $entity, string $type)
     {
         // Get RuleSet data
         $internationalCode = $entity->getInternationalCode();

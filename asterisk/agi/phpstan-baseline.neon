@@ -761,6 +761,11 @@ parameters:
 			path: src/Agi/Agents/UserAgent.php
 
 		-
+			message: "#^Method Agi\\\\Agents\\\\UserAgent\\:\\:getPickUpGroups\\(\\) should return array\\<Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupInterface\\>\\|null but returns array\\<Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupInterface\\|null\\>\\.$#"
+			count: 1
+			path: src/Agi/Agents/UserAgent.php
+
+		-
 			message: "#^Parameter \\#1 \\$originalDdi of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleInterface\\:\\:getOutgoingDdi\\(\\) expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface\\|null given\\.$#"
 			count: 1
 			path: src/Agi/Agents/UserAgent.php

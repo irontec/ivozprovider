@@ -1,29 +1,9 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Controller\\\\ResetCounter\\:\\:index\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/ResetCounter.php
-
-		-
-			message: "#^Method Controller\\\\ResetCounter\\:\\:registerCommand\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/ResetCounter.php
-
-		-
 			message: "#^Property Controller\\\\ResetCounter\\:\\:\\$resetDailyUsageCounters has no typehint specified\\.$#"
 			count: 1
 			path: src/Controller/ResetCounter.php
-
-		-
-			message: "#^Method Controller\\\\Sync\\:\\:index\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/Sync.php
-
-		-
-			message: "#^Method Controller\\\\Sync\\:\\:registerCommand\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Controller/Sync.php
 
 		-
 			message: "#^Property Controller\\\\Sync\\:\\:\\$syncBalances has no typehint specified\\.$#"

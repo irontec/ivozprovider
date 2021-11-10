@@ -52,7 +52,7 @@ class Rates
         $this->requestId = $requestId;
     }
 
-    public function import()
+    public function import(): Response
     {
         try {
             $params = $this->getJobPayload();

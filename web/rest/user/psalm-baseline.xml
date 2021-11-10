@@ -51,9 +51,6 @@
     <MissingPropertyType occurrences="1">
       <code>$request</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>setUserTimezone</code>
-    </MissingReturnType>
     <MixedArgument occurrences="2">
       <code>$qb</code>
       <code>$this-&gt;request</code>
@@ -118,14 +115,6 @@
       <code>decode</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Controller/My/StatusAction.php">
-    <MissingReturnType occurrences="4">
-      <code>setCompanyData</code>
-      <code>setExtensionData</code>
-      <code>setTerminalData</code>
-      <code>setUserLocationData</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Controller/My/WebThemeAction.php">
     <MixedArgument occurrences="1">
       <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
@@ -140,11 +129,6 @@
     <PossiblyNullPropertyFetch occurrences="1">
       <code>$request-&gt;server</code>
     </PossiblyNullPropertyFetch>
-  </file>
-  <file src="src/DataFixtures/AppFixtures.php">
-    <MissingReturnType occurrences="1">
-      <code>load</code>
-    </MissingReturnType>
   </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">
@@ -206,16 +190,12 @@
       <code>$userName</code>
       <code>$voiceMail</code>
     </MissingConstructor>
-    <MissingParamType occurrences="1">
-      <code>$language</code>
-    </MissingParamType>
-    <MixedAssignment occurrences="12">
+    <MixedAssignment occurrences="11">
       <code>$this-&gt;companyDomain</code>
       <code>$this-&gt;companyName</code>
       <code>$this-&gt;extensionNumber</code>
       <code>$this-&gt;gsQRCode</code>
       <code>$this-&gt;ipRegistered</code>
-      <code>$this-&gt;language</code>
       <code>$this-&gt;statusTerminal</code>
       <code>$this-&gt;terminalName</code>
       <code>$this-&gt;terminalPassword</code>
@@ -265,12 +245,10 @@
     <DeprecatedInterface occurrences="1">
       <code>FeatureContext</code>
     </DeprecatedInterface>
-    <MissingReturnType occurrences="6">
-      <code>setBrandAuthorizationHeaderByExchange</code>
+    <MissingReturnType occurrences="4">
       <code>setCompanyAuthorizationHeader</code>
       <code>setResidentialCompanyAuthorizationHeader</code>
       <code>setRetailCompanyAuthorizationHeader</code>
-      <code>setUserApiContext</code>
       <code>setUserAuthorizationHeader</code>
     </MissingReturnType>
     <PropertyNotSetInConstructor occurrences="1">

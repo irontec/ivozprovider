@@ -27,7 +27,7 @@ class Cgrates
         $this->requestId = $requestId;
     }
 
-    public function reload()
+    public function reload(): Response
     {
         try {
             $this->registerCommand('Worker', 'cgrates');

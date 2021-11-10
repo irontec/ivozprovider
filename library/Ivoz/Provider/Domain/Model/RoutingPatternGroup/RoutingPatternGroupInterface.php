@@ -22,9 +22,12 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
 
     /**
      * @param Criteria|null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
+     *
+     * @return (\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface|null)[]
+     *
+     * @psalm-return list<\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface|null>
      */
-    public function getRoutingPatterns(?Criteria $criteria = null);
+    public function getRoutingPatterns(?Criteria $criteria = null): array;
 
     public function getName(): string;
 

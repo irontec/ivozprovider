@@ -36,9 +36,9 @@
     </UnresolvableInclude>
   </file>
   <file src="src/Worker/Cgrates.php">
-    <MissingReturnType occurrences="1">
-      <code>reload</code>
-    </MissingReturnType>
+    <InvalidReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidReturnType>
     <MixedArgument occurrences="4">
       <code>$cgratesTpid</code>
       <code>$cgratesTpid</code>
@@ -57,12 +57,10 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Worker/Invoices.php">
-    <MissingReturnType occurrences="2">
-      <code>create</code>
-      <code>getInvoiceId</code>
-    </MissingReturnType>
-    <MixedArgument occurrences="3">
-      <code>$id</code>
+    <InvalidReturnType occurrences="1">
+      <code>?Response</code>
+    </InvalidReturnType>
+    <MixedArgument occurrences="2">
       <code>$totals["totalPrice"]</code>
       <code>$totals["totalWithTaxes"]</code>
     </MixedArgument>
@@ -70,12 +68,10 @@
       <code>$totals["totalPrice"]</code>
       <code>$totals["totalWithTaxes"]</code>
     </MixedArrayAccess>
-    <MixedAssignment occurrences="2">
-      <code>$id</code>
+    <MixedAssignment occurrences="1">
       <code>$totals</code>
     </MixedAssignment>
-    <MixedOperand occurrences="2">
-      <code>$id</code>
+    <MixedOperand occurrences="1">
       <code>$invoice-&gt;getId()</code>
     </MixedOperand>
     <PossiblyNullOperand occurrences="1">
@@ -96,10 +92,6 @@
     <MissingPropertyType occurrences="1">
       <code>$retryInterval</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="2">
-      <code>delayed</code>
-      <code>send</code>
-    </MissingReturnType>
     <MixedArgument occurrences="11">
       <code>$data</code>
       <code>$job['rpcEntity']</code>
@@ -137,9 +129,6 @@
       <code>$entity</code>
       <code>$entity</code>
     </ImplicitToStringCast>
-    <MissingReturnType occurrences="1">
-      <code>encode</code>
-    </MissingReturnType>
     <MixedArgument occurrences="8">
       <code>$data</code>
       <code>$entityDto-&gt;getOriginalFileBaseName()</code>
@@ -179,9 +168,6 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Worker/Rates.php">
-    <MissingReturnType occurrences="1">
-      <code>import</code>
-    </MissingReturnType>
     <MixedArgument occurrences="20">
       <code>$brandId</code>
       <code>$brandId</code>

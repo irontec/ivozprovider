@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * CallCsvScheduler
@@ -118,10 +119,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
         return $this->id;
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone()
+    public function getTimezone(): ?TimezoneInterface
     {
         $timeZone = $this->getCompany()
             ? $this->getCompany()->getDefaultTimezone()

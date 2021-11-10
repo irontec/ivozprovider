@@ -22,9 +22,12 @@ class AliasImporter
     /**
      * @param int $companyId
      * @param array $data
+     *
      * @throws \Exception
+     *
+     * @return void
      */
-    public function execute(int $companyId, array $data)
+    public function execute(int $companyId, array $data): void
     {
         $this->assertValidData($data);
 
@@ -46,7 +49,7 @@ class AliasImporter
             ->dispatchQueuedOperations();
     }
 
-    private function assertValidData(array $data)
+    private function assertValidData(array $data): void
     {
         Assertion::notEmpty(
             $data,
@@ -102,7 +105,7 @@ class AliasImporter
         string $countryPrefix,
         string $numberValue,
         string $countryIden = null
-    ) {
+    ): void {
         $country = $this->countryRepository->findOneByCountryCode(
             $countryPrefix,
             $countryIden
@@ -166,7 +169,7 @@ class AliasImporter
     private function assertExtensionCanBeUpdated(
         string $extensionNumber,
         ExtensionInterface $extension
-    ) {
+    ): void {
         $errorMsg =
             'Unable to update extension '
             . $extensionNumber

@@ -50,6 +50,11 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function setNumberValue(?string $numberValue = null): static;
 
+    /**
+     * @return (int|mixed|null|string)[]
+     *
+     * @psalm-return array{id: int, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     */
     public function toArrayPortal();
 
     /**
@@ -66,7 +71,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function getRouteType(): ?string;
 
-    public function getCallForwardTarget();
+    public function getCallForwardTarget(): ?string;
 
     public function getCallTypeFilter(): string;
 
