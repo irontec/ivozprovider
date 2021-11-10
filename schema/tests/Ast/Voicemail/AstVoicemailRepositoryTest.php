@@ -8,14 +8,13 @@ use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 
-class VoicemailRepositoryTest extends KernelTestCase
+class AstVoicemailRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
     public function test_runner()
     {
         $this->its_instantiable();
-        $this->it_finds_by_userId();
         $this->it_finds_one_by_mailbox_and_context();
     }
 
@@ -29,21 +28,6 @@ class VoicemailRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             VoicemailRepository::class,
             $repository
-        );
-    }
-
-    public function it_finds_by_userId()
-    {
-        /** @var VoicemailRepository $repository */
-        $repository = $this
-            ->em
-            ->getRepository(Voicemail::class);
-
-        $result = $repository->findOneByUserId(1);
-
-        $this->assertInstanceOf(
-            VoicemailInterface::class,
-            $result
         );
     }
 

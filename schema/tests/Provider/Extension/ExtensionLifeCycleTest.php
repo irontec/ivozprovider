@@ -3,11 +3,12 @@
 namespace Tests\Provider\Extension;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
-use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\Voicemail as AstVoicemail;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
@@ -90,7 +91,9 @@ class ExtensionLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Extension::class,
             PsEndpoint::class,
-            User::class
+            User::class,
+            Voicemail::class,
+            AstVoicemail::class
         ]);
     }
 
@@ -155,6 +158,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
             PsEndpoint::class,
             User::class,
             Voicemail::class,
+            AstVoicemail::class,
         ]);
     }
 
@@ -203,18 +207,6 @@ class ExtensionLifeCycleTest extends KernelTestCase
                 'mailboxes' => 'user2@company1'
             ]
         );
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeExtension();
-        $this->assetChangedEntities([
-            Extension::class,
-            Ivr::class,
-        ]);
     }
 
     /////////////////////////////////////////
