@@ -39,7 +39,10 @@ class PersistTemplatesSpec extends ObjectBehavior
     function it_returns_if_no_template_has_changed(
         TerminalModelInterface $entity
     ) {
-        $this->fs
+        $this->prepareNoChangesExampleBase($entity);
+
+        $this
+            ->fs
             ->exists(Argument::any())
             ->shouldNotBeCalled();
 
