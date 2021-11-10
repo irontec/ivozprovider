@@ -165,40 +165,34 @@ abstract class ResidentialDeviceAbstract
         $this->setMultiContact($multiContact);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ResidentialDevice",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ResidentialDeviceDto
+    public static function createDto(string|int|null $id = null): ResidentialDeviceDto
     {
         return new ResidentialDeviceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ResidentialDeviceInterface|null $entity
-     * @param int $depth
-     * @return ResidentialDeviceDto|null
+     * @param null|ResidentialDeviceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ResidentialDeviceDto
     {
         if (!$entity) {
             return null;
@@ -214,7 +208,6 @@ abstract class ResidentialDeviceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ResidentialDeviceDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -224,12 +217,11 @@ abstract class ResidentialDeviceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ResidentialDeviceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
         $self = new static(
@@ -270,12 +262,11 @@ abstract class ResidentialDeviceAbstract
     /**
      * @internal use EntityTools instead
      * @param ResidentialDeviceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
         $this
@@ -310,9 +301,8 @@ abstract class ResidentialDeviceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ResidentialDeviceDto
+    public function toDto(int $depth = 0): ResidentialDeviceDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -342,10 +332,7 @@ abstract class ResidentialDeviceAbstract
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

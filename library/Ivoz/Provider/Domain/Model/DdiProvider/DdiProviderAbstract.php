@@ -63,40 +63,34 @@ abstract class DdiProviderAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "DdiProvider",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): DdiProviderDto
+    public static function createDto(string|int|null $id = null): DdiProviderDto
     {
         return new DdiProviderDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DdiProviderInterface|null $entity
-     * @param int $depth
-     * @return DdiProviderDto|null
+     * @param null|DdiProviderInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiProviderDto
     {
         if (!$entity) {
             return null;
@@ -112,7 +106,6 @@ abstract class DdiProviderAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DdiProviderDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -122,12 +115,11 @@ abstract class DdiProviderAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
         $self = new static(
@@ -150,12 +142,11 @@ abstract class DdiProviderAbstract
     /**
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
         $this
@@ -172,9 +163,8 @@ abstract class DdiProviderAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): DdiProviderDto
+    public function toDto(int $depth = 0): DdiProviderDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -186,10 +176,7 @@ abstract class DdiProviderAbstract
             ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),

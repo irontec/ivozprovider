@@ -57,40 +57,34 @@ abstract class UsersHtableAbstract
         $this->setExpires($expires);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersHtable",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): UsersHtableDto
+    public static function createDto(string|int|null $id = null): UsersHtableDto
     {
         return new UsersHtableDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersHtableInterface|null $entity
-     * @param int $depth
-     * @return UsersHtableDto|null
+     * @param null|UsersHtableInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersHtableDto
     {
         if (!$entity) {
             return null;
@@ -106,7 +100,6 @@ abstract class UsersHtableAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersHtableDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -116,12 +109,11 @@ abstract class UsersHtableAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersHtableDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersHtableDto::class);
 
         $self = new static(
@@ -142,12 +134,11 @@ abstract class UsersHtableAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersHtableDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersHtableDto::class);
 
         $this
@@ -162,9 +153,8 @@ abstract class UsersHtableAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): UsersHtableDto
+    public function toDto(int $depth = 0): UsersHtableDto
     {
         return self::createDto()
             ->setKeyName(self::getKeyName())
@@ -174,10 +164,7 @@ abstract class UsersHtableAbstract
             ->setExpires(self::getExpires());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'key_name' => self::getKeyName(),

@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Model\Company;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -56,14 +59,20 @@ interface CompanyInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}
      */
     public function setName(string $name): static;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
@@ -184,6 +193,25 @@ interface CompanyInterface extends LoggableEntityInterface
     public function isResidential(): bool;
 
     public function isWholesale(): bool;
+
+    public static function createDto(string|int|null $id = null): CompanyDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CompanyInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CompanyDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CompanyDto;
 
     public function getType(): string;
 

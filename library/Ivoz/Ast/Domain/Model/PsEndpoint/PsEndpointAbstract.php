@@ -161,40 +161,34 @@ abstract class PsEndpointAbstract
         $this->setT38UdptlNat($t38UdptlNat);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PsEndpoint",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): PsEndpointDto
+    public static function createDto(string|int|null $id = null): PsEndpointDto
     {
         return new PsEndpointDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PsEndpointInterface|null $entity
-     * @param int $depth
-     * @return PsEndpointDto|null
+     * @param null|PsEndpointInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PsEndpointDto
     {
         if (!$entity) {
             return null;
@@ -210,7 +204,6 @@ abstract class PsEndpointAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PsEndpointDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -220,12 +213,11 @@ abstract class PsEndpointAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PsEndpointDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
         $self = new static(
@@ -265,12 +257,11 @@ abstract class PsEndpointAbstract
     /**
      * @internal use EntityTools instead
      * @param PsEndpointDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
         $this
@@ -304,9 +295,8 @@ abstract class PsEndpointAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): PsEndpointDto
+    public function toDto(int $depth = 0): PsEndpointDto
     {
         return self::createDto()
             ->setSorceryId(self::getSorceryId())
@@ -335,10 +325,7 @@ abstract class PsEndpointAbstract
             ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'sorcery_id' => self::getSorceryId(),

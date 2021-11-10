@@ -36,40 +36,34 @@ abstract class PickUpGroupAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PickUpGroup",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): PickUpGroupDto
+    public static function createDto(string|int|null $id = null): PickUpGroupDto
     {
         return new PickUpGroupDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PickUpGroupInterface|null $entity
-     * @param int $depth
-     * @return PickUpGroupDto|null
+     * @param null|PickUpGroupInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PickUpGroupDto
     {
         if (!$entity) {
             return null;
@@ -85,7 +79,6 @@ abstract class PickUpGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PickUpGroupDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -95,12 +88,11 @@ abstract class PickUpGroupAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PickUpGroupDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
         $self = new static(
@@ -118,12 +110,11 @@ abstract class PickUpGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param PickUpGroupDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
         $this
@@ -135,19 +126,15 @@ abstract class PickUpGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): PickUpGroupDto
+    public function toDto(int $depth = 0): PickUpGroupDto
     {
         return self::createDto()
             ->setName(self::getName())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

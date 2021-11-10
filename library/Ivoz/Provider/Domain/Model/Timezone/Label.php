@@ -47,10 +47,7 @@ final class Label
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $label)
+    public function equals(self $label): bool
     {
         if ($this->getEn() !== $label->getEn()) {
             return false;

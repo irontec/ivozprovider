@@ -44,40 +44,34 @@ abstract class MatchListAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MatchList",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): MatchListDto
+    public static function createDto(string|int|null $id = null): MatchListDto
     {
         return new MatchListDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MatchListInterface|null $entity
-     * @param int $depth
-     * @return MatchListDto|null
+     * @param null|MatchListInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MatchListDto
     {
         if (!$entity) {
             return null;
@@ -93,7 +87,6 @@ abstract class MatchListAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MatchListDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -103,12 +96,11 @@ abstract class MatchListAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MatchListDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
         $self = new static(
@@ -127,12 +119,11 @@ abstract class MatchListAbstract
     /**
      * @internal use EntityTools instead
      * @param MatchListDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
         $this
@@ -145,9 +136,8 @@ abstract class MatchListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): MatchListDto
+    public function toDto(int $depth = 0): MatchListDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -155,10 +145,7 @@ abstract class MatchListAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

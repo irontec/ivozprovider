@@ -41,10 +41,7 @@ final class File
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $file)
+    public function equals(self $file): bool
     {
         if ($this->getFileSize() !== $file->getFileSize()) {
             return false;

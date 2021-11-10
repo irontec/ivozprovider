@@ -113,40 +113,34 @@ abstract class BrandAbstract
         $this->setInvoice($invoice);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Brand",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): BrandDto
+    public static function createDto(string|int|null $id = null): BrandDto
     {
         return new BrandDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BrandInterface|null $entity
-     * @param int $depth
-     * @return BrandDto|null
+     * @param null|BrandInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BrandDto
     {
         if (!$entity) {
             return null;
@@ -162,7 +156,6 @@ abstract class BrandAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BrandDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -172,12 +165,11 @@ abstract class BrandAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BrandDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
         $logo = new Logo(
@@ -225,12 +217,11 @@ abstract class BrandAbstract
     /**
      * @internal use EntityTools instead
      * @param BrandDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
         $logo = new Logo(
@@ -272,9 +263,8 @@ abstract class BrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): BrandDto
+    public function toDto(int $depth = 0): BrandDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -303,10 +293,7 @@ abstract class BrandAbstract
             ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

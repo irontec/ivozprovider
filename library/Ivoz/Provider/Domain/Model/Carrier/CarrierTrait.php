@@ -67,7 +67,7 @@ trait CarrierTrait
         $this->tpCdrStats = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -182,9 +182,8 @@ trait CarrierTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CarrierDto
+    public function toDto(int $depth = 0): CarrierDto
     {
         $dto = parent::toDto($depth);
         return $dto

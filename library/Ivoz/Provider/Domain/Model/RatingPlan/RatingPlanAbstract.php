@@ -72,40 +72,34 @@ abstract class RatingPlanAbstract
         $this->setTimeIn($timeIn);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RatingPlan",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RatingPlanDto
+    public static function createDto(string|int|null $id = null): RatingPlanDto
     {
         return new RatingPlanDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RatingPlanInterface|null $entity
-     * @param int $depth
-     * @return RatingPlanDto|null
+     * @param null|RatingPlanInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RatingPlanDto
     {
         if (!$entity) {
             return null;
@@ -121,7 +115,6 @@ abstract class RatingPlanAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RatingPlanDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -131,12 +124,11 @@ abstract class RatingPlanAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RatingPlanDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
         $self = new static(
@@ -164,12 +156,11 @@ abstract class RatingPlanAbstract
     /**
      * @internal use EntityTools instead
      * @param RatingPlanDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
         $this
@@ -191,9 +182,8 @@ abstract class RatingPlanAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RatingPlanDto
+    public function toDto(int $depth = 0): RatingPlanDto
     {
         return self::createDto()
             ->setWeight(self::getWeight())
@@ -210,10 +200,7 @@ abstract class RatingPlanAbstract
             ->setDestinationRateGroup(DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'weight' => self::getWeight(),

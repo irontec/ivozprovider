@@ -40,40 +40,34 @@ abstract class FeaturesRelBrandAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FeaturesRelBrand",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): FeaturesRelBrandDto
+    public static function createDto(string|int|null $id = null): FeaturesRelBrandDto
     {
         return new FeaturesRelBrandDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FeaturesRelBrandInterface|null $entity
-     * @param int $depth
-     * @return FeaturesRelBrandDto|null
+     * @param null|FeaturesRelBrandInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FeaturesRelBrandDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class FeaturesRelBrandAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FeaturesRelBrandDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class FeaturesRelBrandAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FeaturesRelBrandDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
         $self = new static();
@@ -121,12 +113,11 @@ abstract class FeaturesRelBrandAbstract
     /**
      * @internal use EntityTools instead
      * @param FeaturesRelBrandDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
         $this
@@ -138,19 +129,15 @@ abstract class FeaturesRelBrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FeaturesRelBrandDto
+    public function toDto(int $depth = 0): FeaturesRelBrandDto
     {
         return self::createDto()
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setFeature(Feature::entityToDto(self::getFeature(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,

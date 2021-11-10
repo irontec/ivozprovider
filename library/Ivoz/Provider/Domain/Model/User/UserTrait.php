@@ -52,7 +52,7 @@ trait UserTrait
         $this->callForwardSettings = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -135,9 +135,8 @@ trait UserTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): UserDto
+    public function toDto(int $depth = 0): UserDto
     {
         $dto = parent::toDto($depth);
         return $dto

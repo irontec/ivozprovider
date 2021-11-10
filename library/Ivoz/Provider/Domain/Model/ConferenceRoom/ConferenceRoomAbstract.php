@@ -46,40 +46,34 @@ abstract class ConferenceRoomAbstract
         $this->setMaxMembers($maxMembers);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ConferenceRoom",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ConferenceRoomDto
+    public static function createDto(string|int|null $id = null): ConferenceRoomDto
     {
         return new ConferenceRoomDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ConferenceRoomInterface|null $entity
-     * @param int $depth
-     * @return ConferenceRoomDto|null
+     * @param null|ConferenceRoomInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ConferenceRoomDto
     {
         if (!$entity) {
             return null;
@@ -95,7 +89,6 @@ abstract class ConferenceRoomAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ConferenceRoomDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -105,12 +98,11 @@ abstract class ConferenceRoomAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ConferenceRoomDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
         $self = new static(
@@ -131,12 +123,11 @@ abstract class ConferenceRoomAbstract
     /**
      * @internal use EntityTools instead
      * @param ConferenceRoomDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
         $this
@@ -151,9 +142,8 @@ abstract class ConferenceRoomAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ConferenceRoomDto
+    public function toDto(int $depth = 0): ConferenceRoomDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -163,10 +153,7 @@ abstract class ConferenceRoomAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

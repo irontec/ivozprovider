@@ -65,40 +65,34 @@ abstract class FaxesInOutAbstract
         $this->setFile($file);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FaxesInOut",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): FaxesInOutDto
+    public static function createDto(string|int|null $id = null): FaxesInOutDto
     {
         return new FaxesInOutDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FaxesInOutInterface|null $entity
-     * @param int $depth
-     * @return FaxesInOutDto|null
+     * @param null|FaxesInOutInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FaxesInOutDto
     {
         if (!$entity) {
             return null;
@@ -114,7 +108,6 @@ abstract class FaxesInOutAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FaxesInOutDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -124,12 +117,11 @@ abstract class FaxesInOutAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FaxesInOutDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
@@ -160,12 +152,11 @@ abstract class FaxesInOutAbstract
     /**
      * @internal use EntityTools instead
      * @param FaxesInOutDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
@@ -190,9 +181,8 @@ abstract class FaxesInOutAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FaxesInOutDto
+    public function toDto(int $depth = 0): FaxesInOutDto
     {
         return self::createDto()
             ->setCalldate(self::getCalldate())
@@ -208,10 +198,7 @@ abstract class FaxesInOutAbstract
             ->setDstCountry(Country::entityToDto(self::getDstCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'calldate' => self::getCalldate(),

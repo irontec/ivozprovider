@@ -37,40 +37,34 @@ abstract class LanguageAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Language",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): LanguageDto
+    public static function createDto(string|int|null $id = null): LanguageDto
     {
         return new LanguageDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param LanguageInterface|null $entity
-     * @param int $depth
-     * @return LanguageDto|null
+     * @param null|LanguageInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?LanguageDto
     {
         if (!$entity) {
             return null;
@@ -86,7 +80,6 @@ abstract class LanguageAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var LanguageDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -96,12 +89,11 @@ abstract class LanguageAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param LanguageDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
         $name = new Name(
@@ -126,12 +118,11 @@ abstract class LanguageAbstract
     /**
      * @internal use EntityTools instead
      * @param LanguageDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
         $name = new Name(
@@ -150,9 +141,8 @@ abstract class LanguageAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): LanguageDto
+    public function toDto(int $depth = 0): LanguageDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -162,10 +152,7 @@ abstract class LanguageAbstract
             ->setNameIt(self::getName()->getIt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

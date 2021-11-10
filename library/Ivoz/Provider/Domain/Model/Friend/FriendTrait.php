@@ -49,7 +49,7 @@ trait FriendTrait
         $this->patterns = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -132,9 +132,8 @@ trait FriendTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FriendDto
+    public function toDto(int $depth = 0): FriendDto
     {
         $dto = parent::toDto($depth);
         return $dto

@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
@@ -47,6 +50,13 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -118,6 +128,25 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * @return string
      */
     public function getMatchData(): string;
+
+    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|ConditionalRoutesConditionInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ConditionalRoutesConditionDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): ConditionalRoutesConditionDto;
 
     public function getPriority(): int;
 

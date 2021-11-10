@@ -151,40 +151,34 @@ abstract class TpCdrAbstract
         $this->setExtraInfo($extraInfo);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpCdr",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TpCdrDto
+    public static function createDto(string|int|null $id = null): TpCdrDto
     {
         return new TpCdrDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpCdrInterface|null $entity
-     * @param int $depth
-     * @return TpCdrDto|null
+     * @param null|TpCdrInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpCdrDto
     {
         if (!$entity) {
             return null;
@@ -200,7 +194,6 @@ abstract class TpCdrAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpCdrDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -210,12 +203,11 @@ abstract class TpCdrAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpCdrDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
         $self = new static(
@@ -254,12 +246,11 @@ abstract class TpCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param TpCdrDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
         $this
@@ -292,9 +283,8 @@ abstract class TpCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TpCdrDto
+    public function toDto(int $depth = 0): TpCdrDto
     {
         return self::createDto()
             ->setCgrid(self::getCgrid())
@@ -322,10 +312,7 @@ abstract class TpCdrAbstract
             ->setDeletedAt(self::getDeletedAt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'cgrid' => self::getCgrid(),

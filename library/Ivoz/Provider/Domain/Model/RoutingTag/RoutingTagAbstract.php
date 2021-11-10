@@ -40,40 +40,34 @@ abstract class RoutingTagAbstract
         $this->setTag($tag);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingTag",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RoutingTagDto
+    public static function createDto(string|int|null $id = null): RoutingTagDto
     {
         return new RoutingTagDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingTagInterface|null $entity
-     * @param int $depth
-     * @return RoutingTagDto|null
+     * @param null|RoutingTagInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingTagDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class RoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingTagDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class RoutingTagAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
         $self = new static(
@@ -123,12 +115,11 @@ abstract class RoutingTagAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
         $this
@@ -141,9 +132,8 @@ abstract class RoutingTagAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RoutingTagDto
+    public function toDto(int $depth = 0): RoutingTagDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -151,10 +141,7 @@ abstract class RoutingTagAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

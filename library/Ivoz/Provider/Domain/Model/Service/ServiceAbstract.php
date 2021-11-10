@@ -53,40 +53,34 @@ abstract class ServiceAbstract
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Service",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ServiceDto
+    public static function createDto(string|int|null $id = null): ServiceDto
     {
         return new ServiceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ServiceInterface|null $entity
-     * @param int $depth
-     * @return ServiceDto|null
+     * @param null|ServiceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ServiceDto
     {
         if (!$entity) {
             return null;
@@ -102,7 +96,6 @@ abstract class ServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ServiceDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -112,12 +105,11 @@ abstract class ServiceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ServiceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
         $name = new Name(
@@ -152,12 +144,11 @@ abstract class ServiceAbstract
     /**
      * @internal use EntityTools instead
      * @param ServiceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
         $name = new Name(
@@ -186,9 +177,8 @@ abstract class ServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ServiceDto
+    public function toDto(int $depth = 0): ServiceDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -204,10 +194,7 @@ abstract class ServiceAbstract
             ->setDescriptionIt(self::getDescription()->getIt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

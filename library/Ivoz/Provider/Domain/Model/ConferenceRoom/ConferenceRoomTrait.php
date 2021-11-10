@@ -25,7 +25,7 @@ trait ConferenceRoomTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -63,9 +63,8 @@ trait ConferenceRoomTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ConferenceRoomDto
+    public function toDto(int $depth = 0): ConferenceRoomDto
     {
         $dto = parent::toDto($depth);
         return $dto

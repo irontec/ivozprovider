@@ -77,40 +77,34 @@ abstract class AdministratorAbstract
         $this->setRestricted($restricted);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Administrator",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): AdministratorDto
+    public static function createDto(string|int|null $id = null): AdministratorDto
     {
         return new AdministratorDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param AdministratorInterface|null $entity
-     * @param int $depth
-     * @return AdministratorDto|null
+     * @param null|AdministratorInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?AdministratorDto
     {
         if (!$entity) {
             return null;
@@ -126,7 +120,6 @@ abstract class AdministratorAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var AdministratorDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -136,12 +129,11 @@ abstract class AdministratorAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param AdministratorDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
 
         $self = new static(
@@ -168,12 +160,11 @@ abstract class AdministratorAbstract
     /**
      * @internal use EntityTools instead
      * @param AdministratorDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
 
         $this
@@ -194,9 +185,8 @@ abstract class AdministratorAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): AdministratorDto
+    public function toDto(int $depth = 0): AdministratorDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())
@@ -212,10 +202,7 @@ abstract class AdministratorAbstract
             ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'username' => self::getUsername(),

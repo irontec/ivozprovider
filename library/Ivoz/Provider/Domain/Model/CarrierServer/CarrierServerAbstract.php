@@ -70,40 +70,34 @@ abstract class CarrierServerAbstract
         $this->setAuthNeeded($authNeeded);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CarrierServer",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): CarrierServerDto
+    public static function createDto(string|int|null $id = null): CarrierServerDto
     {
         return new CarrierServerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CarrierServerInterface|null $entity
-     * @param int $depth
-     * @return CarrierServerDto|null
+     * @param null|CarrierServerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CarrierServerDto
     {
         if (!$entity) {
             return null;
@@ -119,7 +113,6 @@ abstract class CarrierServerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CarrierServerDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -129,12 +122,11 @@ abstract class CarrierServerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CarrierServerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $self = new static(
@@ -166,12 +158,11 @@ abstract class CarrierServerAbstract
     /**
      * @internal use EntityTools instead
      * @param CarrierServerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $this
@@ -197,9 +188,8 @@ abstract class CarrierServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CarrierServerDto
+    public function toDto(int $depth = 0): CarrierServerDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -220,10 +210,7 @@ abstract class CarrierServerAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),

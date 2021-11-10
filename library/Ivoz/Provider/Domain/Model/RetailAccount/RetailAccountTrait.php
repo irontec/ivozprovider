@@ -57,7 +57,7 @@ trait RetailAccountTrait
         $this->callForwardSettings = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -156,9 +156,8 @@ trait RetailAccountTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RetailAccountDto
+    public function toDto(int $depth = 0): RetailAccountDto
     {
         $dto = parent::toDto($depth);
         return $dto

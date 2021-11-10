@@ -103,40 +103,34 @@ abstract class ExternalCallFilterAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ExternalCallFilter",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ExternalCallFilterDto
+    public static function createDto(string|int|null $id = null): ExternalCallFilterDto
     {
         return new ExternalCallFilterDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExternalCallFilterInterface|null $entity
-     * @param int $depth
-     * @return ExternalCallFilterDto|null
+     * @param null|ExternalCallFilterInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExternalCallFilterDto
     {
         if (!$entity) {
             return null;
@@ -152,7 +146,6 @@ abstract class ExternalCallFilterAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExternalCallFilterDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -162,12 +155,11 @@ abstract class ExternalCallFilterAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExternalCallFilterDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
 
         $self = new static(
@@ -198,12 +190,11 @@ abstract class ExternalCallFilterAbstract
     /**
      * @internal use EntityTools instead
      * @param ExternalCallFilterDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
 
         $this
@@ -228,9 +219,8 @@ abstract class ExternalCallFilterAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ExternalCallFilterDto
+    public function toDto(int $depth = 0): ExternalCallFilterDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -250,10 +240,7 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleNumberCountry(Country::entityToDto(self::getOutOfScheduleNumberCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

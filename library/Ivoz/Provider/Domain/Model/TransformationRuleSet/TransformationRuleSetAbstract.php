@@ -59,40 +59,34 @@ abstract class TransformationRuleSetAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TransformationRuleSet",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TransformationRuleSetDto
+    public static function createDto(string|int|null $id = null): TransformationRuleSetDto
     {
         return new TransformationRuleSetDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TransformationRuleSetInterface|null $entity
-     * @param int $depth
-     * @return TransformationRuleSetDto|null
+     * @param null|TransformationRuleSetInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TransformationRuleSetDto
     {
         if (!$entity) {
             return null;
@@ -108,7 +102,6 @@ abstract class TransformationRuleSetAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TransformationRuleSetDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -118,12 +111,11 @@ abstract class TransformationRuleSetAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TransformationRuleSetDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
         $name = new Name(
@@ -155,12 +147,11 @@ abstract class TransformationRuleSetAbstract
     /**
      * @internal use EntityTools instead
      * @param TransformationRuleSetDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
         $name = new Name(
@@ -186,9 +177,8 @@ abstract class TransformationRuleSetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TransformationRuleSetDto
+    public function toDto(int $depth = 0): TransformationRuleSetDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -205,10 +195,7 @@ abstract class TransformationRuleSetAbstract
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),

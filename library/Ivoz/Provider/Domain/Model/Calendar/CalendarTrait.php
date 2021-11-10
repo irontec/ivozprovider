@@ -43,7 +43,7 @@ trait CalendarTrait
         $this->calendarPeriods = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -110,9 +110,8 @@ trait CalendarTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CalendarDto
+    public function toDto(int $depth = 0): CalendarDto
     {
         $dto = parent::toDto($depth);
         return $dto

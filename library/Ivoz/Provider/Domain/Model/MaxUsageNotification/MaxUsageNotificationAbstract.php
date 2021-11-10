@@ -46,40 +46,34 @@ abstract class MaxUsageNotificationAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MaxUsageNotification",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): MaxUsageNotificationDto
+    public static function createDto(string|int|null $id = null): MaxUsageNotificationDto
     {
         return new MaxUsageNotificationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MaxUsageNotificationInterface|null $entity
-     * @param int $depth
-     * @return MaxUsageNotificationDto|null
+     * @param null|MaxUsageNotificationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MaxUsageNotificationDto
     {
         if (!$entity) {
             return null;
@@ -95,7 +89,6 @@ abstract class MaxUsageNotificationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MaxUsageNotificationDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -105,12 +98,11 @@ abstract class MaxUsageNotificationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MaxUsageNotificationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MaxUsageNotificationDto::class);
 
         $self = new static();
@@ -130,12 +122,11 @@ abstract class MaxUsageNotificationAbstract
     /**
      * @internal use EntityTools instead
      * @param MaxUsageNotificationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MaxUsageNotificationDto::class);
 
         $this
@@ -150,9 +141,8 @@ abstract class MaxUsageNotificationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): MaxUsageNotificationDto
+    public function toDto(int $depth = 0): MaxUsageNotificationDto
     {
         return self::createDto()
             ->setToAddress(self::getToAddress())
@@ -162,10 +152,7 @@ abstract class MaxUsageNotificationAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'toAddress' => self::getToAddress(),

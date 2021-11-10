@@ -42,40 +42,34 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FixedCostsRelInvoiceScheduler",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): FixedCostsRelInvoiceSchedulerDto
+    public static function createDto(string|int|null $id = null): FixedCostsRelInvoiceSchedulerDto
     {
         return new FixedCostsRelInvoiceSchedulerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FixedCostsRelInvoiceSchedulerInterface|null $entity
-     * @param int $depth
-     * @return FixedCostsRelInvoiceSchedulerDto|null
+     * @param null|FixedCostsRelInvoiceSchedulerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FixedCostsRelInvoiceSchedulerDto
     {
         if (!$entity) {
             return null;
@@ -91,7 +85,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FixedCostsRelInvoiceSchedulerDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -101,12 +94,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FixedCostsRelInvoiceSchedulerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $self = new static();
@@ -124,12 +116,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * @internal use EntityTools instead
      * @param FixedCostsRelInvoiceSchedulerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $this
@@ -142,9 +133,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FixedCostsRelInvoiceSchedulerDto
+    public function toDto(int $depth = 0): FixedCostsRelInvoiceSchedulerDto
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
@@ -152,10 +142,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setInvoiceScheduler(InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'quantity' => self::getQuantity(),

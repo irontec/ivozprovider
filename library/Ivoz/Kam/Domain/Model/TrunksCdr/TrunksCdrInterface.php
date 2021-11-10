@@ -3,6 +3,8 @@
 namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -23,7 +25,33 @@ interface TrunksCdrInterface extends EntityInterface
 
     public const DIRECTION_OUTBOUND = 'outbound';
 
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
     public function isOutboundCall(): bool;
+
+    public static function createDto(string|int|null $id = null): TrunksCdrDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TrunksCdrInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksCdrDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TrunksCdrDto;
 
     /**
      * @return \DateTime|\DateTimeImmutable

@@ -48,40 +48,34 @@ abstract class CommandlogAbstract
         $this->setMicrotime($microtime);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Commandlog",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): CommandlogDto
+    public static function createDto(string|int|null $id = null): CommandlogDto
     {
         return new CommandlogDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CommandlogInterface|null $entity
-     * @param int $depth
-     * @return CommandlogDto|null
+     * @param null|CommandlogInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CommandlogDto
     {
         if (!$entity) {
             return null;
@@ -97,7 +91,6 @@ abstract class CommandlogAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CommandlogDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -107,12 +100,11 @@ abstract class CommandlogAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CommandlogDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CommandlogDto::class);
 
         $self = new static(
@@ -135,12 +127,11 @@ abstract class CommandlogAbstract
     /**
      * @internal use EntityTools instead
      * @param CommandlogDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CommandlogDto::class);
 
         $this
@@ -157,9 +148,8 @@ abstract class CommandlogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CommandlogDto
+    public function toDto(int $depth = 0): CommandlogDto
     {
         return self::createDto()
             ->setRequestId(self::getRequestId())
@@ -171,10 +161,7 @@ abstract class CommandlogAbstract
             ->setMicrotime(self::getMicrotime());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'requestId' => self::getRequestId(),

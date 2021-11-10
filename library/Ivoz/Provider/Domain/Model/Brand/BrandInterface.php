@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -37,6 +40,12 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      * @return array
      */
     public function getFileObjects(?int $filter = null): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     */
+    public function getId(): ?int;
 
     /**
      * @inheritdoc
@@ -94,6 +103,25 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      * @return \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface|null
      */
     public function getService($exten);
+
+    public static function createDto(string|int|null $id = null): BrandDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|BrandInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BrandDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): BrandDto;
 
     public function getName(): string;
 

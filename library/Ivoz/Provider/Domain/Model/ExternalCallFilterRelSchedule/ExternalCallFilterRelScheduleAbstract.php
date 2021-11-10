@@ -40,40 +40,34 @@ abstract class ExternalCallFilterRelScheduleAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ExternalCallFilterRelSchedule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ExternalCallFilterRelScheduleDto
+    public static function createDto(string|int|null $id = null): ExternalCallFilterRelScheduleDto
     {
         return new ExternalCallFilterRelScheduleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExternalCallFilterRelScheduleInterface|null $entity
-     * @param int $depth
-     * @return ExternalCallFilterRelScheduleDto|null
+     * @param null|ExternalCallFilterRelScheduleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExternalCallFilterRelScheduleDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExternalCallFilterRelScheduleDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class ExternalCallFilterRelScheduleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExternalCallFilterRelScheduleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
 
         $self = new static();
@@ -121,12 +113,11 @@ abstract class ExternalCallFilterRelScheduleAbstract
     /**
      * @internal use EntityTools instead
      * @param ExternalCallFilterRelScheduleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
 
         $this
@@ -138,19 +129,15 @@ abstract class ExternalCallFilterRelScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ExternalCallFilterRelScheduleDto
+    public function toDto(int $depth = 0): ExternalCallFilterRelScheduleDto
     {
         return self::createDto()
             ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))
             ->setSchedule(Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'filterId' => self::getFilter() ? self::getFilter()->getId() : null,

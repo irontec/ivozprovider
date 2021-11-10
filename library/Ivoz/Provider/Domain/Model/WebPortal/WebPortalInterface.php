@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
@@ -32,9 +35,35 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
     public function getFileObjects(?int $filter = null): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * @return static
      */
     public function setUrl(string $url): static;
+
+    public static function createDto(string|int|null $id = null): WebPortalDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|WebPortalInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?WebPortalDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): WebPortalDto;
 
     public function getUrl(): string;
 

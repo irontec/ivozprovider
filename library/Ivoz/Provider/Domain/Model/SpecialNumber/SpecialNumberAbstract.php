@@ -49,40 +49,34 @@ abstract class SpecialNumberAbstract
         $this->setDisableCDR($disableCDR);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "SpecialNumber",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): SpecialNumberDto
+    public static function createDto(string|int|null $id = null): SpecialNumberDto
     {
         return new SpecialNumberDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param SpecialNumberInterface|null $entity
-     * @param int $depth
-     * @return SpecialNumberDto|null
+     * @param null|SpecialNumberInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?SpecialNumberDto
     {
         if (!$entity) {
             return null;
@@ -98,7 +92,6 @@ abstract class SpecialNumberAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var SpecialNumberDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -108,12 +101,11 @@ abstract class SpecialNumberAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param SpecialNumberDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
 
         $self = new static(
@@ -134,12 +126,11 @@ abstract class SpecialNumberAbstract
     /**
      * @internal use EntityTools instead
      * @param SpecialNumberDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
 
         $this
@@ -154,9 +145,8 @@ abstract class SpecialNumberAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): SpecialNumberDto
+    public function toDto(int $depth = 0): SpecialNumberDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -166,10 +156,7 @@ abstract class SpecialNumberAbstract
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'number' => self::getNumber(),

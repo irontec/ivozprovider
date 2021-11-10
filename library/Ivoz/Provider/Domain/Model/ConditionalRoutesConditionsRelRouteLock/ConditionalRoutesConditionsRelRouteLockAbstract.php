@@ -40,40 +40,34 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ConditionalRoutesConditionsRelRouteLock",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ConditionalRoutesConditionsRelRouteLockDto
+    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelRouteLockDto
     {
         return new ConditionalRoutesConditionsRelRouteLockDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ConditionalRoutesConditionsRelRouteLockInterface|null $entity
-     * @param int $depth
-     * @return ConditionalRoutesConditionsRelRouteLockDto|null
+     * @param null|ConditionalRoutesConditionsRelRouteLockInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ConditionalRoutesConditionsRelRouteLockDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ConditionalRoutesConditionsRelRouteLockDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionsRelRouteLockDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $self = new static();
@@ -121,12 +113,11 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     /**
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionsRelRouteLockDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelRouteLockDto::class);
 
         $this
@@ -138,19 +129,15 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ConditionalRoutesConditionsRelRouteLockDto
+    public function toDto(int $depth = 0): ConditionalRoutesConditionsRelRouteLockDto
     {
         return self::createDto()
             ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
             ->setRouteLock(RouteLock::entityToDto(self::getRouteLock(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,

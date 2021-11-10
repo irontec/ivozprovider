@@ -48,10 +48,7 @@ final class File
         $this->setImporterArguments($importerArguments);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $file)
+    public function equals(self $file): bool
     {
         if ($this->getFileSize() !== $file->getFileSize()) {
             return false;

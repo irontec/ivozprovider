@@ -102,7 +102,7 @@ class TerminalDto extends TerminalDtoAbstract
         );
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;

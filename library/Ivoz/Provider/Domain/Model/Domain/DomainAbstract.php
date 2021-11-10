@@ -35,40 +35,34 @@ abstract class DomainAbstract
         $this->setPointsTo($pointsTo);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Domain",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): DomainDto
+    public static function createDto(string|int|null $id = null): DomainDto
     {
         return new DomainDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DomainInterface|null $entity
-     * @param int $depth
-     * @return DomainDto|null
+     * @param null|DomainInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DomainDto
     {
         if (!$entity) {
             return null;
@@ -84,7 +78,6 @@ abstract class DomainAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DomainDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -94,12 +87,11 @@ abstract class DomainAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DomainDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DomainDto::class);
 
         $self = new static(
@@ -118,12 +110,11 @@ abstract class DomainAbstract
     /**
      * @internal use EntityTools instead
      * @param DomainDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DomainDto::class);
 
         $this
@@ -136,9 +127,8 @@ abstract class DomainAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): DomainDto
+    public function toDto(int $depth = 0): DomainDto
     {
         return self::createDto()
             ->setDomain(self::getDomain())
@@ -146,10 +136,7 @@ abstract class DomainAbstract
             ->setDescription(self::getDescription());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'domain' => self::getDomain(),

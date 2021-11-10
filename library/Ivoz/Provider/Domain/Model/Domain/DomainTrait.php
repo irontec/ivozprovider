@@ -51,7 +51,7 @@ trait DomainTrait
         $this->terminals = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -134,9 +134,8 @@ trait DomainTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): DomainDto
+    public function toDto(int $depth = 0): DomainDto
     {
         $dto = parent::toDto($depth);
         return $dto

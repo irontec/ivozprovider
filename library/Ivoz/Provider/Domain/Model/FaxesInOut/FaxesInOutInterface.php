@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Core\Domain\Service\TempFile;
@@ -28,6 +31,13 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function getFileObjects(?int $filter = null): array;
 
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
     public function setCalldate($calldate = null): static;
 
     /**
@@ -36,6 +46,25 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      * @return string
      */
     public function getDstE164();
+
+    public static function createDto(string|int|null $id = null): FaxesInOutDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|FaxesInOutInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FaxesInOutDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): FaxesInOutDto;
 
     /**
      * @return \DateTime|\DateTimeImmutable

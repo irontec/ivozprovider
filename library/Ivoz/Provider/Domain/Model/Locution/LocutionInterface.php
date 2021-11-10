@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Model\Locution;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
@@ -32,6 +35,12 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
     public function getFileObjects(?int $filter = null): array;
 
     /**
+     * @codeCoverageIgnore
+     * @return int
+     */
+    public function getId(): ?int;
+
+    /**
      * Add TempFile and set status to pending
      *
      * @param string $fldName
@@ -40,6 +49,25 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
      * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file);
+
+    public static function createDto(string|int|null $id = null): LocutionDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|LocutionInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?LocutionDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): LocutionDto;
 
     public function getName(): string;
 

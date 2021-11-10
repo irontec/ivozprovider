@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
@@ -29,6 +32,13 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return array
@@ -64,6 +74,25 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
      * @return string
      */
     public function getRoundingMethod();
+
+    public static function createDto(string|int|null $id = null): DestinationRateGroupDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|DestinationRateGroupInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DestinationRateGroupDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): DestinationRateGroupDto;
 
     public function getStatus(): ?string;
 

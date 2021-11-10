@@ -52,40 +52,34 @@ abstract class RoutingPatternAbstract
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RoutingPatternDto
+    public static function createDto(string|int|null $id = null): RoutingPatternDto
     {
         return new RoutingPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingPatternInterface|null $entity
-     * @param int $depth
-     * @return RoutingPatternDto|null
+     * @param null|RoutingPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingPatternDto
     {
         if (!$entity) {
             return null;
@@ -101,7 +95,6 @@ abstract class RoutingPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingPatternDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -111,12 +104,11 @@ abstract class RoutingPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
         $name = new Name(
@@ -150,12 +142,11 @@ abstract class RoutingPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
         $name = new Name(
@@ -183,9 +174,8 @@ abstract class RoutingPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RoutingPatternDto
+    public function toDto(int $depth = 0): RoutingPatternDto
     {
         return self::createDto()
             ->setPrefix(self::getPrefix())
@@ -200,10 +190,7 @@ abstract class RoutingPatternAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'prefix' => self::getPrefix(),

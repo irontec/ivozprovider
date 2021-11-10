@@ -46,40 +46,34 @@ abstract class BalanceMovementAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BalanceMovement",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): BalanceMovementDto
+    public static function createDto(string|int|null $id = null): BalanceMovementDto
     {
         return new BalanceMovementDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BalanceMovementInterface|null $entity
-     * @param int $depth
-     * @return BalanceMovementDto|null
+     * @param null|BalanceMovementInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BalanceMovementDto
     {
         if (!$entity) {
             return null;
@@ -95,7 +89,6 @@ abstract class BalanceMovementAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BalanceMovementDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -105,12 +98,11 @@ abstract class BalanceMovementAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BalanceMovementDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
         $self = new static();
@@ -130,12 +122,11 @@ abstract class BalanceMovementAbstract
     /**
      * @internal use EntityTools instead
      * @param BalanceMovementDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
         $this
@@ -150,9 +141,8 @@ abstract class BalanceMovementAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): BalanceMovementDto
+    public function toDto(int $depth = 0): BalanceMovementDto
     {
         return self::createDto()
             ->setAmount(self::getAmount())
@@ -162,10 +152,7 @@ abstract class BalanceMovementAbstract
             ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'amount' => self::getAmount(),

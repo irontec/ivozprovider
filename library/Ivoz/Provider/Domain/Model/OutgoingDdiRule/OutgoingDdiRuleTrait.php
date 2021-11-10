@@ -35,7 +35,7 @@ trait OutgoingDdiRuleTrait
         $this->patterns = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -86,9 +86,8 @@ trait OutgoingDdiRuleTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): OutgoingDdiRuleDto
+    public function toDto(int $depth = 0): OutgoingDdiRuleDto
     {
         $dto = parent::toDto($depth);
         return $dto

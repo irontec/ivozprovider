@@ -46,40 +46,34 @@ abstract class TimezoneAbstract
         $this->setLabel($label);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Timezone",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TimezoneDto
+    public static function createDto(string|int|null $id = null): TimezoneDto
     {
         return new TimezoneDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TimezoneInterface|null $entity
-     * @param int $depth
-     * @return TimezoneDto|null
+     * @param null|TimezoneInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TimezoneDto
     {
         if (!$entity) {
             return null;
@@ -95,7 +89,6 @@ abstract class TimezoneAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TimezoneDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -105,12 +98,11 @@ abstract class TimezoneAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TimezoneDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
         $label = new Label(
@@ -137,12 +129,11 @@ abstract class TimezoneAbstract
     /**
      * @internal use EntityTools instead
      * @param TimezoneDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
         $label = new Label(
@@ -163,9 +154,8 @@ abstract class TimezoneAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TimezoneDto
+    public function toDto(int $depth = 0): TimezoneDto
     {
         return self::createDto()
             ->setTz(self::getTz())
@@ -177,10 +167,7 @@ abstract class TimezoneAbstract
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tz' => self::getTz(),

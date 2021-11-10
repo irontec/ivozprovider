@@ -14,7 +14,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         $response = parent::getChangeSet();
         unset($response['lastProvisionDate']);
@@ -36,7 +36,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",

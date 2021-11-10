@@ -47,10 +47,7 @@ final class Zone
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $zone)
+    public function equals(self $zone): bool
     {
         if ($this->getEn() !== $zone->getEn()) {
             return false;

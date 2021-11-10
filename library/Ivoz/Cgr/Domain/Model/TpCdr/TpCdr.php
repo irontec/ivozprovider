@@ -19,7 +19,7 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
         return $this->id;
     }
 
-    public function initChangelog()
+    public function initChangelog(): void
     {
         /** @var array|null $costDetails */
         $costDetails = $this->costDetails;

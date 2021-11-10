@@ -47,10 +47,7 @@ final class Name
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $name)
+    public function equals(self $name): bool
     {
         if ($this->getEn() !== $name->getEn()) {
             return false;

@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
@@ -38,6 +41,13 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function getChangeSet(): array;
 
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
     public function getTimezone(): ?TimezoneInterface;
 
     public function getSchedulerDateTimeZone(): \DateTimeZone;
@@ -46,6 +56,27 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      * @return \DateInterval
      */
     public function getInterval(): \DateInterval;
+
+    /**
+     * @internal use EntityTools instead
+     * @param int $depth
+     * @return CallCsvSchedulerDto
+     */
+    public function toDto($depth = '0'): CallCsvSchedulerDto;
+
+    public static function createDto(string|int|null $id = null): CallCsvSchedulerDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CallCsvSchedulerInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallCsvSchedulerDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
     public function getName(): string;
 

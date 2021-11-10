@@ -47,10 +47,7 @@ final class Description
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $description)
+    public function equals(self $description): bool
     {
         if ($this->getEn() !== $description->getEn()) {
             return false;

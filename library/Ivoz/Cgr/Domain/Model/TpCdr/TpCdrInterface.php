@@ -3,12 +3,20 @@
 namespace Ivoz\Cgr\Domain\Model\TpCdr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * TpCdrInterface
 */
 interface TpCdrInterface extends EntityInterface
 {
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     public function getDuration(): ?float;
 
@@ -31,6 +39,25 @@ interface TpCdrInterface extends EntityInterface
      * @return string
      */
     public function getMatchedDestinationTag(): string;
+
+    public static function createDto(string|int|null $id = null): TpCdrDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TpCdrInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpCdrDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TpCdrDto;
 
     public function getCgrid(): string;
 

@@ -20,7 +20,6 @@ class UserDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, UserInterface::class);
 
-        /** @var UserDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, UserDto::CONTEXTS_WITH_PICKUP_GROUPS, true)) {

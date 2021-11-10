@@ -36,7 +36,7 @@ trait HuntGroupTrait
         $this->huntGroupsRelUsers = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -87,9 +87,8 @@ trait HuntGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): HuntGroupDto
+    public function toDto(int $depth = 0): HuntGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto

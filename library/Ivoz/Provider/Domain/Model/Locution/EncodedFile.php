@@ -41,10 +41,7 @@ final class EncodedFile
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $encodedFile)
+    public function equals(self $encodedFile): bool
     {
         if ($this->getFileSize() !== $encodedFile->getFileSize()) {
             return false;

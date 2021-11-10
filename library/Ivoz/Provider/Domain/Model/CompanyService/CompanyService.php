@@ -34,7 +34,7 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",

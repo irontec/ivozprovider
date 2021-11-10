@@ -80,40 +80,34 @@ abstract class TrunksLcrRuleAbstract
         $this->setEnabled($enabled);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksLcrRule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TrunksLcrRuleDto
+    public static function createDto(string|int|null $id = null): TrunksLcrRuleDto
     {
         return new TrunksLcrRuleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksLcrRuleInterface|null $entity
-     * @param int $depth
-     * @return TrunksLcrRuleDto|null
+     * @param null|TrunksLcrRuleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksLcrRuleDto
     {
         if (!$entity) {
             return null;
@@ -129,7 +123,6 @@ abstract class TrunksLcrRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksLcrRuleDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -139,12 +132,11 @@ abstract class TrunksLcrRuleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksLcrRuleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
 
         $self = new static(
@@ -170,12 +162,11 @@ abstract class TrunksLcrRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksLcrRuleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
 
         $this
@@ -195,9 +186,8 @@ abstract class TrunksLcrRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TrunksLcrRuleDto
+    public function toDto(int $depth = 0): TrunksLcrRuleDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())
@@ -212,10 +202,7 @@ abstract class TrunksLcrRuleAbstract
             ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'lcr_id' => self::getLcrId(),

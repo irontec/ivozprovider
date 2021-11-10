@@ -43,7 +43,7 @@ trait RoutingTagTrait
         $this->relCompanies = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -110,9 +110,8 @@ trait RoutingTagTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RoutingTagDto
+    public function toDto(int $depth = 0): RoutingTagDto
     {
         $dto = parent::toDto($depth);
         return $dto

@@ -20,9 +20,8 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         $response = parent::getChangeSet();
         unset($response['currentDayUsage']);

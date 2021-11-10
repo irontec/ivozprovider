@@ -86,40 +86,34 @@ abstract class TpDestinationRateAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpDestinationRate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TpDestinationRateDto
+    public static function createDto(string|int|null $id = null): TpDestinationRateDto
     {
         return new TpDestinationRateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpDestinationRateInterface|null $entity
-     * @param int $depth
-     * @return TpDestinationRateDto|null
+     * @param null|TpDestinationRateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpDestinationRateDto
     {
         if (!$entity) {
             return null;
@@ -135,7 +129,6 @@ abstract class TpDestinationRateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpDestinationRateDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -145,12 +138,11 @@ abstract class TpDestinationRateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpDestinationRateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $self = new static(
@@ -176,12 +168,11 @@ abstract class TpDestinationRateAbstract
     /**
      * @internal use EntityTools instead
      * @param TpDestinationRateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $this
@@ -201,9 +192,8 @@ abstract class TpDestinationRateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TpDestinationRateDto
+    public function toDto(int $depth = 0): TpDestinationRateDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -218,10 +208,7 @@ abstract class TpDestinationRateAbstract
             ->setDestinationRate(DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),

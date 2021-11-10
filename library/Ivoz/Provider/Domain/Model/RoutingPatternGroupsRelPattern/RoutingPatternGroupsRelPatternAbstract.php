@@ -41,40 +41,34 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingPatternGroupsRelPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RoutingPatternGroupsRelPatternDto
+    public static function createDto(string|int|null $id = null): RoutingPatternGroupsRelPatternDto
     {
         return new RoutingPatternGroupsRelPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingPatternGroupsRelPatternInterface|null $entity
-     * @param int $depth
-     * @return RoutingPatternGroupsRelPatternDto|null
+     * @param null|RoutingPatternGroupsRelPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingPatternGroupsRelPatternDto
     {
         if (!$entity) {
             return null;
@@ -90,7 +84,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingPatternGroupsRelPatternDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -100,12 +93,11 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternGroupsRelPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $self = new static();
@@ -122,12 +114,11 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternGroupsRelPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $this
@@ -139,19 +130,15 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RoutingPatternGroupsRelPatternDto
+    public function toDto(int $depth = 0): RoutingPatternGroupsRelPatternDto
     {
         return self::createDto()
             ->setRoutingPattern(RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
             ->setRoutingPatternGroup(RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,

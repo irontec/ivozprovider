@@ -116,40 +116,34 @@ abstract class VoicemailAbstract
         $this->setMailbox($mailbox);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Voicemail",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): VoicemailDto
+    public static function createDto(string|int|null $id = null): VoicemailDto
     {
         return new VoicemailDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param VoicemailInterface|null $entity
-     * @param int $depth
-     * @return VoicemailDto|null
+     * @param null|VoicemailInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?VoicemailDto
     {
         if (!$entity) {
             return null;
@@ -165,7 +159,6 @@ abstract class VoicemailAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var VoicemailDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -175,12 +168,11 @@ abstract class VoicemailAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param VoicemailDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, VoicemailDto::class);
 
         $self = new static(
@@ -231,12 +223,11 @@ abstract class VoicemailAbstract
     /**
      * @internal use EntityTools instead
      * @param VoicemailDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, VoicemailDto::class);
 
         $this
@@ -281,9 +272,8 @@ abstract class VoicemailAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): VoicemailDto
+    public function toDto(int $depth = 0): VoicemailDto
     {
         return self::createDto()
             ->setContext(self::getContext())
@@ -323,10 +313,7 @@ abstract class VoicemailAbstract
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'context' => self::getContext(),

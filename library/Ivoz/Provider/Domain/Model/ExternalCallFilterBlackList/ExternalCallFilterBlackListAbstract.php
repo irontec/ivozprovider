@@ -40,40 +40,34 @@ abstract class ExternalCallFilterBlackListAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ExternalCallFilterBlackList",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ExternalCallFilterBlackListDto
+    public static function createDto(string|int|null $id = null): ExternalCallFilterBlackListDto
     {
         return new ExternalCallFilterBlackListDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExternalCallFilterBlackListInterface|null $entity
-     * @param int $depth
-     * @return ExternalCallFilterBlackListDto|null
+     * @param null|ExternalCallFilterBlackListInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExternalCallFilterBlackListDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class ExternalCallFilterBlackListAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExternalCallFilterBlackListDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class ExternalCallFilterBlackListAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExternalCallFilterBlackListDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterBlackListDto::class);
 
         $self = new static();
@@ -121,12 +113,11 @@ abstract class ExternalCallFilterBlackListAbstract
     /**
      * @internal use EntityTools instead
      * @param ExternalCallFilterBlackListDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterBlackListDto::class);
 
         $this
@@ -138,19 +129,15 @@ abstract class ExternalCallFilterBlackListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ExternalCallFilterBlackListDto
+    public function toDto(int $depth = 0): ExternalCallFilterBlackListDto
     {
         return self::createDto()
             ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))
             ->setMatchlist(MatchList::entityToDto(self::getMatchlist(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'filterId' => self::getFilter() ? self::getFilter()->getId() : null,

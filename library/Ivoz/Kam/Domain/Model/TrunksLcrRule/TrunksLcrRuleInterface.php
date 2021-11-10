@@ -4,6 +4,9 @@ namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 
@@ -19,12 +22,38 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * Return LcrRule FromUri string based on OutgoingRouting configuration
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      * @return string
      */
     public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): string;
+
+    public static function createDto(string|int|null $id = null): TrunksLcrRuleDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TrunksLcrRuleInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksLcrRuleDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TrunksLcrRuleDto;
 
     public function getLcrId(): int;
 

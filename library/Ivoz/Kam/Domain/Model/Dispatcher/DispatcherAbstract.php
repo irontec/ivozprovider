@@ -56,40 +56,34 @@ abstract class DispatcherAbstract
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Dispatcher",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): DispatcherDto
+    public static function createDto(string|int|null $id = null): DispatcherDto
     {
         return new DispatcherDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DispatcherInterface|null $entity
-     * @param int $depth
-     * @return DispatcherDto|null
+     * @param null|DispatcherInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DispatcherDto
     {
         if (!$entity) {
             return null;
@@ -105,7 +99,6 @@ abstract class DispatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DispatcherDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -115,12 +108,11 @@ abstract class DispatcherAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DispatcherDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
         $self = new static(
@@ -143,12 +135,11 @@ abstract class DispatcherAbstract
     /**
      * @internal use EntityTools instead
      * @param DispatcherDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
         $this
@@ -165,9 +156,8 @@ abstract class DispatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): DispatcherDto
+    public function toDto(int $depth = 0): DispatcherDto
     {
         return self::createDto()
             ->setSetid(self::getSetid())
@@ -179,10 +169,7 @@ abstract class DispatcherAbstract
             ->setApplicationServer(ApplicationServer::entityToDto(self::getApplicationServer(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'setid' => self::getSetid(),

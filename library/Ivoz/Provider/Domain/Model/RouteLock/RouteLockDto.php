@@ -85,7 +85,7 @@ class RouteLockDto extends RouteLockDtoAbstract
         );
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
 

@@ -73,40 +73,34 @@ abstract class TpTimingAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpTiming",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TpTimingDto
+    public static function createDto(string|int|null $id = null): TpTimingDto
     {
         return new TpTimingDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpTimingInterface|null $entity
-     * @param int $depth
-     * @return TpTimingDto|null
+     * @param null|TpTimingInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpTimingDto
     {
         if (!$entity) {
             return null;
@@ -122,7 +116,6 @@ abstract class TpTimingAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpTimingDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -132,12 +125,11 @@ abstract class TpTimingAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpTimingDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpTimingDto::class);
 
         $self = new static(
@@ -162,12 +154,11 @@ abstract class TpTimingAbstract
     /**
      * @internal use EntityTools instead
      * @param TpTimingDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpTimingDto::class);
 
         $this
@@ -186,9 +177,8 @@ abstract class TpTimingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TpTimingDto
+    public function toDto(int $depth = 0): TpTimingDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -202,10 +192,7 @@ abstract class TpTimingAbstract
             ->setRatingPlan(RatingPlan::entityToDto(self::getRatingPlan(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),

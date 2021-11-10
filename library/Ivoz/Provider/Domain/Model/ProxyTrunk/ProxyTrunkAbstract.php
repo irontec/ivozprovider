@@ -31,40 +31,34 @@ abstract class ProxyTrunkAbstract
         $this->setIp($ip);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ProxyTrunk",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ProxyTrunkDto
+    public static function createDto(string|int|null $id = null): ProxyTrunkDto
     {
         return new ProxyTrunkDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ProxyTrunkInterface|null $entity
-     * @param int $depth
-     * @return ProxyTrunkDto|null
+     * @param null|ProxyTrunkInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ProxyTrunkDto
     {
         if (!$entity) {
             return null;
@@ -80,7 +74,6 @@ abstract class ProxyTrunkAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ProxyTrunkDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -90,12 +83,11 @@ abstract class ProxyTrunkAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ProxyTrunkDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
 
         $self = new static(
@@ -113,12 +105,11 @@ abstract class ProxyTrunkAbstract
     /**
      * @internal use EntityTools instead
      * @param ProxyTrunkDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
 
         $this
@@ -130,19 +121,15 @@ abstract class ProxyTrunkAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ProxyTrunkDto
+    public function toDto(int $depth = 0): ProxyTrunkDto
     {
         return self::createDto()
             ->setName(self::getName())
             ->setIp(self::getIp());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

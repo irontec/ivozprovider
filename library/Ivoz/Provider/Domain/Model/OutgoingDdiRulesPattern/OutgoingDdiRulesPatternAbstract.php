@@ -67,40 +67,34 @@ abstract class OutgoingDdiRulesPatternAbstract
         $this->setPriority($priority);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "OutgoingDdiRulesPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): OutgoingDdiRulesPatternDto
+    public static function createDto(string|int|null $id = null): OutgoingDdiRulesPatternDto
     {
         return new OutgoingDdiRulesPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param OutgoingDdiRulesPatternInterface|null $entity
-     * @param int $depth
-     * @return OutgoingDdiRulesPatternDto|null
+     * @param null|OutgoingDdiRulesPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingDdiRulesPatternDto
     {
         if (!$entity) {
             return null;
@@ -116,7 +110,6 @@ abstract class OutgoingDdiRulesPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var OutgoingDdiRulesPatternDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -126,12 +119,11 @@ abstract class OutgoingDdiRulesPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingDdiRulesPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
         $self = new static(
@@ -154,12 +146,11 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param OutgoingDdiRulesPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
         $this
@@ -176,9 +167,8 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): OutgoingDdiRulesPatternDto
+    public function toDto(int $depth = 0): OutgoingDdiRulesPatternDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -190,10 +180,7 @@ abstract class OutgoingDdiRulesPatternAbstract
             ->setForcedDdi(Ddi::entityToDto(self::getForcedDdi(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'type' => self::getType(),

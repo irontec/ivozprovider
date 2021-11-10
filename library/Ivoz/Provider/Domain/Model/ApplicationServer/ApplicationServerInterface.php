@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\ApplicationServer;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * ApplicationServerInterface
@@ -14,6 +17,32 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): ApplicationServerDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|ApplicationServerInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ApplicationServerDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): ApplicationServerDto;
 
     public function getIp(): string;
 

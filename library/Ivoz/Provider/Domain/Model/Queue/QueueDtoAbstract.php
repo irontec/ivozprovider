@@ -146,7 +146,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -180,10 +180,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
-    /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),

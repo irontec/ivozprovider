@@ -47,40 +47,34 @@ abstract class CountryAbstract
         $this->setZone($zone);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Country",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): CountryDto
+    public static function createDto(string|int|null $id = null): CountryDto
     {
         return new CountryDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CountryInterface|null $entity
-     * @param int $depth
-     * @return CountryDto|null
+     * @param null|CountryInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CountryDto
     {
         if (!$entity) {
             return null;
@@ -96,7 +90,6 @@ abstract class CountryAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CountryDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -106,12 +99,11 @@ abstract class CountryAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CountryDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
         $name = new Name(
@@ -145,12 +137,11 @@ abstract class CountryAbstract
     /**
      * @internal use EntityTools instead
      * @param CountryDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
         $name = new Name(
@@ -178,9 +169,8 @@ abstract class CountryAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CountryDto
+    public function toDto(int $depth = 0): CountryDto
     {
         return self::createDto()
             ->setCode(self::getCode())
@@ -195,10 +185,7 @@ abstract class CountryAbstract
             ->setZoneIt(self::getZone()->getIt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'code' => self::getCode(),

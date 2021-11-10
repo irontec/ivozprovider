@@ -35,7 +35,7 @@ trait ExtensionTrait
         $this->users = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -86,9 +86,8 @@ trait ExtensionTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ExtensionDto
+    public function toDto(int $depth = 0): ExtensionDto
     {
         $dto = parent::toDto($depth);
         return $dto

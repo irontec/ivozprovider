@@ -39,7 +39,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s %s [%s]",

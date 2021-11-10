@@ -3,6 +3,9 @@
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -38,6 +41,32 @@ interface PsEndpointInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): PsEndpointDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|PsEndpointInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PsEndpointDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): PsEndpointDto;
 
     public function getSorceryId(): string;
 

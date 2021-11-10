@@ -132,7 +132,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -162,10 +162,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         ];
     }
 
-    /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),

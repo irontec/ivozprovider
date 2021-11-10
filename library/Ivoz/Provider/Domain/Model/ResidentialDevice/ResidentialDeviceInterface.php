@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -55,6 +58,13 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return bool
@@ -126,6 +136,25 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return string with the voicemail context
      */
     public function getVoiceMailContext();
+
+    public static function createDto(string|int|null $id = null): ResidentialDeviceDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|ResidentialDeviceInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ResidentialDeviceDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): ResidentialDeviceDto;
 
     public function getName(): string;
 

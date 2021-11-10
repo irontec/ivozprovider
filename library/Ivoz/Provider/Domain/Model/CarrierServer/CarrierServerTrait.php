@@ -32,7 +32,7 @@ trait CarrierServerTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -83,9 +83,8 @@ trait CarrierServerTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CarrierServerDto
+    public function toDto(int $depth = 0): CarrierServerDto
     {
         $dto = parent::toDto($depth);
         return $dto

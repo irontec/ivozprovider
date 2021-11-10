@@ -25,7 +25,7 @@ trait QueueMemberTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -63,9 +63,8 @@ trait QueueMemberTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): QueueMemberDto
+    public function toDto(int $depth = 0): QueueMemberDto
     {
         $dto = parent::toDto($depth);
         return $dto
