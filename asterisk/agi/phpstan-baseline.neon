@@ -706,6 +706,11 @@ parameters:
 			path: src/Agi/Action/VoiceMailAction.php
 
 		-
+			message: "#^Method Agi\\\\Agents\\\\DdiAgent\\:\\:getId\\(\\) should return string but returns int\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/DdiAgent.php
+
+		-
 			message: "#^Method Agi\\\\Agents\\\\DdiAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Agi/Agents/DdiAgent.php
@@ -731,6 +736,11 @@ parameters:
 			path: src/Agi/Agents/FriendAgent.php
 
 		-
+			message: "#^Method Agi\\\\Agents\\\\FriendAgent\\:\\:getId\\(\\) should return string but returns int\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/FriendAgent.php
+
+		-
 			message: "#^Method Agi\\\\Agents\\\\FriendAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Agi/Agents/FriendAgent.php
@@ -741,9 +751,19 @@ parameters:
 			path: src/Agi/Agents/ResidentialAgent.php
 
 		-
+			message: "#^Method Agi\\\\Agents\\\\ResidentialAgent\\:\\:getId\\(\\) should return string but returns int\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/ResidentialAgent.php
+
+		-
 			message: "#^Method Agi\\\\Agents\\\\ResidentialAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Agi/Agents/ResidentialAgent.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\RetailAgent\\:\\:getId\\(\\) should return string but returns int\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/RetailAgent.php
 
 		-
 			message: "#^Method Agi\\\\Agents\\\\RetailAgent\\:\\:getPickupGroups\\(\\) has no return typehint specified\\.$#"
@@ -757,6 +777,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method getT38Udptl\\(\\) on Ivoz\\\\Ast\\\\Domain\\\\Model\\\\PsEndpoint\\\\PsEndpointInterface\\|null\\.$#"
+			count: 1
+			path: src/Agi/Agents/UserAgent.php
+
+		-
+			message: "#^Method Agi\\\\Agents\\\\UserAgent\\:\\:getId\\(\\) should return string but returns int\\|null\\.$#"
 			count: 1
 			path: src/Agi/Agents/UserAgent.php
 
