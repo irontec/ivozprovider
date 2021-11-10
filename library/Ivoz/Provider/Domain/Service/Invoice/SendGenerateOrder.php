@@ -34,7 +34,9 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
 
         $this
             ->invoicer
-            ->setId($invoice->getId())
+            ->setId(
+                (int) $invoice->getId()
+            )
             ->send();
     }
 }

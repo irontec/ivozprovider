@@ -23,7 +23,6 @@ class ConditionalRoutesConditionDtoAssembler implements CustomDtoAssemblerInterf
     {
         Assertion::isInstanceOf($entity, ConditionalRoutesConditionInterface::class);
 
-        /** @var ConditionalRoutesConditionDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, ConditionalRoutesConditionDto::CONTEXTS_WITH_INVERSE_RELATIONSHIPS, true)) {

@@ -99,8 +99,8 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTimeInterface $utcInDate, \DateTimeInterface $utcOutDate): void
     {
         $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
-            $invoice->getCompany()->getId(),
-            $invoice->getBrand()->getId(),
+            (int) $invoice->getCompany()->getId(),
+            (int) $invoice->getBrand()->getId(),
             $utcInDate->format('Y-m-d H:i:s'),
             $utcOutDate->format('Y-m-d H:i:s'),
             $invoice->getId()

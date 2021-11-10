@@ -111,7 +111,7 @@ class ProcessExternalCdr
         } catch (\Exception $e) {
             $errorMsg = sprintf(
                 'Unable to process external cdr for #%s: %s',
-                $trunksCdr->getId(),
+                (int) $trunksCdr->getId(),
                 $e->getMessage()
             );
             $this->logger->error($errorMsg);

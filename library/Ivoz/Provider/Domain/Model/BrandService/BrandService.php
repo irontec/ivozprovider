@@ -25,7 +25,7 @@ class BrandService extends BrandServiceAbstract implements BrandServiceInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -20,13 +20,12 @@ class RoutingPatternGroupDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, RoutingPatternGroupInterface::class);
 
-        /** @var RoutingPatternGroupDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, RoutingPatternGroupDto::CONTEXTS_WITH_PATTERNS, true)) {
             $patternIds = array_map(
                 function (RoutingPatternGroupsRelPattern $relFeature) {
-                    return $relFeature
+                    return (int) $relFeature
                         ->getRoutingPattern()
                         ->getId();
                 },

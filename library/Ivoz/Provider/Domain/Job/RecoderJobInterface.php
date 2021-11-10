@@ -8,7 +8,7 @@ interface RecoderJobInterface
 
     public function setId($id): self;
 
-    public function getId(): int;
+    public function getId(): ?int;
 
     public function setEntityName($entityName): self;
 

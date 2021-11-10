@@ -25,7 +25,6 @@ class FaxesInOutDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($faxesInOut, FaxesInOutInterface::class);
 
-        /** @var FaxesInOutDto $dto */
         $dto = $faxesInOut->toDto($depth);
         $id = $faxesInOut->getId();
 

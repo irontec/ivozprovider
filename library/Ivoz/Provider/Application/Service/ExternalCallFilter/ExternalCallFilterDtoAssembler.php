@@ -23,7 +23,6 @@ class ExternalCallFilterDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, ExternalCallFilterInterface::class);
 
-        /** @var ExternalCallFilterDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, ExternalCallFilterDto::CONTEXTS_WITH_INVERSE_RELATIONSHIPS, true)) {

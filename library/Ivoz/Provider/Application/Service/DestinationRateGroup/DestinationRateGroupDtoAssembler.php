@@ -25,7 +25,6 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($destinationRateGroup, DestinationRateGroupInterface::class);
 
-        /** @var DestinationRateGroupDto $dto */
         $dto = $destinationRateGroup->toDto($depth);
         $id = $destinationRateGroup->getId();
 

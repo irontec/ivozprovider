@@ -66,7 +66,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * @return (int|string)[]
      *
-     * @psalm-return array{id: int, number: string}
+     * @psalm-return array{id: int|null, number: string}
      */
     public function toArrayPortal();
 

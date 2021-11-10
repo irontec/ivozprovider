@@ -27,7 +27,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -35,7 +35,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         // Set Routable options to avoid naming collision
         $this->routeTypes = [
@@ -94,7 +94,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * @return (int|mixed|null|string)[]
      *
-     * @psalm-return array{id: int, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
      */
     public function toArrayPortal()
     {

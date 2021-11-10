@@ -27,7 +27,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -35,7 +35,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         // Set Routable options to avoid naming collision
         $this->routeTypes = [

@@ -67,7 +67,7 @@ class UserDto extends UserDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -131,7 +131,7 @@ class UserDto extends UserDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -148,7 +148,7 @@ class UserDto extends UserDtoAbstract
     /**
      * @inheritdoc
      */
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         if ($role !== 'ROLE_COMPANY_ADMIN') {
             if (isset($data['oldPass'])) {

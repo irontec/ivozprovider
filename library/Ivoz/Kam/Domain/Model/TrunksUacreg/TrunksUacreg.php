@@ -24,12 +24,12 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (empty($this->getAuthUsername())) {
             $this->setAuthUsername($this->getRUsername());

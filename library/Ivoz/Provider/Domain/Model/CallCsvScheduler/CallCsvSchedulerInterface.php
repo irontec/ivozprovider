@@ -59,10 +59,9 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      * @return CallCsvSchedulerDto
      */
-    public function toDto($depth = '0'): CallCsvSchedulerDto;
+    public function toDto(int $depth = 0): CallCsvSchedulerDto;
 
     public static function createDto(string|int|null $id = null): CallCsvSchedulerDto;
 

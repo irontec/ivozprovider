@@ -23,7 +23,7 @@ class CalendarPeriodsRelSchedule extends CalendarPeriodsRelScheduleAbstract impl
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

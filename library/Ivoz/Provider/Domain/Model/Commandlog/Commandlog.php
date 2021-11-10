@@ -14,7 +14,7 @@ class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, Co
      * @codeCoverageIgnore
      * @return string
      */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

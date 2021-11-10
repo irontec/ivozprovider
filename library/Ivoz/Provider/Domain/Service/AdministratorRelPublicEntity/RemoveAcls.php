@@ -40,7 +40,7 @@ final class RemoveAcls implements AdministratorLifecycleEventHandlerInterface
         $this
             ->administratorRelPublicEntityRepository
             ->removeByAdministratorId(
-                $admin->getId()
+                (int) $admin->getId()
             );
     }
 }

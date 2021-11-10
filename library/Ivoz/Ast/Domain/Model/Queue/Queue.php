@@ -23,7 +23,7 @@ class Queue extends QueueAbstract implements QueueInterface
      * @codeCoverageIgnore
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

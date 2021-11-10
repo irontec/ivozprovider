@@ -26,7 +26,7 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

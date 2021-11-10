@@ -23,7 +23,7 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -37,8 +37,8 @@ class RatingPlanGroup extends RatingPlanGroupAbstract implements RatingPlanGroup
     {
         return sprintf(
             "b%drp%d",
-            $this->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 

@@ -32,7 +32,7 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
     public function execute(RetailAccountInterface $entity)
     {
         $endpoint = $this->psEndpointRepository->findOneByRetailAccountId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         // If not found create a new one

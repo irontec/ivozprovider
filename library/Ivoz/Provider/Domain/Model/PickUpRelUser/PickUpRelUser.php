@@ -23,7 +23,7 @@ class PickUpRelUser extends PickUpRelUserAbstract implements PickUpRelUserInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

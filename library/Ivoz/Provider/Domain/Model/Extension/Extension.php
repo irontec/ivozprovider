@@ -28,7 +28,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -49,7 +49,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues();
     }
@@ -82,7 +82,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * @return (int|string)[]
      *
-     * @psalm-return array{id: int, number: string}
+     * @psalm-return array{id: int|null, number: string}
      */
     public function toArrayPortal()
     {

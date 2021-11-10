@@ -43,7 +43,9 @@ class ActiveCallsAction
         if (!$companyId) {
             $activeCalls = $this
                 ->trunksClient
-                ->getBrandActiveCalls($brand->getId());
+                ->getBrandActiveCalls(
+                    (int) $brand->getId()
+                );
 
             return new ActiveCalls(
                 $activeCalls[0] ?? 0,

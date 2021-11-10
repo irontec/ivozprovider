@@ -27,7 +27,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -45,7 +45,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $nullableFields = [
             'force' => 'forcedDdi',

@@ -23,7 +23,7 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -45,7 +45,7 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
      * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->getPinProtected()) {
             $this->setPinCode(null);

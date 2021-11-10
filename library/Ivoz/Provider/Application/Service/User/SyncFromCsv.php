@@ -65,7 +65,7 @@ class SyncFromCsv
 
             try {
                 $user = $this->userFactory->fromMassProvisioningCsv(
-                    $company->getId(),
+                    (int) $company->getId(),
                     ...$userArgs
                 );
                 $entities = [$user];
@@ -73,7 +73,7 @@ class SyncFromCsv
                 $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
                 if ($notEmptyTerminalArgs) {
                     $terminal = $this->terminalFactory->fromMassProvisioningCsv(
-                        $company->getId(),
+                        (int) $company->getId(),
                         ...$terminalArgs
                     );
 
@@ -82,7 +82,7 @@ class SyncFromCsv
 
                 if ($extensionArg) {
                     $extension = $this->extensionFactory->fromMassProvisioningCsv(
-                        $company->getId(),
+                        (int) $company->getId(),
                         $extensionArg,
                         $user
                     );

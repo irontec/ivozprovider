@@ -24,12 +24,12 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeBrandByCarrier();
         $this->sanitizeAuth();
@@ -103,9 +103,9 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         return
             sprintf(
                 'b%dc%ds%d',
-                $this->getBrand()->getId(),
-                $this->getCarrier()->getId(),
-                $this->getId()
+                (int) $this->getBrand()->getId(),
+                (int) $this->getCarrier()->getId(),
+                (int) $this->getId()
             );
     }
 }

@@ -26,12 +26,12 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
 
         if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {

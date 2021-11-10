@@ -28,7 +28,6 @@ class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($retailAccount, RetailAccountInterface::class);
 
-        /** @var RetailAccountDto $dto */
         $dto = $retailAccount->toDto($depth);
 
         if (RetailAccountDto::CONTEXT_STATUS !== $context) {

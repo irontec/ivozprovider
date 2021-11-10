@@ -23,7 +23,7 @@ class OutgoingRoutingRelCarrier extends OutgoingRoutingRelCarrierAbstract implem
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

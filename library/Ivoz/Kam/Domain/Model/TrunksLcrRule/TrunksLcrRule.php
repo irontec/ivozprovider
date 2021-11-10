@@ -25,7 +25,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -44,15 +44,15 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
             // Apply all companies
             return sprintf(
                 '^b%dc[0-9]+$',
-                $outgoingRouting->getBrand()->getId()
+                (int) $outgoingRouting->getBrand()->getId()
             );
         }
 
         // Company specific rule
         return sprintf(
             '^b%dc%d$',
-            $outgoingRouting->getBrand()->getId(),
-            $company->getId()
+            (int) $outgoingRouting->getBrand()->getId(),
+            (int) $company->getId()
         );
     }
 }

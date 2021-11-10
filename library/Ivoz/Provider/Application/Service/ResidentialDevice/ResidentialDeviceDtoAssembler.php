@@ -28,7 +28,6 @@ class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($residentialDevice, ResidentialDeviceInterface::class);
 
-        /** @var ResidentialDeviceDto $dto */
         $dto = $residentialDevice->toDto($depth);
 
         if (ResidentialDeviceDto::CONTEXT_STATUS !== $context) {

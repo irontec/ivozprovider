@@ -14,7 +14,7 @@ class UsersHtable extends UsersHtableAbstract implements UsersHtableInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

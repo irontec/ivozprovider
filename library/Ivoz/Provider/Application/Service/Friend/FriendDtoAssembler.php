@@ -28,7 +28,6 @@ class FriendDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($friend, FriendInterface::class);
 
-        /** @var FriendDto $dto */
         $dto = $friend->toDto($depth);
 
         if (FriendDto::CONTEXT_STATUS !== $context) {

@@ -24,7 +24,7 @@ class CompanyDto extends CompanyDtoAbstract
      */
     private $featureIds = [];
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -38,7 +38,7 @@ class CompanyDto extends CompanyDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         if ($role === 'ROLE_COMPANY_ADMIN') {
             $data = $this->filterCompanyReadOnlyFields($data);
@@ -118,7 +118,7 @@ class CompanyDto extends CompanyDtoAbstract
      * @codeCoverageIgnore
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null)
+    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [

@@ -14,7 +14,7 @@ class UsersWatcher extends UsersWatcherAbstract implements UsersWatcherInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

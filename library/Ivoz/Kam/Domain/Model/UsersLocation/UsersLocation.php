@@ -14,7 +14,7 @@ class UsersLocation extends UsersLocationAbstract implements UsersLocationInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

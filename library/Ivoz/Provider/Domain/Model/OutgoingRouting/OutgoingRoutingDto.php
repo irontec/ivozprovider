@@ -24,7 +24,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
      */
     private $carrierIds = [];
 
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -51,7 +51,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -64,7 +64,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
         );
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,

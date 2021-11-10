@@ -46,7 +46,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

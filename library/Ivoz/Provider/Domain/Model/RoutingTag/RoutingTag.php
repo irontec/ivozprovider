@@ -34,7 +34,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -44,6 +44,6 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
      */
     public function getCgrSubject(): string
     {
-        return sprintf("rt%d", $this->getId());
+        return sprintf("rt%d", (int) $this->getId());
     }
 }

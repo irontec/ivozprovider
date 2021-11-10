@@ -25,7 +25,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,7 +34,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     /**
      * @inheritdoc
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getExternallyRated()) {
             $this->setCalculateCost(false);
@@ -50,7 +50,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
      */
     public function getCgrSubject(): string
     {
-        return sprintf("cr%d", $this->getId());
+        return sprintf("cr%d", (int) $this->getId());
     }
 
     /**

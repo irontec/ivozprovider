@@ -26,7 +26,6 @@ class RouteLockDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, RouteLockInterface::class);
 
-        /** @var RouteLockDto $dto */
         $dto = $entity->toDto($depth);
 
         /**

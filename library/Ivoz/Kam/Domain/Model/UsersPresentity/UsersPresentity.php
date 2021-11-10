@@ -14,7 +14,7 @@ class UsersPresentity extends UsersPresentityAbstract implements UsersPresentity
      *
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

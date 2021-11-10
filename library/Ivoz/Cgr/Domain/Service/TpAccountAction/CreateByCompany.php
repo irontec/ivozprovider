@@ -44,7 +44,7 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
         } else {
             $accountAction = $this->tpAccountActionRepository
                 ->findByCompany(
-                    $company->getId()
+                    (int) $company->getId()
                 );
 
             /** @var TpAccountActionDto  $accountActionDto */

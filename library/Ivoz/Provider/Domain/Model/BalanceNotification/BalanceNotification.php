@@ -26,12 +26,12 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         /**
          * @todo ensure carrier or company to have value

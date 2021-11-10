@@ -29,7 +29,7 @@ class Ivr extends IvrAbstract implements IvrInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -38,7 +38,7 @@ class Ivr extends IvrAbstract implements IvrInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -47,7 +47,7 @@ class Ivr extends IvrAbstract implements IvrInterface
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('NoInput');
         $this->sanitizeRouteValues('Error');

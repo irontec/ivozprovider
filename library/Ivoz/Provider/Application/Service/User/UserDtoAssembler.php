@@ -25,7 +25,7 @@ class UserDtoAssembler implements CustomDtoAssemblerInterface
         if (in_array($context, UserDto::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
             $pickupGroupIds = array_map(
                 function (PickUpRelUser $relFeature) {
-                    return $relFeature
+                    return (int) $relFeature
                         ->getPickUpGroup()
                         ->getId();
                 },

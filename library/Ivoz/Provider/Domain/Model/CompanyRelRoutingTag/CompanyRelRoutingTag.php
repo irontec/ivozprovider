@@ -47,7 +47,7 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

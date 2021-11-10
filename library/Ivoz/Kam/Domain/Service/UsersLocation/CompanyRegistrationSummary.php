@@ -29,7 +29,7 @@ class CompanyRegistrationSummary
     public function getUsersLocations(CompanyInterface $company): array
     {
         $domain = $this->domainRepository->findByCompanyId(
-            $company->getId()
+            (int) $company->getId()
         );
 
         if (!$domain) {
@@ -49,7 +49,7 @@ class CompanyRegistrationSummary
 
     public function getDeviceNumber(CompanyInterface $company): int
     {
-        $ids = [$company->getId()];
+        $ids = [(int) $company->getId()];
 
         if ($company->isWholesale()) {
             return 0;
@@ -79,7 +79,7 @@ class CompanyRegistrationSummary
         if ($company->isWholesale()) {
             return [];
         }
-        $companyId = $company->getId();
+        $companyId = (int) $company->getId();
 
         if ($company->isResidential()) {
             return $this

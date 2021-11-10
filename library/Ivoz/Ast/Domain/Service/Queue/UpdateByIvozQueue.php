@@ -49,7 +49,7 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         $astQueueName = $entity->getAstQueueName();
 
         $astQueue = $this->astQueueRepository->findOneByProviderQueueId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         /** @var QueueDto $astQueueDto */

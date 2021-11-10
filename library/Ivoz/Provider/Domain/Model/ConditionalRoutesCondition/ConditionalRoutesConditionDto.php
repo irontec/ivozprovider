@@ -61,7 +61,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -83,7 +83,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,

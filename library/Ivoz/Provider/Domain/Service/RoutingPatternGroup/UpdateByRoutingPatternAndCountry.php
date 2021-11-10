@@ -28,7 +28,7 @@ class UpdateByRoutingPatternAndCountry
      */
     public function execute(RoutingPatternInterface $entity, CountryInterface $country)
     {
-        $brandId = $entity
+        $brandId = (int) $entity
             ->getbrand()
             ->getId();
 

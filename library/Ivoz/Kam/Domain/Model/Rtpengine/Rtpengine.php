@@ -16,7 +16,7 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,7 +34,7 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
     {
         if (!is_null($mediaRelaySet)) {
             $this->setSetid(
-                $mediaRelaySet->getId()
+                (int) $mediaRelaySet->getId()
             );
         }
 

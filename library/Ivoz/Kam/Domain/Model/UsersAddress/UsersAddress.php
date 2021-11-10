@@ -16,7 +16,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -30,7 +30,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $address = explode('/', $this->getSourceAddress());
         $ip = array_shift($address);

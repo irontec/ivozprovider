@@ -26,7 +26,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,7 +36,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getTimingType() == self::TIMINGTYPE_ALWAYS) {
             $this
@@ -104,8 +104,8 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
 
         return sprintf(
             "b%dtm%d",
-            $this->getRatingPlanGroup()->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getRatingPlanGroup()->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 }

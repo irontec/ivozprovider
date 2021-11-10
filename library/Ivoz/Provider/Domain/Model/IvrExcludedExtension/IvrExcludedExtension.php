@@ -19,7 +19,7 @@ class IvrExcludedExtension extends IvrExcludedExtensionAbstract implements IvrEx
      *
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

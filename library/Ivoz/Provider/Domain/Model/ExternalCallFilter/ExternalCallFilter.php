@@ -32,7 +32,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -50,7 +50,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('Holiday');
         $this->sanitizeRouteValues('OutOfSchedule');

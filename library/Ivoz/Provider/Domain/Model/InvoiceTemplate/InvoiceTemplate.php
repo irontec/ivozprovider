@@ -23,12 +23,12 @@ class InvoiceTemplate extends InvoiceTemplateAbstract implements InvoiceTemplate
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $notNew = !$this->isNew();
         $brandHasChanged = $this->hasChanged('brandId');

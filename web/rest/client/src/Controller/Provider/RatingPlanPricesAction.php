@@ -101,7 +101,7 @@ class RatingPlanPricesAction
         $generator = $this
             ->ratingPlanGroupRepository
             ->getAllRatesByRatingPlanId(
-                $ratingPlanGroup->getId(),
+                (int) $ratingPlanGroup->getId(),
                 10000,
                 $queryModifier
             );

@@ -44,7 +44,7 @@ class Recording extends RecordingAbstract implements FileContainerInterface, Rec
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

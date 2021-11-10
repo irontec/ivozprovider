@@ -32,7 +32,6 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     {
         $lcrGateway = $carrierServer->getLcrGateway();
 
-        /** @var TrunksLcrGatewayDto $lcrGatewayDto */
         $lcrGatewayDto = is_null($lcrGateway)
             ? TrunksLcrGateway::createDto()
             : $lcrGateway->toDto();

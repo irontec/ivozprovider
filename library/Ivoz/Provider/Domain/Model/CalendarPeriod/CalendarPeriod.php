@@ -26,12 +26,12 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $startDate = $this->getStartDate();
         $endDate = $this->getEndDate();

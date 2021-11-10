@@ -33,7 +33,7 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
     {
         // Replicate Terminal into ast_ps_endpoint
         $endpoint = $this->psEndpointRepository->findOneByFriendId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         if (is_null($endpoint)) {
@@ -43,7 +43,6 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
                 ->setSendDiversion("yes")
                 ->setSendPai("yes");
         } else {
-            /** @var PsEndpointDto $endPointDto */
             $endPointDto = $endpoint->toDto();
         }
 

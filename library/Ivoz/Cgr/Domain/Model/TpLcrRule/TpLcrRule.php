@@ -23,7 +23,7 @@ class TpLcrRule extends TpLcrRuleAbstract implements TpLcrRuleInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

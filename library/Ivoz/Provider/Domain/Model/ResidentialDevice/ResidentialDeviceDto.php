@@ -58,7 +58,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_STATUS) {
             $baseAttributes = [
@@ -105,7 +105,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {

@@ -23,7 +23,7 @@ class ExternalCallFilterWhiteList extends ExternalCallFilterWhiteListAbstract im
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

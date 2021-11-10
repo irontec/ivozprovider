@@ -25,7 +25,7 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

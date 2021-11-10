@@ -4,7 +4,7 @@ namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
 class UsersAddressDto extends UsersAddressDtoAbstract
 {
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
