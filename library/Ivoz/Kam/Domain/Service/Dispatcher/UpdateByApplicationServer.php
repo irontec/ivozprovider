@@ -38,7 +38,7 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
          * @var KamDispatcher $kamDispatcher
          */
         $kamDispatcher = $this->dispatcherRepository->findOneByApplicationServerId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         $kamDispatcherDto = $entity->isNew()

@@ -23,7 +23,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $isGodUrlType = $this->getUrlType() === self::URLTYPE_GOD;
 
@@ -61,7 +61,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

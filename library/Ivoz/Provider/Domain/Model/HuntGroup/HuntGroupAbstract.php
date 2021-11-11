@@ -92,40 +92,34 @@ abstract class HuntGroupAbstract
         $this->setAllowCallForwards($allowCallForwards);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "HuntGroup",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): HuntGroupDto
+    public static function createDto(string|int|null $id = null): HuntGroupDto
     {
         return new HuntGroupDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param HuntGroupInterface|null $entity
-     * @param int $depth
-     * @return HuntGroupDto|null
+     * @param null|HuntGroupInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?HuntGroupDto
     {
         if (!$entity) {
             return null;
@@ -141,7 +135,6 @@ abstract class HuntGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var HuntGroupDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -151,12 +144,11 @@ abstract class HuntGroupAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param HuntGroupDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
         $self = new static(
@@ -185,12 +177,11 @@ abstract class HuntGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param HuntGroupDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
         $this
@@ -213,9 +204,8 @@ abstract class HuntGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): HuntGroupDto
+    public function toDto(int $depth = 0): HuntGroupDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -233,10 +223,7 @@ abstract class HuntGroupAbstract
             ->setNoAnswerNumberCountry(Country::entityToDto(self::getNoAnswerNumberCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

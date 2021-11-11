@@ -25,7 +25,7 @@ trait BannedAddressTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -63,9 +63,8 @@ trait BannedAddressTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): BannedAddressDto
+    public function toDto(int $depth = 0): BannedAddressDto
     {
         $dto = parent::toDto($depth);
         return $dto

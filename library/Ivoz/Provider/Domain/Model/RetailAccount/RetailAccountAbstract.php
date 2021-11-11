@@ -112,40 +112,34 @@ abstract class RetailAccountAbstract
         $this->setMultiContact($multiContact);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RetailAccount",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RetailAccountDto
+    public static function createDto(string|int|null $id = null): RetailAccountDto
     {
         return new RetailAccountDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RetailAccountInterface|null $entity
-     * @param int $depth
-     * @return RetailAccountDto|null
+     * @param null|RetailAccountInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RetailAccountDto
     {
         if (!$entity) {
             return null;
@@ -161,7 +155,6 @@ abstract class RetailAccountAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RetailAccountDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -171,12 +164,11 @@ abstract class RetailAccountAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RetailAccountDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
         $self = new static(
@@ -209,12 +201,11 @@ abstract class RetailAccountAbstract
     /**
      * @internal use EntityTools instead
      * @param RetailAccountDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
         $this
@@ -241,9 +232,8 @@ abstract class RetailAccountAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RetailAccountDto
+    public function toDto(int $depth = 0): RetailAccountDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -265,10 +255,7 @@ abstract class RetailAccountAbstract
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

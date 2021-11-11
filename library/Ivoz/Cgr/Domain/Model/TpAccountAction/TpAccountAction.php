@@ -14,7 +14,7 @@ class TpAccountAction extends TpAccountActionAbstract implements TpAccountAction
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

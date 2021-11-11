@@ -36,7 +36,7 @@ trait CalendarPeriodTrait
         $this->relSchedules = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -87,9 +87,8 @@ trait CalendarPeriodTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CalendarPeriodDto
+    public function toDto(int $depth = 0): CalendarPeriodDto
     {
         $dto = parent::toDto($depth);
         return $dto

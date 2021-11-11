@@ -43,7 +43,7 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
         // Update/Create Trunks Address for this DDI Provider Address
         $trunksAddressDto
             ->setIpAddr($ddiProviderAddress->getIp())
-            ->setGrp($ddiProviderAddress->getDdiProvider()->getId())
+            ->setGrp((int) $ddiProviderAddress->getDdiProvider()->getId())
             ->setDdiProviderAddressId($ddiProviderAddress->getId());
 
         $this->entityTools->persistDto(

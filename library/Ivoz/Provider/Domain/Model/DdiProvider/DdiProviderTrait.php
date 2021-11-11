@@ -43,7 +43,7 @@ trait DdiProviderTrait
         $this->ddiProviderAddresses = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -110,9 +110,8 @@ trait DdiProviderTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): DdiProviderDto
+    public function toDto(int $depth = 0): DdiProviderDto
     {
         $dto = parent::toDto($depth);
         return $dto

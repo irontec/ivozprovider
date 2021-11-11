@@ -141,40 +141,34 @@ abstract class TrunksCdrAbstract
         $this->setParserScheduledAt($parserScheduledAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksCdr",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TrunksCdrDto
+    public static function createDto(string|int|null $id = null): TrunksCdrDto
     {
         return new TrunksCdrDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksCdrInterface|null $entity
-     * @param int $depth
-     * @return TrunksCdrDto|null
+     * @param null|TrunksCdrInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksCdrDto
     {
         if (!$entity) {
             return null;
@@ -190,7 +184,6 @@ abstract class TrunksCdrAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksCdrDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -200,12 +193,11 @@ abstract class TrunksCdrAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksCdrDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
         $self = new static(
@@ -245,12 +237,11 @@ abstract class TrunksCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksCdrDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
         $this
@@ -284,9 +275,8 @@ abstract class TrunksCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TrunksCdrDto
+    public function toDto(int $depth = 0): TrunksCdrDto
     {
         return self::createDto()
             ->setStartTime(self::getStartTime())
@@ -315,10 +305,7 @@ abstract class TrunksCdrAbstract
             ->setDdiProvider(DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'start_time' => self::getStartTime(),

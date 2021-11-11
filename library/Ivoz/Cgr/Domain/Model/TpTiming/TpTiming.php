@@ -18,7 +18,7 @@ class TpTiming extends TpTimingAbstract implements TpTimingInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

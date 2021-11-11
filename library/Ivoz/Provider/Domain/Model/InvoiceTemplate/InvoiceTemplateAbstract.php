@@ -46,40 +46,34 @@ abstract class InvoiceTemplateAbstract
         $this->setTemplate($template);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "InvoiceTemplate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): InvoiceTemplateDto
+    public static function createDto(string|int|null $id = null): InvoiceTemplateDto
     {
         return new InvoiceTemplateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceTemplateInterface|null $entity
-     * @param int $depth
-     * @return InvoiceTemplateDto|null
+     * @param null|InvoiceTemplateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceTemplateDto
     {
         if (!$entity) {
             return null;
@@ -95,7 +89,6 @@ abstract class InvoiceTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceTemplateDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -105,12 +98,11 @@ abstract class InvoiceTemplateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceTemplateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
         $self = new static(
@@ -132,12 +124,11 @@ abstract class InvoiceTemplateAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceTemplateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
         $this
@@ -153,9 +144,8 @@ abstract class InvoiceTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): InvoiceTemplateDto
+    public function toDto(int $depth = 0): InvoiceTemplateDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -166,10 +156,7 @@ abstract class InvoiceTemplateAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

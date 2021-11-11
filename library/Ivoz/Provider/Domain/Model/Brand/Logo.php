@@ -41,10 +41,7 @@ final class Logo
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $logo)
+    public function equals(self $logo): bool
     {
         if ($this->getFileSize() !== $logo->getFileSize()) {
             return false;

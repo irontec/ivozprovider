@@ -43,9 +43,8 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -155,7 +154,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     {
         return sprintf(
             "b%d",
-            $this->getId()
+            (int) $this->getId()
         );
     }
 

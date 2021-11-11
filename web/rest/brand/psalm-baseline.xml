@@ -42,16 +42,12 @@
     </InvalidScalarArgument>
   </file>
   <file src="src/Controller/My/ActiveCallsAction.php">
-    <MixedArgument occurrences="1">
-      <code>$brand-&gt;getId()</code>
-    </MixedArgument>
     <MixedAssignment occurrences="1">
       <code>$companyId</code>
     </MixedAssignment>
   </file>
   <file src="src/Controller/My/RegistrationSummaryAction.php">
-    <MixedArgument occurrences="2">
-      <code>$brand-&gt;getId()</code>
+    <MixedArgument occurrences="1">
       <code>$company</code>
     </MixedArgument>
     <MixedAssignment occurrences="2">
@@ -79,8 +75,7 @@
     </PossiblyNullPropertyFetch>
   </file>
   <file src="src/Controller/Provider/PutBillableCallRatingAction.php">
-    <MixedArgument occurrences="2">
-      <code>$brand-&gt;getId()</code>
+    <MixedArgument occurrences="1">
       <code>$callid</code>
     </MixedArgument>
     <MixedArrayAssignment occurrences="2">

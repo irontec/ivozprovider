@@ -27,7 +27,7 @@ class Queue extends QueueAbstract implements QueueInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -35,7 +35,7 @@ class Queue extends QueueAbstract implements QueueInterface
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('Timeout');
         $this->sanitizeRouteValues('Full');
@@ -55,9 +55,9 @@ class Queue extends QueueAbstract implements QueueInterface
     {
         return sprintf(
             "b%dc%dq%d_%s",
-            $this->getCompany()->getBrand()->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getBrand()->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }

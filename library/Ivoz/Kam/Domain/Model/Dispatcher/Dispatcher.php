@@ -23,7 +23,7 @@ class Dispatcher extends DispatcherAbstract implements DispatcherInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -25,7 +25,6 @@ class CallCsvReportDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($callCsvReport, CallCsvReportInterface::class);
 
-        /** @var CallCsvReportDTO $dto */
         $dto = $callCsvReport->toDto($depth);
         $id = $callCsvReport->getId();
 

@@ -25,7 +25,7 @@ trait FeaturesRelCompanyTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -63,9 +63,8 @@ trait FeaturesRelCompanyTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FeaturesRelCompanyDto
+    public function toDto(int $depth = 0): FeaturesRelCompanyDto
     {
         $dto = parent::toDto($depth);
         return $dto

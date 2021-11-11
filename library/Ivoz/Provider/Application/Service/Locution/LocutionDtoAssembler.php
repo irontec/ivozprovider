@@ -25,7 +25,6 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($locution, LocutionInterface::class);
 
-        /** @var LocutionDTO $dto */
         $dto = $locution->toDto($depth);
         $id = $locution->getId();
 

@@ -34,7 +34,7 @@ class CarrierDoctrineRepository extends ServiceEntityRepository implements Carri
         $response = [];
 
         foreach ($carriers as $carrier) {
-            $brandId = $carrier->getBrand()->getId();
+            $brandId = (int) $carrier->getBrand()->getId();
             if (!array_key_exists($brandId, $response)) {
                 $response[$brandId] = [];
             }

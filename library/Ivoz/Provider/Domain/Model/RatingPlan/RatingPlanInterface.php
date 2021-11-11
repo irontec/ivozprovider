@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
@@ -16,6 +19,13 @@ interface RatingPlanInterface extends LoggableEntityInterface
     public const TIMINGTYPE_ALWAYS = 'always';
 
     public const TIMINGTYPE_CUSTOM = 'custom';
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     public function getChangeSet(): array;
 
@@ -39,6 +49,25 @@ interface RatingPlanInterface extends LoggableEntityInterface
      * @return string
      */
     public function getCgrTimingTag();
+
+    public static function createDto(string|int|null $id = null): RatingPlanDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|RatingPlanInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RatingPlanDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): RatingPlanDto;
 
     public function getWeight(): float;
 

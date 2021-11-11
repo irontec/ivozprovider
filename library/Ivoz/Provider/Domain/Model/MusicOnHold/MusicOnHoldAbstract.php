@@ -66,40 +66,34 @@ abstract class MusicOnHoldAbstract
         $this->setEncodedFile($encodedFile);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MusicOnHold",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): MusicOnHoldDto
+    public static function createDto(string|int|null $id = null): MusicOnHoldDto
     {
         return new MusicOnHoldDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MusicOnHoldInterface|null $entity
-     * @param int $depth
-     * @return MusicOnHoldDto|null
+     * @param null|MusicOnHoldInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MusicOnHoldDto
     {
         if (!$entity) {
             return null;
@@ -115,7 +109,6 @@ abstract class MusicOnHoldAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MusicOnHoldDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -125,12 +118,11 @@ abstract class MusicOnHoldAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MusicOnHoldDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
@@ -164,12 +156,11 @@ abstract class MusicOnHoldAbstract
     /**
      * @internal use EntityTools instead
      * @param MusicOnHoldDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
@@ -197,9 +188,8 @@ abstract class MusicOnHoldAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): MusicOnHoldDto
+    public function toDto(int $depth = 0): MusicOnHoldDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -214,10 +204,7 @@ abstract class MusicOnHoldAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

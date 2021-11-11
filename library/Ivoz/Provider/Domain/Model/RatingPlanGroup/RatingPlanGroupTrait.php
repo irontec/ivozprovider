@@ -35,7 +35,7 @@ trait RatingPlanGroupTrait
         $this->ratingPlan = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -86,9 +86,8 @@ trait RatingPlanGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RatingPlanGroupDto
+    public function toDto(int $depth = 0): RatingPlanGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto

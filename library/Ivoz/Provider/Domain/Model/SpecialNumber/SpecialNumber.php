@@ -18,7 +18,7 @@ class SpecialNumber extends SpecialNumberAbstract implements SpecialNumberInterf
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $notNew = !$this->isNew();
         $brandHasChanged = $this->hasChanged('brandId');
@@ -44,7 +44,7 @@ class SpecialNumber extends SpecialNumberAbstract implements SpecialNumberInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

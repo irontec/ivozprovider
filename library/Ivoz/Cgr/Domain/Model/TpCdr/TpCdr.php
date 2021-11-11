@@ -14,12 +14,12 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function initChangelog()
+    public function initChangelog(): void
     {
         /** @var array|null $costDetails */
         $costDetails = $this->costDetails;

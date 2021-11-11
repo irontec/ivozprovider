@@ -20,9 +20,8 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         $response = parent::getChangeSet();
         unset($response['currentDayUsage']);
@@ -43,12 +42,12 @@ class Company extends CompanyAbstract implements CompanyInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->getDefaultTimezone()) {
             $this->setDefaultTimezone(
@@ -409,7 +408,7 @@ class Company extends CompanyAbstract implements CompanyInterface
          * @var FeaturesRelCompany $relFeature
          */
         foreach ($this->getRelFeatures() as $relFeature) {
-            $relFeatureId = $relFeature->getFeature()->getId();
+            $relFeatureId = (int) $relFeature->getFeature()->getId();
             if ($this->getBrand()->hasFeature($relFeatureId)) {
                 array_push($features, $relFeature->getFeature());
             }
@@ -448,7 +447,7 @@ class Company extends CompanyAbstract implements CompanyInterface
      */
     public function getCgrSubject(): string
     {
-        return sprintf("c%d", $this->getId());
+        return sprintf("c%d", (int) $this->getId());
     }
 
     public function isVpbx(): bool

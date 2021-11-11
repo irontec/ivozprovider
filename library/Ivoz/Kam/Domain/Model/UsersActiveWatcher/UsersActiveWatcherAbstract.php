@@ -174,40 +174,34 @@ abstract class UsersActiveWatcherAbstract
         $this->setUserAgent($userAgent);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersActiveWatcher",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): UsersActiveWatcherDto
+    public static function createDto(string|int|null $id = null): UsersActiveWatcherDto
     {
         return new UsersActiveWatcherDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersActiveWatcherInterface|null $entity
-     * @param int $depth
-     * @return UsersActiveWatcherDto|null
+     * @param null|UsersActiveWatcherInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersActiveWatcherDto
     {
         if (!$entity) {
             return null;
@@ -223,7 +217,6 @@ abstract class UsersActiveWatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersActiveWatcherDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -233,12 +226,11 @@ abstract class UsersActiveWatcherAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersActiveWatcherDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersActiveWatcherDto::class);
 
         $self = new static(
@@ -280,12 +272,11 @@ abstract class UsersActiveWatcherAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersActiveWatcherDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersActiveWatcherDto::class);
 
         $this
@@ -321,9 +312,8 @@ abstract class UsersActiveWatcherAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): UsersActiveWatcherDto
+    public function toDto(int $depth = 0): UsersActiveWatcherDto
     {
         return self::createDto()
             ->setPresentityUri(self::getPresentityUri())
@@ -354,10 +344,7 @@ abstract class UsersActiveWatcherAbstract
             ->setUserAgent(self::getUserAgent());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'presentity_uri' => self::getPresentityUri(),

@@ -27,12 +27,12 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->setBrand(
             $this
@@ -122,9 +122,9 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     {
         return sprintf(
             "b%dc%dr%d_%s",
-            $this->getCompany()->getBrand()->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getBrand()->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }

@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
@@ -30,7 +33,14 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * @return array
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
@@ -64,6 +74,25 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllow();
 
     public function setMac(?string $mac = null): static;
+
+    public static function createDto(string|int|null $id = null): TerminalDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TerminalInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TerminalDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TerminalDto;
 
     public function getName(): string;
 

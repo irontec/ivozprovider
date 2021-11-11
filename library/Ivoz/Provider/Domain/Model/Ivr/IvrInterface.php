@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -37,6 +40,13 @@ interface IvrInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * @return (\Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null)[] with key=>value
      *
      * @psalm-return array{welcome: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, noanswer: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, error: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, success: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null}
@@ -66,6 +76,25 @@ interface IvrInterface extends LoggableEntityInterface
      * @return null|string
      */
     public function getErrorTarget(): ?string;
+
+    public static function createDto(string|int|null $id = null): IvrDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|IvrInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?IvrDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): IvrDto;
 
     public function getName(): string;
 

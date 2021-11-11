@@ -23,7 +23,7 @@ class TrunksLcrGateway extends TrunksLcrGatewayAbstract implements TrunksLcrGate
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -6,6 +6,9 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
@@ -43,6 +46,13 @@ interface UserInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     public function serialize(): string;
 
@@ -157,6 +167,25 @@ interface UserInterface extends LoggableEntityInterface
      * @return string
      */
     public function getFullNameExtension(): string;
+
+    public static function createDto(string|int|null $id = null): UserDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|UserInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UserDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): UserDto;
 
     public function getName(): string;
 

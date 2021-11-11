@@ -40,40 +40,34 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ConditionalRoutesConditionsRelSchedule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ConditionalRoutesConditionsRelScheduleDto
+    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionsRelScheduleDto
     {
         return new ConditionalRoutesConditionsRelScheduleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ConditionalRoutesConditionsRelScheduleInterface|null $entity
-     * @param int $depth
-     * @return ConditionalRoutesConditionsRelScheduleDto|null
+     * @param null|ConditionalRoutesConditionsRelScheduleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ConditionalRoutesConditionsRelScheduleDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ConditionalRoutesConditionsRelScheduleDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionsRelScheduleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
         $self = new static();
@@ -121,12 +113,11 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     /**
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionsRelScheduleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
         $this
@@ -138,19 +129,15 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ConditionalRoutesConditionsRelScheduleDto
+    public function toDto(int $depth = 0): ConditionalRoutesConditionsRelScheduleDto
     {
         return self::createDto()
             ->setCondition(ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
             ->setSchedule(Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,

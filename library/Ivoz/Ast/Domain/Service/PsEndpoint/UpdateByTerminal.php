@@ -33,7 +33,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     {
         // Replicate Terminal into ast_ps_endpoint
         $endpoint = $this->psEndpointRepository->findOneByTerminalId(
-            $terminal->getId()
+            (int) $terminal->getId()
         );
 
         if (is_null($endpoint)) {

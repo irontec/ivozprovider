@@ -40,40 +40,34 @@ abstract class IvrExcludedExtensionAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "IvrExcludedExtension",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): IvrExcludedExtensionDto
+    public static function createDto(string|int|null $id = null): IvrExcludedExtensionDto
     {
         return new IvrExcludedExtensionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param IvrExcludedExtensionInterface|null $entity
-     * @param int $depth
-     * @return IvrExcludedExtensionDto|null
+     * @param null|IvrExcludedExtensionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?IvrExcludedExtensionDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class IvrExcludedExtensionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var IvrExcludedExtensionDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class IvrExcludedExtensionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param IvrExcludedExtensionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $self = new static();
@@ -121,12 +113,11 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * @internal use EntityTools instead
      * @param IvrExcludedExtensionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
         $this
@@ -138,19 +129,15 @@ abstract class IvrExcludedExtensionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): IvrExcludedExtensionDto
+    public function toDto(int $depth = 0): IvrExcludedExtensionDto
     {
         return self::createDto()
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,

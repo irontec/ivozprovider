@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
@@ -28,6 +31,13 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * @return string
      */
     public function getCgrSubject(): string;
@@ -41,6 +51,25 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return string
      */
     public function getCurrencyIden(): string;
+
+    public static function createDto(string|int|null $id = null): CarrierDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CarrierInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CarrierDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CarrierDto;
 
     public function getDescription(): string;
 

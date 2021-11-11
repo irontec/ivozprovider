@@ -25,7 +25,7 @@ class TransformationRule extends TransformationRuleAbstract implements Transform
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

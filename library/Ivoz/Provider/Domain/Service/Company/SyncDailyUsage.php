@@ -61,8 +61,8 @@ class SyncDailyUsage
         bool $persistImmediately = false
     ) {
         $amount = $this->client->getCurrentDayUsage(
-            $company->getBrand()->getId(),
-            $company->getId()
+            (int) $company->getBrand()->getId(),
+            (int) $company->getId()
         );
 
         // If numeric amount, round to 4 decimals value

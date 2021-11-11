@@ -47,10 +47,7 @@ final class Invoice
         $this->setRegistryData($registryData);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $invoice)
+    public function equals(self $invoice): bool
     {
         if ($this->getNif() !== $invoice->getNif()) {
             return false;

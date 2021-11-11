@@ -51,40 +51,34 @@ abstract class CallAclRelMatchListAbstract
         $this->setPolicy($policy);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CallAclRelMatchList",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): CallAclRelMatchListDto
+    public static function createDto(string|int|null $id = null): CallAclRelMatchListDto
     {
         return new CallAclRelMatchListDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CallAclRelMatchListInterface|null $entity
-     * @param int $depth
-     * @return CallAclRelMatchListDto|null
+     * @param null|CallAclRelMatchListInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallAclRelMatchListDto
     {
         if (!$entity) {
             return null;
@@ -100,7 +94,6 @@ abstract class CallAclRelMatchListAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CallAclRelMatchListDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -110,12 +103,11 @@ abstract class CallAclRelMatchListAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CallAclRelMatchListDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
 
         $self = new static(
@@ -135,12 +127,11 @@ abstract class CallAclRelMatchListAbstract
     /**
      * @internal use EntityTools instead
      * @param CallAclRelMatchListDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
 
         $this
@@ -154,9 +145,8 @@ abstract class CallAclRelMatchListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CallAclRelMatchListDto
+    public function toDto(int $depth = 0): CallAclRelMatchListDto
     {
         return self::createDto()
             ->setPriority(self::getPriority())
@@ -165,10 +155,7 @@ abstract class CallAclRelMatchListAbstract
             ->setMatchList(MatchList::entityToDto(self::getMatchList(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'priority' => self::getPriority(),

@@ -107,40 +107,34 @@ abstract class ConditionalRoutesConditionAbstract
         $this->setPriority($priority);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ConditionalRoutesCondition",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ConditionalRoutesConditionDto
+    public static function createDto(string|int|null $id = null): ConditionalRoutesConditionDto
     {
         return new ConditionalRoutesConditionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ConditionalRoutesConditionInterface|null $entity
-     * @param int $depth
-     * @return ConditionalRoutesConditionDto|null
+     * @param null|ConditionalRoutesConditionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ConditionalRoutesConditionDto
     {
         if (!$entity) {
             return null;
@@ -156,7 +150,6 @@ abstract class ConditionalRoutesConditionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ConditionalRoutesConditionDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -166,12 +159,11 @@ abstract class ConditionalRoutesConditionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionDto::class);
 
         $self = new static(
@@ -201,12 +193,11 @@ abstract class ConditionalRoutesConditionAbstract
     /**
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionDto::class);
 
         $this
@@ -230,9 +221,8 @@ abstract class ConditionalRoutesConditionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ConditionalRoutesConditionDto
+    public function toDto(int $depth = 0): ConditionalRoutesConditionDto
     {
         return self::createDto()
             ->setPriority(self::getPriority())
@@ -251,10 +241,7 @@ abstract class ConditionalRoutesConditionAbstract
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'priority' => self::getPriority(),

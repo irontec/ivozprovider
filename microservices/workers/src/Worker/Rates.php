@@ -67,9 +67,9 @@ class Rates
                 throw new \Exception('Unknown destination rate');
             }
 
-            $destinationRateGroupId = $destinationRateGroup->getId();
+            $destinationRateGroupId = (int) $destinationRateGroup->getId();
             $brand = $destinationRateGroup->getBrand();
-            $brandId = $brand->getId();
+            $brandId = (int) $brand->getId();
 
             $roundingMethod = $destinationRateGroup->getRoundingMethod();
 

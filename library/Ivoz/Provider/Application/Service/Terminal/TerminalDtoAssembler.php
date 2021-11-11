@@ -28,7 +28,6 @@ class TerminalDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($terminal, TerminalInterface::class);
 
-        /** @var TerminalDto $dto */
         $dto = $terminal->toDto($depth);
 
         if (TerminalDto::CONTEXT_STATUS !== $context) {

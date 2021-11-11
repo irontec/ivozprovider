@@ -59,7 +59,7 @@ trait OutgoingRoutingTrait
         $this->relCarriers = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -158,9 +158,8 @@ trait OutgoingRoutingTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): OutgoingRoutingDto
+    public function toDto(int $depth = 0): OutgoingRoutingDto
     {
         $dto = parent::toDto($depth);
         return $dto

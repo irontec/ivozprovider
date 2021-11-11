@@ -25,7 +25,7 @@ trait TrunksLcrRuleTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -63,9 +63,8 @@ trait TrunksLcrRuleTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TrunksLcrRuleDto
+    public function toDto(int $depth = 0): TrunksLcrRuleDto
     {
         $dto = parent::toDto($depth);
         return $dto

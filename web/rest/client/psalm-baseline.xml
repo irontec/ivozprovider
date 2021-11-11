@@ -58,15 +58,6 @@
       <code>$value</code>
     </MixedAssignment>
   </file>
-  <file src="src/Controller/Provider/ServicesUnassignedAction.php">
-    <MixedArgument occurrences="2">
-      <code>$company-&gt;getBrand()-&gt;getId()</code>
-      <code>$company-&gt;getId()</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$id</code>
-    </MixedAssignment>
-  </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">
       <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>

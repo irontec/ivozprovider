@@ -51,40 +51,34 @@ abstract class PublicEntityAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PublicEntity",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): PublicEntityDto
+    public static function createDto(string|int|null $id = null): PublicEntityDto
     {
         return new PublicEntityDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PublicEntityInterface|null $entity
-     * @param int $depth
-     * @return PublicEntityDto|null
+     * @param null|PublicEntityInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PublicEntityDto
     {
         if (!$entity) {
             return null;
@@ -100,7 +94,6 @@ abstract class PublicEntityAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PublicEntityDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -110,12 +103,11 @@ abstract class PublicEntityAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PublicEntityDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
 
         $name = new Name(
@@ -144,12 +136,11 @@ abstract class PublicEntityAbstract
     /**
      * @internal use EntityTools instead
      * @param PublicEntityDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
 
         $name = new Name(
@@ -172,9 +163,8 @@ abstract class PublicEntityAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): PublicEntityDto
+    public function toDto(int $depth = 0): PublicEntityDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -188,10 +178,7 @@ abstract class PublicEntityAbstract
             ->setNameIt(self::getName()->getIt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

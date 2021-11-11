@@ -42,40 +42,34 @@ abstract class QueueMemberAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "QueueMember",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): QueueMemberDto
+    public static function createDto(string|int|null $id = null): QueueMemberDto
     {
         return new QueueMemberDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param QueueMemberInterface|null $entity
-     * @param int $depth
-     * @return QueueMemberDto|null
+     * @param null|QueueMemberInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?QueueMemberDto
     {
         if (!$entity) {
             return null;
@@ -91,7 +85,6 @@ abstract class QueueMemberAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var QueueMemberDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -101,12 +94,11 @@ abstract class QueueMemberAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param QueueMemberDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
         $self = new static();
@@ -124,12 +116,11 @@ abstract class QueueMemberAbstract
     /**
      * @internal use EntityTools instead
      * @param QueueMemberDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
         $this
@@ -142,9 +133,8 @@ abstract class QueueMemberAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): QueueMemberDto
+    public function toDto(int $depth = 0): QueueMemberDto
     {
         return self::createDto()
             ->setPenalty(self::getPenalty())
@@ -152,10 +142,7 @@ abstract class QueueMemberAbstract
             ->setUser(User::entityToDto(self::getUser(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'penalty' => self::getPenalty(),

@@ -23,7 +23,7 @@ class TpDerivedCharger extends TpDerivedChargerAbstract implements TpDerivedChar
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

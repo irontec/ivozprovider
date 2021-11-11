@@ -20,13 +20,12 @@ class OutgoingRoutingDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, OutgoingRoutingInterface::class);
 
-        /** @var OutgoingRoutingDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, OutgoingRoutingDto::CONTEXTS_WITH_CARRIERS, true)) {
             $carrierIds = array_map(
                 function (OutgoingRoutingRelCarrier $relFeature) {
-                    return $relFeature
+                    return (int) $relFeature
                         ->getCarrier()
                         ->getId();
                 },

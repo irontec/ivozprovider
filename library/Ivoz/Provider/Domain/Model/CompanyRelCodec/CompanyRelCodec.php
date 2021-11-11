@@ -24,7 +24,7 @@ class CompanyRelCodec extends CompanyRelCodecAbstract implements CompanyRelCodec
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

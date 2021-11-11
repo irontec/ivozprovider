@@ -49,7 +49,7 @@ class RegistrationSummaryAction
             );
 
             $total = $this->brandRegistrationSummary->getDeviceNumber(
-                $brand->getId()
+                (int) $brand->getId()
             );
         } else {
             $companies = $brand->getCompanies(CriteriaHelper::fromArray([

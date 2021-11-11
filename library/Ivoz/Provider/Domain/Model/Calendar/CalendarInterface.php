@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Calendar;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use DateTimeInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -22,6 +25,13 @@ interface CalendarInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * Check if the given day is registered as Holiday
      *
      * @param \DateTime $datetime
@@ -36,6 +46,25 @@ interface CalendarInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface|null
      */
     public function getHolidayDate(DateTimeInterface $dateTime);
+
+    public static function createDto(string|int|null $id = null): CalendarDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CalendarInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CalendarDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CalendarDto;
 
     public function getName(): string;
 

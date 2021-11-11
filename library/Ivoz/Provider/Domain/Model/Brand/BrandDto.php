@@ -60,7 +60,7 @@ class BrandDto extends BrandDtoAbstract
      * @return array
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = self::CONTEXT_COLLECTION, string $role = null)
+    public static function getPropertyMap(string $context = self::CONTEXT_COLLECTION, string $role = null): array
     {
         if ($role === 'ROLE_COMPANY_ADMIN') {
             return [];
@@ -94,7 +94,7 @@ class BrandDto extends BrandDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
 
@@ -108,7 +108,7 @@ class BrandDto extends BrandDtoAbstract
         );
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,

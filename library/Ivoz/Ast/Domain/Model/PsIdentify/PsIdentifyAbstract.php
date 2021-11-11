@@ -80,40 +80,34 @@ abstract class PsIdentifyAbstract
         $this->setSrvLookups($srvLookups);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PsIdentify",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): PsIdentifyDto
+    public static function createDto(string|int|null $id = null): PsIdentifyDto
     {
         return new PsIdentifyDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PsIdentifyInterface|null $entity
-     * @param int $depth
-     * @return PsIdentifyDto|null
+     * @param null|PsIdentifyInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PsIdentifyDto
     {
         if (!$entity) {
             return null;
@@ -129,7 +123,6 @@ abstract class PsIdentifyAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PsIdentifyDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -139,12 +132,11 @@ abstract class PsIdentifyAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PsIdentifyDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsIdentifyDto::class);
 
         $self = new static(
@@ -169,12 +161,11 @@ abstract class PsIdentifyAbstract
     /**
      * @internal use EntityTools instead
      * @param PsIdentifyDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsIdentifyDto::class);
 
         $this
@@ -193,9 +184,8 @@ abstract class PsIdentifyAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): PsIdentifyDto
+    public function toDto(int $depth = 0): PsIdentifyDto
     {
         return self::createDto()
             ->setSorceryId(self::getSorceryId())
@@ -209,10 +199,7 @@ abstract class PsIdentifyAbstract
             ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'sorcery_id' => self::getSorceryId(),

@@ -59,40 +59,34 @@ abstract class MatchListPatternAbstract
         $this->setType($type);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MatchListPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): MatchListPatternDto
+    public static function createDto(string|int|null $id = null): MatchListPatternDto
     {
         return new MatchListPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MatchListPatternInterface|null $entity
-     * @param int $depth
-     * @return MatchListPatternDto|null
+     * @param null|MatchListPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MatchListPatternDto
     {
         if (!$entity) {
             return null;
@@ -108,7 +102,6 @@ abstract class MatchListPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MatchListPatternDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -118,12 +111,11 @@ abstract class MatchListPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MatchListPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
 
         $self = new static(
@@ -145,12 +137,11 @@ abstract class MatchListPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param MatchListPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
 
         $this
@@ -166,9 +157,8 @@ abstract class MatchListPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): MatchListPatternDto
+    public function toDto(int $depth = 0): MatchListPatternDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -179,10 +169,7 @@ abstract class MatchListPatternAbstract
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),

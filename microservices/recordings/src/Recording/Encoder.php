@@ -264,7 +264,7 @@ class Encoder
                 // Store this Recording
                 $recording = $this->entityTools->persistDto($recordingDto, null, true);
                 $this->logger->info(
-                    sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recording->getId())
+                    sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, (string) $recording->getId())
                 );
                 $stats['encoded']++;
             }

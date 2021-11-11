@@ -57,40 +57,34 @@ abstract class LocutionAbstract
         $this->setOriginalFile($originalFile);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Locution",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): LocutionDto
+    public static function createDto(string|int|null $id = null): LocutionDto
     {
         return new LocutionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param LocutionInterface|null $entity
-     * @param int $depth
-     * @return LocutionDto|null
+     * @param null|LocutionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?LocutionDto
     {
         if (!$entity) {
             return null;
@@ -106,7 +100,6 @@ abstract class LocutionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var LocutionDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -116,12 +109,11 @@ abstract class LocutionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param LocutionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, LocutionDto::class);
 
         $encodedFile = new EncodedFile(
@@ -154,12 +146,11 @@ abstract class LocutionAbstract
     /**
      * @internal use EntityTools instead
      * @param LocutionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, LocutionDto::class);
 
         $encodedFile = new EncodedFile(
@@ -186,9 +177,8 @@ abstract class LocutionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): LocutionDto
+    public function toDto(int $depth = 0): LocutionDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -202,10 +192,7 @@ abstract class LocutionAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

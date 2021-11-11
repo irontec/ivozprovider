@@ -84,18 +84,12 @@
       <code>createQueryBuilder</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Controller/My/CompanyExtensionsAction.php">
-    <MixedArgument occurrences="1">
-      <code>$company-&gt;getId()</code>
-    </MixedArgument>
-  </file>
   <file src="src/Controller/My/PostCallForwardSettingsAction.php">
     <MixedArrayAssignment occurrences="1">
       <code>$data['user']</code>
     </MixedArrayAssignment>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="1">
       <code>$data</code>
-      <code>$data['user']</code>
     </MixedAssignment>
     <UndefinedInterfaceMethod occurrences="1">
       <code>decode</code>

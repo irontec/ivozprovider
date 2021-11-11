@@ -49,40 +49,34 @@ abstract class FaxAbstract
         $this->setSendByEmail($sendByEmail);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Fax",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): FaxDto
+    public static function createDto(string|int|null $id = null): FaxDto
     {
         return new FaxDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FaxInterface|null $entity
-     * @param int $depth
-     * @return FaxDto|null
+     * @param null|FaxInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FaxDto
     {
         if (!$entity) {
             return null;
@@ -98,7 +92,6 @@ abstract class FaxAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FaxDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -108,12 +101,11 @@ abstract class FaxAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FaxDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
         $self = new static(
@@ -134,12 +126,11 @@ abstract class FaxAbstract
     /**
      * @internal use EntityTools instead
      * @param FaxDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
         $this
@@ -154,9 +145,8 @@ abstract class FaxAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FaxDto
+    public function toDto(int $depth = 0): FaxDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -166,10 +156,7 @@ abstract class FaxAbstract
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

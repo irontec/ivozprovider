@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -31,6 +34,13 @@ interface QueueInterface extends LoggableEntityInterface
      * @return array
      */
     public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
@@ -66,6 +76,25 @@ interface QueueInterface extends LoggableEntityInterface
     public function setMaxWaitTime(?int $maxWaitTime = null): static;
 
     public function setMaxlen(?int $maxlen = null): static;
+
+    public static function createDto(string|int|null $id = null): QueueDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|QueueInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?QueueDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): QueueDto;
 
     public function getName(): ?string;
 

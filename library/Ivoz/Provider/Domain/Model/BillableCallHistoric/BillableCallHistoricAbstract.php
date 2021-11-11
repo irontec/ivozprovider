@@ -127,40 +127,34 @@ abstract class BillableCallHistoricAbstract
         $this->setDuration($duration);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BillableCallHistoric",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): BillableCallHistoricDto
+    public static function createDto(string|int|null $id = null): BillableCallHistoricDto
     {
         return new BillableCallHistoricDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BillableCallHistoricInterface|null $entity
-     * @param int $depth
-     * @return BillableCallHistoricDto|null
+     * @param null|BillableCallHistoricInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BillableCallHistoricDto
     {
         if (!$entity) {
             return null;
@@ -176,7 +170,6 @@ abstract class BillableCallHistoricAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BillableCallHistoricDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -186,12 +179,11 @@ abstract class BillableCallHistoricAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BillableCallHistoricDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
 
         $self = new static(
@@ -231,12 +223,11 @@ abstract class BillableCallHistoricAbstract
     /**
      * @internal use EntityTools instead
      * @param BillableCallHistoricDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
 
         $this
@@ -270,9 +261,8 @@ abstract class BillableCallHistoricAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): BillableCallHistoricDto
+    public function toDto(int $depth = 0): BillableCallHistoricDto
     {
         return self::createDto()
             ->setCallid(self::getCallid())
@@ -301,10 +291,7 @@ abstract class BillableCallHistoricAbstract
             ->setDdiProvider(DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'callid' => self::getCallid(),

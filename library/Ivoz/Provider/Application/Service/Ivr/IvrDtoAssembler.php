@@ -20,13 +20,12 @@ class IvrDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, IvrInterface::class);
 
-        /** @var IvrDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, IvrDto::CONTEXTS_WITH_EXCLUDED_EXTENSIONS, true)) {
             $extensionIds = array_map(
                 function (IvrExcludedExtension $excludedExtension) {
-                    return $excludedExtension
+                    return (int) $excludedExtension
                         ->getExtension()
                         ->getId();
                 },

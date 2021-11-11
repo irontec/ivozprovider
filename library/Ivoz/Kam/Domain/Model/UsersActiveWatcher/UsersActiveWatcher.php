@@ -14,7 +14,7 @@ class UsersActiveWatcher extends UsersActiveWatcherAbstract implements UsersActi
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

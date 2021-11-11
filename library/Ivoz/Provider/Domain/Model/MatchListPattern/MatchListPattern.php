@@ -23,7 +23,7 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -43,7 +43,7 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
             $this->getNumberValue();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         {
             $nullableFields = [

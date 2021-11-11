@@ -25,7 +25,6 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($musicOnHold, MusicOnHoldInterface::class);
 
-        /** @var MusicOnHoldDto $dto */
         $dto = $musicOnHold->toDto($depth);
         $id = $musicOnHold->getId();
 

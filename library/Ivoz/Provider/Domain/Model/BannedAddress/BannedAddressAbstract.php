@@ -53,40 +53,34 @@ abstract class BannedAddressAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BannedAddress",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): BannedAddressDto
+    public static function createDto(string|int|null $id = null): BannedAddressDto
     {
         return new BannedAddressDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BannedAddressInterface|null $entity
-     * @param int $depth
-     * @return BannedAddressDto|null
+     * @param null|BannedAddressInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BannedAddressDto
     {
         if (!$entity) {
             return null;
@@ -102,7 +96,6 @@ abstract class BannedAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BannedAddressDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -112,12 +105,11 @@ abstract class BannedAddressAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BannedAddressDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
         $self = new static();
@@ -139,12 +131,11 @@ abstract class BannedAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param BannedAddressDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
         $this
@@ -161,9 +152,8 @@ abstract class BannedAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): BannedAddressDto
+    public function toDto(int $depth = 0): BannedAddressDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -175,10 +165,7 @@ abstract class BannedAddressAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),

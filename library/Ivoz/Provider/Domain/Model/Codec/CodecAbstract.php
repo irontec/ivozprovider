@@ -40,40 +40,34 @@ abstract class CodecAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Codec",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): CodecDto
+    public static function createDto(string|int|null $id = null): CodecDto
     {
         return new CodecDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CodecInterface|null $entity
-     * @param int $depth
-     * @return CodecDto|null
+     * @param null|CodecInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CodecDto
     {
         if (!$entity) {
             return null;
@@ -89,7 +83,6 @@ abstract class CodecAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CodecDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -99,12 +92,11 @@ abstract class CodecAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CodecDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CodecDto::class);
 
         $self = new static(
@@ -123,12 +115,11 @@ abstract class CodecAbstract
     /**
      * @internal use EntityTools instead
      * @param CodecDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CodecDto::class);
 
         $this
@@ -141,9 +132,8 @@ abstract class CodecAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CodecDto
+    public function toDto(int $depth = 0): CodecDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -151,10 +141,7 @@ abstract class CodecAbstract
             ->setName(self::getName());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'type' => self::getType(),

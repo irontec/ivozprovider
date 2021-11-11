@@ -3,12 +3,39 @@
 namespace Ivoz\Kam\Domain\Model\UsersWatcher;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * UsersWatcherInterface
 */
 interface UsersWatcherInterface extends EntityInterface
 {
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): UsersWatcherDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|UsersWatcherInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersWatcherDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): UsersWatcherDto;
 
     public function getPresentityUri(): string;
 

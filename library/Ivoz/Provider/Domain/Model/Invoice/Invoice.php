@@ -13,7 +13,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     use InvoiceTrait;
     use TempFileContainnerTrait;
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (empty($this->_initialValues)) {
             $this->initChangelog();
@@ -112,7 +112,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

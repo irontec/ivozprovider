@@ -24,7 +24,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $company = $this->getCompany();
         $brand = $this->getBrand();
@@ -114,7 +114,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -158,10 +158,9 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      * @return CallCsvSchedulerDto
      */
-    public function toDto($depth = 0): CallCsvSchedulerDto
+    public function toDto(int $depth = 0): CallCsvSchedulerDto
     {
         $dto = $this->traitToDto($depth);
         $companyDto = \Ivoz\Provider\Domain\Model\Company\Company::entityToDto(

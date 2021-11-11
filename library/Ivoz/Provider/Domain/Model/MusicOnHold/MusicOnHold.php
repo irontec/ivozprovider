@@ -51,12 +51,12 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         foreach ($this->getTempFiles() as $tmpFile) {
             $tmpPath = $tmpFile->getTmpPath();

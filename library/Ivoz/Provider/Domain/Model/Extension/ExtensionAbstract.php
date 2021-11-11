@@ -95,40 +95,34 @@ abstract class ExtensionAbstract
         $this->setNumber($number);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Extension",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ExtensionDto
+    public static function createDto(string|int|null $id = null): ExtensionDto
     {
         return new ExtensionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExtensionInterface|null $entity
-     * @param int $depth
-     * @return ExtensionDto|null
+     * @param null|ExtensionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExtensionDto
     {
         if (!$entity) {
             return null;
@@ -144,7 +138,6 @@ abstract class ExtensionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExtensionDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -154,12 +147,11 @@ abstract class ExtensionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExtensionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
         $self = new static(
@@ -187,12 +179,11 @@ abstract class ExtensionAbstract
     /**
      * @internal use EntityTools instead
      * @param ExtensionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
         $this
@@ -214,9 +205,8 @@ abstract class ExtensionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ExtensionDto
+    public function toDto(int $depth = 0): ExtensionDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -233,10 +223,7 @@ abstract class ExtensionAbstract
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'number' => self::getNumber(),

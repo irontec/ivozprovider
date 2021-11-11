@@ -23,7 +23,7 @@ class DdiProviderRegistration extends DdiProviderRegistrationAbstract implements
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -31,7 +31,7 @@ class DdiProviderRegistration extends DdiProviderRegistrationAbstract implements
     /**
      * @inheritdoc
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getMultiDdi()) {
             $this->setContactUsername('');

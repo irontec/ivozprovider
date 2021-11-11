@@ -25,7 +25,7 @@ class PsIdentify extends PsIdentifyAbstract implements PsIdentifyInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

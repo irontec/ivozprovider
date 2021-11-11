@@ -53,40 +53,34 @@ abstract class BalanceNotificationAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BalanceNotification",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): BalanceNotificationDto
+    public static function createDto(string|int|null $id = null): BalanceNotificationDto
     {
         return new BalanceNotificationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BalanceNotificationInterface|null $entity
-     * @param int $depth
-     * @return BalanceNotificationDto|null
+     * @param null|BalanceNotificationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BalanceNotificationDto
     {
         if (!$entity) {
             return null;
@@ -102,7 +96,6 @@ abstract class BalanceNotificationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BalanceNotificationDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -112,12 +105,11 @@ abstract class BalanceNotificationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BalanceNotificationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BalanceNotificationDto::class);
 
         $self = new static();
@@ -138,12 +130,11 @@ abstract class BalanceNotificationAbstract
     /**
      * @internal use EntityTools instead
      * @param BalanceNotificationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BalanceNotificationDto::class);
 
         $this
@@ -159,9 +150,8 @@ abstract class BalanceNotificationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): BalanceNotificationDto
+    public function toDto(int $depth = 0): BalanceNotificationDto
     {
         return self::createDto()
             ->setToAddress(self::getToAddress())
@@ -172,10 +162,7 @@ abstract class BalanceNotificationAbstract
             ->setNotificationTemplate(NotificationTemplate::entityToDto(self::getNotificationTemplate(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'toAddress' => self::getToAddress(),

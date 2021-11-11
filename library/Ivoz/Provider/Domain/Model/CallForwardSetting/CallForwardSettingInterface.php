@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
@@ -44,6 +47,13 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * {@inheritDoc}
      *
      * @throws \InvalidArgumentException
@@ -53,7 +63,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * @return (int|mixed|null|string)[]
      *
-     * @psalm-return array{id: int, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
      */
     public function toArrayPortal();
 
@@ -72,6 +82,25 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getRouteType(): ?string;
 
     public function getCallForwardTarget(): ?string;
+
+    public static function createDto(string|int|null $id = null): CallForwardSettingDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CallForwardSettingInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallForwardSettingDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CallForwardSettingDto;
 
     public function getCallTypeFilter(): string;
 

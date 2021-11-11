@@ -32,7 +32,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
     public function execute(ResidentialDeviceInterface $entity)
     {
         $endpoint = $this->psEndpointRepository->findOneByResidentialDeviceId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         // If not found create a new one
@@ -44,7 +44,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
                 ->setSendPai('yes');
         } else {
             // @todo use entityTools here
-            /** @var PsEndpointDto $endpointDto */
             $endpointDto  = $endpoint->toDto();
         }
 

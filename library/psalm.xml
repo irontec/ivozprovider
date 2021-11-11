@@ -14,7 +14,10 @@
         <UnusedClass errorLevel="suppress" />
         <PossiblyUnusedMethod errorLevel="suppress" />
         <PossiblyUnusedProperty errorLevel="suppress" />
-        <PossiblyUnusedParam  errorLevel="suppress" />
+        <PossiblyUnusedParam errorLevel="suppress" />
+        <PossiblyNullOperand errorLevel="suppress" />
+        <MoreSpecificImplementedParamType errorLevel="suppress" />
+        <RedundantConditionGivenDocblockType errorLevel="suppress" />
     </issueHandlers>
     <projectFiles>
         <directory name="Ivoz" />

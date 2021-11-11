@@ -37,40 +37,34 @@ abstract class FeatureAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Feature",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): FeatureDto
+    public static function createDto(string|int|null $id = null): FeatureDto
     {
         return new FeatureDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FeatureInterface|null $entity
-     * @param int $depth
-     * @return FeatureDto|null
+     * @param null|FeatureInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FeatureDto
     {
         if (!$entity) {
             return null;
@@ -86,7 +80,6 @@ abstract class FeatureAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FeatureDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -96,12 +89,11 @@ abstract class FeatureAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FeatureDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
         $name = new Name(
@@ -126,12 +118,11 @@ abstract class FeatureAbstract
     /**
      * @internal use EntityTools instead
      * @param FeatureDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
         $name = new Name(
@@ -150,9 +141,8 @@ abstract class FeatureAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FeatureDto
+    public function toDto(int $depth = 0): FeatureDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -162,10 +152,7 @@ abstract class FeatureAbstract
             ->setNameIt(self::getName()->getIt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

@@ -25,7 +25,7 @@ trait ProxyTrunkTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -63,9 +63,8 @@ trait ProxyTrunkTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ProxyTrunkDto
+    public function toDto(int $depth = 0): ProxyTrunkDto
     {
         $dto = parent::toDto($depth);
         return $dto

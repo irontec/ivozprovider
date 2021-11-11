@@ -41,40 +41,34 @@ abstract class CurrencyAbstract
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Currency",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): CurrencyDto
+    public static function createDto(string|int|null $id = null): CurrencyDto
     {
         return new CurrencyDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CurrencyInterface|null $entity
-     * @param int $depth
-     * @return CurrencyDto|null
+     * @param null|CurrencyInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CurrencyDto
     {
         if (!$entity) {
             return null;
@@ -90,7 +84,6 @@ abstract class CurrencyAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CurrencyDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -100,12 +93,11 @@ abstract class CurrencyAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CurrencyDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
         $name = new Name(
@@ -131,12 +123,11 @@ abstract class CurrencyAbstract
     /**
      * @internal use EntityTools instead
      * @param CurrencyDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
         $name = new Name(
@@ -156,9 +147,8 @@ abstract class CurrencyAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): CurrencyDto
+    public function toDto(int $depth = 0): CurrencyDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -169,10 +159,7 @@ abstract class CurrencyAbstract
             ->setNameIt(self::getName()->getIt());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

@@ -17,7 +17,7 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
      *
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

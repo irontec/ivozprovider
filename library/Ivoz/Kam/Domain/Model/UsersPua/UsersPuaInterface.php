@@ -3,12 +3,39 @@
 namespace Ivoz\Kam\Domain\Model\UsersPua;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * UsersPuaInterface
 */
 interface UsersPuaInterface extends EntityInterface
 {
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): UsersPuaDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|UsersPuaInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersPuaDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): UsersPuaDto;
 
     public function getPresUri(): string;
 

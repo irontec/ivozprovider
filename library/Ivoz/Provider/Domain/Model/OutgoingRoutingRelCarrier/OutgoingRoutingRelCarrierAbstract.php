@@ -41,40 +41,34 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "OutgoingRoutingRelCarrier",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): OutgoingRoutingRelCarrierDto
+    public static function createDto(string|int|null $id = null): OutgoingRoutingRelCarrierDto
     {
         return new OutgoingRoutingRelCarrierDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param OutgoingRoutingRelCarrierInterface|null $entity
-     * @param int $depth
-     * @return OutgoingRoutingRelCarrierDto|null
+     * @param null|OutgoingRoutingRelCarrierInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingRoutingRelCarrierDto
     {
         if (!$entity) {
             return null;
@@ -90,7 +84,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var OutgoingRoutingRelCarrierDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -100,12 +93,11 @@ abstract class OutgoingRoutingRelCarrierAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingRoutingRelCarrierDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
         $self = new static();
@@ -122,12 +114,11 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * @internal use EntityTools instead
      * @param OutgoingRoutingRelCarrierDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
         $this
@@ -139,19 +130,15 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): OutgoingRoutingRelCarrierDto
+    public function toDto(int $depth = 0): OutgoingRoutingRelCarrierDto
     {
         return self::createDto()
             ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth))
             ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null,

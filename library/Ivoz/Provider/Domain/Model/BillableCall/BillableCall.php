@@ -23,7 +23,7 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -33,7 +33,7 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
         return $this->getDirection() === self::DIRECTION_OUTBOUND;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getPrice() < 0) {
             throw new \DomainException(

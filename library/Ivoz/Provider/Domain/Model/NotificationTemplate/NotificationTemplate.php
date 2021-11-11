@@ -21,7 +21,7 @@ class NotificationTemplate extends NotificationTemplateAbstract implements Notif
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $notNew = !$this->isNew();
         $brandHasChanged = $this->hasChanged('brandId');
@@ -40,7 +40,7 @@ class NotificationTemplate extends NotificationTemplateAbstract implements Notif
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

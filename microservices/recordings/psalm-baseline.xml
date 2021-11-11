@@ -39,9 +39,6 @@
     <ImplicitToStringCast occurrences="1">
       <code>$ddi</code>
     </ImplicitToStringCast>
-    <MixedArgument occurrences="1">
-      <code>$recording-&gt;getId()</code>
-    </MixedArgument>
     <PossiblyNullArgument occurrences="4">
       <code>$callee</code>
       <code>$caller</code>
@@ -56,9 +53,6 @@
     <ImplicitToStringCast occurrences="1">
       <code>$ddi</code>
     </ImplicitToStringCast>
-    <MixedArgument occurrences="1">
-      <code>$recording-&gt;getId()</code>
-    </MixedArgument>
     <PossiblyNullArgument occurrences="4">
       <code>$callee</code>
       <code>$caller</code>

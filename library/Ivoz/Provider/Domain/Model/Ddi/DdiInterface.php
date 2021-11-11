@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
@@ -60,6 +63,13 @@ interface DdiInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * {@inheritDoc}
      */
     public function setDdi(string $ddi): static;
@@ -74,6 +84,25 @@ interface DdiInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDdie164(): string;
+
+    public static function createDto(string|int|null $id = null): DdiDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|DdiInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): DdiDto;
 
     public function getDdi(): string;
 

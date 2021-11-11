@@ -40,13 +40,16 @@ abstract class AbstractBalanceOperation
         if (isset($response['success']) && $response['success']) {
             $success = $response['success'];
 
-            $brandId = $company->getBrand()->getId();
-            $companyIds = [$company->getId()];
+            $brandId = (int) $company->getBrand()->getId();
+            $companyIds = [(int) $company->getId()];
 
             $this->syncBalanceService->updateCompanies($brandId, $companyIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance($brandId, $company->getId());
+            $balance = $this->client->getBalance(
+                $brandId,
+                (int) $company->getId()
+            );
 
             $this->createBalanceMovementByCompany->execute(
                 $company,

@@ -60,40 +60,34 @@ abstract class RatingProfileAbstract
         $this->setActivationTime($activationTime);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RatingProfile",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RatingProfileDto
+    public static function createDto(string|int|null $id = null): RatingProfileDto
     {
         return new RatingProfileDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RatingProfileInterface|null $entity
-     * @param int $depth
-     * @return RatingProfileDto|null
+     * @param null|RatingProfileInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RatingProfileDto
     {
         if (!$entity) {
             return null;
@@ -109,7 +103,6 @@ abstract class RatingProfileAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RatingProfileDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -119,12 +112,11 @@ abstract class RatingProfileAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RatingProfileDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $self = new static(
@@ -145,12 +137,11 @@ abstract class RatingProfileAbstract
     /**
      * @internal use EntityTools instead
      * @param RatingProfileDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $this
@@ -165,9 +156,8 @@ abstract class RatingProfileAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RatingProfileDto
+    public function toDto(int $depth = 0): RatingProfileDto
     {
         return self::createDto()
             ->setActivationTime(self::getActivationTime())
@@ -177,10 +167,7 @@ abstract class RatingProfileAbstract
             ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'activationTime' => self::getActivationTime(),

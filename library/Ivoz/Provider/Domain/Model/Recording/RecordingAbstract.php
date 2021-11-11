@@ -65,40 +65,34 @@ abstract class RecordingAbstract
         $this->setRecordedFile($recordedFile);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Recording",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RecordingDto
+    public static function createDto(string|int|null $id = null): RecordingDto
     {
         return new RecordingDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RecordingInterface|null $entity
-     * @param int $depth
-     * @return RecordingDto|null
+     * @param null|RecordingInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RecordingDto
     {
         if (!$entity) {
             return null;
@@ -114,7 +108,6 @@ abstract class RecordingAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RecordingDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -124,12 +117,11 @@ abstract class RecordingAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RecordingDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
 
         $recordedFile = new RecordedFile(
@@ -160,12 +152,11 @@ abstract class RecordingAbstract
     /**
      * @internal use EntityTools instead
      * @param RecordingDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
 
         $recordedFile = new RecordedFile(
@@ -190,9 +181,8 @@ abstract class RecordingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RecordingDto
+    public function toDto(int $depth = 0): RecordingDto
     {
         return self::createDto()
             ->setCallid(self::getCallid())
@@ -208,10 +198,7 @@ abstract class RecordingAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'callid' => self::getCallid(),

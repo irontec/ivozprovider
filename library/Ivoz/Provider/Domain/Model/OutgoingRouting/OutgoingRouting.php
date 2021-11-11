@@ -41,7 +41,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
         return parent::setWeight($weight);
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         switch ($this->getType()) {
             case self::TYPE_GROUP:
@@ -117,7 +117,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     {
         return sprintf(
             "or%d",
-            $this->getId()
+            (int) $this->getId()
         );
     }
 
@@ -130,7 +130,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     {
         return sprintf(
             "lcr_profile%d",
-            $this->getId()
+            (int) $this->getId()
         );
     }
 

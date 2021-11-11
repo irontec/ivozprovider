@@ -58,40 +58,34 @@ abstract class InvoiceNumberSequenceAbstract
         $this->setVersion($version);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "InvoiceNumberSequence",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): InvoiceNumberSequenceDto
+    public static function createDto(string|int|null $id = null): InvoiceNumberSequenceDto
     {
         return new InvoiceNumberSequenceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceNumberSequenceInterface|null $entity
-     * @param int $depth
-     * @return InvoiceNumberSequenceDto|null
+     * @param null|InvoiceNumberSequenceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceNumberSequenceDto
     {
         if (!$entity) {
             return null;
@@ -107,7 +101,6 @@ abstract class InvoiceNumberSequenceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceNumberSequenceDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -117,12 +110,11 @@ abstract class InvoiceNumberSequenceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceNumberSequenceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
         $self = new static(
@@ -146,12 +138,11 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceNumberSequenceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
         $this
@@ -169,9 +160,8 @@ abstract class InvoiceNumberSequenceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): InvoiceNumberSequenceDto
+    public function toDto(int $depth = 0): InvoiceNumberSequenceDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -184,10 +174,7 @@ abstract class InvoiceNumberSequenceAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

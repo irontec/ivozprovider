@@ -38,7 +38,7 @@ abstract class AbstractBalanceThresholdWasBroken implements DomainEventInterface
         $this->setEventTimestamp();
         $this
             ->setBalanceNotificationId(
-                $balaceNotification->getId()
+                (int) $balaceNotification->getId()
             )
             ->setThreshold(
                 $balaceNotification->getThreshold()

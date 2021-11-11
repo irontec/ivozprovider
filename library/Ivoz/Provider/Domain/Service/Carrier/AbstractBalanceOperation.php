@@ -39,13 +39,16 @@ abstract class AbstractBalanceOperation
         $success = $response['success'];
 
         if ($success) {
-            $brandId = $carrier->getBrand()->getId();
-            $carrierIds = [$carrier->getId()];
+            $brandId = (int) $carrier->getBrand()->getId();
+            $carrierIds = [(int) $carrier->getId()];
 
             $this->syncBalanceService->updateCarriers($brandId, $carrierIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance($brandId, $carrier->getId());
+            $balance = $this->client->getBalance(
+                $brandId,
+                (int) $carrier->getId()
+            );
 
             // Store this transaction in a BalanceMovement
             $this->createBalanceMovementByCarrier->execute(

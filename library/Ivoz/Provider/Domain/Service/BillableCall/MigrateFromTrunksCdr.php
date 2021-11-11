@@ -23,7 +23,7 @@ class MigrateFromTrunksCdr
     public function execute(TrunksCdrInterface $trunksCdr, bool $dispatchImmediately = false): void
     {
         $billableCall = $this->billableCallRepository->findOneByTrunksCdrId(
-            $trunksCdr->getId()
+            (int) $trunksCdr->getId()
         );
 
         $billableCall = $this

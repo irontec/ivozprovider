@@ -30,7 +30,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -39,7 +39,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s %s [%s]",
@@ -69,7 +69,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             ) = unserialize($serialized);
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $isNew = !$this->getId();
         if ($isNew) {

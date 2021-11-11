@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -35,12 +38,38 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * Get contents by language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface | null
      */
     public function getContentsByLanguage(LanguageInterface $language);
+
+    public static function createDto(string|int|null $id = null): NotificationTemplateDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|NotificationTemplateInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?NotificationTemplateDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): NotificationTemplateDto;
 
     public function getName(): string;
 

@@ -25,7 +25,7 @@ class Fax extends FaxAbstract implements FaxInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,12 +34,12 @@ class Fax extends FaxAbstract implements FaxInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [fax%d]",
             $this->getName(),
-            $this->getId()
+            (int) $this->getId()
         );
     }
 

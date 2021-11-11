@@ -8,19 +8,13 @@ use Psr\Log\LoggerInterface;
 
 class Invoicer implements InvoicerJobInterface
 {
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-    private $id;
+    private ?int $id = null;
 
     public function __construct(
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     /**
@@ -32,7 +26,7 @@ class Invoicer implements InvoicerJobInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -46,7 +40,7 @@ class Invoicer implements InvoicerJobInterface
 
             $redisClient->rPush(
                 self::CHANNEL,
-                $this->getId()
+                (string) $this->getId()
             );
 
             $redisClient->close();

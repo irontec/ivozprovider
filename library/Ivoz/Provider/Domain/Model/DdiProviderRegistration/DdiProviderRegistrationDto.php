@@ -20,7 +20,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         $response =  parent::getPropertyMap(...func_get_args());
 
@@ -44,7 +44,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
     }
 
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(...func_get_args());
 
@@ -61,7 +61,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
         return $response;
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['status'] = $this->status;

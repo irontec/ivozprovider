@@ -23,7 +23,7 @@ class TpCdrStat extends TpCdrStatAbstract implements TpCdrStatInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

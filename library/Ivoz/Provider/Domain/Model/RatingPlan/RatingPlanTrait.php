@@ -39,7 +39,7 @@ trait RatingPlanTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -106,9 +106,8 @@ trait RatingPlanTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RatingPlanDto
+    public function toDto(int $depth = 0): RatingPlanDto
     {
         $dto = parent::toDto($depth);
         return $dto

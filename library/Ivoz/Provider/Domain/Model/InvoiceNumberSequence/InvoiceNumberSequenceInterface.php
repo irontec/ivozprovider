@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\InvoiceNumberSequence;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 /**
@@ -17,11 +20,37 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * Update and return latest value
      *
      * @return string
      */
     public function nextval(): ?string;
+
+    public static function createDto(string|int|null $id = null): InvoiceNumberSequenceDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|InvoiceNumberSequenceInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceNumberSequenceDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): InvoiceNumberSequenceDto;
 
     public function getName(): string;
 

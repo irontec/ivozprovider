@@ -23,7 +23,7 @@ class MaxUsageNotification extends MaxUsageNotificationAbstract implements MaxUs
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

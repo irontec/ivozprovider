@@ -81,40 +81,34 @@ abstract class InvoiceSchedulerAbstract
         $this->setEmail($email);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "InvoiceScheduler",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): InvoiceSchedulerDto
+    public static function createDto(string|int|null $id = null): InvoiceSchedulerDto
     {
         return new InvoiceSchedulerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceSchedulerInterface|null $entity
-     * @param int $depth
-     * @return InvoiceSchedulerDto|null
+     * @param null|InvoiceSchedulerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceSchedulerDto
     {
         if (!$entity) {
             return null;
@@ -130,7 +124,6 @@ abstract class InvoiceSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceSchedulerDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -140,12 +133,11 @@ abstract class InvoiceSchedulerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceSchedulerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
 
         $self = new static(
@@ -173,12 +165,11 @@ abstract class InvoiceSchedulerAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceSchedulerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
 
         $this
@@ -200,9 +191,8 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): InvoiceSchedulerDto
+    public function toDto(int $depth = 0): InvoiceSchedulerDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -219,10 +209,7 @@ abstract class InvoiceSchedulerAbstract
             ->setNumberSequence(InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

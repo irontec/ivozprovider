@@ -31,40 +31,34 @@ abstract class ApplicationServerAbstract
         $this->setIp($ip);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ApplicationServer",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ApplicationServerDto
+    public static function createDto(string|int|null $id = null): ApplicationServerDto
     {
         return new ApplicationServerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ApplicationServerInterface|null $entity
-     * @param int $depth
-     * @return ApplicationServerDto|null
+     * @param null|ApplicationServerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ApplicationServerDto
     {
         if (!$entity) {
             return null;
@@ -80,7 +74,6 @@ abstract class ApplicationServerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ApplicationServerDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -90,12 +83,11 @@ abstract class ApplicationServerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ApplicationServerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
         $self = new static(
@@ -113,12 +105,11 @@ abstract class ApplicationServerAbstract
     /**
      * @internal use EntityTools instead
      * @param ApplicationServerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
         $this
@@ -130,19 +121,15 @@ abstract class ApplicationServerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ApplicationServerDto
+    public function toDto(int $depth = 0): ApplicationServerDto
     {
         return self::createDto()
             ->setIp(self::getIp())
             ->setName(self::getName());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),

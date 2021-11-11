@@ -2466,16 +2466,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.5.1",
+            "version": "4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "1e5507dd015421ec6b6fcd2887ec444101ca1501"
+                "reference": "569544ae295d1135d71a988db76fce7ccaeb6ab4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/1e5507dd015421ec6b6fcd2887ec444101ca1501",
-                "reference": "1e5507dd015421ec6b6fcd2887ec444101ca1501",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/569544ae295d1135d71a988db76fce7ccaeb6ab4",
+                "reference": "569544ae295d1135d71a988db76fce7ccaeb6ab4",
                 "shasum": ""
             },
             "require": {
@@ -2518,9 +2518,9 @@
             "description": "Core library for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core/issues",
-                "source": "https://github.com/irontec/ivoz-core/tree/4.5.1"
+                "source": "https://github.com/irontec/ivoz-core/tree/4.6"
             },
-            "time": "2021-10-14T12:30:33+00:00"
+            "time": "2021-11-10T16:25:24+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -2577,22 +2577,22 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.5",
+            "version": "5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "ec7b86769124940be94573ef064c70d2d9d0fb35"
+                "reference": "f9c2e5e0b6d908051d76971de0733caf2538f6f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/ec7b86769124940be94573ef064c70d2d9d0fb35",
-                "reference": "ec7b86769124940be94573ef064c70d2d9d0fb35",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/f9c2e5e0b6d908051d76971de0733caf2538f6f2",
+                "reference": "f9c2e5e0b6d908051d76971de0733caf2538f6f2",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/orm": "^2.5",
-                "irontec/ivoz-core": "^4.5.1",
+                "irontec/ivoz-core": "^4.6",
                 "php": ">=8.0",
                 "symfony/console": "^5.1",
                 "symfony/maker-bundle": "^1.33"
@@ -2627,9 +2627,9 @@
             "description": "DevTools for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-dev-tools/issues",
-                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.5"
+                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.6"
             },
-            "time": "2021-11-08T13:31:56+00:00"
+            "time": "2021-11-10T16:38:01+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",

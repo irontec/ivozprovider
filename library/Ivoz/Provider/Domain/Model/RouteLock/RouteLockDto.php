@@ -42,7 +42,7 @@ class RouteLockDto extends RouteLockDtoAbstract
         'toggleExtension' => 'toggleExtension',
     ];
 
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $collectionProps = [
@@ -64,7 +64,7 @@ class RouteLockDto extends RouteLockDtoAbstract
         return $response + self::CALCULATED_READ_ONLY_PROPS;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -85,7 +85,7 @@ class RouteLockDto extends RouteLockDtoAbstract
         );
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
 

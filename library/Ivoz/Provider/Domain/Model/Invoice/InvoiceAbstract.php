@@ -88,40 +88,34 @@ abstract class InvoiceAbstract
         $this->setPdf($pdf);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Invoice",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): InvoiceDto
+    public static function createDto(string|int|null $id = null): InvoiceDto
     {
         return new InvoiceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceInterface|null $entity
-     * @param int $depth
-     * @return InvoiceDto|null
+     * @param null|InvoiceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceDto
     {
         if (!$entity) {
             return null;
@@ -137,7 +131,6 @@ abstract class InvoiceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -147,12 +140,11 @@ abstract class InvoiceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
         $pdf = new Pdf(
@@ -188,12 +180,11 @@ abstract class InvoiceAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
         $pdf = new Pdf(
@@ -223,9 +214,8 @@ abstract class InvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): InvoiceDto
+    public function toDto(int $depth = 0): InvoiceDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -246,10 +236,7 @@ abstract class InvoiceAbstract
             ->setScheduler(InvoiceScheduler::entityToDto(self::getScheduler(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'number' => self::getNumber(),

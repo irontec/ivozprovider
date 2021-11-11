@@ -63,7 +63,7 @@ trait ExternalCallFilterTrait
         $this->schedules = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -162,9 +162,8 @@ trait ExternalCallFilterTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ExternalCallFilterDto
+    public function toDto(int $depth = 0): ExternalCallFilterDto
     {
         $dto = parent::toDto($depth);
         return $dto

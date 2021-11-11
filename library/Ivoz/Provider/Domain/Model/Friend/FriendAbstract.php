@@ -172,40 +172,34 @@ abstract class FriendAbstract
         $this->setMultiContact($multiContact);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Friend",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): FriendDto
+    public static function createDto(string|int|null $id = null): FriendDto
     {
         return new FriendDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FriendInterface|null $entity
-     * @param int $depth
-     * @return FriendDto|null
+     * @param null|FriendInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FriendDto
     {
         if (!$entity) {
             return null;
@@ -221,7 +215,6 @@ abstract class FriendAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FriendDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -231,12 +224,11 @@ abstract class FriendAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FriendDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FriendDto::class);
 
         $self = new static(
@@ -279,12 +271,11 @@ abstract class FriendAbstract
     /**
      * @internal use EntityTools instead
      * @param FriendDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FriendDto::class);
 
         $this
@@ -321,9 +312,8 @@ abstract class FriendAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): FriendDto
+    public function toDto(int $depth = 0): FriendDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -355,10 +345,7 @@ abstract class FriendAbstract
             ->setInterCompany(Company::entityToDto(self::getInterCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

@@ -84,40 +84,34 @@ abstract class TpAccountActionAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpAccountAction",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TpAccountActionDto
+    public static function createDto(string|int|null $id = null): TpAccountActionDto
     {
         return new TpAccountActionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpAccountActionInterface|null $entity
-     * @param int $depth
-     * @return TpAccountActionDto|null
+     * @param null|TpAccountActionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpAccountActionDto
     {
         if (!$entity) {
             return null;
@@ -133,7 +127,6 @@ abstract class TpAccountActionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpAccountActionDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -143,12 +136,11 @@ abstract class TpAccountActionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpAccountActionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
         $self = new static(
@@ -175,12 +167,11 @@ abstract class TpAccountActionAbstract
     /**
      * @internal use EntityTools instead
      * @param TpAccountActionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
         $this
@@ -201,9 +192,8 @@ abstract class TpAccountActionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TpAccountActionDto
+    public function toDto(int $depth = 0): TpAccountActionDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -219,10 +209,7 @@ abstract class TpAccountActionAbstract
             ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),

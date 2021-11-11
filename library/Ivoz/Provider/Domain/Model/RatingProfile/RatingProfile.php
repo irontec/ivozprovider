@@ -26,7 +26,7 @@ class RatingProfile extends RatingProfileAbstract implements RatingProfileInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -175,40 +175,34 @@ abstract class UserAbstract
         $this->setGsQRCode($gsQRCode);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "User",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): UserDto
+    public static function createDto(string|int|null $id = null): UserDto
     {
         return new UserDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UserInterface|null $entity
-     * @param int $depth
-     * @return UserDto|null
+     * @param null|UserInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UserDto
     {
         if (!$entity) {
             return null;
@@ -224,7 +218,6 @@ abstract class UserAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UserDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -234,12 +227,11 @@ abstract class UserAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UserDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UserDto::class);
 
         $self = new static(
@@ -282,12 +274,11 @@ abstract class UserAbstract
     /**
      * @internal use EntityTools instead
      * @param UserDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UserDto::class);
 
         $this
@@ -324,9 +315,8 @@ abstract class UserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): UserDto
+    public function toDto(int $depth = 0): UserDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -358,10 +348,7 @@ abstract class UserAbstract
             ->setVoicemailLocution(Locution::entityToDto(self::getVoicemailLocution(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

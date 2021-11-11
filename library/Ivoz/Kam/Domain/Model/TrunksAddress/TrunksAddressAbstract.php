@@ -52,40 +52,34 @@ abstract class TrunksAddressAbstract
         $this->setPort($port);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksAddress",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TrunksAddressDto
+    public static function createDto(string|int|null $id = null): TrunksAddressDto
     {
         return new TrunksAddressDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksAddressInterface|null $entity
-     * @param int $depth
-     * @return TrunksAddressDto|null
+     * @param null|TrunksAddressInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksAddressDto
     {
         if (!$entity) {
             return null;
@@ -101,7 +95,6 @@ abstract class TrunksAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksAddressDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -111,12 +104,11 @@ abstract class TrunksAddressAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksAddressDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
         $self = new static(
@@ -138,12 +130,11 @@ abstract class TrunksAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksAddressDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
         $this
@@ -159,9 +150,8 @@ abstract class TrunksAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TrunksAddressDto
+    public function toDto(int $depth = 0): TrunksAddressDto
     {
         return self::createDto()
             ->setGrp(self::getGrp())
@@ -172,10 +162,7 @@ abstract class TrunksAddressAbstract
             ->setDdiProviderAddress(DdiProviderAddress::entityToDto(self::getDdiProviderAddress(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'grp' => self::getGrp(),

@@ -36,7 +36,7 @@ trait PickUpGroupTrait
         $this->relUsers = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -87,9 +87,8 @@ trait PickUpGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): PickUpGroupDto
+    public function toDto(int $depth = 0): PickUpGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto

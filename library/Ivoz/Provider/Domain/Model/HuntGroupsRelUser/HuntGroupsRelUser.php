@@ -14,7 +14,7 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
     use HuntGroupsRelUserTrait;
     use RoutableTrait;
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $huntGroup = $this->getHuntGroup();
 
@@ -73,7 +73,7 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

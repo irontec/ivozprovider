@@ -41,10 +41,7 @@ final class Csv
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $csv)
+    public function equals(self $csv): bool
     {
         if ($this->getFileSize() !== $csv->getFileSize()) {
             return false;

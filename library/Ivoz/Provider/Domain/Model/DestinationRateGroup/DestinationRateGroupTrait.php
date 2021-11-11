@@ -35,7 +35,7 @@ trait DestinationRateGroupTrait
         $this->destinationRates = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -86,9 +86,8 @@ trait DestinationRateGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): DestinationRateGroupDto
+    public function toDto(int $depth = 0): DestinationRateGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto

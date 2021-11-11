@@ -37,40 +37,34 @@ abstract class TerminalManufacturerAbstract
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TerminalManufacturer",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TerminalManufacturerDto
+    public static function createDto(string|int|null $id = null): TerminalManufacturerDto
     {
         return new TerminalManufacturerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TerminalManufacturerInterface|null $entity
-     * @param int $depth
-     * @return TerminalManufacturerDto|null
+     * @param null|TerminalManufacturerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TerminalManufacturerDto
     {
         if (!$entity) {
             return null;
@@ -86,7 +80,6 @@ abstract class TerminalManufacturerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TerminalManufacturerDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -96,12 +89,11 @@ abstract class TerminalManufacturerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TerminalManufacturerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
         $self = new static(
@@ -120,12 +112,11 @@ abstract class TerminalManufacturerAbstract
     /**
      * @internal use EntityTools instead
      * @param TerminalManufacturerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
         $this
@@ -138,9 +129,8 @@ abstract class TerminalManufacturerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TerminalManufacturerDto
+    public function toDto(int $depth = 0): TerminalManufacturerDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -148,10 +138,7 @@ abstract class TerminalManufacturerAbstract
             ->setDescription(self::getDescription());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

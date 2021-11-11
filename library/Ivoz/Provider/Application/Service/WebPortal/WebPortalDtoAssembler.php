@@ -25,7 +25,6 @@ class WebPortalDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($webPortal, WebPortalInterface::class);
 
-        /** @var WebPortalDTO $dto */
         $dto = $webPortal->toDto($depth);
         $id = $webPortal->getId();
 

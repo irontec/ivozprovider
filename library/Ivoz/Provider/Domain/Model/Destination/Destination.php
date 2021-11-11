@@ -25,7 +25,7 @@ class Destination extends DestinationAbstract implements DestinationInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -51,8 +51,8 @@ class Destination extends DestinationAbstract implements DestinationInterface
     {
         return sprintf(
             "b%ddst%d",
-            $this->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 }

@@ -23,12 +23,12 @@ class BalanceMovement extends BalanceMovementAbstract implements BalanceMovement
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getCarrier()) {
             $this->setCompany(null);

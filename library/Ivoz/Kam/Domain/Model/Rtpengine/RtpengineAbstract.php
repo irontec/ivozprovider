@@ -55,40 +55,34 @@ abstract class RtpengineAbstract
         $this->setStamp($stamp);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Rtpengine",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): RtpengineDto
+    public static function createDto(string|int|null $id = null): RtpengineDto
     {
         return new RtpengineDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RtpengineInterface|null $entity
-     * @param int $depth
-     * @return RtpengineDto|null
+     * @param null|RtpengineInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RtpengineDto
     {
         if (!$entity) {
             return null;
@@ -104,7 +98,6 @@ abstract class RtpengineAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RtpengineDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -114,12 +107,11 @@ abstract class RtpengineAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RtpengineDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
         $self = new static(
@@ -142,12 +134,11 @@ abstract class RtpengineAbstract
     /**
      * @internal use EntityTools instead
      * @param RtpengineDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
         $this
@@ -164,9 +155,8 @@ abstract class RtpengineAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): RtpengineDto
+    public function toDto(int $depth = 0): RtpengineDto
     {
         return self::createDto()
             ->setSetid(self::getSetid())
@@ -178,10 +168,7 @@ abstract class RtpengineAbstract
             ->setMediaRelaySet(MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'setid' => self::getSetid(),

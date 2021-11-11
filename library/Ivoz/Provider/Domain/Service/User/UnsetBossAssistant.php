@@ -38,9 +38,10 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         $hasChangedIsBoss = $user->hasChanged('isBoss');
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
+            $userId = (int) $user->getId();
             $bosses = $this
                 ->userRepository
-                ->findByBossAssistantId($user->getId());
+                ->findByBossAssistantId($userId);
 
             foreach ($bosses as $boss) {
                 /**

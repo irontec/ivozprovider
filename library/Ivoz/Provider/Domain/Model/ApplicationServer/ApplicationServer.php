@@ -23,7 +23,7 @@ class ApplicationServer extends ApplicationServerAbstract implements Application
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

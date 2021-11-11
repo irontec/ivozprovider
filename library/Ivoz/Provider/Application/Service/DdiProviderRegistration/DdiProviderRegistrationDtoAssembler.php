@@ -26,7 +26,6 @@ class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($ddiProviderRegistration, DdiProviderRegistrationInterface::class);
 
-        /** @var DdiProviderRegistrationDto $dto */
         $dto = $ddiProviderRegistration->toDto($depth);
 
         if (DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION !== $context) {

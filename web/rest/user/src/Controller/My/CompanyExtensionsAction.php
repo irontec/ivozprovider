@@ -31,6 +31,6 @@ class CompanyExtensionsAction
 
         return $this
             ->extensionRepository
-            ->findByCompanyId($company->getId());
+            ->findByCompanyId((int) $company->getId());
     }
 }

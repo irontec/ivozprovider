@@ -23,7 +23,7 @@ class FriendsPattern extends FriendsPatternAbstract implements FriendsPatternInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

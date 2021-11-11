@@ -59,7 +59,7 @@ class SendCgratesUpdateRequest extends CgratesReloadNotificator implements Compa
         $tpAccountAction = $this
             ->tpAccountActionRepository
             ->findByCompany(
-                $company->getId()
+                (int) $company->getId()
             );
 
         if (!$tpAccountAction) {

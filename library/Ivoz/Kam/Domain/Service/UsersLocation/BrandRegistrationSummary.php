@@ -30,7 +30,7 @@ class BrandRegistrationSummary
     public function getUsersLocations(BrandInterface $brand)
     {
         $domains = $this->domainRepository->findByBrandId(
-            $brand->getId()
+            (int) $brand->getId()
         );
 
         $domainFqdns = [];

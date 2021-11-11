@@ -28,7 +28,7 @@ class SendCgratesReloadRequest extends CgratesReloadNotificator implements Carri
         $tpAccountAction = $this
             ->tpAccountActionRepository
             ->findByCarrier(
-                $carrier->getId()
+                (int) $carrier->getId()
             );
 
         if (!$tpAccountAction) {

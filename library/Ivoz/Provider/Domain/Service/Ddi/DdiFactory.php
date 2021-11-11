@@ -50,7 +50,7 @@ class DdiFactory
             $ddiProvider = $this
                 ->ddiProviderRepository
                 ->findOneByBrandAndName(
-                    $company->getBrand()->getId(),
+                    (int) $company->getBrand()->getId(),
                     $ddiProviderName
                 );
 
@@ -66,7 +66,7 @@ class DdiFactory
             ->ddiRepository
             ->findOneByDdiAndCountry(
                 $ddiNumber,
-                $country->getId()
+                (int) $country->getId()
             );
 
         if ($ddi) {

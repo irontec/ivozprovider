@@ -23,7 +23,7 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

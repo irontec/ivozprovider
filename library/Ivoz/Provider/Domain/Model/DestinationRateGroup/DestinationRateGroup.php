@@ -34,7 +34,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -80,8 +80,8 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     {
         return sprintf(
             "b%ddr%d",
-            $this->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 
@@ -119,7 +119,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
             TpDestinationRateInterface::ROUNDINGMETHOD_UP;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->isNew() && $this->hasChanged('deductibleConnectionFee')) {
             throw new \DomainException(

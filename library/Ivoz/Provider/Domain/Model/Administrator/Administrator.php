@@ -26,7 +26,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -157,7 +157,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
             ) = unserialize($serialized);
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->getTimezone()) {
             $this->setTimezone(

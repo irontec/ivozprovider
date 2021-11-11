@@ -57,40 +57,34 @@ abstract class TrustedAbstract
         $this->setPriority($priority);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Trusted",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): TrustedDto
+    public static function createDto(string|int|null $id = null): TrustedDto
     {
         return new TrustedDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrustedInterface|null $entity
-     * @param int $depth
-     * @return TrustedDto|null
+     * @param null|TrustedInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrustedDto
     {
         if (!$entity) {
             return null;
@@ -106,7 +100,6 @@ abstract class TrustedAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrustedDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -116,12 +109,11 @@ abstract class TrustedAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrustedDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $self = new static(
@@ -145,12 +137,11 @@ abstract class TrustedAbstract
     /**
      * @internal use EntityTools instead
      * @param TrustedDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $this
@@ -168,9 +159,8 @@ abstract class TrustedAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TrustedDto
+    public function toDto(int $depth = 0): TrustedDto
     {
         return self::createDto()
             ->setSrcIp(self::getSrcIp())
@@ -183,10 +173,7 @@ abstract class TrustedAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'src_ip' => self::getSrcIp(),

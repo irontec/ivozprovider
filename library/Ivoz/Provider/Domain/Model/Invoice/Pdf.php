@@ -41,10 +41,7 @@ final class Pdf
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $pdf)
+    public function equals(self $pdf): bool
     {
         if ($this->getFileSize() !== $pdf->getFileSize()) {
             return false;

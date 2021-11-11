@@ -44,7 +44,7 @@ trait IvrTrait
         $this->excludedExtensions = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -111,9 +111,8 @@ trait IvrTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): IvrDto
+    public function toDto(int $depth = 0): IvrDto
     {
         $dto = parent::toDto($depth);
         return $dto

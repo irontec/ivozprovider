@@ -43,40 +43,34 @@ abstract class NotificationTemplateAbstract
         $this->setType($type);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "NotificationTemplate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): NotificationTemplateDto
+    public static function createDto(string|int|null $id = null): NotificationTemplateDto
     {
         return new NotificationTemplateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param NotificationTemplateInterface|null $entity
-     * @param int $depth
-     * @return NotificationTemplateDto|null
+     * @param null|NotificationTemplateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?NotificationTemplateDto
     {
         if (!$entity) {
             return null;
@@ -92,7 +86,6 @@ abstract class NotificationTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var NotificationTemplateDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -102,12 +95,11 @@ abstract class NotificationTemplateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param NotificationTemplateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
         $self = new static(
@@ -126,12 +118,11 @@ abstract class NotificationTemplateAbstract
     /**
      * @internal use EntityTools instead
      * @param NotificationTemplateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
         $this
@@ -144,9 +135,8 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): NotificationTemplateDto
+    public function toDto(int $depth = 0): NotificationTemplateDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -154,10 +144,7 @@ abstract class NotificationTemplateAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

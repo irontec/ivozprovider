@@ -91,7 +91,7 @@ class SyncBalances
         $response = [];
 
         foreach ($companies as $company) {
-            $brandId = $company->getBrand()->getId();
+            $brandId = (int) $company->getBrand()->getId();
             if (!array_key_exists($brandId, $response)) {
                 $response[$brandId] = [];
             }

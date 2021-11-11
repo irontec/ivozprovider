@@ -29,7 +29,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -38,7 +38,7 @@ class Friend extends FriendAbstract implements FriendInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -50,7 +50,7 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->isDirectConnectivity() && !$this->getTransport()) {
             throw new \DomainException('Invalid empty transport');
@@ -206,12 +206,12 @@ class Friend extends FriendAbstract implements FriendInterface
     {
         return sprintf(
             "b%dc%df%d_%s",
-            $this
+            (int) $this
                 ->getCompany()
                 ->getBrand()
                 ->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }
@@ -311,11 +311,11 @@ class Friend extends FriendAbstract implements FriendInterface
          * Return the same name for Interconnected friends no matter what company is its owner.
          */
         if ($interCompany->getId() > $company->getId()) {
-            $companyOneId = $company->getId();
-            $companyTwoId = $interCompany->getId();
+            $companyOneId = (int) $company->getId();
+            $companyTwoId = (int) $interCompany->getId();
         } else {
-            $companyOneId = $interCompany->getId();
-            $companyTwoId = $company->getId();
+            $companyOneId = (int) $interCompany->getId();
+            $companyTwoId = (int) $company->getId();
         }
 
         return sprintf("InterCompany%d_%d", $companyOneId, $companyTwoId);

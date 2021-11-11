@@ -126,40 +126,34 @@ abstract class UsersPuaAbstract
         $this->setExtraHeaders($extraHeaders);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersPua",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): UsersPuaDto
+    public static function createDto(string|int|null $id = null): UsersPuaDto
     {
         return new UsersPuaDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersPuaInterface|null $entity
-     * @param int $depth
-     * @return UsersPuaDto|null
+     * @param null|UsersPuaInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersPuaDto
     {
         if (!$entity) {
             return null;
@@ -175,7 +169,6 @@ abstract class UsersPuaAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersPuaDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -185,12 +178,11 @@ abstract class UsersPuaAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersPuaDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersPuaDto::class);
 
         $self = new static(
@@ -224,12 +216,11 @@ abstract class UsersPuaAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersPuaDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersPuaDto::class);
 
         $this
@@ -257,9 +248,8 @@ abstract class UsersPuaAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): UsersPuaDto
+    public function toDto(int $depth = 0): UsersPuaDto
     {
         return self::createDto()
             ->setPresUri(self::getPresUri())
@@ -282,10 +272,7 @@ abstract class UsersPuaAbstract
             ->setExtraHeaders(self::getExtraHeaders());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'pres_uri' => self::getPresUri(),

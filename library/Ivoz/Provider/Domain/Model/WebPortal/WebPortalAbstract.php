@@ -58,40 +58,34 @@ abstract class WebPortalAbstract
         $this->setLogo($logo);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "WebPortal",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): WebPortalDto
+    public static function createDto(string|int|null $id = null): WebPortalDto
     {
         return new WebPortalDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param WebPortalInterface|null $entity
-     * @param int $depth
-     * @return WebPortalDto|null
+     * @param null|WebPortalInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?WebPortalDto
     {
         if (!$entity) {
             return null;
@@ -107,7 +101,6 @@ abstract class WebPortalAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var WebPortalDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -117,12 +110,11 @@ abstract class WebPortalAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param WebPortalDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
 
         $logo = new Logo(
@@ -151,12 +143,11 @@ abstract class WebPortalAbstract
     /**
      * @internal use EntityTools instead
      * @param WebPortalDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
 
         $logo = new Logo(
@@ -179,9 +170,8 @@ abstract class WebPortalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): WebPortalDto
+    public function toDto(int $depth = 0): WebPortalDto
     {
         return self::createDto()
             ->setUrl(self::getUrl())
@@ -195,10 +185,7 @@ abstract class WebPortalAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'url' => self::getUrl(),

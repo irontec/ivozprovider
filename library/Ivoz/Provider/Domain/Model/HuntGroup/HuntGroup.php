@@ -28,12 +28,12 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('NoAnswer');
 

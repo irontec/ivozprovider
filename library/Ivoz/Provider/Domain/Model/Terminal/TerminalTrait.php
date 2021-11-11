@@ -49,7 +49,7 @@ trait TerminalTrait
         $this->users = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
@@ -132,9 +132,8 @@ trait TerminalTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): TerminalDto
+    public function toDto(int $depth = 0): TerminalDto
     {
         $dto = parent::toDto($depth);
         return $dto

@@ -14,7 +14,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     /**
      * @return array
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         $response = parent::getChangeSet();
         unset($response['lastProvisionDate']);
@@ -27,7 +27,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,7 +36,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -45,7 +45,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->setDomain(
             $this
@@ -130,9 +130,9 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     {
         return sprintf(
             'b%dc%dt%d_%s',
-            $this->getCompany()->getBrand()->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getBrand()->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }

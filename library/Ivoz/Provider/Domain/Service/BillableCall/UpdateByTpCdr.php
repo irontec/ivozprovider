@@ -52,7 +52,7 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
             $msg = sprintf(
                 'Skipping %s call #%d',
                 $billableCall->getDirection() ?? '',
-                $billableCall->getId()
+                (int) $billableCall->getId()
             );
             $this->logger->info($msg);
 
@@ -61,7 +61,7 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
 
         $infoMsg = sprintf(
             'About to update billable call by TpCdr. TrunksCdr#%s',
-            $trunksCdr->getId()
+            (int) $trunksCdr->getId()
         ) ;
         $this->logger->info($infoMsg);
 
@@ -100,7 +100,7 @@ class UpdateByTpCdr implements TrunksCdrWasMigratedSubscriberInterface
         if ($carrier && $carrier->getExternallyRated()) {
             $infoMsg = sprintf(
                 'Carrier#%s has external rater. Skipping',
-                $carrier->getId()
+                (int) $carrier->getId()
             );
             $this->logger->info($infoMsg);
             return;

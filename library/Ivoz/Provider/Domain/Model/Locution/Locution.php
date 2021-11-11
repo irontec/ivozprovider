@@ -50,7 +50,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
      * @codeCoverageIgnore
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

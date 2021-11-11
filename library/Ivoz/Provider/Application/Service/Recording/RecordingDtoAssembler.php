@@ -25,7 +25,6 @@ class RecordingDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($recording, RecordingInterface::class);
 
-        /** @var RecordingDTO $dto */
         $dto = $recording->toDto($depth);
         $id = $recording->getId();
 

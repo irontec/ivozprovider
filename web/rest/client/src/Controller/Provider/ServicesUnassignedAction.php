@@ -36,12 +36,12 @@ class ServicesUnassignedAction
         $admin = $token->getUser();
         $company = $admin->getCompany();
         $serviceIds = $this->brandServiceRepository->getServiceIdsByBrand(
-            $company->getBrand()->getId()
+            (int) $company->getBrand()->getId()
         );
         $services = $this->serviceRepository->getServicesInGroup($serviceIds);
 
         $serviceIdsAlreadyInUse = $this->companyServiceRepository->findServiceIdsByCompany(
-            $company->getId()
+            (int) $company->getId()
         );
 
         $includeId = $request->query->get('_includeId');

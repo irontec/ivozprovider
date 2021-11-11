@@ -51,40 +51,34 @@ abstract class ChangelogAbstract
         $this->setMicrotime($microtime);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Changelog",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): ChangelogDto
+    public static function createDto(string|int|null $id = null): ChangelogDto
     {
         return new ChangelogDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ChangelogInterface|null $entity
-     * @param int $depth
-     * @return ChangelogDto|null
+     * @param null|ChangelogInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ChangelogDto
     {
         if (!$entity) {
             return null;
@@ -100,7 +94,6 @@ abstract class ChangelogAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ChangelogDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -110,12 +103,11 @@ abstract class ChangelogAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ChangelogDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
         $self = new static(
@@ -137,12 +129,11 @@ abstract class ChangelogAbstract
     /**
      * @internal use EntityTools instead
      * @param ChangelogDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
         $this
@@ -158,9 +149,8 @@ abstract class ChangelogAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): ChangelogDto
+    public function toDto(int $depth = 0): ChangelogDto
     {
         return self::createDto()
             ->setEntity(self::getEntity())
@@ -171,10 +161,7 @@ abstract class ChangelogAbstract
             ->setCommand(Commandlog::entityToDto(self::getCommand(), $depth));
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'entity' => self::getEntity(),

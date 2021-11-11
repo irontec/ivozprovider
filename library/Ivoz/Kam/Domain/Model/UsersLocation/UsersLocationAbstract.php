@@ -117,40 +117,34 @@ abstract class UsersLocationAbstract
         $this->setPartition($partition);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersLocation",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     */
-    public static function createDto($id = null): UsersLocationDto
+    public static function createDto(string|int|null $id = null): UsersLocationDto
     {
         return new UsersLocationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersLocationInterface|null $entity
-     * @param int $depth
-     * @return UsersLocationDto|null
+     * @param null|UsersLocationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersLocationDto
     {
         if (!$entity) {
             return null;
@@ -166,7 +160,6 @@ abstract class UsersLocationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersLocationDto $dto */
         $dto = $entity->toDto($depth - 1);
 
         return $dto;
@@ -176,12 +169,11 @@ abstract class UsersLocationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersLocationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
 
         $self = new static(
@@ -219,12 +211,11 @@ abstract class UsersLocationAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersLocationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
 
         $this
@@ -256,9 +247,8 @@ abstract class UsersLocationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      */
-    public function toDto($depth = 0): UsersLocationDto
+    public function toDto(int $depth = 0): UsersLocationDto
     {
         return self::createDto()
             ->setRuid(self::getRuid())
@@ -285,10 +275,7 @@ abstract class UsersLocationAbstract
             ->setPartition(self::getPartition());
     }
 
-    /**
-     * @return array
-     */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ruid' => self::getRuid(),

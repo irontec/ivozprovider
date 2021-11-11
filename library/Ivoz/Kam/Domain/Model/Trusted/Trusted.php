@@ -16,7 +16,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,7 +34,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
      * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         // Set tag with companyId value
         $company = $this->getCompany();

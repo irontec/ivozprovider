@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\IvrEntry;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -30,11 +33,37 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getChangeSet(): array;
 
     /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
      * Get the numberValue in E.164 format when routing to 'number'
      *
      * @return string
      */
     public function getNumberValueE164();
+
+    public static function createDto(string|int|null $id = null): IvrEntryDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|IvrEntryInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?IvrEntryDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): IvrEntryDto;
 
     public function getEntry(): string;
 

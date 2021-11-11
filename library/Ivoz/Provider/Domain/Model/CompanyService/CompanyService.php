@@ -25,7 +25,7 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,7 +34,7 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
