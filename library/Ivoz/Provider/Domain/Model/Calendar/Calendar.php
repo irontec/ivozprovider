@@ -13,7 +13,7 @@ class Calendar extends CalendarAbstract implements CalendarInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

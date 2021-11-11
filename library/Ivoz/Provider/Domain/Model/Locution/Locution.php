@@ -18,7 +18,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

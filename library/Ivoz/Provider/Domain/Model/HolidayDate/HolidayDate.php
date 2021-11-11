@@ -14,7 +14,7 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

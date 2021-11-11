@@ -13,7 +13,10 @@ use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 */
 interface TpRatingPlanInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

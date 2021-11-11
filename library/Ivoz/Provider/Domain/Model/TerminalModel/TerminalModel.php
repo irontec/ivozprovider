@@ -13,7 +13,7 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

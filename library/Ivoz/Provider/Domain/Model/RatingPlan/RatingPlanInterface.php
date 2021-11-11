@@ -27,6 +27,10 @@ interface RatingPlanInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

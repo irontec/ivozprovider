@@ -11,7 +11,7 @@ class ApplicationServer extends ApplicationServerAbstract implements Application
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

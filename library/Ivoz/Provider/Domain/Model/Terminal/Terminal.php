@@ -12,7 +12,8 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     use TerminalTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

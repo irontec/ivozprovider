@@ -11,7 +11,7 @@ class Timezone extends TimezoneAbstract implements TimezoneInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

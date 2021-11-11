@@ -13,7 +13,10 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 */
 interface TpRateInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

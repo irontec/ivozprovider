@@ -23,7 +23,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

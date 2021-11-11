@@ -11,7 +11,7 @@ class AdministratorRelPublicEntity extends AdministratorRelPublicEntityAbstract 
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

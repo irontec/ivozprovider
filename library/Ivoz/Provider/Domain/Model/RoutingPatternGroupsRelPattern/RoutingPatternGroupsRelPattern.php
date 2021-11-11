@@ -9,6 +9,10 @@ class RoutingPatternGroupsRelPattern extends RoutingPatternGroupsRelPatternAbstr
 {
     use RoutingPatternGroupsRelPatternTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

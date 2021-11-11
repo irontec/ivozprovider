@@ -16,7 +16,7 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

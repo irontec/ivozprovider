@@ -12,7 +12,8 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
     use CarrierServerTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

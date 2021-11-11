@@ -11,7 +11,7 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

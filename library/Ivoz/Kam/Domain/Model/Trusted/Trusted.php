@@ -23,7 +23,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

@@ -14,7 +14,7 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

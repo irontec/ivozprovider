@@ -16,7 +16,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

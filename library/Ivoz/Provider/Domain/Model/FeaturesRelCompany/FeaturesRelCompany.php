@@ -11,7 +11,7 @@ class FeaturesRelCompany extends FeaturesRelCompanyAbstract implements FeaturesR
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

@@ -43,7 +43,8 @@ interface UserInterface extends LoggableEntityInterface
     public const REJECTCALLMETHOD_600 = '600';
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

@@ -11,7 +11,7 @@ class CalendarPeriodsRelSchedule extends CalendarPeriodsRelScheduleAbstract impl
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

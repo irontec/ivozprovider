@@ -20,7 +20,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

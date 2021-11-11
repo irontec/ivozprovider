@@ -13,7 +13,10 @@ use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 */
 interface TpDestinationInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

@@ -59,6 +59,7 @@ interface CompanyInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

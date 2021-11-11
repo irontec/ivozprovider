@@ -9,6 +9,10 @@ class TpDestination extends TpDestinationAbstract implements TpDestinationInterf
 {
     use TpDestinationTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

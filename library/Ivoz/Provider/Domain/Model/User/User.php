@@ -18,7 +18,8 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     use UserSecurityTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

@@ -11,7 +11,7 @@ class TerminalManufacturer extends TerminalManufacturerAbstract implements Termi
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

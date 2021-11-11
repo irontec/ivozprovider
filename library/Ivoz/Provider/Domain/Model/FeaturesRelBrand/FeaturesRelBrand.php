@@ -11,7 +11,7 @@ class FeaturesRelBrand extends FeaturesRelBrandAbstract implements FeaturesRelBr
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

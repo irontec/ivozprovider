@@ -16,7 +16,8 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 interface CarrierServerInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

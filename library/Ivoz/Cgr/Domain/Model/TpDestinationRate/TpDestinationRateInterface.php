@@ -17,6 +17,10 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
 
     public const ROUNDINGMETHOD_UPMINCOST = '*upmincost';
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

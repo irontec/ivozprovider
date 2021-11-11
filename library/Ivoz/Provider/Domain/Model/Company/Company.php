@@ -20,6 +20,7 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     /**
      * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

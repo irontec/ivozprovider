@@ -31,7 +31,8 @@ interface TerminalInterface extends LoggableEntityInterface
     public const T38PASSTHROUGH_NO = 'no';
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

@@ -32,7 +32,7 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

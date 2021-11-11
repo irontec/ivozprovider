@@ -15,7 +15,8 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 interface TrunksUacregInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

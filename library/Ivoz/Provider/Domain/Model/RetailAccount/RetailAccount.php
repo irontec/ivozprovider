@@ -14,7 +14,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

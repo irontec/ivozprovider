@@ -19,7 +19,8 @@ use Doctrine\Common\Collections\Criteria;
 interface AdministratorInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

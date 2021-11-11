@@ -15,7 +15,8 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 interface VoicemailInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

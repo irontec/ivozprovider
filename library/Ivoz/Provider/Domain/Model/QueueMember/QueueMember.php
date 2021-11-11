@@ -11,7 +11,7 @@ class QueueMember extends QueueMemberAbstract implements QueueMemberInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

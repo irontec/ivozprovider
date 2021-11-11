@@ -13,7 +13,7 @@ class MatchList extends MatchListAbstract implements MatchListInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

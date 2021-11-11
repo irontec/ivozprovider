@@ -16,7 +16,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

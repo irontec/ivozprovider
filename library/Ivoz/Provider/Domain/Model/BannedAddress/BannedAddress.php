@@ -11,7 +11,7 @@ class BannedAddress extends BannedAddressAbstract implements BannedAddressInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

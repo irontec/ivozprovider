@@ -11,7 +11,7 @@ class Dispatcher extends DispatcherAbstract implements DispatcherInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

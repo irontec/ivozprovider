@@ -11,7 +11,7 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

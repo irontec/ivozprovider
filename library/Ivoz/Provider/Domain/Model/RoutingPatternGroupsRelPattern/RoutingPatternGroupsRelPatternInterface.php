@@ -14,7 +14,10 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 */
 interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

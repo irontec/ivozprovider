@@ -37,7 +37,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 

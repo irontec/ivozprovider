@@ -14,7 +14,10 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 */
 interface IvrExcludedExtensionInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**

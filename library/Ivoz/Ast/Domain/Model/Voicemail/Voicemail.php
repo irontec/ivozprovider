@@ -10,7 +10,8 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
     use VoicemailTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

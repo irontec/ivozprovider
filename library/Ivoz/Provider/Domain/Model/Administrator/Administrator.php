@@ -14,7 +14,8 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     }
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {
