@@ -208,8 +208,8 @@ abstract class TransformationRuleSetAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'countryId' => self::getCountry()?->getId()
         ];
     }
 

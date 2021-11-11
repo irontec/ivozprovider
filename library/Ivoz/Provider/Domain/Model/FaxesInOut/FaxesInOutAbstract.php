@@ -211,7 +211,7 @@ abstract class FaxesInOutAbstract
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
             'faxId' => self::getFax()->getId(),
-            'dstCountryId' => self::getDstCountry() ? self::getDstCountry()->getId() : null
+            'dstCountryId' => self::getDstCountry()?->getId()
         ];
     }
 

@@ -147,7 +147,7 @@ abstract class FixedCostsRelInvoiceAbstract
         return [
             'quantity' => self::getQuantity(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
+            'invoiceId' => self::getInvoice()?->getId()
         ];
     }
 

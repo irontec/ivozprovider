@@ -207,10 +207,10 @@ abstract class PsIdentifyAbstract
             'match' => self::getMatch(),
             'match_header' => self::getMatchHeader(),
             'srv_lookups' => self::getSrvLookups(),
-            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'terminalId' => self::getTerminal()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 

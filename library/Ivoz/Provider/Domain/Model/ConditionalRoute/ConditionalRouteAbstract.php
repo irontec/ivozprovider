@@ -255,15 +255,15 @@ abstract class ConditionalRouteAbstract
             'numberValue' => self::getNumbervalue(),
             'friendValue' => self::getFriendvalue(),
             'companyId' => self::getCompany()->getId(),
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'voicemailUserId' => self::getVoicemailUser() ? self::getVoicemailUser()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'voicemailUserId' => self::getVoicemailUser()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'locutionId' => self::getLocution()?->getId(),
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

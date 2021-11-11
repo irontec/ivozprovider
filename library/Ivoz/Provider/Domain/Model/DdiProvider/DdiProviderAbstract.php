@@ -183,9 +183,9 @@ abstract class DdiProviderAbstract
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
             'brandId' => self::getBrand()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'proxyTrunkId' => self::getProxyTrunk()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
         ];
     }
 

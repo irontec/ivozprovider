@@ -205,10 +205,10 @@ abstract class CarrierAbstract
             'balance' => self::getBalance(),
             'calculateCost' => self::getCalculateCost(),
             'brandId' => self::getBrand()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'currencyId' => self::getCurrency()?->getId(),
+            'proxyTrunkId' => self::getProxyTrunk()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
         ];
     }
 

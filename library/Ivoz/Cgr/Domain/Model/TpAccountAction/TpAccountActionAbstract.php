@@ -221,8 +221,8 @@ abstract class TpAccountActionAbstract
             'allow_negative' => self::getAllowNegative(),
             'disabled' => self::getDisabled(),
             'created_at' => self::getCreatedAt(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId()
         ];
     }
 

@@ -245,7 +245,7 @@ abstract class TpLcrRuleAbstract
             'activation_time' => self::getActivationTime(),
             'weight' => self::getWeight(),
             'created_at' => self::getCreatedAt(),
-            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
+            'outgoingRoutingId' => self::getOutgoingRouting()?->getId()
         ];
     }
 

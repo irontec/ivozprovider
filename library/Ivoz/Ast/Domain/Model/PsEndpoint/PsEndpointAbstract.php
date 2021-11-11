@@ -348,10 +348,10 @@ abstract class PsEndpointAbstract
             't38_udptl_ec' => self::getT38UdptlEc(),
             't38_udptl_maxdatagram' => self::getT38UdptlMaxdatagram(),
             't38_udptl_nat' => self::getT38UdptlNat(),
-            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'terminalId' => self::getTerminal()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 

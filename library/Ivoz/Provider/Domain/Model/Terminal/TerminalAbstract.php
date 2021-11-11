@@ -244,8 +244,8 @@ abstract class TerminalAbstract
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
             'companyId' => self::getCompany()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
+            'domainId' => self::getDomain()?->getId(),
+            'terminalModelId' => self::getTerminalModel()?->getId()
         ];
     }
 

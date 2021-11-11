@@ -171,10 +171,10 @@ abstract class RatingProfileAbstract
     {
         return [
             'activationTime' => self::getActivationTime(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
             'ratingPlanGroupId' => self::getRatingPlanGroup()->getId(),
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
+            'routingTagId' => self::getRoutingTag()?->getId()
         ];
     }
 

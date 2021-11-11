@@ -140,7 +140,7 @@ abstract class ExternalCallFilterWhiteListAbstract
     protected function __toArray(): array
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'filterId' => self::getFilter()?->getId(),
             'matchlistId' => self::getMatchlist()->getId()
         ];
     }

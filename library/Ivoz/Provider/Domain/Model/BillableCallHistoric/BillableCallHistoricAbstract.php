@@ -309,15 +309,15 @@ abstract class BillableCallHistoricAbstract
             'endpointId' => self::getEndpointId(),
             'endpointName' => self::getEndpointName(),
             'direction' => self::getDirection(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
-            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
-            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
-            'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'destinationId' => self::getDestination()?->getId(),
+            'ratingPlanGroupId' => self::getRatingPlanGroup()?->getId(),
+            'invoiceId' => self::getInvoice()?->getId(),
+            'trunksCdrId' => self::getTrunksCdr()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 

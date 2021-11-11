@@ -213,9 +213,9 @@ abstract class AdministratorAbstract
             'restricted' => self::getRestricted(),
             'name' => self::getName(),
             'lastname' => self::getLastname(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'timezoneId' => self::getTimezone()?->getId()
         ];
     }
 

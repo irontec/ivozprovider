@@ -140,7 +140,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
     protected function __toArray(): array
     {
         return [
-            'calendarPeriodId' => self::getCalendarPeriod() ? self::getCalendarPeriod()->getId() : null,
+            'calendarPeriodId' => self::getCalendarPeriod()?->getId(),
             'scheduleId' => self::getSchedule()->getId()
         ];
     }

@@ -168,9 +168,9 @@ abstract class BalanceNotificationAbstract
             'toAddress' => self::getToAddress(),
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'notificationTemplateId' => self::getNotificationTemplate()?->getId()
         ];
     }
 

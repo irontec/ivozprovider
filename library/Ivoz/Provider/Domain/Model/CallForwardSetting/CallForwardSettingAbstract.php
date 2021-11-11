@@ -252,14 +252,14 @@ abstract class CallForwardSettingAbstract
             'numberValue' => self::getNumberValue(),
             'noAnswerTimeout' => self::getNoAnswerTimeout(),
             'enabled' => self::getEnabled(),
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'cfwToRetailAccountId' => self::getCfwToRetailAccount() ? self::getCfwToRetailAccount()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null
+            'userId' => self::getUser()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'cfwToRetailAccountId' => self::getCfwToRetailAccount()?->getId(),
+            'ddiId' => self::getDdi()?->getId()
         ];
     }
 

@@ -177,7 +177,7 @@ abstract class RtpengineAbstract
             'disabled' => self::getDisabled(),
             'stamp' => self::getStamp(),
             'description' => self::getDescription(),
-            'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
+            'mediaRelaySetId' => self::getMediaRelaySet()?->getId()
         ];
     }
 

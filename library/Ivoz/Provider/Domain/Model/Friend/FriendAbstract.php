@@ -369,12 +369,12 @@ abstract class FriendAbstract
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
             'companyId' => self::getCompany()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'interCompanyId' => self::getInterCompany() ? self::getInterCompany()->getId() : null
+            'domainId' => self::getDomain()?->getId(),
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'callAclId' => self::getCallAcl()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'interCompanyId' => self::getInterCompany()?->getId()
         ];
     }
 

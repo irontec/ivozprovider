@@ -281,16 +281,16 @@ abstract class IvrAbstract
             'errorRouteType' => self::getErrorRouteType(),
             'errorNumberValue' => self::getErrorNumberValue(),
             'companyId' => self::getCompany()->getId(),
-            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
-            'noInputLocutionId' => self::getNoInputLocution() ? self::getNoInputLocution()->getId() : null,
-            'errorLocutionId' => self::getErrorLocution() ? self::getErrorLocution()->getId() : null,
-            'successLocutionId' => self::getSuccessLocution() ? self::getSuccessLocution()->getId() : null,
-            'noInputExtensionId' => self::getNoInputExtension() ? self::getNoInputExtension()->getId() : null,
-            'errorExtensionId' => self::getErrorExtension() ? self::getErrorExtension()->getId() : null,
-            'noInputVoiceMailUserId' => self::getNoInputVoiceMailUser() ? self::getNoInputVoiceMailUser()->getId() : null,
-            'errorVoiceMailUserId' => self::getErrorVoiceMailUser() ? self::getErrorVoiceMailUser()->getId() : null,
-            'noInputNumberCountryId' => self::getNoInputNumberCountry() ? self::getNoInputNumberCountry()->getId() : null,
-            'errorNumberCountryId' => self::getErrorNumberCountry() ? self::getErrorNumberCountry()->getId() : null
+            'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
+            'noInputLocutionId' => self::getNoInputLocution()?->getId(),
+            'errorLocutionId' => self::getErrorLocution()?->getId(),
+            'successLocutionId' => self::getSuccessLocution()?->getId(),
+            'noInputExtensionId' => self::getNoInputExtension()?->getId(),
+            'errorExtensionId' => self::getErrorExtension()?->getId(),
+            'noInputVoiceMailUserId' => self::getNoInputVoiceMailUser()?->getId(),
+            'errorVoiceMailUserId' => self::getErrorVoiceMailUser()?->getId(),
+            'noInputNumberCountryId' => self::getNoInputNumberCountry()?->getId(),
+            'errorNumberCountryId' => self::getErrorNumberCountry()?->getId()
         ];
     }
 

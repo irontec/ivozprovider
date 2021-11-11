@@ -140,7 +140,7 @@ abstract class CompanyRelGeoIPCountryAbstract
     protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'countryId' => self::getCountry()->getId()
         ];
     }

@@ -160,7 +160,7 @@ abstract class OutgoingDdiRuleAbstract
             'name' => self::getName(),
             'defaultAction' => self::getDefaultAction(),
             'companyId' => self::getCompany()->getId(),
-            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
+            'forcedDdiId' => self::getForcedDdi()?->getId()
         ];
     }
 

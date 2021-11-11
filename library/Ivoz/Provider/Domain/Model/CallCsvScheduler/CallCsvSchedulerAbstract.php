@@ -293,17 +293,17 @@ abstract class CallCsvSchedulerAbstract
             'lastExecution' => self::getLastExecution(),
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 

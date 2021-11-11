@@ -180,9 +180,9 @@ abstract class HuntGroupsRelUserAbstract
             'priority' => self::getPriority(),
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

@@ -141,7 +141,7 @@ abstract class CompanyRelRoutingTagAbstract
     protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'routingTagId' => self::getRoutingTag()->getId()
         ];
     }

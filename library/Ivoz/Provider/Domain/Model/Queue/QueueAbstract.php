@@ -297,15 +297,15 @@ abstract class QueueAbstract
             'weight' => self::getWeight(),
             'preventMissedCalls' => self::getPreventMissedCalls(),
             'companyId' => self::getCompany()->getId(),
-            'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution() ? self::getPeriodicAnnounceLocution()->getId() : null,
-            'timeoutLocutionId' => self::getTimeoutLocution() ? self::getTimeoutLocution()->getId() : null,
-            'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
-            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser() ? self::getTimeoutVoiceMailUser()->getId() : null,
-            'fullLocutionId' => self::getFullLocution() ? self::getFullLocution()->getId() : null,
-            'fullExtensionId' => self::getFullExtension() ? self::getFullExtension()->getId() : null,
-            'fullVoiceMailUserId' => self::getFullVoiceMailUser() ? self::getFullVoiceMailUser()->getId() : null,
-            'timeoutNumberCountryId' => self::getTimeoutNumberCountry() ? self::getTimeoutNumberCountry()->getId() : null,
-            'fullNumberCountryId' => self::getFullNumberCountry() ? self::getFullNumberCountry()->getId() : null
+            'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution()?->getId(),
+            'timeoutLocutionId' => self::getTimeoutLocution()?->getId(),
+            'timeoutExtensionId' => self::getTimeoutExtension()?->getId(),
+            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser()?->getId(),
+            'fullLocutionId' => self::getFullLocution()?->getId(),
+            'fullExtensionId' => self::getFullExtension()?->getId(),
+            'fullVoiceMailUserId' => self::getFullVoiceMailUser()?->getId(),
+            'timeoutNumberCountryId' => self::getTimeoutNumberCountry()?->getId(),
+            'fullNumberCountryId' => self::getFullNumberCountry()?->getId()
         ];
     }
 

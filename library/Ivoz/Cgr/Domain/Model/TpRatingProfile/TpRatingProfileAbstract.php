@@ -236,8 +236,8 @@ abstract class TpRatingProfileAbstract
             'fallback_subjects' => self::getFallbackSubjects(),
             'cdr_stat_queue_ids' => self::getCdrStatQueueIds(),
             'created_at' => self::getCreatedAt(),
-            'ratingProfileId' => self::getRatingProfile() ? self::getRatingProfile()->getId() : null,
-            'outgoingRoutingRelCarrierId' => self::getOutgoingRoutingRelCarrier() ? self::getOutgoingRoutingRelCarrier()->getId() : null
+            'ratingProfileId' => self::getRatingProfile()?->getId(),
+            'outgoingRoutingRelCarrierId' => self::getOutgoingRoutingRelCarrier()?->getId()
         ];
     }
 

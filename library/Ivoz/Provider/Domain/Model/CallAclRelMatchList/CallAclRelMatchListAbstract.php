@@ -160,7 +160,7 @@ abstract class CallAclRelMatchListAbstract
         return [
             'priority' => self::getPriority(),
             'policy' => self::getPolicy(),
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
+            'callAclId' => self::getCallAcl()?->getId(),
             'matchListId' => self::getMatchList()->getId()
         ];
     }

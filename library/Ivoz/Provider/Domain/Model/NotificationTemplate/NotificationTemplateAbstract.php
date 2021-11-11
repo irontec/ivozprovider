@@ -149,7 +149,7 @@ abstract class NotificationTemplateAbstract
         return [
             'name' => self::getName(),
             'type' => self::getType(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 

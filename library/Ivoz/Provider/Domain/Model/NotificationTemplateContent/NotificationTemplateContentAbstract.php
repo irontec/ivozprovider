@@ -181,7 +181,7 @@ abstract class NotificationTemplateContentAbstract
             'body' => self::getBody(),
             'bodyType' => self::getBodyType(),
             'notificationTemplateId' => self::getNotificationTemplate()->getId(),
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
+            'languageId' => self::getLanguage()?->getId()
         ];
     }
 

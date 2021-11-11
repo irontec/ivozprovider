@@ -140,7 +140,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     protected function __toArray(): array
     {
         return [
-            'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
+            'conditionId' => self::getCondition()?->getId(),
             'scheduleId' => self::getSchedule()->getId()
         ];
     }

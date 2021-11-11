@@ -158,8 +158,8 @@ abstract class BalanceMovementAbstract
             'amount' => self::getAmount(),
             'balance' => self::getBalance(),
             'createdOn' => self::getCreatedOn(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId()
         ];
     }
 

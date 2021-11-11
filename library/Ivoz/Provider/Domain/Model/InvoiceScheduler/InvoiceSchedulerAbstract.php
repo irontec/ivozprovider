@@ -220,10 +220,10 @@ abstract class InvoiceSchedulerAbstract
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'taxRate' => self::getTaxRate(),
-            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
+            'invoiceTemplateId' => self::getInvoiceTemplate()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()->getId(),
-            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
+            'numberSequenceId' => self::getNumberSequence()?->getId()
         ];
     }
 

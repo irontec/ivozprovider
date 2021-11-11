@@ -147,7 +147,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return [
             'quantity' => self::getQuantity(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
+            'invoiceSchedulerId' => self::getInvoiceScheduler()?->getId()
         ];
     }
 

@@ -311,15 +311,15 @@ abstract class BrandAbstract
             'invoiceProvince' => self::getInvoice()->getProvince(),
             'invoiceCountry' => self::getInvoice()->getCountry(),
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
+            'domainId' => self::getDomain()?->getId(),
             'languageId' => self::getLanguage()->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
-            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
-            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate() ? self::getMaxDailyUsageNotificationTemplate()->getId() : null
+            'currencyId' => self::getCurrency()?->getId(),
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId()
         ];
     }
 

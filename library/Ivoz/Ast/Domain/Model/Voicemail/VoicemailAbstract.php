@@ -349,8 +349,8 @@ abstract class VoicemailAbstract
             'imapport' => self::getImapport(),
             'imapflags' => self::getImapflags(),
             'stamp' => self::getStamp(),
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
+            'userId' => self::getUser()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId()
         ];
     }
 

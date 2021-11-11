@@ -168,7 +168,7 @@ abstract class TransformationRuleAbstract
             'priority' => self::getPriority(),
             'matchExpr' => self::getMatchExpr(),
             'replaceExpr' => self::getReplaceExpr(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId()
         ];
     }
 

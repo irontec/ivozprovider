@@ -211,9 +211,9 @@ abstract class CallCsvReportAbstract
             'csvFileSize' => self::getCsv()->getFileSize(),
             'csvMimeType' => self::getCsv()->getMimeType(),
             'csvBaseName' => self::getCsv()->getBaseName(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'callCsvSchedulerId' => self::getCallCsvScheduler() ? self::getCallCsvScheduler()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'brandId' => self::getBrand()?->getId(),
+            'callCsvSchedulerId' => self::getCallCsvScheduler()?->getId()
         ];
     }
 

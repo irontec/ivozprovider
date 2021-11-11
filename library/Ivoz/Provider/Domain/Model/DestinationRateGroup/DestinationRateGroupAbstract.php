@@ -260,7 +260,7 @@ abstract class DestinationRateGroupAbstract
             'fileBaseName' => self::getFile()->getBaseName(),
             'fileImporterArguments' => self::getFile()->getImporterArguments(),
             'brandId' => self::getBrand()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
+            'currencyId' => self::getCurrency()?->getId()
         ];
     }
 

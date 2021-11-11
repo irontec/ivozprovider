@@ -158,8 +158,8 @@ abstract class MaxUsageNotificationAbstract
             'toAddress' => self::getToAddress(),
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'notificationTemplateId' => self::getNotificationTemplate()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 

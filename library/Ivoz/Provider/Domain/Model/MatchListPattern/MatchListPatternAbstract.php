@@ -177,7 +177,7 @@ abstract class MatchListPatternAbstract
             'regExp' => self::getRegexp(),
             'numberValue' => self::getNumbervalue(),
             'matchListId' => self::getMatchList()->getId(),
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

@@ -250,11 +250,11 @@ abstract class InvoiceAbstract
             'pdfFileSize' => self::getPdf()->getFileSize(),
             'pdfMimeType' => self::getPdf()->getMimeType(),
             'pdfBaseName' => self::getPdf()->getBaseName(),
-            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
+            'invoiceTemplateId' => self::getInvoiceTemplate()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()->getId(),
-            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null,
-            'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
+            'numberSequenceId' => self::getNumberSequence()?->getId(),
+            'schedulerId' => self::getScheduler()?->getId()
         ];
     }
 

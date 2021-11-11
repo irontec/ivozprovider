@@ -212,8 +212,8 @@ abstract class TrunksLcrRuleAbstract
             'mt_tvalue' => self::getMtTvalue(),
             'stopper' => self::getStopper(),
             'enabled' => self::getEnabled(),
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupsRelPatternId' => self::getRoutingPatternGroupsRelPattern() ? self::getRoutingPatternGroupsRelPattern()->getId() : null,
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupsRelPatternId' => self::getRoutingPatternGroupsRelPattern()?->getId(),
             'outgoingRoutingId' => self::getOutgoingRouting()->getId()
         ];
     }

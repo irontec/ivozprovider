@@ -207,11 +207,11 @@ abstract class IvrEntryAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'ivrId' => self::getIvr()->getId(),
-            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

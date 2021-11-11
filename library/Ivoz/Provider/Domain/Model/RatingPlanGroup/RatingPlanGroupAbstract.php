@@ -205,7 +205,7 @@ abstract class RatingPlanGroupAbstract
             'descriptionCa' => self::getDescription()->getCa(),
             'descriptionIt' => self::getDescription()->getIt(),
             'brandId' => self::getBrand()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
+            'currencyId' => self::getCurrency()?->getId()
         ];
     }
 

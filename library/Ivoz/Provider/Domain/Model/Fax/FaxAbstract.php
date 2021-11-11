@@ -163,7 +163,7 @@ abstract class FaxAbstract
             'email' => self::getEmail(),
             'sendByEmail' => self::getSendByEmail(),
             'companyId' => self::getCompany()->getId(),
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId()
         ];
     }
 

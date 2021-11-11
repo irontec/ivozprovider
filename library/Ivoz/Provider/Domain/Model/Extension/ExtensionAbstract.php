@@ -231,13 +231,13 @@ abstract class ExtensionAbstract
             'numberValue' => self::getNumberValue(),
             'friendValue' => self::getFriendValue(),
             'companyId' => self::getCompany()->getId(),
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

@@ -149,8 +149,8 @@ abstract class MatchListAbstract
     {
         return [
             'name' => self::getName(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 

@@ -141,7 +141,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     protected function __toArray(): array
     {
         return [
-            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null,
+            'outgoingRoutingId' => self::getOutgoingRouting()?->getId(),
             'carrierId' => self::getCarrier()->getId()
         ];
     }

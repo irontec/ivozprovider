@@ -215,8 +215,8 @@ abstract class MusicOnHoldAbstract
             'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
             'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
             'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 

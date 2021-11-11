@@ -140,7 +140,7 @@ abstract class FeaturesRelBrandAbstract
     protected function __toArray(): array
     {
         return [
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'featureId' => self::getFeature()->getId()
         ];
     }

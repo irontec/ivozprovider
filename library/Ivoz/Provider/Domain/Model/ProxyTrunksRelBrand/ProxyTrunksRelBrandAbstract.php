@@ -140,7 +140,7 @@ abstract class ProxyTrunksRelBrandAbstract
     protected function __toArray(): array
     {
         return [
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'proxyTrunkId' => self::getProxyTrunk()->getId()
         ];
     }

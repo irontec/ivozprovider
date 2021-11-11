@@ -367,17 +367,17 @@ abstract class UserAbstract
             'multiContact' => self::getMultiContact(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany()->getId(),
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
-            'bossAssistantId' => self::getBossAssistant() ? self::getBossAssistant()->getId() : null,
-            'bossAssistantWhiteListId' => self::getBossAssistantWhiteList() ? self::getBossAssistantWhiteList()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
-            'voicemailLocutionId' => self::getVoicemailLocution() ? self::getVoicemailLocution()->getId() : null
+            'callAclId' => self::getCallAcl()?->getId(),
+            'bossAssistantId' => self::getBossAssistant()?->getId(),
+            'bossAssistantWhiteListId' => self::getBossAssistantWhiteList()?->getId(),
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'terminalId' => self::getTerminal()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'timezoneId' => self::getTimezone()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId(),
+            'voicemailLocutionId' => self::getVoicemailLocution()?->getId()
         ];
     }
 

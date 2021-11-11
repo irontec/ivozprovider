@@ -216,7 +216,7 @@ abstract class TrunksLcrGatewayAbstract
             'prefix' => self::getPrefix(),
             'tag' => self::getTag(),
             'defunct' => self::getDefunct(),
-            'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
+            'carrierServerId' => self::getCarrierServer()?->getId()
         ];
     }
 

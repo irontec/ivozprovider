@@ -355,11 +355,11 @@ abstract class ResidentialDeviceAbstract
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
             'brandId' => self::getBrand()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
+            'domainId' => self::getDomain()?->getId(),
             'companyId' => self::getCompany()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'languageId' => self::getLanguage()?->getId()
         ];
     }
 

@@ -322,16 +322,16 @@ abstract class TrunksCdrAbstract
             'parserScheduledAt' => self::getParserScheduledAt(),
             'direction' => self::getDirection(),
             'cgrid' => self::getCgrid(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 

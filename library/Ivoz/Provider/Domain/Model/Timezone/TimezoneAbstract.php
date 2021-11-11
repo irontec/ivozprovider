@@ -176,7 +176,7 @@ abstract class TimezoneAbstract
             'labelEs' => self::getLabel()->getEs(),
             'labelCa' => self::getLabel()->getCa(),
             'labelIt' => self::getLabel()->getIt(),
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
+            'countryId' => self::getCountry()?->getId()
         ];
     }
 

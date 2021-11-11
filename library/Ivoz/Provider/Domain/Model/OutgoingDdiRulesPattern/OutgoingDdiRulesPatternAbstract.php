@@ -188,8 +188,8 @@ abstract class OutgoingDdiRulesPatternAbstract
             'action' => self::getAction(),
             'priority' => self::getPriority(),
             'outgoingDdiRuleId' => self::getOutgoingDdiRule()->getId(),
-            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
-            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
+            'matchListId' => self::getMatchList()?->getId(),
+            'forcedDdiId' => self::getForcedDdi()?->getId()
         ];
     }
 

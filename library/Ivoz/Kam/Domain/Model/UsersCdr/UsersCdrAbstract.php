@@ -273,12 +273,12 @@ abstract class UsersCdrAbstract
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
             'hidden' => self::getHidden(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 

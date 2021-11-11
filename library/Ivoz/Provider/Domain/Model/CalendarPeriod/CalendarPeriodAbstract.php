@@ -204,10 +204,10 @@ abstract class CalendarPeriodAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'calendarId' => self::getCalendar()->getId(),
-            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'locutionId' => self::getLocution()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

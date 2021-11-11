@@ -249,15 +249,15 @@ abstract class ExternalCallFilterAbstract
             'outOfScheduleTargetType' => self::getOutOfScheduleTargetType(),
             'outOfScheduleNumberValue' => self::getOutOfScheduleNumberValue(),
             'companyId' => self::getCompany()->getId(),
-            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
-            'holidayLocutionId' => self::getHolidayLocution() ? self::getHolidayLocution()->getId() : null,
-            'outOfScheduleLocutionId' => self::getOutOfScheduleLocution() ? self::getOutOfScheduleLocution()->getId() : null,
-            'holidayExtensionId' => self::getHolidayExtension() ? self::getHolidayExtension()->getId() : null,
-            'outOfScheduleExtensionId' => self::getOutOfScheduleExtension() ? self::getOutOfScheduleExtension()->getId() : null,
-            'holidayVoiceMailUserId' => self::getHolidayVoiceMailUser() ? self::getHolidayVoiceMailUser()->getId() : null,
-            'outOfScheduleVoiceMailUserId' => self::getOutOfScheduleVoiceMailUser() ? self::getOutOfScheduleVoiceMailUser()->getId() : null,
-            'holidayNumberCountryId' => self::getHolidayNumberCountry() ? self::getHolidayNumberCountry()->getId() : null,
-            'outOfScheduleNumberCountryId' => self::getOutOfScheduleNumberCountry() ? self::getOutOfScheduleNumberCountry()->getId() : null
+            'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
+            'holidayLocutionId' => self::getHolidayLocution()?->getId(),
+            'outOfScheduleLocutionId' => self::getOutOfScheduleLocution()?->getId(),
+            'holidayExtensionId' => self::getHolidayExtension()?->getId(),
+            'outOfScheduleExtensionId' => self::getOutOfScheduleExtension()?->getId(),
+            'holidayVoiceMailUserId' => self::getHolidayVoiceMailUser()?->getId(),
+            'outOfScheduleVoiceMailUserId' => self::getOutOfScheduleVoiceMailUser()?->getId(),
+            'holidayNumberCountryId' => self::getHolidayNumberCountry()?->getId(),
+            'outOfScheduleNumberCountryId' => self::getOutOfScheduleNumberCountry()?->getId()
         ];
     }
 

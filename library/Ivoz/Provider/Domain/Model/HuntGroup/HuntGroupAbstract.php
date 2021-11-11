@@ -235,10 +235,10 @@ abstract class HuntGroupAbstract
             'preventMissedCalls' => self::getPreventMissedCalls(),
             'allowCallForwards' => self::getAllowCallForwards(),
             'companyId' => self::getCompany()->getId(),
-            'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
-            'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
-            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null,
-            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
+            'noAnswerLocutionId' => self::getNoAnswerLocution()?->getId(),
+            'noAnswerExtensionId' => self::getNoAnswerExtension()?->getId(),
+            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser()?->getId(),
+            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry()?->getId()
         ];
     }
 

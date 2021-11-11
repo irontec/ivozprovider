@@ -141,8 +141,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     protected function __toArray(): array
     {
         return [
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupId' => self::getRoutingPatternGroup()?->getId()
         ];
     }
 

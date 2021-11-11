@@ -253,12 +253,12 @@ abstract class OutgoingRoutingAbstract
             'forceClid' => self::getForceClid(),
             'clid' => self::getClid(),
             'brandId' => self::getBrand()->getId(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null,
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null,
-            'clidCountryId' => self::getClidCountry() ? self::getClidCountry()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupId' => self::getRoutingPatternGroup()?->getId(),
+            'routingTagId' => self::getRoutingTag()?->getId(),
+            'clidCountryId' => self::getClidCountry()?->getId()
         ];
     }
 

@@ -140,7 +140,7 @@ abstract class IvrExcludedExtensionAbstract
     protected function __toArray(): array
     {
         return [
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
+            'ivrId' => self::getIvr()?->getId(),
             'extensionId' => self::getExtension()->getId()
         ];
     }

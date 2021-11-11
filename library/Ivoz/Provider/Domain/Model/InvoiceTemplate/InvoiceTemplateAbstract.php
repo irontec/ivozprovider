@@ -164,7 +164,7 @@ abstract class InvoiceTemplateAbstract
             'template' => self::getTemplate(),
             'templateHeader' => self::getTemplateHeader(),
             'templateFooter' => self::getTemplateFooter(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 

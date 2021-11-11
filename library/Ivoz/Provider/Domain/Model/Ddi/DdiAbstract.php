@@ -335,19 +335,19 @@ abstract class DdiAbstract
             'friendValue' => self::getFriendValue(),
             'companyId' => self::getCompany()->getId(),
             'brandId' => self::getBrand()->getId(),
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'externalCallFilterId' => self::getExternalCallFilter() ? self::getExternalCallFilter()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'externalCallFilterId' => self::getExternalCallFilter()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId(),
+            'countryId' => self::getCountry()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 

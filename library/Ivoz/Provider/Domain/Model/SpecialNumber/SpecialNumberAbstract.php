@@ -162,7 +162,7 @@ abstract class SpecialNumberAbstract
             'number' => self::getNumber(),
             'numberE164' => self::getNumberE164(),
             'disableCDR' => self::getDisableCDR(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'countryId' => self::getCountry()->getId()
         ];
     }

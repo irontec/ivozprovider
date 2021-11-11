@@ -173,8 +173,8 @@ abstract class BannedAddressAbstract
             'aor' => self::getAor(),
             'description' => self::getDescription(),
             'lastTimeBanned' => self::getLastTimeBanned(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
