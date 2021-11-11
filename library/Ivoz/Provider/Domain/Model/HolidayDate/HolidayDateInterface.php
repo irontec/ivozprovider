@@ -65,21 +65,12 @@ interface HolidayDateInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEventDate(): \DateTimeInterface;
+    public function getEventDate(): \DateTime;
 
     public function getWholeDayEvent(): bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): ?\DateTimeInterface;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeOut(): ?\DateTimeInterface;
 
     public function getRouteType(): ?string;

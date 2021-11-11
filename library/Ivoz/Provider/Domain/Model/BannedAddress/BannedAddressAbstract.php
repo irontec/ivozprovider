@@ -264,13 +264,11 @@ abstract class BannedAddressAbstract
         return $this->description;
     }
 
-    protected function setLastTimeBanned($lastTimeBanned = null): static
+    protected function setLastTimeBanned(string|\DateTimeInterface|null $lastTimeBanned = null): static
     {
         if (!is_null($lastTimeBanned)) {
-            Assertion::notNull(
-                $lastTimeBanned,
-                'lastTimeBanned value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastTimeBanned = DateTimeHelper::createOrFix(
                 $lastTimeBanned,
                 null
@@ -286,10 +284,7 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastTimeBanned(): ?\DateTimeInterface
+    public function getLastTimeBanned(): ?\DateTime
     {
         return !is_null($this->lastTimeBanned) ? clone $this->lastTimeBanned : null;
     }

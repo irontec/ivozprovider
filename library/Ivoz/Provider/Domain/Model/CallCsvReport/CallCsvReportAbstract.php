@@ -31,12 +31,24 @@ abstract class CallCsvReportAbstract
      */
     protected $sentTo = '';
 
-    protected \DateTimeInterface $inDate;
+    /**
+     * @var \DateTime
+     */
+    protected $inDate;
 
-    protected \DateTimeInterface $outDate;
+    /**
+     * @var \DateTime
+     */
+    protected $outDate;
 
-    protected \DateTimeInterface $createdOn;
+    /**
+     * @var \DateTime
+     */
+    protected $createdOn;
 
+    /**
+     * @var Csv
+     */
     protected $csv;
 
     /**
@@ -231,9 +243,10 @@ abstract class CallCsvReportAbstract
         return $this->sentTo;
     }
 
-    protected function setInDate($inDate): static
+    protected function setInDate(string|\DateTimeInterface $inDate): static
     {
 
+        /** @var \Datetime */
         $inDate = DateTimeHelper::createOrFix(
             $inDate,
             null
@@ -248,17 +261,15 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): \DateTimeInterface
+    public function getInDate(): \DateTime
     {
         return clone $this->inDate;
     }
 
-    protected function setOutDate($outDate): static
+    protected function setOutDate(string|\DateTimeInterface $outDate): static
     {
 
+        /** @var \Datetime */
         $outDate = DateTimeHelper::createOrFix(
             $outDate,
             null
@@ -273,17 +284,15 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): \DateTimeInterface
+    public function getOutDate(): \DateTime
     {
         return clone $this->outDate;
     }
 
-    protected function setCreatedOn($createdOn): static
+    protected function setCreatedOn(string|\DateTimeInterface $createdOn): static
     {
 
+        /** @var \Datetime */
         $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null
@@ -298,10 +307,7 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }

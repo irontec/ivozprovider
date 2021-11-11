@@ -68,10 +68,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function toDto(int $depth = 0): FaxesInOutDto;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCalldate(): \DateTimeInterface;
+    public function getCalldate(): \DateTime;
 
     public function getSrc(): ?string;
 

@@ -84,17 +84,11 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getEmail(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastExecution(): ?\DateTimeInterface;
+    public function getLastExecution(): ?\DateTime;
 
     public function getLastExecutionError(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getNextExecution(): ?\DateTimeInterface;
+    public function getNextExecution(): ?\DateTime;
 
     public function getTaxRate(): ?float;
 

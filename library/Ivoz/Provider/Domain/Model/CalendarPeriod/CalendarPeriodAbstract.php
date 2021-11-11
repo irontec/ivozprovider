@@ -221,32 +221,26 @@ abstract class CalendarPeriodAbstract
         ];
     }
 
-    protected function setStartDate($startDate): static
+    protected function setStartDate(string|\DateTimeInterface $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartDate(): \DateTimeInterface
+    public function getStartDate(): \DateTime
     {
         return clone $this->startDate;
     }
 
-    protected function setEndDate($endDate): static
+    protected function setEndDate(string|\DateTimeInterface $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEndDate(): \DateTimeInterface
+    public function getEndDate(): \DateTime
     {
         return clone $this->endDate;
     }

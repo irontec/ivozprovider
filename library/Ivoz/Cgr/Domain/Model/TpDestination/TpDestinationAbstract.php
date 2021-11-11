@@ -40,7 +40,7 @@ abstract class TpDestinationAbstract
      * @var \DateTime
      * column: created_at
      */
-    protected \DateTimeInterface $createdAt;
+    protected $createdAt;
 
     /**
      * @var DestinationInterface
@@ -223,9 +223,10 @@ abstract class TpDestinationAbstract
         return $this->prefix;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
@@ -240,10 +241,7 @@ abstract class TpDestinationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

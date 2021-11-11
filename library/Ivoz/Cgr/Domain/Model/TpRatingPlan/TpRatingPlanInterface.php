@@ -56,10 +56,7 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
 
     public function getWeight(): float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 

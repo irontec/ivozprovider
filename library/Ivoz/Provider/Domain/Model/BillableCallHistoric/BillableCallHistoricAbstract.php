@@ -378,13 +378,11 @@ abstract class BillableCallHistoricAbstract
         return $this->callid;
     }
 
-    protected function setStartTime($startTime = null): static
+    protected function setStartTime(string|\DateTimeInterface|null $startTime = null): static
     {
         if (!is_null($startTime)) {
-            Assertion::notNull(
-                $startTime,
-                'startTime value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $startTime = DateTimeHelper::createOrFix(
                 $startTime,
                 null
@@ -400,10 +398,7 @@ abstract class BillableCallHistoricAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): ?\DateTimeInterface
+    public function getStartTime(): ?\DateTime
     {
         return !is_null($this->startTime) ? clone $this->startTime : null;
     }

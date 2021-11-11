@@ -909,13 +909,11 @@ abstract class VoicemailAbstract
         return $this->imapflags;
     }
 
-    protected function setStamp($stamp = null): static
+    protected function setStamp(string|\DateTimeInterface|null $stamp = null): static
     {
         if (!is_null($stamp)) {
-            Assertion::notNull(
-                $stamp,
-                'stamp value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $stamp = DateTimeHelper::createOrFix(
                 $stamp,
                 null
@@ -931,10 +929,7 @@ abstract class VoicemailAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): ?\DateTimeInterface
+    public function getStamp(): ?\DateTime
     {
         return !is_null($this->stamp) ? clone $this->stamp : null;
     }

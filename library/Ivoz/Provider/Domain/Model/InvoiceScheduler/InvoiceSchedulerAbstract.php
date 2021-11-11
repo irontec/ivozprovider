@@ -314,13 +314,11 @@ abstract class InvoiceSchedulerAbstract
         return $this->email;
     }
 
-    protected function setLastExecution($lastExecution = null): static
+    protected function setLastExecution(string|\DateTimeInterface|null $lastExecution = null): static
     {
         if (!is_null($lastExecution)) {
-            Assertion::notNull(
-                $lastExecution,
-                'lastExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
@@ -336,10 +334,7 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastExecution(): ?\DateTimeInterface
+    public function getLastExecution(): ?\DateTime
     {
         return !is_null($this->lastExecution) ? clone $this->lastExecution : null;
     }
@@ -360,13 +355,11 @@ abstract class InvoiceSchedulerAbstract
         return $this->lastExecutionError;
     }
 
-    protected function setNextExecution($nextExecution = null): static
+    protected function setNextExecution(string|\DateTimeInterface|null $nextExecution = null): static
     {
         if (!is_null($nextExecution)) {
-            Assertion::notNull(
-                $nextExecution,
-                'nextExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null
@@ -382,10 +375,7 @@ abstract class InvoiceSchedulerAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getNextExecution(): ?\DateTimeInterface
+    public function getNextExecution(): ?\DateTime
     {
         return !is_null($this->nextExecution) ? clone $this->nextExecution : null;
     }

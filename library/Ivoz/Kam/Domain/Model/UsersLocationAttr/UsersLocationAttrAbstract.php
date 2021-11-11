@@ -53,7 +53,7 @@ abstract class UsersLocationAttrAbstract
      * @var \DateTime
      * column: last_modified
      */
-    protected \DateTimeInterface $lastModified;
+    protected $lastModified;
 
     /**
      * Constructor
@@ -284,9 +284,10 @@ abstract class UsersLocationAttrAbstract
         return $this->avalue;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
@@ -301,10 +302,7 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

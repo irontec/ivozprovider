@@ -49,7 +49,10 @@ abstract class UsersLocationAbstract
      */
     protected $path = null;
 
-    protected \DateTimeInterface $expires;
+    /**
+     * @var \DateTime
+     */
+    protected $expires;
 
     /**
      * @var float
@@ -70,7 +73,7 @@ abstract class UsersLocationAbstract
      * @var \DateTime
      * column: last_modified
      */
-    protected \DateTimeInterface $lastModified;
+    protected $lastModified;
 
     /**
      * @var int
@@ -446,9 +449,10 @@ abstract class UsersLocationAbstract
         return $this->path;
     }
 
-    protected function setExpires($expires): static
+    protected function setExpires(string|\DateTimeInterface $expires): static
     {
 
+        /** @var \Datetime */
         $expires = DateTimeHelper::createOrFix(
             $expires,
             '2030-05-28 21:32:15'
@@ -463,10 +467,7 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getExpires(): \DateTimeInterface
+    public function getExpires(): \DateTime
     {
         return clone $this->expires;
     }
@@ -509,9 +510,10 @@ abstract class UsersLocationAbstract
         return $this->cseq;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
@@ -526,10 +528,7 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

@@ -24,7 +24,10 @@ abstract class FaxesInOutAbstract
 {
     use ChangelogTrait;
 
-    protected \DateTimeInterface $calldate;
+    /**
+     * @var \DateTime
+     */
+    protected $calldate;
 
     /**
      * @var ?string
@@ -52,6 +55,9 @@ abstract class FaxesInOutAbstract
      */
     protected $status = null;
 
+    /**
+     * @var File
+     */
     protected $file;
 
     /**
@@ -225,9 +231,10 @@ abstract class FaxesInOutAbstract
         ];
     }
 
-    protected function setCalldate($calldate): static
+    protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
+        /** @var \Datetime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             null
@@ -242,10 +249,7 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCalldate(): \DateTimeInterface
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }

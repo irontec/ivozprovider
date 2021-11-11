@@ -111,10 +111,7 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getImapflags(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): ?\DateTimeInterface;
+    public function getStamp(): ?\DateTime;
 
     public function getUser(): ?UserInterface;
 

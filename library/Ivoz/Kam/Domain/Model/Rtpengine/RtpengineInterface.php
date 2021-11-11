@@ -56,10 +56,7 @@ interface RtpengineInterface extends LoggableEntityInterface
 
     public function getDisabled(): bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): \DateTimeInterface;
+    public function getStamp(): \DateTime;
 
     public function getDescription(): ?string;
 

@@ -66,10 +66,7 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
 
     public function getMaxCostStrategy(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 

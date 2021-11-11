@@ -296,13 +296,11 @@ abstract class InvoiceAbstract
         return $this->number;
     }
 
-    protected function setInDate($inDate = null): static
+    protected function setInDate(string|\DateTimeInterface|null $inDate = null): static
     {
         if (!is_null($inDate)) {
-            Assertion::notNull(
-                $inDate,
-                'inDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $inDate = DateTimeHelper::createOrFix(
                 $inDate,
                 null
@@ -318,21 +316,16 @@ abstract class InvoiceAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): ?\DateTimeInterface
+    public function getInDate(): ?\DateTime
     {
         return !is_null($this->inDate) ? clone $this->inDate : null;
     }
 
-    protected function setOutDate($outDate = null): static
+    protected function setOutDate(string|\DateTimeInterface|null $outDate = null): static
     {
         if (!is_null($outDate)) {
-            Assertion::notNull(
-                $outDate,
-                'outDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $outDate = DateTimeHelper::createOrFix(
                 $outDate,
                 null
@@ -348,10 +341,7 @@ abstract class InvoiceAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): ?\DateTimeInterface
+    public function getOutDate(): ?\DateTime
     {
         return !is_null($this->outDate) ? clone $this->outDate : null;
     }

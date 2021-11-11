@@ -59,10 +59,7 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getCallid(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCalldate(): \DateTimeInterface;
+    public function getCalldate(): \DateTime;
 
     public function getType(): string;
 

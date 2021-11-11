@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
@@ -92,7 +91,7 @@ abstract class RatingPlanAbstract
      */
     protected function __construct(
         float $weight,
-        \DateTimeInterface|string $timeIn
+        \DateTimeInterface $timeIn
     ) {
         $this->setWeight($weight);
         $this->setTimeIn($timeIn);
@@ -280,19 +279,16 @@ abstract class RatingPlanAbstract
         return $this->timingType;
     }
 
-    protected function setTimeIn($timeIn): static
+    protected function setTimeIn(\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface
     {
-        return clone $this->timeIn;
+        return $this->timeIn;
     }
 
     protected function setMonday(?bool $monday = null): static

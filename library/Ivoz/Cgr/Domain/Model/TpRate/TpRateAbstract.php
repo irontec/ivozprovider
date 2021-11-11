@@ -65,7 +65,7 @@ abstract class TpRateAbstract
      * @var \DateTime
      * column: created_at
      */
-    protected \DateTimeInterface $createdAt;
+    protected $createdAt;
 
     /**
      * @var DestinationRateInterface
@@ -324,9 +324,10 @@ abstract class TpRateAbstract
         return $this->groupIntervalStart;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
@@ -341,10 +342,7 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

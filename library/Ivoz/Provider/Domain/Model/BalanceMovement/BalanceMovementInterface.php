@@ -51,10 +51,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
 
     public function getBalance(): ?float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): ?\DateTimeInterface;
+    public function getCreatedOn(): ?\DateTime;
 
     public function getCompany(): ?CompanyInterface;
 

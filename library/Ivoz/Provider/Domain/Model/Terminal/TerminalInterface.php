@@ -110,10 +110,7 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function getMac(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastProvisionDate(): ?\DateTimeInterface;
+    public function getLastProvisionDate(): ?\DateTime;
 
     public function getT38Passthrough(): string;
 

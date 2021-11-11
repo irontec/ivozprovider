@@ -60,20 +60,11 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
 
     public function getSentTo(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): \DateTimeInterface;
+    public function getInDate(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): \DateTimeInterface;
+    public function getOutDate(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface;
+    public function getCreatedOn(): \DateTime;
 
     public function getCsv(): Csv;
 

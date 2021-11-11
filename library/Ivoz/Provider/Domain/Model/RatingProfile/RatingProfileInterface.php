@@ -59,10 +59,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
      */
     public function toDto(int $depth = 0): RatingProfileDto;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface;
+    public function getActivationTime(): \DateTime;
 
     public function setCompany(?CompanyInterface $company = null): static;
 

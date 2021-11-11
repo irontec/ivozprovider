@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -81,8 +80,8 @@ abstract class ScheduleAbstract
      */
     protected function __construct(
         string $name,
-        \DateTimeInterface|string $timeIn,
-        \DateTimeInterface|string $timeout
+        \DateTimeInterface $timeIn,
+        \DateTimeInterface $timeout
     ) {
         $this->setName($name);
         $this->setTimeIn($timeIn);
@@ -245,34 +244,28 @@ abstract class ScheduleAbstract
         return $this->name;
     }
 
-    protected function setTimeIn($timeIn): static
+    protected function setTimeIn(\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface
     {
-        return clone $this->timeIn;
+        return $this->timeIn;
     }
 
-    protected function setTimeout($timeout): static
+    protected function setTimeout(\DateTimeInterface $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeout(): \DateTimeInterface
     {
-        return clone $this->timeout;
+        return $this->timeout;
     }
 
     protected function setMonday(?bool $monday = null): static

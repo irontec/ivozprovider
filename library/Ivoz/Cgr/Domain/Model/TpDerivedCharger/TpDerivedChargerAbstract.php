@@ -167,7 +167,7 @@ abstract class TpDerivedChargerAbstract
      * @var \DateTime
      * column: created_at
      */
-    protected \DateTimeInterface $createdAt;
+    protected $createdAt;
 
     /**
      * @var BrandInterface
@@ -789,9 +789,10 @@ abstract class TpDerivedChargerAbstract
         return $this->costField;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
@@ -806,10 +807,7 @@ abstract class TpDerivedChargerAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

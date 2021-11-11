@@ -87,13 +87,13 @@ abstract class TpCdrAbstract
      * @var \DateTime
      * column: setup_time
      */
-    protected \DateTimeInterface $setupTime;
+    protected $setupTime;
 
     /**
      * @var \DateTime
      * column: answer_time
      */
-    protected \DateTimeInterface $answerTime;
+    protected $answerTime;
 
     /**
      * @var int
@@ -552,9 +552,10 @@ abstract class TpCdrAbstract
         return $this->destination;
     }
 
-    protected function setSetupTime($setupTime): static
+    protected function setSetupTime(string|\DateTimeInterface $setupTime): static
     {
 
+        /** @var \Datetime */
         $setupTime = DateTimeHelper::createOrFix(
             $setupTime,
             null
@@ -569,17 +570,15 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getSetupTime(): \DateTimeInterface
+    public function getSetupTime(): \DateTime
     {
         return clone $this->setupTime;
     }
 
-    protected function setAnswerTime($answerTime): static
+    protected function setAnswerTime(string|\DateTimeInterface $answerTime): static
     {
 
+        /** @var \Datetime */
         $answerTime = DateTimeHelper::createOrFix(
             $answerTime,
             null
@@ -594,10 +593,7 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getAnswerTime(): \DateTimeInterface
+    public function getAnswerTime(): \DateTime
     {
         return clone $this->answerTime;
     }
@@ -676,13 +672,11 @@ abstract class TpCdrAbstract
         return $this->extraInfo;
     }
 
-    protected function setCreatedAt($createdAt = null): static
+    protected function setCreatedAt(string|\DateTimeInterface|null $createdAt = null): static
     {
         if (!is_null($createdAt)) {
-            Assertion::notNull(
-                $createdAt,
-                'createdAt value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $createdAt = DateTimeHelper::createOrFix(
                 $createdAt,
                 null
@@ -698,21 +692,16 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTime
     {
         return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
 
-    protected function setUpdatedAt($updatedAt = null): static
+    protected function setUpdatedAt(string|\DateTimeInterface|null $updatedAt = null): static
     {
         if (!is_null($updatedAt)) {
-            Assertion::notNull(
-                $updatedAt,
-                'updatedAt value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $updatedAt = DateTimeHelper::createOrFix(
                 $updatedAt,
                 null
@@ -728,21 +717,16 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTime
     {
         return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
 
-    protected function setDeletedAt($deletedAt = null): static
+    protected function setDeletedAt(string|\DateTimeInterface|null $deletedAt = null): static
     {
         if (!is_null($deletedAt)) {
-            Assertion::notNull(
-                $deletedAt,
-                'deletedAt value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $deletedAt = DateTimeHelper::createOrFix(
                 $deletedAt,
                 null
@@ -758,10 +742,7 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getDeletedAt(): ?\DateTimeInterface
+    public function getDeletedAt(): ?\DateTime
     {
         return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }

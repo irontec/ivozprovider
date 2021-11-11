@@ -78,7 +78,7 @@ abstract class TpLcrRuleAbstract
      * @var \DateTime
      * column: activation_time
      */
-    protected \DateTimeInterface $activationTime;
+    protected $activationTime;
 
     /**
      * @var float
@@ -89,7 +89,7 @@ abstract class TpLcrRuleAbstract
      * @var \DateTime
      * column: created_at
      */
-    protected \DateTimeInterface $createdAt;
+    protected $createdAt;
 
     /**
      * @var ?OutgoingRoutingInterface
@@ -424,9 +424,10 @@ abstract class TpLcrRuleAbstract
         return $this->strategyParams;
     }
 
-    protected function setActivationTime($activationTime): static
+    protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
+        /** @var \Datetime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
@@ -441,10 +442,7 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }
@@ -461,9 +459,10 @@ abstract class TpLcrRuleAbstract
         return $this->weight;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
@@ -478,10 +477,7 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

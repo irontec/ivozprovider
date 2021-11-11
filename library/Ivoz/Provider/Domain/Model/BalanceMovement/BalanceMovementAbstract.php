@@ -204,13 +204,11 @@ abstract class BalanceMovementAbstract
         return $this->balance;
     }
 
-    protected function setCreatedOn($createdOn = null): static
+    protected function setCreatedOn(string|\DateTimeInterface|null $createdOn = null): static
     {
         if (!is_null($createdOn)) {
-            Assertion::notNull(
-                $createdOn,
-                'createdOn value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $createdOn = DateTimeHelper::createOrFix(
                 $createdOn,
                 'CURRENT_TIMESTAMP'
@@ -226,10 +224,7 @@ abstract class BalanceMovementAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): ?\DateTimeInterface
+    public function getCreatedOn(): ?\DateTime
     {
         return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }

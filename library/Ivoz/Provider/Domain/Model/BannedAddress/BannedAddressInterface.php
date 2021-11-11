@@ -61,10 +61,7 @@ interface BannedAddressInterface extends LoggableEntityInterface
 
     public function getDescription(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastTimeBanned(): ?\DateTimeInterface;
+    public function getLastTimeBanned(): ?\DateTime;
 
     public function getBrand(): ?BrandInterface;
 

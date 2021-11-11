@@ -81,15 +81,9 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function getNumber(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): ?\DateTimeInterface;
+    public function getInDate(): ?\DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): ?\DateTimeInterface;
+    public function getOutDate(): ?\DateTime;
 
     public function getTotal(): ?float;
 

@@ -41,7 +41,10 @@ abstract class RtpengineAbstract
      */
     protected $disabled = false;
 
-    protected \DateTimeInterface $stamp;
+    /**
+     * @var \DateTime
+     */
+    protected $stamp;
 
     /**
      * @var ?string
@@ -248,9 +251,10 @@ abstract class RtpengineAbstract
         return $this->disabled;
     }
 
-    protected function setStamp($stamp): static
+    protected function setStamp(string|\DateTimeInterface $stamp): static
     {
 
+        /** @var \Datetime */
         $stamp = DateTimeHelper::createOrFix(
             $stamp,
             '2000-01-01 00:00:00'
@@ -265,10 +269,7 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): \DateTimeInterface
+    public function getStamp(): \DateTime
     {
         return clone $this->stamp;
     }

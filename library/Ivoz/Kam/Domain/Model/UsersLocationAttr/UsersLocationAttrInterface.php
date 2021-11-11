@@ -50,10 +50,7 @@ interface UsersLocationAttrInterface extends EntityInterface
 
     public function getAvalue(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastModified(): \DateTimeInterface;
+    public function getLastModified(): \DateTime;
 
     public function isInitialized(): bool;
 }

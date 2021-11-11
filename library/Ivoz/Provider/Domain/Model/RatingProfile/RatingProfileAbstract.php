@@ -27,7 +27,10 @@ abstract class RatingProfileAbstract
 {
     use ChangelogTrait;
 
-    protected \DateTimeInterface $activationTime;
+    /**
+     * @var \DateTime
+     */
+    protected $activationTime;
 
     /**
      * @var ?CompanyInterface
@@ -178,9 +181,10 @@ abstract class RatingProfileAbstract
         ];
     }
 
-    protected function setActivationTime($activationTime): static
+    protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
+        /** @var \Datetime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
@@ -195,10 +199,7 @@ abstract class RatingProfileAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }

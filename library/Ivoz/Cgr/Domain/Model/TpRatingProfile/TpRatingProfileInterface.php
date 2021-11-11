@@ -67,10 +67,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
 
     public function getCdrStatQueueIds(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setRatingProfile(?RatingProfileInterface $ratingProfile = null): static;
 

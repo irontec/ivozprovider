@@ -70,10 +70,7 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
 
     public function getCallid(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): ?\DateTimeInterface;
+    public function getStartTime(): ?\DateTime;
 
     public function getDuration(): float;
 

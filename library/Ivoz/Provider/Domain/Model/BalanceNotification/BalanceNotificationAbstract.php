@@ -215,13 +215,11 @@ abstract class BalanceNotificationAbstract
         return $this->threshold;
     }
 
-    protected function setLastSent($lastSent = null): static
+    protected function setLastSent(string|\DateTimeInterface|null $lastSent = null): static
     {
         if (!is_null($lastSent)) {
-            Assertion::notNull(
-                $lastSent,
-                'lastSent value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null
@@ -237,10 +235,7 @@ abstract class BalanceNotificationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface
+    public function getLastSent(): ?\DateTime
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }

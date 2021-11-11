@@ -36,7 +36,10 @@ abstract class ChangelogAbstract
      */
     protected $data = [];
 
-    protected \DateTimeInterface $createdOn;
+    /**
+     * @var \DateTime
+     */
+    protected $createdOn;
 
     /**
      * @var int
@@ -225,9 +228,10 @@ abstract class ChangelogAbstract
         return $this->data;
     }
 
-    protected function setCreatedOn($createdOn): static
+    protected function setCreatedOn(string|\DateTimeInterface $createdOn): static
     {
 
+        /** @var \Datetime */
         $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null
@@ -242,10 +246,7 @@ abstract class ChangelogAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }

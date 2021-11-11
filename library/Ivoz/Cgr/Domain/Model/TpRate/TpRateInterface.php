@@ -70,10 +70,7 @@ interface TpRateInterface extends LoggableEntityInterface
 
     public function getGroupIntervalStart(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 

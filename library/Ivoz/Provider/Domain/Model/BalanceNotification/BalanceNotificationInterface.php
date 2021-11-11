@@ -60,10 +60,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
 
     public function getThreshold(): ?float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface;
+    public function getLastSent(): ?\DateTime;
 
     public function getCompany(): ?CompanyInterface;
 

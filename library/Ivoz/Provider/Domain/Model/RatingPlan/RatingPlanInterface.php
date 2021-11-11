@@ -78,9 +78,6 @@ interface RatingPlanInterface extends LoggableEntityInterface
 
     public function getTimingType(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface;
 
     public function getMonday(): ?bool;

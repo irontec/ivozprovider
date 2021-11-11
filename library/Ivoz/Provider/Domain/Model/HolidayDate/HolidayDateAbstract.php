@@ -264,17 +264,14 @@ abstract class HolidayDateAbstract
         return $this->name;
     }
 
-    protected function setEventDate($eventDate): static
+    protected function setEventDate(string|\DateTimeInterface $eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEventDate(): \DateTimeInterface
+    public function getEventDate(): \DateTime
     {
         return clone $this->eventDate;
     }
@@ -291,34 +288,28 @@ abstract class HolidayDateAbstract
         return $this->wholeDayEvent;
     }
 
-    protected function setTimeIn($timeIn = null): static
+    protected function setTimeIn(?\DateTimeInterface $timeIn = null): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): ?\DateTimeInterface
     {
-        return !is_null($this->timeIn) ? clone $this->timeIn : null;
+        return $this->timeIn;
     }
 
-    protected function setTimeOut($timeOut = null): static
+    protected function setTimeOut(?\DateTimeInterface $timeOut = null): static
     {
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeOut(): ?\DateTimeInterface
     {
-        return !is_null($this->timeOut) ? clone $this->timeOut : null;
+        return $this->timeOut;
     }
 
     protected function setRouteType(?string $routeType = null): static

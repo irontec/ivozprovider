@@ -98,10 +98,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
 
     public function getActionTriggers(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setCarrier(CarrierInterface $carrier): static;
 

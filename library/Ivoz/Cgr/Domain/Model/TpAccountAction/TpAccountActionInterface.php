@@ -63,10 +63,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
 
     public function getDisabled(): bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function getCompany(): ?CompanyInterface;
 

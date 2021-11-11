@@ -54,15 +54,9 @@ interface TrunksCdrInterface extends EntityInterface
      */
     public function toDto(int $depth = 0): TrunksCdrDto;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): \DateTimeInterface;
+    public function getStartTime(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEndTime(): \DateTimeInterface;
+    public function getEndTime(): \DateTime;
 
     public function getDuration(): float;
 
@@ -82,10 +76,7 @@ interface TrunksCdrInterface extends EntityInterface
 
     public function getParsed(): ?bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getParserScheduledAt(): \DateTimeInterface;
+    public function getParserScheduledAt(): \DateTime;
 
     public function getDirection(): ?string;
 

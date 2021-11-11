@@ -51,10 +51,7 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
 
     public function getThreshold(): ?float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface;
+    public function getLastSent(): ?\DateTime;
 
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
 

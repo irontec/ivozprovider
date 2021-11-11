@@ -70,7 +70,7 @@ abstract class TpAccountActionAbstract
      * @var \DateTime
      * column: created_at
      */
-    protected \DateTimeInterface $createdAt;
+    protected $createdAt;
 
     /**
      * @var ?CompanyInterface
@@ -357,9 +357,10 @@ abstract class TpAccountActionAbstract
         return $this->disabled;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
@@ -374,10 +375,7 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

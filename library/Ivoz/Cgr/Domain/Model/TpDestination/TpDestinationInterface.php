@@ -52,10 +52,7 @@ interface TpDestinationInterface extends LoggableEntityInterface
 
     public function getPrefix(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setDestination(DestinationInterface $destination): static;
 

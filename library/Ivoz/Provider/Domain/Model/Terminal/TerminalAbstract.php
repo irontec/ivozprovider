@@ -379,13 +379,11 @@ abstract class TerminalAbstract
         return $this->mac;
     }
 
-    protected function setLastProvisionDate($lastProvisionDate = null): static
+    protected function setLastProvisionDate(string|\DateTimeInterface|null $lastProvisionDate = null): static
     {
         if (!is_null($lastProvisionDate)) {
-            Assertion::notNull(
-                $lastProvisionDate,
-                'lastProvisionDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastProvisionDate = DateTimeHelper::createOrFix(
                 $lastProvisionDate,
                 null
@@ -401,10 +399,7 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastProvisionDate(): ?\DateTimeInterface
+    public function getLastProvisionDate(): ?\DateTime
     {
         return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }

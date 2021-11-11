@@ -43,13 +43,13 @@ abstract class TrunksCdrAbstract
      * @var \DateTime
      * column: start_time
      */
-    protected \DateTimeInterface $startTime;
+    protected $startTime;
 
     /**
      * @var \DateTime
      * column: end_time
      */
-    protected \DateTimeInterface $endTime;
+    protected $endTime;
 
     /**
      * @var float
@@ -96,7 +96,10 @@ abstract class TrunksCdrAbstract
      */
     protected $parsed = false;
 
-    protected \DateTimeInterface $parserScheduledAt;
+    /**
+     * @var \DateTime
+     */
+    protected $parserScheduledAt;
 
     /**
      * @var ?string
@@ -368,9 +371,10 @@ abstract class TrunksCdrAbstract
         ];
     }
 
-    protected function setStartTime($startTime): static
+    protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
+        /** @var \Datetime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
@@ -385,17 +389,15 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): \DateTimeInterface
+    public function getStartTime(): \DateTime
     {
         return clone $this->startTime;
     }
 
-    protected function setEndTime($endTime): static
+    protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
+        /** @var \Datetime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
@@ -410,10 +412,7 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEndTime(): \DateTimeInterface
+    public function getEndTime(): \DateTime
     {
         return clone $this->endTime;
     }
@@ -550,9 +549,10 @@ abstract class TrunksCdrAbstract
         return $this->parsed;
     }
 
-    protected function setParserScheduledAt($parserScheduledAt): static
+    protected function setParserScheduledAt(string|\DateTimeInterface $parserScheduledAt): static
     {
 
+        /** @var \Datetime */
         $parserScheduledAt = DateTimeHelper::createOrFix(
             $parserScheduledAt,
             'CURRENT_TIMESTAMP'
@@ -567,10 +567,7 @@ abstract class TrunksCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getParserScheduledAt(): \DateTimeInterface
+    public function getParserScheduledAt(): \DateTime
     {
         return clone $this->parserScheduledAt;
     }

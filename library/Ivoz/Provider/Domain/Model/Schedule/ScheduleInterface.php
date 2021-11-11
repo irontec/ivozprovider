@@ -57,14 +57,8 @@ interface ScheduleInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeout(): \DateTimeInterface;
 
     public function getMonday(): ?bool;

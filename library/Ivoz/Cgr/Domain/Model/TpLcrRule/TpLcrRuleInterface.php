@@ -66,17 +66,11 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 
     public function getStrategyParams(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface;
+    public function getActivationTime(): \DateTime;
 
     public function getWeight(): float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static;
 

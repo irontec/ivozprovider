@@ -96,10 +96,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
 
     public function getCostField(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function getBrand(): BrandInterface;
 
