@@ -104,6 +104,9 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [

@@ -49,6 +49,9 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [

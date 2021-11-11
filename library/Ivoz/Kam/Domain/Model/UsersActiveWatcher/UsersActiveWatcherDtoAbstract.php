@@ -193,6 +193,9 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [

@@ -200,6 +200,9 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [

@@ -98,6 +98,9 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
