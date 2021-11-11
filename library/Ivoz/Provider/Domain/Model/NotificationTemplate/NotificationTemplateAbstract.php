@@ -20,17 +20,21 @@ abstract class NotificationTemplateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var string
      * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
      */
     protected $type;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * Constructor

@@ -18,42 +18,42 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @var string|null
      */
-    private $fromName;
+    private $fromName = null;
 
     /**
      * @var string|null
      */
-    private $fromAddress;
+    private $fromAddress = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $subject;
+    private $subject = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $body;
+    private $body = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bodyType = 'text/plain';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $notificationTemplate;
+    private $notificationTemplate = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     public function __construct($id = null)
     {
@@ -178,7 +178,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -19,90 +19,133 @@ abstract class TpCdrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $cgrid;
 
     /**
+     * @var string
      * column: run_id
      */
     protected $runId;
 
     /**
+     * @var string
      * column: origin_host
      */
     protected $originHost;
 
+    /**
+     * @var string
+     */
     protected $source;
 
     /**
+     * @var string
      * column: origin_id
      */
     protected $originId;
 
+    /**
+     * @var string
+     */
     protected $tor;
 
     /**
+     * @var string
      * column: request_type
      */
     protected $requestType;
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $category;
 
+    /**
+     * @var string
+     */
     protected $account;
 
+    /**
+     * @var string
+     */
     protected $subject;
 
+    /**
+     * @var string
+     */
     protected $destination;
 
     /**
+     * @var \DateTime
      * column: setup_time
      */
-    protected $setupTime;
+    protected \DateTimeInterface $setupTime;
 
     /**
+     * @var \DateTime
      * column: answer_time
      */
-    protected $answerTime;
+    protected \DateTimeInterface $answerTime;
 
+    /**
+     * @var int
+     */
     protected $usage;
 
     /**
+     * @var string
      * column: extra_fields
      */
     protected $extraFields;
 
     /**
+     * @var string
      * column: cost_source
      */
     protected $costSource;
 
+    /**
+     * @var float
+     */
     protected $cost;
 
     /**
+     * @var array
      * column: cost_details
      */
     protected $costDetails = [];
 
     /**
+     * @var string
      * column: extra_info
      */
     protected $extraInfo;
 
     /**
+     * @var ?\DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected $createdAt = null;
 
     /**
+     * @var ?\DateTime
      * column: updated_at
      */
-    protected $updatedAt;
+    protected $updatedAt = null;
 
     /**
+     * @var ?\DateTime
      * column: deleted_at
      */
-    protected $deletedAt;
+    protected $deletedAt = null;
 
     /**
      * Constructor
@@ -517,7 +560,7 @@ abstract class TpCdrAbstract
             null
         );
 
-        if ($this->setupTime == $setupTime) {
+        if ($this->isInitialized() && $this->setupTime == $setupTime) {
             return $this;
         }
 
@@ -542,7 +585,7 @@ abstract class TpCdrAbstract
             null
         );
 
-        if ($this->answerTime == $answerTime) {
+        if ($this->isInitialized() && $this->answerTime == $answerTime) {
             return $this;
         }
 
@@ -645,7 +688,7 @@ abstract class TpCdrAbstract
                 null
             );
 
-            if ($this->createdAt == $createdAt) {
+            if ($this->isInitialized() && $this->createdAt == $createdAt) {
                 return $this;
             }
         }
@@ -675,7 +718,7 @@ abstract class TpCdrAbstract
                 null
             );
 
-            if ($this->updatedAt == $updatedAt) {
+            if ($this->isInitialized() && $this->updatedAt == $updatedAt) {
                 return $this;
             }
         }
@@ -705,7 +748,7 @@ abstract class TpCdrAbstract
                 null
             );
 
-            if ($this->deletedAt == $deletedAt) {
+            if ($this->isInitialized() && $this->deletedAt == $deletedAt) {
                 return $this;
             }
         }

@@ -18,69 +18,69 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $username;
+    private $username = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $pass;
+    private $pass = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $email = '';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $active = true;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $internal = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $restricted = false;
 
     /**
      * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $lastname;
+    private $lastname = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $timezone;
+    private $timezone = null;
 
     /**
      * @var AdministratorRelPublicEntityDto[] | null
      */
-    private $relPublicEntities;
+    private $relPublicEntities = null;
 
     public function __construct($id = null)
     {
@@ -250,7 +250,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

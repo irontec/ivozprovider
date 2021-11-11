@@ -15,59 +15,59 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
      * @var string|null
      */
-    private $destinationsTag;
+    private $destinationsTag = null;
 
     /**
      * @var string|null
      */
-    private $ratesTag;
+    private $ratesTag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $roundingMethod = '*up';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $roundingDecimals = 4;
 
     /**
-     * @var float
+     * @var float|null
      */
     private $maxCost = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $maxCostStrategy = '';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DestinationRateDto | null
      */
-    private $destinationRate;
+    private $destinationRate = null;
 
     public function __construct($id = null)
     {
@@ -246,7 +246,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

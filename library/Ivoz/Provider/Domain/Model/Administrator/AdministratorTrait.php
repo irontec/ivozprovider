@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait AdministratorTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, AdministratorRelPublicEntityInterface> & Selectable<array-key, AdministratorRelPublicEntityInterface>
      * AdministratorRelPublicEntityInterface mappedBy administrator
      */
     protected $relPublicEntities;
@@ -40,6 +42,7 @@ trait AdministratorTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param AdministratorDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait AdministratorTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelPublicEntities())) {
-            $self->replaceRelPublicEntities(
-                $fkTransformer->transformCollection(
-                    $dto->getRelPublicEntities()
-                )
+        $relPublicEntities = $dto->getRelPublicEntities();
+        if (!is_null($relPublicEntities)) {
+
+            /** @var Collection<array-key, AdministratorRelPublicEntityInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relPublicEntities
             );
+            $self->replaceRelPublicEntities($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait AdministratorTrait
 
     /**
      * @internal use EntityTools instead
+     * @param AdministratorDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelPublicEntities())) {
-            $this->replaceRelPublicEntities(
-                $fkTransformer->transformCollection(
-                    $dto->getRelPublicEntities()
-                )
+        $relPublicEntities = $dto->getRelPublicEntities();
+        if (!is_null($relPublicEntities)) {
+
+            /** @var Collection<array-key, AdministratorRelPublicEntityInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relPublicEntities
             );
+            $this->replaceRelPublicEntities($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait AdministratorTrait
         return $this;
     }
 
-    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities): AdministratorInterface
+    /**
+     * @param Collection<array-key, AdministratorRelPublicEntityInterface> $relPublicEntities
+     */
+    public function replaceRelPublicEntities(Collection $relPublicEntities): AdministratorInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relPublicEntities as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setAdministrator($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relPublicEntities as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relPublicEntities->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relPublicEntities->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relPublicEntities->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

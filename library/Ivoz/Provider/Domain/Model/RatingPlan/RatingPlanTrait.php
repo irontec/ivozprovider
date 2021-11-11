@@ -15,9 +15,9 @@ use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 trait RatingPlanTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TpTimingInterface
@@ -44,6 +44,7 @@ trait RatingPlanTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RatingPlanDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -52,19 +53,19 @@ trait RatingPlanTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpTiming())) {
-            $self->setTpTiming(
-                $fkTransformer->transform(
-                    $dto->getTpTiming()
-                )
+            /** @var TpTimingInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpTiming()
             );
+            $self->setTpTiming($entity);
         }
 
         if (!is_null($dto->getTpRatingPlan())) {
-            $self->setTpRatingPlan(
-                $fkTransformer->transform(
-                    $dto->getTpRatingPlan()
-                )
+            /** @var TpRatingPlanInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRatingPlan()
             );
+            $self->setTpRatingPlan($entity);
         }
 
         $self->sanitizeValues();
@@ -78,6 +79,7 @@ trait RatingPlanTrait
 
     /**
      * @internal use EntityTools instead
+     * @param RatingPlanDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -85,19 +87,19 @@ trait RatingPlanTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpTiming())) {
-            $this->setTpTiming(
-                $fkTransformer->transform(
-                    $dto->getTpTiming()
-                )
+            /** @var TpTimingInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpTiming()
             );
+            $this->setTpTiming($entity);
         }
 
         if (!is_null($dto->getTpRatingPlan())) {
-            $this->setTpRatingPlan(
-                $fkTransformer->transform(
-                    $dto->getTpRatingPlan()
-                )
+            /** @var TpRatingPlanInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRatingPlan()
             );
+            $this->setTpRatingPlan($entity);
         }
         $this->sanitizeValues();
 

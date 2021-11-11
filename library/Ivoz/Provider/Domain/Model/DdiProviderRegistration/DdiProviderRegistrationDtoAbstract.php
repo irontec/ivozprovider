@@ -16,37 +16,37 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $username = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $domain = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $realm = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authUsername = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authPassword = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authProxy = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expires = 0;
 
@@ -56,24 +56,24 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     private $multiDdi = false;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contactUsername = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
     /**
      * @var TrunksUacregDto | null
      */
-    private $trunksUacreg;
+    private $trunksUacreg = null;
 
     public function __construct($id = null)
     {
@@ -254,7 +254,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

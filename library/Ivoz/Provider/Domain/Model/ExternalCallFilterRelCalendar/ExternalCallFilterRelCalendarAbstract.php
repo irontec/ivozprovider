@@ -23,10 +23,10 @@ abstract class ExternalCallFilterRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy calendars
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var CalendarInterface

@@ -37,6 +37,7 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpRatingPlanDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

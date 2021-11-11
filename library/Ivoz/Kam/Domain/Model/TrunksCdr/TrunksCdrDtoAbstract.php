@@ -24,54 +24,54 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $endTime = '2000-01-01 00:00:00';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $duration = 0;
 
     /**
      * @var string|null
      */
-    private $caller;
+    private $caller = null;
 
     /**
      * @var string|null
      */
-    private $callee;
+    private $callee = null;
 
     /**
      * @var string|null
      */
-    private $callid;
+    private $callid = null;
 
     /**
      * @var string|null
      */
-    private $callidHash;
+    private $callidHash = null;
 
     /**
      * @var string|null
      */
-    private $xcallid;
+    private $xcallid = null;
 
     /**
      * @var string|null
      */
-    private $diversion;
+    private $diversion = null;
 
     /**
      * @var bool|null
      */
-    private $bounced;
+    private $bounced = null;
 
     /**
      * @var bool|null
@@ -79,74 +79,74 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $parsed = false;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
     /**
      * @var string|null
      */
-    private $direction;
+    private $direction = null;
 
     /**
      * @var string|null
      */
-    private $cgrid;
+    private $cgrid = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
     public function __construct($id = null)
     {
@@ -413,7 +413,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

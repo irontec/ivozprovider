@@ -20,11 +20,20 @@ abstract class FixedCostAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
-    protected $cost;
+    /**
+     * @var ?float
+     */
+    protected $cost = null;
 
     /**
      * @var BrandInterface

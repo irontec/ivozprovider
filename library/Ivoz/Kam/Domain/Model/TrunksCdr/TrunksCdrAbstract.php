@@ -40,91 +40,124 @@ abstract class TrunksCdrAbstract
     use ChangelogTrait;
 
     /**
+     * @var \DateTime
      * column: start_time
      */
-    protected $startTime;
+    protected \DateTimeInterface $startTime;
 
     /**
+     * @var \DateTime
      * column: end_time
      */
-    protected $endTime;
+    protected \DateTimeInterface $endTime;
 
+    /**
+     * @var float
+     */
     protected $duration = 0;
 
-    protected $caller;
+    /**
+     * @var ?string
+     */
+    protected $caller = null;
 
-    protected $callee;
+    /**
+     * @var ?string
+     */
+    protected $callee = null;
 
-    protected $callid;
+    /**
+     * @var ?string
+     */
+    protected $callid = null;
 
-    protected $callidHash;
+    /**
+     * @var ?string
+     */
+    protected $callidHash = null;
 
-    protected $xcallid;
+    /**
+     * @var ?string
+     */
+    protected $xcallid = null;
 
-    protected $diversion;
+    /**
+     * @var ?string
+     */
+    protected $diversion = null;
 
-    protected $bounced;
+    /**
+     * @var ?bool
+     */
+    protected $bounced = null;
 
+    /**
+     * @var ?bool
+     */
     protected $parsed = false;
 
-    protected $parserScheduledAt;
+    protected \DateTimeInterface $parserScheduledAt;
 
     /**
+     * @var ?string
      * comment: enum:inbound|outbound
      */
-    protected $direction;
-
-    protected $cgrid;
+    protected $direction = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $cgrid = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?BrandInterface
      */
-    protected $company;
+    protected $brand = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CompanyInterface
      */
-    protected $carrier;
+    protected $company = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?CarrierInterface
      */
-    protected $retailAccount;
+    protected $carrier = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $residentialDevice;
+    protected $retailAccount = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $user;
+    protected $residentialDevice = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?UserInterface
      */
-    protected $friend;
+    protected $user = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?FriendInterface
      */
-    protected $fax;
+    protected $friend = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?FaxInterface
      */
-    protected $ddi;
+    protected $fax = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiInterface
      */
-    protected $ddiProvider;
+    protected $ddi = null;
+
+    /**
+     * @var ?DdiProviderInterface
+     */
+    protected $ddiProvider = null;
 
     /**
      * Constructor
@@ -343,7 +376,7 @@ abstract class TrunksCdrAbstract
             '2000-01-01 00:00:00'
         );
 
-        if ($this->startTime == $startTime) {
+        if ($this->isInitialized() && $this->startTime == $startTime) {
             return $this;
         }
 
@@ -368,7 +401,7 @@ abstract class TrunksCdrAbstract
             '2000-01-01 00:00:00'
         );
 
-        if ($this->endTime == $endTime) {
+        if ($this->isInitialized() && $this->endTime == $endTime) {
             return $this;
         }
 
@@ -525,7 +558,7 @@ abstract class TrunksCdrAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->parserScheduledAt == $parserScheduledAt) {
+        if ($this->isInitialized() && $this->parserScheduledAt == $parserScheduledAt) {
             return $this;
         }
 

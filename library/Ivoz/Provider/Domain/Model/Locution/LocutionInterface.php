@@ -61,6 +61,7 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param LocutionDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

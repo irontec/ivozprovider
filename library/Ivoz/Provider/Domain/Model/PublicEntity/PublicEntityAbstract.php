@@ -19,18 +19,33 @@ abstract class PublicEntityAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
-    protected $fqdn;
+    /**
+     * @var ?string
+     */
+    protected $fqdn = null;
 
+    /**
+     * @var bool
+     */
     protected $platform = false;
 
+    /**
+     * @var bool
+     */
     protected $brand = false;
 
+    /**
+     * @var bool
+     */
     protected $client = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -48,7 +63,7 @@ abstract class PublicEntityAbstract
         $this->setPlatform($platform);
         $this->setBrand($brand);
         $this->setClient($client);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -266,7 +281,7 @@ abstract class PublicEntityAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

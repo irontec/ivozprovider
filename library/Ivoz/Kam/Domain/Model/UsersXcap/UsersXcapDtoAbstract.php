@@ -14,49 +14,49 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $username;
+    private $username = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $doc;
+    private $doc = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $docType;
+    private $docType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $etag;
+    private $etag = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $source;
+    private $source = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $docUri;
+    private $docUri = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -219,7 +219,7 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

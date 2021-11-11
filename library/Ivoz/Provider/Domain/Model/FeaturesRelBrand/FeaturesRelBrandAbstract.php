@@ -23,10 +23,10 @@ abstract class FeaturesRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy relFeatures
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var FeatureInterface

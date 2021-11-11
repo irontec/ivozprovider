@@ -16,17 +16,17 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -105,7 +105,7 @@ abstract class ProxyUserDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

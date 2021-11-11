@@ -15,44 +15,44 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $setid = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $destination = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $flags = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $attrs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ApplicationServerDto | null
      */
-    private $applicationServer;
+    private $applicationServer = null;
 
     public function __construct($id = null)
     {
@@ -189,7 +189,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

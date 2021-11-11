@@ -21,26 +21,38 @@ abstract class TpRatingPlanAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
     /**
+     * @var ?string
      * column: destrates_tag
      */
-    protected $destratesTag;
+    protected $destratesTag = null;
 
     /**
+     * @var string
      * column: timing_tag
      */
     protected $timingTag = '*any';
 
+    /**
+     * @var float
+     */
     protected $weight = 10;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var RatingPlanInterface
@@ -269,7 +281,7 @@ abstract class TpRatingPlanAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

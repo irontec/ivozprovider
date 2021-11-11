@@ -26,26 +26,33 @@ abstract class DestinationRateGroupAbstract
     use ChangelogTrait;
 
     /**
+     * @var ?string
      * comment: enum:waiting|inProgress|imported|error
      */
-    protected $status;
+    protected $status = null;
 
-    protected $lastExecutionError;
+    /**
+     * @var ?string
+     */
+    protected $lastExecutionError = null;
 
+    /**
+     * @var bool
+     */
     protected $deductibleConnectionFee = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
     /**
-     * @var File | null
+     * @var File
      */
     protected $file;
 
@@ -55,9 +62,9 @@ abstract class DestinationRateGroupAbstract
     protected $brand;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
      * Constructor
@@ -69,9 +76,9 @@ abstract class DestinationRateGroupAbstract
         File $file
     ) {
         $this->setDeductibleConnectionFee($deductibleConnectionFee);
-        $this->setName($name);
-        $this->setDescription($description);
-        $this->setFile($file);
+        $this->name = $name;
+        $this->description = $description;
+        $this->file = $file;
     }
 
     abstract public function getId(): null|string|int;
@@ -325,7 +332,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -341,7 +348,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }
@@ -357,7 +364,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setFile(File $file): static
     {
-        $isEqual = $this->file && $this->file->equals($file);
+        $isEqual = $this->file->equals($file);
         if ($isEqual) {
             return $this;
         }

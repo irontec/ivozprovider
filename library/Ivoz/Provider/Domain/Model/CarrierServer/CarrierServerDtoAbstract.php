@@ -19,27 +19,27 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var string|null
      */
-    private $hostname;
+    private $hostname = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var int|null
      */
-    private $uriScheme;
+    private $uriScheme = null;
 
     /**
      * @var int|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var bool|null
@@ -52,59 +52,59 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
     private $sendRPID = false;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authNeeded = 'no';
 
     /**
      * @var string|null
      */
-    private $authUser;
+    private $authUser = null;
 
     /**
      * @var string|null
      */
-    private $authPassword;
+    private $authPassword = null;
 
     /**
      * @var string|null
      */
-    private $sipProxy;
+    private $sipProxy = null;
 
     /**
      * @var string|null
      */
-    private $outboundProxy;
+    private $outboundProxy = null;
 
     /**
      * @var string|null
      */
-    private $fromUser;
+    private $fromUser = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TrunksLcrGatewayDto | null
      */
-    private $lcrGateway;
+    private $lcrGateway = null;
 
     public function __construct($id = null)
     {
@@ -357,7 +357,7 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

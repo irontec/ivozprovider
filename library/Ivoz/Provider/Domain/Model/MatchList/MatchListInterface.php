@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -49,6 +49,7 @@ interface MatchListInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param MatchListDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -71,7 +72,10 @@ interface MatchListInterface extends LoggableEntityInterface
 
     public function removePattern(MatchListPatternInterface $pattern): MatchListInterface;
 
-    public function replacePatterns(ArrayCollection $patterns): MatchListInterface;
+    /**
+     * @param Collection<array-key, MatchListPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): MatchListInterface;
 
     public function getPatterns(?Criteria $criteria = null): array;
 }

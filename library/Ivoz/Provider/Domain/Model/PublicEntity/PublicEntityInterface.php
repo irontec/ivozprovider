@@ -36,6 +36,7 @@ interface PublicEntityInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param PublicEntityDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

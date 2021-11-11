@@ -74,6 +74,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CallCsvSchedulerDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

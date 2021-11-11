@@ -38,6 +38,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BalanceMovementDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

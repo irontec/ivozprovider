@@ -41,43 +41,82 @@ abstract class UserAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $lastname;
 
-    protected $email;
+    /**
+     * @var ?string
+     */
+    protected $email = null;
 
     /**
+     * @var ?string
      * comment: password
      */
-    protected $pass;
+    protected $pass = null;
 
+    /**
+     * @var bool
+     */
     protected $doNotDisturb = false;
 
+    /**
+     * @var bool
+     */
     protected $isBoss = false;
 
+    /**
+     * @var bool
+     */
     protected $active = false;
 
+    /**
+     * @var int
+     */
     protected $maxCalls = 0;
 
     /**
+     * @var string
      * comment: enum:0|1|2|3
      */
     protected $externalIpCalls = '0';
 
     /**
+     * @var string
      * comment: enum:rfc|486|600
      */
     protected $rejectCallMethod = 'rfc';
 
+    /**
+     * @var bool
+     */
     protected $voicemailEnabled = true;
 
+    /**
+     * @var bool
+     */
     protected $voicemailSendMail = false;
 
+    /**
+     * @var bool
+     */
     protected $voicemailAttachSound = true;
 
+    /**
+     * @var bool
+     */
     protected $multiContact = true;
 
+    /**
+     * @var bool
+     */
     protected $gsQRCode = false;
 
     /**
@@ -86,61 +125,61 @@ abstract class UserAbstract
     protected $company;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $bossAssistant;
+    protected $bossAssistant = null;
 
     /**
-     * @var MatchListInterface | null
+     * @var ?MatchListInterface
      */
-    protected $bossAssistantWhiteList;
+    protected $bossAssistantWhiteList = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var TerminalInterface | null
+     * @var ?TerminalInterface
      * inversedBy users
      */
-    protected $terminal;
+    protected $terminal = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      * inversedBy users
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?TimezoneInterface
      */
-    protected $timezone;
+    protected $timezone = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var OutgoingDdiRuleInterface | null
+     * @var ?OutgoingDdiRuleInterface
      */
-    protected $outgoingDdiRule;
+    protected $outgoingDdiRule = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $voicemailLocution;
+    protected $voicemailLocution = null;
 
     /**
      * Constructor

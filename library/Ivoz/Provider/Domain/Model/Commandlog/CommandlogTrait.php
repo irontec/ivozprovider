@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait CommandlogTrait
 {
     /**
-     * @var string
+     * @var ?string
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait CommandlogTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CommandlogDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait CommandlogTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CommandlogDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

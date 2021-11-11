@@ -59,6 +59,7 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BillableCallHistoricDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait TransformationRuleSetTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TransformationRuleInterface> & Selectable<array-key, TransformationRuleInterface>
      * TransformationRuleInterface mappedBy transformationRuleSet
      */
     protected $rules;
@@ -40,6 +42,7 @@ trait TransformationRuleSetTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TransformationRuleSetDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait TransformationRuleSetTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRules())) {
-            $self->replaceRules(
-                $fkTransformer->transformCollection(
-                    $dto->getRules()
-                )
+        $rules = $dto->getRules();
+        if (!is_null($rules)) {
+
+            /** @var Collection<array-key, TransformationRuleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $rules
             );
+            $self->replaceRules($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait TransformationRuleSetTrait
 
     /**
      * @internal use EntityTools instead
+     * @param TransformationRuleSetDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRules())) {
-            $this->replaceRules(
-                $fkTransformer->transformCollection(
-                    $dto->getRules()
-                )
+        $rules = $dto->getRules();
+        if (!is_null($rules)) {
+
+            /** @var Collection<array-key, TransformationRuleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $rules
             );
+            $this->replaceRules($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait TransformationRuleSetTrait
         return $this;
     }
 
-    public function replaceRules(ArrayCollection $rules): TransformationRuleSetInterface
+    /**
+     * @param Collection<array-key, TransformationRuleInterface> $rules
+     */
+    public function replaceRules(Collection $rules): TransformationRuleSetInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($rules as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setTransformationRuleSet($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->rules as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->rules->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->rules->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->rules->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

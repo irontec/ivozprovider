@@ -21,14 +21,26 @@ abstract class ChangelogAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $entity;
 
+    /**
+     * @var string
+     */
     protected $entityId;
 
+    /**
+     * @var ?array
+     */
     protected $data = [];
 
-    protected $createdOn;
+    protected \DateTimeInterface $createdOn;
 
+    /**
+     * @var int
+     */
     protected $microtime;
 
     /**
@@ -221,7 +233,7 @@ abstract class ChangelogAbstract
             null
         );
 
-        if ($this->createdOn == $createdOn) {
+        if ($this->isInitialized() && $this->createdOn == $createdOn) {
             return $this;
         }
 

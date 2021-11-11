@@ -14,9 +14,9 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 trait CarrierServerTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TrunksLcrGatewayInterface
@@ -37,6 +37,7 @@ trait CarrierServerTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CarrierServerDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -45,11 +46,11 @@ trait CarrierServerTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getLcrGateway())) {
-            $self->setLcrGateway(
-                $fkTransformer->transform(
-                    $dto->getLcrGateway()
-                )
+            /** @var TrunksLcrGatewayInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getLcrGateway()
             );
+            $self->setLcrGateway($entity);
         }
 
         $self->sanitizeValues();
@@ -63,6 +64,7 @@ trait CarrierServerTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CarrierServerDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -70,11 +72,11 @@ trait CarrierServerTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getLcrGateway())) {
-            $this->setLcrGateway(
-                $fkTransformer->transform(
-                    $dto->getLcrGateway()
-                )
+            /** @var TrunksLcrGatewayInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getLcrGateway()
             );
+            $this->setLcrGateway($entity);
         }
         $this->sanitizeValues();
 

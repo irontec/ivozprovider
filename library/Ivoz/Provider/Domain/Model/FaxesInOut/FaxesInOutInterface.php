@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use DateTimeInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -38,7 +39,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function getId(): ?int;
 
-    public function setCalldate($calldate = null): static;
+    public function setCalldate(DateTimeInterface $calldate = null): static;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -58,6 +59,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param FaxesInOutDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

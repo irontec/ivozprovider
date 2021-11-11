@@ -28,159 +28,159 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $lastname;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $email;
+    private $lastname = null;
 
     /**
      * @var string|null
      */
-    private $pass;
+    private $email = null;
 
     /**
-     * @var bool
+     * @var string|null
+     */
+    private $pass = null;
+
+    /**
+     * @var bool|null
      */
     private $doNotDisturb = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $isBoss = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $active = false;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxCalls = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $externalIpCalls = '0';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $rejectCallMethod = 'rfc';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $voicemailEnabled = true;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $voicemailSendMail = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $voicemailAttachSound = true;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $multiContact = true;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $gsQRCode = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CallAclDto | null
      */
-    private $callAcl;
+    private $callAcl = null;
 
     /**
      * @var UserDto | null
      */
-    private $bossAssistant;
+    private $bossAssistant = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $bossAssistantWhiteList;
+    private $bossAssistantWhiteList = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var TerminalDto | null
      */
-    private $terminal;
+    private $terminal = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $timezone;
+    private $timezone = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var OutgoingDdiRuleDto | null
      */
-    private $outgoingDdiRule;
+    private $outgoingDdiRule = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $voicemailLocution;
+    private $voicemailLocution = null;
 
     /**
      * @var PickUpRelUserDto[] | null
      */
-    private $pickUpRelUsers;
+    private $pickUpRelUsers = null;
 
     /**
      * @var QueueMemberDto[] | null
      */
-    private $queueMembers;
+    private $queueMembers = null;
 
     /**
      * @var CallForwardSettingDto[] | null
      */
-    private $callForwardSettings;
+    private $callForwardSettings = null;
 
     public function __construct($id = null)
     {
@@ -468,7 +468,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

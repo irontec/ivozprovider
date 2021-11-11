@@ -20,18 +20,31 @@ abstract class TrunksAddressAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $grp = 1;
 
     /**
+     * @var ?string
      * column: ip_addr
      */
-    protected $ipAddr;
+    protected $ipAddr = null;
 
+    /**
+     * @var int
+     */
     protected $mask = 32;
 
+    /**
+     * @var int
+     */
     protected $port = 0;
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
     /**
      * @var DdiProviderAddressInterface

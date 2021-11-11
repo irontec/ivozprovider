@@ -24,24 +24,34 @@ abstract class FaxesInOutAbstract
 {
     use ChangelogTrait;
 
-    protected $calldate;
-
-    protected $src;
-
-    protected $dst;
+    protected \DateTimeInterface $calldate;
 
     /**
+     * @var ?string
+     */
+    protected $src = null;
+
+    /**
+     * @var ?string
+     */
+    protected $dst = null;
+
+    /**
+     * @var ?string
      * comment: enum:In|Out
      */
     protected $type = 'Out';
 
-    protected $pages;
-
-    protected $status;
+    /**
+     * @var ?string
+     */
+    protected $pages = null;
 
     /**
-     * @var File | null
+     * @var ?string
      */
+    protected $status = null;
+
     protected $file;
 
     /**
@@ -50,9 +60,9 @@ abstract class FaxesInOutAbstract
     protected $fax;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $dstCountry;
+    protected $dstCountry = null;
 
     /**
      * Constructor
@@ -62,7 +72,7 @@ abstract class FaxesInOutAbstract
         File $file
     ) {
         $this->setCalldate($calldate);
-        $this->setFile($file);
+        $this->file = $file;
     }
 
     abstract public function getId(): null|string|int;
@@ -223,7 +233,7 @@ abstract class FaxesInOutAbstract
             null
         );
 
-        if ($this->calldate == $calldate) {
+        if ($this->isInitialized() && $this->calldate == $calldate) {
             return $this;
         }
 
@@ -331,7 +341,7 @@ abstract class FaxesInOutAbstract
 
     protected function setFile(File $file): static
     {
-        $isEqual = $this->file && $this->file->equals($file);
+        $isEqual = $this->file->equals($file);
         if ($isEqual) {
             return $this;
         }

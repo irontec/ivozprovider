@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface;
@@ -19,33 +21,33 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterR
 trait ExternalCallFilterTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ExternalCallFilterRelCalendarInterface> & Selectable<array-key, ExternalCallFilterRelCalendarInterface>
      * ExternalCallFilterRelCalendarInterface mappedBy filter
      * orphanRemoval
      */
     protected $calendars;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ExternalCallFilterBlackListInterface> & Selectable<array-key, ExternalCallFilterBlackListInterface>
      * ExternalCallFilterBlackListInterface mappedBy filter
      * orphanRemoval
      */
     protected $blackLists;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ExternalCallFilterWhiteListInterface> & Selectable<array-key, ExternalCallFilterWhiteListInterface>
      * ExternalCallFilterWhiteListInterface mappedBy filter
      * orphanRemoval
      */
     protected $whiteLists;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ExternalCallFilterRelScheduleInterface> & Selectable<array-key, ExternalCallFilterRelScheduleInterface>
      * ExternalCallFilterRelScheduleInterface mappedBy filter
      * orphanRemoval
      */
@@ -68,6 +70,7 @@ trait ExternalCallFilterTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ExternalCallFilterDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -75,36 +78,44 @@ trait ExternalCallFilterTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getCalendars())) {
-            $self->replaceCalendars(
-                $fkTransformer->transformCollection(
-                    $dto->getCalendars()
-                )
+        $calendars = $dto->getCalendars();
+        if (!is_null($calendars)) {
+
+            /** @var Collection<array-key, ExternalCallFilterRelCalendarInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $calendars
             );
+            $self->replaceCalendars($replacement);
         }
 
-        if (!is_null($dto->getBlackLists())) {
-            $self->replaceBlackLists(
-                $fkTransformer->transformCollection(
-                    $dto->getBlackLists()
-                )
+        $blackLists = $dto->getBlackLists();
+        if (!is_null($blackLists)) {
+
+            /** @var Collection<array-key, ExternalCallFilterBlackListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $blackLists
             );
+            $self->replaceBlackLists($replacement);
         }
 
-        if (!is_null($dto->getWhiteLists())) {
-            $self->replaceWhiteLists(
-                $fkTransformer->transformCollection(
-                    $dto->getWhiteLists()
-                )
+        $whiteLists = $dto->getWhiteLists();
+        if (!is_null($whiteLists)) {
+
+            /** @var Collection<array-key, ExternalCallFilterWhiteListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $whiteLists
             );
+            $self->replaceWhiteLists($replacement);
         }
 
-        if (!is_null($dto->getSchedules())) {
-            $self->replaceSchedules(
-                $fkTransformer->transformCollection(
-                    $dto->getSchedules()
-                )
+        $schedules = $dto->getSchedules();
+        if (!is_null($schedules)) {
+
+            /** @var Collection<array-key, ExternalCallFilterRelScheduleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $schedules
             );
+            $self->replaceSchedules($replacement);
         }
 
         $self->sanitizeValues();
@@ -118,42 +129,51 @@ trait ExternalCallFilterTrait
 
     /**
      * @internal use EntityTools instead
+     * @param ExternalCallFilterDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getCalendars())) {
-            $this->replaceCalendars(
-                $fkTransformer->transformCollection(
-                    $dto->getCalendars()
-                )
+        $calendars = $dto->getCalendars();
+        if (!is_null($calendars)) {
+
+            /** @var Collection<array-key, ExternalCallFilterRelCalendarInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $calendars
             );
+            $this->replaceCalendars($replacement);
         }
 
-        if (!is_null($dto->getBlackLists())) {
-            $this->replaceBlackLists(
-                $fkTransformer->transformCollection(
-                    $dto->getBlackLists()
-                )
+        $blackLists = $dto->getBlackLists();
+        if (!is_null($blackLists)) {
+
+            /** @var Collection<array-key, ExternalCallFilterBlackListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $blackLists
             );
+            $this->replaceBlackLists($replacement);
         }
 
-        if (!is_null($dto->getWhiteLists())) {
-            $this->replaceWhiteLists(
-                $fkTransformer->transformCollection(
-                    $dto->getWhiteLists()
-                )
+        $whiteLists = $dto->getWhiteLists();
+        if (!is_null($whiteLists)) {
+
+            /** @var Collection<array-key, ExternalCallFilterWhiteListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $whiteLists
             );
+            $this->replaceWhiteLists($replacement);
         }
 
-        if (!is_null($dto->getSchedules())) {
-            $this->replaceSchedules(
-                $fkTransformer->transformCollection(
-                    $dto->getSchedules()
-                )
+        $schedules = $dto->getSchedules();
+        if (!is_null($schedules)) {
+
+            /** @var Collection<array-key, ExternalCallFilterRelScheduleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $schedules
             );
+            $this->replaceSchedules($replacement);
         }
         $this->sanitizeValues();
 
@@ -191,25 +211,33 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    public function replaceCalendars(ArrayCollection $calendars): ExternalCallFilterInterface
+    /**
+     * @param Collection<array-key, ExternalCallFilterRelCalendarInterface> $calendars
+     */
+    public function replaceCalendars(Collection $calendars): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($calendars as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->calendars as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->calendars->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->calendars->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->calendars->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -242,25 +270,33 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    public function replaceBlackLists(ArrayCollection $blackLists): ExternalCallFilterInterface
+    /**
+     * @param Collection<array-key, ExternalCallFilterBlackListInterface> $blackLists
+     */
+    public function replaceBlackLists(Collection $blackLists): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($blackLists as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->blackLists as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->blackLists->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->blackLists->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->blackLists->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -293,25 +329,33 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    public function replaceWhiteLists(ArrayCollection $whiteLists): ExternalCallFilterInterface
+    /**
+     * @param Collection<array-key, ExternalCallFilterWhiteListInterface> $whiteLists
+     */
+    public function replaceWhiteLists(Collection $whiteLists): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($whiteLists as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->whiteLists as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->whiteLists->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->whiteLists->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->whiteLists->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -344,25 +388,33 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
-    public function replaceSchedules(ArrayCollection $schedules): ExternalCallFilterInterface
+    /**
+     * @param Collection<array-key, ExternalCallFilterRelScheduleInterface> $schedules
+     */
+    public function replaceSchedules(Collection $schedules): ExternalCallFilterInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($schedules as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->schedules as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->schedules->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->schedules->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->schedules->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

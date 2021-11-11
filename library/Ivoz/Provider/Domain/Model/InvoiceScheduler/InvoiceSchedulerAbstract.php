@@ -27,29 +27,51 @@ abstract class InvoiceSchedulerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var string
      * comment: enum:week|month|year
      */
     protected $unit = 'month';
 
+    /**
+     * @var int
+     */
     protected $frequency;
 
+    /**
+     * @var string
+     */
     protected $email;
 
-    protected $lastExecution;
-
-    protected $lastExecutionError;
-
-    protected $nextExecution;
-
-    protected $taxRate;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastExecution = null;
 
     /**
-     * @var InvoiceTemplateInterface | null
+     * @var ?string
      */
-    protected $invoiceTemplate;
+    protected $lastExecutionError = null;
+
+    /**
+     * @var ?\DateTime
+     */
+    protected $nextExecution = null;
+
+    /**
+     * @var ?float
+     */
+    protected $taxRate = null;
+
+    /**
+     * @var ?InvoiceTemplateInterface
+     */
+    protected $invoiceTemplate = null;
 
     /**
      * @var BrandInterface
@@ -62,9 +84,9 @@ abstract class InvoiceSchedulerAbstract
     protected $company;
 
     /**
-     * @var InvoiceNumberSequenceInterface | null
+     * @var ?InvoiceNumberSequenceInterface
      */
-    protected $numberSequence;
+    protected $numberSequence = null;
 
     /**
      * Constructor
@@ -304,7 +326,7 @@ abstract class InvoiceSchedulerAbstract
                 null
             );
 
-            if ($this->lastExecution == $lastExecution) {
+            if ($this->isInitialized() && $this->lastExecution == $lastExecution) {
                 return $this;
             }
         }
@@ -350,7 +372,7 @@ abstract class InvoiceSchedulerAbstract
                 null
             );
 
-            if ($this->nextExecution == $nextExecution) {
+            if ($this->isInitialized() && $this->nextExecution == $nextExecution) {
                 return $this;
             }
         }

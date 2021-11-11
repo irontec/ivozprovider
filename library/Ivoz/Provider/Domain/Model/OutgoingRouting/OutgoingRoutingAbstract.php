@@ -32,24 +32,46 @@ abstract class OutgoingRoutingAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var ?string
+     */
     protected $type = 'group';
 
+    /**
+     * @var int
+     */
     protected $priority;
 
+    /**
+     * @var int
+     */
     protected $weight = 1;
 
     /**
+     * @var ?string
      * comment: enum:static|lcr|block
      */
     protected $routingMode = 'static';
 
-    protected $prefix;
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
 
+    /**
+     * @var bool
+     */
     protected $stopper = false;
 
+    /**
+     * @var ?bool
+     */
     protected $forceClid = false;
 
-    protected $clid;
+    /**
+     * @var ?string
+     */
+    protected $clid = null;
 
     /**
      * @var BrandInterface
@@ -58,38 +80,38 @@ abstract class OutgoingRoutingAbstract
     protected $brand;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      * inversedBy outgoingRoutings
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupInterface | null
+     * @var ?RoutingPatternGroupInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingPatternGroup;
+    protected $routingPatternGroup = null;
 
     /**
-     * @var RoutingTagInterface | null
+     * @var ?RoutingTagInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingTag;
+    protected $routingTag = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $clidCountry;
+    protected $clidCountry = null;
 
     /**
      * Constructor

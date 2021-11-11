@@ -21,23 +21,36 @@ abstract class TransformationRuleAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:callerin|calleein|callerout|calleeout
      */
     protected $type;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
-    protected $priority;
-
-    protected $matchExpr;
-
-    protected $replaceExpr;
+    /**
+     * @var ?int
+     */
+    protected $priority = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?string
+     */
+    protected $matchExpr = null;
+
+    /**
+     * @var ?string
+     */
+    protected $replaceExpr = null;
+
+    /**
+     * @var ?TransformationRuleSetInterface
      * inversedBy rules
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
      * Constructor

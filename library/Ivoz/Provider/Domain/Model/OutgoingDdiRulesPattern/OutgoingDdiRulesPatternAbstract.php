@@ -25,17 +25,25 @@ abstract class OutgoingDdiRulesPatternAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:prefix|destination
      */
     protected $type;
 
-    protected $prefix;
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
 
     /**
+     * @var string
      * comment: enum:keep|force
      */
     protected $action;
 
+    /**
+     * @var int
+     */
     protected $priority = 1;
 
     /**
@@ -45,14 +53,14 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $outgoingDdiRule;
 
     /**
-     * @var MatchListInterface | null
+     * @var ?MatchListInterface
      */
-    protected $matchList;
+    protected $matchList = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $forcedDdi;
+    protected $forcedDdi = null;
 
     /**
      * Constructor

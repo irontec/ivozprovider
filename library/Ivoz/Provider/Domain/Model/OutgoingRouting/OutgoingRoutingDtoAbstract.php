@@ -30,12 +30,12 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $type = 'group';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $priority;
+    private $priority = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $weight = 1;
 
@@ -47,10 +47,10 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $stopper = false;
 
@@ -62,67 +62,67 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $clid;
+    private $clid = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RoutingPatternDto | null
      */
-    private $routingPattern;
+    private $routingPattern = null;
 
     /**
      * @var RoutingPatternGroupDto | null
      */
-    private $routingPatternGroup;
+    private $routingPatternGroup = null;
 
     /**
      * @var RoutingTagDto | null
      */
-    private $routingTag;
+    private $routingTag = null;
 
     /**
      * @var CountryDto | null
      */
-    private $clidCountry;
+    private $clidCountry = null;
 
     /**
      * @var TpLcrRuleDto | null
      */
-    private $tpLcrRule;
+    private $tpLcrRule = null;
 
     /**
      * @var TrunksLcrRuleDto[] | null
      */
-    private $lcrRules;
+    private $lcrRules = null;
 
     /**
      * @var TrunksLcrRuleTargetDto[] | null
      */
-    private $lcrRuleTargets;
+    private $lcrRuleTargets = null;
 
     /**
      * @var OutgoingRoutingRelCarrierDto[] | null
      */
-    private $relCarriers;
+    private $relCarriers = null;
 
     public function __construct($id = null)
     {
@@ -304,7 +304,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

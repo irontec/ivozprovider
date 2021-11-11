@@ -21,111 +21,153 @@ abstract class TpDerivedChargerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $loadid = 'DATABASE';
 
+    /**
+     * @var string
+     */
     protected $direction = '*out';
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $category = 'call';
 
+    /**
+     * @var string
+     */
     protected $account = '*any';
 
+    /**
+     * @var ?string
+     */
     protected $subject = '*any';
 
     /**
+     * @var ?string
      * column: destination_ids
      */
     protected $destinationIds = '*any';
 
+    /**
+     * @var string
+     */
     protected $runid = 'carrier';
 
     /**
+     * @var string
      * column: run_filters
      */
     protected $runFilters = '';
 
     /**
+     * @var string
      * column: req_type_field
      */
     protected $reqTypeField = '^*postpaid';
 
     /**
+     * @var string
      * column: direction_field
      */
     protected $directionField = '*default';
 
     /**
+     * @var string
      * column: tenant_field
      */
     protected $tenantField = '*default';
 
     /**
+     * @var string
      * column: category_field
      */
     protected $categoryField = '*default';
 
     /**
+     * @var string
      * column: account_field
      */
     protected $accountField = 'carrierId';
 
     /**
+     * @var string
      * column: subject_field
      */
     protected $subjectField = 'carrierId';
 
     /**
+     * @var string
      * column: destination_field
      */
     protected $destinationField = '*default';
 
     /**
+     * @var string
      * column: setup_time_field
      */
     protected $setupTimeField = '*default';
 
     /**
+     * @var string
      * column: pdd_field
      */
     protected $pddField = '*default';
 
     /**
+     * @var string
      * column: answer_time_field
      */
     protected $answerTimeField = '*default';
 
     /**
+     * @var string
      * column: usage_field
      */
     protected $usageField = '*default';
 
     /**
+     * @var string
      * column: supplier_field
      */
     protected $supplierField = '*default';
 
     /**
+     * @var string
      * column: disconnect_cause_field
      */
     protected $disconnectCauseField = '*default';
 
     /**
+     * @var string
      * column: rated_field
      */
     protected $ratedTimeField = '*default';
 
     /**
+     * @var string
      * column: cost_field
      */
     protected $costField = '*default';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var BrandInterface
@@ -755,7 +797,7 @@ abstract class TpDerivedChargerAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

@@ -17,44 +17,44 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $type;
+    private $type = null;
 
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $action;
+    private $action = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var OutgoingDdiRuleDto | null
      */
-    private $outgoingDdiRule;
+    private $outgoingDdiRule = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchList;
+    private $matchList = null;
 
     /**
      * @var DdiDto | null
      */
-    private $forcedDdi;
+    private $forcedDdi = null;
 
     public function __construct($id = null)
     {
@@ -167,7 +167,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

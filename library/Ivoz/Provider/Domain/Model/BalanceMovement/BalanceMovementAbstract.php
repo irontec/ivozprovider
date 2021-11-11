@@ -23,21 +23,30 @@ abstract class BalanceMovementAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var ?float
+     */
     protected $amount = 0;
 
+    /**
+     * @var ?float
+     */
     protected $balance = 0;
 
-    protected $createdOn;
+    /**
+     * @var ?\DateTime
+     */
+    protected $createdOn = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * Constructor
@@ -207,7 +216,7 @@ abstract class BalanceMovementAbstract
                 'CURRENT_TIMESTAMP'
             );
 
-            if ($this->createdOn == $createdOn) {
+            if ($this->isInitialized() && $this->createdOn == $createdOn) {
                 return $this;
             }
         }

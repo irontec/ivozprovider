@@ -16,19 +16,19 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ExternalCallFilterDto | null
      */
-    private $filter;
+    private $filter = null;
 
     /**
      * @var ScheduleDto | null
      */
-    private $schedule;
+    private $schedule = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

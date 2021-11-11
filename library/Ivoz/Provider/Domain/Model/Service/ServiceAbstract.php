@@ -20,19 +20,28 @@ abstract class ServiceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden = '';
 
+    /**
+     * @var string
+     */
     protected $defaultCode;
 
+    /**
+     * @var bool
+     */
     protected $extraArgs = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -49,8 +58,8 @@ abstract class ServiceAbstract
         $this->setIden($iden);
         $this->setDefaultCode($defaultCode);
         $this->setExtraArgs($extraArgs);
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
     abstract public function getId(): null|string|int;
@@ -258,7 +267,7 @@ abstract class ServiceAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -274,7 +283,7 @@ abstract class ServiceAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

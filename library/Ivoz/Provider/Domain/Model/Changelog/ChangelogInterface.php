@@ -37,6 +37,7 @@ interface ChangelogInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ChangelogDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

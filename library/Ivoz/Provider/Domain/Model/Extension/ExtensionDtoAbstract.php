@@ -22,74 +22,74 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $number;
+    private $number = null;
 
     /**
      * @var string|null
      */
-    private $routeType;
+    private $routeType = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $numberValue = null;
 
     /**
      * @var string|null
      */
-    private $friendValue;
+    private $friendValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var UserDto[] | null
      */
-    private $users;
+    private $users = null;
 
     public function __construct($id = null)
     {
@@ -213,7 +213,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

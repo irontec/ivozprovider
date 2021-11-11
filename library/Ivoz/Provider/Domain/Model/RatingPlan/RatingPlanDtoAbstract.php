@@ -18,7 +18,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var float
+     * @var float|null
      */
     private $weight = 10;
 
@@ -28,9 +28,9 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     private $timingType = 'always';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|null
      */
-    private $timeIn;
+    private $timeIn = null;
 
     /**
      * @var bool|null
@@ -68,29 +68,29 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     private $sunday = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RatingPlanGroupDto | null
      */
-    private $ratingPlanGroup;
+    private $ratingPlanGroup = null;
 
     /**
      * @var DestinationRateGroupDto | null
      */
-    private $destinationRateGroup;
+    private $destinationRateGroup = null;
 
     /**
      * @var TpTimingDto | null
      */
-    private $tpTiming;
+    private $tpTiming = null;
 
     /**
      * @var TpRatingPlanDto | null
      */
-    private $tpRatingPlan;
+    private $tpRatingPlan = null;
 
     public function __construct($id = null)
     {
@@ -186,14 +186,14 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->timingType;
     }
 
-    public function setTimeIn(\DateTimeInterface|string $timeIn): static
+    public function setTimeIn(\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): \DateTimeInterface|string|null
+    public function getTimeIn(): ?\DateTimeInterface
     {
         return $this->timeIn;
     }
@@ -289,7 +289,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

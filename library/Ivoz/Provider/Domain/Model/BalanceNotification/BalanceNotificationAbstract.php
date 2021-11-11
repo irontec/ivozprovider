@@ -25,26 +25,35 @@ abstract class BalanceNotificationAbstract
 {
     use ChangelogTrait;
 
-    protected $toAddress;
+    /**
+     * @var ?string
+     */
+    protected $toAddress = null;
 
+    /**
+     * @var ?float
+     */
     protected $threshold = 0;
 
-    protected $lastSent;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastSent = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $notificationTemplate;
+    protected $notificationTemplate = null;
 
     /**
      * Constructor
@@ -218,7 +227,7 @@ abstract class BalanceNotificationAbstract
                 null
             );
 
-            if ($this->lastSent == $lastSent) {
+            if ($this->isInitialized() && $this->lastSent == $lastSent) {
                 return $this;
             }
         }

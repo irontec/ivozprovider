@@ -19,22 +19,41 @@ abstract class UsersLocationAttrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $ruid = '';
 
+    /**
+     * @var string
+     */
     protected $username = '';
 
-    protected $domain;
+    /**
+     * @var ?string
+     */
+    protected $domain = null;
 
+    /**
+     * @var string
+     */
     protected $aname = '';
 
+    /**
+     * @var int
+     */
     protected $atype = 0;
 
+    /**
+     * @var string
+     */
     protected $avalue = '';
 
     /**
+     * @var \DateTime
      * column: last_modified
      */
-    protected $lastModified;
+    protected \DateTimeInterface $lastModified;
 
     /**
      * Constructor
@@ -273,7 +292,7 @@ abstract class UsersLocationAttrAbstract
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 

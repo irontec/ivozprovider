@@ -36,16 +36,26 @@ abstract class ConditionalRoutesConditionAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $priority = 1;
 
     /**
+     * @var ?string
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
      */
-    protected $routeType;
+    protected $routeType = null;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
-    protected $friendValue;
+    /**
+     * @var ?string
+     */
+    protected $friendValue = null;
 
     /**
      * @var ConditionalRouteInterface
@@ -54,49 +64,49 @@ abstract class ConditionalRoutesConditionAbstract
     protected $conditionalRoute;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voicemailUser;
+    protected $voicemailUser = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $locution;
+    protected $locution = null;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

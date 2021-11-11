@@ -23,10 +23,10 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface | null
+     * @var ?ConditionalRoutesConditionInterface
      * inversedBy relMatchlists
      */
-    protected $condition;
+    protected $condition = null;
 
     /**
      * @var MatchListInterface

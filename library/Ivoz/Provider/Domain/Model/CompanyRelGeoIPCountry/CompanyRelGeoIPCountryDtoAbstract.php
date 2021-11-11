@@ -16,19 +16,19 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class CompanyRelGeoIPCountryDtoAbstract implements DataTransferObjectIn
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

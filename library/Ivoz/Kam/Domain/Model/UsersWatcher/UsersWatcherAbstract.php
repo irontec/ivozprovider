@@ -19,27 +19,40 @@ abstract class UsersWatcherAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: presentity_uri
      */
     protected $presentityUri;
 
     /**
+     * @var string
      * column: watcher_username
      */
     protected $watcherUsername;
 
     /**
+     * @var string
      * column: watcher_domain
      */
     protected $watcherDomain;
 
+    /**
+     * @var string
+     */
     protected $event = 'presence';
 
+    /**
+     * @var int
+     */
     protected $status;
 
-    protected $reason;
+    /**
+     * @var ?string
+     */
+    protected $reason = null;
 
     /**
+     * @var int
      * column: inserted_time
      */
     protected $insertedTime;

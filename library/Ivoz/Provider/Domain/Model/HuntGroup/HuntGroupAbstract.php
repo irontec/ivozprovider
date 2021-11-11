@@ -28,26 +28,46 @@ abstract class HuntGroupAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var string
      * comment: enum:ringAll|linear|roundRobin|random
      */
     protected $strategy;
 
-    protected $ringAllTimeout;
+    /**
+     * @var ?int
+     */
+    protected $ringAllTimeout = null;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $noAnswerTargetType;
+    protected $noAnswerTargetType = null;
 
-    protected $noAnswerNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $noAnswerNumberValue = null;
 
+    /**
+     * @var int
+     */
     protected $preventMissedCalls = 1;
 
+    /**
+     * @var int
+     */
     protected $allowCallForwards = 0;
 
     /**
@@ -56,24 +76,24 @@ abstract class HuntGroupAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $noAnswerLocution;
+    protected $noAnswerLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $noAnswerExtension;
+    protected $noAnswerExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $noAnswerVoiceMailUser;
+    protected $noAnswerVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $noAnswerNumberCountry;
+    protected $noAnswerNumberCountry = null;
 
     /**
      * Constructor

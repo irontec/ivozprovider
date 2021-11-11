@@ -37,86 +37,127 @@ abstract class BillableCallHistoricAbstract
 {
     use ChangelogTrait;
 
-    protected $callid;
+    /**
+     * @var ?string
+     */
+    protected $callid = null;
 
-    protected $startTime;
+    /**
+     * @var ?\DateTime
+     */
+    protected $startTime = null;
 
+    /**
+     * @var float
+     */
     protected $duration = 0;
 
-    protected $caller;
+    /**
+     * @var ?string
+     */
+    protected $caller = null;
 
-    protected $callee;
+    /**
+     * @var ?string
+     */
+    protected $callee = null;
 
-    protected $cost;
+    /**
+     * @var ?float
+     */
+    protected $cost = null;
 
-    protected $price;
+    /**
+     * @var ?float
+     */
+    protected $price = null;
 
+    /**
+     * @var ?array
+     */
     protected $priceDetails = [];
 
-    protected $carrierName;
-
-    protected $destinationName;
-
-    protected $ratingPlanName;
+    /**
+     * @var ?string
+     */
+    protected $carrierName = null;
 
     /**
+     * @var ?string
+     */
+    protected $destinationName = null;
+
+    /**
+     * @var ?string
+     */
+    protected $ratingPlanName = null;
+
+    /**
+     * @var ?string
      * comment: enum:RetailAccount|ResidentialDevice|User|Friend|Fax
      */
-    protected $endpointType;
-
-    protected $endpointId;
-
-    protected $endpointName;
+    protected $endpointType = null;
 
     /**
+     * @var ?int
+     */
+    protected $endpointId = null;
+
+    /**
+     * @var ?string
+     */
+    protected $endpointName = null;
+
+    /**
+     * @var ?string
      * comment: enum:inbound|outbound
      */
     protected $direction = 'outbound';
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var DestinationInterface | null
+     * @var ?DestinationInterface
      */
-    protected $destination;
+    protected $destination = null;
 
     /**
-     * @var RatingPlanGroupInterface | null
+     * @var ?RatingPlanGroupInterface
      */
-    protected $ratingPlanGroup;
+    protected $ratingPlanGroup = null;
 
     /**
-     * @var InvoiceInterface | null
+     * @var ?InvoiceInterface
      */
-    protected $invoice;
+    protected $invoice = null;
 
     /**
-     * @var TrunksCdrInterface | null
+     * @var ?TrunksCdrInterface
      */
-    protected $trunksCdr;
+    protected $trunksCdr = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $ddi;
+    protected $ddi = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
      * Constructor
@@ -349,7 +390,7 @@ abstract class BillableCallHistoricAbstract
                 null
             );
 
-            if ($this->startTime == $startTime) {
+            if ($this->isInitialized() && $this->startTime == $startTime) {
                 return $this;
             }
         }

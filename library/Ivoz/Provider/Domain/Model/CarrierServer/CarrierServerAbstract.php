@@ -22,33 +22,75 @@ abstract class CarrierServerAbstract
 {
     use ChangelogTrait;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
-    protected $hostname;
+    /**
+     * @var ?string
+     */
+    protected $hostname = null;
 
-    protected $port;
+    /**
+     * @var ?int
+     */
+    protected $port = null;
 
-    protected $uriScheme;
+    /**
+     * @var ?int
+     */
+    protected $uriScheme = null;
 
-    protected $transport;
+    /**
+     * @var ?int
+     */
+    protected $transport = null;
 
+    /**
+     * @var ?bool
+     */
     protected $sendPAI = false;
 
+    /**
+     * @var ?bool
+     */
     protected $sendRPID = false;
 
+    /**
+     * @var string
+     */
     protected $authNeeded = 'no';
 
-    protected $authUser;
+    /**
+     * @var ?string
+     */
+    protected $authUser = null;
 
-    protected $authPassword;
+    /**
+     * @var ?string
+     */
+    protected $authPassword = null;
 
-    protected $sipProxy;
+    /**
+     * @var ?string
+     */
+    protected $sipProxy = null;
 
-    protected $outboundProxy;
+    /**
+     * @var ?string
+     */
+    protected $outboundProxy = null;
 
-    protected $fromUser;
+    /**
+     * @var ?string
+     */
+    protected $fromUser = null;
 
-    protected $fromDomain;
+    /**
+     * @var ?string
+     */
+    protected $fromDomain = null;
 
     /**
      * @var CarrierInterface

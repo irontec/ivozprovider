@@ -23,10 +23,10 @@ abstract class CompanyRelGeoIPCountryAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relCountries
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var CountryInterface

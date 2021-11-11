@@ -32,66 +32,101 @@ abstract class UsersCdrAbstract
     use ChangelogTrait;
 
     /**
+     * @var \DateTime
      * column: start_time
      */
-    protected $startTime;
+    protected \DateTimeInterface $startTime;
 
     /**
+     * @var \DateTime
      * column: end_time
      */
-    protected $endTime;
+    protected \DateTimeInterface $endTime;
 
+    /**
+     * @var float
+     */
     protected $duration = 0;
 
-    protected $direction;
+    /**
+     * @var ?string
+     */
+    protected $direction = null;
 
-    protected $caller;
+    /**
+     * @var ?string
+     */
+    protected $caller = null;
 
-    protected $callee;
+    /**
+     * @var ?string
+     */
+    protected $callee = null;
 
-    protected $diversion;
+    /**
+     * @var ?string
+     */
+    protected $diversion = null;
 
-    protected $referee;
+    /**
+     * @var ?string
+     */
+    protected $referee = null;
 
-    protected $referrer;
+    /**
+     * @var ?string
+     */
+    protected $referrer = null;
 
-    protected $callid;
+    /**
+     * @var ?string
+     */
+    protected $callid = null;
 
-    protected $callidHash;
+    /**
+     * @var ?string
+     */
+    protected $callidHash = null;
 
-    protected $xcallid;
+    /**
+     * @var ?string
+     */
+    protected $xcallid = null;
 
+    /**
+     * @var bool
+     */
     protected $hidden = false;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor
@@ -290,7 +325,7 @@ abstract class UsersCdrAbstract
             '2000-01-01 00:00:00'
         );
 
-        if ($this->startTime == $startTime) {
+        if ($this->isInitialized() && $this->startTime == $startTime) {
             return $this;
         }
 
@@ -315,7 +350,7 @@ abstract class UsersCdrAbstract
             '2000-01-01 00:00:00'
         );
 
-        if ($this->endTime == $endTime) {
+        if ($this->isInitialized() && $this->endTime == $endTime) {
             return $this;
         }
 

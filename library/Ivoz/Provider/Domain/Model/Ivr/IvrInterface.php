@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface;
 
@@ -88,6 +88,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param IvrDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -140,7 +141,10 @@ interface IvrInterface extends LoggableEntityInterface
 
     public function removeEntry(IvrEntryInterface $entry): IvrInterface;
 
-    public function replaceEntries(ArrayCollection $entries): IvrInterface;
+    /**
+     * @param Collection<array-key, IvrEntryInterface> $entries
+     */
+    public function replaceEntries(Collection $entries): IvrInterface;
 
     public function getEntries(?Criteria $criteria = null): array;
 
@@ -148,7 +152,10 @@ interface IvrInterface extends LoggableEntityInterface
 
     public function removeExcludedExtension(IvrExcludedExtensionInterface $excludedExtension): IvrInterface;
 
-    public function replaceExcludedExtensions(ArrayCollection $excludedExtensions): IvrInterface;
+    /**
+     * @param Collection<array-key, IvrExcludedExtensionInterface> $excludedExtensions
+     */
+    public function replaceExcludedExtensions(Collection $excludedExtensions): IvrInterface;
 
     public function getExcludedExtensions(?Criteria $criteria = null): array;
 }

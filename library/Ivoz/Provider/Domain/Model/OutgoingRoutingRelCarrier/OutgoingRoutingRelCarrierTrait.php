@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait OutgoingRoutingRelCarrierTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TpRatingProfileInterface> & Selectable<array-key, TpRatingProfileInterface>
      * TpRatingProfileInterface mappedBy outgoingRoutingRelCarrier
      */
     protected $tpRatingProfiles;
@@ -40,6 +42,7 @@ trait OutgoingRoutingRelCarrierTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param OutgoingRoutingRelCarrierDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait OutgoingRoutingRelCarrierTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getTpRatingProfiles())) {
-            $self->replaceTpRatingProfiles(
-                $fkTransformer->transformCollection(
-                    $dto->getTpRatingProfiles()
-                )
+        $tpRatingProfiles = $dto->getTpRatingProfiles();
+        if (!is_null($tpRatingProfiles)) {
+
+            /** @var Collection<array-key, TpRatingProfileInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $tpRatingProfiles
             );
+            $self->replaceTpRatingProfiles($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait OutgoingRoutingRelCarrierTrait
 
     /**
      * @internal use EntityTools instead
+     * @param OutgoingRoutingRelCarrierDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getTpRatingProfiles())) {
-            $this->replaceTpRatingProfiles(
-                $fkTransformer->transformCollection(
-                    $dto->getTpRatingProfiles()
-                )
+        $tpRatingProfiles = $dto->getTpRatingProfiles();
+        if (!is_null($tpRatingProfiles)) {
+
+            /** @var Collection<array-key, TpRatingProfileInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $tpRatingProfiles
             );
+            $this->replaceTpRatingProfiles($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait OutgoingRoutingRelCarrierTrait
         return $this;
     }
 
-    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface
+    /**
+     * @param Collection<array-key, TpRatingProfileInterface> $tpRatingProfiles
+     */
+    public function replaceTpRatingProfiles(Collection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($tpRatingProfiles as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setOutgoingRoutingRelCarrier($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->tpRatingProfiles as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->tpRatingProfiles->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->tpRatingProfiles->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->tpRatingProfiles->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

@@ -23,10 +23,10 @@ abstract class ExternalCallFilterRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy schedules
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var ScheduleInterface

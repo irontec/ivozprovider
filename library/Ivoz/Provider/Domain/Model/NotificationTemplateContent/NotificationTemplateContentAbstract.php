@@ -22,15 +22,28 @@ abstract class NotificationTemplateContentAbstract
 {
     use ChangelogTrait;
 
-    protected $fromName;
+    /**
+     * @var ?string
+     */
+    protected $fromName = null;
 
-    protected $fromAddress;
+    /**
+     * @var ?string
+     */
+    protected $fromAddress = null;
 
+    /**
+     * @var string
+     */
     protected $subject;
 
+    /**
+     * @var string
+     */
     protected $body;
 
     /**
+     * @var string
      * comment: enum:text/plain|text/html
      */
     protected $bodyType = 'text/plain';
@@ -42,9 +55,9 @@ abstract class NotificationTemplateContentAbstract
     protected $notificationTemplate;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
      * Constructor

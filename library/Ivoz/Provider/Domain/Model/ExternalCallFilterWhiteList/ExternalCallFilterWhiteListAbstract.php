@@ -23,10 +23,10 @@ abstract class ExternalCallFilterWhiteListAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy whiteLists
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var MatchListInterface

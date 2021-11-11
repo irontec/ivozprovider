@@ -10,6 +10,8 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -18,9 +20,9 @@ use Doctrine\Common\Collections\Criteria;
 trait TerminalTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var PsEndpointInterface
@@ -35,7 +37,7 @@ trait TerminalTrait
     protected $psIdentify;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, UserInterface> & Selectable<array-key, UserInterface>
      * UserInterface mappedBy terminal
      */
     protected $users;
@@ -54,6 +56,7 @@ trait TerminalTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TerminalDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -62,27 +65,29 @@ trait TerminalTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $self->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $self->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $self->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getUsers())) {
-            $self->replaceUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getUsers()
-                )
+        $users = $dto->getUsers();
+        if (!is_null($users)) {
+
+            /** @var Collection<array-key, UserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $users
             );
+            $self->replaceUsers($replacement);
         }
 
         $self->sanitizeValues();
@@ -96,6 +101,7 @@ trait TerminalTrait
 
     /**
      * @internal use EntityTools instead
+     * @param TerminalDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -103,27 +109,29 @@ trait TerminalTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $this->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $this->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $this->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getUsers())) {
-            $this->replaceUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getUsers()
-                )
+        $users = $dto->getUsers();
+        if (!is_null($users)) {
+
+            /** @var Collection<array-key, UserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $users
             );
+            $this->replaceUsers($replacement);
         }
         $this->sanitizeValues();
 
@@ -185,25 +193,33 @@ trait TerminalTrait
         return $this;
     }
 
-    public function replaceUsers(ArrayCollection $users): TerminalInterface
+    /**
+     * @param Collection<array-key, UserInterface> $users
+     */
+    public function replaceUsers(Collection $users): TerminalInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($users as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setTerminal($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->users as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->users->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->users->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->users->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

@@ -19,12 +19,18 @@ abstract class CurrencyAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $symbol;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -38,7 +44,7 @@ abstract class CurrencyAbstract
     ) {
         $this->setIden($iden);
         $this->setSymbol($symbol);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -206,7 +212,7 @@ abstract class CurrencyAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

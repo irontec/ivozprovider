@@ -38,6 +38,7 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRoutesConditionsRelMatchlistDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

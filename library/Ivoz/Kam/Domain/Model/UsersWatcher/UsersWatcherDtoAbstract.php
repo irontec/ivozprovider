@@ -14,44 +14,44 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $presentityUri;
-
-    /**
-     * @var string
-     */
-    private $watcherUsername;
-
-    /**
-     * @var string
-     */
-    private $watcherDomain;
-
-    /**
-     * @var string
-     */
-    private $event = 'presence';
-
-    /**
-     * @var int
-     */
-    private $status;
+    private $presentityUri = null;
 
     /**
      * @var string|null
      */
-    private $reason;
+    private $watcherUsername = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $insertedTime;
+    private $watcherDomain = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $event = 'presence';
+
+    /**
+     * @var int|null
+     */
+    private $status = null;
+
+    /**
+     * @var string|null
+     */
+    private $reason = null;
+
+    /**
+     * @var int|null
+     */
+    private $insertedTime = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -200,7 +200,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

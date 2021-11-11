@@ -16,7 +16,7 @@ use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface;
@@ -140,6 +140,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRoutesConditionDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -184,7 +185,10 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 
     public function removeRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;
 
-    public function replaceRelMatchlists(ArrayCollection $relMatchlists): ConditionalRoutesConditionInterface;
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelMatchlistInterface> $relMatchlists
+     */
+    public function replaceRelMatchlists(Collection $relMatchlists): ConditionalRoutesConditionInterface;
 
     public function getRelMatchlists(?Criteria $criteria = null): array;
 
@@ -192,7 +196,10 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 
     public function removeRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface;
 
-    public function replaceRelSchedules(ArrayCollection $relSchedules): ConditionalRoutesConditionInterface;
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelScheduleInterface> $relSchedules
+     */
+    public function replaceRelSchedules(Collection $relSchedules): ConditionalRoutesConditionInterface;
 
     public function getRelSchedules(?Criteria $criteria = null): array;
 
@@ -200,7 +207,10 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 
     public function removeRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface;
 
-    public function replaceRelCalendars(ArrayCollection $relCalendars): ConditionalRoutesConditionInterface;
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelCalendarInterface> $relCalendars
+     */
+    public function replaceRelCalendars(Collection $relCalendars): ConditionalRoutesConditionInterface;
 
     public function getRelCalendars(?Criteria $criteria = null): array;
 
@@ -208,7 +218,10 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 
     public function removeRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface;
 
-    public function replaceRelRouteLocks(ArrayCollection $relRouteLocks): ConditionalRoutesConditionInterface;
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelRouteLockInterface> $relRouteLocks
+     */
+    public function replaceRelRouteLocks(Collection $relRouteLocks): ConditionalRoutesConditionInterface;
 
     public function getRelRouteLocks(?Criteria $criteria = null): array;
 

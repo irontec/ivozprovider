@@ -23,16 +23,16 @@ abstract class PickUpRelUserAbstract
     use ChangelogTrait;
 
     /**
-     * @var PickUpGroupInterface | null
+     * @var ?PickUpGroupInterface
      * inversedBy relUsers
      */
-    protected $pickUpGroup;
+    protected $pickUpGroup = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      * inversedBy pickUpRelUsers
      */
-    protected $user;
+    protected $user = null;
 
     /**
      * Constructor

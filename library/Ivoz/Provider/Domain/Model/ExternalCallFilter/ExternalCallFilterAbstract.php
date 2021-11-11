@@ -28,21 +28,32 @@ abstract class ExternalCallFilterAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $holidayTargetType;
-
-    protected $holidayNumberValue;
+    protected $holidayTargetType = null;
 
     /**
+     * @var ?string
+     */
+    protected $holidayNumberValue = null;
+
+    /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $outOfScheduleTargetType;
+    protected $outOfScheduleTargetType = null;
 
-    protected $outOfScheduleNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $outOfScheduleNumberValue = null;
 
     /**
      * @var CompanyInterface
@@ -50,49 +61,49 @@ abstract class ExternalCallFilterAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $welcomeLocution;
+    protected $welcomeLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $holidayLocution;
+    protected $holidayLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $outOfScheduleLocution;
+    protected $outOfScheduleLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $holidayExtension;
+    protected $holidayExtension = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $outOfScheduleExtension;
+    protected $outOfScheduleExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $holidayVoiceMailUser;
+    protected $holidayVoiceMailUser = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $outOfScheduleVoiceMailUser;
+    protected $outOfScheduleVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $holidayNumberCountry;
+    protected $holidayNumberCountry = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $outOfScheduleNumberCountry;
+    protected $outOfScheduleNumberCountry = null;
 
     /**
      * Constructor

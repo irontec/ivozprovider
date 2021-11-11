@@ -14,19 +14,19 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -105,7 +105,7 @@ abstract class ApplicationServerDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -21,122 +21,122 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var int|null
      */
-    private $maxWaitTime;
+    private $maxWaitTime = null;
 
     /**
      * @var string|null
      */
-    private $timeoutTargetType;
+    private $timeoutTargetType = null;
 
     /**
      * @var string|null
      */
-    private $timeoutNumberValue;
+    private $timeoutNumberValue = null;
 
     /**
      * @var int|null
      */
-    private $maxlen;
+    private $maxlen = null;
 
     /**
      * @var string|null
      */
-    private $fullTargetType;
+    private $fullTargetType = null;
 
     /**
      * @var string|null
      */
-    private $fullNumberValue;
+    private $fullNumberValue = null;
 
     /**
      * @var int|null
      */
-    private $periodicAnnounceFrequency;
+    private $periodicAnnounceFrequency = null;
 
     /**
      * @var int|null
      */
-    private $memberCallRest;
+    private $memberCallRest = null;
 
     /**
      * @var int|null
      */
-    private $memberCallTimeout;
+    private $memberCallTimeout = null;
 
     /**
      * @var string|null
      */
-    private $strategy;
+    private $strategy = null;
 
     /**
      * @var int|null
      */
-    private $weight;
+    private $weight = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $preventMissedCalls = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $periodicAnnounceLocution;
+    private $periodicAnnounceLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $timeoutLocution;
+    private $timeoutLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $timeoutExtension;
+    private $timeoutExtension = null;
 
     /**
      * @var UserDto | null
      */
-    private $timeoutVoiceMailUser;
+    private $timeoutVoiceMailUser = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $fullLocution;
+    private $fullLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $fullExtension;
+    private $fullExtension = null;
 
     /**
      * @var UserDto | null
      */
-    private $fullVoiceMailUser;
+    private $fullVoiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $timeoutNumberCountry;
+    private $timeoutNumberCountry = null;
 
     /**
      * @var CountryDto | null
      */
-    private $fullNumberCountry;
+    private $fullNumberCountry = null;
 
     public function __construct($id = null)
     {
@@ -389,7 +389,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

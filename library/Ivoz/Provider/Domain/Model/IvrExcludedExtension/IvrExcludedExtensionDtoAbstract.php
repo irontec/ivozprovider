@@ -16,19 +16,19 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

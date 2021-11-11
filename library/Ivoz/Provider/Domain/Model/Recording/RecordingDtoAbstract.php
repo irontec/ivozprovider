@@ -17,62 +17,62 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $callid;
+    private $callid = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $calldate = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type = 'ddi';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $duration = 0;
 
     /**
      * @var string|null
      */
-    private $caller;
+    private $caller = null;
 
     /**
      * @var string|null
      */
-    private $callee;
+    private $callee = null;
 
     /**
      * @var string|null
      */
-    private $recorder;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $recorder = null;
 
     /**
      * @var int|null
      */
-    private $recordedFileFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $recordedFileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $recordedFileMimeType;
+    private $recordedFileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $recordedFileBaseName;
+    private $recordedFileBaseName = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -233,7 +233,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

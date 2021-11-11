@@ -28,14 +28,29 @@ abstract class CarrierAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var ?bool
+     */
     protected $externallyRated = false;
 
+    /**
+     * @var ?float
+     */
     protected $balance = 0;
 
+    /**
+     * @var ?bool
+     */
     protected $calculateCost = false;
 
     /**
@@ -44,24 +59,24 @@ abstract class CarrierAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var ProxyTrunkInterface | null
+     * @var ?ProxyTrunkInterface
      */
-    protected $proxyTrunk;
+    protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
      * Constructor

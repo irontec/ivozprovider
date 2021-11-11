@@ -22,12 +22,24 @@ abstract class AdministratorRelPublicEntityAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var bool
+     */
     protected $create = false;
 
+    /**
+     * @var bool
+     */
     protected $read = true;
 
+    /**
+     * @var bool
+     */
     protected $update = false;
 
+    /**
+     * @var bool
+     */
     protected $delete = false;
 
     /**

@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait TpRatingProfileTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait TpRatingProfileTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpRatingProfileDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait TpRatingProfileTrait
 
     /**
      * @internal use EntityTools instead
+     * @param TpRatingProfileDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

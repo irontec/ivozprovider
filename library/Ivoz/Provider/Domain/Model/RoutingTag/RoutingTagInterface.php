@@ -8,7 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface;
 
@@ -45,6 +45,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RoutingTagDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -65,7 +66,10 @@ interface RoutingTagInterface extends LoggableEntityInterface
 
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingTagInterface;
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingTagInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingTagInterface;
 
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
@@ -73,7 +77,10 @@ interface RoutingTagInterface extends LoggableEntityInterface
 
     public function removeRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface;
 
-    public function replaceRelCompanies(ArrayCollection $relCompanies): RoutingTagInterface;
+    /**
+     * @param Collection<array-key, CompanyRelRoutingTagInterface> $relCompanies
+     */
+    public function replaceRelCompanies(Collection $relCompanies): RoutingTagInterface;
 
     public function getRelCompanies(?Criteria $criteria = null): array;
 }

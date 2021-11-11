@@ -15,19 +15,19 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|null
      */
-    private $timeIn;
+    private $timeIn = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|null
      */
-    private $timeout;
+    private $timeout = null;
 
     /**
      * @var bool|null
@@ -65,14 +65,14 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     private $sunday = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -150,26 +150,26 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTimeIn(\DateTimeInterface|string $timeIn): static
+    public function setTimeIn(\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): \DateTimeInterface|string|null
+    public function getTimeIn(): ?\DateTimeInterface
     {
         return $this->timeIn;
     }
 
-    public function setTimeout(\DateTimeInterface|string $timeout): static
+    public function setTimeout(\DateTimeInterface $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    public function getTimeout(): \DateTimeInterface|string|null
+    public function getTimeout(): ?\DateTimeInterface
     {
         return $this->timeout;
     }
@@ -265,7 +265,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

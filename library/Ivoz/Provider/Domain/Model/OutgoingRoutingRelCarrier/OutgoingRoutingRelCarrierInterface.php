@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -41,6 +41,7 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param OutgoingRoutingRelCarrierDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -63,7 +64,10 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
 
     public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): OutgoingRoutingRelCarrierInterface;
 
-    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface;
+    /**
+     * @param Collection<array-key, TpRatingProfileInterface> $tpRatingProfiles
+     */
+    public function replaceTpRatingProfiles(Collection $tpRatingProfiles): OutgoingRoutingRelCarrierInterface;
 
     public function getTpRatingProfiles(?Criteria $criteria = null): array;
 }

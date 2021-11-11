@@ -20,20 +20,35 @@ abstract class InvoiceTemplateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $description;
-
-    protected $template;
-
-    protected $templateHeader;
-
-    protected $templateFooter;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
-     * @var BrandInterface | null
+     * @var string
      */
-    protected $brand;
+    protected $template;
+
+    /**
+     * @var ?string
+     */
+    protected $templateHeader = null;
+
+    /**
+     * @var ?string
+     */
+    protected $templateFooter = null;
+
+    /**
+     * @var ?BrandInterface
+     */
+    protected $brand = null;
 
     /**
      * Constructor

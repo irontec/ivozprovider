@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait IvrEntryTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait IvrEntryTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param IvrEntryDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait IvrEntryTrait
 
     /**
      * @internal use EntityTools instead
+     * @param IvrEntryDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

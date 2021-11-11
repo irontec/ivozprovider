@@ -29,6 +29,7 @@ interface UsersLocationAttrInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UsersLocationAttrDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

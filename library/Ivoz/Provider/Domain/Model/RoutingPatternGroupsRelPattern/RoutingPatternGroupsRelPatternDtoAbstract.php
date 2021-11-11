@@ -16,19 +16,19 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RoutingPatternDto | null
      */
-    private $routingPattern;
+    private $routingPattern = null;
 
     /**
      * @var RoutingPatternGroupDto | null
      */
-    private $routingPatternGroup;
+    private $routingPatternGroup = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

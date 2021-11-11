@@ -15,9 +15,9 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 trait DestinationRateTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TpRateInterface
@@ -44,6 +44,7 @@ trait DestinationRateTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DestinationRateDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -52,19 +53,19 @@ trait DestinationRateTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRate())) {
-            $self->setTpRate(
-                $fkTransformer->transform(
-                    $dto->getTpRate()
-                )
+            /** @var TpRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRate()
             );
+            $self->setTpRate($entity);
         }
 
         if (!is_null($dto->getTpDestinationRate())) {
-            $self->setTpDestinationRate(
-                $fkTransformer->transform(
-                    $dto->getTpDestinationRate()
-                )
+            /** @var TpDestinationRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpDestinationRate()
             );
+            $self->setTpDestinationRate($entity);
         }
 
         $self->sanitizeValues();
@@ -78,6 +79,7 @@ trait DestinationRateTrait
 
     /**
      * @internal use EntityTools instead
+     * @param DestinationRateDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -85,19 +87,19 @@ trait DestinationRateTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRate())) {
-            $this->setTpRate(
-                $fkTransformer->transform(
-                    $dto->getTpRate()
-                )
+            /** @var TpRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRate()
             );
+            $this->setTpRate($entity);
         }
 
         if (!is_null($dto->getTpDestinationRate())) {
-            $this->setTpDestinationRate(
-                $fkTransformer->transform(
-                    $dto->getTpDestinationRate()
-                )
+            /** @var TpDestinationRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpDestinationRate()
             );
+            $this->setTpDestinationRate($entity);
         }
         $this->sanitizeValues();
 

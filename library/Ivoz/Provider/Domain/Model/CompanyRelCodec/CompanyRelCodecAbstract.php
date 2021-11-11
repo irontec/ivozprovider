@@ -23,10 +23,10 @@ abstract class CompanyRelCodecAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relCodecs
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var CodecInterface

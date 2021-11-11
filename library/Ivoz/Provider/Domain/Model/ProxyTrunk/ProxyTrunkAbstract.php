@@ -18,8 +18,14 @@ abstract class ProxyTrunkAbstract
 {
     use ChangelogTrait;
 
-    protected $name;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
+    /**
+     * @var string
+     */
     protected $ip;
 
     /**

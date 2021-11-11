@@ -29,6 +29,7 @@ interface UsersHtableInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UsersHtableDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

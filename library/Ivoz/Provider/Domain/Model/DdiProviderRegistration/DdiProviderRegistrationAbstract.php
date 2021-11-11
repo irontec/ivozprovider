@@ -20,22 +20,49 @@ abstract class DdiProviderRegistrationAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username = '';
 
+    /**
+     * @var string
+     */
     protected $domain = '';
 
+    /**
+     * @var string
+     */
     protected $realm = '';
 
+    /**
+     * @var string
+     */
     protected $authUsername = '';
 
+    /**
+     * @var string
+     */
     protected $authPassword = '';
 
+    /**
+     * @var string
+     */
     protected $authProxy = '';
 
+    /**
+     * @var int
+     */
     protected $expires = 0;
 
+    /**
+     * @var ?bool
+     */
     protected $multiDdi = false;
 
+    /**
+     * @var string
+     */
     protected $contactUsername = '';
 
     /**

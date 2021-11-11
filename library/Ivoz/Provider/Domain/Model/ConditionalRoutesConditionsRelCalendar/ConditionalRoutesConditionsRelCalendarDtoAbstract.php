@@ -16,19 +16,19 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ConditionalRoutesConditionDto | null
      */
-    private $condition;
+    private $condition = null;
 
     /**
      * @var CalendarDto | null
      */
-    private $calendar;
+    private $calendar = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

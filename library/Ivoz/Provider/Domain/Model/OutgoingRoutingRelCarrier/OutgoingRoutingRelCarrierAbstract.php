@@ -23,10 +23,10 @@ abstract class OutgoingRoutingRelCarrierAbstract
     use ChangelogTrait;
 
     /**
-     * @var OutgoingRoutingInterface | null
+     * @var ?OutgoingRoutingInterface
      * inversedBy relCarriers
      */
-    protected $outgoingRouting;
+    protected $outgoingRouting = null;
 
     /**
      * @var CarrierInterface

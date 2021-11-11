@@ -23,31 +23,57 @@ abstract class RatingPlanAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var float
+     */
     protected $weight = 10;
 
     /**
+     * @var ?string
      * column: timing_type
      * comment: enum:always|custom
      */
     protected $timingType = 'always';
 
     /**
+     * @var \DateTimeInterface
      * column: time_in
      */
     protected $timeIn;
 
+    /**
+     * @var ?bool
+     */
     protected $monday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $tuesday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $wednesday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $thursday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $friday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $saturday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $sunday = true;
 
     /**

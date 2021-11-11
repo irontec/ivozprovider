@@ -21,22 +21,36 @@ abstract class UsersAddressAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: source_address
      */
     protected $sourceAddress;
 
     /**
+     * @var ?string
      * column: ip_addr
      */
-    protected $ipAddr;
+    protected $ipAddr = null;
 
+    /**
+     * @var int
+     */
     protected $mask = 32;
 
+    /**
+     * @var int
+     */
     protected $port = 0;
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * @var CompanyInterface

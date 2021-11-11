@@ -45,6 +45,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UsersCdrDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

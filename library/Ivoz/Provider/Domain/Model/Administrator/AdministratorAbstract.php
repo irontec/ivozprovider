@@ -24,39 +24,61 @@ abstract class AdministratorAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username;
 
     /**
+     * @var string
      * comment: password
      */
     protected $pass;
 
+    /**
+     * @var string
+     */
     protected $email = '';
 
+    /**
+     * @var bool
+     */
     protected $active = true;
 
+    /**
+     * @var bool
+     */
     protected $internal = false;
 
+    /**
+     * @var bool
+     */
     protected $restricted = false;
 
-    protected $name;
-
-    protected $lastname;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $lastname = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?BrandInterface
      */
-    protected $company;
+    protected $brand = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?CompanyInterface
      */
-    protected $timezone;
+    protected $company = null;
+
+    /**
+     * @var ?TimezoneInterface
+     */
+    protected $timezone = null;
 
     /**
      * Constructor

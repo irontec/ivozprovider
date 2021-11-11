@@ -14,32 +14,32 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameIt = '';
 
@@ -118,7 +118,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -28,174 +28,174 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $domainUsers;
+    private $domainUsers = null;
 
     /**
      * @var int|null
      */
-    private $recordingsLimitMB;
+    private $recordingsLimitMB = null;
 
     /**
      * @var string|null
      */
-    private $recordingsLimitEmail;
+    private $recordingsLimitEmail = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxCalls = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $logoFileSize;
+    private $logoFileSize = null;
 
     /**
      * @var string|null
      */
-    private $logoMimeType;
+    private $logoMimeType = null;
 
     /**
      * @var string|null
      */
-    private $logoBaseName;
-
-    /**
-     * @var string
-     */
-    private $invoiceNif;
-
-    /**
-     * @var string
-     */
-    private $invoicePostalAddress;
-
-    /**
-     * @var string
-     */
-    private $invoicePostalCode;
-
-    /**
-     * @var string
-     */
-    private $invoiceTown;
-
-    /**
-     * @var string
-     */
-    private $invoiceProvince;
-
-    /**
-     * @var string
-     */
-    private $invoiceCountry;
+    private $logoBaseName = null;
 
     /**
      * @var string|null
      */
-    private $invoiceRegistryData;
+    private $invoiceNif = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoicePostalAddress = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoicePostalCode = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceTown = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceProvince = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceCountry = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceRegistryData = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $defaultTimezone;
+    private $defaultTimezone = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $voicemailNotificationTemplate;
+    private $voicemailNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $faxNotificationTemplate;
+    private $faxNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $invoiceNotificationTemplate;
+    private $invoiceNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $callCsvNotificationTemplate;
+    private $callCsvNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $maxDailyUsageNotificationTemplate;
+    private $maxDailyUsageNotificationTemplate = null;
 
     /**
      * @var CompanyDto[] | null
      */
-    private $companies;
+    private $companies = null;
 
     /**
      * @var BrandServiceDto[] | null
      */
-    private $services;
+    private $services = null;
 
     /**
      * @var WebPortalDto[] | null
      */
-    private $urls;
+    private $urls = null;
 
     /**
      * @var FeaturesRelBrandDto[] | null
      */
-    private $relFeatures;
+    private $relFeatures = null;
 
     /**
      * @var ProxyTrunksRelBrandDto[] | null
      */
-    private $relProxyTrunks;
+    private $relProxyTrunks = null;
 
     /**
      * @var ResidentialDeviceDto[] | null
      */
-    private $residentialDevices;
+    private $residentialDevices = null;
 
     /**
      * @var MusicOnHoldDto[] | null
      */
-    private $musicsOnHold;
+    private $musicsOnHold = null;
 
     /**
      * @var MatchListDto[] | null
      */
-    private $matchLists;
+    private $matchLists = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     public function __construct($id = null)
     {
@@ -371,7 +371,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

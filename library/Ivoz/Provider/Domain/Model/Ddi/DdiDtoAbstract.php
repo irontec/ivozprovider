@@ -29,119 +29,119 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $ddi;
+    private $ddi = null;
 
     /**
      * @var string|null
      */
-    private $ddie164;
+    private $ddie164 = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $recordCalls = 'none';
 
     /**
      * @var string|null
      */
-    private $displayName;
+    private $displayName = null;
 
     /**
      * @var string|null
      */
-    private $routeType;
+    private $routeType = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $billInboundCalls = false;
 
     /**
      * @var string|null
      */
-    private $friendValue;
+    private $friendValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var ExternalCallFilterDto | null
      */
-    private $externalCallFilter;
+    private $externalCallFilter = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     public function __construct($id = null)
     {
@@ -320,7 +320,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

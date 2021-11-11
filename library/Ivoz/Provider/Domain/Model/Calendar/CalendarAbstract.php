@@ -20,6 +20,9 @@ abstract class CalendarAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**

@@ -15,44 +15,44 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $setid = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $url;
+    private $url = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $weight = 1;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $disabled = false;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $stamp = '2000-01-01 00:00:00';
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySet;
+    private $mediaRelaySet = null;
 
     public function __construct($id = null)
     {
@@ -189,7 +189,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

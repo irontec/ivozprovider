@@ -21,43 +21,73 @@ abstract class TrunksLcrGatewayAbstract
     use ChangelogTrait;
 
     /**
+     * @var int
      * column: lcr_id
      */
     protected $lcrId = 1;
 
     /**
+     * @var string
      * column: gw_name
      */
     protected $gwName;
 
-    protected $ip;
-
-    protected $hostname;
-
-    protected $port;
-
-    protected $params;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
     /**
+     * @var ?string
+     */
+    protected $hostname = null;
+
+    /**
+     * @var ?int
+     */
+    protected $port = null;
+
+    /**
+     * @var ?string
+     */
+    protected $params = null;
+
+    /**
+     * @var ?int
      * column: uri_scheme
      */
-    protected $uriScheme;
-
-    protected $transport;
-
-    protected $strip;
-
-    protected $prefix;
-
-    protected $tag;
-
-    protected $defunct;
+    protected $uriScheme = null;
 
     /**
-     * @var CarrierServerInterface | null
+     * @var ?int
+     */
+    protected $transport = null;
+
+    /**
+     * @var ?bool
+     */
+    protected $strip = null;
+
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
+
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
+
+    /**
+     * @var ?int
+     */
+    protected $defunct = null;
+
+    /**
+     * @var ?CarrierServerInterface
      * inversedBy lcrGateway
      */
-    protected $carrierServer;
+    protected $carrierServer = null;
 
     /**
      * Constructor

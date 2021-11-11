@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait ConditionalRouteTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ConditionalRoutesConditionInterface> & Selectable<array-key, ConditionalRoutesConditionInterface>
      * ConditionalRoutesConditionInterface mappedBy conditionalRoute
      */
     protected $conditions;
@@ -40,6 +42,7 @@ trait ConditionalRouteTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRouteDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait ConditionalRouteTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getConditions())) {
-            $self->replaceConditions(
-                $fkTransformer->transformCollection(
-                    $dto->getConditions()
-                )
+        $conditions = $dto->getConditions();
+        if (!is_null($conditions)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $conditions
             );
+            $self->replaceConditions($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait ConditionalRouteTrait
 
     /**
      * @internal use EntityTools instead
+     * @param ConditionalRouteDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getConditions())) {
-            $this->replaceConditions(
-                $fkTransformer->transformCollection(
-                    $dto->getConditions()
-                )
+        $conditions = $dto->getConditions();
+        if (!is_null($conditions)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $conditions
             );
+            $this->replaceConditions($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait ConditionalRouteTrait
         return $this;
     }
 
-    public function replaceConditions(ArrayCollection $conditions): ConditionalRouteInterface
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionInterface> $conditions
+     */
+    public function replaceConditions(Collection $conditions): ConditionalRouteInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($conditions as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setConditionalRoute($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->conditions as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->conditions->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->conditions->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->conditions->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

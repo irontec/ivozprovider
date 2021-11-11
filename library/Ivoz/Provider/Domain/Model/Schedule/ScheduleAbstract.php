@@ -21,24 +21,54 @@ abstract class ScheduleAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $timeIn;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $timeout;
 
+    /**
+     * @var ?bool
+     */
     protected $monday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $tuesday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $wednesday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $thursday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $friday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $saturday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $sunday = false;
 
     /**

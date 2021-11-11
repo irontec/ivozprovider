@@ -8,7 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
@@ -47,6 +47,7 @@ interface RoutingPatternInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RoutingPatternDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -69,7 +70,10 @@ interface RoutingPatternInterface extends LoggableEntityInterface
 
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternInterface;
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingPatternInterface;
 
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
@@ -77,7 +81,10 @@ interface RoutingPatternInterface extends LoggableEntityInterface
 
     public function removeRelPatternGroup(RoutingPatternGroupsRelPatternInterface $relPatternGroup): RoutingPatternInterface;
 
-    public function replaceRelPatternGroups(ArrayCollection $relPatternGroups): RoutingPatternInterface;
+    /**
+     * @param Collection<array-key, RoutingPatternGroupsRelPatternInterface> $relPatternGroups
+     */
+    public function replaceRelPatternGroups(Collection $relPatternGroups): RoutingPatternInterface;
 
     public function getRelPatternGroups(?Criteria $criteria = null): array;
 
@@ -85,7 +92,10 @@ interface RoutingPatternInterface extends LoggableEntityInterface
 
     public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): RoutingPatternInterface;
 
-    public function replaceLcrRules(ArrayCollection $lcrRules): RoutingPatternInterface;
+    /**
+     * @param Collection<array-key, TrunksLcrRuleInterface> $lcrRules
+     */
+    public function replaceLcrRules(Collection $lcrRules): RoutingPatternInterface;
 
     public function getLcrRules(?Criteria $criteria = null): array;
 }

@@ -23,87 +23,182 @@ abstract class VoicemailAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $context;
 
+    /**
+     * @var string
+     */
     protected $mailbox;
 
-    protected $password;
-
-    protected $fullname;
-
-    protected $alias;
-
-    protected $email;
-
-    protected $pager;
-
-    protected $attach;
-
-    protected $attachfmt;
-
-    protected $serveremail;
-
-    protected $language;
-
-    protected $tz;
+    /**
+     * @var ?string
+     */
+    protected $password = null;
 
     /**
+     * @var ?string
+     */
+    protected $fullname = null;
+
+    /**
+     * @var ?string
+     */
+    protected $alias = null;
+
+    /**
+     * @var ?string
+     */
+    protected $email = null;
+
+    /**
+     * @var ?string
+     */
+    protected $pager = null;
+
+    /**
+     * @var ?string
+     */
+    protected $attach = null;
+
+    /**
+     * @var ?string
+     */
+    protected $attachfmt = null;
+
+    /**
+     * @var ?string
+     */
+    protected $serveremail = null;
+
+    /**
+     * @var ?string
+     */
+    protected $language = null;
+
+    /**
+     * @var ?string
+     */
+    protected $tz = null;
+
+    /**
+     * @var ?string
      * column: deleteast_voicemail
      */
-    protected $deleteVoicemail;
+    protected $deleteVoicemail = null;
 
+    /**
+     * @var ?string
+     */
     protected $saycid = 'yes';
 
     /**
+     * @var ?string
      * column: sendast_voicemail
      */
-    protected $sendVoicemail;
-
-    protected $review;
-
-    protected $tempgreetwarn;
-
-    protected $operator;
-
-    protected $envelope;
-
-    protected $sayduration;
-
-    protected $forcename;
-
-    protected $forcegreetings;
-
-    protected $callback;
-
-    protected $dialout;
-
-    protected $exitcontext;
-
-    protected $maxmsg;
-
-    protected $volgain;
-
-    protected $imapuser;
-
-    protected $imappassword;
-
-    protected $imapserver;
-
-    protected $imapport;
-
-    protected $imapflags;
-
-    protected $stamp;
+    protected $sendVoicemail = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?string
      */
-    protected $user;
+    protected $review = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?string
      */
-    protected $residentialDevice;
+    protected $tempgreetwarn = null;
+
+    /**
+     * @var ?string
+     */
+    protected $operator = null;
+
+    /**
+     * @var ?string
+     */
+    protected $envelope = null;
+
+    /**
+     * @var ?int
+     */
+    protected $sayduration = null;
+
+    /**
+     * @var ?string
+     */
+    protected $forcename = null;
+
+    /**
+     * @var ?string
+     */
+    protected $forcegreetings = null;
+
+    /**
+     * @var ?string
+     */
+    protected $callback = null;
+
+    /**
+     * @var ?string
+     */
+    protected $dialout = null;
+
+    /**
+     * @var ?string
+     */
+    protected $exitcontext = null;
+
+    /**
+     * @var ?int
+     */
+    protected $maxmsg = null;
+
+    /**
+     * @var ?float
+     */
+    protected $volgain = null;
+
+    /**
+     * @var ?string
+     */
+    protected $imapuser = null;
+
+    /**
+     * @var ?string
+     */
+    protected $imappassword = null;
+
+    /**
+     * @var ?string
+     */
+    protected $imapserver = null;
+
+    /**
+     * @var ?string
+     */
+    protected $imapport = null;
+
+    /**
+     * @var ?string
+     */
+    protected $imapflags = null;
+
+    /**
+     * @var ?\DateTime
+     */
+    protected $stamp = null;
+
+    /**
+     * @var ?UserInterface
+     */
+    protected $user = null;
+
+    /**
+     * @var ?ResidentialDeviceInterface
+     */
+    protected $residentialDevice = null;
 
     /**
      * Constructor
@@ -826,7 +921,7 @@ abstract class VoicemailAbstract
                 null
             );
 
-            if ($this->stamp == $stamp) {
+            if ($this->isInitialized() && $this->stamp == $stamp) {
                 return $this;
             }
         }

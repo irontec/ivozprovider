@@ -23,21 +23,30 @@ abstract class MaxUsageNotificationAbstract
 {
     use ChangelogTrait;
 
-    protected $toAddress;
+    /**
+     * @var ?string
+     */
+    protected $toAddress = null;
 
+    /**
+     * @var ?float
+     */
     protected $threshold = 0;
 
-    protected $lastSent;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastSent = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $notificationTemplate;
+    protected $notificationTemplate = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor
@@ -207,7 +216,7 @@ abstract class MaxUsageNotificationAbstract
                 null
             );
 
-            if ($this->lastSent == $lastSent) {
+            if ($this->isInitialized() && $this->lastSent == $lastSent) {
                 return $this;
             }
         }

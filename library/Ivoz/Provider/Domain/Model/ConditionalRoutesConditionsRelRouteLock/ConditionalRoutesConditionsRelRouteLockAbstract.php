@@ -23,10 +23,10 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface | null
+     * @var ?ConditionalRoutesConditionInterface
      * inversedBy relRouteLocks
      */
-    protected $condition;
+    protected $condition = null;
 
     /**
      * @var RouteLockInterface

@@ -13,20 +13,23 @@ use Assert\Assertion;
 final class Csv
 {
     /**
+     * @var ?int
      * column: csvFileSize
      * comment: FSO
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: csvMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: csvBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
      * Constructor

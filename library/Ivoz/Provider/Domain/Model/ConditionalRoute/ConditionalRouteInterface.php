@@ -16,7 +16,7 @@ use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -73,6 +73,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRouteDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -115,7 +116,10 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
 
     public function removeCondition(ConditionalRoutesConditionInterface $condition): ConditionalRouteInterface;
 
-    public function replaceConditions(ArrayCollection $conditions): ConditionalRouteInterface;
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionInterface> $conditions
+     */
+    public function replaceConditions(Collection $conditions): ConditionalRouteInterface;
 
     public function getConditions(?Criteria $criteria = null): array;
 

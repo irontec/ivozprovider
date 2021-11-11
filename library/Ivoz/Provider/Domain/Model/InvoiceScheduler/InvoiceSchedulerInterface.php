@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -67,6 +67,7 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param InvoiceSchedulerDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -111,7 +112,10 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function removeRelFixedCost(FixedCostsRelInvoiceSchedulerInterface $relFixedCost): InvoiceSchedulerInterface;
 
-    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceSchedulerInterface;
+    /**
+     * @param Collection<array-key, FixedCostsRelInvoiceSchedulerInterface> $relFixedCosts
+     */
+    public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceSchedulerInterface;
 
     public function getRelFixedCosts(?Criteria $criteria = null): array;
 }

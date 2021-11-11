@@ -20,12 +20,24 @@ abstract class ConferenceRoomAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var bool
+     */
     protected $pinProtected = false;
 
-    protected $pinCode;
+    /**
+     * @var ?string
+     */
+    protected $pinCode = null;
 
+    /**
+     * @var int
+     */
     protected $maxMembers = 0;
 
     /**

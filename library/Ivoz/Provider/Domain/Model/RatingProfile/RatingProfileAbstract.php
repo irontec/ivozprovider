@@ -27,19 +27,19 @@ abstract class RatingProfileAbstract
 {
     use ChangelogTrait;
 
-    protected $activationTime;
+    protected \DateTimeInterface $activationTime;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy ratingProfiles
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      * inversedBy ratingProfiles
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * @var RatingPlanGroupInterface
@@ -47,9 +47,9 @@ abstract class RatingProfileAbstract
     protected $ratingPlanGroup;
 
     /**
-     * @var RoutingTagInterface | null
+     * @var ?RoutingTagInterface
      */
-    protected $routingTag;
+    protected $routingTag = null;
 
     /**
      * Constructor
@@ -186,7 +186,7 @@ abstract class RatingProfileAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->activationTime == $activationTime) {
+        if ($this->isInitialized() && $this->activationTime == $activationTime) {
             return $this;
         }
 

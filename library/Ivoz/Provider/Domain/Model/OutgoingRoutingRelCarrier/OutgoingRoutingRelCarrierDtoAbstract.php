@@ -17,24 +17,24 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var TpRatingProfileDto[] | null
      */
-    private $tpRatingProfiles;
+    private $tpRatingProfiles = null;
 
     public function __construct($id = null)
     {
@@ -90,7 +90,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -22,7 +22,10 @@ abstract class FixedCostsRelInvoiceAbstract
 {
     use ChangelogTrait;
 
-    protected $quantity;
+    /**
+     * @var ?int
+     */
+    protected $quantity = null;
 
     /**
      * @var FixedCostInterface
@@ -30,10 +33,10 @@ abstract class FixedCostsRelInvoiceAbstract
     protected $fixedCost;
 
     /**
-     * @var InvoiceInterface | null
+     * @var ?InvoiceInterface
      * inversedBy relFixedCosts
      */
-    protected $invoice;
+    protected $invoice = null;
 
     /**
      * Constructor

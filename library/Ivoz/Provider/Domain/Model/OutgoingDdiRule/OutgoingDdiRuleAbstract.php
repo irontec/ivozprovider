@@ -22,9 +22,13 @@ abstract class OutgoingDdiRuleAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var string
      * comment: enum:keep|force
      */
     protected $defaultAction;
@@ -35,9 +39,9 @@ abstract class OutgoingDdiRuleAbstract
     protected $company;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $forcedDdi;
+    protected $forcedDdi = null;
 
     /**
      * Constructor

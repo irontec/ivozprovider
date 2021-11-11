@@ -28,36 +28,71 @@ abstract class QueueAbstract
 {
     use ChangelogTrait;
 
-    protected $name;
-
-    protected $maxWaitTime;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
     /**
-     * comment: enum:number|extension|voicemail
+     * @var ?int
      */
-    protected $timeoutTargetType;
-
-    protected $timeoutNumberValue;
-
-    protected $maxlen;
+    protected $maxWaitTime = null;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $fullTargetType;
+    protected $timeoutTargetType = null;
 
-    protected $fullNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $timeoutNumberValue = null;
 
-    protected $periodicAnnounceFrequency;
+    /**
+     * @var ?int
+     */
+    protected $maxlen = null;
 
-    protected $memberCallRest;
+    /**
+     * @var ?string
+     * comment: enum:number|extension|voicemail
+     */
+    protected $fullTargetType = null;
 
-    protected $memberCallTimeout;
+    /**
+     * @var ?string
+     */
+    protected $fullNumberValue = null;
 
-    protected $strategy;
+    /**
+     * @var ?int
+     */
+    protected $periodicAnnounceFrequency = null;
 
-    protected $weight;
+    /**
+     * @var ?int
+     */
+    protected $memberCallRest = null;
 
+    /**
+     * @var ?int
+     */
+    protected $memberCallTimeout = null;
+
+    /**
+     * @var ?string
+     */
+    protected $strategy = null;
+
+    /**
+     * @var ?int
+     */
+    protected $weight = null;
+
+    /**
+     * @var int
+     */
     protected $preventMissedCalls = 1;
 
     /**
@@ -66,49 +101,49 @@ abstract class QueueAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $periodicAnnounceLocution;
+    protected $periodicAnnounceLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $timeoutLocution;
+    protected $timeoutLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $timeoutExtension;
+    protected $timeoutExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $timeoutVoiceMailUser;
+    protected $timeoutVoiceMailUser = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $fullLocution;
+    protected $fullLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $fullExtension;
+    protected $fullExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $fullVoiceMailUser;
+    protected $fullVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $timeoutNumberCountry;
+    protected $timeoutNumberCountry = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $fullNumberCountry;
+    protected $fullNumberCountry = null;
 
     /**
      * Constructor

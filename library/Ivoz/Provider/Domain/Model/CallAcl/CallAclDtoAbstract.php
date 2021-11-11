@@ -16,29 +16,29 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $defaultPolicy;
+    private $defaultPolicy = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CallAclRelMatchListDto[] | null
      */
-    private $relMatchLists;
+    private $relMatchLists = null;
 
     public function __construct($id = null)
     {
@@ -120,7 +120,7 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

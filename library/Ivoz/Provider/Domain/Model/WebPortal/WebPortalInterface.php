@@ -57,6 +57,7 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param WebPortalDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

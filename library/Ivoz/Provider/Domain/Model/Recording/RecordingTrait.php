@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait RecordingTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait RecordingTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RecordingDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait RecordingTrait
 
     /**
      * @internal use EntityTools instead
+     * @param RecordingDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

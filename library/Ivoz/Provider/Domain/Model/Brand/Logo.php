@@ -13,20 +13,23 @@ use Assert\Assertion;
 final class Logo
 {
     /**
+     * @var ?int
      * column: logoFileSize
      * comment: FSO
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: logoMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: logoBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
      * Constructor

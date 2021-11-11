@@ -16,74 +16,74 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $loadid = 'DATABASE';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $direction = '*out';
 
     /**
      * @var string|null
      */
-    private $tenant;
+    private $tenant = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $category = 'call';
 
     /**
      * @var string|null
      */
-    private $subject;
+    private $subject = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $activationTime = '1970-01-01 00:00:00';
 
     /**
      * @var string|null
      */
-    private $ratingPlanTag;
+    private $ratingPlanTag = null;
 
     /**
      * @var string|null
      */
-    private $fallbackSubjects;
+    private $fallbackSubjects = null;
 
     /**
      * @var string|null
      */
-    private $cdrStatQueueIds;
+    private $cdrStatQueueIds = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RatingProfileDto | null
      */
-    private $ratingProfile;
+    private $ratingProfile = null;
 
     /**
      * @var OutgoingRoutingRelCarrierDto | null
      */
-    private $outgoingRoutingRelCarrier;
+    private $outgoingRoutingRelCarrier = null;
 
     public function __construct($id = null)
     {
@@ -292,7 +292,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

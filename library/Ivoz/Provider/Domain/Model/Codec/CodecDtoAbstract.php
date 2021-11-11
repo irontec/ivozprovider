@@ -14,24 +14,24 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type = 'audio';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -124,7 +124,7 @@ abstract class CodecDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

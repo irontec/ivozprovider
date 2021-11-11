@@ -21,30 +21,48 @@ abstract class TpTimingAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
+    /**
+     * @var string
+     */
     protected $years;
 
+    /**
+     * @var string
+     */
     protected $months;
 
     /**
+     * @var string
      * column: month_days
      */
     protected $monthDays;
 
     /**
+     * @var string
      * column: week_days
      */
     protected $weekDays;
 
+    /**
+     * @var string
+     */
     protected $time = '00:00:00';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var RatingPlanInterface
@@ -315,7 +333,7 @@ abstract class TpTimingAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

@@ -18,9 +18,15 @@ abstract class ProxyUserAbstract
 {
     use ChangelogTrait;
 
-    protected $name;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
     /**
      * Constructor

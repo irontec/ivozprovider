@@ -22,26 +22,39 @@ abstract class RecordingAbstract
 {
     use ChangelogTrait;
 
-    protected $callid;
+    /**
+     * @var ?string
+     */
+    protected $callid = null;
 
-    protected $calldate;
+    protected \DateTimeInterface $calldate;
 
     /**
+     * @var string
      * comment: enum:ondemand|ddi
      */
     protected $type = 'ddi';
 
+    /**
+     * @var float
+     */
     protected $duration = 0;
 
-    protected $caller;
-
-    protected $callee;
-
-    protected $recorder;
+    /**
+     * @var ?string
+     */
+    protected $caller = null;
 
     /**
-     * @var RecordedFile | null
+     * @var ?string
      */
+    protected $callee = null;
+
+    /**
+     * @var ?string
+     */
+    protected $recorder = null;
+
     protected $recordedFile;
 
     /**
@@ -62,7 +75,7 @@ abstract class RecordingAbstract
         $this->setCalldate($calldate);
         $this->setType($type);
         $this->setDuration($duration);
-        $this->setRecordedFile($recordedFile);
+        $this->recordedFile = $recordedFile;
     }
 
     abstract public function getId(): null|string|int;
@@ -239,7 +252,7 @@ abstract class RecordingAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->calldate == $calldate) {
+        if ($this->isInitialized() && $this->calldate == $calldate) {
             return $this;
         }
 
@@ -344,7 +357,7 @@ abstract class RecordingAbstract
 
     protected function setRecordedFile(RecordedFile $recordedFile): static
     {
-        $isEqual = $this->recordedFile && $this->recordedFile->equals($recordedFile);
+        $isEqual = $this->recordedFile->equals($recordedFile);
         if ($isEqual) {
             return $this;
         }

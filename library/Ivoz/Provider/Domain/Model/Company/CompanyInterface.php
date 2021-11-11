@@ -20,7 +20,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
@@ -206,6 +206,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CompanyDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -300,7 +301,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeExtension(ExtensionInterface $extension): CompanyInterface;
 
-    public function replaceExtensions(ArrayCollection $extensions): CompanyInterface;
+    /**
+     * @param Collection<array-key, ExtensionInterface> $extensions
+     */
+    public function replaceExtensions(Collection $extensions): CompanyInterface;
 
     public function getExtensions(?Criteria $criteria = null): array;
 
@@ -308,7 +312,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeDdi(DdiInterface $ddi): CompanyInterface;
 
-    public function replaceDdis(ArrayCollection $ddis): CompanyInterface;
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): CompanyInterface;
 
     public function getDdis(?Criteria $criteria = null): array;
 
@@ -316,7 +323,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeFriend(FriendInterface $friend): CompanyInterface;
 
-    public function replaceFriends(ArrayCollection $friends): CompanyInterface;
+    /**
+     * @param Collection<array-key, FriendInterface> $friends
+     */
+    public function replaceFriends(Collection $friends): CompanyInterface;
 
     public function getFriends(?Criteria $criteria = null): array;
 
@@ -324,7 +334,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 
-    public function replaceCompanyServices(ArrayCollection $companyServices): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyServiceInterface> $companyServices
+     */
+    public function replaceCompanyServices(Collection $companyServices): CompanyInterface;
 
     public function getCompanyServices(?Criteria $criteria = null): array;
 
@@ -332,7 +345,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeTerminal(TerminalInterface $terminal): CompanyInterface;
 
-    public function replaceTerminals(ArrayCollection $terminals): CompanyInterface;
+    /**
+     * @param Collection<array-key, TerminalInterface> $terminals
+     */
+    public function replaceTerminals(Collection $terminals): CompanyInterface;
 
     public function getTerminals(?Criteria $criteria = null): array;
 
@@ -340,7 +356,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface;
 
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CompanyInterface;
+    /**
+     * @param Collection<array-key, RatingProfileInterface> $ratingProfiles
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles): CompanyInterface;
 
     public function getRatingProfiles(?Criteria $criteria = null): array;
 
@@ -348,7 +367,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface;
 
-    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): CompanyInterface;
+    /**
+     * @param Collection<array-key, MusicOnHoldInterface> $musicsOnHold
+     */
+    public function replaceMusicsOnHold(Collection $musicsOnHold): CompanyInterface;
 
     public function getMusicsOnHold(?Criteria $criteria = null): array;
 
@@ -356,7 +378,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeRecording(RecordingInterface $recording): CompanyInterface;
 
-    public function replaceRecordings(ArrayCollection $recordings): CompanyInterface;
+    /**
+     * @param Collection<array-key, RecordingInterface> $recordings
+     */
+    public function replaceRecordings(Collection $recordings): CompanyInterface;
 
     public function getRecordings(?Criteria $criteria = null): array;
 
@@ -364,7 +389,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface;
 
-    public function replaceRelFeatures(ArrayCollection $relFeatures): CompanyInterface;
+    /**
+     * @param Collection<array-key, FeaturesRelCompanyInterface> $relFeatures
+     */
+    public function replaceRelFeatures(Collection $relFeatures): CompanyInterface;
 
     public function getRelFeatures(?Criteria $criteria = null): array;
 
@@ -372,7 +400,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeRelCountry(CompanyRelGeoIPCountryInterface $relCountry): CompanyInterface;
 
-    public function replaceRelCountries(ArrayCollection $relCountries): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyRelGeoIPCountryInterface> $relCountries
+     */
+    public function replaceRelCountries(Collection $relCountries): CompanyInterface;
 
     public function getRelCountries(?Criteria $criteria = null): array;
 
@@ -380,7 +411,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface;
 
-    public function replaceRelCodecs(ArrayCollection $relCodecs): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyRelCodecInterface> $relCodecs
+     */
+    public function replaceRelCodecs(Collection $relCodecs): CompanyInterface;
 
     public function getRelCodecs(?Criteria $criteria = null): array;
 
@@ -388,7 +422,10 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface;
 
-    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyRelRoutingTagInterface> $relRoutingTags
+     */
+    public function replaceRelRoutingTags(Collection $relRoutingTags): CompanyInterface;
 
     public function getRelRoutingTags(?Criteria $criteria = null): array;
 }

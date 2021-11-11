@@ -54,6 +54,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param OutgoingDdiRulesPatternDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

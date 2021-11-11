@@ -15,7 +15,7 @@ use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -153,6 +153,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param FriendDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -231,7 +232,10 @@ interface FriendInterface extends LoggableEntityInterface
 
     public function removePattern(FriendsPatternInterface $pattern): FriendInterface;
 
-    public function replacePatterns(ArrayCollection $patterns): FriendInterface;
+    /**
+     * @param Collection<array-key, FriendsPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): FriendInterface;
 
     public function getPatterns(?Criteria $criteria = null): array;
 }

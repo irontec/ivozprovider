@@ -25,12 +25,19 @@ abstract class TrunksLcrRuleTargetAbstract
     use ChangelogTrait;
 
     /**
+     * @var int
      * column: lcr_id
      */
     protected $lcrId = 1;
 
+    /**
+     * @var int
+     */
     protected $priority;
 
+    /**
+     * @var int
+     */
     protected $weight = 1;
 
     /**

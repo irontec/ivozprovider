@@ -23,16 +23,16 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     use ChangelogTrait;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy relPatternGroups
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupInterface | null
+     * @var ?RoutingPatternGroupInterface
      * inversedBy relPatterns
      */
-    protected $routingPatternGroup;
+    protected $routingPatternGroup = null;
 
     /**
      * Constructor

@@ -23,32 +23,50 @@ abstract class TransformationRuleSetAbstract
 {
     use ChangelogTrait;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
+    /**
+     * @var ?string
+     */
     protected $internationalCode = '00';
 
+    /**
+     * @var ?string
+     */
     protected $trunkPrefix = '';
 
+    /**
+     * @var ?string
+     */
     protected $areaCode = '';
 
+    /**
+     * @var ?int
+     */
     protected $nationalLen = 9;
 
+    /**
+     * @var ?bool
+     */
     protected $generateRules = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
      * Constructor
@@ -56,7 +74,7 @@ abstract class TransformationRuleSetAbstract
     protected function __construct(
         Name $name
     ) {
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -312,7 +330,7 @@ abstract class TransformationRuleSetAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

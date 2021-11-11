@@ -22,114 +22,114 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
      * @var string|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $password;
+    private $password = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directConnectivity = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ddiIn = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Passthrough = 'no';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $rtpEncryption = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $multiContact = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var PsEndpointDto | null
      */
-    private $psEndpoint;
+    private $psEndpoint = null;
 
     /**
      * @var PsIdentifyDto | null
      */
-    private $psIdentify;
+    private $psIdentify = null;
 
     /**
      * @var DdiDto[] | null
      */
-    private $ddis;
+    private $ddis = null;
 
     /**
      * @var CallForwardSettingDto[] | null
      */
-    private $callForwardSettings;
+    private $callForwardSettings = null;
 
     public function __construct($id = null)
     {
@@ -364,7 +364,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

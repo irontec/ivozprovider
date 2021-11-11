@@ -15,27 +15,27 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $direction = '*out';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tenant;
+    private $tenant = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $category;
+    private $category = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $account = '*any';
 
@@ -50,12 +50,12 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $destinationTag = '*any';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $rpCategory;
+    private $rpCategory = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $strategy = '*lowest_cost';
 
@@ -65,29 +65,29 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $strategyParams = '';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $weight = 10;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
     public function __construct($id = null)
     {
@@ -322,7 +322,7 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -34,16 +34,26 @@ abstract class ExtensionAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $number;
 
     /**
+     * @var ?string
      * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional
      */
-    protected $routeType;
+    protected $routeType = null;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
-    protected $friendValue;
+    /**
+     * @var ?string
+     */
+    protected $friendValue = null;
 
     /**
      * @var CompanyInterface
@@ -52,39 +62,39 @@ abstract class ExtensionAbstract
     protected $company;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

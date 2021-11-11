@@ -25,41 +25,54 @@ abstract class TrunksLcrRuleAbstract
     use ChangelogTrait;
 
     /**
+     * @var int
      * column: lcr_id
      */
     protected $lcrId = 1;
 
-    protected $prefix;
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
 
     /**
+     * @var ?string
      * column: from_uri
      */
-    protected $fromUri;
+    protected $fromUri = null;
 
     /**
+     * @var ?string
      * column: request_uri
      */
-    protected $requestUri;
+    protected $requestUri = null;
 
     /**
+     * @var ?string
      * column: mt_tvalue
      */
-    protected $mtTvalue;
+    protected $mtTvalue = null;
 
+    /**
+     * @var int
+     */
     protected $stopper = 0;
 
+    /**
+     * @var int
+     */
     protected $enabled = 1;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy lcrRules
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupsRelPatternInterface | null
+     * @var ?RoutingPatternGroupsRelPatternInterface
      */
-    protected $routingPatternGroupsRelPattern;
+    protected $routingPatternGroupsRelPattern = null;
 
     /**
      * @var OutgoingRoutingInterface

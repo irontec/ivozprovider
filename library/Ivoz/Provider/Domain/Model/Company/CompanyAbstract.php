@@ -43,88 +43,146 @@ abstract class CompanyAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:vpbx|retail|wholesale|residential
      */
     protected $type = 'vpbx';
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: domain_users
      */
-    protected $domainUsers;
+    protected $domainUsers = null;
 
+    /**
+     * @var string
+     */
     protected $nif;
 
     /**
+     * @var string
      * comment: enum:static|rr|hash
      */
     protected $distributeMethod = 'hash';
 
+    /**
+     * @var int
+     */
     protected $maxCalls = 0;
 
+    /**
+     * @var int
+     */
     protected $maxDailyUsage = 1000000;
 
+    /**
+     * @var ?float
+     */
     protected $currentDayUsage = 0;
 
-    protected $maxDailyUsageEmail;
+    /**
+     * @var ?string
+     */
+    protected $maxDailyUsageEmail = null;
 
+    /**
+     * @var string
+     */
     protected $postalAddress;
 
+    /**
+     * @var string
+     */
     protected $postalCode;
 
+    /**
+     * @var string
+     */
     protected $town;
 
+    /**
+     * @var string
+     */
     protected $province;
 
     /**
+     * @var string
      * column: country
      */
     protected $countryName;
 
     /**
+     * @var ?bool
      * column: ipFilter
      */
     protected $ipfilter = true;
 
+    /**
+     * @var ?int
+     */
     protected $onDemandRecord = 0;
 
+    /**
+     * @var bool
+     */
     protected $allowRecordingRemoval = true;
 
-    protected $onDemandRecordCode;
+    /**
+     * @var ?string
+     */
+    protected $onDemandRecordCode = null;
 
     /**
+     * @var ?string
      * column: externallyExtraOpts
      */
-    protected $externallyextraopts;
-
-    protected $recordingsLimitMB;
-
-    protected $recordingsLimitEmail;
+    protected $externallyextraopts = null;
 
     /**
+     * @var ?int
+     */
+    protected $recordingsLimitMB = null;
+
+    /**
+     * @var ?string
+     */
+    protected $recordingsLimitEmail = null;
+
+    /**
+     * @var string
      * comment: enum:postpaid|prepaid|pseudoprepaid
      */
     protected $billingMethod = 'postpaid';
 
+    /**
+     * @var ?float
+     */
     protected $balance = 0;
 
+    /**
+     * @var ?bool
+     */
     protected $showInvoices = false;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?TimezoneInterface
      */
-    protected $defaultTimezone;
+    protected $defaultTimezone = null;
 
     /**
      * @var BrandInterface
@@ -133,14 +191,14 @@ abstract class CompanyAbstract
     protected $brand;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var ApplicationServerInterface | null
+     * @var ?ApplicationServerInterface
      */
-    protected $applicationServer;
+    protected $applicationServer = null;
 
     /**
      * @var CountryInterface
@@ -148,49 +206,49 @@ abstract class CompanyAbstract
     protected $country;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var OutgoingDdiRuleInterface | null
+     * @var ?OutgoingDdiRuleInterface
      */
-    protected $outgoingDdiRule;
+    protected $outgoingDdiRule = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $voicemailNotificationTemplate;
+    protected $voicemailNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $faxNotificationTemplate;
+    protected $faxNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $invoiceNotificationTemplate;
+    protected $invoiceNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $maxDailyUsageNotificationTemplate;
+    protected $maxDailyUsageNotificationTemplate = null;
 
     /**
      * Constructor

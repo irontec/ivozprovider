@@ -22,10 +22,19 @@ abstract class FaxAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $email;
+    /**
+     * @var ?string
+     */
+    protected $email = null;
 
+    /**
+     * @var bool
+     */
     protected $sendByEmail = true;
 
     /**
@@ -34,9 +43,9 @@ abstract class FaxAbstract
     protected $company;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
      * Constructor

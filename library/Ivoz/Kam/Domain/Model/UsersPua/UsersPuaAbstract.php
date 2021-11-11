@@ -19,70 +19,102 @@ abstract class UsersPuaAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: pres_uri
      */
     protected $presUri;
 
     /**
+     * @var string
      * column: pres_id
      */
     protected $presId;
 
+    /**
+     * @var int
+     */
     protected $event;
 
+    /**
+     * @var int
+     */
     protected $expires;
 
     /**
+     * @var int
      * column: desired_expires
      */
     protected $desiredExpires;
 
+    /**
+     * @var int
+     */
     protected $flag;
 
+    /**
+     * @var string
+     */
     protected $etag;
 
     /**
+     * @var ?string
      * column: tuple_id
      */
-    protected $tupleId;
+    protected $tupleId = null;
 
     /**
+     * @var string
      * column: watcher_uri
      */
     protected $watcherUri;
 
     /**
+     * @var string
      * column: call_id
      */
     protected $callId;
 
     /**
+     * @var string
      * column: to_tag
      */
     protected $toTag;
 
     /**
+     * @var string
      * column: from_tag
      */
     protected $fromTag;
 
+    /**
+     * @var int
+     */
     protected $cseq;
 
     /**
+     * @var ?string
      * column: record_route
      */
-    protected $recordRoute;
+    protected $recordRoute = null;
 
+    /**
+     * @var string
+     */
     protected $contact;
 
     /**
+     * @var string
      * column: remote_contact
      */
     protected $remoteContact;
 
+    /**
+     * @var int
+     */
     protected $version;
 
     /**
+     * @var string
      * column: extra_headers
      */
     protected $extraHeaders;

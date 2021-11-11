@@ -19,31 +19,57 @@ abstract class QueueAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: periodic_announce
      */
-    protected $periodicAnnounce;
+    protected $periodicAnnounce = null;
 
     /**
+     * @var ?int
      * column: periodic_announce_frequency
      */
-    protected $periodicAnnounceFrequency;
+    protected $periodicAnnounceFrequency = null;
 
-    protected $timeout;
+    /**
+     * @var ?int
+     */
+    protected $timeout = null;
 
+    /**
+     * @var string
+     */
     protected $autopause = 'no';
 
+    /**
+     * @var string
+     */
     protected $ringinuse = 'no';
 
-    protected $wrapuptime;
+    /**
+     * @var ?int
+     */
+    protected $wrapuptime = null;
 
-    protected $maxlen;
+    /**
+     * @var ?int
+     */
+    protected $maxlen = null;
 
-    protected $strategy;
+    /**
+     * @var ?string
+     */
+    protected $strategy = null;
 
-    protected $weight;
+    /**
+     * @var ?int
+     */
+    protected $weight = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface

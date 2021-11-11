@@ -27,114 +27,146 @@ abstract class PsEndpointAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: sorcery_id
      */
     protected $sorceryId;
 
     /**
+     * @var ?string
      * column: from_domain
      */
-    protected $fromDomain;
+    protected $fromDomain = null;
 
-    protected $aors;
+    /**
+     * @var ?string
+     */
+    protected $aors = null;
 
-    protected $callerid;
+    /**
+     * @var ?string
+     */
+    protected $callerid = null;
 
+    /**
+     * @var string
+     */
     protected $context = 'users';
 
+    /**
+     * @var string
+     */
     protected $disallow = 'all';
 
+    /**
+     * @var string
+     */
     protected $allow = 'all';
 
     /**
+     * @var ?string
      * column: direct_media
      */
     protected $directMedia = 'yes';
 
     /**
+     * @var ?string
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
      */
     protected $directMediaMethod = 'update';
 
-    protected $mailboxes;
+    /**
+     * @var ?string
+     */
+    protected $mailboxes = null;
 
     /**
+     * @var ?string
      * column: named_pickup_group
      */
-    protected $namedPickupGroup;
+    protected $namedPickupGroup = null;
 
     /**
+     * @var ?string
      * column: send_diversion
      */
     protected $sendDiversion = 'yes';
 
     /**
+     * @var ?string
      * column: send_pai
      */
     protected $sendPai = 'yes';
 
     /**
+     * @var string
      * column: 100rel
      */
     protected $oneHundredRel = 'no';
 
     /**
+     * @var ?string
      * column: outbound_proxy
      */
-    protected $outboundProxy;
+    protected $outboundProxy = null;
 
     /**
+     * @var ?string
      * column: trust_id_inbound
      */
-    protected $trustIdInbound;
+    protected $trustIdInbound = null;
 
     /**
+     * @var string
      * column: t38_udptl
      * comment: enum:yes|no
      */
     protected $t38Udptl = 'no';
 
     /**
+     * @var string
      * column: t38_udptl_ec
      * comment: enum:none|fec|redundancy
      */
     protected $t38UdptlEc = 'redundancy';
 
     /**
+     * @var int
      * column: t38_udptl_maxdatagram
      */
     protected $t38UdptlMaxdatagram = 1440;
 
     /**
+     * @var string
      * column: t38_udptl_nat
      * comment: enum:yes|no
      */
     protected $t38UdptlNat = 'no';
 
     /**
-     * @var TerminalInterface | null
+     * @var ?TerminalInterface
      * inversedBy psEndpoint
      */
-    protected $terminal;
+    protected $terminal = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      * inversedBy psEndpoint
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy psEndpoint
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy psEndpoint
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor

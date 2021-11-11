@@ -16,19 +16,19 @@ abstract class ExternalCallFilterWhiteListDtoAbstract implements DataTransferObj
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ExternalCallFilterDto | null
      */
-    private $filter;
+    private $filter = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchlist;
+    private $matchlist = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class ExternalCallFilterWhiteListDtoAbstract implements DataTransferObj
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -20,9 +20,15 @@ abstract class DdiProviderAddressAbstract
 {
     use ChangelogTrait;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * @var DdiProviderInterface

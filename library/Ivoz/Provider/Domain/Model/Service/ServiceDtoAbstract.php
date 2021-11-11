@@ -14,62 +14,62 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $iden = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $defaultCode;
+    private $defaultCode = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $extraArgs = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameIt = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $descriptionEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $descriptionEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $descriptionCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $descriptionIt = '';
 
@@ -188,7 +188,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

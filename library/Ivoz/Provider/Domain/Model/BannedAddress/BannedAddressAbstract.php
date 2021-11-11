@@ -23,28 +23,41 @@ abstract class BannedAddressAbstract
 {
     use ChangelogTrait;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
     /**
+     * @var ?string
      * comment: enum:antiflood|ipfilter|antibruteforce
      */
-    protected $blocker;
-
-    protected $aor;
-
-    protected $description;
-
-    protected $lastTimeBanned;
+    protected $blocker = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $aor = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?string
      */
-    protected $company;
+    protected $description = null;
+
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastTimeBanned = null;
+
+    /**
+     * @var ?BrandInterface
+     */
+    protected $brand = null;
+
+    /**
+     * @var ?CompanyInterface
+     */
+    protected $company = null;
 
     /**
      * Constructor
@@ -263,7 +276,7 @@ abstract class BannedAddressAbstract
                 null
             );
 
-            if ($this->lastTimeBanned == $lastTimeBanned) {
+            if ($this->isInitialized() && $this->lastTimeBanned == $lastTimeBanned) {
                 return $this;
             }
         }

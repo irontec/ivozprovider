@@ -14,99 +14,99 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $presUri;
-
-    /**
-     * @var string
-     */
-    private $presId;
-
-    /**
-     * @var int
-     */
-    private $event;
-
-    /**
-     * @var int
-     */
-    private $expires;
-
-    /**
-     * @var int
-     */
-    private $desiredExpires;
-
-    /**
-     * @var int
-     */
-    private $flag;
-
-    /**
-     * @var string
-     */
-    private $etag;
+    private $presUri = null;
 
     /**
      * @var string|null
      */
-    private $tupleId;
+    private $presId = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    private $watcherUri;
+    private $event = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    private $callId;
+    private $expires = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    private $toTag;
+    private $desiredExpires = null;
 
     /**
-     * @var string
+     * @var int|null
      */
-    private $fromTag;
-
-    /**
-     * @var int
-     */
-    private $cseq;
+    private $flag = null;
 
     /**
      * @var string|null
      */
-    private $recordRoute;
+    private $etag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $contact;
+    private $tupleId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $remoteContact;
+    private $watcherUri = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $version;
+    private $callId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $extraHeaders;
+    private $toTag = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $fromTag = null;
+
+    /**
+     * @var int|null
+     */
+    private $cseq = null;
+
+    /**
+     * @var string|null
+     */
+    private $recordRoute = null;
+
+    /**
+     * @var string|null
+     */
+    private $contact = null;
+
+    /**
+     * @var string|null
+     */
+    private $remoteContact = null;
+
+    /**
+     * @var int|null
+     */
+    private $version = null;
+
+    /**
+     * @var string|null
+     */
+    private $extraHeaders = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -409,7 +409,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

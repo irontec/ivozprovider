@@ -23,10 +23,10 @@ abstract class IvrExcludedExtensionAbstract
     use ChangelogTrait;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      * inversedBy excludedExtensions
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
      * @var ExtensionInterface

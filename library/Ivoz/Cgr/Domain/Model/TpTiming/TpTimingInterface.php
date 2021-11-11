@@ -30,6 +30,7 @@ interface TpTimingInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpTimingDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

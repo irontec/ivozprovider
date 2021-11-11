@@ -23,10 +23,10 @@ abstract class ExternalCallFilterBlackListAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy blackLists
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var MatchListInterface

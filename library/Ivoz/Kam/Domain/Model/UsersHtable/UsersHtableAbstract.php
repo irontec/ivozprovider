@@ -19,25 +19,32 @@ abstract class UsersHtableAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: key_name
      */
     protected $keyName = '';
 
     /**
+     * @var int
      * column: key_type
      */
     protected $keyType = 0;
 
     /**
+     * @var int
      * column: value_type
      */
     protected $valueType = 0;
 
     /**
+     * @var string
      * column: key_value
      */
     protected $keyValue = '';
 
+    /**
+     * @var int
+     */
     protected $expires = 0;
 
     /**

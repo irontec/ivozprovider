@@ -14,9 +14,9 @@ use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 trait DdiProviderRegistrationTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TrunksUacregInterface
@@ -37,6 +37,7 @@ trait DdiProviderRegistrationTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DdiProviderRegistrationDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -45,11 +46,11 @@ trait DdiProviderRegistrationTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTrunksUacreg())) {
-            $self->setTrunksUacreg(
-                $fkTransformer->transform(
-                    $dto->getTrunksUacreg()
-                )
+            /** @var TrunksUacregInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTrunksUacreg()
             );
+            $self->setTrunksUacreg($entity);
         }
 
         $self->sanitizeValues();
@@ -63,6 +64,7 @@ trait DdiProviderRegistrationTrait
 
     /**
      * @internal use EntityTools instead
+     * @param DdiProviderRegistrationDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -70,11 +72,11 @@ trait DdiProviderRegistrationTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTrunksUacreg())) {
-            $this->setTrunksUacreg(
-                $fkTransformer->transform(
-                    $dto->getTrunksUacreg()
-                )
+            /** @var TrunksUacregInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTrunksUacreg()
             );
+            $this->setTrunksUacreg($entity);
         }
         $this->sanitizeValues();
 

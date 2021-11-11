@@ -23,10 +23,10 @@ abstract class CompanyRelRoutingTagAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relRoutingTags
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var RoutingTagInterface

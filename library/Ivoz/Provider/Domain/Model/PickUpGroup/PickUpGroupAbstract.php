@@ -20,6 +20,9 @@ abstract class PickUpGroupAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**

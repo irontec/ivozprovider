@@ -7,7 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
@@ -41,6 +41,7 @@ interface DomainInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DomainDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -61,7 +62,10 @@ interface DomainInterface extends LoggableEntityInterface
 
     public function removeFriend(FriendInterface $friend): DomainInterface;
 
-    public function replaceFriends(ArrayCollection $friends): DomainInterface;
+    /**
+     * @param Collection<array-key, FriendInterface> $friends
+     */
+    public function replaceFriends(Collection $friends): DomainInterface;
 
     public function getFriends(?Criteria $criteria = null): array;
 
@@ -69,7 +73,10 @@ interface DomainInterface extends LoggableEntityInterface
 
     public function removeResidentialDevice(ResidentialDeviceInterface $residentialDevice): DomainInterface;
 
-    public function replaceResidentialDevices(ArrayCollection $residentialDevices): DomainInterface;
+    /**
+     * @param Collection<array-key, ResidentialDeviceInterface> $residentialDevices
+     */
+    public function replaceResidentialDevices(Collection $residentialDevices): DomainInterface;
 
     public function getResidentialDevices(?Criteria $criteria = null): array;
 
@@ -77,7 +84,10 @@ interface DomainInterface extends LoggableEntityInterface
 
     public function removeTerminal(TerminalInterface $terminal): DomainInterface;
 
-    public function replaceTerminals(ArrayCollection $terminals): DomainInterface;
+    /**
+     * @param Collection<array-key, TerminalInterface> $terminals
+     */
+    public function replaceTerminals(Collection $terminals): DomainInterface;
 
     public function getTerminals(?Criteria $criteria = null): array;
 }

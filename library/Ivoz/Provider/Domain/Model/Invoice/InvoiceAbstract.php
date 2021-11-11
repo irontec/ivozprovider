@@ -30,34 +30,56 @@ abstract class InvoiceAbstract
 {
     use ChangelogTrait;
 
-    protected $number;
-
-    protected $inDate;
-
-    protected $outDate;
-
-    protected $total;
-
-    protected $taxRate;
-
-    protected $totalWithTax;
+    /**
+     * @var ?string
+     */
+    protected $number = null;
 
     /**
+     * @var ?\DateTime
+     */
+    protected $inDate = null;
+
+    /**
+     * @var ?\DateTime
+     */
+    protected $outDate = null;
+
+    /**
+     * @var ?float
+     */
+    protected $total = null;
+
+    /**
+     * @var ?float
+     */
+    protected $taxRate = null;
+
+    /**
+     * @var ?float
+     */
+    protected $totalWithTax = null;
+
+    /**
+     * @var ?string
      * comment: enum:waiting|processing|created|error
      */
-    protected $status;
-
-    protected $statusMsg;
+    protected $status = null;
 
     /**
-     * @var Pdf | null
+     * @var ?string
+     */
+    protected $statusMsg = null;
+
+    /**
+     * @var Pdf
      */
     protected $pdf;
 
     /**
-     * @var InvoiceTemplateInterface | null
+     * @var ?InvoiceTemplateInterface
      */
-    protected $invoiceTemplate;
+    protected $invoiceTemplate = null;
 
     /**
      * @var BrandInterface
@@ -70,14 +92,14 @@ abstract class InvoiceAbstract
     protected $company;
 
     /**
-     * @var InvoiceNumberSequenceInterface | null
+     * @var ?InvoiceNumberSequenceInterface
      */
-    protected $numberSequence;
+    protected $numberSequence = null;
 
     /**
-     * @var InvoiceSchedulerInterface | null
+     * @var ?InvoiceSchedulerInterface
      */
-    protected $scheduler;
+    protected $scheduler = null;
 
     /**
      * Constructor
@@ -85,7 +107,7 @@ abstract class InvoiceAbstract
     protected function __construct(
         Pdf $pdf
     ) {
-        $this->setPdf($pdf);
+        $this->pdf = $pdf;
     }
 
     abstract public function getId(): null|string|int;
@@ -286,7 +308,7 @@ abstract class InvoiceAbstract
                 null
             );
 
-            if ($this->inDate == $inDate) {
+            if ($this->isInitialized() && $this->inDate == $inDate) {
                 return $this;
             }
         }
@@ -316,7 +338,7 @@ abstract class InvoiceAbstract
                 null
             );
 
-            if ($this->outDate == $outDate) {
+            if ($this->isInitialized() && $this->outDate == $outDate) {
                 return $this;
             }
         }
@@ -431,7 +453,7 @@ abstract class InvoiceAbstract
 
     protected function setPdf(Pdf $pdf): static
     {
-        $isEqual = $this->pdf && $this->pdf->equals($pdf);
+        $isEqual = $this->pdf->equals($pdf);
         if ($isEqual) {
             return $this;
         }

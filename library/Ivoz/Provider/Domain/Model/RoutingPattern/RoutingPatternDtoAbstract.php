@@ -18,74 +18,74 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $nameEn;
-
-    /**
-     * @var string
-     */
-    private $nameEs;
-
-    /**
-     * @var string
-     */
-    private $nameCa;
-
-    /**
-     * @var string
-     */
-    private $nameIt;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $descriptionEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $descriptionEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $descriptionCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $descriptionIt;
+    private $nameIt = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionEn = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionEs = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionCa = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     /**
      * @var RoutingPatternGroupsRelPatternDto[] | null
      */
-    private $relPatternGroups;
+    private $relPatternGroups = null;
 
     /**
      * @var TrunksLcrRuleDto[] | null
      */
-    private $lcrRules;
+    private $lcrRules = null;
 
     public function __construct($id = null)
     {
@@ -179,7 +179,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

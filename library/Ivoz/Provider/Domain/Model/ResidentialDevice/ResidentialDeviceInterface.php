@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -148,6 +148,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ResidentialDeviceDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -222,7 +223,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function removeDdi(DdiInterface $ddi): ResidentialDeviceInterface;
 
-    public function replaceDdis(ArrayCollection $ddis): ResidentialDeviceInterface;
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): ResidentialDeviceInterface;
 
     public function getDdis(?Criteria $criteria = null): array;
 
@@ -230,7 +234,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface;
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): ResidentialDeviceInterface;
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): ResidentialDeviceInterface;
 
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

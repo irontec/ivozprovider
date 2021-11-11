@@ -22,92 +22,92 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $number;
+    private $number = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $inDate;
+    private $inDate = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $outDate;
+    private $outDate = null;
 
     /**
      * @var float|null
      */
-    private $total;
+    private $total = null;
 
     /**
      * @var float|null
      */
-    private $taxRate;
+    private $taxRate = null;
 
     /**
      * @var float|null
      */
-    private $totalWithTax;
+    private $totalWithTax = null;
 
     /**
      * @var string|null
      */
-    private $status;
+    private $status = null;
 
     /**
      * @var string|null
      */
-    private $statusMsg;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $statusMsg = null;
 
     /**
      * @var int|null
      */
-    private $pdfFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $pdfFileSize = null;
 
     /**
      * @var string|null
      */
-    private $pdfMimeType;
+    private $pdfMimeType = null;
 
     /**
      * @var string|null
      */
-    private $pdfBaseName;
+    private $pdfBaseName = null;
 
     /**
      * @var InvoiceTemplateDto | null
      */
-    private $invoiceTemplate;
+    private $invoiceTemplate = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var InvoiceNumberSequenceDto | null
      */
-    private $numberSequence;
+    private $numberSequence = null;
 
     /**
      * @var InvoiceSchedulerDto | null
      */
-    private $scheduler;
+    private $scheduler = null;
 
     /**
      * @var FixedCostsRelInvoiceDto[] | null
      */
-    private $relFixedCosts;
+    private $relFixedCosts = null;
 
     public function __construct($id = null)
     {
@@ -291,7 +291,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

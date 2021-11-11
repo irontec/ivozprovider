@@ -49,30 +49,43 @@ abstract class DdiAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: Ddi
      */
     protected $ddi;
 
     /**
+     * @var ?string
      * column: DdiE164
      */
-    protected $ddie164;
+    protected $ddie164 = null;
 
     /**
+     * @var string
      * comment: enum:none|all|inbound|outbound
      */
     protected $recordCalls = 'none';
 
-    protected $displayName;
+    /**
+     * @var ?string
+     */
+    protected $displayName = null;
 
     /**
+     * @var ?string
      * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
      */
-    protected $routeType;
+    protected $routeType = null;
 
+    /**
+     * @var bool
+     */
     protected $billInboundCalls = false;
 
-    protected $friendValue;
+    /**
+     * @var ?string
+     */
+    protected $friendValue = null;
 
     /**
      * @var CompanyInterface
@@ -86,71 +99,71 @@ abstract class DdiAbstract
     protected $brand;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      */
-    protected $externalCallFilter;
+    protected $externalCallFilter = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?FaxInterface
      */
-    protected $fax;
+    protected $fax = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy ddis
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy ddis
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor

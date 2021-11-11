@@ -26,10 +26,19 @@ abstract class DdiProviderAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var ?bool
+     */
     protected $externallyRated = false;
 
     /**
@@ -38,19 +47,19 @@ abstract class DdiProviderAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var ProxyTrunkInterface | null
+     * @var ?ProxyTrunkInterface
      */
-    protected $proxyTrunk;
+    protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
      * Constructor

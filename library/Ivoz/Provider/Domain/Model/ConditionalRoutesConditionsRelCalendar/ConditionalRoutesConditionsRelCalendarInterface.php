@@ -38,6 +38,7 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRoutesConditionsRelCalendarDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

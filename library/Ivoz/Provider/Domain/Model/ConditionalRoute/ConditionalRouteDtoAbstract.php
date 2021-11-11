@@ -24,84 +24,84 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $routetype;
+    private $routetype = null;
 
     /**
      * @var string|null
      */
-    private $numbervalue;
+    private $numbervalue = null;
 
     /**
      * @var string|null
      */
-    private $friendvalue;
+    private $friendvalue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
 
     /**
      * @var UserDto | null
      */
-    private $voicemailUser;
+    private $voicemailUser = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var ConditionalRoutesConditionDto[] | null
      */
-    private $conditions;
+    private $conditions = null;
 
     public function __construct($id = null)
     {
@@ -229,7 +229,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

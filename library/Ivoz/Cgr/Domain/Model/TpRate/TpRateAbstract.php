@@ -21,39 +21,51 @@ abstract class TpRateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
     /**
+     * @var float
      * column: connect_fee
      */
     protected $connectFee;
 
     /**
+     * @var float
      * column: rate
      */
     protected $rateCost;
 
     /**
+     * @var string
      * column: rate_unit
      */
     protected $rateUnit = '60s';
 
     /**
+     * @var string
      * column: rate_increment
      */
     protected $rateIncrement;
 
     /**
+     * @var string
      * column: group_interval_start
      */
     protected $groupIntervalStart = '0s';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var DestinationRateInterface
@@ -320,7 +332,7 @@ abstract class TpRateAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

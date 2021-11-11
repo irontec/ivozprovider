@@ -18,26 +18,46 @@ abstract class UsersXcapAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $domain;
 
+    /**
+     * @var string
+     */
     protected $doc;
 
     /**
+     * @var int
      * column: doc_type
      */
     protected $docType;
 
+    /**
+     * @var string
+     */
     protected $etag;
 
+    /**
+     * @var int
+     */
     protected $source;
 
     /**
+     * @var string
      * column: doc_uri
      */
     protected $docUri;
 
+    /**
+     * @var int
+     */
     protected $port;
 
     /**

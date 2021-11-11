@@ -38,6 +38,7 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param FixedCostsRelInvoiceSchedulerDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

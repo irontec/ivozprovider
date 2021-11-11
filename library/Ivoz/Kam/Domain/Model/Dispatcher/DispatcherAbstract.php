@@ -20,16 +20,34 @@ abstract class DispatcherAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $setid = 0;
 
+    /**
+     * @var string
+     */
     protected $destination = '';
 
+    /**
+     * @var int
+     */
     protected $flags = 0;
 
+    /**
+     * @var int
+     */
     protected $priority = 0;
 
+    /**
+     * @var string
+     */
     protected $attrs = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**

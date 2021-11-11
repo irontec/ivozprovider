@@ -16,19 +16,19 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ConditionalRoutesConditionDto | null
      */
-    private $condition;
+    private $condition = null;
 
     /**
      * @var RouteLockDto | null
      */
-    private $routeLock;
+    private $routeLock = null;
 
     public function __construct($id = null)
     {
@@ -83,7 +83,7 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

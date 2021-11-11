@@ -21,16 +21,26 @@ abstract class TpDestinationAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
+    /**
+     * @var string
+     */
     protected $prefix;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var DestinationInterface
@@ -221,7 +231,7 @@ abstract class TpDestinationAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

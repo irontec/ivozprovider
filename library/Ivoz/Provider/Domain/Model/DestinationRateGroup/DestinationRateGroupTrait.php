@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait DestinationRateGroupTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DestinationRateInterface> & Selectable<array-key, DestinationRateInterface>
      * DestinationRateInterface mappedBy destinationRateGroup
      */
     protected $destinationRates;
@@ -40,6 +42,7 @@ trait DestinationRateGroupTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DestinationRateGroupDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait DestinationRateGroupTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getDestinationRates())) {
-            $self->replaceDestinationRates(
-                $fkTransformer->transformCollection(
-                    $dto->getDestinationRates()
-                )
+        $destinationRates = $dto->getDestinationRates();
+        if (!is_null($destinationRates)) {
+
+            /** @var Collection<array-key, DestinationRateInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $destinationRates
             );
+            $self->replaceDestinationRates($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait DestinationRateGroupTrait
 
     /**
      * @internal use EntityTools instead
+     * @param DestinationRateGroupDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getDestinationRates())) {
-            $this->replaceDestinationRates(
-                $fkTransformer->transformCollection(
-                    $dto->getDestinationRates()
-                )
+        $destinationRates = $dto->getDestinationRates();
+        if (!is_null($destinationRates)) {
+
+            /** @var Collection<array-key, DestinationRateInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $destinationRates
             );
+            $this->replaceDestinationRates($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait DestinationRateGroupTrait
         return $this;
     }
 
-    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationRateGroupInterface
+    /**
+     * @param Collection<array-key, DestinationRateInterface> $destinationRates
+     */
+    public function replaceDestinationRates(Collection $destinationRates): DestinationRateGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($destinationRates as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDestinationRateGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->destinationRates as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->destinationRates->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->destinationRates->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->destinationRates->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

@@ -22,6 +22,9 @@ abstract class BrandServiceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $code;
 
     /**

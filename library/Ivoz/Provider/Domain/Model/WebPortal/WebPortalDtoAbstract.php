@@ -15,9 +15,9 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $url;
+    private $url = null;
 
     /**
      * @var string|null
@@ -25,9 +25,9 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $klearTheme = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $urlType;
+    private $urlType = null;
 
     /**
      * @var string|null
@@ -40,29 +40,29 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $userTheme = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $logoFileSize;
+    private $logoFileSize = null;
 
     /**
      * @var string|null
      */
-    private $logoMimeType;
+    private $logoMimeType = null;
 
     /**
      * @var string|null
      */
-    private $logoBaseName;
+    private $logoBaseName = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     public function __construct($id = null)
     {
@@ -195,7 +195,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

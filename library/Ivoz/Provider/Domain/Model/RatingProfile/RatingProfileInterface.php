@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -50,6 +50,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RatingProfileDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -81,7 +82,10 @@ interface RatingProfileInterface extends LoggableEntityInterface
 
     public function removeTpRatingProfile(TpRatingProfileInterface $tpRatingProfile): RatingProfileInterface;
 
-    public function replaceTpRatingProfiles(ArrayCollection $tpRatingProfiles): RatingProfileInterface;
+    /**
+     * @param Collection<array-key, TpRatingProfileInterface> $tpRatingProfiles
+     */
+    public function replaceTpRatingProfiles(Collection $tpRatingProfiles): RatingProfileInterface;
 
     public function getTpRatingProfiles(?Criteria $criteria = null): array;
 }

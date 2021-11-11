@@ -29,16 +29,26 @@ abstract class CalendarPeriodAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $startDate;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $endDate;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $routeType;
+    protected $routeType = null;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
      * @var CalendarInterface
@@ -47,24 +57,24 @@ abstract class CalendarPeriodAbstract
     protected $calendar;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $locution;
+    protected $locution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voiceMailUser;
+    protected $voiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

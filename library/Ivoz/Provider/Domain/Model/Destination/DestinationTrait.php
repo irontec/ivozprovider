@@ -9,6 +9,8 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -17,9 +19,9 @@ use Doctrine\Common\Collections\Criteria;
 trait DestinationTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TpDestinationInterface
@@ -28,7 +30,7 @@ trait DestinationTrait
     protected $tpDestination;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DestinationRateInterface> & Selectable<array-key, DestinationRateInterface>
      * DestinationRateInterface mappedBy destination
      */
     protected $destinationRates;
@@ -47,6 +49,7 @@ trait DestinationTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DestinationDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -55,19 +58,21 @@ trait DestinationTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpDestination())) {
-            $self->setTpDestination(
-                $fkTransformer->transform(
-                    $dto->getTpDestination()
-                )
+            /** @var TpDestinationInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpDestination()
             );
+            $self->setTpDestination($entity);
         }
 
-        if (!is_null($dto->getDestinationRates())) {
-            $self->replaceDestinationRates(
-                $fkTransformer->transformCollection(
-                    $dto->getDestinationRates()
-                )
+        $destinationRates = $dto->getDestinationRates();
+        if (!is_null($destinationRates)) {
+
+            /** @var Collection<array-key, DestinationRateInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $destinationRates
             );
+            $self->replaceDestinationRates($replacement);
         }
 
         $self->sanitizeValues();
@@ -81,6 +86,7 @@ trait DestinationTrait
 
     /**
      * @internal use EntityTools instead
+     * @param DestinationDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -88,19 +94,21 @@ trait DestinationTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpDestination())) {
-            $this->setTpDestination(
-                $fkTransformer->transform(
-                    $dto->getTpDestination()
-                )
+            /** @var TpDestinationInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpDestination()
             );
+            $this->setTpDestination($entity);
         }
 
-        if (!is_null($dto->getDestinationRates())) {
-            $this->replaceDestinationRates(
-                $fkTransformer->transformCollection(
-                    $dto->getDestinationRates()
-                )
+        $destinationRates = $dto->getDestinationRates();
+        if (!is_null($destinationRates)) {
+
+            /** @var Collection<array-key, DestinationRateInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $destinationRates
             );
+            $this->replaceDestinationRates($replacement);
         }
         $this->sanitizeValues();
 
@@ -150,25 +158,33 @@ trait DestinationTrait
         return $this;
     }
 
-    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationInterface
+    /**
+     * @param Collection<array-key, DestinationRateInterface> $destinationRates
+     */
+    public function replaceDestinationRates(Collection $destinationRates): DestinationInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($destinationRates as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDestination($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->destinationRates as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->destinationRates->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->destinationRates->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->destinationRates->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

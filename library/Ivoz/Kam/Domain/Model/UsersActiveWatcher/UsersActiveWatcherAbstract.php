@@ -19,104 +19,148 @@ abstract class UsersActiveWatcherAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: presentity_uri
      */
     protected $presentityUri;
 
     /**
+     * @var string
      * column: watcher_username
      */
     protected $watcherUsername;
 
     /**
+     * @var string
      * column: watcher_domain
      */
     protected $watcherDomain;
 
     /**
+     * @var string
      * column: to_user
      */
     protected $toUser;
 
     /**
+     * @var string
      * column: to_domain
      */
     protected $toDomain;
 
+    /**
+     * @var string
+     */
     protected $event = 'presence';
 
     /**
+     * @var ?string
      * column: event_id
      */
-    protected $eventId;
+    protected $eventId = null;
 
     /**
+     * @var string
      * column: to_tag
      */
     protected $toTag;
 
     /**
+     * @var string
      * column: from_tag
      */
     protected $fromTag;
 
+    /**
+     * @var string
+     */
     protected $callid;
 
     /**
+     * @var int
      * column: local_cseq
      */
     protected $localCseq;
 
     /**
+     * @var int
      * column: remote_cseq
      */
     protected $remoteCseq;
 
+    /**
+     * @var string
+     */
     protected $contact;
 
     /**
+     * @var ?string
      * column: record_route
      */
-    protected $recordRoute;
+    protected $recordRoute = null;
 
+    /**
+     * @var int
+     */
     protected $expires;
 
+    /**
+     * @var int
+     */
     protected $status = 2;
 
-    protected $reason;
+    /**
+     * @var ?string
+     */
+    protected $reason = null;
 
+    /**
+     * @var int
+     */
     protected $version = 0;
 
     /**
+     * @var string
      * column: socket_info
      */
     protected $socketInfo;
 
     /**
+     * @var string
      * column: local_contact
      */
     protected $localContact;
 
     /**
+     * @var string
      * column: from_user
      */
     protected $fromUser;
 
     /**
+     * @var string
      * column: from_domain
      */
     protected $fromDomain;
 
+    /**
+     * @var int
+     */
     protected $updated;
 
     /**
+     * @var int
      * column: updated_winfo
      */
     protected $updatedWinfo;
 
+    /**
+     * @var int
+     */
     protected $flags = 0;
 
     /**
+     * @var string
      * column: user_agent
      */
     protected $userAgent = '';

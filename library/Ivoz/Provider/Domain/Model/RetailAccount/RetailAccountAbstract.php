@@ -28,40 +28,68 @@ abstract class RetailAccountAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var ?string
      * comment: enum:udp|tcp|tls
      */
-    protected $transport;
-
-    protected $ip;
-
-    protected $port;
-
-    protected $password;
-
-    protected $fromDomain;
+    protected $transport = null;
 
     /**
+     * @var ?string
+     */
+    protected $ip = null;
+
+    /**
+     * @var ?int
+     */
+    protected $port = null;
+
+    /**
+     * @var ?string
+     */
+    protected $password = null;
+
+    /**
+     * @var ?string
+     */
+    protected $fromDomain = null;
+
+    /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $directConnectivity = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $ddiIn = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
+    /**
+     * @var bool
+     */
     protected $multiContact = true;
 
     /**
@@ -71,10 +99,10 @@ abstract class RetailAccountAbstract
     protected $brand;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy residentialDevices
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var CompanyInterface
@@ -82,14 +110,14 @@ abstract class RetailAccountAbstract
     protected $company;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
      * Constructor

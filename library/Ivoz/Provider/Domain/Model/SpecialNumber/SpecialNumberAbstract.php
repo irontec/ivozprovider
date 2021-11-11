@@ -22,16 +22,25 @@ abstract class SpecialNumberAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $number;
 
-    protected $numberE164;
+    /**
+     * @var ?string
+     */
+    protected $numberE164 = null;
 
+    /**
+     * @var int
+     */
     protected $disableCDR = 1;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var CountryInterface

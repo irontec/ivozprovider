@@ -10,7 +10,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -73,6 +73,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param AdministratorDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -109,7 +110,10 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function removeRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface;
 
-    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities): AdministratorInterface;
+    /**
+     * @param Collection<array-key, AdministratorRelPublicEntityInterface> $relPublicEntities
+     */
+    public function replaceRelPublicEntities(Collection $relPublicEntities): AdministratorInterface;
 
     public function getRelPublicEntities(?Criteria $criteria = null): array;
 

@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait QueueMemberTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait QueueMemberTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param QueueMemberDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait QueueMemberTrait
 
     /**
      * @internal use EntityTools instead
+     * @param QueueMemberDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -53,6 +53,7 @@ interface DestinationInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DestinationDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -77,7 +78,10 @@ interface DestinationInterface extends LoggableEntityInterface
 
     public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface;
 
-    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationInterface;
+    /**
+     * @param Collection<array-key, DestinationRateInterface> $destinationRates
+     */
+    public function replaceDestinationRates(Collection $destinationRates): DestinationInterface;
 
     public function getDestinationRates(?Criteria $criteria = null): array;
 }

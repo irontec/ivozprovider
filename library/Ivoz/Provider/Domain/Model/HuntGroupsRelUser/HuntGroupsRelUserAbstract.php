@@ -24,32 +24,42 @@ abstract class HuntGroupsRelUserAbstract
 {
     use ChangelogTrait;
 
-    protected $timeoutTime;
-
-    protected $priority;
+    /**
+     * @var ?int
+     */
+    protected $timeoutTime = null;
 
     /**
+     * @var ?int
+     */
+    protected $priority = null;
+
+    /**
+     * @var string
      * comment: enum:number|user
      */
     protected $routeType;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      * inversedBy huntGroupsRelUsers
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

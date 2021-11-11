@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait OutgoingDdiRuleTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingDdiRulesPatternInterface> & Selectable<array-key, OutgoingDdiRulesPatternInterface>
      * OutgoingDdiRulesPatternInterface mappedBy outgoingDdiRule
      */
     protected $patterns;
@@ -40,6 +42,7 @@ trait OutgoingDdiRuleTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param OutgoingDdiRuleDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait OutgoingDdiRuleTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPatterns())) {
-            $self->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, OutgoingDdiRulesPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $self->replacePatterns($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait OutgoingDdiRuleTrait
 
     /**
      * @internal use EntityTools instead
+     * @param OutgoingDdiRuleDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPatterns())) {
-            $this->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, OutgoingDdiRulesPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $this->replacePatterns($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait OutgoingDdiRuleTrait
         return $this;
     }
 
-    public function replacePatterns(ArrayCollection $patterns): OutgoingDdiRuleInterface
+    /**
+     * @param Collection<array-key, OutgoingDdiRulesPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): OutgoingDdiRuleInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($patterns as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setOutgoingDdiRule($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->patterns as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->patterns->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->patterns->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->patterns->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

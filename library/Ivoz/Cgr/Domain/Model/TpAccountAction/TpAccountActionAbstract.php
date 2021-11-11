@@ -23,45 +23,64 @@ abstract class TpAccountActionAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $loadid = 'DATABASE';
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $account;
 
     /**
+     * @var ?string
      * column: action_plan_tag
      */
-    protected $actionPlanTag;
+    protected $actionPlanTag = null;
 
     /**
+     * @var ?string
      * column: action_triggers_tag
      */
-    protected $actionTriggersTag;
+    protected $actionTriggersTag = null;
 
     /**
+     * @var bool
      * column: allow_negative
      */
     protected $allowNegative = false;
 
+    /**
+     * @var bool
+     */
     protected $disabled = false;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * Constructor
@@ -346,7 +365,7 @@ abstract class TpAccountActionAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

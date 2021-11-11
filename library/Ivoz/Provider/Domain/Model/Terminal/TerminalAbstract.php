@@ -25,40 +25,60 @@ abstract class TerminalAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $disallow = 'all';
 
     /**
+     * @var string
      * column: allow_audio
      */
     protected $allowAudio = 'alaw';
 
     /**
+     * @var ?string
      * column: allow_video
      */
-    protected $allowVideo;
+    protected $allowVideo = null;
 
     /**
+     * @var string
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
      */
     protected $directMediaMethod = 'update';
 
     /**
+     * @var string
      * comment: password
      */
     protected $password = '';
 
-    protected $mac;
-
-    protected $lastProvisionDate;
+    /**
+     * @var ?string
+     */
+    protected $mac = null;
 
     /**
+     * @var ?\DateTime
+     */
+    protected $lastProvisionDate = null;
+
+    /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
     /**
@@ -68,15 +88,15 @@ abstract class TerminalAbstract
     protected $company;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy terminals
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var TerminalModelInterface | null
+     * @var ?TerminalModelInterface
      */
-    protected $terminalModel;
+    protected $terminalModel = null;
 
     /**
      * Constructor
@@ -371,7 +391,7 @@ abstract class TerminalAbstract
                 null
             );
 
-            if ($this->lastProvisionDate == $lastProvisionDate) {
+            if ($this->isInitialized() && $this->lastProvisionDate == $lastProvisionDate) {
                 return $this;
             }
         }

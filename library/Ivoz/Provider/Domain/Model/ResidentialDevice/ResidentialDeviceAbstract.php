@@ -30,72 +30,111 @@ abstract class ResidentialDeviceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var ?string
      * comment: enum:udp|tcp|tls
      */
-    protected $transport;
-
-    protected $ip;
-
-    protected $port;
+    protected $transport = null;
 
     /**
+     * @var ?string
+     */
+    protected $ip = null;
+
+    /**
+     * @var ?int
+     */
+    protected $port = null;
+
+    /**
+     * @var string
      * column: auth_needed
      */
     protected $authNeeded = 'yes';
 
-    protected $password;
+    /**
+     * @var ?string
+     */
+    protected $password = null;
 
+    /**
+     * @var string
+     */
     protected $disallow = 'all';
 
+    /**
+     * @var string
+     */
     protected $allow = 'alaw';
 
     /**
+     * @var string
      * column: direct_media_method
      * comment: enum:invite|update
      */
     protected $directMediaMethod = 'update';
 
     /**
+     * @var string
      * column: callerid_update_header
      * comment: enum:pai|rpid
      */
     protected $calleridUpdateHeader = 'pai';
 
     /**
+     * @var string
      * column: update_callerid
      * comment: enum:yes|no
      */
     protected $updateCallerid = 'yes';
 
     /**
+     * @var ?string
      * column: from_domain
      */
-    protected $fromDomain;
+    protected $fromDomain = null;
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $directConnectivity = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $ddiIn = 'yes';
 
+    /**
+     * @var int
+     */
     protected $maxCalls = 1;
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
+    /**
+     * @var bool
+     */
     protected $multiContact = true;
 
     /**
@@ -105,10 +144,10 @@ abstract class ResidentialDeviceAbstract
     protected $brand;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy residentialDevices
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var CompanyInterface
@@ -116,19 +155,19 @@ abstract class ResidentialDeviceAbstract
     protected $company;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
      * Constructor

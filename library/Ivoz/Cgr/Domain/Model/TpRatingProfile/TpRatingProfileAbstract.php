@@ -23,54 +23,77 @@ abstract class TpRatingProfileAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $loadid = 'DATABASE';
 
+    /**
+     * @var string
+     */
     protected $direction = '*out';
 
-    protected $tenant;
-
-    protected $category = 'call';
-
-    protected $subject;
+    /**
+     * @var ?string
+     */
+    protected $tenant = null;
 
     /**
+     * @var string
+     */
+    protected $category = 'call';
+
+    /**
+     * @var ?string
+     */
+    protected $subject = null;
+
+    /**
+     * @var string
      * column: activation_time
      */
     protected $activationTime = '1970-01-01 00:00:00';
 
     /**
+     * @var ?string
      * column: rating_plan_tag
      */
-    protected $ratingPlanTag;
+    protected $ratingPlanTag = null;
 
     /**
+     * @var ?string
      * column: fallback_subjects
      */
-    protected $fallbackSubjects;
+    protected $fallbackSubjects = null;
 
     /**
+     * @var ?string
      * column: cdr_stat_queue_ids
      */
-    protected $cdrStatQueueIds;
+    protected $cdrStatQueueIds = null;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
-     * @var RatingProfileInterface | null
+     * @var ?RatingProfileInterface
      * inversedBy tpRatingProfiles
      */
-    protected $ratingProfile;
+    protected $ratingProfile = null;
 
     /**
-     * @var OutgoingRoutingRelCarrierInterface | null
+     * @var ?OutgoingRoutingRelCarrierInterface
      * inversedBy tpRatingProfiles
      */
-    protected $outgoingRoutingRelCarrier;
+    protected $outgoingRoutingRelCarrier = null;
 
     /**
      * Constructor
@@ -399,7 +422,7 @@ abstract class TpRatingProfileAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

@@ -30,14 +30,21 @@ abstract class IvrEntryAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $entry;
 
     /**
+     * @var string
      * comment: enum:number|extension|voicemail|conditional
      */
     protected $routeType;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
      * @var IvrInterface
@@ -46,29 +53,29 @@ abstract class IvrEntryAbstract
     protected $ivr;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $welcomeLocution;
+    protected $welcomeLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voiceMailUser;
+    protected $voiceMailUser = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

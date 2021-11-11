@@ -15,24 +15,24 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $prefix = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $sequenceLength;
+    private $sequenceLength = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $increment;
+    private $increment = null;
 
     /**
      * @var string|null
@@ -40,24 +40,24 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     private $latestValue = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $iteration = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $version = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     public function __construct($id = null)
     {
@@ -208,7 +208,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

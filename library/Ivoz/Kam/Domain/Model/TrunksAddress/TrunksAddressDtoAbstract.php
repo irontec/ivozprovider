@@ -15,39 +15,39 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $grp = 1;
 
     /**
      * @var string|null
      */
-    private $ipAddr;
+    private $ipAddr = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $mask = 32;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $port = 0;
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderAddressDto | null
      */
-    private $ddiProviderAddress;
+    private $ddiProviderAddress = null;
 
     public function __construct($id = null)
     {
@@ -170,7 +170,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -15,54 +15,54 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $status = null;
 
     /**
      * @var int|null
      */
-    private $encodedFileFileSize;
-
-    /**
-     * @var string|null
-     */
-    private $encodedFileMimeType;
-
-    /**
-     * @var string|null
-     */
-    private $encodedFileBaseName;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $originalFileFileSize;
+    private $encodedFileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $originalFileMimeType;
+    private $encodedFileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $originalFileBaseName;
+    private $encodedFileBaseName = null;
+
+    /**
+     * @var int|null
+     */
+    private $originalFileFileSize = null;
+
+    /**
+     * @var string|null
+     */
+    private $originalFileMimeType = null;
+
+    /**
+     * @var string|null
+     */
+    private $originalFileBaseName = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -163,7 +163,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

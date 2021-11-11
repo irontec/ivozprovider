@@ -20,8 +20,14 @@ abstract class RoutingTagAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $tag;
 
     /**

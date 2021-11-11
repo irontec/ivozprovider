@@ -10,6 +10,8 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -19,9 +21,9 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 trait ResidentialDeviceTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var PsEndpointInterface
@@ -36,13 +38,13 @@ trait ResidentialDeviceTrait
     protected $psIdentify;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DdiInterface> & Selectable<array-key, DdiInterface>
      * DdiInterface mappedBy residentialDevice
      */
     protected $ddis;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CallForwardSettingInterface> & Selectable<array-key, CallForwardSettingInterface>
      * CallForwardSettingInterface mappedBy residentialDevice
      */
     protected $callForwardSettings;
@@ -62,6 +64,7 @@ trait ResidentialDeviceTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ResidentialDeviceDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -70,35 +73,39 @@ trait ResidentialDeviceTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $self->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $self->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $self->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getDdis())) {
-            $self->replaceDdis(
-                $fkTransformer->transformCollection(
-                    $dto->getDdis()
-                )
+        $ddis = $dto->getDdis();
+        if (!is_null($ddis)) {
+
+            /** @var Collection<array-key, DdiInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddis
             );
+            $self->replaceDdis($replacement);
         }
 
-        if (!is_null($dto->getCallForwardSettings())) {
-            $self->replaceCallForwardSettings(
-                $fkTransformer->transformCollection(
-                    $dto->getCallForwardSettings()
-                )
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
             );
+            $self->replaceCallForwardSettings($replacement);
         }
 
         $self->sanitizeValues();
@@ -112,6 +119,7 @@ trait ResidentialDeviceTrait
 
     /**
      * @internal use EntityTools instead
+     * @param ResidentialDeviceDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -119,35 +127,39 @@ trait ResidentialDeviceTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $this->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $this->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $this->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getDdis())) {
-            $this->replaceDdis(
-                $fkTransformer->transformCollection(
-                    $dto->getDdis()
-                )
+        $ddis = $dto->getDdis();
+        if (!is_null($ddis)) {
+
+            /** @var Collection<array-key, DdiInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddis
             );
+            $this->replaceDdis($replacement);
         }
 
-        if (!is_null($dto->getCallForwardSettings())) {
-            $this->replaceCallForwardSettings(
-                $fkTransformer->transformCollection(
-                    $dto->getCallForwardSettings()
-                )
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
             );
+            $this->replaceCallForwardSettings($replacement);
         }
         $this->sanitizeValues();
 
@@ -209,25 +221,33 @@ trait ResidentialDeviceTrait
         return $this;
     }
 
-    public function replaceDdis(ArrayCollection $ddis): ResidentialDeviceInterface
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): ResidentialDeviceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ddis as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setResidentialDevice($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ddis as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ddis->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ddis->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ddis->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -260,25 +280,33 @@ trait ResidentialDeviceTrait
         return $this;
     }
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): ResidentialDeviceInterface
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): ResidentialDeviceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($callForwardSettings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setResidentialDevice($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->callForwardSettings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->callForwardSettings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->callForwardSettings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->callForwardSettings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

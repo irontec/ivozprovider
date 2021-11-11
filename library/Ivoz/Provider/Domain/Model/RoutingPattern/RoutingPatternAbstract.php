@@ -22,15 +22,18 @@ abstract class RoutingPatternAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $prefix;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -48,8 +51,8 @@ abstract class RoutingPatternAbstract
         Description $description
     ) {
         $this->setPrefix($prefix);
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
     abstract public function getId(): null|string|int;
@@ -227,7 +230,7 @@ abstract class RoutingPatternAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -243,7 +246,7 @@ abstract class RoutingPatternAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

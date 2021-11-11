@@ -23,10 +23,10 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface | null
+     * @var ?ConditionalRoutesConditionInterface
      * inversedBy relCalendars
      */
-    protected $condition;
+    protected $condition = null;
 
     /**
      * @var CalendarInterface

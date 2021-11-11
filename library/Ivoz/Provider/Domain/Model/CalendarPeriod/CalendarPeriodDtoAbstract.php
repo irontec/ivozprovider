@@ -20,59 +20,59 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|null
      */
-    private $startDate;
+    private $startDate = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|null
      */
-    private $endDate;
-
-    /**
-     * @var string|null
-     */
-    private $routeType;
+    private $endDate = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $routeType = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numberValue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var CalendarDto | null
      */
-    private $calendar;
+    private $calendar = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var UserDto | null
      */
-    private $voiceMailUser;
+    private $voiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var CalendarPeriodsRelScheduleDto[] | null
      */
-    private $relSchedules;
+    private $relSchedules = null;
 
     public function __construct($id = null)
     {
@@ -135,26 +135,26 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartDate(\DateTimeInterface|string $startDate): static
+    public function setStartDate(\DateTimeInterface $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getStartDate(): \DateTimeInterface|string|null
+    public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
     }
 
-    public function setEndDate(\DateTimeInterface|string $endDate): static
+    public function setEndDate(\DateTimeInterface $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function getEndDate(): \DateTimeInterface|string|null
+    public function getEndDate(): ?\DateTimeInterface
     {
         return $this->endDate;
     }
@@ -190,7 +190,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

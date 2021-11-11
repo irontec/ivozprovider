@@ -18,11 +18,20 @@ abstract class DomainAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $domain;
 
+    /**
+     * @var string
+     */
     protected $pointsTo = 'proxyusers';
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * Constructor

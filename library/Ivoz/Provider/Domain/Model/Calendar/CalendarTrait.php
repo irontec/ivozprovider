@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 
@@ -17,18 +19,18 @@ use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 trait CalendarTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, HolidayDateInterface> & Selectable<array-key, HolidayDateInterface>
      * HolidayDateInterface mappedBy calendar
      */
     protected $holidayDates;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CalendarPeriodInterface> & Selectable<array-key, CalendarPeriodInterface>
      * CalendarPeriodInterface mappedBy calendar
      */
     protected $calendarPeriods;
@@ -48,6 +50,7 @@ trait CalendarTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CalendarDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -55,20 +58,24 @@ trait CalendarTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getHolidayDates())) {
-            $self->replaceHolidayDates(
-                $fkTransformer->transformCollection(
-                    $dto->getHolidayDates()
-                )
+        $holidayDates = $dto->getHolidayDates();
+        if (!is_null($holidayDates)) {
+
+            /** @var Collection<array-key, HolidayDateInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $holidayDates
             );
+            $self->replaceHolidayDates($replacement);
         }
 
-        if (!is_null($dto->getCalendarPeriods())) {
-            $self->replaceCalendarPeriods(
-                $fkTransformer->transformCollection(
-                    $dto->getCalendarPeriods()
-                )
+        $calendarPeriods = $dto->getCalendarPeriods();
+        if (!is_null($calendarPeriods)) {
+
+            /** @var Collection<array-key, CalendarPeriodInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $calendarPeriods
             );
+            $self->replaceCalendarPeriods($replacement);
         }
 
         $self->sanitizeValues();
@@ -82,26 +89,31 @@ trait CalendarTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CalendarDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getHolidayDates())) {
-            $this->replaceHolidayDates(
-                $fkTransformer->transformCollection(
-                    $dto->getHolidayDates()
-                )
+        $holidayDates = $dto->getHolidayDates();
+        if (!is_null($holidayDates)) {
+
+            /** @var Collection<array-key, HolidayDateInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $holidayDates
             );
+            $this->replaceHolidayDates($replacement);
         }
 
-        if (!is_null($dto->getCalendarPeriods())) {
-            $this->replaceCalendarPeriods(
-                $fkTransformer->transformCollection(
-                    $dto->getCalendarPeriods()
-                )
+        $calendarPeriods = $dto->getCalendarPeriods();
+        if (!is_null($calendarPeriods)) {
+
+            /** @var Collection<array-key, CalendarPeriodInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $calendarPeriods
             );
+            $this->replaceCalendarPeriods($replacement);
         }
         $this->sanitizeValues();
 
@@ -139,25 +151,33 @@ trait CalendarTrait
         return $this;
     }
 
-    public function replaceHolidayDates(ArrayCollection $holidayDates): CalendarInterface
+    /**
+     * @param Collection<array-key, HolidayDateInterface> $holidayDates
+     */
+    public function replaceHolidayDates(Collection $holidayDates): CalendarInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($holidayDates as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCalendar($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->holidayDates as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->holidayDates->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->holidayDates->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->holidayDates->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -190,25 +210,33 @@ trait CalendarTrait
         return $this;
     }
 
-    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods): CalendarInterface
+    /**
+     * @param Collection<array-key, CalendarPeriodInterface> $calendarPeriods
+     */
+    public function replaceCalendarPeriods(Collection $calendarPeriods): CalendarInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($calendarPeriods as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCalendar($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->calendarPeriods as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->calendarPeriods->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->calendarPeriods->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->calendarPeriods->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

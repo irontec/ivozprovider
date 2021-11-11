@@ -29,6 +29,7 @@ interface UsersPuaInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UsersPuaDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

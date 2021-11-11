@@ -25,19 +25,19 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $unit = 'month';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $frequency;
+    private $frequency = null;
 
     /**
      * @var string|null
@@ -45,84 +45,84 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $callDirection = 'outbound';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $email;
+    private $email = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $lastExecution;
+    private $lastExecution = null;
 
     /**
      * @var string|null
      */
-    private $lastExecutionError;
+    private $lastExecutionError = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $nextExecution;
+    private $nextExecution = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $callCsvNotificationTemplate;
+    private $callCsvNotificationTemplate = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
     public function __construct($id = null)
     {
@@ -307,7 +307,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -14,59 +14,59 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $username;
+    private $username = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $event;
+    private $event = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $etag;
+    private $etag = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $expires;
+    private $expires = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $receivedTime;
+    private $receivedTime = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $body;
+    private $body = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $sender;
+    private $sender = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 0;
 
     /**
      * @var string|null
      */
-    private $ruid;
+    private $ruid = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -257,7 +257,7 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

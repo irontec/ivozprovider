@@ -12,19 +12,40 @@ use Assert\Assertion;
 */
 final class Invoice
 {
+    /**
+     * @var string
+     */
     private $nif;
 
+    /**
+     * @var string
+     */
     private $postalAddress;
 
+    /**
+     * @var string
+     */
     private $postalCode;
 
+    /**
+     * @var string
+     */
     private $town;
 
+    /**
+     * @var string
+     */
     private $province;
 
+    /**
+     * @var string
+     */
     private $country;
 
-    private $registryData;
+    /**
+     * @var ?string
+     */
+    private $registryData = null;
 
     /**
      * Constructor

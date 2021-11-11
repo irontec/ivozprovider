@@ -20,14 +20,14 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var bool|null
@@ -35,39 +35,39 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $externallyRated = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var ProxyTrunkDto | null
      */
-    private $proxyTrunk;
+    private $proxyTrunk = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets;
+    private $mediaRelaySets = null;
 
     /**
      * @var DdiProviderRegistrationDto[] | null
      */
-    private $ddiProviderRegistrations;
+    private $ddiProviderRegistrations = null;
 
     /**
      * @var DdiProviderAddressDto[] | null
      */
-    private $ddiProviderAddresses;
+    private $ddiProviderAddresses = null;
 
     public function __construct($id = null)
     {
@@ -170,7 +170,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

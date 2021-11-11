@@ -20,19 +20,40 @@ abstract class TerminalModelAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $name = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
-    protected $genericTemplate;
+    /**
+     * @var ?string
+     */
+    protected $genericTemplate = null;
 
-    protected $specificTemplate;
+    /**
+     * @var ?string
+     */
+    protected $specificTemplate = null;
 
-    protected $genericUrlPattern;
+    /**
+     * @var ?string
+     */
+    protected $genericUrlPattern = null;
 
-    protected $specificUrlPattern;
+    /**
+     * @var ?string
+     */
+    protected $specificUrlPattern = null;
 
     /**
      * @var TerminalManufacturerInterface

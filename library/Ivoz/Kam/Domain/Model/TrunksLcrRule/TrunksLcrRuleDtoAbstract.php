@@ -17,59 +17,59 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $lcrId = 1;
 
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
      * @var string|null
      */
-    private $fromUri;
+    private $fromUri = null;
 
     /**
      * @var string|null
      */
-    private $requestUri;
+    private $requestUri = null;
 
     /**
      * @var string|null
      */
-    private $mtTvalue;
+    private $mtTvalue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $stopper = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $enabled = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RoutingPatternDto | null
      */
-    private $routingPattern;
+    private $routingPattern = null;
 
     /**
      * @var RoutingPatternGroupsRelPatternDto | null
      */
-    private $routingPatternGroupsRelPattern;
+    private $routingPatternGroupsRelPattern = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
     public function __construct($id = null)
     {
@@ -224,7 +224,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

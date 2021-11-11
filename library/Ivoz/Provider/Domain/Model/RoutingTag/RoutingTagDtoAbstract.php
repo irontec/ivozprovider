@@ -17,34 +17,34 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     /**
      * @var CompanyRelRoutingTagDto[] | null
      */
-    private $relCompanies;
+    private $relCompanies = null;
 
     public function __construct($id = null)
     {
@@ -127,7 +127,7 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

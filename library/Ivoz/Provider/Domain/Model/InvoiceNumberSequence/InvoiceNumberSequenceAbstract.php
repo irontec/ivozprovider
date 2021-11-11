@@ -20,18 +20,39 @@ abstract class InvoiceNumberSequenceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $prefix = '';
 
+    /**
+     * @var int
+     */
     protected $sequenceLength;
 
+    /**
+     * @var int
+     */
     protected $increment;
 
+    /**
+     * @var ?string
+     */
     protected $latestValue = '';
 
+    /**
+     * @var int
+     */
     protected $iteration = 0;
 
+    /**
+     * @var int
+     */
     protected $version = 1;
 
     /**

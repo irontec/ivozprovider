@@ -19,42 +19,42 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var int|null
      */
-    private $timeoutTime;
+    private $timeoutTime = null;
 
     /**
      * @var int|null
      */
-    private $priority;
-
-    /**
-     * @var string
-     */
-    private $routeType;
+    private $priority = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $routeType = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numberValue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     public function __construct($id = null)
     {
@@ -167,7 +167,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

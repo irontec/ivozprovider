@@ -27,47 +27,56 @@ abstract class PsIdentifyAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: sorcery_id
      */
     protected $sorceryId;
 
-    protected $endpoint;
-
-    protected $match;
+    /**
+     * @var ?string
+     */
+    protected $endpoint = null;
 
     /**
+     * @var ?string
+     */
+    protected $match = null;
+
+    /**
+     * @var ?string
      * column: match_header
      */
-    protected $matchHeader;
+    protected $matchHeader = null;
 
     /**
+     * @var string
      * column: srv_lookups
      */
     protected $srvLookups = 'false';
 
     /**
-     * @var TerminalInterface | null
+     * @var ?TerminalInterface
      * inversedBy psIdentify
      */
-    protected $terminal;
+    protected $terminal = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      * inversedBy psIdentify
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy psIdentify
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy psIdentify
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor

@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait ConditionalRoutesConditionsRelCalendarTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait ConditionalRoutesConditionsRelCalendarTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRoutesConditionsRelCalendarDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait ConditionalRoutesConditionsRelCalendarTrait
 
     /**
      * @internal use EntityTools instead
+     * @param ConditionalRoutesConditionsRelCalendarDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

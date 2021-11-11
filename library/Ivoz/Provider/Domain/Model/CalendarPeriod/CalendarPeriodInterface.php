@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -59,6 +59,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CalendarPeriodDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -99,7 +100,10 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function removeRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface;
 
-    public function replaceRelSchedules(ArrayCollection $relSchedules): CalendarPeriodInterface;
+    /**
+     * @param Collection<array-key, CalendarPeriodsRelScheduleInterface> $relSchedules
+     */
+    public function replaceRelSchedules(Collection $relSchedules): CalendarPeriodInterface;
 
     public function getRelSchedules(?Criteria $criteria = null): array;
 

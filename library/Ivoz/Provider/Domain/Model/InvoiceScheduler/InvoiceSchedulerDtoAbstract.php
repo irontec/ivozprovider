@@ -19,74 +19,74 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $unit = 'month';
-
-    /**
-     * @var int
-     */
-    private $frequency;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var \DateTimeInterface|string|null
-     */
-    private $lastExecution;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $lastExecutionError;
+    private $unit = 'month';
+
+    /**
+     * @var int|null
+     */
+    private $frequency = null;
+
+    /**
+     * @var string|null
+     */
+    private $email = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $nextExecution;
+    private $lastExecution = null;
+
+    /**
+     * @var string|null
+     */
+    private $lastExecutionError = null;
+
+    /**
+     * @var \DateTimeInterface|string|null
+     */
+    private $nextExecution = null;
 
     /**
      * @var float|null
      */
-    private $taxRate;
+    private $taxRate = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var InvoiceTemplateDto | null
      */
-    private $invoiceTemplate;
+    private $invoiceTemplate = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var InvoiceNumberSequenceDto | null
      */
-    private $numberSequence;
+    private $numberSequence = null;
 
     /**
      * @var FixedCostsRelInvoiceSchedulerDto[] | null
      */
-    private $relFixedCosts;
+    private $relFixedCosts = null;
 
     public function __construct($id = null)
     {
@@ -258,7 +258,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -18,28 +18,56 @@ abstract class UsersPresentityAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $domain;
 
+    /**
+     * @var string
+     */
     protected $event;
 
+    /**
+     * @var string
+     */
     protected $etag;
 
+    /**
+     * @var int
+     */
     protected $expires;
 
     /**
+     * @var int
      * column: received_time
      */
     protected $receivedTime;
 
+    /**
+     * @var string
+     */
     protected $body;
 
+    /**
+     * @var string
+     */
     protected $sender;
 
+    /**
+     * @var int
+     */
     protected $priority = 0;
 
-    protected $ruid;
+    /**
+     * @var ?string
+     */
+    protected $ruid = null;
 
     /**
      * Constructor

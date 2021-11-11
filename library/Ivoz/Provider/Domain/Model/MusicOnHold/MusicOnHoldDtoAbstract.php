@@ -16,59 +16,59 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $status = null;
 
     /**
      * @var int|null
      */
-    private $originalFileFileSize;
-
-    /**
-     * @var string|null
-     */
-    private $originalFileMimeType;
-
-    /**
-     * @var string|null
-     */
-    private $originalFileBaseName;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $encodedFileFileSize;
+    private $originalFileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $encodedFileMimeType;
+    private $originalFileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $encodedFileBaseName;
+    private $originalFileBaseName = null;
+
+    /**
+     * @var int|null
+     */
+    private $encodedFileFileSize = null;
+
+    /**
+     * @var string|null
+     */
+    private $encodedFileMimeType = null;
+
+    /**
+     * @var string|null
+     */
+    private $encodedFileBaseName = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -171,7 +171,7 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

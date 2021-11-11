@@ -38,6 +38,7 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CalendarPeriodsRelScheduleDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

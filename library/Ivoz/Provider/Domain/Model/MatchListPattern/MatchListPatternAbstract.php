@@ -22,22 +22,28 @@ abstract class MatchListPatternAbstract
 {
     use ChangelogTrait;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
+     * @var string
      * comment: enum:number|regexp
      */
     protected $type;
 
     /**
+     * @var ?string
      * column: regExp
      */
-    protected $regexp;
+    protected $regexp = null;
 
     /**
+     * @var ?string
      * column: numberValue
      */
-    protected $numbervalue;
+    protected $numbervalue = null;
 
     /**
      * @var MatchListInterface
@@ -46,9 +52,9 @@ abstract class MatchListPatternAbstract
     protected $matchList;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

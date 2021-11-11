@@ -23,10 +23,10 @@ abstract class FeaturesRelCompanyAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relFeatures
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var FeatureInterface

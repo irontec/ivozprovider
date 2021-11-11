@@ -30,33 +30,46 @@ abstract class BrandAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: domain_users
      */
-    protected $domainUsers;
+    protected $domainUsers = null;
 
-    protected $recordingsLimitMB;
+    /**
+     * @var ?int
+     */
+    protected $recordingsLimitMB = null;
 
-    protected $recordingsLimitEmail;
+    /**
+     * @var ?string
+     */
+    protected $recordingsLimitEmail = null;
 
+    /**
+     * @var int
+     */
     protected $maxCalls = 0;
 
     /**
-     * @var Logo | null
+     * @var Logo
      */
     protected $logo;
 
     /**
-     * @var Invoice | null
+     * @var Invoice
      */
     protected $invoice;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var LanguageInterface
@@ -69,34 +82,34 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $voicemailNotificationTemplate;
+    protected $voicemailNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $faxNotificationTemplate;
+    protected $faxNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $invoiceNotificationTemplate;
+    protected $invoiceNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $maxDailyUsageNotificationTemplate;
+    protected $maxDailyUsageNotificationTemplate = null;
 
     /**
      * Constructor
@@ -109,8 +122,8 @@ abstract class BrandAbstract
     ) {
         $this->setName($name);
         $this->setMaxCalls($maxCalls);
-        $this->setLogo($logo);
-        $this->setInvoice($invoice);
+        $this->logo = $logo;
+        $this->invoice = $invoice;
     }
 
     abstract public function getId(): null|string|int;
@@ -402,7 +415,7 @@ abstract class BrandAbstract
 
     protected function setLogo(Logo $logo): static
     {
-        $isEqual = $this->logo && $this->logo->equals($logo);
+        $isEqual = $this->logo->equals($logo);
         if ($isEqual) {
             return $this;
         }
@@ -418,7 +431,7 @@ abstract class BrandAbstract
 
     protected function setInvoice(Invoice $invoice): static
     {
-        $isEqual = $this->invoice && $this->invoice->equals($invoice);
+        $isEqual = $this->invoice->equals($invoice);
         if ($isEqual) {
             return $this;
         }

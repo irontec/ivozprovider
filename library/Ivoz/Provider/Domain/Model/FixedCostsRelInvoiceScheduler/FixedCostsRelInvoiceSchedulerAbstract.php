@@ -22,7 +22,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 {
     use ChangelogTrait;
 
-    protected $quantity;
+    /**
+     * @var ?int
+     */
+    protected $quantity = null;
 
     /**
      * @var FixedCostInterface
@@ -30,10 +33,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $fixedCost;
 
     /**
-     * @var InvoiceSchedulerInterface | null
+     * @var ?InvoiceSchedulerInterface
      * inversedBy relFixedCosts
      */
-    protected $invoiceScheduler;
+    protected $invoiceScheduler = null;
 
     /**
      * Constructor

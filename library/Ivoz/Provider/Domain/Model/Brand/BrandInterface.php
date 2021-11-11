@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
@@ -115,6 +115,7 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BrandDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -161,7 +162,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeCompany(CompanyInterface $company): BrandInterface;
 
-    public function replaceCompanies(ArrayCollection $companies): BrandInterface;
+    /**
+     * @param Collection<array-key, CompanyInterface> $companies
+     */
+    public function replaceCompanies(Collection $companies): BrandInterface;
 
     public function getCompanies(?Criteria $criteria = null): array;
 
@@ -169,7 +173,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeService(BrandServiceInterface $service): BrandInterface;
 
-    public function replaceServices(ArrayCollection $services): BrandInterface;
+    /**
+     * @param Collection<array-key, BrandServiceInterface> $services
+     */
+    public function replaceServices(Collection $services): BrandInterface;
 
     public function getServices(?Criteria $criteria = null): array;
 
@@ -177,7 +184,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeUrl(WebPortalInterface $url): BrandInterface;
 
-    public function replaceUrls(ArrayCollection $urls): BrandInterface;
+    /**
+     * @param Collection<array-key, WebPortalInterface> $urls
+     */
+    public function replaceUrls(Collection $urls): BrandInterface;
 
     public function getUrls(?Criteria $criteria = null): array;
 
@@ -185,7 +195,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeRelFeature(FeaturesRelBrandInterface $relFeature): BrandInterface;
 
-    public function replaceRelFeatures(ArrayCollection $relFeatures): BrandInterface;
+    /**
+     * @param Collection<array-key, FeaturesRelBrandInterface> $relFeatures
+     */
+    public function replaceRelFeatures(Collection $relFeatures): BrandInterface;
 
     public function getRelFeatures(?Criteria $criteria = null): array;
 
@@ -193,7 +206,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeRelProxyTrunk(ProxyTrunksRelBrandInterface $relProxyTrunk): BrandInterface;
 
-    public function replaceRelProxyTrunks(ArrayCollection $relProxyTrunks): BrandInterface;
+    /**
+     * @param Collection<array-key, ProxyTrunksRelBrandInterface> $relProxyTrunks
+     */
+    public function replaceRelProxyTrunks(Collection $relProxyTrunks): BrandInterface;
 
     public function getRelProxyTrunks(?Criteria $criteria = null): array;
 
@@ -201,7 +217,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeResidentialDevice(ResidentialDeviceInterface $residentialDevice): BrandInterface;
 
-    public function replaceResidentialDevices(ArrayCollection $residentialDevices): BrandInterface;
+    /**
+     * @param Collection<array-key, ResidentialDeviceInterface> $residentialDevices
+     */
+    public function replaceResidentialDevices(Collection $residentialDevices): BrandInterface;
 
     public function getResidentialDevices(?Criteria $criteria = null): array;
 
@@ -209,7 +228,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeMusicsOnHold(MusicOnHoldInterface $musicsOnHold): BrandInterface;
 
-    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): BrandInterface;
+    /**
+     * @param Collection<array-key, MusicOnHoldInterface> $musicsOnHold
+     */
+    public function replaceMusicsOnHold(Collection $musicsOnHold): BrandInterface;
 
     public function getMusicsOnHold(?Criteria $criteria = null): array;
 
@@ -217,7 +239,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeMatchList(MatchListInterface $matchList): BrandInterface;
 
-    public function replaceMatchLists(ArrayCollection $matchLists): BrandInterface;
+    /**
+     * @param Collection<array-key, MatchListInterface> $matchLists
+     */
+    public function replaceMatchLists(Collection $matchLists): BrandInterface;
 
     public function getMatchLists(?Criteria $criteria = null): array;
 
@@ -225,7 +250,10 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): BrandInterface;
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): BrandInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): BrandInterface;
 
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 

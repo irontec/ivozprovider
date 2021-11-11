@@ -19,63 +19,116 @@ abstract class UsersLocationAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $ruid = '';
 
+    /**
+     * @var string
+     */
     protected $username = '';
 
-    protected $domain;
+    /**
+     * @var ?string
+     */
+    protected $domain = null;
 
+    /**
+     * @var string
+     */
     protected $contact = '';
 
-    protected $received;
+    /**
+     * @var ?string
+     */
+    protected $received = null;
 
-    protected $path;
+    /**
+     * @var ?string
+     */
+    protected $path = null;
 
-    protected $expires;
+    protected \DateTimeInterface $expires;
 
+    /**
+     * @var float
+     */
     protected $q = 1;
 
+    /**
+     * @var string
+     */
     protected $callid = 'Default-Call-ID';
 
+    /**
+     * @var int
+     */
     protected $cseq = 1;
 
     /**
+     * @var \DateTime
      * column: last_modified
      */
-    protected $lastModified;
+    protected \DateTimeInterface $lastModified;
 
+    /**
+     * @var int
+     */
     protected $flags = 0;
 
+    /**
+     * @var int
+     */
     protected $cflags = 0;
 
     /**
+     * @var string
      * column: user_agent
      */
     protected $userAgent = '';
 
-    protected $socket;
-
-    protected $methods;
-
-    protected $instance;
+    /**
+     * @var ?string
+     */
+    protected $socket = null;
 
     /**
+     * @var ?int
+     */
+    protected $methods = null;
+
+    /**
+     * @var ?string
+     */
+    protected $instance = null;
+
+    /**
+     * @var int
      * column: reg_id
      */
     protected $regId = 0;
 
     /**
+     * @var int
      * column: server_id
      */
     protected $serverId = 0;
 
     /**
+     * @var int
      * column: connection_id
      */
     protected $connectionId = 0;
 
+    /**
+     * @var int
+     */
     protected $keepalive = 0;
 
+    /**
+     * @var int
+     */
     protected $partition = 0;
 
     /**
@@ -401,7 +454,7 @@ abstract class UsersLocationAbstract
             '2030-05-28 21:32:15'
         );
 
-        if ($this->expires == $expires) {
+        if ($this->isInitialized() && $this->expires == $expires) {
             return $this;
         }
 
@@ -464,7 +517,7 @@ abstract class UsersLocationAbstract
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 

@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait HuntGroupTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, HuntGroupsRelUserInterface> & Selectable<array-key, HuntGroupsRelUserInterface>
      * HuntGroupsRelUserInterface mappedBy huntGroup
      * orphanRemoval
      */
@@ -41,6 +43,7 @@ trait HuntGroupTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param HuntGroupDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -48,12 +51,14 @@ trait HuntGroupTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getHuntGroupsRelUsers())) {
-            $self->replaceHuntGroupsRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getHuntGroupsRelUsers()
-                )
+        $huntGroupsRelUsers = $dto->getHuntGroupsRelUsers();
+        if (!is_null($huntGroupsRelUsers)) {
+
+            /** @var Collection<array-key, HuntGroupsRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $huntGroupsRelUsers
             );
+            $self->replaceHuntGroupsRelUsers($replacement);
         }
 
         $self->sanitizeValues();
@@ -67,18 +72,21 @@ trait HuntGroupTrait
 
     /**
      * @internal use EntityTools instead
+     * @param HuntGroupDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getHuntGroupsRelUsers())) {
-            $this->replaceHuntGroupsRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getHuntGroupsRelUsers()
-                )
+        $huntGroupsRelUsers = $dto->getHuntGroupsRelUsers();
+        if (!is_null($huntGroupsRelUsers)) {
+
+            /** @var Collection<array-key, HuntGroupsRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $huntGroupsRelUsers
             );
+            $this->replaceHuntGroupsRelUsers($replacement);
         }
         $this->sanitizeValues();
 
@@ -116,25 +124,33 @@ trait HuntGroupTrait
         return $this;
     }
 
-    public function replaceHuntGroupsRelUsers(ArrayCollection $huntGroupsRelUsers): HuntGroupInterface
+    /**
+     * @param Collection<array-key, HuntGroupsRelUserInterface> $huntGroupsRelUsers
+     */
+    public function replaceHuntGroupsRelUsers(Collection $huntGroupsRelUsers): HuntGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($huntGroupsRelUsers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setHuntGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->huntGroupsRelUsers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->huntGroupsRelUsers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->huntGroupsRelUsers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->huntGroupsRelUsers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

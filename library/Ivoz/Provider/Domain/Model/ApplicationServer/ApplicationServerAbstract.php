@@ -18,9 +18,15 @@ abstract class ApplicationServerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $ip;
 
-    protected $name;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
     /**
      * Constructor

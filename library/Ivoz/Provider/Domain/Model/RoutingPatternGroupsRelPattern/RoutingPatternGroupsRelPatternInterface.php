@@ -38,6 +38,7 @@ interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterfac
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RoutingPatternGroupsRelPatternDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

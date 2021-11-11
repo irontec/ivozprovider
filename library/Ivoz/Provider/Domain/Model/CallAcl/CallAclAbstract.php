@@ -20,9 +20,13 @@ abstract class CallAclAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var string
      * comment: enum:allow|deny
      */
     protected $defaultPolicy;

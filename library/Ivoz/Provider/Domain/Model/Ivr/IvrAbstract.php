@@ -28,27 +28,47 @@ abstract class IvrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var int
+     */
     protected $timeout;
 
+    /**
+     * @var int
+     */
     protected $maxDigits;
 
+    /**
+     * @var bool
+     */
     protected $allowExtensions = false;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $noInputRouteType;
-
-    protected $noInputNumberValue;
+    protected $noInputRouteType = null;
 
     /**
+     * @var ?string
+     */
+    protected $noInputNumberValue = null;
+
+    /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $errorRouteType;
+    protected $errorRouteType = null;
 
-    protected $errorNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $errorNumberValue = null;
 
     /**
      * @var CompanyInterface
@@ -56,54 +76,54 @@ abstract class IvrAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $welcomeLocution;
+    protected $welcomeLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $noInputLocution;
+    protected $noInputLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $errorLocution;
+    protected $errorLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $successLocution;
+    protected $successLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $noInputExtension;
+    protected $noInputExtension = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $errorExtension;
+    protected $errorExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $noInputVoiceMailUser;
+    protected $noInputVoiceMailUser = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $errorVoiceMailUser;
+    protected $errorVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $noInputNumberCountry;
+    protected $noInputNumberCountry = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $errorNumberCountry;
+    protected $errorNumberCountry = null;
 
     /**
      * Constructor

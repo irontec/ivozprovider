@@ -18,54 +18,54 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $sorceryId;
+    private $sorceryId = null;
 
     /**
      * @var string|null
      */
-    private $endpoint;
+    private $endpoint = null;
 
     /**
      * @var string|null
      */
-    private $match;
+    private $match = null;
 
     /**
      * @var string|null
      */
-    private $matchHeader;
+    private $matchHeader = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $srvLookups = 'false';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TerminalDto | null
      */
-    private $terminal;
+    private $terminal = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     public function __construct($id = null)
     {
@@ -194,7 +194,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

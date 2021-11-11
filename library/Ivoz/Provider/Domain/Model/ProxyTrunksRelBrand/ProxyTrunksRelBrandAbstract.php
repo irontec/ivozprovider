@@ -23,10 +23,10 @@ abstract class ProxyTrunksRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy relProxyTrunks
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var ProxyTrunkInterface

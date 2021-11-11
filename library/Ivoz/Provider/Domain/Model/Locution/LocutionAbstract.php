@@ -22,20 +22,24 @@ abstract class LocutionAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * comment: enum:pending|encoding|ready|error
      */
-    protected $status;
+    protected $status = null;
 
     /**
-     * @var EncodedFile | null
+     * @var EncodedFile
      */
     protected $encodedFile;
 
     /**
-     * @var OriginalFile | null
+     * @var OriginalFile
      */
     protected $originalFile;
 
@@ -53,8 +57,8 @@ abstract class LocutionAbstract
         OriginalFile $originalFile
     ) {
         $this->setName($name);
-        $this->setEncodedFile($encodedFile);
-        $this->setOriginalFile($originalFile);
+        $this->encodedFile = $encodedFile;
+        $this->originalFile = $originalFile;
     }
 
     abstract public function getId(): null|string|int;
@@ -254,7 +258,7 @@ abstract class LocutionAbstract
 
     protected function setEncodedFile(EncodedFile $encodedFile): static
     {
-        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
+        $isEqual = $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
             return $this;
         }
@@ -270,7 +274,7 @@ abstract class LocutionAbstract
 
     protected function setOriginalFile(OriginalFile $originalFile): static
     {
-        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
+        $isEqual = $this->originalFile->equals($originalFile);
         if ($isEqual) {
             return $this;
         }

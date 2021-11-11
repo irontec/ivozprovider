@@ -21,29 +21,42 @@ abstract class WebPortalAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $url;
 
+    /**
+     * @var ?string
+     */
     protected $klearTheme = '';
 
     /**
+     * @var string
      * comment: enum:god|brand|admin|user
      */
     protected $urlType;
 
+    /**
+     * @var ?string
+     */
     protected $name = '';
 
+    /**
+     * @var ?string
+     */
     protected $userTheme = '';
 
     /**
-     * @var Logo | null
+     * @var Logo
      */
     protected $logo;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy urls
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * Constructor
@@ -55,7 +68,7 @@ abstract class WebPortalAbstract
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
-        $this->setLogo($logo);
+        $this->logo = $logo;
     }
 
     abstract public function getId(): null|string|int;
@@ -293,7 +306,7 @@ abstract class WebPortalAbstract
 
     protected function setLogo(Logo $logo): static
     {
-        $isEqual = $this->logo && $this->logo->equals($logo);
+        $isEqual = $this->logo->equals($logo);
         if ($isEqual) {
             return $this;
         }

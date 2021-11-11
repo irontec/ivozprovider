@@ -16,94 +16,94 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lUuid = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lUsername = 'unused';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lDomain = 'unused';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $rUsername = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $rDomain = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $realm = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authUsername = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authPassword = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authProxy = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expires = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $flags = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $regDelay = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authHa1 = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $socket = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contactAddr = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderRegistrationDto | null
      */
-    private $ddiProviderRegistration;
+    private $ddiProviderRegistration = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     public function __construct($id = null)
     {
@@ -368,7 +368,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

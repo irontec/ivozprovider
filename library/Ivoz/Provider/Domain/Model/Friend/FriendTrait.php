@@ -10,6 +10,8 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -18,9 +20,9 @@ use Doctrine\Common\Collections\Criteria;
 trait FriendTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var PsEndpointInterface
@@ -35,7 +37,7 @@ trait FriendTrait
     protected $psIdentify;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FriendsPatternInterface> & Selectable<array-key, FriendsPatternInterface>
      * FriendsPatternInterface mappedBy friend
      */
     protected $patterns;
@@ -54,6 +56,7 @@ trait FriendTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param FriendDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -62,27 +65,29 @@ trait FriendTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $self->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $self->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $self->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getPatterns())) {
-            $self->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, FriendsPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $self->replacePatterns($replacement);
         }
 
         $self->sanitizeValues();
@@ -96,6 +101,7 @@ trait FriendTrait
 
     /**
      * @internal use EntityTools instead
+     * @param FriendDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -103,27 +109,29 @@ trait FriendTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $this->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $this->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $this->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getPatterns())) {
-            $this->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, FriendsPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $this->replacePatterns($replacement);
         }
         $this->sanitizeValues();
 
@@ -185,25 +193,33 @@ trait FriendTrait
         return $this;
     }
 
-    public function replacePatterns(ArrayCollection $patterns): FriendInterface
+    /**
+     * @param Collection<array-key, FriendsPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): FriendInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($patterns as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setFriend($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->patterns as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->patterns->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->patterns->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->patterns->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

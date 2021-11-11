@@ -21,110 +21,157 @@ abstract class TpCdrStatAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $tag;
 
     /**
+     * @var int
      * column: queue_length
      */
     protected $queueLength = 0;
 
     /**
+     * @var string
      * column: time_window
      */
     protected $timeWindow = '';
 
     /**
+     * @var string
      * column: save_interval
      */
     protected $saveInterval = '';
 
+    /**
+     * @var string
+     */
     protected $metrics;
 
     /**
+     * @var string
      * column: setup_interval
      */
     protected $setupInterval = '';
 
+    /**
+     * @var string
+     */
     protected $tors = '';
 
     /**
+     * @var string
      * column: cdr_hosts
      */
     protected $cdrHosts = '';
 
     /**
+     * @var string
      * column: cdr_sources
      */
     protected $cdrSources = '';
 
     /**
+     * @var string
      * column: req_types
      */
     protected $reqTypes = '';
 
+    /**
+     * @var string
+     */
     protected $directions = '';
 
+    /**
+     * @var string
+     */
     protected $tenants = '';
 
+    /**
+     * @var string
+     */
     protected $categories = '';
 
+    /**
+     * @var string
+     */
     protected $accounts = '';
 
+    /**
+     * @var string
+     */
     protected $subjects = '';
 
     /**
+     * @var string
      * column: destination_ids
      */
     protected $destinationIds = '';
 
     /**
+     * @var string
      * column: ppd_interval
      */
     protected $ppdInterval = '';
 
     /**
+     * @var string
      * column: usage_interval
      */
     protected $usageInterval = '';
 
+    /**
+     * @var string
+     */
     protected $suppliers = '';
 
     /**
+     * @var string
      * column: disconnect_causes
      */
     protected $disconnectCauses = '';
 
     /**
+     * @var string
      * column: mediation_runids
      */
     protected $mediationRunids = '';
 
     /**
+     * @var string
      * column: rated_accounts
      */
     protected $ratedAccounts = '';
 
     /**
+     * @var string
      * column: rated_subjects
      */
     protected $ratedSubjects = '';
 
     /**
+     * @var string
      * column: cost_interval
      */
     protected $costInterval = '';
 
     /**
+     * @var string
      * column: action_triggers
      */
     protected $actionTriggers = '';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var CarrierInterface
@@ -773,7 +820,7 @@ abstract class TpCdrStatAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

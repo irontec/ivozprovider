@@ -29,22 +29,41 @@ abstract class HolidayDateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $eventDate;
 
+    /**
+     * @var bool
+     */
     protected $wholeDayEvent = true;
 
-    protected $timeIn;
-
-    protected $timeOut;
+    /**
+     * @var ?\DateTimeInterface
+     */
+    protected $timeIn = null;
 
     /**
+     * @var ?\DateTimeInterface
+     */
+    protected $timeOut = null;
+
+    /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $routeType;
+    protected $routeType = null;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
      * @var CalendarInterface
@@ -53,24 +72,24 @@ abstract class HolidayDateAbstract
     protected $calendar;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $locution;
+    protected $locution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voiceMailUser;
+    protected $voiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor

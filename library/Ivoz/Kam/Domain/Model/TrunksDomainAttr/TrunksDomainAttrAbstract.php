@@ -19,18 +19,31 @@ abstract class TrunksDomainAttrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $did;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var int
+     */
     protected $type;
 
+    /**
+     * @var string
+     */
     protected $value;
 
     /**
+     * @var \DateTime
      * column: last_modified
      */
-    protected $lastModified;
+    protected \DateTimeInterface $lastModified;
 
     /**
      * Constructor
@@ -231,7 +244,7 @@ abstract class TrunksDomainAttrAbstract
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 

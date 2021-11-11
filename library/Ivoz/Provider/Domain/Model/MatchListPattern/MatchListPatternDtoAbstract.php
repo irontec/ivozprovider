@@ -18,37 +18,37 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string|null
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $type;
+    private $description = null;
 
     /**
      * @var string|null
      */
-    private $regexp;
+    private $type = null;
 
     /**
      * @var string|null
      */
-    private $numbervalue;
+    private $regexp = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numbervalue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchList;
+    private $matchList = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     public function __construct($id = null)
     {
@@ -159,7 +159,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

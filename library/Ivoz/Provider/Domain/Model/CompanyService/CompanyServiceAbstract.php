@@ -22,6 +22,9 @@ abstract class CompanyServiceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $code;
 
     /**

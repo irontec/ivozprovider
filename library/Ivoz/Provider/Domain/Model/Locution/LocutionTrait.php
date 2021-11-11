@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait LocutionTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait LocutionTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param LocutionDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait LocutionTrait
 
     /**
      * @internal use EntityTools instead
+     * @param LocutionDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

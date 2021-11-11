@@ -21,45 +21,58 @@ abstract class TpDestinationRateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
     /**
+     * @var ?string
      * column: destinations_tag
      */
-    protected $destinationsTag;
+    protected $destinationsTag = null;
 
     /**
+     * @var ?string
      * column: rates_tag
      */
-    protected $ratesTag;
+    protected $ratesTag = null;
 
     /**
+     * @var string
      * column: rounding_method
      * comment: enum:*up|*upmincost
      */
     protected $roundingMethod = '*up';
 
     /**
+     * @var int
      * column: rounding_decimals
      */
     protected $roundingDecimals = 4;
 
     /**
+     * @var float
      * column: max_cost
      */
     protected $maxCost = 0;
 
     /**
+     * @var string
      * column: max_cost_strategy
      */
     protected $maxCostStrategy = '';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
      * @var DestinationRateInterface
@@ -354,7 +367,7 @@ abstract class TpDestinationRateAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

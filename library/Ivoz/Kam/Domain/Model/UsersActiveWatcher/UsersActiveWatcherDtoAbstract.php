@@ -14,139 +14,139 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $presentityUri;
+    private $presentityUri = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $watcherUsername;
+    private $watcherUsername = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $watcherDomain;
+    private $watcherDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $toUser;
+    private $toUser = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $toDomain;
+    private $toDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $event = 'presence';
 
     /**
      * @var string|null
      */
-    private $eventId;
-
-    /**
-     * @var string
-     */
-    private $toTag;
-
-    /**
-     * @var string
-     */
-    private $fromTag;
-
-    /**
-     * @var string
-     */
-    private $callid;
-
-    /**
-     * @var int
-     */
-    private $localCseq;
-
-    /**
-     * @var int
-     */
-    private $remoteCseq;
-
-    /**
-     * @var string
-     */
-    private $contact;
+    private $eventId = null;
 
     /**
      * @var string|null
      */
-    private $recordRoute;
+    private $toTag = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $expires;
+    private $fromTag = null;
 
     /**
-     * @var int
+     * @var string|null
+     */
+    private $callid = null;
+
+    /**
+     * @var int|null
+     */
+    private $localCseq = null;
+
+    /**
+     * @var int|null
+     */
+    private $remoteCseq = null;
+
+    /**
+     * @var string|null
+     */
+    private $contact = null;
+
+    /**
+     * @var string|null
+     */
+    private $recordRoute = null;
+
+    /**
+     * @var int|null
+     */
+    private $expires = null;
+
+    /**
+     * @var int|null
      */
     private $status = 2;
 
     /**
      * @var string|null
      */
-    private $reason;
+    private $reason = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $version = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $socketInfo;
+    private $socketInfo = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $localContact;
+    private $localContact = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $fromUser;
+    private $fromUser = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $updated;
+    private $updated = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $updatedWinfo;
+    private $updatedWinfo = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $flags = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $userAgent = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -561,7 +561,7 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

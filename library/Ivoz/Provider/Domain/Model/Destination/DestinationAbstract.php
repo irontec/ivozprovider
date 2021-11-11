@@ -21,10 +21,13 @@ abstract class DestinationAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $prefix;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -41,7 +44,7 @@ abstract class DestinationAbstract
         Name $name
     ) {
         $this->setPrefix($prefix);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -195,7 +198,7 @@ abstract class DestinationAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

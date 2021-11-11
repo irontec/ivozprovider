@@ -19,18 +19,36 @@ abstract class CommandlogAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $requestId;
 
+    /**
+     * @var string
+     */
     protected $class;
 
-    protected $method;
+    /**
+     * @var ?string
+     */
+    protected $method = null;
 
+    /**
+     * @var ?array
+     */
     protected $arguments = [];
 
+    /**
+     * @var ?array
+     */
     protected $agent = [];
 
-    protected $createdOn;
+    protected \DateTimeInterface $createdOn;
 
+    /**
+     * @var int
+     */
     protected $microtime;
 
     /**
@@ -248,7 +266,7 @@ abstract class CommandlogAbstract
             null
         );
 
-        if ($this->createdOn == $createdOn) {
+        if ($this->isInitialized() && $this->createdOn == $createdOn) {
             return $this;
         }
 

@@ -15,44 +15,44 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $sourceAddress;
+    private $sourceAddress = null;
 
     /**
      * @var string|null
      */
-    private $ipAddr;
+    private $ipAddr = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $mask = 32;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $port = 0;
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -189,7 +189,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

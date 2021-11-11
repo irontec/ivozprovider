@@ -21,22 +21,37 @@ abstract class RtpengineAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $setid = 0;
 
+    /**
+     * @var string
+     */
     protected $url;
 
+    /**
+     * @var int
+     */
     protected $weight = 1;
 
+    /**
+     * @var bool
+     */
     protected $disabled = false;
 
-    protected $stamp;
-
-    protected $description;
+    protected \DateTimeInterface $stamp;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?string
      */
-    protected $mediaRelaySet;
+    protected $description = null;
+
+    /**
+     * @var ?MediaRelaySetInterface
+     */
+    protected $mediaRelaySet = null;
 
     /**
      * Constructor
@@ -241,7 +256,7 @@ abstract class RtpengineAbstract
             '2000-01-01 00:00:00'
         );
 
-        if ($this->stamp == $stamp) {
+        if ($this->isInitialized() && $this->stamp == $stamp) {
             return $this;
         }
 

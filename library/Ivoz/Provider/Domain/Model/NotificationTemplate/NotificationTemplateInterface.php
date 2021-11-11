@@ -9,7 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -63,6 +63,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param NotificationTemplateDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -83,7 +84,10 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
 
     public function removeContent(NotificationTemplateContentInterface $content): NotificationTemplateInterface;
 
-    public function replaceContents(ArrayCollection $contents): NotificationTemplateInterface;
+    /**
+     * @param Collection<array-key, NotificationTemplateContentInterface> $contents
+     */
+    public function replaceContents(Collection $contents): NotificationTemplateInterface;
 
     public function getContents(?Criteria $criteria = null): array;
 }

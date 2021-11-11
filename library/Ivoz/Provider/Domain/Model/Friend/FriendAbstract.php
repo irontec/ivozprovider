@@ -30,74 +30,116 @@ abstract class FriendAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var ?string
      * comment: enum:udp|tcp|tls
      */
-    protected $transport;
+    protected $transport = null;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
-    protected $port;
+    /**
+     * @var ?int
+     */
+    protected $port = null;
 
-    protected $password;
+    /**
+     * @var ?string
+     */
+    protected $password = null;
 
+    /**
+     * @var int
+     */
     protected $priority = 1;
 
+    /**
+     * @var string
+     */
     protected $disallow = 'all';
 
+    /**
+     * @var string
+     */
     protected $allow = 'alaw';
 
     /**
+     * @var string
      * column: direct_media_method
      * comment: enum:invite|update
      */
     protected $directMediaMethod = 'update';
 
     /**
+     * @var string
      * column: callerid_update_header
      * comment: enum:pai|rpid
      */
     protected $calleridUpdateHeader = 'pai';
 
     /**
+     * @var string
      * column: update_callerid
      * comment: enum:yes|no
      */
     protected $updateCallerid = 'yes';
 
     /**
+     * @var ?string
      * column: from_user
      */
-    protected $fromUser;
+    protected $fromUser = null;
 
     /**
+     * @var ?string
      * column: from_domain
      */
-    protected $fromDomain;
+    protected $fromDomain = null;
 
     /**
+     * @var string
      * comment: enum:yes|no|intervpbx
      */
     protected $directConnectivity = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $ddiIn = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $alwaysApplyTransformations = false;
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
+    /**
+     * @var bool
+     */
     protected $multiContact = true;
 
     /**
@@ -107,35 +149,35 @@ abstract class FriendAbstract
     protected $company;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy friends
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $interCompany;
+    protected $interCompany = null;
 
     /**
      * Constructor

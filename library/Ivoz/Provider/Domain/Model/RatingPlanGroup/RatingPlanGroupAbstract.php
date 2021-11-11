@@ -25,12 +25,12 @@ abstract class RatingPlanGroupAbstract
     use ChangelogTrait;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -40,9 +40,9 @@ abstract class RatingPlanGroupAbstract
     protected $brand;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
      * Constructor
@@ -51,8 +51,8 @@ abstract class RatingPlanGroupAbstract
         Name $name,
         Description $description
     ) {
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
     abstract public function getId(): null|string|int;
@@ -216,7 +216,7 @@ abstract class RatingPlanGroupAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -232,7 +232,7 @@ abstract class RatingPlanGroupAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

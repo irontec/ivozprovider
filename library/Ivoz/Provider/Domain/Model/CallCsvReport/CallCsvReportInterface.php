@@ -49,6 +49,7 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CallCsvReportDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

@@ -18,7 +18,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -180,6 +180,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UserDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -246,7 +247,10 @@ interface UserInterface extends LoggableEntityInterface
 
     public function removePickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
-    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface;
+    /**
+     * @param Collection<array-key, PickUpRelUserInterface> $pickUpRelUsers
+     */
+    public function replacePickUpRelUsers(Collection $pickUpRelUsers): UserInterface;
 
     public function getPickUpRelUsers(?Criteria $criteria = null): array;
 
@@ -254,7 +258,10 @@ interface UserInterface extends LoggableEntityInterface
 
     public function removeQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
-    public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface;
+    /**
+     * @param Collection<array-key, QueueMemberInterface> $queueMembers
+     */
+    public function replaceQueueMembers(Collection $queueMembers): UserInterface;
 
     public function getQueueMembers(?Criteria $criteria = null): array;
 
@@ -262,7 +269,10 @@ interface UserInterface extends LoggableEntityInterface
 
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface;
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): UserInterface;
 
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 

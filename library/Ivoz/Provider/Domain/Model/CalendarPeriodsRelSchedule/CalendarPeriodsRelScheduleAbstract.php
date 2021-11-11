@@ -23,10 +23,10 @@ abstract class CalendarPeriodsRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var CalendarPeriodInterface | null
+     * @var ?CalendarPeriodInterface
      * inversedBy relSchedules
      */
-    protected $calendarPeriod;
+    protected $calendarPeriod = null;
 
     /**
      * @var ScheduleInterface

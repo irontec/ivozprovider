@@ -23,64 +23,87 @@ abstract class TrunksUacregAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: l_uuid
      */
     protected $lUuid = '';
 
     /**
+     * @var string
      * column: l_username
      */
     protected $lUsername = 'unused';
 
     /**
+     * @var string
      * column: l_domain
      */
     protected $lDomain = 'unused';
 
     /**
+     * @var string
      * column: r_username
      */
     protected $rUsername = '';
 
     /**
+     * @var string
      * column: r_domain
      */
     protected $rDomain = '';
 
+    /**
+     * @var string
+     */
     protected $realm = '';
 
     /**
+     * @var string
      * column: auth_username
      */
     protected $authUsername = '';
 
     /**
+     * @var string
      * column: auth_password
      */
     protected $authPassword = '';
 
     /**
+     * @var string
      * column: auth_proxy
      */
     protected $authProxy = '';
 
+    /**
+     * @var int
+     */
     protected $expires = 0;
 
+    /**
+     * @var int
+     */
     protected $flags = 0;
 
     /**
+     * @var int
      * column: reg_delay
      */
     protected $regDelay = 0;
 
     /**
+     * @var string
      * column: auth_ha1
      */
     protected $authHa1 = '';
 
+    /**
+     * @var string
+     */
     protected $socket = '';
 
     /**
+     * @var string
      * column: contact_addr
      */
     protected $contactAddr = '';

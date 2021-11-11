@@ -23,10 +23,10 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface | null
+     * @var ?ConditionalRoutesConditionInterface
      * inversedBy relSchedules
      */
-    protected $condition;
+    protected $condition = null;
 
     /**
      * @var ScheduleInterface

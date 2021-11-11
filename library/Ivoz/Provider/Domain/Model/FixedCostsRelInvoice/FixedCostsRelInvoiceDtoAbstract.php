@@ -18,22 +18,22 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     /**
      * @var int|null
      */
-    private $quantity;
+    private $quantity = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var FixedCostDto | null
      */
-    private $fixedCost;
+    private $fixedCost = null;
 
     /**
      * @var InvoiceDto | null
      */
-    private $invoice;
+    private $invoice = null;
 
     public function __construct($id = null)
     {
@@ -102,7 +102,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

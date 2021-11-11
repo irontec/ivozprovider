@@ -15,64 +15,64 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $periodicAnnounce;
+    private $periodicAnnounce = null;
 
     /**
      * @var int|null
      */
-    private $periodicAnnounceFrequency;
+    private $periodicAnnounceFrequency = null;
 
     /**
      * @var int|null
      */
-    private $timeout;
+    private $timeout = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $autopause = 'no';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ringinuse = 'no';
 
     /**
      * @var int|null
      */
-    private $wrapuptime;
+    private $wrapuptime = null;
 
     /**
      * @var int|null
      */
-    private $maxlen;
+    private $maxlen = null;
 
     /**
      * @var string|null
      */
-    private $strategy;
+    private $strategy = null;
 
     /**
      * @var int|null
      */
-    private $weight;
+    private $weight = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     public function __construct($id = null)
     {
@@ -265,7 +265,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

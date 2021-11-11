@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait ScheduleTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait ScheduleTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ScheduleDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait ScheduleTrait
 
     /**
      * @internal use EntityTools instead
+     * @param ScheduleDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

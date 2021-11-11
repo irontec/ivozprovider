@@ -20,17 +20,23 @@ abstract class CountryAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $code = '';
 
-    protected $countryCode;
+    /**
+     * @var ?string
+     */
+    protected $countryCode = null;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Zone | null
+     * @var Zone
      */
     protected $zone;
 
@@ -43,8 +49,8 @@ abstract class CountryAbstract
         Zone $zone
     ) {
         $this->setCode($code);
-        $this->setName($name);
-        $this->setZone($zone);
+        $this->name = $name;
+        $this->zone = $zone;
     }
 
     abstract public function getId(): null|string|int;
@@ -238,7 +244,7 @@ abstract class CountryAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -254,7 +260,7 @@ abstract class CountryAbstract
 
     protected function setZone(Zone $zone): static
     {
-        $isEqual = $this->zone && $this->zone->equals($zone);
+        $isEqual = $this->zone->equals($zone);
         if ($isEqual) {
             return $this;
         }

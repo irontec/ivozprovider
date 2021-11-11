@@ -20,9 +20,15 @@ abstract class RoutingPatternGroupAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * @var BrandInterface

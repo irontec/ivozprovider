@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
@@ -63,6 +63,7 @@ interface CarrierInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CarrierDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -97,7 +98,10 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): CarrierInterface;
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): CarrierInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): CarrierInterface;
 
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
@@ -105,7 +109,10 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function removeOutgoingRoutingsRelCarrier(OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier): CarrierInterface;
 
-    public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers): CarrierInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingRelCarrierInterface> $outgoingRoutingsRelCarriers
+     */
+    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers): CarrierInterface;
 
     public function getOutgoingRoutingsRelCarriers(?Criteria $criteria = null): array;
 
@@ -113,7 +120,10 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function removeServer(CarrierServerInterface $server): CarrierInterface;
 
-    public function replaceServers(ArrayCollection $servers): CarrierInterface;
+    /**
+     * @param Collection<array-key, CarrierServerInterface> $servers
+     */
+    public function replaceServers(Collection $servers): CarrierInterface;
 
     public function getServers(?Criteria $criteria = null): array;
 
@@ -121,7 +131,10 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function removeRatingProfile(RatingProfileInterface $ratingProfile): CarrierInterface;
 
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CarrierInterface;
+    /**
+     * @param Collection<array-key, RatingProfileInterface> $ratingProfiles
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles): CarrierInterface;
 
     public function getRatingProfiles(?Criteria $criteria = null): array;
 
@@ -129,7 +142,10 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function removeTpCdrStat(TpCdrStatInterface $tpCdrStat): CarrierInterface;
 
-    public function replaceTpCdrStats(ArrayCollection $tpCdrStats): CarrierInterface;
+    /**
+     * @param Collection<array-key, TpCdrStatInterface> $tpCdrStats
+     */
+    public function replaceTpCdrStats(Collection $tpCdrStats): CarrierInterface;
 
     public function getTpCdrStats(?Criteria $criteria = null): array;
 }

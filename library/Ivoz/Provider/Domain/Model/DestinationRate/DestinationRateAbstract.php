@@ -23,14 +23,24 @@ abstract class DestinationRateAbstract
     use ChangelogTrait;
 
     /**
+     * @var float
      * column: rate
      */
     protected $cost;
 
+    /**
+     * @var float
+     */
     protected $connectFee;
 
+    /**
+     * @var string
+     */
     protected $rateIncrement;
 
+    /**
+     * @var string
+     */
     protected $groupIntervalStart = '0s';
 
     /**

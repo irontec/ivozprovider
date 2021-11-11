@@ -15,54 +15,54 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $years;
+    private $years = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $months;
+    private $months = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $monthDays;
+    private $monthDays = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $weekDays;
+    private $weekDays = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $time = '00:00:00';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RatingPlanDto | null
      */
-    private $ratingPlan;
+    private $ratingPlan = null;
 
     public function __construct($id = null)
     {
@@ -227,7 +227,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -31,68 +31,80 @@ abstract class CallForwardSettingAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:internal|external|both
      */
     protected $callTypeFilter;
 
     /**
+     * @var string
      * comment: enum:inconditional|noAnswer|busy|userNotRegistered
      */
     protected $callForwardType;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail|retail
      */
-    protected $targetType;
+    protected $targetType = null;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
+    /**
+     * @var int
+     */
     protected $noAnswerTimeout = 10;
 
+    /**
+     * @var bool
+     */
     protected $enabled = true;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      * inversedBy callForwardSettings
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voiceMailUser;
+    protected $voiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy callForwardSettings
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy callForwardSettings
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $cfwToRetailAccount;
+    protected $cfwToRetailAccount = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $ddi;
+    protected $ddi = null;
 
     /**
      * Constructor

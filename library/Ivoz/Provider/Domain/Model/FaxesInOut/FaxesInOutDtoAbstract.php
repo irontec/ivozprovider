@@ -16,19 +16,19 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
-    private $calldate;
+    private $calldate = null;
 
     /**
      * @var string|null
      */
-    private $src;
+    private $src = null;
 
     /**
      * @var string|null
      */
-    private $dst;
+    private $dst = null;
 
     /**
      * @var string|null
@@ -38,42 +38,42 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $pages;
+    private $pages = null;
 
     /**
      * @var string|null
      */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $status = null;
 
     /**
      * @var int|null
      */
-    private $fileFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $fileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $fileMimeType;
+    private $fileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $fileBaseName;
+    private $fileBaseName = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var CountryDto | null
      */
-    private $dstCountry;
+    private $dstCountry = null;
 
     public function __construct($id = null)
     {
@@ -222,7 +222,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

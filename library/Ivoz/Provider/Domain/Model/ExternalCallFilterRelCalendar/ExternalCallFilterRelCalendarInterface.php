@@ -38,6 +38,7 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ExternalCallFilterRelCalendarDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

@@ -22,7 +22,10 @@ abstract class QueueMemberAbstract
 {
     use ChangelogTrait;
 
-    protected $penalty;
+    /**
+     * @var ?int
+     */
+    protected $penalty = null;
 
     /**
      * @var QueueInterface

@@ -19,10 +19,13 @@ abstract class LanguageAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -34,7 +37,7 @@ abstract class LanguageAbstract
         Name $name
     ) {
         $this->setIden($iden);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -184,7 +187,7 @@ abstract class LanguageAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

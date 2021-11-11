@@ -18,10 +18,19 @@ abstract class TerminalManufacturerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $name = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**

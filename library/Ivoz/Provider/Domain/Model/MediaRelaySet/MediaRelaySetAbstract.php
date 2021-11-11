@@ -18,9 +18,15 @@ abstract class MediaRelaySetAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name = '0';
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * Constructor

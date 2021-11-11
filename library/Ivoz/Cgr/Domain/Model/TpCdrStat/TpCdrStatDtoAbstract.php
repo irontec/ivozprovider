@@ -15,149 +15,149 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $queueLength = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $timeWindow = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $saveInterval = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $metrics;
+    private $metrics = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $setupInterval = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tors = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $cdrHosts = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $cdrSources = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $reqTypes = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directions = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tenants = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $categories = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $accounts = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $subjects = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $destinationIds = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ppdInterval = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $usageInterval = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $suppliers = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disconnectCauses = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $mediationRunids = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ratedAccounts = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ratedSubjects = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $costInterval = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $actionTriggers = '';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     public function __construct($id = null)
     {
@@ -588,7 +588,7 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

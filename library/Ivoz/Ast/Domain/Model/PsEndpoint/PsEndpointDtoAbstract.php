@@ -18,37 +18,37 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $sorceryId;
+    private $sorceryId = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
      * @var string|null
      */
-    private $aors;
+    private $aors = null;
 
     /**
      * @var string|null
      */
-    private $callerid;
+    private $callerid = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $context = 'users';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disallow = 'all';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $allow = 'all';
 
@@ -65,12 +65,12 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $mailboxes;
+    private $mailboxes = null;
 
     /**
      * @var string|null
      */
-    private $namedPickupGroup;
+    private $namedPickupGroup = null;
 
     /**
      * @var string|null
@@ -83,64 +83,64 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     private $sendPai = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $oneHundredRel = 'no';
 
     /**
      * @var string|null
      */
-    private $outboundProxy;
+    private $outboundProxy = null;
 
     /**
      * @var string|null
      */
-    private $trustIdInbound;
+    private $trustIdInbound = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Udptl = 'no';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38UdptlEc = 'redundancy';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $t38UdptlMaxdatagram = 1440;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38UdptlNat = 'no';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TerminalDto | null
      */
-    private $terminal;
+    private $terminal = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     public function __construct($id = null)
     {
@@ -479,7 +479,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

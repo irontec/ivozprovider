@@ -20,8 +20,14 @@ abstract class FriendsPatternAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $regExp;
 
     /**

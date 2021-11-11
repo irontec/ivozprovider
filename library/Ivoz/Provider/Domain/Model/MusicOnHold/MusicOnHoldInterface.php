@@ -68,6 +68,7 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param MusicOnHoldDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

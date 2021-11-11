@@ -26,33 +26,33 @@ abstract class CallCsvReportAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $sentTo = '';
 
-    protected $inDate;
+    protected \DateTimeInterface $inDate;
 
-    protected $outDate;
+    protected \DateTimeInterface $outDate;
 
-    protected $createdOn;
+    protected \DateTimeInterface $createdOn;
 
-    /**
-     * @var Csv | null
-     */
     protected $csv;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CallCsvSchedulerInterface | null
+     * @var ?CallCsvSchedulerInterface
      */
-    protected $callCsvScheduler;
+    protected $callCsvScheduler = null;
 
     /**
      * Constructor
@@ -68,7 +68,7 @@ abstract class CallCsvReportAbstract
         $this->setInDate($inDate);
         $this->setOutDate($outDate);
         $this->setCreatedOn($createdOn);
-        $this->setCsv($csv);
+        $this->csv = $csv;
     }
 
     abstract public function getId(): null|string|int;
@@ -239,7 +239,7 @@ abstract class CallCsvReportAbstract
             null
         );
 
-        if ($this->inDate == $inDate) {
+        if ($this->isInitialized() && $this->inDate == $inDate) {
             return $this;
         }
 
@@ -264,7 +264,7 @@ abstract class CallCsvReportAbstract
             null
         );
 
-        if ($this->outDate == $outDate) {
+        if ($this->isInitialized() && $this->outDate == $outDate) {
             return $this;
         }
 
@@ -289,7 +289,7 @@ abstract class CallCsvReportAbstract
             null
         );
 
-        if ($this->createdOn == $createdOn) {
+        if ($this->isInitialized() && $this->createdOn == $createdOn) {
             return $this;
         }
 
@@ -313,7 +313,7 @@ abstract class CallCsvReportAbstract
 
     protected function setCsv(Csv $csv): static
     {
-        $isEqual = $this->csv && $this->csv->equals($csv);
+        $isEqual = $this->csv->equals($csv);
         if ($isEqual) {
             return $this;
         }

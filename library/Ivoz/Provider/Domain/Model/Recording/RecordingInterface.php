@@ -48,6 +48,7 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RecordingDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

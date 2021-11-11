@@ -16,24 +16,24 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var PickUpRelUserDto[] | null
      */
-    private $relUsers;
+    private $relUsers = null;
 
     public function __construct($id = null)
     {
@@ -101,7 +101,7 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

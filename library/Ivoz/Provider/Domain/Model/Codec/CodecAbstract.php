@@ -19,12 +19,19 @@ abstract class CodecAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:audio|video
      */
     protected $type = 'audio';
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**

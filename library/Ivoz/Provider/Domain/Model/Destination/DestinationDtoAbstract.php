@@ -17,49 +17,49 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TpDestinationDto | null
      */
-    private $tpDestination;
+    private $tpDestination = null;
 
     /**
      * @var DestinationRateDto[] | null
      */
-    private $destinationRates;
+    private $destinationRates = null;
 
     public function __construct($id = null)
     {
@@ -141,7 +141,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

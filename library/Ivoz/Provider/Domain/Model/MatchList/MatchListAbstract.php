@@ -22,18 +22,21 @@ abstract class MatchListAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy matchLists
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor

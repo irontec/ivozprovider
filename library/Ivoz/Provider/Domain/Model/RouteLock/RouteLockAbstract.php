@@ -20,10 +20,19 @@ abstract class RouteLockAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
+    /**
+     * @var bool
+     */
     protected $open = false;
 
     /**

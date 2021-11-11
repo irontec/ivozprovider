@@ -41,82 +41,102 @@ abstract class CallCsvSchedulerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var string
      * comment: enum:day|week|month
      */
     protected $unit = 'month';
 
+    /**
+     * @var int
+     */
     protected $frequency;
 
     /**
+     * @var ?string
      * comment: enum:inbound|outbound
      */
     protected $callDirection = 'outbound';
 
+    /**
+     * @var string
+     */
     protected $email;
 
-    protected $lastExecution;
-
-    protected $lastExecutionError;
-
-    protected $nextExecution;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastExecution = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $lastExecutionError = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?\DateTime
      */
-    protected $company;
+    protected $nextExecution = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?BrandInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $brand = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?CompanyInterface
      */
-    protected $ddi;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $carrier;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?DdiInterface
      */
-    protected $retailAccount;
+    protected $ddi = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?CarrierInterface
      */
-    protected $residentialDevice;
+    protected $carrier = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $user;
+    protected $retailAccount = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $fax;
+    protected $residentialDevice = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?UserInterface
      */
-    protected $friend;
+    protected $user = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?FaxInterface
      */
-    protected $ddiProvider;
+    protected $fax = null;
+
+    /**
+     * @var ?FriendInterface
+     */
+    protected $friend = null;
+
+    /**
+     * @var ?DdiProviderInterface
+     */
+    protected $ddiProvider = null;
 
     /**
      * Constructor
@@ -407,7 +427,7 @@ abstract class CallCsvSchedulerAbstract
                 null
             );
 
-            if ($this->lastExecution == $lastExecution) {
+            if ($this->isInitialized() && $this->lastExecution == $lastExecution) {
                 return $this;
             }
         }
@@ -453,7 +473,7 @@ abstract class CallCsvSchedulerAbstract
                 null
             );
 
-            if ($this->nextExecution == $nextExecution) {
+            if ($this->isInitialized() && $this->nextExecution == $nextExecution) {
                 return $this;
             }
         }

@@ -21,52 +21,81 @@ abstract class TpLcrRuleAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $direction = '*out';
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $category;
 
+    /**
+     * @var string
+     */
     protected $account = '*any';
 
+    /**
+     * @var ?string
+     */
     protected $subject = '*any';
 
     /**
+     * @var ?string
      * column: destination_tag
      */
     protected $destinationTag = '*any';
 
     /**
+     * @var string
      * column: rp_category
      */
     protected $rpCategory;
 
+    /**
+     * @var string
+     */
     protected $strategy = '*lowest_cost';
 
     /**
+     * @var ?string
      * column: strategy_params
      */
     protected $strategyParams = '';
 
     /**
+     * @var \DateTime
      * column: activation_time
      */
-    protected $activationTime;
+    protected \DateTimeInterface $activationTime;
 
+    /**
+     * @var float
+     */
     protected $weight = 10;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
 
     /**
-     * @var OutgoingRoutingInterface | null
+     * @var ?OutgoingRoutingInterface
      * inversedBy tpLcrRule
      */
-    protected $outgoingRouting;
+    protected $outgoingRouting = null;
 
     /**
      * Constructor
@@ -403,7 +432,7 @@ abstract class TpLcrRuleAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->activationTime == $activationTime) {
+        if ($this->isInitialized() && $this->activationTime == $activationTime) {
             return $this;
         }
 
@@ -440,7 +469,7 @@ abstract class TpLcrRuleAbstract
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

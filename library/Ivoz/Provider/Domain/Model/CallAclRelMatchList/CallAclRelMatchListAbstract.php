@@ -22,18 +22,22 @@ abstract class CallAclRelMatchListAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $priority;
 
     /**
+     * @var string
      * comment: enum:allow|deny
      */
     protected $policy;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      * inversedBy relMatchLists
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
      * @var MatchListInterface
