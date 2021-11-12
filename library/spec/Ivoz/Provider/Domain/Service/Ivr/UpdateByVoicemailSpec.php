@@ -6,12 +6,12 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrRepository;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Service\Ivr\UpdateByUser;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Service\Ivr\UpdateByVoicemail;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class UpdateByUserSpec extends ObjectBehavior
+class UpdateByVoicemailSpec extends ObjectBehavior
 {
     /**
      * @var EntityTools
@@ -35,31 +35,31 @@ class UpdateByUserSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(UpdateByUser::class);
+        $this->shouldHaveType(UpdateByVoicemail::class);
     }
 
-    function it_cleans_up_no_input_voicemail_user(
-        UserInterface $user,
+    function it_cleans_up_no_input_voicemail(
+        VoicemailInterface $voicemail,
         IvrInterface $ivr,
         IvrDto $ivrDto
     ) {
         $this
             ->ivrRepository
-            ->findByUser($user)
+            ->findByVoicemail($voicemail)
             ->willReturn([$ivr]);
 
         $ivr
-            ->getNoInputVoiceMailUser()
-            ->willReturn($user)
+            ->getNoInputVoicemail()
+            ->willReturn($voicemail)
             ->shouldBeCalled();
 
-        $user
+        $voicemail
             ->getId()
             ->willReturn(1)
             ->shouldBeCalled();
 
         $ivr
-            ->getErrorVoiceMailUser()
+            ->getErrorVoicemail()
             ->willReturn(null)
             ->shouldBeCalled();
 
@@ -74,7 +74,7 @@ class UpdateByUserSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $ivrDto
-            ->setNoInputVoiceMailUserId(null)
+            ->setNoInputVoicemailId(null)
             ->willReturn($ivrDto)
             ->shouldBeCalled();
 
@@ -83,32 +83,32 @@ class UpdateByUserSpec extends ObjectBehavior
             ->persistDto($ivrDto, $ivr)
             ->shouldBeCalled();
 
-        $this->execute($user);
+        $this->execute($voicemail);
     }
 
-    function it_cleans_up_no_error_voicemail_user(
-        UserInterface $user,
+    function it_cleans_up_no_error_voicemail(
+        VoicemailInterface $voicemail,
         IvrInterface $ivr,
         IvrDto $ivrDto
     ) {
         $this
             ->ivrRepository
-            ->findByUser($user)
+            ->findByVoicemail($voicemail)
             ->willReturn([$ivr]);
 
         $ivr
-            ->getNoInputVoiceMailUser()
+            ->getNoInputVoicemail()
             ->willReturn(null)
             ->shouldBeCalled();
 
-        $user
+        $voicemail
             ->getId()
             ->willReturn(1)
             ->shouldBeCalled();
 
         $ivr
-            ->getErrorVoiceMailUser()
-            ->willReturn($user)
+            ->getErrorVoicemail()
+            ->willReturn($voicemail)
             ->shouldBeCalled();
 
         $this
@@ -122,7 +122,7 @@ class UpdateByUserSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $ivrDto
-            ->setErrorVoiceMailUserId(null)
+            ->setErrorVoicemailId(null)
             ->willReturn($ivrDto)
             ->shouldBeCalled();
 
@@ -131,6 +131,6 @@ class UpdateByUserSpec extends ObjectBehavior
             ->persistDto($ivrDto, $ivr)
             ->shouldBeCalled();
 
-        $this->execute($user);
+        $this->execute($voicemail);
     }
 }
