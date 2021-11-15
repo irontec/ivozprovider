@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -80,8 +79,8 @@ abstract class CalendarPeriodAbstract
      * Constructor
      */
     protected function __construct(
-        \DateTimeInterface|string $startDate,
-        \DateTimeInterface|string $endDate
+        \DateTimeInterface $startDate,
+        \DateTimeInterface $endDate
     ) {
         $this->setStartDate($startDate);
         $this->setEndDate($endDate);
@@ -234,28 +233,28 @@ abstract class CalendarPeriodAbstract
         ];
     }
 
-    protected function setStartDate(string|\DateTimeInterface $startDate): static
+    protected function setStartDate(\DateTimeInterface $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getStartDate(): \DateTime
+    public function getStartDate(): \DateTimeInterface
     {
-        return clone $this->startDate;
+        return $this->startDate;
     }
 
-    protected function setEndDate(string|\DateTimeInterface $endDate): static
+    protected function setEndDate(\DateTimeInterface $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function getEndDate(): \DateTime
+    public function getEndDate(): \DateTimeInterface
     {
-        return clone $this->endDate;
+        return $this->endDate;
     }
 
     protected function setRouteType(?string $routeType = null): static

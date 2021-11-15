@@ -65,7 +65,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public function getEventDate(): \DateTime;
+    public function getEventDate(): \DateTimeInterface;
 
     public function getWholeDayEvent(): bool;
 

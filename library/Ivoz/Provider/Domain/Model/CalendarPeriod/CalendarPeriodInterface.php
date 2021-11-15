@@ -68,9 +68,9 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      */
     public function toDto(int $depth = 0): CalendarPeriodDto;
 
-    public function getStartDate(): \DateTime;
+    public function getStartDate(): \DateTimeInterface;
 
-    public function getEndDate(): \DateTime;
+    public function getEndDate(): \DateTimeInterface;
 
     public function getRouteType(): ?string;
 

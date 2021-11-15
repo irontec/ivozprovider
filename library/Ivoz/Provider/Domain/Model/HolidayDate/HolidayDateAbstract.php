@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -96,7 +95,7 @@ abstract class HolidayDateAbstract
      */
     protected function __construct(
         string $name,
-        \DateTimeInterface|string $eventDate,
+        \DateTimeInterface $eventDate,
         bool $wholeDayEvent
     ) {
         $this->setName($name);
@@ -281,16 +280,16 @@ abstract class HolidayDateAbstract
         return $this->name;
     }
 
-    protected function setEventDate(string|\DateTimeInterface $eventDate): static
+    protected function setEventDate(\DateTimeInterface $eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    public function getEventDate(): \DateTime
+    public function getEventDate(): \DateTimeInterface
     {
-        return clone $this->eventDate;
+        return $this->eventDate;
     }
 
     protected function setWholeDayEvent(bool $wholeDayEvent): static

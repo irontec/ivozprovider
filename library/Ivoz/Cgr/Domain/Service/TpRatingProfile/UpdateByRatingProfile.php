@@ -5,6 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpRatingProfile;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use Ivoz\Provider\Domain\Service\RatingProfile\RatingProfileLifecycleEventHandlerInterface;
@@ -75,6 +76,7 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             );
         }
 
+        /** @var TpRatingProfileInterface $tpRatingProfile */
         $tpRatingProfile = $this->entityTools->persistDto(
             $tpRatingProfileDto,
             $tpRatingProfile,

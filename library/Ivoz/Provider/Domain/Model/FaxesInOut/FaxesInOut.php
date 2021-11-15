@@ -51,7 +51,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
         return $this->id;
     }
 
-    public function setCalldate($calldate = null): static
+    public function setCalldate(string|\DateTimeInterface $calldate = null): static
     {
         if (!$calldate) {
             $calldate = new \DateTime('now', new \DateTimeZone('UTC'));
