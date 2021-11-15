@@ -26,7 +26,7 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
         /** @var RatingProfile $item1 */
         $item1 = $this->createEntityInstance(RatingProfile::class);
         (function () use ($fixture) {
-            $this->setActivationTime(new \DateTime('2018-02-02 20:20:20'));
+            $this->activationTime = new \DateTime('2018-02-02 20:20:20');
             $this->setCompany(
                 $fixture->getReference('_reference_ProviderCompany1')
             );
@@ -48,7 +48,7 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
         /** @var RatingProfile $item2 */
         $item2 = $this->createEntityInstance(RatingProfile::class);
         (function () use ($fixture) {
-            $this->setActivationTime(new \DateTime('2018-02-02 20:20:20'));
+            $this->activationTime = new \DateTime('2018-02-02 20:20:20');
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setRatingPlanGroup($fixture->getReference('_reference_ProviderRatingPlanGroup2'));
             $this->setRoutingTag($fixture->getReference('_reference_ProviderRoutingTag1'));

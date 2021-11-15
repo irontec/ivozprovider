@@ -24,7 +24,7 @@ class ProviderFeature extends Fixture
         $item1 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("queues");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item1);
 
         $this->addReference('_reference_ProviderFeature1', $item1);
@@ -34,7 +34,7 @@ class ProviderFeature extends Fixture
         $item2 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("recordings");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item2);
 
         $this->addReference('_reference_ProviderFeature2', $item2);
@@ -44,7 +44,7 @@ class ProviderFeature extends Fixture
         $item3 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("faxes");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item3);
 
         $this->addReference('_reference_ProviderFeature3', $item3);
@@ -54,7 +54,7 @@ class ProviderFeature extends Fixture
         $item4 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("friends");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item4);
 
         $this->addReference('_reference_ProviderFeature4', $item4);
@@ -64,7 +64,7 @@ class ProviderFeature extends Fixture
         $item5 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("conferences");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item5);
 
         $this->addReference('_reference_ProviderFeature5', $item5);
@@ -74,7 +74,7 @@ class ProviderFeature extends Fixture
         $item6 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("billing");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item6);
 
         $this->addReference('_reference_ProviderFeature6', $item6);
@@ -84,7 +84,7 @@ class ProviderFeature extends Fixture
         $item7 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("invoices");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item7);
 
         $this->addReference('_reference_ProviderFeature7', $item7);
@@ -94,7 +94,7 @@ class ProviderFeature extends Fixture
         $item8 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("progress");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item8);
 
         $this->addReference('_reference_ProviderFeature8', $item8);
@@ -104,7 +104,7 @@ class ProviderFeature extends Fixture
         $item9 = $this->createEntityInstance(Feature::class);
         (function () use ($fixture) {
             $this->setIden("retail");
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
         })->call($item9);
 
         $this->addReference('_reference_ProviderFeature9', $item9);

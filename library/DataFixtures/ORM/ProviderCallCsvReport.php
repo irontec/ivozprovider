@@ -27,9 +27,9 @@ class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(CallCsvReport::class);
         (function () use ($fixture) {
             $this->setSentTo('');
-            $this->setInDate('2019-05-31 00:00:00');
-            $this->setOutDate('2019-05-31 23:59:59');
-            $this->setCreatedOn('2019-06-01 05:59:59');
+            $this->inDate = new \DateTime('2019-05-31 00:00:00');
+            $this->outDate = new \DateTime('2019-05-31 23:59:59');
+            $this->createdOn = new \DateTime('2019-06-01 05:59:59');
 
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
@@ -37,9 +37,7 @@ class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
             $this->setCallCsvScheduler(
                 $fixture->getReference('_reference_ProviderCallCsvScheduler1')
             );
-            $this->setCsv(
-                new Csv(null, null, null)
-            );
+            $this->csv = new Csv(null, null, null);
         })->call($item1);
 
         $this->addReference('_reference_ProviderCallCsvReport1', $item1);
@@ -49,9 +47,9 @@ class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
         $item2 = $this->createEntityInstance(CallCsvReport::class);
         (function () use ($fixture) {
             $this->setSentTo('');
-            $this->setInDate('2019-05-31 00:00:00');
-            $this->setOutDate('2019-05-31 23:59:59');
-            $this->setCreatedOn('2019-06-01 05:59:59');
+            $this->inDate = new \DateTime('2019-05-31 00:00:00');
+            $this->outDate = new \DateTime('2019-05-31 23:59:59');
+            $this->createdOn = new \DateTime('2019-06-01 05:59:59');
 
             $this->setCompany(
                 $fixture->getReference('_reference_ProviderCompany1')
@@ -59,9 +57,7 @@ class ProviderCallCsvReport extends Fixture implements DependentFixtureInterface
             $this->setCallCsvScheduler(
                 $fixture->getReference('_reference_ProviderCallCsvScheduler2')
             );
-            $this->setCsv(
-                new Csv(null, null, null)
-            );
+            $this->csv = new Csv(null, null, null);
         })->call($item2);
 
         $this->addReference('_reference_ProviderCallCsvReport2', $item2);

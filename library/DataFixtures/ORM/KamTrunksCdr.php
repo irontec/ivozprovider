@@ -25,8 +25,8 @@ class KamTrunksCdr extends Fixture implements DependentFixtureInterface
         /** @var TrunksCdrInterface $item1 */
         $item1 = $this->createEntityInstance(TrunksCdr::class);
         (function () use ($fixture) {
-            $this->setStartTime(new \DateTime('2018-11-22 16:54:49'));
-            $this->setEndTime(new \DateTime('2018-11-22 16:54:54'));
+            $this->startTime = new \DateTime('2018-11-22 16:54:49');
+            $this->endTime = new \DateTime('2018-11-22 16:54:54');
             $this->setDuration(4.765);
             $this->setDirection('outbound');
 
@@ -36,7 +36,7 @@ class KamTrunksCdr extends Fixture implements DependentFixtureInterface
             $this->setCallidHash('2789d532');
             $this->setXcallid('9297bdde-309cd48f@10.10.1.123');
             $this->setParsed(0);
-            $this->setParserScheduledAt(new \DateTime('2018-11-22 16:54:54'));
+            $this->parserScheduledAt = new \DateTime('2018-11-22 16:54:54');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setCarrier($fixture->getReference('_reference_ProviderCarrier1'));

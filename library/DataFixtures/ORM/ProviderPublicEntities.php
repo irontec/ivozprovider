@@ -45,8 +45,9 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
                     ->setFqdn($data[1])
                     ->setPlatform($data[2])
                     ->setBrand($data[3])
-                    ->setClient($data[4])
-                    ->setName($name);
+                    ->setClient($data[4]);
+
+                $this->name = $name;
             })->call($publicEntity);
 
             $this->addReference(

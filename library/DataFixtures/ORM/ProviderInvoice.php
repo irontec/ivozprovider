@@ -26,13 +26,13 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(Invoice::class);
         (function () use ($fixture) {
             $this->setNumber('1');
-            $this->setInDate(new \DateTime('2018-01-01', new \DateTimeZone('UTC')));
-            $this->setOutDate(new \DateTime('2018-01-31', new \DateTimeZone('UTC')));
+            $this->inDate = new \DateTime('2018-01-01', new \DateTimeZone('UTC'));
+            $this->outDate = new \DateTime('2018-01-31', new \DateTimeZone('UTC'));
             $this->setTotal(0.272);
             $this->setTaxRate(21.0);
             $this->setTotalWithTax(0.330);
             $this->setStatus('processing');
-            $this->setPdf(new Pdf(null, null, null));
+            $this->pdf = new Pdf(null, null, null);
             $this->setBrand(
                 $fixture->getReference('_reference_ProviderBrand1')
             );

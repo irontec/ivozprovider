@@ -24,7 +24,7 @@ class ProviderLanguage extends Fixture
         $item1 = $this->createEntityInstance(Language::class);
         (function () use ($fixture) {
             $this->setIden("es");
-            $this->setName(new Name('es', 'es', 'es', 'es'));
+            $this->name = new Name('es', 'es', 'es', 'es');
         })->call($item1);
 
         $this->addReference('_reference_ProviderLanguage1', $item1);
@@ -34,7 +34,7 @@ class ProviderLanguage extends Fixture
         $item2 = $this->createEntityInstance(Language::class);
         (function () use ($fixture) {
             $this->setIden("en");
-            $this->setName(new Name('en', 'en', 'en', 'en'));
+            $this->name = new Name('en', 'en', 'en', 'en');
         })->call($item2);
 
         $this->addReference('_reference_ProviderLanguage2', $item2);
@@ -44,7 +44,7 @@ class ProviderLanguage extends Fixture
         $item3 = $this->createEntityInstance(Language::class);
         (function () use ($fixture) {
             $this->setIden("ca");
-            $this->setName(new Name('ca', 'ca', 'ca', 'ca'));
+            $this->name = new Name('ca', 'ca', 'ca', 'ca');
         })->call($item3);
 
         $this->addReference('_reference_ProviderLanguage3', $item3);
@@ -54,7 +54,7 @@ class ProviderLanguage extends Fixture
         $item4 = $this->createEntityInstance(Language::class);
         (function () use ($fixture) {
             $this->setIden("it");
-            $this->setName(new Name('it', 'it', 'it', 'it'));
+            $this->name = new Name('it', 'it', 'it', 'it');
         })->call($item4);
 
         $this->addReference('_reference_ProviderLanguage4', $item4);

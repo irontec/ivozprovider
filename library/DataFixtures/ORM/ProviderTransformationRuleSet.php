@@ -27,7 +27,7 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
             $this->setDescription("Generic transformation for Spain");
             $this->setGenerateRules(false);
             $this->setInternationalCode('00');
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item70);
@@ -41,7 +41,7 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
             $this->setDescription("");
             $this->setGenerateRules(false);
             $this->setInternationalCode('00');
-            $this->setName(new Name('en', 'es', 'ca', 'it'));
+            $this->name = new Name('en', 'es', 'ca', 'it');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item253);

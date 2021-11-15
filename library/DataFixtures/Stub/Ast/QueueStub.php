@@ -28,6 +28,8 @@ class QueueStub
             ->setMaxlen(5)
             ->setStrategy('rrmemory')
             ->setWeight(5)
+            ->setAutopause('no')
+            ->setRinginuse('no')
             ->setQueueId(
                 1
             );
