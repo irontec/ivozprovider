@@ -98,12 +98,14 @@ abstract class CompanyRelGeoIPCountryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class CompanyRelGeoIPCountryAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
 
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         return $this;
     }

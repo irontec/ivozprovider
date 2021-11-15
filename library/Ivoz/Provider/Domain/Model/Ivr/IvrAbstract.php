@@ -198,12 +198,22 @@ abstract class IvrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, IvrDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $maxDigits = $dto->getMaxDigits();
+        Assertion::notNull($maxDigits, 'getMaxDigits value is null, but non null value was expected.');
+        $allowExtensions = $dto->getAllowExtensions();
+        Assertion::notNull($allowExtensions, 'getAllowExtensions value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTimeout(),
-            $dto->getMaxDigits(),
-            $dto->getAllowExtensions()
+            $name,
+            $timeout,
+            $maxDigits,
+            $allowExtensions
         );
 
         $self
@@ -211,7 +221,7 @@ abstract class IvrAbstract
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
             ->setErrorNumberValue($dto->getErrorNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setNoInputLocution($fkTransformer->transform($dto->getNoInputLocution()))
             ->setErrorLocution($fkTransformer->transform($dto->getErrorLocution()))
@@ -238,16 +248,27 @@ abstract class IvrAbstract
     ): static {
         Assertion::isInstanceOf($dto, IvrDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $maxDigits = $dto->getMaxDigits();
+        Assertion::notNull($maxDigits, 'getMaxDigits value is null, but non null value was expected.');
+        $allowExtensions = $dto->getAllowExtensions();
+        Assertion::notNull($allowExtensions, 'getAllowExtensions value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setTimeout($dto->getTimeout())
-            ->setMaxDigits($dto->getMaxDigits())
-            ->setAllowExtensions($dto->getAllowExtensions())
+            ->setName($name)
+            ->setTimeout($timeout)
+            ->setMaxDigits($maxDigits)
+            ->setAllowExtensions($allowExtensions)
             ->setNoInputRouteType($dto->getNoInputRouteType())
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
             ->setErrorNumberValue($dto->getErrorNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setNoInputLocution($fkTransformer->transform($dto->getNoInputLocution()))
             ->setErrorLocution($fkTransformer->transform($dto->getErrorLocution()))

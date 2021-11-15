@@ -103,13 +103,17 @@ abstract class QueueMemberAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+        $user = $dto->getUser();
+        Assertion::notNull($user, 'getUser value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setPenalty($dto->getPenalty())
-            ->setQueue($fkTransformer->transform($dto->getQueue()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setQueue($fkTransformer->transform($queue))
+            ->setUser($fkTransformer->transform($user));
 
         $self->initChangelog();
 
@@ -126,10 +130,15 @@ abstract class QueueMemberAbstract
     ): static {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
 
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+        $user = $dto->getUser();
+        Assertion::notNull($user, 'getUser value is null, but non null value was expected.');
+
         $this
             ->setPenalty($dto->getPenalty())
-            ->setQueue($fkTransformer->transform($dto->getQueue()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setQueue($fkTransformer->transform($queue))
+            ->setUser($fkTransformer->transform($user));
 
         return $this;
     }

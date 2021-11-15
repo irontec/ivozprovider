@@ -120,13 +120,23 @@ abstract class TrunksDomainAttrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
+        $did = $dto->getDid();
+        Assertion::notNull($did, 'getDid value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $value = $dto->getValue();
+        Assertion::notNull($value, 'getValue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDid(),
-            $dto->getName(),
-            $dto->getType(),
-            $dto->getValue(),
-            $dto->getLastModified()
+            $did,
+            $name,
+            $type,
+            $value,
+            $lastModified
         );
 
         ;
@@ -146,12 +156,23 @@ abstract class TrunksDomainAttrAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
 
+        $did = $dto->getDid();
+        Assertion::notNull($did, 'getDid value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $value = $dto->getValue();
+        Assertion::notNull($value, 'getValue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+
         $this
-            ->setDid($dto->getDid())
-            ->setName($dto->getName())
-            ->setType($dto->getType())
-            ->setValue($dto->getValue())
-            ->setLastModified($dto->getLastModified());
+            ->setDid($did)
+            ->setName($name)
+            ->setType($type)
+            ->setValue($value)
+            ->setLastModified($lastModified);
 
         return $this;
     }

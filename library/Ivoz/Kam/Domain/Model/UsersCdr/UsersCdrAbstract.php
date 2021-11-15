@@ -201,12 +201,20 @@ abstract class UsersCdrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $hidden = $dto->getHidden();
+        Assertion::notNull($hidden, 'getHidden value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartTime(),
-            $dto->getEndTime(),
-            $dto->getDuration(),
-            $dto->getHidden()
+            $startTime,
+            $endTime,
+            $duration,
+            $hidden
         );
 
         $self
@@ -241,10 +249,19 @@ abstract class UsersCdrAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $hidden = $dto->getHidden();
+        Assertion::notNull($hidden, 'getHidden value is null, but non null value was expected.');
+
         $this
-            ->setStartTime($dto->getStartTime())
-            ->setEndTime($dto->getEndTime())
-            ->setDuration($dto->getDuration())
+            ->setStartTime($startTime)
+            ->setEndTime($endTime)
+            ->setDuration($duration)
             ->setDirection($dto->getDirection())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
@@ -254,7 +271,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setHidden($dto->getHidden())
+            ->setHidden($hidden)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))

@@ -127,12 +127,20 @@ abstract class CommandlogAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CommandlogDto::class);
+        $requestId = $dto->getRequestId();
+        Assertion::notNull($requestId, 'getRequestId value is null, but non null value was expected.');
+        $class = $dto->getClass();
+        Assertion::notNull($class, 'getClass value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
+        $microtime = $dto->getMicrotime();
+        Assertion::notNull($microtime, 'getMicrotime value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRequestId(),
-            $dto->getClass(),
-            $dto->getCreatedOn(),
-            $dto->getMicrotime()
+            $requestId,
+            $class,
+            $createdOn,
+            $microtime
         );
 
         $self
@@ -155,14 +163,23 @@ abstract class CommandlogAbstract
     ): static {
         Assertion::isInstanceOf($dto, CommandlogDto::class);
 
+        $requestId = $dto->getRequestId();
+        Assertion::notNull($requestId, 'getRequestId value is null, but non null value was expected.');
+        $class = $dto->getClass();
+        Assertion::notNull($class, 'getClass value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
+        $microtime = $dto->getMicrotime();
+        Assertion::notNull($microtime, 'getMicrotime value is null, but non null value was expected.');
+
         $this
-            ->setRequestId($dto->getRequestId())
-            ->setClass($dto->getClass())
+            ->setRequestId($requestId)
+            ->setClass($class)
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
             ->setAgent($dto->getAgent())
-            ->setCreatedOn($dto->getCreatedOn())
-            ->setMicrotime($dto->getMicrotime());
+            ->setCreatedOn($createdOn)
+            ->setMicrotime($microtime);
 
         return $this;
     }

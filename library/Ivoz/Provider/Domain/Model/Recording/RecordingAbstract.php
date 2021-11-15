@@ -142,6 +142,14 @@ abstract class RecordingAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $recordedFile = new RecordedFile(
             $dto->getRecordedFileFileSize(),
@@ -150,9 +158,9 @@ abstract class RecordingAbstract
         );
 
         $self = new static(
-            $dto->getCalldate(),
-            $dto->getType(),
-            $dto->getDuration(),
+            $calldate,
+            $type,
+            $duration,
             $recordedFile
         );
 
@@ -161,7 +169,7 @@ abstract class RecordingAbstract
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -178,6 +186,15 @@ abstract class RecordingAbstract
     ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
 
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $recordedFile = new RecordedFile(
             $dto->getRecordedFileFileSize(),
             $dto->getRecordedFileMimeType(),
@@ -186,14 +203,14 @@ abstract class RecordingAbstract
 
         $this
             ->setCallid($dto->getCallid())
-            ->setCalldate($dto->getCalldate())
-            ->setType($dto->getType())
-            ->setDuration($dto->getDuration())
+            ->setCalldate($calldate)
+            ->setType($type)
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setRecordedFile($recordedFile)
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

@@ -111,6 +111,8 @@ abstract class CountryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -127,7 +129,7 @@ abstract class CountryAbstract
         );
 
         $self = new static(
-            $dto->getCode(),
+            $code,
             $name,
             $zone
         );
@@ -150,6 +152,9 @@ abstract class CountryAbstract
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -165,7 +170,7 @@ abstract class CountryAbstract
         );
 
         $this
-            ->setCode($dto->getCode())
+            ->setCode($code)
             ->setCountryCode($dto->getCountryCode())
             ->setName($name)
             ->setZone($zone);

@@ -128,9 +128,11 @@ abstract class HuntGroupsRelUserAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRouteType()
+            $routeType
         );
 
         $self
@@ -156,10 +158,13 @@ abstract class HuntGroupsRelUserAbstract
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
 
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+
         $this
             ->setTimeoutTime($dto->getTimeoutTime())
             ->setPriority($dto->getPriority())
-            ->setRouteType($dto->getRouteType())
+            ->setRouteType($routeType)
             ->setNumberValue($dto->getNumberValue())
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setUser($fkTransformer->transform($dto->getUser()))

@@ -177,16 +177,20 @@ abstract class ConditionalRouteAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
@@ -212,12 +216,17 @@ abstract class ConditionalRouteAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))

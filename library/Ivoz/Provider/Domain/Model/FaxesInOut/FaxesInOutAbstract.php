@@ -139,6 +139,10 @@ abstract class FaxesInOutAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $fax = $dto->getFax();
+        Assertion::notNull($fax, 'getFax value is null, but non null value was expected.');
 
         $file = new File(
             $dto->getFileFileSize(),
@@ -147,7 +151,7 @@ abstract class FaxesInOutAbstract
         );
 
         $self = new static(
-            $dto->getCalldate(),
+            $calldate,
             $file
         );
 
@@ -157,7 +161,7 @@ abstract class FaxesInOutAbstract
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
-            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setFax($fkTransformer->transform($fax))
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
         $self->initChangelog();
@@ -175,6 +179,11 @@ abstract class FaxesInOutAbstract
     ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $fax = $dto->getFax();
+        Assertion::notNull($fax, 'getFax value is null, but non null value was expected.');
+
         $file = new File(
             $dto->getFileFileSize(),
             $dto->getFileMimeType(),
@@ -182,14 +191,14 @@ abstract class FaxesInOutAbstract
         );
 
         $this
-            ->setCalldate($dto->getCalldate())
+            ->setCalldate($calldate)
             ->setSrc($dto->getSrc())
             ->setDst($dto->getDst())
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
             ->setFile($file)
-            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setFax($fkTransformer->transform($fax))
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
         return $this;

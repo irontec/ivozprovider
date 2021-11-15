@@ -172,14 +172,26 @@ abstract class TpRatingProfileAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpRatingProfileDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getLoadid(),
-            $dto->getDirection(),
-            $dto->getCategory(),
-            $dto->getActivationTime(),
-            $dto->getCreatedAt()
+            $tpid,
+            $loadid,
+            $direction,
+            $category,
+            $activationTime,
+            $createdAt
         );
 
         $self
@@ -206,18 +218,31 @@ abstract class TpRatingProfileAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpRatingProfileDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setLoadid($dto->getLoadid())
-            ->setDirection($dto->getDirection())
+            ->setTpid($tpid)
+            ->setLoadid($loadid)
+            ->setDirection($direction)
             ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
+            ->setCategory($category)
             ->setSubject($dto->getSubject())
-            ->setActivationTime($dto->getActivationTime())
+            ->setActivationTime($activationTime)
             ->setRatingPlanTag($dto->getRatingPlanTag())
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setCreatedAt($createdAt)
             ->setRatingProfile($fkTransformer->transform($dto->getRatingProfile()))
             ->setOutgoingRoutingRelCarrier($fkTransformer->transform($dto->getOutgoingRoutingRelCarrier()));
 

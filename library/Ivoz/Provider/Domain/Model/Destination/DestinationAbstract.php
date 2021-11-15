@@ -105,6 +105,10 @@ abstract class DestinationAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationDto::class);
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -114,12 +118,12 @@ abstract class DestinationAbstract
         );
 
         $self = new static(
-            $dto->getPrefix(),
+            $prefix,
             $name
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -136,6 +140,11 @@ abstract class DestinationAbstract
     ): static {
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -144,9 +153,9 @@ abstract class DestinationAbstract
         );
 
         $this
-            ->setPrefix($dto->getPrefix())
+            ->setPrefix($prefix)
             ->setName($name)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

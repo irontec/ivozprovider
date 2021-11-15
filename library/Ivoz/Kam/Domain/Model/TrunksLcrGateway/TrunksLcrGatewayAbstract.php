@@ -158,10 +158,14 @@ abstract class TrunksLcrGatewayAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $gwName = $dto->getGwName();
+        Assertion::notNull($gwName, 'getGwName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getGwName()
+            $lcrId,
+            $gwName
         );
 
         $self
@@ -192,9 +196,14 @@ abstract class TrunksLcrGatewayAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $gwName = $dto->getGwName();
+        Assertion::notNull($gwName, 'getGwName value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
-            ->setGwName($dto->getGwName())
+            ->setLcrId($lcrId)
+            ->setGwName($gwName)
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())

@@ -179,12 +179,20 @@ abstract class CallForwardSettingAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallForwardSettingDto::class);
+        $callTypeFilter = $dto->getCallTypeFilter();
+        Assertion::notNull($callTypeFilter, 'getCallTypeFilter value is null, but non null value was expected.');
+        $callForwardType = $dto->getCallForwardType();
+        Assertion::notNull($callForwardType, 'getCallForwardType value is null, but non null value was expected.');
+        $noAnswerTimeout = $dto->getNoAnswerTimeout();
+        Assertion::notNull($noAnswerTimeout, 'getNoAnswerTimeout value is null, but non null value was expected.');
+        $enabled = $dto->getEnabled();
+        Assertion::notNull($enabled, 'getEnabled value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCallTypeFilter(),
-            $dto->getCallForwardType(),
-            $dto->getNoAnswerTimeout(),
-            $dto->getEnabled()
+            $callTypeFilter,
+            $callForwardType,
+            $noAnswerTimeout,
+            $enabled
         );
 
         $self
@@ -214,13 +222,22 @@ abstract class CallForwardSettingAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallForwardSettingDto::class);
 
+        $callTypeFilter = $dto->getCallTypeFilter();
+        Assertion::notNull($callTypeFilter, 'getCallTypeFilter value is null, but non null value was expected.');
+        $callForwardType = $dto->getCallForwardType();
+        Assertion::notNull($callForwardType, 'getCallForwardType value is null, but non null value was expected.');
+        $noAnswerTimeout = $dto->getNoAnswerTimeout();
+        Assertion::notNull($noAnswerTimeout, 'getNoAnswerTimeout value is null, but non null value was expected.');
+        $enabled = $dto->getEnabled();
+        Assertion::notNull($enabled, 'getEnabled value is null, but non null value was expected.');
+
         $this
-            ->setCallTypeFilter($dto->getCallTypeFilter())
-            ->setCallForwardType($dto->getCallForwardType())
+            ->setCallTypeFilter($callTypeFilter)
+            ->setCallForwardType($callForwardType)
             ->setTargetType($dto->getTargetType())
             ->setNumberValue($dto->getNumberValue())
-            ->setNoAnswerTimeout($dto->getNoAnswerTimeout())
-            ->setEnabled($dto->getEnabled())
+            ->setNoAnswerTimeout($noAnswerTimeout)
+            ->setEnabled($enabled)
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))

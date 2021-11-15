@@ -99,12 +99,14 @@ abstract class CompanyRelRoutingTagAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
+        $routingTag = $dto->getRoutingTag();
+        Assertion::notNull($routingTag, 'getRoutingTag value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
+            ->setRoutingTag($fkTransformer->transform($routingTag));
 
         $self->initChangelog();
 
@@ -121,9 +123,12 @@ abstract class CompanyRelRoutingTagAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
 
+        $routingTag = $dto->getRoutingTag();
+        Assertion::notNull($routingTag, 'getRoutingTag value is null, but non null value was expected.');
+
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
+            ->setRoutingTag($fkTransformer->transform($routingTag));
 
         return $this;
     }

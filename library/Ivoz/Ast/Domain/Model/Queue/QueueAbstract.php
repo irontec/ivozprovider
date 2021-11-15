@@ -147,11 +147,19 @@ abstract class QueueAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $autopause = $dto->getAutopause();
+        Assertion::notNull($autopause, 'getAutopause value is null, but non null value was expected.');
+        $ringinuse = $dto->getRinginuse();
+        Assertion::notNull($ringinuse, 'getRinginuse value is null, but non null value was expected.');
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getAutopause(),
-            $dto->getRinginuse()
+            $name,
+            $autopause,
+            $ringinuse
         );
 
         $self
@@ -162,7 +170,7 @@ abstract class QueueAbstract
             ->setMaxlen($dto->getMaxlen())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setQueue($fkTransformer->transform($dto->getQueue()));
+            ->setQueue($fkTransformer->transform($queue));
 
         $self->initChangelog();
 
@@ -179,18 +187,27 @@ abstract class QueueAbstract
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $autopause = $dto->getAutopause();
+        Assertion::notNull($autopause, 'getAutopause value is null, but non null value was expected.');
+        $ringinuse = $dto->getRinginuse();
+        Assertion::notNull($ringinuse, 'getRinginuse value is null, but non null value was expected.');
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
-            ->setAutopause($dto->getAutopause())
-            ->setRinginuse($dto->getRinginuse())
+            ->setAutopause($autopause)
+            ->setRinginuse($ringinuse)
             ->setWrapuptime($dto->getWrapuptime())
             ->setMaxlen($dto->getMaxlen())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setQueue($fkTransformer->transform($dto->getQueue()));
+            ->setQueue($fkTransformer->transform($queue));
 
         return $this;
     }

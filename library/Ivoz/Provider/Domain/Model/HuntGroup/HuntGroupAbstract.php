@@ -170,20 +170,32 @@ abstract class HuntGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $allowCallForwards = $dto->getAllowCallForwards();
+        Assertion::notNull($allowCallForwards, 'getAllowCallForwards value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getStrategy(),
-            $dto->getPreventMissedCalls(),
-            $dto->getAllowCallForwards()
+            $name,
+            $description,
+            $strategy,
+            $preventMissedCalls,
+            $allowCallForwards
         );
 
         $self
             ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
             ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
@@ -204,16 +216,29 @@ abstract class HuntGroupAbstract
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $allowCallForwards = $dto->getAllowCallForwards();
+        Assertion::notNull($allowCallForwards, 'getAllowCallForwards value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
-            ->setStrategy($dto->getStrategy())
+            ->setName($name)
+            ->setDescription($description)
+            ->setStrategy($strategy)
             ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setPreventMissedCalls($dto->getPreventMissedCalls())
-            ->setAllowCallForwards($dto->getAllowCallForwards())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPreventMissedCalls($preventMissedCalls)
+            ->setAllowCallForwards($allowCallForwards)
+            ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
             ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))

@@ -147,10 +147,14 @@ abstract class PsIdentifyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, PsIdentifyDto::class);
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $srvLookups = $dto->getSrvLookups();
+        Assertion::notNull($srvLookups, 'getSrvLookups value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSorceryId(),
-            $dto->getSrvLookups()
+            $sorceryId,
+            $srvLookups
         );
 
         $self
@@ -177,12 +181,17 @@ abstract class PsIdentifyAbstract
     ): static {
         Assertion::isInstanceOf($dto, PsIdentifyDto::class);
 
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $srvLookups = $dto->getSrvLookups();
+        Assertion::notNull($srvLookups, 'getSrvLookups value is null, but non null value was expected.');
+
         $this
-            ->setSorceryId($dto->getSorceryId())
+            ->setSorceryId($sorceryId)
             ->setEndpoint($dto->getEndpoint())
             ->setMatch($dto->getMatch())
             ->setMatchHeader($dto->getMatchHeader())
-            ->setSrvLookups($dto->getSrvLookups())
+            ->setSrvLookups($srvLookups)
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))

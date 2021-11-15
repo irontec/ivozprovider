@@ -98,12 +98,14 @@ abstract class CompanyRelCodecAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
+        $codec = $dto->getCodec();
+        Assertion::notNull($codec, 'getCodec value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCodec($fkTransformer->transform($dto->getCodec()));
+            ->setCodec($fkTransformer->transform($codec));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class CompanyRelCodecAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
 
+        $codec = $dto->getCodec();
+        Assertion::notNull($codec, 'getCodec value is null, but non null value was expected.');
+
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCodec($fkTransformer->transform($dto->getCodec()));
+            ->setCodec($fkTransformer->transform($codec));
 
         return $this;
     }

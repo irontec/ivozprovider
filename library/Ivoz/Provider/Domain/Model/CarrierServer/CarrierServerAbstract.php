@@ -170,9 +170,15 @@ abstract class CarrierServerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getAuthNeeded()
+            $authNeeded
         );
 
         $self
@@ -189,8 +195,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setCarrier($fkTransformer->transform($carrier))
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -207,6 +213,13 @@ abstract class CarrierServerAbstract
     ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
@@ -215,15 +228,15 @@ abstract class CarrierServerAbstract
             ->setTransport($dto->getTransport())
             ->setSendPAI($dto->getSendPAI())
             ->setSendRPID($dto->getSendRPID())
-            ->setAuthNeeded($dto->getAuthNeeded())
+            ->setAuthNeeded($authNeeded)
             ->setAuthUser($dto->getAuthUser())
             ->setAuthPassword($dto->getAuthPassword())
             ->setSipProxy($dto->getSipProxy())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setCarrier($fkTransformer->transform($carrier))
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

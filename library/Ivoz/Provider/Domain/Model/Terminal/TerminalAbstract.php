@@ -177,22 +177,38 @@ abstract class TerminalAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TerminalDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allowAudio = $dto->getAllowAudio();
+        Assertion::notNull($allowAudio, 'getAllowAudio value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $password = $dto->getPassword();
+        Assertion::notNull($password, 'getPassword value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDisallow(),
-            $dto->getAllowAudio(),
-            $dto->getDirectMediaMethod(),
-            $dto->getPassword(),
-            $dto->getT38Passthrough(),
-            $dto->getRtpEncryption()
+            $name,
+            $disallow,
+            $allowAudio,
+            $directMediaMethod,
+            $password,
+            $t38Passthrough,
+            $rtpEncryption
         );
 
         $self
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
@@ -211,18 +227,35 @@ abstract class TerminalAbstract
     ): static {
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allowAudio = $dto->getAllowAudio();
+        Assertion::notNull($allowAudio, 'getAllowAudio value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $password = $dto->getPassword();
+        Assertion::notNull($password, 'getPassword value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDisallow($dto->getDisallow())
-            ->setAllowAudio($dto->getAllowAudio())
+            ->setName($name)
+            ->setDisallow($disallow)
+            ->setAllowAudio($allowAudio)
             ->setAllowVideo($dto->getAllowVideo())
-            ->setDirectMediaMethod($dto->getDirectMediaMethod())
-            ->setPassword($dto->getPassword())
+            ->setDirectMediaMethod($directMediaMethod)
+            ->setPassword($password)
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setT38Passthrough($dto->getT38Passthrough())
-            ->setRtpEncryption($dto->getRtpEncryption())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setT38Passthrough($t38Passthrough)
+            ->setRtpEncryption($rtpEncryption)
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 

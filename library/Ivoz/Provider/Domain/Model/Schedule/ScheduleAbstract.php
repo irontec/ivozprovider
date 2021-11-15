@@ -146,11 +146,19 @@ abstract class ScheduleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ScheduleDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTimeIn(),
-            $dto->getTimeout()
+            $name,
+            $timeIn,
+            $timeout
         );
 
         $self
@@ -161,7 +169,7 @@ abstract class ScheduleAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -178,10 +186,19 @@ abstract class ScheduleAbstract
     ): static {
         Assertion::isInstanceOf($dto, ScheduleDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setTimeIn($dto->getTimeIn())
-            ->setTimeout($dto->getTimeout())
+            ->setName($name)
+            ->setTimeIn($timeIn)
+            ->setTimeout($timeout)
             ->setMonday($dto->getMonday())
             ->setTuesday($dto->getTuesday())
             ->setWednesday($dto->getWednesday())
@@ -189,7 +206,7 @@ abstract class ScheduleAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

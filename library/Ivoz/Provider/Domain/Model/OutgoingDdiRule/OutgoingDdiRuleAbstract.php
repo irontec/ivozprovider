@@ -112,14 +112,20 @@ abstract class OutgoingDdiRuleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRuleDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultAction = $dto->getDefaultAction();
+        Assertion::notNull($defaultAction, 'getDefaultAction value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDefaultAction()
+            $name,
+            $defaultAction
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
         $self->initChangelog();
@@ -137,10 +143,17 @@ abstract class OutgoingDdiRuleAbstract
     ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRuleDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultAction = $dto->getDefaultAction();
+        Assertion::notNull($defaultAction, 'getDefaultAction value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDefaultAction($dto->getDefaultAction())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setName($name)
+            ->setDefaultAction($defaultAction)
+            ->setCompany($fkTransformer->transform($company))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
         return $this;

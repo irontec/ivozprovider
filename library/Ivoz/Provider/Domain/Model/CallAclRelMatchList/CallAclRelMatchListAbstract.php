@@ -113,15 +113,21 @@ abstract class CallAclRelMatchListAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $policy = $dto->getPolicy();
+        Assertion::notNull($policy, 'getPolicy value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority(),
-            $dto->getPolicy()
+            $priority,
+            $policy
         );
 
         $self
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
+            ->setMatchList($fkTransformer->transform($matchList));
 
         $self->initChangelog();
 
@@ -138,11 +144,18 @@ abstract class CallAclRelMatchListAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $policy = $dto->getPolicy();
+        Assertion::notNull($policy, 'getPolicy value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
+
         $this
-            ->setPriority($dto->getPriority())
-            ->setPolicy($dto->getPolicy())
+            ->setPriority($priority)
+            ->setPolicy($policy)
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
+            ->setMatchList($fkTransformer->transform($matchList));
 
         return $this;
     }

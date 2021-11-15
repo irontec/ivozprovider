@@ -157,21 +157,35 @@ abstract class TpDestinationRateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $roundingMethod = $dto->getRoundingMethod();
+        Assertion::notNull($roundingMethod, 'getRoundingMethod value is null, but non null value was expected.');
+        $roundingDecimals = $dto->getRoundingDecimals();
+        Assertion::notNull($roundingDecimals, 'getRoundingDecimals value is null, but non null value was expected.');
+        $maxCost = $dto->getMaxCost();
+        Assertion::notNull($maxCost, 'getMaxCost value is null, but non null value was expected.');
+        $maxCostStrategy = $dto->getMaxCostStrategy();
+        Assertion::notNull($maxCostStrategy, 'getMaxCostStrategy value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getRoundingMethod(),
-            $dto->getRoundingDecimals(),
-            $dto->getMaxCost(),
-            $dto->getMaxCostStrategy(),
-            $dto->getCreatedAt()
+            $tpid,
+            $roundingMethod,
+            $roundingDecimals,
+            $maxCost,
+            $maxCostStrategy,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         $self->initChangelog();
 
@@ -188,17 +202,32 @@ abstract class TpDestinationRateAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $roundingMethod = $dto->getRoundingMethod();
+        Assertion::notNull($roundingMethod, 'getRoundingMethod value is null, but non null value was expected.');
+        $roundingDecimals = $dto->getRoundingDecimals();
+        Assertion::notNull($roundingDecimals, 'getRoundingDecimals value is null, but non null value was expected.');
+        $maxCost = $dto->getMaxCost();
+        Assertion::notNull($maxCost, 'getMaxCost value is null, but non null value was expected.');
+        $maxCostStrategy = $dto->getMaxCostStrategy();
+        Assertion::notNull($maxCostStrategy, 'getMaxCostStrategy value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setRoundingMethod($dto->getRoundingMethod())
-            ->setRoundingDecimals($dto->getRoundingDecimals())
-            ->setMaxCost($dto->getMaxCost())
-            ->setMaxCostStrategy($dto->getMaxCostStrategy())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setRoundingMethod($roundingMethod)
+            ->setRoundingDecimals($roundingDecimals)
+            ->setMaxCost($maxCost)
+            ->setMaxCostStrategy($maxCostStrategy)
+            ->setCreatedAt($createdAt)
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         return $this;
     }

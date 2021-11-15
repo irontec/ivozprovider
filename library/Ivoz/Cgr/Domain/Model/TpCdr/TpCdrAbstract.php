@@ -252,28 +252,68 @@ abstract class TpCdrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
+        $cgrid = $dto->getCgrid();
+        Assertion::notNull($cgrid, 'getCgrid value is null, but non null value was expected.');
+        $runId = $dto->getRunId();
+        Assertion::notNull($runId, 'getRunId value is null, but non null value was expected.');
+        $originHost = $dto->getOriginHost();
+        Assertion::notNull($originHost, 'getOriginHost value is null, but non null value was expected.');
+        $source = $dto->getSource();
+        Assertion::notNull($source, 'getSource value is null, but non null value was expected.');
+        $originId = $dto->getOriginId();
+        Assertion::notNull($originId, 'getOriginId value is null, but non null value was expected.');
+        $tor = $dto->getTor();
+        Assertion::notNull($tor, 'getTor value is null, but non null value was expected.');
+        $requestType = $dto->getRequestType();
+        Assertion::notNull($requestType, 'getRequestType value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $setupTime = $dto->getSetupTime();
+        Assertion::notNull($setupTime, 'getSetupTime value is null, but non null value was expected.');
+        $answerTime = $dto->getAnswerTime();
+        Assertion::notNull($answerTime, 'getAnswerTime value is null, but non null value was expected.');
+        $usage = $dto->getUsage();
+        Assertion::notNull($usage, 'getUsage value is null, but non null value was expected.');
+        $extraFields = $dto->getExtraFields();
+        Assertion::notNull($extraFields, 'getExtraFields value is null, but non null value was expected.');
+        $costSource = $dto->getCostSource();
+        Assertion::notNull($costSource, 'getCostSource value is null, but non null value was expected.');
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $costDetails = $dto->getCostDetails();
+        Assertion::notNull($costDetails, 'getCostDetails value is null, but non null value was expected.');
+        $extraInfo = $dto->getExtraInfo();
+        Assertion::notNull($extraInfo, 'getExtraInfo value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCgrid(),
-            $dto->getRunId(),
-            $dto->getOriginHost(),
-            $dto->getSource(),
-            $dto->getOriginId(),
-            $dto->getTor(),
-            $dto->getRequestType(),
-            $dto->getTenant(),
-            $dto->getCategory(),
-            $dto->getAccount(),
-            $dto->getSubject(),
-            $dto->getDestination(),
-            $dto->getSetupTime(),
-            $dto->getAnswerTime(),
-            $dto->getUsage(),
-            $dto->getExtraFields(),
-            $dto->getCostSource(),
-            $dto->getCost(),
-            $dto->getCostDetails(),
-            $dto->getExtraInfo()
+            $cgrid,
+            $runId,
+            $originHost,
+            $source,
+            $originId,
+            $tor,
+            $requestType,
+            $tenant,
+            $category,
+            $account,
+            $subject,
+            $destination,
+            $setupTime,
+            $answerTime,
+            $usage,
+            $extraFields,
+            $costSource,
+            $cost,
+            $costDetails,
+            $extraInfo
         );
 
         $self
@@ -296,27 +336,68 @@ abstract class TpCdrAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
+        $cgrid = $dto->getCgrid();
+        Assertion::notNull($cgrid, 'getCgrid value is null, but non null value was expected.');
+        $runId = $dto->getRunId();
+        Assertion::notNull($runId, 'getRunId value is null, but non null value was expected.');
+        $originHost = $dto->getOriginHost();
+        Assertion::notNull($originHost, 'getOriginHost value is null, but non null value was expected.');
+        $source = $dto->getSource();
+        Assertion::notNull($source, 'getSource value is null, but non null value was expected.');
+        $originId = $dto->getOriginId();
+        Assertion::notNull($originId, 'getOriginId value is null, but non null value was expected.');
+        $tor = $dto->getTor();
+        Assertion::notNull($tor, 'getTor value is null, but non null value was expected.');
+        $requestType = $dto->getRequestType();
+        Assertion::notNull($requestType, 'getRequestType value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $setupTime = $dto->getSetupTime();
+        Assertion::notNull($setupTime, 'getSetupTime value is null, but non null value was expected.');
+        $answerTime = $dto->getAnswerTime();
+        Assertion::notNull($answerTime, 'getAnswerTime value is null, but non null value was expected.');
+        $usage = $dto->getUsage();
+        Assertion::notNull($usage, 'getUsage value is null, but non null value was expected.');
+        $extraFields = $dto->getExtraFields();
+        Assertion::notNull($extraFields, 'getExtraFields value is null, but non null value was expected.');
+        $costSource = $dto->getCostSource();
+        Assertion::notNull($costSource, 'getCostSource value is null, but non null value was expected.');
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $costDetails = $dto->getCostDetails();
+        Assertion::notNull($costDetails, 'getCostDetails value is null, but non null value was expected.');
+        $extraInfo = $dto->getExtraInfo();
+        Assertion::notNull($extraInfo, 'getExtraInfo value is null, but non null value was expected.');
+
         $this
-            ->setCgrid($dto->getCgrid())
-            ->setRunId($dto->getRunId())
-            ->setOriginHost($dto->getOriginHost())
-            ->setSource($dto->getSource())
-            ->setOriginId($dto->getOriginId())
-            ->setTor($dto->getTor())
-            ->setRequestType($dto->getRequestType())
-            ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
-            ->setAccount($dto->getAccount())
-            ->setSubject($dto->getSubject())
-            ->setDestination($dto->getDestination())
-            ->setSetupTime($dto->getSetupTime())
-            ->setAnswerTime($dto->getAnswerTime())
-            ->setUsage($dto->getUsage())
-            ->setExtraFields($dto->getExtraFields())
-            ->setCostSource($dto->getCostSource())
-            ->setCost($dto->getCost())
-            ->setCostDetails($dto->getCostDetails())
-            ->setExtraInfo($dto->getExtraInfo())
+            ->setCgrid($cgrid)
+            ->setRunId($runId)
+            ->setOriginHost($originHost)
+            ->setSource($source)
+            ->setOriginId($originId)
+            ->setTor($tor)
+            ->setRequestType($requestType)
+            ->setTenant($tenant)
+            ->setCategory($category)
+            ->setAccount($account)
+            ->setSubject($subject)
+            ->setDestination($destination)
+            ->setSetupTime($setupTime)
+            ->setAnswerTime($answerTime)
+            ->setUsage($usage)
+            ->setExtraFields($extraFields)
+            ->setCostSource($costSource)
+            ->setCost($cost)
+            ->setCostDetails($costDetails)
+            ->setExtraInfo($extraInfo)
             ->setCreatedAt($dto->getCreatedAt())
             ->setUpdatedAt($dto->getUpdatedAt())
             ->setDeletedAt($dto->getDeletedAt());

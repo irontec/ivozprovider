@@ -120,6 +120,12 @@ abstract class ServiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $defaultCode = $dto->getDefaultCode();
+        Assertion::notNull($defaultCode, 'getDefaultCode value is null, but non null value was expected.');
+        $extraArgs = $dto->getExtraArgs();
+        Assertion::notNull($extraArgs, 'getExtraArgs value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -136,9 +142,9 @@ abstract class ServiceAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getDefaultCode(),
-            $dto->getExtraArgs(),
+            $iden,
+            $defaultCode,
+            $extraArgs,
             $name,
             $description
         );
@@ -160,6 +166,13 @@ abstract class ServiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $defaultCode = $dto->getDefaultCode();
+        Assertion::notNull($defaultCode, 'getDefaultCode value is null, but non null value was expected.');
+        $extraArgs = $dto->getExtraArgs();
+        Assertion::notNull($extraArgs, 'getExtraArgs value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -175,9 +188,9 @@ abstract class ServiceAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
-            ->setDefaultCode($dto->getDefaultCode())
-            ->setExtraArgs($dto->getExtraArgs())
+            ->setIden($iden)
+            ->setDefaultCode($defaultCode)
+            ->setExtraArgs($extraArgs)
             ->setName($name)
             ->setDescription($description);
 

@@ -182,18 +182,38 @@ abstract class TpLcrRuleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $rpCategory = $dto->getRpCategory();
+        Assertion::notNull($rpCategory, 'getRpCategory value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getDirection(),
-            $dto->getTenant(),
-            $dto->getCategory(),
-            $dto->getAccount(),
-            $dto->getRpCategory(),
-            $dto->getStrategy(),
-            $dto->getActivationTime(),
-            $dto->getWeight(),
-            $dto->getCreatedAt()
+            $tpid,
+            $direction,
+            $tenant,
+            $category,
+            $account,
+            $rpCategory,
+            $strategy,
+            $activationTime,
+            $weight,
+            $createdAt
         );
 
         $self
@@ -217,20 +237,41 @@ abstract class TpLcrRuleAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $rpCategory = $dto->getRpCategory();
+        Assertion::notNull($rpCategory, 'getRpCategory value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setDirection($dto->getDirection())
-            ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
-            ->setAccount($dto->getAccount())
+            ->setTpid($tpid)
+            ->setDirection($direction)
+            ->setTenant($tenant)
+            ->setCategory($category)
+            ->setAccount($account)
             ->setSubject($dto->getSubject())
             ->setDestinationTag($dto->getDestinationTag())
-            ->setRpCategory($dto->getRpCategory())
-            ->setStrategy($dto->getStrategy())
+            ->setRpCategory($rpCategory)
+            ->setStrategy($strategy)
             ->setStrategyParams($dto->getStrategyParams())
-            ->setActivationTime($dto->getActivationTime())
-            ->setWeight($dto->getWeight())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setActivationTime($activationTime)
+            ->setWeight($weight)
+            ->setCreatedAt($createdAt)
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
 
         return $this;

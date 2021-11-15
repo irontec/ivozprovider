@@ -121,15 +121,19 @@ abstract class RatingProfileAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getActivationTime()
+            $activationTime
         );
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         $self->initChangelog();
@@ -147,11 +151,16 @@ abstract class RatingProfileAbstract
     ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+
         $this
-            ->setActivationTime($dto->getActivationTime())
+            ->setActivationTime($activationTime)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         return $this;

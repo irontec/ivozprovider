@@ -161,15 +161,29 @@ abstract class TpAccountActionAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $allowNegative = $dto->getAllowNegative();
+        Assertion::notNull($allowNegative, 'getAllowNegative value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getLoadid(),
-            $dto->getTenant(),
-            $dto->getAccount(),
-            $dto->getAllowNegative(),
-            $dto->getDisabled(),
-            $dto->getCreatedAt()
+            $tpid,
+            $loadid,
+            $tenant,
+            $account,
+            $allowNegative,
+            $disabled,
+            $createdAt
         );
 
         $self
@@ -193,16 +207,31 @@ abstract class TpAccountActionAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $allowNegative = $dto->getAllowNegative();
+        Assertion::notNull($allowNegative, 'getAllowNegative value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setLoadid($dto->getLoadid())
-            ->setTenant($dto->getTenant())
-            ->setAccount($dto->getAccount())
+            ->setTpid($tpid)
+            ->setLoadid($loadid)
+            ->setTenant($tenant)
+            ->setAccount($account)
             ->setActionPlanTag($dto->getActionPlanTag())
             ->setActionTriggersTag($dto->getActionTriggersTag())
-            ->setAllowNegative($dto->getAllowNegative())
-            ->setDisabled($dto->getDisabled())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setAllowNegative($allowNegative)
+            ->setDisabled($disabled)
+            ->setCreatedAt($createdAt)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 

@@ -172,9 +172,13 @@ abstract class ExternalCallFilterAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
@@ -182,7 +186,7 @@ abstract class ExternalCallFilterAbstract
             ->setHolidayNumberValue($dto->getHolidayNumberValue())
             ->setOutOfScheduleTargetType($dto->getOutOfScheduleTargetType())
             ->setOutOfScheduleNumberValue($dto->getOutOfScheduleNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setHolidayLocution($fkTransformer->transform($dto->getHolidayLocution()))
             ->setOutOfScheduleLocution($fkTransformer->transform($dto->getOutOfScheduleLocution()))
@@ -208,13 +212,18 @@ abstract class ExternalCallFilterAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setHolidayTargetType($dto->getHolidayTargetType())
             ->setHolidayNumberValue($dto->getHolidayNumberValue())
             ->setOutOfScheduleTargetType($dto->getOutOfScheduleTargetType())
             ->setOutOfScheduleNumberValue($dto->getOutOfScheduleNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setHolidayLocution($fkTransformer->transform($dto->getHolidayLocution()))
             ->setOutOfScheduleLocution($fkTransformer->transform($dto->getOutOfScheduleLocution()))

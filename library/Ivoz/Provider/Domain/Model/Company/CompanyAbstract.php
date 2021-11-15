@@ -341,21 +341,51 @@ abstract class CompanyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $nif = $dto->getNif();
+        Assertion::notNull($nif, 'getNif value is null, but non null value was expected.');
+        $distributeMethod = $dto->getDistributeMethod();
+        Assertion::notNull($distributeMethod, 'getDistributeMethod value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $maxDailyUsage = $dto->getMaxDailyUsage();
+        Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
+        $postalAddress = $dto->getPostalAddress();
+        Assertion::notNull($postalAddress, 'getPostalAddress value is null, but non null value was expected.');
+        $postalCode = $dto->getPostalCode();
+        Assertion::notNull($postalCode, 'getPostalCode value is null, but non null value was expected.');
+        $town = $dto->getTown();
+        Assertion::notNull($town, 'getTown value is null, but non null value was expected.');
+        $province = $dto->getProvince();
+        Assertion::notNull($province, 'getProvince value is null, but non null value was expected.');
+        $countryName = $dto->getCountryName();
+        Assertion::notNull($countryName, 'getCountryName value is null, but non null value was expected.');
+        $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
+        Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
+        $billingMethod = $dto->getBillingMethod();
+        Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getName(),
-            $dto->getNif(),
-            $dto->getDistributeMethod(),
-            $dto->getMaxCalls(),
-            $dto->getMaxDailyUsage(),
-            $dto->getPostalAddress(),
-            $dto->getPostalCode(),
-            $dto->getTown(),
-            $dto->getProvince(),
-            $dto->getCountryName(),
-            $dto->getAllowRecordingRemoval(),
-            $dto->getBillingMethod()
+            $type,
+            $name,
+            $nif,
+            $distributeMethod,
+            $maxCalls,
+            $maxDailyUsage,
+            $postalAddress,
+            $postalCode,
+            $town,
+            $province,
+            $countryName,
+            $allowRecordingRemoval,
+            $billingMethod
         );
 
         $self
@@ -373,10 +403,10 @@ abstract class CompanyAbstract
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCountry($fkTransformer->transform($country))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
@@ -402,38 +432,69 @@ abstract class CompanyAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $nif = $dto->getNif();
+        Assertion::notNull($nif, 'getNif value is null, but non null value was expected.');
+        $distributeMethod = $dto->getDistributeMethod();
+        Assertion::notNull($distributeMethod, 'getDistributeMethod value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $maxDailyUsage = $dto->getMaxDailyUsage();
+        Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
+        $postalAddress = $dto->getPostalAddress();
+        Assertion::notNull($postalAddress, 'getPostalAddress value is null, but non null value was expected.');
+        $postalCode = $dto->getPostalCode();
+        Assertion::notNull($postalCode, 'getPostalCode value is null, but non null value was expected.');
+        $town = $dto->getTown();
+        Assertion::notNull($town, 'getTown value is null, but non null value was expected.');
+        $province = $dto->getProvince();
+        Assertion::notNull($province, 'getProvince value is null, but non null value was expected.');
+        $countryName = $dto->getCountryName();
+        Assertion::notNull($countryName, 'getCountryName value is null, but non null value was expected.');
+        $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
+        Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
+        $billingMethod = $dto->getBillingMethod();
+        Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setName($dto->getName())
+            ->setType($type)
+            ->setName($name)
             ->setDomainUsers($dto->getDomainUsers())
-            ->setNif($dto->getNif())
-            ->setDistributeMethod($dto->getDistributeMethod())
-            ->setMaxCalls($dto->getMaxCalls())
-            ->setMaxDailyUsage($dto->getMaxDailyUsage())
+            ->setNif($nif)
+            ->setDistributeMethod($distributeMethod)
+            ->setMaxCalls($maxCalls)
+            ->setMaxDailyUsage($maxDailyUsage)
             ->setCurrentDayUsage($dto->getCurrentDayUsage())
             ->setMaxDailyUsageEmail($dto->getMaxDailyUsageEmail())
-            ->setPostalAddress($dto->getPostalAddress())
-            ->setPostalCode($dto->getPostalCode())
-            ->setTown($dto->getTown())
-            ->setProvince($dto->getProvince())
-            ->setCountryName($dto->getCountryName())
+            ->setPostalAddress($postalAddress)
+            ->setPostalCode($postalCode)
+            ->setTown($town)
+            ->setProvince($province)
+            ->setCountryName($countryName)
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
-            ->setAllowRecordingRemoval($dto->getAllowRecordingRemoval())
+            ->setAllowRecordingRemoval($allowRecordingRemoval)
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setBillingMethod($dto->getBillingMethod())
+            ->setBillingMethod($billingMethod)
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCountry($fkTransformer->transform($country))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))

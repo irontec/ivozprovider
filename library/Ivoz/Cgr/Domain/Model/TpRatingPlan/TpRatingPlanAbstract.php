@@ -133,18 +133,28 @@ abstract class TpRatingPlanAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpRatingPlanDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $timingTag = $dto->getTimingTag();
+        Assertion::notNull($timingTag, 'getTimingTag value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getTimingTag(),
-            $dto->getWeight(),
-            $dto->getCreatedAt()
+            $tpid,
+            $timingTag,
+            $weight,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
             ->setDestratesTag($dto->getDestratesTag())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         $self->initChangelog();
 
@@ -161,14 +171,25 @@ abstract class TpRatingPlanAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpRatingPlanDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $timingTag = $dto->getTimingTag();
+        Assertion::notNull($timingTag, 'getTimingTag value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
             ->setDestratesTag($dto->getDestratesTag())
-            ->setTimingTag($dto->getTimingTag())
-            ->setWeight($dto->getWeight())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setTimingTag($timingTag)
+            ->setWeight($weight)
+            ->setCreatedAt($createdAt)
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         return $this;
     }

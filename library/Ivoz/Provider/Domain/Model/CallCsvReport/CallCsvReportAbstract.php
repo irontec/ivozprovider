@@ -141,6 +141,14 @@ abstract class CallCsvReportAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
+        $sentTo = $dto->getSentTo();
+        Assertion::notNull($sentTo, 'getSentTo value is null, but non null value was expected.');
+        $inDate = $dto->getInDate();
+        Assertion::notNull($inDate, 'getInDate value is null, but non null value was expected.');
+        $outDate = $dto->getOutDate();
+        Assertion::notNull($outDate, 'getOutDate value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
 
         $csv = new Csv(
             $dto->getCsvFileSize(),
@@ -149,10 +157,10 @@ abstract class CallCsvReportAbstract
         );
 
         $self = new static(
-            $dto->getSentTo(),
-            $dto->getInDate(),
-            $dto->getOutDate(),
-            $dto->getCreatedOn(),
+            $sentTo,
+            $inDate,
+            $outDate,
+            $createdOn,
             $csv
         );
 
@@ -176,6 +184,15 @@ abstract class CallCsvReportAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
 
+        $sentTo = $dto->getSentTo();
+        Assertion::notNull($sentTo, 'getSentTo value is null, but non null value was expected.');
+        $inDate = $dto->getInDate();
+        Assertion::notNull($inDate, 'getInDate value is null, but non null value was expected.');
+        $outDate = $dto->getOutDate();
+        Assertion::notNull($outDate, 'getOutDate value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
+
         $csv = new Csv(
             $dto->getCsvFileSize(),
             $dto->getCsvMimeType(),
@@ -183,10 +200,10 @@ abstract class CallCsvReportAbstract
         );
 
         $this
-            ->setSentTo($dto->getSentTo())
-            ->setInDate($dto->getInDate())
-            ->setOutDate($dto->getOutDate())
-            ->setCreatedOn($dto->getCreatedOn())
+            ->setSentTo($sentTo)
+            ->setInDate($inDate)
+            ->setOutDate($outDate)
+            ->setCreatedOn($createdOn)
             ->setCsv($csv)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($dto->getBrand()))

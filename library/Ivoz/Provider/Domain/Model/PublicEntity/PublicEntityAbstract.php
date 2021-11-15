@@ -124,6 +124,14 @@ abstract class PublicEntityAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $platform = $dto->getPlatform();
+        Assertion::notNull($platform, 'getPlatform value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $client = $dto->getClient();
+        Assertion::notNull($client, 'getClient value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -133,10 +141,10 @@ abstract class PublicEntityAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getPlatform(),
-            $dto->getBrand(),
-            $dto->getClient(),
+            $iden,
+            $platform,
+            $brand,
+            $client,
             $name
         );
 
@@ -158,6 +166,15 @@ abstract class PublicEntityAbstract
     ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $platform = $dto->getPlatform();
+        Assertion::notNull($platform, 'getPlatform value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $client = $dto->getClient();
+        Assertion::notNull($client, 'getClient value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -166,11 +183,11 @@ abstract class PublicEntityAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
+            ->setIden($iden)
             ->setFqdn($dto->getFqdn())
-            ->setPlatform($dto->getPlatform())
-            ->setBrand($dto->getBrand())
-            ->setClient($dto->getClient())
+            ->setPlatform($platform)
+            ->setBrand($brand)
+            ->setClient($client)
             ->setName($name);
 
         return $this;

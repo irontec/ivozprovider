@@ -124,17 +124,27 @@ abstract class ChangelogAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ChangelogDto::class);
+        $entity = $dto->getEntity();
+        Assertion::notNull($entity, 'getEntity value is null, but non null value was expected.');
+        $entityId = $dto->getEntityId();
+        Assertion::notNull($entityId, 'getEntityId value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
+        $microtime = $dto->getMicrotime();
+        Assertion::notNull($microtime, 'getMicrotime value is null, but non null value was expected.');
+        $command = $dto->getCommand();
+        Assertion::notNull($command, 'getCommand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getEntity(),
-            $dto->getEntityId(),
-            $dto->getCreatedOn(),
-            $dto->getMicrotime()
+            $entity,
+            $entityId,
+            $createdOn,
+            $microtime
         );
 
         $self
             ->setData($dto->getData())
-            ->setCommand($fkTransformer->transform($dto->getCommand()));
+            ->setCommand($fkTransformer->transform($command));
 
         $self->initChangelog();
 
@@ -151,13 +161,24 @@ abstract class ChangelogAbstract
     ): static {
         Assertion::isInstanceOf($dto, ChangelogDto::class);
 
+        $entity = $dto->getEntity();
+        Assertion::notNull($entity, 'getEntity value is null, but non null value was expected.');
+        $entityId = $dto->getEntityId();
+        Assertion::notNull($entityId, 'getEntityId value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
+        $microtime = $dto->getMicrotime();
+        Assertion::notNull($microtime, 'getMicrotime value is null, but non null value was expected.');
+        $command = $dto->getCommand();
+        Assertion::notNull($command, 'getCommand value is null, but non null value was expected.');
+
         $this
-            ->setEntity($dto->getEntity())
-            ->setEntityId($dto->getEntityId())
+            ->setEntity($entity)
+            ->setEntityId($entityId)
             ->setData($dto->getData())
-            ->setCreatedOn($dto->getCreatedOn())
-            ->setMicrotime($dto->getMicrotime())
-            ->setCommand($fkTransformer->transform($dto->getCommand()));
+            ->setCreatedOn($createdOn)
+            ->setMicrotime($microtime)
+            ->setCommand($fkTransformer->transform($command));
 
         return $this;
     }

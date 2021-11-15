@@ -145,16 +145,22 @@ abstract class CalendarPeriodAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodDto::class);
+        $startDate = $dto->getStartDate();
+        Assertion::notNull($startDate, 'getStartDate value is null, but non null value was expected.');
+        $endDate = $dto->getEndDate();
+        Assertion::notNull($endDate, 'getEndDate value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartDate(),
-            $dto->getEndDate()
+            $startDate,
+            $endDate
         );
 
         $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -175,12 +181,19 @@ abstract class CalendarPeriodAbstract
     ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodDto::class);
 
+        $startDate = $dto->getStartDate();
+        Assertion::notNull($startDate, 'getStartDate value is null, but non null value was expected.');
+        $endDate = $dto->getEndDate();
+        Assertion::notNull($endDate, 'getEndDate value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
+
         $this
-            ->setStartDate($dto->getStartDate())
-            ->setEndDate($dto->getEndDate())
+            ->setStartDate($startDate)
+            ->setEndDate($endDate)
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))

@@ -116,16 +116,24 @@ abstract class ConferenceRoomAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $pinProtected = $dto->getPinProtected();
+        Assertion::notNull($pinProtected, 'getPinProtected value is null, but non null value was expected.');
+        $maxMembers = $dto->getMaxMembers();
+        Assertion::notNull($maxMembers, 'getMaxMembers value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getPinProtected(),
-            $dto->getMaxMembers()
+            $name,
+            $pinProtected,
+            $maxMembers
         );
 
         $self
             ->setPinCode($dto->getPinCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -142,12 +150,21 @@ abstract class ConferenceRoomAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $pinProtected = $dto->getPinProtected();
+        Assertion::notNull($pinProtected, 'getPinProtected value is null, but non null value was expected.');
+        $maxMembers = $dto->getMaxMembers();
+        Assertion::notNull($maxMembers, 'getMaxMembers value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setPinProtected($dto->getPinProtected())
+            ->setName($name)
+            ->setPinProtected($pinProtected)
             ->setPinCode($dto->getPinCode())
-            ->setMaxMembers($dto->getMaxMembers())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setMaxMembers($maxMembers)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

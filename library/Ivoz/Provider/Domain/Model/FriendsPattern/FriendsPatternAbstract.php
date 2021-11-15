@@ -105,14 +105,20 @@ abstract class FriendsPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FriendsPatternDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $regExp = $dto->getRegExp();
+        Assertion::notNull($regExp, 'getRegExp value is null, but non null value was expected.');
+        $friend = $dto->getFriend();
+        Assertion::notNull($friend, 'getFriend value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getRegExp()
+            $name,
+            $regExp
         );
 
         $self
-            ->setFriend($fkTransformer->transform($dto->getFriend()));
+            ->setFriend($fkTransformer->transform($friend));
 
         $self->initChangelog();
 
@@ -129,10 +135,17 @@ abstract class FriendsPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, FriendsPatternDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $regExp = $dto->getRegExp();
+        Assertion::notNull($regExp, 'getRegExp value is null, but non null value was expected.');
+        $friend = $dto->getFriend();
+        Assertion::notNull($friend, 'getFriend value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setRegExp($dto->getRegExp())
-            ->setFriend($fkTransformer->transform($dto->getFriend()));
+            ->setName($name)
+            ->setRegExp($regExp)
+            ->setFriend($fkTransformer->transform($friend));
 
         return $this;
     }

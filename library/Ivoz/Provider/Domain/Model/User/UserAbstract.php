@@ -272,27 +272,55 @@ abstract class UserAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UserDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $lastname = $dto->getLastname();
+        Assertion::notNull($lastname, 'getLastname value is null, but non null value was expected.');
+        $doNotDisturb = $dto->getDoNotDisturb();
+        Assertion::notNull($doNotDisturb, 'getDoNotDisturb value is null, but non null value was expected.');
+        $isBoss = $dto->getIsBoss();
+        Assertion::notNull($isBoss, 'getIsBoss value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $externalIpCalls = $dto->getExternalIpCalls();
+        Assertion::notNull($externalIpCalls, 'getExternalIpCalls value is null, but non null value was expected.');
+        $rejectCallMethod = $dto->getRejectCallMethod();
+        Assertion::notNull($rejectCallMethod, 'getRejectCallMethod value is null, but non null value was expected.');
+        $voicemailEnabled = $dto->getVoicemailEnabled();
+        Assertion::notNull($voicemailEnabled, 'getVoicemailEnabled value is null, but non null value was expected.');
+        $voicemailSendMail = $dto->getVoicemailSendMail();
+        Assertion::notNull($voicemailSendMail, 'getVoicemailSendMail value is null, but non null value was expected.');
+        $voicemailAttachSound = $dto->getVoicemailAttachSound();
+        Assertion::notNull($voicemailAttachSound, 'getVoicemailAttachSound value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $gsQRCode = $dto->getGsQRCode();
+        Assertion::notNull($gsQRCode, 'getGsQRCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getLastname(),
-            $dto->getDoNotDisturb(),
-            $dto->getIsBoss(),
-            $dto->getActive(),
-            $dto->getMaxCalls(),
-            $dto->getExternalIpCalls(),
-            $dto->getRejectCallMethod(),
-            $dto->getVoicemailEnabled(),
-            $dto->getVoicemailSendMail(),
-            $dto->getVoicemailAttachSound(),
-            $dto->getMultiContact(),
-            $dto->getGsQRCode()
+            $name,
+            $lastname,
+            $doNotDisturb,
+            $isBoss,
+            $active,
+            $maxCalls,
+            $externalIpCalls,
+            $rejectCallMethod,
+            $voicemailEnabled,
+            $voicemailSendMail,
+            $voicemailAttachSound,
+            $multiContact,
+            $gsQRCode
         );
 
         $self
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
             ->setBossAssistantWhiteList($fkTransformer->transform($dto->getBossAssistantWhiteList()))
@@ -320,23 +348,52 @@ abstract class UserAbstract
     ): static {
         Assertion::isInstanceOf($dto, UserDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $lastname = $dto->getLastname();
+        Assertion::notNull($lastname, 'getLastname value is null, but non null value was expected.');
+        $doNotDisturb = $dto->getDoNotDisturb();
+        Assertion::notNull($doNotDisturb, 'getDoNotDisturb value is null, but non null value was expected.');
+        $isBoss = $dto->getIsBoss();
+        Assertion::notNull($isBoss, 'getIsBoss value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $externalIpCalls = $dto->getExternalIpCalls();
+        Assertion::notNull($externalIpCalls, 'getExternalIpCalls value is null, but non null value was expected.');
+        $rejectCallMethod = $dto->getRejectCallMethod();
+        Assertion::notNull($rejectCallMethod, 'getRejectCallMethod value is null, but non null value was expected.');
+        $voicemailEnabled = $dto->getVoicemailEnabled();
+        Assertion::notNull($voicemailEnabled, 'getVoicemailEnabled value is null, but non null value was expected.');
+        $voicemailSendMail = $dto->getVoicemailSendMail();
+        Assertion::notNull($voicemailSendMail, 'getVoicemailSendMail value is null, but non null value was expected.');
+        $voicemailAttachSound = $dto->getVoicemailAttachSound();
+        Assertion::notNull($voicemailAttachSound, 'getVoicemailAttachSound value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $gsQRCode = $dto->getGsQRCode();
+        Assertion::notNull($gsQRCode, 'getGsQRCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setLastname($dto->getLastname())
+            ->setName($name)
+            ->setLastname($lastname)
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
-            ->setDoNotDisturb($dto->getDoNotDisturb())
-            ->setIsBoss($dto->getIsBoss())
-            ->setActive($dto->getActive())
-            ->setMaxCalls($dto->getMaxCalls())
-            ->setExternalIpCalls($dto->getExternalIpCalls())
-            ->setRejectCallMethod($dto->getRejectCallMethod())
-            ->setVoicemailEnabled($dto->getVoicemailEnabled())
-            ->setVoicemailSendMail($dto->getVoicemailSendMail())
-            ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
-            ->setMultiContact($dto->getMultiContact())
-            ->setGsQRCode($dto->getGsQRCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDoNotDisturb($doNotDisturb)
+            ->setIsBoss($isBoss)
+            ->setActive($active)
+            ->setMaxCalls($maxCalls)
+            ->setExternalIpCalls($externalIpCalls)
+            ->setRejectCallMethod($rejectCallMethod)
+            ->setVoicemailEnabled($voicemailEnabled)
+            ->setVoicemailSendMail($voicemailSendMail)
+            ->setVoicemailAttachSound($voicemailAttachSound)
+            ->setMultiContact($multiContact)
+            ->setGsQRCode($gsQRCode)
+            ->setCompany($fkTransformer->transform($company))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
             ->setBossAssistantWhiteList($fkTransformer->transform($dto->getBossAssistantWhiteList()))

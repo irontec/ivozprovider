@@ -175,16 +175,20 @@ abstract class ConditionalRoutesConditionAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $conditionalRoute = $dto->getConditionalRoute();
+        Assertion::notNull($conditionalRoute, 'getConditionalRoute value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority()
+            $priority
         );
 
         $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setConditionalRoute($fkTransformer->transform($conditionalRoute))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
@@ -210,12 +214,17 @@ abstract class ConditionalRoutesConditionAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $conditionalRoute = $dto->getConditionalRoute();
+        Assertion::notNull($conditionalRoute, 'getConditionalRoute value is null, but non null value was expected.');
+
         $this
-            ->setPriority($dto->getPriority())
+            ->setPriority($priority)
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
+            ->setConditionalRoute($fkTransformer->transform($conditionalRoute))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))

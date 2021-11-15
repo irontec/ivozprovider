@@ -121,10 +121,14 @@ abstract class TransformationRuleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getDescription()
+            $type,
+            $description
         );
 
         $self
@@ -148,9 +152,14 @@ abstract class TransformationRuleAbstract
     ): static {
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setDescription($dto->getDescription())
+            ->setType($type)
+            ->setDescription($description)
             ->setPriority($dto->getPriority())
             ->setMatchExpr($dto->getMatchExpr())
             ->setReplaceExpr($dto->getReplaceExpr())

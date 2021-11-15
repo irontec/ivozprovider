@@ -184,6 +184,14 @@ abstract class BrandAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $language = $dto->getLanguage();
+        Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
+        $defaultTimezone = $dto->getDefaultTimezone();
+        Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -202,8 +210,8 @@ abstract class BrandAbstract
         );
 
         $self = new static(
-            $dto->getName(),
-            $dto->getMaxCalls(),
+            $name,
+            $maxCalls,
             $logo,
             $invoice
         );
@@ -213,8 +221,8 @@ abstract class BrandAbstract
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setLanguage($fkTransformer->transform($language))
+            ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
@@ -237,6 +245,15 @@ abstract class BrandAbstract
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $language = $dto->getLanguage();
+        Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
+        $defaultTimezone = $dto->getDefaultTimezone();
+        Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
+
         $logo = new Logo(
             $dto->getLogoFileSize(),
             $dto->getLogoMimeType(),
@@ -254,16 +271,16 @@ abstract class BrandAbstract
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDomainUsers($dto->getDomainUsers())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setMaxCalls($dto->getMaxCalls())
+            ->setMaxCalls($maxCalls)
             ->setLogo($logo)
             ->setInvoice($invoice)
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setLanguage($fkTransformer->transform($language))
+            ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))

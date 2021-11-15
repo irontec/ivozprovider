@@ -276,31 +276,77 @@ abstract class UsersActiveWatcherAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersActiveWatcherDto::class);
+        $presentityUri = $dto->getPresentityUri();
+        Assertion::notNull($presentityUri, 'getPresentityUri value is null, but non null value was expected.');
+        $watcherUsername = $dto->getWatcherUsername();
+        Assertion::notNull($watcherUsername, 'getWatcherUsername value is null, but non null value was expected.');
+        $watcherDomain = $dto->getWatcherDomain();
+        Assertion::notNull($watcherDomain, 'getWatcherDomain value is null, but non null value was expected.');
+        $toUser = $dto->getToUser();
+        Assertion::notNull($toUser, 'getToUser value is null, but non null value was expected.');
+        $toDomain = $dto->getToDomain();
+        Assertion::notNull($toDomain, 'getToDomain value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $toTag = $dto->getToTag();
+        Assertion::notNull($toTag, 'getToTag value is null, but non null value was expected.');
+        $fromTag = $dto->getFromTag();
+        Assertion::notNull($fromTag, 'getFromTag value is null, but non null value was expected.');
+        $callid = $dto->getCallid();
+        Assertion::notNull($callid, 'getCallid value is null, but non null value was expected.');
+        $localCseq = $dto->getLocalCseq();
+        Assertion::notNull($localCseq, 'getLocalCseq value is null, but non null value was expected.');
+        $remoteCseq = $dto->getRemoteCseq();
+        Assertion::notNull($remoteCseq, 'getRemoteCseq value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $status = $dto->getStatus();
+        Assertion::notNull($status, 'getStatus value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $socketInfo = $dto->getSocketInfo();
+        Assertion::notNull($socketInfo, 'getSocketInfo value is null, but non null value was expected.');
+        $localContact = $dto->getLocalContact();
+        Assertion::notNull($localContact, 'getLocalContact value is null, but non null value was expected.');
+        $fromUser = $dto->getFromUser();
+        Assertion::notNull($fromUser, 'getFromUser value is null, but non null value was expected.');
+        $fromDomain = $dto->getFromDomain();
+        Assertion::notNull($fromDomain, 'getFromDomain value is null, but non null value was expected.');
+        $updated = $dto->getUpdated();
+        Assertion::notNull($updated, 'getUpdated value is null, but non null value was expected.');
+        $updatedWinfo = $dto->getUpdatedWinfo();
+        Assertion::notNull($updatedWinfo, 'getUpdatedWinfo value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $userAgent = $dto->getUserAgent();
+        Assertion::notNull($userAgent, 'getUserAgent value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPresentityUri(),
-            $dto->getWatcherUsername(),
-            $dto->getWatcherDomain(),
-            $dto->getToUser(),
-            $dto->getToDomain(),
-            $dto->getEvent(),
-            $dto->getToTag(),
-            $dto->getFromTag(),
-            $dto->getCallid(),
-            $dto->getLocalCseq(),
-            $dto->getRemoteCseq(),
-            $dto->getContact(),
-            $dto->getExpires(),
-            $dto->getStatus(),
-            $dto->getVersion(),
-            $dto->getSocketInfo(),
-            $dto->getLocalContact(),
-            $dto->getFromUser(),
-            $dto->getFromDomain(),
-            $dto->getUpdated(),
-            $dto->getUpdatedWinfo(),
-            $dto->getFlags(),
-            $dto->getUserAgent()
+            $presentityUri,
+            $watcherUsername,
+            $watcherDomain,
+            $toUser,
+            $toDomain,
+            $event,
+            $toTag,
+            $fromTag,
+            $callid,
+            $localCseq,
+            $remoteCseq,
+            $contact,
+            $expires,
+            $status,
+            $version,
+            $socketInfo,
+            $localContact,
+            $fromUser,
+            $fromDomain,
+            $updated,
+            $updatedWinfo,
+            $flags,
+            $userAgent
         );
 
         $self
@@ -323,33 +369,80 @@ abstract class UsersActiveWatcherAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersActiveWatcherDto::class);
 
+        $presentityUri = $dto->getPresentityUri();
+        Assertion::notNull($presentityUri, 'getPresentityUri value is null, but non null value was expected.');
+        $watcherUsername = $dto->getWatcherUsername();
+        Assertion::notNull($watcherUsername, 'getWatcherUsername value is null, but non null value was expected.');
+        $watcherDomain = $dto->getWatcherDomain();
+        Assertion::notNull($watcherDomain, 'getWatcherDomain value is null, but non null value was expected.');
+        $toUser = $dto->getToUser();
+        Assertion::notNull($toUser, 'getToUser value is null, but non null value was expected.');
+        $toDomain = $dto->getToDomain();
+        Assertion::notNull($toDomain, 'getToDomain value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $toTag = $dto->getToTag();
+        Assertion::notNull($toTag, 'getToTag value is null, but non null value was expected.');
+        $fromTag = $dto->getFromTag();
+        Assertion::notNull($fromTag, 'getFromTag value is null, but non null value was expected.');
+        $callid = $dto->getCallid();
+        Assertion::notNull($callid, 'getCallid value is null, but non null value was expected.');
+        $localCseq = $dto->getLocalCseq();
+        Assertion::notNull($localCseq, 'getLocalCseq value is null, but non null value was expected.');
+        $remoteCseq = $dto->getRemoteCseq();
+        Assertion::notNull($remoteCseq, 'getRemoteCseq value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $status = $dto->getStatus();
+        Assertion::notNull($status, 'getStatus value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $socketInfo = $dto->getSocketInfo();
+        Assertion::notNull($socketInfo, 'getSocketInfo value is null, but non null value was expected.');
+        $localContact = $dto->getLocalContact();
+        Assertion::notNull($localContact, 'getLocalContact value is null, but non null value was expected.');
+        $fromUser = $dto->getFromUser();
+        Assertion::notNull($fromUser, 'getFromUser value is null, but non null value was expected.');
+        $fromDomain = $dto->getFromDomain();
+        Assertion::notNull($fromDomain, 'getFromDomain value is null, but non null value was expected.');
+        $updated = $dto->getUpdated();
+        Assertion::notNull($updated, 'getUpdated value is null, but non null value was expected.');
+        $updatedWinfo = $dto->getUpdatedWinfo();
+        Assertion::notNull($updatedWinfo, 'getUpdatedWinfo value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $userAgent = $dto->getUserAgent();
+        Assertion::notNull($userAgent, 'getUserAgent value is null, but non null value was expected.');
+
         $this
-            ->setPresentityUri($dto->getPresentityUri())
-            ->setWatcherUsername($dto->getWatcherUsername())
-            ->setWatcherDomain($dto->getWatcherDomain())
-            ->setToUser($dto->getToUser())
-            ->setToDomain($dto->getToDomain())
-            ->setEvent($dto->getEvent())
+            ->setPresentityUri($presentityUri)
+            ->setWatcherUsername($watcherUsername)
+            ->setWatcherDomain($watcherDomain)
+            ->setToUser($toUser)
+            ->setToDomain($toDomain)
+            ->setEvent($event)
             ->setEventId($dto->getEventId())
-            ->setToTag($dto->getToTag())
-            ->setFromTag($dto->getFromTag())
-            ->setCallid($dto->getCallid())
-            ->setLocalCseq($dto->getLocalCseq())
-            ->setRemoteCseq($dto->getRemoteCseq())
-            ->setContact($dto->getContact())
+            ->setToTag($toTag)
+            ->setFromTag($fromTag)
+            ->setCallid($callid)
+            ->setLocalCseq($localCseq)
+            ->setRemoteCseq($remoteCseq)
+            ->setContact($contact)
             ->setRecordRoute($dto->getRecordRoute())
-            ->setExpires($dto->getExpires())
-            ->setStatus($dto->getStatus())
+            ->setExpires($expires)
+            ->setStatus($status)
             ->setReason($dto->getReason())
-            ->setVersion($dto->getVersion())
-            ->setSocketInfo($dto->getSocketInfo())
-            ->setLocalContact($dto->getLocalContact())
-            ->setFromUser($dto->getFromUser())
-            ->setFromDomain($dto->getFromDomain())
-            ->setUpdated($dto->getUpdated())
-            ->setUpdatedWinfo($dto->getUpdatedWinfo())
-            ->setFlags($dto->getFlags())
-            ->setUserAgent($dto->getUserAgent());
+            ->setVersion($version)
+            ->setSocketInfo($socketInfo)
+            ->setLocalContact($localContact)
+            ->setFromUser($fromUser)
+            ->setFromDomain($fromDomain)
+            ->setUpdated($updated)
+            ->setUpdatedWinfo($updatedWinfo)
+            ->setFlags($flags)
+            ->setUserAgent($userAgent);
 
         return $this;
     }

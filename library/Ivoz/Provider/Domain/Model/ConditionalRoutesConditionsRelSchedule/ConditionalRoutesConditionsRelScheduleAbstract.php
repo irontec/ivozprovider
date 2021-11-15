@@ -98,12 +98,14 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelScheduleDto::class);
 
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
+
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         return $this;
     }

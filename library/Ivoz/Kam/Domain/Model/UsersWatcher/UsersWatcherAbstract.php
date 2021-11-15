@@ -134,14 +134,26 @@ abstract class UsersWatcherAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersWatcherDto::class);
+        $presentityUri = $dto->getPresentityUri();
+        Assertion::notNull($presentityUri, 'getPresentityUri value is null, but non null value was expected.');
+        $watcherUsername = $dto->getWatcherUsername();
+        Assertion::notNull($watcherUsername, 'getWatcherUsername value is null, but non null value was expected.');
+        $watcherDomain = $dto->getWatcherDomain();
+        Assertion::notNull($watcherDomain, 'getWatcherDomain value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $status = $dto->getStatus();
+        Assertion::notNull($status, 'getStatus value is null, but non null value was expected.');
+        $insertedTime = $dto->getInsertedTime();
+        Assertion::notNull($insertedTime, 'getInsertedTime value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPresentityUri(),
-            $dto->getWatcherUsername(),
-            $dto->getWatcherDomain(),
-            $dto->getEvent(),
-            $dto->getStatus(),
-            $dto->getInsertedTime()
+            $presentityUri,
+            $watcherUsername,
+            $watcherDomain,
+            $event,
+            $status,
+            $insertedTime
         );
 
         $self
@@ -162,14 +174,27 @@ abstract class UsersWatcherAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersWatcherDto::class);
 
+        $presentityUri = $dto->getPresentityUri();
+        Assertion::notNull($presentityUri, 'getPresentityUri value is null, but non null value was expected.');
+        $watcherUsername = $dto->getWatcherUsername();
+        Assertion::notNull($watcherUsername, 'getWatcherUsername value is null, but non null value was expected.');
+        $watcherDomain = $dto->getWatcherDomain();
+        Assertion::notNull($watcherDomain, 'getWatcherDomain value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $status = $dto->getStatus();
+        Assertion::notNull($status, 'getStatus value is null, but non null value was expected.');
+        $insertedTime = $dto->getInsertedTime();
+        Assertion::notNull($insertedTime, 'getInsertedTime value is null, but non null value was expected.');
+
         $this
-            ->setPresentityUri($dto->getPresentityUri())
-            ->setWatcherUsername($dto->getWatcherUsername())
-            ->setWatcherDomain($dto->getWatcherDomain())
-            ->setEvent($dto->getEvent())
-            ->setStatus($dto->getStatus())
+            ->setPresentityUri($presentityUri)
+            ->setWatcherUsername($watcherUsername)
+            ->setWatcherDomain($watcherDomain)
+            ->setEvent($event)
+            ->setStatus($status)
             ->setReason($dto->getReason())
-            ->setInsertedTime($dto->getInsertedTime());
+            ->setInsertedTime($insertedTime);
 
         return $this;
     }

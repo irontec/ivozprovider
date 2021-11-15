@@ -98,12 +98,14 @@ abstract class ExternalCallFilterWhiteListAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ExternalCallFilterWhiteListAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
 
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
+
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         return $this;
     }

@@ -119,10 +119,14 @@ abstract class InvoiceTemplateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $template = $dto->getTemplate();
+        Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTemplate()
+            $name,
+            $template
         );
 
         $self
@@ -146,10 +150,15 @@ abstract class InvoiceTemplateAbstract
     ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $template = $dto->getTemplate();
+        Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription())
-            ->setTemplate($dto->getTemplate())
+            ->setTemplate($template)
             ->setTemplateHeader($dto->getTemplateHeader())
             ->setTemplateFooter($dto->getTemplateFooter())
             ->setBrand($fkTransformer->transform($dto->getBrand()));

@@ -216,24 +216,56 @@ abstract class UsersPuaAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersPuaDto::class);
+        $presUri = $dto->getPresUri();
+        Assertion::notNull($presUri, 'getPresUri value is null, but non null value was expected.');
+        $presId = $dto->getPresId();
+        Assertion::notNull($presId, 'getPresId value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $desiredExpires = $dto->getDesiredExpires();
+        Assertion::notNull($desiredExpires, 'getDesiredExpires value is null, but non null value was expected.');
+        $flag = $dto->getFlag();
+        Assertion::notNull($flag, 'getFlag value is null, but non null value was expected.');
+        $etag = $dto->getEtag();
+        Assertion::notNull($etag, 'getEtag value is null, but non null value was expected.');
+        $watcherUri = $dto->getWatcherUri();
+        Assertion::notNull($watcherUri, 'getWatcherUri value is null, but non null value was expected.');
+        $callId = $dto->getCallId();
+        Assertion::notNull($callId, 'getCallId value is null, but non null value was expected.');
+        $toTag = $dto->getToTag();
+        Assertion::notNull($toTag, 'getToTag value is null, but non null value was expected.');
+        $fromTag = $dto->getFromTag();
+        Assertion::notNull($fromTag, 'getFromTag value is null, but non null value was expected.');
+        $cseq = $dto->getCseq();
+        Assertion::notNull($cseq, 'getCseq value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $remoteContact = $dto->getRemoteContact();
+        Assertion::notNull($remoteContact, 'getRemoteContact value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $extraHeaders = $dto->getExtraHeaders();
+        Assertion::notNull($extraHeaders, 'getExtraHeaders value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPresUri(),
-            $dto->getPresId(),
-            $dto->getEvent(),
-            $dto->getExpires(),
-            $dto->getDesiredExpires(),
-            $dto->getFlag(),
-            $dto->getEtag(),
-            $dto->getWatcherUri(),
-            $dto->getCallId(),
-            $dto->getToTag(),
-            $dto->getFromTag(),
-            $dto->getCseq(),
-            $dto->getContact(),
-            $dto->getRemoteContact(),
-            $dto->getVersion(),
-            $dto->getExtraHeaders()
+            $presUri,
+            $presId,
+            $event,
+            $expires,
+            $desiredExpires,
+            $flag,
+            $etag,
+            $watcherUri,
+            $callId,
+            $toTag,
+            $fromTag,
+            $cseq,
+            $contact,
+            $remoteContact,
+            $version,
+            $extraHeaders
         );
 
         $self
@@ -255,25 +287,58 @@ abstract class UsersPuaAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersPuaDto::class);
 
+        $presUri = $dto->getPresUri();
+        Assertion::notNull($presUri, 'getPresUri value is null, but non null value was expected.');
+        $presId = $dto->getPresId();
+        Assertion::notNull($presId, 'getPresId value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $desiredExpires = $dto->getDesiredExpires();
+        Assertion::notNull($desiredExpires, 'getDesiredExpires value is null, but non null value was expected.');
+        $flag = $dto->getFlag();
+        Assertion::notNull($flag, 'getFlag value is null, but non null value was expected.');
+        $etag = $dto->getEtag();
+        Assertion::notNull($etag, 'getEtag value is null, but non null value was expected.');
+        $watcherUri = $dto->getWatcherUri();
+        Assertion::notNull($watcherUri, 'getWatcherUri value is null, but non null value was expected.');
+        $callId = $dto->getCallId();
+        Assertion::notNull($callId, 'getCallId value is null, but non null value was expected.');
+        $toTag = $dto->getToTag();
+        Assertion::notNull($toTag, 'getToTag value is null, but non null value was expected.');
+        $fromTag = $dto->getFromTag();
+        Assertion::notNull($fromTag, 'getFromTag value is null, but non null value was expected.');
+        $cseq = $dto->getCseq();
+        Assertion::notNull($cseq, 'getCseq value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $remoteContact = $dto->getRemoteContact();
+        Assertion::notNull($remoteContact, 'getRemoteContact value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $extraHeaders = $dto->getExtraHeaders();
+        Assertion::notNull($extraHeaders, 'getExtraHeaders value is null, but non null value was expected.');
+
         $this
-            ->setPresUri($dto->getPresUri())
-            ->setPresId($dto->getPresId())
-            ->setEvent($dto->getEvent())
-            ->setExpires($dto->getExpires())
-            ->setDesiredExpires($dto->getDesiredExpires())
-            ->setFlag($dto->getFlag())
-            ->setEtag($dto->getEtag())
+            ->setPresUri($presUri)
+            ->setPresId($presId)
+            ->setEvent($event)
+            ->setExpires($expires)
+            ->setDesiredExpires($desiredExpires)
+            ->setFlag($flag)
+            ->setEtag($etag)
             ->setTupleId($dto->getTupleId())
-            ->setWatcherUri($dto->getWatcherUri())
-            ->setCallId($dto->getCallId())
-            ->setToTag($dto->getToTag())
-            ->setFromTag($dto->getFromTag())
-            ->setCseq($dto->getCseq())
+            ->setWatcherUri($watcherUri)
+            ->setCallId($callId)
+            ->setToTag($toTag)
+            ->setFromTag($fromTag)
+            ->setCseq($cseq)
             ->setRecordRoute($dto->getRecordRoute())
-            ->setContact($dto->getContact())
-            ->setRemoteContact($dto->getRemoteContact())
-            ->setVersion($dto->getVersion())
-            ->setExtraHeaders($dto->getExtraHeaders());
+            ->setContact($contact)
+            ->setRemoteContact($remoteContact)
+            ->setVersion($version)
+            ->setExtraHeaders($extraHeaders);
 
         return $this;
     }

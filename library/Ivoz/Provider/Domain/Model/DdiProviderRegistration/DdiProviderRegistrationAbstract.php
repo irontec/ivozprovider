@@ -152,21 +152,39 @@ abstract class DdiProviderRegistrationAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $realm = $dto->getRealm();
+        Assertion::notNull($realm, 'getRealm value is null, but non null value was expected.');
+        $authUsername = $dto->getAuthUsername();
+        Assertion::notNull($authUsername, 'getAuthUsername value is null, but non null value was expected.');
+        $authPassword = $dto->getAuthPassword();
+        Assertion::notNull($authPassword, 'getAuthPassword value is null, but non null value was expected.');
+        $authProxy = $dto->getAuthProxy();
+        Assertion::notNull($authProxy, 'getAuthProxy value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $contactUsername = $dto->getContactUsername();
+        Assertion::notNull($contactUsername, 'getContactUsername value is null, but non null value was expected.');
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getUsername(),
-            $dto->getDomain(),
-            $dto->getRealm(),
-            $dto->getAuthUsername(),
-            $dto->getAuthPassword(),
-            $dto->getAuthProxy(),
-            $dto->getExpires(),
-            $dto->getContactUsername()
+            $username,
+            $domain,
+            $realm,
+            $authUsername,
+            $authPassword,
+            $authProxy,
+            $expires,
+            $contactUsername
         );
 
         $self
             ->setMultiDdi($dto->getMultiDdi())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         $self->initChangelog();
 
@@ -183,17 +201,36 @@ abstract class DdiProviderRegistrationAbstract
     ): static {
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
 
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $realm = $dto->getRealm();
+        Assertion::notNull($realm, 'getRealm value is null, but non null value was expected.');
+        $authUsername = $dto->getAuthUsername();
+        Assertion::notNull($authUsername, 'getAuthUsername value is null, but non null value was expected.');
+        $authPassword = $dto->getAuthPassword();
+        Assertion::notNull($authPassword, 'getAuthPassword value is null, but non null value was expected.');
+        $authProxy = $dto->getAuthProxy();
+        Assertion::notNull($authProxy, 'getAuthProxy value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $contactUsername = $dto->getContactUsername();
+        Assertion::notNull($contactUsername, 'getContactUsername value is null, but non null value was expected.');
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
+
         $this
-            ->setUsername($dto->getUsername())
-            ->setDomain($dto->getDomain())
-            ->setRealm($dto->getRealm())
-            ->setAuthUsername($dto->getAuthUsername())
-            ->setAuthPassword($dto->getAuthPassword())
-            ->setAuthProxy($dto->getAuthProxy())
-            ->setExpires($dto->getExpires())
+            ->setUsername($username)
+            ->setDomain($domain)
+            ->setRealm($realm)
+            ->setAuthUsername($authUsername)
+            ->setAuthPassword($authPassword)
+            ->setAuthProxy($authProxy)
+            ->setExpires($expires)
             ->setMultiDdi($dto->getMultiDdi())
-            ->setContactUsername($dto->getContactUsername())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setContactUsername($contactUsername)
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         return $this;
     }

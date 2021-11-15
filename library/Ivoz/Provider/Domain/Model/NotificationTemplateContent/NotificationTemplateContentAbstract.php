@@ -130,17 +130,25 @@ abstract class NotificationTemplateContentAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateContentDto::class);
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $body = $dto->getBody();
+        Assertion::notNull($body, 'getBody value is null, but non null value was expected.');
+        $bodyType = $dto->getBodyType();
+        Assertion::notNull($bodyType, 'getBodyType value is null, but non null value was expected.');
+        $notificationTemplate = $dto->getNotificationTemplate();
+        Assertion::notNull($notificationTemplate, 'getNotificationTemplate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSubject(),
-            $dto->getBody(),
-            $dto->getBodyType()
+            $subject,
+            $body,
+            $bodyType
         );
 
         $self
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
-            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setNotificationTemplate($fkTransformer->transform($notificationTemplate))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
         $self->initChangelog();
@@ -158,13 +166,22 @@ abstract class NotificationTemplateContentAbstract
     ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateContentDto::class);
 
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $body = $dto->getBody();
+        Assertion::notNull($body, 'getBody value is null, but non null value was expected.');
+        $bodyType = $dto->getBodyType();
+        Assertion::notNull($bodyType, 'getBodyType value is null, but non null value was expected.');
+        $notificationTemplate = $dto->getNotificationTemplate();
+        Assertion::notNull($notificationTemplate, 'getNotificationTemplate value is null, but non null value was expected.');
+
         $this
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
-            ->setSubject($dto->getSubject())
-            ->setBody($dto->getBody())
-            ->setBodyType($dto->getBodyType())
-            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setSubject($subject)
+            ->setBody($body)
+            ->setBodyType($bodyType)
+            ->setNotificationTemplate($fkTransformer->transform($notificationTemplate))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
         return $this;

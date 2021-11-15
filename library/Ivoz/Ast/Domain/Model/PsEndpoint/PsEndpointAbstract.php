@@ -251,17 +251,35 @@ abstract class PsEndpointAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $context = $dto->getContext();
+        Assertion::notNull($context, 'getContext value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $oneHundredRel = $dto->getOneHundredRel();
+        Assertion::notNull($oneHundredRel, 'getOneHundredRel value is null, but non null value was expected.');
+        $t38Udptl = $dto->getT38Udptl();
+        Assertion::notNull($t38Udptl, 'getT38Udptl value is null, but non null value was expected.');
+        $t38UdptlEc = $dto->getT38UdptlEc();
+        Assertion::notNull($t38UdptlEc, 'getT38UdptlEc value is null, but non null value was expected.');
+        $t38UdptlMaxdatagram = $dto->getT38UdptlMaxdatagram();
+        Assertion::notNull($t38UdptlMaxdatagram, 'getT38UdptlMaxdatagram value is null, but non null value was expected.');
+        $t38UdptlNat = $dto->getT38UdptlNat();
+        Assertion::notNull($t38UdptlNat, 'getT38UdptlNat value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSorceryId(),
-            $dto->getContext(),
-            $dto->getDisallow(),
-            $dto->getAllow(),
-            $dto->getOneHundredRel(),
-            $dto->getT38Udptl(),
-            $dto->getT38UdptlEc(),
-            $dto->getT38UdptlMaxdatagram(),
-            $dto->getT38UdptlNat()
+            $sorceryId,
+            $context,
+            $disallow,
+            $allow,
+            $oneHundredRel,
+            $t38Udptl,
+            $t38UdptlEc,
+            $t38UdptlMaxdatagram,
+            $t38UdptlNat
         );
 
         $self
@@ -296,27 +314,46 @@ abstract class PsEndpointAbstract
     ): static {
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $context = $dto->getContext();
+        Assertion::notNull($context, 'getContext value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $oneHundredRel = $dto->getOneHundredRel();
+        Assertion::notNull($oneHundredRel, 'getOneHundredRel value is null, but non null value was expected.');
+        $t38Udptl = $dto->getT38Udptl();
+        Assertion::notNull($t38Udptl, 'getT38Udptl value is null, but non null value was expected.');
+        $t38UdptlEc = $dto->getT38UdptlEc();
+        Assertion::notNull($t38UdptlEc, 'getT38UdptlEc value is null, but non null value was expected.');
+        $t38UdptlMaxdatagram = $dto->getT38UdptlMaxdatagram();
+        Assertion::notNull($t38UdptlMaxdatagram, 'getT38UdptlMaxdatagram value is null, but non null value was expected.');
+        $t38UdptlNat = $dto->getT38UdptlNat();
+        Assertion::notNull($t38UdptlNat, 'getT38UdptlNat value is null, but non null value was expected.');
+
         $this
-            ->setSorceryId($dto->getSorceryId())
+            ->setSorceryId($sorceryId)
             ->setFromDomain($dto->getFromDomain())
             ->setAors($dto->getAors())
             ->setCallerid($dto->getCallerid())
-            ->setContext($dto->getContext())
-            ->setDisallow($dto->getDisallow())
-            ->setAllow($dto->getAllow())
+            ->setContext($context)
+            ->setDisallow($disallow)
+            ->setAllow($allow)
             ->setDirectMedia($dto->getDirectMedia())
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
             ->setNamedPickupGroup($dto->getNamedPickupGroup())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
-            ->setOneHundredRel($dto->getOneHundredRel())
+            ->setOneHundredRel($oneHundredRel)
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
-            ->setT38Udptl($dto->getT38Udptl())
-            ->setT38UdptlEc($dto->getT38UdptlEc())
-            ->setT38UdptlMaxdatagram($dto->getT38UdptlMaxdatagram())
-            ->setT38UdptlNat($dto->getT38UdptlNat())
+            ->setT38Udptl($t38Udptl)
+            ->setT38UdptlEc($t38UdptlEc)
+            ->setT38UdptlMaxdatagram($t38UdptlMaxdatagram)
+            ->setT38UdptlNat($t38UdptlNat)
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))

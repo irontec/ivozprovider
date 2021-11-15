@@ -262,22 +262,54 @@ abstract class ResidentialDeviceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $calleridUpdateHeader = $dto->getCalleridUpdateHeader();
+        Assertion::notNull($calleridUpdateHeader, 'getCalleridUpdateHeader value is null, but non null value was expected.');
+        $updateCallerid = $dto->getUpdateCallerid();
+        Assertion::notNull($updateCallerid, 'getUpdateCallerid value is null, but non null value was expected.');
+        $directConnectivity = $dto->getDirectConnectivity();
+        Assertion::notNull($directConnectivity, 'getDirectConnectivity value is null, but non null value was expected.');
+        $ddiIn = $dto->getDdiIn();
+        Assertion::notNull($ddiIn, 'getDdiIn value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getAuthNeeded(),
-            $dto->getDisallow(),
-            $dto->getAllow(),
-            $dto->getDirectMediaMethod(),
-            $dto->getCalleridUpdateHeader(),
-            $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity(),
-            $dto->getDdiIn(),
-            $dto->getMaxCalls(),
-            $dto->getT38Passthrough(),
-            $dto->getRtpEncryption(),
-            $dto->getMultiContact()
+            $name,
+            $description,
+            $authNeeded,
+            $disallow,
+            $allow,
+            $directMediaMethod,
+            $calleridUpdateHeader,
+            $updateCallerid,
+            $directConnectivity,
+            $ddiIn,
+            $maxCalls,
+            $t38Passthrough,
+            $rtpEncryption,
+            $multiContact
         );
 
         $self
@@ -286,9 +318,9 @@ abstract class ResidentialDeviceAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));
@@ -308,29 +340,62 @@ abstract class ResidentialDeviceAbstract
     ): static {
         Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $calleridUpdateHeader = $dto->getCalleridUpdateHeader();
+        Assertion::notNull($calleridUpdateHeader, 'getCalleridUpdateHeader value is null, but non null value was expected.');
+        $updateCallerid = $dto->getUpdateCallerid();
+        Assertion::notNull($updateCallerid, 'getUpdateCallerid value is null, but non null value was expected.');
+        $directConnectivity = $dto->getDirectConnectivity();
+        Assertion::notNull($directConnectivity, 'getDirectConnectivity value is null, but non null value was expected.');
+        $ddiIn = $dto->getDdiIn();
+        Assertion::notNull($ddiIn, 'getDdiIn value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
+            ->setName($name)
+            ->setDescription($description)
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
-            ->setAuthNeeded($dto->getAuthNeeded())
+            ->setAuthNeeded($authNeeded)
             ->setPassword($dto->getPassword())
-            ->setDisallow($dto->getDisallow())
-            ->setAllow($dto->getAllow())
-            ->setDirectMediaMethod($dto->getDirectMediaMethod())
-            ->setCalleridUpdateHeader($dto->getCalleridUpdateHeader())
-            ->setUpdateCallerid($dto->getUpdateCallerid())
+            ->setDisallow($disallow)
+            ->setAllow($allow)
+            ->setDirectMediaMethod($directMediaMethod)
+            ->setCalleridUpdateHeader($calleridUpdateHeader)
+            ->setUpdateCallerid($updateCallerid)
             ->setFromDomain($dto->getFromDomain())
-            ->setDirectConnectivity($dto->getDirectConnectivity())
-            ->setDdiIn($dto->getDdiIn())
-            ->setMaxCalls($dto->getMaxCalls())
-            ->setT38Passthrough($dto->getT38Passthrough())
-            ->setRtpEncryption($dto->getRtpEncryption())
-            ->setMultiContact($dto->getMultiContact())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDirectConnectivity($directConnectivity)
+            ->setDdiIn($ddiIn)
+            ->setMaxCalls($maxCalls)
+            ->setT38Passthrough($t38Passthrough)
+            ->setRtpEncryption($rtpEncryption)
+            ->setMultiContact($multiContact)
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));

@@ -105,10 +105,14 @@ abstract class NotificationTemplateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getType()
+            $name,
+            $type
         );
 
         $self
@@ -129,9 +133,14 @@ abstract class NotificationTemplateAbstract
     ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setType($dto->getType())
+            ->setName($name)
+            ->setType($type)
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         return $this;

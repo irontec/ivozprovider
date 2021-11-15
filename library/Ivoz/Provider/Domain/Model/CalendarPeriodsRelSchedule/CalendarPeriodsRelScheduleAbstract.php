@@ -98,12 +98,14 @@ abstract class CalendarPeriodsRelScheduleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class CalendarPeriodsRelScheduleAbstract
     ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
 
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
+
         $this
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         return $this;
     }

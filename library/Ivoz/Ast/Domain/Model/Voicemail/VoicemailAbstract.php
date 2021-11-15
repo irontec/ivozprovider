@@ -269,10 +269,14 @@ abstract class VoicemailAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, VoicemailDto::class);
+        $context = $dto->getContext();
+        Assertion::notNull($context, 'getContext value is null, but non null value was expected.');
+        $mailbox = $dto->getMailbox();
+        Assertion::notNull($mailbox, 'getMailbox value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getContext(),
-            $dto->getMailbox()
+            $context,
+            $mailbox
         );
 
         $self
@@ -325,9 +329,14 @@ abstract class VoicemailAbstract
     ): static {
         Assertion::isInstanceOf($dto, VoicemailDto::class);
 
+        $context = $dto->getContext();
+        Assertion::notNull($context, 'getContext value is null, but non null value was expected.');
+        $mailbox = $dto->getMailbox();
+        Assertion::notNull($mailbox, 'getMailbox value is null, but non null value was expected.');
+
         $this
-            ->setContext($dto->getContext())
-            ->setMailbox($dto->getMailbox())
+            ->setContext($context)
+            ->setMailbox($mailbox)
             ->setPassword($dto->getPassword())
             ->setFullname($dto->getFullname())
             ->setAlias($dto->getAlias())

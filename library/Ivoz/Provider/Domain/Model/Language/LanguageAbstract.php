@@ -98,6 +98,8 @@ abstract class LanguageAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -107,7 +109,7 @@ abstract class LanguageAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
+            $iden,
             $name
         );
 
@@ -128,6 +130,9 @@ abstract class LanguageAbstract
     ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -136,7 +141,7 @@ abstract class LanguageAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
+            ->setIden($iden)
             ->setName($name);
 
         return $this;

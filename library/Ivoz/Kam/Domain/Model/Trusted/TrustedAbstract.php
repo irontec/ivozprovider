@@ -130,9 +130,13 @@ abstract class TrustedAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrustedDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority()
+            $priority
         );
 
         $self
@@ -142,7 +146,7 @@ abstract class TrustedAbstract
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -159,6 +163,11 @@ abstract class TrustedAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
             ->setSrcIp($dto->getSrcIp())
             ->setProto($dto->getProto())
@@ -166,8 +175,8 @@ abstract class TrustedAbstract
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setPriority($dto->getPriority())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setPriority($priority)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

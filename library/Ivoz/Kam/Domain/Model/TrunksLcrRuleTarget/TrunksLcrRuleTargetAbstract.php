@@ -127,17 +127,29 @@ abstract class TrunksLcrRuleTargetAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleTargetDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $rule = $dto->getRule();
+        Assertion::notNull($rule, 'getRule value is null, but non null value was expected.');
+        $gw = $dto->getGw();
+        Assertion::notNull($gw, 'getGw value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getPriority(),
-            $dto->getWeight()
+            $lcrId,
+            $priority,
+            $weight
         );
 
         $self
-            ->setRule($fkTransformer->transform($dto->getRule()))
-            ->setGw($fkTransformer->transform($dto->getGw()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setRule($fkTransformer->transform($rule))
+            ->setGw($fkTransformer->transform($gw))
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         $self->initChangelog();
 
@@ -154,13 +166,26 @@ abstract class TrunksLcrRuleTargetAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleTargetDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $rule = $dto->getRule();
+        Assertion::notNull($rule, 'getRule value is null, but non null value was expected.');
+        $gw = $dto->getGw();
+        Assertion::notNull($gw, 'getGw value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
-            ->setPriority($dto->getPriority())
-            ->setWeight($dto->getWeight())
-            ->setRule($fkTransformer->transform($dto->getRule()))
-            ->setGw($fkTransformer->transform($dto->getGw()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setLcrId($lcrId)
+            ->setPriority($priority)
+            ->setWeight($weight)
+            ->setRule($fkTransformer->transform($rule))
+            ->setGw($fkTransformer->transform($gw))
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         return $this;
     }

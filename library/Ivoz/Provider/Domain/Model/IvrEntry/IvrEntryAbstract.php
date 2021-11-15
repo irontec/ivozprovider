@@ -146,15 +146,21 @@ abstract class IvrEntryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, IvrEntryDto::class);
+        $entry = $dto->getEntry();
+        Assertion::notNull($entry, 'getEntry value is null, but non null value was expected.');
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+        $ivr = $dto->getIvr();
+        Assertion::notNull($ivr, 'getIvr value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getEntry(),
-            $dto->getRouteType()
+            $entry,
+            $routeType
         );
 
         $self
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -176,11 +182,18 @@ abstract class IvrEntryAbstract
     ): static {
         Assertion::isInstanceOf($dto, IvrEntryDto::class);
 
+        $entry = $dto->getEntry();
+        Assertion::notNull($entry, 'getEntry value is null, but non null value was expected.');
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+        $ivr = $dto->getIvr();
+        Assertion::notNull($ivr, 'getIvr value is null, but non null value was expected.');
+
         $this
-            ->setEntry($dto->getEntry())
-            ->setRouteType($dto->getRouteType())
+            ->setEntry($entry)
+            ->setRouteType($routeType)
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))

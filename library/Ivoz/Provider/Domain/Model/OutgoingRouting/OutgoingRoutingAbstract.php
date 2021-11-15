@@ -184,11 +184,19 @@ abstract class OutgoingRoutingAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority(),
-            $dto->getWeight(),
-            $dto->getStopper()
+            $priority,
+            $weight,
+            $stopper
         );
 
         $self
@@ -197,7 +205,7 @@ abstract class OutgoingRoutingAbstract
             ->setPrefix($dto->getPrefix())
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
@@ -220,16 +228,25 @@ abstract class OutgoingRoutingAbstract
     ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
             ->setType($dto->getType())
-            ->setPriority($dto->getPriority())
-            ->setWeight($dto->getWeight())
+            ->setPriority($priority)
+            ->setWeight($weight)
             ->setRoutingMode($dto->getRoutingMode())
             ->setPrefix($dto->getPrefix())
-            ->setStopper($dto->getStopper())
+            ->setStopper($stopper)
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))

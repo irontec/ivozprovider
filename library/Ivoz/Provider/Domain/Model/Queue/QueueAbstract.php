@@ -212,9 +212,13 @@ abstract class QueueAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPreventMissedCalls()
+            $preventMissedCalls
         );
 
         $self
@@ -230,7 +234,7 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
             ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
@@ -256,6 +260,11 @@ abstract class QueueAbstract
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
             ->setName($dto->getName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
@@ -269,8 +278,8 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setPreventMissedCalls($dto->getPreventMissedCalls())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPreventMissedCalls($preventMissedCalls)
+            ->setCompany($fkTransformer->transform($company))
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
             ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))

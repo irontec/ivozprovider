@@ -113,6 +113,8 @@ abstract class RatingPlanGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -134,7 +136,7 @@ abstract class RatingPlanGroupAbstract
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         $self->initChangelog();
@@ -151,6 +153,9 @@ abstract class RatingPlanGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
+
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -169,7 +174,7 @@ abstract class RatingPlanGroupAbstract
         $this
             ->setName($name)
             ->setDescription($description)
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         return $this;

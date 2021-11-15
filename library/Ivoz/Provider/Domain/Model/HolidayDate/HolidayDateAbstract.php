@@ -162,11 +162,19 @@ abstract class HolidayDateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $eventDate = $dto->getEventDate();
+        Assertion::notNull($eventDate, 'getEventDate value is null, but non null value was expected.');
+        $wholeDayEvent = $dto->getWholeDayEvent();
+        Assertion::notNull($wholeDayEvent, 'getWholeDayEvent value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getEventDate(),
-            $dto->getWholeDayEvent()
+            $name,
+            $eventDate,
+            $wholeDayEvent
         );
 
         $self
@@ -174,7 +182,7 @@ abstract class HolidayDateAbstract
             ->setTimeOut($dto->getTimeOut())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -195,15 +203,24 @@ abstract class HolidayDateAbstract
     ): static {
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $eventDate = $dto->getEventDate();
+        Assertion::notNull($eventDate, 'getEventDate value is null, but non null value was expected.');
+        $wholeDayEvent = $dto->getWholeDayEvent();
+        Assertion::notNull($wholeDayEvent, 'getWholeDayEvent value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setEventDate($dto->getEventDate())
-            ->setWholeDayEvent($dto->getWholeDayEvent())
+            ->setName($name)
+            ->setEventDate($eventDate)
+            ->setWholeDayEvent($wholeDayEvent)
             ->setTimeIn($dto->getTimeIn())
             ->setTimeOut($dto->getTimeOut())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))

@@ -111,15 +111,23 @@ abstract class RouteLockAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RouteLockDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $open = $dto->getOpen();
+        Assertion::notNull($open, 'getOpen value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getOpen()
+            $name,
+            $description,
+            $open
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -136,11 +144,20 @@ abstract class RouteLockAbstract
     ): static {
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $open = $dto->getOpen();
+        Assertion::notNull($open, 'getOpen value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
-            ->setOpen($dto->getOpen())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setName($name)
+            ->setDescription($description)
+            ->setOpen($open)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

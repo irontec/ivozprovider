@@ -163,16 +163,20 @@ abstract class ExtensionAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExtensionDto::class);
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getNumber()
+            $number
         );
 
         $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
@@ -196,12 +200,17 @@ abstract class ExtensionAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setNumber($dto->getNumber())
+            ->setNumber($number)
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))

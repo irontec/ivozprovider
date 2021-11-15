@@ -235,12 +235,20 @@ abstract class TrunksCdrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $parserScheduledAt = $dto->getParserScheduledAt();
+        Assertion::notNull($parserScheduledAt, 'getParserScheduledAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartTime(),
-            $dto->getEndTime(),
-            $dto->getDuration(),
-            $dto->getParserScheduledAt()
+            $startTime,
+            $endTime,
+            $duration,
+            $parserScheduledAt
         );
 
         $self
@@ -280,10 +288,19 @@ abstract class TrunksCdrAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $parserScheduledAt = $dto->getParserScheduledAt();
+        Assertion::notNull($parserScheduledAt, 'getParserScheduledAt value is null, but non null value was expected.');
+
         $this
-            ->setStartTime($dto->getStartTime())
-            ->setEndTime($dto->getEndTime())
-            ->setDuration($dto->getDuration())
+            ->setStartTime($startTime)
+            ->setEndTime($endTime)
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setCallid($dto->getCallid())
@@ -292,7 +309,7 @@ abstract class TrunksCdrAbstract
             ->setDiversion($dto->getDiversion())
             ->setBounced($dto->getBounced())
             ->setParsed($dto->getParsed())
-            ->setParserScheduledAt($dto->getParserScheduledAt())
+            ->setParserScheduledAt($parserScheduledAt)
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
             ->setBrand($fkTransformer->transform($dto->getBrand()))

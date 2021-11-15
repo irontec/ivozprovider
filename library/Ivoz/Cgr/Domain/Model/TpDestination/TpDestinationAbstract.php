@@ -119,16 +119,24 @@ abstract class TpDestinationAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpDestinationDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getPrefix(),
-            $dto->getCreatedAt()
+            $tpid,
+            $prefix,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setDestination($fkTransformer->transform($destination));
 
         $self->initChangelog();
 
@@ -145,12 +153,21 @@ abstract class TpDestinationAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpDestinationDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
-            ->setPrefix($dto->getPrefix())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setPrefix($prefix)
+            ->setCreatedAt($createdAt)
+            ->setDestination($fkTransformer->transform($destination));
 
         return $this;
     }

@@ -105,6 +105,10 @@ abstract class CurrencyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $symbol = $dto->getSymbol();
+        Assertion::notNull($symbol, 'getSymbol value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -114,8 +118,8 @@ abstract class CurrencyAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getSymbol(),
+            $iden,
+            $symbol,
             $name
         );
 
@@ -136,6 +140,11 @@ abstract class CurrencyAbstract
     ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $symbol = $dto->getSymbol();
+        Assertion::notNull($symbol, 'getSymbol value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -144,8 +153,8 @@ abstract class CurrencyAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
-            ->setSymbol($dto->getSymbol())
+            ->setIden($iden)
+            ->setSymbol($symbol)
             ->setName($name);
 
         return $this;

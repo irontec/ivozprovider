@@ -149,20 +149,36 @@ abstract class TpTimingAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpTimingDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $years = $dto->getYears();
+        Assertion::notNull($years, 'getYears value is null, but non null value was expected.');
+        $months = $dto->getMonths();
+        Assertion::notNull($months, 'getMonths value is null, but non null value was expected.');
+        $monthDays = $dto->getMonthDays();
+        Assertion::notNull($monthDays, 'getMonthDays value is null, but non null value was expected.');
+        $weekDays = $dto->getWeekDays();
+        Assertion::notNull($weekDays, 'getWeekDays value is null, but non null value was expected.');
+        $time = $dto->getTime();
+        Assertion::notNull($time, 'getTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getYears(),
-            $dto->getMonths(),
-            $dto->getMonthDays(),
-            $dto->getWeekDays(),
-            $dto->getTime(),
-            $dto->getCreatedAt()
+            $tpid,
+            $years,
+            $months,
+            $monthDays,
+            $weekDays,
+            $time,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         $self->initChangelog();
 
@@ -179,16 +195,33 @@ abstract class TpTimingAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpTimingDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $years = $dto->getYears();
+        Assertion::notNull($years, 'getYears value is null, but non null value was expected.');
+        $months = $dto->getMonths();
+        Assertion::notNull($months, 'getMonths value is null, but non null value was expected.');
+        $monthDays = $dto->getMonthDays();
+        Assertion::notNull($monthDays, 'getMonthDays value is null, but non null value was expected.');
+        $weekDays = $dto->getWeekDays();
+        Assertion::notNull($weekDays, 'getWeekDays value is null, but non null value was expected.');
+        $time = $dto->getTime();
+        Assertion::notNull($time, 'getTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
-            ->setYears($dto->getYears())
-            ->setMonths($dto->getMonths())
-            ->setMonthDays($dto->getMonthDays())
-            ->setWeekDays($dto->getWeekDays())
-            ->setTime($dto->getTime())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setYears($years)
+            ->setMonths($months)
+            ->setMonthDays($monthDays)
+            ->setWeekDays($weekDays)
+            ->setTime($time)
+            ->setCreatedAt($createdAt)
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         return $this;
     }

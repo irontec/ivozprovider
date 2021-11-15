@@ -129,6 +129,10 @@ abstract class WebPortalAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $urlType = $dto->getUrlType();
+        Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -137,8 +141,8 @@ abstract class WebPortalAbstract
         );
 
         $self = new static(
-            $dto->getUrl(),
-            $dto->getUrlType(),
+            $url,
+            $urlType,
             $logo
         );
 
@@ -163,6 +167,11 @@ abstract class WebPortalAbstract
     ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
 
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $urlType = $dto->getUrlType();
+        Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
+
         $logo = new Logo(
             $dto->getLogoFileSize(),
             $dto->getLogoMimeType(),
@@ -170,9 +179,9 @@ abstract class WebPortalAbstract
         );
 
         $this
-            ->setUrl($dto->getUrl())
+            ->setUrl($url)
             ->setKlearTheme($dto->getKlearTheme())
-            ->setUrlType($dto->getUrlType())
+            ->setUrlType($urlType)
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
             ->setLogo($logo)

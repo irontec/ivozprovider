@@ -98,12 +98,14 @@ abstract class ExternalCallFilterRelScheduleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ExternalCallFilterRelScheduleAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
 
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
+
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         return $this;
     }

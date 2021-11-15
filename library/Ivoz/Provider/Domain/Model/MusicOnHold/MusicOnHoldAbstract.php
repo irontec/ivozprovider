@@ -128,6 +128,8 @@ abstract class MusicOnHoldAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
@@ -142,7 +144,7 @@ abstract class MusicOnHoldAbstract
         );
 
         $self = new static(
-            $dto->getName(),
+            $name,
             $originalFile,
             $encodedFile
         );
@@ -167,6 +169,9 @@ abstract class MusicOnHoldAbstract
     ): static {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
             $dto->getOriginalFileMimeType(),
@@ -180,7 +185,7 @@ abstract class MusicOnHoldAbstract
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setStatus($dto->getStatus())
             ->setOriginalFile($originalFile)
             ->setEncodedFile($encodedFile)

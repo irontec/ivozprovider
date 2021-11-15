@@ -123,16 +123,20 @@ abstract class MatchListPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType()
+            $type
         );
 
         $self
             ->setDescription($dto->getDescription())
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setMatchList($fkTransformer->transform($matchList))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
@@ -150,12 +154,17 @@ abstract class MatchListPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
+
         $this
             ->setDescription($dto->getDescription())
-            ->setType($dto->getType())
+            ->setType($type)
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setMatchList($fkTransformer->transform($matchList))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         return $this;

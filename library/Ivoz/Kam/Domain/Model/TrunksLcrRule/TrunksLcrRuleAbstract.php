@@ -151,11 +151,19 @@ abstract class TrunksLcrRuleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $enabled = $dto->getEnabled();
+        Assertion::notNull($enabled, 'getEnabled value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getStopper(),
-            $dto->getEnabled()
+            $lcrId,
+            $stopper,
+            $enabled
         );
 
         $self
@@ -165,7 +173,7 @@ abstract class TrunksLcrRuleAbstract
             ->setMtTvalue($dto->getMtTvalue())
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
             ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         $self->initChangelog();
 
@@ -182,17 +190,26 @@ abstract class TrunksLcrRuleAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $enabled = $dto->getEnabled();
+        Assertion::notNull($enabled, 'getEnabled value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
+            ->setLcrId($lcrId)
             ->setPrefix($dto->getPrefix())
             ->setFromUri($dto->getFromUri())
             ->setRequestUri($dto->getRequestUri())
             ->setMtTvalue($dto->getMtTvalue())
-            ->setStopper($dto->getStopper())
-            ->setEnabled($dto->getEnabled())
+            ->setStopper($stopper)
+            ->setEnabled($enabled)
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
             ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         return $this;
     }

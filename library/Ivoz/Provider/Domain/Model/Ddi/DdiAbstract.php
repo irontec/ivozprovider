@@ -236,11 +236,21 @@ abstract class DdiAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DdiDto::class);
+        $ddi = $dto->getDdi();
+        Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
+        $recordCalls = $dto->getRecordCalls();
+        Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
+        $billInboundCalls = $dto->getBillInboundCalls();
+        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDdi(),
-            $dto->getRecordCalls(),
-            $dto->getBillInboundCalls()
+            $ddi,
+            $recordCalls,
+            $billInboundCalls
         );
 
         $self
@@ -248,8 +258,8 @@ abstract class DdiAbstract
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($company))
+            ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
@@ -279,16 +289,27 @@ abstract class DdiAbstract
     ): static {
         Assertion::isInstanceOf($dto, DdiDto::class);
 
+        $ddi = $dto->getDdi();
+        Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
+        $recordCalls = $dto->getRecordCalls();
+        Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
+        $billInboundCalls = $dto->getBillInboundCalls();
+        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDdi($dto->getDdi())
+            ->setDdi($ddi)
             ->setDdie164($dto->getDdie164())
-            ->setRecordCalls($dto->getRecordCalls())
+            ->setRecordCalls($recordCalls)
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
-            ->setBillInboundCalls($dto->getBillInboundCalls())
+            ->setBillInboundCalls($billInboundCalls)
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($company))
+            ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))

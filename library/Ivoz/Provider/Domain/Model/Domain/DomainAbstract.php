@@ -102,10 +102,14 @@ abstract class DomainAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DomainDto::class);
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $pointsTo = $dto->getPointsTo();
+        Assertion::notNull($pointsTo, 'getPointsTo value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDomain(),
-            $dto->getPointsTo()
+            $domain,
+            $pointsTo
         );
 
         $self
@@ -126,9 +130,14 @@ abstract class DomainAbstract
     ): static {
         Assertion::isInstanceOf($dto, DomainDto::class);
 
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $pointsTo = $dto->getPointsTo();
+        Assertion::notNull($pointsTo, 'getPointsTo value is null, but non null value was expected.');
+
         $this
-            ->setDomain($dto->getDomain())
-            ->setPointsTo($dto->getPointsTo())
+            ->setDomain($domain)
+            ->setPointsTo($pointsTo)
             ->setDescription($dto->getDescription());
 
         return $this;

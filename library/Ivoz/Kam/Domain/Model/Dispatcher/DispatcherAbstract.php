@@ -132,18 +132,32 @@ abstract class DispatcherAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $attrs = $dto->getAttrs();
+        Assertion::notNull($attrs, 'getAttrs value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $applicationServer = $dto->getApplicationServer();
+        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSetid(),
-            $dto->getDestination(),
-            $dto->getFlags(),
-            $dto->getPriority(),
-            $dto->getAttrs(),
-            $dto->getDescription()
+            $setid,
+            $destination,
+            $flags,
+            $priority,
+            $attrs,
+            $description
         );
 
         $self
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
+            ->setApplicationServer($fkTransformer->transform($applicationServer));
 
         $self->initChangelog();
 
@@ -160,14 +174,29 @@ abstract class DispatcherAbstract
     ): static {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $attrs = $dto->getAttrs();
+        Assertion::notNull($attrs, 'getAttrs value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $applicationServer = $dto->getApplicationServer();
+        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
+
         $this
-            ->setSetid($dto->getSetid())
-            ->setDestination($dto->getDestination())
-            ->setFlags($dto->getFlags())
-            ->setPriority($dto->getPriority())
-            ->setAttrs($dto->getAttrs())
-            ->setDescription($dto->getDescription())
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
+            ->setSetid($setid)
+            ->setDestination($destination)
+            ->setFlags($flags)
+            ->setPriority($priority)
+            ->setAttrs($attrs)
+            ->setDescription($description)
+            ->setApplicationServer($fkTransformer->transform($applicationServer));
 
         return $this;
     }

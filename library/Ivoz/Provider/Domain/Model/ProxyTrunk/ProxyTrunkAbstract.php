@@ -95,9 +95,11 @@ abstract class ProxyTrunkAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIp()
+            $ip
         );
 
         $self
@@ -118,9 +120,12 @@ abstract class ProxyTrunkAbstract
     ): static {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
 
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
+
         $this
             ->setName($dto->getName())
-            ->setIp($dto->getIp());
+            ->setIp($ip);
 
         return $this;
     }

@@ -123,17 +123,25 @@ abstract class TrunksAddressAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
+        $grp = $dto->getGrp();
+        Assertion::notNull($grp, 'getGrp value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $ddiProviderAddress = $dto->getDdiProviderAddress();
+        Assertion::notNull($ddiProviderAddress, 'getDdiProviderAddress value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getGrp(),
-            $dto->getMask(),
-            $dto->getPort()
+            $grp,
+            $mask,
+            $port
         );
 
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
+            ->setDdiProviderAddress($fkTransformer->transform($ddiProviderAddress));
 
         $self->initChangelog();
 
@@ -150,13 +158,22 @@ abstract class TrunksAddressAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
+        $grp = $dto->getGrp();
+        Assertion::notNull($grp, 'getGrp value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $ddiProviderAddress = $dto->getDdiProviderAddress();
+        Assertion::notNull($ddiProviderAddress, 'getDdiProviderAddress value is null, but non null value was expected.');
+
         $this
-            ->setGrp($dto->getGrp())
+            ->setGrp($grp)
             ->setIpAddr($dto->getIpAddr())
-            ->setMask($dto->getMask())
-            ->setPort($dto->getPort())
+            ->setMask($mask)
+            ->setPort($port)
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
+            ->setDdiProviderAddress($fkTransformer->transform($ddiProviderAddress));
 
         return $this;
     }

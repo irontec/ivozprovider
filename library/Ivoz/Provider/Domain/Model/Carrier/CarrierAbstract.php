@@ -147,17 +147,23 @@ abstract class CarrierAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CarrierDto::class);
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDescription(),
-            $dto->getName()
+            $description,
+            $name
         );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
@@ -178,13 +184,20 @@ abstract class CarrierAbstract
     ): static {
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDescription($dto->getDescription())
-            ->setName($dto->getName())
+            ->setDescription($description)
+            ->setName($name)
             ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))

@@ -168,6 +168,10 @@ abstract class InvoiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
@@ -189,8 +193,8 @@ abstract class InvoiceAbstract
             ->setStatus($dto->getStatus())
             ->setStatusMsg($dto->getStatusMsg())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
@@ -209,6 +213,11 @@ abstract class InvoiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
             $dto->getPdfMimeType(),
@@ -226,8 +235,8 @@ abstract class InvoiceAbstract
             ->setStatusMsg($dto->getStatusMsg())
             ->setPdf($pdf)
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 

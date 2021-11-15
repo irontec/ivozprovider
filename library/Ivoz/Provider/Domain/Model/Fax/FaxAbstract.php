@@ -116,15 +116,21 @@ abstract class FaxAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $sendByEmail = $dto->getSendByEmail();
+        Assertion::notNull($sendByEmail, 'getSendByEmail value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getSendByEmail()
+            $name,
+            $sendByEmail
         );
 
         $self
             ->setEmail($dto->getEmail())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         $self->initChangelog();
@@ -142,11 +148,18 @@ abstract class FaxAbstract
     ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $sendByEmail = $dto->getSendByEmail();
+        Assertion::notNull($sendByEmail, 'getSendByEmail value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setEmail($dto->getEmail())
-            ->setSendByEmail($dto->getSendByEmail())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setSendByEmail($sendByEmail)
+            ->setCompany($fkTransformer->transform($company))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         return $this;

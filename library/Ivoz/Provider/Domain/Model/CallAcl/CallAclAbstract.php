@@ -105,14 +105,20 @@ abstract class CallAclAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallAclDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultPolicy = $dto->getDefaultPolicy();
+        Assertion::notNull($defaultPolicy, 'getDefaultPolicy value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDefaultPolicy()
+            $name,
+            $defaultPolicy
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -129,10 +135,17 @@ abstract class CallAclAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallAclDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultPolicy = $dto->getDefaultPolicy();
+        Assertion::notNull($defaultPolicy, 'getDefaultPolicy value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDefaultPolicy($dto->getDefaultPolicy())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setName($name)
+            ->setDefaultPolicy($defaultPolicy)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

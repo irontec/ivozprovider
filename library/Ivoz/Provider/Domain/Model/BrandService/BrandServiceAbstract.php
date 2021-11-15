@@ -105,14 +105,20 @@ abstract class BrandServiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCode()
+            $code
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setBrand($fkTransformer->transform($brand))
+            ->setService($fkTransformer->transform($service));
 
         $self->initChangelog();
 
@@ -129,10 +135,17 @@ abstract class BrandServiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
 
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
+
         $this
-            ->setCode($dto->getCode())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setCode($code)
+            ->setBrand($fkTransformer->transform($brand))
+            ->setService($fkTransformer->transform($service));
 
         return $this;
     }

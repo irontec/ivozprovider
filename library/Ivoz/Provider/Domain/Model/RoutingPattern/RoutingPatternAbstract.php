@@ -113,6 +113,10 @@ abstract class RoutingPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -129,13 +133,13 @@ abstract class RoutingPatternAbstract
         );
 
         $self = new static(
-            $dto->getPrefix(),
+            $prefix,
             $name,
             $description
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -152,6 +156,11 @@ abstract class RoutingPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -167,10 +176,10 @@ abstract class RoutingPatternAbstract
         );
 
         $this
-            ->setPrefix($dto->getPrefix())
+            ->setPrefix($prefix)
             ->setName($name)
             ->setDescription($description)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

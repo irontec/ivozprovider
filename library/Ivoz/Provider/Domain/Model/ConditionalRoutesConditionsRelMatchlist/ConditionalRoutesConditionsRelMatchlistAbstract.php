@@ -98,12 +98,14 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelMatchlistDto::class);
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelMatchlistDto::class);
 
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
+
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         return $this;
     }

@@ -211,12 +211,20 @@ abstract class CallCsvSchedulerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getUnit(),
-            $dto->getFrequency(),
-            $dto->getEmail()
+            $name,
+            $unit,
+            $frequency,
+            $email
         );
 
         $self
@@ -251,12 +259,21 @@ abstract class CallCsvSchedulerAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setUnit($dto->getUnit())
-            ->setFrequency($dto->getFrequency())
+            ->setName($name)
+            ->setUnit($unit)
+            ->setFrequency($frequency)
             ->setCallDirection($dto->getCallDirection())
-            ->setEmail($dto->getEmail())
+            ->setEmail($email)
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())

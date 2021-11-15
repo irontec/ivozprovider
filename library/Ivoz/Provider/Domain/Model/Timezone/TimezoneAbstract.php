@@ -110,6 +110,8 @@ abstract class TimezoneAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
+        $tz = $dto->getTz();
+        Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
         $label = new Label(
             $dto->getLabelEn(),
@@ -119,7 +121,7 @@ abstract class TimezoneAbstract
         );
 
         $self = new static(
-            $dto->getTz(),
+            $tz,
             $label
         );
 
@@ -142,6 +144,9 @@ abstract class TimezoneAbstract
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
+        $tz = $dto->getTz();
+        Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
+
         $label = new Label(
             $dto->getLabelEn(),
             $dto->getLabelEs(),
@@ -150,7 +155,7 @@ abstract class TimezoneAbstract
         );
 
         $this
-            ->setTz($dto->getTz())
+            ->setTz($tz)
             ->setComment($dto->getComment())
             ->setLabel($label)
             ->setCountry($fkTransformer->transform($dto->getCountry()));

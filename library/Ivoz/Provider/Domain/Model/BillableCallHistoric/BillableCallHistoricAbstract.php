@@ -226,9 +226,11 @@ abstract class BillableCallHistoricAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDuration()
+            $duration
         );
 
         $self
@@ -271,10 +273,13 @@ abstract class BillableCallHistoricAbstract
     ): static {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
 
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+
         $this
             ->setCallid($dto->getCallid())
             ->setStartTime($dto->getStartTime())
-            ->setDuration($dto->getDuration())
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setCost($dto->getCost())

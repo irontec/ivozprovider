@@ -161,12 +161,24 @@ abstract class InvoiceSchedulerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getUnit(),
-            $dto->getFrequency(),
-            $dto->getEmail()
+            $name,
+            $unit,
+            $frequency,
+            $email
         );
 
         $self
@@ -175,8 +187,8 @@ abstract class InvoiceSchedulerAbstract
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()));
 
         $self->initChangelog();
@@ -194,18 +206,31 @@ abstract class InvoiceSchedulerAbstract
     ): static {
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setUnit($dto->getUnit())
-            ->setFrequency($dto->getFrequency())
-            ->setEmail($dto->getEmail())
+            ->setName($name)
+            ->setUnit($unit)
+            ->setFrequency($frequency)
+            ->setEmail($email)
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()));
 
         return $this;

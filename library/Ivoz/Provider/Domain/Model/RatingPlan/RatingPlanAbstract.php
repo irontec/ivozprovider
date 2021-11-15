@@ -155,10 +155,18 @@ abstract class RatingPlanAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getWeight(),
-            $dto->getTimeIn()
+            $weight,
+            $timeIn
         );
 
         $self
@@ -170,8 +178,8 @@ abstract class RatingPlanAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup));
 
         $self->initChangelog();
 
@@ -188,10 +196,19 @@ abstract class RatingPlanAbstract
     ): static {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
+
         $this
-            ->setWeight($dto->getWeight())
+            ->setWeight($weight)
             ->setTimingType($dto->getTimingType())
-            ->setTimeIn($dto->getTimeIn())
+            ->setTimeIn($timeIn)
             ->setMonday($dto->getMonday())
             ->setTuesday($dto->getTuesday())
             ->setWednesday($dto->getWednesday())
@@ -199,8 +216,8 @@ abstract class RatingPlanAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup));
 
         return $this;
     }
