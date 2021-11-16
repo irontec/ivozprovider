@@ -3,13 +3,12 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
-use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * AdministratorRelPublicEntityDoctrineRepository

@@ -7,6 +7,10 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhi
 use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ *
+ * @template-extends ServiceEntityRepository<ExternalCallFilterWhiteList>
+ */
 class ExternalCallFilterWhiteListDoctrineRepository extends ServiceEntityRepository implements ExternalCallFilterWhiteListRepository
 {
     public function __construct(ManagerRegistry $registry)
