@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Service\BalanceNotification;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -14,6 +15,7 @@ class BalanceNotificationLifecycleServiceCollection implements LifecycleServiceC
 {
     use LifecycleServiceCollectionTrait;
 
+    /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
         "on_domain_event" =>
         [
@@ -21,7 +23,7 @@ class BalanceNotificationLifecycleServiceCollection implements LifecycleServiceC
         ],
     ];
 
-    protected function addService(string $event, $service): void
+    protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
         Assertion::isInstanceOf($service, DomainEventSubscriberInterface::class);
         $this->services[$event][] = $service;

@@ -15,6 +15,7 @@ class TrunksCdrLifecycleServiceCollection implements LifecycleServiceCollectionI
 {
     use LifecycleServiceCollectionTrait;
 
+    /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
         "on_domain_event" =>
         [
