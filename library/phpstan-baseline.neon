@@ -351,42 +351,7 @@ parameters:
 			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByUser.php
 
 		-
-			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:__construct\\(\\) has parameter \\$password with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:__construct\\(\\) has parameter \\$port with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:__construct\\(\\) has parameter \\$userName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
 			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:_post\\(\\) has parameter \\$postdata with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:\\$_logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:\\$_pass has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:\\$_port has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
-
-		-
-			message: "#^Property Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:\\$_user has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
 
@@ -901,11 +866,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/SimulatedCall.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\SimulatedCall\\:\\:\\$errorCode has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/SimulatedCall.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpRatingProfile\\\\TpRatingProfile\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfile.php
@@ -1026,16 +986,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Service/TpAccountAction/TpAccountActionLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpAccountAction\\\\TpAccountActionLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpAccountAction/TpAccountActionLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpAccountAction\\\\TpAccountActionLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpAccountAction/TpAccountActionLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpCdrStat\\\\CreateByCarrier\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Service/TpCdrStat/CreateByCarrier.php
@@ -1056,29 +1006,9 @@ parameters:
 			path: Ivoz/Cgr/Domain/Service/TpDestination/TpDestinationLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpDestination\\\\TpDestinationLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpDestination/TpDestinationLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpDestination\\\\TpDestinationLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpDestination/TpDestinationLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpDestinationRate\\\\TpDestinationRateLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Service/TpDestinationRate/TpDestinationRateLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpDestinationRate\\\\TpDestinationRateLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpDestinationRate/TpDestinationRateLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpDestinationRate\\\\TpDestinationRateLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpDestinationRate/TpDestinationRateLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpDestinationRate\\\\UpdatedByDestinationRate\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1096,29 +1026,9 @@ parameters:
 			path: Ivoz/Cgr/Domain/Service/TpLcrRule/TpLcrRuleLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpLcrRule\\\\TpLcrRuleLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpLcrRule/TpLcrRuleLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpLcrRule\\\\TpLcrRuleLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpLcrRule/TpLcrRuleLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRate\\\\TpRateLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Service/TpRate/TpRateLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRate\\\\TpRateLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpRate/TpRateLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRate\\\\TpRateLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpRate/TpRateLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRate\\\\UpdatedByDestinationRate\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1129,16 +1039,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRatingPlan\\\\TpRatingPlanLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Service/TpRatingPlan/TpRatingPlanLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRatingPlan\\\\TpRatingPlanLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpRatingPlan/TpRatingPlanLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRatingPlan\\\\TpRatingPlanLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpRatingPlan/TpRatingPlanLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRatingPlan\\\\UpdateByRatingPlan\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1166,16 +1066,6 @@ parameters:
 			path: Ivoz/Cgr/Domain/Service/TpRatingProfile/TpRatingProfileLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRatingProfile\\\\TpRatingProfileLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpRatingProfile/TpRatingProfileLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpRatingProfile\\\\TpRatingProfileLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpRatingProfile/TpRatingProfileLifecycleServiceCollection.php
-
-		-
 			message: "#^Cannot call method getBrand\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Domain/Service/TpRatingProfile/UpdateByRatingProfile.php
@@ -1201,14 +1091,9 @@ parameters:
 			path: Ivoz/Cgr/Domain/Service/TpTiming/TpTimingLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpTiming\\\\TpTimingLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			message: "#^Cannot call method getBody\\(\\) on Graze\\\\GuzzleHttp\\\\JsonRpc\\\\Message\\\\ResponseInterface\\|null\\.$#"
 			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpTiming/TpTimingLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Domain\\\\Service\\\\TpTiming\\\\TpTimingLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Domain/Service/TpTiming/TpTimingLifecycleServiceCollection.php
+			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/BillingService.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\BillingService\\:\\:sendRequest\\(\\) has parameter \\$payload with no value type specified in iterable type array\\.$#"
@@ -1216,12 +1101,7 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/BillingService.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\BillingService\\:\\:\\$client has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/BillingService.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\BillingService\\:\\:\\$entityTools has no typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\$request of method Graze\\\\GuzzleHttp\\\\JsonRpc\\\\ClientInterface\\:\\:send\\(\\) expects Graze\\\\GuzzleHttp\\\\JsonRpc\\\\Message\\\\RequestInterface, Graze\\\\GuzzleHttp\\\\JsonRpc\\\\Message\\\\Response given\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/BillingService.php
 
@@ -1261,6 +1141,11 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/CompanyBalanceService.php
 
 		-
+			message: "#^Cannot call method getBody\\(\\) on Graze\\\\GuzzleHttp\\\\JsonRpc\\\\Message\\\\ResponseInterface\\|null\\.$#"
+			count: 1
+			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/FetchCallStatsService.php
+
+		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\FetchCallStatsService\\:\\:sendRequest\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/FetchCallStatsService.php
@@ -1271,12 +1156,7 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/FetchCallStatsService.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\FetchCallStatsService\\:\\:\\$carrierRepository has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/FetchCallStatsService.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\FetchCallStatsService\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\$request of method Graze\\\\GuzzleHttp\\\\JsonRpc\\\\ClientInterface\\:\\:send\\(\\) expects Graze\\\\GuzzleHttp\\\\JsonRpc\\\\Message\\\\RequestInterface, Graze\\\\GuzzleHttp\\\\JsonRpc\\\\Message\\\\Response given\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/FetchCallStatsService.php
 
@@ -1296,34 +1176,9 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ProcessExternalCdr\\:\\:\\$apiClient has no typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\$originId of method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpCdr\\\\TpCdrRepository\\:\\:getByOriginId\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ProcessExternalCdr\\:\\:\\$entityTools has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ProcessExternalCdr\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ProcessExternalCdr\\:\\:\\$tpCdrRepository has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ProcessExternalCdr\\:\\:\\$trunksClient has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ReloadService\\:\\:\\$mutex has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ReloadService.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\RerateCallService\\:\\:execute\\(\\) has parameter \\$pks with no value type specified in iterable type array\\.$#"
@@ -1339,21 +1194,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$trunksCdr of method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\ProcessExternalCdr\\:\\:execute\\(\\) expects Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrInterface, Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrInterface\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/RerateCallService.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\SetMaxUsageThresholdService\\:\\:\\$companyBalanceService has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/SetMaxUsageThresholdService.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\SetMaxUsageThresholdService\\:\\:\\$enableAccountService has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/SetMaxUsageThresholdService.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\SetMaxUsageThresholdService\\:\\:\\$reassembleTriggerService has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/SetMaxUsageThresholdService.php
 
 		-
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpAccountActionDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
@@ -1391,27 +1231,12 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDestinationDoctrineRepository.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpDestinationDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDestinationDoctrineRepository.php
-
-		-
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpDestinationRateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDestinationRateDoctrineRepository.php
 
 		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpDestinationRateDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDestinationRateDoctrineRepository.php
-
-		-
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpRateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpRateDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpRateDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpRateDoctrineRepository.php
 
@@ -1429,41 +1254,6 @@ parameters:
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpTimingDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpTimingDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:setTpid\\(\\) has parameter \\$tpid with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:\\$disableDestinations has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:\\$notifyThresholdForAccount has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:\\$redisDb has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:\\$redisMasterFactory has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
-
-		-
-			message: "#^Property Ivoz\\\\Cgr\\\\Infrastructure\\\\Redis\\\\Job\\\\Cgrates\\:\\:\\$tpid has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Redis/Job/Cgrates.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\Dispatcher\\\\Dispatcher\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -2031,21 +1821,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/TrunksUacreg/DdiProviderRegistrationStatus.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\DdiProviderRegistrationStatus\\:\\:\\$expires has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/DdiProviderRegistrationStatus.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\DdiProviderRegistrationStatus\\:\\:\\$inProgress has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/DdiProviderRegistrationStatus.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\DdiProviderRegistrationStatus\\:\\:\\$registered has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/TrunksUacreg/DdiProviderRegistrationStatus.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacreg\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacreg.php
@@ -2601,16 +2376,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Service/Rtpengine/RtpengineLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Rtpengine\\\\RtpengineLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/Rtpengine/RtpengineLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Rtpengine\\\\RtpengineLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/Rtpengine/RtpengineLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Rtpengine\\\\SendTrunksRtpengineReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/Rtpengine/SendTrunksRtpengineReloadRequest.php
@@ -2631,16 +2396,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Service/TrunksAddress/TrunksAddressLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksAddress\\\\TrunksAddressLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/TrunksAddress/TrunksAddressLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksAddress\\\\TrunksAddressLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/TrunksAddress/TrunksAddressLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksAddress\\\\UpdateByDdiProviderAddress\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/TrunksAddress/UpdateByDdiProviderAddress.php
@@ -2652,11 +2407,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksCdr\\\\TrunksCdrLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/TrunksCdr/TrunksCdrLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksCdr\\\\TrunksCdrLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/TrunksCdr/TrunksCdrLifecycleServiceCollection.php
 
@@ -2761,16 +2511,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Service/TrunksUacreg/TrunksUacregLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksUacreg\\\\TrunksUacregLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/TrunksUacreg/TrunksUacregLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksUacreg\\\\TrunksUacregLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/TrunksUacreg/TrunksUacregLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Trusted\\\\SendTrunksPermissionsReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/Trusted/SendTrunksPermissionsReloadRequest.php
@@ -2786,16 +2526,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Service/Trusted/TrustedLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Trusted\\\\TrustedLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/Trusted/TrustedLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Trusted\\\\TrustedLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/Trusted/TrustedLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\UsersAddress\\\\SendUsersPermissionsReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/UsersAddress/SendUsersPermissionsReloadRequest.php
@@ -2804,16 +2534,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\UsersAddress\\\\UsersAddressLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/UsersAddress/UsersAddressLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\UsersAddress\\\\UsersAddressLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/UsersAddress/UsersAddressLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Domain\\\\Service\\\\UsersAddress\\\\UsersAddressLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/UsersAddress/UsersAddressLifecycleServiceCollection.php
 
 		-
 			message: "#^Cannot call method getDomain\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainInterface\\|null\\.$#"
@@ -2881,22 +2601,12 @@ parameters:
 			path: Ivoz/Kam/Infrastructure/Kamailio/TrunksClient.php
 
 		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Kamailio\\\\TrunksClient\\:\\:\\$rpcJob has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Kamailio/TrunksClient.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Kamailio\\\\UsersClient\\:\\:sendRequest\\(\\) has parameter \\$method with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Kamailio/UsersClient.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Kamailio\\\\UsersClient\\:\\:sendRequest\\(\\) has parameter \\$payload with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Kamailio/UsersClient.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Kamailio\\\\UsersClient\\:\\:\\$rpcJob has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Kamailio/UsersClient.php
 
@@ -2932,11 +2642,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TrunksCdrDoctrineRepository\\:\\:resetParsed\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/TrunksCdrDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TrunksCdrDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/TrunksCdrDoctrineRepository.php
 
@@ -3024,56 +2729,6 @@ parameters:
 			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersXcapDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersXcapDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\TrunksRpcJob\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/TrunksRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\TrunksRpcJob\\:\\:\\$redisDb has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/TrunksRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\TrunksRpcJob\\:\\:\\$redisMasterFactory has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/TrunksRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\TrunksRpcJob\\:\\:\\$rpcEntity has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/TrunksRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\TrunksRpcJob\\:\\:\\$rpcPort has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/TrunksRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\UserRpcJob\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/UserRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\UserRpcJob\\:\\:\\$redisDb has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/UserRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\UserRpcJob\\:\\:\\$redisMasterFactory has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/UserRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\UserRpcJob\\:\\:\\$rpcEntity has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/UserRpcJob.php
-
-		-
-			message: "#^Property Ivoz\\\\Kam\\\\Infrastructure\\\\Redis\\\\Job\\\\UserRpcJob\\:\\:\\$rpcPort has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Redis/Job/UserRpcJob.php
 
 		-
 			message: "#^Cannot call method getLUuid\\(\\) on Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregInterface\\|null\\.$#"
@@ -4106,11 +3761,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDto\\:\\:\\$logoPath has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDtoAbstract.php
@@ -4556,11 +4206,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriod.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriod\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriod.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodAbstract.php
@@ -4906,11 +4551,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDto.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDto\\:\\:\\$csvPath has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDtoAbstract.php
@@ -5052,11 +4692,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDto\\:\\:setVpbxId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDto\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDto.php
 
@@ -5232,11 +4867,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSetting\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSetting\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php
 
@@ -6636,11 +6266,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRoute.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRoute\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRoute.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteAbstract.php
@@ -6827,11 +6452,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesCondition\\:\\:getRelSchedules\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesCondition.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesCondition\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesCondition.php
 
@@ -7481,11 +7101,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ddi/Ddi.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\Ddi\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/Ddi.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiAbstract.php
@@ -7936,11 +7551,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDto.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDto\\:\\:\\$status has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProviderRegistration\\\\DdiProviderRegistrationDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationDtoAbstract.php
@@ -8236,11 +7846,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDto\\:\\:\\$filePath has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
@@ -8461,11 +8066,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Extension/Extension.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\Extension\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/Extension.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionAbstract.php
@@ -8637,11 +8237,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilter\\:\\:getWhiteLists\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilter.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilter\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilter.php
 
@@ -9207,11 +8802,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutDto\\:\\:getPropertyMap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutDto\\:\\:\\$filePath has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutDto.php
 
@@ -9881,11 +9471,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDate.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDate\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDate.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateAbstract.php
@@ -9987,11 +9572,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroup\\:\\:getHuntGroupsRelUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroup.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroup\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroup.php
 
@@ -10116,11 +9696,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUser.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUser\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUser.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserAbstract.php
@@ -10222,11 +9797,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDto\\:\\:getPropertyMap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDto\\:\\:\\$pdfPath has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDto.php
 
@@ -10576,11 +10146,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/Ivr.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\Ivr\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/Ivr.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrAbstract.php
@@ -10782,11 +10347,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntry\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntry.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntry\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntry.php
 
@@ -11032,16 +10592,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDto\\:\\:getPropertyMap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDto\\:\\:\\$encodedFilePath has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDto\\:\\:\\$originalFilePath has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
 
@@ -11372,16 +10922,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDto\\:\\:getPropertyMap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDto\\:\\:\\$encodedFilePath has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDto\\:\\:\\$originalFilePath has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
 
@@ -12346,11 +11886,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Queue/Queue.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\Queue\\:\\:\\$routeTypes type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/Queue.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Queue/QueueAbstract.php
@@ -12922,11 +12457,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDto\\:\\:getPropertyMap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingDto.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDto\\:\\:\\$recordedFile has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Recording/RecordingDto.php
 
@@ -14821,11 +14351,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDto.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDto\\:\\:\\$logoPath has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php
@@ -14861,12 +14386,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalInterface.php
 
 		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
+			message: "#^Generic type Doctrine\\\\Common\\\\Collections\\\\Selectable\\<Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalInterface\\> in PHPDoc tag @extends does not specify all template types of interface Doctrine\\\\Common\\\\Collections\\\\Selectable\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalRepository.php
 
@@ -14876,29 +14396,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Administrator/AdministratorLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Administrator\\\\AdministratorLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Administrator/AdministratorLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Administrator\\\\AdministratorLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Administrator/AdministratorLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/AdministratorRelPublicEntity/AdministratorRelPublicEntityLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/AdministratorRelPublicEntity/AdministratorRelPublicEntityLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\AdministratorRelPublicEntity\\\\AdministratorRelPublicEntityLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/AdministratorRelPublicEntity/AdministratorRelPublicEntityLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\AdministratorRelPublicEntity\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -14921,16 +14421,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ApplicationServer/ApplicationServerLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ApplicationServer\\\\ApplicationServerLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ApplicationServer/ApplicationServerLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ApplicationServer\\\\ApplicationServerLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ApplicationServer/ApplicationServerLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ApplicationServer\\\\SendTrunksDispatcherReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ApplicationServer/SendTrunksDispatcherReloadRequest.php
@@ -14939,16 +14429,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ApplicationServer\\\\SendUsersDispatcherReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ApplicationServer/SendUsersDispatcherReloadRequest.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BalanceNotification\\\\BalanceNotificationLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BalanceNotification/BalanceNotificationLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BalanceNotification\\\\BalanceNotificationLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BalanceNotification/BalanceNotificationLifecycleServiceCollection.php
 
 		-
 			message: "#^Cannot call method getBody\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplateContent\\\\NotificationTemplateContentInterface\\|null\\.$#"
@@ -14991,16 +14471,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/BalanceNotification/NotifyBrokenThreshold.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BannedAddress\\\\BannedAddressLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BannedAddress/BannedAddressLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BannedAddress\\\\BannedAddressLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BannedAddress/BannedAddressLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BannedAddress\\\\Unban\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BannedAddress/Unban.php
@@ -15019,16 +14489,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BillableCall\\\\BillableCallLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/BillableCallLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BillableCall\\\\BillableCallLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BillableCall/BillableCallLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BillableCall\\\\BillableCallLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BillableCall/BillableCallLifecycleServiceCollection.php
 
 		-
 			message: "#^Cannot call method getNumber\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionInterface\\|null\\.$#"
@@ -15061,29 +14521,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/BillableCall/UpdateDtoByDefaultRunTpCdr.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Brand\\\\BrandLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Brand/BrandLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Brand\\\\BrandLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Brand/BrandLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BrandService\\\\BrandServiceLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BrandService/BrandServiceLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BrandService\\\\BrandServiceLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BrandService/BrandServiceLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BrandService\\\\BrandServiceLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/BrandService/BrandServiceLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BrandService\\\\UpdateByBrand\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15101,29 +14541,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/CallAclRelMatchList/CallAclRelMatchListLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallAclRelMatchList\\\\CallAclRelMatchListLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallAclRelMatchList/CallAclRelMatchListLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallAclRelMatchList\\\\CallAclRelMatchListLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallAclRelMatchList/CallAclRelMatchListLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallCsvReport\\\\CallCsvReportLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CallCsvReport/CallCsvReportLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallCsvReport\\\\CallCsvReportLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallCsvReport/CallCsvReportLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallCsvReport\\\\CallCsvReportLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallCsvReport/CallCsvReportLifecycleServiceCollection.php
 
 		-
 			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
@@ -15201,16 +14621,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/CallCsvScheduler/CallCsvSchedulerLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallCsvScheduler\\\\CallCsvSchedulerLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallCsvScheduler/CallCsvSchedulerLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallCsvScheduler\\\\CallCsvSchedulerLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallCsvScheduler/CallCsvSchedulerLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallCsvScheduler\\\\CheckUniqueness\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CallCsvScheduler/CheckUniqueness.php
@@ -15234,16 +14644,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallForwardSetting\\\\CallForwardSettingLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CallForwardSetting/CallForwardSettingLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallForwardSetting\\\\CallForwardSettingLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallForwardSetting/CallForwardSettingLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallForwardSetting\\\\CallForwardSettingLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CallForwardSetting/CallForwardSettingLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CallForwardSetting\\\\CheckUniqueness\\:\\:createConditions\\(\\) has parameter \\$callTypeFilterConditions with no value type specified in iterable type array\\.$#"
@@ -15306,16 +14706,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Carrier/CarrierLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Carrier\\\\CarrierLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Carrier/CarrierLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Carrier\\\\CarrierLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Carrier/CarrierLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Carrier\\\\ForceExternallyRated\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Carrier/ForceExternallyRated.php
@@ -15356,16 +14746,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/CarrierServer/CarrierServerLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CarrierServer\\\\CarrierServerLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CarrierServer/CarrierServerLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CarrierServer\\\\CarrierServerLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CarrierServer/CarrierServerLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CarrierServer\\\\SendTrunksLcrReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CarrierServer/SendTrunksLcrReloadRequest.php
@@ -15389,16 +14769,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\CompanyBalanceServiceInterface\\:\\:incrementBalance\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Company/CompanyBalanceServiceInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\CompanyLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/CompanyLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\CompanyLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/CompanyLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SanitizeEmptyValues\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15431,11 +14801,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Company/SendUsersTrustedPermissionsReloadRequest.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SendUsersTrustedPermissionsReloadRequest\\:\\:\\$usersClient has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/SendUsersTrustedPermissionsReloadRequest.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SyncBalances\\:\\:getPrepaidCompanyIdsGroupByBrand\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Company/SyncBalances.php
@@ -15456,26 +14821,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Company/SyncDailyUsage.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SyncDailyUsage\\:\\:\\$client has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/SyncDailyUsage.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SyncDailyUsage\\:\\:\\$companyRepository has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/SyncDailyUsage.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SyncDailyUsage\\:\\:\\$entityTools has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/SyncDailyUsage.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Company\\\\SyncDailyUsage\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Company/SyncDailyUsage.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelCodec\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CompanyRelCodec/AvoidUpdates.php
@@ -15486,16 +14831,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/CompanyRelCodec/CompanyRelCodecLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelCodec\\\\CompanyRelCodecLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CompanyRelCodec/CompanyRelCodecLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelCodec\\\\CompanyRelCodecLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CompanyRelCodec/CompanyRelCodecLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelRoutingTag\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CompanyRelRoutingTag/AvoidUpdates.php
@@ -15504,16 +14839,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/CompanyRelRoutingTag/CompanyRelRoutingTagLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CompanyRelRoutingTag/CompanyRelRoutingTagLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/CompanyRelRoutingTag/CompanyRelRoutingTagLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\CompanyService\\\\PropagateBrandServices\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15536,16 +14861,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelCalendar\\\\ConditionalRoutesConditionsRelCalendarLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelCalendar\\\\ConditionalRoutesConditionsRelCalendarLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelMatchlist\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelMatchlist/AvoidUpdates.php
@@ -15554,16 +14869,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelMatchlist\\\\ConditionalRoutesConditionsRelMatchlistLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelMatchlist\\\\ConditionalRoutesConditionsRelMatchlistLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelMatchlist\\\\ConditionalRoutesConditionsRelMatchlistLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelRouteLock\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15576,16 +14881,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelSchedule\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelSchedule/AvoidUpdates.php
@@ -15594,26 +14889,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleLifecycleServiceCollection.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProvider\\\\DdiProviderLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DdiProvider/DdiProviderLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProvider\\\\DdiProviderLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DdiProvider/DdiProviderLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProvider\\\\SendTrunksAddressPermissionsReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15626,29 +14901,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/DdiProviderAddress/DdiProviderAddressLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderAddress\\\\DdiProviderAddressLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DdiProviderAddress/DdiProviderAddressLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderAddress\\\\DdiProviderAddressLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DdiProviderAddress/DdiProviderAddressLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderRegistration\\\\DdiProviderRegistrationLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/DdiProviderRegistrationLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderRegistration\\\\DdiProviderRegistrationLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/DdiProviderRegistrationLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderRegistration\\\\DdiProviderRegistrationLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/DdiProviderRegistrationLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderRegistration\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15661,16 +14916,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Destination/DestinationLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Destination\\\\DestinationLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Destination/DestinationLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Destination\\\\DestinationLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Destination/DestinationLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Destination\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Destination/PersistErrorHandler.php
@@ -15681,29 +14926,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/DestinationRate/DestinationRateLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DestinationRate\\\\DestinationRateLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DestinationRate/DestinationRateLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DestinationRate\\\\DestinationRateLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DestinationRate/DestinationRateLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DestinationRateGroup\\\\DestinationRateGroupLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/DestinationRateGroup/DestinationRateGroupLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DestinationRateGroup\\\\DestinationRateGroupLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DestinationRateGroup/DestinationRateGroupLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DestinationRateGroup\\\\DestinationRateGroupLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/DestinationRateGroup/DestinationRateGroupLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DestinationRateGroup\\\\SendImporterOrder\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15724,16 +14949,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Domain\\\\DomainLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Domain/DomainLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Domain\\\\DomainLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Domain/DomainLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Domain\\\\DomainLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Domain/DomainLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Domain\\\\SendUsersDomainReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15766,16 +14981,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Extension/ExtensionLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Extension\\\\ExtensionLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Extension/ExtensionLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Extension\\\\ExtensionLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Extension/ExtensionLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Extension\\\\UpdateByUser\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Extension/UpdateByUser.php
@@ -15791,16 +14996,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ExternalCallFilterRelCalendar\\\\ExternalCallFilterRelCalendarLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ExternalCallFilterRelCalendar\\\\ExternalCallFilterRelCalendarLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ExternalCallFilterRelSchedule\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelSchedule/AvoidUpdates.php
@@ -15811,29 +15006,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ExternalCallFilterRelSchedule\\\\ExternalCallFilterRelScheduleLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ExternalCallFilterRelSchedule\\\\ExternalCallFilterRelScheduleLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FaxesInOut\\\\FaxesInOutLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/FaxesInOut/FaxesInOutLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FaxesInOut\\\\FaxesInOutLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FaxesInOut/FaxesInOutLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FaxesInOut\\\\FaxesInOutLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FaxesInOut/FaxesInOutLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FaxesInOut\\\\SendFaxFile\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15851,16 +15026,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/FeaturesRelBrand/FeaturesRelBrandLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FeaturesRelBrand\\\\FeaturesRelBrandLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FeaturesRelBrand/FeaturesRelBrandLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FeaturesRelBrand\\\\FeaturesRelBrandLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FeaturesRelBrand/FeaturesRelBrandLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FeaturesRelCompany\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/FeaturesRelCompany/AvoidUpdates.php
@@ -15869,16 +15034,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FeaturesRelCompany\\\\FeaturesRelCompanyLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/FeaturesRelCompany/FeaturesRelCompanyLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FeaturesRelCompany\\\\FeaturesRelCompanyLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FeaturesRelCompany/FeaturesRelCompanyLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FeaturesRelCompany\\\\FeaturesRelCompanyLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FeaturesRelCompany/FeaturesRelCompanyLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoice\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15891,16 +15046,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoice/FixedCostsRelInvoiceLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoice\\\\FixedCostsRelInvoiceLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoice/FixedCostsRelInvoiceLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoice\\\\FixedCostsRelInvoiceLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoice/FixedCostsRelInvoiceLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoiceScheduler\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoiceScheduler/AvoidUpdates.php
@@ -15909,16 +15054,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\CheckUniqueness\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15934,16 +15069,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\FriendLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Friend/FriendLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\FriendLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Friend/FriendLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\FriendLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Friend/FriendLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -15966,16 +15091,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/HolidayDate/HolidayDateLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HolidayDate\\\\HolidayDateLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/HolidayDate/HolidayDateLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HolidayDate\\\\HolidayDateLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/HolidayDate/HolidayDateLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupsRelUser\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/HuntGroupsRelUser/AvoidUpdates.php
@@ -15984,16 +15099,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/HuntGroupsRelUser/HuntGroupsRelUserLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/HuntGroupsRelUser/HuntGroupsRelUserLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/HuntGroupsRelUser/HuntGroupsRelUserLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\AutoRateCalls\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16051,6 +15156,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
 
 		-
+			message: "#^Binary operation \"\\+\" between 0\\|string and int results in an error\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
+
+		-
 			message: "#^Binary operation \"\\+\" between string and string results in an error\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
@@ -16096,47 +15206,12 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\Generator\\:\\:\\$fixedCostTotal has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\Generator\\:\\:\\$fixedCosts has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\Generator\\:\\:\\$invoiceId has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\Generator\\:\\:\\$totals has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\InvoiceLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/InvoiceLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\InvoiceLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/InvoiceLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\InvoiceLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/InvoiceLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\SendGenerateOrder\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/SendGenerateOrder.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\SendGenerateOrder\\:\\:\\$invoicer has no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/SendGenerateOrder.php
 
@@ -16156,29 +15231,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/InvoiceNumberSequence/InvoiceNumberSequenceLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/InvoiceNumberSequence/InvoiceNumberSequenceLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/InvoiceNumberSequence/InvoiceNumberSequenceLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\InvoiceScheduler\\\\InvoiceSchedulerLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/InvoiceScheduler/InvoiceSchedulerLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\InvoiceScheduler\\\\InvoiceSchedulerLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/InvoiceScheduler/InvoiceSchedulerLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\InvoiceScheduler\\\\InvoiceSchedulerLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/InvoiceScheduler/InvoiceSchedulerLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\InvoiceScheduler\\\\NextExecutionResolver\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16204,16 +15259,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Locution\\\\LocutionLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Locution/LocutionLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Locution\\\\LocutionLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Locution/LocutionLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Locution\\\\LocutionLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Locution/LocutionLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Locution\\\\SendRecodingOrder\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16271,16 +15316,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/MusicOnHold/MusicOnHoldLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\MusicOnHold\\\\MusicOnHoldLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/MusicOnHold/MusicOnHoldLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\MusicOnHold\\\\MusicOnHoldLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/MusicOnHold/MusicOnHoldLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\MusicOnHold\\\\SendRecodingOrder\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/MusicOnHold/SendRecodingOrder.php
@@ -16294,16 +15329,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\OutgoingRouting\\\\OutgoingRoutingLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/OutgoingRouting/OutgoingRoutingLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\OutgoingRouting\\\\OutgoingRoutingLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/OutgoingRouting/OutgoingRoutingLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\OutgoingRouting\\\\OutgoingRoutingLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/OutgoingRouting/OutgoingRoutingLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\OutgoingRouting\\\\SendTrunksLcrReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16321,16 +15346,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\OutgoingRoutingRelCarrier\\\\OutgoingRoutingRelCarrierLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\PickUpRelUser\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/PickUpRelUser/AvoidUpdates.php
@@ -16341,16 +15356,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/PickUpRelUser/PickUpRelUserLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\PickUpRelUser\\\\PickUpRelUserLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/PickUpRelUser/PickUpRelUserLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\PickUpRelUser\\\\PickUpRelUserLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/PickUpRelUser/PickUpRelUserLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunk\\\\DeleteProtection\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ProxyTrunk/DeleteProtection.php
@@ -16359,16 +15364,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunk\\\\ProxyTrunkLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ProxyTrunk/ProxyTrunkLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunk\\\\ProxyTrunkLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ProxyTrunk/ProxyTrunkLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunk\\\\ProxyTrunkLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ProxyTrunk/ProxyTrunkLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunksRelBrand\\\\AvoidRemovingInUseAddresses\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16396,16 +15391,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ProxyTrunksRelBrand/ProxyTrunksRelBrandLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunksRelBrand\\\\ProxyTrunksRelBrandLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ProxyTrunksRelBrand/ProxyTrunksRelBrandLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyTrunksRelBrand\\\\ProxyTrunksRelBrandLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ProxyTrunksRelBrand/ProxyTrunksRelBrandLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyUser\\\\DeleteProtection\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ProxyUser/DeleteProtection.php
@@ -16416,29 +15401,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ProxyUser/ProxyUserLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyUser\\\\ProxyUserLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ProxyUser/ProxyUserLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ProxyUser\\\\ProxyUserLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ProxyUser/ProxyUserLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Queue\\\\QueueLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Queue/QueueLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Queue\\\\QueueLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Queue/QueueLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Queue\\\\QueueLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Queue/QueueLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingPlan\\\\CheckDestinationRateGroupDuplicates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16461,16 +15426,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RatingPlan/RatingPlanLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingPlan\\\\RatingPlanLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RatingPlan/RatingPlanLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingPlan\\\\RatingPlanLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RatingPlan/RatingPlanLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingProfile\\\\BillingServiceInterface\\:\\:simulateCall\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RatingProfile/BillingServiceInterface.php
@@ -16491,16 +15446,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RatingProfile/RatingProfileLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingProfile\\\\RatingProfileLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RatingProfile/RatingProfileLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingProfile\\\\RatingProfileLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RatingProfile/RatingProfileLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ResidentialDevice\\\\CheckUniqueness\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ResidentialDevice/CheckUniqueness.php
@@ -16514,16 +15459,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ResidentialDevice\\\\ResidentialDeviceLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ResidentialDevice/ResidentialDeviceLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ResidentialDevice\\\\ResidentialDeviceLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ResidentialDevice/ResidentialDeviceLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ResidentialDevice\\\\ResidentialDeviceLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/ResidentialDevice/ResidentialDeviceLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RetailAccount\\\\CheckUniqueness\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16541,29 +15476,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RetailAccount/RetailAccountLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RetailAccount\\\\RetailAccountLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RetailAccount/RetailAccountLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RetailAccount\\\\RetailAccountLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RetailAccount/RetailAccountLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPattern\\\\RoutingPatternLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RoutingPattern/RoutingPatternLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPattern\\\\RoutingPatternLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingPattern/RoutingPatternLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPattern\\\\RoutingPatternLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingPattern/RoutingPatternLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPattern\\\\SendTrunksLcrReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16581,16 +15496,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RoutingPatternGroup/RoutingPatternGroupLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPatternGroup\\\\RoutingPatternGroupLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingPatternGroup/RoutingPatternGroupLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPatternGroup\\\\RoutingPatternGroupLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingPatternGroup/RoutingPatternGroupLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPatternGroup\\\\SendTrunksLcrReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RoutingPatternGroup/SendTrunksLcrReloadRequest.php
@@ -16606,29 +15511,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPatternGroupsRelPattern\\\\RoutingPatternGroupsRelPatternLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPatternGroupsRelPattern\\\\RoutingPatternGroupsRelPatternLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingTag\\\\RoutingTagLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RoutingTag/RoutingTagLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingTag\\\\RoutingTagLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingTag/RoutingTagLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingTag\\\\RoutingTagLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RoutingTag/RoutingTagLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingTag\\\\SendTrunksLcrReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16651,16 +15536,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Terminal/TerminalLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Terminal\\\\TerminalLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Terminal/TerminalLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Terminal\\\\TerminalLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Terminal/TerminalLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TerminalModel\\\\PersistTemplates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/TerminalModel/PersistTemplates.php
@@ -16669,16 +15544,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TerminalModel\\\\TerminalModelLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/TerminalModel/TerminalModelLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TerminalModel\\\\TerminalModelLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/TerminalModel/TerminalModelLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TerminalModel\\\\TerminalModelLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/TerminalModel/TerminalModelLifecycleServiceCollection.php
 
 		-
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
@@ -16721,16 +15586,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/TransformationRule/TransformationRuleLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRule\\\\TransformationRuleLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/TransformationRule/TransformationRuleLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRule\\\\TransformationRuleLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/TransformationRule/TransformationRuleLifecycleServiceCollection.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRuleSet\\\\DisableGenerateRules\\:\\:execute\\(\\) has parameter \\$dispatchImmediately with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/DisableGenerateRules.php
@@ -16749,16 +15604,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRuleSet\\\\TransformationRuleSetLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/TransformationRuleSetLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRuleSet\\\\TransformationRuleSetLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/TransformationRuleSetLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRuleSet\\\\TransformationRuleSetLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/TransformationRuleSetLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -16789,16 +15634,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\UserLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/User/UserLifecycleEventHandlerInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\UserLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/User/UserLifecycleServiceCollection.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\UserLifecycleServiceCollection\\:\\:\\$bindedBaseServices has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/User/UserLifecycleServiceCollection.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:appendAuthHeaders\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
@@ -16836,26 +15671,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:\\$administratorRepository has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:\\$httpClient has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:\\$jwtToken has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:\\$jwtTokenManager has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\FakeClient\\:\\:delete\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Api/Client/FakeClient.php
@@ -16876,11 +15691,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Api/Client/FakeClient.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Jwt\\\\AdminTokenAuthenticator\\:\\:\\$tokenStorage has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Jwt/AdminTokenAuthenticator.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Jwt\\\\UserAuthenticationSuccessHandler\\:\\:handleAuthenticationSuccess\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Api/Jwt/UserAuthenticationSuccessHandler.php
@@ -16896,74 +15706,9 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Api/Jwt/UserTokenAuthenticator.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Jwt\\\\UserTokenAuthenticator\\:\\:\\$tokenStorage has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Jwt/UserTokenAuthenticator.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Timezone\\\\UserTimezoneInjector\\:\\:__construct\\(\\) has parameter \\$tzParamName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Timezone/UserTimezoneInjector.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Timezone\\\\UserTimezoneInjector\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Timezone/UserTimezoneInjector.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Timezone\\\\UserTimezoneInjector\\:\\:\\$tokenStorage has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Timezone/UserTimezoneInjector.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Timezone\\\\UserTimezoneInjector\\:\\:\\$tzParamName has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Timezone/UserTimezoneInjector.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\AdministratorDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/AdministratorDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\AdministratorDoctrineRepository\\:\\:findOneByCriteria\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/AdministratorDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\AdministratorDoctrineRepository\\:\\:findOneByCriteria\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/AdministratorDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\AdministratorRelPublicEntityDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/AdministratorRelPublicEntityDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\AdministratorRelPublicEntityDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/AdministratorRelPublicEntityDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ApplicationServerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ApplicationServerDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BalanceMovementDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BalanceMovementDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BalanceNotificationDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BalanceNotificationDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BannedAddressDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BannedAddressDoctrineRepository.php
 
 		-
 			message: "#^Cannot call method getCgrid\\(\\) on Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksCdr\\\\TrunksCdrInterface\\|null\\.$#"
@@ -16973,11 +15718,6 @@ parameters:
 		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTime\\|null\\.$#"
 			count: 2
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallDoctrineRepository.php
 
 		-
@@ -17031,72 +15771,12 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallDoctrineRepository.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallHistoricDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallHistoricDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallHistoricDoctrineRepository\\:\\:copyBillableCallsByIds\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallHistoricDoctrineRepository.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallHistoricDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallHistoricDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BrandDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BrandDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BrandServiceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BrandServiceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CalendarDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CalendarDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CalendarPeriodDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CalendarPeriodDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CalendarPeriodsRelScheduleDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CalendarPeriodsRelScheduleDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CallAclDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallAclDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CallAclRelMatchListDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallAclRelMatchListDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CallCsvReportDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallCsvReportDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallCsvSchedulerDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CallCsvSchedulerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallCsvSchedulerDoctrineRepository.php
 
@@ -17111,17 +15791,7 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallCsvSchedulerDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CallForwardSettingDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CallForwardSettingDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CarrierDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
 
@@ -17136,27 +15806,7 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CarrierServerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CarrierServerDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ChangelogDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ChangelogDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CodecDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CodecDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
 
@@ -17176,87 +15826,7 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyRelCodecDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyRelCodecDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyRelGeoIPCountryDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyRelGeoIPCountryDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyRelRoutingTagDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyRelRoutingTagDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CompanyServiceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CompanyServiceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConditionalRouteDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConditionalRouteDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConditionalRoutesConditionDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConditionalRoutesConditionDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConditionalRoutesConditionsRelCalendarDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConditionalRoutesConditionsRelCalendarDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConditionalRoutesConditionsRelMatchlistDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConditionalRoutesConditionsRelMatchlistDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConditionalRoutesConditionsRelRouteLockDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConditionalRoutesConditionsRelRouteLockDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConditionalRoutesConditionsRelScheduleDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConditionalRoutesConditionsRelScheduleDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ConferenceRoomDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ConferenceRoomDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CountryDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CountryDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\CurrencyDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/CurrencyDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderAddressDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderAddressDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
 
@@ -17276,16 +15846,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DdiProviderRegistrationDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DdiProviderRegistrationDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationDoctrineRepository\\:\\:getPrefixArrayByBrandId\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php
@@ -17296,164 +15856,14 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationRateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationRateDoctrineRepository\\:\\:insertIgnoreFromArray\\(\\) has parameter \\$destinationRates with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateDoctrineRepository.php
 
 		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationRateDoctrineRepository\\:\\:\\$em has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationRateDoctrineRepository\\:\\:\\$queryRunner has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationRateGroupDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateGroupDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DomainDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DomainDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DomainDoctrineRepository\\:\\:\\$brandRepository has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DomainDoctrineRepository.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DomainDoctrineRepository\\:\\:\\$companyRepository has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DomainDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ExtensionDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ExtensionDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ExternalCallFilterBlackListDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ExternalCallFilterBlackListDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ExternalCallFilterDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ExternalCallFilterDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ExternalCallFilterRelCalendarDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ExternalCallFilterRelCalendarDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ExternalCallFilterRelScheduleDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ExternalCallFilterRelScheduleDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ExternalCallFilterWhiteListDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ExternalCallFilterWhiteListDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FaxDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FaxDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FaxesInOutDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FaxesInOutDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FeatureDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FeatureDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FeaturesRelBrandDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FeaturesRelBrandDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FeaturesRelCompanyDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FeaturesRelCompanyDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FixedCostDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FixedCostDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FixedCostsRelInvoiceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FixedCostsRelInvoiceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FixedCostsRelInvoiceSchedulerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FixedCostsRelInvoiceSchedulerDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FriendDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FriendDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\FriendsPatternDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/FriendsPatternDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\HolidayDateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/HolidayDateDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\HolidayDateDoctrineRepository\\:\\:findMatchingDateSiblings\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/HolidayDateDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\HuntGroupDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/HuntGroupDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\HuntGroupsRelUserDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/HuntGroupsRelUserDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\InvoiceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/InvoiceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\InvoiceNumberSequenceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/InvoiceNumberSequenceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\InvoiceSchedulerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/InvoiceSchedulerDoctrineRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\InvoiceSchedulerDoctrineRepository\\:\\:getCompanyIdsInUse\\(\\) has parameter \\$schedulerIdToExclude with no typehint specified\\.$#"
@@ -17466,16 +15876,6 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/InvoiceSchedulerDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\InvoiceTemplateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/InvoiceTemplateDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\IvrDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\IvrDoctrineRepository\\:\\:findByExtension\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrDoctrineRepository.php
@@ -17486,79 +15886,9 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\IvrEntryDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrEntryDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\IvrExcludedExtensionDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrExcludedExtensionDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\LanguageDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/LanguageDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\LocutionDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/LocutionDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\MatchListDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/MatchListDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\MatchListDoctrineRepository\\:\\:getIdsByCompanyId\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/MatchListDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\MatchListPatternDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/MatchListPatternDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\MaxUsageNotificationDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/MaxUsageNotificationDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\MediaRelaySetDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/MediaRelaySetDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\MusicOnHoldDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/MusicOnHoldDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\NotificationTemplateContentDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/NotificationTemplateContentDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\NotificationTemplateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/NotificationTemplateDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\OutgoingDdiRuleDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/OutgoingDdiRuleDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\OutgoingDdiRulesPatternDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/OutgoingDdiRulesPatternDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\OutgoingRoutingDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/OutgoingRoutingDoctrineRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\OutgoingRoutingDoctrineRepository\\:\\:findByRoutingPattern\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -17566,64 +15896,9 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/OutgoingRoutingDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\OutgoingRoutingRelCarrierDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/OutgoingRoutingRelCarrierDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\PickUpGroupDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/PickUpGroupDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\PickUpRelUserDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/PickUpRelUserDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ProxyTrunkDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ProxyTrunkDoctrineRepository.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ProxyTrunksRelBrandDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ProxyTrunksRelBrandDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ProxyTrunksRelBrandDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ProxyUserDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ProxyUserDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\PublicEntityDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/PublicEntityDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\QueueDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/QueueDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\QueueMemberDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/QueueMemberDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RatingPlanDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RatingPlanDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RatingPlanGroupDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RatingPlanGroupDoctrineRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RatingPlanGroupDoctrineRepository\\:\\:cleanUpResults\\(\\) has parameter \\$rateWindows with no value type specified in iterable type array\\.$#"
@@ -17641,99 +15916,9 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RatingPlanGroupDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RatingProfileDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RatingProfileDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RecordingDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RecordingDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ResidentialDeviceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ResidentialDeviceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RetailAccountDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RetailAccountDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RouteLockDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RouteLockDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RoutingPatternDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RoutingPatternDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RoutingPatternGroupDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RoutingPatternGroupDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RoutingPatternGroupsRelPatternDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RoutingPatternGroupsRelPatternDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\RoutingTagDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/RoutingTagDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ScheduleDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ScheduleDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ServiceDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ServiceDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\ServiceDoctrineRepository\\:\\:getServicesInGroup\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/ServiceDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\SpecialNumberDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/SpecialNumberDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TerminalDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TerminalDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TerminalManufacturerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TerminalManufacturerDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TerminalModelDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TerminalModelDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TimezoneDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TimezoneDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TransformationRuleDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TransformationRuleDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TransformationRuleSetDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TransformationRuleSetDoctrineRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TransformationRuleSetDoctrineRepository\\:\\:getIdsByBrandId\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -17746,97 +15931,7 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
 
 		-
-			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UserDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UserDoctrineRepository\\:\\:getBrandUsersIdsOrderByTerminalExpireDate\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UserDoctrineRepository\\:\\:getCompanyIdsByBrandAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UserDoctrineRepository\\:\\:getSupervisedUserIdsByAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\WebPortalDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/WebPortalDoctrineRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:getParams\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Redis/Job/RatesImporter.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:setParams\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/RatesImporter.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/RatesImporter.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:\\$params has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/RatesImporter.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:\\$redisDb has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/RatesImporter.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:\\$redisMasterFactory has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/RatesImporter.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:setEntityName\\(\\) has parameter \\$entityName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:\\$entityName has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:\\$id has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:\\$redisDb has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\Recoder\\:\\:\\$redisMasterFactory has no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Redis/Job/Recoder.php
 
