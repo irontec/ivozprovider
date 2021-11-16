@@ -1688,11 +1688,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.6",
+            "version": "4.6.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "569544ae295d1135d71a988db76fce7ccaeb6ab4"
+                "reference": "0faa5ef438984fab99c790147824d2de78c2b53c"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -3185,7 +3185,7 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache-contracts",
@@ -3504,7 +3504,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/deprecation-contracts",
@@ -3803,7 +3803,7 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/event-dispatcher-contracts",
@@ -4243,7 +4243,7 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/http-client-contracts",
@@ -4782,7 +4782,7 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "dev-main",
+            "version": "v1.23.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-grapheme",
@@ -5037,7 +5037,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-main",
+            "version": "v1.23.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
@@ -6010,7 +6010,7 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/service-contracts",
