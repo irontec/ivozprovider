@@ -62,7 +62,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getOriginalFilePath()
     {
@@ -79,7 +79,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getEncodedFilePath()
     {

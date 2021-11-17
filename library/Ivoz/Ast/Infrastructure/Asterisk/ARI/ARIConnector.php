@@ -40,6 +40,9 @@ class ARIConnector
 
     /**
      * Creates a new instance of Asterisk Rest Interface Connector
+     * @param string $userName
+     * @param string $password
+     * @param int $port
      */
     public function __construct(
         ApplicationServerRepository $applicationServerRepository,

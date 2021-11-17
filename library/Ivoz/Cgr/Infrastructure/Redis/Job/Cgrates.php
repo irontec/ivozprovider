@@ -22,13 +22,16 @@ class Cgrates implements RaterReloadInterface
     ) {
     }
 
+    /**
+     * @param string $tpid
+     */
     public function setTpid($tpid): self
     {
         $this->tpid = $tpid;
         return $this;
     }
 
-    public function getTpid(): string
+    public function getTpid(): ?string
     {
         return $this->tpid;
     }

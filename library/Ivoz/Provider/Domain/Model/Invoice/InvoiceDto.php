@@ -69,7 +69,7 @@ class InvoiceDto extends InvoiceDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getPdfPath()
     {

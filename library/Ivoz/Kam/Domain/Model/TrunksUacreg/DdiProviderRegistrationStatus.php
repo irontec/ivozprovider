@@ -73,7 +73,7 @@ class DdiProviderRegistrationStatus
     }
 
     /**
-     * @return string | null
+     * @return int | null
      */
     public function getExpires()
     {

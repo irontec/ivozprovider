@@ -18,6 +18,9 @@ class RatesImporter implements RatesImporterJobInterface
     ) {
     }
 
+    /**
+     * @param array<array-key, string|int> $params
+     */
     public function setParams(array $params): self
     {
         $this->params = $params;

@@ -94,7 +94,7 @@ class CallCsvReportDto extends CallCsvReportDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getCsvPath()
     {

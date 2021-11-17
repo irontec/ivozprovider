@@ -50,8 +50,8 @@ class SetMaxUsageThresholdService extends AbstractApiBasedService
 
     private function isReassembleNeeded(string $tenant, string $account, int $threshold): bool
     {
-        $brandId = substr($tenant, 1);
-        $companyId = substr($account, 1);
+        $brandId = (int) substr($tenant, 1);
+        $companyId = (int) substr($account, 1);
 
         $currentDayUsage = $this->companyBalanceService->getCurrentDayUsage(
             $brandId,

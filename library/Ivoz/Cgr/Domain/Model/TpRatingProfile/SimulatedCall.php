@@ -24,7 +24,7 @@ class SimulatedCall
     public const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
     public const FALLBACK_ERROR_MSG = 'There was a problem';
 
-    /** @var int|string */
+    /** @var int|string|null */
     private $errorCode;
 
     /**
@@ -233,7 +233,7 @@ class SimulatedCall
     }
 
     /**
-     * @return int | null
+     * @return int | string | null
      */
     public function getErrorCode()
     {

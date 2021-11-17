@@ -71,7 +71,7 @@ class RecordingDto extends RecordingDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getRecordedFilePath()
     {

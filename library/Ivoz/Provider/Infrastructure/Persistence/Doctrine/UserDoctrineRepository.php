@@ -58,7 +58,12 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
 
         $result = $qb->getQuery()->getScalarResult();
 
-        return array_column($result, 'id');
+        $ids = array_column($result, 'id');
+
+        return array_map(
+            fn($id) => (int) $id,
+            $ids
+        );
     }
 
     /**
@@ -120,9 +125,14 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
 
         $results = $connection->fetchAll($query);
 
-        return array_column(
+        $ids = array_column(
             $results,
             'userId'
+        );
+
+        return array_map(
+            fn($id) => (int) $id,
+            $ids
         );
     }
 
@@ -204,6 +214,11 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
         );
         $result = $qb->getQuery()->getScalarResult();
 
-        return array_column($result, 'id');
+        $ids = array_column($result, 'id');
+
+        return array_map(
+            fn($id) => (int) $id,
+            $ids
+        );
     }
 }

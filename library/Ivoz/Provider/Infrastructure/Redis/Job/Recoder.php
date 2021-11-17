@@ -20,12 +20,18 @@ class Recoder implements RecoderJobInterface
     ) {
     }
 
+    /**
+     * @param int $id
+     */
     public function setId($id): self
     {
         $this->id = $id;
         return $this;
     }
 
+    /**
+     * @param string $entityName
+     */
     public function setEntityName($entityName): self
     {
         $this->entityName = $entityName;

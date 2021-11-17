@@ -70,7 +70,7 @@ class WebPortalDto extends WebPortalDtoAbstract
         return $this;
     }
     /**
-     * @return string
+     * @return ?string
      */
     public function getLogoPath()
     {

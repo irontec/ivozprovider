@@ -50,7 +50,7 @@ class BrandDto extends BrandDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getLogoPath()
     {

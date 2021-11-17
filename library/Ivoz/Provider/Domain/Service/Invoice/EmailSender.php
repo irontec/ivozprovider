@@ -61,8 +61,15 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
 
         /** @var InvoiceDto $invoiceDto */
         $invoiceDto = $this->entityTools->entityToDto($invoice);
+        $pdfPath = $invoiceDto->getPdfPath();
+        if (is_null($pdfPath)) {
+            throw new \RuntimeException(
+                'Empty pdf path found'
+            );
+        }
+
         $pdf = \Swift_Attachment::fromPath(
-            $invoiceDto->getPdfPath(),
+            $pdfPath,
             'application/pdf'
         );
         $pdf->setFilename(

@@ -72,7 +72,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getFilePath()
     {
