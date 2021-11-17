@@ -8,6 +8,7 @@ use Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus;
 class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
 {
     /**
+     * @var ?DdiProviderRegistrationStatus
      * @AttributeDefinition(
      *     type="object",
      *     class="Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus",

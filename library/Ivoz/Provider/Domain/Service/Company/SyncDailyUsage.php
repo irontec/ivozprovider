@@ -10,21 +10,12 @@ use Psr\Log\LoggerInterface;
 
 class SyncDailyUsage
 {
-    private $entityTools;
-    private $logger;
-    private $client;
-    private $companyRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        CompanyBalanceServiceInterface $client,
-        CompanyRepository $companyRepository
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private CompanyBalanceServiceInterface $client,
+        private CompanyRepository $companyRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->client = $client;
-        $this->companyRepository = $companyRepository;
     }
 
     /**

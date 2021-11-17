@@ -14,18 +14,11 @@ class UserTimezoneInjector
 {
     public const FALLBACK_TZ = 'UTC';
 
-    private $tokenStorage;
-    private $logger;
-    private $tzParamName;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        LoggerInterface $logger,
-        $tzParamName = '_timezone'
+        private TokenStorageInterface $tokenStorage,
+        private LoggerInterface $logger,
+        private string $tzParamName = '_timezone'
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->logger = $logger;
-        $this->tzParamName = $tzParamName;
     }
 
     /**

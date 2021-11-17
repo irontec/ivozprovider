@@ -14,6 +14,7 @@ class BrandDto extends BrandDtoAbstract
         self::CONTEXT_DETAILED
     ];
 
+    /** @var ?string */
     private $logoPath;
 
     /**

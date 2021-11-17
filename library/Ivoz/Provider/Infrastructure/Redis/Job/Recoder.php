@@ -8,21 +8,16 @@ use Psr\Log\LoggerInterface;
 
 class Recoder implements RecoderJobInterface
 {
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
+    /** @var int */
     private $id;
+    /** @var string */
     private $entityName;
 
     public function __construct(
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function setId($id): self

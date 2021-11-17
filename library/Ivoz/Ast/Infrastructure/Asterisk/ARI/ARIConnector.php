@@ -24,10 +24,13 @@ class ARIConnector
     /**
      * Connection information
      */
+    /** @var int */
     protected $_port;
+    /** @var string */
     protected $_user;
+    /** @var string */
     protected $_pass;
-
+    /** @var LoggerInterface */
     protected $_logger;
 
     /**

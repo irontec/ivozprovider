@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 class FaxesInOutDto extends FaxesInOutDtoAbstract
 {
+    /** @var ?string */
     private $filePath;
 
     /**

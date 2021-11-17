@@ -102,6 +102,9 @@ class AdministratorDoctrineRepository extends ServiceEntityRepository implements
         );
     }
 
+    /**
+     * @return AdministratorInterface|null
+     */
     private function findOneByCriteria(array $criteria)
     {
         $qb = $this->createQueryBuilder('self');

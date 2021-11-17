@@ -4,8 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Locution;
 
 class LocutionDto extends LocutionDtoAbstract
 {
-
+    /** @var ?string */
     private $originalFilePath;
+    /** @var ?string */
     private $encodedFilePath;
 
     /**

@@ -6,7 +6,9 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class MusicOnHoldDto extends MusicOnHoldDtoAbstract
 {
+    /** @var ?string */
     private $originalFilePath;
+    /** @var ?string */
     private $encodedFilePath;
 
     /**

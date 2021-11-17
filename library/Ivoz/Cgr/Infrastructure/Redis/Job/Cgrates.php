@@ -8,22 +8,18 @@ use Psr\Log\LoggerInterface;
 
 class Cgrates implements RaterReloadInterface
 {
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
+    /** @var ?string */
     private $tpid;
+    /** @var ?string */
     private $notifyThresholdForAccount;
+    /** @var bool */
     private $disableDestinations = false;
 
     public function __construct(
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function setTpid($tpid): self

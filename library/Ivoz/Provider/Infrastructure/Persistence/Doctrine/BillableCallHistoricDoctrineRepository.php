@@ -21,14 +21,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BillableCallHistoricDoctrineRepository extends ServiceEntityRepository implements BillableCallHistoricRepository
 {
-    private $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, BillableCallHistoric::class);
-        $this->queryRunner = $queryRunner;
     }
 
     public function copyBillableCallsByIds(array $ids): int

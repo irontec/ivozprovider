@@ -14,24 +14,13 @@ class ProcessExternalCdr
 {
     public const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
 
-    private $apiClient;
-    private $entityTools;
-    private $tpCdrRepository;
-    private $logger;
-    private $trunksClient;
-
     public function __construct(
-        ApiClient $apiClient,
-        EntityTools $entityTools,
-        TpCdrRepository $tpCdrRepository,
-        LoggerInterface $logger,
-        TrunksClientInterface $trunksClient
+        private ApiClient $apiClient,
+        private EntityTools $entityTools,
+        private TpCdrRepository $tpCdrRepository,
+        private LoggerInterface $logger,
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->tpCdrRepository = $tpCdrRepository;
-        $this->apiClient = $apiClient;
-        $this->trunksClient = $trunksClient;
     }
 
     /**

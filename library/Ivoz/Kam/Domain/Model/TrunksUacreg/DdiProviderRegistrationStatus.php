@@ -7,16 +7,19 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 class DdiProviderRegistrationStatus
 {
    /**
+    * @var bool
     * @AttributeDefinition(type="bool")
     */
     private $registered = false;
 
     /**
+     * @var bool
      * @AttributeDefinition(type="bool")
      */
     private $inProgress = false;
 
     /**
+     * @var ?int
      * @AttributeDefinition(type="int", required=false)
      */
     private $expires;

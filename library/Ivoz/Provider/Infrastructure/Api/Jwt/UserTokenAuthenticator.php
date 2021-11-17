@@ -17,27 +17,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserTokenAuthenticator extends JWTTokenAuthenticator
 {
-    /**
-     * @var JWTTokenManagerInterface
-     */
-    protected $jwtManager;
-
-    private $tokenStorage;
-
-    /**
-     * @param JWTTokenManagerInterface $jwtManager
-     * @param EventDispatcherInterface $dispatcher
-     * @param TokenExtractorInterface  $tokenExtractor
-     */
     public function __construct(
-        JWTTokenManagerInterface $jwtManager,
+        private JWTTokenManagerInterface $jwtManager,
         EventDispatcherInterface $dispatcher,
         TokenExtractorInterface $tokenExtractor,
-        TokenStorageInterface $tokenStorage
+        private TokenStorageInterface $tokenStorage
     ) {
-        $this->jwtManager = $jwtManager;
-        $this->tokenStorage = $tokenStorage;
-
         parent::__construct($jwtManager, $dispatcher, $tokenExtractor, $tokenStorage);
     }
 

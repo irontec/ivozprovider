@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 class WebPortalDto extends WebPortalDtoAbstract
 {
+    /** @var ?string */
     private $logoPath;
 
     /**

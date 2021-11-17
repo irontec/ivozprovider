@@ -10,15 +10,12 @@ class UsersClient implements UsersClientInterface
 {
     use RpcRequestTrait;
 
-    private $rpcJob;
-
     public function __construct(
         RpcClient $rpcClient,
-        UserRpcJob $userRpcJob,
+        private UserRpcJob $rpcJob,
         LoggerInterface $logger
     ) {
         $this->rpcClient = $rpcClient;
-        $this->rpcJob = $userRpcJob;
         $this->logger = $logger;
     }
 

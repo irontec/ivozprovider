@@ -28,14 +28,11 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
     use GetGeneratorByConditionsTrait;
 
-    private $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, BillableCall::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**

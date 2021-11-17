@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 
 class RecordingDto extends RecordingDtoAbstract
 {
+    /** @var ?string */
     private $recordedFile;
 
     /**

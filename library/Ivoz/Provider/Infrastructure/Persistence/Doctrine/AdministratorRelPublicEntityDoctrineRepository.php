@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 
 /**
@@ -20,14 +21,11 @@ use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPubl
  */
 class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityRepository implements AdministratorRelPublicEntityRepository
 {
-    private $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, AdministratorRelPublicEntity::class);
-        $this->queryRunner = $queryRunner;
     }
 
     public function setWritePermissions(

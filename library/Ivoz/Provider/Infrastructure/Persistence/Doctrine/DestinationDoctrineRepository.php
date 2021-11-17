@@ -19,14 +19,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DestinationDoctrineRepository extends ServiceEntityRepository implements DestinationRepository
 {
-    private $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, Destination::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**

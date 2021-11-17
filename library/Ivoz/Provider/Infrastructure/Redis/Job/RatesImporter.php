@@ -8,20 +8,14 @@ use Psr\Log\LoggerInterface;
 
 class RatesImporter implements RatesImporterJobInterface
 {
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
+    /** @var array<array-key, string|int> */
     private $params = [];
 
     public function __construct(
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
     public function setParams(array $params): self

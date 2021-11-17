@@ -39,14 +39,13 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
 
     /**
      * Used by client API access controls
-     * @param AdministratorInterface $admin
-     * @return array
+     * @return int[]
      */
     public function getSupervisedUserIdsByAdmin(AdministratorInterface $admin): array
     {
         $companyIds = $admin->isBrandAdmin()
             ? $this->getCompanyIdsByBrandAdmin($admin)
-            : [ $admin->getCompany()->getId() ];
+            : [ $admin->getCompany()?->getId() ];
 
         $qb = $this->createQueryBuilder('self');
         $expression = $qb->expr();
@@ -63,7 +62,6 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
-     * @param UserInterface $user
      * @return UserInterface[]
      */
     public function getUserAssistantCandidates(UserInterface $user): array
@@ -86,7 +84,6 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
-     * @param UserInterface $user
      * @return UserInterface[]
      */
     public function getAvailableVoicemails(UserInterface $user): array
@@ -106,7 +103,9 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
         return $query->getResult();
     }
 
-
+    /**
+     * @return int[]
+     */
     public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC'): array
     {
         $query = $this->getBrandUsersIdsOrderByTerminalExpireDateQuery(
@@ -190,8 +189,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
-     * @param AdministratorInterface $admin
-     * @return array
+     * @return int[]
      */
     protected function getCompanyIdsByBrandAdmin(AdministratorInterface $admin): array
     {

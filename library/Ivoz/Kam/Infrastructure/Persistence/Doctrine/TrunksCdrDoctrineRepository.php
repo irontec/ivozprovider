@@ -21,14 +21,11 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 {
     use GetGeneratorByConditionsTrait;
 
-    private $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TrunksCdr::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**

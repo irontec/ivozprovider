@@ -23,18 +23,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DomainDoctrineRepository extends ServiceEntityRepository implements DomainRepository
 {
-    private $brandRepository;
-    private $companyRepository;
-
     public function __construct(
         ManagerRegistry $registry,
-        BrandRepository $brandRepository,
-        CompanyRepository $companyRepository
+        private BrandRepository $brandRepository,
+        private CompanyRepository $companyRepository
     ) {
         parent::__construct($registry, Domain::class);
-
-        $this->brandRepository = $brandRepository;
-        $this->companyRepository = $companyRepository;
     }
 
     /**

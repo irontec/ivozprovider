@@ -10,26 +10,13 @@ use Psr\Log\LoggerInterface;
 
 class UserRpcJob implements RpcJobInterface
 {
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
-    private $rpcEntity;
-    private $rpcPort;
-
     public function __construct(
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger,
-        string $rpcEntity = ProxyUser::class,
-        int $rpcPort = 8000
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger,
+        private string $rpcEntity = ProxyUser::class,
+        private int $rpcPort = 8000
     ) {
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
-
-        $this->rpcEntity = $rpcEntity;
-        $this->rpcPort = $rpcPort;
     }
 
     public function send(string $method, bool $retryOnError = false): void
