@@ -12,5 +12,6 @@ This group will show all available client types for a given (emulated/logged in)
     residential
     retail
     wholesale
+    operators
 
 .. tip:: Available client types can be configured through *Brand Features*.

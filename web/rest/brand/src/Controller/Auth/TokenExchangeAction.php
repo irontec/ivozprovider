@@ -50,14 +50,34 @@ class TokenExchangeAction
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
 
-        /** @var string  $inputToken */
-        $inputToken =  $request->get('token');
-        /** @var string $username */
+        /** @var ?string  $inputToken */
+        $inputToken =  $request->get('token', null);
+        if (is_null($inputToken)) {
+            throw new \DomainException(
+                'Token not found'
+            );
+        }
+
+        /** @var ?string $username */
         $username = $request->get('username');
+
+        /** @var ?int  $brandId */
+        $brandId = $request->get('brandId', null);
+
+        if (!$username && !$brandId) {
+            throw new \DomainException(
+                'Either username or brandId must be set'
+            );
+        }
+
+        /** @var string $identity */
+        $identity = $brandId
+            ? '__b' . $brandId . '_internal'
+            : $username;
 
         $tokenStr = $this->exchangeToken->execute(
             $inputToken,
-            $username
+            $identity
         );
 
         return new Token($tokenStr);

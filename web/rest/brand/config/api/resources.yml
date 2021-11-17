@@ -24,8 +24,13 @@ Model\Token:
           - name: username
             in: formData
             type: string
-            required: true
+            required: false
             description: 'Target brand admin user name'
+          - name: brandId
+            in: formData
+            type: integer
+            required: false
+            description: 'Target brand ID'
 
 Model\ActiveCalls:
   itemOperations:

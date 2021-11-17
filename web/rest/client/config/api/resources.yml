@@ -25,8 +25,13 @@ Model\Token:
         - name: username
           in: formData
           type: string
-          required: true
+          required: false
           description: 'Target client admin user name'
+        - name: clientId
+          in: formData
+          type: integer
+          required: false
+          description: 'Target client ID'
 
 Model\RatingPlanPrices:
   attributes:
