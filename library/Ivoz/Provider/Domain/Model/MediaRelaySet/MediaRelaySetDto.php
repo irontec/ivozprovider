@@ -14,7 +14,6 @@ class MediaRelaySetDto extends MediaRelaySetDtoAbstract
             return [
                 'name' => 'name',
                 'description' => 'description',
-                'type' => 'type',
                 'id' => 'id'
             ];
         }
