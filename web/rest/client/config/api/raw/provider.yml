@@ -1344,6 +1344,8 @@ Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Name: ~
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Description: ~
 
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   itemOperations:
@@ -1385,6 +1387,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
     swagger_context:
       required:
       - company
+Ivoz\Provider\Domain\Model\Recording\RecordedFile: ~
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
@@ -1548,6 +1551,8 @@ Ivoz\Provider\Domain\Model\Service\Service:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\Service\Name: ~
+Ivoz\Provider\Domain\Model\Service\Description: ~
 
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
   itemOperations:
@@ -1609,6 +1614,7 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\Timezone\Label: ~
 
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
