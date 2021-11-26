@@ -95,6 +95,17 @@ Feature: Manage brands
               },
               "country": 68
           },
+          "currency": {
+              "iden": "EUR",
+              "symbol": "€",
+              "id": 1,
+              "name": {
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro"
+              }
+          },
           "features": [
               1,
               2,

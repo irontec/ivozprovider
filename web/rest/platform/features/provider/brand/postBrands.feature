@@ -72,6 +72,7 @@ Feature: Manage brands
               },
               "country": 68
           },
+          "currency": null,
           "features": []
       }
     """
@@ -126,6 +127,7 @@ Feature: Manage brands
               },
               "country": 68
           },
+          "currency": null,
           "features": []
       }
     """
@@ -212,6 +214,7 @@ This is file content
               },
               "country": 68
           },
+          "currency": null,
           "features": [
               1
           ]
