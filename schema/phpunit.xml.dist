@@ -12,6 +12,7 @@
         <server name="KERNEL_DIR" value="src/" />
         <server name="KERNEL_CLASS" value="Kernel" />
         <server name="APP_ENV" value="test" force="true" />
+        <server name="APP_DEBUG" value="false" />
         <server name="SHELL_VERBOSITY" value="-1" />
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
     </php>
