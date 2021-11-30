@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type RetailAccountPropertyList<T> = {
+export type RetailAccountPropertyList<T> = {
 };
 
 export type RetailAccountProperties = RetailAccountPropertyList<Partial<PropertySpec>>;

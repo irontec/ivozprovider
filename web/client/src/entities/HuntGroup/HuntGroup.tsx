@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import { HuntGroupProperties } from './HuntGroupProperties';
 
 const routableFields = [
@@ -118,7 +118,8 @@ const huntGroup: EntityInterface = {
     path: '/hunt_groups',
     toStr: (row: any) => row.name,
     properties,
-    Form
+    Form,
+    foreignKeyGetter
 };
 
 export default huntGroup;

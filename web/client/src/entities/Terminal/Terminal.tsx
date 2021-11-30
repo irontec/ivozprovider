@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
-import Form from './Form'
+import Form, { foreignKeyGetter } from './Form'
 import entities from '../index';
 import { TerminalProperties, TerminalPropertiesList } from './TerminalProperties';
 
@@ -101,6 +101,7 @@ const terminal: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver
 };
 

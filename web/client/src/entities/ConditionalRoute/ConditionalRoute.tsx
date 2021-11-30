@@ -4,7 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import { ConditionalRouteProperties, ConditionalRoutePropertiesList } from './ConditionalRouteProperties';
 
 const routableFields = [
@@ -285,6 +285,7 @@ const ConditionalRoute: EntityInterface = {
     properties,
     columns,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver
 };
 

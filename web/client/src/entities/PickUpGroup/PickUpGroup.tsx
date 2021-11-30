@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import entities from '../index';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import { PickUpGroupProperties, PickUpGroupPropertiesList } from './PickUpGroupProperties';
@@ -43,6 +43,7 @@ const pickUpGroup: EntityInterface = {
     path: '/pick_up_groups',
     properties,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver
 };
 

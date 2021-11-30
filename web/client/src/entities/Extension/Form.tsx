@@ -7,6 +7,45 @@ import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
+import { ExtensionPropertyList } from './ExtensionProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: ExtensionPropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = CountrySelectOptions((options: any) => {
+        response.numberCountry = options;
+    });
+
+    promises[promises.length] = IvrSelectOptions((options: any) => {
+        response.ivr = options;
+    });
+
+    promises[promises.length] = HuntGroupSelectOptions((options: any) => {
+        response.huntGroup = options;
+    });
+
+    promises[promises.length] = ConferenceRoomSelectOptions((options: any) => {
+        response.conferenceRoom = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.user = options;
+    });
+
+    promises[promises.length] = QueueSelectOptions((options: any) => {
+        response.queue = options;
+    });
+
+    promises[promises.length] = ConditionalRouteSelectOptions((options: any) => {
+        response.conditionalRoute = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -21,65 +60,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                CountrySelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            numberCountry: options
-                        }
-                    });
-                });
-
-                IvrSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ivr: options
-                        }
-                    });
-                });
-
-                HuntGroupSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            huntGroup: options
-                        }
-                    });
-                });
-
-                ConferenceRoomSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            conferenceRoom: options
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            user: options
-                        }
-                    });
-                });
-
-                QueueSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            queue: options
-                        }
-                    });
-                });
-
-                ConditionalRouteSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            conditionalRoute: options
+                            ...options
                         }
                     });
                 });

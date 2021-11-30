@@ -4,7 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import { CompanyServiceProperties, CompanyServicePropertiesList } from './CompanyServiceProperties';
 
 const properties: CompanyServiceProperties = {
@@ -54,7 +54,8 @@ const companyService: EntityInterface = {
     properties,
     columns,
     foreignKeyResolver,
-    Form
+    Form,
+    foreignKeyGetter
 };
 
 export default companyService;

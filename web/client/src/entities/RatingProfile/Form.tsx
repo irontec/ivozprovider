@@ -2,6 +2,25 @@ import defaultEntityBehavior, { EntityFormProps } from 'lib/entities/DefaultEnti
 import { useEffect, useState } from 'react';
 import RatingPlanGroupSelectOptions from 'entities/RatingPlanGroup/SelectOptions';
 import RoutingTagSelectOptions from 'entities/RoutingTag/SelectOptions';
+import { RatingProfilePropertyList } from './RatingProfileProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: RatingProfilePropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = RatingPlanGroupSelectOptions((options: any) => {
+        response.ratingPlanGroup = options;
+    });
+
+    promises[promises.length] = RoutingTagSelectOptions((options: any) => {
+        response.routingTag = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -13,21 +32,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
-            if (mounted && loadingFks) {
-                RatingPlanGroupSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ratingPlanGroup: options,
-                        }
-                    });
-                });
 
-                RoutingTagSelectOptions((options: any) => {
+            if (mounted && loadingFks) {
+
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            routingTag: options,
+                            ...options
                         }
                     });
                 });

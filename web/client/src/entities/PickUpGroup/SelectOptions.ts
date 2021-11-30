@@ -1,9 +1,9 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import pickUpGroup from './PickUpGroup';
 
-const PickUpGroupSelectOptions = (callback: FetchFksCallback): void => {
+const PickUpGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         pickUpGroup.path,
         ['id', 'name'],
         (data: any) => {

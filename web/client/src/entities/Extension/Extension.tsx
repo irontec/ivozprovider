@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import entities from '../index';
 import { ExtensionProperties, ExtensionPropertiesList } from './ExtensionProperties';
 
@@ -249,6 +249,7 @@ const extension: EntityInterface = {
     columns,
     properties,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver
 };
 

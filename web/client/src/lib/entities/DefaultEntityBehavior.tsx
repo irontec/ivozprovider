@@ -337,8 +337,8 @@ const View = (props: ViewProps): JSX.Element | null => {
 
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
 
-const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback): void => {
-    ApiClient.get(
+const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback): Promise<unknown> => {
+    return ApiClient.get(
         endpoint,
         {
             '_pagination': false,

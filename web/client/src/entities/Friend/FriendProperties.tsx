@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type FriendPropertyList<T> = {
+export type FriendPropertyList<T> = {
     'name'?: T,
     'domain'?: T,
     'description'?: T,

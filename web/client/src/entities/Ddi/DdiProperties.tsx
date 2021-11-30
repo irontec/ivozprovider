@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type DdiPropertyList<T> = {
+export type DdiPropertyList<T> = {
     'ddi'?: T,
     'externalCallFilter'?: T,
     'routeType'?: T,
@@ -13,6 +13,7 @@ type DdiPropertyList<T> = {
     'fax'?: T,
     'conferenceRoom'?: T,
     'residentialDevice'?: T,
+    'ddiProvider'?: T,
     'friendValue'?: T,
     'country'?: T,
     'language'?: T,
@@ -23,4 +24,4 @@ type DdiPropertyList<T> = {
 };
 
 export type DdiProperties = DdiPropertyList<Partial<PropertySpec>>;
-export type DdiPropertiesList = Array<DdiPropertyList<EntityValue|EntityValues>>;
+export type DdiPropertiesList = Array<DdiPropertyList<EntityValue | EntityValues>>;

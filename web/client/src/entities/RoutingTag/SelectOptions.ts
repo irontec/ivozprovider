@@ -1,8 +1,8 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const RoutingTagSelectOptions = (callback: FetchFksCallback): void => {
+const RoutingTagSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/routing_tag',
         ['id', 'name'],
         (data: any) => {

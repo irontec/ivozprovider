@@ -1,8 +1,8 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const ConferenceRoomSelectOptions = (callback: FetchFksCallback): void => {
+const ConferenceRoomSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/conference_rooms',
         ['id', 'name'],
         (data:any) => {

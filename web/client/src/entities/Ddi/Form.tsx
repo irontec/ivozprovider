@@ -14,6 +14,70 @@ import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { DdiPropertyList } from './DdiProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: DdiPropertyList<unknown> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = ExternalCallFilterSelectOptions((options: any) => {
+        response.externalCallFilter = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.user = options;
+    });
+
+    promises[promises.length] = IvrSelectOptions((options: any) => {
+        response.ivr = options;
+    });
+
+    promises[promises.length] = HuntGroupSelectOptions((options: any) => {
+        response.huntGroup = options;
+    });
+
+    promises[promises.length] = FaxSelectOptions((options: any) => {
+        response.fax = options;
+    });
+
+    promises[promises.length] = ConferenceRoomSelectOptions((options: any) => {
+        response.conferenceRoom = options;
+    });
+
+    promises[promises.length] = ResidentialDeviceSelectOptions((options: any) => {
+        response.residentialDevice = options;
+    });
+
+    promises[promises.length] = DdiProviderSelectOptions((options: any) => {
+        response.ddiProvider = options;
+    });
+
+    promises[promises.length] = CountrySelectOptions((options: any) => {
+        response.country = options;
+    });
+
+    promises[promises.length] = LanguageSelectOptions((options: any) => {
+        response.language = options;
+    });
+
+    promises[promises.length] = QueueSelectOptions((options: any) => {
+        response.queue = options;
+    });
+
+    promises[promises.length] = ConditionalRouteSelectOptions((options: any) => {
+        response.conditionalRoute = options;
+    });
+
+    promises[promises.length] = RetailAccountSelectOptions((options: any) => {
+        response.retailAccount = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -28,119 +92,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                ExternalCallFilterSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            externalCallFilter: options
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            user: options
-                        }
-                    });
-                });
-
-                IvrSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ivr: options
-                        }
-                    });
-                });
-
-                HuntGroupSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            huntGroup: options
-                        }
-                    });
-                });
-
-                FaxSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            fax: options
-                        }
-                    });
-                });
-
-                ConferenceRoomSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            conferenceRoom: options
-                        }
-                    });
-                });
-
-                ResidentialDeviceSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            residentialDevice: options
-                        }
-                    });
-                });
-
-                DdiProviderSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ddiProvider: options
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            country: options
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            language: options
-                        }
-                    });
-                });
-
-                QueueSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            queue: options
-                        }
-                    });
-                });
-
-                ConditionalRouteSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            conditionalRoute: options
-                        }
-                    });
-                });
-
-                RetailAccountSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            retailAccount: options
+                            ...options
                         }
                     });
                 });

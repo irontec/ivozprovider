@@ -5,6 +5,41 @@ import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { IvrPropertyList } from './IvrProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: IvrPropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = LocutionSelectOptions((options: any) => {
+        response.welcomeLocution = options;
+        response.noInputLocution = options;
+        response.errorLocution = options;
+        response.successLocution = options;
+    });
+
+    promises[promises.length] = CountrySelectOptions((options: any) => {
+        response.noInputNumberCountry = options;
+        response.errorNumberCountry = options;
+    });
+
+    promises[promises.length] = ExtensionSelectOptions((options: any) => {
+        response.noInputExtension = options;
+        response.errorExtension = options;
+        response.excludedExtensionIds = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.noInputVoiceMailUser = options;
+        response.errorVoiceMailUser = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -19,45 +54,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                LocutionSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            welcomeLocution: options,
-                            noInputLocution: options,
-                            errorLocution: options,
-                            successLocution: options,
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            noInputNumberCountry: options,
-                            errorNumberCountry: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            noInputExtension: options,
-                            errorExtension: options,
-                            excludedExtensionIds: options,
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            noInputVoiceMailUser: options,
-                            errorVoiceMailUser: options,
+                            ...options
                         }
                     });
                 });

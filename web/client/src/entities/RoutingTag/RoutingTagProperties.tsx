@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type RoutingTagPropertyList<T> = {
+export type RoutingTagPropertyList<T> = {
     'name'?: T,
     'tag'?: T,
 };

@@ -6,8 +6,44 @@ import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOpt
 import UserSelectOptions from 'entities/User/SelectOptions';
 import FaxSelectOptions from 'entities/Fax/SelectOptions';
 import FriendSelectOptions from 'entities/Friend/SelectOptions';
-import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: CallCsvSchedulerPropertyList<unknown> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = DdiSelectOptions((options: any) => {
+        response.ddi = options;
+    });
+
+    promises[promises.length] = RetailAccountSelectOptions((options: any) => {
+        response.retailAccount = options;
+    });
+
+    promises[promises.length] = ResidentialDeviceSelectOptions((options: any) => {
+        response.residentialDevice = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.user = options;
+    });
+
+    promises[promises.length] = FaxSelectOptions((options: any) => {
+        response.fax = options;
+    });
+
+    promises[promises.length] = FriendSelectOptions((options: any) => {
+        response.friend = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
+
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -22,65 +58,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                DdiSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            ddi: options
-                        }
-                    });
-                });
-
-                RetailAccountSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            retailAccount: options
-                        }
-                    });
-                });
-
-                ResidentialDeviceSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            residentialDevice: options
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            user: options
-                        }
-                    });
-                });
-
-                FaxSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            fax: options
-                        }
-                    });
-                });
-
-                FriendSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            friend: options
-                        }
-                    });
-                });
-
-                DdiProviderSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ddiProvider: options
+                            ...options
                         }
                     });
                 });

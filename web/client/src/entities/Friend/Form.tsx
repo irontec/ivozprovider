@@ -5,6 +5,33 @@ import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/S
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { FriendPropertyList } from './FriendProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: FriendPropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = CallAclSelectOptions((options: any) => {
+        response.callAcl = options;
+    });
+
+    promises[promises.length] = TransformationRuleSetSelectOptions((options: any) => {
+        response.transformationRuleSet = options;
+    });
+
+    promises[promises.length] = DdiSelectOptions((options: any) => {
+        response.outgoingDdi = options;
+    });
+
+    promises[promises.length] = LanguageSelectOptions((options: any) => {
+        response.language = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -16,40 +43,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
 
-                CallAclSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            callAcl: options,
-                        }
-                    });
-                });
-
-                TransformationRuleSetSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            transformationRuleSet: options,
-                        }
-                    });
-                });
-
-                DdiSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            outgoingDdi: options,
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            language: options,
+                            ...options
                         }
                     });
                 });

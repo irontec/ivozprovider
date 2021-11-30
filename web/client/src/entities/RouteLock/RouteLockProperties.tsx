@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type RouteLockPropertyList<T> = {
+export type RouteLockPropertyList<T> = {
     'name'?: T,
     'description'?: T,
     'open'?: T,

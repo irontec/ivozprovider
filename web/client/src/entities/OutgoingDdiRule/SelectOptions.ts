@@ -1,8 +1,8 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const OutgoingDdiRuleSelectOptions = (callback: FetchFksCallback): void => {
+const OutgoingDdiRuleSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/outgoing_ddi_rules',
         ['id', 'name'],
         (data: any) => {

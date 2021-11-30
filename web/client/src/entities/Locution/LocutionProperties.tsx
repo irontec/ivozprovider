@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type LocutionPropertyList<T> = {
+export type LocutionPropertyList<T> = {
     'name'?: T,
     'originalFile'?: T,
     'status'?: T,

@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type TerminalPropertyList<T> = {
+export type TerminalPropertyList<T> = {
     'name'?: T,
     'mac'?: T,
     'lastProvisionDate'?: T,

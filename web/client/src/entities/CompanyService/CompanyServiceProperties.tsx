@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type CompanyServicePropertyList<T> = {
+export type CompanyServicePropertyList<T> = {
     'service'?: T,
     'code'?: T,
 };
