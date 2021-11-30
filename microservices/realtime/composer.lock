@@ -8,11 +8,11 @@
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "dev-main",
+            "version": "v2.6.6",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/api-platform/core",
-                "reference": "9c348d2b4fdc55b55f202a91878e2f4dd8d6cf99"
+                "reference": "25c71b216473844cdbe5bf284ccbeeb26acd76e7"
             },
             "require": {
                 "doctrine/inflector": "^1.0 || ^2.0",
@@ -30,17 +30,19 @@
             },
             "conflict": {
                 "doctrine/common": "<2.7",
-                "doctrine/mongodb-odm": "<2.1",
+                "doctrine/dbal": "<2.10",
+                "doctrine/mongodb-odm": "<2.2",
                 "doctrine/persistence": "<1.3"
             },
             "require-dev": {
                 "behat/behat": "^3.1",
                 "behat/mink": "^1.7",
                 "doctrine/annotations": "^1.7",
+                "doctrine/cache": "^1.11",
                 "doctrine/common": "^2.11 || ^3.0",
                 "doctrine/data-fixtures": "^1.2.2",
                 "doctrine/doctrine-bundle": "^1.12 || ^2.0",
-                "doctrine/mongodb-odm": "^2.1",
+                "doctrine/mongodb-odm": "^2.2",
                 "doctrine/mongodb-odm-bundle": "^4.0",
                 "doctrine/orm": "^2.6.4 || ^3.0",
                 "elasticsearch/elasticsearch": "^6.0 || ^7.0",
@@ -133,7 +135,7 @@
             "authors": [
                 {
                     "name": "Kévin Dunglas",
-                    "email": "dunglas@gmail.com",
+                    "email": "kevin@dunglas.fr",
                     "homepage": "https://dunglas.fr"
                 }
             ],
@@ -1949,14 +1951,14 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.4.4",
+            "version": "4.5.1",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api",
-                "reference": "ef4cdd9fcda6777c3b107810bd10d300e4606f2e"
+                "reference": "2ea7f3f2573afce8399be7ba3f9859eeb8840bc4"
             },
             "require": {
-                "api-platform/core": "^2.5",
+                "api-platform/core": "2.6.*",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
                 "irontec/ivoz-core": "^4.4",
@@ -1998,15 +2000,15 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.2",
+            "version": "4.3",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "1440e26cf7d2b6ca2b3779cff014472baf94a872"
+                "reference": "f6d4b21f58e59a08ad3bc3ea82a39c6d2dfe8baf"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.4",
+                "irontec/ivoz-api": "^4.5",
                 "irontec/ivoz-core-bundle": "^4.0.6",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",

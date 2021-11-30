@@ -58,7 +58,8 @@ Feature: Create proxy trunks rel brands
                   "registryData": ""
               },
               "language": 1,
-              "defaultTimezone": 145
+              "defaultTimezone": 145,
+              "currency": 2
           },
           "proxyTrunk": {
               "name": "ExtraIP",
