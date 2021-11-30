@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpRate;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
@@ -14,6 +15,7 @@ class TpRateLifecycleServiceCollection implements LifecycleServiceCollectionInte
 {
     use LifecycleServiceCollectionTrait;
 
+    /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
         "on_commit" =>
         [
@@ -21,7 +23,7 @@ class TpRateLifecycleServiceCollection implements LifecycleServiceCollectionInte
         ],
     ];
 
-    protected function addService(string $event, $service): void
+    protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
         Assertion::isInstanceOf($service, TpRateLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;

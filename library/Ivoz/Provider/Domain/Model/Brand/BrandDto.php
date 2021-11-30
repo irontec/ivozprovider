@@ -14,6 +14,7 @@ class BrandDto extends BrandDtoAbstract
         self::CONTEXT_DETAILED
     ];
 
+    /** @var ?string */
     private $logoPath;
 
     /**
@@ -49,7 +50,7 @@ class BrandDto extends BrandDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getLogoPath()
     {

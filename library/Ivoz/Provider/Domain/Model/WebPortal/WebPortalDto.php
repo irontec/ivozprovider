@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 class WebPortalDto extends WebPortalDtoAbstract
 {
+    /** @var ?string */
     private $logoPath;
 
     /**
@@ -69,7 +70,7 @@ class WebPortalDto extends WebPortalDtoAbstract
         return $this;
     }
     /**
-     * @return string
+     * @return ?string
      */
     public function getLogoPath()
     {

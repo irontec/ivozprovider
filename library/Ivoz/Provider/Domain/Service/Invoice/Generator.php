@@ -21,57 +21,22 @@ class Generator
 
     public const LOGGER_PREFIX = '[Invoices][Generator]';
 
+    /** @var int */
     private $invoiceId;
+    /** @var int float */
     private $fixedCostTotal = 0;
+    /** @var array<array-key, array>  */
     private $fixedCosts = array();
+    /** @var array<array-key, float> */
     private $totals = array();
 
-    /**
-     * @var InvoiceRepository
-     */
-    private $invoiceRepository;
-
-    /**
-     * @var BillableCallRepository
-     */
-    private $billableCallRepository;
-
-    /**
-     * @var EntityTools
-     */
-    private $entityTools;
-
-    /**
-     * @var Logger
-     */
-    private $logger;
-
-    /**
-     * @var string
-     */
-    private $vendorDir;
-
-    /**
-     * Generator constructor.
-     *
-     * @param InvoiceRepository $invoiceRepository
-     * @param BillableCallRepository $billableCallRepository
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param string $vendorDir
-     */
     public function __construct(
-        InvoiceRepository $invoiceRepository,
-        BillableCallRepository $billableCallRepository,
-        EntityTools $entityTools,
-        Logger $logger,
-        string $vendorDir
+        private InvoiceRepository $invoiceRepository,
+        private BillableCallRepository $billableCallRepository,
+        private EntityTools $entityTools,
+        private Logger $logger,
+        private string $vendorDir
     ) {
-        $this->invoiceRepository = $invoiceRepository;
-        $this->billableCallRepository = $billableCallRepository;
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->vendorDir = $vendorDir;
     }
 
     public function setInvoiceId(int $id): self

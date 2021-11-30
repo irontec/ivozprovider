@@ -9,16 +9,10 @@ use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class BillingService implements BillingServiceInterface
 {
-    private $client;
-    private $entityTools;
-
     public function __construct(
-        ClientInterface $client,
-        EntityTools $entityTools
+        private ClientInterface $client,
+        private EntityTools $entityTools
     ) {
-        $this->client = $client;
-
-        $this->entityTools = $entityTools;
     }
 
     /**

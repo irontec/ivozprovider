@@ -9,12 +9,9 @@ class SendUsersTrustedPermissionsReloadRequest implements CompanyLifecycleEventH
 {
     public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
-    private $usersClient;
-
     public function __construct(
-        UsersClientInterface $usersClient
+        private UsersClientInterface $usersClient
     ) {
-        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()

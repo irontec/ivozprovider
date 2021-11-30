@@ -11,7 +11,7 @@ trait RoutableTrait
     /**
      * Available Route types
      *
-     * @var array
+     * @var string[]
      */
     protected $routeTypes = [
         'ivr',

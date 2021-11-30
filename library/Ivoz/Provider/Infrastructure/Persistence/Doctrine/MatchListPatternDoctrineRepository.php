@@ -7,6 +7,9 @@ use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @template-extends ServiceEntityRepository<MatchListPattern>
+ */
 class MatchListPatternDoctrineRepository extends ServiceEntityRepository implements MatchListPatternRepository
 {
     public function __construct(ManagerRegistry $registry)

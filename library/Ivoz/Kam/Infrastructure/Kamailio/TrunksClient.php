@@ -10,15 +10,12 @@ class TrunksClient implements TrunksClientInterface
 {
     use RpcRequestTrait;
 
-    private $rpcJob;
-
     public function __construct(
         RpcClient $rpcClient,
-        TrunksRpcJob $rpcJob,
+        private TrunksRpcJob $rpcJob,
         LoggerInterface $logger
     ) {
         $this->rpcClient = $rpcClient;
-        $this->rpcJob = $rpcJob;
         $this->logger = $logger;
     }
 

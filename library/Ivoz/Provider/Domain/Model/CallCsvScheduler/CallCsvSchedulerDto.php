@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
 {
-    /** @var string */
+    /** @var ?string */
     private $type;
 
     public function denormalize(array $data, string $context, string $role = ''): void

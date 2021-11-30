@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
 {
+    /** @var ?string */
     private $filePath;
 
     /**
@@ -71,7 +72,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getFilePath()
     {

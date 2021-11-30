@@ -7,12 +7,9 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
 {
-    private $invoicer;
-
     public function __construct(
-        InvoicerJobInterface $invoicer
+        private InvoicerJobInterface $invoicer
     ) {
-        $this->invoicer = $invoicer;
     }
 
     public static function getSubscribedEvents()

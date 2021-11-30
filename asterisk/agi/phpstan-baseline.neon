@@ -156,6 +156,11 @@ parameters:
 			path: src/Agi/Action/FaxReceiveStatusAction.php
 
 		-
+			message: "#^Parameter \\#1 \\$path of static method Swift_Attachment\\:\\:fromPath\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Agi/Action/FaxReceiveStatusAction.php
+
+		-
 			message: "#^Parameter \\#1 \\$string of function ltrim expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Agi/Action/FaxReceiveStatusAction.php

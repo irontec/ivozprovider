@@ -17,14 +17,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TpDestinationRateDoctrineRepository extends ServiceEntityRepository implements TpDestinationRateRepository
 {
-    private $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TpDestinationRate::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**

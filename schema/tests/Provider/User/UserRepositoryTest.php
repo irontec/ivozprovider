@@ -2,6 +2,8 @@
 
 namespace Tests\Provider\User;
 
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
@@ -18,6 +20,7 @@ class UserRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->it_finds_by_bossAssistantId();
+        $this->it_finds_supervised_userIds_by_admin();
         $this->it_gets_user_assistant_candidates();
         $this->it_gets_available_voicemails();
         $this->it_searchs_one_by_company_and_name();
@@ -41,6 +44,31 @@ class UserRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             UserInterface::class,
             $user[0]
+        );
+    }
+
+    public function it_finds_supervised_userIds_by_admin()
+    {
+        /** @var AdministratorRepository $adminRepository */
+        $adminRepository = $this
+            ->em
+            ->getRepository(Administrator::class);
+
+        /** @var UserRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(User::class);
+
+        $admin = $adminRepository->find(2);
+
+        $ids = $repository->getSupervisedUserIdsByAdmin($admin);
+
+        $this->assertIsArray(
+            $ids
+        );
+
+        $this->assertIsInt(
+            $ids[0]
         );
     }
 

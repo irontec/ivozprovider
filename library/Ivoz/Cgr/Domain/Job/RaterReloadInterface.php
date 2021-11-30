@@ -8,7 +8,7 @@ interface RaterReloadInterface
 
     public function setTpid(string $tpid): self;
 
-    public function getTpid(): string;
+    public function getTpid(): ?string;
 
     public function setNotifyThresholdForAccount(?string $notifyThresholdForAccount): self;
 

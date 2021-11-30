@@ -4,8 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 
 class InvoiceDto extends InvoiceDtoAbstract
 {
+    /** @var ?string */
     private $pdfPath;
-
 
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
@@ -69,7 +69,7 @@ class InvoiceDto extends InvoiceDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getPdfPath()
     {

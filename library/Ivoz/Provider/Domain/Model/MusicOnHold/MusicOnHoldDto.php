@@ -6,7 +6,9 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class MusicOnHoldDto extends MusicOnHoldDtoAbstract
 {
+    /** @var ?string */
     private $originalFilePath;
+    /** @var ?string */
     private $encodedFilePath;
 
     /**
@@ -60,7 +62,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getOriginalFilePath()
     {
@@ -77,7 +79,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getEncodedFilePath()
     {

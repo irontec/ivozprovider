@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 
 class RecordingDto extends RecordingDtoAbstract
 {
+    /** @var ?string */
     private $recordedFile;
 
     /**
@@ -70,7 +71,7 @@ class RecordingDto extends RecordingDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getRecordedFilePath()
     {
