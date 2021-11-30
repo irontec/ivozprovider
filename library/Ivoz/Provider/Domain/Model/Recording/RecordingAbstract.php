@@ -22,25 +22,44 @@ abstract class RecordingAbstract
 {
     use ChangelogTrait;
 
-    protected $callid;
+    /**
+     * @var ?string
+     */
+    protected $callid = null;
 
+    /**
+     * @var \DateTime
+     */
     protected $calldate;
 
     /**
+     * @var string
      * comment: enum:ondemand|ddi
      */
     protected $type = 'ddi';
 
+    /**
+     * @var float
+     */
     protected $duration = 0;
 
-    protected $caller;
-
-    protected $callee;
-
-    protected $recorder;
+    /**
+     * @var ?string
+     */
+    protected $caller = null;
 
     /**
-     * @var RecordedFile | null
+     * @var ?string
+     */
+    protected $callee = null;
+
+    /**
+     * @var ?string
+     */
+    protected $recorder = null;
+
+    /**
+     * @var RecordedFile
      */
     protected $recordedFile;
 
@@ -62,7 +81,7 @@ abstract class RecordingAbstract
         $this->setCalldate($calldate);
         $this->setType($type);
         $this->setDuration($duration);
-        $this->setRecordedFile($recordedFile);
+        $this->recordedFile = $recordedFile;
     }
 
     abstract public function getId(): null|string|int;
@@ -123,6 +142,14 @@ abstract class RecordingAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $recordedFile = new RecordedFile(
             $dto->getRecordedFileFileSize(),
@@ -131,9 +158,9 @@ abstract class RecordingAbstract
         );
 
         $self = new static(
-            $dto->getCalldate(),
-            $dto->getType(),
-            $dto->getDuration(),
+            $calldate,
+            $type,
+            $duration,
             $recordedFile
         );
 
@@ -142,7 +169,7 @@ abstract class RecordingAbstract
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -159,6 +186,15 @@ abstract class RecordingAbstract
     ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
 
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $recordedFile = new RecordedFile(
             $dto->getRecordedFileFileSize(),
             $dto->getRecordedFileMimeType(),
@@ -167,14 +203,14 @@ abstract class RecordingAbstract
 
         $this
             ->setCallid($dto->getCallid())
-            ->setCalldate($dto->getCalldate())
-            ->setType($dto->getType())
-            ->setDuration($dto->getDuration())
+            ->setCalldate($calldate)
+            ->setType($type)
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setRecordedFile($recordedFile)
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
@@ -231,15 +267,16 @@ abstract class RecordingAbstract
         return $this->callid;
     }
 
-    protected function setCalldate($calldate): static
+    protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
+        /** @var \Datetime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->calldate == $calldate) {
+        if ($this->isInitialized() && $this->calldate == $calldate) {
             return $this;
         }
 
@@ -248,10 +285,7 @@ abstract class RecordingAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCalldate(): \DateTimeInterface
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }
@@ -344,7 +378,7 @@ abstract class RecordingAbstract
 
     protected function setRecordedFile(RecordedFile $recordedFile): static
     {
-        $isEqual = $this->recordedFile && $this->recordedFile->equals($recordedFile);
+        $isEqual = $this->recordedFile->equals($recordedFile);
         if ($isEqual) {
             return $this;
         }

@@ -20,17 +20,23 @@ abstract class CountryAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $code = '';
 
-    protected $countryCode;
+    /**
+     * @var ?string
+     */
+    protected $countryCode = null;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Zone | null
+     * @var Zone
      */
     protected $zone;
 
@@ -43,8 +49,8 @@ abstract class CountryAbstract
         Zone $zone
     ) {
         $this->setCode($code);
-        $this->setName($name);
-        $this->setZone($zone);
+        $this->name = $name;
+        $this->zone = $zone;
     }
 
     abstract public function getId(): null|string|int;
@@ -105,6 +111,8 @@ abstract class CountryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -121,7 +129,7 @@ abstract class CountryAbstract
         );
 
         $self = new static(
-            $dto->getCode(),
+            $code,
             $name,
             $zone
         );
@@ -144,6 +152,9 @@ abstract class CountryAbstract
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -159,7 +170,7 @@ abstract class CountryAbstract
         );
 
         $this
-            ->setCode($dto->getCode())
+            ->setCode($code)
             ->setCountryCode($dto->getCountryCode())
             ->setName($name)
             ->setZone($zone);
@@ -238,7 +249,7 @@ abstract class CountryAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -254,7 +265,7 @@ abstract class CountryAbstract
 
     protected function setZone(Zone $zone): static
     {
-        $isEqual = $this->zone && $this->zone->equals($zone);
+        $isEqual = $this->zone->equals($zone);
         if ($isEqual) {
             return $this;
         }

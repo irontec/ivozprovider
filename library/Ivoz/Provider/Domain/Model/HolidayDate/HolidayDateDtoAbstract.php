@@ -19,69 +19,69 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|null
      */
-    private $eventDate;
+    private $eventDate = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $wholeDayEvent = true;
 
     /**
-     * @var \DateTimeInterface|string|null
+     * @var \DateTimeInterface|null
      */
-    private $timeIn;
+    private $timeIn = null;
 
     /**
-     * @var \DateTimeInterface|string|null
+     * @var \DateTimeInterface|null
      */
-    private $timeOut;
-
-    /**
-     * @var string|null
-     */
-    private $routeType;
+    private $timeOut = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $routeType = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numberValue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var CalendarDto | null
      */
-    private $calendar;
+    private $calendar = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var UserDto | null
      */
-    private $voiceMailUser;
+    private $voiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     public function __construct($id = null)
     {
@@ -114,6 +114,9 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -158,14 +161,14 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setEventDate(\DateTimeInterface|string $eventDate): static
+    public function setEventDate(\DateTimeInterface $eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    public function getEventDate(): \DateTimeInterface|string|null
+    public function getEventDate(): ?\DateTimeInterface
     {
         return $this->eventDate;
     }
@@ -182,26 +185,26 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->wholeDayEvent;
     }
 
-    public function setTimeIn(null|\DateTimeInterface|string $timeIn): static
+    public function setTimeIn(?\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): \DateTimeInterface|string|null
+    public function getTimeIn(): ?\DateTimeInterface
     {
         return $this->timeIn;
     }
 
-    public function setTimeOut(null|\DateTimeInterface|string $timeOut): static
+    public function setTimeOut(?\DateTimeInterface $timeOut): static
     {
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    public function getTimeOut(): \DateTimeInterface|string|null
+    public function getTimeOut(): ?\DateTimeInterface
     {
         return $this->timeOut;
     }
@@ -237,7 +240,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

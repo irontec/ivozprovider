@@ -21,29 +21,42 @@ abstract class WebPortalAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $url;
 
+    /**
+     * @var ?string
+     */
     protected $klearTheme = '';
 
     /**
+     * @var string
      * comment: enum:god|brand|admin|user
      */
     protected $urlType;
 
+    /**
+     * @var ?string
+     */
     protected $name = '';
 
+    /**
+     * @var ?string
+     */
     protected $userTheme = '';
 
     /**
-     * @var Logo | null
+     * @var Logo
      */
     protected $logo;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy urls
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * Constructor
@@ -55,7 +68,7 @@ abstract class WebPortalAbstract
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
-        $this->setLogo($logo);
+        $this->logo = $logo;
     }
 
     abstract public function getId(): null|string|int;
@@ -116,6 +129,10 @@ abstract class WebPortalAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $urlType = $dto->getUrlType();
+        Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -124,8 +141,8 @@ abstract class WebPortalAbstract
         );
 
         $self = new static(
-            $dto->getUrl(),
-            $dto->getUrlType(),
+            $url,
+            $urlType,
             $logo
         );
 
@@ -150,6 +167,11 @@ abstract class WebPortalAbstract
     ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
 
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $urlType = $dto->getUrlType();
+        Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
+
         $logo = new Logo(
             $dto->getLogoFileSize(),
             $dto->getLogoMimeType(),
@@ -157,9 +179,9 @@ abstract class WebPortalAbstract
         );
 
         $this
-            ->setUrl($dto->getUrl())
+            ->setUrl($url)
             ->setKlearTheme($dto->getKlearTheme())
-            ->setUrlType($dto->getUrlType())
+            ->setUrlType($urlType)
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
             ->setLogo($logo)
@@ -196,7 +218,7 @@ abstract class WebPortalAbstract
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 
@@ -293,7 +315,7 @@ abstract class WebPortalAbstract
 
     protected function setLogo(Logo $logo): static
     {
-        $isEqual = $this->logo && $this->logo->equals($logo);
+        $isEqual = $this->logo->equals($logo);
         if ($isEqual) {
             return $this;
         }

@@ -16,19 +16,19 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var FeatureDto | null
      */
-    private $feature;
+    private $feature = null;
 
     public function __construct($id = null)
     {
@@ -51,6 +51,9 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -80,7 +83,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait FriendsPatternTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait FriendsPatternTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param FriendsPatternDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait FriendsPatternTrait
 
     /**
      * @internal use EntityTools instead
+     * @param FriendsPatternDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

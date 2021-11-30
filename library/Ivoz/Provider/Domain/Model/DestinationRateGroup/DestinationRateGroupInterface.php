@@ -11,7 +11,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -29,7 +29,7 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -86,6 +86,7 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DestinationRateGroupDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -116,7 +117,10 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
 
     public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationRateGroupInterface;
 
-    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationRateGroupInterface;
+    /**
+     * @param Collection<array-key, DestinationRateInterface> $destinationRates
+     */
+    public function replaceDestinationRates(Collection $destinationRates): DestinationRateGroupInterface;
 
     public function getDestinationRates(?Criteria $criteria = null): array;
 

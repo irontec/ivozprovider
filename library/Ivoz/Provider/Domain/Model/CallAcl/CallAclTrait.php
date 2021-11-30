@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait CallAclTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CallAclRelMatchListInterface> & Selectable<array-key, CallAclRelMatchListInterface>
      * CallAclRelMatchListInterface mappedBy callAcl
      * orphanRemoval
      */
@@ -41,6 +43,7 @@ trait CallAclTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CallAclDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -48,12 +51,14 @@ trait CallAclTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelMatchLists())) {
-            $self->replaceRelMatchLists(
-                $fkTransformer->transformCollection(
-                    $dto->getRelMatchLists()
-                )
+        $relMatchLists = $dto->getRelMatchLists();
+        if (!is_null($relMatchLists)) {
+
+            /** @var Collection<array-key, CallAclRelMatchListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMatchLists
             );
+            $self->replaceRelMatchLists($replacement);
         }
 
         $self->sanitizeValues();
@@ -67,18 +72,21 @@ trait CallAclTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CallAclDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelMatchLists())) {
-            $this->replaceRelMatchLists(
-                $fkTransformer->transformCollection(
-                    $dto->getRelMatchLists()
-                )
+        $relMatchLists = $dto->getRelMatchLists();
+        if (!is_null($relMatchLists)) {
+
+            /** @var Collection<array-key, CallAclRelMatchListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMatchLists
             );
+            $this->replaceRelMatchLists($replacement);
         }
         $this->sanitizeValues();
 
@@ -116,25 +124,33 @@ trait CallAclTrait
         return $this;
     }
 
-    public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface
+    /**
+     * @param Collection<array-key, CallAclRelMatchListInterface> $relMatchLists
+     */
+    public function replaceRelMatchLists(Collection $relMatchLists): CallAclInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relMatchLists as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCallAcl($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relMatchLists as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relMatchLists->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relMatchLists->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relMatchLists->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

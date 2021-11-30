@@ -31,19 +31,19 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     private $createdOn = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     public function __construct($id = null)
     {
@@ -69,6 +69,9 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -137,7 +140,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -27,99 +27,99 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 1;
 
     /**
      * @var string|null
      */
-    private $routeType;
+    private $routeType = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $numberValue = null;
 
     /**
      * @var string|null
      */
-    private $friendValue;
+    private $friendValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
 
     /**
      * @var UserDto | null
      */
-    private $voicemailUser;
+    private $voicemailUser = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var ConditionalRoutesConditionsRelMatchlistDto[] | null
      */
-    private $relMatchlists;
+    private $relMatchlists = null;
 
     /**
      * @var ConditionalRoutesConditionsRelScheduleDto[] | null
      */
-    private $relSchedules;
+    private $relSchedules = null;
 
     /**
      * @var ConditionalRoutesConditionsRelCalendarDto[] | null
      */
-    private $relCalendars;
+    private $relCalendars = null;
 
     /**
      * @var ConditionalRoutesConditionsRelRouteLockDto[] | null
      */
-    private $relRouteLocks;
+    private $relRouteLocks = null;
 
     public function __construct($id = null)
     {
@@ -154,6 +154,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -247,7 +250,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -15,7 +15,7 @@ class Recording extends RecordingAbstract implements FileContainerInterface, Rec
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

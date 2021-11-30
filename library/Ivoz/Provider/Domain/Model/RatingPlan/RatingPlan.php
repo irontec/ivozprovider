@@ -31,6 +31,10 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
         return $this->id;
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

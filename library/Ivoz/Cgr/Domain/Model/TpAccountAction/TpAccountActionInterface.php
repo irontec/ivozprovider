@@ -23,7 +23,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -38,6 +38,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpAccountActionDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -62,10 +63,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
 
     public function getDisabled(): bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function getCompany(): ?CompanyInterface;
 

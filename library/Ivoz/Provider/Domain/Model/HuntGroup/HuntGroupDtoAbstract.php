@@ -20,79 +20,79 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $strategy;
+    private $strategy = null;
 
     /**
      * @var int|null
      */
-    private $ringAllTimeout;
+    private $ringAllTimeout = null;
 
     /**
      * @var string|null
      */
-    private $noAnswerTargetType;
+    private $noAnswerTargetType = null;
 
     /**
      * @var string|null
      */
-    private $noAnswerNumberValue;
+    private $noAnswerNumberValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $preventMissedCalls = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $allowCallForwards = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $noAnswerLocution;
+    private $noAnswerLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $noAnswerExtension;
+    private $noAnswerExtension = null;
 
     /**
      * @var UserDto | null
      */
-    private $noAnswerVoiceMailUser;
+    private $noAnswerVoiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $noAnswerNumberCountry;
+    private $noAnswerNumberCountry = null;
 
     /**
      * @var HuntGroupsRelUserDto[] | null
      */
-    private $huntGroupsRelUsers;
+    private $huntGroupsRelUsers = null;
 
     public function __construct($id = null)
     {
@@ -126,6 +126,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -263,7 +266,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

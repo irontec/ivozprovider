@@ -20,7 +20,7 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -49,6 +49,7 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CallCsvReportDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -59,20 +60,11 @@ interface CallCsvReportInterface extends LoggableEntityInterface, FileContainerI
 
     public function getSentTo(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): \DateTimeInterface;
+    public function getInDate(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): \DateTimeInterface;
+    public function getOutDate(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface;
+    public function getCreatedOn(): \DateTime;
 
     public function getCsv(): Csv;
 

@@ -19,90 +19,133 @@ abstract class TpCdrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $cgrid;
 
     /**
+     * @var string
      * column: run_id
      */
     protected $runId;
 
     /**
+     * @var string
      * column: origin_host
      */
     protected $originHost;
 
+    /**
+     * @var string
+     */
     protected $source;
 
     /**
+     * @var string
      * column: origin_id
      */
     protected $originId;
 
+    /**
+     * @var string
+     */
     protected $tor;
 
     /**
+     * @var string
      * column: request_type
      */
     protected $requestType;
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $category;
 
+    /**
+     * @var string
+     */
     protected $account;
 
+    /**
+     * @var string
+     */
     protected $subject;
 
+    /**
+     * @var string
+     */
     protected $destination;
 
     /**
+     * @var \DateTime
      * column: setup_time
      */
     protected $setupTime;
 
     /**
+     * @var \DateTime
      * column: answer_time
      */
     protected $answerTime;
 
+    /**
+     * @var int
+     */
     protected $usage;
 
     /**
+     * @var string
      * column: extra_fields
      */
     protected $extraFields;
 
     /**
+     * @var string
      * column: cost_source
      */
     protected $costSource;
 
+    /**
+     * @var float
+     */
     protected $cost;
 
     /**
+     * @var array
      * column: cost_details
      */
     protected $costDetails = [];
 
     /**
+     * @var string
      * column: extra_info
      */
     protected $extraInfo;
 
     /**
+     * @var ?\DateTime
      * column: created_at
      */
-    protected $createdAt;
+    protected $createdAt = null;
 
     /**
+     * @var ?\DateTime
      * column: updated_at
      */
-    protected $updatedAt;
+    protected $updatedAt = null;
 
     /**
+     * @var ?\DateTime
      * column: deleted_at
      */
-    protected $deletedAt;
+    protected $deletedAt = null;
 
     /**
      * Constructor
@@ -209,28 +252,68 @@ abstract class TpCdrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
+        $cgrid = $dto->getCgrid();
+        Assertion::notNull($cgrid, 'getCgrid value is null, but non null value was expected.');
+        $runId = $dto->getRunId();
+        Assertion::notNull($runId, 'getRunId value is null, but non null value was expected.');
+        $originHost = $dto->getOriginHost();
+        Assertion::notNull($originHost, 'getOriginHost value is null, but non null value was expected.');
+        $source = $dto->getSource();
+        Assertion::notNull($source, 'getSource value is null, but non null value was expected.');
+        $originId = $dto->getOriginId();
+        Assertion::notNull($originId, 'getOriginId value is null, but non null value was expected.');
+        $tor = $dto->getTor();
+        Assertion::notNull($tor, 'getTor value is null, but non null value was expected.');
+        $requestType = $dto->getRequestType();
+        Assertion::notNull($requestType, 'getRequestType value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $setupTime = $dto->getSetupTime();
+        Assertion::notNull($setupTime, 'getSetupTime value is null, but non null value was expected.');
+        $answerTime = $dto->getAnswerTime();
+        Assertion::notNull($answerTime, 'getAnswerTime value is null, but non null value was expected.');
+        $usage = $dto->getUsage();
+        Assertion::notNull($usage, 'getUsage value is null, but non null value was expected.');
+        $extraFields = $dto->getExtraFields();
+        Assertion::notNull($extraFields, 'getExtraFields value is null, but non null value was expected.');
+        $costSource = $dto->getCostSource();
+        Assertion::notNull($costSource, 'getCostSource value is null, but non null value was expected.');
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $costDetails = $dto->getCostDetails();
+        Assertion::notNull($costDetails, 'getCostDetails value is null, but non null value was expected.');
+        $extraInfo = $dto->getExtraInfo();
+        Assertion::notNull($extraInfo, 'getExtraInfo value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCgrid(),
-            $dto->getRunId(),
-            $dto->getOriginHost(),
-            $dto->getSource(),
-            $dto->getOriginId(),
-            $dto->getTor(),
-            $dto->getRequestType(),
-            $dto->getTenant(),
-            $dto->getCategory(),
-            $dto->getAccount(),
-            $dto->getSubject(),
-            $dto->getDestination(),
-            $dto->getSetupTime(),
-            $dto->getAnswerTime(),
-            $dto->getUsage(),
-            $dto->getExtraFields(),
-            $dto->getCostSource(),
-            $dto->getCost(),
-            $dto->getCostDetails(),
-            $dto->getExtraInfo()
+            $cgrid,
+            $runId,
+            $originHost,
+            $source,
+            $originId,
+            $tor,
+            $requestType,
+            $tenant,
+            $category,
+            $account,
+            $subject,
+            $destination,
+            $setupTime,
+            $answerTime,
+            $usage,
+            $extraFields,
+            $costSource,
+            $cost,
+            $costDetails,
+            $extraInfo
         );
 
         $self
@@ -253,27 +336,68 @@ abstract class TpCdrAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpCdrDto::class);
 
+        $cgrid = $dto->getCgrid();
+        Assertion::notNull($cgrid, 'getCgrid value is null, but non null value was expected.');
+        $runId = $dto->getRunId();
+        Assertion::notNull($runId, 'getRunId value is null, but non null value was expected.');
+        $originHost = $dto->getOriginHost();
+        Assertion::notNull($originHost, 'getOriginHost value is null, but non null value was expected.');
+        $source = $dto->getSource();
+        Assertion::notNull($source, 'getSource value is null, but non null value was expected.');
+        $originId = $dto->getOriginId();
+        Assertion::notNull($originId, 'getOriginId value is null, but non null value was expected.');
+        $tor = $dto->getTor();
+        Assertion::notNull($tor, 'getTor value is null, but non null value was expected.');
+        $requestType = $dto->getRequestType();
+        Assertion::notNull($requestType, 'getRequestType value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $setupTime = $dto->getSetupTime();
+        Assertion::notNull($setupTime, 'getSetupTime value is null, but non null value was expected.');
+        $answerTime = $dto->getAnswerTime();
+        Assertion::notNull($answerTime, 'getAnswerTime value is null, but non null value was expected.');
+        $usage = $dto->getUsage();
+        Assertion::notNull($usage, 'getUsage value is null, but non null value was expected.');
+        $extraFields = $dto->getExtraFields();
+        Assertion::notNull($extraFields, 'getExtraFields value is null, but non null value was expected.');
+        $costSource = $dto->getCostSource();
+        Assertion::notNull($costSource, 'getCostSource value is null, but non null value was expected.');
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $costDetails = $dto->getCostDetails();
+        Assertion::notNull($costDetails, 'getCostDetails value is null, but non null value was expected.');
+        $extraInfo = $dto->getExtraInfo();
+        Assertion::notNull($extraInfo, 'getExtraInfo value is null, but non null value was expected.');
+
         $this
-            ->setCgrid($dto->getCgrid())
-            ->setRunId($dto->getRunId())
-            ->setOriginHost($dto->getOriginHost())
-            ->setSource($dto->getSource())
-            ->setOriginId($dto->getOriginId())
-            ->setTor($dto->getTor())
-            ->setRequestType($dto->getRequestType())
-            ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
-            ->setAccount($dto->getAccount())
-            ->setSubject($dto->getSubject())
-            ->setDestination($dto->getDestination())
-            ->setSetupTime($dto->getSetupTime())
-            ->setAnswerTime($dto->getAnswerTime())
-            ->setUsage($dto->getUsage())
-            ->setExtraFields($dto->getExtraFields())
-            ->setCostSource($dto->getCostSource())
-            ->setCost($dto->getCost())
-            ->setCostDetails($dto->getCostDetails())
-            ->setExtraInfo($dto->getExtraInfo())
+            ->setCgrid($cgrid)
+            ->setRunId($runId)
+            ->setOriginHost($originHost)
+            ->setSource($source)
+            ->setOriginId($originId)
+            ->setTor($tor)
+            ->setRequestType($requestType)
+            ->setTenant($tenant)
+            ->setCategory($category)
+            ->setAccount($account)
+            ->setSubject($subject)
+            ->setDestination($destination)
+            ->setSetupTime($setupTime)
+            ->setAnswerTime($answerTime)
+            ->setUsage($usage)
+            ->setExtraFields($extraFields)
+            ->setCostSource($costSource)
+            ->setCost($cost)
+            ->setCostDetails($costDetails)
+            ->setExtraInfo($extraInfo)
             ->setCreatedAt($dto->getCreatedAt())
             ->setUpdatedAt($dto->getUpdatedAt())
             ->setDeletedAt($dto->getDeletedAt());
@@ -509,15 +633,16 @@ abstract class TpCdrAbstract
         return $this->destination;
     }
 
-    protected function setSetupTime($setupTime): static
+    protected function setSetupTime(string|\DateTimeInterface $setupTime): static
     {
 
+        /** @var \Datetime */
         $setupTime = DateTimeHelper::createOrFix(
             $setupTime,
             null
         );
 
-        if ($this->setupTime == $setupTime) {
+        if ($this->isInitialized() && $this->setupTime == $setupTime) {
             return $this;
         }
 
@@ -526,23 +651,21 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getSetupTime(): \DateTimeInterface
+    public function getSetupTime(): \DateTime
     {
         return clone $this->setupTime;
     }
 
-    protected function setAnswerTime($answerTime): static
+    protected function setAnswerTime(string|\DateTimeInterface $answerTime): static
     {
 
+        /** @var \Datetime */
         $answerTime = DateTimeHelper::createOrFix(
             $answerTime,
             null
         );
 
-        if ($this->answerTime == $answerTime) {
+        if ($this->isInitialized() && $this->answerTime == $answerTime) {
             return $this;
         }
 
@@ -551,10 +674,7 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getAnswerTime(): \DateTimeInterface
+    public function getAnswerTime(): \DateTime
     {
         return clone $this->answerTime;
     }
@@ -633,19 +753,17 @@ abstract class TpCdrAbstract
         return $this->extraInfo;
     }
 
-    protected function setCreatedAt($createdAt = null): static
+    protected function setCreatedAt(string|\DateTimeInterface|null $createdAt = null): static
     {
         if (!is_null($createdAt)) {
-            Assertion::notNull(
-                $createdAt,
-                'createdAt value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $createdAt = DateTimeHelper::createOrFix(
                 $createdAt,
                 null
             );
 
-            if ($this->createdAt == $createdAt) {
+            if ($this->isInitialized() && $this->createdAt == $createdAt) {
                 return $this;
             }
         }
@@ -655,27 +773,22 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTime
     {
         return !is_null($this->createdAt) ? clone $this->createdAt : null;
     }
 
-    protected function setUpdatedAt($updatedAt = null): static
+    protected function setUpdatedAt(string|\DateTimeInterface|null $updatedAt = null): static
     {
         if (!is_null($updatedAt)) {
-            Assertion::notNull(
-                $updatedAt,
-                'updatedAt value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $updatedAt = DateTimeHelper::createOrFix(
                 $updatedAt,
                 null
             );
 
-            if ($this->updatedAt == $updatedAt) {
+            if ($this->isInitialized() && $this->updatedAt == $updatedAt) {
                 return $this;
             }
         }
@@ -685,27 +798,22 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTime
     {
         return !is_null($this->updatedAt) ? clone $this->updatedAt : null;
     }
 
-    protected function setDeletedAt($deletedAt = null): static
+    protected function setDeletedAt(string|\DateTimeInterface|null $deletedAt = null): static
     {
         if (!is_null($deletedAt)) {
-            Assertion::notNull(
-                $deletedAt,
-                'deletedAt value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $deletedAt = DateTimeHelper::createOrFix(
                 $deletedAt,
                 null
             );
 
-            if ($this->deletedAt == $deletedAt) {
+            if ($this->isInitialized() && $this->deletedAt == $deletedAt) {
                 return $this;
             }
         }
@@ -715,10 +823,7 @@ abstract class TpCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getDeletedAt(): ?\DateTimeInterface
+    public function getDeletedAt(): ?\DateTime
     {
         return !is_null($this->deletedAt) ? clone $this->deletedAt : null;
     }

@@ -13,7 +13,10 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 */
 interface TpRateInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**
@@ -44,6 +47,7 @@ interface TpRateInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpRateDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -66,10 +70,7 @@ interface TpRateInterface extends LoggableEntityInterface
 
     public function getGroupIntervalStart(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 

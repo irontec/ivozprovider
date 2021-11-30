@@ -19,25 +19,32 @@ abstract class UsersHtableAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: key_name
      */
     protected $keyName = '';
 
     /**
+     * @var int
      * column: key_type
      */
     protected $keyType = 0;
 
     /**
+     * @var int
      * column: value_type
      */
     protected $valueType = 0;
 
     /**
+     * @var string
      * column: key_value
      */
     protected $keyValue = '';
 
+    /**
+     * @var int
+     */
     protected $expires = 0;
 
     /**
@@ -115,13 +122,23 @@ abstract class UsersHtableAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersHtableDto::class);
+        $keyName = $dto->getKeyName();
+        Assertion::notNull($keyName, 'getKeyName value is null, but non null value was expected.');
+        $keyType = $dto->getKeyType();
+        Assertion::notNull($keyType, 'getKeyType value is null, but non null value was expected.');
+        $valueType = $dto->getValueType();
+        Assertion::notNull($valueType, 'getValueType value is null, but non null value was expected.');
+        $keyValue = $dto->getKeyValue();
+        Assertion::notNull($keyValue, 'getKeyValue value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getKeyName(),
-            $dto->getKeyType(),
-            $dto->getValueType(),
-            $dto->getKeyValue(),
-            $dto->getExpires()
+            $keyName,
+            $keyType,
+            $valueType,
+            $keyValue,
+            $expires
         );
 
         ;
@@ -141,12 +158,23 @@ abstract class UsersHtableAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersHtableDto::class);
 
+        $keyName = $dto->getKeyName();
+        Assertion::notNull($keyName, 'getKeyName value is null, but non null value was expected.');
+        $keyType = $dto->getKeyType();
+        Assertion::notNull($keyType, 'getKeyType value is null, but non null value was expected.');
+        $valueType = $dto->getValueType();
+        Assertion::notNull($valueType, 'getValueType value is null, but non null value was expected.');
+        $keyValue = $dto->getKeyValue();
+        Assertion::notNull($keyValue, 'getKeyValue value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+
         $this
-            ->setKeyName($dto->getKeyName())
-            ->setKeyType($dto->getKeyType())
-            ->setValueType($dto->getValueType())
-            ->setKeyValue($dto->getKeyValue())
-            ->setExpires($dto->getExpires());
+            ->setKeyName($keyName)
+            ->setKeyType($keyType)
+            ->setValueType($valueType)
+            ->setKeyValue($keyValue)
+            ->setExpires($expires);
 
         return $this;
     }

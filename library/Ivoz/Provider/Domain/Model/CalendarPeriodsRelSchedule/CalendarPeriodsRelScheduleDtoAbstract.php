@@ -16,19 +16,19 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CalendarPeriodDto | null
      */
-    private $calendarPeriod;
+    private $calendarPeriod = null;
 
     /**
      * @var ScheduleDto | null
      */
-    private $schedule;
+    private $schedule = null;
 
     public function __construct($id = null)
     {
@@ -51,6 +51,9 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -80,7 +83,7 @@ abstract class CalendarPeriodsRelScheduleDtoAbstract implements DataTransferObje
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

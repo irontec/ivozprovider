@@ -30,33 +30,46 @@ abstract class BrandAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: domain_users
      */
-    protected $domainUsers;
+    protected $domainUsers = null;
 
-    protected $recordingsLimitMB;
+    /**
+     * @var ?int
+     */
+    protected $recordingsLimitMB = null;
 
-    protected $recordingsLimitEmail;
+    /**
+     * @var ?string
+     */
+    protected $recordingsLimitEmail = null;
 
+    /**
+     * @var int
+     */
     protected $maxCalls = 0;
 
     /**
-     * @var Logo | null
+     * @var Logo
      */
     protected $logo;
 
     /**
-     * @var Invoice | null
+     * @var Invoice
      */
     protected $invoice;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var LanguageInterface
@@ -69,34 +82,34 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $voicemailNotificationTemplate;
+    protected $voicemailNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $faxNotificationTemplate;
+    protected $faxNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $invoiceNotificationTemplate;
+    protected $invoiceNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $maxDailyUsageNotificationTemplate;
+    protected $maxDailyUsageNotificationTemplate = null;
 
     /**
      * Constructor
@@ -109,8 +122,8 @@ abstract class BrandAbstract
     ) {
         $this->setName($name);
         $this->setMaxCalls($maxCalls);
-        $this->setLogo($logo);
-        $this->setInvoice($invoice);
+        $this->logo = $logo;
+        $this->invoice = $invoice;
     }
 
     abstract public function getId(): null|string|int;
@@ -171,6 +184,14 @@ abstract class BrandAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $language = $dto->getLanguage();
+        Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
+        $defaultTimezone = $dto->getDefaultTimezone();
+        Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -189,8 +210,8 @@ abstract class BrandAbstract
         );
 
         $self = new static(
-            $dto->getName(),
-            $dto->getMaxCalls(),
+            $name,
+            $maxCalls,
             $logo,
             $invoice
         );
@@ -200,8 +221,8 @@ abstract class BrandAbstract
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setLanguage($fkTransformer->transform($language))
+            ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
@@ -224,6 +245,15 @@ abstract class BrandAbstract
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $language = $dto->getLanguage();
+        Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
+        $defaultTimezone = $dto->getDefaultTimezone();
+        Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
+
         $logo = new Logo(
             $dto->getLogoFileSize(),
             $dto->getLogoMimeType(),
@@ -241,16 +271,16 @@ abstract class BrandAbstract
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDomainUsers($dto->getDomainUsers())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setMaxCalls($dto->getMaxCalls())
+            ->setMaxCalls($maxCalls)
             ->setLogo($logo)
             ->setInvoice($invoice)
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
+            ->setLanguage($fkTransformer->transform($language))
+            ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
@@ -311,15 +341,15 @@ abstract class BrandAbstract
             'invoiceProvince' => self::getInvoice()->getProvince(),
             'invoiceCountry' => self::getInvoice()->getCountry(),
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
+            'domainId' => self::getDomain()?->getId(),
             'languageId' => self::getLanguage()->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
-            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
-            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate() ? self::getMaxDailyUsageNotificationTemplate()->getId() : null
+            'currencyId' => self::getCurrency()?->getId(),
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId()
         ];
     }
 
@@ -402,7 +432,7 @@ abstract class BrandAbstract
 
     protected function setLogo(Logo $logo): static
     {
-        $isEqual = $this->logo && $this->logo->equals($logo);
+        $isEqual = $this->logo->equals($logo);
         if ($isEqual) {
             return $this;
         }
@@ -418,7 +448,7 @@ abstract class BrandAbstract
 
     protected function setInvoice(Invoice $invoice): static
     {
-        $isEqual = $this->invoice && $this->invoice->equals($invoice);
+        $isEqual = $this->invoice->equals($invoice);
         if ($isEqual) {
             return $this;
         }

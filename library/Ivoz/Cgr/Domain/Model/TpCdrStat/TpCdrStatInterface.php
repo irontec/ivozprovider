@@ -15,7 +15,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -37,6 +37,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpCdrStatDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -97,10 +98,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
 
     public function getActionTriggers(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setCarrier(CarrierInterface $carrier): static;
 

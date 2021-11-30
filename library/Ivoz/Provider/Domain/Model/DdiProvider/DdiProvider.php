@@ -13,7 +13,7 @@ class DdiProvider extends DdiProviderAbstract implements DdiProviderInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

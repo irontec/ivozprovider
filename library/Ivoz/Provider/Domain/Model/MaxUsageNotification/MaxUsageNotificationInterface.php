@@ -16,7 +16,7 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -38,6 +38,7 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param MaxUsageNotificationDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -50,10 +51,7 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
 
     public function getThreshold(): ?float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface;
+    public function getLastSent(): ?\DateTime;
 
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
 

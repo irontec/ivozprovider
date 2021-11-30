@@ -11,7 +11,7 @@ class FriendsPattern extends FriendsPatternAbstract implements FriendsPatternInt
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

@@ -14,24 +14,24 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -55,6 +55,9 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -121,7 +124,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
@@ -27,81 +29,81 @@ use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterfac
 trait CompanyTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ExtensionInterface> & Selectable<array-key, ExtensionInterface>
      * ExtensionInterface mappedBy company
      */
     protected $extensions;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DdiInterface> & Selectable<array-key, DdiInterface>
      * DdiInterface mappedBy company
      */
     protected $ddis;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FriendInterface> & Selectable<array-key, FriendInterface>
      * FriendInterface mappedBy company
      */
     protected $friends;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CompanyServiceInterface> & Selectable<array-key, CompanyServiceInterface>
      * CompanyServiceInterface mappedBy company
      */
     protected $companyServices;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TerminalInterface> & Selectable<array-key, TerminalInterface>
      * TerminalInterface mappedBy company
      */
     protected $terminals;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, RatingProfileInterface> & Selectable<array-key, RatingProfileInterface>
      * RatingProfileInterface mappedBy company
      */
     protected $ratingProfiles;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, MusicOnHoldInterface> & Selectable<array-key, MusicOnHoldInterface>
      * MusicOnHoldInterface mappedBy company
      */
     protected $musicsOnHold;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, RecordingInterface> & Selectable<array-key, RecordingInterface>
      * RecordingInterface mappedBy company
      */
     protected $recordings;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FeaturesRelCompanyInterface> & Selectable<array-key, FeaturesRelCompanyInterface>
      * FeaturesRelCompanyInterface mappedBy company
      * orphanRemoval
      */
     protected $relFeatures;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CompanyRelGeoIPCountryInterface> & Selectable<array-key, CompanyRelGeoIPCountryInterface>
      * CompanyRelGeoIPCountryInterface mappedBy company
      * orphanRemoval
      */
     protected $relCountries;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CompanyRelCodecInterface> & Selectable<array-key, CompanyRelCodecInterface>
      * CompanyRelCodecInterface mappedBy company
      * orphanRemoval
      */
     protected $relCodecs;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CompanyRelRoutingTagInterface> & Selectable<array-key, CompanyRelRoutingTagInterface>
      * CompanyRelRoutingTagInterface mappedBy company
      * orphanRemoval
      */
@@ -132,6 +134,7 @@ trait CompanyTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CompanyDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -139,100 +142,124 @@ trait CompanyTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getExtensions())) {
-            $self->replaceExtensions(
-                $fkTransformer->transformCollection(
-                    $dto->getExtensions()
-                )
+        $extensions = $dto->getExtensions();
+        if (!is_null($extensions)) {
+
+            /** @var Collection<array-key, ExtensionInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $extensions
             );
+            $self->replaceExtensions($replacement);
         }
 
-        if (!is_null($dto->getDdis())) {
-            $self->replaceDdis(
-                $fkTransformer->transformCollection(
-                    $dto->getDdis()
-                )
+        $ddis = $dto->getDdis();
+        if (!is_null($ddis)) {
+
+            /** @var Collection<array-key, DdiInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddis
             );
+            $self->replaceDdis($replacement);
         }
 
-        if (!is_null($dto->getFriends())) {
-            $self->replaceFriends(
-                $fkTransformer->transformCollection(
-                    $dto->getFriends()
-                )
+        $friends = $dto->getFriends();
+        if (!is_null($friends)) {
+
+            /** @var Collection<array-key, FriendInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $friends
             );
+            $self->replaceFriends($replacement);
         }
 
-        if (!is_null($dto->getCompanyServices())) {
-            $self->replaceCompanyServices(
-                $fkTransformer->transformCollection(
-                    $dto->getCompanyServices()
-                )
+        $companyServices = $dto->getCompanyServices();
+        if (!is_null($companyServices)) {
+
+            /** @var Collection<array-key, CompanyServiceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $companyServices
             );
+            $self->replaceCompanyServices($replacement);
         }
 
-        if (!is_null($dto->getTerminals())) {
-            $self->replaceTerminals(
-                $fkTransformer->transformCollection(
-                    $dto->getTerminals()
-                )
+        $terminals = $dto->getTerminals();
+        if (!is_null($terminals)) {
+
+            /** @var Collection<array-key, TerminalInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $terminals
             );
+            $self->replaceTerminals($replacement);
         }
 
-        if (!is_null($dto->getRatingProfiles())) {
-            $self->replaceRatingProfiles(
-                $fkTransformer->transformCollection(
-                    $dto->getRatingProfiles()
-                )
+        $ratingProfiles = $dto->getRatingProfiles();
+        if (!is_null($ratingProfiles)) {
+
+            /** @var Collection<array-key, RatingProfileInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ratingProfiles
             );
+            $self->replaceRatingProfiles($replacement);
         }
 
-        if (!is_null($dto->getMusicsOnHold())) {
-            $self->replaceMusicsOnHold(
-                $fkTransformer->transformCollection(
-                    $dto->getMusicsOnHold()
-                )
+        $musicsOnHold = $dto->getMusicsOnHold();
+        if (!is_null($musicsOnHold)) {
+
+            /** @var Collection<array-key, MusicOnHoldInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $musicsOnHold
             );
+            $self->replaceMusicsOnHold($replacement);
         }
 
-        if (!is_null($dto->getRecordings())) {
-            $self->replaceRecordings(
-                $fkTransformer->transformCollection(
-                    $dto->getRecordings()
-                )
+        $recordings = $dto->getRecordings();
+        if (!is_null($recordings)) {
+
+            /** @var Collection<array-key, RecordingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $recordings
             );
+            $self->replaceRecordings($replacement);
         }
 
-        if (!is_null($dto->getRelFeatures())) {
-            $self->replaceRelFeatures(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFeatures()
-                )
+        $relFeatures = $dto->getRelFeatures();
+        if (!is_null($relFeatures)) {
+
+            /** @var Collection<array-key, FeaturesRelCompanyInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFeatures
             );
+            $self->replaceRelFeatures($replacement);
         }
 
-        if (!is_null($dto->getRelCountries())) {
-            $self->replaceRelCountries(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCountries()
-                )
+        $relCountries = $dto->getRelCountries();
+        if (!is_null($relCountries)) {
+
+            /** @var Collection<array-key, CompanyRelGeoIPCountryInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCountries
             );
+            $self->replaceRelCountries($replacement);
         }
 
-        if (!is_null($dto->getRelCodecs())) {
-            $self->replaceRelCodecs(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCodecs()
-                )
+        $relCodecs = $dto->getRelCodecs();
+        if (!is_null($relCodecs)) {
+
+            /** @var Collection<array-key, CompanyRelCodecInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCodecs
             );
+            $self->replaceRelCodecs($replacement);
         }
 
-        if (!is_null($dto->getRelRoutingTags())) {
-            $self->replaceRelRoutingTags(
-                $fkTransformer->transformCollection(
-                    $dto->getRelRoutingTags()
-                )
+        $relRoutingTags = $dto->getRelRoutingTags();
+        if (!is_null($relRoutingTags)) {
+
+            /** @var Collection<array-key, CompanyRelRoutingTagInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relRoutingTags
             );
+            $self->replaceRelRoutingTags($replacement);
         }
 
         $self->sanitizeValues();
@@ -246,106 +273,131 @@ trait CompanyTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CompanyDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getExtensions())) {
-            $this->replaceExtensions(
-                $fkTransformer->transformCollection(
-                    $dto->getExtensions()
-                )
+        $extensions = $dto->getExtensions();
+        if (!is_null($extensions)) {
+
+            /** @var Collection<array-key, ExtensionInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $extensions
             );
+            $this->replaceExtensions($replacement);
         }
 
-        if (!is_null($dto->getDdis())) {
-            $this->replaceDdis(
-                $fkTransformer->transformCollection(
-                    $dto->getDdis()
-                )
+        $ddis = $dto->getDdis();
+        if (!is_null($ddis)) {
+
+            /** @var Collection<array-key, DdiInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddis
             );
+            $this->replaceDdis($replacement);
         }
 
-        if (!is_null($dto->getFriends())) {
-            $this->replaceFriends(
-                $fkTransformer->transformCollection(
-                    $dto->getFriends()
-                )
+        $friends = $dto->getFriends();
+        if (!is_null($friends)) {
+
+            /** @var Collection<array-key, FriendInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $friends
             );
+            $this->replaceFriends($replacement);
         }
 
-        if (!is_null($dto->getCompanyServices())) {
-            $this->replaceCompanyServices(
-                $fkTransformer->transformCollection(
-                    $dto->getCompanyServices()
-                )
+        $companyServices = $dto->getCompanyServices();
+        if (!is_null($companyServices)) {
+
+            /** @var Collection<array-key, CompanyServiceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $companyServices
             );
+            $this->replaceCompanyServices($replacement);
         }
 
-        if (!is_null($dto->getTerminals())) {
-            $this->replaceTerminals(
-                $fkTransformer->transformCollection(
-                    $dto->getTerminals()
-                )
+        $terminals = $dto->getTerminals();
+        if (!is_null($terminals)) {
+
+            /** @var Collection<array-key, TerminalInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $terminals
             );
+            $this->replaceTerminals($replacement);
         }
 
-        if (!is_null($dto->getRatingProfiles())) {
-            $this->replaceRatingProfiles(
-                $fkTransformer->transformCollection(
-                    $dto->getRatingProfiles()
-                )
+        $ratingProfiles = $dto->getRatingProfiles();
+        if (!is_null($ratingProfiles)) {
+
+            /** @var Collection<array-key, RatingProfileInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ratingProfiles
             );
+            $this->replaceRatingProfiles($replacement);
         }
 
-        if (!is_null($dto->getMusicsOnHold())) {
-            $this->replaceMusicsOnHold(
-                $fkTransformer->transformCollection(
-                    $dto->getMusicsOnHold()
-                )
+        $musicsOnHold = $dto->getMusicsOnHold();
+        if (!is_null($musicsOnHold)) {
+
+            /** @var Collection<array-key, MusicOnHoldInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $musicsOnHold
             );
+            $this->replaceMusicsOnHold($replacement);
         }
 
-        if (!is_null($dto->getRecordings())) {
-            $this->replaceRecordings(
-                $fkTransformer->transformCollection(
-                    $dto->getRecordings()
-                )
+        $recordings = $dto->getRecordings();
+        if (!is_null($recordings)) {
+
+            /** @var Collection<array-key, RecordingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $recordings
             );
+            $this->replaceRecordings($replacement);
         }
 
-        if (!is_null($dto->getRelFeatures())) {
-            $this->replaceRelFeatures(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFeatures()
-                )
+        $relFeatures = $dto->getRelFeatures();
+        if (!is_null($relFeatures)) {
+
+            /** @var Collection<array-key, FeaturesRelCompanyInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFeatures
             );
+            $this->replaceRelFeatures($replacement);
         }
 
-        if (!is_null($dto->getRelCountries())) {
-            $this->replaceRelCountries(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCountries()
-                )
+        $relCountries = $dto->getRelCountries();
+        if (!is_null($relCountries)) {
+
+            /** @var Collection<array-key, CompanyRelGeoIPCountryInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCountries
             );
+            $this->replaceRelCountries($replacement);
         }
 
-        if (!is_null($dto->getRelCodecs())) {
-            $this->replaceRelCodecs(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCodecs()
-                )
+        $relCodecs = $dto->getRelCodecs();
+        if (!is_null($relCodecs)) {
+
+            /** @var Collection<array-key, CompanyRelCodecInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCodecs
             );
+            $this->replaceRelCodecs($replacement);
         }
 
-        if (!is_null($dto->getRelRoutingTags())) {
-            $this->replaceRelRoutingTags(
-                $fkTransformer->transformCollection(
-                    $dto->getRelRoutingTags()
-                )
+        $relRoutingTags = $dto->getRelRoutingTags();
+        if (!is_null($relRoutingTags)) {
+
+            /** @var Collection<array-key, CompanyRelRoutingTagInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relRoutingTags
             );
+            $this->replaceRelRoutingTags($replacement);
         }
         $this->sanitizeValues();
 
@@ -383,25 +435,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceExtensions(ArrayCollection $extensions): CompanyInterface
+    /**
+     * @param Collection<array-key, ExtensionInterface> $extensions
+     */
+    public function replaceExtensions(Collection $extensions): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($extensions as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->extensions as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->extensions->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->extensions->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->extensions->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -434,25 +494,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceDdis(ArrayCollection $ddis): CompanyInterface
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ddis as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ddis as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ddis->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ddis->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ddis->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -485,25 +553,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceFriends(ArrayCollection $friends): CompanyInterface
+    /**
+     * @param Collection<array-key, FriendInterface> $friends
+     */
+    public function replaceFriends(Collection $friends): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($friends as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->friends as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->friends->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->friends->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->friends->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -536,25 +612,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceCompanyServices(ArrayCollection $companyServices): CompanyInterface
+    /**
+     * @param Collection<array-key, CompanyServiceInterface> $companyServices
+     */
+    public function replaceCompanyServices(Collection $companyServices): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($companyServices as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->companyServices as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->companyServices->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->companyServices->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->companyServices->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -587,25 +671,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceTerminals(ArrayCollection $terminals): CompanyInterface
+    /**
+     * @param Collection<array-key, TerminalInterface> $terminals
+     */
+    public function replaceTerminals(Collection $terminals): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($terminals as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->terminals as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->terminals->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->terminals->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->terminals->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -638,25 +730,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CompanyInterface
+    /**
+     * @param Collection<array-key, RatingProfileInterface> $ratingProfiles
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ratingProfiles as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ratingProfiles as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ratingProfiles->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ratingProfiles->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ratingProfiles->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -689,25 +789,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): CompanyInterface
+    /**
+     * @param Collection<array-key, MusicOnHoldInterface> $musicsOnHold
+     */
+    public function replaceMusicsOnHold(Collection $musicsOnHold): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($musicsOnHold as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->musicsOnHold as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->musicsOnHold->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->musicsOnHold->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->musicsOnHold->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -740,25 +848,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceRecordings(ArrayCollection $recordings): CompanyInterface
+    /**
+     * @param Collection<array-key, RecordingInterface> $recordings
+     */
+    public function replaceRecordings(Collection $recordings): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($recordings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->recordings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->recordings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->recordings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->recordings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -791,25 +907,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceRelFeatures(ArrayCollection $relFeatures): CompanyInterface
+    /**
+     * @param Collection<array-key, FeaturesRelCompanyInterface> $relFeatures
+     */
+    public function replaceRelFeatures(Collection $relFeatures): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relFeatures as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relFeatures as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relFeatures->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relFeatures->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relFeatures->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -842,25 +966,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceRelCountries(ArrayCollection $relCountries): CompanyInterface
+    /**
+     * @param Collection<array-key, CompanyRelGeoIPCountryInterface> $relCountries
+     */
+    public function replaceRelCountries(Collection $relCountries): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relCountries as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relCountries as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relCountries->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relCountries->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relCountries->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -893,25 +1025,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceRelCodecs(ArrayCollection $relCodecs): CompanyInterface
+    /**
+     * @param Collection<array-key, CompanyRelCodecInterface> $relCodecs
+     */
+    public function replaceRelCodecs(Collection $relCodecs): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relCodecs as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relCodecs as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relCodecs->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relCodecs->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relCodecs->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -944,25 +1084,33 @@ trait CompanyTrait
         return $this;
     }
 
-    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags): CompanyInterface
+    /**
+     * @param Collection<array-key, CompanyRelRoutingTagInterface> $relRoutingTags
+     */
+    public function replaceRelRoutingTags(Collection $relRoutingTags): CompanyInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relRoutingTags as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relRoutingTags as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relRoutingTags->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relRoutingTags->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relRoutingTags->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

@@ -23,7 +23,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -38,6 +38,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpRatingProfileDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -66,10 +67,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
 
     public function getCdrStatQueueIds(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setRatingProfile(?RatingProfileInterface $ratingProfile = null): static;
 

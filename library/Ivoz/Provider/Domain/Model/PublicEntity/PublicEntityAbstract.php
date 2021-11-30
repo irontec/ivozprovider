@@ -19,18 +19,33 @@ abstract class PublicEntityAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
-    protected $fqdn;
+    /**
+     * @var ?string
+     */
+    protected $fqdn = null;
 
+    /**
+     * @var bool
+     */
     protected $platform = false;
 
+    /**
+     * @var bool
+     */
     protected $brand = false;
 
+    /**
+     * @var bool
+     */
     protected $client = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -48,7 +63,7 @@ abstract class PublicEntityAbstract
         $this->setPlatform($platform);
         $this->setBrand($brand);
         $this->setClient($client);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -109,6 +124,14 @@ abstract class PublicEntityAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $platform = $dto->getPlatform();
+        Assertion::notNull($platform, 'getPlatform value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $client = $dto->getClient();
+        Assertion::notNull($client, 'getClient value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -118,10 +141,10 @@ abstract class PublicEntityAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getPlatform(),
-            $dto->getBrand(),
-            $dto->getClient(),
+            $iden,
+            $platform,
+            $brand,
+            $client,
             $name
         );
 
@@ -143,6 +166,15 @@ abstract class PublicEntityAbstract
     ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $platform = $dto->getPlatform();
+        Assertion::notNull($platform, 'getPlatform value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $client = $dto->getClient();
+        Assertion::notNull($client, 'getClient value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -151,11 +183,11 @@ abstract class PublicEntityAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
+            ->setIden($iden)
             ->setFqdn($dto->getFqdn())
-            ->setPlatform($dto->getPlatform())
-            ->setBrand($dto->getBrand())
-            ->setClient($dto->getClient())
+            ->setPlatform($platform)
+            ->setBrand($brand)
+            ->setClient($client)
             ->setName($name);
 
         return $this;
@@ -266,7 +298,7 @@ abstract class PublicEntityAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

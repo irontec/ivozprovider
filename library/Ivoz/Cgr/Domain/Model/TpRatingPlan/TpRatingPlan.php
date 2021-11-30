@@ -9,6 +9,10 @@ class TpRatingPlan extends TpRatingPlanAbstract implements TpRatingPlanInterface
 {
     use TpRatingPlanTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

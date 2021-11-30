@@ -18,49 +18,49 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private $cost;
+    private $cost = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private $connectFee;
+    private $connectFee = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $rateIncrement;
+    private $rateIncrement = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $groupIntervalStart = '0s';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DestinationRateGroupDto | null
      */
-    private $destinationRateGroup;
+    private $destinationRateGroup = null;
 
     /**
      * @var DestinationDto | null
      */
-    private $destination;
+    private $destination = null;
 
     /**
      * @var TpRateDto | null
      */
-    private $tpRate;
+    private $tpRate = null;
 
     /**
      * @var TpDestinationRateDto | null
      */
-    private $tpDestinationRate;
+    private $tpDestinationRate = null;
 
     public function __construct($id = null)
     {
@@ -89,6 +89,9 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -172,7 +175,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

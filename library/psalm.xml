@@ -18,6 +18,7 @@
         <PossiblyNullOperand errorLevel="suppress" />
         <MoreSpecificImplementedParamType errorLevel="suppress" />
         <RedundantConditionGivenDocblockType errorLevel="suppress" />
+        <PropertyNotSetInConstructor errorLevel="suppress" />
     </issueHandlers>
     <projectFiles>
         <directory name="Ivoz" />

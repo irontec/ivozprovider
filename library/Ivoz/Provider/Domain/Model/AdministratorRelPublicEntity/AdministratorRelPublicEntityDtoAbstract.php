@@ -16,39 +16,39 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     use DtoNormalizer;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $create = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $read = true;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $update = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $delete = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var AdministratorDto | null
      */
-    private $administrator;
+    private $administrator = null;
 
     /**
      * @var PublicEntityDto | null
      */
-    private $publicEntity;
+    private $publicEntity = null;
 
     public function __construct($id = null)
     {
@@ -75,6 +75,9 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -156,7 +159,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -22,7 +22,7 @@ interface RtpengineInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -39,6 +39,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RtpengineDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -55,10 +56,7 @@ interface RtpengineInterface extends LoggableEntityInterface
 
     public function getDisabled(): bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): \DateTimeInterface;
+    public function getStamp(): \DateTime;
 
     public function getDescription(): ?string;
 

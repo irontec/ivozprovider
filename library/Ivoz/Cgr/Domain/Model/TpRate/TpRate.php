@@ -9,6 +9,10 @@ class TpRate extends TpRateAbstract implements TpRateInterface
 {
     use TpRateTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

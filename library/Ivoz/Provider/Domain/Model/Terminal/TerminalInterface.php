@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -31,7 +31,8 @@ interface TerminalInterface extends LoggableEntityInterface
     public const T38PASSTHROUGH_NO = 'no';
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -86,6 +87,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TerminalDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -108,10 +110,7 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function getMac(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastProvisionDate(): ?\DateTimeInterface;
+    public function getLastProvisionDate(): ?\DateTime;
 
     public function getT38Passthrough(): string;
 
@@ -141,7 +140,10 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function removeUser(UserInterface $user): TerminalInterface;
 
-    public function replaceUsers(ArrayCollection $users): TerminalInterface;
+    /**
+     * @param Collection<array-key, UserInterface> $users
+     */
+    public function replaceUsers(Collection $users): TerminalInterface;
 
     public function getUsers(?Criteria $criteria = null): array;
 }

@@ -14,44 +14,44 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ruid = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $username = '';
 
     /**
      * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $aname = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $atype = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $avalue = '';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -79,6 +79,9 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -197,7 +200,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

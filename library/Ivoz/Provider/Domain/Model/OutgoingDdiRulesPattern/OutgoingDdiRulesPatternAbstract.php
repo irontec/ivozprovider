@@ -25,17 +25,25 @@ abstract class OutgoingDdiRulesPatternAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:prefix|destination
      */
     protected $type;
 
-    protected $prefix;
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
 
     /**
+     * @var string
      * comment: enum:keep|force
      */
     protected $action;
 
+    /**
+     * @var int
+     */
     protected $priority = 1;
 
     /**
@@ -45,14 +53,14 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $outgoingDdiRule;
 
     /**
-     * @var MatchListInterface | null
+     * @var ?MatchListInterface
      */
-    protected $matchList;
+    protected $matchList = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $forcedDdi;
+    protected $forcedDdi = null;
 
     /**
      * Constructor
@@ -125,16 +133,24 @@ abstract class OutgoingDdiRulesPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $action = $dto->getAction();
+        Assertion::notNull($action, 'getAction value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $outgoingDdiRule = $dto->getOutgoingDdiRule();
+        Assertion::notNull($outgoingDdiRule, 'getOutgoingDdiRule value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getAction(),
-            $dto->getPriority()
+            $type,
+            $action,
+            $priority
         );
 
         $self
             ->setPrefix($dto->getPrefix())
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setOutgoingDdiRule($fkTransformer->transform($outgoingDdiRule))
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
@@ -153,12 +169,21 @@ abstract class OutgoingDdiRulesPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $action = $dto->getAction();
+        Assertion::notNull($action, 'getAction value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $outgoingDdiRule = $dto->getOutgoingDdiRule();
+        Assertion::notNull($outgoingDdiRule, 'getOutgoingDdiRule value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
+            ->setType($type)
             ->setPrefix($dto->getPrefix())
-            ->setAction($dto->getAction())
-            ->setPriority($dto->getPriority())
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setAction($action)
+            ->setPriority($priority)
+            ->setOutgoingDdiRule($fkTransformer->transform($outgoingDdiRule))
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
@@ -188,8 +213,8 @@ abstract class OutgoingDdiRulesPatternAbstract
             'action' => self::getAction(),
             'priority' => self::getPriority(),
             'outgoingDdiRuleId' => self::getOutgoingDdiRule()->getId(),
-            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
-            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
+            'matchListId' => self::getMatchList()?->getId(),
+            'forcedDdiId' => self::getForcedDdi()?->getId()
         ];
     }
 

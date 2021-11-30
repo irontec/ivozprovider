@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Domain\Service\TempFile;
 
@@ -32,7 +32,7 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -70,6 +70,7 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param InvoiceDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -80,15 +81,9 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function getNumber(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): ?\DateTimeInterface;
+    public function getInDate(): ?\DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): ?\DateTimeInterface;
+    public function getOutDate(): ?\DateTime;
 
     public function getTotal(): ?float;
 
@@ -118,7 +113,10 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function removeRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface;
 
-    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceInterface;
+    /**
+     * @param Collection<array-key, FixedCostsRelInvoiceInterface> $relFixedCosts
+     */
+    public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceInterface;
 
     public function getRelFixedCosts(?Criteria $criteria = null): array;
 

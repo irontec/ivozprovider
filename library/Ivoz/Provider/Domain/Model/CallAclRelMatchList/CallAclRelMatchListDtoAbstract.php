@@ -16,29 +16,29 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $priority;
+    private $priority = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $policy;
+    private $policy = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CallAclDto | null
      */
-    private $callAcl;
+    private $callAcl = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchList;
+    private $matchList = null;
 
     public function __construct($id = null)
     {
@@ -63,6 +63,9 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -118,7 +121,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

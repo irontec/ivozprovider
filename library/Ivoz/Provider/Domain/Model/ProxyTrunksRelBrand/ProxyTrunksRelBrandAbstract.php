@@ -23,10 +23,10 @@ abstract class ProxyTrunksRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy relProxyTrunks
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var ProxyTrunkInterface
@@ -98,12 +98,14 @@ abstract class ProxyTrunksRelBrandAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
+        $proxyTrunk = $dto->getProxyTrunk();
+        Assertion::notNull($proxyTrunk, 'getProxyTrunk value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($proxyTrunk));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ProxyTrunksRelBrandAbstract
     ): static {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
 
+        $proxyTrunk = $dto->getProxyTrunk();
+        Assertion::notNull($proxyTrunk, 'getProxyTrunk value is null, but non null value was expected.');
+
         $this
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($proxyTrunk));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class ProxyTrunksRelBrandAbstract
     protected function __toArray(): array
     {
         return [
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'proxyTrunkId' => self::getProxyTrunk()->getId()
         ];
     }

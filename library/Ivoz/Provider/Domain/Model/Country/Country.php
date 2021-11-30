@@ -11,7 +11,7 @@ class Country extends CountryAbstract implements CountryInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

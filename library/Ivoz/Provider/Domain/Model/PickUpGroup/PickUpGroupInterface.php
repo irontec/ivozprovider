@@ -8,7 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -18,7 +18,7 @@ interface PickUpGroupInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -40,6 +40,7 @@ interface PickUpGroupInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param PickUpGroupDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -58,7 +59,10 @@ interface PickUpGroupInterface extends LoggableEntityInterface
 
     public function removeRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface;
 
-    public function replaceRelUsers(ArrayCollection $relUsers): PickUpGroupInterface;
+    /**
+     * @param Collection<array-key, PickUpRelUserInterface> $relUsers
+     */
+    public function replaceRelUsers(Collection $relUsers): PickUpGroupInterface;
 
     public function getRelUsers(?Criteria $criteria = null): array;
 }

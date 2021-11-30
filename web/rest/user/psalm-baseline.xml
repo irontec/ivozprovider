@@ -113,9 +113,8 @@
     <MixedArgument occurrences="1">
       <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
     </MixedArgument>
-    <MixedOperand occurrences="2">
+    <MixedOperand occurrences="1">
       <code>$request-&gt;server-&gt;get('SERVER_NAME')</code>
-      <code>$webPortalDto-&gt;getId()</code>
     </MixedOperand>
     <PossiblyNullArgument occurrences="1">
       <code>$webPortalDto-&gt;getLogoBaseName()</code>

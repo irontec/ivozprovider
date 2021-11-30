@@ -23,14 +23,24 @@ abstract class DestinationRateAbstract
     use ChangelogTrait;
 
     /**
+     * @var float
      * column: rate
      */
     protected $cost;
 
+    /**
+     * @var float
+     */
     protected $connectFee;
 
+    /**
+     * @var string
+     */
     protected $rateIncrement;
 
+    /**
+     * @var string
+     */
     protected $groupIntervalStart = '0s';
 
     /**
@@ -118,17 +128,29 @@ abstract class DestinationRateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCost(),
-            $dto->getConnectFee(),
-            $dto->getRateIncrement(),
-            $dto->getGroupIntervalStart()
+            $cost,
+            $connectFee,
+            $rateIncrement,
+            $groupIntervalStart
         );
 
         $self
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup))
+            ->setDestination($fkTransformer->transform($destination));
 
         $self->initChangelog();
 
@@ -145,13 +167,26 @@ abstract class DestinationRateAbstract
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+
         $this
-            ->setCost($dto->getCost())
-            ->setConnectFee($dto->getConnectFee())
-            ->setRateIncrement($dto->getRateIncrement())
-            ->setGroupIntervalStart($dto->getGroupIntervalStart())
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setCost($cost)
+            ->setConnectFee($connectFee)
+            ->setRateIncrement($rateIncrement)
+            ->setGroupIntervalStart($groupIntervalStart)
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup))
+            ->setDestination($fkTransformer->transform($destination));
 
         return $this;
     }

@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait WebPortalTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait WebPortalTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param WebPortalDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait WebPortalTrait
 
     /**
      * @internal use EntityTools instead
+     * @param WebPortalDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

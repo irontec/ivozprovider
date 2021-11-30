@@ -21,22 +21,36 @@ abstract class UsersAddressAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: source_address
      */
     protected $sourceAddress;
 
     /**
+     * @var ?string
      * column: ip_addr
      */
-    protected $ipAddr;
+    protected $ipAddr = null;
 
+    /**
+     * @var int
+     */
     protected $mask = 32;
 
+    /**
+     * @var int
+     */
     protected $port = 0;
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * @var CompanyInterface
@@ -114,18 +128,26 @@ abstract class UsersAddressAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersAddressDto::class);
+        $sourceAddress = $dto->getSourceAddress();
+        Assertion::notNull($sourceAddress, 'getSourceAddress value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSourceAddress(),
-            $dto->getMask(),
-            $dto->getPort()
+            $sourceAddress,
+            $mask,
+            $port
         );
 
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -142,14 +164,23 @@ abstract class UsersAddressAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersAddressDto::class);
 
+        $sourceAddress = $dto->getSourceAddress();
+        Assertion::notNull($sourceAddress, 'getSourceAddress value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setSourceAddress($dto->getSourceAddress())
+            ->setSourceAddress($sourceAddress)
             ->setIpAddr($dto->getIpAddr())
-            ->setMask($dto->getMask())
-            ->setPort($dto->getPort())
+            ->setMask($mask)
+            ->setPort($port)
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }

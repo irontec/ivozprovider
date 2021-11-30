@@ -11,7 +11,7 @@ class TrunksLcrRuleTarget extends TrunksLcrRuleTargetAbstract implements TrunksL
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

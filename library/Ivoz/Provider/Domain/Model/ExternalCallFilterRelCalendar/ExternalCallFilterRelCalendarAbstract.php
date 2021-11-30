@@ -23,10 +23,10 @@ abstract class ExternalCallFilterRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy calendars
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var CalendarInterface
@@ -98,12 +98,14 @@ abstract class ExternalCallFilterRelCalendarAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
+            ->setCalendar($fkTransformer->transform($calendar));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ExternalCallFilterRelCalendarAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelCalendarDto::class);
 
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
+
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
+            ->setCalendar($fkTransformer->transform($calendar));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     protected function __toArray(): array
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'filterId' => self::getFilter()?->getId(),
             'calendarId' => self::getCalendar()->getId()
         ];
     }

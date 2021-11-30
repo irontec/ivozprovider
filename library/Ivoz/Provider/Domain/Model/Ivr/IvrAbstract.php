@@ -28,27 +28,47 @@ abstract class IvrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var int
+     */
     protected $timeout;
 
+    /**
+     * @var int
+     */
     protected $maxDigits;
 
+    /**
+     * @var bool
+     */
     protected $allowExtensions = false;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $noInputRouteType;
-
-    protected $noInputNumberValue;
+    protected $noInputRouteType = null;
 
     /**
+     * @var ?string
+     */
+    protected $noInputNumberValue = null;
+
+    /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $errorRouteType;
+    protected $errorRouteType = null;
 
-    protected $errorNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $errorNumberValue = null;
 
     /**
      * @var CompanyInterface
@@ -56,54 +76,54 @@ abstract class IvrAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $welcomeLocution;
+    protected $welcomeLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $noInputLocution;
+    protected $noInputLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $errorLocution;
+    protected $errorLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $successLocution;
+    protected $successLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $noInputExtension;
+    protected $noInputExtension = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $errorExtension;
+    protected $errorExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $noInputVoiceMailUser;
+    protected $noInputVoiceMailUser = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $errorVoiceMailUser;
+    protected $errorVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $noInputNumberCountry;
+    protected $noInputNumberCountry = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $errorNumberCountry;
+    protected $errorNumberCountry = null;
 
     /**
      * Constructor
@@ -178,12 +198,22 @@ abstract class IvrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, IvrDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $maxDigits = $dto->getMaxDigits();
+        Assertion::notNull($maxDigits, 'getMaxDigits value is null, but non null value was expected.');
+        $allowExtensions = $dto->getAllowExtensions();
+        Assertion::notNull($allowExtensions, 'getAllowExtensions value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTimeout(),
-            $dto->getMaxDigits(),
-            $dto->getAllowExtensions()
+            $name,
+            $timeout,
+            $maxDigits,
+            $allowExtensions
         );
 
         $self
@@ -191,7 +221,7 @@ abstract class IvrAbstract
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
             ->setErrorNumberValue($dto->getErrorNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setNoInputLocution($fkTransformer->transform($dto->getNoInputLocution()))
             ->setErrorLocution($fkTransformer->transform($dto->getErrorLocution()))
@@ -218,16 +248,27 @@ abstract class IvrAbstract
     ): static {
         Assertion::isInstanceOf($dto, IvrDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $maxDigits = $dto->getMaxDigits();
+        Assertion::notNull($maxDigits, 'getMaxDigits value is null, but non null value was expected.');
+        $allowExtensions = $dto->getAllowExtensions();
+        Assertion::notNull($allowExtensions, 'getAllowExtensions value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setTimeout($dto->getTimeout())
-            ->setMaxDigits($dto->getMaxDigits())
-            ->setAllowExtensions($dto->getAllowExtensions())
+            ->setName($name)
+            ->setTimeout($timeout)
+            ->setMaxDigits($maxDigits)
+            ->setAllowExtensions($allowExtensions)
             ->setNoInputRouteType($dto->getNoInputRouteType())
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
             ->setErrorNumberValue($dto->getErrorNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setNoInputLocution($fkTransformer->transform($dto->getNoInputLocution()))
             ->setErrorLocution($fkTransformer->transform($dto->getErrorLocution()))
@@ -281,16 +322,16 @@ abstract class IvrAbstract
             'errorRouteType' => self::getErrorRouteType(),
             'errorNumberValue' => self::getErrorNumberValue(),
             'companyId' => self::getCompany()->getId(),
-            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
-            'noInputLocutionId' => self::getNoInputLocution() ? self::getNoInputLocution()->getId() : null,
-            'errorLocutionId' => self::getErrorLocution() ? self::getErrorLocution()->getId() : null,
-            'successLocutionId' => self::getSuccessLocution() ? self::getSuccessLocution()->getId() : null,
-            'noInputExtensionId' => self::getNoInputExtension() ? self::getNoInputExtension()->getId() : null,
-            'errorExtensionId' => self::getErrorExtension() ? self::getErrorExtension()->getId() : null,
-            'noInputVoiceMailUserId' => self::getNoInputVoiceMailUser() ? self::getNoInputVoiceMailUser()->getId() : null,
-            'errorVoiceMailUserId' => self::getErrorVoiceMailUser() ? self::getErrorVoiceMailUser()->getId() : null,
-            'noInputNumberCountryId' => self::getNoInputNumberCountry() ? self::getNoInputNumberCountry()->getId() : null,
-            'errorNumberCountryId' => self::getErrorNumberCountry() ? self::getErrorNumberCountry()->getId() : null
+            'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
+            'noInputLocutionId' => self::getNoInputLocution()?->getId(),
+            'errorLocutionId' => self::getErrorLocution()?->getId(),
+            'successLocutionId' => self::getSuccessLocution()?->getId(),
+            'noInputExtensionId' => self::getNoInputExtension()?->getId(),
+            'errorExtensionId' => self::getErrorExtension()?->getId(),
+            'noInputVoiceMailUserId' => self::getNoInputVoiceMailUser()?->getId(),
+            'errorVoiceMailUserId' => self::getErrorVoiceMailUser()?->getId(),
+            'noInputNumberCountryId' => self::getNoInputNumberCountry()?->getId(),
+            'errorNumberCountryId' => self::getErrorNumberCountry()?->getId()
         ];
     }
 

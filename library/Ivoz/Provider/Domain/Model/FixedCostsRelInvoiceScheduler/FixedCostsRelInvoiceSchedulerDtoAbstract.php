@@ -18,22 +18,22 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     /**
      * @var int|null
      */
-    private $quantity;
+    private $quantity = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var FixedCostDto | null
      */
-    private $fixedCost;
+    private $fixedCost = null;
 
     /**
      * @var InvoiceSchedulerDto | null
      */
-    private $invoiceScheduler;
+    private $invoiceScheduler = null;
 
     public function __construct($id = null)
     {
@@ -57,6 +57,9 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -99,7 +102,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

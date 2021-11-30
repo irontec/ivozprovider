@@ -22,7 +22,7 @@ interface BannedAddressInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -44,6 +44,7 @@ interface BannedAddressInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BannedAddressDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -60,10 +61,7 @@ interface BannedAddressInterface extends LoggableEntityInterface
 
     public function getDescription(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastTimeBanned(): ?\DateTimeInterface;
+    public function getLastTimeBanned(): ?\DateTime;
 
     public function getBrand(): ?BrandInterface;
 

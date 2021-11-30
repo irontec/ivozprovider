@@ -13,7 +13,7 @@ class DdiProviderAddress extends DdiProviderAddressAbstract implements DdiProvid
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

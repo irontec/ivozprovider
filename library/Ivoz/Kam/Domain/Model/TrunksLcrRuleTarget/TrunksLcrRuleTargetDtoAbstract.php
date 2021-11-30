@@ -17,39 +17,39 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $lcrId = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $priority;
+    private $priority = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $weight = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TrunksLcrRuleDto | null
      */
-    private $rule;
+    private $rule = null;
 
     /**
      * @var TrunksLcrGatewayDto | null
      */
-    private $gw;
+    private $gw = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
     public function __construct($id = null)
     {
@@ -76,6 +76,9 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -145,7 +148,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

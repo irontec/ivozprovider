@@ -22,7 +22,10 @@ abstract class FixedCostsRelInvoiceAbstract
 {
     use ChangelogTrait;
 
-    protected $quantity;
+    /**
+     * @var ?int
+     */
+    protected $quantity = null;
 
     /**
      * @var FixedCostInterface
@@ -30,10 +33,10 @@ abstract class FixedCostsRelInvoiceAbstract
     protected $fixedCost;
 
     /**
-     * @var InvoiceInterface | null
+     * @var ?InvoiceInterface
      * inversedBy relFixedCosts
      */
-    protected $invoice;
+    protected $invoice = null;
 
     /**
      * Constructor
@@ -100,12 +103,14 @@ abstract class FixedCostsRelInvoiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
+        $fixedCost = $dto->getFixedCost();
+        Assertion::notNull($fixedCost, 'getFixedCost value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setFixedCost($fkTransformer->transform($fixedCost))
             ->setInvoice($fkTransformer->transform($dto->getInvoice()));
 
         $self->initChangelog();
@@ -123,9 +128,12 @@ abstract class FixedCostsRelInvoiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
 
+        $fixedCost = $dto->getFixedCost();
+        Assertion::notNull($fixedCost, 'getFixedCost value is null, but non null value was expected.');
+
         $this
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setFixedCost($fkTransformer->transform($fixedCost))
             ->setInvoice($fkTransformer->transform($dto->getInvoice()));
 
         return $this;
@@ -147,7 +155,7 @@ abstract class FixedCostsRelInvoiceAbstract
         return [
             'quantity' => self::getQuantity(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
+            'invoiceId' => self::getInvoice()?->getId()
         ];
     }
 

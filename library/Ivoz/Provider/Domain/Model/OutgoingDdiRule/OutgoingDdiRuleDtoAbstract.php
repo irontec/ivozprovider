@@ -17,34 +17,34 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $defaultAction;
+    private $defaultAction = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var DdiDto | null
      */
-    private $forcedDdi;
+    private $forcedDdi = null;
 
     /**
      * @var OutgoingDdiRulesPatternDto[] | null
      */
-    private $patterns;
+    private $patterns = null;
 
     public function __construct($id = null)
     {
@@ -69,6 +69,9 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -125,7 +128,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

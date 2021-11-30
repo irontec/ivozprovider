@@ -8,7 +8,7 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

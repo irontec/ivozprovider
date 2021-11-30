@@ -13,7 +13,7 @@ class TransformationRuleSet extends TransformationRuleSetAbstract implements Tra
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

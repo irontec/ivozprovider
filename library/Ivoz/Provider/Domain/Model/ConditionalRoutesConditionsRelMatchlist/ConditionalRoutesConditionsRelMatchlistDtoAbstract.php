@@ -16,19 +16,19 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ConditionalRoutesConditionDto | null
      */
-    private $condition;
+    private $condition = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchlist;
+    private $matchlist = null;
 
     public function __construct($id = null)
     {
@@ -51,6 +51,9 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -80,7 +83,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

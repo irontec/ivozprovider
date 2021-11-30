@@ -22,33 +22,75 @@ abstract class CarrierServerAbstract
 {
     use ChangelogTrait;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
-    protected $hostname;
+    /**
+     * @var ?string
+     */
+    protected $hostname = null;
 
-    protected $port;
+    /**
+     * @var ?int
+     */
+    protected $port = null;
 
-    protected $uriScheme;
+    /**
+     * @var ?int
+     */
+    protected $uriScheme = null;
 
-    protected $transport;
+    /**
+     * @var ?int
+     */
+    protected $transport = null;
 
+    /**
+     * @var ?bool
+     */
     protected $sendPAI = false;
 
+    /**
+     * @var ?bool
+     */
     protected $sendRPID = false;
 
+    /**
+     * @var string
+     */
     protected $authNeeded = 'no';
 
-    protected $authUser;
+    /**
+     * @var ?string
+     */
+    protected $authUser = null;
 
-    protected $authPassword;
+    /**
+     * @var ?string
+     */
+    protected $authPassword = null;
 
-    protected $sipProxy;
+    /**
+     * @var ?string
+     */
+    protected $sipProxy = null;
 
-    protected $outboundProxy;
+    /**
+     * @var ?string
+     */
+    protected $outboundProxy = null;
 
-    protected $fromUser;
+    /**
+     * @var ?string
+     */
+    protected $fromUser = null;
 
-    protected $fromDomain;
+    /**
+     * @var ?string
+     */
+    protected $fromDomain = null;
 
     /**
      * @var CarrierInterface
@@ -128,9 +170,15 @@ abstract class CarrierServerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getAuthNeeded()
+            $authNeeded
         );
 
         $self
@@ -147,8 +195,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setCarrier($fkTransformer->transform($carrier))
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -165,6 +213,13 @@ abstract class CarrierServerAbstract
     ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
@@ -173,15 +228,15 @@ abstract class CarrierServerAbstract
             ->setTransport($dto->getTransport())
             ->setSendPAI($dto->getSendPAI())
             ->setSendRPID($dto->getSendRPID())
-            ->setAuthNeeded($dto->getAuthNeeded())
+            ->setAuthNeeded($authNeeded)
             ->setAuthUser($dto->getAuthUser())
             ->setAuthPassword($dto->getAuthPassword())
             ->setSipProxy($dto->getSipProxy())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setCarrier($fkTransformer->transform($carrier))
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

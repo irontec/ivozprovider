@@ -24,39 +24,61 @@ abstract class AdministratorAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username;
 
     /**
+     * @var string
      * comment: password
      */
     protected $pass;
 
+    /**
+     * @var string
+     */
     protected $email = '';
 
+    /**
+     * @var bool
+     */
     protected $active = true;
 
+    /**
+     * @var bool
+     */
     protected $internal = false;
 
+    /**
+     * @var bool
+     */
     protected $restricted = false;
 
-    protected $name;
-
-    protected $lastname;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $lastname = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?BrandInterface
      */
-    protected $company;
+    protected $brand = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?CompanyInterface
      */
-    protected $timezone;
+    protected $company = null;
+
+    /**
+     * @var ?TimezoneInterface
+     */
+    protected $timezone = null;
 
     /**
      * Constructor
@@ -135,14 +157,26 @@ abstract class AdministratorAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $pass = $dto->getPass();
+        Assertion::notNull($pass, 'getPass value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $internal = $dto->getInternal();
+        Assertion::notNull($internal, 'getInternal value is null, but non null value was expected.');
+        $restricted = $dto->getRestricted();
+        Assertion::notNull($restricted, 'getRestricted value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getUsername(),
-            $dto->getPass(),
-            $dto->getEmail(),
-            $dto->getActive(),
-            $dto->getInternal(),
-            $dto->getRestricted()
+            $username,
+            $pass,
+            $email,
+            $active,
+            $internal,
+            $restricted
         );
 
         $self
@@ -167,13 +201,26 @@ abstract class AdministratorAbstract
     ): static {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
 
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $pass = $dto->getPass();
+        Assertion::notNull($pass, 'getPass value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $internal = $dto->getInternal();
+        Assertion::notNull($internal, 'getInternal value is null, but non null value was expected.');
+        $restricted = $dto->getRestricted();
+        Assertion::notNull($restricted, 'getRestricted value is null, but non null value was expected.');
+
         $this
-            ->setUsername($dto->getUsername())
-            ->setPass($dto->getPass())
-            ->setEmail($dto->getEmail())
-            ->setActive($dto->getActive())
-            ->setInternal($dto->getInternal())
-            ->setRestricted($dto->getRestricted())
+            ->setUsername($username)
+            ->setPass($pass)
+            ->setEmail($email)
+            ->setActive($active)
+            ->setInternal($internal)
+            ->setRestricted($restricted)
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -213,9 +260,9 @@ abstract class AdministratorAbstract
             'restricted' => self::getRestricted(),
             'name' => self::getName(),
             'lastname' => self::getLastname(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'timezoneId' => self::getTimezone()?->getId()
         ];
     }
 

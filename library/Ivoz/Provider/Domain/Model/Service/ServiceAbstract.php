@@ -20,19 +20,28 @@ abstract class ServiceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden = '';
 
+    /**
+     * @var string
+     */
     protected $defaultCode;
 
+    /**
+     * @var bool
+     */
     protected $extraArgs = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -49,8 +58,8 @@ abstract class ServiceAbstract
         $this->setIden($iden);
         $this->setDefaultCode($defaultCode);
         $this->setExtraArgs($extraArgs);
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
     abstract public function getId(): null|string|int;
@@ -111,6 +120,12 @@ abstract class ServiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $defaultCode = $dto->getDefaultCode();
+        Assertion::notNull($defaultCode, 'getDefaultCode value is null, but non null value was expected.');
+        $extraArgs = $dto->getExtraArgs();
+        Assertion::notNull($extraArgs, 'getExtraArgs value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -127,9 +142,9 @@ abstract class ServiceAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getDefaultCode(),
-            $dto->getExtraArgs(),
+            $iden,
+            $defaultCode,
+            $extraArgs,
             $name,
             $description
         );
@@ -151,6 +166,13 @@ abstract class ServiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $defaultCode = $dto->getDefaultCode();
+        Assertion::notNull($defaultCode, 'getDefaultCode value is null, but non null value was expected.');
+        $extraArgs = $dto->getExtraArgs();
+        Assertion::notNull($extraArgs, 'getExtraArgs value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -166,9 +188,9 @@ abstract class ServiceAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
-            ->setDefaultCode($dto->getDefaultCode())
-            ->setExtraArgs($dto->getExtraArgs())
+            ->setIden($iden)
+            ->setDefaultCode($defaultCode)
+            ->setExtraArgs($extraArgs)
             ->setName($name)
             ->setDescription($description);
 
@@ -258,7 +280,7 @@ abstract class ServiceAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -274,7 +296,7 @@ abstract class ServiceAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

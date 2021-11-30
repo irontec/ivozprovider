@@ -18,7 +18,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -47,6 +47,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BalanceNotificationDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -59,10 +60,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
 
     public function getThreshold(): ?float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface;
+    public function getLastSent(): ?\DateTime;
 
     public function getCompany(): ?CompanyInterface;
 

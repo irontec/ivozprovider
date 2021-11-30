@@ -12,7 +12,7 @@ class CompanyRelCodec extends CompanyRelCodecAbstract implements CompanyRelCodec
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

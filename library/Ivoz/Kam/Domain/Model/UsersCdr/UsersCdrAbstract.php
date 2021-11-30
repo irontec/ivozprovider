@@ -32,66 +32,101 @@ abstract class UsersCdrAbstract
     use ChangelogTrait;
 
     /**
+     * @var \DateTime
      * column: start_time
      */
     protected $startTime;
 
     /**
+     * @var \DateTime
      * column: end_time
      */
     protected $endTime;
 
+    /**
+     * @var float
+     */
     protected $duration = 0;
 
-    protected $direction;
+    /**
+     * @var ?string
+     */
+    protected $direction = null;
 
-    protected $caller;
+    /**
+     * @var ?string
+     */
+    protected $caller = null;
 
-    protected $callee;
+    /**
+     * @var ?string
+     */
+    protected $callee = null;
 
-    protected $diversion;
+    /**
+     * @var ?string
+     */
+    protected $diversion = null;
 
-    protected $referee;
+    /**
+     * @var ?string
+     */
+    protected $referee = null;
 
-    protected $referrer;
+    /**
+     * @var ?string
+     */
+    protected $referrer = null;
 
-    protected $callid;
+    /**
+     * @var ?string
+     */
+    protected $callid = null;
 
-    protected $callidHash;
+    /**
+     * @var ?string
+     */
+    protected $callidHash = null;
 
-    protected $xcallid;
+    /**
+     * @var ?string
+     */
+    protected $xcallid = null;
 
+    /**
+     * @var bool
+     */
     protected $hidden = false;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor
@@ -166,12 +201,20 @@ abstract class UsersCdrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $hidden = $dto->getHidden();
+        Assertion::notNull($hidden, 'getHidden value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartTime(),
-            $dto->getEndTime(),
-            $dto->getDuration(),
-            $dto->getHidden()
+            $startTime,
+            $endTime,
+            $duration,
+            $hidden
         );
 
         $self
@@ -206,10 +249,19 @@ abstract class UsersCdrAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $hidden = $dto->getHidden();
+        Assertion::notNull($hidden, 'getHidden value is null, but non null value was expected.');
+
         $this
-            ->setStartTime($dto->getStartTime())
-            ->setEndTime($dto->getEndTime())
-            ->setDuration($dto->getDuration())
+            ->setStartTime($startTime)
+            ->setEndTime($endTime)
+            ->setDuration($duration)
             ->setDirection($dto->getDirection())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
@@ -219,7 +271,7 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setHidden($dto->getHidden())
+            ->setHidden($hidden)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -273,24 +325,25 @@ abstract class UsersCdrAbstract
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
             'hidden' => self::getHidden(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 
-    protected function setStartTime($startTime): static
+    protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
+        /** @var \Datetime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->startTime == $startTime) {
+        if ($this->isInitialized() && $this->startTime == $startTime) {
             return $this;
         }
 
@@ -299,23 +352,21 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): \DateTimeInterface
+    public function getStartTime(): \DateTime
     {
         return clone $this->startTime;
     }
 
-    protected function setEndTime($endTime): static
+    protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
+        /** @var \Datetime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->endTime == $endTime) {
+        if ($this->isInitialized() && $this->endTime == $endTime) {
             return $this;
         }
 
@@ -324,10 +375,7 @@ abstract class UsersCdrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEndTime(): \DateTimeInterface
+    public function getEndTime(): \DateTime
     {
         return clone $this->endTime;
     }

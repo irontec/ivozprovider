@@ -15,7 +15,7 @@ use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
@@ -33,7 +33,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -81,6 +81,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param OutgoingRoutingDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -139,7 +140,10 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface;
 
-    public function replaceLcrRules(ArrayCollection $lcrRules): OutgoingRoutingInterface;
+    /**
+     * @param Collection<array-key, TrunksLcrRuleInterface> $lcrRules
+     */
+    public function replaceLcrRules(Collection $lcrRules): OutgoingRoutingInterface;
 
     public function getLcrRules(?Criteria $criteria = null): array;
 
@@ -147,7 +151,10 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     public function removeLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
-    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets): OutgoingRoutingInterface;
+    /**
+     * @param Collection<array-key, TrunksLcrRuleTargetInterface> $lcrRuleTargets
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets): OutgoingRoutingInterface;
 
     public function getLcrRuleTargets(?Criteria $criteria = null): array;
 
@@ -155,7 +162,10 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     public function removeRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
-    public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingRelCarrierInterface> $relCarriers
+     */
+    public function replaceRelCarriers(Collection $relCarriers): OutgoingRoutingInterface;
 
     public function getRelCarriers(?Criteria $criteria = null): array;
 }

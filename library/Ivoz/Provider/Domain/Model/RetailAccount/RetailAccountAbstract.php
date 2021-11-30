@@ -28,40 +28,68 @@ abstract class RetailAccountAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var ?string
      * comment: enum:udp|tcp|tls
      */
-    protected $transport;
-
-    protected $ip;
-
-    protected $port;
-
-    protected $password;
-
-    protected $fromDomain;
+    protected $transport = null;
 
     /**
+     * @var ?string
+     */
+    protected $ip = null;
+
+    /**
+     * @var ?int
+     */
+    protected $port = null;
+
+    /**
+     * @var ?string
+     */
+    protected $password = null;
+
+    /**
+     * @var ?string
+     */
+    protected $fromDomain = null;
+
+    /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $directConnectivity = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $ddiIn = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
+    /**
+     * @var bool
+     */
     protected $multiContact = true;
 
     /**
@@ -71,10 +99,10 @@ abstract class RetailAccountAbstract
     protected $brand;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy residentialDevices
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var CompanyInterface
@@ -82,14 +110,14 @@ abstract class RetailAccountAbstract
     protected $company;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
      * Constructor
@@ -170,15 +198,33 @@ abstract class RetailAccountAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $directConnectivity = $dto->getDirectConnectivity();
+        Assertion::notNull($directConnectivity, 'getDirectConnectivity value is null, but non null value was expected.');
+        $ddiIn = $dto->getDdiIn();
+        Assertion::notNull($ddiIn, 'getDdiIn value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getDirectConnectivity(),
-            $dto->getDdiIn(),
-            $dto->getT38Passthrough(),
-            $dto->getRtpEncryption(),
-            $dto->getMultiContact()
+            $name,
+            $description,
+            $directConnectivity,
+            $ddiIn,
+            $t38Passthrough,
+            $rtpEncryption,
+            $multiContact
         );
 
         $self
@@ -187,9 +233,9 @@ abstract class RetailAccountAbstract
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
@@ -208,22 +254,41 @@ abstract class RetailAccountAbstract
     ): static {
         Assertion::isInstanceOf($dto, RetailAccountDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $directConnectivity = $dto->getDirectConnectivity();
+        Assertion::notNull($directConnectivity, 'getDirectConnectivity value is null, but non null value was expected.');
+        $ddiIn = $dto->getDdiIn();
+        Assertion::notNull($ddiIn, 'getDdiIn value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
+            ->setName($name)
+            ->setDescription($description)
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
-            ->setDirectConnectivity($dto->getDirectConnectivity())
-            ->setDdiIn($dto->getDdiIn())
-            ->setT38Passthrough($dto->getT38Passthrough())
-            ->setRtpEncryption($dto->getRtpEncryption())
-            ->setMultiContact($dto->getMultiContact())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setDirectConnectivity($directConnectivity)
+            ->setDdiIn($ddiIn)
+            ->setT38Passthrough($t38Passthrough)
+            ->setRtpEncryption($rtpEncryption)
+            ->setMultiContact($multiContact)
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
@@ -271,10 +336,10 @@ abstract class RetailAccountAbstract
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
             'brandId' => self::getBrand()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
+            'domainId' => self::getDomain()?->getId(),
             'companyId' => self::getCompany()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId()
         ];
     }
 

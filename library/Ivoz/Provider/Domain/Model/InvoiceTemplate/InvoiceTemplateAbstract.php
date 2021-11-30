@@ -20,20 +20,35 @@ abstract class InvoiceTemplateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $description;
-
-    protected $template;
-
-    protected $templateHeader;
-
-    protected $templateFooter;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
-     * @var BrandInterface | null
+     * @var string
      */
-    protected $brand;
+    protected $template;
+
+    /**
+     * @var ?string
+     */
+    protected $templateHeader = null;
+
+    /**
+     * @var ?string
+     */
+    protected $templateFooter = null;
+
+    /**
+     * @var ?BrandInterface
+     */
+    protected $brand = null;
 
     /**
      * Constructor
@@ -104,10 +119,14 @@ abstract class InvoiceTemplateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $template = $dto->getTemplate();
+        Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTemplate()
+            $name,
+            $template
         );
 
         $self
@@ -131,10 +150,15 @@ abstract class InvoiceTemplateAbstract
     ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $template = $dto->getTemplate();
+        Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription())
-            ->setTemplate($dto->getTemplate())
+            ->setTemplate($template)
             ->setTemplateHeader($dto->getTemplateHeader())
             ->setTemplateFooter($dto->getTemplateFooter())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
@@ -164,7 +188,7 @@ abstract class InvoiceTemplateAbstract
             'template' => self::getTemplate(),
             'templateHeader' => self::getTemplateHeader(),
             'templateFooter' => self::getTemplateFooter(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 

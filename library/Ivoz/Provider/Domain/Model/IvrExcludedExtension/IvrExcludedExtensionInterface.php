@@ -14,7 +14,10 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 */
 interface IvrExcludedExtensionInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**
@@ -35,6 +38,7 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param IvrExcludedExtensionDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

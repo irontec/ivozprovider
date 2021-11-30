@@ -28,26 +28,46 @@ abstract class HuntGroupAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var string
      * comment: enum:ringAll|linear|roundRobin|random
      */
     protected $strategy;
 
-    protected $ringAllTimeout;
+    /**
+     * @var ?int
+     */
+    protected $ringAllTimeout = null;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $noAnswerTargetType;
+    protected $noAnswerTargetType = null;
 
-    protected $noAnswerNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $noAnswerNumberValue = null;
 
+    /**
+     * @var int
+     */
     protected $preventMissedCalls = 1;
 
+    /**
+     * @var int
+     */
     protected $allowCallForwards = 0;
 
     /**
@@ -56,24 +76,24 @@ abstract class HuntGroupAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $noAnswerLocution;
+    protected $noAnswerLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $noAnswerExtension;
+    protected $noAnswerExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $noAnswerVoiceMailUser;
+    protected $noAnswerVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $noAnswerNumberCountry;
+    protected $noAnswerNumberCountry = null;
 
     /**
      * Constructor
@@ -150,20 +170,32 @@ abstract class HuntGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $allowCallForwards = $dto->getAllowCallForwards();
+        Assertion::notNull($allowCallForwards, 'getAllowCallForwards value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getStrategy(),
-            $dto->getPreventMissedCalls(),
-            $dto->getAllowCallForwards()
+            $name,
+            $description,
+            $strategy,
+            $preventMissedCalls,
+            $allowCallForwards
         );
 
         $self
             ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
             ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
@@ -184,16 +216,29 @@ abstract class HuntGroupAbstract
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $allowCallForwards = $dto->getAllowCallForwards();
+        Assertion::notNull($allowCallForwards, 'getAllowCallForwards value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
-            ->setStrategy($dto->getStrategy())
+            ->setName($name)
+            ->setDescription($description)
+            ->setStrategy($strategy)
             ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setPreventMissedCalls($dto->getPreventMissedCalls())
-            ->setAllowCallForwards($dto->getAllowCallForwards())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPreventMissedCalls($preventMissedCalls)
+            ->setAllowCallForwards($allowCallForwards)
+            ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
             ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
@@ -235,10 +280,10 @@ abstract class HuntGroupAbstract
             'preventMissedCalls' => self::getPreventMissedCalls(),
             'allowCallForwards' => self::getAllowCallForwards(),
             'companyId' => self::getCompany()->getId(),
-            'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
-            'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
-            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null,
-            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
+            'noAnswerLocutionId' => self::getNoAnswerLocution()?->getId(),
+            'noAnswerExtensionId' => self::getNoAnswerExtension()?->getId(),
+            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser()?->getId(),
+            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry()?->getId()
         ];
     }
 

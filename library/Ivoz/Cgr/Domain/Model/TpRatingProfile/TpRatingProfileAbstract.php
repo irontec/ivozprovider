@@ -23,54 +23,77 @@ abstract class TpRatingProfileAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $loadid = 'DATABASE';
 
+    /**
+     * @var string
+     */
     protected $direction = '*out';
 
-    protected $tenant;
-
-    protected $category = 'call';
-
-    protected $subject;
+    /**
+     * @var ?string
+     */
+    protected $tenant = null;
 
     /**
+     * @var string
+     */
+    protected $category = 'call';
+
+    /**
+     * @var ?string
+     */
+    protected $subject = null;
+
+    /**
+     * @var string
      * column: activation_time
      */
     protected $activationTime = '1970-01-01 00:00:00';
 
     /**
+     * @var ?string
      * column: rating_plan_tag
      */
-    protected $ratingPlanTag;
+    protected $ratingPlanTag = null;
 
     /**
+     * @var ?string
      * column: fallback_subjects
      */
-    protected $fallbackSubjects;
+    protected $fallbackSubjects = null;
 
     /**
+     * @var ?string
      * column: cdr_stat_queue_ids
      */
-    protected $cdrStatQueueIds;
+    protected $cdrStatQueueIds = null;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
     protected $createdAt;
 
     /**
-     * @var RatingProfileInterface | null
+     * @var ?RatingProfileInterface
      * inversedBy tpRatingProfiles
      */
-    protected $ratingProfile;
+    protected $ratingProfile = null;
 
     /**
-     * @var OutgoingRoutingRelCarrierInterface | null
+     * @var ?OutgoingRoutingRelCarrierInterface
      * inversedBy tpRatingProfiles
      */
-    protected $outgoingRoutingRelCarrier;
+    protected $outgoingRoutingRelCarrier = null;
 
     /**
      * Constructor
@@ -149,14 +172,26 @@ abstract class TpRatingProfileAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpRatingProfileDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getLoadid(),
-            $dto->getDirection(),
-            $dto->getCategory(),
-            $dto->getActivationTime(),
-            $dto->getCreatedAt()
+            $tpid,
+            $loadid,
+            $direction,
+            $category,
+            $activationTime,
+            $createdAt
         );
 
         $self
@@ -183,18 +218,31 @@ abstract class TpRatingProfileAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpRatingProfileDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setLoadid($dto->getLoadid())
-            ->setDirection($dto->getDirection())
+            ->setTpid($tpid)
+            ->setLoadid($loadid)
+            ->setDirection($direction)
             ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
+            ->setCategory($category)
             ->setSubject($dto->getSubject())
-            ->setActivationTime($dto->getActivationTime())
+            ->setActivationTime($activationTime)
             ->setRatingPlanTag($dto->getRatingPlanTag())
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setCreatedAt($createdAt)
             ->setRatingProfile($fkTransformer->transform($dto->getRatingProfile()))
             ->setOutgoingRoutingRelCarrier($fkTransformer->transform($dto->getOutgoingRoutingRelCarrier()));
 
@@ -236,8 +284,8 @@ abstract class TpRatingProfileAbstract
             'fallback_subjects' => self::getFallbackSubjects(),
             'cdr_stat_queue_ids' => self::getCdrStatQueueIds(),
             'created_at' => self::getCreatedAt(),
-            'ratingProfileId' => self::getRatingProfile() ? self::getRatingProfile()->getId() : null,
-            'outgoingRoutingRelCarrierId' => self::getOutgoingRoutingRelCarrier() ? self::getOutgoingRoutingRelCarrier()->getId() : null
+            'ratingProfileId' => self::getRatingProfile()?->getId(),
+            'outgoingRoutingRelCarrierId' => self::getOutgoingRoutingRelCarrier()?->getId()
         ];
     }
 
@@ -391,15 +439,16 @@ abstract class TpRatingProfileAbstract
         return $this->cdrStatQueueIds;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -408,10 +457,7 @@ abstract class TpRatingProfileAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

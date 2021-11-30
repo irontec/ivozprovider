@@ -23,10 +23,10 @@ abstract class ExternalCallFilterRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy schedules
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var ScheduleInterface
@@ -98,12 +98,14 @@ abstract class ExternalCallFilterRelScheduleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ExternalCallFilterRelScheduleAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
 
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
+
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     protected function __toArray(): array
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'filterId' => self::getFilter()?->getId(),
             'scheduleId' => self::getSchedule()->getId()
         ];
     }

@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait HuntGroupsRelUserTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait HuntGroupsRelUserTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param HuntGroupsRelUserDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait HuntGroupsRelUserTrait
 
     /**
      * @internal use EntityTools instead
+     * @param HuntGroupsRelUserDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

@@ -19,7 +19,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
      * @var string|null
@@ -47,44 +47,44 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     private $generateRules = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     /**
      * @var TransformationRuleDto[] | null
      */
-    private $rules;
+    private $rules = null;
 
     public function __construct($id = null)
     {
@@ -119,6 +119,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -233,7 +236,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

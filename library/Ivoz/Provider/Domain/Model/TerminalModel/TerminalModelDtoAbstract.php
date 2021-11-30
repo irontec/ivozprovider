@@ -15,49 +15,49 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
      * @var string|null
      */
-    private $genericTemplate;
+    private $genericTemplate = null;
 
     /**
      * @var string|null
      */
-    private $specificTemplate;
+    private $specificTemplate = null;
 
     /**
      * @var string|null
      */
-    private $genericUrlPattern;
+    private $genericUrlPattern = null;
 
     /**
      * @var string|null
      */
-    private $specificUrlPattern;
+    private $specificUrlPattern = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TerminalManufacturerDto | null
      */
-    private $terminalManufacturer;
+    private $terminalManufacturer = null;
 
     public function __construct($id = null)
     {
@@ -86,6 +86,9 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -205,7 +208,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

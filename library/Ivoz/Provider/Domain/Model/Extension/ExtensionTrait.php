@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait ExtensionTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, UserInterface> & Selectable<array-key, UserInterface>
      * UserInterface mappedBy extension
      */
     protected $users;
@@ -40,6 +42,7 @@ trait ExtensionTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ExtensionDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -47,12 +50,14 @@ trait ExtensionTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getUsers())) {
-            $self->replaceUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getUsers()
-                )
+        $users = $dto->getUsers();
+        if (!is_null($users)) {
+
+            /** @var Collection<array-key, UserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $users
             );
+            $self->replaceUsers($replacement);
         }
 
         $self->sanitizeValues();
@@ -66,18 +71,21 @@ trait ExtensionTrait
 
     /**
      * @internal use EntityTools instead
+     * @param ExtensionDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getUsers())) {
-            $this->replaceUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getUsers()
-                )
+        $users = $dto->getUsers();
+        if (!is_null($users)) {
+
+            /** @var Collection<array-key, UserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $users
             );
+            $this->replaceUsers($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,25 +123,33 @@ trait ExtensionTrait
         return $this;
     }
 
-    public function replaceUsers(ArrayCollection $users): ExtensionInterface
+    /**
+     * @param Collection<array-key, UserInterface> $users
+     */
+    public function replaceUsers(Collection $users): ExtensionInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($users as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setExtension($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->users as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->users->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->users->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->users->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

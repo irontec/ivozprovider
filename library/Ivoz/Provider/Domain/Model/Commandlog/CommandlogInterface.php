@@ -36,6 +36,7 @@ interface CommandlogInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CommandlogDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -54,10 +55,7 @@ interface CommandlogInterface extends EntityInterface
 
     public function getAgent(): ?array;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface;
+    public function getCreatedOn(): \DateTime;
 
     public function getMicrotime(): int;
 

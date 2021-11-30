@@ -25,7 +25,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -54,6 +54,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param HolidayDateDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -64,21 +65,12 @@ interface HolidayDateInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getEventDate(): \DateTimeInterface;
 
     public function getWholeDayEvent(): bool;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): ?\DateTimeInterface;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeOut(): ?\DateTimeInterface;
 
     public function getRouteType(): ?string;

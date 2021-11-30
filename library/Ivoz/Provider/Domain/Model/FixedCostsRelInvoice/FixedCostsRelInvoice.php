@@ -14,7 +14,7 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

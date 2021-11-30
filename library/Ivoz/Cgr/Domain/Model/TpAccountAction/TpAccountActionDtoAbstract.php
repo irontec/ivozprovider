@@ -16,64 +16,64 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $loadid = 'DATABASE';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tenant;
-
-    /**
-     * @var string
-     */
-    private $account;
+    private $tenant = null;
 
     /**
      * @var string|null
      */
-    private $actionPlanTag;
+    private $account = null;
 
     /**
      * @var string|null
      */
-    private $actionTriggersTag;
+    private $actionPlanTag = null;
 
     /**
-     * @var bool
+     * @var string|null
+     */
+    private $actionTriggersTag = null;
+
+    /**
+     * @var bool|null
      */
     private $allowNegative = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $disabled = false;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     public function __construct($id = null)
     {
@@ -105,6 +105,9 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -251,7 +254,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

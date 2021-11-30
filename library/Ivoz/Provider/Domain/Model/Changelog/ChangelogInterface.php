@@ -37,6 +37,7 @@ interface ChangelogInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ChangelogDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -51,10 +52,7 @@ interface ChangelogInterface extends EntityInterface
 
     public function getData(): ?array;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface;
+    public function getCreatedOn(): \DateTime;
 
     public function getMicrotime(): int;
 

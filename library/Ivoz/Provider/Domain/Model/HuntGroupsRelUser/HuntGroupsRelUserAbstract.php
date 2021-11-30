@@ -24,32 +24,42 @@ abstract class HuntGroupsRelUserAbstract
 {
     use ChangelogTrait;
 
-    protected $timeoutTime;
-
-    protected $priority;
+    /**
+     * @var ?int
+     */
+    protected $timeoutTime = null;
 
     /**
+     * @var ?int
+     */
+    protected $priority = null;
+
+    /**
+     * @var string
      * comment: enum:number|user
      */
     protected $routeType;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      * inversedBy huntGroupsRelUsers
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
@@ -118,9 +128,11 @@ abstract class HuntGroupsRelUserAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRouteType()
+            $routeType
         );
 
         $self
@@ -146,10 +158,13 @@ abstract class HuntGroupsRelUserAbstract
     ): static {
         Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
 
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+
         $this
             ->setTimeoutTime($dto->getTimeoutTime())
             ->setPriority($dto->getPriority())
-            ->setRouteType($dto->getRouteType())
+            ->setRouteType($routeType)
             ->setNumberValue($dto->getNumberValue())
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setUser($fkTransformer->transform($dto->getUser()))
@@ -180,9 +195,9 @@ abstract class HuntGroupsRelUserAbstract
             'priority' => self::getPriority(),
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

@@ -28,36 +28,71 @@ abstract class QueueAbstract
 {
     use ChangelogTrait;
 
-    protected $name;
-
-    protected $maxWaitTime;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
     /**
-     * comment: enum:number|extension|voicemail
+     * @var ?int
      */
-    protected $timeoutTargetType;
-
-    protected $timeoutNumberValue;
-
-    protected $maxlen;
+    protected $maxWaitTime = null;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $fullTargetType;
+    protected $timeoutTargetType = null;
 
-    protected $fullNumberValue;
+    /**
+     * @var ?string
+     */
+    protected $timeoutNumberValue = null;
 
-    protected $periodicAnnounceFrequency;
+    /**
+     * @var ?int
+     */
+    protected $maxlen = null;
 
-    protected $memberCallRest;
+    /**
+     * @var ?string
+     * comment: enum:number|extension|voicemail
+     */
+    protected $fullTargetType = null;
 
-    protected $memberCallTimeout;
+    /**
+     * @var ?string
+     */
+    protected $fullNumberValue = null;
 
-    protected $strategy;
+    /**
+     * @var ?int
+     */
+    protected $periodicAnnounceFrequency = null;
 
-    protected $weight;
+    /**
+     * @var ?int
+     */
+    protected $memberCallRest = null;
 
+    /**
+     * @var ?int
+     */
+    protected $memberCallTimeout = null;
+
+    /**
+     * @var ?string
+     */
+    protected $strategy = null;
+
+    /**
+     * @var ?int
+     */
+    protected $weight = null;
+
+    /**
+     * @var int
+     */
     protected $preventMissedCalls = 1;
 
     /**
@@ -66,49 +101,49 @@ abstract class QueueAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $periodicAnnounceLocution;
+    protected $periodicAnnounceLocution = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $timeoutLocution;
+    protected $timeoutLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $timeoutExtension;
+    protected $timeoutExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $timeoutVoiceMailUser;
+    protected $timeoutVoiceMailUser = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $fullLocution;
+    protected $fullLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $fullExtension;
+    protected $fullExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $fullVoiceMailUser;
+    protected $fullVoiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $timeoutNumberCountry;
+    protected $timeoutNumberCountry = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $fullNumberCountry;
+    protected $fullNumberCountry = null;
 
     /**
      * Constructor
@@ -177,9 +212,13 @@ abstract class QueueAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPreventMissedCalls()
+            $preventMissedCalls
         );
 
         $self
@@ -195,7 +234,7 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
             ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
@@ -221,6 +260,11 @@ abstract class QueueAbstract
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
             ->setName($dto->getName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
@@ -234,8 +278,8 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setPreventMissedCalls($dto->getPreventMissedCalls())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPreventMissedCalls($preventMissedCalls)
+            ->setCompany($fkTransformer->transform($company))
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
             ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
@@ -297,15 +341,15 @@ abstract class QueueAbstract
             'weight' => self::getWeight(),
             'preventMissedCalls' => self::getPreventMissedCalls(),
             'companyId' => self::getCompany()->getId(),
-            'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution() ? self::getPeriodicAnnounceLocution()->getId() : null,
-            'timeoutLocutionId' => self::getTimeoutLocution() ? self::getTimeoutLocution()->getId() : null,
-            'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
-            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser() ? self::getTimeoutVoiceMailUser()->getId() : null,
-            'fullLocutionId' => self::getFullLocution() ? self::getFullLocution()->getId() : null,
-            'fullExtensionId' => self::getFullExtension() ? self::getFullExtension()->getId() : null,
-            'fullVoiceMailUserId' => self::getFullVoiceMailUser() ? self::getFullVoiceMailUser()->getId() : null,
-            'timeoutNumberCountryId' => self::getTimeoutNumberCountry() ? self::getTimeoutNumberCountry()->getId() : null,
-            'fullNumberCountryId' => self::getFullNumberCountry() ? self::getFullNumberCountry()->getId() : null
+            'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution()?->getId(),
+            'timeoutLocutionId' => self::getTimeoutLocution()?->getId(),
+            'timeoutExtensionId' => self::getTimeoutExtension()?->getId(),
+            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser()?->getId(),
+            'fullLocutionId' => self::getFullLocution()?->getId(),
+            'fullExtensionId' => self::getFullExtension()?->getId(),
+            'fullVoiceMailUserId' => self::getFullVoiceMailUser()?->getId(),
+            'timeoutNumberCountryId' => self::getTimeoutNumberCountry()?->getId(),
+            'fullNumberCountryId' => self::getFullNumberCountry()?->getId()
         ];
     }
 

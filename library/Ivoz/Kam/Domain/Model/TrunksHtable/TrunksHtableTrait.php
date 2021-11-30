@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait TrunksHtableTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait TrunksHtableTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TrunksHtableDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait TrunksHtableTrait
 
     /**
      * @internal use EntityTools instead
+     * @param TrunksHtableDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

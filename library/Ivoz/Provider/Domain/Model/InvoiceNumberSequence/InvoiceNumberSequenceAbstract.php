@@ -20,18 +20,39 @@ abstract class InvoiceNumberSequenceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $prefix = '';
 
+    /**
+     * @var int
+     */
     protected $sequenceLength;
 
+    /**
+     * @var int
+     */
     protected $increment;
 
+    /**
+     * @var ?string
+     */
     protected $latestValue = '';
 
+    /**
+     * @var int
+     */
     protected $iteration = 0;
 
+    /**
+     * @var int
+     */
     protected $version = 1;
 
     /**
@@ -116,19 +137,33 @@ abstract class InvoiceNumberSequenceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $sequenceLength = $dto->getSequenceLength();
+        Assertion::notNull($sequenceLength, 'getSequenceLength value is null, but non null value was expected.');
+        $increment = $dto->getIncrement();
+        Assertion::notNull($increment, 'getIncrement value is null, but non null value was expected.');
+        $iteration = $dto->getIteration();
+        Assertion::notNull($iteration, 'getIteration value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getPrefix(),
-            $dto->getSequenceLength(),
-            $dto->getIncrement(),
-            $dto->getIteration(),
-            $dto->getVersion()
+            $name,
+            $prefix,
+            $sequenceLength,
+            $increment,
+            $iteration,
+            $version
         );
 
         $self
             ->setLatestValue($dto->getLatestValue())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -145,15 +180,30 @@ abstract class InvoiceNumberSequenceAbstract
     ): static {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $sequenceLength = $dto->getSequenceLength();
+        Assertion::notNull($sequenceLength, 'getSequenceLength value is null, but non null value was expected.');
+        $increment = $dto->getIncrement();
+        Assertion::notNull($increment, 'getIncrement value is null, but non null value was expected.');
+        $iteration = $dto->getIteration();
+        Assertion::notNull($iteration, 'getIteration value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setPrefix($dto->getPrefix())
-            ->setSequenceLength($dto->getSequenceLength())
-            ->setIncrement($dto->getIncrement())
+            ->setName($name)
+            ->setPrefix($prefix)
+            ->setSequenceLength($sequenceLength)
+            ->setIncrement($increment)
             ->setLatestValue($dto->getLatestValue())
-            ->setIteration($dto->getIteration())
-            ->setVersion($dto->getVersion())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setIteration($iteration)
+            ->setVersion($version)
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

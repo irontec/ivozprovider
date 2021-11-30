@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait CalendarPeriodTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CalendarPeriodsRelScheduleInterface> & Selectable<array-key, CalendarPeriodsRelScheduleInterface>
      * CalendarPeriodsRelScheduleInterface mappedBy calendarPeriod
      * orphanRemoval
      */
@@ -41,6 +43,7 @@ trait CalendarPeriodTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CalendarPeriodDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -48,12 +51,14 @@ trait CalendarPeriodTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelSchedules())) {
-            $self->replaceRelSchedules(
-                $fkTransformer->transformCollection(
-                    $dto->getRelSchedules()
-                )
+        $relSchedules = $dto->getRelSchedules();
+        if (!is_null($relSchedules)) {
+
+            /** @var Collection<array-key, CalendarPeriodsRelScheduleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relSchedules
             );
+            $self->replaceRelSchedules($replacement);
         }
 
         $self->sanitizeValues();
@@ -67,18 +72,21 @@ trait CalendarPeriodTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CalendarPeriodDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelSchedules())) {
-            $this->replaceRelSchedules(
-                $fkTransformer->transformCollection(
-                    $dto->getRelSchedules()
-                )
+        $relSchedules = $dto->getRelSchedules();
+        if (!is_null($relSchedules)) {
+
+            /** @var Collection<array-key, CalendarPeriodsRelScheduleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relSchedules
             );
+            $this->replaceRelSchedules($replacement);
         }
         $this->sanitizeValues();
 
@@ -116,25 +124,33 @@ trait CalendarPeriodTrait
         return $this;
     }
 
-    public function replaceRelSchedules(ArrayCollection $relSchedules): CalendarPeriodInterface
+    /**
+     * @param Collection<array-key, CalendarPeriodsRelScheduleInterface> $relSchedules
+     */
+    public function replaceRelSchedules(Collection $relSchedules): CalendarPeriodInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relSchedules as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCalendarPeriod($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relSchedules as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relSchedules->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relSchedules->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relSchedules->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

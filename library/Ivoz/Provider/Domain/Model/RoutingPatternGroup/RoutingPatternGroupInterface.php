@@ -9,7 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 /**
@@ -19,7 +19,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -50,6 +50,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RoutingPatternGroupDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -70,7 +71,10 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
 
     public function removeRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface;
 
-    public function replaceRelPatterns(ArrayCollection $relPatterns): RoutingPatternGroupInterface;
+    /**
+     * @param Collection<array-key, RoutingPatternGroupsRelPatternInterface> $relPatterns
+     */
+    public function replaceRelPatterns(Collection $relPatterns): RoutingPatternGroupInterface;
 
     public function getRelPatterns(?Criteria $criteria = null): array;
 
@@ -78,7 +82,10 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
 
     public function removeOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternGroupInterface;
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternGroupInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingPatternGroupInterface;
 
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 }

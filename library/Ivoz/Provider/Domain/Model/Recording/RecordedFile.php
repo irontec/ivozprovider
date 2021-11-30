@@ -13,20 +13,23 @@ use Assert\Assertion;
 final class RecordedFile
 {
     /**
+     * @var ?int
      * column: recordedFileFileSize
      * comment: FSO:keepExtension
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: recordedFileMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: recordedFileBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
      * Constructor

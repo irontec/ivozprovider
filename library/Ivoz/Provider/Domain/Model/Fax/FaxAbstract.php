@@ -22,10 +22,19 @@ abstract class FaxAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $email;
+    /**
+     * @var ?string
+     */
+    protected $email = null;
 
+    /**
+     * @var bool
+     */
     protected $sendByEmail = true;
 
     /**
@@ -34,9 +43,9 @@ abstract class FaxAbstract
     protected $company;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
      * Constructor
@@ -107,15 +116,21 @@ abstract class FaxAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $sendByEmail = $dto->getSendByEmail();
+        Assertion::notNull($sendByEmail, 'getSendByEmail value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getSendByEmail()
+            $name,
+            $sendByEmail
         );
 
         $self
             ->setEmail($dto->getEmail())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         $self->initChangelog();
@@ -133,11 +148,18 @@ abstract class FaxAbstract
     ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $sendByEmail = $dto->getSendByEmail();
+        Assertion::notNull($sendByEmail, 'getSendByEmail value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setEmail($dto->getEmail())
-            ->setSendByEmail($dto->getSendByEmail())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setSendByEmail($sendByEmail)
+            ->setCompany($fkTransformer->transform($company))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         return $this;
@@ -163,7 +185,7 @@ abstract class FaxAbstract
             'email' => self::getEmail(),
             'sendByEmail' => self::getSendByEmail(),
             'companyId' => self::getCompany()->getId(),
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId()
         ];
     }
 

@@ -23,7 +23,7 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

@@ -20,54 +20,54 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $entry;
-
-    /**
-     * @var string
-     */
-    private $routeType;
+    private $entry = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $routeType = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numberValue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $welcomeLocution;
+    private $welcomeLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var UserDto | null
      */
-    private $voiceMailUser;
+    private $voiceMailUser = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     public function __construct($id = null)
     {
@@ -97,6 +97,9 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -169,7 +172,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

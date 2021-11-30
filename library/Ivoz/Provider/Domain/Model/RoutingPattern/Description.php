@@ -13,24 +13,28 @@ use Assert\Assertion;
 final class Description
 {
     /**
+     * @var ?string
      * column: description_en
      */
-    private $en;
+    private $en = null;
 
     /**
+     * @var ?string
      * column: description_es
      */
-    private $es;
+    private $es = null;
 
     /**
+     * @var ?string
      * column: description_ca
      */
-    private $ca;
+    private $ca = null;
 
     /**
+     * @var ?string
      * column: description_it
      */
-    private $it;
+    private $it = null;
 
     /**
      * Constructor

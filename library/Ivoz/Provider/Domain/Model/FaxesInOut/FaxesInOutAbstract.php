@@ -24,23 +24,39 @@ abstract class FaxesInOutAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var \DateTime
+     */
     protected $calldate;
 
-    protected $src;
-
-    protected $dst;
+    /**
+     * @var ?string
+     */
+    protected $src = null;
 
     /**
+     * @var ?string
+     */
+    protected $dst = null;
+
+    /**
+     * @var ?string
      * comment: enum:In|Out
      */
     protected $type = 'Out';
 
-    protected $pages;
-
-    protected $status;
+    /**
+     * @var ?string
+     */
+    protected $pages = null;
 
     /**
-     * @var File | null
+     * @var ?string
+     */
+    protected $status = null;
+
+    /**
+     * @var File
      */
     protected $file;
 
@@ -50,9 +66,9 @@ abstract class FaxesInOutAbstract
     protected $fax;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $dstCountry;
+    protected $dstCountry = null;
 
     /**
      * Constructor
@@ -62,7 +78,7 @@ abstract class FaxesInOutAbstract
         File $file
     ) {
         $this->setCalldate($calldate);
-        $this->setFile($file);
+        $this->file = $file;
     }
 
     abstract public function getId(): null|string|int;
@@ -123,6 +139,10 @@ abstract class FaxesInOutAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $fax = $dto->getFax();
+        Assertion::notNull($fax, 'getFax value is null, but non null value was expected.');
 
         $file = new File(
             $dto->getFileFileSize(),
@@ -131,7 +151,7 @@ abstract class FaxesInOutAbstract
         );
 
         $self = new static(
-            $dto->getCalldate(),
+            $calldate,
             $file
         );
 
@@ -141,7 +161,7 @@ abstract class FaxesInOutAbstract
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
-            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setFax($fkTransformer->transform($fax))
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
         $self->initChangelog();
@@ -159,6 +179,11 @@ abstract class FaxesInOutAbstract
     ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $fax = $dto->getFax();
+        Assertion::notNull($fax, 'getFax value is null, but non null value was expected.');
+
         $file = new File(
             $dto->getFileFileSize(),
             $dto->getFileMimeType(),
@@ -166,14 +191,14 @@ abstract class FaxesInOutAbstract
         );
 
         $this
-            ->setCalldate($dto->getCalldate())
+            ->setCalldate($calldate)
             ->setSrc($dto->getSrc())
             ->setDst($dto->getDst())
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
             ->setFile($file)
-            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setFax($fkTransformer->transform($fax))
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
         return $this;
@@ -211,19 +236,20 @@ abstract class FaxesInOutAbstract
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
             'faxId' => self::getFax()->getId(),
-            'dstCountryId' => self::getDstCountry() ? self::getDstCountry()->getId() : null
+            'dstCountryId' => self::getDstCountry()?->getId()
         ];
     }
 
-    protected function setCalldate($calldate): static
+    protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
+        /** @var \Datetime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             null
         );
 
-        if ($this->calldate == $calldate) {
+        if ($this->isInitialized() && $this->calldate == $calldate) {
             return $this;
         }
 
@@ -232,10 +258,7 @@ abstract class FaxesInOutAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCalldate(): \DateTimeInterface
+    public function getCalldate(): \DateTime
     {
         return clone $this->calldate;
     }
@@ -331,7 +354,7 @@ abstract class FaxesInOutAbstract
 
     protected function setFile(File $file): static
     {
-        $isEqual = $this->file && $this->file->equals($file);
+        $isEqual = $this->file->equals($file);
         if ($isEqual) {
             return $this;
         }

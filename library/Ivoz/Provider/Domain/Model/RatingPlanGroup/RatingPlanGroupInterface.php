@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +19,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -64,6 +64,7 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RatingPlanGroupDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -86,7 +87,10 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
 
     public function removeRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface;
 
-    public function replaceRatingPlan(ArrayCollection $ratingPlan): RatingPlanGroupInterface;
+    /**
+     * @param Collection<array-key, RatingPlanInterface> $ratingPlan
+     */
+    public function replaceRatingPlan(Collection $ratingPlan): RatingPlanGroupInterface;
 
     public function getRatingPlan(?Criteria $criteria = null): array;
 }

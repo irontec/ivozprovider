@@ -38,7 +38,7 @@ class WebThemeAction
             'https://'
             . $request->server->get('SERVER_NAME')
             . '/fso/webPortal/'
-            . $webPortalDto->getId()
+            . (string) $webPortalDto->getId()
             . '-'
             . urlencode($webPortalDto->getLogoBaseName());
 

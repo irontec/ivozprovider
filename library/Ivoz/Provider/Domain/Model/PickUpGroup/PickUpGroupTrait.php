@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait PickUpGroupTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, PickUpRelUserInterface> & Selectable<array-key, PickUpRelUserInterface>
      * PickUpRelUserInterface mappedBy pickUpGroup
      * orphanRemoval
      */
@@ -41,6 +43,7 @@ trait PickUpGroupTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param PickUpGroupDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -48,12 +51,14 @@ trait PickUpGroupTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelUsers())) {
-            $self->replaceRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getRelUsers()
-                )
+        $relUsers = $dto->getRelUsers();
+        if (!is_null($relUsers)) {
+
+            /** @var Collection<array-key, PickUpRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relUsers
             );
+            $self->replaceRelUsers($replacement);
         }
 
         $self->sanitizeValues();
@@ -67,18 +72,21 @@ trait PickUpGroupTrait
 
     /**
      * @internal use EntityTools instead
+     * @param PickUpGroupDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelUsers())) {
-            $this->replaceRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getRelUsers()
-                )
+        $relUsers = $dto->getRelUsers();
+        if (!is_null($relUsers)) {
+
+            /** @var Collection<array-key, PickUpRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relUsers
             );
+            $this->replaceRelUsers($replacement);
         }
         $this->sanitizeValues();
 
@@ -116,25 +124,33 @@ trait PickUpGroupTrait
         return $this;
     }
 
-    public function replaceRelUsers(ArrayCollection $relUsers): PickUpGroupInterface
+    /**
+     * @param Collection<array-key, PickUpRelUserInterface> $relUsers
+     */
+    public function replaceRelUsers(Collection $relUsers): PickUpGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relUsers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setPickUpGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relUsers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relUsers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relUsers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relUsers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

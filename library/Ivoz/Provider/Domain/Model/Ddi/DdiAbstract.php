@@ -49,30 +49,43 @@ abstract class DdiAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * column: Ddi
      */
     protected $ddi;
 
     /**
+     * @var ?string
      * column: DdiE164
      */
-    protected $ddie164;
+    protected $ddie164 = null;
 
     /**
+     * @var string
      * comment: enum:none|all|inbound|outbound
      */
     protected $recordCalls = 'none';
 
-    protected $displayName;
+    /**
+     * @var ?string
+     */
+    protected $displayName = null;
 
     /**
+     * @var ?string
      * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
      */
-    protected $routeType;
+    protected $routeType = null;
 
+    /**
+     * @var bool
+     */
     protected $billInboundCalls = false;
 
-    protected $friendValue;
+    /**
+     * @var ?string
+     */
+    protected $friendValue = null;
 
     /**
      * @var CompanyInterface
@@ -86,71 +99,71 @@ abstract class DdiAbstract
     protected $brand;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      */
-    protected $externalCallFilter;
+    protected $externalCallFilter = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?FaxInterface
      */
-    protected $fax;
+    protected $fax = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy ddis
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy ddis
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor
@@ -223,11 +236,21 @@ abstract class DdiAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DdiDto::class);
+        $ddi = $dto->getDdi();
+        Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
+        $recordCalls = $dto->getRecordCalls();
+        Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
+        $billInboundCalls = $dto->getBillInboundCalls();
+        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDdi(),
-            $dto->getRecordCalls(),
-            $dto->getBillInboundCalls()
+            $ddi,
+            $recordCalls,
+            $billInboundCalls
         );
 
         $self
@@ -235,8 +258,8 @@ abstract class DdiAbstract
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($company))
+            ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
@@ -266,16 +289,27 @@ abstract class DdiAbstract
     ): static {
         Assertion::isInstanceOf($dto, DdiDto::class);
 
+        $ddi = $dto->getDdi();
+        Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
+        $recordCalls = $dto->getRecordCalls();
+        Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
+        $billInboundCalls = $dto->getBillInboundCalls();
+        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDdi($dto->getDdi())
+            ->setDdi($ddi)
             ->setDdie164($dto->getDdie164())
-            ->setRecordCalls($dto->getRecordCalls())
+            ->setRecordCalls($recordCalls)
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
-            ->setBillInboundCalls($dto->getBillInboundCalls())
+            ->setBillInboundCalls($billInboundCalls)
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($company))
+            ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
@@ -335,19 +369,19 @@ abstract class DdiAbstract
             'friendValue' => self::getFriendValue(),
             'companyId' => self::getCompany()->getId(),
             'brandId' => self::getBrand()->getId(),
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'externalCallFilterId' => self::getExternalCallFilter() ? self::getExternalCallFilter()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'externalCallFilterId' => self::getExternalCallFilter()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId(),
+            'countryId' => self::getCountry()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 

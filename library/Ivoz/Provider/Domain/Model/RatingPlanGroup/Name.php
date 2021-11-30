@@ -13,21 +13,25 @@ use Assert\Assertion;
 final class Name
 {
     /**
+     * @var string
      * column: name_en
      */
     private $en;
 
     /**
+     * @var string
      * column: name_es
      */
     private $es;
 
     /**
+     * @var string
      * column: name_ca
      */
     private $ca;
 
     /**
+     * @var string
      * column: name_it
      */
     private $it;

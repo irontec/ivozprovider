@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
@@ -23,31 +22,57 @@ abstract class RatingPlanAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var float
+     */
     protected $weight = 10;
 
     /**
+     * @var ?string
      * column: timing_type
      * comment: enum:always|custom
      */
     protected $timingType = 'always';
 
     /**
+     * @var \DateTimeInterface
      * column: time_in
      */
     protected $timeIn;
 
+    /**
+     * @var ?bool
+     */
     protected $monday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $tuesday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $wednesday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $thursday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $friday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $saturday = true;
 
+    /**
+     * @var ?bool
+     */
     protected $sunday = true;
 
     /**
@@ -66,7 +91,7 @@ abstract class RatingPlanAbstract
      */
     protected function __construct(
         float $weight,
-        \DateTimeInterface|string $timeIn
+        \DateTimeInterface $timeIn
     ) {
         $this->setWeight($weight);
         $this->setTimeIn($timeIn);
@@ -130,10 +155,18 @@ abstract class RatingPlanAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getWeight(),
-            $dto->getTimeIn()
+            $weight,
+            $timeIn
         );
 
         $self
@@ -145,8 +178,8 @@ abstract class RatingPlanAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup));
 
         $self->initChangelog();
 
@@ -163,10 +196,19 @@ abstract class RatingPlanAbstract
     ): static {
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
+
         $this
-            ->setWeight($dto->getWeight())
+            ->setWeight($weight)
             ->setTimingType($dto->getTimingType())
-            ->setTimeIn($dto->getTimeIn())
+            ->setTimeIn($timeIn)
             ->setMonday($dto->getMonday())
             ->setTuesday($dto->getTuesday())
             ->setWednesday($dto->getWednesday())
@@ -174,8 +216,8 @@ abstract class RatingPlanAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()));
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup));
 
         return $this;
     }
@@ -254,19 +296,16 @@ abstract class RatingPlanAbstract
         return $this->timingType;
     }
 
-    protected function setTimeIn($timeIn): static
+    protected function setTimeIn(\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface
     {
-        return clone $this->timeIn;
+        return $this->timeIn;
     }
 
     protected function setMonday(?bool $monday = null): static

@@ -26,26 +26,33 @@ abstract class DestinationRateGroupAbstract
     use ChangelogTrait;
 
     /**
+     * @var ?string
      * comment: enum:waiting|inProgress|imported|error
      */
-    protected $status;
+    protected $status = null;
 
-    protected $lastExecutionError;
+    /**
+     * @var ?string
+     */
+    protected $lastExecutionError = null;
 
+    /**
+     * @var bool
+     */
     protected $deductibleConnectionFee = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
     /**
-     * @var File | null
+     * @var File
      */
     protected $file;
 
@@ -55,9 +62,9 @@ abstract class DestinationRateGroupAbstract
     protected $brand;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
      * Constructor
@@ -69,9 +76,9 @@ abstract class DestinationRateGroupAbstract
         File $file
     ) {
         $this->setDeductibleConnectionFee($deductibleConnectionFee);
-        $this->setName($name);
-        $this->setDescription($description);
-        $this->setFile($file);
+        $this->name = $name;
+        $this->description = $description;
+        $this->file = $file;
     }
 
     abstract public function getId(): null|string|int;
@@ -132,6 +139,10 @@ abstract class DestinationRateGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
+        $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
+        Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -155,7 +166,7 @@ abstract class DestinationRateGroupAbstract
         );
 
         $self = new static(
-            $dto->getDeductibleConnectionFee(),
+            $deductibleConnectionFee,
             $name,
             $description,
             $file
@@ -164,7 +175,7 @@ abstract class DestinationRateGroupAbstract
         $self
             ->setStatus($dto->getStatus())
             ->setLastExecutionError($dto->getLastExecutionError())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         $self->initChangelog();
@@ -181,6 +192,11 @@ abstract class DestinationRateGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
+
+        $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
+        Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -206,11 +222,11 @@ abstract class DestinationRateGroupAbstract
         $this
             ->setStatus($dto->getStatus())
             ->setLastExecutionError($dto->getLastExecutionError())
-            ->setDeductibleConnectionFee($dto->getDeductibleConnectionFee())
+            ->setDeductibleConnectionFee($deductibleConnectionFee)
             ->setName($name)
             ->setDescription($description)
             ->setFile($file)
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         return $this;
@@ -260,7 +276,7 @@ abstract class DestinationRateGroupAbstract
             'fileBaseName' => self::getFile()->getBaseName(),
             'fileImporterArguments' => self::getFile()->getImporterArguments(),
             'brandId' => self::getBrand()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
+            'currencyId' => self::getCurrency()?->getId()
         ];
     }
 
@@ -325,7 +341,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -341,7 +357,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }
@@ -357,7 +373,7 @@ abstract class DestinationRateGroupAbstract
 
     protected function setFile(File $file): static
     {
-        $isEqual = $this->file && $this->file->equals($file);
+        $isEqual = $this->file->equals($file);
         if ($isEqual) {
             return $this;
         }

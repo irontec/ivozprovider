@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 
@@ -22,7 +22,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -44,6 +44,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DdiProviderDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -72,7 +73,10 @@ interface DdiProviderInterface extends LoggableEntityInterface
 
     public function removeDdiProviderRegistration(DdiProviderRegistrationInterface $ddiProviderRegistration): DdiProviderInterface;
 
-    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations): DdiProviderInterface;
+    /**
+     * @param Collection<array-key, DdiProviderRegistrationInterface> $ddiProviderRegistrations
+     */
+    public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations): DdiProviderInterface;
 
     public function getDdiProviderRegistrations(?Criteria $criteria = null): array;
 
@@ -80,7 +84,10 @@ interface DdiProviderInterface extends LoggableEntityInterface
 
     public function removeDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface;
 
-    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses): DdiProviderInterface;
+    /**
+     * @param Collection<array-key, DdiProviderAddressInterface> $ddiProviderAddresses
+     */
+    public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses): DdiProviderInterface;
 
     public function getDdiProviderAddresses(?Criteria $criteria = null): array;
 }

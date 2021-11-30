@@ -18,22 +18,22 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     /**
      * @var int|null
      */
-    private $penalty;
+    private $penalty = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     public function __construct($id = null)
     {
@@ -57,6 +57,9 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -99,7 +102,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

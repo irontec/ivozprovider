@@ -20,79 +20,79 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $callTypeFilter;
-
-    /**
-     * @var string
-     */
-    private $callForwardType;
+    private $callTypeFilter = null;
 
     /**
      * @var string|null
      */
-    private $targetType;
+    private $callForwardType = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $targetType = null;
 
     /**
-     * @var int
+     * @var string|null
+     */
+    private $numberValue = null;
+
+    /**
+     * @var int|null
      */
     private $noAnswerTimeout = 10;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $enabled = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var UserDto | null
      */
-    private $voiceMailUser;
+    private $voiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $cfwToRetailAccount;
+    private $cfwToRetailAccount = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
     public function __construct($id = null)
     {
@@ -127,6 +127,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -240,7 +243,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

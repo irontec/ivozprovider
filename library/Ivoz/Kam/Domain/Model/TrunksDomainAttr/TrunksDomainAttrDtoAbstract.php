@@ -14,34 +14,34 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $did;
+    private $did = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $type;
+    private $type = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $value;
+    private $value = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -67,6 +67,9 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -159,7 +162,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

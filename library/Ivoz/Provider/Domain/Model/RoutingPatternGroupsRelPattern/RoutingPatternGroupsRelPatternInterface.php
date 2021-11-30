@@ -14,7 +14,10 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 */
 interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**
@@ -35,6 +38,7 @@ interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterfac
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RoutingPatternGroupsRelPatternDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

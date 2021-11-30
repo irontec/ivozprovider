@@ -9,6 +9,10 @@ class IvrExcludedExtension extends IvrExcludedExtensionAbstract implements IvrEx
 {
     use IvrExcludedExtensionTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

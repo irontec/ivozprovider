@@ -23,159 +23,159 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
      * @var string|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $password;
+    private $password = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disallow = 'all';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $allow = 'alaw';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directMediaMethod = 'update';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $calleridUpdateHeader = 'pai';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $updateCallerid = 'yes';
 
     /**
      * @var string|null
      */
-    private $fromUser;
+    private $fromUser = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directConnectivity = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ddiIn = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Passthrough = 'no';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $alwaysApplyTransformations = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $rtpEncryption = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $multiContact = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var CallAclDto | null
      */
-    private $callAcl;
+    private $callAcl = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $interCompany;
+    private $interCompany = null;
 
     /**
      * @var PsEndpointDto | null
      */
-    private $psEndpoint;
+    private $psEndpoint = null;
 
     /**
      * @var PsIdentifyDto | null
      */
-    private $psIdentify;
+    private $psIdentify = null;
 
     /**
      * @var FriendsPatternDto[] | null
      */
-    private $patterns;
+    private $patterns = null;
 
     public function __construct($id = null)
     {
@@ -225,6 +225,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -522,7 +525,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

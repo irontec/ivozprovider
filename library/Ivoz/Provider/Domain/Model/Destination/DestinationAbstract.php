@@ -21,10 +21,13 @@ abstract class DestinationAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $prefix;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -41,7 +44,7 @@ abstract class DestinationAbstract
         Name $name
     ) {
         $this->setPrefix($prefix);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -102,6 +105,10 @@ abstract class DestinationAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationDto::class);
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -111,12 +118,12 @@ abstract class DestinationAbstract
         );
 
         $self = new static(
-            $dto->getPrefix(),
+            $prefix,
             $name
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -133,6 +140,11 @@ abstract class DestinationAbstract
     ): static {
         Assertion::isInstanceOf($dto, DestinationDto::class);
 
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -141,9 +153,9 @@ abstract class DestinationAbstract
         );
 
         $this
-            ->setPrefix($dto->getPrefix())
+            ->setPrefix($prefix)
             ->setName($name)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
@@ -195,7 +207,7 @@ abstract class DestinationAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

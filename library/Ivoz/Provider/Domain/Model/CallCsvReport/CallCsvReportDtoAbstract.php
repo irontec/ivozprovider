@@ -17,59 +17,59 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $sentTo = '';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
-    private $inDate;
+    private $inDate = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
-    private $outDate;
+    private $outDate = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
-    private $createdOn;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $createdOn = null;
 
     /**
      * @var int|null
      */
-    private $csvFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $csvFileSize = null;
 
     /**
      * @var string|null
      */
-    private $csvMimeType;
+    private $csvMimeType = null;
 
     /**
      * @var string|null
      */
-    private $csvBaseName;
+    private $csvBaseName = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CallCsvSchedulerDto | null
      */
-    private $callCsvScheduler;
+    private $callCsvScheduler = null;
 
     public function __construct($id = null)
     {
@@ -102,6 +102,9 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -189,7 +192,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

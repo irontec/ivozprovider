@@ -18,9 +18,15 @@ abstract class MediaRelaySetAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name = '0';
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * Constructor
@@ -89,9 +95,11 @@ abstract class MediaRelaySetAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
@@ -112,8 +120,11 @@ abstract class MediaRelaySetAbstract
     ): static {
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription());
 
         return $this;

@@ -24,34 +24,38 @@ abstract class MusicOnHoldAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * comment: enum:pending|encoding|ready|error
      */
-    protected $status;
+    protected $status = null;
 
     /**
-     * @var OriginalFile | null
+     * @var OriginalFile
      */
     protected $originalFile;
 
     /**
-     * @var EncodedFile | null
+     * @var EncodedFile
      */
     protected $encodedFile;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy musicsOnHold
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy musicsOnHold
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor
@@ -62,8 +66,8 @@ abstract class MusicOnHoldAbstract
         EncodedFile $encodedFile
     ) {
         $this->setName($name);
-        $this->setOriginalFile($originalFile);
-        $this->setEncodedFile($encodedFile);
+        $this->originalFile = $originalFile;
+        $this->encodedFile = $encodedFile;
     }
 
     abstract public function getId(): null|string|int;
@@ -124,6 +128,8 @@ abstract class MusicOnHoldAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
@@ -138,7 +144,7 @@ abstract class MusicOnHoldAbstract
         );
 
         $self = new static(
-            $dto->getName(),
+            $name,
             $originalFile,
             $encodedFile
         );
@@ -163,6 +169,9 @@ abstract class MusicOnHoldAbstract
     ): static {
         Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
             $dto->getOriginalFileMimeType(),
@@ -176,7 +185,7 @@ abstract class MusicOnHoldAbstract
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setStatus($dto->getStatus())
             ->setOriginalFile($originalFile)
             ->setEncodedFile($encodedFile)
@@ -215,8 +224,8 @@ abstract class MusicOnHoldAbstract
             'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
             'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
             'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -267,7 +276,7 @@ abstract class MusicOnHoldAbstract
 
     protected function setOriginalFile(OriginalFile $originalFile): static
     {
-        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
+        $isEqual = $this->originalFile->equals($originalFile);
         if ($isEqual) {
             return $this;
         }
@@ -283,7 +292,7 @@ abstract class MusicOnHoldAbstract
 
     protected function setEncodedFile(EncodedFile $encodedFile): static
     {
-        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
+        $isEqual = $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
             return $this;
         }

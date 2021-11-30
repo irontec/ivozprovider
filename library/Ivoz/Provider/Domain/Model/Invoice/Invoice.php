@@ -83,7 +83,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

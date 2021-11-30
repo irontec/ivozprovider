@@ -51,6 +51,7 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpCdrDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -83,15 +84,9 @@ interface TpCdrInterface extends EntityInterface
 
     public function getDestination(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getSetupTime(): \DateTimeInterface;
+    public function getSetupTime(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getAnswerTime(): \DateTimeInterface;
+    public function getAnswerTime(): \DateTime;
 
     public function getUsage(): int;
 
@@ -105,20 +100,11 @@ interface TpCdrInterface extends EntityInterface
 
     public function getExtraInfo(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): ?\DateTimeInterface;
+    public function getCreatedAt(): ?\DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getUpdatedAt(): ?\DateTimeInterface;
+    public function getUpdatedAt(): ?\DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getDeletedAt(): ?\DateTimeInterface;
+    public function getDeletedAt(): ?\DateTime;
 
     public function isInitialized(): bool;
 }

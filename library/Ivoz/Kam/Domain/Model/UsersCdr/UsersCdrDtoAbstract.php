@@ -20,104 +20,104 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $endTime = '2000-01-01 00:00:00';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $duration = 0;
 
     /**
      * @var string|null
      */
-    private $direction;
+    private $direction = null;
 
     /**
      * @var string|null
      */
-    private $caller;
+    private $caller = null;
 
     /**
      * @var string|null
      */
-    private $callee;
+    private $callee = null;
 
     /**
      * @var string|null
      */
-    private $diversion;
+    private $diversion = null;
 
     /**
      * @var string|null
      */
-    private $referee;
+    private $referee = null;
 
     /**
      * @var string|null
      */
-    private $referrer;
+    private $referrer = null;
 
     /**
      * @var string|null
      */
-    private $callid;
+    private $callid = null;
 
     /**
      * @var string|null
      */
-    private $callidHash;
+    private $callidHash = null;
 
     /**
      * @var string|null
      */
-    private $xcallid;
+    private $xcallid = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $hidden = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     public function __construct($id = null)
     {
@@ -157,6 +157,9 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -359,7 +362,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

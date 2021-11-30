@@ -8,7 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -22,7 +22,7 @@ interface CallAclInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -50,6 +50,7 @@ interface CallAclInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CallAclDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -70,7 +71,10 @@ interface CallAclInterface extends LoggableEntityInterface
 
     public function removeRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;
 
-    public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface;
+    /**
+     * @param Collection<array-key, CallAclRelMatchListInterface> $relMatchLists
+     */
+    public function replaceRelMatchLists(Collection $relMatchLists): CallAclInterface;
 
     public function getRelMatchLists(?Criteria $criteria = null): array;
 }

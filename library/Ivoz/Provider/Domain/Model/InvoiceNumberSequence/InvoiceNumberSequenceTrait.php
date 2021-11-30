@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait InvoiceNumberSequenceTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait InvoiceNumberSequenceTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param InvoiceNumberSequenceDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait InvoiceNumberSequenceTrait
 
     /**
      * @internal use EntityTools instead
+     * @param InvoiceNumberSequenceDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

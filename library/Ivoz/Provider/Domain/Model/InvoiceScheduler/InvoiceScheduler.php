@@ -14,7 +14,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

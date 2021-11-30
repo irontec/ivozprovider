@@ -17,64 +17,64 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEn;
+    private $descriptionEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEs;
+    private $descriptionEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionCa;
+    private $descriptionCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionIt;
+    private $descriptionIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var RatingPlanDto[] | null
      */
-    private $ratingPlan;
+    private $ratingPlan = null;
 
     public function __construct($id = null)
     {
@@ -109,6 +109,9 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -151,7 +154,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

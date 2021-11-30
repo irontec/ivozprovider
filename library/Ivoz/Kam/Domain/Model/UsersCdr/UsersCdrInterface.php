@@ -45,6 +45,7 @@ interface UsersCdrInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UsersCdrDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -53,15 +54,9 @@ interface UsersCdrInterface extends EntityInterface
      */
     public function toDto(int $depth = 0): UsersCdrDto;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): \DateTimeInterface;
+    public function getStartTime(): \DateTime;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getEndTime(): \DateTimeInterface;
+    public function getEndTime(): \DateTime;
 
     public function getDuration(): float;
 

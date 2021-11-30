@@ -23,21 +23,30 @@ abstract class MaxUsageNotificationAbstract
 {
     use ChangelogTrait;
 
-    protected $toAddress;
+    /**
+     * @var ?string
+     */
+    protected $toAddress = null;
 
+    /**
+     * @var ?float
+     */
     protected $threshold = 0;
 
-    protected $lastSent;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastSent = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $notificationTemplate;
+    protected $notificationTemplate = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor
@@ -158,8 +167,8 @@ abstract class MaxUsageNotificationAbstract
             'toAddress' => self::getToAddress(),
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'notificationTemplateId' => self::getNotificationTemplate()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -195,19 +204,17 @@ abstract class MaxUsageNotificationAbstract
         return $this->threshold;
     }
 
-    protected function setLastSent($lastSent = null): static
+    protected function setLastSent(string|\DateTimeInterface|null $lastSent = null): static
     {
         if (!is_null($lastSent)) {
-            Assertion::notNull(
-                $lastSent,
-                'lastSent value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null
             );
 
-            if ($this->lastSent == $lastSent) {
+            if ($this->isInitialized() && $this->lastSent == $lastSent) {
                 return $this;
             }
         }
@@ -217,10 +224,7 @@ abstract class MaxUsageNotificationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface
+    public function getLastSent(): ?\DateTime
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }

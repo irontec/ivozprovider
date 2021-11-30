@@ -13,7 +13,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

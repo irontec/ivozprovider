@@ -18,28 +18,56 @@ abstract class UsersPresentityAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $domain;
 
+    /**
+     * @var string
+     */
     protected $event;
 
+    /**
+     * @var string
+     */
     protected $etag;
 
+    /**
+     * @var int
+     */
     protected $expires;
 
     /**
+     * @var int
      * column: received_time
      */
     protected $receivedTime;
 
+    /**
+     * @var string
+     */
     protected $body;
 
+    /**
+     * @var string
+     */
     protected $sender;
 
+    /**
+     * @var int
+     */
     protected $priority = 0;
 
-    protected $ruid;
+    /**
+     * @var ?string
+     */
+    protected $ruid = null;
 
     /**
      * Constructor
@@ -124,17 +152,35 @@ abstract class UsersPresentityAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersPresentityDto::class);
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $etag = $dto->getEtag();
+        Assertion::notNull($etag, 'getEtag value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $receivedTime = $dto->getReceivedTime();
+        Assertion::notNull($receivedTime, 'getReceivedTime value is null, but non null value was expected.');
+        $body = $dto->getBody();
+        Assertion::notNull($body, 'getBody value is null, but non null value was expected.');
+        $sender = $dto->getSender();
+        Assertion::notNull($sender, 'getSender value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getUsername(),
-            $dto->getDomain(),
-            $dto->getEvent(),
-            $dto->getEtag(),
-            $dto->getExpires(),
-            $dto->getReceivedTime(),
-            $dto->getBody(),
-            $dto->getSender(),
-            $dto->getPriority()
+            $username,
+            $domain,
+            $event,
+            $etag,
+            $expires,
+            $receivedTime,
+            $body,
+            $sender,
+            $priority
         );
 
         $self
@@ -155,16 +201,35 @@ abstract class UsersPresentityAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersPresentityDto::class);
 
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $event = $dto->getEvent();
+        Assertion::notNull($event, 'getEvent value is null, but non null value was expected.');
+        $etag = $dto->getEtag();
+        Assertion::notNull($etag, 'getEtag value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $receivedTime = $dto->getReceivedTime();
+        Assertion::notNull($receivedTime, 'getReceivedTime value is null, but non null value was expected.');
+        $body = $dto->getBody();
+        Assertion::notNull($body, 'getBody value is null, but non null value was expected.');
+        $sender = $dto->getSender();
+        Assertion::notNull($sender, 'getSender value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+
         $this
-            ->setUsername($dto->getUsername())
-            ->setDomain($dto->getDomain())
-            ->setEvent($dto->getEvent())
-            ->setEtag($dto->getEtag())
-            ->setExpires($dto->getExpires())
-            ->setReceivedTime($dto->getReceivedTime())
-            ->setBody($dto->getBody())
-            ->setSender($dto->getSender())
-            ->setPriority($dto->getPriority())
+            ->setUsername($username)
+            ->setDomain($domain)
+            ->setEvent($event)
+            ->setEtag($etag)
+            ->setExpires($expires)
+            ->setReceivedTime($receivedTime)
+            ->setBody($body)
+            ->setSender($sender)
+            ->setPriority($priority)
             ->setRuid($dto->getRuid());
 
         return $this;

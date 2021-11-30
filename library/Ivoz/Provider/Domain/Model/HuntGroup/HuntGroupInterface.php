@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -36,7 +36,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -76,6 +76,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param HuntGroupDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -116,7 +117,10 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     public function removeHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface;
 
-    public function replaceHuntGroupsRelUsers(ArrayCollection $huntGroupsRelUsers): HuntGroupInterface;
+    /**
+     * @param Collection<array-key, HuntGroupsRelUserInterface> $huntGroupsRelUsers
+     */
+    public function replaceHuntGroupsRelUsers(Collection $huntGroupsRelUsers): HuntGroupInterface;
 
     public function getHuntGroupsRelUsers(?Criteria $criteria = null): array;
 

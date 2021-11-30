@@ -23,104 +23,104 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $holidayTargetType;
+    private $holidayTargetType = null;
 
     /**
      * @var string|null
      */
-    private $holidayNumberValue;
+    private $holidayNumberValue = null;
 
     /**
      * @var string|null
      */
-    private $outOfScheduleTargetType;
+    private $outOfScheduleTargetType = null;
 
     /**
      * @var string|null
      */
-    private $outOfScheduleNumberValue;
+    private $outOfScheduleNumberValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $welcomeLocution;
+    private $welcomeLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $holidayLocution;
+    private $holidayLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $outOfScheduleLocution;
+    private $outOfScheduleLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $holidayExtension;
+    private $holidayExtension = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $outOfScheduleExtension;
+    private $outOfScheduleExtension = null;
 
     /**
      * @var UserDto | null
      */
-    private $holidayVoiceMailUser;
+    private $holidayVoiceMailUser = null;
 
     /**
      * @var UserDto | null
      */
-    private $outOfScheduleVoiceMailUser;
+    private $outOfScheduleVoiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $holidayNumberCountry;
+    private $holidayNumberCountry = null;
 
     /**
      * @var CountryDto | null
      */
-    private $outOfScheduleNumberCountry;
+    private $outOfScheduleNumberCountry = null;
 
     /**
      * @var ExternalCallFilterRelCalendarDto[] | null
      */
-    private $calendars;
+    private $calendars = null;
 
     /**
      * @var ExternalCallFilterBlackListDto[] | null
      */
-    private $blackLists;
+    private $blackLists = null;
 
     /**
      * @var ExternalCallFilterWhiteListDto[] | null
      */
-    private $whiteLists;
+    private $whiteLists = null;
 
     /**
      * @var ExternalCallFilterRelScheduleDto[] | null
      */
-    private $schedules;
+    private $schedules = null;
 
     public function __construct($id = null)
     {
@@ -156,6 +156,9 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -262,7 +265,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

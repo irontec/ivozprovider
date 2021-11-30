@@ -34,7 +34,7 @@ class CgrTpAccountAction extends Fixture implements DependentFixtureInterface
             $this->setActionTriggersTag(null);
             $this->setAllowNegative(false);
             $this->setDisabled(false);
-            $this->setCreatedAt(new \DateTime('2018-01-01 10:10:10'));
+            $this->createdAt = new \DateTime('2018-01-01 10:10:10');
             $this->setCompany(
                 $fixture->getReference('_reference_ProviderCompany1')
             );
@@ -54,7 +54,7 @@ class CgrTpAccountAction extends Fixture implements DependentFixtureInterface
             $this->setActionTriggersTag(null);
             $this->setAllowNegative(false);
             $this->setDisabled(false);
-            $this->setCreatedAt(new \DateTime('2017-02-01 10:11:12'));
+            $this->createdAt = new \DateTime('2017-02-01 10:11:12');
             $this->setCompany(
                 $fixture->getReference('_reference_ProviderCompany2')
             );

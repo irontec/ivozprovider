@@ -23,10 +23,10 @@ abstract class FeaturesRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy relFeatures
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var FeatureInterface
@@ -98,12 +98,14 @@ abstract class FeaturesRelBrandAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class FeaturesRelBrandAbstract
     ): static {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
 
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
+
         $this
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class FeaturesRelBrandAbstract
     protected function __toArray(): array
     {
         return [
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'featureId' => self::getFeature()->getId()
         ];
     }

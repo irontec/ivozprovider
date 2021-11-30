@@ -15,39 +15,39 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $entity;
+    private $entity = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $entityId;
+    private $entityId = null;
 
     /**
      * @var array|null
      */
-    private $data;
+    private $data = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
-    private $createdOn;
+    private $createdOn = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $microtime;
+    private $microtime = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CommandlogDto | null
      */
-    private $command;
+    private $command = null;
 
     public function __construct($id = null)
     {
@@ -74,6 +74,9 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -167,7 +170,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
@@ -24,62 +26,62 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 trait BrandTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CompanyInterface> & Selectable<array-key, CompanyInterface>
      * CompanyInterface mappedBy brand
      */
     protected $companies;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, BrandServiceInterface> & Selectable<array-key, BrandServiceInterface>
      * BrandServiceInterface mappedBy brand
      */
     protected $services;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, WebPortalInterface> & Selectable<array-key, WebPortalInterface>
      * WebPortalInterface mappedBy brand
      */
     protected $urls;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FeaturesRelBrandInterface> & Selectable<array-key, FeaturesRelBrandInterface>
      * FeaturesRelBrandInterface mappedBy brand
      * orphanRemoval
      */
     protected $relFeatures;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ProxyTrunksRelBrandInterface> & Selectable<array-key, ProxyTrunksRelBrandInterface>
      * ProxyTrunksRelBrandInterface mappedBy brand
      * orphanRemoval
      */
     protected $relProxyTrunks;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ResidentialDeviceInterface> & Selectable<array-key, ResidentialDeviceInterface>
      * ResidentialDeviceInterface mappedBy brand
      */
     protected $residentialDevices;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, MusicOnHoldInterface> & Selectable<array-key, MusicOnHoldInterface>
      * MusicOnHoldInterface mappedBy brand
      */
     protected $musicsOnHold;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, MatchListInterface> & Selectable<array-key, MatchListInterface>
      * MatchListInterface mappedBy brand
      */
     protected $matchLists;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingRoutingInterface> & Selectable<array-key, OutgoingRoutingInterface>
      * OutgoingRoutingInterface mappedBy brand
      */
     protected $outgoingRoutings;
@@ -106,6 +108,7 @@ trait BrandTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BrandDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -113,76 +116,94 @@ trait BrandTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getCompanies())) {
-            $self->replaceCompanies(
-                $fkTransformer->transformCollection(
-                    $dto->getCompanies()
-                )
+        $companies = $dto->getCompanies();
+        if (!is_null($companies)) {
+
+            /** @var Collection<array-key, CompanyInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $companies
             );
+            $self->replaceCompanies($replacement);
         }
 
-        if (!is_null($dto->getServices())) {
-            $self->replaceServices(
-                $fkTransformer->transformCollection(
-                    $dto->getServices()
-                )
+        $services = $dto->getServices();
+        if (!is_null($services)) {
+
+            /** @var Collection<array-key, BrandServiceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $services
             );
+            $self->replaceServices($replacement);
         }
 
-        if (!is_null($dto->getUrls())) {
-            $self->replaceUrls(
-                $fkTransformer->transformCollection(
-                    $dto->getUrls()
-                )
+        $urls = $dto->getUrls();
+        if (!is_null($urls)) {
+
+            /** @var Collection<array-key, WebPortalInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $urls
             );
+            $self->replaceUrls($replacement);
         }
 
-        if (!is_null($dto->getRelFeatures())) {
-            $self->replaceRelFeatures(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFeatures()
-                )
+        $relFeatures = $dto->getRelFeatures();
+        if (!is_null($relFeatures)) {
+
+            /** @var Collection<array-key, FeaturesRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFeatures
             );
+            $self->replaceRelFeatures($replacement);
         }
 
-        if (!is_null($dto->getRelProxyTrunks())) {
-            $self->replaceRelProxyTrunks(
-                $fkTransformer->transformCollection(
-                    $dto->getRelProxyTrunks()
-                )
+        $relProxyTrunks = $dto->getRelProxyTrunks();
+        if (!is_null($relProxyTrunks)) {
+
+            /** @var Collection<array-key, ProxyTrunksRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relProxyTrunks
             );
+            $self->replaceRelProxyTrunks($replacement);
         }
 
-        if (!is_null($dto->getResidentialDevices())) {
-            $self->replaceResidentialDevices(
-                $fkTransformer->transformCollection(
-                    $dto->getResidentialDevices()
-                )
+        $residentialDevices = $dto->getResidentialDevices();
+        if (!is_null($residentialDevices)) {
+
+            /** @var Collection<array-key, ResidentialDeviceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $residentialDevices
             );
+            $self->replaceResidentialDevices($replacement);
         }
 
-        if (!is_null($dto->getMusicsOnHold())) {
-            $self->replaceMusicsOnHold(
-                $fkTransformer->transformCollection(
-                    $dto->getMusicsOnHold()
-                )
+        $musicsOnHold = $dto->getMusicsOnHold();
+        if (!is_null($musicsOnHold)) {
+
+            /** @var Collection<array-key, MusicOnHoldInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $musicsOnHold
             );
+            $self->replaceMusicsOnHold($replacement);
         }
 
-        if (!is_null($dto->getMatchLists())) {
-            $self->replaceMatchLists(
-                $fkTransformer->transformCollection(
-                    $dto->getMatchLists()
-                )
+        $matchLists = $dto->getMatchLists();
+        if (!is_null($matchLists)) {
+
+            /** @var Collection<array-key, MatchListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $matchLists
             );
+            $self->replaceMatchLists($replacement);
         }
 
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $self->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $self->replaceOutgoingRoutings($replacement);
         }
 
         $self->sanitizeValues();
@@ -196,82 +217,101 @@ trait BrandTrait
 
     /**
      * @internal use EntityTools instead
+     * @param BrandDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getCompanies())) {
-            $this->replaceCompanies(
-                $fkTransformer->transformCollection(
-                    $dto->getCompanies()
-                )
+        $companies = $dto->getCompanies();
+        if (!is_null($companies)) {
+
+            /** @var Collection<array-key, CompanyInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $companies
             );
+            $this->replaceCompanies($replacement);
         }
 
-        if (!is_null($dto->getServices())) {
-            $this->replaceServices(
-                $fkTransformer->transformCollection(
-                    $dto->getServices()
-                )
+        $services = $dto->getServices();
+        if (!is_null($services)) {
+
+            /** @var Collection<array-key, BrandServiceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $services
             );
+            $this->replaceServices($replacement);
         }
 
-        if (!is_null($dto->getUrls())) {
-            $this->replaceUrls(
-                $fkTransformer->transformCollection(
-                    $dto->getUrls()
-                )
+        $urls = $dto->getUrls();
+        if (!is_null($urls)) {
+
+            /** @var Collection<array-key, WebPortalInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $urls
             );
+            $this->replaceUrls($replacement);
         }
 
-        if (!is_null($dto->getRelFeatures())) {
-            $this->replaceRelFeatures(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFeatures()
-                )
+        $relFeatures = $dto->getRelFeatures();
+        if (!is_null($relFeatures)) {
+
+            /** @var Collection<array-key, FeaturesRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFeatures
             );
+            $this->replaceRelFeatures($replacement);
         }
 
-        if (!is_null($dto->getRelProxyTrunks())) {
-            $this->replaceRelProxyTrunks(
-                $fkTransformer->transformCollection(
-                    $dto->getRelProxyTrunks()
-                )
+        $relProxyTrunks = $dto->getRelProxyTrunks();
+        if (!is_null($relProxyTrunks)) {
+
+            /** @var Collection<array-key, ProxyTrunksRelBrandInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relProxyTrunks
             );
+            $this->replaceRelProxyTrunks($replacement);
         }
 
-        if (!is_null($dto->getResidentialDevices())) {
-            $this->replaceResidentialDevices(
-                $fkTransformer->transformCollection(
-                    $dto->getResidentialDevices()
-                )
+        $residentialDevices = $dto->getResidentialDevices();
+        if (!is_null($residentialDevices)) {
+
+            /** @var Collection<array-key, ResidentialDeviceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $residentialDevices
             );
+            $this->replaceResidentialDevices($replacement);
         }
 
-        if (!is_null($dto->getMusicsOnHold())) {
-            $this->replaceMusicsOnHold(
-                $fkTransformer->transformCollection(
-                    $dto->getMusicsOnHold()
-                )
+        $musicsOnHold = $dto->getMusicsOnHold();
+        if (!is_null($musicsOnHold)) {
+
+            /** @var Collection<array-key, MusicOnHoldInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $musicsOnHold
             );
+            $this->replaceMusicsOnHold($replacement);
         }
 
-        if (!is_null($dto->getMatchLists())) {
-            $this->replaceMatchLists(
-                $fkTransformer->transformCollection(
-                    $dto->getMatchLists()
-                )
+        $matchLists = $dto->getMatchLists();
+        if (!is_null($matchLists)) {
+
+            /** @var Collection<array-key, MatchListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $matchLists
             );
+            $this->replaceMatchLists($replacement);
         }
 
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $this->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $this->replaceOutgoingRoutings($replacement);
         }
         $this->sanitizeValues();
 
@@ -309,25 +349,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceCompanies(ArrayCollection $companies): BrandInterface
+    /**
+     * @param Collection<array-key, CompanyInterface> $companies
+     */
+    public function replaceCompanies(Collection $companies): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($companies as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->companies as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->companies->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->companies->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->companies->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -360,25 +408,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceServices(ArrayCollection $services): BrandInterface
+    /**
+     * @param Collection<array-key, BrandServiceInterface> $services
+     */
+    public function replaceServices(Collection $services): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($services as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->services as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->services->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->services->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->services->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -411,25 +467,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceUrls(ArrayCollection $urls): BrandInterface
+    /**
+     * @param Collection<array-key, WebPortalInterface> $urls
+     */
+    public function replaceUrls(Collection $urls): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($urls as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->urls as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->urls->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->urls->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->urls->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -462,25 +526,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceRelFeatures(ArrayCollection $relFeatures): BrandInterface
+    /**
+     * @param Collection<array-key, FeaturesRelBrandInterface> $relFeatures
+     */
+    public function replaceRelFeatures(Collection $relFeatures): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relFeatures as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relFeatures as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relFeatures->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relFeatures->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relFeatures->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -513,25 +585,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceRelProxyTrunks(ArrayCollection $relProxyTrunks): BrandInterface
+    /**
+     * @param Collection<array-key, ProxyTrunksRelBrandInterface> $relProxyTrunks
+     */
+    public function replaceRelProxyTrunks(Collection $relProxyTrunks): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relProxyTrunks as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relProxyTrunks as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relProxyTrunks->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relProxyTrunks->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relProxyTrunks->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -564,25 +644,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceResidentialDevices(ArrayCollection $residentialDevices): BrandInterface
+    /**
+     * @param Collection<array-key, ResidentialDeviceInterface> $residentialDevices
+     */
+    public function replaceResidentialDevices(Collection $residentialDevices): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($residentialDevices as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->residentialDevices as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->residentialDevices->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->residentialDevices->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->residentialDevices->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -615,25 +703,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): BrandInterface
+    /**
+     * @param Collection<array-key, MusicOnHoldInterface> $musicsOnHold
+     */
+    public function replaceMusicsOnHold(Collection $musicsOnHold): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($musicsOnHold as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->musicsOnHold as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->musicsOnHold->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->musicsOnHold->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->musicsOnHold->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -666,25 +762,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceMatchLists(ArrayCollection $matchLists): BrandInterface
+    /**
+     * @param Collection<array-key, MatchListInterface> $matchLists
+     */
+    public function replaceMatchLists(Collection $matchLists): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($matchLists as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->matchLists as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->matchLists->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->matchLists->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->matchLists->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -717,25 +821,33 @@ trait BrandTrait
         return $this;
     }
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): BrandInterface
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): BrandInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($outgoingRoutings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->outgoingRoutings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->outgoingRoutings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->outgoingRoutings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->outgoingRoutings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

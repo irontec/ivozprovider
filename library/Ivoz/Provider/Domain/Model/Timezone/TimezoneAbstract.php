@@ -21,19 +21,25 @@ abstract class TimezoneAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tz;
 
+    /**
+     * @var ?string
+     */
     protected $comment = '';
 
     /**
-     * @var Label | null
+     * @var Label
      */
     protected $label;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
      * Constructor
@@ -43,7 +49,7 @@ abstract class TimezoneAbstract
         Label $label
     ) {
         $this->setTz($tz);
-        $this->setLabel($label);
+        $this->label = $label;
     }
 
     abstract public function getId(): null|string|int;
@@ -104,6 +110,8 @@ abstract class TimezoneAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
+        $tz = $dto->getTz();
+        Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
         $label = new Label(
             $dto->getLabelEn(),
@@ -113,7 +121,7 @@ abstract class TimezoneAbstract
         );
 
         $self = new static(
-            $dto->getTz(),
+            $tz,
             $label
         );
 
@@ -136,6 +144,9 @@ abstract class TimezoneAbstract
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
+        $tz = $dto->getTz();
+        Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
+
         $label = new Label(
             $dto->getLabelEn(),
             $dto->getLabelEs(),
@@ -144,7 +155,7 @@ abstract class TimezoneAbstract
         );
 
         $this
-            ->setTz($dto->getTz())
+            ->setTz($tz)
             ->setComment($dto->getComment())
             ->setLabel($label)
             ->setCountry($fkTransformer->transform($dto->getCountry()));
@@ -176,7 +187,7 @@ abstract class TimezoneAbstract
             'labelEs' => self::getLabel()->getEs(),
             'labelCa' => self::getLabel()->getCa(),
             'labelIt' => self::getLabel()->getIt(),
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
+            'countryId' => self::getCountry()?->getId()
         ];
     }
 
@@ -217,7 +228,7 @@ abstract class TimezoneAbstract
 
     protected function setLabel(Label $label): static
     {
-        $isEqual = $this->label && $this->label->equals($label);
+        $isEqual = $this->label->equals($label);
         if ($isEqual) {
             return $this;
         }

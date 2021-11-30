@@ -30,6 +30,7 @@ interface TpTimingInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpTimingDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -52,10 +53,7 @@ interface TpTimingInterface extends EntityInterface
 
     public function getTime(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 

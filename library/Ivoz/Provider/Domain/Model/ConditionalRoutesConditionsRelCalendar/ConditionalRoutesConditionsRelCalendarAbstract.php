@@ -23,10 +23,10 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface | null
+     * @var ?ConditionalRoutesConditionInterface
      * inversedBy relCalendars
      */
-    protected $condition;
+    protected $condition = null;
 
     /**
      * @var CalendarInterface
@@ -98,12 +98,14 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
+            ->setCalendar($fkTransformer->transform($calendar));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelCalendarDto::class);
 
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
+
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()));
+            ->setCalendar($fkTransformer->transform($calendar));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     protected function __toArray(): array
     {
         return [
-            'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
+            'conditionId' => self::getCondition()?->getId(),
             'calendarId' => self::getCalendar()->getId()
         ];
     }

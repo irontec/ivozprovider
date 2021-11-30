@@ -17,6 +17,10 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
 
     public const ROUNDINGMETHOD_UPMINCOST = '*upmincost';
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**
@@ -37,6 +41,7 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpDestinationRateDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -61,10 +66,7 @@ interface TpDestinationRateInterface extends LoggableEntityInterface
 
     public function getMaxCostStrategy(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 

@@ -9,7 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 
@@ -20,7 +20,7 @@ interface CalendarInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -58,6 +58,7 @@ interface CalendarInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CalendarDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -76,7 +77,10 @@ interface CalendarInterface extends LoggableEntityInterface
 
     public function removeHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface;
 
-    public function replaceHolidayDates(ArrayCollection $holidayDates): CalendarInterface;
+    /**
+     * @param Collection<array-key, HolidayDateInterface> $holidayDates
+     */
+    public function replaceHolidayDates(Collection $holidayDates): CalendarInterface;
 
     public function getHolidayDates(?Criteria $criteria = null): array;
 
@@ -84,7 +88,10 @@ interface CalendarInterface extends LoggableEntityInterface
 
     public function removeCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface;
 
-    public function replaceCalendarPeriods(ArrayCollection $calendarPeriods): CalendarInterface;
+    /**
+     * @param Collection<array-key, CalendarPeriodInterface> $calendarPeriods
+     */
+    public function replaceCalendarPeriods(Collection $calendarPeriods): CalendarInterface;
 
     public function getCalendarPeriods(?Criteria $criteria = null): array;
 }

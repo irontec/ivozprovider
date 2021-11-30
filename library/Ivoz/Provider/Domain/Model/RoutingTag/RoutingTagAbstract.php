@@ -20,8 +20,14 @@ abstract class RoutingTagAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $tag;
 
     /**
@@ -98,14 +104,20 @@ abstract class RoutingTagAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $tag = $dto->getTag();
+        Assertion::notNull($tag, 'getTag value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTag()
+            $name,
+            $tag
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -122,10 +134,17 @@ abstract class RoutingTagAbstract
     ): static {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $tag = $dto->getTag();
+        Assertion::notNull($tag, 'getTag value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setTag($dto->getTag())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setName($name)
+            ->setTag($tag)
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

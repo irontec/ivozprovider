@@ -14,119 +14,119 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ruid = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $username = '';
 
     /**
      * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contact = '';
 
     /**
      * @var string|null
      */
-    private $received;
+    private $received = null;
 
     /**
      * @var string|null
      */
-    private $path;
+    private $path = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $expires = '2030-05-28 21:32:15';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $q = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $callid = 'Default-Call-ID';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $cseq = 1;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $flags = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $cflags = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $userAgent = '';
 
     /**
      * @var string|null
      */
-    private $socket;
+    private $socket = null;
 
     /**
      * @var int|null
      */
-    private $methods;
+    private $methods = null;
 
     /**
      * @var string|null
      */
-    private $instance;
+    private $instance = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $regId = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $serverId = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $connectionId = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $keepalive = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $partition = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -169,6 +169,9 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -482,7 +485,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

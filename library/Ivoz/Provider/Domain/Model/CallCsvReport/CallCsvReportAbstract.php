@@ -26,33 +26,45 @@ abstract class CallCsvReportAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $sentTo = '';
 
+    /**
+     * @var \DateTime
+     */
     protected $inDate;
 
+    /**
+     * @var \DateTime
+     */
     protected $outDate;
 
+    /**
+     * @var \DateTime
+     */
     protected $createdOn;
 
     /**
-     * @var Csv | null
+     * @var Csv
      */
     protected $csv;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CallCsvSchedulerInterface | null
+     * @var ?CallCsvSchedulerInterface
      */
-    protected $callCsvScheduler;
+    protected $callCsvScheduler = null;
 
     /**
      * Constructor
@@ -68,7 +80,7 @@ abstract class CallCsvReportAbstract
         $this->setInDate($inDate);
         $this->setOutDate($outDate);
         $this->setCreatedOn($createdOn);
-        $this->setCsv($csv);
+        $this->csv = $csv;
     }
 
     abstract public function getId(): null|string|int;
@@ -129,6 +141,14 @@ abstract class CallCsvReportAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
+        $sentTo = $dto->getSentTo();
+        Assertion::notNull($sentTo, 'getSentTo value is null, but non null value was expected.');
+        $inDate = $dto->getInDate();
+        Assertion::notNull($inDate, 'getInDate value is null, but non null value was expected.');
+        $outDate = $dto->getOutDate();
+        Assertion::notNull($outDate, 'getOutDate value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
 
         $csv = new Csv(
             $dto->getCsvFileSize(),
@@ -137,10 +157,10 @@ abstract class CallCsvReportAbstract
         );
 
         $self = new static(
-            $dto->getSentTo(),
-            $dto->getInDate(),
-            $dto->getOutDate(),
-            $dto->getCreatedOn(),
+            $sentTo,
+            $inDate,
+            $outDate,
+            $createdOn,
             $csv
         );
 
@@ -164,6 +184,15 @@ abstract class CallCsvReportAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallCsvReportDto::class);
 
+        $sentTo = $dto->getSentTo();
+        Assertion::notNull($sentTo, 'getSentTo value is null, but non null value was expected.');
+        $inDate = $dto->getInDate();
+        Assertion::notNull($inDate, 'getInDate value is null, but non null value was expected.');
+        $outDate = $dto->getOutDate();
+        Assertion::notNull($outDate, 'getOutDate value is null, but non null value was expected.');
+        $createdOn = $dto->getCreatedOn();
+        Assertion::notNull($createdOn, 'getCreatedOn value is null, but non null value was expected.');
+
         $csv = new Csv(
             $dto->getCsvFileSize(),
             $dto->getCsvMimeType(),
@@ -171,10 +200,10 @@ abstract class CallCsvReportAbstract
         );
 
         $this
-            ->setSentTo($dto->getSentTo())
-            ->setInDate($dto->getInDate())
-            ->setOutDate($dto->getOutDate())
-            ->setCreatedOn($dto->getCreatedOn())
+            ->setSentTo($sentTo)
+            ->setInDate($inDate)
+            ->setOutDate($outDate)
+            ->setCreatedOn($createdOn)
             ->setCsv($csv)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -211,9 +240,9 @@ abstract class CallCsvReportAbstract
             'csvFileSize' => self::getCsv()->getFileSize(),
             'csvMimeType' => self::getCsv()->getMimeType(),
             'csvBaseName' => self::getCsv()->getBaseName(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'callCsvSchedulerId' => self::getCallCsvScheduler() ? self::getCallCsvScheduler()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'brandId' => self::getBrand()?->getId(),
+            'callCsvSchedulerId' => self::getCallCsvScheduler()?->getId()
         ];
     }
 
@@ -231,15 +260,16 @@ abstract class CallCsvReportAbstract
         return $this->sentTo;
     }
 
-    protected function setInDate($inDate): static
+    protected function setInDate(string|\DateTimeInterface $inDate): static
     {
 
+        /** @var \Datetime */
         $inDate = DateTimeHelper::createOrFix(
             $inDate,
             null
         );
 
-        if ($this->inDate == $inDate) {
+        if ($this->isInitialized() && $this->inDate == $inDate) {
             return $this;
         }
 
@@ -248,23 +278,21 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): \DateTimeInterface
+    public function getInDate(): \DateTime
     {
         return clone $this->inDate;
     }
 
-    protected function setOutDate($outDate): static
+    protected function setOutDate(string|\DateTimeInterface $outDate): static
     {
 
+        /** @var \Datetime */
         $outDate = DateTimeHelper::createOrFix(
             $outDate,
             null
         );
 
-        if ($this->outDate == $outDate) {
+        if ($this->isInitialized() && $this->outDate == $outDate) {
             return $this;
         }
 
@@ -273,23 +301,21 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): \DateTimeInterface
+    public function getOutDate(): \DateTime
     {
         return clone $this->outDate;
     }
 
-    protected function setCreatedOn($createdOn): static
+    protected function setCreatedOn(string|\DateTimeInterface $createdOn): static
     {
 
+        /** @var \Datetime */
         $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null
         );
 
-        if ($this->createdOn == $createdOn) {
+        if ($this->isInitialized() && $this->createdOn == $createdOn) {
             return $this;
         }
 
@@ -298,10 +324,7 @@ abstract class CallCsvReportAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): \DateTimeInterface
+    public function getCreatedOn(): \DateTime
     {
         return clone $this->createdOn;
     }
@@ -313,7 +336,7 @@ abstract class CallCsvReportAbstract
 
     protected function setCsv(Csv $csv): static
     {
-        $isEqual = $this->csv && $this->csv->equals($csv);
+        $isEqual = $this->csv->equals($csv);
         if ($isEqual) {
             return $this;
         }

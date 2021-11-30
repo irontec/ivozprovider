@@ -23,45 +23,64 @@ abstract class TpAccountActionAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $loadid = 'DATABASE';
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $account;
 
     /**
+     * @var ?string
      * column: action_plan_tag
      */
-    protected $actionPlanTag;
+    protected $actionPlanTag = null;
 
     /**
+     * @var ?string
      * column: action_triggers_tag
      */
-    protected $actionTriggersTag;
+    protected $actionTriggersTag = null;
 
     /**
+     * @var bool
      * column: allow_negative
      */
     protected $allowNegative = false;
 
+    /**
+     * @var bool
+     */
     protected $disabled = false;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
     protected $createdAt;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * Constructor
@@ -142,15 +161,29 @@ abstract class TpAccountActionAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $allowNegative = $dto->getAllowNegative();
+        Assertion::notNull($allowNegative, 'getAllowNegative value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getLoadid(),
-            $dto->getTenant(),
-            $dto->getAccount(),
-            $dto->getAllowNegative(),
-            $dto->getDisabled(),
-            $dto->getCreatedAt()
+            $tpid,
+            $loadid,
+            $tenant,
+            $account,
+            $allowNegative,
+            $disabled,
+            $createdAt
         );
 
         $self
@@ -174,16 +207,31 @@ abstract class TpAccountActionAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $allowNegative = $dto->getAllowNegative();
+        Assertion::notNull($allowNegative, 'getAllowNegative value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setLoadid($dto->getLoadid())
-            ->setTenant($dto->getTenant())
-            ->setAccount($dto->getAccount())
+            ->setTpid($tpid)
+            ->setLoadid($loadid)
+            ->setTenant($tenant)
+            ->setAccount($account)
             ->setActionPlanTag($dto->getActionPlanTag())
             ->setActionTriggersTag($dto->getActionTriggersTag())
-            ->setAllowNegative($dto->getAllowNegative())
-            ->setDisabled($dto->getDisabled())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setAllowNegative($allowNegative)
+            ->setDisabled($disabled)
+            ->setCreatedAt($createdAt)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
@@ -221,8 +269,8 @@ abstract class TpAccountActionAbstract
             'allow_negative' => self::getAllowNegative(),
             'disabled' => self::getDisabled(),
             'created_at' => self::getCreatedAt(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId()
         ];
     }
 
@@ -338,15 +386,16 @@ abstract class TpAccountActionAbstract
         return $this->disabled;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -355,10 +404,7 @@ abstract class TpAccountActionAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

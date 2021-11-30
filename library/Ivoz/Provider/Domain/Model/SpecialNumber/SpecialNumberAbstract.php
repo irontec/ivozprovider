@@ -22,16 +22,25 @@ abstract class SpecialNumberAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $number;
 
-    protected $numberE164;
+    /**
+     * @var ?string
+     */
+    protected $numberE164 = null;
 
+    /**
+     * @var int
+     */
     protected $disableCDR = 1;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var CountryInterface
@@ -107,16 +116,22 @@ abstract class SpecialNumberAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $disableCDR = $dto->getDisableCDR();
+        Assertion::notNull($disableCDR, 'getDisableCDR value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getNumber(),
-            $dto->getDisableCDR()
+            $number,
+            $disableCDR
         );
 
         $self
             ->setNumberE164($dto->getNumberE164())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         $self->initChangelog();
 
@@ -133,12 +148,19 @@ abstract class SpecialNumberAbstract
     ): static {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
 
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $disableCDR = $dto->getDisableCDR();
+        Assertion::notNull($disableCDR, 'getDisableCDR value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+
         $this
-            ->setNumber($dto->getNumber())
+            ->setNumber($number)
             ->setNumberE164($dto->getNumberE164())
-            ->setDisableCDR($dto->getDisableCDR())
+            ->setDisableCDR($disableCDR)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         return $this;
     }
@@ -162,7 +184,7 @@ abstract class SpecialNumberAbstract
             'number' => self::getNumber(),
             'numberE164' => self::getNumberE164(),
             'disableCDR' => self::getDisableCDR(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'countryId' => self::getCountry()->getId()
         ];
     }

@@ -22,18 +22,22 @@ abstract class CallAclRelMatchListAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $priority;
 
     /**
+     * @var string
      * comment: enum:allow|deny
      */
     protected $policy;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      * inversedBy relMatchLists
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
      * @var MatchListInterface
@@ -109,15 +113,21 @@ abstract class CallAclRelMatchListAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $policy = $dto->getPolicy();
+        Assertion::notNull($policy, 'getPolicy value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority(),
-            $dto->getPolicy()
+            $priority,
+            $policy
         );
 
         $self
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
+            ->setMatchList($fkTransformer->transform($matchList));
 
         $self->initChangelog();
 
@@ -134,11 +144,18 @@ abstract class CallAclRelMatchListAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $policy = $dto->getPolicy();
+        Assertion::notNull($policy, 'getPolicy value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
+
         $this
-            ->setPriority($dto->getPriority())
-            ->setPolicy($dto->getPolicy())
+            ->setPriority($priority)
+            ->setPolicy($policy)
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
+            ->setMatchList($fkTransformer->transform($matchList));
 
         return $this;
     }
@@ -160,7 +177,7 @@ abstract class CallAclRelMatchListAbstract
         return [
             'priority' => self::getPriority(),
             'policy' => self::getPolicy(),
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
+            'callAclId' => self::getCallAcl()?->getId(),
             'matchListId' => self::getMatchList()->getId()
         ];
     }

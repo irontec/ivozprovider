@@ -15,74 +15,74 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $lcrId = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $gwName;
+    private $gwName = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var string|null
      */
-    private $hostname;
+    private $hostname = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $params;
+    private $params = null;
 
     /**
      * @var int|null
      */
-    private $uriScheme;
+    private $uriScheme = null;
 
     /**
      * @var int|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var bool|null
      */
-    private $strip;
+    private $strip = null;
 
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
      * @var int|null
      */
-    private $defunct;
+    private $defunct = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CarrierServerDto | null
      */
-    private $carrierServer;
+    private $carrierServer = null;
 
     public function __construct($id = null)
     {
@@ -116,6 +116,9 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -300,7 +303,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

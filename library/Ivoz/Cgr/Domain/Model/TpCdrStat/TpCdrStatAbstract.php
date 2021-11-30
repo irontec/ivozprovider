@@ -21,107 +21,154 @@ abstract class TpCdrStatAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $tag;
 
     /**
+     * @var int
      * column: queue_length
      */
     protected $queueLength = 0;
 
     /**
+     * @var string
      * column: time_window
      */
     protected $timeWindow = '';
 
     /**
+     * @var string
      * column: save_interval
      */
     protected $saveInterval = '';
 
+    /**
+     * @var string
+     */
     protected $metrics;
 
     /**
+     * @var string
      * column: setup_interval
      */
     protected $setupInterval = '';
 
+    /**
+     * @var string
+     */
     protected $tors = '';
 
     /**
+     * @var string
      * column: cdr_hosts
      */
     protected $cdrHosts = '';
 
     /**
+     * @var string
      * column: cdr_sources
      */
     protected $cdrSources = '';
 
     /**
+     * @var string
      * column: req_types
      */
     protected $reqTypes = '';
 
+    /**
+     * @var string
+     */
     protected $directions = '';
 
+    /**
+     * @var string
+     */
     protected $tenants = '';
 
+    /**
+     * @var string
+     */
     protected $categories = '';
 
+    /**
+     * @var string
+     */
     protected $accounts = '';
 
+    /**
+     * @var string
+     */
     protected $subjects = '';
 
     /**
+     * @var string
      * column: destination_ids
      */
     protected $destinationIds = '';
 
     /**
+     * @var string
      * column: ppd_interval
      */
     protected $ppdInterval = '';
 
     /**
+     * @var string
      * column: usage_interval
      */
     protected $usageInterval = '';
 
+    /**
+     * @var string
+     */
     protected $suppliers = '';
 
     /**
+     * @var string
      * column: disconnect_causes
      */
     protected $disconnectCauses = '';
 
     /**
+     * @var string
      * column: mediation_runids
      */
     protected $mediationRunids = '';
 
     /**
+     * @var string
      * column: rated_accounts
      */
     protected $ratedAccounts = '';
 
     /**
+     * @var string
      * column: rated_subjects
      */
     protected $ratedSubjects = '';
 
     /**
+     * @var string
      * column: cost_interval
      */
     protected $costInterval = '';
 
     /**
+     * @var string
      * column: action_triggers
      */
     protected $actionTriggers = '';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
     protected $createdAt;
@@ -251,39 +298,95 @@ abstract class TpCdrStatAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpCdrStatDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $tag = $dto->getTag();
+        Assertion::notNull($tag, 'getTag value is null, but non null value was expected.');
+        $queueLength = $dto->getQueueLength();
+        Assertion::notNull($queueLength, 'getQueueLength value is null, but non null value was expected.');
+        $timeWindow = $dto->getTimeWindow();
+        Assertion::notNull($timeWindow, 'getTimeWindow value is null, but non null value was expected.');
+        $saveInterval = $dto->getSaveInterval();
+        Assertion::notNull($saveInterval, 'getSaveInterval value is null, but non null value was expected.');
+        $metrics = $dto->getMetrics();
+        Assertion::notNull($metrics, 'getMetrics value is null, but non null value was expected.');
+        $setupInterval = $dto->getSetupInterval();
+        Assertion::notNull($setupInterval, 'getSetupInterval value is null, but non null value was expected.');
+        $tors = $dto->getTors();
+        Assertion::notNull($tors, 'getTors value is null, but non null value was expected.');
+        $cdrHosts = $dto->getCdrHosts();
+        Assertion::notNull($cdrHosts, 'getCdrHosts value is null, but non null value was expected.');
+        $cdrSources = $dto->getCdrSources();
+        Assertion::notNull($cdrSources, 'getCdrSources value is null, but non null value was expected.');
+        $reqTypes = $dto->getReqTypes();
+        Assertion::notNull($reqTypes, 'getReqTypes value is null, but non null value was expected.');
+        $directions = $dto->getDirections();
+        Assertion::notNull($directions, 'getDirections value is null, but non null value was expected.');
+        $tenants = $dto->getTenants();
+        Assertion::notNull($tenants, 'getTenants value is null, but non null value was expected.');
+        $categories = $dto->getCategories();
+        Assertion::notNull($categories, 'getCategories value is null, but non null value was expected.');
+        $accounts = $dto->getAccounts();
+        Assertion::notNull($accounts, 'getAccounts value is null, but non null value was expected.');
+        $subjects = $dto->getSubjects();
+        Assertion::notNull($subjects, 'getSubjects value is null, but non null value was expected.');
+        $destinationIds = $dto->getDestinationIds();
+        Assertion::notNull($destinationIds, 'getDestinationIds value is null, but non null value was expected.');
+        $ppdInterval = $dto->getPpdInterval();
+        Assertion::notNull($ppdInterval, 'getPpdInterval value is null, but non null value was expected.');
+        $usageInterval = $dto->getUsageInterval();
+        Assertion::notNull($usageInterval, 'getUsageInterval value is null, but non null value was expected.');
+        $suppliers = $dto->getSuppliers();
+        Assertion::notNull($suppliers, 'getSuppliers value is null, but non null value was expected.');
+        $disconnectCauses = $dto->getDisconnectCauses();
+        Assertion::notNull($disconnectCauses, 'getDisconnectCauses value is null, but non null value was expected.');
+        $mediationRunids = $dto->getMediationRunids();
+        Assertion::notNull($mediationRunids, 'getMediationRunids value is null, but non null value was expected.');
+        $ratedAccounts = $dto->getRatedAccounts();
+        Assertion::notNull($ratedAccounts, 'getRatedAccounts value is null, but non null value was expected.');
+        $ratedSubjects = $dto->getRatedSubjects();
+        Assertion::notNull($ratedSubjects, 'getRatedSubjects value is null, but non null value was expected.');
+        $costInterval = $dto->getCostInterval();
+        Assertion::notNull($costInterval, 'getCostInterval value is null, but non null value was expected.');
+        $actionTriggers = $dto->getActionTriggers();
+        Assertion::notNull($actionTriggers, 'getActionTriggers value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getTag(),
-            $dto->getQueueLength(),
-            $dto->getTimeWindow(),
-            $dto->getSaveInterval(),
-            $dto->getMetrics(),
-            $dto->getSetupInterval(),
-            $dto->getTors(),
-            $dto->getCdrHosts(),
-            $dto->getCdrSources(),
-            $dto->getReqTypes(),
-            $dto->getDirections(),
-            $dto->getTenants(),
-            $dto->getCategories(),
-            $dto->getAccounts(),
-            $dto->getSubjects(),
-            $dto->getDestinationIds(),
-            $dto->getPpdInterval(),
-            $dto->getUsageInterval(),
-            $dto->getSuppliers(),
-            $dto->getDisconnectCauses(),
-            $dto->getMediationRunids(),
-            $dto->getRatedAccounts(),
-            $dto->getRatedSubjects(),
-            $dto->getCostInterval(),
-            $dto->getActionTriggers(),
-            $dto->getCreatedAt()
+            $tpid,
+            $tag,
+            $queueLength,
+            $timeWindow,
+            $saveInterval,
+            $metrics,
+            $setupInterval,
+            $tors,
+            $cdrHosts,
+            $cdrSources,
+            $reqTypes,
+            $directions,
+            $tenants,
+            $categories,
+            $accounts,
+            $subjects,
+            $destinationIds,
+            $ppdInterval,
+            $usageInterval,
+            $suppliers,
+            $disconnectCauses,
+            $mediationRunids,
+            $ratedAccounts,
+            $ratedSubjects,
+            $costInterval,
+            $actionTriggers,
+            $createdAt
         );
 
         $self
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
+            ->setCarrier($fkTransformer->transform($carrier));
 
         $self->initChangelog();
 
@@ -300,35 +403,92 @@ abstract class TpCdrStatAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpCdrStatDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $tag = $dto->getTag();
+        Assertion::notNull($tag, 'getTag value is null, but non null value was expected.');
+        $queueLength = $dto->getQueueLength();
+        Assertion::notNull($queueLength, 'getQueueLength value is null, but non null value was expected.');
+        $timeWindow = $dto->getTimeWindow();
+        Assertion::notNull($timeWindow, 'getTimeWindow value is null, but non null value was expected.');
+        $saveInterval = $dto->getSaveInterval();
+        Assertion::notNull($saveInterval, 'getSaveInterval value is null, but non null value was expected.');
+        $metrics = $dto->getMetrics();
+        Assertion::notNull($metrics, 'getMetrics value is null, but non null value was expected.');
+        $setupInterval = $dto->getSetupInterval();
+        Assertion::notNull($setupInterval, 'getSetupInterval value is null, but non null value was expected.');
+        $tors = $dto->getTors();
+        Assertion::notNull($tors, 'getTors value is null, but non null value was expected.');
+        $cdrHosts = $dto->getCdrHosts();
+        Assertion::notNull($cdrHosts, 'getCdrHosts value is null, but non null value was expected.');
+        $cdrSources = $dto->getCdrSources();
+        Assertion::notNull($cdrSources, 'getCdrSources value is null, but non null value was expected.');
+        $reqTypes = $dto->getReqTypes();
+        Assertion::notNull($reqTypes, 'getReqTypes value is null, but non null value was expected.');
+        $directions = $dto->getDirections();
+        Assertion::notNull($directions, 'getDirections value is null, but non null value was expected.');
+        $tenants = $dto->getTenants();
+        Assertion::notNull($tenants, 'getTenants value is null, but non null value was expected.');
+        $categories = $dto->getCategories();
+        Assertion::notNull($categories, 'getCategories value is null, but non null value was expected.');
+        $accounts = $dto->getAccounts();
+        Assertion::notNull($accounts, 'getAccounts value is null, but non null value was expected.');
+        $subjects = $dto->getSubjects();
+        Assertion::notNull($subjects, 'getSubjects value is null, but non null value was expected.');
+        $destinationIds = $dto->getDestinationIds();
+        Assertion::notNull($destinationIds, 'getDestinationIds value is null, but non null value was expected.');
+        $ppdInterval = $dto->getPpdInterval();
+        Assertion::notNull($ppdInterval, 'getPpdInterval value is null, but non null value was expected.');
+        $usageInterval = $dto->getUsageInterval();
+        Assertion::notNull($usageInterval, 'getUsageInterval value is null, but non null value was expected.');
+        $suppliers = $dto->getSuppliers();
+        Assertion::notNull($suppliers, 'getSuppliers value is null, but non null value was expected.');
+        $disconnectCauses = $dto->getDisconnectCauses();
+        Assertion::notNull($disconnectCauses, 'getDisconnectCauses value is null, but non null value was expected.');
+        $mediationRunids = $dto->getMediationRunids();
+        Assertion::notNull($mediationRunids, 'getMediationRunids value is null, but non null value was expected.');
+        $ratedAccounts = $dto->getRatedAccounts();
+        Assertion::notNull($ratedAccounts, 'getRatedAccounts value is null, but non null value was expected.');
+        $ratedSubjects = $dto->getRatedSubjects();
+        Assertion::notNull($ratedSubjects, 'getRatedSubjects value is null, but non null value was expected.');
+        $costInterval = $dto->getCostInterval();
+        Assertion::notNull($costInterval, 'getCostInterval value is null, but non null value was expected.');
+        $actionTriggers = $dto->getActionTriggers();
+        Assertion::notNull($actionTriggers, 'getActionTriggers value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setTag($dto->getTag())
-            ->setQueueLength($dto->getQueueLength())
-            ->setTimeWindow($dto->getTimeWindow())
-            ->setSaveInterval($dto->getSaveInterval())
-            ->setMetrics($dto->getMetrics())
-            ->setSetupInterval($dto->getSetupInterval())
-            ->setTors($dto->getTors())
-            ->setCdrHosts($dto->getCdrHosts())
-            ->setCdrSources($dto->getCdrSources())
-            ->setReqTypes($dto->getReqTypes())
-            ->setDirections($dto->getDirections())
-            ->setTenants($dto->getTenants())
-            ->setCategories($dto->getCategories())
-            ->setAccounts($dto->getAccounts())
-            ->setSubjects($dto->getSubjects())
-            ->setDestinationIds($dto->getDestinationIds())
-            ->setPpdInterval($dto->getPpdInterval())
-            ->setUsageInterval($dto->getUsageInterval())
-            ->setSuppliers($dto->getSuppliers())
-            ->setDisconnectCauses($dto->getDisconnectCauses())
-            ->setMediationRunids($dto->getMediationRunids())
-            ->setRatedAccounts($dto->getRatedAccounts())
-            ->setRatedSubjects($dto->getRatedSubjects())
-            ->setCostInterval($dto->getCostInterval())
-            ->setActionTriggers($dto->getActionTriggers())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
+            ->setTpid($tpid)
+            ->setTag($tag)
+            ->setQueueLength($queueLength)
+            ->setTimeWindow($timeWindow)
+            ->setSaveInterval($saveInterval)
+            ->setMetrics($metrics)
+            ->setSetupInterval($setupInterval)
+            ->setTors($tors)
+            ->setCdrHosts($cdrHosts)
+            ->setCdrSources($cdrSources)
+            ->setReqTypes($reqTypes)
+            ->setDirections($directions)
+            ->setTenants($tenants)
+            ->setCategories($categories)
+            ->setAccounts($accounts)
+            ->setSubjects($subjects)
+            ->setDestinationIds($destinationIds)
+            ->setPpdInterval($ppdInterval)
+            ->setUsageInterval($usageInterval)
+            ->setSuppliers($suppliers)
+            ->setDisconnectCauses($disconnectCauses)
+            ->setMediationRunids($mediationRunids)
+            ->setRatedAccounts($ratedAccounts)
+            ->setRatedSubjects($ratedSubjects)
+            ->setCostInterval($costInterval)
+            ->setActionTriggers($actionTriggers)
+            ->setCreatedAt($createdAt)
+            ->setCarrier($fkTransformer->transform($carrier));
 
         return $this;
     }
@@ -765,15 +925,16 @@ abstract class TpCdrStatAbstract
         return $this->actionTriggers;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -782,10 +943,7 @@ abstract class TpCdrStatAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

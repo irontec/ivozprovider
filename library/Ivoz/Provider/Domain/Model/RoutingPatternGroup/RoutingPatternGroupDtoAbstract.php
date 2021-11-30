@@ -17,34 +17,34 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var RoutingPatternGroupsRelPatternDto[] | null
      */
-    private $relPatterns;
+    private $relPatterns = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     public function __construct($id = null)
     {
@@ -68,6 +68,9 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -124,7 +127,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

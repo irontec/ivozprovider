@@ -15,7 +15,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -37,6 +37,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpDerivedChargerDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -95,10 +96,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
 
     public function getCostField(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function getBrand(): BrandInterface;
 

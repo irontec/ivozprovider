@@ -12,7 +12,8 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     use TrunksUacregTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

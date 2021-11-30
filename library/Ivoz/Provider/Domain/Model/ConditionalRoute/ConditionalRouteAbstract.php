@@ -36,23 +36,29 @@ abstract class ConditionalRouteAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: routeType
      * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
      */
-    protected $routetype;
+    protected $routetype = null;
 
     /**
+     * @var ?string
      * column: numberValue
      */
-    protected $numbervalue;
+    protected $numbervalue = null;
 
     /**
+     * @var ?string
      * column: friendValue
      */
-    protected $friendvalue;
+    protected $friendvalue = null;
 
     /**
      * @var CompanyInterface
@@ -60,49 +66,49 @@ abstract class ConditionalRouteAbstract
     protected $company;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voicemailUser;
+    protected $voicemailUser = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $locution;
+    protected $locution = null;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
@@ -171,16 +177,20 @@ abstract class ConditionalRouteAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
@@ -206,12 +216,17 @@ abstract class ConditionalRouteAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
@@ -255,15 +270,15 @@ abstract class ConditionalRouteAbstract
             'numberValue' => self::getNumbervalue(),
             'friendValue' => self::getFriendvalue(),
             'companyId' => self::getCompany()->getId(),
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'voicemailUserId' => self::getVoicemailUser() ? self::getVoicemailUser()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'voicemailUserId' => self::getVoicemailUser()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'locutionId' => self::getLocution()?->getId(),
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

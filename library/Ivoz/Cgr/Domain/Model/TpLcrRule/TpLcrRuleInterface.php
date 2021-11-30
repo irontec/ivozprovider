@@ -15,7 +15,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -37,6 +37,7 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpLcrRuleDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -65,17 +66,11 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 
     public function getStrategyParams(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface;
+    public function getActivationTime(): \DateTime;
 
     public function getWeight(): float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setOutgoingRouting(?OutgoingRoutingInterface $outgoingRouting = null): static;
 

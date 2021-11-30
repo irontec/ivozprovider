@@ -13,7 +13,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -42,7 +42,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -99,6 +99,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RetailAccountDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -159,7 +160,10 @@ interface RetailAccountInterface extends LoggableEntityInterface
 
     public function removeDdi(DdiInterface $ddi): RetailAccountInterface;
 
-    public function replaceDdis(ArrayCollection $ddis): RetailAccountInterface;
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): RetailAccountInterface;
 
     public function getDdis(?Criteria $criteria = null): array;
 
@@ -167,7 +171,10 @@ interface RetailAccountInterface extends LoggableEntityInterface
 
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface;
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): RetailAccountInterface;
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): RetailAccountInterface;
 
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

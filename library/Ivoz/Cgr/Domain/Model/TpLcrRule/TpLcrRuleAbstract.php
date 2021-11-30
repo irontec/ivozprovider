@@ -21,52 +21,81 @@ abstract class TpLcrRuleAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
+    /**
+     * @var string
+     */
     protected $direction = '*out';
 
+    /**
+     * @var string
+     */
     protected $tenant;
 
+    /**
+     * @var string
+     */
     protected $category;
 
+    /**
+     * @var string
+     */
     protected $account = '*any';
 
+    /**
+     * @var ?string
+     */
     protected $subject = '*any';
 
     /**
+     * @var ?string
      * column: destination_tag
      */
     protected $destinationTag = '*any';
 
     /**
+     * @var string
      * column: rp_category
      */
     protected $rpCategory;
 
+    /**
+     * @var string
+     */
     protected $strategy = '*lowest_cost';
 
     /**
+     * @var ?string
      * column: strategy_params
      */
     protected $strategyParams = '';
 
     /**
+     * @var \DateTime
      * column: activation_time
      */
     protected $activationTime;
 
+    /**
+     * @var float
+     */
     protected $weight = 10;
 
     /**
+     * @var \DateTime
      * column: created_at
      */
     protected $createdAt;
 
     /**
-     * @var OutgoingRoutingInterface | null
+     * @var ?OutgoingRoutingInterface
      * inversedBy tpLcrRule
      */
-    protected $outgoingRouting;
+    protected $outgoingRouting = null;
 
     /**
      * Constructor
@@ -153,18 +182,38 @@ abstract class TpLcrRuleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $rpCategory = $dto->getRpCategory();
+        Assertion::notNull($rpCategory, 'getRpCategory value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getDirection(),
-            $dto->getTenant(),
-            $dto->getCategory(),
-            $dto->getAccount(),
-            $dto->getRpCategory(),
-            $dto->getStrategy(),
-            $dto->getActivationTime(),
-            $dto->getWeight(),
-            $dto->getCreatedAt()
+            $tpid,
+            $direction,
+            $tenant,
+            $category,
+            $account,
+            $rpCategory,
+            $strategy,
+            $activationTime,
+            $weight,
+            $createdAt
         );
 
         $self
@@ -188,20 +237,41 @@ abstract class TpLcrRuleAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpLcrRuleDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $rpCategory = $dto->getRpCategory();
+        Assertion::notNull($rpCategory, 'getRpCategory value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setDirection($dto->getDirection())
-            ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
-            ->setAccount($dto->getAccount())
+            ->setTpid($tpid)
+            ->setDirection($direction)
+            ->setTenant($tenant)
+            ->setCategory($category)
+            ->setAccount($account)
             ->setSubject($dto->getSubject())
             ->setDestinationTag($dto->getDestinationTag())
-            ->setRpCategory($dto->getRpCategory())
-            ->setStrategy($dto->getStrategy())
+            ->setRpCategory($rpCategory)
+            ->setStrategy($strategy)
             ->setStrategyParams($dto->getStrategyParams())
-            ->setActivationTime($dto->getActivationTime())
-            ->setWeight($dto->getWeight())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setActivationTime($activationTime)
+            ->setWeight($weight)
+            ->setCreatedAt($createdAt)
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
 
         return $this;
@@ -245,7 +315,7 @@ abstract class TpLcrRuleAbstract
             'activation_time' => self::getActivationTime(),
             'weight' => self::getWeight(),
             'created_at' => self::getCreatedAt(),
-            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
+            'outgoingRoutingId' => self::getOutgoingRouting()?->getId()
         ];
     }
 
@@ -395,15 +465,16 @@ abstract class TpLcrRuleAbstract
         return $this->strategyParams;
     }
 
-    protected function setActivationTime($activationTime): static
+    protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
+        /** @var \Datetime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->activationTime == $activationTime) {
+        if ($this->isInitialized() && $this->activationTime == $activationTime) {
             return $this;
         }
 
@@ -412,10 +483,7 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }
@@ -432,15 +500,16 @@ abstract class TpLcrRuleAbstract
         return $this->weight;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -449,10 +518,7 @@ abstract class TpLcrRuleAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

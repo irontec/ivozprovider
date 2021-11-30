@@ -28,14 +28,29 @@ abstract class CarrierAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var ?bool
+     */
     protected $externallyRated = false;
 
+    /**
+     * @var ?float
+     */
     protected $balance = 0;
 
+    /**
+     * @var ?bool
+     */
     protected $calculateCost = false;
 
     /**
@@ -44,24 +59,24 @@ abstract class CarrierAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var ProxyTrunkInterface | null
+     * @var ?ProxyTrunkInterface
      */
-    protected $proxyTrunk;
+    protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
      * Constructor
@@ -132,17 +147,23 @@ abstract class CarrierAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CarrierDto::class);
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDescription(),
-            $dto->getName()
+            $description,
+            $name
         );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
@@ -163,13 +184,20 @@ abstract class CarrierAbstract
     ): static {
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDescription($dto->getDescription())
-            ->setName($dto->getName())
+            ->setDescription($description)
+            ->setName($name)
             ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
@@ -205,10 +233,10 @@ abstract class CarrierAbstract
             'balance' => self::getBalance(),
             'calculateCost' => self::getCalculateCost(),
             'brandId' => self::getBrand()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'currencyId' => self::getCurrency()?->getId(),
+            'proxyTrunkId' => self::getProxyTrunk()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
         ];
     }
 

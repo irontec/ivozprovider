@@ -13,7 +13,7 @@ class Fax extends FaxAbstract implements FaxInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

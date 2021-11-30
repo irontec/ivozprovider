@@ -19,97 +19,97 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @var string|null
      */
-    private $status;
+    private $status = null;
 
     /**
      * @var string|null
      */
-    private $lastExecutionError;
+    private $lastExecutionError = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $deductibleConnectionFee = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEn;
+    private $descriptionEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEs;
+    private $descriptionEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionCa;
+    private $descriptionCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionIt;
+    private $descriptionIt = null;
 
     /**
      * @var int|null
      */
-    private $fileFileSize;
+    private $fileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $fileMimeType;
+    private $fileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $fileBaseName;
+    private $fileBaseName = null;
 
     /**
      * @var array|null
      */
-    private $fileImporterArguments;
+    private $fileImporterArguments = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var DestinationRateDto[] | null
      */
-    private $destinationRates;
+    private $destinationRates = null;
 
     public function __construct($id = null)
     {
@@ -153,6 +153,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -240,7 +243,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -30,34 +30,56 @@ abstract class InvoiceAbstract
 {
     use ChangelogTrait;
 
-    protected $number;
-
-    protected $inDate;
-
-    protected $outDate;
-
-    protected $total;
-
-    protected $taxRate;
-
-    protected $totalWithTax;
+    /**
+     * @var ?string
+     */
+    protected $number = null;
 
     /**
+     * @var ?\DateTime
+     */
+    protected $inDate = null;
+
+    /**
+     * @var ?\DateTime
+     */
+    protected $outDate = null;
+
+    /**
+     * @var ?float
+     */
+    protected $total = null;
+
+    /**
+     * @var ?float
+     */
+    protected $taxRate = null;
+
+    /**
+     * @var ?float
+     */
+    protected $totalWithTax = null;
+
+    /**
+     * @var ?string
      * comment: enum:waiting|processing|created|error
      */
-    protected $status;
-
-    protected $statusMsg;
+    protected $status = null;
 
     /**
-     * @var Pdf | null
+     * @var ?string
+     */
+    protected $statusMsg = null;
+
+    /**
+     * @var Pdf
      */
     protected $pdf;
 
     /**
-     * @var InvoiceTemplateInterface | null
+     * @var ?InvoiceTemplateInterface
      */
-    protected $invoiceTemplate;
+    protected $invoiceTemplate = null;
 
     /**
      * @var BrandInterface
@@ -70,14 +92,14 @@ abstract class InvoiceAbstract
     protected $company;
 
     /**
-     * @var InvoiceNumberSequenceInterface | null
+     * @var ?InvoiceNumberSequenceInterface
      */
-    protected $numberSequence;
+    protected $numberSequence = null;
 
     /**
-     * @var InvoiceSchedulerInterface | null
+     * @var ?InvoiceSchedulerInterface
      */
-    protected $scheduler;
+    protected $scheduler = null;
 
     /**
      * Constructor
@@ -85,7 +107,7 @@ abstract class InvoiceAbstract
     protected function __construct(
         Pdf $pdf
     ) {
-        $this->setPdf($pdf);
+        $this->pdf = $pdf;
     }
 
     abstract public function getId(): null|string|int;
@@ -146,6 +168,10 @@ abstract class InvoiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
@@ -167,8 +193,8 @@ abstract class InvoiceAbstract
             ->setStatus($dto->getStatus())
             ->setStatusMsg($dto->getStatusMsg())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
@@ -187,6 +213,11 @@ abstract class InvoiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
 
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
             $dto->getPdfMimeType(),
@@ -204,8 +235,8 @@ abstract class InvoiceAbstract
             ->setStatusMsg($dto->getStatusMsg())
             ->setPdf($pdf)
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
@@ -250,11 +281,11 @@ abstract class InvoiceAbstract
             'pdfFileSize' => self::getPdf()->getFileSize(),
             'pdfMimeType' => self::getPdf()->getMimeType(),
             'pdfBaseName' => self::getPdf()->getBaseName(),
-            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
+            'invoiceTemplateId' => self::getInvoiceTemplate()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()->getId(),
-            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null,
-            'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
+            'numberSequenceId' => self::getNumberSequence()?->getId(),
+            'schedulerId' => self::getScheduler()?->getId()
         ];
     }
 
@@ -274,19 +305,17 @@ abstract class InvoiceAbstract
         return $this->number;
     }
 
-    protected function setInDate($inDate = null): static
+    protected function setInDate(string|\DateTimeInterface|null $inDate = null): static
     {
         if (!is_null($inDate)) {
-            Assertion::notNull(
-                $inDate,
-                'inDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $inDate = DateTimeHelper::createOrFix(
                 $inDate,
                 null
             );
 
-            if ($this->inDate == $inDate) {
+            if ($this->isInitialized() && $this->inDate == $inDate) {
                 return $this;
             }
         }
@@ -296,27 +325,22 @@ abstract class InvoiceAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getInDate(): ?\DateTimeInterface
+    public function getInDate(): ?\DateTime
     {
         return !is_null($this->inDate) ? clone $this->inDate : null;
     }
 
-    protected function setOutDate($outDate = null): static
+    protected function setOutDate(string|\DateTimeInterface|null $outDate = null): static
     {
         if (!is_null($outDate)) {
-            Assertion::notNull(
-                $outDate,
-                'outDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $outDate = DateTimeHelper::createOrFix(
                 $outDate,
                 null
             );
 
-            if ($this->outDate == $outDate) {
+            if ($this->isInitialized() && $this->outDate == $outDate) {
                 return $this;
             }
         }
@@ -326,10 +350,7 @@ abstract class InvoiceAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getOutDate(): ?\DateTimeInterface
+    public function getOutDate(): ?\DateTime
     {
         return !is_null($this->outDate) ? clone $this->outDate : null;
     }
@@ -431,7 +452,7 @@ abstract class InvoiceAbstract
 
     protected function setPdf(Pdf $pdf): static
     {
-        $isEqual = $this->pdf && $this->pdf->equals($pdf);
+        $isEqual = $this->pdf->equals($pdf);
         if ($isEqual) {
             return $this;
         }

@@ -22,15 +22,18 @@ abstract class RoutingPatternAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $prefix;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -48,8 +51,8 @@ abstract class RoutingPatternAbstract
         Description $description
     ) {
         $this->setPrefix($prefix);
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
     abstract public function getId(): null|string|int;
@@ -110,6 +113,10 @@ abstract class RoutingPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -126,13 +133,13 @@ abstract class RoutingPatternAbstract
         );
 
         $self = new static(
-            $dto->getPrefix(),
+            $prefix,
             $name,
             $description
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -149,6 +156,11 @@ abstract class RoutingPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -164,10 +176,10 @@ abstract class RoutingPatternAbstract
         );
 
         $this
-            ->setPrefix($dto->getPrefix())
+            ->setPrefix($prefix)
             ->setName($name)
             ->setDescription($description)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
@@ -227,7 +239,7 @@ abstract class RoutingPatternAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -243,7 +255,7 @@ abstract class RoutingPatternAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

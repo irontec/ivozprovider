@@ -19,63 +19,119 @@ abstract class UsersLocationAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $ruid = '';
 
+    /**
+     * @var string
+     */
     protected $username = '';
 
-    protected $domain;
+    /**
+     * @var ?string
+     */
+    protected $domain = null;
 
+    /**
+     * @var string
+     */
     protected $contact = '';
 
-    protected $received;
+    /**
+     * @var ?string
+     */
+    protected $received = null;
 
-    protected $path;
+    /**
+     * @var ?string
+     */
+    protected $path = null;
 
+    /**
+     * @var \DateTime
+     */
     protected $expires;
 
+    /**
+     * @var float
+     */
     protected $q = 1;
 
+    /**
+     * @var string
+     */
     protected $callid = 'Default-Call-ID';
 
+    /**
+     * @var int
+     */
     protected $cseq = 1;
 
     /**
+     * @var \DateTime
      * column: last_modified
      */
     protected $lastModified;
 
+    /**
+     * @var int
+     */
     protected $flags = 0;
 
+    /**
+     * @var int
+     */
     protected $cflags = 0;
 
     /**
+     * @var string
      * column: user_agent
      */
     protected $userAgent = '';
 
-    protected $socket;
-
-    protected $methods;
-
-    protected $instance;
+    /**
+     * @var ?string
+     */
+    protected $socket = null;
 
     /**
+     * @var ?int
+     */
+    protected $methods = null;
+
+    /**
+     * @var ?string
+     */
+    protected $instance = null;
+
+    /**
+     * @var int
      * column: reg_id
      */
     protected $regId = 0;
 
     /**
+     * @var int
      * column: server_id
      */
     protected $serverId = 0;
 
     /**
+     * @var int
      * column: connection_id
      */
     protected $connectionId = 0;
 
+    /**
+     * @var int
+     */
     protected $keepalive = 0;
 
+    /**
+     * @var int
+     */
     protected $partition = 0;
 
     /**
@@ -175,24 +231,56 @@ abstract class UsersLocationAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $q = $dto->getQ();
+        Assertion::notNull($q, 'getQ value is null, but non null value was expected.');
+        $callid = $dto->getCallid();
+        Assertion::notNull($callid, 'getCallid value is null, but non null value was expected.');
+        $cseq = $dto->getCseq();
+        Assertion::notNull($cseq, 'getCseq value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $cflags = $dto->getCflags();
+        Assertion::notNull($cflags, 'getCflags value is null, but non null value was expected.');
+        $userAgent = $dto->getUserAgent();
+        Assertion::notNull($userAgent, 'getUserAgent value is null, but non null value was expected.');
+        $regId = $dto->getRegId();
+        Assertion::notNull($regId, 'getRegId value is null, but non null value was expected.');
+        $serverId = $dto->getServerId();
+        Assertion::notNull($serverId, 'getServerId value is null, but non null value was expected.');
+        $connectionId = $dto->getConnectionId();
+        Assertion::notNull($connectionId, 'getConnectionId value is null, but non null value was expected.');
+        $keepalive = $dto->getKeepalive();
+        Assertion::notNull($keepalive, 'getKeepalive value is null, but non null value was expected.');
+        $partition = $dto->getPartition();
+        Assertion::notNull($partition, 'getPartition value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRuid(),
-            $dto->getUsername(),
-            $dto->getContact(),
-            $dto->getExpires(),
-            $dto->getQ(),
-            $dto->getCallid(),
-            $dto->getCseq(),
-            $dto->getLastModified(),
-            $dto->getFlags(),
-            $dto->getCflags(),
-            $dto->getUserAgent(),
-            $dto->getRegId(),
-            $dto->getServerId(),
-            $dto->getConnectionId(),
-            $dto->getKeepalive(),
-            $dto->getPartition()
+            $ruid,
+            $username,
+            $contact,
+            $expires,
+            $q,
+            $callid,
+            $cseq,
+            $lastModified,
+            $flags,
+            $cflags,
+            $userAgent,
+            $regId,
+            $serverId,
+            $connectionId,
+            $keepalive,
+            $partition
         );
 
         $self
@@ -218,29 +306,62 @@ abstract class UsersLocationAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
 
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $q = $dto->getQ();
+        Assertion::notNull($q, 'getQ value is null, but non null value was expected.');
+        $callid = $dto->getCallid();
+        Assertion::notNull($callid, 'getCallid value is null, but non null value was expected.');
+        $cseq = $dto->getCseq();
+        Assertion::notNull($cseq, 'getCseq value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $cflags = $dto->getCflags();
+        Assertion::notNull($cflags, 'getCflags value is null, but non null value was expected.');
+        $userAgent = $dto->getUserAgent();
+        Assertion::notNull($userAgent, 'getUserAgent value is null, but non null value was expected.');
+        $regId = $dto->getRegId();
+        Assertion::notNull($regId, 'getRegId value is null, but non null value was expected.');
+        $serverId = $dto->getServerId();
+        Assertion::notNull($serverId, 'getServerId value is null, but non null value was expected.');
+        $connectionId = $dto->getConnectionId();
+        Assertion::notNull($connectionId, 'getConnectionId value is null, but non null value was expected.');
+        $keepalive = $dto->getKeepalive();
+        Assertion::notNull($keepalive, 'getKeepalive value is null, but non null value was expected.');
+        $partition = $dto->getPartition();
+        Assertion::notNull($partition, 'getPartition value is null, but non null value was expected.');
+
         $this
-            ->setRuid($dto->getRuid())
-            ->setUsername($dto->getUsername())
+            ->setRuid($ruid)
+            ->setUsername($username)
             ->setDomain($dto->getDomain())
-            ->setContact($dto->getContact())
+            ->setContact($contact)
             ->setReceived($dto->getReceived())
             ->setPath($dto->getPath())
-            ->setExpires($dto->getExpires())
-            ->setQ($dto->getQ())
-            ->setCallid($dto->getCallid())
-            ->setCseq($dto->getCseq())
-            ->setLastModified($dto->getLastModified())
-            ->setFlags($dto->getFlags())
-            ->setCflags($dto->getCflags())
-            ->setUserAgent($dto->getUserAgent())
+            ->setExpires($expires)
+            ->setQ($q)
+            ->setCallid($callid)
+            ->setCseq($cseq)
+            ->setLastModified($lastModified)
+            ->setFlags($flags)
+            ->setCflags($cflags)
+            ->setUserAgent($userAgent)
             ->setSocket($dto->getSocket())
             ->setMethods($dto->getMethods())
             ->setInstance($dto->getInstance())
-            ->setRegId($dto->getRegId())
-            ->setServerId($dto->getServerId())
-            ->setConnectionId($dto->getConnectionId())
-            ->setKeepalive($dto->getKeepalive())
-            ->setPartition($dto->getPartition());
+            ->setRegId($regId)
+            ->setServerId($serverId)
+            ->setConnectionId($connectionId)
+            ->setKeepalive($keepalive)
+            ->setPartition($partition);
 
         return $this;
     }
@@ -393,15 +514,16 @@ abstract class UsersLocationAbstract
         return $this->path;
     }
 
-    protected function setExpires($expires): static
+    protected function setExpires(string|\DateTimeInterface $expires): static
     {
 
+        /** @var \Datetime */
         $expires = DateTimeHelper::createOrFix(
             $expires,
             '2030-05-28 21:32:15'
         );
 
-        if ($this->expires == $expires) {
+        if ($this->isInitialized() && $this->expires == $expires) {
             return $this;
         }
 
@@ -410,10 +532,7 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getExpires(): \DateTimeInterface
+    public function getExpires(): \DateTime
     {
         return clone $this->expires;
     }
@@ -456,15 +575,16 @@ abstract class UsersLocationAbstract
         return $this->cseq;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 
@@ -473,10 +593,7 @@ abstract class UsersLocationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

@@ -1938,11 +1938,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.6",
+            "version": "4.6.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "569544ae295d1135d71a988db76fce7ccaeb6ab4"
+                "reference": "0faa5ef438984fab99c790147824d2de78c2b53c"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -2033,16 +2033,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.6",
+            "version": "5.6.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "f9c2e5e0b6d908051d76971de0733caf2538f6f2"
+                "reference": "caaedd28dbd976a2e09f218f8ad4624c2b0e1297"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/orm": "^2.5",
-                "irontec/ivoz-core": "^4.6",
+                "irontec/ivoz-core": "^4.6.2",
                 "php": ">=8.0",
                 "symfony/console": "^5.1",
                 "symfony/maker-bundle": "^1.33"
@@ -3379,7 +3379,7 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/cache-contracts",
@@ -3698,7 +3698,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/deprecation-contracts",
@@ -3997,7 +3997,7 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/event-dispatcher-contracts",
@@ -4437,7 +4437,7 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/http-client-contracts",
@@ -5047,7 +5047,7 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "dev-main",
+            "version": "v1.23.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-grapheme",
@@ -5302,7 +5302,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-main",
+            "version": "v1.23.1",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-mbstring",
@@ -6234,7 +6234,7 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "dev-main",
+            "version": "v2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/service-contracts",

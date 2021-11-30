@@ -19,10 +19,13 @@ abstract class LanguageAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -34,7 +37,7 @@ abstract class LanguageAbstract
         Name $name
     ) {
         $this->setIden($iden);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -95,6 +98,8 @@ abstract class LanguageAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -104,7 +109,7 @@ abstract class LanguageAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
+            $iden,
             $name
         );
 
@@ -125,6 +130,9 @@ abstract class LanguageAbstract
     ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -133,7 +141,7 @@ abstract class LanguageAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
+            ->setIden($iden)
             ->setName($name);
 
         return $this;
@@ -184,7 +192,7 @@ abstract class LanguageAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

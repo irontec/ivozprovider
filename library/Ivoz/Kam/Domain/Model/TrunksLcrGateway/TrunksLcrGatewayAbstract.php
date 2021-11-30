@@ -21,43 +21,73 @@ abstract class TrunksLcrGatewayAbstract
     use ChangelogTrait;
 
     /**
+     * @var int
      * column: lcr_id
      */
     protected $lcrId = 1;
 
     /**
+     * @var string
      * column: gw_name
      */
     protected $gwName;
 
-    protected $ip;
-
-    protected $hostname;
-
-    protected $port;
-
-    protected $params;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
     /**
+     * @var ?string
+     */
+    protected $hostname = null;
+
+    /**
+     * @var ?int
+     */
+    protected $port = null;
+
+    /**
+     * @var ?string
+     */
+    protected $params = null;
+
+    /**
+     * @var ?int
      * column: uri_scheme
      */
-    protected $uriScheme;
-
-    protected $transport;
-
-    protected $strip;
-
-    protected $prefix;
-
-    protected $tag;
-
-    protected $defunct;
+    protected $uriScheme = null;
 
     /**
-     * @var CarrierServerInterface | null
+     * @var ?int
+     */
+    protected $transport = null;
+
+    /**
+     * @var ?bool
+     */
+    protected $strip = null;
+
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
+
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
+
+    /**
+     * @var ?int
+     */
+    protected $defunct = null;
+
+    /**
+     * @var ?CarrierServerInterface
      * inversedBy lcrGateway
      */
-    protected $carrierServer;
+    protected $carrierServer = null;
 
     /**
      * Constructor
@@ -128,10 +158,14 @@ abstract class TrunksLcrGatewayAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $gwName = $dto->getGwName();
+        Assertion::notNull($gwName, 'getGwName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getGwName()
+            $lcrId,
+            $gwName
         );
 
         $self
@@ -162,9 +196,14 @@ abstract class TrunksLcrGatewayAbstract
     ): static {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $gwName = $dto->getGwName();
+        Assertion::notNull($gwName, 'getGwName value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
-            ->setGwName($dto->getGwName())
+            ->setLcrId($lcrId)
+            ->setGwName($gwName)
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())
@@ -216,7 +255,7 @@ abstract class TrunksLcrGatewayAbstract
             'prefix' => self::getPrefix(),
             'tag' => self::getTag(),
             'defunct' => self::getDefunct(),
-            'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
+            'carrierServerId' => self::getCarrierServer()?->getId()
         ];
     }
 

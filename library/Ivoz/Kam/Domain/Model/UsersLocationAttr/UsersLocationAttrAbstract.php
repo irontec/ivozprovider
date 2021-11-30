@@ -19,19 +19,38 @@ abstract class UsersLocationAttrAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $ruid = '';
 
+    /**
+     * @var string
+     */
     protected $username = '';
 
-    protected $domain;
+    /**
+     * @var ?string
+     */
+    protected $domain = null;
 
+    /**
+     * @var string
+     */
     protected $aname = '';
 
+    /**
+     * @var int
+     */
     protected $atype = 0;
 
+    /**
+     * @var string
+     */
     protected $avalue = '';
 
     /**
+     * @var \DateTime
      * column: last_modified
      */
     protected $lastModified;
@@ -113,14 +132,26 @@ abstract class UsersLocationAttrAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $aname = $dto->getAname();
+        Assertion::notNull($aname, 'getAname value is null, but non null value was expected.');
+        $atype = $dto->getAtype();
+        Assertion::notNull($atype, 'getAtype value is null, but non null value was expected.');
+        $avalue = $dto->getAvalue();
+        Assertion::notNull($avalue, 'getAvalue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRuid(),
-            $dto->getUsername(),
-            $dto->getAname(),
-            $dto->getAtype(),
-            $dto->getAvalue(),
-            $dto->getLastModified()
+            $ruid,
+            $username,
+            $aname,
+            $atype,
+            $avalue,
+            $lastModified
         );
 
         $self
@@ -141,14 +172,27 @@ abstract class UsersLocationAttrAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
 
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $aname = $dto->getAname();
+        Assertion::notNull($aname, 'getAname value is null, but non null value was expected.');
+        $atype = $dto->getAtype();
+        Assertion::notNull($atype, 'getAtype value is null, but non null value was expected.');
+        $avalue = $dto->getAvalue();
+        Assertion::notNull($avalue, 'getAvalue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+
         $this
-            ->setRuid($dto->getRuid())
-            ->setUsername($dto->getUsername())
+            ->setRuid($ruid)
+            ->setUsername($username)
             ->setDomain($dto->getDomain())
-            ->setAname($dto->getAname())
-            ->setAtype($dto->getAtype())
-            ->setAvalue($dto->getAvalue())
-            ->setLastModified($dto->getLastModified());
+            ->setAname($aname)
+            ->setAtype($atype)
+            ->setAvalue($avalue)
+            ->setLastModified($lastModified);
 
         return $this;
     }
@@ -265,15 +309,16 @@ abstract class UsersLocationAttrAbstract
         return $this->avalue;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 
@@ -282,10 +327,7 @@ abstract class UsersLocationAttrAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastModified(): \DateTimeInterface
+    public function getLastModified(): \DateTime
     {
         return clone $this->lastModified;
     }

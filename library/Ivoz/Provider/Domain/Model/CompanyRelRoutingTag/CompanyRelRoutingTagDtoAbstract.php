@@ -16,19 +16,19 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var RoutingTagDto | null
      */
-    private $routingTag;
+    private $routingTag = null;
 
     public function __construct($id = null)
     {
@@ -51,6 +51,9 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -80,7 +83,7 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

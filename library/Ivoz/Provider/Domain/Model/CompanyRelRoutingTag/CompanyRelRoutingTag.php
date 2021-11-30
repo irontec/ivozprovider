@@ -35,7 +35,7 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

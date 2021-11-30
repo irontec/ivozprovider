@@ -23,10 +23,10 @@ abstract class FeaturesRelCompanyAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relFeatures
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var FeatureInterface
@@ -98,12 +98,14 @@ abstract class FeaturesRelCompanyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class FeaturesRelCompanyAbstract
     ): static {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
 
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
+
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class FeaturesRelCompanyAbstract
     protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'featureId' => self::getFeature()->getId()
         ];
     }

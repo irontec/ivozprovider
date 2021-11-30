@@ -25,40 +25,60 @@ abstract class TerminalAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $disallow = 'all';
 
     /**
+     * @var string
      * column: allow_audio
      */
     protected $allowAudio = 'alaw';
 
     /**
+     * @var ?string
      * column: allow_video
      */
-    protected $allowVideo;
+    protected $allowVideo = null;
 
     /**
+     * @var string
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
      */
     protected $directMediaMethod = 'update';
 
     /**
+     * @var string
      * comment: password
      */
     protected $password = '';
 
-    protected $mac;
-
-    protected $lastProvisionDate;
+    /**
+     * @var ?string
+     */
+    protected $mac = null;
 
     /**
+     * @var ?\DateTime
+     */
+    protected $lastProvisionDate = null;
+
+    /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
     /**
@@ -68,15 +88,15 @@ abstract class TerminalAbstract
     protected $company;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy terminals
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var TerminalModelInterface | null
+     * @var ?TerminalModelInterface
      */
-    protected $terminalModel;
+    protected $terminalModel = null;
 
     /**
      * Constructor
@@ -157,22 +177,38 @@ abstract class TerminalAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TerminalDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allowAudio = $dto->getAllowAudio();
+        Assertion::notNull($allowAudio, 'getAllowAudio value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $password = $dto->getPassword();
+        Assertion::notNull($password, 'getPassword value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDisallow(),
-            $dto->getAllowAudio(),
-            $dto->getDirectMediaMethod(),
-            $dto->getPassword(),
-            $dto->getT38Passthrough(),
-            $dto->getRtpEncryption()
+            $name,
+            $disallow,
+            $allowAudio,
+            $directMediaMethod,
+            $password,
+            $t38Passthrough,
+            $rtpEncryption
         );
 
         $self
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
@@ -191,18 +227,35 @@ abstract class TerminalAbstract
     ): static {
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allowAudio = $dto->getAllowAudio();
+        Assertion::notNull($allowAudio, 'getAllowAudio value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $password = $dto->getPassword();
+        Assertion::notNull($password, 'getPassword value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDisallow($dto->getDisallow())
-            ->setAllowAudio($dto->getAllowAudio())
+            ->setName($name)
+            ->setDisallow($disallow)
+            ->setAllowAudio($allowAudio)
             ->setAllowVideo($dto->getAllowVideo())
-            ->setDirectMediaMethod($dto->getDirectMediaMethod())
-            ->setPassword($dto->getPassword())
+            ->setDirectMediaMethod($directMediaMethod)
+            ->setPassword($password)
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setT38Passthrough($dto->getT38Passthrough())
-            ->setRtpEncryption($dto->getRtpEncryption())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setT38Passthrough($t38Passthrough)
+            ->setRtpEncryption($rtpEncryption)
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
@@ -244,8 +297,8 @@ abstract class TerminalAbstract
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
             'companyId' => self::getCompany()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
+            'domainId' => self::getDomain()?->getId(),
+            'terminalModelId' => self::getTerminalModel()?->getId()
         ];
     }
 
@@ -359,19 +412,17 @@ abstract class TerminalAbstract
         return $this->mac;
     }
 
-    protected function setLastProvisionDate($lastProvisionDate = null): static
+    protected function setLastProvisionDate(string|\DateTimeInterface|null $lastProvisionDate = null): static
     {
         if (!is_null($lastProvisionDate)) {
-            Assertion::notNull(
-                $lastProvisionDate,
-                'lastProvisionDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastProvisionDate = DateTimeHelper::createOrFix(
                 $lastProvisionDate,
                 null
             );
 
-            if ($this->lastProvisionDate == $lastProvisionDate) {
+            if ($this->isInitialized() && $this->lastProvisionDate == $lastProvisionDate) {
                 return $this;
             }
         }
@@ -381,10 +432,7 @@ abstract class TerminalAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastProvisionDate(): ?\DateTimeInterface
+    public function getLastProvisionDate(): ?\DateTime
     {
         return !is_null($this->lastProvisionDate) ? clone $this->lastProvisionDate : null;
     }

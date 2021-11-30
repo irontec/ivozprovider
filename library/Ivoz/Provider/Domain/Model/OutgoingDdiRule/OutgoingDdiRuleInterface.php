@@ -9,7 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -23,7 +23,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -60,6 +60,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param OutgoingDdiRuleDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -80,7 +81,10 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 
     public function removePattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;
 
-    public function replacePatterns(ArrayCollection $patterns): OutgoingDdiRuleInterface;
+    /**
+     * @param Collection<array-key, OutgoingDdiRulesPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): OutgoingDdiRuleInterface;
 
     public function getPatterns(?Criteria $criteria = null): array;
 }

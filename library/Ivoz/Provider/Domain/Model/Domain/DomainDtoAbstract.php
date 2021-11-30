@@ -17,39 +17,39 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $pointsTo = 'proxyusers';
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var FriendDto[] | null
      */
-    private $friends;
+    private $friends = null;
 
     /**
      * @var ResidentialDeviceDto[] | null
      */
-    private $residentialDevices;
+    private $residentialDevices = null;
 
     /**
      * @var TerminalDto[] | null
      */
-    private $terminals;
+    private $terminals = null;
 
     public function __construct($id = null)
     {
@@ -73,6 +73,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -142,7 +145,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

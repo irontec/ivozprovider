@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
@@ -18,24 +20,24 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 trait DomainTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FriendInterface> & Selectable<array-key, FriendInterface>
      * FriendInterface mappedBy domain
      */
     protected $friends;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ResidentialDeviceInterface> & Selectable<array-key, ResidentialDeviceInterface>
      * ResidentialDeviceInterface mappedBy domain
      */
     protected $residentialDevices;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TerminalInterface> & Selectable<array-key, TerminalInterface>
      * TerminalInterface mappedBy domain
      */
     protected $terminals;
@@ -56,6 +58,7 @@ trait DomainTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DomainDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -63,28 +66,34 @@ trait DomainTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getFriends())) {
-            $self->replaceFriends(
-                $fkTransformer->transformCollection(
-                    $dto->getFriends()
-                )
+        $friends = $dto->getFriends();
+        if (!is_null($friends)) {
+
+            /** @var Collection<array-key, FriendInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $friends
             );
+            $self->replaceFriends($replacement);
         }
 
-        if (!is_null($dto->getResidentialDevices())) {
-            $self->replaceResidentialDevices(
-                $fkTransformer->transformCollection(
-                    $dto->getResidentialDevices()
-                )
+        $residentialDevices = $dto->getResidentialDevices();
+        if (!is_null($residentialDevices)) {
+
+            /** @var Collection<array-key, ResidentialDeviceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $residentialDevices
             );
+            $self->replaceResidentialDevices($replacement);
         }
 
-        if (!is_null($dto->getTerminals())) {
-            $self->replaceTerminals(
-                $fkTransformer->transformCollection(
-                    $dto->getTerminals()
-                )
+        $terminals = $dto->getTerminals();
+        if (!is_null($terminals)) {
+
+            /** @var Collection<array-key, TerminalInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $terminals
             );
+            $self->replaceTerminals($replacement);
         }
 
         $self->sanitizeValues();
@@ -98,34 +107,41 @@ trait DomainTrait
 
     /**
      * @internal use EntityTools instead
+     * @param DomainDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getFriends())) {
-            $this->replaceFriends(
-                $fkTransformer->transformCollection(
-                    $dto->getFriends()
-                )
+        $friends = $dto->getFriends();
+        if (!is_null($friends)) {
+
+            /** @var Collection<array-key, FriendInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $friends
             );
+            $this->replaceFriends($replacement);
         }
 
-        if (!is_null($dto->getResidentialDevices())) {
-            $this->replaceResidentialDevices(
-                $fkTransformer->transformCollection(
-                    $dto->getResidentialDevices()
-                )
+        $residentialDevices = $dto->getResidentialDevices();
+        if (!is_null($residentialDevices)) {
+
+            /** @var Collection<array-key, ResidentialDeviceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $residentialDevices
             );
+            $this->replaceResidentialDevices($replacement);
         }
 
-        if (!is_null($dto->getTerminals())) {
-            $this->replaceTerminals(
-                $fkTransformer->transformCollection(
-                    $dto->getTerminals()
-                )
+        $terminals = $dto->getTerminals();
+        if (!is_null($terminals)) {
+
+            /** @var Collection<array-key, TerminalInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $terminals
             );
+            $this->replaceTerminals($replacement);
         }
         $this->sanitizeValues();
 
@@ -163,25 +179,33 @@ trait DomainTrait
         return $this;
     }
 
-    public function replaceFriends(ArrayCollection $friends): DomainInterface
+    /**
+     * @param Collection<array-key, FriendInterface> $friends
+     */
+    public function replaceFriends(Collection $friends): DomainInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($friends as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDomain($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->friends as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->friends->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->friends->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->friends->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -214,25 +238,33 @@ trait DomainTrait
         return $this;
     }
 
-    public function replaceResidentialDevices(ArrayCollection $residentialDevices): DomainInterface
+    /**
+     * @param Collection<array-key, ResidentialDeviceInterface> $residentialDevices
+     */
+    public function replaceResidentialDevices(Collection $residentialDevices): DomainInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($residentialDevices as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDomain($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->residentialDevices as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->residentialDevices->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->residentialDevices->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->residentialDevices->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -265,25 +297,33 @@ trait DomainTrait
         return $this;
     }
 
-    public function replaceTerminals(ArrayCollection $terminals): DomainInterface
+    /**
+     * @param Collection<array-key, TerminalInterface> $terminals
+     */
+    public function replaceTerminals(Collection $terminals): DomainInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($terminals as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDomain($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->terminals as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->terminals->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->terminals->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->terminals->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

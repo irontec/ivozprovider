@@ -21,36 +21,48 @@ abstract class TpRateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
     /**
+     * @var float
      * column: connect_fee
      */
     protected $connectFee;
 
     /**
+     * @var float
      * column: rate
      */
     protected $rateCost;
 
     /**
+     * @var string
      * column: rate_unit
      */
     protected $rateUnit = '60s';
 
     /**
+     * @var string
      * column: rate_increment
      */
     protected $rateIncrement;
 
     /**
+     * @var string
      * column: group_interval_start
      */
     protected $groupIntervalStart = '0s';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
     protected $createdAt;
@@ -140,20 +152,36 @@ abstract class TpRateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpRateDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateCost = $dto->getRateCost();
+        Assertion::notNull($rateCost, 'getRateCost value is null, but non null value was expected.');
+        $rateUnit = $dto->getRateUnit();
+        Assertion::notNull($rateUnit, 'getRateUnit value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getConnectFee(),
-            $dto->getRateCost(),
-            $dto->getRateUnit(),
-            $dto->getRateIncrement(),
-            $dto->getGroupIntervalStart(),
-            $dto->getCreatedAt()
+            $tpid,
+            $connectFee,
+            $rateCost,
+            $rateUnit,
+            $rateIncrement,
+            $groupIntervalStart,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         $self->initChangelog();
 
@@ -170,16 +198,33 @@ abstract class TpRateAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpRateDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateCost = $dto->getRateCost();
+        Assertion::notNull($rateCost, 'getRateCost value is null, but non null value was expected.');
+        $rateUnit = $dto->getRateUnit();
+        Assertion::notNull($rateUnit, 'getRateUnit value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
-            ->setConnectFee($dto->getConnectFee())
-            ->setRateCost($dto->getRateCost())
-            ->setRateUnit($dto->getRateUnit())
-            ->setRateIncrement($dto->getRateIncrement())
-            ->setGroupIntervalStart($dto->getGroupIntervalStart())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setConnectFee($connectFee)
+            ->setRateCost($rateCost)
+            ->setRateUnit($rateUnit)
+            ->setRateIncrement($rateIncrement)
+            ->setGroupIntervalStart($groupIntervalStart)
+            ->setCreatedAt($createdAt)
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         return $this;
     }
@@ -312,15 +357,16 @@ abstract class TpRateAbstract
         return $this->groupIntervalStart;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -329,10 +375,7 @@ abstract class TpRateAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

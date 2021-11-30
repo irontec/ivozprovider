@@ -22,7 +22,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

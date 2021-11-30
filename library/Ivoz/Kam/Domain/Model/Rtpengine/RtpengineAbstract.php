@@ -21,22 +21,40 @@ abstract class RtpengineAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var int
+     */
     protected $setid = 0;
 
+    /**
+     * @var string
+     */
     protected $url;
 
+    /**
+     * @var int
+     */
     protected $weight = 1;
 
+    /**
+     * @var bool
+     */
     protected $disabled = false;
 
+    /**
+     * @var \DateTime
+     */
     protected $stamp;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySet;
+    protected $mediaRelaySet = null;
 
     /**
      * Constructor
@@ -113,13 +131,23 @@ abstract class RtpengineAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $stamp = $dto->getStamp();
+        Assertion::notNull($stamp, 'getStamp value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSetid(),
-            $dto->getUrl(),
-            $dto->getWeight(),
-            $dto->getDisabled(),
-            $dto->getStamp()
+            $setid,
+            $url,
+            $weight,
+            $disabled,
+            $stamp
         );
 
         $self
@@ -141,12 +169,23 @@ abstract class RtpengineAbstract
     ): static {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $stamp = $dto->getStamp();
+        Assertion::notNull($stamp, 'getStamp value is null, but non null value was expected.');
+
         $this
-            ->setSetid($dto->getSetid())
-            ->setUrl($dto->getUrl())
-            ->setWeight($dto->getWeight())
-            ->setDisabled($dto->getDisabled())
-            ->setStamp($dto->getStamp())
+            ->setSetid($setid)
+            ->setUrl($url)
+            ->setWeight($weight)
+            ->setDisabled($disabled)
+            ->setStamp($stamp)
             ->setDescription($dto->getDescription())
             ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
@@ -177,7 +216,7 @@ abstract class RtpengineAbstract
             'disabled' => self::getDisabled(),
             'stamp' => self::getStamp(),
             'description' => self::getDescription(),
-            'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
+            'mediaRelaySetId' => self::getMediaRelaySet()?->getId()
         ];
     }
 
@@ -233,15 +272,16 @@ abstract class RtpengineAbstract
         return $this->disabled;
     }
 
-    protected function setStamp($stamp): static
+    protected function setStamp(string|\DateTimeInterface $stamp): static
     {
 
+        /** @var \Datetime */
         $stamp = DateTimeHelper::createOrFix(
             $stamp,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->stamp == $stamp) {
+        if ($this->isInitialized() && $this->stamp == $stamp) {
             return $this;
         }
 
@@ -250,10 +290,7 @@ abstract class RtpengineAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): \DateTimeInterface
+    public function getStamp(): \DateTime
     {
         return clone $this->stamp;
     }

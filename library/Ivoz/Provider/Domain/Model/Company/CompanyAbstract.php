@@ -43,88 +43,146 @@ abstract class CompanyAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:vpbx|retail|wholesale|residential
      */
     protected $type = 'vpbx';
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: domain_users
      */
-    protected $domainUsers;
+    protected $domainUsers = null;
 
+    /**
+     * @var string
+     */
     protected $nif;
 
     /**
+     * @var string
      * comment: enum:static|rr|hash
      */
     protected $distributeMethod = 'hash';
 
+    /**
+     * @var int
+     */
     protected $maxCalls = 0;
 
+    /**
+     * @var int
+     */
     protected $maxDailyUsage = 1000000;
 
+    /**
+     * @var ?float
+     */
     protected $currentDayUsage = 0;
 
-    protected $maxDailyUsageEmail;
+    /**
+     * @var ?string
+     */
+    protected $maxDailyUsageEmail = null;
 
+    /**
+     * @var string
+     */
     protected $postalAddress;
 
+    /**
+     * @var string
+     */
     protected $postalCode;
 
+    /**
+     * @var string
+     */
     protected $town;
 
+    /**
+     * @var string
+     */
     protected $province;
 
     /**
+     * @var string
      * column: country
      */
     protected $countryName;
 
     /**
+     * @var ?bool
      * column: ipFilter
      */
     protected $ipfilter = true;
 
+    /**
+     * @var ?int
+     */
     protected $onDemandRecord = 0;
 
+    /**
+     * @var bool
+     */
     protected $allowRecordingRemoval = true;
 
-    protected $onDemandRecordCode;
+    /**
+     * @var ?string
+     */
+    protected $onDemandRecordCode = null;
 
     /**
+     * @var ?string
      * column: externallyExtraOpts
      */
-    protected $externallyextraopts;
-
-    protected $recordingsLimitMB;
-
-    protected $recordingsLimitEmail;
+    protected $externallyextraopts = null;
 
     /**
+     * @var ?int
+     */
+    protected $recordingsLimitMB = null;
+
+    /**
+     * @var ?string
+     */
+    protected $recordingsLimitEmail = null;
+
+    /**
+     * @var string
      * comment: enum:postpaid|prepaid|pseudoprepaid
      */
     protected $billingMethod = 'postpaid';
 
+    /**
+     * @var ?float
+     */
     protected $balance = 0;
 
+    /**
+     * @var ?bool
+     */
     protected $showInvoices = false;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?TimezoneInterface
      */
-    protected $defaultTimezone;
+    protected $defaultTimezone = null;
 
     /**
      * @var BrandInterface
@@ -133,14 +191,14 @@ abstract class CompanyAbstract
     protected $brand;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var ApplicationServerInterface | null
+     * @var ?ApplicationServerInterface
      */
-    protected $applicationServer;
+    protected $applicationServer = null;
 
     /**
      * @var CountryInterface
@@ -148,49 +206,49 @@ abstract class CompanyAbstract
     protected $country;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var OutgoingDdiRuleInterface | null
+     * @var ?OutgoingDdiRuleInterface
      */
-    protected $outgoingDdiRule;
+    protected $outgoingDdiRule = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $voicemailNotificationTemplate;
+    protected $voicemailNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $faxNotificationTemplate;
+    protected $faxNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $invoiceNotificationTemplate;
+    protected $invoiceNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $maxDailyUsageNotificationTemplate;
+    protected $maxDailyUsageNotificationTemplate = null;
 
     /**
      * Constructor
@@ -283,21 +341,51 @@ abstract class CompanyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $nif = $dto->getNif();
+        Assertion::notNull($nif, 'getNif value is null, but non null value was expected.');
+        $distributeMethod = $dto->getDistributeMethod();
+        Assertion::notNull($distributeMethod, 'getDistributeMethod value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $maxDailyUsage = $dto->getMaxDailyUsage();
+        Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
+        $postalAddress = $dto->getPostalAddress();
+        Assertion::notNull($postalAddress, 'getPostalAddress value is null, but non null value was expected.');
+        $postalCode = $dto->getPostalCode();
+        Assertion::notNull($postalCode, 'getPostalCode value is null, but non null value was expected.');
+        $town = $dto->getTown();
+        Assertion::notNull($town, 'getTown value is null, but non null value was expected.');
+        $province = $dto->getProvince();
+        Assertion::notNull($province, 'getProvince value is null, but non null value was expected.');
+        $countryName = $dto->getCountryName();
+        Assertion::notNull($countryName, 'getCountryName value is null, but non null value was expected.');
+        $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
+        Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
+        $billingMethod = $dto->getBillingMethod();
+        Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getName(),
-            $dto->getNif(),
-            $dto->getDistributeMethod(),
-            $dto->getMaxCalls(),
-            $dto->getMaxDailyUsage(),
-            $dto->getPostalAddress(),
-            $dto->getPostalCode(),
-            $dto->getTown(),
-            $dto->getProvince(),
-            $dto->getCountryName(),
-            $dto->getAllowRecordingRemoval(),
-            $dto->getBillingMethod()
+            $type,
+            $name,
+            $nif,
+            $distributeMethod,
+            $maxCalls,
+            $maxDailyUsage,
+            $postalAddress,
+            $postalCode,
+            $town,
+            $province,
+            $countryName,
+            $allowRecordingRemoval,
+            $billingMethod
         );
 
         $self
@@ -315,10 +403,10 @@ abstract class CompanyAbstract
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCountry($fkTransformer->transform($country))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
@@ -344,38 +432,69 @@ abstract class CompanyAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $nif = $dto->getNif();
+        Assertion::notNull($nif, 'getNif value is null, but non null value was expected.');
+        $distributeMethod = $dto->getDistributeMethod();
+        Assertion::notNull($distributeMethod, 'getDistributeMethod value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $maxDailyUsage = $dto->getMaxDailyUsage();
+        Assertion::notNull($maxDailyUsage, 'getMaxDailyUsage value is null, but non null value was expected.');
+        $postalAddress = $dto->getPostalAddress();
+        Assertion::notNull($postalAddress, 'getPostalAddress value is null, but non null value was expected.');
+        $postalCode = $dto->getPostalCode();
+        Assertion::notNull($postalCode, 'getPostalCode value is null, but non null value was expected.');
+        $town = $dto->getTown();
+        Assertion::notNull($town, 'getTown value is null, but non null value was expected.');
+        $province = $dto->getProvince();
+        Assertion::notNull($province, 'getProvince value is null, but non null value was expected.');
+        $countryName = $dto->getCountryName();
+        Assertion::notNull($countryName, 'getCountryName value is null, but non null value was expected.');
+        $allowRecordingRemoval = $dto->getAllowRecordingRemoval();
+        Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
+        $billingMethod = $dto->getBillingMethod();
+        Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setName($dto->getName())
+            ->setType($type)
+            ->setName($name)
             ->setDomainUsers($dto->getDomainUsers())
-            ->setNif($dto->getNif())
-            ->setDistributeMethod($dto->getDistributeMethod())
-            ->setMaxCalls($dto->getMaxCalls())
-            ->setMaxDailyUsage($dto->getMaxDailyUsage())
+            ->setNif($nif)
+            ->setDistributeMethod($distributeMethod)
+            ->setMaxCalls($maxCalls)
+            ->setMaxDailyUsage($maxDailyUsage)
             ->setCurrentDayUsage($dto->getCurrentDayUsage())
             ->setMaxDailyUsageEmail($dto->getMaxDailyUsageEmail())
-            ->setPostalAddress($dto->getPostalAddress())
-            ->setPostalCode($dto->getPostalCode())
-            ->setTown($dto->getTown())
-            ->setProvince($dto->getProvince())
-            ->setCountryName($dto->getCountryName())
+            ->setPostalAddress($postalAddress)
+            ->setPostalCode($postalCode)
+            ->setTown($town)
+            ->setProvince($province)
+            ->setCountryName($countryName)
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
-            ->setAllowRecordingRemoval($dto->getAllowRecordingRemoval())
+            ->setAllowRecordingRemoval($allowRecordingRemoval)
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setBillingMethod($dto->getBillingMethod())
+            ->setBillingMethod($billingMethod)
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()))
+            ->setCountry($fkTransformer->transform($country))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
@@ -464,22 +583,22 @@ abstract class CompanyAbstract
             'billingMethod' => self::getBillingMethod(),
             'balance' => self::getBalance(),
             'showInvoices' => self::getShowInvoices(),
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
-            'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
+            'languageId' => self::getLanguage()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId(),
+            'defaultTimezoneId' => self::getDefaultTimezone()?->getId(),
             'brandId' => self::getBrand()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
+            'domainId' => self::getDomain()?->getId(),
+            'applicationServerId' => self::getApplicationServer()?->getId(),
             'countryId' => self::getCountry()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
-            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
-            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
-            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate() ? self::getMaxDailyUsageNotificationTemplate()->getId() : null
+            'currencyId' => self::getCurrency()?->getId(),
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId(),
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId()
         ];
     }
 

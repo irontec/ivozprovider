@@ -8,6 +8,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
@@ -98,11 +99,14 @@ class TrunksLcrRuleTargetFactory
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time
-                $lcrRuleTargets[] = $this->entityTools->persistDto(
+                /** @var TrunksLcrRuleTargetInterface $lcrRuleTarget */
+                $lcrRuleTarget = $this->entityTools->persistDto(
                     $lcrRuleTargetDto,
                     $lcrRuleTarget,
                     true
                 );
+
+                $lcrRuleTargets[] = $lcrRuleTarget;
             }
         }
 

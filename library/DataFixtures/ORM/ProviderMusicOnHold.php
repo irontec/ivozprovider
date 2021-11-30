@@ -26,8 +26,8 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(MusicOnHold::class);
         (function () use ($fixture) {
             $this->setName("Something good");
-            $this->setOriginalFile(new OriginalFile(null, null, null));
-            $this->setEncodedFile(new EncodedFile(null, null, null));
+            $this->originalFile = new OriginalFile(null, null, null);
+            $this->encodedFile = new EncodedFile(null, null, null);
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
         })->call($item1);
 
@@ -38,8 +38,8 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
         $item2 = $this->createEntityInstance(MusicOnHold::class);
         (function () use ($fixture) {
             $this->setName("Something good");
-            $this->setOriginalFile(new OriginalFile(null, null, null));
-            $this->setEncodedFile(new EncodedFile(null, null, null));
+            $this->originalFile = new OriginalFile(null, null, null);
+            $this->encodedFile = new EncodedFile(null, null, null);
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
         })->call($item2);
 

@@ -19,12 +19,19 @@ abstract class CodecAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:audio|video
      */
     protected $type = 'audio';
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
@@ -98,11 +105,17 @@ abstract class CodecAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CodecDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getIden(),
-            $dto->getName()
+            $type,
+            $iden,
+            $name
         );
 
         ;
@@ -122,10 +135,17 @@ abstract class CodecAbstract
     ): static {
         Assertion::isInstanceOf($dto, CodecDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setIden($dto->getIden())
-            ->setName($dto->getName());
+            ->setType($type)
+            ->setIden($iden)
+            ->setName($name);
 
         return $this;
     }

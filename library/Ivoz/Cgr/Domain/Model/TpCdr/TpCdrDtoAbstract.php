@@ -14,124 +14,124 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $cgrid;
+    private $cgrid = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $runId;
+    private $runId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $originHost;
+    private $originHost = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $source;
+    private $source = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $originId;
+    private $originId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tor;
+    private $tor = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $requestType;
+    private $requestType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tenant;
+    private $tenant = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $category;
+    private $category = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $account;
+    private $account = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $subject;
+    private $subject = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $destination;
-
-    /**
-     * @var \DateTimeInterface|string
-     */
-    private $setupTime;
-
-    /**
-     * @var \DateTimeInterface|string
-     */
-    private $answerTime;
-
-    /**
-     * @var int
-     */
-    private $usage;
-
-    /**
-     * @var string
-     */
-    private $extraFields;
-
-    /**
-     * @var string
-     */
-    private $costSource;
-
-    /**
-     * @var float
-     */
-    private $cost;
-
-    /**
-     * @var array
-     */
-    private $costDetails;
-
-    /**
-     * @var string
-     */
-    private $extraInfo;
+    private $destination = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $createdAt;
+    private $setupTime = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $updatedAt;
+    private $answerTime = null;
+
+    /**
+     * @var int|null
+     */
+    private $usage = null;
+
+    /**
+     * @var string|null
+     */
+    private $extraFields = null;
+
+    /**
+     * @var string|null
+     */
+    private $costSource = null;
+
+    /**
+     * @var float|null
+     */
+    private $cost = null;
+
+    /**
+     * @var array|null
+     */
+    private $costDetails = null;
+
+    /**
+     * @var string|null
+     */
+    private $extraInfo = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $deletedAt;
+    private $createdAt = null;
 
     /**
-     * @var int
+     * @var \DateTimeInterface|string|null
      */
-    private $id;
+    private $updatedAt = null;
+
+    /**
+     * @var \DateTimeInterface|string|null
+     */
+    private $deletedAt = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -175,6 +175,9 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -501,7 +504,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

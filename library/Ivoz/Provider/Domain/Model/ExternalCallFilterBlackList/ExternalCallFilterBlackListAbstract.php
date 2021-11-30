@@ -23,10 +23,10 @@ abstract class ExternalCallFilterBlackListAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy blackLists
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var MatchListInterface
@@ -98,12 +98,14 @@ abstract class ExternalCallFilterBlackListAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterBlackListDto::class);
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ExternalCallFilterBlackListAbstract
     ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterBlackListDto::class);
 
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
+
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class ExternalCallFilterBlackListAbstract
     protected function __toArray(): array
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'filterId' => self::getFilter()?->getId(),
             'matchlistId' => self::getMatchlist()->getId()
         ];
     }

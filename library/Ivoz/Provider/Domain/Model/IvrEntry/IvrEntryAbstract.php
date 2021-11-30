@@ -30,14 +30,21 @@ abstract class IvrEntryAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $entry;
 
     /**
+     * @var string
      * comment: enum:number|extension|voicemail|conditional
      */
     protected $routeType;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
      * @var IvrInterface
@@ -46,29 +53,29 @@ abstract class IvrEntryAbstract
     protected $ivr;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $welcomeLocution;
+    protected $welcomeLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voiceMailUser;
+    protected $voiceMailUser = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
@@ -139,15 +146,21 @@ abstract class IvrEntryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, IvrEntryDto::class);
+        $entry = $dto->getEntry();
+        Assertion::notNull($entry, 'getEntry value is null, but non null value was expected.');
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+        $ivr = $dto->getIvr();
+        Assertion::notNull($ivr, 'getIvr value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getEntry(),
-            $dto->getRouteType()
+            $entry,
+            $routeType
         );
 
         $self
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -169,11 +182,18 @@ abstract class IvrEntryAbstract
     ): static {
         Assertion::isInstanceOf($dto, IvrEntryDto::class);
 
+        $entry = $dto->getEntry();
+        Assertion::notNull($entry, 'getEntry value is null, but non null value was expected.');
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+        $ivr = $dto->getIvr();
+        Assertion::notNull($ivr, 'getIvr value is null, but non null value was expected.');
+
         $this
-            ->setEntry($dto->getEntry())
-            ->setRouteType($dto->getRouteType())
+            ->setEntry($entry)
+            ->setRouteType($routeType)
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -207,11 +227,11 @@ abstract class IvrEntryAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'ivrId' => self::getIvr()->getId(),
-            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 

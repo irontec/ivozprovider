@@ -19,31 +19,57 @@ abstract class QueueAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * column: periodic_announce
      */
-    protected $periodicAnnounce;
+    protected $periodicAnnounce = null;
 
     /**
+     * @var ?int
      * column: periodic_announce_frequency
      */
-    protected $periodicAnnounceFrequency;
+    protected $periodicAnnounceFrequency = null;
 
-    protected $timeout;
+    /**
+     * @var ?int
+     */
+    protected $timeout = null;
 
+    /**
+     * @var string
+     */
     protected $autopause = 'no';
 
+    /**
+     * @var string
+     */
     protected $ringinuse = 'no';
 
-    protected $wrapuptime;
+    /**
+     * @var ?int
+     */
+    protected $wrapuptime = null;
 
-    protected $maxlen;
+    /**
+     * @var ?int
+     */
+    protected $maxlen = null;
 
-    protected $strategy;
+    /**
+     * @var ?string
+     */
+    protected $strategy = null;
 
-    protected $weight;
+    /**
+     * @var ?int
+     */
+    protected $weight = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface
@@ -121,11 +147,19 @@ abstract class QueueAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $autopause = $dto->getAutopause();
+        Assertion::notNull($autopause, 'getAutopause value is null, but non null value was expected.');
+        $ringinuse = $dto->getRinginuse();
+        Assertion::notNull($ringinuse, 'getRinginuse value is null, but non null value was expected.');
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getAutopause(),
-            $dto->getRinginuse()
+            $name,
+            $autopause,
+            $ringinuse
         );
 
         $self
@@ -136,7 +170,7 @@ abstract class QueueAbstract
             ->setMaxlen($dto->getMaxlen())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setQueue($fkTransformer->transform($dto->getQueue()));
+            ->setQueue($fkTransformer->transform($queue));
 
         $self->initChangelog();
 
@@ -153,18 +187,27 @@ abstract class QueueAbstract
     ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $autopause = $dto->getAutopause();
+        Assertion::notNull($autopause, 'getAutopause value is null, but non null value was expected.');
+        $ringinuse = $dto->getRinginuse();
+        Assertion::notNull($ringinuse, 'getRinginuse value is null, but non null value was expected.');
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
-            ->setAutopause($dto->getAutopause())
-            ->setRinginuse($dto->getRinginuse())
+            ->setAutopause($autopause)
+            ->setRinginuse($ringinuse)
             ->setWrapuptime($dto->getWrapuptime())
             ->setMaxlen($dto->getMaxlen())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setQueue($fkTransformer->transform($dto->getQueue()));
+            ->setQueue($fkTransformer->transform($queue));
 
         return $this;
     }

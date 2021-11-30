@@ -32,24 +32,46 @@ abstract class OutgoingRoutingAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var ?string
+     */
     protected $type = 'group';
 
+    /**
+     * @var int
+     */
     protected $priority;
 
+    /**
+     * @var int
+     */
     protected $weight = 1;
 
     /**
+     * @var ?string
      * comment: enum:static|lcr|block
      */
     protected $routingMode = 'static';
 
-    protected $prefix;
+    /**
+     * @var ?string
+     */
+    protected $prefix = null;
 
+    /**
+     * @var bool
+     */
     protected $stopper = false;
 
+    /**
+     * @var ?bool
+     */
     protected $forceClid = false;
 
-    protected $clid;
+    /**
+     * @var ?string
+     */
+    protected $clid = null;
 
     /**
      * @var BrandInterface
@@ -58,38 +80,38 @@ abstract class OutgoingRoutingAbstract
     protected $brand;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      * inversedBy outgoingRoutings
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupInterface | null
+     * @var ?RoutingPatternGroupInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingPatternGroup;
+    protected $routingPatternGroup = null;
 
     /**
-     * @var RoutingTagInterface | null
+     * @var ?RoutingTagInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingTag;
+    protected $routingTag = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $clidCountry;
+    protected $clidCountry = null;
 
     /**
      * Constructor
@@ -162,11 +184,19 @@ abstract class OutgoingRoutingAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority(),
-            $dto->getWeight(),
-            $dto->getStopper()
+            $priority,
+            $weight,
+            $stopper
         );
 
         $self
@@ -175,7 +205,7 @@ abstract class OutgoingRoutingAbstract
             ->setPrefix($dto->getPrefix())
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
@@ -198,16 +228,25 @@ abstract class OutgoingRoutingAbstract
     ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
             ->setType($dto->getType())
-            ->setPriority($dto->getPriority())
-            ->setWeight($dto->getWeight())
+            ->setPriority($priority)
+            ->setWeight($weight)
             ->setRoutingMode($dto->getRoutingMode())
             ->setPrefix($dto->getPrefix())
-            ->setStopper($dto->getStopper())
+            ->setStopper($stopper)
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
@@ -253,12 +292,12 @@ abstract class OutgoingRoutingAbstract
             'forceClid' => self::getForceClid(),
             'clid' => self::getClid(),
             'brandId' => self::getBrand()->getId(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null,
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null,
-            'clidCountryId' => self::getClidCountry() ? self::getClidCountry()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupId' => self::getRoutingPatternGroup()?->getId(),
+            'routingTagId' => self::getRoutingTag()?->getId(),
+            'clidCountryId' => self::getClidCountry()?->getId()
         ];
     }
 

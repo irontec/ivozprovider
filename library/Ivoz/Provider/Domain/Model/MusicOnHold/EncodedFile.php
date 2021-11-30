@@ -13,20 +13,23 @@ use Assert\Assertion;
 final class EncodedFile
 {
     /**
+     * @var ?int
      * column: encodedFileFileSize
      * comment: FSO:keepExtension|storeInBaseFolder
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: encodedFileMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: encodedFileBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
      * Constructor

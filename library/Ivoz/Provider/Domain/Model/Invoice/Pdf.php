@@ -13,20 +13,23 @@ use Assert\Assertion;
 final class Pdf
 {
     /**
+     * @var ?int
      * column: pdfFileFileSize
      * comment: FSO
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: pdfFileMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: pdfFileBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
      * Constructor

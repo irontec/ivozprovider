@@ -20,9 +20,15 @@ abstract class DdiProviderAddressAbstract
 {
     use ChangelogTrait;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
     /**
      * @var DdiProviderInterface
@@ -95,13 +101,15 @@ abstract class DdiProviderAddressAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         $self->initChangelog();
 
@@ -118,10 +126,13 @@ abstract class DdiProviderAddressAbstract
     ): static {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
 
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
+
         $this
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         return $this;
     }

@@ -23,21 +23,30 @@ abstract class BalanceMovementAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var ?float
+     */
     protected $amount = 0;
 
+    /**
+     * @var ?float
+     */
     protected $balance = 0;
 
-    protected $createdOn;
+    /**
+     * @var ?\DateTime
+     */
+    protected $createdOn = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * Constructor
@@ -158,8 +167,8 @@ abstract class BalanceMovementAbstract
             'amount' => self::getAmount(),
             'balance' => self::getBalance(),
             'createdOn' => self::getCreatedOn(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId()
         ];
     }
 
@@ -195,19 +204,17 @@ abstract class BalanceMovementAbstract
         return $this->balance;
     }
 
-    protected function setCreatedOn($createdOn = null): static
+    protected function setCreatedOn(string|\DateTimeInterface|null $createdOn = null): static
     {
         if (!is_null($createdOn)) {
-            Assertion::notNull(
-                $createdOn,
-                'createdOn value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $createdOn = DateTimeHelper::createOrFix(
                 $createdOn,
                 'CURRENT_TIMESTAMP'
             );
 
-            if ($this->createdOn == $createdOn) {
+            if ($this->isInitialized() && $this->createdOn == $createdOn) {
                 return $this;
             }
         }
@@ -217,10 +224,7 @@ abstract class BalanceMovementAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): ?\DateTimeInterface
+    public function getCreatedOn(): ?\DateTime
     {
         return !is_null($this->createdOn) ? clone $this->createdOn : null;
     }

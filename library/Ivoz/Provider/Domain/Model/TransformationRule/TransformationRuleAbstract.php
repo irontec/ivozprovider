@@ -21,23 +21,36 @@ abstract class TransformationRuleAbstract
     use ChangelogTrait;
 
     /**
+     * @var string
      * comment: enum:callerin|calleein|callerout|calleeout
      */
     protected $type;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
-    protected $priority;
-
-    protected $matchExpr;
-
-    protected $replaceExpr;
+    /**
+     * @var ?int
+     */
+    protected $priority = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?string
+     */
+    protected $matchExpr = null;
+
+    /**
+     * @var ?string
+     */
+    protected $replaceExpr = null;
+
+    /**
+     * @var ?TransformationRuleSetInterface
      * inversedBy rules
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
      * Constructor
@@ -108,10 +121,14 @@ abstract class TransformationRuleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getDescription()
+            $type,
+            $description
         );
 
         $self
@@ -135,9 +152,14 @@ abstract class TransformationRuleAbstract
     ): static {
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setDescription($dto->getDescription())
+            ->setType($type)
+            ->setDescription($description)
             ->setPriority($dto->getPriority())
             ->setMatchExpr($dto->getMatchExpr())
             ->setReplaceExpr($dto->getReplaceExpr())
@@ -168,7 +190,7 @@ abstract class TransformationRuleAbstract
             'priority' => self::getPriority(),
             'matchExpr' => self::getMatchExpr(),
             'replaceExpr' => self::getReplaceExpr(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId()
         ];
     }
 

@@ -14,44 +14,44 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $requestId;
-
-    /**
-     * @var string
-     */
-    private $class;
+    private $requestId = null;
 
     /**
      * @var string|null
      */
-    private $method;
+    private $class = null;
+
+    /**
+     * @var string|null
+     */
+    private $method = null;
 
     /**
      * @var array|null
      */
-    private $arguments;
+    private $arguments = null;
 
     /**
      * @var array|null
      */
-    private $agent;
+    private $agent = null;
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
-    private $createdOn;
+    private $createdOn = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $microtime;
+    private $microtime = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -79,6 +79,9 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -197,7 +200,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }

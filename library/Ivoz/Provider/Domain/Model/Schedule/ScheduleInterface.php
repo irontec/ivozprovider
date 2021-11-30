@@ -16,7 +16,7 @@ interface ScheduleInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -46,6 +46,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ScheduleDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -56,14 +57,8 @@ interface ScheduleInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeout(): \DateTimeInterface;
 
     public function getMonday(): ?bool;

@@ -19,10 +19,9 @@ class TpRatingProfile extends TpRatingProfileAbstract implements TpRatingProfile
         return $this->id;
     }
 
-
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

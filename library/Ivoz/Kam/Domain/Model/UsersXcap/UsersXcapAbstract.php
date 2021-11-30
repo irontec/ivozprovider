@@ -18,26 +18,46 @@ abstract class UsersXcapAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $domain;
 
+    /**
+     * @var string
+     */
     protected $doc;
 
     /**
+     * @var int
      * column: doc_type
      */
     protected $docType;
 
+    /**
+     * @var string
+     */
     protected $etag;
 
+    /**
+     * @var int
+     */
     protected $source;
 
     /**
+     * @var string
      * column: doc_uri
      */
     protected $docUri;
 
+    /**
+     * @var int
+     */
     protected $port;
 
     /**
@@ -121,16 +141,32 @@ abstract class UsersXcapAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $doc = $dto->getDoc();
+        Assertion::notNull($doc, 'getDoc value is null, but non null value was expected.');
+        $docType = $dto->getDocType();
+        Assertion::notNull($docType, 'getDocType value is null, but non null value was expected.');
+        $etag = $dto->getEtag();
+        Assertion::notNull($etag, 'getEtag value is null, but non null value was expected.');
+        $source = $dto->getSource();
+        Assertion::notNull($source, 'getSource value is null, but non null value was expected.');
+        $docUri = $dto->getDocUri();
+        Assertion::notNull($docUri, 'getDocUri value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getUsername(),
-            $dto->getDomain(),
-            $dto->getDoc(),
-            $dto->getDocType(),
-            $dto->getEtag(),
-            $dto->getSource(),
-            $dto->getDocUri(),
-            $dto->getPort()
+            $username,
+            $domain,
+            $doc,
+            $docType,
+            $etag,
+            $source,
+            $docUri,
+            $port
         );
 
         ;
@@ -150,15 +186,32 @@ abstract class UsersXcapAbstract
     ): static {
         Assertion::isInstanceOf($dto, UsersXcapDto::class);
 
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $doc = $dto->getDoc();
+        Assertion::notNull($doc, 'getDoc value is null, but non null value was expected.');
+        $docType = $dto->getDocType();
+        Assertion::notNull($docType, 'getDocType value is null, but non null value was expected.');
+        $etag = $dto->getEtag();
+        Assertion::notNull($etag, 'getEtag value is null, but non null value was expected.');
+        $source = $dto->getSource();
+        Assertion::notNull($source, 'getSource value is null, but non null value was expected.');
+        $docUri = $dto->getDocUri();
+        Assertion::notNull($docUri, 'getDocUri value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+
         $this
-            ->setUsername($dto->getUsername())
-            ->setDomain($dto->getDomain())
-            ->setDoc($dto->getDoc())
-            ->setDocType($dto->getDocType())
-            ->setEtag($dto->getEtag())
-            ->setSource($dto->getSource())
-            ->setDocUri($dto->getDocUri())
-            ->setPort($dto->getPort());
+            ->setUsername($username)
+            ->setDomain($domain)
+            ->setDoc($doc)
+            ->setDocType($docType)
+            ->setEtag($etag)
+            ->setSource($source)
+            ->setDocUri($docUri)
+            ->setPort($port);
 
         return $this;
     }

@@ -11,7 +11,7 @@ class ExternalCallFilterWhiteList extends ExternalCallFilterWhiteListAbstract im
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

@@ -26,10 +26,19 @@ abstract class DdiProviderAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var ?bool
+     */
     protected $externallyRated = false;
 
     /**
@@ -38,19 +47,19 @@ abstract class DdiProviderAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var ProxyTrunkInterface | null
+     * @var ?ProxyTrunkInterface
      */
-    protected $proxyTrunk;
+    protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
      * Constructor
@@ -121,15 +130,21 @@ abstract class DdiProviderAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDescription(),
-            $dto->getName()
+            $description,
+            $name
         );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
@@ -149,11 +164,18 @@ abstract class DdiProviderAbstract
     ): static {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDescription($dto->getDescription())
-            ->setName($dto->getName())
+            ->setDescription($description)
+            ->setName($name)
             ->setExternallyRated($dto->getExternallyRated())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
@@ -183,9 +205,9 @@ abstract class DdiProviderAbstract
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
             'brandId' => self::getBrand()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'proxyTrunkId' => self::getProxyTrunk()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
         ];
     }
 

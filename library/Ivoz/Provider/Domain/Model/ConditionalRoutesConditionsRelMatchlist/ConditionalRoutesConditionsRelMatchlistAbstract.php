@@ -23,10 +23,10 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     use ChangelogTrait;
 
     /**
-     * @var ConditionalRoutesConditionInterface | null
+     * @var ?ConditionalRoutesConditionInterface
      * inversedBy relMatchlists
      */
-    protected $condition;
+    protected $condition = null;
 
     /**
      * @var MatchListInterface
@@ -98,12 +98,14 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelMatchlistDto::class);
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     ): static {
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionsRelMatchlistDto::class);
 
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
+
         $this
             ->setCondition($fkTransformer->transform($dto->getCondition()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     protected function __toArray(): array
     {
         return [
-            'conditionId' => self::getCondition() ? self::getCondition()->getId() : null,
+            'conditionId' => self::getCondition()?->getId(),
             'matchlistId' => self::getMatchlist()->getId()
         ];
     }

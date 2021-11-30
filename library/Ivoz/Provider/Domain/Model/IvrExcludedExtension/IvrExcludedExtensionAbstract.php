@@ -23,10 +23,10 @@ abstract class IvrExcludedExtensionAbstract
     use ChangelogTrait;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      * inversedBy excludedExtensions
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
      * @var ExtensionInterface
@@ -98,12 +98,14 @@ abstract class IvrExcludedExtensionAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
+        $extension = $dto->getExtension();
+        Assertion::notNull($extension, 'getExtension value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setIvr($fkTransformer->transform($dto->getIvr()))
-            ->setExtension($fkTransformer->transform($dto->getExtension()));
+            ->setExtension($fkTransformer->transform($extension));
 
         $self->initChangelog();
 
@@ -120,9 +122,12 @@ abstract class IvrExcludedExtensionAbstract
     ): static {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
 
+        $extension = $dto->getExtension();
+        Assertion::notNull($extension, 'getExtension value is null, but non null value was expected.');
+
         $this
             ->setIvr($fkTransformer->transform($dto->getIvr()))
-            ->setExtension($fkTransformer->transform($dto->getExtension()));
+            ->setExtension($fkTransformer->transform($extension));
 
         return $this;
     }
@@ -140,7 +145,7 @@ abstract class IvrExcludedExtensionAbstract
     protected function __toArray(): array
     {
         return [
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
+            'ivrId' => self::getIvr()?->getId(),
             'extensionId' => self::getExtension()->getId()
         ];
     }

@@ -15,7 +15,8 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 interface VoicemailInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -37,6 +38,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param VoicemailDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -109,10 +111,7 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getImapflags(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStamp(): ?\DateTimeInterface;
+    public function getStamp(): ?\DateTime;
 
     public function getUser(): ?UserInterface;
 

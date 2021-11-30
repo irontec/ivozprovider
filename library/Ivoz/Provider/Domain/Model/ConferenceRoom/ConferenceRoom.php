@@ -11,7 +11,7 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

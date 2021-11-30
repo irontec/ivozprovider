@@ -28,16 +28,16 @@ class ProviderRecording extends Fixture implements DependentFixtureInterface
 
         (function () use ($fixture) {
             $this->setCallid('7602fd7f-4153-4475-9100-d89ff70cdf76');
-            $this->setCalldate(new \DateTime('2017-01-05 00:15:15', new \DateTimeZone('UTC')));
+            $this->calldate = new \DateTime('2017-01-05 00:15:15', new \DateTimeZone('UTC'));
             $this->setType('ondemand');
             $this->setDuration(3);
             $this->setCaller('34946002020');
             $this->setCallee('34946002021');
-            $this->setRecordedFile(new RecordedFile(
+            $this->recordedFile = new RecordedFile(
                 4280,
                 'audio/mpeg; charset=binary',
                 '7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3'
-            ));
+            );
             $this->setCompany(
                 $fixture->getReference('_reference_ProviderCompany1')
             );

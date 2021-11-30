@@ -20,11 +20,20 @@ abstract class FixedCostAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
-    protected $description;
+    /**
+     * @var ?string
+     */
+    protected $description = null;
 
-    protected $cost;
+    /**
+     * @var ?float
+     */
+    protected $cost = null;
 
     /**
      * @var BrandInterface
@@ -98,15 +107,19 @@ abstract class FixedCostAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FixedCostDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
             ->setDescription($dto->getDescription())
             ->setCost($dto->getCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -123,11 +136,16 @@ abstract class FixedCostAbstract
     ): static {
         Assertion::isInstanceOf($dto, FixedCostDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription())
             ->setCost($dto->getCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }

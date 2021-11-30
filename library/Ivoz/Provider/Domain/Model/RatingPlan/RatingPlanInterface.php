@@ -27,6 +27,10 @@ interface RatingPlanInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**
@@ -61,6 +65,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RatingPlanDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -73,9 +78,6 @@ interface RatingPlanInterface extends LoggableEntityInterface
 
     public function getTimingType(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface;
 
     public function getMonday(): ?bool;

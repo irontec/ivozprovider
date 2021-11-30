@@ -21,7 +21,7 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -48,6 +48,7 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RecordingDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -58,10 +59,7 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getCallid(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCalldate(): \DateTimeInterface;
+    public function getCalldate(): \DateTime;
 
     public function getType(): string;
 

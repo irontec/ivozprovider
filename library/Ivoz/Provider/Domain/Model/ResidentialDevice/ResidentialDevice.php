@@ -15,7 +15,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

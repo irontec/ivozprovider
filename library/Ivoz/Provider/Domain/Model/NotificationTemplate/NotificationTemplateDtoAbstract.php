@@ -16,29 +16,29 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $type;
+    private $type = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var NotificationTemplateContentDto[] | null
      */
-    private $contents;
+    private $contents = null;
 
     public function __construct($id = null)
     {
@@ -62,6 +62,9 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -117,7 +120,7 @@ abstract class NotificationTemplateDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

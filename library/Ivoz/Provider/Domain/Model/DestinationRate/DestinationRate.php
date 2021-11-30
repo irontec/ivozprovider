@@ -13,7 +13,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

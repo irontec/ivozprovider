@@ -22,20 +22,24 @@ abstract class LocutionAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var ?string
      * comment: enum:pending|encoding|ready|error
      */
-    protected $status;
+    protected $status = null;
 
     /**
-     * @var EncodedFile | null
+     * @var EncodedFile
      */
     protected $encodedFile;
 
     /**
-     * @var OriginalFile | null
+     * @var OriginalFile
      */
     protected $originalFile;
 
@@ -53,8 +57,8 @@ abstract class LocutionAbstract
         OriginalFile $originalFile
     ) {
         $this->setName($name);
-        $this->setEncodedFile($encodedFile);
-        $this->setOriginalFile($originalFile);
+        $this->encodedFile = $encodedFile;
+        $this->originalFile = $originalFile;
     }
 
     abstract public function getId(): null|string|int;
@@ -115,6 +119,10 @@ abstract class LocutionAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, LocutionDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $encodedFile = new EncodedFile(
             $dto->getEncodedFileFileSize(),
@@ -129,14 +137,14 @@ abstract class LocutionAbstract
         );
 
         $self = new static(
-            $dto->getName(),
+            $name,
             $encodedFile,
             $originalFile
         );
 
         $self
             ->setStatus($dto->getStatus())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -153,6 +161,11 @@ abstract class LocutionAbstract
     ): static {
         Assertion::isInstanceOf($dto, LocutionDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $encodedFile = new EncodedFile(
             $dto->getEncodedFileFileSize(),
             $dto->getEncodedFileMimeType(),
@@ -166,11 +179,11 @@ abstract class LocutionAbstract
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setStatus($dto->getStatus())
             ->setEncodedFile($encodedFile)
             ->setOriginalFile($originalFile)
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
@@ -254,7 +267,7 @@ abstract class LocutionAbstract
 
     protected function setEncodedFile(EncodedFile $encodedFile): static
     {
-        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
+        $isEqual = $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
             return $this;
         }
@@ -270,7 +283,7 @@ abstract class LocutionAbstract
 
     protected function setOriginalFile(OriginalFile $originalFile): static
     {
-        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
+        $isEqual = $this->originalFile->equals($originalFile);
         if ($isEqual) {
             return $this;
         }

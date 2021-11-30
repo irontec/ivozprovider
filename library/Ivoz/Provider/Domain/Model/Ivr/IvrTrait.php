@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface;
 
@@ -17,18 +19,18 @@ use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterfac
 trait IvrTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, IvrEntryInterface> & Selectable<array-key, IvrEntryInterface>
      * IvrEntryInterface mappedBy ivr
      */
     protected $entries;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, IvrExcludedExtensionInterface> & Selectable<array-key, IvrExcludedExtensionInterface>
      * IvrExcludedExtensionInterface mappedBy ivr
      * orphanRemoval
      */
@@ -49,6 +51,7 @@ trait IvrTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param IvrDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -56,20 +59,24 @@ trait IvrTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getEntries())) {
-            $self->replaceEntries(
-                $fkTransformer->transformCollection(
-                    $dto->getEntries()
-                )
+        $entries = $dto->getEntries();
+        if (!is_null($entries)) {
+
+            /** @var Collection<array-key, IvrEntryInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $entries
             );
+            $self->replaceEntries($replacement);
         }
 
-        if (!is_null($dto->getExcludedExtensions())) {
-            $self->replaceExcludedExtensions(
-                $fkTransformer->transformCollection(
-                    $dto->getExcludedExtensions()
-                )
+        $excludedExtensions = $dto->getExcludedExtensions();
+        if (!is_null($excludedExtensions)) {
+
+            /** @var Collection<array-key, IvrExcludedExtensionInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $excludedExtensions
             );
+            $self->replaceExcludedExtensions($replacement);
         }
 
         $self->sanitizeValues();
@@ -83,26 +90,31 @@ trait IvrTrait
 
     /**
      * @internal use EntityTools instead
+     * @param IvrDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getEntries())) {
-            $this->replaceEntries(
-                $fkTransformer->transformCollection(
-                    $dto->getEntries()
-                )
+        $entries = $dto->getEntries();
+        if (!is_null($entries)) {
+
+            /** @var Collection<array-key, IvrEntryInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $entries
             );
+            $this->replaceEntries($replacement);
         }
 
-        if (!is_null($dto->getExcludedExtensions())) {
-            $this->replaceExcludedExtensions(
-                $fkTransformer->transformCollection(
-                    $dto->getExcludedExtensions()
-                )
+        $excludedExtensions = $dto->getExcludedExtensions();
+        if (!is_null($excludedExtensions)) {
+
+            /** @var Collection<array-key, IvrExcludedExtensionInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $excludedExtensions
             );
+            $this->replaceExcludedExtensions($replacement);
         }
         $this->sanitizeValues();
 
@@ -140,25 +152,33 @@ trait IvrTrait
         return $this;
     }
 
-    public function replaceEntries(ArrayCollection $entries): IvrInterface
+    /**
+     * @param Collection<array-key, IvrEntryInterface> $entries
+     */
+    public function replaceEntries(Collection $entries): IvrInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($entries as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setIvr($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->entries as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->entries->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->entries->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->entries->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -191,25 +211,33 @@ trait IvrTrait
         return $this;
     }
 
-    public function replaceExcludedExtensions(ArrayCollection $excludedExtensions): IvrInterface
+    /**
+     * @param Collection<array-key, IvrExcludedExtensionInterface> $excludedExtensions
+     */
+    public function replaceExcludedExtensions(Collection $excludedExtensions): IvrInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($excludedExtensions as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setIvr($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->excludedExtensions as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->excludedExtensions->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->excludedExtensions->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->excludedExtensions->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

@@ -15,32 +15,32 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $loadid = 'DATABASE';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $direction = '*out';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tenant;
+    private $tenant = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $category = 'call';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $account = '*any';
 
@@ -55,104 +55,104 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
     private $destinationIds = '*any';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $runid = 'carrier';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $runFilters = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $reqTypeField = '^*postpaid';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directionField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tenantField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $categoryField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $accountField = 'carrierId';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $subjectField = 'carrierId';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $destinationField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $setupTimeField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $pddField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $answerTimeField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $usageField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $supplierField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disconnectCauseField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ratedTimeField = '*default';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $costField = '*default';
 
     /**
-     * @var \DateTimeInterface|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     public function __construct($id = null)
     {
@@ -200,6 +200,9 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -566,7 +569,7 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

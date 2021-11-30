@@ -23,28 +23,41 @@ abstract class BannedAddressAbstract
 {
     use ChangelogTrait;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
     /**
+     * @var ?string
      * comment: enum:antiflood|ipfilter|antibruteforce
      */
-    protected $blocker;
-
-    protected $aor;
-
-    protected $description;
-
-    protected $lastTimeBanned;
+    protected $blocker = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $aor = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?string
      */
-    protected $company;
+    protected $description = null;
+
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastTimeBanned = null;
+
+    /**
+     * @var ?BrandInterface
+     */
+    protected $brand = null;
+
+    /**
+     * @var ?CompanyInterface
+     */
+    protected $company = null;
 
     /**
      * Constructor
@@ -173,8 +186,8 @@ abstract class BannedAddressAbstract
             'aor' => self::getAor(),
             'description' => self::getDescription(),
             'lastTimeBanned' => self::getLastTimeBanned(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -251,19 +264,17 @@ abstract class BannedAddressAbstract
         return $this->description;
     }
 
-    protected function setLastTimeBanned($lastTimeBanned = null): static
+    protected function setLastTimeBanned(string|\DateTimeInterface|null $lastTimeBanned = null): static
     {
         if (!is_null($lastTimeBanned)) {
-            Assertion::notNull(
-                $lastTimeBanned,
-                'lastTimeBanned value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastTimeBanned = DateTimeHelper::createOrFix(
                 $lastTimeBanned,
                 null
             );
 
-            if ($this->lastTimeBanned == $lastTimeBanned) {
+            if ($this->isInitialized() && $this->lastTimeBanned == $lastTimeBanned) {
                 return $this;
             }
         }
@@ -273,10 +284,7 @@ abstract class BannedAddressAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastTimeBanned(): ?\DateTimeInterface
+    public function getLastTimeBanned(): ?\DateTime
     {
         return !is_null($this->lastTimeBanned) ? clone $this->lastTimeBanned : null;
     }

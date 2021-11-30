@@ -25,26 +25,35 @@ abstract class BalanceNotificationAbstract
 {
     use ChangelogTrait;
 
-    protected $toAddress;
+    /**
+     * @var ?string
+     */
+    protected $toAddress = null;
 
+    /**
+     * @var ?float
+     */
     protected $threshold = 0;
 
-    protected $lastSent;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastSent = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $notificationTemplate;
+    protected $notificationTemplate = null;
 
     /**
      * Constructor
@@ -168,9 +177,9 @@ abstract class BalanceNotificationAbstract
             'toAddress' => self::getToAddress(),
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'notificationTemplateId' => self::getNotificationTemplate()?->getId()
         ];
     }
 
@@ -206,19 +215,17 @@ abstract class BalanceNotificationAbstract
         return $this->threshold;
     }
 
-    protected function setLastSent($lastSent = null): static
+    protected function setLastSent(string|\DateTimeInterface|null $lastSent = null): static
     {
         if (!is_null($lastSent)) {
-            Assertion::notNull(
-                $lastSent,
-                'lastSent value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null
             );
 
-            if ($this->lastSent == $lastSent) {
+            if ($this->isInitialized() && $this->lastSent == $lastSent) {
                 return $this;
             }
         }
@@ -228,10 +235,7 @@ abstract class BalanceNotificationAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastSent(): ?\DateTimeInterface
+    public function getLastSent(): ?\DateTime
     {
         return !is_null($this->lastSent) ? clone $this->lastSent : null;
     }

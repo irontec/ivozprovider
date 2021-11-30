@@ -16,69 +16,69 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $context;
-
-    /**
-     * @var string
-     */
-    private $mailbox;
+    private $context = null;
 
     /**
      * @var string|null
      */
-    private $password;
+    private $mailbox = null;
 
     /**
      * @var string|null
      */
-    private $fullname;
+    private $password = null;
 
     /**
      * @var string|null
      */
-    private $alias;
+    private $fullname = null;
 
     /**
      * @var string|null
      */
-    private $email;
+    private $alias = null;
 
     /**
      * @var string|null
      */
-    private $pager;
+    private $email = null;
 
     /**
      * @var string|null
      */
-    private $attach;
+    private $pager = null;
 
     /**
      * @var string|null
      */
-    private $attachfmt;
+    private $attach = null;
 
     /**
      * @var string|null
      */
-    private $serveremail;
+    private $attachfmt = null;
 
     /**
      * @var string|null
      */
-    private $language;
+    private $serveremail = null;
 
     /**
      * @var string|null
      */
-    private $tz;
+    private $language = null;
 
     /**
      * @var string|null
      */
-    private $deleteVoicemail;
+    private $tz = null;
+
+    /**
+     * @var string|null
+     */
+    private $deleteVoicemail = null;
 
     /**
      * @var string|null
@@ -88,112 +88,112 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $sendVoicemail;
+    private $sendVoicemail = null;
 
     /**
      * @var string|null
      */
-    private $review;
+    private $review = null;
 
     /**
      * @var string|null
      */
-    private $tempgreetwarn;
+    private $tempgreetwarn = null;
 
     /**
      * @var string|null
      */
-    private $operator;
+    private $operator = null;
 
     /**
      * @var string|null
      */
-    private $envelope;
+    private $envelope = null;
 
     /**
      * @var int|null
      */
-    private $sayduration;
+    private $sayduration = null;
 
     /**
      * @var string|null
      */
-    private $forcename;
+    private $forcename = null;
 
     /**
      * @var string|null
      */
-    private $forcegreetings;
+    private $forcegreetings = null;
 
     /**
      * @var string|null
      */
-    private $callback;
+    private $callback = null;
 
     /**
      * @var string|null
      */
-    private $dialout;
+    private $dialout = null;
 
     /**
      * @var string|null
      */
-    private $exitcontext;
+    private $exitcontext = null;
 
     /**
      * @var int|null
      */
-    private $maxmsg;
+    private $maxmsg = null;
 
     /**
      * @var float|null
      */
-    private $volgain;
+    private $volgain = null;
 
     /**
      * @var string|null
      */
-    private $imapuser;
+    private $imapuser = null;
 
     /**
      * @var string|null
      */
-    private $imappassword;
+    private $imappassword = null;
 
     /**
      * @var string|null
      */
-    private $imapserver;
+    private $imapserver = null;
 
     /**
      * @var string|null
      */
-    private $imapport;
+    private $imapport = null;
 
     /**
      * @var string|null
      */
-    private $imapflags;
+    private $imapflags = null;
 
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $stamp;
+    private $stamp = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     public function __construct($id = null)
     {
@@ -249,6 +249,9 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -707,7 +710,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -37,7 +37,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -74,6 +74,7 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CallCsvSchedulerDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -87,17 +88,11 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     public function getEmail(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastExecution(): ?\DateTimeInterface;
+    public function getLastExecution(): ?\DateTime;
 
     public function getLastExecutionError(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getNextExecution(): ?\DateTimeInterface;
+    public function getNextExecution(): ?\DateTime;
 
     public function getBrand(): ?BrandInterface;
 

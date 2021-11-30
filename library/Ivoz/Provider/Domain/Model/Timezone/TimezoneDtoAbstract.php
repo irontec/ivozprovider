@@ -15,9 +15,9 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tz;
+    private $tz = null;
 
     /**
      * @var string|null
@@ -25,34 +25,34 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     private $comment = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelIt = '';
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     public function __construct($id = null)
     {
@@ -82,6 +82,9 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -142,7 +145,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

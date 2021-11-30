@@ -13,7 +13,10 @@ use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 */
 interface TpRatingPlanInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array;
 
     /**
@@ -34,6 +37,7 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpRatingPlanDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -52,10 +56,7 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
 
     public function getWeight(): float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface;
+    public function getCreatedAt(): \DateTime;
 
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 

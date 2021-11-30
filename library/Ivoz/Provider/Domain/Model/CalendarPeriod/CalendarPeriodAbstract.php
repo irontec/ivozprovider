@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -29,16 +28,26 @@ abstract class CalendarPeriodAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $startDate;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $endDate;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
      */
-    protected $routeType;
+    protected $routeType = null;
 
-    protected $numberValue;
+    /**
+     * @var ?string
+     */
+    protected $numberValue = null;
 
     /**
      * @var CalendarInterface
@@ -47,31 +56,31 @@ abstract class CalendarPeriodAbstract
     protected $calendar;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $locution;
+    protected $locution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $voiceMailUser;
+    protected $voiceMailUser = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        \DateTimeInterface|string $startDate,
-        \DateTimeInterface|string $endDate
+        \DateTimeInterface $startDate,
+        \DateTimeInterface $endDate
     ) {
         $this->setStartDate($startDate);
         $this->setEndDate($endDate);
@@ -135,16 +144,22 @@ abstract class CalendarPeriodAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodDto::class);
+        $startDate = $dto->getStartDate();
+        Assertion::notNull($startDate, 'getStartDate value is null, but non null value was expected.');
+        $endDate = $dto->getEndDate();
+        Assertion::notNull($endDate, 'getEndDate value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartDate(),
-            $dto->getEndDate()
+            $startDate,
+            $endDate
         );
 
         $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -165,12 +180,19 @@ abstract class CalendarPeriodAbstract
     ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodDto::class);
 
+        $startDate = $dto->getStartDate();
+        Assertion::notNull($startDate, 'getStartDate value is null, but non null value was expected.');
+        $endDate = $dto->getEndDate();
+        Assertion::notNull($endDate, 'getEndDate value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
+
         $this
-            ->setStartDate($dto->getStartDate())
-            ->setEndDate($dto->getEndDate())
+            ->setStartDate($startDate)
+            ->setEndDate($endDate)
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
@@ -204,41 +226,35 @@ abstract class CalendarPeriodAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'calendarId' => self::getCalendar()->getId(),
-            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'locutionId' => self::getLocution()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 
-    protected function setStartDate($startDate): static
+    protected function setStartDate(\DateTimeInterface $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getStartDate(): \DateTimeInterface
     {
-        return clone $this->startDate;
+        return $this->startDate;
     }
 
-    protected function setEndDate($endDate): static
+    protected function setEndDate(\DateTimeInterface $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getEndDate(): \DateTimeInterface
     {
-        return clone $this->endDate;
+        return $this->endDate;
     }
 
     protected function setRouteType(?string $routeType = null): static

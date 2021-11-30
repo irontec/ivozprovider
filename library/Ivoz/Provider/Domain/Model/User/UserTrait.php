@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -18,25 +20,25 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 trait UserTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, PickUpRelUserInterface> & Selectable<array-key, PickUpRelUserInterface>
      * PickUpRelUserInterface mappedBy user
      * orphanRemoval
      */
     protected $pickUpRelUsers;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, QueueMemberInterface> & Selectable<array-key, QueueMemberInterface>
      * QueueMemberInterface mappedBy user
      */
     protected $queueMembers;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CallForwardSettingInterface> & Selectable<array-key, CallForwardSettingInterface>
      * CallForwardSettingInterface mappedBy user
      */
     protected $callForwardSettings;
@@ -57,6 +59,7 @@ trait UserTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UserDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -64,28 +67,34 @@ trait UserTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPickUpRelUsers())) {
-            $self->replacePickUpRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getPickUpRelUsers()
-                )
+        $pickUpRelUsers = $dto->getPickUpRelUsers();
+        if (!is_null($pickUpRelUsers)) {
+
+            /** @var Collection<array-key, PickUpRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $pickUpRelUsers
             );
+            $self->replacePickUpRelUsers($replacement);
         }
 
-        if (!is_null($dto->getQueueMembers())) {
-            $self->replaceQueueMembers(
-                $fkTransformer->transformCollection(
-                    $dto->getQueueMembers()
-                )
+        $queueMembers = $dto->getQueueMembers();
+        if (!is_null($queueMembers)) {
+
+            /** @var Collection<array-key, QueueMemberInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $queueMembers
             );
+            $self->replaceQueueMembers($replacement);
         }
 
-        if (!is_null($dto->getCallForwardSettings())) {
-            $self->replaceCallForwardSettings(
-                $fkTransformer->transformCollection(
-                    $dto->getCallForwardSettings()
-                )
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
             );
+            $self->replaceCallForwardSettings($replacement);
         }
 
         $self->sanitizeValues();
@@ -99,34 +108,41 @@ trait UserTrait
 
     /**
      * @internal use EntityTools instead
+     * @param UserDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPickUpRelUsers())) {
-            $this->replacePickUpRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getPickUpRelUsers()
-                )
+        $pickUpRelUsers = $dto->getPickUpRelUsers();
+        if (!is_null($pickUpRelUsers)) {
+
+            /** @var Collection<array-key, PickUpRelUserInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $pickUpRelUsers
             );
+            $this->replacePickUpRelUsers($replacement);
         }
 
-        if (!is_null($dto->getQueueMembers())) {
-            $this->replaceQueueMembers(
-                $fkTransformer->transformCollection(
-                    $dto->getQueueMembers()
-                )
+        $queueMembers = $dto->getQueueMembers();
+        if (!is_null($queueMembers)) {
+
+            /** @var Collection<array-key, QueueMemberInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $queueMembers
             );
+            $this->replaceQueueMembers($replacement);
         }
 
-        if (!is_null($dto->getCallForwardSettings())) {
-            $this->replaceCallForwardSettings(
-                $fkTransformer->transformCollection(
-                    $dto->getCallForwardSettings()
-                )
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
             );
+            $this->replaceCallForwardSettings($replacement);
         }
         $this->sanitizeValues();
 
@@ -164,25 +180,33 @@ trait UserTrait
         return $this;
     }
 
-    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface
+    /**
+     * @param Collection<array-key, PickUpRelUserInterface> $pickUpRelUsers
+     */
+    public function replacePickUpRelUsers(Collection $pickUpRelUsers): UserInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($pickUpRelUsers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->pickUpRelUsers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->pickUpRelUsers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->pickUpRelUsers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->pickUpRelUsers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -215,25 +239,33 @@ trait UserTrait
         return $this;
     }
 
-    public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface
+    /**
+     * @param Collection<array-key, QueueMemberInterface> $queueMembers
+     */
+    public function replaceQueueMembers(Collection $queueMembers): UserInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($queueMembers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->queueMembers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->queueMembers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->queueMembers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->queueMembers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -266,25 +298,33 @@ trait UserTrait
         return $this;
     }
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): UserInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($callForwardSettings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->callForwardSettings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->callForwardSettings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->callForwardSettings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->callForwardSettings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

@@ -37,7 +37,7 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -59,6 +59,7 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BillableCallHistoricDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -69,10 +70,7 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
 
     public function getCallid(): ?string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getStartTime(): ?\DateTimeInterface;
+    public function getStartTime(): ?\DateTime;
 
     public function getDuration(): float;
 

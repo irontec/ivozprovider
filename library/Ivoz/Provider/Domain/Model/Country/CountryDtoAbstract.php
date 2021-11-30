@@ -14,57 +14,57 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $code = '';
 
     /**
      * @var string|null
      */
-    private $countryCode;
+    private $countryCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneIt = '';
 
@@ -101,6 +101,9 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -166,7 +169,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

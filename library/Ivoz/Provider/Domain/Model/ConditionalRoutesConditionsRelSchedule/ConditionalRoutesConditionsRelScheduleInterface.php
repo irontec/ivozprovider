@@ -16,7 +16,7 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -38,6 +38,7 @@ interface ConditionalRoutesConditionsRelScheduleInterface extends LoggableEntity
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ConditionalRoutesConditionsRelScheduleDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

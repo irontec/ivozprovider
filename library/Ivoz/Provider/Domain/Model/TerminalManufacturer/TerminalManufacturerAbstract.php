@@ -18,10 +18,19 @@ abstract class TerminalManufacturerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $name = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
@@ -95,11 +104,17 @@ abstract class TerminalManufacturerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getName(),
-            $dto->getDescription()
+            $iden,
+            $name,
+            $description
         );
 
         ;
@@ -119,10 +134,17 @@ abstract class TerminalManufacturerAbstract
     ): static {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+
         $this
-            ->setIden($dto->getIden())
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription());
+            ->setIden($iden)
+            ->setName($name)
+            ->setDescription($description);
 
         return $this;
     }

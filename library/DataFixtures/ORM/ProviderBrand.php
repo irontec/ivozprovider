@@ -28,9 +28,10 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
             $this->setName("DemoBrand");
             $this->setDomainUsers("");
             $this->setRecordingsLimitEmail("");
+            $this->setRecordingsLimitMB(0);
             $this->setMaxCalls(0);
-            $this->setLogo(new Logo(null, null, null));
-            $this->setInvoice(new Invoice('', '', '', '', '', '', ''));
+            $this->logo = new Logo(null, null, null);
+            $this->invoice = new Invoice('', '', '', '', '', '', '');
             $this->setDomain($fixture->getReference('_reference_ProviderDomain6'));
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
@@ -45,9 +46,10 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setName("Irontec_e2e");
             $this->setDomainUsers("sip.irontec.com");
+            $this->setRecordingsLimitMB(0);
             $this->setMaxCalls(0);
-            $this->setLogo(new Logo(null, null, null));
-            $this->setInvoice(new Invoice('', '', '', '', '', '', ''));
+            $this->logo = new Logo(null, null, null);
+            $this->invoice = new Invoice('', '', '', '', '', '', '');
             $this->setDomain($fixture->getReference('_reference_ProviderDomain4'));
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));

@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,7 +19,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -51,6 +51,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TransformationRuleSetDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -83,7 +84,10 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
 
     public function removeRule(TransformationRuleInterface $rule): TransformationRuleSetInterface;
 
-    public function replaceRules(ArrayCollection $rules): TransformationRuleSetInterface;
+    /**
+     * @param Collection<array-key, TransformationRuleInterface> $rules
+     */
+    public function replaceRules(Collection $rules): TransformationRuleSetInterface;
 
     public function getRules(?Criteria $criteria = null): array;
 }

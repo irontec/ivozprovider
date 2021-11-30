@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait CurrencyTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait CurrencyTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param CurrencyDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait CurrencyTrait
 
     /**
      * @internal use EntityTools instead
+     * @param CurrencyDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

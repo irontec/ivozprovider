@@ -15,7 +15,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

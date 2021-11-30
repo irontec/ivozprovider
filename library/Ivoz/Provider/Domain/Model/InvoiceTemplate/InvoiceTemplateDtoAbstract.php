@@ -15,39 +15,39 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $template;
+    private $description = null;
 
     /**
      * @var string|null
      */
-    private $templateHeader;
+    private $template = null;
 
     /**
      * @var string|null
      */
-    private $templateFooter;
+    private $templateHeader = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $templateFooter = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     public function __construct($id = null)
     {
@@ -74,6 +74,9 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -167,7 +170,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

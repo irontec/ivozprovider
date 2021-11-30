@@ -15,34 +15,34 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $pinProtected = false;
 
     /**
      * @var string|null
      */
-    private $pinCode;
+    private $pinCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxMembers = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -68,6 +68,9 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -148,7 +151,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

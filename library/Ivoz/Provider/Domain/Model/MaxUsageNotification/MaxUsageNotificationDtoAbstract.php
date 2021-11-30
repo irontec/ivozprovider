@@ -18,7 +18,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     /**
      * @var string|null
      */
-    private $toAddress;
+    private $toAddress = null;
 
     /**
      * @var float|null
@@ -28,22 +28,22 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $lastSent;
+    private $lastSent = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $notificationTemplate;
+    private $notificationTemplate = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -69,6 +69,9 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -137,7 +140,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

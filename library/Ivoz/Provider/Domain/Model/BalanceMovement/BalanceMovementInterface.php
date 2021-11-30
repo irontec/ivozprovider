@@ -16,7 +16,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -38,6 +38,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param BalanceMovementDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -50,10 +51,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
 
     public function getBalance(): ?float;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedOn(): ?\DateTimeInterface;
+    public function getCreatedOn(): ?\DateTime;
 
     public function getCompany(): ?CompanyInterface;
 

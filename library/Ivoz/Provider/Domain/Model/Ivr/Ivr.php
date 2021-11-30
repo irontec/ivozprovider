@@ -17,7 +17,7 @@ class Ivr extends IvrAbstract implements IvrInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

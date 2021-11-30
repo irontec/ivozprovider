@@ -24,14 +24,14 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var bool|null
@@ -49,59 +49,59 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $calculateCost = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var ProxyTrunkDto | null
      */
-    private $proxyTrunk;
+    private $proxyTrunk = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets;
+    private $mediaRelaySets = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     /**
      * @var OutgoingRoutingRelCarrierDto[] | null
      */
-    private $outgoingRoutingsRelCarriers;
+    private $outgoingRoutingsRelCarriers = null;
 
     /**
      * @var CarrierServerDto[] | null
      */
-    private $servers;
+    private $servers = null;
 
     /**
      * @var RatingProfileDto[] | null
      */
-    private $ratingProfiles;
+    private $ratingProfiles = null;
 
     /**
      * @var TpCdrStatDto[] | null
      */
-    private $tpCdrStats;
+    private $tpCdrStats = null;
 
     public function __construct($id = null)
     {
@@ -132,6 +132,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -234,7 +237,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

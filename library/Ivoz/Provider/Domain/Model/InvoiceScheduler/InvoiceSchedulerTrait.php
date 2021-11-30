@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait InvoiceSchedulerTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FixedCostsRelInvoiceSchedulerInterface> & Selectable<array-key, FixedCostsRelInvoiceSchedulerInterface>
      * FixedCostsRelInvoiceSchedulerInterface mappedBy invoiceScheduler
      * orphanRemoval
      */
@@ -41,6 +43,7 @@ trait InvoiceSchedulerTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param InvoiceSchedulerDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -48,12 +51,14 @@ trait InvoiceSchedulerTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelFixedCosts())) {
-            $self->replaceRelFixedCosts(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFixedCosts()
-                )
+        $relFixedCosts = $dto->getRelFixedCosts();
+        if (!is_null($relFixedCosts)) {
+
+            /** @var Collection<array-key, FixedCostsRelInvoiceSchedulerInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFixedCosts
             );
+            $self->replaceRelFixedCosts($replacement);
         }
 
         $self->sanitizeValues();
@@ -67,18 +72,21 @@ trait InvoiceSchedulerTrait
 
     /**
      * @internal use EntityTools instead
+     * @param InvoiceSchedulerDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelFixedCosts())) {
-            $this->replaceRelFixedCosts(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFixedCosts()
-                )
+        $relFixedCosts = $dto->getRelFixedCosts();
+        if (!is_null($relFixedCosts)) {
+
+            /** @var Collection<array-key, FixedCostsRelInvoiceSchedulerInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFixedCosts
             );
+            $this->replaceRelFixedCosts($replacement);
         }
         $this->sanitizeValues();
 
@@ -116,25 +124,33 @@ trait InvoiceSchedulerTrait
         return $this;
     }
 
-    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceSchedulerInterface
+    /**
+     * @param Collection<array-key, FixedCostsRelInvoiceSchedulerInterface> $relFixedCosts
+     */
+    public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceSchedulerInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relFixedCosts as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setInvoiceScheduler($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relFixedCosts as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relFixedCosts->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relFixedCosts->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relFixedCosts->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {

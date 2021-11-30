@@ -22,6 +22,9 @@ abstract class CompanyServiceAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $code;
 
     /**
@@ -102,14 +105,20 @@ abstract class CompanyServiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCode()
+            $code
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setCompany($fkTransformer->transform($company))
+            ->setService($fkTransformer->transform($service));
 
         $self->initChangelog();
 
@@ -126,10 +135,17 @@ abstract class CompanyServiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
+
         $this
-            ->setCode($dto->getCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setCode($code)
+            ->setCompany($fkTransformer->transform($company))
+            ->setService($fkTransformer->transform($service));
 
         return $this;
     }

@@ -27,19 +27,22 @@ abstract class RatingProfileAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var \DateTime
+     */
     protected $activationTime;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy ratingProfiles
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      * inversedBy ratingProfiles
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * @var RatingPlanGroupInterface
@@ -47,9 +50,9 @@ abstract class RatingProfileAbstract
     protected $ratingPlanGroup;
 
     /**
-     * @var RoutingTagInterface | null
+     * @var ?RoutingTagInterface
      */
-    protected $routingTag;
+    protected $routingTag = null;
 
     /**
      * Constructor
@@ -118,15 +121,19 @@ abstract class RatingProfileAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getActivationTime()
+            $activationTime
         );
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         $self->initChangelog();
@@ -144,11 +151,16 @@ abstract class RatingProfileAbstract
     ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+
         $this
-            ->setActivationTime($dto->getActivationTime())
+            ->setActivationTime($activationTime)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         return $this;
@@ -171,22 +183,23 @@ abstract class RatingProfileAbstract
     {
         return [
             'activationTime' => self::getActivationTime(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
             'ratingPlanGroupId' => self::getRatingPlanGroup()->getId(),
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
+            'routingTagId' => self::getRoutingTag()?->getId()
         ];
     }
 
-    protected function setActivationTime($activationTime): static
+    protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
+        /** @var \Datetime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->activationTime == $activationTime) {
+        if ($this->isInitialized() && $this->activationTime == $activationTime) {
             return $this;
         }
 
@@ -195,10 +208,7 @@ abstract class RatingProfileAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getActivationTime(): \DateTimeInterface
+    public function getActivationTime(): \DateTime
     {
         return clone $this->activationTime;
     }

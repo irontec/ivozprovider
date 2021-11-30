@@ -16,34 +16,34 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $number;
+    private $number = null;
 
     /**
      * @var string|null
      */
-    private $numberE164;
+    private $numberE164 = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $disableCDR = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     public function __construct($id = null)
     {
@@ -69,6 +69,9 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -137,7 +140,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

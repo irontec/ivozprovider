@@ -22,12 +22,24 @@ abstract class AdministratorRelPublicEntityAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var bool
+     */
     protected $create = false;
 
+    /**
+     * @var bool
+     */
     protected $read = true;
 
+    /**
+     * @var bool
+     */
     protected $update = false;
 
+    /**
+     * @var bool
+     */
     protected $delete = false;
 
     /**
@@ -114,17 +126,29 @@ abstract class AdministratorRelPublicEntityAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, AdministratorRelPublicEntityDto::class);
+        $create = $dto->getCreate();
+        Assertion::notNull($create, 'getCreate value is null, but non null value was expected.');
+        $read = $dto->getRead();
+        Assertion::notNull($read, 'getRead value is null, but non null value was expected.');
+        $update = $dto->getUpdate();
+        Assertion::notNull($update, 'getUpdate value is null, but non null value was expected.');
+        $delete = $dto->getDelete();
+        Assertion::notNull($delete, 'getDelete value is null, but non null value was expected.');
+        $administrator = $dto->getAdministrator();
+        Assertion::notNull($administrator, 'getAdministrator value is null, but non null value was expected.');
+        $publicEntity = $dto->getPublicEntity();
+        Assertion::notNull($publicEntity, 'getPublicEntity value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCreate(),
-            $dto->getRead(),
-            $dto->getUpdate(),
-            $dto->getDelete()
+            $create,
+            $read,
+            $update,
+            $delete
         );
 
         $self
-            ->setAdministrator($fkTransformer->transform($dto->getAdministrator()))
-            ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()));
+            ->setAdministrator($fkTransformer->transform($administrator))
+            ->setPublicEntity($fkTransformer->transform($publicEntity));
 
         $self->initChangelog();
 
@@ -141,13 +165,26 @@ abstract class AdministratorRelPublicEntityAbstract
     ): static {
         Assertion::isInstanceOf($dto, AdministratorRelPublicEntityDto::class);
 
+        $create = $dto->getCreate();
+        Assertion::notNull($create, 'getCreate value is null, but non null value was expected.');
+        $read = $dto->getRead();
+        Assertion::notNull($read, 'getRead value is null, but non null value was expected.');
+        $update = $dto->getUpdate();
+        Assertion::notNull($update, 'getUpdate value is null, but non null value was expected.');
+        $delete = $dto->getDelete();
+        Assertion::notNull($delete, 'getDelete value is null, but non null value was expected.');
+        $administrator = $dto->getAdministrator();
+        Assertion::notNull($administrator, 'getAdministrator value is null, but non null value was expected.');
+        $publicEntity = $dto->getPublicEntity();
+        Assertion::notNull($publicEntity, 'getPublicEntity value is null, but non null value was expected.');
+
         $this
-            ->setCreate($dto->getCreate())
-            ->setRead($dto->getRead())
-            ->setUpdate($dto->getUpdate())
-            ->setDelete($dto->getDelete())
-            ->setAdministrator($fkTransformer->transform($dto->getAdministrator()))
-            ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()));
+            ->setCreate($create)
+            ->setRead($read)
+            ->setUpdate($update)
+            ->setDelete($delete)
+            ->setAdministrator($fkTransformer->transform($administrator))
+            ->setPublicEntity($fkTransformer->transform($publicEntity));
 
         return $this;
     }

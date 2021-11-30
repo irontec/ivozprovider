@@ -13,21 +13,25 @@ use Assert\Assertion;
 final class Label
 {
     /**
+     * @var string
      * column: timeZoneLabel_en
      */
     private $en = '';
 
     /**
+     * @var string
      * column: timeZoneLabel_es
      */
     private $es = '';
 
     /**
+     * @var string
      * column: timeZoneLabel_ca
      */
     private $ca = '';
 
     /**
+     * @var string
      * column: timeZoneLabel_it
      */
     private $it = '';

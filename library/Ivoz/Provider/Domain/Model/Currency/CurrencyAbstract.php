@@ -19,12 +19,18 @@ abstract class CurrencyAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $symbol;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -38,7 +44,7 @@ abstract class CurrencyAbstract
     ) {
         $this->setIden($iden);
         $this->setSymbol($symbol);
-        $this->setName($name);
+        $this->name = $name;
     }
 
     abstract public function getId(): null|string|int;
@@ -99,6 +105,10 @@ abstract class CurrencyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $symbol = $dto->getSymbol();
+        Assertion::notNull($symbol, 'getSymbol value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -108,8 +118,8 @@ abstract class CurrencyAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getSymbol(),
+            $iden,
+            $symbol,
             $name
         );
 
@@ -130,6 +140,11 @@ abstract class CurrencyAbstract
     ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $symbol = $dto->getSymbol();
+        Assertion::notNull($symbol, 'getSymbol value is null, but non null value was expected.');
+
         $name = new Name(
             $dto->getNameEn(),
             $dto->getNameEs(),
@@ -138,8 +153,8 @@ abstract class CurrencyAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
-            ->setSymbol($dto->getSymbol())
+            ->setIden($iden)
+            ->setSymbol($symbol)
             ->setName($name);
 
         return $this;
@@ -206,7 +221,7 @@ abstract class CurrencyAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

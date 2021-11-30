@@ -37,37 +37,37 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type = 'vpbx';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $domainUsers;
+    private $domainUsers = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nif;
+    private $nif = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $distributeMethod = 'hash';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxCalls = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxDailyUsage = 1000000;
 
@@ -79,32 +79,32 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $maxDailyUsageEmail;
+    private $maxDailyUsageEmail = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $postalAddress;
+    private $postalAddress = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $postalCode;
+    private $postalCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $town;
+    private $town = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $province;
+    private $province = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $countryName;
+    private $countryName = null;
 
     /**
      * @var bool|null
@@ -117,32 +117,32 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $onDemandRecord = 0;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $allowRecordingRemoval = true;
 
     /**
      * @var string|null
      */
-    private $onDemandRecordCode;
+    private $onDemandRecordCode = null;
 
     /**
      * @var string|null
      */
-    private $externallyextraopts;
+    private $externallyextraopts = null;
 
     /**
      * @var int|null
      */
-    private $recordingsLimitMB;
+    private $recordingsLimitMB = null;
 
     /**
      * @var string|null
      */
-    private $recordingsLimitEmail;
+    private $recordingsLimitEmail = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $billingMethod = 'postpaid';
 
@@ -157,149 +157,149 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $showInvoices = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets;
+    private $mediaRelaySets = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $defaultTimezone;
+    private $defaultTimezone = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var ApplicationServerDto | null
      */
-    private $applicationServer;
+    private $applicationServer = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var OutgoingDdiRuleDto | null
      */
-    private $outgoingDdiRule;
+    private $outgoingDdiRule = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $voicemailNotificationTemplate;
+    private $voicemailNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $faxNotificationTemplate;
+    private $faxNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $invoiceNotificationTemplate;
+    private $invoiceNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $callCsvNotificationTemplate;
+    private $callCsvNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $maxDailyUsageNotificationTemplate;
+    private $maxDailyUsageNotificationTemplate = null;
 
     /**
      * @var ExtensionDto[] | null
      */
-    private $extensions;
+    private $extensions = null;
 
     /**
      * @var DdiDto[] | null
      */
-    private $ddis;
+    private $ddis = null;
 
     /**
      * @var FriendDto[] | null
      */
-    private $friends;
+    private $friends = null;
 
     /**
      * @var CompanyServiceDto[] | null
      */
-    private $companyServices;
+    private $companyServices = null;
 
     /**
      * @var TerminalDto[] | null
      */
-    private $terminals;
+    private $terminals = null;
 
     /**
      * @var RatingProfileDto[] | null
      */
-    private $ratingProfiles;
+    private $ratingProfiles = null;
 
     /**
      * @var MusicOnHoldDto[] | null
      */
-    private $musicsOnHold;
+    private $musicsOnHold = null;
 
     /**
      * @var RecordingDto[] | null
      */
-    private $recordings;
+    private $recordings = null;
 
     /**
      * @var FeaturesRelCompanyDto[] | null
      */
-    private $relFeatures;
+    private $relFeatures = null;
 
     /**
      * @var CompanyRelGeoIPCountryDto[] | null
      */
-    private $relCountries;
+    private $relCountries = null;
 
     /**
      * @var CompanyRelCodecDto[] | null
      */
-    private $relCodecs;
+    private $relCodecs = null;
 
     /**
      * @var CompanyRelRoutingTagDto[] | null
      */
-    private $relRoutingTags;
+    private $relRoutingTags = null;
 
     public function __construct($id = null)
     {
@@ -360,6 +360,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -727,7 +730,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -14,34 +14,34 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $keyName = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $keyType = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $valueType = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $keyValue = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expires = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     public function __construct($id = null)
     {
@@ -67,6 +67,9 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -159,7 +162,7 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

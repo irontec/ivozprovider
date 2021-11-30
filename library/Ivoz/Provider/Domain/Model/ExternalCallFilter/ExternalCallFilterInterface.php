@@ -12,7 +12,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface;
@@ -37,7 +37,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -127,6 +127,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param ExternalCallFilterDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -171,7 +172,10 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function removeCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface;
 
-    public function replaceCalendars(ArrayCollection $calendars): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterRelCalendarInterface> $calendars
+     */
+    public function replaceCalendars(Collection $calendars): ExternalCallFilterInterface;
 
     public function getCalendars(?Criteria $criteria = null): array;
 
@@ -179,7 +183,10 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function removeBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface;
 
-    public function replaceBlackLists(ArrayCollection $blackLists): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterBlackListInterface> $blackLists
+     */
+    public function replaceBlackLists(Collection $blackLists): ExternalCallFilterInterface;
 
     public function getBlackLists(?Criteria $criteria = null): array;
 
@@ -187,7 +194,10 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function removeWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface;
 
-    public function replaceWhiteLists(ArrayCollection $whiteLists): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterWhiteListInterface> $whiteLists
+     */
+    public function replaceWhiteLists(Collection $whiteLists): ExternalCallFilterInterface;
 
     public function getWhiteLists(?Criteria $criteria = null): array;
 
@@ -195,7 +205,10 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function removeSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface;
 
-    public function replaceSchedules(ArrayCollection $schedules): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterRelScheduleInterface> $schedules
+     */
+    public function replaceSchedules(Collection $schedules): ExternalCallFilterInterface;
 
     public function getSchedules(?Criteria $criteria = null): array;
 

@@ -18,9 +18,15 @@ abstract class ApplicationServerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $ip;
 
-    protected $name;
+    /**
+     * @var ?string
+     */
+    protected $name = null;
 
     /**
      * Constructor
@@ -89,9 +95,11 @@ abstract class ApplicationServerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIp()
+            $ip
         );
 
         $self
@@ -112,8 +120,11 @@ abstract class ApplicationServerAbstract
     ): static {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
+
         $this
-            ->setIp($dto->getIp())
+            ->setIp($ip)
             ->setName($dto->getName());
 
         return $this;

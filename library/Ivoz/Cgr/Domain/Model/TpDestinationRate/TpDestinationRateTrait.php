@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait TpDestinationRateTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait TpDestinationRateTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TpDestinationRateDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait TpDestinationRateTrait
 
     /**
      * @internal use EntityTools instead
+     * @param TpDestinationRateDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

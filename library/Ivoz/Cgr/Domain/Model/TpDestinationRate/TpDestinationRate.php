@@ -9,6 +9,10 @@ class TpDestinationRate extends TpDestinationRateAbstract implements TpDestinati
 {
     use TpDestinationRateTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
     public function getChangeSet(): array
     {
         return parent::getChangeSet();

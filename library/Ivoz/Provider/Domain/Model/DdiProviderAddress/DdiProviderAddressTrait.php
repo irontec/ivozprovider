@@ -14,9 +14,9 @@ use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
 trait DdiProviderAddressTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TrunksAddressInterface
@@ -37,6 +37,7 @@ trait DdiProviderAddressTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param DdiProviderAddressDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -45,11 +46,11 @@ trait DdiProviderAddressTrait
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTrunksAddress())) {
-            $self->setTrunksAddress(
-                $fkTransformer->transform(
-                    $dto->getTrunksAddress()
-                )
+            /** @var TrunksAddressInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTrunksAddress()
             );
+            $self->setTrunksAddress($entity);
         }
 
         $self->sanitizeValues();
@@ -63,6 +64,7 @@ trait DdiProviderAddressTrait
 
     /**
      * @internal use EntityTools instead
+     * @param DdiProviderAddressDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -70,11 +72,11 @@ trait DdiProviderAddressTrait
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTrunksAddress())) {
-            $this->setTrunksAddress(
-                $fkTransformer->transform(
-                    $dto->getTrunksAddress()
-                )
+            /** @var TrunksAddressInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTrunksAddress()
             );
+            $this->setTrunksAddress($entity);
         }
         $this->sanitizeValues();
 

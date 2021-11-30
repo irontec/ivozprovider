@@ -21,42 +21,55 @@ abstract class TpDestinationRateAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $tpid = 'ivozprovider';
 
-    protected $tag;
+    /**
+     * @var ?string
+     */
+    protected $tag = null;
 
     /**
+     * @var ?string
      * column: destinations_tag
      */
-    protected $destinationsTag;
+    protected $destinationsTag = null;
 
     /**
+     * @var ?string
      * column: rates_tag
      */
-    protected $ratesTag;
+    protected $ratesTag = null;
 
     /**
+     * @var string
      * column: rounding_method
      * comment: enum:*up|*upmincost
      */
     protected $roundingMethod = '*up';
 
     /**
+     * @var int
      * column: rounding_decimals
      */
     protected $roundingDecimals = 4;
 
     /**
+     * @var float
      * column: max_cost
      */
     protected $maxCost = 0;
 
     /**
+     * @var string
      * column: max_cost_strategy
      */
     protected $maxCostStrategy = '';
 
     /**
+     * @var \DateTime
      * column: created_at
      */
     protected $createdAt;
@@ -144,21 +157,35 @@ abstract class TpDestinationRateAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $roundingMethod = $dto->getRoundingMethod();
+        Assertion::notNull($roundingMethod, 'getRoundingMethod value is null, but non null value was expected.');
+        $roundingDecimals = $dto->getRoundingDecimals();
+        Assertion::notNull($roundingDecimals, 'getRoundingDecimals value is null, but non null value was expected.');
+        $maxCost = $dto->getMaxCost();
+        Assertion::notNull($maxCost, 'getMaxCost value is null, but non null value was expected.');
+        $maxCostStrategy = $dto->getMaxCostStrategy();
+        Assertion::notNull($maxCostStrategy, 'getMaxCostStrategy value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getRoundingMethod(),
-            $dto->getRoundingDecimals(),
-            $dto->getMaxCost(),
-            $dto->getMaxCostStrategy(),
-            $dto->getCreatedAt()
+            $tpid,
+            $roundingMethod,
+            $roundingDecimals,
+            $maxCost,
+            $maxCostStrategy,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         $self->initChangelog();
 
@@ -175,17 +202,32 @@ abstract class TpDestinationRateAbstract
     ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $roundingMethod = $dto->getRoundingMethod();
+        Assertion::notNull($roundingMethod, 'getRoundingMethod value is null, but non null value was expected.');
+        $roundingDecimals = $dto->getRoundingDecimals();
+        Assertion::notNull($roundingDecimals, 'getRoundingDecimals value is null, but non null value was expected.');
+        $maxCost = $dto->getMaxCost();
+        Assertion::notNull($maxCost, 'getMaxCost value is null, but non null value was expected.');
+        $maxCostStrategy = $dto->getMaxCostStrategy();
+        Assertion::notNull($maxCostStrategy, 'getMaxCostStrategy value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setRoundingMethod($dto->getRoundingMethod())
-            ->setRoundingDecimals($dto->getRoundingDecimals())
-            ->setMaxCost($dto->getMaxCost())
-            ->setMaxCostStrategy($dto->getMaxCostStrategy())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setRoundingMethod($roundingMethod)
+            ->setRoundingDecimals($roundingDecimals)
+            ->setMaxCost($maxCost)
+            ->setMaxCostStrategy($maxCostStrategy)
+            ->setCreatedAt($createdAt)
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         return $this;
     }
@@ -346,15 +388,16 @@ abstract class TpDestinationRateAbstract
         return $this->maxCostStrategy;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -363,10 +406,7 @@ abstract class TpDestinationRateAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): \DateTime
     {
         return clone $this->createdAt;
     }

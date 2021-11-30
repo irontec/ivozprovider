@@ -20,19 +20,40 @@ abstract class TerminalModelAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $iden;
 
+    /**
+     * @var string
+     */
     protected $name = '';
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
-    protected $genericTemplate;
+    /**
+     * @var ?string
+     */
+    protected $genericTemplate = null;
 
-    protected $specificTemplate;
+    /**
+     * @var ?string
+     */
+    protected $specificTemplate = null;
 
-    protected $genericUrlPattern;
+    /**
+     * @var ?string
+     */
+    protected $genericUrlPattern = null;
 
-    protected $specificUrlPattern;
+    /**
+     * @var ?string
+     */
+    protected $specificUrlPattern = null;
 
     /**
      * @var TerminalManufacturerInterface
@@ -110,11 +131,19 @@ abstract class TerminalModelAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TerminalModelDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $terminalManufacturer = $dto->getTerminalManufacturer();
+        Assertion::notNull($terminalManufacturer, 'getTerminalManufacturer value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getName(),
-            $dto->getDescription()
+            $iden,
+            $name,
+            $description
         );
 
         $self
@@ -122,7 +151,7 @@ abstract class TerminalModelAbstract
             ->setSpecificTemplate($dto->getSpecificTemplate())
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
-            ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()));
+            ->setTerminalManufacturer($fkTransformer->transform($terminalManufacturer));
 
         $self->initChangelog();
 
@@ -139,15 +168,24 @@ abstract class TerminalModelAbstract
     ): static {
         Assertion::isInstanceOf($dto, TerminalModelDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $terminalManufacturer = $dto->getTerminalManufacturer();
+        Assertion::notNull($terminalManufacturer, 'getTerminalManufacturer value is null, but non null value was expected.');
+
         $this
-            ->setIden($dto->getIden())
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
+            ->setIden($iden)
+            ->setName($name)
+            ->setDescription($description)
             ->setGenericTemplate($dto->getGenericTemplate())
             ->setSpecificTemplate($dto->getSpecificTemplate())
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
-            ->setTerminalManufacturer($fkTransformer->transform($dto->getTerminalManufacturer()));
+            ->setTerminalManufacturer($fkTransformer->transform($terminalManufacturer));
 
         return $this;
     }

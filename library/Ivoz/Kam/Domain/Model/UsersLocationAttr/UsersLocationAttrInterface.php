@@ -29,6 +29,7 @@ interface UsersLocationAttrInterface extends EntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param UsersLocationAttrDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
@@ -49,10 +50,7 @@ interface UsersLocationAttrInterface extends EntityInterface
 
     public function getAvalue(): string;
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastModified(): \DateTimeInterface;
+    public function getLastModified(): \DateTime;
 
     public function isInitialized(): bool;
 }

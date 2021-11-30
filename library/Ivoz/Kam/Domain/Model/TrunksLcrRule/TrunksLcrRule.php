@@ -13,7 +13,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array
     {

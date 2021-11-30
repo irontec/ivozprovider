@@ -14,54 +14,54 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
      * @var string|null
      */
-    private $fqdn;
+    private $fqdn = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $platform = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $brand = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $client = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     public function __construct($id = null)
     {
@@ -93,6 +93,9 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -191,7 +194,7 @@ abstract class PublicEntityDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

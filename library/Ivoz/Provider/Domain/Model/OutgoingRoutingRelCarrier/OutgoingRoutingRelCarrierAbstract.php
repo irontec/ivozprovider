@@ -23,10 +23,10 @@ abstract class OutgoingRoutingRelCarrierAbstract
     use ChangelogTrait;
 
     /**
-     * @var OutgoingRoutingInterface | null
+     * @var ?OutgoingRoutingInterface
      * inversedBy relCarriers
      */
-    protected $outgoingRouting;
+    protected $outgoingRouting = null;
 
     /**
      * @var CarrierInterface
@@ -99,12 +99,14 @@ abstract class OutgoingRoutingRelCarrierAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
+            ->setCarrier($fkTransformer->transform($carrier));
 
         $self->initChangelog();
 
@@ -121,9 +123,12 @@ abstract class OutgoingRoutingRelCarrierAbstract
     ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
 
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+
         $this
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
+            ->setCarrier($fkTransformer->transform($carrier));
 
         return $this;
     }
@@ -141,7 +146,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
     protected function __toArray(): array
     {
         return [
-            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null,
+            'outgoingRoutingId' => self::getOutgoingRouting()?->getId(),
             'carrierId' => self::getCarrier()->getId()
         ];
     }

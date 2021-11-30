@@ -30,74 +30,116 @@ abstract class FriendAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var string
+     */
     protected $description = '';
 
     /**
+     * @var ?string
      * comment: enum:udp|tcp|tls
      */
-    protected $transport;
+    protected $transport = null;
 
-    protected $ip;
+    /**
+     * @var ?string
+     */
+    protected $ip = null;
 
-    protected $port;
+    /**
+     * @var ?int
+     */
+    protected $port = null;
 
-    protected $password;
+    /**
+     * @var ?string
+     */
+    protected $password = null;
 
+    /**
+     * @var int
+     */
     protected $priority = 1;
 
+    /**
+     * @var string
+     */
     protected $disallow = 'all';
 
+    /**
+     * @var string
+     */
     protected $allow = 'alaw';
 
     /**
+     * @var string
      * column: direct_media_method
      * comment: enum:invite|update
      */
     protected $directMediaMethod = 'update';
 
     /**
+     * @var string
      * column: callerid_update_header
      * comment: enum:pai|rpid
      */
     protected $calleridUpdateHeader = 'pai';
 
     /**
+     * @var string
      * column: update_callerid
      * comment: enum:yes|no
      */
     protected $updateCallerid = 'yes';
 
     /**
+     * @var ?string
      * column: from_user
      */
-    protected $fromUser;
+    protected $fromUser = null;
 
     /**
+     * @var ?string
      * column: from_domain
      */
-    protected $fromDomain;
+    protected $fromDomain = null;
 
     /**
+     * @var string
      * comment: enum:yes|no|intervpbx
      */
     protected $directConnectivity = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $ddiIn = 'yes';
 
     /**
+     * @var string
      * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
+    /**
+     * @var bool
+     */
     protected $alwaysApplyTransformations = false;
 
+    /**
+     * @var bool
+     */
     protected $rtpEncryption = false;
 
+    /**
+     * @var bool
+     */
     protected $multiContact = true;
 
     /**
@@ -107,35 +149,35 @@ abstract class FriendAbstract
     protected $company;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy friends
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $interCompany;
+    protected $interCompany = null;
 
     /**
      * Constructor
@@ -230,22 +272,52 @@ abstract class FriendAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FriendDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $calleridUpdateHeader = $dto->getCalleridUpdateHeader();
+        Assertion::notNull($calleridUpdateHeader, 'getCalleridUpdateHeader value is null, but non null value was expected.');
+        $updateCallerid = $dto->getUpdateCallerid();
+        Assertion::notNull($updateCallerid, 'getUpdateCallerid value is null, but non null value was expected.');
+        $directConnectivity = $dto->getDirectConnectivity();
+        Assertion::notNull($directConnectivity, 'getDirectConnectivity value is null, but non null value was expected.');
+        $ddiIn = $dto->getDdiIn();
+        Assertion::notNull($ddiIn, 'getDdiIn value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $alwaysApplyTransformations = $dto->getAlwaysApplyTransformations();
+        Assertion::notNull($alwaysApplyTransformations, 'getAlwaysApplyTransformations value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getPriority(),
-            $dto->getDisallow(),
-            $dto->getAllow(),
-            $dto->getDirectMediaMethod(),
-            $dto->getCalleridUpdateHeader(),
-            $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity(),
-            $dto->getDdiIn(),
-            $dto->getT38Passthrough(),
-            $dto->getAlwaysApplyTransformations(),
-            $dto->getRtpEncryption(),
-            $dto->getMultiContact()
+            $name,
+            $description,
+            $priority,
+            $disallow,
+            $allow,
+            $directMediaMethod,
+            $calleridUpdateHeader,
+            $updateCallerid,
+            $directConnectivity,
+            $ddiIn,
+            $t38Passthrough,
+            $alwaysApplyTransformations,
+            $rtpEncryption,
+            $multiContact
         );
 
         $self
@@ -255,7 +327,7 @@ abstract class FriendAbstract
             ->setPassword($dto->getPassword())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
@@ -278,28 +350,59 @@ abstract class FriendAbstract
     ): static {
         Assertion::isInstanceOf($dto, FriendDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $calleridUpdateHeader = $dto->getCalleridUpdateHeader();
+        Assertion::notNull($calleridUpdateHeader, 'getCalleridUpdateHeader value is null, but non null value was expected.');
+        $updateCallerid = $dto->getUpdateCallerid();
+        Assertion::notNull($updateCallerid, 'getUpdateCallerid value is null, but non null value was expected.');
+        $directConnectivity = $dto->getDirectConnectivity();
+        Assertion::notNull($directConnectivity, 'getDirectConnectivity value is null, but non null value was expected.');
+        $ddiIn = $dto->getDdiIn();
+        Assertion::notNull($ddiIn, 'getDdiIn value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $alwaysApplyTransformations = $dto->getAlwaysApplyTransformations();
+        Assertion::notNull($alwaysApplyTransformations, 'getAlwaysApplyTransformations value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
+            ->setName($name)
+            ->setDescription($description)
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
-            ->setPriority($dto->getPriority())
-            ->setDisallow($dto->getDisallow())
-            ->setAllow($dto->getAllow())
-            ->setDirectMediaMethod($dto->getDirectMediaMethod())
-            ->setCalleridUpdateHeader($dto->getCalleridUpdateHeader())
-            ->setUpdateCallerid($dto->getUpdateCallerid())
+            ->setPriority($priority)
+            ->setDisallow($disallow)
+            ->setAllow($allow)
+            ->setDirectMediaMethod($directMediaMethod)
+            ->setCalleridUpdateHeader($calleridUpdateHeader)
+            ->setUpdateCallerid($updateCallerid)
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setDirectConnectivity($dto->getDirectConnectivity())
-            ->setDdiIn($dto->getDdiIn())
-            ->setT38Passthrough($dto->getT38Passthrough())
-            ->setAlwaysApplyTransformations($dto->getAlwaysApplyTransformations())
-            ->setRtpEncryption($dto->getRtpEncryption())
-            ->setMultiContact($dto->getMultiContact())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDirectConnectivity($directConnectivity)
+            ->setDdiIn($ddiIn)
+            ->setT38Passthrough($t38Passthrough)
+            ->setAlwaysApplyTransformations($alwaysApplyTransformations)
+            ->setRtpEncryption($rtpEncryption)
+            ->setMultiContact($multiContact)
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
@@ -369,12 +472,12 @@ abstract class FriendAbstract
             'rtpEncryption' => self::getRtpEncryption(),
             'multiContact' => self::getMultiContact(),
             'companyId' => self::getCompany()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'interCompanyId' => self::getInterCompany() ? self::getInterCompany()->getId() : null
+            'domainId' => self::getDomain()?->getId(),
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'callAclId' => self::getCallAcl()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'interCompanyId' => self::getInterCompany()?->getId()
         ];
     }
 

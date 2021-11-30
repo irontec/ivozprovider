@@ -13,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait RtpengineTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ trait RtpengineTrait
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param RtpengineDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -49,6 +50,7 @@ trait RtpengineTrait
 
     /**
      * @internal use EntityTools instead
+     * @param RtpengineDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,

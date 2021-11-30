@@ -9,7 +9,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -21,24 +20,54 @@ abstract class ScheduleAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $timeIn;
 
+    /**
+     * @var \DateTimeInterface
+     */
     protected $timeout;
 
+    /**
+     * @var ?bool
+     */
     protected $monday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $tuesday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $wednesday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $thursday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $friday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $saturday = false;
 
+    /**
+     * @var ?bool
+     */
     protected $sunday = false;
 
     /**
@@ -51,8 +80,8 @@ abstract class ScheduleAbstract
      */
     protected function __construct(
         string $name,
-        \DateTimeInterface|string $timeIn,
-        \DateTimeInterface|string $timeout
+        \DateTimeInterface $timeIn,
+        \DateTimeInterface $timeout
     ) {
         $this->setName($name);
         $this->setTimeIn($timeIn);
@@ -117,11 +146,19 @@ abstract class ScheduleAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ScheduleDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTimeIn(),
-            $dto->getTimeout()
+            $name,
+            $timeIn,
+            $timeout
         );
 
         $self
@@ -132,7 +169,7 @@ abstract class ScheduleAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -149,10 +186,19 @@ abstract class ScheduleAbstract
     ): static {
         Assertion::isInstanceOf($dto, ScheduleDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $timeIn = $dto->getTimeIn();
+        Assertion::notNull($timeIn, 'getTimeIn value is null, but non null value was expected.');
+        $timeout = $dto->getTimeout();
+        Assertion::notNull($timeout, 'getTimeout value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setTimeIn($dto->getTimeIn())
-            ->setTimeout($dto->getTimeout())
+            ->setName($name)
+            ->setTimeIn($timeIn)
+            ->setTimeout($timeout)
             ->setMonday($dto->getMonday())
             ->setTuesday($dto->getTuesday())
             ->setWednesday($dto->getWednesday())
@@ -160,7 +206,7 @@ abstract class ScheduleAbstract
             ->setFriday($dto->getFriday())
             ->setSaturday($dto->getSaturday())
             ->setSunday($dto->getSunday())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
@@ -215,34 +261,28 @@ abstract class ScheduleAbstract
         return $this->name;
     }
 
-    protected function setTimeIn($timeIn): static
+    protected function setTimeIn(\DateTimeInterface $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeIn(): \DateTimeInterface
     {
-        return clone $this->timeIn;
+        return $this->timeIn;
     }
 
-    protected function setTimeout($timeout): static
+    protected function setTimeout(\DateTimeInterface $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
     public function getTimeout(): \DateTimeInterface
     {
-        return clone $this->timeout;
+        return $this->timeout;
     }
 
     protected function setMonday(?bool $monday = null): static

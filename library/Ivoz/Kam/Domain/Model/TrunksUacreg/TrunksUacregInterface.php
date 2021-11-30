@@ -15,7 +15,8 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 interface TrunksUacregInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
     public function getChangeSet(): array;
 
@@ -47,6 +48,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     /**
      * Factory method
      * @internal use EntityTools instead
+     * @param TrunksUacregDto $dto
      */
     public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 

@@ -13,21 +13,25 @@ use Assert\Assertion;
 final class Zone
 {
     /**
+     * @var string
      * column: zone_en
      */
     private $en = '';
 
     /**
+     * @var string
      * column: zone_es
      */
     private $es = '';
 
     /**
+     * @var string
      * column: zone_ca
      */
     private $ca = '';
 
     /**
+     * @var string
      * column: zone_it
      */
     private $it = '';

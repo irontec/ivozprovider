@@ -13,20 +13,23 @@ use Assert\Assertion;
 final class OriginalFile
 {
     /**
+     * @var ?int
      * column: originalFileFileSize
      * comment: FSO:keepExtension
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: originalFileMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: originalFileBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
      * Constructor

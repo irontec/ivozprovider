@@ -17,47 +17,47 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $srcIp;
+    private $srcIp = null;
 
     /**
      * @var string|null
      */
-    private $proto;
+    private $proto = null;
 
     /**
      * @var string|null
      */
-    private $fromPattern;
+    private $fromPattern = null;
 
     /**
      * @var string|null
      */
-    private $ruriPattern;
+    private $ruriPattern = null;
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     public function __construct($id = null)
     {
@@ -86,6 +86,9 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -205,7 +208,7 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

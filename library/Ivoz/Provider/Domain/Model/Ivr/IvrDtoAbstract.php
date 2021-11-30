@@ -21,114 +21,114 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $timeout;
+    private $timeout = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $maxDigits;
+    private $maxDigits = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $allowExtensions = false;
 
     /**
      * @var string|null
      */
-    private $noInputRouteType;
+    private $noInputRouteType = null;
 
     /**
      * @var string|null
      */
-    private $noInputNumberValue;
+    private $noInputNumberValue = null;
 
     /**
      * @var string|null
      */
-    private $errorRouteType;
+    private $errorRouteType = null;
 
     /**
      * @var string|null
      */
-    private $errorNumberValue;
+    private $errorNumberValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $welcomeLocution;
+    private $welcomeLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $noInputLocution;
+    private $noInputLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $errorLocution;
+    private $errorLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $successLocution;
+    private $successLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $noInputExtension;
+    private $noInputExtension = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $errorExtension;
+    private $errorExtension = null;
 
     /**
      * @var UserDto | null
      */
-    private $noInputVoiceMailUser;
+    private $noInputVoiceMailUser = null;
 
     /**
      * @var UserDto | null
      */
-    private $errorVoiceMailUser;
+    private $errorVoiceMailUser = null;
 
     /**
      * @var CountryDto | null
      */
-    private $noInputNumberCountry;
+    private $noInputNumberCountry = null;
 
     /**
      * @var CountryDto | null
      */
-    private $errorNumberCountry;
+    private $errorNumberCountry = null;
 
     /**
      * @var IvrEntryDto[] | null
      */
-    private $entries;
+    private $entries = null;
 
     /**
      * @var IvrExcludedExtensionDto[] | null
      */
-    private $excludedExtensions;
+    private $excludedExtensions = null;
 
     public function __construct($id = null)
     {
@@ -168,6 +168,9 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
@@ -312,7 +315,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

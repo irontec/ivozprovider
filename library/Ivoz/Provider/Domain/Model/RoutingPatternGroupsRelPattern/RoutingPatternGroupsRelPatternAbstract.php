@@ -23,16 +23,16 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     use ChangelogTrait;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy relPatternGroups
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupInterface | null
+     * @var ?RoutingPatternGroupInterface
      * inversedBy relPatterns
      */
-    protected $routingPatternGroup;
+    protected $routingPatternGroup = null;
 
     /**
      * Constructor
@@ -141,8 +141,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     protected function __toArray(): array
     {
         return [
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupId' => self::getRoutingPatternGroup()?->getId()
         ];
     }
 

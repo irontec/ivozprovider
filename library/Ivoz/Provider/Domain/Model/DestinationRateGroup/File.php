@@ -13,22 +13,26 @@ use Assert\Assertion;
 final class File
 {
     /**
+     * @var ?int
      * column: fileFileSize
      * comment: FSO
      */
-    private $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: fileMimeType
      */
-    private $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: fileBaseName
      */
-    private $baseName;
+    private $baseName = null;
 
     /**
+     * @var ?array
      * column: fileImporterArguments
      */
     private $importerArguments = [];

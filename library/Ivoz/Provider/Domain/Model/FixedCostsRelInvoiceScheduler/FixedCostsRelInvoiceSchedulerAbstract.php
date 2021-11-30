@@ -22,7 +22,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 {
     use ChangelogTrait;
 
-    protected $quantity;
+    /**
+     * @var ?int
+     */
+    protected $quantity = null;
 
     /**
      * @var FixedCostInterface
@@ -30,10 +33,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $fixedCost;
 
     /**
-     * @var InvoiceSchedulerInterface | null
+     * @var ?InvoiceSchedulerInterface
      * inversedBy relFixedCosts
      */
-    protected $invoiceScheduler;
+    protected $invoiceScheduler = null;
 
     /**
      * Constructor
@@ -100,12 +103,14 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
+        $fixedCost = $dto->getFixedCost();
+        Assertion::notNull($fixedCost, 'getFixedCost value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setFixedCost($fkTransformer->transform($fixedCost))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
 
         $self->initChangelog();
@@ -123,9 +128,12 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
+        $fixedCost = $dto->getFixedCost();
+        Assertion::notNull($fixedCost, 'getFixedCost value is null, but non null value was expected.');
+
         $this
             ->setQuantity($dto->getQuantity())
-            ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
+            ->setFixedCost($fkTransformer->transform($fixedCost))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
 
         return $this;
@@ -147,7 +155,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return [
             'quantity' => self::getQuantity(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
+            'invoiceSchedulerId' => self::getInvoiceScheduler()?->getId()
         ];
     }
 

@@ -25,7 +25,7 @@ class ProviderHolidayDate extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(HolidayDate::class);
         (function () use ($fixture) {
             $this->setName("Name");
-            $this->setEventDate(new \DateTime("2021-12-21 00:00:00", new \DateTimeZone('UTC')));
+            $this->eventDate = new \DateTime("2021-12-21 00:00:00", new \DateTimeZone('UTC'));
             $this->setCalendar($fixture->getReference('_reference_ProviderCalendar1'));
         })->call($item1);
 

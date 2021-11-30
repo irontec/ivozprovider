@@ -41,82 +41,102 @@ abstract class CallCsvSchedulerAbstract
 {
     use ChangelogTrait;
 
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
+     * @var string
      * comment: enum:day|week|month
      */
     protected $unit = 'month';
 
+    /**
+     * @var int
+     */
     protected $frequency;
 
     /**
+     * @var ?string
      * comment: enum:inbound|outbound
      */
     protected $callDirection = 'outbound';
 
+    /**
+     * @var string
+     */
     protected $email;
 
-    protected $lastExecution;
-
-    protected $lastExecutionError;
-
-    protected $nextExecution;
+    /**
+     * @var ?\DateTime
+     */
+    protected $lastExecution = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?string
      */
-    protected $brand;
+    protected $lastExecutionError = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?\DateTime
      */
-    protected $company;
+    protected $nextExecution = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?BrandInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $brand = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?CompanyInterface
      */
-    protected $ddi;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $carrier;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?DdiInterface
      */
-    protected $retailAccount;
+    protected $ddi = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?CarrierInterface
      */
-    protected $residentialDevice;
+    protected $carrier = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $user;
+    protected $retailAccount = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $fax;
+    protected $residentialDevice = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?UserInterface
      */
-    protected $friend;
+    protected $user = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?FaxInterface
      */
-    protected $ddiProvider;
+    protected $fax = null;
+
+    /**
+     * @var ?FriendInterface
+     */
+    protected $friend = null;
+
+    /**
+     * @var ?DdiProviderInterface
+     */
+    protected $ddiProvider = null;
 
     /**
      * Constructor
@@ -191,12 +211,20 @@ abstract class CallCsvSchedulerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getUnit(),
-            $dto->getFrequency(),
-            $dto->getEmail()
+            $name,
+            $unit,
+            $frequency,
+            $email
         );
 
         $self
@@ -231,12 +259,21 @@ abstract class CallCsvSchedulerAbstract
     ): static {
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setUnit($dto->getUnit())
-            ->setFrequency($dto->getFrequency())
+            ->setName($name)
+            ->setUnit($unit)
+            ->setFrequency($frequency)
             ->setCallDirection($dto->getCallDirection())
-            ->setEmail($dto->getEmail())
+            ->setEmail($email)
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
@@ -293,17 +330,17 @@ abstract class CallCsvSchedulerAbstract
             'lastExecution' => self::getLastExecution(),
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 
@@ -395,19 +432,17 @@ abstract class CallCsvSchedulerAbstract
         return $this->email;
     }
 
-    protected function setLastExecution($lastExecution = null): static
+    protected function setLastExecution(string|\DateTimeInterface|null $lastExecution = null): static
     {
         if (!is_null($lastExecution)) {
-            Assertion::notNull(
-                $lastExecution,
-                'lastExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
             );
 
-            if ($this->lastExecution == $lastExecution) {
+            if ($this->isInitialized() && $this->lastExecution == $lastExecution) {
                 return $this;
             }
         }
@@ -417,10 +452,7 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getLastExecution(): ?\DateTimeInterface
+    public function getLastExecution(): ?\DateTime
     {
         return !is_null($this->lastExecution) ? clone $this->lastExecution : null;
     }
@@ -441,19 +473,17 @@ abstract class CallCsvSchedulerAbstract
         return $this->lastExecutionError;
     }
 
-    protected function setNextExecution($nextExecution = null): static
+    protected function setNextExecution(string|\DateTimeInterface|null $nextExecution = null): static
     {
         if (!is_null($nextExecution)) {
-            Assertion::notNull(
-                $nextExecution,
-                'nextExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null
             );
 
-            if ($this->nextExecution == $nextExecution) {
+            if ($this->isInitialized() && $this->nextExecution == $nextExecution) {
                 return $this;
             }
         }
@@ -463,10 +493,7 @@ abstract class CallCsvSchedulerAbstract
         return $this;
     }
 
-    /**
-     * @return \DateTime|\DateTimeImmutable
-     */
-    public function getNextExecution(): ?\DateTimeInterface
+    public function getNextExecution(): ?\DateTime
     {
         return !is_null($this->nextExecution) ? clone $this->nextExecution : null;
     }
