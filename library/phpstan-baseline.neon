@@ -13916,16 +13916,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\Description\\:\\:__construct\\(\\) has parameter \\$en with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/Description.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\Description\\:\\:__construct\\(\\) has parameter \\$es with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/Description.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSet\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSet.php
