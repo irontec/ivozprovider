@@ -1,15 +1,32 @@
 import React, { useState, ChangeEvent } from 'react';
 import { TextField, Grid, Menu, MenuItem, IconButton } from '@mui/material';
-import { withStyles } from '@mui/styles';
 import Autocomplete from '@mui/material/Autocomplete';
 import FilterIconFactory from 'icons/FilterIconFactory';
+import { FilterList, Filter } from './ContentFilter';
 
-const ContentFilterRow = function (props: any) {
+type ValueType = unknown | Array<unknown>;
+
+type ValueStructureType = {
+    type: string,
+    value: ValueType
+};
+
+interface ContentFilterRowProps {
+    values: ValueStructureType,
+    key: unknown,
+    rowNum: number,
+    columnName: string,
+    columnLabel: string,
+    setFilter: (columnName: string, filterType: string, value: ValueType, label?: string) => void,
+    filterTypes: FilterList,
+    choices: Array<unknown>,
+}
+
+export default function ContentFilterRow(props: ContentFilterRowProps): JSX.Element {
 
     const {
         columnName,
         columnLabel,
-        classes,
         rowNum,
         setFilter,
         filterTypes,
@@ -66,8 +83,16 @@ const ContentFilterRow = function (props: any) {
         );
     }
 
+    const options = [];
+    for (const idx in choices) {
+        options.push({
+            value: idx,
+            label: choices[idx]
+        });
+    }
+
     return (
-        <Grid container={true} spacing={3} alignItems="flex-end" className={classes.grid}>
+        <Grid container={true} spacing={3} alignItems="flex-end" className="grid">
             <Grid item>
                 {choices &&
                     <IconButton size='small'>
@@ -99,7 +124,7 @@ const ContentFilterRow = function (props: any) {
                                 onClick={() => { handleFilterTypeCheck(filter.value) }}
                                 key={filter.value}
                             >
-                                <FilterIconFactory name={filter.value} /*@TODO className={classes.icon}*/ />
+                                <FilterIconFactory name={filter.value} className="icon" />
                                 <em>{filter.label}</em>
                             </MenuItem>
                         );
@@ -112,9 +137,9 @@ const ContentFilterRow = function (props: any) {
                         <Autocomplete
                             multiple
                             filterSelectedOptions
-                            options={choices}
-                            defaultValue={values.value}
-                            getOptionLabel={option => option.label}
+                            options={options}
+                            defaultValue={[] /*values.value as unknown[] || []*/}
+                            getOptionLabel={(option) => (option as Filter).label as string}
                             onChange={(event, newValue) => {
 
                                 const values = newValue.reduce(
@@ -155,20 +180,3 @@ const ContentFilterRow = function (props: any) {
         </Grid >
     );
 }
-
-const styles = {
-    icon: {
-        display: 'inline-flex',
-        marginRight: '10px',
-    },
-    clickableIcon: {
-        display: 'inline-flex',
-        marginRight: '10px',
-        cursor: 'pointer',
-    },
-    grid: {
-        margin: '0',
-    }
-};
-
-export default withStyles(styles)(ContentFilterRow);

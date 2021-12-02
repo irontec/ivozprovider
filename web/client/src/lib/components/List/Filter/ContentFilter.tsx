@@ -1,23 +1,15 @@
 import { useState, useEffect, ReactNode, ReactElement } from 'react';
-import { withStyles } from '@mui/styles';
-import FilterDialog from './FilterDialog';
-import ContentFilterRow from './ContentFilterRow';
+import FilterBox from './FilterBox';
 import _ from 'lib/services/translations/translate';
+import { StyledContentFilterRow } from './ContentFilterRow.styles';
+import EntityService from 'lib/services/entity/EntityService';
 
-const styles = {
-    paper: {
-        border: '1px solid #d3d4d5',
-        padding: '20px 25px',
-        margin: '10px 0',
-    },
-};
-
-interface Filter {
+export interface Filter {
     value: string | Array<string>,
     label: string | JSX.Element
 }
 
-type FilterList = Array<Filter>;
+export type FilterList = Array<Filter>;
 
 export const filterTypes: FilterList = [
     { value: "", label: _("None") },
@@ -72,7 +64,6 @@ export const getFilterLabel = (filter: Filter): string | JSX.Element => {
     }
 
     return (<>[${filter.label}]</>);
-    //return '[' + filter.label.join(', ') + ']';
 }
 
 export interface CriteriaFilterValue {
@@ -85,7 +76,17 @@ export interface CriteriaFilterValues {
     [name: string]: CriteriaFilterValue | null,
 }
 
-const ContentFilterMenu = function (props: any) {
+
+interface ContentFilterMenuProps {
+    entityService: EntityService,
+    open: boolean,
+    handleClose: () => void,
+    currentFilter: CriteriaFilterValues,
+    setFilters: (data: CriteriaFilterValues) => void,
+    path: string
+}
+
+export function ContentFilterMenu(props: ContentFilterMenuProps): JSX.Element | null {
 
     const {
         entityService,
@@ -100,7 +101,7 @@ const ContentFilterMenu = function (props: any) {
     const [loading, setLoading] = useState<boolean>(true);
     const [foreignEntities, setForeignEntities] = useState<any>({});
     const [criteria, setCriteria] = useState<CriteriaFilterValues>({ ...currentFilter });
-    const columns = entityService.getColumns();
+    const columns = entityService.getCollectionParamList();
     const foreignKeyGetter = entityService.getForeignKeyGetter();
 
     useEffect(
@@ -108,7 +109,9 @@ const ContentFilterMenu = function (props: any) {
             if (mounted && loading) {
                 foreignKeyGetter()
                     .then((foreignEntities: any) => {
-                        if (!mounted) return;
+                        if (!mounted) {
+                            return;
+                        }
                         setForeignEntities(foreignEntities);
                         setLoading(false);
                     });
@@ -142,11 +145,14 @@ const ContentFilterMenu = function (props: any) {
         });
     };
 
-
     const columnNames: Array<string> = Object.keys(columns);
 
+    if (!mounted && loading) {
+        return null;
+    }
+
     return (
-        <FilterDialog
+        <FilterBox
             open={open}
             handleClose={handleClose}
             apply={apply}
@@ -155,6 +161,7 @@ const ContentFilterMenu = function (props: any) {
 
                 const propertyFilter = entityService.getPropertyFilters(key, path);
                 if (!propertyFilter.length) {
+                    debugger;
                     return null;
                 }
 
@@ -162,12 +169,7 @@ const ContentFilterMenu = function (props: any) {
                     return propertyFilter.includes(type.value);
                 });
 
-                if (!criteria[key]) {
-                    return null;
-                }
-
-                const currentCriteria = criteria[key] as CriteriaFilterValue;
-
+                const currentCriteria = criteria[key] as CriteriaFilterValue || {};
                 const hasValue = criteria[key] && currentCriteria.value;
                 const currentFilterType = hasValue
                     ? currentCriteria.type
@@ -177,6 +179,21 @@ const ContentFilterMenu = function (props: any) {
                     value: '',
                     type: currentFilterType
                 };
+
+                if (!criteria[key]) {
+                    return (
+                        <StyledContentFilterRow
+                            values={currentFilterValues}
+                            key={key}
+                            rowNum={idx}
+                            columnName={key}
+                            columnLabel={columns[key].label as string}
+                            setFilter={setFilter}
+                            filterTypes={propertyFilterTypes}
+                            choices={foreignEntities[key]}
+                        />
+                    );
+                }
 
                 const isArrayValue = hasValue && Array.isArray(currentCriteria.value);
 
@@ -195,20 +212,19 @@ const ContentFilterMenu = function (props: any) {
                 }
 
                 return (
-                    <ContentFilterRow
+                    <StyledContentFilterRow
                         values={currentFilterValues}
                         key={key}
                         rowNum={idx}
                         columnName={key}
-                        columnLabel={columns[key].label}
+                        columnLabel={columns[key].label as string}
                         setFilter={setFilter}
                         filterTypes={propertyFilterTypes}
                         choices={foreignEntities[key]}
                     />
                 );
             })}
-        </FilterDialog>
+        </FilterBox>
     );
 }
 
-export default withStyles(styles)(ContentFilterMenu);

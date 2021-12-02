@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url */
 
 import { useState, useEffect } from 'react';
-import { CriteriaFilterValue, CriteriaFilterValues } from '../shared/ContentFilter';
+import { CriteriaFilterValue, CriteriaFilterValues } from './Filter/ContentFilter';
 
 
 interface UseRequestPathProps {

@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import PanoramaIcon from '@mui/icons-material/Panorama';
-import ConfirmDialog from './ConfirmDialog';
+import ConfirmDialog from 'lib/components/shared/ConfirmDialog';
 import EntityService from 'lib/services/entity/EntityService';
 import { useStoreActions } from 'easy-peasy';
 import { ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';

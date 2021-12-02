@@ -1,4 +1,4 @@
-import { List, Create, Edit, View } from 'lib/layout/content/index';
+import { List, Create, Edit, View } from 'lib/components/index';
 import ParsedApiSpecInterface from 'lib/services/api/ParsedApiSpecInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';

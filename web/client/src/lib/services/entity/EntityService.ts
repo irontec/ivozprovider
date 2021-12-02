@@ -78,7 +78,6 @@ export default class EntityService {
             this.entityConfig.path
         );
         const collectionActionFields = Object.keys(collectionAction?.properties || {});
-
         const response: PropertyList = {};
         const restrictedColumns = this.entityConfig.columns.length
             ? this.entityConfig.columns
@@ -93,6 +92,32 @@ export default class EntityService {
         }
 
         return response;
+    }
+
+    public getCollectionParamList(): PropertyList {
+
+        const collectionAction = this.getFromModelList(
+            this.actions?.get?.collection || {},
+            this.entityConfig.path
+        );
+        const collectionActionParameters = collectionAction?.parameters || {};
+
+        const paramNames = Object.keys(collectionActionParameters).map((key: string) => {
+            return collectionActionParameters[key].name;
+        });
+
+        const columns = this.getColumns();
+
+        const filteredColumns: PropertyList = {};
+        for (const columnName in columns) {
+
+            if (!paramNames.includes(columnName)) {
+                continue;
+            }
+            filteredColumns[columnName] = columns[columnName];
+        }
+
+        return filteredColumns;
     }
 
     public getVisualToggleRules(): visualToggleList {

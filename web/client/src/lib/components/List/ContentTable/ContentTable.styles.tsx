@@ -91,7 +91,7 @@ export const StyledChipIcon = styled(
   () => {
     return {
       paddingTop: '5px',
-      '* .prefix': {
+      '& .prefix': {
         display: 'inline-flex',
         userSelect: 'none',
         paddingLeft: '12px',

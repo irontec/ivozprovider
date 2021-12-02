@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Table, TablePagination, TableBody, Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
-import ContentFilter, { getFilterTypeLabel, getFilterLabel, CriteriaFilterValues } from './ContentFilter';
+import { ContentFilterMenu, getFilterTypeLabel, getFilterLabel, CriteriaFilterValues } from 'lib/components/List/Filter/ContentFilter';
 import ContentTableHead from './ContentTableHead';
 import FilterIconFactory from 'icons/FilterIconFactory';
 import ContentTableRow from './ContentTableRow';
@@ -104,7 +104,7 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
         </div>
       </StyledActionButtonContainer>
 
-      <ContentFilter
+      <ContentFilterMenu
         entityService={entityService}
         open={showFilters}
         handleClose={handleFiltersClose}

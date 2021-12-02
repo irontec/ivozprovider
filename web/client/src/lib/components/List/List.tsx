@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useStoreActions } from 'easy-peasy';
 import queryString from 'query-string';
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import ContentTable from '../shared/ContentTable';
+import ContentTable from './ContentTable/ContentTable';
 import EntityService from 'lib/services/entity/EntityService';
 import useFilterRequestPath from './useFilterRequestPath';
 

@@ -2,7 +2,7 @@ import { Grid, LinearProgress, CssBaseline } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from "react-router-dom";
-import { Header, Footer } from 'lib/layout/index';
+import { Header, Footer } from 'lib/components/index';
 import { StyledAppContent, StyledAppBarSpacer, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
 import ParsedApiSpecInterface from './services/api/ParsedApiSpecInterface';
 import { useStoreActions, useStoreState } from 'store';

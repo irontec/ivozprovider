@@ -1,7 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 
 import Dashboard from './Dashboard';
-import { Login } from 'lib/layout/content/index';
+import { Login } from 'lib/components/index';
 import EntityService from "lib/services/entity/EntityService";
 import { RouteSpec, parseRoutes } from 'lib/entities/Routes';
 import { useStoreActions } from "easy-peasy";

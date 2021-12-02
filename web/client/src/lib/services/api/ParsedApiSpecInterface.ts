@@ -8,8 +8,15 @@ interface KeyNumList {
     [key: string]: number
 }
 
+interface ActionParam {
+    name: string,
+    in: "query",
+    required: boolean,
+    type: "string"
+}
+
 export interface ActionModelSpec {
-    parameters: KeyNumList,
+    parameters: { [key: string | number]: ActionParam },
     paths: Array<any>,
     properties: Array<any>,
     required: Array<string>,

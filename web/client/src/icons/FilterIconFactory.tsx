@@ -12,6 +12,7 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
 interface FilterIconFactoryProps {
     name: string,
+    className?: string,
     fontSize?: 'small' | 'inherit' | 'large' | 'medium' | undefined,
 }
 export default function FilterIconFactory(props: FilterIconFactoryProps): JSX.Element {
