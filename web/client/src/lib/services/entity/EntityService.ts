@@ -1,3 +1,4 @@
+import { SearchFilterType } from 'lib/components/List/Filter/icons/FilterIconFactory';
 import
 EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, PropertiesList, RowIconsType }
     from 'lib/entities/EntityInterface';
@@ -335,7 +336,7 @@ export default class EntityService {
         return this.entityConfig.RowIcons;
     }
 
-    public getPropertyFilters(propertyName: string, path?: string): Array<string> {
+    public getPropertyFilters(propertyName: string, path?: string): Array<SearchFilterType> {
         const filters = this.getFilters(path);
 
         return filters[propertyName] || [];

@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useStoreActions } from 'easy-peasy';
-import queryString from 'query-string';
+//import queryString from 'query-string';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import ContentTable from './ContentTable/ContentTable';
 import EntityService from 'lib/services/entity/EntityService';
 import useFilterRequestPath from './useFilterRequestPath';
+import { CriteriaFilterValues } from './Filter/ContentFilter';
 
 const List = function (props: any & RouteComponentProps) {
 
@@ -24,12 +25,12 @@ const List = function (props: any & RouteComponentProps) {
         return actions.api.get
     });
 
-    const querystring = queryString.parse(location.search || '');
-    const criteria = querystring._criteria
+    //const querystring = queryString.parse(location.search || '');
+    const criteria: CriteriaFilterValues = []; /* TODO querystring._criteria
         ? JSON.parse(querystring._criteria as string)
-        : {};
+        : {};*/
 
-    const [where, setWhere] = useState<any>(criteria);
+    const [where, setWhere] = useState<CriteriaFilterValues>(criteria);
     const [orderBy, setOrderBy] = useState(entityService.getOrderBy());
     const [orderDirection, setOrderDirection] = useState(entityService.getOrderDirection());
 

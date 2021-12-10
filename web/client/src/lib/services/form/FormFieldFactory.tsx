@@ -11,7 +11,10 @@ import CustomComponentWrapper from './Field/CustomComponentWrapper';
 import Alert from '@mui/material/Alert';
 import FileUploader from './Field/FileUploader';
 import { StyledSwitchFormControl, StyledtextField, StyledLinearProgress } from './FormFieldFactory.styles';
-import { FormOnChangeEvent, NullablePropertyFkChoices, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
+import { FormOnChangeEvent, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
+
+export type FormFieldFactoryChoices = { [key: string | number]: any };
+export type NullableFormFieldFactoryChoices = null | FormFieldFactoryChoices;
 
 export default class FormFieldFactory {
 
@@ -22,16 +25,30 @@ export default class FormFieldFactory {
     ) {
     }
 
-    public getFormField(fld: string, choices: NullablePropertyFkChoices, readOnly = false): JSX.Element | null {
+    public getFormField(fld: string, choices: NullableFormFieldFactoryChoices, readOnly = false): JSX.Element | null {
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);
             return null;
         }
 
+        return this.createByPropertySpec(
+            fld,
+            property,
+            choices,
+            readOnly
+        );
+    }
+
+    public createByPropertySpec(
+        fld: string,
+        property: PropertySpec,
+        choices: NullableFormFieldFactoryChoices,
+        readOnly = false
+    ): JSX.Element | null {
         return (
             <React.Fragment>
-                {this.getInputField(fld, choices, readOnly)}
+                {this.getInputField(fld, property, choices, readOnly)}
                 {this.formik.errors[fld] && <Alert severity="error">{this.formik.errors[fld]}</Alert>}
                 {property.helpText && <FormHelperText variant={'outlined'}>
                     {property.helpText}
@@ -46,12 +63,9 @@ export default class FormFieldFactory {
         return (properties[fld] as PropertySpec);
     }
 
-    private getInputField(fld: string, choices: NullablePropertyFkChoices, readOnly: boolean) {
-
-        const property = this.getProperty(fld);
+    private getInputField(fld: string, property: PropertySpec, choices: NullableFormFieldFactoryChoices, readOnly: boolean) {
 
         const disabled = (property as ScalarProperty).readOnly || readOnly;
-
         const multiSelect = (property as ScalarProperty).type === 'array';
         const fileUpload = (property as ScalarProperty).type === 'file';
 
@@ -93,7 +107,6 @@ export default class FormFieldFactory {
         if ((property as ScalarProperty).enum) {
 
             const enumValues: any = (property as ScalarProperty).enum;
-
             if (Array.isArray(enumValues)) {
                 choices = choices || {};
                 for (const enumValue of enumValues) {

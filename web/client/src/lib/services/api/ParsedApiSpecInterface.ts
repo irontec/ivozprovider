@@ -1,10 +1,10 @@
-import React, { JSXElementConstructor } from 'react';
+import React from 'react';
 
-interface KeyValList {
-    [key: string]: any
+export interface KeyValList {
+    [key: string]: unknown
 }
 
-interface KeyNumList {
+export interface KeyNumList {
     [key: string]: number
 }
 
@@ -92,6 +92,10 @@ export interface FkProperty {
 }
 
 export type PropertySpec = ScalarProperty | FkProperty;
+
+export const isPropertyFk = (property: PropertySpec): property is FkProperty => {
+    return (property as FkProperty).$ref !== undefined;
+}
 
 export interface PropertyList {
     [key: string]: PropertySpec

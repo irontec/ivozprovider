@@ -24,7 +24,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
     return actions.api.post
   });
 
-  const submit = async (values: any, actions: FormikHelpers<any>) => {
+  const submit = async (values: any, actions: FormikHelpers<EntityValues>) => {
 
     const { setSubmitting } = actions;
 

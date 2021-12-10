@@ -1,4 +1,4 @@
-import { Fab, Chip } from '@mui/material';
+import { Fab } from '@mui/material';
 import { styled } from '@mui/styles';
 import { forwardRef } from 'react';
 import { Link } from "react-router-dom";
@@ -51,53 +51,6 @@ export const StyledFab = styled(_Fab)(
   () => {
     return {
       marginRight: '10px'
-    }
-  }
-);
-
-const _Chip = forwardRef<any, any>((props, ref) => {
-  const { className, icon, label, onDelete } = props;
-  return (
-    <Chip
-      icon={icon}
-      label={label}
-      onDelete={onDelete}
-      className={className}
-      ref={ref}
-    />
-  );
-});
-_Chip.displayName = '_Chip';
-
-export const StyledChip = styled(_Chip)(
-  () => {
-    return {
-      margin: '0 5px',
-    }
-  }
-);
-
-export const StyledChipIcon = styled(
-  (props) => {
-    const { children, className, fieldName } = props;
-    return (
-      <div className={className}>
-        <span className='prefix'>{fieldName}</span>
-        {children}
-      </div>
-    );
-  }
-)(
-  () => {
-    return {
-      paddingTop: '5px',
-      '& .prefix': {
-        display: 'inline-flex',
-        userSelect: 'none',
-        paddingLeft: '12px',
-        paddingRight: '5px',
-        verticalAlign: 'super',
-      }
     }
   }
 );

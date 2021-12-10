@@ -6,7 +6,7 @@ type FilterBoxProps = FilterDialogContentProps & {
   open: boolean,
 }
 
-export default function FilterBox(props: FilterBoxProps): JSX.Element {
+export default function FilterDrawer(props: FilterBoxProps): JSX.Element {
 
   const { open, handleClose, apply, children } = props;
 

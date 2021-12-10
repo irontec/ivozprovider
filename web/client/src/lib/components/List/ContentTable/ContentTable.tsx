@@ -4,15 +4,14 @@ import React, { useState } from 'react';
 import { Table, TablePagination, TableBody, Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
-import { ContentFilterMenu, getFilterTypeLabel, getFilterLabel, CriteriaFilterValues } from 'lib/components/List/Filter/ContentFilter';
+import { ContentFilter, CriteriaFilterValues } from 'lib/components/List/Filter/ContentFilter';
 import ContentTableHead from './ContentTableHead';
-import FilterIconFactory from 'icons/FilterIconFactory';
 import ContentTableRow from './ContentTableRow';
 import EntityService from 'lib/services/entity/EntityService';
 import _ from 'lib/services/translations/translate';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as locales from '@mui/material/locale';
-import { StyledActionButtonContainer, StyledLink, StyledFab, StyledChip, StyledChipIcon } from './ContentTable.styles';
+import { StyledActionButtonContainer, StyledLink, StyledFab } from './ContentTable.styles';
 
 type sortType = 'asc' | 'desc';
 
@@ -30,7 +29,7 @@ interface ContentTableProps {
   page: number,
   setPage: (page: number) => void,
   rows: any,
-  where: any,
+  where: CriteriaFilterValues,
   setWhere: (where: CriteriaFilterValues) => void
 }
 
@@ -52,7 +51,6 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
     setWhere
   } = props;
 
-  const columns = entityService.getColumns();
   const acl = entityService.getAcls();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -64,17 +62,16 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
     setShowFilters(!showFilters);
   };
 
-  const [criteria, setCriteria] = useState<any>(where);
+  const [criteria, setCriteria] = useState<CriteriaFilterValues>(where);
 
-  const removeFilter = (fldName: string) => {
-
-    delete criteria[fldName];
-    setWhereCondition({
+  const removeFilter = (index: number) => {
+    criteria.splice(index, 1);
+    setWhereCondition([
       ...criteria
-    });
+    ]);
   }
 
-  const setWhereCondition = (where: any) => {
+  const setWhereCondition = (where: CriteriaFilterValues) => {
     setCriteria(where);
     setWhere(where);
   }
@@ -104,52 +101,15 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
         </div>
       </StyledActionButtonContainer>
 
-      <ContentFilterMenu
+      <ContentFilter
         entityService={entityService}
         open={showFilters}
         handleClose={handleFiltersClose}
-        currentFilter={criteria}
-        setFilters={setWhereCondition}
+        commitedCriteria={criteria}
+        commitCriteria={setWhereCondition}
+        removeFilter={removeFilter}
         path={path}
       />
-
-      <div>
-        {Object.keys(criteria).map((fldName: string, idx: number) => {
-
-          if (!criteria[fldName]) {
-            return null;
-          }
-
-          const fieldStr = columns[fldName].label;
-
-          const icon = (
-            <StyledChipIcon fieldName={fieldStr}>
-              <FilterIconFactory name={criteria[fldName].type} fontSize='small' />
-            </StyledChipIcon>
-          );
-
-          const tooltip = (<span>
-            {fieldStr} &nbsp;
-            {getFilterTypeLabel(criteria[fldName].type)} &nbsp;
-            {getFilterLabel(criteria[fldName])}
-          </span>);
-
-          return (
-            <Tooltip
-              key={idx}
-              title={tooltip}
-            >
-              <StyledChip
-                icon={icon}
-                label={getFilterLabel(criteria[fldName])}
-                onDelete={() => {
-                  removeFilter(fldName);
-                }}
-              />
-            </Tooltip>
-          );
-        })}
-      </div>
 
       <Table size="medium">
         <ContentTableHead

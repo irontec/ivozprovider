@@ -27,7 +27,8 @@ export const StyledFilterDialogTypography = styled(
 export const StyledFilterBoxContent = styled(FilterBoxContent)(
   () => {
     return {
-      paddingTop: '65px'
+      paddingTop: '65px',
+      maxWidth: '450px'
     }
   }
 );
