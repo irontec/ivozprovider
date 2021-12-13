@@ -8,7 +8,7 @@ type FilterBoxProps = FilterDialogContentProps & {
 
 export default function FilterDrawer(props: FilterBoxProps): JSX.Element {
 
-  const { open, handleClose, apply, children } = props;
+  const { open, close: handleClose, apply, children } = props;
 
   return (
     <Drawer
@@ -16,7 +16,7 @@ export default function FilterDrawer(props: FilterBoxProps): JSX.Element {
       open={open}
       onClose={handleClose}
     >
-      <StyledFilterBoxContent handleClose={handleClose} apply={apply}>
+      <StyledFilterBoxContent close={handleClose} apply={apply}>
         {children}
       </StyledFilterBoxContent>
     </Drawer >

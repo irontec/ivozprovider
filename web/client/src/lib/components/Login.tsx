@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { Container } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions } from 'store';
 import ApiClient from 'lib/services/api/ApiClient';
 import Title from 'lib/components/Title';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';

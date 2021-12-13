@@ -2,7 +2,7 @@ import { withRouter } from "react-router-dom";
 import { Grid } from "@mui/material";
 import _ from 'lib/services/translations/translate';
 import { StyledDashboardLink } from './Dashboard.styles';
-import entities from './entities/index';
+import entities from './entities';
 
 const Dashboard = () => {
 

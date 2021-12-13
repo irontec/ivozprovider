@@ -1,8 +1,8 @@
-import { List, Create, Edit, View } from 'lib/components/index';
+import { List, Create, Edit, View } from 'lib/components';
 import ParsedApiSpecInterface from 'lib/services/api/ParsedApiSpecInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
-import entities from '../../entities/index';
+import entities from '../../entities';
 
 export type RouteSpec = {
     key: string,

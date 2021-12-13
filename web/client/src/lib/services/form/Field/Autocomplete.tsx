@@ -11,36 +11,30 @@ interface AutocompleteProps {
   required: boolean,
   disabled: boolean,
   onChange: (event: any) => void,
-  choices: any
+  choices: any,
+  error?: boolean,
+  helperText?: string
 }
 
 const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
-  const { name, label, required, multiple, disabled, onChange, choices } = props;
+  const { name, label, required, multiple, disabled, onChange, choices, error, helperText } = props;
   const value = props.value || null;
 
   const [arrayChoices, setArrayChoices] = useState<Array<any>>([]);
-  const [mounted, setMounted] = useState<boolean>(true);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(
     () => {
 
-      if (mounted && loading) {
-        const arrayValue = [];
-        for (const idx in choices) {
-          arrayValue.push({ value: idx, label: choices[idx] });
-        }
-
-        setArrayChoices(arrayValue);
-        setLoading(false);
+      const arrayValue = [];
+      for (const idx in choices) {
+        arrayValue.push({ value: idx, label: choices[idx] });
       }
 
-      return function umount() {
-        setMounted(false);
-      };
+      setArrayChoices(arrayValue);
+
     },
-    [loading, choices, mounted]
+    [choices]
   );
 
   const onChangeWrapper = useCallback(
@@ -108,15 +102,13 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
           label={label}
           InputProps={InputProps}
           InputLabelProps={{ shrink: true, required: required }}
+          error={error}
+          helperText={helperText}
         />
       );
     },
-    [name, label, required]
+    [name, label, required, error, helperText]
   );
-
-  if (loading) {
-    return null;
-  }
 
   return (
     <MuiAutocomplete
@@ -129,7 +121,6 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
       isOptionEqualToValue={isOptionEqualToValue}
       filterSelectedOptions
       renderInput={renderInput}
-
     />
   );
 };

@@ -1,5 +1,6 @@
+import { CircularProgress, styled } from '@mui/material';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import { useStoreState } from 'easy-peasy';
+import { useStoreState } from 'store';
 import _ from 'lib/services/translations/translate';
 import {
   StyledCollapsedBreadcrumbsLink, StyledCollapsedBreadcrumbsNavigateNextIcon,
@@ -10,10 +11,22 @@ export default function CollapsedBreadcrumbs(): JSX.Element {
 
   const currentRoute = useStoreState((state: any) => state.route.route);
   const currentRouteName = useStoreState((state: any) => state.route.name);
+  const loading = useStoreState((state: any) => state.api.loading);
+
   const routeSegments = currentRoute.split('/').filter((segment: string) => {
     return segment;
   });
   const parsedSegments: Array<string> = [];
+
+  const StyleCircularProgress = styled(CircularProgress)(() => {
+    return {
+      margin:'0 4px'
+    }
+  });
+
+  const homeIcon = loading
+    ? (<StyleCircularProgress size="20px" color="inherit" />)
+    : (<StyledHomeIcon />);
 
   return (
     <Breadcrumbs
@@ -22,7 +35,7 @@ export default function CollapsedBreadcrumbs(): JSX.Element {
       aria-label="breadcrumb"
     >
       <StyledCollapsedBreadcrumbsLink to={''}>
-        <StyledHomeIcon />
+        {homeIcon}
       </StyledCollapsedBreadcrumbsLink>
       {routeSegments.map((segment: string, key: number) => {
 

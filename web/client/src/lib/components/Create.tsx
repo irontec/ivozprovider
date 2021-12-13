@@ -6,7 +6,7 @@ import ErrorMessage from './shared/ErrorMessage';
 import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
 import { useFormikType } from 'lib/services/form/types';
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions } from 'store';
 import _ from 'lib/services/translations/translate';
 
 interface CreateProps extends EntityInterface {

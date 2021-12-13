@@ -2,7 +2,7 @@ import * as React from 'react';
 import EntityService, { EntityValues, VisualToggleStates } from 'lib/services/entity/EntityService';
 import FormFieldFactory from 'lib/services/form/FormFieldFactory';
 import { useFormikType } from 'lib/services/form/types';
-import ApiClient from "lib/services/api/ApiClient";
+import store from "store";
 import { Grid } from '@mui/material';
 import { PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityInterface, { PropertiesList, RowIconsType, ViewProps } from './EntityInterface';
@@ -338,17 +338,19 @@ const View = (props: ViewProps): JSX.Element | null => {
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
 
 const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback): Promise<unknown> => {
-    return ApiClient.get(
-        endpoint,
-        {
+
+    const getAction = store.getActions().api.get;
+    return getAction({
+        path: endpoint,
+        params: {
             '_pagination': false,
             '_itemsPerPage': 100,
             '_properties': properties
         },
-        async (data: any) => {
+        successCallback: async (data: any) => {
             setter(data);
         }
-    );
+    });
 }
 
 const DefaultEntityBehavior = {

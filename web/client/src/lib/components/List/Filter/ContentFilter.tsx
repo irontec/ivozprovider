@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import FilterDrawer from './FilterDrawer';
 import EntityService from 'lib/services/entity/EntityService';
-import { Divider } from '@mui/material';
+import { StyledDivider } from './ContentFilter.styles';
 import StyledContentFilterSelector from './ContentFilterSelector.styles';
 import { SearchFilterType } from './icons/FilterIconFactory';
 import { FilterCriteria } from './FilterCriteria';
+import { useStoreState, useStoreActions } from 'store';
 
 export interface CriteriaFilterValue {
     name: string,
@@ -18,10 +19,8 @@ interface ContentFilterMenuProps {
     entityService: EntityService,
     open: boolean,
     handleClose: () => void,
-    commitedCriteria: CriteriaFilterValues,
-    commitCriteria: (data: CriteriaFilterValues) => void,
-    removeFilter: (index: number) => void,
-    path: string
+    path: string,
+    preloadData: boolean
 }
 
 export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null {
@@ -30,65 +29,92 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
         entityService,
         open,
         handleClose,
-        commitedCriteria,
-        commitCriteria,
-        removeFilter,
-        path
+        path,
+        preloadData
     } = props;
 
-    const [mounted, setMounted] = useState<boolean>(true);
+    const queryStringCriteria: CriteriaFilterValues = useStoreState(
+        (state) => state.route.queryStringCriteria
+    );
+    const setQueryStringCriteria = useStoreActions((actions) => {
+        return actions.route.setQueryStringCriteria;
+    });
+
     const [loading, setLoading] = useState<boolean>(true);
     const [foreignEntities, setForeignEntities] = useState<any>({});
-    const [criteria, setCriteria] = useState<CriteriaFilterValues>(commitedCriteria);
-    const foreignKeyGetter = entityService.getForeignKeyGetter();
+    const [criteria, setCriteria] = useState<CriteriaFilterValues>(queryStringCriteria);
 
     useEffect(
         () => {
-            if (mounted && loading) {
+            setCriteria(queryStringCriteria);
+        },
+        [queryStringCriteria, setCriteria]
+    );
+
+    const [delayedApply, setDelayedApply] = useState<boolean>(false);
+    const foreignKeyGetter = entityService.getForeignKeyGetter();
+
+    const apply = useCallback(
+        (waitForStateUpdate: boolean) => {
+
+            if (waitForStateUpdate) {
+                setDelayedApply(true);
+                return;
+            }
+
+            setQueryStringCriteria(criteria);
+            setDelayedApply(false);
+            handleClose();
+        },
+        [criteria, handleClose, setQueryStringCriteria]
+    );
+
+    useEffect(
+        () => {
+            if ((preloadData || open) && loading) {
                 foreignKeyGetter()
                     .then((foreignEntities: any) => {
-                        if (!mounted) {
-                            return;
-                        }
                         setForeignEntities(foreignEntities);
                         setLoading(false);
                     });
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loading, foreignKeyGetter]
+        [preloadData, open, loading, foreignKeyGetter]
     );
 
-    const apply = () => {
-        commitCriteria(criteria);
-        handleClose();
-    };
+    useEffect(
+        () => {
+            if (delayedApply) {
+                apply(false);
+            }
+        },
+        [delayedApply, criteria, apply]
+    );
 
-    if (!mounted && loading) {
-        return null;
-    }
-
-    const addCriteria = (data:CriteriaFilterValue) => {
+    const addCriteria = (data: CriteriaFilterValue) => {
         const newCriteria: CriteriaFilterValues = [...criteria, data];
         setCriteria(newCriteria);
     }
 
     const localRemoveFilter = (index: number) => {
 
-        criteria.splice(index, 1);
-        setCriteria([
-          ...criteria
-        ]);
-      }
+        const newCriteria = [
+            ...criteria
+        ];
+        newCriteria.splice(index, 1);
+        setCriteria(newCriteria);
+    }
+
+    const removeFilter = (index: number) => {
+        localRemoveFilter(index)
+        apply(true);
+    }
 
     return (
         <>
             <FilterDrawer
                 open={open}
-                handleClose={handleClose}
+                close={handleClose}
                 apply={apply}
             >
                 <>
@@ -96,9 +122,10 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
                         entityService={entityService}
                         fkChoices={foreignEntities}
                         addCriteria={addCriteria}
+                        apply={apply}
                         path={path}
                     />
-                    <Divider />
+                    <StyledDivider />
                     <FilterCriteria
                         criteria={criteria}
                         entityService={entityService}
@@ -109,7 +136,7 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
                 </>
             </FilterDrawer>
             <FilterCriteria
-                criteria={commitedCriteria}
+                criteria={queryStringCriteria}
                 entityService={entityService}
                 fkChoices={foreignEntities}
                 removeFilter={removeFilter}

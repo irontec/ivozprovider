@@ -16,9 +16,7 @@ import { StyledActionButtonContainer, StyledLink, StyledFab } from './ContentTab
 type sortType = 'asc' | 'desc';
 
 interface ContentTableProps {
-  loading?: boolean,
   path: string,
-  setLoading: (loading: boolean) => void,
   entityService: EntityService,
   headers: { [id: string]: string },
   rowsPerPage: number,
@@ -29,8 +27,7 @@ interface ContentTableProps {
   page: number,
   setPage: (page: number) => void,
   rows: any,
-  where: CriteriaFilterValues,
-  setWhere: (where: CriteriaFilterValues) => void
+  uriCriteria: CriteriaFilterValues
 }
 
 export default function ContentTable(props: ContentTableProps): JSX.Element {
@@ -46,9 +43,7 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
     setSort,
     page,
     setPage,
-    setLoading,
-    where,
-    setWhere
+    uriCriteria
   } = props;
 
   const acl = entityService.getAcls();
@@ -61,20 +56,6 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
   const filterButtonHandler = (/*event: MouseEvent<HTMLButtonElement>*/) => {
     setShowFilters(!showFilters);
   };
-
-  const [criteria, setCriteria] = useState<CriteriaFilterValues>(where);
-
-  const removeFilter = (index: number) => {
-    criteria.splice(index, 1);
-    setWhereCondition([
-      ...criteria
-    ]);
-  }
-
-  const setWhereCondition = (where: CriteriaFilterValues) => {
-    setCriteria(where);
-    setWhere(where);
-  }
 
   const totalItems = parseInt(
     headers['x-total-items'] ?? 0,
@@ -105,10 +86,8 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
         entityService={entityService}
         open={showFilters}
         handleClose={handleFiltersClose}
-        commitedCriteria={criteria}
-        commitCriteria={setWhereCondition}
-        removeFilter={removeFilter}
         path={path}
+        preloadData={uriCriteria.length > 0}
       />
 
       <Table size="medium">
@@ -126,7 +105,6 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
                 row={row}
                 key={key}
                 path={path}
-                setLoading={setLoading}
               />
             );
           })}
@@ -147,11 +125,9 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
           }}
           onPageChange={(event: any, newPage: any) => {
             setPage(newPage + 1);
-            setLoading(true);
           }}
           onRowsPerPageChange={(newRowsPerpage: any) => {
             setRowsPerPage(newRowsPerpage.target.value);
-            setLoading(true);
           }}
         />
       </ThemeProvider>

@@ -8,9 +8,8 @@ import Dropdown from 'lib/services/form/Field/Dropdown';
 import React from 'react';
 import Autocomplete from './Field/Autocomplete';
 import CustomComponentWrapper from './Field/CustomComponentWrapper';
-import Alert from '@mui/material/Alert';
 import FileUploader from './Field/FileUploader';
-import { StyledSwitchFormControl, StyledtextField, StyledLinearProgress } from './FormFieldFactory.styles';
+import { StyledSwitchFormControl, StyledTextField, StyledLinearProgress } from './FormFieldFactory.styles';
 import { FormOnChangeEvent, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
 
 export type FormFieldFactoryChoices = { [key: string | number]: any };
@@ -46,10 +45,10 @@ export default class FormFieldFactory {
         choices: NullableFormFieldFactoryChoices,
         readOnly = false
     ): JSX.Element | null {
+
         return (
             <React.Fragment>
                 {this.getInputField(fld, property, choices, readOnly)}
-                {this.formik.errors[fld] && <Alert severity="error">{this.formik.errors[fld]}</Alert>}
                 {property.helpText && <FormHelperText variant={'outlined'}>
                     {property.helpText}
                 </FormHelperText>}
@@ -100,6 +99,8 @@ export default class FormFieldFactory {
                     disabled={disabled}
                     onChange={this.changeHandler}
                     choices={choices}
+                    error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
+                    helperText={this.formik.touched[fld] ? this.formik.errors[fld] as string : ''}
                 />
             );
         }
@@ -129,6 +130,8 @@ export default class FormFieldFactory {
                     disabled={disabled}
                     onChange={this.changeHandler}
                     choices={choices}
+                    error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
+                    helperText={this.formik.touched[fld] ? this.formik.errors[fld] as string : ''}
                 />
             );
         }
@@ -182,7 +185,7 @@ export default class FormFieldFactory {
         if ((property as ScalarProperty).type === 'integer') {
 
             return (
-                <StyledtextField
+                <StyledTextField
                     name={fld}
                     type="number"
                     value={this.formik.values[fld]}
@@ -201,7 +204,7 @@ export default class FormFieldFactory {
 
             if ((property as ScalarProperty).format === 'date-time') {
                 return (
-                    <StyledtextField
+                    <StyledTextField
                         name={fld}
                         type="datetime-local"
                         value={this.formik.values[fld]}
@@ -222,7 +225,7 @@ export default class FormFieldFactory {
 
             if ((property as ScalarProperty).format === 'time') {
                 return (
-                    <StyledtextField
+                    <StyledTextField
                         name={fld}
                         type="time"
                         value={this.formik.values[fld]}
@@ -238,7 +241,7 @@ export default class FormFieldFactory {
             }
 
             return (
-                <StyledtextField
+                <StyledTextField
                     name={fld}
                     type="text"
                     value={this.formik.values[fld]}

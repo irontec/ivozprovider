@@ -1,63 +1,49 @@
 /* eslint-disable no-script-url */
 
 import { useState, useEffect, useMemo } from 'react';
-import { useStoreActions } from 'easy-peasy';
-//import queryString from 'query-string';
+import { useStoreActions, useStoreState } from 'store';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import ContentTable from './ContentTable/ContentTable';
 import EntityService from 'lib/services/entity/EntityService';
-import useFilterRequestPath from './useFilterRequestPath';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
+import { criteriaFilterValuesToString, queryStringToCriteria } from './List.helpers';
 
 const List = function (props: any & RouteComponentProps) {
 
-    const { path, history, location, foreignKeyResolver } = props;
+    const { path, history, foreignKeyResolver } = props;
     const { entityService }: { entityService: EntityService } = props;
 
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loading, setLoading] = useState(true);
     const [rows, setRows] = useState<Array<any>>([]);
     const [headers, setHeaders] = useState<{ [id: string]: string }>({});
+
     const [page, setPage] = useState<number>(1);
     const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
     const apiGet = useStoreActions((actions: any) => {
         return actions.api.get
     });
+    const [criteriaIsReady, setCriteriaIsReady] = useState<boolean>(false);
+    const queryStringCriteria: CriteriaFilterValues = useStoreState(
+        (state) => state.route.queryStringCriteria
+    );
+    const setQueryStringCriteria = useStoreActions((actions) => {
+        return actions.route.setQueryStringCriteria;
+    });
 
-    //const querystring = queryString.parse(location.search || '');
-    const criteria: CriteriaFilterValues = []; /* TODO querystring._criteria
-        ? JSON.parse(querystring._criteria as string)
-        : {};*/
+    const uriCriteria: CriteriaFilterValues = queryStringToCriteria();
+    const currentQueryString = criteriaFilterValuesToString(uriCriteria);
+    const reqPath = path + currentQueryString;
 
-    const [where, setWhere] = useState<CriteriaFilterValues>(criteria);
+    ////////////////////////////
+    // Pagination
+    ////////////////////////////
     const [orderBy, setOrderBy] = useState(entityService.getOrderBy());
     const [orderDirection, setOrderDirection] = useState(entityService.getOrderDirection());
 
     const setSort = (property: string, direction: 'asc' | 'desc') => {
         setOrderBy(property);
         setOrderDirection(direction);
-        setLoading(true);
     }
-
-    const applyFilters = (where: any) => {
-
-        const search = Object.keys(where).length
-            ? '?_criteria=' + JSON.stringify(where)
-            : '';
-
-        history.push({
-            pathname: location.pathname,
-            search
-        });
-        setWhere(where);
-        setLoading(true);
-    }
-
-    const reqPath = useFilterRequestPath({
-        where,
-        basePath: path,
-    });
 
     const paginationParams = useMemo(
         () => {
@@ -74,42 +60,67 @@ const List = function (props: any & RouteComponentProps) {
         [rowsPerPage, page, orderBy, orderDirection]
     );
 
+    ////////////////////////////
+    // End of pagination
+    ////////////////////////////
+
     useEffect(
         () => {
-            if (mounted && loading) {
+            const criteria = queryStringToCriteria();
+            setQueryStringCriteria(criteria);
+            setCriteriaIsReady(true);
+        },
+        [reqPath, setQueryStringCriteria, setCriteriaIsReady]
+    );
 
-                apiGet({
-                    path: reqPath,
-                    params: paginationParams,
-                    successCallback: async (data: any, headers: any) => {
+    useEffect(
+        () => {
 
-                        if (headers) {
-                            setHeaders(headers);
-                        }
-
-                        foreignKeyResolver(data, entityService)
-                            .then((data: any) => {
-
-                                const fixedData = [];
-                                for (const idx in data) {
-                                    fixedData.push(
-                                        data[idx],
-                                    );
-                                }
-
-                                setRows(fixedData);
-                                setLoading(false);
-                            });
-                    }
-                });
+            if (!criteriaIsReady) {
+                return;
             }
 
-            return function umount() {
-                setMounted(false);
-            };
+            const newQueryString = criteriaFilterValuesToString(queryStringCriteria);
+            if (currentQueryString === newQueryString) {
+                return;
+            }
+
+            history.push({
+                pathname: path,
+                search: newQueryString
+            });
+        },
+        [criteriaIsReady, queryStringCriteria, currentQueryString, history, path]
+    );
+
+    useEffect(
+        () => {
+            apiGet({
+                path: encodeURI(reqPath),
+                params: paginationParams,
+                successCallback: async (data: any, headers: any) => {
+
+                    if (headers) {
+                        setHeaders(headers);
+                    }
+
+                    foreignKeyResolver(data, entityService)
+                        .then((data: any) => {
+
+                            const fixedData = [];
+                            for (const idx in data) {
+                                fixedData.push(
+                                    data[idx],
+                                );
+                            }
+
+                            setRows(fixedData);
+                        });
+                }
+            });
         },
         [
-            mounted, loading, foreignKeyResolver, entityService,
+            foreignKeyResolver, entityService,
             apiGet, reqPath, paginationParams
         ]
     );
@@ -117,7 +128,6 @@ const List = function (props: any & RouteComponentProps) {
     return (
         <ContentTable
             entityService={entityService}
-            loading={loading}
             rows={rows}
             headers={headers}
             page={page}
@@ -127,12 +137,11 @@ const List = function (props: any & RouteComponentProps) {
             orderBy={orderBy}
             orderDirection={orderDirection}
             setSort={setSort}
-            setLoading={setLoading}
-            where={where}
-            setWhere={applyFilters}
+            uriCriteria={uriCriteria}
             path={path}
         />
     );
 }
 
 export default withRouter(List);
+

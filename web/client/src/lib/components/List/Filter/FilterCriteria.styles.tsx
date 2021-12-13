@@ -20,12 +20,12 @@ _Chip.displayName = '_Chip';
 export const StyledChip = styled(_Chip)(
   () => {
     return {
-      margin: '0 5px',
+      margin: '0 5px 5px',
     }
   }
 );
 
-const _ChipIcon = (props:any) => {
+const _ChipIcon = (props: any) => {
   const { children, className, fieldName } = props;
   return (
     <div className={className}>
@@ -38,9 +38,10 @@ const _ChipIcon = (props:any) => {
 export const StyledChipIcon = styled(_ChipIcon)(
   () => {
     return {
+      paddingLeft: '5px',
       '& .prefix': {
         display: 'inline-flex',
-         paddingRight: '5px',
+        paddingRight: '10px',
       }
     }
   }

@@ -14,24 +14,28 @@ Transition.displayName = 'FilterDialogTransition';
 
 export interface FilterDialogContentProps {
   className?: string,
-  handleClose: (event: unknown) => void,
-  apply: (event: unknown) => void,
+  close: () => void,
+  apply: (waitForStateUpdate: boolean) => void,
   children: Array<JSX.Element | null> | JSX.Element | null
 }
 
 export default function FilterBoxContent(props: FilterDialogContentProps): JSX.Element {
 
-  const { handleClose, apply, className } = props;
+  const { close, apply, className } = props;
+
+  const applyImmediately = () => {
+    apply(false);
+  };
 
   return (
     <div className={className}>
       <StyledToolbar>
-        <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+        <IconButton edge="start" color="inherit" onClick={close} aria-label="close">
           <Tooltip title={_('Close')} arrow placement='right'>
             <CloseIcon />
           </Tooltip>
         </IconButton>
-        <Button autoFocus color="inherit" onClick={apply}>
+        <Button autoFocus color="inherit" onClick={applyImmediately}>
           {_('Apply')}
         </Button>
       </StyledToolbar>

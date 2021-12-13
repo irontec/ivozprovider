@@ -55,7 +55,6 @@ export default class EntityService {
 
         for (const idx of columns) {
             if (!this.properties[idx] && !properties[idx]) {
-                //console.warn(`skipping property ${idx}`);
                 continue;
             }
 
@@ -367,14 +366,18 @@ export default class EntityService {
         for (const idx in parameters) {
 
             const name = parameters[idx].name;
-
             const match = name.match(filterRegExp);
             const fieldName = match[1];
             let modifier = match[2] || null;
             if (!modifier) {
-                modifier = parameters[idx].type === 'string'
+
+                if (name.indexOf('[]') >= 0) {
+                    modifier = 'in';
+                } else {
+                    modifier = parameters[idx].type === 'string'
                     ? 'exact'
                     : 'eq';
+                }
             }
 
             if (!filters[fieldName]) {
@@ -383,6 +386,14 @@ export default class EntityService {
 
             if (filters[fieldName].includes(modifier)) {
                 continue;
+            }
+
+            if (modifier === 'in' && filters[fieldName].includes('exact')) {
+
+                const index = filters[fieldName].indexOf('exact');
+                if (index > -1) {
+                    filters[fieldName].splice(index, 1);
+                }
             }
 
             filters[fieldName].push(modifier);

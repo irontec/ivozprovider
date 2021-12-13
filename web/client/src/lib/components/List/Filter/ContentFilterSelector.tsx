@@ -13,7 +13,8 @@ import { CriteriaFilterValue } from './ContentFilter';
 interface ContentFilterRowProps {
     entityService: EntityService,
     fkChoices: { [fldName: string]: NullablePropertyFkChoices },
-    addCriteria: (data:CriteriaFilterValue) => void,
+    addCriteria: (data: CriteriaFilterValue) => void,
+    apply: (waitForStateUpdate:boolean) => void,
     path: string
     className?: string
 }
@@ -23,6 +24,7 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
     const {
         entityService,
         addCriteria,
+        apply,
         path,
         fkChoices,
         className
@@ -31,6 +33,7 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
     const columns = entityService.getCollectionParamList();
     const columnNames: Array<string> = Object.keys(columns);
     const filters: FormFieldFactoryChoices = {};
+
     for (const idx in columnNames) {
         const propertyName: string = columnNames[idx];
         filters[propertyName] = entityService.getPropertyFilters(propertyName, path);
@@ -42,7 +45,7 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
     }
 
     const [name, setName] = useState<string>(Object.keys(filters)[0]);
-    const [type, setType] = useState<SearchFilterType>(filters[name] || '');
+    const [type, setType] = useState<SearchFilterType>(filters[name][0] || '');
 
     const filterLabels: KeyValList = {};
     for (const filter of (filters[name] || {})) {
@@ -52,7 +55,7 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
     const nameSelectBoxSpec: PropertySpec = {
         type: 'string',
         enum: fieldNames,
-        default: Object.keys(fieldNames)[0],
+        default: name,
         label: _('Field'),
         required: true,
     };
@@ -60,7 +63,7 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
     const typeSelectBoxSpec: PropertySpec = {
         type: 'string',
         enum: filterLabels,
-        default: filters[name][0],
+        default: type,
         label: _('Filter'),
         required: true,
     };
@@ -85,8 +88,26 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
 
     const searchFormik: useFormikType = useFormik({
         initialValues,
+        validate: (values: CriteriaFilterValue) => {
+
+            const response: any = {};
+            const emptyValue = values.value === '' || values.value === undefined;
+            if (emptyValue && values.type !== 'exact') {
+                response.value = _('required value');
+            }
+
+            return response;
+        },
         onSubmit: async (values: CriteriaFilterValue, actions: FormikHelpers<CriteriaFilterValue>) => {
-            addCriteria(values);
+
+            actions.setTouched({}, false);
+            const dataFixes: Partial<CriteriaFilterValue> = {};
+
+            addCriteria({
+                ...values,
+                ...dataFixes
+            });
+
             actions.setValues({
                 ...values,
                 value: ''
@@ -94,13 +115,27 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
         }
     });
 
+    if (!filters[name].includes(searchFormik.values.type)) {
+        searchFormik.setValues({
+            ...searchFormik.values,
+            type: filters[name][0]
+        });
+    }
+
     const formFieldFactory = new FormFieldFactory(
         entityService,
         searchFormik,
         (e: FormOnChangeEvent): void => {
-            switch(e.target.name) {
+            switch (e.target.name) {
                 case 'name':
                     setName(e.target.value);
+                    searchFormik.handleChange({
+                        target: {
+                            name: 'value',
+                            value: ''
+                        }
+                    });
+                    searchFormik.setTouched({}, false);
                     break;
                 case 'type':
                     setType(e.target.value);
@@ -109,6 +144,11 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
             searchFormik.handleChange(e);
         }
     );
+
+    const addAndApplyCallback = async () => {
+        await searchFormik.submitForm();
+        apply(true);
+    }
 
     return (
         <form onSubmit={searchFormik.handleSubmit}>
@@ -128,7 +168,7 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
                         {},
                         false
                     )}
-                </Grid >
+                </Grid>
                 <Grid item xs={12}>
                     {type !== 'exists' && formFieldFactory.createByPropertySpec(
                         'value',
@@ -139,6 +179,10 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
                 </Grid>
                 <Grid item xs={12}>
                     <Button variant="contained" type="submit">{_('Add')}</Button>
+                    &nbsp;
+                    <Button variant="contained" onClick={addAndApplyCallback}>
+                        {_('Add and apply')}
+                    </Button>
                 </Grid>
             </Grid >
         </form>

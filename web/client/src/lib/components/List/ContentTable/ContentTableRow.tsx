@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import PanoramaIcon from '@mui/icons-material/Panorama';
 import ConfirmDialog from 'lib/components/shared/ConfirmDialog';
 import EntityService from 'lib/services/entity/EntityService';
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions } from 'store';
 import { ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import _ from 'lib/services/translations/translate';
 import { StyledTableRowLink, StyledTableRowFkLink, StyledDeleteIcon, StyledTableCell, StyledCheckBoxIcon, StyledCheckBoxOutlineBlankIcon } from './ContentTableRow.styles';
@@ -16,13 +16,12 @@ import { StyledTableRowLink, StyledTableRowFkLink, StyledDeleteIcon, StyledTable
 interface ContentTableRowProps {
   entityService: EntityService,
   row: any,
-  path: string,
-  setLoading: (loading: boolean) => void
+  path: string
 }
 
 export default function ContentTableRow(props: ContentTableRowProps): JSX.Element {
 
-  const { entityService, row, path, setLoading } = props;
+  const { entityService, row, path } = props;
 
   const columns = entityService.getCollectionColumns();
   const acl = entityService.getAcls();
@@ -51,7 +50,6 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
       path: path.replace('{id}', row.id)
     });
     setShowDelete(false);
-    setLoading(true);
   };
 
   return (

@@ -7,7 +7,6 @@ import LowerThan from './lowerThan';
 import LowerThanEqual from './lowerThanEqual';
 import GreaterThan from './greaterThan';
 import GreaterThanEqual from './greaterThanEqual';
-import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import _ from 'lib/services/translations/translate';
 import { styled } from '@mui/styles';
@@ -52,8 +51,6 @@ export default function FilterIconFactory(props: FilterIconFactoryProps): JSX.El
 export const getFilterIcon = (name: string): OverridableComponent<SvgIconTypeMap> => {
 
     switch (name) {
-        case '':
-            return NotInterestedIcon;
         case 'exists':
             return AssignmentTurnedInIcon;
         case 'partial':
@@ -62,7 +59,9 @@ export const getFilterIcon = (name: string): OverridableComponent<SvgIconTypeMap
             return StartsWith;
         case 'end':
             return EndsWith;
+        case '':
         case 'in':
+            return Equals;
         case 'exact':
         case 'eq':
             return Equals;
@@ -85,7 +84,8 @@ export const getFilterIcon = (name: string): OverridableComponent<SvgIconTypeMap
 export const getFilterLabel = (value: string): JSX.Element => {
 
     const filterTypes: { [key: string]: JSX.Element } = {
-        "": _("None"),
+        "": _("Equals"),
+        "in": _("Equals"),
         "eq": _("Equals"),
         "exact": _("Equals"),
         "neq": _("Does not Equal"),
