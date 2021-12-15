@@ -278,7 +278,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                                     : false;
 
                                 return (
-                                    <Grid item xs={12} md={6} lg={4} key={idx} style={visibilityStyles}>
+                                    <Grid item xs={12} md={6} lg={4} xl={3} key={idx} style={visibilityStyles}>
                                         {formFieldFactory.getFormField(columnName, choices, readOnly)}
                                     </Grid>
                                 );
