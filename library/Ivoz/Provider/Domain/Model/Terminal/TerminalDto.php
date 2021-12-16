@@ -40,25 +40,6 @@ class TerminalDto extends TerminalDtoAbstract
         $this->domainName = $name;
     }
 
-    public function normalize(string $context, string $role = '')
-    {
-        $response = parent::normalize(...func_get_args());
-
-        if (!isset($response['status'])) {
-            return $response;
-        }
-
-        /**
-         * @var int $key
-         * @var RegistrationStatus $status
-         */
-        foreach ($response['status'] as $key => $status) {
-            $response['status'][$key] = $status->toArray();
-        }
-
-        return $response;
-    }
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -71,9 +52,11 @@ class TerminalDto extends TerminalDtoAbstract
                 'name' => 'name',
                 'domainName' => 'domainName',
                 'status' => [
-                    'contact',
-                    'expires',
-                    'userAgent'
+                    [
+                        'contact',
+                        'expires',
+                        'userAgent'
+                    ]
                 ]
             ];
 
@@ -125,7 +108,10 @@ class TerminalDto extends TerminalDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
-        $response['status'] = $this->status;
+        $response['status'] = [];
+        foreach ($this->status as $status) {
+            $response['status'][] = $status->toArray();
+        }
 
         return $response;
     }

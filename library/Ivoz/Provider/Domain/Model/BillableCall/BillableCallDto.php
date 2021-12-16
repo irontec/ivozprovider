@@ -56,6 +56,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+            $response['priceDetails'] = [];
         }
 
         if ($role === 'ROLE_SUPER_ADMIN') {
@@ -73,7 +74,6 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return $response;
     }
-
 
     /**
      * @param array $response

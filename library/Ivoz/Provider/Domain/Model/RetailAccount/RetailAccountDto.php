@@ -40,30 +40,14 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $this->domainName = $name;
     }
 
-    public function normalize(string $context, string $role = '')
-    {
-        $response = parent::normalize(...func_get_args());
-
-        if (!isset($response['status'])) {
-            return $response;
-        }
-
-        /**
-         * @var int $key
-         * @var RegistrationStatus $status
-         */
-        foreach ($response['status'] as $key => $status) {
-            $response['status'][$key] = $status->toArray();
-        }
-
-        return $response;
-    }
-
     public function toArray($hideSensitiveData = false)
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
-        $response['status'] = $this->status;
+        $response['status'] = [];
+        foreach ($this->status as $status) {
+            $response['status'][] = $status->toArray();
+        }
 
         return $response;
     }
@@ -80,9 +64,11 @@ class RetailAccountDto extends RetailAccountDtoAbstract
                 'name' => 'name',
                 'domainName' => 'domainName',
                 'status' => [
-                    'contact',
-                    'expires',
-                    'userAgent'
+                    [
+                        'contact',
+                        'expires',
+                        'userAgent'
+                    ]
                 ]
             ];
 

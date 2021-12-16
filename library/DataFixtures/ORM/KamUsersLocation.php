@@ -33,7 +33,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
             $this->setDomain($domain->getDomain());
             $this->setUsername('alice');
             $this->setLastmodified(
-                new \DateTime('1900-01-01 00:00:0')
+                new \DateTime('1900-01-01 00:00:00')
             );
             $this->setRuid('uloc-5cf7df4e-2b02-ba');
         })->call($item1);
@@ -54,7 +54,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
             $this->setDomain($domain->getDomain());
             $this->setUsername('testFriend');
             $this->setLastmodified(
-                new \DateTime('1900-01-01 00:00:0')
+                new \DateTime('1900-01-01 00:00:00')
             );
             $this->setRuid('uloc-5cf7df4e-2b02-bb');
         })->call($item2);
@@ -75,10 +75,14 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
             $this->setDomain($domain->getDomain());
             $this->setUsername('residentialDevice');
             $this->setLastmodified(
-                new \DateTime('1900-01-01 00:00:0')
+                new \DateTime('1900-01-01 00:00:00')
             );
             $this->setRuid('uloc-5cf7df4e-2b02-bc');
         })->call($item3);
+
+        $this->addReference('_reference_KamUsersLocation3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         /** @var UsersLocation $item4 */
         $item4 = $this->createEntityInstance(UsersLocation::class);
@@ -92,7 +96,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
             $this->setDomain($domain->getDomain());
             $this->setUsername('testRetailAccount');
             $this->setLastmodified(
-                new \DateTime('1900-01-01 00:00:0')
+                new \DateTime('1900-01-01 00:00:00')
             );
             $this->setRuid('uloc-5cf7df4e-2b02-bd');
         })->call($item4);
@@ -101,9 +105,26 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
-        $this->addReference('_reference_KamUsersLocation3', $item3);
-        $this->sanitizeEntityValues($item3);
-        $manager->persist($item3);
+        /** @var UsersLocation $item5 */
+        $item5 = $this->createEntityInstance(UsersLocation::class);
+        $domain = $fixture->getReference('_reference_ProviderDomain6');
+        (function () use ($domain, $fixture) {
+            $this->setExpires(
+                new \DateTime('2030-12-31 23:59:59')
+            );
+            $this->setContact('sip:yealinktest@10.10.1.110:5060');
+            $this->setUserAgent('Yealink SIP-T23G 44.80.0.130');
+            $this->setDomain($domain->getDomain());
+            $this->setUsername('residentialDevice');
+            $this->setLastmodified(
+                new \DateTime('1900-01-01 00:00:01')
+            );
+            $this->setRuid('uloc-5cf7df4e-2b12-be');
+        })->call($item5);
+
+        $this->addReference('_reference_KamUsersLocation5', $item5);
+        $this->sanitizeEntityValues($item5);
+        $manager->persist($item5);
 
         $manager->flush();
     }
