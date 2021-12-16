@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "688fc113afd8f76f9865b924586af3de",
+    "content-hash": "ffc8ffee860c2203c636da667829c21d",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1757,11 +1757,17 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.4.4",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "3eccde9473af434e448ed7cf15736d21852508cb"
+                "reference": "1b04e662c1e796d1337e3d1d485d4373cc9b1650"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/1b04e662c1e796d1337e3d1d485d4373cc9b1650",
+                "reference": "1b04e662c1e796d1337e3d1d485d4373cc9b1650",
+                "shasum": ""
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1782,6 +1788,7 @@
                     "Ivoz\\Core\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
@@ -1800,7 +1807,7 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2021-11-03T14:28:21+00:00"
+            "time": "2021-12-16T11:41:34+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -1955,8 +1962,7 @@
             ],
             "description": "Symfony bridge for IvozProvider",
             "transport-options": {
-                "symlink": false,
-                "relative": true
+                "symlink": false
             }
         },
         {
@@ -3413,6 +3419,7 @@
                 "mail",
                 "mailer"
             ],
+            "abandoned": "symfony/mailer",
             "time": "2019-11-12T09:31:26+00:00"
         },
         {
@@ -7104,12 +7111,6 @@
                 "future",
                 "non-blocking",
                 "promise"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/amphp",
-                    "type": "github"
-                }
             ],
             "time": "2020-07-14T21:47:18+00:00"
         },
@@ -10823,6 +10824,7 @@
                 }
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+            "abandoned": "symfony/filesystem",
             "time": "2015-12-17T08:42:14+00:00"
         }
     ],
