@@ -23,6 +23,11 @@ Feature: Retrieve residential devices status
                       "contact": "sip:yealinktest@10.10.1.108:5060",
                       "expires": "2031-01-01 00:59:59",
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  },
+                  {
+                      "contact": "sip:yealinktest@10.10.1.110:5060",
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }
               ]
           }
@@ -36,7 +41,7 @@ Feature: Retrieve residential devices status
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
+    And the JSON should be equal to:
     """
       {
           "name": "residentialDevice",
@@ -45,6 +50,11 @@ Feature: Retrieve residential devices status
           "status": [
               {
                   "contact": "sip:yealinktest@10.10.1.108:5060",
+                  "expires": "2031-01-01 00:59:59",
+                  "userAgent": "Yealink SIP-T23G 44.80.0.130"
+              },
+              {
+                  "contact": "sip:yealinktest@10.10.1.110:5060",
                   "expires": "2031-01-01 00:59:59",
                   "userAgent": "Yealink SIP-T23G 44.80.0.130"
               }
