@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type SchedulePropertyList<T> = {
+export type SchedulePropertyList<T> = {
     'name'?: T,
     'timeIn'?: T,
     'timeout'?: T,

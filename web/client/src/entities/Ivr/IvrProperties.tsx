@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type IvrPropertyList<T> = {
+export type IvrPropertyList<T> = {
     'name'?: T,
     'welcomeLocution'?: T,
     'noInputLocution'?: T,

@@ -3,7 +3,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  OutlinedInput
+  OutlinedInput,
+  FormHelperText
 } from '@mui/material';
 import { JSXElementConstructor, ReactElement } from 'react';
 
@@ -14,16 +15,18 @@ interface SelectProps {
   required: boolean,
   disabled: boolean,
   onChange: (event: any) => void,
-  choices: any
+  choices: any,
+  error?: boolean,
+  helperText?: string
 }
 
 const Dropdown = (props: SelectProps): JSX.Element => {
 
-  const { name, label, value, required, disabled, onChange, choices } = props;
+  const { name, label, value, required, disabled, onChange, choices, error, helperText } = props;
   const labelId = `${name}-label`;
 
   return (
-    <FormControl fullWidth={true}>
+    <FormControl fullWidth={true} error={error}>
       <InputLabel required={required} shrink={true} id={labelId}>{label}</InputLabel>
       <Select
         value={value}
@@ -44,6 +47,7 @@ const Dropdown = (props: SelectProps): JSX.Element => {
           return (<MenuItem value={value} key={key}>{label}</MenuItem>);
         })}
       </Select>
+      {helperText && <FormHelperText>{helperText}</FormHelperText>}
     </FormControl>
   );
 };

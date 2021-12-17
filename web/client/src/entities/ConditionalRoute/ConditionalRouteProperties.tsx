@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type ConditionalRoutePropertyList<T> = {
+export type ConditionalRoutePropertyList<T> = {
     'name'?: T,
     'locution'?: T,
     'routetype'?: T,

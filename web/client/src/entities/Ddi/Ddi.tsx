@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { DdiProperties, DdiPropertiesList } from './DdiProperties';
@@ -308,6 +308,7 @@ const ddi: EntityInterface = {
     columns,
     properties,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver
 };
 

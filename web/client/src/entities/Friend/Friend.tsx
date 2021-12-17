@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import StatusIcon from './Field/StatusIcon';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import { FriendProperties } from './FriendProperties';
 
 const properties: FriendProperties = {
@@ -240,7 +240,8 @@ const friend: EntityInterface = {
     path: '/friends',
     properties,
     columns,
-    Form
+    Form,
+    foreignKeyGetter
 };
 
 export default friend;

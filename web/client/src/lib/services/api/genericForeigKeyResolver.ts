@@ -1,5 +1,5 @@
 import { EntityValues } from '../entity/EntityService';
-import ApiClient from './ApiClient';
+import store from 'store';
 
 export default async function genericForeignKeyResolver(
     data: Array<EntityValues> | EntityValues,
@@ -46,13 +46,16 @@ export default async function genericForeignKeyResolver(
     }
 
     if (ids.length) {
-        await ApiClient.get(
-            entityEndpoint,
-            {
+
+        const getAction = store.getActions().api.get;
+
+        await getAction({
+            path: entityEndpoint,
+            params: {
                 id: ids,
                 _pagination: false
             },
-            async (response: any) => {
+            successCallback: async (response: any) => {
 
                 const entityReducer = async (accumulator: any, value: any) => {
 
@@ -89,7 +92,7 @@ export default async function genericForeignKeyResolver(
                     }
                 }
             }
-        );
+        });
     }
 
     return data;

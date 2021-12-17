@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type ExternalCallFilterPropertyList<T> = {
+export type ExternalCallFilterPropertyList<T> = {
     'name'?: T,
     'welcomeLocution'?: T,
     'holidayLocution'?: T,

@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form'
+import Form, { foreignKeyGetter } from './Form'
 import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
 import entities from '../index';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -59,6 +59,7 @@ const ratingProfile: EntityInterface = {
     path: '/rating_profiles',
     properties,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver,
 };
 

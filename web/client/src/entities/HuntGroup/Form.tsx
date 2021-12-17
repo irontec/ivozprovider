@@ -5,6 +5,34 @@ import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { HuntGroupPropertyList } from './HuntGroupProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: HuntGroupPropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = LocutionSelectOptions((options: any) => {
+        response.noAnswerLocution = options;
+    });
+
+    promises[promises.length] = CountrySelectOptions((options: any) => {
+        response.noAnswerNumberCountry = options;
+    });
+
+    promises[promises.length] = ExtensionSelectOptions((options: any) => {
+        response.noAnswerExtension = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.noAnswerVoiceMailUser = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -16,40 +44,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
 
-                LocutionSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            noAnswerLocution: options,
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerNumberCountry: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerExtension: options,
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerVoiceMailUser: options,
+                            ...options
                         }
                     });
                 });

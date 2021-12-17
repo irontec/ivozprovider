@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type ConferenceRoomPropertyList<T> = {
+export type ConferenceRoomPropertyList<T> = {
     'attr'?: T,
     'name'?: T,
     'pinProtected'?: T,

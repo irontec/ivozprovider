@@ -1,9 +1,9 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 
-const LanguageSelectOptions = (callback: FetchFksCallback): void => {
+const LanguageSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/languages',
         ['id', 'name'],
         (data: any) => {

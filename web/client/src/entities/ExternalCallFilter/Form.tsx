@@ -8,6 +8,51 @@ import _ from 'lib/services/translations/translate';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
+import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = LocutionSelectOptions((options: any) => {
+        response.welcomeLocution = options;
+        response.holidayLocution = options;
+        response.outOfScheduleLocution = options;
+    });
+
+    promises[promises.length] = CountrySelectOptions((options: any) => {
+        response.holidayNumberCountry = options;
+        response.outOfScheduleNumberCountry = options;
+    });
+
+    promises[promises.length] = ExtensionSelectOptions((options: any) => {
+        response.holidayExtension = options;
+        response.outOfScheduleExtension = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.holidayVoiceMailUser = options;
+        response.outOfScheduleVoiceMailUser = options;
+    });
+
+    promises[promises.length] = MatchListSelectOptions((options: any) => {
+        response.whiteListIds = options;
+        response.blackListIds = options;
+    });
+
+    promises[promises.length] = ScheduleSelectOptions((options: any) => {
+        response.scheduleIds = options;
+    });
+
+    promises[promises.length] = CalendarSelectOptions((options: any) => {
+        response.calendarIds = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -19,73 +64,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
 
-                LocutionSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            welcomeLocution: options,
-                            holidayLocution: options,
-                            outOfScheduleLocution: options,
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            holidayNumberCountry: options,
-                            outOfScheduleNumberCountry: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            holidayExtension: options,
-                            outOfScheduleExtension: options,
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            holidayVoiceMailUser: options,
-                            outOfScheduleVoiceMailUser: options,
-                        }
-                    });
-                });
-
-                MatchListSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            whiteListIds: options,
-                            blackListIds: options,
-                        }
-                    });
-                });
-
-                ScheduleSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            scheduleIds: options,
-                        }
-                    });
-                });
-
-                CalendarSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            calendarIds: options,
+                            ...options
                         }
                     });
                 });

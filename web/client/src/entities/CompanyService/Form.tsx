@@ -1,6 +1,21 @@
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import ServiceSelectOptions from 'entities/Service/SelectOptions';
+import { CompanyServicePropertyList } from './CompanyServiceProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: CompanyServicePropertyList<unknown> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = ServiceSelectOptions((options: any) => {
+        response.service = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -15,17 +30,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                ServiceSelectOptions(
-                    (options: any) => {
-                        mounted && setFkChoices((fkChoices: any) => {
-                            return {
-                                ...fkChoices,
-                                service: options
-                            }
-                        });
-                    },
-                    props.formik.initialValues?.service
-                );
+                foreignKeyGetter().then((options) => {
+                    mounted && setFkChoices((fkChoices: any) => {
+                        return {
+                            ...fkChoices,
+                            ...options
+                        }
+                    });
+                });
 
                 setLoadingFks(false);
             }
@@ -34,7 +46,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 setMounted(false);
             };
         },
-        [mounted, loadingFks, fkChoices, props.formik.initialValues?.service]
+        [mounted, loadingFks, fkChoices]
     );
 
     const groups: Array<FieldsetGroups> = [
@@ -50,7 +62,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
     const readOnlyProperties = {
         service: props.edit ? true : false,
     };
-
 
     return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} readOnlyProperties={readOnlyProperties} />);
 }

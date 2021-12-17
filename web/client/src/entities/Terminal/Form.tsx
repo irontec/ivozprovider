@@ -2,6 +2,21 @@ import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/enti
 import TerminalModelSelectOptions from '../TerminalModel/SelectOptions';
 import { useEffect, useState } from 'react';
 import _ from 'lib/services/translations/translate';
+import { TerminalPropertyList } from './TerminalProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: TerminalPropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = TerminalModelSelectOptions((options: any) => {
+        response.terminalModel = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -13,12 +28,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
-                TerminalModelSelectOptions((options: any) => {
+
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            terminalModel: options
+                            ...options
                         }
                     });
                 });

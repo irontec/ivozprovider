@@ -1,44 +1,9 @@
-import { Actions, Thunk, thunk } from 'easy-peasy';
+import { action, Actions, Computed, computed, Thunk, thunk } from 'easy-peasy';
 import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
 
-interface ApiState {
-  errorMsg: string | null,
-}
-
-interface ApiActions {
-  get: Thunk<() => Promise<void>, apiGetRequestParams>
-  download: Thunk<() => Promise<void>, apiGetRequestParams>
-  post: Thunk<() => Promise<void>, apiPostRequestParams>
-  put: Thunk<() => Promise<void>, apiPutRequestParams>
-  delete: Thunk<() => Promise<void>, apiDeleteRequestParams>
-}
-
-export type ApiStore = ApiState & ApiActions;
-
-interface apiGetRequestParams {
-  path: string,
-  params: any,
-  successCallback: (data: Record<string, any>, headers: Record<string, any>) => Promise<any>
-}
-
-interface apiPostRequestParams {
-  path: string,
-  values: any,
-  contentType: string
-}
-
-interface apiPutRequestParams {
-  path: string,
-  values: any
-}
-
-interface apiDeleteRequestParams {
-  path: string,
-  params: any,
-  successCallback: () => Promise<any>
-}
-
-const handleApiErrors = (error: ApiError | null, getStoreActions: () => Actions<any>): string | null => {
+const handleApiErrors = (
+  error: ApiError | null, getStoreActions: () => Actions<any>
+): string | null => {
 
   if (!error) {
     throw error;
@@ -54,21 +19,38 @@ const handleApiErrors = (error: ApiError | null, getStoreActions: () => Actions<
 
 const api = {
   errorMsg: null,
+  ongoingRequests: 0,
+  loading: computed((state:any) => { return state.ongoingRequests > 0 }),
+  sumRequest: action((state: any) => {
+    state.ongoingRequests += 1;
+  }),
+  restRequest: action((state: any) => {
+    state.ongoingRequests = Math.max(
+      (state.ongoingRequests - 1),
+      0
+    );
+  }),
   ////////////////////////////////////////
   // GET
   ////////////////////////////////////////
   get: thunk(async (actions: any, payload: apiGetRequestParams, { getStoreActions }) => {
 
+    actions.sumRequest();
     const { path, params, successCallback } = payload;
 
     try {
-      return await ApiClient.get(
+      const resp = await ApiClient.get(
         path,
         params,
         successCallback
       );
+      actions.restRequest();
+
+      return resp;
+
     } catch (error: any) {
 
+      actions.restRequest();
       console.log('api get error', error);
       handleApiErrors(error as ApiError, getStoreActions);
     }
@@ -143,3 +125,42 @@ const api = {
 };
 
 export default api;
+
+interface apiGetRequestParams {
+  path: string,
+  params: any,
+  successCallback: (data: Record<string, any>, headers: Record<string, any>) => Promise<any>
+}
+
+interface apiPostRequestParams {
+  path: string,
+  values: any,
+  contentType: string
+}
+
+interface apiPutRequestParams {
+  path: string,
+  values: any
+}
+
+interface apiDeleteRequestParams {
+  path: string,
+  params: any,
+  successCallback: () => Promise<any>
+}
+
+interface ApiState {
+  errorMsg: string | null,
+  ongoingRequests: number,
+  loading: Computed<ApiState, boolean>,
+}
+
+interface ApiActions {
+  get: Thunk<() => Promise<void>, apiGetRequestParams>
+  download: Thunk<() => Promise<void>, apiGetRequestParams>
+  post: Thunk<() => Promise<void>, apiPostRequestParams>
+  put: Thunk<() => Promise<void>, apiPutRequestParams>
+  delete: Thunk<() => Promise<void>, apiDeleteRequestParams>
+}
+
+export type ApiStore = ApiState & ApiActions;

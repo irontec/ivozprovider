@@ -1,9 +1,9 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Country from './Country';
 
-const CountrySelectOptions = (callback: FetchFksCallback): void => {
+const CountrySelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/countries',
         ['id', 'name', 'countryCode'],
         (data:any) => {

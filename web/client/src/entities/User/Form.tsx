@@ -13,6 +13,65 @@ import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import UserSelectOptions from './SelectOptions';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { UserPropertyList } from './UserProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: UserPropertyList<unknown> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.bossAssistant = options;
+    });
+
+    promises[promises.length] = MatchListSelectOptions((options: any) => {
+        response.bossAssistantWhiteList = options;
+    });
+
+    promises[promises.length] = TransformationRuleSetSelectOptions((options: any) => {
+        response.transformationRuleSet = options;
+    });
+
+    promises[promises.length] = LanguageSelectOptions((options: any) => {
+        response.language = options;
+    });
+
+    promises[promises.length] = ExtensionSelectOptions((options: any) => {
+        response.extension = options;
+    });
+
+    promises[promises.length] = TimezoneSelectOptions((options: any) => {
+        response.timezone = options;
+    });
+
+    promises[promises.length] = DdiSelectOptions((options: any) => {
+        response.outgoingDdi = options;
+    });
+
+    promises[promises.length] = OutgoingDdiRuleSelectOptions((options: any) => {
+        response.outgoingDdiRule = options;
+    });
+
+    promises[promises.length] = LocutionSelectOptions((options: any) => {
+        response.voicemailLocution = options;
+    });
+
+    promises[promises.length] = TerminalSelectOptions((options: any) => {
+        response.terminal = options;
+    });
+
+    promises[promises.length] = CallAclSelectOptions((options: any) => {
+        response.callAcl = options;
+    });
+
+    promises[promises.length] = PickUpGroupSelectOptions((options: any) => {
+        response.pickupGroupIds = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -27,110 +86,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                UserSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            bossAssistant: options
-                        }
-                    });
-                });
-
-                MatchListSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            bossAssistantWhiteList: options
-                        }
-                    });
-                });
-
-                TransformationRuleSetSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            transformationRuleSet: options
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            language: options
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            extension: options
-                        }
-                    });
-                });
-
-                TimezoneSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            timezone: options
-                        }
-                    });
-                });
-
-                DdiSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            outgoingDdi: options
-                        }
-                    });
-                });
-
-                OutgoingDdiRuleSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            outgoingDdiRule: options
-                        }
-                    });
-                });
-
-                LocutionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            voicemailLocution: options
-                        }
-                    });
-                });
-
-                TerminalSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            terminal: options
-                        }
-                    });
-                });
-
-                CallAclSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            callAcl: options
-                        }
-                    });
-                });
-
-                PickUpGroupSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            pickupGroupIds: options
+                            ...options
                         }
                     });
                 });

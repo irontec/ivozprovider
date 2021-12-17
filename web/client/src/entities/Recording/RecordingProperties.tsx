@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type RecordingPropertyList<T> = {
+export type RecordingPropertyList<T> = {
     'callid'?: T,
     'calldate'?: T,
     'duration'?: T,

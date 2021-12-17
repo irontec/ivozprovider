@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form';
+import Form, { foreignKeyGetter } from './Form';
 import entities from '../index';
 import { FaxProperties, FaxPropertiesList } from './FaxProperties';
 
@@ -77,6 +77,7 @@ const fax: EntityInterface = {
     properties,
     columns,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver,
     initialValues: {
         outgoingDdi: null,

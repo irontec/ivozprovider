@@ -1,9 +1,9 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 
-const TransformationRuleSetSelectOptions = (callback: FetchFksCallback): void => {
+const TransformationRuleSetSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/transformation_rule_sets',
         ['id', 'name'],
         (data: any) => {

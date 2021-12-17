@@ -5,6 +5,39 @@ import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { QueuePropertyList } from './QueueProperties';
+
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: QueuePropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = LocutionSelectOptions((options: any) => {
+        response.timeoutLocution = options;
+        response.fullLocution = options;
+        response.periodicAnnounceLocution = options;
+    });
+
+    promises[promises.length] = CountrySelectOptions((options: any) => {
+        response.timeoutNumberCountry = options;
+        response.fullNumberCountry = options;
+    });
+
+    promises[promises.length] = ExtensionSelectOptions((options: any) => {
+        response.timeoutExtension = options;
+        response.fullExtension = options;
+    });
+
+    promises[promises.length] = UserSelectOptions((options: any) => {
+        response.timeoutVoiceMailUser = options;
+        response.fullVoiceMailUser = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -16,44 +49,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
-                LocutionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            timeoutLocution: options,
-                            fullLocution: options,
-                            periodicAnnounceLocution: options,
-                        }
-                    });
-                });
 
-                CountrySelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            timeoutNumberCountry: options,
-                            fullNumberCountry: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            timeoutExtension: options,
-                            fullExtension: options,
-                        }
-                    });
-                });
-
-                UserSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            timeoutVoiceMailUser: options,
-                            fullVoiceMailUser: options,
+                            ...options
                         }
                     });
                 });

@@ -21,14 +21,14 @@ const specStore = {
   loading: false,
 
   // Actions
-  setSpec: action((state: any, spec: any) => {
+  setSpec: action<SpecState, any>((state: any, spec: any) => {
     sessionStorage.setItem('apiSpec', JSON.stringify(spec));
     state.spec = new ApiSpecParser().parse(spec);
   }),
-  setLoading: action((state: any/*, spec: any*/) => {
+  setLoading: action<SpecState>((state: any/*, spec: any*/) => {
     state.loading = true;
   }),
-  unsetLoading: action((state: any/*, spec: any*/) => {
+  unsetLoading: action<SpecState>((state: any/*, spec: any*/) => {
     state.loading = false;
   }),
 

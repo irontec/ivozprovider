@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type QueuePropertyList<T> = {
+export type QueuePropertyList<T> = {
     'name'?: T,
     'maxWaitTime'?: T,
     'timeoutLocution'?: T,

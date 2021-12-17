@@ -2,6 +2,26 @@ import defaultEntityBehavior, { EntityFormProps } from 'lib/entities/DefaultEnti
 import { useEffect, useState } from 'react';
 import InvoiceSelectOptions from 'entities/Invoice/SelectOptions';
 import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
+import { BillableCallPropertyList } from './BillableCallProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: BillableCallPropertyList<unknown> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = InvoiceSelectOptions((options: any) => {
+        response.invoice = options;
+    });
+
+    promises[promises.length] = DdiProviderSelectOptions((options: any) => {
+        response.ddiProvider = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -16,20 +36,11 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
             if (mounted && loadingFks) {
 
-                InvoiceSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            invoice: options
-                        }
-                    });
-                });
-
-                DdiProviderSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ddiProvider: options
+                            ...options
                         }
                     });
                 });

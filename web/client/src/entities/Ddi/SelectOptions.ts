@@ -1,8 +1,8 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const DdiSelectOptions = (callback: FetchFksCallback): void => {
+const DdiSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/ddis',
         ['id', 'ddie164'],
         (data:any) => {

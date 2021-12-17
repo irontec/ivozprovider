@@ -1,14 +1,14 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Service from './Service';
 
-const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number): void => {
+const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number): Promise<unknown> => {
 
     let path = `${Service.path}/unassigned`;
     if (includeId) {
         path += `?_includeId=${includeId}`;
     }
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         path,
         ['id', 'name'],
         (data: any) => {

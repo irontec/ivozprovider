@@ -1,10 +1,15 @@
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
-import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
-import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { ConferenceRoomPropertyList } from './ConferenceRoomProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: ConferenceRoomPropertyList<unknown> = {};
+
+    return response;
+};
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -16,40 +21,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
 
-                CallAclSelectOptions((options: any) => {
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            callACL: options,
-                        }
-                    });
-                });
-
-                TransformationRuleSetSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            transformationRuleSet: options,
-                        }
-                    });
-                });
-
-                DdiSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            outgoingDdi: options,
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options: any) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            language: options,
+                            ...options
                         }
                     });
                 });

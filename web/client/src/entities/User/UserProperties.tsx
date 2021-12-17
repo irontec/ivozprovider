@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type UserPropertyList<T> = {
+export type UserPropertyList<T> = {
     'name'?: T,
     'lastname'?: T,
     'email'?: T,

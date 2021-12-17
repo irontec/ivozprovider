@@ -4,22 +4,19 @@ import React, { useState } from 'react';
 import { Table, TablePagination, TableBody, Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
-import ContentFilter, { getFilterTypeLabel, getFilterLabel, CriteriaFilterValues } from './ContentFilter';
+import { ContentFilter, CriteriaFilterValues } from 'lib/components/List/Filter/ContentFilter';
 import ContentTableHead from './ContentTableHead';
-import FilterIconFactory from 'icons/FilterIconFactory';
 import ContentTableRow from './ContentTableRow';
 import EntityService from 'lib/services/entity/EntityService';
 import _ from 'lib/services/translations/translate';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as locales from '@mui/material/locale';
-import { StyledActionButtonContainer, StyledLink, StyledFab, StyledChip, StyledChipIcon } from './ContentTable.styles';
+import { StyledActionButtonContainer, StyledLink, StyledFab } from './ContentTable.styles';
 
 type sortType = 'asc' | 'desc';
 
 interface ContentTableProps {
-  loading?: boolean,
   path: string,
-  setLoading: (loading: boolean) => void,
   entityService: EntityService,
   headers: { [id: string]: string },
   rowsPerPage: number,
@@ -30,8 +27,7 @@ interface ContentTableProps {
   page: number,
   setPage: (page: number) => void,
   rows: any,
-  where: any,
-  setWhere: (where: CriteriaFilterValues) => void
+  uriCriteria: CriteriaFilterValues
 }
 
 export default function ContentTable(props: ContentTableProps): JSX.Element {
@@ -47,12 +43,9 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
     setSort,
     page,
     setPage,
-    setLoading,
-    where,
-    setWhere
+    uriCriteria
   } = props;
 
-  const columns = entityService.getColumns();
   const acl = entityService.getAcls();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -63,21 +56,6 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
   const filterButtonHandler = (/*event: MouseEvent<HTMLButtonElement>*/) => {
     setShowFilters(!showFilters);
   };
-
-  const [criteria, setCriteria] = useState<any>(where);
-
-  const removeFilter = (fldName: string) => {
-
-    delete criteria[fldName];
-    setWhereCondition({
-      ...criteria
-    });
-  }
-
-  const setWhereCondition = (where: any) => {
-    setCriteria(where);
-    setWhere(where);
-  }
 
   const totalItems = parseInt(
     headers['x-total-items'] ?? 0,
@@ -108,48 +86,9 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
         entityService={entityService}
         open={showFilters}
         handleClose={handleFiltersClose}
-        currentFilter={criteria}
-        setFilters={setWhereCondition}
         path={path}
+        preloadData={uriCriteria.length > 0}
       />
-
-      <div>
-        {Object.keys(criteria).map((fldName: string, idx: number) => {
-
-          if (!criteria[fldName]) {
-            return null;
-          }
-
-          const fieldStr = columns[fldName].label;
-
-          const icon = (
-            <StyledChipIcon fieldName={fieldStr}>
-              <FilterIconFactory name={criteria[fldName].type} fontSize='small' />
-            </StyledChipIcon>
-          );
-
-          const tooltip = (<span>
-            {fieldStr} &nbsp;
-            {getFilterTypeLabel(criteria[fldName].type)} &nbsp;
-            {getFilterLabel(criteria[fldName])}
-          </span>);
-
-          return (
-            <Tooltip
-              key={idx}
-              title={tooltip}
-            >
-              <StyledChip
-                icon={icon}
-                label={getFilterLabel(criteria[fldName])}
-                onDelete={() => {
-                  removeFilter(fldName);
-                }}
-              />
-            </Tooltip>
-          );
-        })}
-      </div>
 
       <Table size="medium">
         <ContentTableHead
@@ -166,7 +105,6 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
                 row={row}
                 key={key}
                 path={path}
-                setLoading={setLoading}
               />
             );
           })}
@@ -187,11 +125,9 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
           }}
           onPageChange={(event: any, newPage: any) => {
             setPage(newPage + 1);
-            setLoading(true);
           }}
           onRowsPerPageChange={(newRowsPerpage: any) => {
             setRowsPerPage(newRowsPerpage.target.value);
-            setLoading(true);
           }}
         />
       </ThemeProvider>

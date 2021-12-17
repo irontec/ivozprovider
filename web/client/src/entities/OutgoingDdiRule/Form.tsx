@@ -2,6 +2,21 @@ import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/enti
 import { useEffect, useState } from 'react';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import _ from 'lib/services/translations/translate';
+import { OutgoingDdiRulePropertyList } from './OutgoingDdiRuleProperties';
+
+export const foreignKeyGetter = async (): Promise<any> => {
+
+    const response: OutgoingDdiRulePropertyList<Array<string | number>> = {};
+    const promises: Array<Promise<unknown>> = [];
+
+    promises[promises.length] = DdiSelectOptions((options: any) => {
+        response.forcedDdi = options;
+    });
+
+    await Promise.all(promises);
+
+    return response;
+};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -13,12 +28,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     useEffect(
         () => {
+
             if (mounted && loadingFks) {
-                DdiSelectOptions((options: any) => {
+
+                foreignKeyGetter().then((options) => {
                     mounted && setFkChoices((fkChoices: any) => {
                         return {
                             ...fkChoices,
-                            forcedDdi: options
+                            ...options
                         }
                     });
                 });

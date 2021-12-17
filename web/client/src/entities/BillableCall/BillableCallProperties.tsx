@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type BillableCallPropertyList<T> = {
+export type BillableCallPropertyList<T> = {
     'attr'?: T,
     'startTime'?: T,
     'callid'?: T,
@@ -23,4 +23,4 @@ type BillableCallPropertyList<T> = {
 
 export type BillableCallProperties = BillableCallPropertyList<Partial<PropertySpec>>;
 
-export type BillableCallPropertiesList = Array<BillableCallPropertyList<EntityValue|EntityValues>>;
+export type BillableCallPropertiesList = Array<BillableCallPropertyList<EntityValue | EntityValues>>;

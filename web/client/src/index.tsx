@@ -2,8 +2,8 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
 import * as locales from '@mui/material/locale';
 import reportWebVitals from './reportWebVitals';
-import { StoreProvider, createStore } from "easy-peasy";
-import storeModel from './store';
+import { StoreProvider } from "easy-peasy";
+import store from 'store';
 import i18n from './i18n';
 import './index.css';
 import App, { AppRoutesProps } from 'lib/App';
@@ -13,8 +13,19 @@ const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'
   : 'enUS';
 
-const theme = createTheme({}, locales[currentLanguage]);
-const store = createStore(storeModel);
+const theme = createTheme(
+  {
+    palette: {
+      primary: {
+        main: '#4383cc',
+      },
+      secondary: {
+        main: '#e53935',
+      },
+    },
+  },
+  locales[currentLanguage]
+);
 
 ReactDOM.render(
   //<React.StrictMode>

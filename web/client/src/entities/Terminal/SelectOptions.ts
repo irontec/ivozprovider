@@ -1,8 +1,8 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const TerminalSelectOptions = (callback: FetchFksCallback): void => {
+const TerminalSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/terminals',
         ['id', 'name'],
         (data: any) => {

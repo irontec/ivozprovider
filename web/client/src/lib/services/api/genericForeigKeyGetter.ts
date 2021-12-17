@@ -1,16 +1,18 @@
-import ApiClient from './ApiClient';
+import store from 'store';
 
 type ToStringFunction = (value: any) => string;
 
 export default async function genericForeignKeyGetter(entityEndpoint: string, fkIdenFld: string, callback?: ToStringFunction): Promise<Array<any>> {
 
     let entities: Array<any> = [];
-    await ApiClient.get(
-        entityEndpoint,
-        {
+
+    const getAction = store.getActions().api.get;
+    await getAction({
+        path: entityEndpoint,
+        params: {
             _pagination: false
         },
-        async (response: any) => {
+        successCallback: async (response: any) => {
 
             entities = response.map((value: any) => {
 
@@ -24,7 +26,7 @@ export default async function genericForeignKeyGetter(entityEndpoint: string, fk
                 };
             });
         }
-    );
+    });
 
     return entities;
 }

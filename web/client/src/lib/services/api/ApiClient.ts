@@ -5,6 +5,7 @@ type AsyncFunction = (data: any, headers: any) => Promise<void>
 export type ApiError = AxiosResponse | null;
 
 class ApiClient {
+
     static setToken(token: string): void {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }

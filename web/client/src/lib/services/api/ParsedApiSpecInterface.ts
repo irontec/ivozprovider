@@ -1,15 +1,22 @@
-import React, { JSXElementConstructor } from 'react';
+import React from 'react';
 
-interface KeyValList {
-    [key: string]: any
+export interface KeyValList {
+    [key: string]: unknown
 }
 
-interface KeyNumList {
+export interface KeyNumList {
     [key: string]: number
 }
 
+interface ActionParam {
+    name: string,
+    in: "query",
+    required: boolean,
+    type: "string"
+}
+
 export interface ActionModelSpec {
-    parameters: KeyNumList,
+    parameters: { [key: string | number]: ActionParam },
     paths: Array<any>,
     properties: Array<any>,
     required: Array<string>,
@@ -85,6 +92,10 @@ export interface FkProperty {
 }
 
 export type PropertySpec = ScalarProperty | FkProperty;
+
+export const isPropertyFk = (property: PropertySpec): property is FkProperty => {
+    return (property as FkProperty).$ref !== undefined;
+}
 
 export interface PropertyList {
     [key: string]: PropertySpec

@@ -1,9 +1,9 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 
-const RatingPlanGroupSelectOptions = (callback: FetchFksCallback): void => {
+const RatingPlanGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/rating_plan_groups',
         ['id', 'name'],
         (data: any) => {

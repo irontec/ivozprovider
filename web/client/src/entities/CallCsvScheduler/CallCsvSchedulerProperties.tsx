@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type CallCsvSchedulerPropertyList<T> = {
+export type CallCsvSchedulerPropertyList<T> = {
     'attr'?: T,
     'name'?: T,
     'callDirection'?: T,

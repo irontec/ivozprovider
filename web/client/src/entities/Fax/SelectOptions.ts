@@ -1,8 +1,8 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 
-const FaxSelectOptions = (callback: FetchFksCallback): void => {
+const FaxSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
-    defaultEntityBehavior.fetchFks(
+    return defaultEntityBehavior.fetchFks(
         '/faxes',
         ['id', 'name'],
         (data:any) => {

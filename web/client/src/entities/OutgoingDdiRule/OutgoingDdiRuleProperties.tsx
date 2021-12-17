@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type OutgoingDdiRulePropertyList<T> = {
+export type OutgoingDdiRulePropertyList<T> = {
     'attr'?: T,
     'name'?: T,
     'defaultAction'?: T,

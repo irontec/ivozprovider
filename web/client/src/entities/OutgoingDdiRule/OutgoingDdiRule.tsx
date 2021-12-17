@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form from './Form'
+import Form, { foreignKeyGetter } from './Form'
 import { EntityValues } from 'lib/services/entity/EntityService';
 import entities from '../index';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -69,6 +69,7 @@ const outgoingDdiRule: EntityInterface = {
     properties,
     columns,
     Form,
+    foreignKeyGetter,
     foreignKeyResolver
 };
 

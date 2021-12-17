@@ -1,6 +1,6 @@
-
 import { styled } from '@mui/styles';
-import { Theme, AppBar, Typography } from '@mui/material';
+import { Theme, AppBar, Typography, Toolbar } from '@mui/material';
+import FilterBoxContent from './FilterBoxContent';
 
 export const StyledAppBar = styled(AppBar)(
   () => {
@@ -20,6 +20,24 @@ export const StyledFilterDialogTypography = styled(
     return {
       marginLeft: theme.spacing(2),
       flex: 1,
+    }
+  }
+);
+
+export const StyledFilterBoxContent = styled(FilterBoxContent)(
+  () => {
+    return {
+      paddingTop: '65px',
+      maxWidth: '450px'
+    }
+  }
+);
+
+export const StyledToolbar = styled(Toolbar)(
+  () => {
+    return {
+      display: 'flex',
+      justifyContent: 'space-between'
     }
   }
 );

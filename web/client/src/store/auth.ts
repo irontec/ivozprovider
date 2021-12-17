@@ -17,12 +17,12 @@ const auth = {
   token: null,
 
   // actions
-  resetToken: action((state: any) => {
+  resetToken: action<AuthState>((state: any) => {
     sessionStorage.removeItem('token');
     state.token = null;
   }),
 
-  setToken: action((state: any, token: string) => {
+  setToken: action<AuthState, string>((state: any, token: string) => {
 
     if (token) {
       sessionStorage.setItem('token', token);

@@ -1,7 +1,7 @@
 import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 
-type HuntGroupPropertyList<T> = {
+export type HuntGroupPropertyList<T> = {
     'name'?: T,
     'description'?: T,
     'strategy'?: T,
