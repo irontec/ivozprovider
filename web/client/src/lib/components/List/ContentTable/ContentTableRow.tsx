@@ -1,6 +1,7 @@
 /* eslint-disable no-script-url */
 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router'
 import {
   TableCell, TableRow, Tooltip
 } from '@mui/material';
@@ -29,6 +30,7 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
   const RowActions: React.FunctionComponent | any = entityService.getRowActions();
 
   const [showDelete, setShowDelete] = useState<boolean>(false);
+  const history = useHistory();
 
   const apiDelete = useStoreActions((actions: any) => {
     return actions.api.delete
@@ -46,10 +48,14 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
     }
 
     event.preventDefault();
-    await apiDelete({
-      path: path.replace('{id}', row.id)
-    });
-    setShowDelete(false);
+    try {
+      await apiDelete({
+        path: path.replace('{id}', row.id)
+      });
+      history.go(0);
+    } catch (error: unknown) {
+      setShowDelete(false);
+    }
   };
 
   return (
