@@ -1,4 +1,4 @@
-import { action, Actions, Computed, computed, Thunk, thunk } from 'easy-peasy';
+import { action, Action, Actions, Computed, computed, Thunk, thunk } from 'easy-peasy';
 import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
 
 const handleApiErrors = (
@@ -17,14 +17,14 @@ const handleApiErrors = (
   throw error.statusText;
 };
 
-const api = {
+const api: ApiStore = {
   errorMsg: null,
   ongoingRequests: 0,
-  loading: computed((state:any) => { return state.ongoingRequests > 0 }),
-  sumRequest: action((state: any) => {
+  loading: computed<ApiState, boolean>((state) => { return state.ongoingRequests > 0 }),
+  sumRequest: action((state) => {
     state.ongoingRequests += 1;
   }),
-  restRequest: action((state: any) => {
+  restRequest: action((state) => {
     state.ongoingRequests = Math.max(
       (state.ongoingRequests - 1),
       0
@@ -156,6 +156,8 @@ interface ApiState {
 }
 
 interface ApiActions {
+  sumRequest: Action<ApiState>,
+  restRequest: Action<ApiState>,
   get: Thunk<() => Promise<void>, apiGetRequestParams>
   download: Thunk<() => Promise<void>, apiGetRequestParams>
   post: Thunk<() => Promise<void>, apiPostRequestParams>

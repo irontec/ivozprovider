@@ -5,10 +5,10 @@ import { CriteriaFilterValues } from './Filter/ContentFilter';
 import { KeyValList } from 'lib/services/api/ParsedApiSpecInterface';
 import { SearchFilterType } from './Filter/icons/FilterIconFactory';
 
-export const criteriaFilterValuesToString = (where: CriteriaFilterValues): string => {
+export const criteriaToArray = (where: CriteriaFilterValues): Array<string> => {
 
     if (!where.length) {
-        return '';
+        return [];
     }
 
     const searchArguments: Array<string> = [];
@@ -23,22 +23,45 @@ export const criteriaFilterValuesToString = (where: CriteriaFilterValues): strin
             searchArguments.push(
                 `${name}[]=${value}`
             );
-        } else {
+        } else if (type !== '') {
             searchArguments.push(
                 `${name}[${type}]=${value}`
             );
+        } else {
+
+            if (name.indexOf('_') === 0) {
+                searchArguments.push(
+                    `${name}=${value}`
+                );
+            } else {
+                searchArguments.push(
+                    `${name}[]=${value}`
+                );
+            }
         }
     }
 
-    return '?' + searchArguments.join('&');
+    searchArguments.sort((a: string, b: string) => {
+        if (a.indexOf('_') >=0 && b.indexOf('_') < 0) return 1;
+        if (b.indexOf('_') >= 0 && a.indexOf('_') < 0) return -1;
+
+        return (a < b) ? -1 : (a > b) ? 1 : 0;
+    });
+
+    return searchArguments;
 }
 
 export const queryStringToCriteria = (): CriteriaFilterValues => {
+    return stringToCriteria(location.search);
+}
+
+export const stringToCriteria = (uri = ''): CriteriaFilterValues => {
 
     const criteria: CriteriaFilterValues = [];
-    const querystring: KeyValList = queryString.parse(location.search || '');
+    const querystring: KeyValList = queryString.parse(uri);
 
     for (const idx in querystring) {
+
         const value = querystring[idx] as string|number|boolean|Array<any>;
         const matches = idx.match(/([^[]+)\[?([^\]]*)\]?/);
 
@@ -77,4 +100,3 @@ export const queryStringToCriteria = (): CriteriaFilterValues => {
 
     return criteria;
 }
-

@@ -25,6 +25,9 @@ export function FilterCriteria(props: FilterCriteriaProps): JSX.Element | null {
 
         const { name, type, value } = criteriaValue;
         const column = columns[name];
+        if (!column) {
+          return null;
+        }
         const fieldStr = column.label;
 
         const valueStr = isPropertyFk(column) && (fkChoices[name])?.[value as string]
