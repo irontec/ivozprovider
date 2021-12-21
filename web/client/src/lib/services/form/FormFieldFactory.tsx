@@ -138,17 +138,19 @@ export default class FormFieldFactory {
 
         if ((property as ScalarProperty).type === 'boolean') {
 
-            const checked = !!(this.formik.values[fld]);
+            const checked = Array.isArray(this.formik.values[fld])
+                ? this.formik.values[fld].includes('1')
+                : this.formik.values[fld];
 
             return (
                 <StyledSwitchFormControl>
                     <FormControlLabel
+                        disabled={disabled}
                         control={<Switch
                             name={fld}
-                            checked={checked}
-                            required={property.required}
-                            disabled={disabled}
+                            checked={!!checked}
                             onChange={this.changeHandler}
+                            value={'1'}
                         />}
                         label={property.label}
                     />
