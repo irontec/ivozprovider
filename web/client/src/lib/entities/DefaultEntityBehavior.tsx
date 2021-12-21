@@ -8,11 +8,12 @@ import { PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInte
 import EntityInterface, { PropertiesList, RowIconsType, ViewProps } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
+import _ from 'lib/services/translations/translate';
 
 export const initialValues = {};
 
 interface EntityValidatorValues { [label: string]: string }
-type EntityValidatorResponse = Record<string, string>;
+type EntityValidatorResponse = Record<string, string | JSX.Element>;
 export type EntityValidator = (values: EntityValidatorValues, properties: PropertiesList) => EntityValidatorResponse;
 
 export const validator: EntityValidator = (values: EntityValidatorValues, properties: PropertiesList): EntityValidatorResponse => {
@@ -22,7 +23,12 @@ export const validator: EntityValidator = (values: EntityValidatorValues, proper
 
         const pattern: RegExp | undefined = (properties[idx] as ScalarProperty)?.pattern;
         if (pattern && !values[idx].match(pattern)) {
-            response[idx] = 'invalid pattern';
+            response[idx] = _('invalid pattern');
+        }
+
+        const required = (properties[idx] as ScalarProperty)?.required;
+        if (required && values[idx] === '') {
+            response[idx] = _('required value');
         }
     }
 
@@ -157,7 +163,6 @@ export const ListDecorator = (props: ListDecoratorProps): JSX.Element | string =
         : '';
 }
 
-
 export const RowIcons: RowIconsType = (): JSX.Element => {
     return (
         <React.Fragment />
@@ -188,7 +193,6 @@ export type EntityFormProps = EntityInterface & {
     fkChoices: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
 };
-
 
 export type FormOnChangeEvent = React.ChangeEvent<{ name: string, value: any }>;
 
