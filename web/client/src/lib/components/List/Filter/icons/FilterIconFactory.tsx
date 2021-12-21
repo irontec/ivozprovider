@@ -68,12 +68,16 @@ export const getFilterIcon = (name: string): OverridableComponent<SvgIconTypeMap
             return Equals;
         case 'neq':
             return NotEquals;
+        case 'strictly_before':
         case 'lt':
             return LowerThan;
+        case 'before':
         case 'lte':
             return LowerThanEqual;
+        case 'strictly_after':
         case 'gt':
             return GreaterThan;
+        case 'after':
         case 'gte':
             return GreaterThanEqual;
         default:
@@ -95,8 +99,12 @@ export const getFilterLabel = (value: string): JSX.Element => {
         "end": _("Ends with"),
         "gt": _("Is greater than"),
         "gte": _("Is greater than equal"),
+        'after': _("Is greater than equal"),
+        'strictly_after': _("Is greater than"),
         "lt": _("Is lower than"),
         "lte": _("Is lower than equal"),
+        'before': _("Is lower than equal"),
+        'strictly_before': _("Is lower than"),
         "exists": _("Exists"),
     };
 
