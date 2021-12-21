@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
 import { Button } from '@mui/material';
@@ -6,7 +5,7 @@ import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import EntityService from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
 import { useFormikType } from 'lib/services/form/types';
-import { useStoreActions } from 'store';
+import { useStoreActions, useStoreState } from 'store';
 import _ from 'lib/services/translations/translate';
 import withRowData from './withRowData';
 
@@ -24,16 +23,13 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
 
   const entityId = match.params.id;
 
-  const [error, setError] = useState<string | null>(null);
+  const error = useStoreState((store) => store.api.errorMsg);
+  const apiPut = useStoreActions((actions) => actions.api.put);
 
   const initialValues = unmarshaller(
     row,
     entityService.getProperties()
   );
-
-  const apiPut = useStoreActions((actions: any) => {
-    return actions.api.put
-  });
 
   const submit = async (values: any, actions: FormikHelpers<any>) => {
 
@@ -53,11 +49,8 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
         values: formData
       });
 
-      setError(null);
       history.goBack();
-    } catch (error: any) {
-      console.error(error);
-      setError(error.toString());
+
     } finally {
       setSubmitting(false);
     }
@@ -66,7 +59,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
   const formik: useFormikType = useFormik({
     initialValues,
     validate: (values: any) => {
-      return props.validator(values, props.properties);
+      return props.validator(values, entityService.getColumns());
     },
     onSubmit: submit,
   });

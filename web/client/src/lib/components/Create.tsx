@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { FormikHelpers, useFormik } from 'formik';
 import { Button } from '@mui/material';
@@ -6,7 +5,7 @@ import ErrorMessage from './shared/ErrorMessage';
 import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
 import { useFormikType } from 'lib/services/form/types';
-import { useStoreActions } from 'store';
+import { useStoreActions, useStoreState } from 'store';
 import _ from 'lib/services/translations/translate';
 
 interface CreateProps extends EntityInterface {
@@ -19,10 +18,8 @@ const Create = (props: CreateProps & RouteComponentProps) => {
 
   const { marshaller, unmarshaller, path, history, properties } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
-  const [error, setError] = useState<string | null>(null);
-  const apiPost = useStoreActions((actions: any) => {
-    return actions.api.post
-  });
+  const error = useStoreState((store) => store.api.errorMsg);
+  const apiPost = useStoreActions((actions) => actions.api.post);
 
   const submit = async (values: any, actions: FormikHelpers<EntityValues>) => {
 
@@ -39,11 +36,8 @@ const Create = (props: CreateProps & RouteComponentProps) => {
         contentType: 'application/json',
       });
 
-      setError(null);
       history.push(path);
 
-    } catch (error: any) {
-      setError(error.toString());
     } finally {
       setSubmitting(false);
     }
@@ -70,7 +64,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   const formik: useFormikType = useFormik({
     initialValues: initialValues,
     validate: (values: any) => {
-      return props.validator(values, props.properties);
+      return props.validator(values, entityService.getColumns());
     },
     onSubmit: submit,
   });

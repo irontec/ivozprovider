@@ -9,7 +9,7 @@ const handleApiErrors = (
     throw error;
   }
 
-  if ([400, 401].includes(error?.status || -1)) {
+  if ([401].includes(error?.status || -1)) {
     const actions: any = getStoreActions();
     actions.auth.resetToken();
   }
@@ -20,6 +20,9 @@ const handleApiErrors = (
 const api: ApiStore = {
   errorMsg: null,
   ongoingRequests: 0,
+  setErrorMsg: action<ApiState, string>((state, errorMsg) => {
+    state.errorMsg = errorMsg;
+  }),
   loading: computed<ApiState, boolean>((state) => { return state.ongoingRequests > 0 }),
   sumRequest: action((state) => {
     state.ongoingRequests += 1;
@@ -36,6 +39,7 @@ const api: ApiStore = {
   get: thunk(async (actions: any, payload: apiGetRequestParams, { getStoreActions }) => {
 
     actions.sumRequest();
+    actions.setErrorMsg(null);
     const { path, params, successCallback } = payload;
 
     try {
@@ -51,7 +55,7 @@ const api: ApiStore = {
     } catch (error: any) {
 
       actions.restRequest();
-      console.log('api get error', error);
+      actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -59,6 +63,7 @@ const api: ApiStore = {
   download: thunk(async (actions: any, payload: apiGetRequestParams, { getStoreActions }) => {
 
     const { path, params, successCallback } = payload;
+    actions.setErrorMsg(null);
 
     try {
       return await ApiClient.download(
@@ -67,6 +72,7 @@ const api: ApiStore = {
         successCallback
       );
     } catch (error: any) {
+      actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -77,6 +83,7 @@ const api: ApiStore = {
   post: thunk(async (actions: any, payload: apiPostRequestParams, { getStoreActions }) => {
 
     const { path, values, contentType } = payload;
+    actions.setErrorMsg(null);
 
     try {
       return await ApiClient.post(
@@ -85,7 +92,7 @@ const api: ApiStore = {
         contentType
       );
     } catch (error: any) {
-      console.log('api post error', error);
+      actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -95,6 +102,7 @@ const api: ApiStore = {
   put: thunk(async (actions: any, payload: apiPutRequestParams, { getStoreActions }) => {
 
     const { path, values } = payload;
+    actions.setErrorMsg(null);
 
     try {
       return await ApiClient.put(
@@ -102,7 +110,7 @@ const api: ApiStore = {
         values
       );
     } catch (error: any) {
-      console.log('api put error', error);
+      actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -112,13 +120,14 @@ const api: ApiStore = {
   delete: thunk(async (actions: any, payload: apiDeleteRequestParams, { getStoreActions }) => {
 
     const { path } = payload;
+    actions.setErrorMsg(null);
 
     try {
       return await ApiClient.delete(
         path
       );
     } catch (error: any) {
-      console.log('api delete error', error);
+      actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -156,6 +165,7 @@ interface ApiState {
 }
 
 interface ApiActions {
+  setErrorMsg: Action<ApiState, string>
   sumRequest: Action<ApiState>,
   restRequest: Action<ApiState>,
   get: Thunk<() => Promise<void>, apiGetRequestParams>
