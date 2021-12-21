@@ -1,12 +1,14 @@
 /* eslint-disable no-script-url */
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import ContentTable from './ContentTable/ContentTable';
 import EntityService from 'lib/services/entity/EntityService';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
-import { criteriaFilterValuesToString, queryStringToCriteria } from './List.helpers';
+import { criteriaToArray, queryStringToCriteria } from './List.helpers';
+import ContentTable from './ContentTable/ContentTable';
+import ContentTablePagination from './ContentTable/ContentTablePagination';
+import useQueryStringParams from './useQueryStringParams';
 
 const List = function (props: any & RouteComponentProps) {
 
@@ -15,9 +17,6 @@ const List = function (props: any & RouteComponentProps) {
 
     const [rows, setRows] = useState<Array<any>>([]);
     const [headers, setHeaders] = useState<{ [id: string]: string }>({});
-
-    const [page, setPage] = useState<number>(1);
-    const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
     const apiGet = useStoreActions((actions: any) => {
         return actions.api.get
@@ -30,74 +29,71 @@ const List = function (props: any & RouteComponentProps) {
         return actions.route.setQueryStringCriteria;
     });
 
-    const uriCriteria: CriteriaFilterValues = queryStringToCriteria();
-    const currentQueryString = criteriaFilterValuesToString(uriCriteria);
-    const reqPath = path + currentQueryString;
-
     ////////////////////////////
-    // Pagination
+    // Filters
     ////////////////////////////
-    const [orderBy, setOrderBy] = useState(entityService.getOrderBy());
-    const [orderDirection, setOrderDirection] = useState(entityService.getOrderDirection());
-
-    const setSort = (property: string, direction: 'asc' | 'desc') => {
-        setOrderBy(property);
-        setOrderDirection(direction);
-    }
-
-    const paginationParams = useMemo(
-        () => {
-            const paginationParams: any = {
-                _itemsPerPage: rowsPerPage,
-                _page: page
-            };
-
-            const orderByFld = `_order[${orderBy}]`;
-            paginationParams[orderByFld] = orderDirection;
-
-            return paginationParams;
-        },
-        [rowsPerPage, page, orderBy, orderDirection]
-    );
-
-    ////////////////////////////
-    // End of pagination
-    ////////////////////////////
+    const currentQueryParams = useQueryStringParams();
+    const reqQuerystring = currentQueryParams.join('&');
+    const [prevReqQuerystring, setPrevReqQuerystring] = useState<string|null>(null);
 
     useEffect(
         () => {
+
+            // Path change listener
+            if (reqQuerystring === prevReqQuerystring) {
+                return;
+            }
+
+            setPrevReqQuerystring(reqQuerystring);
             const criteria = queryStringToCriteria();
             setQueryStringCriteria(criteria);
             setCriteriaIsReady(true);
         },
-        [reqPath, setQueryStringCriteria, setCriteriaIsReady]
+        [
+            reqQuerystring, prevReqQuerystring, setPrevReqQuerystring,
+            setQueryStringCriteria, criteriaIsReady, setCriteriaIsReady
+        ]
     );
 
     useEffect(
         () => {
 
-            if (!criteriaIsReady) {
+            // Criteria change listener
+            if (reqQuerystring !== prevReqQuerystring) {
                 return;
             }
 
-            const newQueryString = criteriaFilterValuesToString(queryStringCriteria);
-            if (currentQueryString === newQueryString) {
+            const newReqQuerystring = criteriaToArray(queryStringCriteria).join('&')
+
+            if (reqQuerystring === newReqQuerystring) {
                 return;
             }
 
             history.push({
                 pathname: path,
-                search: newQueryString
+                search: newReqQuerystring
             });
         },
-        [criteriaIsReady, queryStringCriteria, currentQueryString, history, path]
+        [
+            reqQuerystring, prevReqQuerystring, path, queryStringCriteria,
+            history
+        ]
     );
 
     useEffect(
         () => {
+
+            // Fetch data request
+            if (!criteriaIsReady) {
+                return;
+            }
+
+            const reqPath = currentQueryParams.length
+                ? path + '?' + encodeURI(currentQueryParams.join('&'))
+                : path;
+
             apiGet({
-                path: encodeURI(reqPath),
-                params: paginationParams,
+                path: reqPath,
                 successCallback: async (data: any, headers: any) => {
 
                     if (headers) {
@@ -120,26 +116,30 @@ const List = function (props: any & RouteComponentProps) {
             });
         },
         [
-            foreignKeyResolver, entityService,
-            apiGet, reqPath, paginationParams
+            foreignKeyResolver, entityService, criteriaIsReady,
+            path, currentQueryParams, apiGet, reqQuerystring
         ]
     );
 
+    // @TODO move into store/api
+    const recordCount = parseInt(
+        headers['x-total-items'] ?? 0,
+        10
+    );
+
     return (
-        <ContentTable
-            entityService={entityService}
-            rows={rows}
-            headers={headers}
-            page={page}
-            rowsPerPage={rowsPerPage}
-            setRowsPerPage={setRowsPerPage}
-            setPage={setPage}
-            orderBy={orderBy}
-            orderDirection={orderDirection}
-            setSort={setSort}
-            uriCriteria={uriCriteria}
-            path={path}
-        />
+        <>
+            <ContentTable
+                path={path}
+                rows={rows}
+                preloadData={currentQueryParams.length > 0}
+                entityService={entityService}
+            />
+            <ContentTablePagination
+                recordCount={recordCount}
+            />
+        </>
+
     );
 }
 

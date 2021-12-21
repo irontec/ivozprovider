@@ -13,7 +13,8 @@ import { styled } from '@mui/styles';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
 
-export type SearchFilterType = '' | 'exists' | 'partial' | 'start' | 'end' | 'in' | 'exact' | 'eq' | 'neq' | 'lt' | 'lte' | 'gt' | 'gte';
+export type OrderFilterType = string;
+export type SearchFilterType = OrderFilterType | '' | 'exists' | 'partial' | 'start' | 'end' | 'in' | 'exact' | 'eq' | 'neq' | 'lt' | 'lte' | 'gt' | 'gte';
 
 interface FilterIconFactoryProps {
     name: SearchFilterType,
