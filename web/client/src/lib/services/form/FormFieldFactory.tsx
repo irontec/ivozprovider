@@ -121,9 +121,13 @@ export default class FormFieldFactory {
                 (choices as PropertyFkChoices)['__null__'] = property.null;
             }
 
-            const value = typeof this.formik.values[fld] === 'boolean'
+            let value = typeof this.formik.values[fld] === 'boolean'
                 ? +this.formik.values[fld]
                 : this.formik.values[fld];
+
+            if (value === null) {
+                value = '__null__';
+            }
 
             return (
                 <Dropdown

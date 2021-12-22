@@ -27,6 +27,7 @@ const properties: UserProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '0',
         visualToggle: {
             '0': {
                 show: [],
@@ -40,9 +41,12 @@ const properties: UserProperties = {
     },
     'timezone': {
         label: _('Timezone'),
+        default: 145,
     },
     'transformationRuleSet': {
         label: _('Numeric transformation'),
+        default: '__null__',
+        null: _("Client's default")
     },
     'terminal': {
         label: _('Terminal'),
@@ -64,6 +68,11 @@ const properties: UserProperties = {
     },
     'doNotDisturb': {
         label: _('Do not disturb'),
+        default: '0',
+        enum: {
+            '0': _("No"),
+            '1': _("Yes"),
+        }
     },
     'isBoss': {
         label: _('Is boss'),
@@ -71,6 +80,7 @@ const properties: UserProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: 0,
         visualToggle: {
             '0': {
                 show: [],
@@ -91,6 +101,9 @@ const properties: UserProperties = {
     },
     'maxCalls': {
         label: _('Call waiting'),
+        default: 0,
+        //@TODO min: 0
+        //@TODO max: 100
         helpText: _('Limits received calls when already handling this number of calls. Set 0 for unlimited.'),
     },
     'voicemailEnabled': {
@@ -99,6 +112,7 @@ const properties: UserProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '1',
         visualToggle: {
             '0': {
                 show: [],
@@ -119,6 +133,7 @@ const properties: UserProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '1',
         visualToggle: {
             '0': {
                 hide: ['voicemailAttachSound'],
@@ -132,19 +147,24 @@ const properties: UserProperties = {
     },
     'voicemailAttachSound': {
         label: _('Voicemail attach sound'),
+        default: '1',
     },
     'pickupGroupIds': {
         label: _('Pick Up Groups'),
     },
     'language': {
         label: _('Language'),
+        default: '__null__',
+        null: _("Client's default"),
     },
     'externalIpCalls': {
         label: _('Calls from non-granted IPs'),
+        default: 0,
         helpText: _("Enable calling from non-granted IP addresses for this user. It limits the number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing calls unlimited as long as company IP policy is fulfilled."),
     },
     'rejectCallMethod': {
         label: _('Call rejection method'),
+        default: 'rfc',
     },
     'gsQRCode': {
         label: _('QR Code'),

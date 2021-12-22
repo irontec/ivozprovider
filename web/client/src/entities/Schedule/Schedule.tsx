@@ -19,24 +19,31 @@ const properties: ScheduleProperties = {
     },
     'monday': {
         label: _('Monday'),
+        default: 0,
     },
     'tuesday': {
         label: _('Tuesday'),
+        default: 0,
     },
     'wednesday': {
         label: _('Wednesday'),
+        default: 0,
     },
     'thursday': {
         label: _('Thursday'),
+        default: 0,
     },
     'friday': {
         label: _('Friday'),
+        default: 0,
     },
     'saturday': {
         label: _('Saturday'),
+        default: 0,
     },
     'sunday': {
         label: _('Sunday'),
+        default: 0,
     }
 };
 

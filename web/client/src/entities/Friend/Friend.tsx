@@ -31,6 +31,8 @@ const properties: FriendProperties = {
     },
     'port': {
         label: _('Port'),
+        pattern: new RegExp('^[0-9]+$'),
+        default: 5060,
     },
     'password': {
         label: _('Password'),
@@ -41,6 +43,8 @@ const properties: FriendProperties = {
     },
     'transformationRuleSet': {
         label: _('Numeric transformation'),
+        null: _("Client's default"),
+        default: '__null__',
     },
     'outgoingDdi': {
         label: _('Fallback Outgoing DDI'),
@@ -48,9 +52,11 @@ const properties: FriendProperties = {
     },
     'priority': {
         label: _('Priority'),
+        default: 1,
     },
     'disallow': {
         label: _('Disallowed audio codecs'),
+        default: 'all',
     },
     'allow': {
         label: _('Allowed audio codecs'),
@@ -64,21 +70,24 @@ const properties: FriendProperties = {
             'g729': _('g729 - G.729A'),
             'ilbc': _('ilbc - iLBC'),
             'opus': _('opus - Opus codec'),
-        }
+        },
+        default: 'alaw',
     },
     'directMediaMethod': {
         label: _('CallerID update method'),
         enum: {
             'invite': _('invite'),
             'update': _('update'),
-        }
+        },
+        default: 'update',
     },
     'calleridUpdateHeader': {
         label: _('CallerID update header'),
         enum: {
             'pai': _('P-Asserted-Identity (PAI)'),
             'rpid': _('Remote-Party-ID (RPID)'),
-        }
+        },
+        default: 'pai',
     },
     'updateCallerid': {
         label: _('Update CallerID?'),
@@ -86,6 +95,7 @@ const properties: FriendProperties = {
             'yes': _('Yes'),
             'no': _('No'),
         },
+        default: 'yes',
         visualToggle: {
             'yes': {
                 show: ['direct_media_method', 'callerid_update_header'],
@@ -110,6 +120,7 @@ const properties: FriendProperties = {
             'no': _('Register'),
             'intervpbx': _('Inter vPBX'),
         },
+        default: 'no',
         visualToggle: {
             'yes': {
                 show: [
@@ -182,6 +193,7 @@ const properties: FriendProperties = {
             'yes': _('Yes'),
             'no': _('No'),
         },
+        default: 'yes',
         helpText: _("If set to 'Yes', set destination (R-URI and To) to called DDI/number when calling to this friend.")
     },
     'language': {
@@ -193,6 +205,7 @@ const properties: FriendProperties = {
             'yes': _('Yes'),
             'no': _('No'),
         },
+        default: 'no',
     },
     'alwaysApplyTransformations': {
         label: _('Always apply transformations'),
@@ -200,6 +213,7 @@ const properties: FriendProperties = {
             '0': _('Yes'),
             '1': _('No'),
         },
+        default: '0',
         helpText: _("Enable to force numeric transformation on numbers in Extensions or numbers matching any Friend regexp. Otherwise, those numbers won't traverse numeric transformations rules.")
     },
     'rtpEncryption': {
@@ -208,6 +222,7 @@ const properties: FriendProperties = {
             '0': _('Yes'),
             '1': _('No'),
         },
+        default: '0',
         helpText: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
     },
     'multiContact': {

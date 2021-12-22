@@ -17,7 +17,8 @@ const properties: RouteLockProperties = {
         enum: {
             '0': _("Closed"),
             '1': _("Opened"),
-        }
+        },
+        default: 0
     },
     'closeExtension': {
         label: _('Close extension'),

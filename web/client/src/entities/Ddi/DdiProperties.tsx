@@ -13,7 +13,6 @@ export type DdiPropertyList<T> = {
     'fax'?: T,
     'conferenceRoom'?: T,
     'residentialDevice'?: T,
-    'ddiProvider'?: T,
     'friendValue'?: T,
     'country'?: T,
     'language'?: T,

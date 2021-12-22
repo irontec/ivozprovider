@@ -39,10 +39,12 @@ const properties: IvrProperties = {
     },
     'timeout': {
         label: _('Timeout'),
+        default: 6,
         helpText: _('Time in seconds the IVR will wait after playing the welcome locution or dialing a digit'),
     },
     'maxDigits': {
         label: _('Max digits'),
+        default: 0,
         helpText: _('Max number of digits the caller can enter. Set to 0 to disable.'),
     },
     'allowExtensions': {
@@ -51,6 +53,7 @@ const properties: IvrProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: 0,
         visualToggle: {
             '0': {
                 show: [],
