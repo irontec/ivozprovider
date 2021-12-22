@@ -23,8 +23,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   const reqError = useStoreState((store) => store.api.errorMsg);
   const [validationError, setValidationError] = useState<KeyValList>({});
   const apiPost = useStoreActions((actions) => actions.api.post);
-
-  const columns = entityService.getColumns();
+  const columns = entityService.getProperties();
 
   const submit = async (values: any, actions: FormikHelpers<EntityValues>) => {
 

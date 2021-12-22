@@ -29,10 +29,10 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
   const apiPut = useStoreActions((actions) => actions.api.put);
   const [validationError, setValidationError] = useState<KeyValList>({});
 
-  const columns = entityService.getColumns();
+  const properties = entityService.getProperties();
   const initialValues = unmarshaller(
     row,
-    columns
+    properties
   );
 
   const submit = async (values: any, actions: FormikHelpers<any>) => {
@@ -45,7 +45,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
 
     try {
 
-      const payload = marshaller(values, columns);
+      const payload = marshaller(values, properties);
       const formData = entityService.prepareFormData(payload);
 
       await apiPut({
@@ -63,7 +63,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
   const formik: useFormikType = useFormik({
     initialValues,
     validate: (values: any) => {
-      const validationErrors = props.validator(values, columns);
+      const validationErrors = props.validator(values, properties);
       setValidationError(validationErrors);
 
       return validationErrors;
@@ -74,7 +74,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
   const errorList = [];
   for (const idx in validationError) {
     errorList.push((
-      <li>{columns[idx].label}: {validationError[idx]}</li>
+      <li>{properties[idx].label}: {validationError[idx]}</li>
     ));
   }
 

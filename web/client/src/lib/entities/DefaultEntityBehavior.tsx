@@ -4,8 +4,8 @@ import FormFieldFactory from 'lib/services/form/FormFieldFactory';
 import { useFormikType } from 'lib/services/form/types';
 import store from "store";
 import { Grid } from '@mui/material';
-import { PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
-import EntityInterface, { PropertiesList, RowIconsType, ViewProps } from './EntityInterface';
+import { PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
+import EntityInterface, { RowIconsType, ViewProps } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 import _ from 'lib/services/translations/translate';
@@ -14,9 +14,9 @@ export const initialValues = {};
 
 interface EntityValidatorValues { [label: string]: string }
 type EntityValidatorResponse = Record<string, string | JSX.Element>;
-export type EntityValidator = (values: EntityValidatorValues, properties: PropertiesList) => EntityValidatorResponse;
+export type EntityValidator = (values: EntityValidatorValues, properties: PartialPropertyList) => EntityValidatorResponse;
 
-export const validator: EntityValidator = (values: EntityValidatorValues, properties: PropertiesList): EntityValidatorResponse => {
+export const validator: EntityValidator = (values: EntityValidatorValues, properties: PartialPropertyList): EntityValidatorResponse => {
 
     const response: EntityValidatorResponse = {};
     for (const idx in values) {
@@ -36,11 +36,16 @@ export const validator: EntityValidator = (values: EntityValidatorValues, proper
 }
 
 export type MarshallerValues = { [key: string]: any };
-export const marshaller = (values: MarshallerValues, properties: PropertiesList): MarshallerValues => {
+export const marshaller = (values: MarshallerValues, properties: PartialPropertyList): MarshallerValues => {
 
     for (const idx in values) {
 
         const property: any = properties[idx];
+
+        if (!property) {
+            delete values[idx];
+            continue;
+        }
 
         if (property?.type === 'file') {
 
@@ -74,7 +79,7 @@ export const marshaller = (values: MarshallerValues, properties: PropertiesList)
 }
 
 // API Response format => formik compatible format
-export const unmarshaller = (row: MarshallerValues, properties: PropertiesList): MarshallerValues => {
+export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyList): MarshallerValues => {
 
     const normalizedData: any = {};
 
