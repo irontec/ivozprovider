@@ -92,6 +92,13 @@ const properties: DdiProperties = {
     'recordCalls': {
         label: _('Record call'),
         helpText: _('Local legislation may enforce to announce the call recording to both parties, act responsibly'),
+        enum: {
+            'none': _('None'),
+            'all': _('All'),
+            'inbound': _('Inbound'),
+            'outbound': _('Outbound'),
+        },
+        default: 'none',
     },
     'displayName': {
         label: _('Display name'),

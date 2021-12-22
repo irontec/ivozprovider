@@ -125,10 +125,12 @@ const properties: QueueProperties = {
     },
     'memberCallRest': {
         label: _('Member rest seconds'),
+        default: 0,
         helpText: _("Time in seconds that member won't be disturbed after attending a queue call"),
     },
     'memberCallTimeout': {
         label: _('Member call seconds'),
+        default: 5,
         helpText: _('Time in seconds queue calls will ring members')
     },
     'strategy': {
@@ -141,10 +143,12 @@ const properties: QueueProperties = {
             'rrmemory': _('Round Robin memory'),
             'linear': _('Linear'),
         },
+        default: 'rrmemory',
         helpText: _('Determines the order current priority members will be called'),
     },
     'weight': {
         label: _('Weight'),
+        default: 5,
     },
     'preventMissedCalls': {
         label: _('Prevent missed calls'),
@@ -152,6 +156,7 @@ const properties: QueueProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '1',
         helpText: _("When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll queues if someone answers."),
     },
 };

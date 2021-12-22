@@ -53,6 +53,7 @@ const properties: HuntGroupProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '1',
         helpText: _("When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll huntgroups if someone answers."),
     },
     'allowCallForwards': {
@@ -61,6 +62,7 @@ const properties: HuntGroupProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '0',
         helpText: _("When 'Yes', Users call forward settings will be followed."),
     },
     'ringAllTimeout': {

@@ -20,6 +20,7 @@ const properties: TerminalProperties = {
     },
     'disallow': {
         label: _('Disallowed audio codecs'),
+        default: 'all',
     },
     'allowAudio': {
         label: _('Allowed audio codecs'),
@@ -33,7 +34,8 @@ const properties: TerminalProperties = {
             'g729': 'g729 - G.729A',
             'ilbc': 'ilbc - iLBC',
             'opus': 'opus - Opus codec',
-        }
+        },
+        default: 'alaw',
     },
     'allowVideo': {
         label: _('Allowed video codecs'),
@@ -44,6 +46,11 @@ const properties: TerminalProperties = {
     },
     'directMediaMethod': {
         label: _('CallerID update method'),
+        enum: {
+            'invite': 'invite',
+            'update': 'update'
+        },
+        default: 'invite',
     },
     'password': {
         label: _('Password'),
@@ -54,7 +61,8 @@ const properties: TerminalProperties = {
         enum: {
             'yes': _('Yes'),
             'no': _('No'),
-        }
+        },
+        default: 'no',
     },
     'rtpEncryption': {
         label: _('RTP encryption'),
@@ -62,6 +70,7 @@ const properties: TerminalProperties = {
             '0': _('No'),
             '1': _('Yes'),
         },
+        default: '0',
         helpText: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
     },
     'terminalModel': {

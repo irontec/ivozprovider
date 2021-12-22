@@ -7,7 +7,6 @@ import HuntGroupSelectOptions from 'entities/HuntGroup/SelectOptions';
 import FaxSelectOptions from 'entities/Fax/SelectOptions';
 import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
 import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOptions';
-import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
 import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import QueueSelectOptions from 'entities/Queue/SelectOptions';
@@ -47,10 +46,6 @@ export const foreignKeyGetter = async (): Promise<any> => {
 
     promises[promises.length] = ResidentialDeviceSelectOptions((options: any) => {
         response.residentialDevice = options;
-    });
-
-    promises[promises.length] = DdiProviderSelectOptions((options: any) => {
-        response.ddiProvider = options;
     });
 
     promises[promises.length] = CountrySelectOptions((options: any) => {
@@ -117,7 +112,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
             fields: [
                 'country',
                 'ddi',
-                'ddiProvider',
                 'displayName',
                 'language',
             ]

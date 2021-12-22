@@ -15,6 +15,7 @@ const properties: ConferenceRoomProperties = {
             '0': _("No"),
             '1': _("yes"),
         },
+        default: '0',
         visualToggle: {
             '0': {
                 show: [],
@@ -31,6 +32,7 @@ const properties: ConferenceRoomProperties = {
     },
     'maxMembers': {
         label: _('Max member'),
+        default: 0,
     },
 };
 

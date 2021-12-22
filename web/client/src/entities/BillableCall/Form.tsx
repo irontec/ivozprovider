@@ -1,7 +1,6 @@
 import defaultEntityBehavior, { EntityFormProps } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import InvoiceSelectOptions from 'entities/Invoice/SelectOptions';
-import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
 import { BillableCallPropertyList } from './BillableCallProperties';
 
 export const foreignKeyGetter = async (): Promise<any> => {
@@ -11,10 +10,6 @@ export const foreignKeyGetter = async (): Promise<any> => {
 
     promises[promises.length] = InvoiceSelectOptions((options: any) => {
         response.invoice = options;
-    });
-
-    promises[promises.length] = DdiProviderSelectOptions((options: any) => {
-        response.ddiProvider = options;
     });
 
     await Promise.all(promises);

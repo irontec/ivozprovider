@@ -18,9 +18,11 @@ const properties: CallCsvSchedulerProperties = {
             'inbound': _('Inbound'),
         },
         null: _('Both'),
+        default: '__null__',
     },
     'frequency': {
         label: _('Frequency'),
+        default: 1,
     },
     'unit': {
         label: _('Unit'),
@@ -28,11 +30,13 @@ const properties: CallCsvSchedulerProperties = {
             'day': _('Day'),
             'week': _('Week'),
             'month': _('Month'),
-        }
+        },
+        default: 'month',
     },
     'email': {
         label: _('Email'),
         helpText: _('Leave empty if no mail is needed (just generate CSV).'),
+        default: '',
     },
     'lastExecution': {
         label: _('Last execution'),
