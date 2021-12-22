@@ -1,13 +1,14 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form, { foreignKeyGetter } from './Form'
 import { EntityValues } from 'lib/services/entity/EntityService';
 import entities from '../index';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
 
-const properties: PropertiesList = {
+const properties: PartialPropertyList = {
     'name': {
         label: _('Name'),
     },

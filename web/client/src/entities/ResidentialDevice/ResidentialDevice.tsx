@@ -1,9 +1,10 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
 
-const properties: PropertiesList = {
+const properties: PartialPropertyList = {
 };
 
 const residentialDevice: EntityInterface = {

@@ -1,10 +1,11 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior, { MarshallerValues } from 'lib/entities/DefaultEntityBehavior';
 import Form, { foreignKeyGetter } from './Form';
 import LastExecution from './Field/LastExecution';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
+import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
 
 const properties: CallCsvSchedulerProperties = {
     'name': {
@@ -105,7 +106,7 @@ const columns = [
 
 export const marshaller = (
     values: CallCsvSchedulerProperties,
-    properties: PropertiesList
+    properties: PartialPropertyList
 ): MarshallerValues => {
 
     if (values.endpointType) {
@@ -122,7 +123,7 @@ export const marshaller = (
 
 export const unmarshaller = (
     row: CallCsvSchedulerProperties,
-    properties: PropertiesList
+    properties: PartialPropertyList
 ): MarshallerValues => {
 
     const response = defaultEntityBehavior.unmarshaller(

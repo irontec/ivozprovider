@@ -1,6 +1,6 @@
 import { SearchFilterType } from 'lib/components/List/Filter/icons/FilterIconFactory';
 import
-EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, PropertiesList, RowIconsType }
+EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, RowIconsType }
     from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
@@ -27,8 +27,8 @@ export default class EntityService {
     ) {
     }
 
-    public getProperties(): PropertiesList {
-        const response: PropertiesList = {};
+    public getProperties(): PropertyList {
+        const response: PropertyList = {};
         const properties = this.entityConfig.properties;
 
         for (const idx in properties) {
@@ -176,25 +176,26 @@ export default class EntityService {
     }
 
     public getDefultValues(): EntityValues {
+
         const response: EntityValues = {};
-        const columns = this.getColumns();
+        const properties = this.getProperties();
 
-        for (const idx in columns) {
+        for (const idx in properties) {
 
-            const column: ScalarProperty = columns[idx];
-            if (!column.default && !column.enum) {
-                if (column.type === 'array') {
+            const property: ScalarProperty = properties[idx];
+            if (!property.default && !property.enum) {
+                if (property.type === 'array') {
                     response[idx] = [];
                 }
                 continue;
             }
 
-            if (!column.default) {
-                response[idx] = Object.keys(column.enum as any)[0];
-            } else if (column.type === 'boolean') {
-                response[idx] = parseInt(column.default);
+            if (!property.default) {
+                response[idx] = Object.keys(property.enum as any)[0];
+            } else if (property.type === 'boolean') {
+                response[idx] = parseInt(property.default);
             } else {
-                response[idx] = column.default;
+                response[idx] = property.default;
             }
         }
 

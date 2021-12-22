@@ -97,6 +97,10 @@ export const isPropertyFk = (property: PropertySpec): property is FkProperty => 
     return (property as FkProperty).$ref !== undefined;
 }
 
+export type PartialPropertyList = {
+    [index: string]: Partial<PropertySpec>
+};
+
 export interface PropertyList {
     [key: string]: PropertySpec
 }
