@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffc8ffee860c2203c636da667829c21d",
+    "content-hash": "22d8a55d576845af60a4ad875c2d19f5",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1757,16 +1757,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "1b04e662c1e796d1337e3d1d485d4373cc9b1650"
+                "reference": "9f7417f523ebf1af7929fe9d04ac3661ec18a936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/1b04e662c1e796d1337e3d1d485d4373cc9b1650",
-                "reference": "1b04e662c1e796d1337e3d1d485d4373cc9b1650",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/9f7417f523ebf1af7929fe9d04ac3661ec18a936",
+                "reference": "9f7417f523ebf1af7929fe9d04ac3661ec18a936",
                 "shasum": ""
             },
             "require": {
@@ -1807,7 +1807,7 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2021-12-16T11:41:34+00:00"
+            "time": "2022-01-03T11:12:47+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -1962,7 +1962,8 @@
             ],
             "description": "Symfony bridge for IvozProvider",
             "transport-options": {
-                "symlink": false
+                "symlink": false,
+                "relative": true
             }
         },
         {
@@ -7111,6 +7112,12 @@
                 "future",
                 "non-blocking",
                 "promise"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/amphp",
+                    "type": "github"
+                }
             ],
             "time": "2020-07-14T21:47:18+00:00"
         },
