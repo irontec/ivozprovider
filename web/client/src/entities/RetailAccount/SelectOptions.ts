@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import RetailAccount from './RetailAccount';
 
 const RetailAccountSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/retail_accounts',
+        RetailAccount.path,
         ['id', 'name'],
         (data: any) => {
 

@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import Terminal from './Terminal';
 
 const TerminalSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/terminals',
+        Terminal.path,
         ['id', 'name'],
         (data: any) => {
 

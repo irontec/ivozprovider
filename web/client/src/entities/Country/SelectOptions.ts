@@ -4,10 +4,10 @@ import Country from './Country';
 const CountrySelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/countries',
+        Country.path,
         ['id', 'name', 'countryCode'],
-        (data:any) => {
-            const options:any = {};
+        (data: any) => {
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = `${Country.toStr(item)} (${item.countryCode})`;
             }

@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import ResidentialDevice from './ResidentialDevice';
 
 const ResidentialDeviceSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/residential_devices',
+        ResidentialDevice.path,
         ['id', 'name'],
         (data: any) => {
 

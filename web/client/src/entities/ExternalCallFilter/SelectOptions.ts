@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import ExternalCallFilter from './ExternalCallFilter';
 
 const ExternalCallFilterSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/external_call_filters',
+        ExternalCallFilter.path,
         ['id', 'name'],
         (data:any) => {
 

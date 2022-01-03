@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import CallAcl from './CallAcl';
 
 const CallAclSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/call_acls',
+        CallAcl.path,
         ['id', 'name'],
         (data: any) => {
 

@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import User from './User';
 
 const UserSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/users',
+        User.path,
         ['id', 'name', 'lastname'],
         (data: any) => {
             const options: any = {};

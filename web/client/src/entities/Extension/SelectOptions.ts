@@ -1,13 +1,14 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import Extension from './Extension';
 
 const ExtensionSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/extensions',
+        Extension.path,
         ['id', 'number'],
-        (data:any) => {
+        (data: any) => {
 
-            const options:any = {};
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = item.number;
             }

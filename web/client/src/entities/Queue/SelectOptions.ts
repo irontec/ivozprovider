@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import Queue from './Queue';
 
 const QueueSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/queues',
+        Queue.path,
         ['id', 'name'],
         (data: any) => {
 

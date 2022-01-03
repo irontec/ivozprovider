@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import MatchList from './MatchList';
 
 const MatchListSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/match_lists',
+        MatchList.path,
         ['id', 'name'],
         (data: any) => {
 

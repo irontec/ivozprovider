@@ -1,9 +1,10 @@
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import Ivr from './Ivr';
 
 const IvrSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/ivrs',
+        Ivr.path,
         ['id', 'name'],
         (data: any) => {
             const options: any = {};
