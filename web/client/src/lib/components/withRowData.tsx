@@ -2,6 +2,7 @@ import { useState, useEffect, FunctionComponent, ComponentClass } from 'react';
 import EntityService from 'lib/services/entity/EntityService';
 import hoistStatics from "hoist-non-react-statics";
 import { useStoreActions } from 'store';
+import axios from 'axios';
 
 const withRowData = (Component: FunctionComponent | ComponentClass): FunctionComponent => {
 
@@ -13,7 +14,6 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
 
     const entityId = match.params.id;
 
-    const [mounted, setMounted] = useState<boolean>(true);
     const [loading, setLoading] = useState(true)
     const [row, setRow] = useState({});
 
@@ -24,7 +24,11 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
     useEffect(
       () => {
 
-        if (mounted && loading) {
+        let mounted = true;
+        const CancelToken = axios.CancelToken;
+        const source = CancelToken.source();
+
+        if (loading) {
 
           const itemPath = entityService.getItemPath();
           if (!itemPath) {
@@ -42,15 +46,17 @@ const withRowData = (Component: FunctionComponent | ComponentClass): FunctionCom
 
               setRow(data);
               setLoading(false);
-            }
+            },
+            cancelToken: source.token
           });
         }
 
         return function umount() {
-          setMounted(false);
+          mounted = false;
+          source.cancel();
         };
       },
-      [mounted, loading, entityId, entityService, apiGet]
+      [loading, entityId, entityService, apiGet]
     );
 
     if (loading) {
