@@ -3,7 +3,8 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
+import { foreignKeyGetter } from './useFkChoices';
 import entities from '../index';
 import { ExtensionProperties, ExtensionPropertiesList } from './ExtensionProperties';
 

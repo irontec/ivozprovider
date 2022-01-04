@@ -3,7 +3,8 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
+import { foreignKeyGetter } from './useFkChoices';
 import entities from '../index';
 import { FaxProperties, FaxPropertiesList } from './FaxProperties';
 

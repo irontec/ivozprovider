@@ -3,7 +3,8 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
+import { foreignKeyGetter } from './useFkChoices';
 import entities from '../index';
 import { BillableCallProperties, BillableCallPropertiesList } from './BillableCallProperties';
 
