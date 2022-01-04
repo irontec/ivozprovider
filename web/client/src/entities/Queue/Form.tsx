@@ -6,33 +6,46 @@ import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'lib/services/translations/translate';
 import { QueuePropertyList } from './QueueProperties';
+import axios, { CancelToken } from 'axios';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: QueuePropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions((options: any) => {
-        response.timeoutLocution = options;
-        response.fullLocution = options;
-        response.periodicAnnounceLocution = options;
-    });
+    promises[promises.length] = LocutionSelectOptions(
+        (options: any) => {
+            response.timeoutLocution = options;
+            response.fullLocution = options;
+            response.periodicAnnounceLocution = options;
+        },
+        token
+    );
 
-    promises[promises.length] = CountrySelectOptions((options: any) => {
-        response.timeoutNumberCountry = options;
-        response.fullNumberCountry = options;
-    });
+    promises[promises.length] = CountrySelectOptions(
+        (options: any) => {
+            response.timeoutNumberCountry = options;
+            response.fullNumberCountry = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ExtensionSelectOptions((options: any) => {
-        response.timeoutExtension = options;
-        response.fullExtension = options;
-    });
+    promises[promises.length] = ExtensionSelectOptions(
+        (options: any) => {
+            response.timeoutExtension = options;
+            response.fullExtension = options;
+        },
+        token
+    );
 
-    promises[promises.length] = UserSelectOptions((options: any) => {
-        response.timeoutVoiceMailUser = options;
-        response.fullVoiceMailUser = options;
-    });
+    promises[promises.length] = UserSelectOptions(
+        (options: any) => {
+            response.timeoutVoiceMailUser = options;
+            response.fullVoiceMailUser = options;
+        },
+        token
+    );
 
     await Promise.all(promises);
 
@@ -42,33 +55,36 @@ export const foreignKeyGetter = async (): Promise<any> => {
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
-
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
     const groups: Array<FieldsetGroups> = [

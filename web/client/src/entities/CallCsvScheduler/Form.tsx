@@ -8,73 +8,95 @@ import FaxSelectOptions from 'entities/Fax/SelectOptions';
 import FriendSelectOptions from 'entities/Friend/SelectOptions';
 import _ from 'lib/services/translations/translate';
 import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import axios, { CancelToken } from 'axios';
 
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: CallCsvSchedulerPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = DdiSelectOptions((options: any) => {
-        response.ddi = options;
-    });
+    promises[promises.length] = DdiSelectOptions(
+        (options: any) => {
+            response.ddi = options;
+        },
+        token
+    );
 
-    promises[promises.length] = RetailAccountSelectOptions((options: any) => {
-        response.retailAccount = options;
-    });
+    promises[promises.length] = RetailAccountSelectOptions(
+        (options: any) => {
+            response.retailAccount = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ResidentialDeviceSelectOptions((options: any) => {
-        response.residentialDevice = options;
-    });
+    promises[promises.length] = ResidentialDeviceSelectOptions(
+        (options: any) => {
+            response.residentialDevice = options;
+        },
+        token
+    );
 
-    promises[promises.length] = UserSelectOptions((options: any) => {
-        response.user = options;
-    });
+    promises[promises.length] = UserSelectOptions(
+        (options: any) => {
+            response.user = options;
+        },
+        token
+    );
 
-    promises[promises.length] = FaxSelectOptions((options: any) => {
-        response.fax = options;
-    });
+    promises[promises.length] = FaxSelectOptions(
+        (options: any) => {
+            response.fax = options;
+        },
+        token
+    );
 
-    promises[promises.length] = FriendSelectOptions((options: any) => {
-        response.friend = options;
-    });
+    promises[promises.length] = FriendSelectOptions(
+        (options: any) => {
+            response.friend = options;
+        },
+        token
+    );
 
     await Promise.all(promises);
 
     return response;
 };
 
-
-
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
-
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
     const groups: Array<FieldsetGroups> = [

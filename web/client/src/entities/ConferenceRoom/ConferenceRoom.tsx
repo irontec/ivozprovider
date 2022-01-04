@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
 import { ConferenceRoomProperties } from './ConferenceRoomProperties';
 
 const properties: ConferenceRoomProperties = {
@@ -44,8 +44,7 @@ const conferenceRoom: EntityInterface = {
     path: '/conference_rooms',
     toStr: (row: any) => row.name,
     properties,
-    Form,
-    foreignKeyGetter
+    Form
 };
 
 export default conferenceRoom;

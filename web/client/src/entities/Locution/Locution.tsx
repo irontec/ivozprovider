@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
 import { LocutionProperties } from './LocutionProperties';
 
 const properties: LocutionProperties = {
@@ -39,7 +39,6 @@ const locution: EntityInterface = {
     path: '/locutions',
     properties,
     Form,
-    foreignKeyGetter,
     columns
 };
 

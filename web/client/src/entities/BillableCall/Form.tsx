@@ -2,15 +2,20 @@ import defaultEntityBehavior, { EntityFormProps } from 'lib/entities/DefaultEnti
 import { useEffect, useState } from 'react';
 import InvoiceSelectOptions from 'entities/Invoice/SelectOptions';
 import { BillableCallPropertyList } from './BillableCallProperties';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import axios, { CancelToken } from 'axios';
 
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: BillableCallPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = InvoiceSelectOptions((options: any) => {
-        response.invoice = options;
-    });
+    promises[promises.length] = InvoiceSelectOptions(
+        (options: any) => {
+            response.invoice = options;
+        },
+        token
+    );
 
     await Promise.all(promises);
 
@@ -21,33 +26,37 @@ export const foreignKeyGetter = async (): Promise<any> => {
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
-
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
     return (<DefaultEntityForm {...props} fkChoices={fkChoices} />);

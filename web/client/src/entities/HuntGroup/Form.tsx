@@ -6,27 +6,41 @@ import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import _ from 'lib/services/translations/translate';
 import { HuntGroupPropertyList } from './HuntGroupProperties';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import axios, { CancelToken } from 'axios';
 
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: HuntGroupPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions((options: any) => {
-        response.noAnswerLocution = options;
-    });
+    promises[promises.length] = LocutionSelectOptions(
+        (options: any) => {
+            response.noAnswerLocution = options;
+        },
+        token
+    );
 
-    promises[promises.length] = CountrySelectOptions((options: any) => {
-        response.noAnswerNumberCountry = options;
-    });
+    promises[promises.length] = CountrySelectOptions(
+        (options: any) => {
+            response.noAnswerNumberCountry = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ExtensionSelectOptions((options: any) => {
-        response.noAnswerExtension = options;
-    });
+    promises[promises.length] = ExtensionSelectOptions(
+        (options: any) => {
+            response.noAnswerExtension = options;
+        },
+        token
+    );
 
-    promises[promises.length] = UserSelectOptions((options: any) => {
-        response.noAnswerVoiceMailUser = options;
-    });
+    promises[promises.length] = UserSelectOptions(
+        (options: any) => {
+            response.noAnswerVoiceMailUser = options;
+        },
+        token
+    );
 
     await Promise.all(promises);
 
@@ -37,33 +51,36 @@ export const foreignKeyGetter = async (): Promise<any> => {
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
-
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
     const groups: Array<FieldsetGroups> = [

@@ -51,7 +51,7 @@ const properties: UserProperties = {
     'terminal': {
         label: _('Terminal'),
     },
-    /*'statusIcon': _('Status'),*/
+    // @TODO 'statusIcon': _('Status'),
     'extension': {
         label: _('Screen Extension'),
         null: _('Unassigned'),
@@ -102,8 +102,8 @@ const properties: UserProperties = {
     'maxCalls': {
         label: _('Call waiting'),
         default: 0,
-        //@TODO min: 0
-        //@TODO max: 100
+        // @TODO min: 0
+        // @TODO max: 100
         helpText: _('Limits received calls when already handling this number of calls. Set 0 for unlimited.'),
     },
     'voicemailEnabled': {
@@ -190,6 +190,15 @@ const properties: UserProperties = {
     }
 };
 
+const columns = [
+    'name',
+    'lastname',
+    'extension',
+    'terminal',
+    'outgoingDdi',
+    // @TODO status
+];
+
 async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropertiesList> {
     const promises = [];
     const { Ddi, Extension, Terminal } = entities;
@@ -234,6 +243,7 @@ const user: EntityInterface = {
     path: '/users',
     toStr: (row: any) => `${row.name} ${row.lastname}`,
     properties,
+    columns,
     Form,
     foreignKeyResolver,
     foreignKeyGetter

@@ -2,15 +2,21 @@ import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/enti
 import { useEffect, useState } from 'react';
 import ServiceSelectOptions from 'entities/Service/SelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
+import axios, { CancelToken } from 'axios';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: CompanyServicePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = ServiceSelectOptions((options: any) => {
-        response.service = options;
-    });
+    promises[promises.length] = ServiceSelectOptions(
+        (options: any) => {
+            response.service = options;
+        },
+        undefined,
+        token
+    );
 
     await Promise.all(promises);
 
@@ -22,31 +28,36 @@ const Form = (props: EntityFormProps): JSX.Element => {
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
     const groups: Array<FieldsetGroups> = [

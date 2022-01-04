@@ -14,59 +14,97 @@ import UserSelectOptions from './SelectOptions';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import _ from 'lib/services/translations/translate';
 import { UserPropertyList } from './UserProperties';
+import axios, { CancelToken } from 'axios';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: UserPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = UserSelectOptions((options: any) => {
-        response.bossAssistant = options;
-    });
+    promises[promises.length] = UserSelectOptions(
+        (options: any) => {
+            response.bossAssistant = options;
+        },
+        token
+    );
 
-    promises[promises.length] = MatchListSelectOptions((options: any) => {
-        response.bossAssistantWhiteList = options;
-    });
+    promises[promises.length] = MatchListSelectOptions(
+        (options: any) => {
+            response.bossAssistantWhiteList = options;
+        },
+        token
+    );
 
-    promises[promises.length] = TransformationRuleSetSelectOptions((options: any) => {
-        response.transformationRuleSet = options;
-    });
+    promises[promises.length] = TransformationRuleSetSelectOptions(
+        (options: any) => {
+            response.transformationRuleSet = options;
+        },
+        token
+    );
 
-    promises[promises.length] = LanguageSelectOptions((options: any) => {
-        response.language = options;
-    });
+    promises[promises.length] = LanguageSelectOptions(
+        (options: any) => {
+            response.language = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ExtensionSelectOptions((options: any) => {
-        response.extension = options;
-    });
+    promises[promises.length] = ExtensionSelectOptions(
+        (options: any) => {
+            response.extension = options;
+        },
+        token
+    );
 
-    promises[promises.length] = TimezoneSelectOptions((options: any) => {
-        response.timezone = options;
-    });
+    promises[promises.length] = TimezoneSelectOptions(
+        (options: any) => {
+            response.timezone = options;
+        },
+        token
+    );
 
-    promises[promises.length] = DdiSelectOptions((options: any) => {
-        response.outgoingDdi = options;
-    });
+    promises[promises.length] = DdiSelectOptions(
+        (options: any) => {
+            response.outgoingDdi = options;
+        },
+        token
+    );
 
-    promises[promises.length] = OutgoingDdiRuleSelectOptions((options: any) => {
-        response.outgoingDdiRule = options;
-    });
+    promises[promises.length] = OutgoingDdiRuleSelectOptions(
+        (options: any) => {
+            response.outgoingDdiRule = options;
+        },
+        token
+    );
 
-    promises[promises.length] = LocutionSelectOptions((options: any) => {
-        response.voicemailLocution = options;
-    });
+    promises[promises.length] = LocutionSelectOptions(
+        (options: any) => {
+            response.voicemailLocution = options;
+        },
+        token
+    );
 
-    promises[promises.length] = TerminalSelectOptions((options: any) => {
-        response.terminal = options;
-    });
+    promises[promises.length] = TerminalSelectOptions(
+        (options: any) => {
+            response.terminal = options;
+        },
+        token
+    );
 
-    promises[promises.length] = CallAclSelectOptions((options: any) => {
-        response.callAcl = options;
-    });
+    promises[promises.length] = CallAclSelectOptions(
+        (options: any) => {
+            response.callAcl = options;
+        },
+        token
+    );
 
-    promises[promises.length] = PickUpGroupSelectOptions((options: any) => {
-        response.pickupGroupIds = options;
-    });
+    promises[promises.length] = PickUpGroupSelectOptions(
+        (options: any) => {
+            response.pickupGroupIds = options;
+        },
+        token
+    );
 
     await Promise.all(promises);
 
@@ -76,54 +114,59 @@ export const foreignKeyGetter = async (): Promise<any> => {
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
-
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
-    const groups: Array<FieldsetGroups> = [
+    const edit = props.edit || false;
+    const groups: Array<FieldsetGroups | false> = [
         {
             legend: _('Personal data'),
             fields: [
                 'name',
-                'language',
+                edit && 'language',
                 'lastname',
                 'email',
             ]
         },
-        {
+        edit && {
             legend: _('Geographic Configuration'),
             fields: [
-                //'language',
+                edit && 'language',
                 'timezone',
                 'transformationRuleSet',
             ]
         },
-        {
+        edit && {
             legend: _('Login Info'),
             fields: [
                 'active',
@@ -131,7 +174,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'gsQRCode',
             ]
         },
-        {
+        edit && {
             legend: _('Boss-Assistant'),
             fields: [
                 'isBoss',
@@ -146,15 +189,15 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'extension',
                 'outgoingDdi',
                 'outgoingDdiRule',
-                'callAcl',
-                'doNotDisturb',
-                'maxCalls',
-                'externalIpCalls',
-                'multiContact',
-                'rejectCallMethod',
+                edit && 'callAcl',
+                edit && 'doNotDisturb',
+                edit && 'maxCalls',
+                edit && 'externalIpCalls',
+                edit && 'multiContact',
+                edit && 'rejectCallMethod',
             ]
         },
-        {
+        edit && {
             legend: _('Voicemail'),
             fields: [
                 'voicemailEnabled',
@@ -163,7 +206,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'voicemailAttachSound',
             ]
         },
-        {
+        edit && {
             legend: _('Group belonging'),
             fields: [
                 'pickupGroupIds',

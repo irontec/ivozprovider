@@ -14,96 +14,137 @@ import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptio
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 import _ from 'lib/services/translations/translate';
 import { DdiPropertyList } from './DdiProperties';
+import axios, { CancelToken } from 'axios';
+import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter = async (): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
 
     const response: DdiPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = ExternalCallFilterSelectOptions((options: any) => {
-        response.externalCallFilter = options;
-    });
+    promises[promises.length] = ExternalCallFilterSelectOptions(
+        (options: any) => {
+            response.externalCallFilter = options;
+        },
+        token
+    );
 
-    promises[promises.length] = UserSelectOptions((options: any) => {
-        response.user = options;
-    });
+    promises[promises.length] = UserSelectOptions(
+        (options: any) => {
+            response.user = options;
+        },
+        token
+    );
 
-    promises[promises.length] = IvrSelectOptions((options: any) => {
-        response.ivr = options;
-    });
+    promises[promises.length] = IvrSelectOptions(
+        (options: any) => {
+            response.ivr = options;
+        },
+        token
+    );
 
-    promises[promises.length] = HuntGroupSelectOptions((options: any) => {
-        response.huntGroup = options;
-    });
+    promises[promises.length] = HuntGroupSelectOptions(
+        (options: any) => {
+            response.huntGroup = options;
+        },
+        token
+    );
 
-    promises[promises.length] = FaxSelectOptions((options: any) => {
-        response.fax = options;
-    });
+    promises[promises.length] = FaxSelectOptions(
+        (options: any) => {
+            response.fax = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ConferenceRoomSelectOptions((options: any) => {
-        response.conferenceRoom = options;
-    });
+    promises[promises.length] = ConferenceRoomSelectOptions(
+        (options: any) => {
+            response.conferenceRoom = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ResidentialDeviceSelectOptions((options: any) => {
-        response.residentialDevice = options;
-    });
+    promises[promises.length] = ResidentialDeviceSelectOptions(
+        (options: any) => {
+            response.residentialDevice = options;
+        },
+        token
+    );
 
-    promises[promises.length] = CountrySelectOptions((options: any) => {
-        response.country = options;
-    });
+    promises[promises.length] = CountrySelectOptions(
+        (options: any) => {
+            response.country = options;
+        },
+        token
+    );
 
-    promises[promises.length] = LanguageSelectOptions((options: any) => {
-        response.language = options;
-    });
+    promises[promises.length] = LanguageSelectOptions(
+        (options: any) => {
+            response.language = options;
+        },
+        token
+    );
 
-    promises[promises.length] = QueueSelectOptions((options: any) => {
-        response.queue = options;
-    });
+    promises[promises.length] = QueueSelectOptions(
+        (options: any) => {
+            response.queue = options;
+        },
+        token
+    );
 
-    promises[promises.length] = ConditionalRouteSelectOptions((options: any) => {
-        response.conditionalRoute = options;
-    });
+    promises[promises.length] = ConditionalRouteSelectOptions(
+        (options: any) => {
+            response.conditionalRoute = options;
+        },
+        token
+    );
 
-    promises[promises.length] = RetailAccountSelectOptions((options: any) => {
-        response.retailAccount = options;
-    });
+    promises[promises.length] = RetailAccountSelectOptions(
+        (options: any) => {
+            response.retailAccount = options;
+        },
+        token
+    );
 
     await Promise.all(promises);
 
     return response;
 };
 
-
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
 
     useEffect(
         () => {
 
-            if (mounted && loadingFks) {
+            let mounted = true;
 
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            foreignKeyGetter(source.token).then((options) => {
+
+                if (!mounted) {
+                    return;
+                }
+
+                setFkChoices((fkChoices: any) => {
+                    return {
+                        ...fkChoices,
+                        ...options
+                    }
                 });
+            });
 
-                setLoadingFks(false);
+            return () => {
+                mounted = false;
+                source.cancel();
             }
-
-            return function umount() {
-                setMounted(false);
-            };
         },
-        [mounted, loadingFks, fkChoices]
+        []
     );
 
     const groups: Array<FieldsetGroups> = [
