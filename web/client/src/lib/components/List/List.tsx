@@ -9,6 +9,7 @@ import { criteriaToArray, queryStringToCriteria } from './List.helpers';
 import ContentTable from './ContentTable/ContentTable';
 import ContentTablePagination from './ContentTable/ContentTablePagination';
 import useQueryStringParams from './useQueryStringParams';
+import axios from 'axios';
 
 const List = function (props: any & RouteComponentProps) {
 
@@ -83,6 +84,10 @@ const List = function (props: any & RouteComponentProps) {
     useEffect(
         () => {
 
+            let mounted = true;
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
             // Fetch data request
             if (!criteriaIsReady) {
                 return;
@@ -96,9 +101,15 @@ const List = function (props: any & RouteComponentProps) {
                 path: reqPath,
                 successCallback: async (data: any, headers: any) => {
 
+                    if (!mounted) {
+                        return;
+                    }
+
                     if (headers) {
                         setHeaders(headers);
                     }
+
+                    setRows(data);
 
                     foreignKeyResolver(data, entityService)
                         .then((data: any) => {
@@ -112,8 +123,14 @@ const List = function (props: any & RouteComponentProps) {
 
                             setRows(fixedData);
                         });
-                }
+                },
+                cancelToken: source.token
             });
+
+            return () => {
+                mounted = false;
+                source.cancel();
+            }
         },
         [
             foreignKeyResolver, entityService, criteriaIsReady,

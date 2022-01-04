@@ -2,7 +2,7 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form, { foreignKeyGetter } from './Form'
+import Form from './Form'
 import { CallAclProperties } from './CallAclProperties';
 
 const properties: CallAclProperties = {
@@ -26,8 +26,7 @@ const CallAcl: EntityInterface = {
     title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',
     properties,
-    Form,
-    foreignKeyGetter
+    Form
 };
 
 export default CallAcl;

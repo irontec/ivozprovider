@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 
-const LanguageSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const LanguageSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         '/languages',
@@ -14,7 +15,8 @@ const LanguageSelectOptions = (callback: FetchFksCallback): Promise<unknown> => 
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

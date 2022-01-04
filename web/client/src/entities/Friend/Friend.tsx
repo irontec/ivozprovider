@@ -3,7 +3,8 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import StatusIcon from './Field/StatusIcon';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
+import { foreignKeyGetter } from './useFkChoices';
 import { FriendProperties } from './FriendProperties';
 
 const properties: FriendProperties = {

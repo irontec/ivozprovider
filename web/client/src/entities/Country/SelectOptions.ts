@@ -1,19 +1,21 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Country from './Country';
 
-const CountrySelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const CountrySelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/countries',
+        Country.path,
         ['id', 'name', 'countryCode'],
-        (data:any) => {
-            const options:any = {};
+        (data: any) => {
+            const options: any = {};
             for (const item of data) {
                 options[item.id] = `${Country.toStr(item)} (${item.countryCode})`;
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Schedule from './Schedule';
 
-const ScheduleSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const ScheduleSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         Schedule.path,
@@ -14,7 +15,8 @@ const ScheduleSelectOptions = (callback: FetchFksCallback): Promise<unknown> => 
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

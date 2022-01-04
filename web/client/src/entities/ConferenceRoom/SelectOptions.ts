@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import ConferenceRoom from './ConferenceRoom';
 
-const ConferenceRoomSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const ConferenceRoomSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/conference_rooms',
+        ConferenceRoom.path,
         ['id', 'name'],
         (data:any) => {
             const options:any = {};
@@ -12,7 +14,8 @@ const ConferenceRoomSelectOptions = (callback: FetchFksCallback): Promise<unknow
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

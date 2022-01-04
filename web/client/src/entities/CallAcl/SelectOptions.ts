@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import CallAcl from './CallAcl';
 
-const CallAclSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const CallAclSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/call_acls',
+        CallAcl.path,
         ['id', 'name'],
         (data: any) => {
 
@@ -13,7 +15,8 @@ const CallAclSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

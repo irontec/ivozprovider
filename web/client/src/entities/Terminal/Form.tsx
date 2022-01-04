@@ -1,54 +1,11 @@
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
-import TerminalModelSelectOptions from '../TerminalModel/SelectOptions';
-import { useEffect, useState } from 'react';
 import _ from 'lib/services/translations/translate';
-import { TerminalPropertyList } from './TerminalProperties';
-
-export const foreignKeyGetter = async (): Promise<any> => {
-
-    const response: TerminalPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
-
-    promises[promises.length] = TerminalModelSelectOptions((options: any) => {
-        response.terminalModel = options;
-    });
-
-    await Promise.all(promises);
-
-    return response;
-};
+import useFkChoices from './useFkChoices';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
-
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [mounted, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
-
-    useEffect(
-        () => {
-
-            if (mounted && loadingFks) {
-
-                foreignKeyGetter().then((options) => {
-                    mounted && setFkChoices((fkChoices: any) => {
-                        return {
-                            ...fkChoices,
-                            ...options
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [mounted, loadingFks, fkChoices]
-    );
+    const fkChoices = useFkChoices();
 
     const groups: Array<FieldsetGroups> = [
         {

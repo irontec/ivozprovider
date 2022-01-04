@@ -1,12 +1,4 @@
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
-import { SchedulePropertyList } from './ScheduleProperties';
-
-export const foreignKeyGetter = async (): Promise<any> => {
-
-    const response: SchedulePropertyList<Array<string | number>> = {};
-
-    return response;
-};
 
 const Form = (props: EntityFormProps): JSX.Element => {
 

@@ -2,7 +2,8 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import Form, { foreignKeyGetter } from './Form';
+import Form from './Form';
+import { foreignKeyGetter } from './useFkChoices';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { DdiProperties, DdiPropertiesList } from './DdiProperties';
@@ -160,8 +161,18 @@ async function foreignKeyResolver(
     const promises = [];
     const {
         User, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute,
-        Fax, ResidentialDevice, ExternalCallFilter
+        Fax, ResidentialDevice, ExternalCallFilter, Country
     } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'country',
+            Country.path,
+            Country.toStr,
+            false
+        )
+    );
 
     promises.push(
         genericForeignKeyResolver(

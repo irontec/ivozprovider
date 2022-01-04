@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import OutgoingDdiRule from './OutgoingDdiRule';
 
-const OutgoingDdiRuleSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const OutgoingDdiRuleSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/outgoing_ddi_rules',
+        OutgoingDdiRule.path,
         ['id', 'name'],
         (data: any) => {
 
@@ -13,7 +15,8 @@ const OutgoingDdiRuleSelectOptions = (callback: FetchFksCallback): Promise<unkno
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

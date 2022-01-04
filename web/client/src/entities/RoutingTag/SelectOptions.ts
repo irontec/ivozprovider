@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import RoutingTag from './RoutingTag';
 
-const RoutingTagSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const RoutingTagSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/routing_tag',
+        RoutingTag.path,
         ['id', 'name'],
         (data: any) => {
 
@@ -13,7 +15,8 @@ const RoutingTagSelectOptions = (callback: FetchFksCallback): Promise<unknown> =
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

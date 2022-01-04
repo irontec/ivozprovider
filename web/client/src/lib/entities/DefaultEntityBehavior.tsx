@@ -9,6 +9,7 @@ import EntityInterface, { RowIconsType, ViewProps } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 import _ from 'lib/services/translations/translate';
+import { CancelToken } from 'axios';
 
 export const initialValues = {};
 
@@ -163,7 +164,7 @@ export const ListDecorator = (props: ListDecoratorProps): JSX.Element | string =
         value = property.null;
     }
 
-    return value !== null
+    return (value !== null && value !== undefined)
         ? value
         : '';
 }
@@ -176,7 +177,7 @@ export const RowIcons: RowIconsType = (): JSX.Element => {
 
 export type FieldsetGroups = {
     legend: string | React.ReactElement,
-    fields: Array<string>
+    fields: Array<string | false | undefined>
 }
 
 export type PropertyFkChoices = {
@@ -194,12 +195,40 @@ export type EntityFormProps = EntityInterface & {
     edit?: boolean,
     entityService: EntityService,
     formik: useFormikType,
-    groups: Array<FieldsetGroups>,
+    groups: Array<FieldsetGroups | false>,
     fkChoices: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
 };
 
 export type FormOnChangeEvent = React.ChangeEvent<{ name: string, value: any }>;
+
+const filterFieldsetGroups = (groups: Array<FieldsetGroups | false>): Array<FieldsetGroups> => {
+
+    const resp:Array<FieldsetGroups> = [];
+    for (const idx in groups) {
+        const group = groups[idx];
+
+        if (!group) {
+            continue;
+        }
+
+        const fields = group.fields.filter(
+            (item) => typeof item === 'string'
+        ) as Array<string>;
+
+        if (!fields.length) {
+            continue;
+        }
+
+        resp.push({
+            legend: group.legend,
+            fields
+        });
+    }
+
+    return resp;
+}
+
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
@@ -211,7 +240,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     let groups: Array<FieldsetGroups> = [];
     if (props.groups) {
-        groups = props.groups;
+
+        groups = filterFieldsetGroups(props.groups);
+
     } else {
         groups.push({
             legend: "",
@@ -253,9 +284,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
     return (
         <React.Fragment>
-            {groups.map((group: FieldsetGroups, idx: number) => {
+            {groups.map((group, idx: number) => {
 
-                const visible = group.fields.reduce(
+                const fields = group.fields as Array<string>;
+                const visible = fields.reduce(
                     (acc: boolean, fld: string) => {
                         return acc || visualToggles[fld];
                     },
@@ -272,7 +304,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                             {group.legend}
                         </StyledGroupLegend>
                         <StyledGroupGrid>
-                            {group.fields.map((columnName: string, idx: number) => {
+                            {fields.map((columnName: string, idx: number) => {
 
                                 const choices: NullablePropertyFkChoices = fkChoices
                                     ? fkChoices[columnName]
@@ -309,7 +341,7 @@ const View = (props: ViewProps): JSX.Element | null => {
 
     let groups: Array<FieldsetGroups> = [];
     if (props.groups) {
-        groups = props.groups;
+        groups = filterFieldsetGroups(props.groups);
     } else {
         groups.push({
             legend: "",
@@ -319,14 +351,17 @@ const View = (props: ViewProps): JSX.Element | null => {
 
     return (
         <React.Fragment>
-            {groups.map((group: FieldsetGroups, idx: number) => {
+            {groups.map((group, idx: number) => {
+
+                const fields = group.fields as Array<string>;
+
                 return (
                     <div key={idx}>
                         <StyledGroupLegend>
                             {group.legend}
                         </StyledGroupLegend>
                         <StyledGroupGrid>
-                            {group.fields.map((columnName: string, idx: number) => {
+                            {fields.map((columnName: string, idx: number) => {
 
                                 const properties = entityService.getProperties();
                                 const property = (properties[columnName] as PropertySpec);
@@ -346,7 +381,7 @@ const View = (props: ViewProps): JSX.Element | null => {
 
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
 
-const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback): Promise<unknown> => {
+const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     const getAction = store.getActions().api.get;
     return getAction({
@@ -358,7 +393,8 @@ const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksC
         },
         successCallback: async (data: any) => {
             setter(data);
-        }
+        },
+        cancelToken
     });
 }
 

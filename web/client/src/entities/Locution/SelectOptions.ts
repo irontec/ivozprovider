@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import Locution from './Locution';
 
-const LocutionSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const LocutionSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/locutions',
+        Locution.path,
         ['id', 'name'],
         (data: any) => {
 
@@ -13,7 +15,8 @@ const LocutionSelectOptions = (callback: FetchFksCallback): Promise<unknown> => 
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

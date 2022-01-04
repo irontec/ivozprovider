@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import ExternalCallFilter from './ExternalCallFilter';
 
-const ExternalCallFilterSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const ExternalCallFilterSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/external_call_filters',
+        ExternalCallFilter.path,
         ['id', 'name'],
         (data:any) => {
 
@@ -13,7 +15,8 @@ const ExternalCallFilterSelectOptions = (callback: FetchFksCallback): Promise<un
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

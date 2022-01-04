@@ -1,9 +1,11 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import Terminal from './Terminal';
 
-const TerminalSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const TerminalSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/terminals',
+        Terminal.path,
         ['id', 'name'],
         (data: any) => {
 
@@ -13,7 +15,8 @@ const TerminalSelectOptions = (callback: FetchFksCallback): Promise<unknown> => 
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

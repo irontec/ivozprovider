@@ -1,10 +1,12 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
+import RatingPlanGroup from './RatingPlanGroup';
 
-const RatingPlanGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const RatingPlanGroupSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        '/rating_plan_groups',
+        RatingPlanGroup.path,
         ['id', 'name'],
         (data: any) => {
 
@@ -15,7 +17,8 @@ const RatingPlanGroupSelectOptions = (callback: FetchFksCallback): Promise<unkno
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

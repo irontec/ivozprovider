@@ -1,5 +1,8 @@
+import { CancelToken } from 'axios';
 import { action, Action, Actions, Computed, computed, Thunk, thunk } from 'easy-peasy';
 import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
+import { KeyValList } from 'lib/services/api/ParsedApiSpecInterface';
+import { EntityValues } from 'lib/services/entity/EntityService';
 
 const handleApiErrors = (
   error: ApiError | null, getStoreActions: () => Actions<any>
@@ -40,13 +43,14 @@ const api: ApiStore = {
 
     actions.sumRequest();
     actions.setErrorMsg(null);
-    const { path, params, successCallback } = payload;
+    const { path, params, successCallback, cancelToken } = payload;
 
     try {
       const resp = await ApiClient.get(
         path,
         params,
-        successCallback
+        successCallback,
+        cancelToken
       );
       actions.restRequest();
 
@@ -62,14 +66,15 @@ const api: ApiStore = {
 
   download: thunk(async (actions: any, payload: apiGetRequestParams, { getStoreActions }) => {
 
-    const { path, params, successCallback } = payload;
+    const { path, params, successCallback, cancelToken } = payload;
     actions.setErrorMsg(null);
 
     try {
       return await ApiClient.download(
         path,
         params,
-        successCallback
+        successCallback,
+        cancelToken
       );
     } catch (error: any) {
       actions.setErrorMsg(error?.statusText);
@@ -82,14 +87,15 @@ const api: ApiStore = {
   ////////////////////////////////////////
   post: thunk(async (actions: any, payload: apiPostRequestParams, { getStoreActions }) => {
 
-    const { path, values, contentType } = payload;
+    const { path, values, contentType, cancelToken } = payload;
     actions.setErrorMsg(null);
 
     try {
       return await ApiClient.post(
         path,
         values,
-        contentType
+        contentType,
+        cancelToken
       );
     } catch (error: any) {
       actions.setErrorMsg(error?.statusText);
@@ -101,13 +107,14 @@ const api: ApiStore = {
   ////////////////////////////////////////
   put: thunk(async (actions: any, payload: apiPutRequestParams, { getStoreActions }) => {
 
-    const { path, values } = payload;
+    const { path, values, cancelToken } = payload;
     actions.setErrorMsg(null);
 
     try {
       return await ApiClient.put(
         path,
-        values
+        values,
+        cancelToken
       );
     } catch (error: any) {
       actions.setErrorMsg(error?.statusText);
@@ -119,12 +126,13 @@ const api: ApiStore = {
   ////////////////////////////////////////
   delete: thunk(async (actions: any, payload: apiDeleteRequestParams, { getStoreActions }) => {
 
-    const { path } = payload;
+    const { path, cancelToken } = payload;
     actions.setErrorMsg(null);
 
     try {
       return await ApiClient.delete(
-        path
+        path,
+        cancelToken
       );
     } catch (error: any) {
       actions.setErrorMsg(error?.statusText);
@@ -137,25 +145,28 @@ export default api;
 
 interface apiGetRequestParams {
   path: string,
-  params: any,
-  successCallback: (data: Record<string, any>, headers: Record<string, any>) => Promise<any>
+  params: KeyValList,
+  successCallback: (data: Record<string, any>, headers: Record<string, any>) => Promise<any>,
+  cancelToken?: CancelToken,
 }
 
 interface apiPostRequestParams {
   path: string,
-  values: any,
-  contentType: string
+  values: FormData | EntityValues,
+  contentType: string,
+  cancelToken?: CancelToken,
 }
 
 interface apiPutRequestParams {
   path: string,
-  values: any
+  values: FormData | EntityValues,
+  cancelToken?: CancelToken,
 }
 
 interface apiDeleteRequestParams {
   path: string,
-  params: any,
-  successCallback: () => Promise<any>
+  successCallback: () => Promise<any>,
+  cancelToken?: CancelToken,
 }
 
 interface ApiState {
