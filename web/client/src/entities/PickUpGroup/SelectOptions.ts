@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import pickUpGroup from './PickUpGroup';
 
-const PickUpGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const PickUpGroupSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         pickUpGroup.path,
@@ -14,7 +15,8 @@ const PickUpGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> 
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

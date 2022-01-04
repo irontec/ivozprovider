@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import ConditionalRoute from './ConditionalRoute';
 
-const ConditionalRouteSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const ConditionalRouteSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         ConditionalRoute.path,
@@ -13,7 +14,8 @@ const ConditionalRouteSelectOptions = (callback: FetchFksCallback): Promise<unkn
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

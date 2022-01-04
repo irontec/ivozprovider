@@ -9,6 +9,7 @@ import EntityInterface, { RowIconsType, ViewProps } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 import _ from 'lib/services/translations/translate';
+import { CancelToken } from 'axios';
 
 export const initialValues = {};
 
@@ -346,7 +347,7 @@ const View = (props: ViewProps): JSX.Element | null => {
 
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
 
-const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback): Promise<unknown> => {
+const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     const getAction = store.getActions().api.get;
     return getAction({
@@ -358,7 +359,8 @@ const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksC
         },
         successCallback: async (data: any) => {
             setter(data);
-        }
+        },
+        cancelToken
     });
 }
 

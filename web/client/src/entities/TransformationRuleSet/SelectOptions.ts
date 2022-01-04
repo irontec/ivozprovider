@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 
-const TransformationRuleSetSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const TransformationRuleSetSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         '/transformation_rule_sets',
@@ -15,7 +16,8 @@ const TransformationRuleSetSelectOptions = (callback: FetchFksCallback): Promise
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

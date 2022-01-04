@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Friend from './Friend';
 
-const FriendSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const FriendSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         Friend.path,
@@ -13,7 +14,8 @@ const FriendSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

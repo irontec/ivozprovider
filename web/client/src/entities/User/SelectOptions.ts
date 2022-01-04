@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import User from './User';
 
-const UserSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const UserSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         User.path,
@@ -13,7 +14,8 @@ const UserSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

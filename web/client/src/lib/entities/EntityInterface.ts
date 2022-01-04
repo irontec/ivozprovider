@@ -1,3 +1,4 @@
+import { CancelToken } from "axios";
 import { PartialPropertyList, PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import EntityService, { EntityValues } from "lib/services/entity/EntityService";
 import { EntityFormProps } from "./DefaultEntityBehavior";
@@ -10,7 +11,7 @@ export type ListDecoratorPropsType = {
 export type ListDecoratorType = (props: ListDecoratorPropsType) => any;
 
 type foreignKeyResolverType = (data: any, entityService: EntityService) => Promise<any>;
-export type ForeignKeyGetterType = () => Promise<any>;
+export type ForeignKeyGetterType = (cancelToken?: CancelToken) => Promise<any>;
 type AclType = {
     create: boolean,
     read: boolean,

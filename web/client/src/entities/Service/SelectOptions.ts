@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import Service from './Service';
 
-const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number): Promise<unknown> => {
+const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number, cancelToken?: CancelToken): Promise<unknown> => {
 
     let path = `${Service.path}/unassigned`;
     if (includeId) {
@@ -18,7 +19,8 @@ const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number): P
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 

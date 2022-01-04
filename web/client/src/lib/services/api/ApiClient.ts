@@ -1,5 +1,6 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse, CancelToken } from 'axios';
 import config from 'config';
+import { KeyValList } from './ParsedApiSpecInterface';
 
 type AsyncFunction = (data: any, headers: any) => Promise<void>
 export type ApiError = AxiosResponse | null;
@@ -10,16 +11,16 @@ class ApiClient {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
-    static async get(endpoint: string, params: any = undefined, callback: AsyncFunction): Promise<unknown> {
+    static async get(endpoint: string, params: KeyValList, callback: AsyncFunction, cancelToken?: CancelToken): Promise<unknown> {
         try {
-
             const response = await axios.get(
                 config.API_URL + endpoint,
                 {
-                    params: params,
+                    params,
                     headers: {
                         'Accept': 'application/json'
                     },
+                    cancelToken,
                 }
             );
 
@@ -28,6 +29,10 @@ class ApiClient {
             return response;
 
         } catch (error: any) {
+
+            if (axios.isCancel(error)) {
+                return;
+            }
 
             if (!error) {
                 throw error;
@@ -43,7 +48,7 @@ class ApiClient {
         }
     }
 
-    static async download(endpoint: string, params: any = undefined, callback: AsyncFunction): Promise<unknown> {
+    static async download(endpoint: string, params: any = undefined, callback: AsyncFunction, cancelToken?: CancelToken): Promise<unknown> {
         try {
 
             const response = await axios.get(
@@ -54,6 +59,7 @@ class ApiClient {
                         'Accept': 'application/json'
                     },
                     responseType: 'blob',
+                    cancelToken,
                 }
             );
 
@@ -62,6 +68,10 @@ class ApiClient {
             return response;
 
         } catch (error: any) {
+
+            if (axios.isCancel(error)) {
+                return;
+            }
 
             if (!error) {
                 throw error;
@@ -77,11 +87,12 @@ class ApiClient {
         }
     }
 
-    static async post<T = any>(endpoint: string, params: any = undefined, contentType: string): Promise<T> {
+    static async post<T = any>(endpoint: string, params: any = undefined, contentType: string, cancelToken?: CancelToken): Promise<T | undefined> {
         const reqConfig = {
             headers: {
                 'Content-Type': contentType
-            }
+            },
+            cancelToken
         };
 
         if (contentType === 'application/x-www-form-urlencoded') {
@@ -94,8 +105,17 @@ class ApiClient {
         }
 
         try {
-            return await axios.post(config.API_URL + endpoint, params, reqConfig);
+            return await axios.post(
+                config.API_URL + endpoint,
+                params,
+                reqConfig
+            );
         } catch (error: any) {
+
+            if (axios.isCancel(error)) {
+                return;
+            }
+
             if (!error) {
                 throw error;
             }
@@ -104,10 +124,21 @@ class ApiClient {
         }
     }
 
-    static async put<T = any>(endpoint: string, params: any = undefined): Promise<T> {
+    static async put<T = any>(endpoint: string, params: any = undefined, cancelToken?: CancelToken): Promise<T | undefined> {
         try {
-            return await axios.put(config.API_URL + endpoint, params);
+            return await axios.put(
+                config.API_URL + endpoint,
+                params,
+                {
+                    cancelToken
+                }
+            );
         } catch (error: any) {
+
+            if (axios.isCancel(error)) {
+                return;
+            }
+
             if (!error) {
                 throw error;
             }
@@ -116,10 +147,20 @@ class ApiClient {
         }
     }
 
-    static async delete<T = any>(endpoint: string, params: any = undefined): Promise<T> {
+    static async delete<T = any>(endpoint: string, cancelToken?: CancelToken): Promise<T | undefined> {
         try {
-            return await axios.delete(config.API_URL + endpoint, params);
+            return await axios.delete(
+                config.API_URL + endpoint,
+                {
+                    cancelToken
+                }
+            );
         } catch (error: any) {
+
+            if (axios.isCancel(error)) {
+                return;
+            }
+
             if (!error) {
                 throw error;
             }

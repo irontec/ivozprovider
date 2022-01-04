@@ -1,7 +1,8 @@
+import { CancelToken } from 'axios';
 import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
 import HuntGroup from './HuntGroup';
 
-const HuntGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> => {
+const HuntGroupSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         HuntGroup.path,
@@ -13,7 +14,8 @@ const HuntGroupSelectOptions = (callback: FetchFksCallback): Promise<unknown> =>
             }
 
             callback(options);
-        }
+        },
+        cancelToken
     );
 }
 
