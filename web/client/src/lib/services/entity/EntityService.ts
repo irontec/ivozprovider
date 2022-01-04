@@ -183,17 +183,17 @@ export default class EntityService {
         for (const idx in properties) {
 
             const property: ScalarProperty = properties[idx];
-            if (!property.default && !property.enum) {
+            if (property.default === undefined && !property.enum) {
                 if (property.type === 'array') {
                     response[idx] = [];
                 }
                 continue;
             }
 
-            if (!property.default) {
+            if (property.default === undefined) {
                 response[idx] = Object.keys(property.enum as any)[0];
             } else if (property.type === 'boolean') {
-                response[idx] = parseInt(property.default);
+                response[idx] = parseInt(property.default, 10);
             } else {
                 response[idx] = property.default;
             }
@@ -376,8 +376,8 @@ export default class EntityService {
                     modifier = 'in';
                 } else {
                     modifier = parameters[idx].type === 'string'
-                    ? 'exact'
-                    : 'eq';
+                        ? 'exact'
+                        : 'eq';
                 }
             }
 
