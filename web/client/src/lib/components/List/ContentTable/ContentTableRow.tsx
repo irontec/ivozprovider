@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router'
 import {
+  LinearProgress,
   TableCell, TableRow, Tooltip
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,7 +11,7 @@ import PanoramaIcon from '@mui/icons-material/Panorama';
 import ConfirmDialog from 'lib/components/shared/ConfirmDialog';
 import EntityService from 'lib/services/entity/EntityService';
 import { useStoreActions } from 'store';
-import { ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
+import { FkProperty, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import _ from 'lib/services/translations/translate';
 import { StyledTableRowLink, StyledTableRowFkLink, StyledDeleteIcon, StyledTableCell, StyledCheckBoxIcon, StyledCheckBoxOutlineBlankIcon } from './ContentTableRow.styles';
 
@@ -62,13 +63,17 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
     <TableRow hover key={row.id}>
       {Object.keys(columns).map((key: string) => {
         const column = columns[key];
+        const loadingValue = (column as FkProperty).$ref && row[key] && !row[`${key}Id`];
+
         const enumValues: any = (column as ScalarProperty).enum;
         const value = row[key];
         const isBoolean = typeof value === "boolean";
 
         let response = value;
 
-        if (isBoolean && !enumValues && value) {
+        if (loadingValue || row[key] === undefined) {
+          response = (<LinearProgress />);
+        } else if (isBoolean && !enumValues && value) {
           response = <StyledCheckBoxIcon />;
         } else if (isBoolean && !enumValues) {
           response = <StyledCheckBoxOutlineBlankIcon />;
@@ -78,7 +83,6 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
               {value}
             </StyledTableRowFkLink>
         } else {
-
           response = <ListDecorator field={key} row={row} property={column} />
         }
 

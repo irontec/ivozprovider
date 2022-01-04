@@ -161,8 +161,18 @@ async function foreignKeyResolver(
     const promises = [];
     const {
         User, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute,
-        Fax, ResidentialDevice, ExternalCallFilter
+        Fax, ResidentialDevice, ExternalCallFilter, Country
     } = entities;
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'country',
+            Country.path,
+            Country.toStr,
+            false
+        )
+    );
 
     promises.push(
         genericForeignKeyResolver(

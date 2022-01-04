@@ -164,7 +164,7 @@ export const ListDecorator = (props: ListDecoratorProps): JSX.Element | string =
         value = property.null;
     }
 
-    return value !== null
+    return (value !== null && value !== undefined)
         ? value
         : '';
 }

@@ -109,6 +109,8 @@ const List = function (props: any & RouteComponentProps) {
                         setHeaders(headers);
                     }
 
+                    setRows(data);
+
                     foreignKeyResolver(data, entityService)
                         .then((data: any) => {
 
