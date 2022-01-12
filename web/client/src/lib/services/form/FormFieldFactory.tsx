@@ -1,7 +1,7 @@
 import {
     FormControlLabel, Switch, FormHelperText, LinearProgress, InputAdornment
 } from '@mui/material';
-import { ScalarProperty, FkProperty, PropertySpec, PropertyCustomComponent } from 'lib/services/api/ParsedApiSpecInterface';
+import { ScalarProperty, FkProperty, PropertySpec, PropertyCustomComponent, isPropertyScalar } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import { useFormikType } from './types';
 import Dropdown from 'lib/services/form/Field/Dropdown';
@@ -166,6 +166,7 @@ export default class FormFieldFactory {
             );
         }
 
+        const inputProps: any = {};
         const InputProps: any = {};
         if (property.prefix) {
             InputProps.startAdornment = (
@@ -192,7 +193,15 @@ export default class FormFieldFactory {
             );
         }
 
-        if ((property as ScalarProperty).type === 'integer') {
+        if (isPropertyScalar(property) && property.type === 'integer') {
+
+            if (property.minimum) {
+                inputProps.min = property.minimum;
+            }
+
+            if (property.maximum) {
+                inputProps.max = property.minimum;
+            }
 
             return (
                 <StyledTextField
@@ -210,9 +219,9 @@ export default class FormFieldFactory {
             );
         }
 
-        if ((property as ScalarProperty).type === 'string') {
+        if (isPropertyScalar(property) && property.type === 'string') {
 
-            if ((property as ScalarProperty).format === 'date-time') {
+            if (property.format === 'date-time') {
                 return (
                     <StyledTextField
                         name={fld}
@@ -233,7 +242,7 @@ export default class FormFieldFactory {
                 );
             }
 
-            if ((property as ScalarProperty).format === 'time') {
+            if (property.format === 'time') {
                 return (
                     <StyledTextField
                         name={fld}
@@ -250,6 +259,10 @@ export default class FormFieldFactory {
                 );
             }
 
+            if (property.maxLength) {
+                inputProps.maxLength = property.maxLength;
+            }
+
             return (
                 <StyledTextField
                     name={fld}
@@ -262,6 +275,7 @@ export default class FormFieldFactory {
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     InputProps={InputProps}
+                    inputProps={inputProps}
                 />
             );
         }

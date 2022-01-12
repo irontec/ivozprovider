@@ -31,6 +31,7 @@ export const StyledFilterDialogTypography = styled(
 export const StyledTextField = styled(
     (props) => {
         const { className, name, type, value, disabled, label, required, onChange, error, helperText, inputProps, InputProps } = props;
+
         return (
             <TextField
                 name={name}

@@ -82,7 +82,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   const errorList = [];
   for (const idx in validationError) {
     errorList.push((
-      <li>{columns[idx].label}: {validationError[idx]}</li>
+      <li key={idx}>{columns[idx].label}: {validationError[idx]}</li>
     ));
   }
 

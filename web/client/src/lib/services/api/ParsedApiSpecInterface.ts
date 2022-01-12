@@ -70,6 +70,8 @@ export interface ScalarProperty {
     readOnly?: boolean,
     description?: string,
     maxLength?: number,
+    minimum?: number,
+    maximum?: number,
     default?: any,
     enum?: KeyValList,
     null?: string | React.ReactElement<any>,
@@ -95,6 +97,10 @@ export type PropertySpec = ScalarProperty | FkProperty;
 
 export const isPropertyFk = (property: PropertySpec): property is FkProperty => {
     return (property as FkProperty).$ref !== undefined;
+}
+
+export const isPropertyScalar = (property: PropertySpec): property is ScalarProperty => {
+    return (property as FkProperty).$ref === undefined;
 }
 
 export type PartialPropertyList = {
