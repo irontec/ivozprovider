@@ -64,7 +64,7 @@ export default function ContentTable(props: ContentTableProps): JSX.Element {
         preloadData={preloadData}
       />
 
-      <Table size="medium">
+      <Table size="medium" sx={{"tableLayout": 'fixed'}}>
         <ContentTableHead
           entityService={entityService}
         />

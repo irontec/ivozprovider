@@ -58,10 +58,10 @@ export const StyledTextField = styled(
     }
 );
 
-export const StyledLinearProgress = styled('div')(
+export const StyledLinearProgressContainer = styled('div')(
     () => {
         return {
-            paddingTop: '60px',
+            paddingTop: '52px',
         }
     }
 );

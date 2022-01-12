@@ -35,7 +35,7 @@ const List = function (props: any & RouteComponentProps) {
     ////////////////////////////
     const currentQueryParams = useQueryStringParams();
     const reqQuerystring = currentQueryParams.join('&');
-    const [prevReqQuerystring, setPrevReqQuerystring] = useState<string|null>(null);
+    const [prevReqQuerystring, setPrevReqQuerystring] = useState<string | null>(null);
 
     useEffect(
         () => {

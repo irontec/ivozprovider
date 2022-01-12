@@ -30,7 +30,7 @@ export function FilterCriteria(props: FilterCriteriaProps): JSX.Element | null {
         }
         const fieldStr = column.label;
 
-        const valueStr = isPropertyFk(column) && (fkChoices[name])?.[value as string]
+        const valueStr = isPropertyFk(column)
           ? (fkChoices[name])?.[value as string]
           : value;
 

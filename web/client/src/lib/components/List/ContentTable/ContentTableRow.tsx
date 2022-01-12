@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router'
 import {
+  Fade,
   LinearProgress,
   TableCell, TableRow, Tooltip
 } from '@mui/material';
@@ -72,7 +73,17 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
         let response = value;
 
         if (loadingValue || row[key] === undefined) {
-          response = (<LinearProgress />);
+          response = (
+            <Fade
+              in={true}
+              style={{
+                transitionDelay: '1000ms',
+              }}
+              unmountOnExit
+            >
+              <LinearProgress color="inherit" />
+            </Fade>
+          );
         } else if (isBoolean && !enumValues && value) {
           response = <StyledCheckBoxIcon />;
         } else if (isBoolean && !enumValues) {

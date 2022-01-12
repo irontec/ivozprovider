@@ -9,7 +9,7 @@ import React from 'react';
 import Autocomplete from './Field/Autocomplete';
 import CustomComponentWrapper from './Field/CustomComponentWrapper';
 import FileUploader from './Field/FileUploader';
-import { StyledSwitchFormControl, StyledTextField, StyledLinearProgress } from './FormFieldFactory.styles';
+import { StyledSwitchFormControl, StyledTextField, StyledLinearProgressContainer } from './FormFieldFactory.styles';
 import { FormOnChangeEvent, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
 
 export type FormFieldFactoryChoices = { [key: string | number]: any };
@@ -82,7 +82,7 @@ export default class FormFieldFactory {
         if (!fileUpload && ((property as FkProperty).$ref || multiSelect)) {
 
             if (!choices) {
-                return (<StyledLinearProgress><LinearProgress /></StyledLinearProgress>);
+                return (<StyledLinearProgressContainer><LinearProgress /></StyledLinearProgressContainer>);
             }
 
             if (property.null) {
