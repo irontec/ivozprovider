@@ -1,24 +1,34 @@
 import { Button } from '@mui/material';
-import { FkProperty } from "lib/services/api/ParsedApiSpecInterface";
-import CustomComponentWrapper from "./CustomComponentWrapper";
 import BackupIcon from '@mui/icons-material/Backup';
 import { ChangeEvent, DragEvent, MouseEvent, useCallback, useState } from 'react';
 import { StyledFileUploaderContainer, StyledFileNameContainer, StyledUploadButtonContainer, StyledUploadButtonLabel, StyledDownloadingIcon } from './FileUploader.styles';
-import { FormOnChangeEvent } from 'lib/entities/DefaultEntityBehavior';
 import { useStoreActions } from 'store';
 import { saveAs } from 'file-saver';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponentProps } from './CustomComponentWrapper';
 
-interface FileUploaderProps {
-    columnName: string,
-    property: FkProperty,
-    values: any,
-    changeHandler: (e: FormOnChangeEvent) => void,
+interface fileProps {
+    file?: File,
+    baseName: string,
+    fileSize: number,
+}
+
+interface ChangeEventValues {
+    name: string,
+    value: fileProps,
+}
+
+interface FileUploaderProps<T> extends PropertyCustomFunctionComponentProps<T> {
     downloadPath: string | null
 }
 
-const FileUploader = (props: FileUploaderProps): JSX.Element => {
+type FileUploaderPropsType = FileUploaderProps<{[k:string]: fileProps}>;
 
-    const { property, columnName, values, changeHandler, downloadPath } = props;
+const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JSX.Element => {
+
+    const { _columnName, formik, changeHandler, downloadPath } = props;
+    const values = formik.values;
+    const fileValue: fileProps = values[_columnName];
+
     if (!downloadPath) {
         console.error('Empty download path');
     }
@@ -101,19 +111,19 @@ const FileUploader = (props: FileUploaderProps): JSX.Element => {
             }
 
             const value = {
-                ...values[columnName],
+                ...fileValue,
                 ...{ file: files[0] }
             };
 
             const changeEvent = {
                 target: {
-                    name: columnName,
+                    name: _columnName,
                     value: value,
                 }
-            } as ChangeEvent<HTMLInputElement>;
+            } as ChangeEvent<ChangeEventValues>;
             changeHandler(changeEvent);
         },
-        [changeHandler, columnName, values],
+        [changeHandler, _columnName, fileValue],
     );
 
     const handleDrop = useCallback(
@@ -136,66 +146,63 @@ const FileUploader = (props: FileUploaderProps): JSX.Element => {
         [onChange],
     );
 
-    const id = `${columnName}-file-upload`;
-    const fileName = values[columnName]?.file
-        ? values[columnName].file?.name
-        : values[columnName]?.baseName;
+    const id = `${_columnName}-file-upload`;
+    const fileName = fileValue?.file
+        ? fileValue.file?.name
+        : fileValue.baseName;
 
-    const fileSize = values[columnName]?.file
-        ? values[columnName].file?.size
-        : values[columnName]?.fileSize;
+    const fileSize = fileValue?.file
+        ? fileValue.file?.size
+        : fileValue.fileSize;
 
     const fileSizeMb = Math.round(fileSize / 1024 / 1024 * 10) / 10;
 
     return (
-        <CustomComponentWrapper property={property}>
-            <StyledFileUploaderContainer
-                hover={hover}
-                onDrop={handleDrop}
-                onDragEnter={handleDragEnter}
-                onDragLeave={handleDragLeave}
-                onDragOver={handleDragOver}
-            >
-                <input
-                    style={{ display: 'none' }}
-                    id={id}
-                    type="file"
-                    onChange={(event) => {
+        <StyledFileUploaderContainer
+            hover={hover}
+            onDrop={handleDrop}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
+        >
+            <input
+                style={{ display: 'none' }}
+                id={id}
+                type="file"
+                onChange={(event) => {
 
-                        const files = event.target.files || [];
-                        const value = {
-                            ...values[columnName],
-                            ...{ file: files[0] }
-                        };
+                    const files = event.target.files || [];
+                    const value = {
+                        ...fileValue,
+                        ...{ file: files[0] }
+                    };
 
-                        const changeEvent = {
-                            target: {
-                                name: columnName,
-                                value: value,
-                            }
-                        } as ChangeEvent<HTMLInputElement>;
-                        changeHandler(changeEvent);
-                    }}
-                />
-                <StyledUploadButtonContainer>
-                    <StyledUploadButtonLabel htmlFor={id}>
-                        <Button variant="contained" component="span">
-                            <BackupIcon />
-                        </Button>
-                    </StyledUploadButtonLabel>
-                </StyledUploadButtonContainer>
-                {fileName &&
-                    <>
-                        <StyledFileNameContainer>
-                            {values.id && <StyledDownloadingIcon onClick={handleDownload} />}
-                            {fileName} ({fileSizeMb}MB)
-                        </StyledFileNameContainer>
-                    </>
-                }
-            </StyledFileUploaderContainer>
-
-        </CustomComponentWrapper >
+                    const changeEvent = {
+                        target: {
+                            name: _columnName,
+                            value: value,
+                        }
+                    } as ChangeEvent<ChangeEventValues>;
+                    changeHandler(changeEvent);
+                }}
+            />
+            <StyledUploadButtonContainer>
+                <StyledUploadButtonLabel htmlFor={id}>
+                    <Button variant="contained" component="span">
+                        <BackupIcon />
+                    </Button>
+                </StyledUploadButtonLabel>
+            </StyledUploadButtonContainer>
+            {fileName &&
+                <>
+                    <StyledFileNameContainer>
+                        {values.id && <StyledDownloadingIcon onClick={handleDownload} />}
+                        {fileName} ({fileSizeMb}MB)
+                    </StyledFileNameContainer>
+                </>
+            }
+        </StyledFileUploaderContainer>
     );
 }
 
-export default FileUploader;
+export default withCustomComponentWrapper<FileUploaderPropsType, FileUploaderProps<FileUploaderPropsType>>(FileUploader);

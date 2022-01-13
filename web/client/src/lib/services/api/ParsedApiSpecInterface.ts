@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropertyCustomFunctionComponent } from '../form/Field/CustomComponentWrapper';
 
 export interface KeyValList {
     [key: string]: unknown
@@ -52,17 +53,8 @@ export interface visualToggle {
     hide: Array<string>,
 }
 
-enum customComponentContext {
-    write = "write",
-    read = "read",
-}
 
-export interface propertyCustomComponentProps {
-    _context?: customComponentContext,
-    _columnName?: string
-}
 
-export type PropertyCustomComponent<P extends propertyCustomComponentProps> = (props: P) => JSX.Element;
 
 export interface ScalarProperty {
     type?: string,
@@ -78,7 +70,7 @@ export interface ScalarProperty {
     visualToggle?: visualToggleValue
     label: string | React.ReactElement<any>,
     prefix?: string | React.ReactElement<any>,
-    component?: PropertyCustomComponent<any>,
+    component?: PropertyCustomFunctionComponent<any>,
     required: boolean,
     pattern?: RegExp,
     helpText?: string | React.ReactElement<any>,
@@ -86,6 +78,7 @@ export interface ScalarProperty {
 
 export interface FkProperty {
     $ref: string,
+    readOnly?: boolean,
     label: string | React.ReactElement<any>,
     prefix?: string | React.ReactElement<any>,
     null?: string | React.ReactElement<any>,

@@ -1,13 +1,13 @@
 import {
     FormControlLabel, Switch, FormHelperText, LinearProgress, InputAdornment
 } from '@mui/material';
-import { ScalarProperty, FkProperty, PropertySpec, PropertyCustomComponent, isPropertyScalar } from 'lib/services/api/ParsedApiSpecInterface';
+import { ScalarProperty, FkProperty, PropertySpec, isPropertyScalar, isPropertyFk } from 'lib/services/api/ParsedApiSpecInterface';
+import { CustomFunctionComponentContext, PropertyCustomFunctionComponent } from 'lib/services/form/Field/CustomComponentWrapper';
 import EntityService from 'lib/services/entity/EntityService';
 import { useFormikType } from './types';
 import Dropdown from 'lib/services/form/Field/Dropdown';
 import React from 'react';
 import Autocomplete from './Field/Autocomplete';
-import CustomComponentWrapper from './Field/CustomComponentWrapper';
 import FileUploader from './Field/FileUploader';
 import { StyledSwitchFormControl, StyledTextField, StyledLinearProgressContainer } from './FormFieldFactory.styles';
 import { FormOnChangeEvent, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
@@ -64,18 +64,23 @@ export default class FormFieldFactory {
 
     private getInputField(fld: string, property: PropertySpec, choices: NullableFormFieldFactoryChoices, readOnly: boolean) {
 
-        const disabled = (property as ScalarProperty).readOnly || readOnly;
+        const disabled = property.readOnly || readOnly;
         const multiSelect = (property as ScalarProperty).type === 'array';
         const fileUpload = (property as ScalarProperty).type === 'file';
 
-        if ((property as ScalarProperty).component) {
+        if (isPropertyScalar(property) && property.component) {
 
-            const PropertyComponent = (property as ScalarProperty).component as PropertyCustomComponent<any>;
+            const PropertyComponent = (property as ScalarProperty).component as PropertyCustomFunctionComponent<any>;
 
             return (
-                <CustomComponentWrapper property={property}>
-                    <PropertyComponent _context={'write'} _columnName={fld} {...this.formik.values} />
-                </CustomComponentWrapper>
+                <PropertyComponent
+                    _context={CustomFunctionComponentContext.write}
+                    _columnName={fld}
+                    formik={this.formik}
+                    property={property}
+                    disabled={disabled}
+                    changeHandler={this.changeHandler}
+                />
             );
         }
 
@@ -105,9 +110,9 @@ export default class FormFieldFactory {
             );
         }
 
-        if ((property as ScalarProperty).enum) {
+        if (isPropertyScalar(property) && property.enum) {
 
-            const enumValues: any = (property as ScalarProperty).enum;
+            const enumValues: any = property.enum;
             if (Array.isArray(enumValues)) {
                 choices = choices || {};
                 for (const enumValue of enumValues) {
@@ -144,7 +149,7 @@ export default class FormFieldFactory {
             );
         }
 
-        if ((property as ScalarProperty).type === 'boolean') {
+        if (isPropertyScalar(property) && property.type === 'boolean') {
 
             const checked = Array.isArray(this.formik.values[fld])
                 ? this.formik.values[fld].includes('1')
@@ -174,8 +179,8 @@ export default class FormFieldFactory {
             );
         }
 
-        if (fileUpload) {
-            const downloadModel = (property as FkProperty).$ref.split('/').pop();
+        if (isPropertyFk(property) && fileUpload) {
+            const downloadModel = property.$ref.split('/').pop();
             const downloadAction = this.entityService.getItemByModel(downloadModel ?? '');
             const paths = downloadAction?.paths || [];
             const downloadPath = paths.length
@@ -185,8 +190,9 @@ export default class FormFieldFactory {
             return (
                 <FileUploader
                     property={property as FkProperty}
-                    columnName={fld}
-                    values={this.formik.values}
+                    _columnName={fld}
+                    disabled={disabled}
+                    formik={this.formik}
                     changeHandler={this.changeHandler}
                     downloadPath={downloadPath}
                 />
