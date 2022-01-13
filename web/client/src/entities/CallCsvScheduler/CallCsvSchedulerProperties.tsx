@@ -9,6 +9,7 @@ export type CallCsvSchedulerPropertyList<T> = {
     'unit'?: T,
     'email'?: T,
     'lastExecution'?: T,
+    'lastExecutionError'?: T,
     'nextExecution'?: T,
     'brand'?: T,
     'callCsvNotificationTemplate'?: T,
@@ -22,4 +23,4 @@ export type CallCsvSchedulerPropertyList<T> = {
 };
 
 export type CallCsvSchedulerProperties = CallCsvSchedulerPropertyList<Partial<PropertySpec>>;
-export type CallCsvSchedulerPropertiesList = Array<CallCsvSchedulerPropertyList<EntityValue|EntityValues>>;
+export type CallCsvSchedulerPropertiesList = Array<CallCsvSchedulerPropertyList<EntityValue | EntityValues>>;

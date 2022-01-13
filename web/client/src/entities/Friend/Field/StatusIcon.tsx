@@ -1,15 +1,17 @@
 import _ from 'lib/services/translations/translate';
 import { Tooltip } from '@mui/material';
 import { StyledStatusIconArrowForwardIcon, StyledStatusIconRotateLeftIcon } from './StatusIcon.styles';
+import { FriendPropertyList } from '../FriendProperties';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from 'lib/services/form/Field/CustomComponentWrapper';
 
-interface StatusIconProps {
-    directConnectivity: string,
-    _context: string,
-}
+type FriendPropertyListValues = FriendPropertyList<string | number>;
+type StatusIconType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<FriendPropertyListValues>>;
 
-const StatusIcon = (props: StatusIconProps): JSX.Element => {
+const StatusIcon: StatusIconType = (props): JSX.Element => {
 
-    const { directConnectivity, _context } = props;
+    const _context = props._context;
+    const values = props.formik.values;
+    const { directConnectivity } = values;
     const writeContext = (_context === 'write');
 
     if (directConnectivity === 'yes') {
@@ -52,4 +54,4 @@ const StatusIcon = (props: StatusIconProps): JSX.Element => {
     return (<span />);
 }
 
-export default StatusIcon;
+export default withCustomComponentWrapper<FriendPropertyListValues>(StatusIcon);

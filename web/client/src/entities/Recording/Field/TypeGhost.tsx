@@ -1,14 +1,15 @@
 import _ from 'lib/services/translations/translate';
+import { RecordingPropertyList } from '../RecordingProperties';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from 'lib/services/form/Field/CustomComponentWrapper';
 
-interface LastExecutionProps {
-    type: string,
-    recorder: string
-}
+type RecordingValues = RecordingPropertyList<string | number>;
+type TypeGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RecordingValues>>;
 
-const TypeGhost = (props: LastExecutionProps): JSX.Element => {
+const TypeGhost: TypeGhostType = (props): JSX.Element => {
 
-    const type = _(props.type);
-    const recorder = props.recorder;
+    const values = props.formik.values;
+    const type = _(values?.type as string || '');
+    const recorder = values?.recorder;
 
     const response = recorder
         ? (<span>{type} ({recorder})</span>)
@@ -17,4 +18,4 @@ const TypeGhost = (props: LastExecutionProps): JSX.Element => {
     return (<span>{response}</span>);
 }
 
-export default TypeGhost;
+export default withCustomComponentWrapper<RecordingValues>(TypeGhost);
