@@ -7,7 +7,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
     const DefaultEntityForm = defaultEntityBehavior.Form;
     const fkChoices = useFkChoices();
 
-    const groups: Array<FieldsetGroups> = [
+    const edit = props.edit || false;
+    const groups: Array<FieldsetGroups | false> = [
         {
             legend: _('Login Info'),
             fields: [
@@ -15,7 +16,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'password',
             ]
         },
-        {
+        edit && {
             legend: _('Connection Info'),
             fields: [
                 'allowAudio',
@@ -30,7 +31,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
             fields: [
                 'terminalModel',
                 'mac',
-                'lastProvisionDate'
+                edit && 'lastProvisionDate'
             ]
         },
     ];

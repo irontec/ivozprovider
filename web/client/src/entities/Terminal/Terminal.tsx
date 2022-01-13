@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './useFkChoices';
 import entities from '../index';
 import { TerminalProperties, TerminalPropertiesList } from './TerminalProperties';
+import Password from './Field/Password';
 
 const properties: TerminalProperties = {
     'name': {
@@ -55,7 +56,8 @@ const properties: TerminalProperties = {
     },
     'password': {
         label: _('Password'),
-        helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'")
+        helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"),
+        component: Password,
     },
     't38Passthrough': {
         label: _('Enable T.38 passthrough'),
