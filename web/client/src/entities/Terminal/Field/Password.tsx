@@ -37,10 +37,9 @@ const randomPass = (): string => {
 
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
     const digits = '0123456789';
-    const simbols = '!"#$%&\'()*+,-./*';
+    const simbols = '+*_-';
 
-    const randomValFromString = (haystack: string, length: number): string =>
-    {
+    const randomValFromString = (haystack: string, length: number): string => {
         let retVal = '';
         for (let i = 0, n = haystack.length; i < length; ++i) {
             retVal += haystack.charAt(Math.floor(Math.random() * n));
@@ -49,10 +48,10 @@ const randomPass = (): string => {
         return retVal;
     }
 
-    const shuffle = (str:string) => {
+    const shuffle = (str: string) => {
         return [...str]
             .sort(() => {
-                return Math.random()-.5;
+                return Math.random() - .5;
             })
             .join('');
     }
@@ -86,7 +85,7 @@ const Password: PasswordType = (props): JSX.Element => {
         const pass = randomPass();
         const event = {
             target: {
-                name: 'password',
+                name: columnName,
                 value: pass,
             }
         };
@@ -105,6 +104,8 @@ const Password: PasswordType = (props): JSX.Element => {
         )
     }
 
+    const hasChanged = formik.initialValues[columnName] != formik.values[columnName];
+
     return (
         <div>
             <StyledTextField
@@ -119,6 +120,7 @@ const Password: PasswordType = (props): JSX.Element => {
                 helperText={formik.touched[columnName] as boolean && formik.errors[columnName] as string}
                 inputProps={inputProps}
                 InputProps={InputProps}
+                hasChanged={hasChanged}
             />
         </div>
     );
