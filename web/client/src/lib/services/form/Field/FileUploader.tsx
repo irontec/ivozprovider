@@ -8,8 +8,8 @@ import withCustomComponentWrapper, { PropertyCustomFunctionComponentProps } from
 
 interface fileProps {
     file?: File,
-    baseName: string,
-    fileSize: number,
+    baseName?: string,
+    fileSize?: number,
 }
 
 interface ChangeEventValues {
@@ -21,7 +21,7 @@ interface FileUploaderProps<T> extends PropertyCustomFunctionComponentProps<T> {
     downloadPath: string | null
 }
 
-type FileUploaderPropsType = FileUploaderProps<{[k:string]: fileProps}>;
+type FileUploaderPropsType = FileUploaderProps<{ [k: string]: fileProps }>;
 
 const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JSX.Element => {
 
@@ -149,13 +149,13 @@ const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JS
     const id = `${_columnName}-file-upload`;
     const fileName = fileValue?.file
         ? fileValue.file?.name
-        : fileValue.baseName;
+        : fileValue?.baseName;
 
     const fileSize = fileValue?.file
         ? fileValue.file?.size
-        : fileValue.fileSize;
+        : fileValue?.fileSize;
 
-    const fileSizeMb = Math.round(fileSize / 1024 / 1024 * 10) / 10;
+    const fileSizeMb = Math.round((fileSize || 0) / 1024 / 1024 * 10) / 10;
 
     return (
         <StyledFileUploaderContainer

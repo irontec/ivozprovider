@@ -5,9 +5,9 @@ import { ScalarProperty, FkProperty, PropertySpec, isPropertyScalar, isPropertyF
 import { CustomFunctionComponentContext, PropertyCustomFunctionComponent } from 'lib/services/form/Field/CustomComponentWrapper';
 import EntityService from 'lib/services/entity/EntityService';
 import { useFormikType } from './types';
-import Dropdown from 'lib/services/form/Field/Dropdown';
+import StyledDropdown from 'lib/services/form/Field/Dropdown.styles';
 import React from 'react';
-import Autocomplete from './Field/Autocomplete';
+import StyledAutocomplete from './Field/Autocomplete.styles';
 import FileUploader from './Field/FileUploader';
 import { StyledSwitchFormControl, StyledTextField, StyledLinearProgressContainer } from './FormFieldFactory.styles';
 import { FormOnChangeEvent, PropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
@@ -67,6 +67,7 @@ export default class FormFieldFactory {
         const disabled = property.readOnly || readOnly;
         const multiSelect = (property as ScalarProperty).type === 'array';
         const fileUpload = (property as ScalarProperty).type === 'file';
+        const hasChanged = this.formik.initialValues[fld] != this.formik.values[fld];
 
         if (isPropertyScalar(property) && property.component) {
 
@@ -95,7 +96,7 @@ export default class FormFieldFactory {
             }
 
             return (
-                <Autocomplete
+                <StyledAutocomplete
                     name={fld}
                     label={property.label}
                     value={this.formik.values[fld]}
@@ -106,6 +107,7 @@ export default class FormFieldFactory {
                     choices={choices}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] ? this.formik.errors[fld] as string : ''}
+                    hasChanged={hasChanged}
                 />
             );
         }
@@ -135,7 +137,7 @@ export default class FormFieldFactory {
             }
 
             return (
-                <Dropdown
+                <StyledDropdown
                     name={fld}
                     label={property.label}
                     value={value}
@@ -145,6 +147,7 @@ export default class FormFieldFactory {
                     choices={choices}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] ? this.formik.errors[fld] as string : ''}
+                    hasChanged={hasChanged}
                 />
             );
         }
@@ -156,7 +159,7 @@ export default class FormFieldFactory {
                 : this.formik.values[fld];
 
             return (
-                <StyledSwitchFormControl>
+                <StyledSwitchFormControl hasChanged={hasChanged}>
                     <FormControlLabel
                         disabled={disabled}
                         control={<Switch
@@ -195,6 +198,7 @@ export default class FormFieldFactory {
                     formik={this.formik}
                     changeHandler={this.changeHandler}
                     downloadPath={downloadPath}
+                    hasChanged={hasChanged}
                 />
             );
         }
@@ -221,6 +225,7 @@ export default class FormFieldFactory {
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     InputProps={InputProps}
+                    hasChanged={hasChanged}
                 />
             );
         }
@@ -244,6 +249,7 @@ export default class FormFieldFactory {
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         fullWidth={true}
                         InputProps={InputProps}
+                        hasChanged={hasChanged}
                     />
                 );
             }
@@ -261,6 +267,7 @@ export default class FormFieldFactory {
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         InputProps={InputProps}
+                        hasChanged={hasChanged}
                     />
                 );
             }
@@ -282,6 +289,7 @@ export default class FormFieldFactory {
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     InputProps={InputProps}
                     inputProps={inputProps}
+                    hasChanged={hasChanged}
                 />
             );
         }

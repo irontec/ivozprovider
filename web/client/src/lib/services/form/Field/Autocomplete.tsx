@@ -4,6 +4,7 @@ import { TextField, } from '@mui/material';
 import MuiAutocomplete from '@mui/material/Autocomplete';
 
 interface AutocompleteProps {
+  className: string,
   name: string,
   label: string | ReactElement<any, string | JSXElementConstructor<any>>,
   value: any,
@@ -13,13 +14,19 @@ interface AutocompleteProps {
   onChange: (event: any) => void,
   choices: any,
   error?: boolean,
-  helperText?: string
+  helperText?: string,
+  hasChanged: boolean,
 }
 
 const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
-  const { name, label, required, multiple, disabled, onChange, choices, error, helperText } = props;
+  const { name, label, required, multiple, disabled, onChange, choices, error, helperText, hasChanged } = props;
   const value = props.value || null;
+
+  let className = props.className;
+  if (hasChanged) {
+    className += ' changed';
+  }
 
   const [arrayChoices, setArrayChoices] = useState<Array<any>>([]);
 
@@ -112,6 +119,7 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
   return (
     <MuiAutocomplete
+      className={className}
       value={value}
       multiple={multiple}
       disabled={disabled}

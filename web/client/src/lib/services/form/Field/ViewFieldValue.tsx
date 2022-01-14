@@ -37,7 +37,7 @@ const ViewFieldValue = (props: ViewValueProps): JSX.Element => {
     const PropertyComponent = (property as ScalarProperty).component as React.FunctionComponent<any>;
 
     return (
-        <CustomComponentWrapper property={property}>
+        <CustomComponentWrapper property={property} hasChanged={false}>
             <PropertyComponent _context={'read'} _columnName={columnName} {...values} />
         </CustomComponentWrapper>
     );
