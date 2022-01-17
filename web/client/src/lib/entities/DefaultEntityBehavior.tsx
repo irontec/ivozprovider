@@ -279,7 +279,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
     const formFieldFactory = new FormFieldFactory(
         entityService,
         formik,
-        formOnChangeHandler
+        formOnChangeHandler,
+        formik.handleBlur
     );
 
     return (

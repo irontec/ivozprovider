@@ -71,11 +71,16 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
     onSubmit: submit,
   });
 
-  const errorList = [];
+  const errorList: {[k: string]: JSX.Element} = {};
   for (const idx in validationError) {
-    errorList.push((
+
+    if (! formik.touched[idx]) {
+      continue;
+    }
+
+    errorList[idx] = (
       <li>{properties[idx].label}: {validationError[idx]}</li>
-    ));
+    );
   }
 
   return (
@@ -83,10 +88,10 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
       <form onSubmit={formik.handleSubmit}>
         <EntityForm formik={formik} edit={true} {...props} />
         <br />
-        {errorList.length > 0 && (
+        {Object.keys(errorList).length > 0 && (
           <Alert severity="error">
             <AlertTitle>{_("Validation error")}</AlertTitle>
-            <ul>{errorList.map((error) => error)}</ul>
+            <ul>{Object.values(errorList).map((error) => error)}</ul>
           </Alert>
         )}
         <Button variant="contained" type="submit">

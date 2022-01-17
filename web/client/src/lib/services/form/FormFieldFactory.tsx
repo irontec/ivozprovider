@@ -20,7 +20,8 @@ export default class FormFieldFactory {
     constructor(
         private entityService: EntityService,
         private formik: useFormikType,
-        private changeHandler: (event: FormOnChangeEvent) => void
+        private changeHandler: (event: FormOnChangeEvent) => void,
+        private handleBlur: (event: React.FocusEvent) => void,
     ) {
     }
 
@@ -81,6 +82,7 @@ export default class FormFieldFactory {
                     property={property}
                     disabled={disabled}
                     changeHandler={this.changeHandler}
+                    onBlur={this.handleBlur}
                 />
             );
         }
@@ -104,6 +106,7 @@ export default class FormFieldFactory {
                     required={property.required}
                     disabled={disabled}
                     onChange={this.changeHandler}
+                    onBlur={this.handleBlur}
                     choices={choices}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] ? this.formik.errors[fld] as string : ''}
@@ -144,6 +147,7 @@ export default class FormFieldFactory {
                     required={property.required}
                     disabled={disabled}
                     onChange={this.changeHandler}
+                    onBlur={this.handleBlur}
                     choices={choices}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] ? this.formik.errors[fld] as string : ''}
@@ -166,6 +170,7 @@ export default class FormFieldFactory {
                             name={fld}
                             checked={!!checked}
                             onChange={this.changeHandler}
+                            onBlur={this.handleBlur}
                             value={'1'}
                         />}
                         label={property.label}
@@ -197,6 +202,7 @@ export default class FormFieldFactory {
                     disabled={disabled}
                     formik={this.formik}
                     changeHandler={this.changeHandler}
+                    onBlur={this.handleBlur}
                     downloadPath={downloadPath}
                     hasChanged={hasChanged}
                 />
@@ -222,6 +228,7 @@ export default class FormFieldFactory {
                     label={property.label}
                     required={property.required}
                     onChange={this.changeHandler}
+                    onBlur={this.handleBlur}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     InputProps={InputProps}
@@ -245,6 +252,7 @@ export default class FormFieldFactory {
                         label={property.label}
                         required={property.required}
                         onChange={this.changeHandler}
+                        onBlur={this.handleBlur}
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         fullWidth={true}
@@ -264,6 +272,7 @@ export default class FormFieldFactory {
                         label={property.label}
                         required={property.required}
                         onChange={this.changeHandler}
+                        onBlur={this.handleBlur}
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         InputProps={InputProps}
@@ -285,6 +294,7 @@ export default class FormFieldFactory {
                     label={property.label}
                     required={property.required}
                     onChange={this.changeHandler}
+                    onBlur={this.handleBlur}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                     InputProps={InputProps}

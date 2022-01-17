@@ -41,8 +41,8 @@ export const StyledTextField = styled(
 
         const {
             name, type, value, disabled, label,
-            required, onChange, error, helperText, inputProps, InputProps,
-            hasChanged
+            required, onChange, onBlur, error, helperText,
+            inputProps, InputProps, hasChanged
         } = props;
 
         let className = props.className;
@@ -59,6 +59,7 @@ export const StyledTextField = styled(
                 label={label}
                 InputLabelProps={{ shrink: true, required: required }}
                 onChange={onChange}
+                onBlur={onBlur}
                 error={error}
                 helperText={helperText}
                 fullWidth={true}

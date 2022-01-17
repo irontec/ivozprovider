@@ -16,6 +16,7 @@ interface SelectProps {
   required: boolean,
   disabled: boolean,
   onChange: (event: any) => void,
+  onBlur: (event: React.FocusEvent) => void,
   hasChanged: boolean,
   choices: any,
   error?: boolean,
@@ -24,7 +25,10 @@ interface SelectProps {
 
 const Dropdown = (props: SelectProps): JSX.Element => {
 
-  const { name, label, value, required, disabled, onChange, choices, error, helperText, hasChanged, className } = props;
+  const {
+    name, label, value, required, disabled, onChange, onBlur,
+    choices, error, helperText, hasChanged, className
+  } = props;
   const labelId = `${name}-label`;
 
   const labelClassName = hasChanged
@@ -38,6 +42,7 @@ const Dropdown = (props: SelectProps): JSX.Element => {
         value={value}
         disabled={disabled}
         onChange={onChange}
+        onBlur={onBlur}
         displayEmpty={true}
         variant="outlined"
         input={

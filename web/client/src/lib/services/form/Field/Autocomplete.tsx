@@ -1,5 +1,5 @@
 import ReactDOMServer from 'react-dom/server';
-import { useEffect, useState, useCallback, ReactElement, JSXElementConstructor } from 'react';
+import React, { useEffect, useState, useCallback, ReactElement, JSXElementConstructor } from 'react';
 import { TextField, } from '@mui/material';
 import MuiAutocomplete from '@mui/material/Autocomplete';
 
@@ -12,6 +12,7 @@ interface AutocompleteProps {
   required: boolean,
   disabled: boolean,
   onChange: (event: any) => void,
+  onBlur: (event: React.FocusEvent) => void,
   choices: any,
   error?: boolean,
   helperText?: string,
@@ -20,7 +21,10 @@ interface AutocompleteProps {
 
 const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
-  const { name, label, required, multiple, disabled, onChange, choices, error, helperText, hasChanged } = props;
+  const {
+    name, label, required, multiple, disabled, onChange, onBlur,
+    choices, error, helperText, hasChanged
+  } = props;
   const value = props.value || null;
 
   let className = props.className;
@@ -124,6 +128,7 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
       multiple={multiple}
       disabled={disabled}
       onChange={onChangeWrapper}
+      onBlur={onBlur}
       options={arrayChoices}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}

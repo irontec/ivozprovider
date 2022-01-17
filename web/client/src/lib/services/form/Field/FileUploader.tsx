@@ -25,7 +25,7 @@ type FileUploaderPropsType = FileUploaderProps<{ [k: string]: fileProps }>;
 
 const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JSX.Element => {
 
-    const { _columnName, formik, changeHandler, downloadPath } = props;
+    const { _columnName, formik, changeHandler, onBlur, downloadPath } = props;
     const values = formik.values;
     const fileValue: fileProps = values[_columnName];
 
@@ -183,7 +183,9 @@ const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JS
                             value: value,
                         }
                     } as ChangeEvent<ChangeEventValues>;
+
                     changeHandler(changeEvent);
+                    onBlur(changeEvent as any);
                 }}
             />
             <StyledUploadButtonContainer>
