@@ -98,7 +98,8 @@ const api: ApiStore = {
         cancelToken
       );
     } catch (error: any) {
-      actions.setErrorMsg(error?.statusText);
+      const msg = error?.data?.detail || error?.statusText;
+      actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -117,7 +118,8 @@ const api: ApiStore = {
         cancelToken
       );
     } catch (error: any) {
-      actions.setErrorMsg(error?.statusText);
+      const msg = error?.data?.detail || error?.statusText;
+      actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
@@ -135,7 +137,8 @@ const api: ApiStore = {
         cancelToken
       );
     } catch (error: any) {
-      actions.setErrorMsg(error?.statusText);
+      const msg = error?.data?.detail || error?.statusText;
+      actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
     }
   }),
