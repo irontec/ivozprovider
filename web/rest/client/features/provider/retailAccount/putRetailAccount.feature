@@ -11,7 +11,7 @@ Feature: Update retail accounts
       And I send a "PUT" request to "/retail_accounts/1" with body:
     """
       {
-          "name": "updatedRetailAccount",
+          "name": "readOnlyRetailAccount",
           "description": "updated desc",
           "transformationRuleSet": 1,
           "outgoingDdi": 3
@@ -23,7 +23,7 @@ Feature: Update retail accounts
      And the JSON should be like:
     """
       {
-          "name": "updatedRetailAccount",
+          "name": "testRetailAccount",
           "description": "updated desc",
           "transport": "udp",
           "password": "9rv6G3TVc-",
