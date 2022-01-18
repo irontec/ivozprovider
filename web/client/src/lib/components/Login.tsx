@@ -9,7 +9,7 @@ import Title from 'lib/components/Title';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import { useFormikType } from 'lib/services/form/types';
 import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from './Login.styles';
-import { EntityValidator } from 'lib/entities/DefaultEntityBehavior';
+import { EntityValidator } from 'lib/entities/EntityInterface';
 
 interface LoginProps {
   validator?: EntityValidator

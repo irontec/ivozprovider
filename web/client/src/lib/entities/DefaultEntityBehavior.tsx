@@ -5,7 +5,9 @@ import { useFormikType } from 'lib/services/form/types';
 import store from "store";
 import { Grid } from '@mui/material';
 import { PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
-import EntityInterface, { RowIconsType, ViewProps } from './EntityInterface';
+import EntityInterface, {
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, RowIconsType, ViewProps
+} from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 import _ from 'lib/services/translations/translate';
@@ -13,14 +15,18 @@ import { CancelToken } from 'axios';
 
 export const initialValues = {};
 
-interface EntityValidatorValues { [label: string]: string }
-type EntityValidatorResponse = Record<string, string | JSX.Element>;
-export type EntityValidator = (values: EntityValidatorValues, properties: PartialPropertyList) => EntityValidatorResponse;
-
-export const validator: EntityValidator = (values: EntityValidatorValues, properties: PartialPropertyList): EntityValidatorResponse => {
+export const validator: EntityValidator = (
+    values: EntityValidatorValues,
+    properties: PartialPropertyList,
+    visualToggle: VisualToggleStates
+): EntityValidatorResponse => {
 
     const response: EntityValidatorResponse = {};
     for (const idx in values) {
+
+        if (!visualToggle[idx]) {
+            continue;
+        }
 
         const pattern: RegExp | undefined = (properties[idx] as ScalarProperty)?.pattern;
         if (pattern && !values[idx].match(pattern)) {
@@ -250,36 +256,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
         });
     }
 
-    let initialVisualToggles = entityService.getVisualToggles();
-    const initialValues = formik.initialValues;
-    for (const idx in initialValues) {
-        initialVisualToggles = entityService.updateVisualToggle(
-            idx,
-            initialValues[idx],
-            initialVisualToggles,
-        );
-    }
-
-    const [visualToggles, setVisualToggles] = React.useState<VisualToggleStates>(initialVisualToggles);
-
-    const formOnChangeHandler = (e: FormOnChangeEvent): void => {
-
-        formik.handleChange(e);
-
-        const { name, value } = e.target;
-        const updatedVisualToggles = entityService.updateVisualToggle(
-            name,
-            value,
-            { ...visualToggles },
-        );
-
-        setVisualToggles(updatedVisualToggles);
-    };
+    const visualToggles = entityService.getVisualToggles(
+        formik.values
+    );
 
     const formFieldFactory = new FormFieldFactory(
         entityService,
         formik,
-        formOnChangeHandler,
+        formik.handleChange,
         formik.handleBlur
     );
 
@@ -294,6 +278,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
                     },
                     false
                 );
+
+                if (!visible) {
+                    return null;
+                }
 
                 const visibilityStyles = visible
                     ? { display: 'block' }
@@ -310,6 +298,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
                                 const choices: NullablePropertyFkChoices = fkChoices
                                     ? fkChoices[columnName]
                                     : null;
+
+                                if (! visualToggles[columnName]) {
+                                    return null;
+                                }
 
                                 const visibilityStyles = visualToggles[columnName]
                                     ? { display: 'block' }

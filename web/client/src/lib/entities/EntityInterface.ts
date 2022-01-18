@@ -1,6 +1,6 @@
 import { CancelToken } from "axios";
 import { PartialPropertyList, PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
-import EntityService, { EntityValues } from "lib/services/entity/EntityService";
+import EntityService, { EntityValues, VisualToggleStates } from "lib/services/entity/EntityService";
 import { EntityFormProps } from "./DefaultEntityBehavior";
 
 export type ListDecoratorPropsType = {
@@ -30,9 +30,17 @@ export type ViewType = (props: ViewProps) => JSX.Element | null;
 
 type ToStrType = (row: EntityValues) => string;
 
+export interface EntityValidatorValues { [label: string]: string }
+export type EntityValidatorResponse = Record<string, string | JSX.Element>;
+export type EntityValidator = (
+    values: EntityValidatorValues,
+    properties: PartialPropertyList,
+    visualToggles: VisualToggleStates
+) => EntityValidatorResponse;
+
 export default interface EntityInterface {
     initialValues: any,
-    validator: (values: any, properties: PartialPropertyList) => any,
+    validator: EntityValidator,
     marshaller: (T: any, properties: PartialPropertyList) => any,
     unmarshaller: (T: any, properties: PartialPropertyList) => any,
     foreignKeyResolver: foreignKeyResolverType,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { FormikHelpers, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { Alert, AlertTitle, Button } from '@mui/material';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import EntityService from 'lib/services/entity/EntityService';
@@ -35,35 +35,35 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
     properties
   );
 
-  const submit = async (values: any, actions: FormikHelpers<any>) => {
+  const submit = async (values: any) => {
 
-    const { setSubmitting } = actions;
     const putPath = entityService.getPutPath();
     if (!putPath) {
       throw new Error('Unknown item path');
     }
 
-    try {
+    const payload = marshaller(values, properties);
+    const formData = entityService.prepareFormData(payload);
 
-      const payload = marshaller(values, properties);
-      const formData = entityService.prepareFormData(payload);
+    await apiPut({
+      path: putPath.replace('{id}', entityId),
+      values: formData
+    });
 
-      await apiPut({
-        path: putPath.replace('{id}', entityId),
-        values: formData
-      });
-
-      history.goBack();
-
-    } finally {
-      setSubmitting(false);
-    }
+    history.goBack();
   };
 
   const formik: useFormikType = useFormik({
     initialValues,
     validate: (values: any) => {
-      const validationErrors = props.validator(values, properties);
+
+      const visualToggles = entityService.getVisualToggles(values);
+
+      const validationErrors = props.validator(
+        values,
+        properties,
+        visualToggles
+      );
       setValidationError(validationErrors);
 
       return validationErrors;
@@ -79,7 +79,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
     }
 
     errorList[idx] = (
-      <li>{properties[idx].label}: {validationError[idx]}</li>
+      <li key={idx}>{properties[idx].label}: {validationError[idx]}</li>
     );
   }
 

@@ -135,7 +135,8 @@ export default class EntityService {
         return rules;
     }
 
-    public getVisualToggles(): VisualToggleStates {
+    public getVisualToggles(values: Record<string, any>): VisualToggleStates {
+
         const properties = this.entityConfig.properties;
         const visualToggles = Object.keys(properties).reduce(
             (accumulator: any, fldName: string) => {
@@ -145,10 +146,18 @@ export default class EntityService {
             {}
         );
 
+        for (const idx in values) {
+            this.updateVisualToggle(
+                idx,
+                values[idx],
+                visualToggles,
+            );
+        }
+
         return visualToggles;
     }
 
-    public updateVisualToggle(
+    private updateVisualToggle(
         fld: string,
         value: string | number,
         visualToggles: VisualToggleStates
