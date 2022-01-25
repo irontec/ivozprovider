@@ -93,9 +93,24 @@ const List = function (props: any & RouteComponentProps) {
                 return;
             }
 
-            const reqPath = currentQueryParams.length
+            let orderBy = currentQueryParams.find(
+                (str: string) => str.indexOf('_order[') === 0
+            );
+
+            let reqPath = currentQueryParams.length
                 ? path + '?' + encodeURI(currentQueryParams.join('&'))
                 : path;
+
+            if (!orderBy) {
+                orderBy = encodeURI(
+                    `_order[${entityService.getOrderBy()}]=${entityService.getOrderDirection()}`
+                );
+                const glue = currentQueryParams.length > 0
+                    ? '&'
+                    : '?';
+
+                reqPath += `${glue}${orderBy}`;
+            }
 
             apiGet({
                 path: reqPath,
@@ -111,7 +126,7 @@ const List = function (props: any & RouteComponentProps) {
 
                     setRows(data);
 
-                    foreignKeyResolver(data, entityService)
+                    foreignKeyResolver(data, true, entityService)
                         .then((data: any) => {
 
                             const fixedData = [];

@@ -4,7 +4,7 @@ import { ChangeEvent, DragEvent, MouseEvent, useCallback, useState } from 'react
 import { StyledFileUploaderContainer, StyledFileNameContainer, StyledUploadButtonContainer, StyledUploadButtonLabel, StyledDownloadingIcon } from './FileUploader.styles';
 import { useStoreActions } from 'store';
 import { saveAs } from 'file-saver';
-import withCustomComponentWrapper, { PropertyCustomFunctionComponentProps } from './CustomComponentWrapper';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponentProps } from '../CustomComponentWrapper';
 
 interface fileProps {
     file?: File,
@@ -25,9 +25,16 @@ type FileUploaderPropsType = FileUploaderProps<{ [k: string]: fileProps }>;
 
 const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JSX.Element => {
 
-    const { _columnName, formik, changeHandler, onBlur, downloadPath } = props;
-    const values = formik.values;
-    const fileValue: fileProps = values[_columnName];
+    const {
+        _columnName,
+        values,
+        downloadPath,
+        disabled,
+        changeHandler,
+        onBlur
+    } = props;
+
+    const fileValue = values[_columnName] as fileProps;
 
     if (!downloadPath) {
         console.error('Empty download path');
@@ -188,16 +195,16 @@ const FileUploader: React.FunctionComponent<FileUploaderPropsType> = (props): JS
                     onBlur(changeEvent as any);
                 }}
             />
-            <StyledUploadButtonContainer>
+            {!disabled && <StyledUploadButtonContainer>
                 <StyledUploadButtonLabel htmlFor={id}>
                     <Button variant="contained" component="span">
                         <BackupIcon />
                     </Button>
                 </StyledUploadButtonLabel>
-            </StyledUploadButtonContainer>
+            </StyledUploadButtonContainer>}
             {fileName &&
                 <>
-                    <StyledFileNameContainer>
+                    <StyledFileNameContainer className={disabled ? 'disabled' : ''}>
                         {values.id && <StyledDownloadingIcon onClick={handleDownload} />}
                         {fileName} ({fileSizeMb}MB)
                     </StyledFileNameContainer>

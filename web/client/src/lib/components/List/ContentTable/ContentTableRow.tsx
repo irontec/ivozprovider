@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 import {
   Fade,
   LinearProgress,
-  TableCell, TableRow, Tooltip
+  TableRow, Tooltip
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import PanoramaIcon from '@mui/icons-material/Panorama';
@@ -14,7 +14,9 @@ import EntityService from 'lib/services/entity/EntityService';
 import { useStoreActions } from 'store';
 import { FkProperty, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import _ from 'lib/services/translations/translate';
-import { StyledTableRowLink, StyledTableRowFkLink, StyledDeleteIcon, StyledTableCell, StyledCheckBoxIcon, StyledCheckBoxOutlineBlankIcon } from './ContentTableRow.styles';
+import {
+  StyledTableRowLink, StyledTableRowFkLink, StyledDeleteIcon, StyledActionsTableCell, StyledCheckBoxIcon, StyledCheckBoxOutlineBlankIcon, StyledTableCell
+} from './ContentTableRow.styles';
 
 interface ContentTableRowProps {
   entityService: EntityService,
@@ -64,15 +66,19 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
     <TableRow hover key={row.id}>
       {Object.keys(columns).map((key: string) => {
         const column = columns[key];
-        const loadingValue = (column as FkProperty).$ref && row[key] && !row[`${key}Id`];
+        const customComponent = (column as ScalarProperty).component;
+
+        const loadingValue =
+          ((column as FkProperty).$ref && row[key] && !row[`${key}Id`] && (column as FkProperty).type !== 'file')
+          || (column as ScalarProperty).type === 'array' && Array.isArray(row[key]);
 
         const enumValues: any = (column as ScalarProperty).enum;
         const value = row[key];
         const isBoolean = typeof value === "boolean";
 
         let response = value;
+        if (loadingValue || (row[key] === undefined && !customComponent)) {
 
-        if (loadingValue || row[key] === undefined) {
           response = (
             <Fade
               in={true}
@@ -99,9 +105,9 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
 
         const prefix = column?.prefix || '';
 
-        return <TableCell key={key}>{prefix}{response}</TableCell>;
+        return <StyledTableCell key={key}>{prefix}{response}</StyledTableCell>;
       })}
-      <StyledTableCell key="actions">
+      <StyledActionsTableCell key="actions">
         {acl.update && <Tooltip title={_('Edit')} placement="bottom">
           <StyledTableRowLink to={`${path}/${row.id}/update`}>
             <EditIcon />
@@ -123,7 +129,7 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
           handleApply={handleDelete}
         />}
         {<RowActions row={row} />}
-      </StyledTableCell>
+      </StyledActionsTableCell>
     </TableRow>
   );
 }

@@ -6,7 +6,8 @@ export default async function genericForeignKeyResolver(
     fkFld: string,
     entityEndpoint: string,
     toStr: (row: EntityValues) => string,
-    addLink = true
+    addLink = true,
+    dataPreprocesor?: (data: Record<string, any>) => Promise<void>
 ): Promise<Array<EntityValues> | EntityValues> {
 
     if (typeof data !== 'object') {
@@ -19,6 +20,13 @@ export default async function genericForeignKeyResolver(
 
     if (!Array.isArray(data)) {
         // Just flat view's detailed model
+
+        try {
+            if (dataPreprocesor && typeof data[fkFld] === 'object') {
+                await dataPreprocesor(data[fkFld] as EntityValues);
+            }
+        } catch { }
+
         data[fkFld] = toStr(data[fkFld] as EntityValues);
 
         return data;
@@ -56,6 +64,13 @@ export default async function genericForeignKeyResolver(
                 _pagination: false
             },
             successCallback: async (response: any) => {
+
+                try {
+                    if (dataPreprocesor) {
+                        await dataPreprocesor(response);
+                    }
+
+                } catch { }
 
                 const entityReducer = async (accumulator: any, value: any) => {
 

@@ -6,11 +6,11 @@ import { EntityFormProps } from "./DefaultEntityBehavior";
 export type ListDecoratorPropsType = {
     field: string,
     row: any,
-    property: Partial<PropertySpec>
+    property: PropertySpec
 };
 export type ListDecoratorType = (props: ListDecoratorPropsType) => any;
 
-type foreignKeyResolverType = (data: any, entityService: EntityService) => Promise<any>;
+type foreignKeyResolverType = (data: any, allowLinks: boolean, entityService: EntityService) => Promise<any>;
 export type ForeignKeyGetterType = (cancelToken?: CancelToken) => Promise<any>;
 type AclType = {
     create: boolean,
@@ -38,6 +38,11 @@ export type EntityValidator = (
     visualToggles: VisualToggleStates
 ) => EntityValidatorResponse;
 
+export enum OrderDirection {
+    asc = 'asc',
+    desc = 'desc',
+}
+
 export default interface EntityInterface {
     initialValues: any,
     validator: EntityValidator,
@@ -57,5 +62,6 @@ export default interface EntityInterface {
     properties: PartialPropertyList,
     toStr: ToStrType,
     defaultOrderBy: string,
+    defaultOrderDirection: OrderDirection,
     icon: JSX.Element
 }

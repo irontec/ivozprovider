@@ -79,6 +79,7 @@ export default class FormFieldFactory {
                     _context={CustomFunctionComponentContext.write}
                     _columnName={fld}
                     formik={this.formik}
+                    values={this.formik.values}
                     property={property}
                     disabled={disabled}
                     changeHandler={this.changeHandler}
@@ -90,7 +91,11 @@ export default class FormFieldFactory {
         if (!fileUpload && ((property as FkProperty).$ref || multiSelect)) {
 
             if (!choices) {
-                return (<StyledLinearProgressContainer><LinearProgress /></StyledLinearProgressContainer>);
+                return (
+                    <StyledLinearProgressContainer>
+                        <LinearProgress />
+                    </StyledLinearProgressContainer>
+                );
             }
 
             if (property.null) {
@@ -160,7 +165,7 @@ export default class FormFieldFactory {
 
             const checked = Array.isArray(this.formik.values[fld])
                 ? this.formik.values[fld].includes('1')
-                : this.formik.values[fld];
+                : Boolean(this.formik.values[fld]);
 
             return (
                 <StyledSwitchFormControl hasChanged={hasChanged}>
@@ -168,10 +173,10 @@ export default class FormFieldFactory {
                         disabled={disabled}
                         control={<Switch
                             name={fld}
-                            checked={!!checked}
+                            checked={checked}
                             onChange={this.changeHandler}
                             onBlur={this.handleBlur}
-                            value={'1'}
+                            value={true}
                         />}
                         label={property.label}
                     />
@@ -201,6 +206,7 @@ export default class FormFieldFactory {
                     _columnName={fld}
                     disabled={disabled}
                     formik={this.formik}
+                    values={this.formik.values}
                     changeHandler={this.changeHandler}
                     onBlur={this.handleBlur}
                     downloadPath={downloadPath}

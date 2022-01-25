@@ -53,9 +53,6 @@ export interface visualToggle {
     hide: Array<string>,
 }
 
-
-
-
 export interface ScalarProperty {
     type?: string,
     format?: string,
@@ -77,6 +74,7 @@ export interface ScalarProperty {
 }
 
 export interface FkProperty {
+    type?: string,
     $ref: string,
     readOnly?: boolean,
     label: string | React.ReactElement<any>,

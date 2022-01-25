@@ -1,7 +1,7 @@
-import ReactDOMServer from 'react-dom/server';
 import React, { useEffect, useState, useCallback, ReactElement, JSXElementConstructor } from 'react';
 import { TextField, } from '@mui/material';
 import MuiAutocomplete from '@mui/material/Autocomplete';
+import { getI18n } from 'react-i18next';
 
 interface AutocompleteProps {
   className: string,
@@ -26,6 +26,7 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
     choices, error, helperText, hasChanged
   } = props;
   const value = props.value || null;
+  const i18n = getI18n();
 
   let className = props.className;
   if (hasChanged) {
@@ -75,15 +76,22 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
         );
       }
 
-      if (value?.label && typeof value.label === 'object') {
-        return ReactDOMServer.renderToStaticMarkup(
-          value.label
-        );
+      const isTranslation =
+        value?.label
+        && typeof value.label === 'object'
+        && value.label?.props?.defaults
+        && typeof value.label?.props?.defaults === 'string';
+
+      if (isTranslation) {
+
+        const translatableText = value.label?.props?.defaults;
+
+        return i18n.t(translatableText);
       }
 
       return value?.label || "";
     },
-    [arrayChoices]
+    [arrayChoices, i18n]
   );
 
   const isOptionEqualToValue = useCallback(

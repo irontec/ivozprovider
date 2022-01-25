@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useFormik } from 'formik';
-import { Alert, AlertTitle, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
 import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
@@ -78,10 +78,10 @@ const Create = (props: CreateProps & RouteComponentProps) => {
     onSubmit: submit,
   });
 
-  const errorList: {[k: string]: JSX.Element} = {};
+  const errorList: { [k: string]: JSX.Element } = {};
   for (const idx in validationError) {
 
-    if (! formik.touched[idx]) {
+    if (!formik.touched[idx]) {
       continue;
     }
 
@@ -93,14 +93,8 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <EntityForm formik={formik} create={true} {...props} />
-        <br />
-        {Object.keys(errorList).length > 0 && (
-          <Alert severity="error">
-            <AlertTitle>{_("Validation error")}</AlertTitle>
-            <ul>{Object.values(errorList).map((error) => error)}</ul>
-          </Alert>
-        )}
+        <EntityForm {...props} formik={formik} create={true} validationErrors={errorList} />
+
         <Button variant="contained" type="submit">
           {_('Save')}
         </Button>
