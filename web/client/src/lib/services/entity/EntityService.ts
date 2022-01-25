@@ -1,6 +1,6 @@
 import { SearchFilterType } from 'lib/components/List/Filter/icons/FilterIconFactory';
 import
-EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, RowIconsType }
+EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection, RowIconsType }
     from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
@@ -121,6 +121,7 @@ export default class EntityService {
     }
 
     public getVisualToggleRules(): visualToggleList {
+
         const rules: visualToggleList = {};
         const properties = this.entityConfig.properties;
         for (const idx in properties) {
@@ -135,7 +136,8 @@ export default class EntityService {
         return rules;
     }
 
-    public getVisualToggles(): VisualToggleStates {
+    public getVisualToggles(values: Record<string, any>): VisualToggleStates {
+
         const properties = this.entityConfig.properties;
         const visualToggles = Object.keys(properties).reduce(
             (accumulator: any, fldName: string) => {
@@ -145,10 +147,18 @@ export default class EntityService {
             {}
         );
 
+        for (const idx in values) {
+            this.updateVisualToggle(
+                idx,
+                values[idx],
+                visualToggles,
+            );
+        }
+
         return visualToggles;
     }
 
-    public updateVisualToggle(
+    private updateVisualToggle(
         fld: string,
         value: string | number,
         visualToggles: VisualToggleStates
@@ -160,15 +170,19 @@ export default class EntityService {
             return visualToggles;
         }
 
-        if (!rules[fld][value]) {
+        const normalizedValue = typeof value === 'boolean'
+            ? (value + 0)
+            : value;
+
+        if (!rules[fld][normalizedValue]) {
             return visualToggles;
         }
 
-        for (const hideFld of rules[fld][value]['hide']) {
+        for (const hideFld of rules[fld][normalizedValue]['hide']) {
             visualToggles[hideFld] = false;
         }
 
-        for (const showFld of rules[fld][value]['show']) {
+        for (const showFld of rules[fld][normalizedValue]['show']) {
             visualToggles[showFld] = true;
         }
 
@@ -293,8 +307,8 @@ export default class EntityService {
         return this.entityConfig?.defaultOrderBy || 'id';
     }
 
-    public getOrderDirection(): 'asc' | 'desc' {
-        return 'desc';
+    public getOrderDirection(): OrderDirection {
+        return this.entityConfig?.defaultOrderDirection || OrderDirection.asc;
     }
 
     public getAcls(): EntityAcls {

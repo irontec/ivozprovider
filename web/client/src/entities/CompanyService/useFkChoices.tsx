@@ -3,9 +3,13 @@ import { useEffect, useState } from 'react';
 import ServiceSelectOptions from 'entities/Service/SelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios, { CancelToken } from 'axios';
-import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+type CompanyServiceForeignKeyGetterType = (cancelToken?: CancelToken, currentServiceId?: number) => Promise<any>
+
+export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
+    token,
+    currentServiceId
+): Promise<any> => {
 
     const response: CompanyServicePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
@@ -14,7 +18,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken
         (options: any) => {
             response.service = options;
         },
-        undefined,
+        currentServiceId,
         token
     );
 
@@ -23,7 +27,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken
     return response;
 };
 
-const useFkChoices = (): FkChoices => {
+const useFkChoices = (currentServiceId?: number): FkChoices => {
 
     const [fkChoices, setFkChoices] = useState<FkChoices>({});
 
@@ -35,7 +39,7 @@ const useFkChoices = (): FkChoices => {
             const CancelToken = axios.CancelToken;
             const source = CancelToken.source();
 
-            foreignKeyGetter(source.token).then((options) => {
+            foreignKeyGetter(source.token, currentServiceId).then((options) => {
 
                 if (!mounted) {
                     return;
@@ -49,13 +53,12 @@ const useFkChoices = (): FkChoices => {
                 });
             });
 
-
             return () => {
                 mounted = false;
                 source.cancel();
             }
         },
-        []
+        [currentServiceId]
     );
 
     return fkChoices;

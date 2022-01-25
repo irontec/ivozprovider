@@ -1,17 +1,17 @@
 import { Tooltip } from '@mui/material';
-import { PropertyCustomComponent, propertyCustomComponentProps } from 'lib/services/api/ParsedApiSpecInterface';
 import _ from 'lib/services/translations/translate';
 import { StyledLastExecutionErrorMsg, StyledLastExecutionSuccessMsg } from './LastExecution.styles';
+import { CallCsvSchedulerPropertyList } from '../CallCsvSchedulerProperties';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from 'lib/services/form/Field/CustomComponentWrapper';
 
-type LastExecutionProps = propertyCustomComponentProps & {
-    lastExecution: string,
-    lastExecutionError: string
-}
+type CallCsvSchedulerValues = CallCsvSchedulerPropertyList<string | number>;
+type LastExecutionType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<CallCsvSchedulerValues>>;
 
-const LastExecution: PropertyCustomComponent<LastExecutionProps> = (props: LastExecutionProps) => {
+const LastExecution: LastExecutionType = (props) => {
 
-    const lastExecution = props.lastExecution.replace('T', ' ');
-    const { lastExecutionError } = props;
+    const values = props.values;
+    const lastExecution = ((values?.lastExecution as string | undefined) || '').replace('T', ' ');
+    const lastExecutionError = values?.lastExecutionError as string | undefined;
 
     if (lastExecutionError) {
         return (
@@ -34,4 +34,4 @@ const LastExecution: PropertyCustomComponent<LastExecutionProps> = (props: LastE
     );
 }
 
-export default LastExecution;
+export default withCustomComponentWrapper<CallCsvSchedulerValues>(LastExecution);

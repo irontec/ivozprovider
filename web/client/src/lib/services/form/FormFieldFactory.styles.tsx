@@ -3,13 +3,21 @@ import { Theme, Typography, FormControl, TextField } from '@mui/material';
 
 export const StyledSwitchFormControl = styled(
     (props) => {
-        const { children, className } = props;
+        const { children, hasChanged } = props;
+        let className = props.className;
+        if (hasChanged) {
+            className += ' changed';
+        }
+
         return (<FormControl className={className} fullWidth={true}>{children}</FormControl>);
     }
 )(
-    () => {
+    ({ theme }: { theme: Theme }) => {
         return {
             marginTop: '10px',
+            '&.changed label': {
+                color: theme.palette.info.main
+            }
         }
     }
 );
@@ -30,7 +38,18 @@ export const StyledFilterDialogTypography = styled(
 
 export const StyledTextField = styled(
     (props) => {
-        const { className, name, type, value, disabled, label, required, onChange, error, helperText, inputProps, InputProps } = props;
+
+        const {
+            name, type, value, disabled, label,
+            required, onChange, onBlur, error, helperText,
+            inputProps, InputProps, hasChanged
+        } = props;
+
+        let className = props.className;
+        if (hasChanged) {
+            className += ' changed';
+        }
+
         return (
             <TextField
                 name={name}
@@ -40,6 +59,7 @@ export const StyledTextField = styled(
                 label={label}
                 InputLabelProps={{ shrink: true, required: required }}
                 onChange={onChange}
+                onBlur={onBlur}
                 error={error}
                 helperText={helperText}
                 fullWidth={true}
@@ -51,9 +71,12 @@ export const StyledTextField = styled(
         );
     }
 )(
-    () => {
+    ({ theme }: { theme: Theme }) => {
         return {
             marginTop: '0px',
+            '&.changed > label': {
+                color: theme.palette.info.main
+            }
         }
     }
 );

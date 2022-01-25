@@ -142,7 +142,9 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
                     break;
             }
             searchFormik.handleChange(e);
-        }
+        },
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        () => {}
     );
 
     const addAndApplyCallback = async () => {

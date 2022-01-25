@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { FormikHelpers, useFormik } from 'formik';
-import { Alert, AlertTitle, Button } from '@mui/material';
+import { useFormik } from 'formik';
+import { Button } from '@mui/material';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import EntityService from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
@@ -15,12 +15,12 @@ interface EditProps extends EntityInterface {
   entityService: EntityService,
   history: any,
   match: any,
-  row: any,
+  row: Record<string, any>,
 }
 
 const Edit: any = (props: EditProps & RouteComponentProps) => {
 
-  const { marshaller, unmarshaller, history, match, row } = props;
+  const { marshaller, unmarshaller, history, match, row, properties } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
 
   const entityId = match.params.id;
@@ -29,41 +29,41 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
   const apiPut = useStoreActions((actions) => actions.api.put);
   const [validationError, setValidationError] = useState<KeyValList>({});
 
-  const properties = entityService.getProperties();
+  //const properties = entityService.getProperties();
   const initialValues = unmarshaller(
     row,
     properties
   );
 
-  const submit = async (values: any, actions: FormikHelpers<any>) => {
+  const submit = async (values: any) => {
 
-    const { setSubmitting } = actions;
     const putPath = entityService.getPutPath();
     if (!putPath) {
       throw new Error('Unknown item path');
     }
 
-    try {
+    const payload = marshaller(values, properties);
+    const formData = entityService.prepareFormData(payload);
 
-      const payload = marshaller(values, properties);
-      const formData = entityService.prepareFormData(payload);
+    await apiPut({
+      path: putPath.replace('{id}', entityId),
+      values: formData
+    });
 
-      await apiPut({
-        path: putPath.replace('{id}', entityId),
-        values: formData
-      });
-
-      history.goBack();
-
-    } finally {
-      setSubmitting(false);
-    }
+    history.goBack();
   };
 
   const formik: useFormikType = useFormik({
     initialValues,
     validate: (values: any) => {
-      const validationErrors = props.validator(values, properties);
+
+      const visualToggles = entityService.getVisualToggles(values);
+
+      const validationErrors = props.validator(
+        values,
+        properties,
+        visualToggles
+      );
       setValidationError(validationErrors);
 
       return validationErrors;
@@ -71,24 +71,23 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
     onSubmit: submit,
   });
 
-  const errorList = [];
+  const errorList: { [k: string]: JSX.Element } = {};
   for (const idx in validationError) {
-    errorList.push((
-      <li>{properties[idx].label}: {validationError[idx]}</li>
-    ));
+
+    if (!formik.touched[idx]) {
+      continue;
+    }
+
+    errorList[idx] = (
+      <li key={idx}>{properties[idx].label}: {validationError[idx]}</li>
+    );
   }
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <EntityForm formik={formik} edit={true} {...props} />
-        <br />
-        {errorList.length > 0 && (
-          <Alert severity="error">
-            <AlertTitle>{_("Validation error")}</AlertTitle>
-            <ul>{errorList.map((error) => error)}</ul>
-          </Alert>
-        )}
+        <EntityForm  {...props} formik={formik} edit={true} validationErrors={errorList} />
+
         <Button variant="contained" type="submit">
           {_('Save')}
         </Button>

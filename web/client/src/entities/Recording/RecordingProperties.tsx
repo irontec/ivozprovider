@@ -7,10 +7,11 @@ export type RecordingPropertyList<T> = {
     'duration'?: T,
     'caller'?: T,
     'callee'?: T,
+    'recorder'?: T,
     'type'?: T,
     'typeGhost'?: T,
     'recordedFile'?: T,
 };
 
 export type RecordingProperties = RecordingPropertyList<Partial<PropertySpec>>;
-export type RecordingPropertiesList = Array<RecordingPropertyList<EntityValue|EntityValues>>;
+export type RecordingPropertiesList = Array<RecordingPropertyList<EntityValue | EntityValues>>;

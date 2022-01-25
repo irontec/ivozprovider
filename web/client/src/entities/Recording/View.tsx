@@ -1,18 +1,18 @@
 import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import { ViewProps } from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
 
 const View = (props: ViewProps): JSX.Element | null => {
 
     const groups: Array<FieldsetGroups | false> = [
         {
-            legend: _('Call Details'),
+            legend: '',
             fields: [
-                'startTime',
+                'caller',
+                'callee',
                 'duration',
-                'owner',
-                'direction',
-                'party',
+                'recordedFile',
+                'typeGhost',
+
             ]
         }
     ];

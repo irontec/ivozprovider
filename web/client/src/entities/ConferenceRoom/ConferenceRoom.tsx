@@ -29,6 +29,7 @@ const properties: ConferenceRoomProperties = {
     },
     'pinCode': {
         label: _('Pin code'),
+        required: true,
     },
     'maxMembers': {
         label: _('Max member'),

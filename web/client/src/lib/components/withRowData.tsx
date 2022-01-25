@@ -7,7 +7,7 @@ import axios from 'axios';
 const withRowData = (Component: FunctionComponent | ComponentClass): FunctionComponent => {
 
   const displayName = `withRowData(${Component.displayName || Component.name})`;
-  const C: any = (props: any) => {
+  const C: any = (props: any): JSX.Element | null => {
 
     const { match } = props;
     const { entityService }: { entityService: EntityService } = props;

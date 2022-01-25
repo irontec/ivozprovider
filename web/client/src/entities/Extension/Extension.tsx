@@ -37,6 +37,7 @@ const properties: ExtensionProperties = {
             'queue': _('Queue'),
             'conditional': _('Conditional Route'),
         },
+        default: '__null__',
         null: _("Unassigned"),
         visualToggle: {
             '__null__': {
@@ -79,30 +80,39 @@ const properties: ExtensionProperties = {
     },
     'numberCountry': {
         label: _('Country'),
+        required: true,
     },
     'numberValue': {
         label: _('Number'),
+        required: true,
     },
     'ivr': {
         label: _('IVR'),
+        required: true,
     },
     'huntGroup': {
         label: _('Hunt Group'),
+        required: true,
     },
     'conferenceRoom': {
         label: _('Conference room'),
+        required: true,
     },
     'user': {
         label: _('User'),
+        required: true,
     },
     'friendValue': {
         label: _('Friend value'),
+        required: true,
     },
     'queue': {
         label: _('Queue'),
+        required: true,
     },
     'conditionalRoute': {
         label: _('Conditional Route'),
+        required: true,
     },
     'target': {
         label: _('Target'),

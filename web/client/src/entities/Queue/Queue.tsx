@@ -23,6 +23,7 @@ const fullFields = [
 const properties: QueueProperties = {
     'name': {
         label: _('Name'),
+        required: true,
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '-'"),
     },
     'maxWaitTime': {
@@ -40,6 +41,7 @@ const properties: QueueProperties = {
             'voicemail': _('Voicemail'),
         },
         null: _("Unassigned"),
+        default: '__null__',
         visualToggle: {
             '__null__': {
                 show: [],
@@ -61,15 +63,19 @@ const properties: QueueProperties = {
     },
     'timeoutNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'timeoutNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'timeoutExtension': {
         label: _('Extension'),
+        required: true,
     },
     'timeoutVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'maxlen': {
         label: _('Max queue length'),
@@ -86,6 +92,7 @@ const properties: QueueProperties = {
             'voicemail': _('Voicemail'),
         },
         null: _("Unassigned"),
+        default: '__null__',
         visualToggle: {
             '__null__': {
                 show: [],
@@ -107,18 +114,24 @@ const properties: QueueProperties = {
     },
     'fullNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'fullNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'fullExtension': {
         label: _('Extension'),
+        required: true,
     },
     'fullVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'periodicAnnounceLocution': {
         label: _('Periodic Annouce Locution'),
+        null: _("Unassigned"),
+        default: '__null__',
         helpText: _("Locution periodically played to calls that are queued"),
     },
     'periodicAnnounceFrequency': {

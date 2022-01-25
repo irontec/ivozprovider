@@ -9,7 +9,7 @@ import Title from 'lib/components/Title';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import { useFormikType } from 'lib/services/form/types';
 import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from './Login.styles';
-import { EntityValidator } from 'lib/entities/DefaultEntityBehavior';
+import { EntityValidator } from 'lib/entities/EntityInterface';
 
 interface LoginProps {
   validator?: EntityValidator
@@ -19,7 +19,8 @@ export default function Login(props: LoginProps): JSX.Element {
 
   const [error, setError] = useState<string | null>(null);
 
-  const setToken = useStoreActions((actions: any) => actions.auth.setToken);
+  const setToken = useStoreActions((actions) => actions.auth.setToken);
+  const setRefreshToken = useStoreActions((actions) => actions.auth.setRefreshToken);
   const submit = async (values: any) => {
 
     try {
@@ -32,6 +33,7 @@ export default function Login(props: LoginProps): JSX.Element {
 
       if (response.data && response.data.token) {
         setToken(response.data.token);
+        setRefreshToken(response.data.refreshToken);
         setError(null);
         return;
       }

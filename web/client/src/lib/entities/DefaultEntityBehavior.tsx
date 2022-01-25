@@ -3,27 +3,34 @@ import EntityService, { EntityValues, VisualToggleStates } from 'lib/services/en
 import FormFieldFactory from 'lib/services/form/FormFieldFactory';
 import { useFormikType } from 'lib/services/form/types';
 import store from "store";
-import { Grid } from '@mui/material';
-import { PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
-import EntityInterface, { RowIconsType, ViewProps } from './EntityInterface';
+import { Alert, AlertTitle, Grid } from '@mui/material';
+import { isPropertyScalar, PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
+import EntityInterface, {
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, RowIconsType, ViewProps, ListDecoratorPropsType, OrderDirection
+} from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 import _ from 'lib/services/translations/translate';
 import { CancelToken } from 'axios';
+import { CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
 
 export const initialValues = {};
 
-interface EntityValidatorValues { [label: string]: string }
-type EntityValidatorResponse = Record<string, string | JSX.Element>;
-export type EntityValidator = (values: EntityValidatorValues, properties: PartialPropertyList) => EntityValidatorResponse;
-
-export const validator: EntityValidator = (values: EntityValidatorValues, properties: PartialPropertyList): EntityValidatorResponse => {
+export const validator: EntityValidator = (
+    values: EntityValidatorValues,
+    properties: PartialPropertyList,
+    visualToggle: VisualToggleStates
+): EntityValidatorResponse => {
 
     const response: EntityValidatorResponse = {};
     for (const idx in values) {
 
+        if (!visualToggle[idx]) {
+            continue;
+        }
+
         const pattern: RegExp | undefined = (properties[idx] as ScalarProperty)?.pattern;
-        if (pattern && !values[idx].match(pattern)) {
+        if (pattern && !(values[idx] + '').match(pattern)) {
             response[idx] = _('invalid pattern');
         }
 
@@ -58,10 +65,6 @@ export const marshaller = (values: MarshallerValues, properties: PartialProperty
         }
 
         if (property?.type === 'boolean') {
-            values[idx] = values[idx] === '0'
-                ? false
-                : true;
-
             continue;
         }
 
@@ -73,6 +76,12 @@ export const marshaller = (values: MarshallerValues, properties: PartialProperty
 
         if (values[idx] === '__null__') {
             values[idx] = null;
+        }
+
+        if (property?.type === 'integer' && values[idx] === '') {
+            values[idx] = null;
+
+            continue;
         }
     }
 
@@ -104,9 +113,9 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
             // formik datetime format: "yyyy-MM-ddThh:mm" followed by optional ":ss" or ":ss.SSS"
             normalizedData[idx] = row[idx].replace(' ', 'T');
         } else if (properties[idx] && (properties[idx] as ScalarProperty).type === "boolean") {
-            normalizedData[idx] = row[idx] === true
-                ? 1
-                : 0;
+            normalizedData[idx] = (row[idx] === true || row[idx] === 1)
+                ? true
+                : false;
         } else {
             normalizedData[idx] = row[idx];
         }
@@ -116,7 +125,7 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const foreignKeyResolver = async (data: EntityValues, entityService: EntityService): Promise<EntityValues> => data;
+export const foreignKeyResolver = async (data: EntityValues, allowLinks: boolean, entityService: EntityService): Promise<EntityValues> => data;
 
 export const foreignKeyGetter = async (): Promise<any> => {
     return {};
@@ -133,20 +142,22 @@ export const acl = {
     delete: true,
 };
 
-interface ListDecoratorProps {
-    field: any,
-    row: any,
-    property: any
-}
-
-export const ListDecorator = (props: ListDecoratorProps): JSX.Element | string => {
+export const ListDecorator = (props: ListDecoratorPropsType): JSX.Element | string => {
 
     const { field, row, property } = props;
     let value = row[field];
 
-    if (property.component) {
+    if (isPropertyScalar(property) && property.component) {
         return (
-            <property.component _context={'read'} {...row} />
+            <property.component
+                _columnName={field}
+                _context={CustomFunctionComponentContext.read}
+                values={row}
+                property={property}
+                disabled={false}
+                changeHandler={() => { return null; }}
+                onBlur={() => { return null; }}
+            />
         );
     }
 
@@ -154,9 +165,17 @@ export const ListDecorator = (props: ListDecoratorProps): JSX.Element | string =
         return value.baseName;
     }
 
-    if (property.enum) {
-        if (property.enum[value]) {
-            value = property.enum[value];
+    if (isPropertyScalar(property) && property.enum) {
+
+        let idx = value;
+        if (typeof value == 'boolean') {
+            idx = value
+                ? 1
+                : 0;
+        }
+
+        if (property.enum[idx]) {
+            value = property.enum[idx];
         }
     }
 
@@ -198,13 +217,15 @@ export type EntityFormProps = EntityInterface & {
     groups: Array<FieldsetGroups | false>,
     fkChoices: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
+    validationErrors: Record<string, JSX.Element>,
+    row?: Record<string, any>,
 };
 
 export type FormOnChangeEvent = React.ChangeEvent<{ name: string, value: any }>;
 
 const filterFieldsetGroups = (groups: Array<FieldsetGroups | false>): Array<FieldsetGroups> => {
 
-    const resp:Array<FieldsetGroups> = [];
+    const resp: Array<FieldsetGroups> = [];
     for (const idx in groups) {
         const group = groups[idx];
 
@@ -232,7 +253,7 @@ const filterFieldsetGroups = (groups: Array<FieldsetGroups | false>): Array<Fiel
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
-    const { entityService, formik, readOnlyProperties } = props;
+    const { entityService, formik, readOnlyProperties, validationErrors } = props;
     const { fkChoices } = props;
 
     const columns = entityService.getColumns();
@@ -250,36 +271,15 @@ const Form = (props: EntityFormProps): JSX.Element => {
         });
     }
 
-    let initialVisualToggles = entityService.getVisualToggles();
-    const initialValues = formik.initialValues;
-    for (const idx in initialValues) {
-        initialVisualToggles = entityService.updateVisualToggle(
-            idx,
-            initialValues[idx],
-            initialVisualToggles,
-        );
-    }
-
-    const [visualToggles, setVisualToggles] = React.useState<VisualToggleStates>(initialVisualToggles);
-
-    const formOnChangeHandler = (e: FormOnChangeEvent): void => {
-
-        formik.handleChange(e);
-
-        const { name, value } = e.target;
-        const updatedVisualToggles = entityService.updateVisualToggle(
-            name,
-            value,
-            { ...visualToggles },
-        );
-
-        setVisualToggles(updatedVisualToggles);
-    };
+    const visualToggles = entityService.getVisualToggles(
+        formik.values
+    );
 
     const formFieldFactory = new FormFieldFactory(
         entityService,
         formik,
-        formOnChangeHandler
+        formik.handleChange,
+        formik.handleBlur
     );
 
     return (
@@ -293,6 +293,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
                     },
                     false
                 );
+
+                if (!visible) {
+                    return null;
+                }
 
                 const visibilityStyles = visible
                     ? { display: 'block' }
@@ -309,6 +313,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
                                 const choices: NullablePropertyFkChoices = fkChoices
                                     ? fkChoices[columnName]
                                     : null;
+
+                                if (!visualToggles[columnName]) {
+                                    return null;
+                                }
 
                                 const visibilityStyles = visualToggles[columnName]
                                     ? { display: 'block' }
@@ -328,6 +336,19 @@ const Form = (props: EntityFormProps): JSX.Element => {
                     </div>
                 );
             })}
+
+            {Object.keys(validationErrors).length > 0 && (
+                <>
+                    <br />
+                    <Alert severity="error">
+                        <AlertTitle>{_("Validation error")}</AlertTitle>
+                        <ul>
+                            {Object.values(validationErrors).map((error) => error)}
+                        </ul>
+                    </Alert>
+                    <br />
+                </>
+            )}
         </React.Fragment>
     );
 };
@@ -367,7 +388,12 @@ const View = (props: ViewProps): JSX.Element | null => {
                                 const property = (properties[columnName] as PropertySpec);
                                 return (
                                     <Grid item xs={12} md={6} lg={4} key={idx}>
-                                        <ViewFieldValue property={property} values={row} columnName={columnName} />
+                                        <ViewFieldValue
+                                            entityService={entityService}
+                                            property={property}
+                                            values={row}
+                                            columnName={columnName}
+                                        />
                                     </Grid>
                                 );
                             })}
@@ -417,6 +443,7 @@ const DefaultEntityBehavior = {
     View,
     fetchFks,
     defaultOrderBy: 'id',
+    defaultOrderDirection: OrderDirection.asc,
 };
 
 export default DefaultEntityBehavior;

@@ -18,7 +18,8 @@ const View: any = (props: ViewProps & RouteComponentProps) => {
   const [parsedData, setParsedData] = useState<any>({});
   const [foreignKeysResolved, setForeignKeysResolved] = useState<boolean>(false);
 
-  foreignKeyResolver(row, entityService)
+  // flat detailed model
+  foreignKeyResolver(row, true, entityService)
     .then((data: any) => {
       setParsedData(data);
       setForeignKeysResolved(true);

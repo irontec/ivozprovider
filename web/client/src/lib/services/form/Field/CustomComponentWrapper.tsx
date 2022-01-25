@@ -1,23 +1,73 @@
-import {
-    PropertyCustomComponent, propertyCustomComponentProps, PropertySpec
-} from 'lib/services/api/ParsedApiSpecInterface';
+import { FormikComputedProps, FormikHandlers, FormikHelpers, FormikState } from 'formik';
+import { FormOnChangeEvent } from 'lib/entities/DefaultEntityBehavior';
+import { PropertySpec } from 'lib/services/api/ParsedApiSpecInterface';
 import { StyledFieldsetRoot, StyledFieldset } from './CustomComponentWrapper.styles';
 
-interface CustomComponentWrapperProps extends propertyCustomComponentProps {
+export enum CustomFunctionComponentContext {
+    write = "write",
+    read = "read",
+}
+
+export interface PropertyCustomFunctionComponentProps<FormikValues> {
+    className?: string,
+    _context?: CustomFunctionComponentContext,
+    _columnName: string,
+    formik?: FormikState<FormikValues> & FormikComputedProps<FormikValues> & FormikHelpers<FormikValues> & FormikHandlers,
+    values: Record<string, string | number | Record<string, unknown>>,
+    changeHandler: (event: FormOnChangeEvent) => void,
+    onBlur: (event: React.FocusEvent) => void,
     property: PropertySpec,
-    children: React.ReactElement | React.ReactElement[],
+    disabled: boolean,
+    hasChanged: boolean,
 }
 
-const CustomComponentWrapper: PropertyCustomComponent<CustomComponentWrapperProps> = (props: CustomComponentWrapperProps) => {
-    const { property } = props;
+export type PropertyCustomFunctionComponent<T extends PropertyCustomFunctionComponentProps<any>> = React.FunctionComponent<T>;
 
-    return (
-        <StyledFieldsetRoot label={property.label}>
-            <StyledFieldset label={property.label}>
-                {props.children}
-            </StyledFieldset>
-        </StyledFieldsetRoot>
-    );
+interface CustomComponentWrapperProps {
+    property: PropertySpec,
+    hasChanged: boolean,
+    children: JSX.Element,
+    disabled?: boolean
 }
 
-export default CustomComponentWrapper;
+export const CustomComponentWrapper: React.FunctionComponent<CustomComponentWrapperProps> =
+    (props): JSX.Element => {
+        const { property, hasChanged, disabled } = props;
+
+        return (
+            <StyledFieldsetRoot label={property.label} hasChanged={hasChanged} disabled={disabled}>
+                <StyledFieldset label={property.label}>
+                    {props.children}
+                </StyledFieldset>
+            </StyledFieldsetRoot>
+        );
+    }
+
+const withCustomComponentWrapper =
+    function <V, T extends PropertyCustomFunctionComponentProps<any> = PropertyCustomFunctionComponentProps<V>>(InnerComponent: React.FunctionComponent<any>): PropertyCustomFunctionComponent<T> {
+
+        const displayName = `withCustomComponentWrapper(${InnerComponent.displayName || InnerComponent.name})`;
+        const WrappedComponent: React.FunctionComponent<any> = (props: PropertyCustomFunctionComponentProps<unknown>): JSX.Element => {
+
+            const { property, hasChanged, _context, formik } = props;
+
+            const isListValue = !formik && _context === CustomFunctionComponentContext.read;
+            if (isListValue) {
+                return (
+                    <InnerComponent {...props} />
+                );
+            }
+
+            return (
+                <CustomComponentWrapper property={property} hasChanged={hasChanged}>
+                    <InnerComponent {...props} />
+                </CustomComponentWrapper>
+            );
+
+        };
+        WrappedComponent.displayName = displayName;
+
+        return WrappedComponent;
+    }
+
+export default withCustomComponentWrapper;

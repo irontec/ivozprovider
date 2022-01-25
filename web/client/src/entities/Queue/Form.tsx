@@ -17,18 +17,18 @@ const Form = (props: EntityFormProps): JSX.Element => {
             ]
         },
         {
-            legend: _('Announce'),
-            fields: [
-                'periodicAnnounceLocution',
-                'periodicAnnounceFrequency',
-            ]
-        },
-        {
             legend: _('Members configuration'),
             fields: [
                 'memberCallTimeout',
                 'memberCallRest',
                 'preventMissedCalls',
+            ]
+        },
+        {
+            legend: _('Announce'),
+            fields: [
+                'periodicAnnounceLocution',
+                'periodicAnnounceFrequency',
             ]
         },
         {

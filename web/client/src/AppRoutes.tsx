@@ -72,5 +72,7 @@ const RouteContent = (props: any) => {
     entity
   );
 
-  return (<route.component entityService={entityService} {...entity} />);
+  const properties = entityService.getProperties();
+
+  return (<route.component {...entity} entityService={entityService} properties={properties} />);
 };

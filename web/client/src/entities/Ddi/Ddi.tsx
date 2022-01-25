@@ -131,6 +131,7 @@ const properties: DdiProperties = {
     },
     'language': {
         label: _('Language'),
+        null: _("Client's default"),
     },
     'queue': {
         label: _('Queue'),

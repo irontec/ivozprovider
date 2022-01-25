@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropertyCustomFunctionComponent } from '../form/Field/CustomComponentWrapper';
 
 export interface KeyValList {
     [key: string]: unknown
@@ -52,38 +53,30 @@ export interface visualToggle {
     hide: Array<string>,
 }
 
-enum customComponentContext {
-    write = "write",
-    read = "read",
-}
-
-export interface propertyCustomComponentProps {
-    _context?: customComponentContext,
-    _columnName?: string
-}
-
-export type PropertyCustomComponent<P extends propertyCustomComponentProps> = (props: P) => JSX.Element;
-
 export interface ScalarProperty {
     type?: string,
     format?: string,
     readOnly?: boolean,
     description?: string,
     maxLength?: number,
+    minimum?: number,
+    maximum?: number,
     default?: any,
     enum?: KeyValList,
     null?: string | React.ReactElement<any>,
     visualToggle?: visualToggleValue
     label: string | React.ReactElement<any>,
     prefix?: string | React.ReactElement<any>,
-    component?: PropertyCustomComponent<any>,
+    component?: PropertyCustomFunctionComponent<any>,
     required: boolean,
     pattern?: RegExp,
     helpText?: string | React.ReactElement<any>,
 }
 
 export interface FkProperty {
+    type?: string,
     $ref: string,
+    readOnly?: boolean,
     label: string | React.ReactElement<any>,
     prefix?: string | React.ReactElement<any>,
     null?: string | React.ReactElement<any>,
@@ -95,6 +88,10 @@ export type PropertySpec = ScalarProperty | FkProperty;
 
 export const isPropertyFk = (property: PropertySpec): property is FkProperty => {
     return (property as FkProperty).$ref !== undefined;
+}
+
+export const isPropertyScalar = (property: PropertySpec): property is ScalarProperty => {
+    return (property as FkProperty).$ref === undefined;
 }
 
 export type PartialPropertyList = {

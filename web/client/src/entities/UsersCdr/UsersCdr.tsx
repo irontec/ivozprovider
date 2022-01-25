@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -10,6 +10,10 @@ import { UsersCdrProperties, UsersCdrRow, UsersCdrRows } from './UsersCdrPropert
 const properties: UsersCdrProperties = {
     'startTime': {
         label: _('Start time'),
+        readOnly: true,
+    },
+    'owner': {
+        label: _('Owner'),
         readOnly: true,
     },
     'duration': {
@@ -44,10 +48,6 @@ const properties: UsersCdrProperties = {
         label: _('CallidHash'),
         readOnly: true,
     },
-    'owner': {
-        label: _('Owner'),
-        readOnly: true,
-    },
     'party': {
         label: _('Party'),
         readOnly: true,
@@ -56,23 +56,24 @@ const properties: UsersCdrProperties = {
 
 function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
 
-    if (row.user) {
+    // Owner
+    if (row.userId) {
         row.owner = row.user;
         if (addLinks) {
             row.ownerId = row.userId;
             row.ownerLink = row.userLink;
         }
-    } else if (row.friend) {
-        row.owner = row.friend;
+    } else if (row.friendId) {
+        row.owner = row.friendId;
         if (addLinks) {
             row.ownerId = row.friendId;
             row.ownerLink = row.friendLink;
         }
-    } else if (row.retailAccount) {
+    } else if (row.retailAccountId) {
         row.owner = row.retailAccount;
         row.ownerId = row.retailAccountId;
         row.ownerLink = row.retailAccountLink;
-    } else if (row.residentialDevice) {
+    } else if (row.residentialDeviceId) {
         row.owner = row.residentialDevice;
         if (addLinks) {
             row.ownerId = row.residentialDeviceId;
@@ -84,6 +85,7 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
         row.owner = row.callee;
     }
 
+    // Party
     if (row.direction === 'outbound') {
         row.party = row.callee;
     } else {
@@ -93,17 +95,39 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
     return row;
 }
 
-export async function foreignKeyResolver(data: UsersCdrRows): Promise<UsersCdrRows> {
+export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true): Promise<UsersCdrRows> {
 
     const promises = [];
-    const { User, Friend, ResidentialDevice, RetailAccount } = entities;
+    const { User, Extension, Friend, ResidentialDevice, RetailAccount } = entities;
 
     promises.push(
+        // User & User.extension
         genericForeignKeyResolver(
             data,
             'user',
             User.path,
-            User.toStr,
+            (row: any) => {
+                let response = `${row.name} ${row.lastname}`;
+                if (row.extensionId) {
+                    response += ` (${row.extension})`
+                }
+
+                return response;
+            },
+            allowLinks,
+            async (rows: any) => {
+                try {
+                    await genericForeignKeyResolver(
+                        Array.isArray(rows) ? rows : [rows],
+                        'extension',
+                        Extension.path,
+                        Extension.toStr,
+                        false,
+                    );
+                } catch { }
+
+                return rows;
+            }
         )
     );
 
@@ -136,13 +160,13 @@ export async function foreignKeyResolver(data: UsersCdrRows): Promise<UsersCdrRo
 
     await Promise.all(promises);
 
-    if (!Array.isArray(data)) {
-        return data;
-    }
+    const iterable = Array.isArray(data)
+        ? data
+        : [data];
 
-    for (const idx in data) {
-        data[idx] = ownerAndPartyResolver(data[idx]);
-        data[idx].duration = Math.round(data[idx].duration as number);
+    for (const idx in iterable) {
+        iterable[idx] = ownerAndPartyResolver(iterable[idx]);
+        iterable[idx].duration = Math.round(iterable[idx].duration as number);
     }
 
     return data;
@@ -160,12 +184,14 @@ const usersCdr: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
     iden: 'UsersCdr',
-    title: _('Call', { count: 2 }),
+    title: _('Call registry', { count: 2 }),
     path: '/users_cdrs',
     properties,
     columns,
     foreignKeyResolver,
-    View
+    View,
+    defaultOrderBy: 'startTime',
+    defaultOrderDirection: OrderDirection.desc,
 };
 
 export default usersCdr;

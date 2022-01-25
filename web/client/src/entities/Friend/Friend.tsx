@@ -6,11 +6,13 @@ import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
 import { foreignKeyGetter } from './useFkChoices';
 import { FriendProperties } from './FriendProperties';
+import Password from 'entities/Terminal/Field/Password';
 
 const properties: FriendProperties = {
     'name': {
         label: _('Name'),
-        helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
+        helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
+        required: true,
     },
     'domain': {
         label: _('Domain'),
@@ -28,19 +30,23 @@ const properties: FriendProperties = {
     },
     'ip': {
         label: _('Destination IP address'),
-        helpText: _('e.g. 8.8.8.8')
+        helpText: _('e.g. 8.8.8.8'),
+        required: true,
     },
     'port': {
         label: _('Port'),
         pattern: new RegExp('^[0-9]+$'),
         default: 5060,
+        required: true,
     },
     'password': {
         label: _('Password'),
         helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"),
+        component: Password,
     },
     'callAcl': {
         label: _('Call ACL'),
+        null: _("Allow all outgoing calls"),
     },
     'transformationRuleSet': {
         label: _('Numeric transformation'),
@@ -49,7 +55,8 @@ const properties: FriendProperties = {
     },
     'outgoingDdi': {
         label: _('Fallback Outgoing DDI'),
-        helpText: _("This DDI will be used if presented DDI doesn't match any of the company DDIs")
+        helpText: _("This DDI will be used if presented DDI doesn't match any of the company DDIs"),
+        null: _("Client's default"),
     },
     'priority': {
         label: _('Priority'),
@@ -199,6 +206,8 @@ const properties: FriendProperties = {
     },
     'language': {
         label: _('Language'),
+        default: '__null__',
+        null: _("Client's default"),
     },
     't38Passthrough': {
         label: _('Enable T.38 passthrough'),
@@ -211,8 +220,8 @@ const properties: FriendProperties = {
     'alwaysApplyTransformations': {
         label: _('Always apply transformations'),
         enum: {
-            '0': _('Yes'),
-            '1': _('No'),
+            '0': _('No'),
+            '1': _('Yes'),
         },
         default: '0',
         helpText: _("Enable to force numeric transformation on numbers in Extensions or numbers matching any Friend regexp. Otherwise, those numbers won't traverse numeric transformations rules.")
@@ -220,8 +229,8 @@ const properties: FriendProperties = {
     'rtpEncryption': {
         label: _('RTP encryption'),
         enum: {
-            '0': _('Yes'),
-            '1': _('No'),
+            '0': _('No'),
+            '1': _('Yes'),
         },
         default: '0',
         helpText: _("Enable to force audio encryption. Call won't be established unless it is encrypted.")
@@ -229,9 +238,10 @@ const properties: FriendProperties = {
     'multiContact': {
         label: _('Multi contact'),
         enum: {
-            '0': _('Yes'),
-            '1': _('No'),
+            '0': _('No'),
+            '1': _('Yes'),
         },
+        default: '0',
         helpText: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
     },
     'statusIcon': {

@@ -75,6 +75,21 @@ export const StyledTableCell = styled(
 )(
   () => {
     return {
+      overflowWrap: 'break-word',
+    };
+  }
+);
+
+
+
+export const StyledActionsTableCell = styled(
+  (props) => {
+    const { children, className, key } = props;
+    return (<TableCell key={key} className={className}>{children}</TableCell>);
+  }
+)(
+  () => {
+    return {
       textAlign: 'right'
     };
   }

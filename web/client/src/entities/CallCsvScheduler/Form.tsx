@@ -4,6 +4,7 @@ import useFkChoices from './useFkChoices';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
+    const edit = props.edit || false;
     const DefaultEntityForm = defaultEntityBehavior.Form;
     const fkChoices = useFkChoices();
 
@@ -20,8 +21,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
             fields: [
                 'frequency',
                 'unit',
-                'nextExecution',
-                'lastExecution',
+                edit && 'nextExecution',
+                edit && 'lastExecution',
             ]
         },
         {
@@ -29,10 +30,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
             fields: [
                 'callDirection',
                 'ddi',
-                'retailAccount',
-                'residentialDevice',
                 'endpointType',
                 'user',
+                'retailAccount',
+                'residentialDevice',
                 'fax',
                 'friend',
             ]

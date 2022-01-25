@@ -4,6 +4,8 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { LocutionProperties } from './LocutionProperties';
+import RecordingExtension from './Field/RecordingExtension';
+import { EntityValues } from 'lib/services/entity/EntityService';
 
 const properties: LocutionProperties = {
     'name': {
@@ -12,6 +14,11 @@ const properties: LocutionProperties = {
     'originalFile': {
         label: _('Uploaded file'),
         type: 'file'
+    },
+    recordingExtension: {
+        label: _('Recording extension'),
+        helpText: _("You can call this extension from any company terminal to record this locution"),
+        component: RecordingExtension,
     },
     'status': {
         label: _('Status'),
@@ -25,12 +32,6 @@ const properties: LocutionProperties = {
     }
 };
 
-const columns = [
-    'name',
-    'originalFile',
-    'status',
-];
-
 const locution: EntityInterface = {
     ...defaultEntityBehavior,
     icon: <SettingsApplications />,
@@ -38,8 +39,14 @@ const locution: EntityInterface = {
     title: _('Locution', { count: 2 }),
     path: '/locutions',
     properties,
+    columns: [
+        'name',
+        'originalFile',
+        'recordingExtension',
+        'status',
+    ],
     Form,
-    columns
+    toStr: (row: EntityValues) => row.name as string,
 };
 
 export default locution;

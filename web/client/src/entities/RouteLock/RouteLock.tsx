@@ -11,6 +11,7 @@ const properties: RouteLockProperties = {
     },
     'description': {
         label: _('Description'),
+        required: false,
     },
     'open': {
         label: _('Status'),

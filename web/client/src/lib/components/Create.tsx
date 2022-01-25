@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { FormikHelpers, useFormik } from 'formik';
-import { Alert, AlertTitle, Button } from '@mui/material';
+import { useFormik } from 'formik';
+import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
 import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
@@ -25,26 +25,18 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   const apiPost = useStoreActions((actions) => actions.api.post);
   const columns = entityService.getProperties();
 
-  const submit = async (values: any, actions: FormikHelpers<EntityValues>) => {
+  const submit = async (values: any) => {
 
-    const { setSubmitting } = actions;
+    const payload = marshaller(values, columns);
+    const formData = entityService.prepareFormData(payload);
 
-    try {
+    await apiPost({
+      path,
+      values: formData,
+      contentType: 'application/json',
+    });
 
-      const payload = marshaller(values, columns);
-      const formData = entityService.prepareFormData(payload);
-
-      await apiPost({
-        path,
-        values: formData,
-        contentType: 'application/json',
-      });
-
-      history.push(path);
-
-    } finally {
-      setSubmitting(false);
-    }
+    history.push(path);
   };
 
   let initialValues: EntityValues = {
@@ -69,9 +61,16 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   );
 
   const formik: useFormikType = useFormik({
-    initialValues: initialValues,
+    initialValues,
     validate: (values: any) => {
-      const validationErrors = props.validator(values, columns);
+
+      const visualToggles = entityService.getVisualToggles(values);
+
+      const validationErrors = props.validator(
+        values,
+        columns,
+        visualToggles
+      );
       setValidationError(validationErrors);
 
       return validationErrors;
@@ -79,24 +78,23 @@ const Create = (props: CreateProps & RouteComponentProps) => {
     onSubmit: submit,
   });
 
-  const errorList = [];
+  const errorList: { [k: string]: JSX.Element } = {};
   for (const idx in validationError) {
-    errorList.push((
-      <li>{columns[idx].label}: {validationError[idx]}</li>
-    ));
+
+    if (!formik.touched[idx]) {
+      continue;
+    }
+
+    errorList[idx] = (
+      <li key={idx}>{columns[idx].label}: {validationError[idx]}</li>
+    );
   }
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <EntityForm formik={formik} create={true} {...props} />
-        <br />
-        {errorList.length > 0 && (
-          <Alert severity="error">
-            <AlertTitle>{_("Validation error")}</AlertTitle>
-            <ul>{errorList.map((error) => error)}</ul>
-          </Alert>
-        )}
+        <EntityForm {...props} formik={formik} create={true} validationErrors={errorList} />
+
         <Button variant="contained" type="submit">
           {_('Save')}
         </Button>

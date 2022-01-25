@@ -2,7 +2,6 @@ import { CreateCSSProperties, styled } from '@mui/styles';
 
 const sharedStyles: CreateCSSProperties = {
     fontWeight: 'bold',
-    fontSize: '1.5em',
     lineHeight: '20px',
     verticalAlign: 'middle',
     paddingRight: '5px',

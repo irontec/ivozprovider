@@ -46,20 +46,13 @@ const properties: CallCsvSchedulerProperties = {
     'nextExecution': {
         label: _('Next execution'),
     },
-    'brand': {
-        label: _('Brand'),
-    },
     'callCsvNotificationTemplate': {
         label: _('Notification template'),
     },
     'ddi': {
         label: _('DDI'),
-    },
-    'retailAccount': {
-        label: _('Retail Account'),
-    },
-    'residentialDevice': {
-        label: _('Residential Device'),
+        null: _('All'),
+        default: '__null__',
     },
     'endpointType': {
         label: _('Endpoint type'),
@@ -72,30 +65,41 @@ const properties: CallCsvSchedulerProperties = {
         visualToggle: {
             '__null__': {
                 show: [],
-                hide: ['user', 'fax', 'friend'],
+                hide: ['user', 'retailAccount', 'residentialDevice', 'fax', 'friend'],
             },
             'user': {
-                show: ['user'],
+                show: ['user', 'retailAccount', 'residentialDevice'],
                 hide: ['fax', 'friend'],
             },
             'fax': {
                 show: ['fax'],
-                hide: ['user', 'friend'],
+                hide: ['user', 'retailAccount', 'residentialDevice', 'friend'],
             },
             'friend': {
                 show: ['friend'],
-                hide: ['user', 'fax', 'friend'],
+                hide: ['user', 'retailAccount', 'residentialDevice', 'fax', 'friend'],
             }
         }
     },
     'user': {
         label: _('User'),
+        required: true,
+    },
+    'retailAccount': {
+        label: _('Retail Account'),
+        required: true,
+    },
+    'residentialDevice': {
+        label: _('Residential Device'),
+        required: true,
     },
     'fax': {
         label: _('Fax'),
+        required: true,
     },
     'friend': {
         label: _('Friend'),
+        required: true,
     },
 };
 

@@ -9,8 +9,8 @@ interface SpecState {
 
 interface SpecActions {
   setSpec: Action<SpecState, null>,
-  setLoading: Action<SpecState, string>,
-  unsetLoading: Action<SpecState, string>,
+  setLoading: Action<SpecState>,
+  unsetLoading: Action<SpecState>,
   init: Thunk<() => Promise<void>>
 }
 
@@ -25,10 +25,10 @@ const specStore = {
     sessionStorage.setItem('apiSpec', JSON.stringify(spec));
     state.spec = new ApiSpecParser().parse(spec);
   }),
-  setLoading: action<SpecState>((state: any/*, spec: any*/) => {
+  setLoading: action<SpecState>((state: any) => {
     state.loading = true;
   }),
-  unsetLoading: action<SpecState>((state: any/*, spec: any*/) => {
+  unsetLoading: action<SpecState>((state: any) => {
     state.loading = false;
   }),
 

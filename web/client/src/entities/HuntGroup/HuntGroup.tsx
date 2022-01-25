@@ -19,6 +19,7 @@ const properties: HuntGroupProperties = {
     },
     'description': {
         label: _('Description'),
+        required: false,
     },
     'strategy': {
         label: _('Strategy'),
@@ -68,6 +69,7 @@ const properties: HuntGroupProperties = {
     },
     'ringAllTimeout': {
         label: _('Ring all timeout'),
+        required: true,
     },
     'noAnswerTargetType': {
         label: _('Timeout target type'),
@@ -76,6 +78,7 @@ const properties: HuntGroupProperties = {
             'extension': _('Extension'),
             'voicemail': _('Voicemail'),
         },
+        default: '__null__',
         visualToggle: {
             '__null__': {
                 show: [],
@@ -101,15 +104,19 @@ const properties: HuntGroupProperties = {
     },
     'noAnswerNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'noAnswerNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'noAnswerExtension': {
         label: _('Extension'),
+        required: true,
     },
     'noAnswerVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
 };
 

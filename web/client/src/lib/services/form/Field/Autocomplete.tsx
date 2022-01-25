@@ -1,9 +1,10 @@
-import ReactDOMServer from 'react-dom/server';
-import { useEffect, useState, useCallback, ReactElement, JSXElementConstructor } from 'react';
+import React, { useEffect, useState, useCallback, ReactElement, JSXElementConstructor } from 'react';
 import { TextField, } from '@mui/material';
 import MuiAutocomplete from '@mui/material/Autocomplete';
+import { getI18n } from 'react-i18next';
 
 interface AutocompleteProps {
+  className: string,
   name: string,
   label: string | ReactElement<any, string | JSXElementConstructor<any>>,
   value: any,
@@ -11,15 +12,26 @@ interface AutocompleteProps {
   required: boolean,
   disabled: boolean,
   onChange: (event: any) => void,
+  onBlur: (event: React.FocusEvent) => void,
   choices: any,
   error?: boolean,
-  helperText?: string
+  helperText?: string,
+  hasChanged: boolean,
 }
 
 const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
-  const { name, label, required, multiple, disabled, onChange, choices, error, helperText } = props;
+  const {
+    name, label, required, multiple, disabled, onChange, onBlur,
+    choices, error, helperText, hasChanged
+  } = props;
   const value = props.value || null;
+  const i18n = getI18n();
+
+  let className = props.className;
+  if (hasChanged) {
+    className += ' changed';
+  }
 
   const [arrayChoices, setArrayChoices] = useState<Array<any>>([]);
 
@@ -64,15 +76,22 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
         );
       }
 
-      if (value?.label && typeof value.label === 'object') {
-        return ReactDOMServer.renderToStaticMarkup(
-          value.label
-        );
+      const isTranslation =
+        value?.label
+        && typeof value.label === 'object'
+        && value.label?.props?.defaults
+        && typeof value.label?.props?.defaults === 'string';
+
+      if (isTranslation) {
+
+        const translatableText = value.label?.props?.defaults;
+
+        return i18n.t(translatableText);
       }
 
       return value?.label || "";
     },
-    [arrayChoices]
+    [arrayChoices, i18n]
   );
 
   const isOptionEqualToValue = useCallback(
@@ -112,10 +131,12 @@ const Autocomplete = (props: AutocompleteProps): JSX.Element | null => {
 
   return (
     <MuiAutocomplete
+      className={className}
       value={value}
       multiple={multiple}
       disabled={disabled}
       onChange={onChangeWrapper}
+      onBlur={onBlur}
       options={arrayChoices}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}

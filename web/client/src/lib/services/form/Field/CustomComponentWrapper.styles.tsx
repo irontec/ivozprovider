@@ -13,7 +13,16 @@ export const StyledCloseIcon = styled(CloseIcon)(
 
 export const StyledFieldsetRoot = styled(
     (props) => {
-        const { children, className, label } = props;
+        const { children, label, hasChanged, disabled } = props;
+
+        let className = props.className;
+        if (hasChanged) {
+            className += ' changed';
+        }
+        if (disabled) {
+            className += ' disabled';
+        }
+
         return (
             <div className={className}>
                 <label>{label}</label>
@@ -48,9 +57,15 @@ export const StyledFieldsetRoot = styled(
                 left: 0,
                 position: 'absolute',
             },
+            '&.changed > label': {
+                color: theme.palette.info.main,
+            },
             '& > div.fieldsetContainer': {
                 position: 'relative',
                 top: '-5px',
+            },
+            '&.disabled fieldset div.customComponentContainer': {
+                color: 'rgba(0, 0, 0, 0.5)'
             }
         }
     }
@@ -80,6 +95,7 @@ export const StyledFieldset = styled(
         return {
             position: 'relative',
             top: '-5px',
+            borderWidth: '1px',
             borderRadius: theme.shape.borderRadius,
             borderColor: borderColor,
             '& > legend': {

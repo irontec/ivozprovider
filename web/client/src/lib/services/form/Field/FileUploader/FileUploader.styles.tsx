@@ -67,6 +67,9 @@ export const StyledFileNameContainer = styled('div')({
     alignItems: 'flex-start',
     flexGrow: 1,
     alignSelf: 'center',
+    '&.disabled': {
+        color: 'rgba(0, 0, 0, 0.5)',
+    }
 });
 
 
