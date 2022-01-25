@@ -4,10 +4,11 @@ import useFkChoices from './useFkChoices';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
+    const edit = props.edit || false;
     const DefaultEntityForm = defaultEntityBehavior.Form;
     const fkChoices = useFkChoices();
 
-    const groups: Array<FieldsetGroups> = [
+    const groups: Array<FieldsetGroups | false> = [
         {
             legend: _('Basic Configuration'),
             fields: [
@@ -22,14 +23,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'alwaysApplyTransformations',
             ]
         },
-        {
+        edit && {
             legend: _('Geographic Configuration'),
             fields: [
                 'language',
                 'transformationRuleSet',
             ]
         },
-        {
+        edit && {
             legend: _('Outgoing Configuration'),
             fields: [
                 'callAcl',
@@ -39,19 +40,19 @@ const Form = (props: EntityFormProps): JSX.Element => {
         {
             legend: _('Advanced Configuration'),
             fields: [
-                'fromUser',
-                'fromDomain',
-                'allow',
-                'ddiIn',
-                't38Passthrough',
-                'rtpEncryption',
+                edit && 'fromUser',
+                edit && 'fromDomain',
+                edit && 'allow',
+                edit && 'ddiIn',
+                edit && 't38Passthrough',
+                edit && 'rtpEncryption',
                 'multiContact',
             ]
         },
         {
             legend: '',
             fields: [
-                'statusIcon',
+                edit && 'statusIcon',
             ]
         },
     ];

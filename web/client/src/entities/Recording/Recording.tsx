@@ -2,8 +2,9 @@ import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import TypeGhost from './Field/TypeGhost';
+import Type from './Field/Type';
 import { RecordingProperties } from './RecordingProperties';
+import View from './View';
 
 const properties: RecordingProperties = {
     'callid': {
@@ -30,10 +31,11 @@ const properties: RecordingProperties = {
     },
     'typeGhost': {
         label: _('Type'),
-        component: TypeGhost,
+        component: Type,
     },
     'recordedFile': {
         label: _('Recorded file'),
+        type: 'file',
     },
 };
 
@@ -53,6 +55,7 @@ const recording: EntityInterface = {
     path: '/recordings',
     properties,
     columns,
+    View,
 };
 
 export default recording;

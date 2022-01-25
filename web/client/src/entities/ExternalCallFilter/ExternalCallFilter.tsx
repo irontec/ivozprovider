@@ -25,15 +25,22 @@ const outOfScheduleFields = [
 const properties: ExternalCallFilterProperties = {
     'name': {
         label: _('Name'),
+        required: true,
     },
     'welcomeLocution': {
         label: _('Welcome locution'),
+        default: '__null__',
+        null: _('Unassigned'),
     },
     'holidayLocution': {
         label: _('Holiday locution'),
+        default: '__null__',
+        null: _('Unassigned'),
     },
     'outOfScheduleLocution': {
         label: _('Out of schedule locution'),
+        default: '__null__',
+        null: _('Unassigned'),
     },
     'holidayTargetType': {
         label: _('Holiday target type'),
@@ -43,6 +50,7 @@ const properties: ExternalCallFilterProperties = {
             'voicemail': _('Voicemail'),
         },
         null: _('Unassigned'),
+        default: '__null__',
         visualToggle: {
             '__null__': {
                 show: [],
@@ -64,15 +72,19 @@ const properties: ExternalCallFilterProperties = {
     },
     'holidayNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'holidayNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'holidayExtension': {
         label: _('Extension'),
+        required: true,
     },
     'holidayVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'outOfScheduleTargetType': {
         label: _('Out of schedule target type'),
@@ -82,6 +94,7 @@ const properties: ExternalCallFilterProperties = {
             'voicemail': _('Voicemail'),
         },
         null: _('Unassigned'),
+        default: '__null__',
         visualToggle: {
             '__null__': {
                 show: [],
@@ -103,15 +116,19 @@ const properties: ExternalCallFilterProperties = {
     },
     'outOfScheduleNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'outOfScheduleNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'outOfScheduleExtension': {
         label: _('Extension'),
+        required: true,
     },
     'outOfScheduleVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'scheduleIds': {
         label: _('Schedule'),

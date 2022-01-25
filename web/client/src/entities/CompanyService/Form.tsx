@@ -3,8 +3,9 @@ import useFkChoices from './useFkChoices';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
+    const currentServiceId: number | undefined = props?.row?.service?.id;
     const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices = useFkChoices();
+    const fkChoices = useFkChoices(currentServiceId);
 
     const groups: Array<FieldsetGroups> = [
         {

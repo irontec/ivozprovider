@@ -4,6 +4,7 @@ import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 export type LocutionPropertyList<T> = {
     'name'?: T,
     'originalFile'?: T,
+    'recordingExtension'?: T,
     'status'?: T,
 };
 

@@ -1,0 +1,59 @@
+import { styled } from '@mui/material';
+import withCustomComponentWrapper, {
+    PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps,
+    CustomFunctionComponentContext
+} from 'lib/services/form/Field/CustomComponentWrapper';
+import { useEffect } from 'react';
+import { useStoreActions, useStoreState } from 'store';
+import { LocutionPropertyList } from '../LocutionProperties';
+
+type RecordingExtensionValues = LocutionPropertyList<string | number>;
+type RecordingExtensionType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RecordingExtensionValues & { className: string }>>;
+
+const RecordingExtension: RecordingExtensionType = (props): JSX.Element | null => {
+
+    const { formik, _context, values } = props;
+    const isListValue = !formik && _context === CustomFunctionComponentContext.read;
+
+    const recordLocutionServiceLoader = useStoreActions((actions) => {
+        return actions.clientSession.recordLocutionService.load;
+    });
+    useEffect(
+        () => {
+            recordLocutionServiceLoader();
+        },
+        [recordLocutionServiceLoader]
+    );
+
+    const recordLocutionService = useStoreState(
+        (state) => state.clientSession.recordLocutionService.recordLocutionService
+    );
+    const serviceEnabled = useStoreState(
+        (state) => state.clientSession.recordLocutionService.serviceEnabled
+    );
+
+    const className = isListValue
+        ? ''
+        : props.className;
+
+    let code = '';
+    if (recordLocutionService !== null && serviceEnabled) {
+        code = `*${recordLocutionService.defaultCode}${values.id}`;
+    }
+
+    return (
+        <span className={className}>{code}</span>
+    );
+}
+
+export const StyledRecordingExtension = styled(
+    RecordingExtension
+)(
+    () => {
+        return {
+            'color': 'rgba(0, 0, 0, 0.5)',
+        }
+    }
+);
+
+export default withCustomComponentWrapper<RecordingExtensionValues>(StyledRecordingExtension);

@@ -154,11 +154,8 @@ const Dashboard = () => {
                     </li>
                     <li>
                         <StyledDashboardLink to={entities.RatingProfile.path}>
-                            {entities.RatingProfile.title}
+                            {entities.RatingProfile.title} (FORBIDEN)
                         </StyledDashboardLink>
-                    </li>
-                    <li>
-                        Invoices
                     </li>
                     <li className="submenu">
                         <h3>{_('Calls')}</h3>

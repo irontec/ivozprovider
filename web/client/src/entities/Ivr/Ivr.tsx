@@ -25,6 +25,7 @@ const errorFields = [
 const properties: IvrProperties = {
     'name': {
         label: _('Name'),
+        required: true,
     },
     'welcomeLocution': {
         label: _('Welcome locution'),
@@ -42,11 +43,13 @@ const properties: IvrProperties = {
         label: _('Timeout'),
         default: 6,
         helpText: _('Time in seconds the IVR will wait after playing the welcome locution or dialing a digit'),
+        required: true,
     },
     'maxDigits': {
         label: _('Max digits'),
         default: 0,
         helpText: _('Max number of digits the caller can enter. Set to 0 to disable.'),
+        required: true,
     },
     'allowExtensions': {
         label: _('Allow dialing extensions'),
@@ -71,6 +74,8 @@ const properties: IvrProperties = {
     },
     'noInputRouteType': {
         label: _('No input target type'),
+        default: '__null__',
+        null: _("Unassigned"),
         enum: {
             'number': _('Number'),
             'extension': _('Extension'),
@@ -97,18 +102,24 @@ const properties: IvrProperties = {
     },
     'noInputNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'noInputNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'noInputExtension': {
         label: _('Extension'),
+        required: true,
     },
     'noInputVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'errorRouteType': {
         label: _('Error target type'),
+        default: '__null__',
+        null: _("Unassigned"),
         enum: {
             'number': _('Number'),
             'extension': _('Extension'),
@@ -135,15 +146,19 @@ const properties: IvrProperties = {
     },
     'errorNumberCountry': {
         label: _('Country'),
+        required: true,
     },
     'errorNumberValue': {
         label: _('Number'),
+        required: true,
     },
     'errorExtension': {
         label: _('Extension'),
+        required: true,
     },
     'errorVoiceMailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'noInputTarget': {
         label: _('No input target'),

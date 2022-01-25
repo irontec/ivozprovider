@@ -1,6 +1,6 @@
 import { InputAdornment, Tooltip } from '@mui/material';
 import { isPropertyScalar } from 'lib/services/api/ParsedApiSpecInterface';
-import { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from 'lib/services/form/Field/CustomComponentWrapper';
+import { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps, CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
 import { StyledTextField } from 'lib/services/form/FormFieldFactory.styles';
 import { TerminalPropertyList } from '../TerminalProperties';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -73,8 +73,14 @@ const randomPass = (): string => {
 const Password: PasswordType = (props): JSX.Element => {
 
     const columnName = props._columnName as keyof TerminalValues;
-    const { formik, disabled, property, changeHandler } = props;
-    const values = formik.values;
+    const { _context, values, disabled, property, changeHandler, formik } = props;
+
+
+    if (!formik || _context === CustomFunctionComponentContext.read) {
+        return (
+            <>{values[columnName]}</>
+        );
+    }
 
     const inputProps: any = {}
     if (isPropertyScalar(property) && property.maxLength) {

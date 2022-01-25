@@ -10,8 +10,7 @@ type StatusIconType = PropertyCustomFunctionComponent<PropertyCustomFunctionComp
 const StatusIcon: StatusIconType = (props): JSX.Element => {
 
     const _context = props._context;
-    const values = props.formik.values;
-    const { directConnectivity } = values;
+    const { directConnectivity } = props.values;
     const writeContext = (_context === 'write');
 
     if (directConnectivity === 'yes') {

@@ -11,6 +11,7 @@ import { PickUpGroupProperties, PickUpGroupPropertiesList } from './PickUpGroupP
 const properties: PickUpGroupProperties = {
     'name': {
         label: _('Name'),
+        required: true,
     },
     'userIds': {
         label: _('User'),

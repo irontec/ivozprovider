@@ -9,9 +9,9 @@ type LastExecutionType = PropertyCustomFunctionComponent<PropertyCustomFunctionC
 
 const LastExecution: LastExecutionType = (props) => {
 
-    const values = props.formik.values;
+    const values = props.values;
     const lastExecution = ((values?.lastExecution as string | undefined) || '').replace('T', ' ');
-    const lastExecutionError = values?.lastExecutionError;
+    const lastExecutionError = values?.lastExecutionError as string | undefined;
 
     if (lastExecutionError) {
         return (

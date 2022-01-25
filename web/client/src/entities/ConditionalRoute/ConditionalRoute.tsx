@@ -6,7 +6,9 @@ import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericFore
 import entities from '../index';
 import Form from './Form';
 import { foreignKeyGetter } from './useFkChoices';
-import { ConditionalRouteProperties, ConditionalRoutePropertiesList } from './ConditionalRouteProperties';
+import {
+    ConditionalRouteProperties, ConditionalRoutePropertiesList
+} from './ConditionalRouteProperties';
 
 const routableFields = [
     'numberCountry',
@@ -27,6 +29,8 @@ const properties: ConditionalRouteProperties = {
     },
     'locution': {
         label: _('Locution'),
+        null: _('Unassgined'),
+        default: '__null__',
     },
     'routetype': {
         label: _('Route type'),
@@ -42,6 +46,7 @@ const properties: ConditionalRouteProperties = {
             'extension': _('Extension'),
         },
         null: _('Unassigned'),
+        default: '__null__',
         visualToggle: {
             '__null__': {
                 show: [],
@@ -87,33 +92,43 @@ const properties: ConditionalRouteProperties = {
     },
     'ivr': {
         label: _('IVR'),
+        required: true,
     },
     'huntGroup': {
         label: _('Hunt Group'),
+        required: true,
     },
     'voicemailUser': {
         label: _('Voicemail'),
+        required: true,
     },
     'user': {
         label: _('User'),
+        required: true,
     },
     'numberCountry': {
         label: _('Country'),
+        required: true,
     },
     'numbervalue': {
         label: _('Number'),
+        required: true,
     },
     'friendvalue': {
         label: _('Friend value'),
+        required: true,
     },
     'queue': {
         label: _('Queue'),
+        required: true,
     },
     'conferenceRoom': {
         label: _('Conference room'),
+        required: true,
     },
     'extension': {
         label: _('Extension'),
+        required: true,
     },
     'target': {
         label: _('Target'),
@@ -133,7 +148,7 @@ async function foreignKeyResolver(
 
     const promises = [];
     const {
-        User, HuntGroup, ConferenceRoom, Queue, Ivr, Extension, Country, Friend
+        User, HuntGroup, ConferenceRoom, Queue, Ivr, Extension, Country, Friend, Locution
     } = entities;
 
     promises.push(
@@ -214,6 +229,15 @@ async function foreignKeyResolver(
             'extension',
             Extension.path,
             Extension.toStr,
+        )
+    );
+
+    promises.push(
+        genericForeignKeyResolver(
+            data,
+            'locution',
+            Locution.path,
+            Locution.toStr,
         )
     );
 

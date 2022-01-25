@@ -2,6 +2,7 @@ import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/enti
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
+    const edit = props.edit || false;
     const DefaultEntityForm = defaultEntityBehavior.Form;
 
     const groups: Array<FieldsetGroups> = [
@@ -9,7 +10,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
             legend: '',
             fields: [
                 'name',
-                //'recordingExtension',
+                edit && 'recordingExtension',
             ]
         },
         {

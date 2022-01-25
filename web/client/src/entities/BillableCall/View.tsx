@@ -6,15 +6,24 @@ const View = (props: ViewProps): JSX.Element | null => {
 
     const groups: Array<FieldsetGroups | false> = [
         {
-            legend: _('Call Details'),
+            legend: _('Basic Information'),
             fields: [
                 'startTime',
                 'duration',
-                'owner',
                 'direction',
-                'party',
+                'caller',
+                'callee',
             ]
-        }
+        },
+        {
+            legend: _('Extra Information'),
+            fields: [
+                'callid',
+                'endpointType',
+                'endpointId',
+                'endpointName',
+            ]
+        },
     ];
 
     return (<defaultEntityBehavior.View {...props} groups={groups} />);

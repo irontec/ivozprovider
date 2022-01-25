@@ -32,6 +32,8 @@ const properties: PartialPropertyList = {
     },
     'forcedDdi': {
         label: _('Forced DDI'),
+        null: _("Client's default"),
+        default: '__null__',
     }
 };
 

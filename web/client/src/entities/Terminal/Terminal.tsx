@@ -13,6 +13,7 @@ const properties: TerminalProperties = {
     'name': {
         label: _('Name'),
         helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
+        required: true,
     },
     'mac': {
         label: _('MAC'),
