@@ -186,57 +186,57 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'noInputExtension',
-            Extension.path,
-            Extension.toStr
-        )
+            fkFld: 'noInputExtension',
+            entity: Extension,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'noInputVoiceMailUser',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'noInputVoiceMailUser',
+            entity: User,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'noInputNumberCountry',
-            Country.path,
-            (row: any) => `${row.countryCode}`,
-        )
+            fkFld: 'noInputNumberCountry',
+            entity: {
+                ...Country,
+                toStr: (row: any) => `${row.countryCode}`
+            },
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'errorExtension',
-            Extension.path,
-            Extension.toStr,
-        )
+            fkFld: 'errorExtension',
+            entity: Extension,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'errorVoiceMailUser',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'errorVoiceMailUser',
+            entity: User,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'errorNumberCountry',
-            Country.path,
-            (row: any) => `${row.countryCode}`,
-        )
+            fkFld: 'errorNumberCountry',
+            entity: {
+                ...Country,
+                toStr: (row: any) => `${row.countryCode}`
+            },
+        })
     );
 
     await Promise.all(promises);

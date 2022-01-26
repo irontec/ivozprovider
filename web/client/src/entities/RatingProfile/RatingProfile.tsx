@@ -28,23 +28,21 @@ async function foreignKeyResolver(data: RatingProfilePropertiesList): Promise<Ra
     const { RoutingTag } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ratingPlanGroup',
-            RatingPlanGroup.path,
-            RatingPlanGroup.toStr,
-            false
-        )
+            fkFld: 'ratingPlanGroup',
+            entity: RatingPlanGroup,
+            addLink: false,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'routingTag',
-            RoutingTag.path,
-            RoutingTag.toStr,
-            false
-        )
+            fkFld: 'routingTag',
+            entity: RoutingTag,
+            addLink: false
+        })
     );
 
     await Promise.all(promises);

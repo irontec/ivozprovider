@@ -91,13 +91,12 @@ async function foreignKeyResolver(data: TerminalPropertiesList): Promise<Termina
     const { TerminalModel } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'terminalModel',
-            TerminalModel.path,
-            TerminalModel.toStr,
-            TerminalModel.acl.update
-        )
+            fkFld: 'terminalModel',
+            entity: TerminalModel,
+            addLink: TerminalModel.acl.update
+        })
     );
 
     await Promise.all(promises);

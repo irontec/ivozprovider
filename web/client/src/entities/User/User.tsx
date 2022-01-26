@@ -103,8 +103,8 @@ const properties: UserProperties = {
     'maxCalls': {
         label: _('Call waiting'),
         default: 0,
-        // @TODO min: 0
-        // @TODO max: 100
+        minimum: 0,
+        maximum: 100,
         helpText: _('Limits received calls when already handling this number of calls. Set 0 for unlimited.'),
     },
     'voicemailEnabled': {
@@ -205,30 +205,27 @@ async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropert
     const { Ddi, Extension, Terminal } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'terminal',
-            Terminal.path,
-            Terminal.toStr
-        )
+            fkFld: 'terminal',
+            entity: Terminal,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'extension',
-            Extension.path,
-            Extension.toStr,
-        )
+            fkFld: 'extension',
+            entity: Extension,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outgoingDdi',
-            Ddi.path,
-            Ddi.toStr,
-        )
+            fkFld: 'outgoingDdi',
+            entity: Ddi,
+        })
     );
 
     await Promise.all(promises);

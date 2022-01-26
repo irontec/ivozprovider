@@ -43,13 +43,12 @@ async function foreignKeyResolver(data: EntityValues): Promise<EntityValues> {
     const { Ddi } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'forcedDdi',
-            Ddi.path,
-            Ddi.toStr,
-            Ddi.acl.update
-        )
+            fkFld: 'forcedDdi',
+            entity: Ddi,
+            addLink: Ddi.acl.update
+        })
     );
 
     await Promise.all(promises);

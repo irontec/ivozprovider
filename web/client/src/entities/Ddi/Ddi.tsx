@@ -166,94 +166,84 @@ async function foreignKeyResolver(
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'country',
-            Country.path,
-            Country.toStr,
-            false
-        )
+            fkFld: 'country',
+            entity: Country,
+            addLink: false
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'externalCallFilter',
-            ExternalCallFilter.path,
-            ExternalCallFilter.toStr
-        )
+            fkFld: 'externalCallFilter',
+            entity: ExternalCallFilter,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            User.toStr
-        )
+            fkFld: 'user',
+            entity: User,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ivr',
-            Ivr.path,
-            Ivr.toStr,
-        )
+            fkFld: 'ivr',
+            entity: Ivr,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'huntGroup',
-            HuntGroup.path,
-            HuntGroup.toStr,
-        )
+            fkFld: 'huntGroup',
+            entity: HuntGroup,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'fax',
-            Fax.path,
-            Fax.toStr,
-        )
+            fkFld: 'fax',
+            entity: Fax,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conferenceRoom',
-            ConferenceRoom.path,
-            ConferenceRoom.toStr,
-        )
+            fkFld: 'conferenceRoom',
+            entity: ConferenceRoom,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'residentialDevice',
-            ResidentialDevice.path,
-            ResidentialDevice.toStr,
-        )
+            fkFld: 'residentialDevice',
+            entity: ResidentialDevice,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'queue',
-            Queue.path,
-            Queue.toStr,
-        )
+            fkFld: 'queue',
+            entity: Queue,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conditionalRoute',
-            ConditionalRoute.path,
-            ConditionalRoute.toStr,
-        )
+            fkFld: 'conditionalRoute',
+            entity: ConditionalRoute,
+        })
     );
 
     await Promise.all(promises);

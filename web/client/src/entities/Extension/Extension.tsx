@@ -131,66 +131,62 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
     const { User, Country, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            User.toStr
-        )
+            fkFld: 'user',
+            entity: User,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'numberCountry',
-            Country.path,
-            (row: any) => `${row.countryCode}`,
-        )
+            fkFld: 'numberCountry',
+            entity: {
+                ...Country,
+                toStr: (row: any) => `${row.countryCode}`
+            },
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ivr',
-            Ivr.path,
-            Ivr.toStr,
-        )
+            fkFld: 'ivr',
+            entity: Ivr,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conferenceRoom',
-            ConferenceRoom.path,
-            ConferenceRoom.toStr,
-        )
+            fkFld: 'conferenceRoom',
+            entity: ConferenceRoom,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'huntGroup',
-            HuntGroup.path,
-            HuntGroup.toStr,
-        )
+            fkFld: 'huntGroup',
+            entity: HuntGroup,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'queue',
-            Queue.path,
-            Queue.toStr,
-        )
+            fkFld: 'queue',
+            entity: Queue,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conditionalRoute',
-            ConditionalRoute.path,
-            ConditionalRoute.toStr,
-        )
+            fkFld: 'conditionalRoute',
+            entity: ConditionalRoute,
+        })
     );
 
     await Promise.all(promises);

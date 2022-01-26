@@ -1,14 +1,24 @@
 import { EntityValues } from '../entity/EntityService';
 import store from 'store';
+import EntityInterface from 'lib/entities/EntityInterface';
 
-export default async function genericForeignKeyResolver(
+interface GenericForeignKeyResolverProps {
     data: Array<EntityValues> | EntityValues,
     fkFld: string,
-    entityEndpoint: string,
-    toStr: (row: EntityValues) => string,
-    addLink = true,
-    dataPreprocesor?: (data: Record<string, any>) => Promise<void>
-): Promise<Array<EntityValues> | EntityValues> {
+    entity: EntityInterface,
+    addLink?: boolean,
+    dataPreprocesor?: (data: Record<string, any>) => Promise<void>,
+}
+
+export default async function genericForeignKeyResolver(props: GenericForeignKeyResolverProps): Promise<Array<EntityValues> | EntityValues> {
+
+    const {
+        data, fkFld, entity, addLink = true, dataPreprocesor
+    } = props;
+
+    const {
+        path, toStr
+    } = entity;
 
     if (typeof data !== 'object') {
         return data;
@@ -58,7 +68,7 @@ export default async function genericForeignKeyResolver(
         const getAction = store.getActions().api.get;
 
         await getAction({
-            path: entityEndpoint,
+            path,
             params: {
                 id: ids,
                 _pagination: false
@@ -101,7 +111,7 @@ export default async function genericForeignKeyResolver(
 
                         data[idx][`${fkFld}Id`] = data[idx][fkFld];
                         if (addLink) {
-                            data[idx][`${fkFld}Link`] = `${entityEndpoint}/${scalarFk}/update`;
+                            data[idx][`${fkFld}Link`] = `${path}/${scalarFk}/update`;
                         }
                         data[idx][fkFld] = entities[scalarFk];
                     }

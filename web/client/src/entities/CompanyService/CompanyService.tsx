@@ -27,13 +27,12 @@ async function foreignKeyResolver(
     const { Service } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'service',
-            Service.path,
-            Service.toStr,
-            false
-        )
+            fkFld: 'service',
+            entity: Service,
+            addLink: false,
+        })
     );
 
     await Promise.all(promises);

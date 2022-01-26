@@ -1,12 +1,10 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
 import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
 import Form from './Form';
 import { foreignKeyGetter } from './useFkChoices';
-import entities from '../index';
-import { BillableCallProperties, BillableCallPropertiesList } from './BillableCallProperties';
+import { BillableCallProperties } from './BillableCallProperties';
 import View from './View';
 
 const properties: BillableCallProperties = {
@@ -64,25 +62,6 @@ const properties: BillableCallProperties = {
     },
 };
 
-async function foreignKeyResolver(data: BillableCallPropertiesList): Promise<BillableCallPropertiesList> {
-
-    const promises = [];
-    const { Ddi } = entities;
-
-    promises.push(
-        genericForeignKeyResolver(
-            data,
-            'ddi',
-            Ddi.path,
-            Ddi.toStr,
-        )
-    );
-
-    await Promise.all(promises);
-
-    return data;
-}
-
 const columns = [
     'startTime',
     'direction',
@@ -99,7 +78,6 @@ const billableCall: EntityInterface = {
     path: '/billable_calls',
     properties,
     columns,
-    foreignKeyResolver,
     foreignKeyGetter,
     Form,
     View,

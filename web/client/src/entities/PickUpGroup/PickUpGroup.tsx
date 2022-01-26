@@ -24,12 +24,11 @@ async function foreignKeyResolver(data: PickUpGroupPropertiesList): Promise<Pick
     const { User } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'userIds',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'userIds',
+            entity: User,
+        })
     );
 
     await Promise.all(promises);

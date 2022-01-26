@@ -52,12 +52,11 @@ async function foreignKeyResolver(data: FaxPropertiesList): Promise<FaxPropertie
     const { Ddi } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outgoingDdi',
-            Ddi.path,
-            Ddi.toStr,
-        )
+            fkFld: 'outgoingDdi',
+            entity: Ddi,
+        })
     );
 
     await Promise.all(promises);

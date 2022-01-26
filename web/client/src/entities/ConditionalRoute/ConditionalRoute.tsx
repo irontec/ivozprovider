@@ -152,93 +152,83 @@ async function foreignKeyResolver(
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'user',
+            entity: User,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ivr',
-            Ivr.path,
-            Ivr.toStr
-        )
+            fkFld: 'ivr',
+            entity: Ivr,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'huntGroup',
-            HuntGroup.path,
-            HuntGroup.toStr
-        )
+            fkFld: 'huntGroup',
+            entity: HuntGroup,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'voicemailUser',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'voicemailUser',
+            entity: User,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'numberCountry',
-            Country.path,
-            Country.toStr,
-        )
+            fkFld: 'numberCountry',
+            entity: Country,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'friend',
-            Friend.path,
-            Friend.toStr,
-        )
+            fkFld: 'friend',
+            entity: Friend,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'queue',
-            Queue.path,
-            Queue.toStr,
-        )
+            fkFld: 'queue',
+            entity: Queue,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conferenceRoom',
-            ConferenceRoom.path,
-            ConferenceRoom.toStr,
-        )
+            fkFld: 'conferenceRoom',
+            entity: ConferenceRoom,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'extension',
-            Extension.path,
-            Extension.toStr,
-        )
+            fkFld: 'extension',
+            entity: Extension,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'locution',
-            Locution.path,
-            Locution.toStr,
-        )
+            fkFld: 'locution',
+            entity: Locution,
+        })
     );
 
     await Promise.all(promises);

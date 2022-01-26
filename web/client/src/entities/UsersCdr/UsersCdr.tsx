@@ -102,60 +102,58 @@ export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true):
 
     promises.push(
         // User & User.extension
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            (row: any) => {
-                let response = `${row.name} ${row.lastname}`;
-                if (row.extensionId) {
-                    response += ` (${row.extension})`
-                }
+            fkFld: 'user',
+            entity: {
+                ...User,
+                toStr: (row: any) => {
+                    let response = `${row.name} ${row.lastname}`;
+                    if (row.extensionId) {
+                        response += ` (${row.extension})`
+                    }
 
-                return response;
+                    return response;
+                }
             },
-            allowLinks,
-            async (rows: any) => {
+            addLink: allowLinks,
+            dataPreprocesor: async (rows: any) => {
                 try {
-                    await genericForeignKeyResolver(
-                        Array.isArray(rows) ? rows : [rows],
-                        'extension',
-                        Extension.path,
-                        Extension.toStr,
-                        false,
-                    );
+                    await genericForeignKeyResolver({
+                        data: Array.isArray(rows) ? rows : [rows],
+                        fkFld: 'extension',
+                        entity: Extension,
+                        addLink: false,
+                    });
                 } catch { }
 
                 return rows;
             }
-        )
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'friend',
-            Friend.path,
-            Friend.toStr,
-        )
+            fkFld: 'friend',
+            entity: Friend,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'residentialDevice',
-            ResidentialDevice.path,
-            ResidentialDevice.toStr,
-        )
+            fkFld: 'residentialDevice',
+            entity: ResidentialDevice,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'retailAccount',
-            RetailAccount.path,
-            RetailAccount.toStr,
-        )
+            fkFld: 'retailAccount',
+            entity: RetailAccount,
+        })
     );
 
     await Promise.all(promises);
