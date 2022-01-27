@@ -10,7 +10,14 @@ export type ListDecoratorPropsType = {
 };
 export type ListDecoratorType = (props: ListDecoratorPropsType) => any;
 
-type foreignKeyResolverType = (data: any, allowLinks: boolean, entityService: EntityService) => Promise<any>;
+export interface foreignKeyResolverProps {
+    data: any,
+    allowLinks?: boolean,
+    entityService?: EntityService,
+    cancelToken?: CancelToken
+}
+
+export type foreignKeyResolverType = (props: foreignKeyResolverProps) => Promise<any>;
 export type ForeignKeyGetterType = (cancelToken?: CancelToken) => Promise<any>;
 type AclType = {
     create: boolean,

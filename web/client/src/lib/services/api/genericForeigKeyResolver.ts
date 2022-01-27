@@ -1,6 +1,7 @@
 import { EntityValues } from '../entity/EntityService';
 import store from 'store';
 import EntityInterface from 'lib/entities/EntityInterface';
+import { CancelToken } from 'axios';
 
 interface GenericForeignKeyResolverProps {
     data: Array<EntityValues> | EntityValues,
@@ -8,12 +9,13 @@ interface GenericForeignKeyResolverProps {
     entity: EntityInterface,
     addLink?: boolean,
     dataPreprocesor?: (data: Record<string, any>) => Promise<void>,
+    cancelToken?: CancelToken,
 }
 
 export default async function genericForeignKeyResolver(props: GenericForeignKeyResolverProps): Promise<Array<EntityValues> | EntityValues> {
 
     const {
-        data, fkFld, entity, addLink = true, dataPreprocesor
+        data, fkFld, entity, addLink = true, dataPreprocesor, cancelToken
     } = props;
 
     const {
@@ -73,6 +75,7 @@ export default async function genericForeignKeyResolver(props: GenericForeignKey
                 id: ids,
                 _pagination: false
             },
+            cancelToken: cancelToken,
             successCallback: async (response: any) => {
 
                 try {
@@ -124,7 +127,6 @@ export default async function genericForeignKeyResolver(props: GenericForeignKey
 }
 
 export const remapFk = (row: EntityValues, from: string, to: string): void => {
-
     row[to] = row[from];
     row[`${to}Id`] = row[`${from}Id`];
     row[`${to}Link`] = row[`${from}Link`];

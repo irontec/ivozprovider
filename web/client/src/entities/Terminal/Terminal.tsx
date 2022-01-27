@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
@@ -85,7 +85,9 @@ const properties: TerminalProperties = {
     },
 };
 
-async function foreignKeyResolver(data: TerminalPropertiesList): Promise<TerminalPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<TerminalPropertiesList> {
 
     const promises = [];
     const { TerminalModel } = entities;
@@ -95,7 +97,8 @@ async function foreignKeyResolver(data: TerminalPropertiesList): Promise<Termina
             data,
             fkFld: 'terminalModel',
             entity: TerminalModel,
-            addLink: TerminalModel.acl.update
+            addLink: TerminalModel.acl.update,
+            cancelToken,
         })
     );
 

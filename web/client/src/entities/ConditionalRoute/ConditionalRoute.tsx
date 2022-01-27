@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
@@ -142,8 +142,8 @@ const columns = [
     'target',
 ];
 
-async function foreignKeyResolver(
-    data: ConditionalRoutePropertiesList
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
 ): Promise<ConditionalRoutePropertiesList> {
 
     const promises = [];
@@ -156,6 +156,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'user',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -164,6 +165,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'ivr',
             entity: Ivr,
+            cancelToken,
         })
     );
 
@@ -172,6 +174,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'huntGroup',
             entity: HuntGroup,
+            cancelToken,
         })
     );
 
@@ -180,6 +183,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'voicemailUser',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -188,6 +192,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'numberCountry',
             entity: Country,
+            cancelToken,
         })
     );
 
@@ -196,6 +201,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'friend',
             entity: Friend,
+            cancelToken,
         })
     );
 
@@ -204,6 +210,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'queue',
             entity: Queue,
+            cancelToken,
         })
     );
 
@@ -212,6 +219,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'conferenceRoom',
             entity: ConferenceRoom,
+            cancelToken,
         })
     );
 
@@ -220,6 +228,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'extension',
             entity: Extension,
+            cancelToken,
         })
     );
 
@@ -228,6 +237,7 @@ async function foreignKeyResolver(
             data,
             fkFld: 'locution',
             entity: Locution,
+            cancelToken,
         })
     );
 

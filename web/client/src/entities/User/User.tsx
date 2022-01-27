@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
@@ -200,7 +200,9 @@ const columns = [
     // @TODO status
 ];
 
-async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<UserPropertiesList> {
     const promises = [];
     const { Ddi, Extension, Terminal } = entities;
 
@@ -209,6 +211,7 @@ async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropert
             data,
             fkFld: 'terminal',
             entity: Terminal,
+            cancelToken,
         })
     );
 
@@ -217,6 +220,7 @@ async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropert
             data,
             fkFld: 'extension',
             entity: Extension,
+            cancelToken,
         })
     );
 
@@ -225,6 +229,7 @@ async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropert
             data,
             fkFld: 'outgoingDdi',
             entity: Ddi,
+            cancelToken,
         })
     );
 

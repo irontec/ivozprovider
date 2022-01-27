@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
@@ -178,7 +178,9 @@ const columns = [
     'errorTarget',
 ];
 
-async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<IvrPropertiesList> {
 
     const promises = [];
     const {
@@ -190,6 +192,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
             data,
             fkFld: 'noInputExtension',
             entity: Extension,
+            cancelToken,
         })
     );
 
@@ -198,6 +201,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
             data,
             fkFld: 'noInputVoiceMailUser',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -209,6 +213,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
                 ...Country,
                 toStr: (row: any) => `${row.countryCode}`
             },
+            cancelToken,
         })
     );
 
@@ -217,6 +222,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
             data,
             fkFld: 'errorExtension',
             entity: Extension,
+            cancelToken,
         })
     );
 
@@ -225,6 +231,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
             data,
             fkFld: 'errorVoiceMailUser',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -236,6 +243,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
                 ...Country,
                 toStr: (row: any) => `${row.countryCode}`
             },
+            cancelToken,
         })
     );
 

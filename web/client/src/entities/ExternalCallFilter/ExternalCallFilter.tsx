@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
@@ -160,7 +160,9 @@ const columns = [
     'outOfScheduleTarget',
 ];
 
-async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promise<ExternalCallFilterPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<ExternalCallFilterPropertiesList> {
 
     const promises = [];
     const {
@@ -172,6 +174,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'holidayLocution',
             entity: Locution,
+            cancelToken,
         })
     );
 
@@ -180,6 +183,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'holidayExtension',
             entity: Extension,
+            cancelToken,
         })
     );
 
@@ -188,6 +192,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'holidayVoiceMailUser',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -196,6 +201,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'holidayNumberCountry',
             entity: Country,
+            cancelToken,
         })
     );
 
@@ -206,6 +212,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'outOfScheduleLocution',
             entity: Locution,
+            cancelToken,
         })
     );
 
@@ -214,6 +221,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'outOfScheduleExtension',
             entity: Extension,
+            cancelToken,
         })
     );
 
@@ -222,6 +230,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'outOfScheduleVoiceMailUser',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -230,6 +239,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
             data,
             fkFld: 'outOfScheduleNumberCountry',
             entity: Country,
+            cancelToken,
         })
     );
 

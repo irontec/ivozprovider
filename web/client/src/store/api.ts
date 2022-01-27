@@ -1,4 +1,4 @@
-import { CancelToken } from 'axios';
+import axios, { CancelToken, CancelTokenSource } from 'axios';
 import { action, Action, Actions, Computed, computed, Thunk, thunk } from 'easy-peasy';
 import ApiClient, { ApiError } from 'lib/services/api/ApiClient';
 import { KeyValList } from 'lib/services/api/ParsedApiSpecInterface';
@@ -23,10 +23,13 @@ const handleApiErrors = (
 const api: ApiStore = {
   errorMsg: null,
   ongoingRequests: 0,
+  reqCancelTokenSourceFactory: () => {
+    return axios.CancelToken.source();
+  },
+  loading: computed<ApiState, boolean>((state) => { return state.ongoingRequests > 0 }),
   setErrorMsg: action<ApiState, string>((state, errorMsg) => {
     state.errorMsg = errorMsg;
   }),
-  loading: computed<ApiState, boolean>((state) => { return state.ongoingRequests > 0 }),
   sumRequest: action((state) => {
     state.ongoingRequests += 1;
   }),
@@ -52,21 +55,21 @@ const api: ApiStore = {
         successCallback,
         cancelToken
       );
-      actions.restRequest();
 
       return resp;
 
     } catch (error: any) {
-
-      actions.restRequest();
       actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
+
+    } finally {
+      actions.restRequest();
     }
   }),
-
   download: thunk(async (actions: any, payload: apiGetRequestParams, { getStoreActions }) => {
 
     const { path, params, successCallback, cancelToken } = payload;
+    actions.sumRequest();
     actions.setErrorMsg(null);
 
     try {
@@ -79,6 +82,9 @@ const api: ApiStore = {
     } catch (error: any) {
       actions.setErrorMsg(error?.statusText);
       handleApiErrors(error as ApiError, getStoreActions);
+
+    } finally {
+      actions.restRequest();
     }
   }),
 
@@ -88,6 +94,7 @@ const api: ApiStore = {
   post: thunk(async (actions: any, payload: apiPostRequestParams, { getStoreActions }) => {
 
     const { path, values, contentType, cancelToken } = payload;
+    actions.sumRequest();
     actions.setErrorMsg(null);
 
     try {
@@ -101,6 +108,9 @@ const api: ApiStore = {
       const msg = error?.data?.detail || error?.statusText;
       actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
+
+    } finally {
+      actions.restRequest();
     }
   }),
   ////////////////////////////////////////
@@ -109,6 +119,7 @@ const api: ApiStore = {
   put: thunk(async (actions: any, payload: apiPutRequestParams, { getStoreActions }) => {
 
     const { path, values, cancelToken } = payload;
+    actions.sumRequest();
     actions.setErrorMsg(null);
 
     try {
@@ -118,9 +129,14 @@ const api: ApiStore = {
         cancelToken
       );
     } catch (error: any) {
+      debugger;
       const msg = error?.data?.detail || error?.statusText;
       actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
+
+    } finally {
+      debugger;
+      actions.restRequest();
     }
   }),
   ////////////////////////////////////////
@@ -129,6 +145,7 @@ const api: ApiStore = {
   delete: thunk(async (actions: any, payload: apiDeleteRequestParams, { getStoreActions }) => {
 
     const { path, cancelToken } = payload;
+    actions.sumRequest();
     actions.setErrorMsg(null);
 
     try {
@@ -140,6 +157,9 @@ const api: ApiStore = {
       const msg = error?.data?.detail || error?.statusText;
       actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
+
+    } finally {
+      actions.restRequest();
     }
   }),
 };
@@ -176,6 +196,7 @@ interface ApiState {
   errorMsg: string | null,
   ongoingRequests: number,
   loading: Computed<ApiState, boolean>,
+  reqCancelTokenSourceFactory: () => CancelTokenSource
 }
 
 interface ApiActions {

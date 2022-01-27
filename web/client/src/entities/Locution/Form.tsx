@@ -22,7 +22,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         {
             legend: '',
             fields: [
-                'status',
+                edit && 'status',
             ]
         },
     ];

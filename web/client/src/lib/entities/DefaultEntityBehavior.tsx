@@ -6,7 +6,7 @@ import store from "store";
 import { Alert, AlertTitle, Grid } from '@mui/material';
 import { isPropertyScalar, PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityInterface, {
-    EntityValidator, EntityValidatorValues, EntityValidatorResponse, RowIconsType, ViewProps, ListDecoratorPropsType, OrderDirection
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, RowIconsType, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType
 } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
@@ -125,7 +125,7 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const foreignKeyResolver = async (data: EntityValues, allowLinks: boolean, entityService: EntityService): Promise<EntityValues> => data;
+export const foreignKeyResolver: foreignKeyResolverType = async (props: foreignKeyResolverProps): Promise<EntityValues> => props.data;
 
 export const foreignKeyGetter = async (): Promise<any> => {
     return {};

@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType, OrderDirection } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -95,7 +95,9 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
     return row;
 }
 
-export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true): Promise<UsersCdrRows> {
+export const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, allowLinks = true, cancelToken }
+): Promise<UsersCdrRows> {
 
     const promises = [];
     const { User, Extension, Friend, ResidentialDevice, RetailAccount } = entities;
@@ -117,6 +119,7 @@ export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true):
                 }
             },
             addLink: allowLinks,
+            cancelToken,
             dataPreprocesor: async (rows: any) => {
                 try {
                     await genericForeignKeyResolver({
@@ -124,6 +127,7 @@ export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true):
                         fkFld: 'extension',
                         entity: Extension,
                         addLink: false,
+                        cancelToken,
                     });
                 } catch { }
 
@@ -137,6 +141,7 @@ export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true):
             data,
             fkFld: 'friend',
             entity: Friend,
+            cancelToken,
         })
     );
 
@@ -145,6 +150,7 @@ export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true):
             data,
             fkFld: 'residentialDevice',
             entity: ResidentialDevice,
+            cancelToken,
         })
     );
 
@@ -153,6 +159,7 @@ export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true):
             data,
             fkFld: 'retailAccount',
             entity: RetailAccount,
+            cancelToken,
         })
     );
 

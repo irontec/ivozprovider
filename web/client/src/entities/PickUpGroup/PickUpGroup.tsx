@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -18,7 +18,9 @@ const properties: PickUpGroupProperties = {
     }
 };
 
-async function foreignKeyResolver(data: PickUpGroupPropertiesList): Promise<PickUpGroupPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<PickUpGroupPropertiesList> {
 
     const promises = [];
     const { User } = entities;
@@ -28,6 +30,7 @@ async function foreignKeyResolver(data: PickUpGroupPropertiesList): Promise<Pick
             data,
             fkFld: 'userIds',
             entity: User,
+            cancelToken,
         })
     );
 

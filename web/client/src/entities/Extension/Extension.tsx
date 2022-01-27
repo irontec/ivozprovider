@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -125,7 +125,10 @@ const columns = [
     'target'
 ];
 
-async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<ExtensionPropertiesList> {
+
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<ExtensionPropertiesList> {
 
     const promises = [];
     const { User, Country, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute } = entities;
@@ -135,6 +138,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
             data,
             fkFld: 'user',
             entity: User,
+            cancelToken,
         })
     );
 
@@ -146,6 +150,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
                 ...Country,
                 toStr: (row: any) => `${row.countryCode}`
             },
+            cancelToken,
         })
     );
 
@@ -154,6 +159,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
             data,
             fkFld: 'ivr',
             entity: Ivr,
+            cancelToken,
         })
     );
 
@@ -162,6 +168,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
             data,
             fkFld: 'conferenceRoom',
             entity: ConferenceRoom,
+            cancelToken,
         })
     );
 
@@ -170,6 +177,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
             data,
             fkFld: 'huntGroup',
             entity: HuntGroup,
+            cancelToken,
         })
     );
 
@@ -178,6 +186,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
             data,
             fkFld: 'queue',
             entity: Queue,
+            cancelToken,
         })
     );
 
@@ -186,6 +195,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
             data,
             fkFld: 'conditionalRoute',
             entity: ConditionalRoute,
+            cancelToken,
         })
     );
 

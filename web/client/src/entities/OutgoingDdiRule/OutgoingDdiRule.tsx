@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -37,7 +37,9 @@ const properties: PartialPropertyList = {
     }
 };
 
-async function foreignKeyResolver(data: EntityValues): Promise<EntityValues> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<EntityValues> {
 
     const promises = [];
     const { Ddi } = entities;
@@ -47,7 +49,8 @@ async function foreignKeyResolver(data: EntityValues): Promise<EntityValues> {
             data,
             fkFld: 'forcedDdi',
             entity: Ddi,
-            addLink: Ddi.acl.update
+            addLink: Ddi.acl.update,
+            cancelToken,
         })
     );
 

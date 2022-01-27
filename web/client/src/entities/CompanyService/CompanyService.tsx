@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -20,8 +20,8 @@ const properties: CompanyServiceProperties = {
     },
 };
 
-async function foreignKeyResolver(
-    data: CompanyServicePropertiesList
+const foreignKeyResolver: foreignKeyResolverType = async function (
+    { data, cancelToken }
 ): Promise<CompanyServicePropertiesList> {
     const promises = [];
     const { Service } = entities;
@@ -32,6 +32,7 @@ async function foreignKeyResolver(
             fkFld: 'service',
             entity: Service,
             addLink: false,
+            cancelToken,
         })
     );
 

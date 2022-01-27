@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url */
 
 import React, { useState } from 'react';
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import {
   Fade,
   LinearProgress,
@@ -35,6 +35,7 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
 
   const [showDelete, setShowDelete] = useState<boolean>(false);
   const history = useHistory();
+  const location = useLocation();
 
   const apiDelete = useStoreActions((actions: any) => {
     return actions.api.delete
@@ -53,10 +54,16 @@ export default function ContentTableRow(props: ContentTableRowProps): JSX.Elemen
 
     event.preventDefault();
     try {
-      await apiDelete({
+      const resp = await apiDelete({
         path: path.replace('{id}', row.id)
       });
-      history.go(0);
+
+      if (resp !== undefined) {
+        history.replace(`${location.pathname}/__reloading`);
+        setTimeout(() => {
+          history.replace(location.pathname);
+        });
+      }
     } catch (error: unknown) {
       setShowDelete(false);
     }
