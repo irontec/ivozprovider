@@ -47,8 +47,7 @@ export default function Login(props: LoginProps): JSX.Element {
 
     } catch (error: any) {
       console.error(error);
-      setError(error.toString());
-    } finally {
+      setError(error?.data?.message);
     }
   };
 
