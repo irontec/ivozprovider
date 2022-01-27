@@ -4,7 +4,11 @@ import _ from 'lib/services/translations/translate';
 import { StyledDashboardLink } from './Dashboard.styles';
 import entities from './entities';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
-
+import DirectionsIcon from '@mui/icons-material/Directions';
+import BuildIcon from '@mui/icons-material/Build';
+import SettingsIcon from '@mui/icons-material/Settings';
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import ViewListIcon from '@mui/icons-material/ViewList';
 
 interface DashboardProps {
     className?: string,
@@ -74,7 +78,9 @@ const Dashboard = ( props: DashboardProps ) => {
                         </StyledDashboardLink>
                     </li>
                     <li className="submenu">
-                        <h3>{_('Routing endpoints')}</h3>
+                        <h3>
+                            <DirectionsIcon /> {_('Routing endpoints')}
+                        </h3>
                         <div>
                             <ul>
                                 <li>
@@ -117,7 +123,10 @@ const Dashboard = ( props: DashboardProps ) => {
                         </div>
                     </li>
                     <li className="submenu">
-                        <h3>{_('Routing tools')}</h3>
+                        <h3>
+                            <BuildIcon />
+                            {_('Routing tools')}
+                        </h3>
                         <div>
                             <ul>
                                 <li>
@@ -158,7 +167,10 @@ const Dashboard = ( props: DashboardProps ) => {
             <Grid item md={6} xs={12}>
                 <ul>
                     <li className="submenu">
-                        <h3>{_('User configuration')}</h3>
+                        <h3>
+                            <SettingsIcon />
+                            {_('User configuration')}
+                        </h3>
                         <div>
                             <ul>
                                 <li>
@@ -183,7 +195,10 @@ const Dashboard = ( props: DashboardProps ) => {
                         </div>
                     </li>
                     <li className="submenu">
-                        <h3>{_('Multimedia')}</h3>
+                        <h3>
+                            <QueueMusicIcon />
+                            {_('Multimedia')}
+                        </h3>
                         <div>
                             <ul>
                                 <li>
@@ -220,7 +235,10 @@ const Dashboard = ( props: DashboardProps ) => {
                         </StyledDashboardLink>
                     </li>
                     <li className="submenu">
-                        <h3>{_('Calls')}</h3>
+                        <h3>
+                            <ViewListIcon />
+                            {_('Calls')}
+                        </h3>
                         <div>
                             <ul>
                                 <li>
