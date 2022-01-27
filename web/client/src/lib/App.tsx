@@ -48,7 +48,7 @@ export default function App(props: AppProps): JSX.Element {
           <Header loggedIn={!!token} />
           <StyledAppContent>
             <StyledAppBarSpacer />
-            <StyledContainer maxWidth={'xl'}>
+            <StyledContainer>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <StyledAppPaper>

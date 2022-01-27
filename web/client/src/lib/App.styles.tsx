@@ -31,12 +31,11 @@ export const StyledAppPaper = styled(Paper)(({ theme }: { theme: Theme }) => {
 
 interface ContainerWrapperProps {
   children: JSX.Element | JSX.Element[],
-  className: string,
-  maxWidth: Breakpoint | false,
+  className: string
 }
 const ContainerWrapper = (props: ContainerWrapperProps): JSX.Element => {
   return (
-    <Container maxWidth={props.maxWidth} className={props.className}>{props.children}</Container >
+    <Container className={props.className}>{props.children}</Container >
   );
 }
 
@@ -44,6 +43,7 @@ export const StyledContainer = styled(ContainerWrapper)(({ theme }: { theme: The
   return {
     padding: theme.spacing(2),
     marginLeft: 0,
+    maxWidth: '1920px',
   }
 });
 
