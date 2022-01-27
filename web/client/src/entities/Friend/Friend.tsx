@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -260,7 +260,7 @@ const columns = [
 
 const friend: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <FavoriteIcon />,
     iden: 'Friend',
     title: _('Friend', { count: 2 }),
     path: '/friends',

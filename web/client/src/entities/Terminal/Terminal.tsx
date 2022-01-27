@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import PhoneIcon from '@mui/icons-material/Phone';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -109,7 +109,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const terminal: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <PhoneIcon />,
     iden: 'Terminal',
     title: _('Terminal', { count: 2 }),
     path: '/terminals',

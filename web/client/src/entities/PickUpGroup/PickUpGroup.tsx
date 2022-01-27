@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -41,7 +41,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const pickUpGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <PhoneCallbackIcon />,
     iden: 'PickUpGroup',
     title: _('Pick up group', { count: 2 }),
     path: '/pick_up_groups',

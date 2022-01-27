@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import DialpadIcon from '@mui/icons-material/Dialpad';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -319,7 +319,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ddi: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <DialpadIcon />,
     iden: 'Ddi',
     title: _('DDI', { count: 2 }),
     path: '/ddis',

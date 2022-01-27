@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import FaxIcon from '@mui/icons-material/Fax';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -73,7 +73,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const fax: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <FaxIcon />,
     iden: 'Fax',
     title: _('Fax', { count: 2 }),
     path: '/faxes',

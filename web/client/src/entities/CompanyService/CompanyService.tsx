@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -48,7 +48,7 @@ const columns = [
 
 const companyService: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <MiscellaneousServicesIcon />,
     iden: 'CompanyService',
     title: _('Service', { count: 2 }),
     path: '/company_services',

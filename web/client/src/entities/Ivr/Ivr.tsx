@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -309,7 +309,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ivr: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <AccountTreeIcon />,
     iden: 'Ivr',
     title: _('IVR', { count: 2 }),
     path: '/ivrs',

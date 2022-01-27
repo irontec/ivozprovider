@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import PersonIcon from '@mui/icons-material/Person';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -240,7 +240,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const user: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <PersonIcon />,
     iden: 'User',
     title: _('User', { count: 2 }),
     path: '/users',

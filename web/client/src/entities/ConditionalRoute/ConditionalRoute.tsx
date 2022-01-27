@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -302,7 +302,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ConditionalRoute: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <SwitchCameraIcon />,
     iden: 'ConditionalRoute',
     title: _('Conditional Route', { count: 2 }),
     path: '/conditional_routes',

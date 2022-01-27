@@ -3,31 +3,74 @@ import { Grid } from "@mui/material";
 import _ from 'lib/services/translations/translate';
 import { StyledDashboardLink } from './Dashboard.styles';
 import entities from './entities';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
 
-const Dashboard = () => {
+
+interface DashboardProps {
+    className?: string,
+}
+
+const Dashboard = ( props: DashboardProps ) => {
+
+    const { className } = props;
+
+    const {
+        User,
+        Terminal,
+        Extension,
+        Ddi,
+        Ivr,
+        HuntGroup,
+        Queue,
+        ConditionalRoute,
+        Friend,
+        ConferenceRoom,
+        ExternalCallFilter,
+        Calendar,
+        Schedule,
+        MatchList,
+        RouteLock,
+        OutgoingDdiRule,
+        PickUpGroup,
+        CallAcl,
+        Locution,
+        MusicOnHold,
+        Fax,
+        CompanyService,
+        RatingProfile,
+        UsersCdr,
+        BillableCall,
+        CallCsvScheduler,
+        Recording,
+    } = entities;
+
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={6}>
+        <Grid container spacing={3} className={className}>
+            <Grid item md={6} xs={12}>
                 <ul>
                     <li>
-                        <StyledDashboardLink to={entities.User.path}>
-                            {entities.User.title}
+                        <StyledDashboardLink to={User.path}>
+                            {User.icon}
+                            {User.title}
                         </StyledDashboardLink>
                     </li>
                     <li>
-                        <StyledDashboardLink to={entities.Terminal.path}>
-                            {entities.Terminal.title}
+                        <StyledDashboardLink to={Terminal.path}>
+                            {Terminal.icon}
+                            {Terminal.title}
                         </StyledDashboardLink>
                     </li>
                     <li>
-                        <StyledDashboardLink to={entities.Extension.path}>
-                            {entities.Extension.title}
+                        <StyledDashboardLink to={Extension.path}>
+                            {Extension.icon}
+                            {Extension.title}
                         </StyledDashboardLink>
                     </li>
                     <li>
-                        <StyledDashboardLink to={entities.Ddi.path}>
-                            {entities.Ddi.title}
+                        <StyledDashboardLink to={Ddi.path}>
+                            {Ddi.icon}
+                            {Ddi.title}
                         </StyledDashboardLink>
                     </li>
                     <li className="submenu">
@@ -35,33 +78,39 @@ const Dashboard = () => {
                         <div>
                             <ul>
                                 <li>
-                                    <StyledDashboardLink to={entities.Ivr.path}>
-                                        {entities.Ivr.title}
+                                    <StyledDashboardLink to={Ivr.path}>
+                                        {Ivr.icon}
+                                        {Ivr.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.HuntGroup.path}>
-                                        {entities.HuntGroup.title}
+                                    <StyledDashboardLink to={HuntGroup.path}>
+                                        {HuntGroup.icon}
+                                        {HuntGroup.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.Queue.path}>
-                                        {entities.Queue.title}
+                                    <StyledDashboardLink to={Queue.path}>
+                                        {Queue.icon}
+                                        {Queue.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.ConditionalRoute.path}>
-                                        {entities.ConditionalRoute.title}
+                                    <StyledDashboardLink to={ConditionalRoute.path}>
+                                        {ConditionalRoute.icon}
+                                        {ConditionalRoute.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.Friend.path}>
-                                        {entities.Friend.title}
+                                    <StyledDashboardLink to={Friend.path}>
+                                        {Friend.icon}
+                                        {Friend.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.ConferenceRoom.path}>
-                                        {entities.ConferenceRoom.title}
+                                    <StyledDashboardLink to={ConferenceRoom.path}>
+                                        {ConferenceRoom.icon}
+                                        {ConferenceRoom.title}
                                     </StyledDashboardLink>
                                 </li>
                             </ul>
@@ -72,28 +121,33 @@ const Dashboard = () => {
                         <div>
                             <ul>
                                 <li>
-                                    <StyledDashboardLink to={entities.ExternalCallFilter.path}>
-                                        {entities.ExternalCallFilter.title}
+                                    <StyledDashboardLink to={ExternalCallFilter.path}>
+                                        {ExternalCallFilter.icon}
+                                        {ExternalCallFilter.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.Calendar.path}>
-                                        {entities.Calendar.title}
+                                    <StyledDashboardLink to={Calendar.path}>
+                                        {Calendar.icon}
+                                        {Calendar.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.Schedule.path}>
-                                        {entities.Schedule.title}
+                                    <StyledDashboardLink to={Schedule.path}>
+                                        {Schedule.icon}
+                                        {Schedule.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.MatchList.path}>
-                                        {entities.MatchList.title}
+                                    <StyledDashboardLink to={MatchList.path}>
+                                        {MatchList.icon}
+                                        {MatchList.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.RouteLock.path}>
-                                        {entities.RouteLock.title}
+                                    <StyledDashboardLink to={RouteLock.path}>
+                                        {RouteLock.icon}
+                                        {RouteLock.title}
                                     </StyledDashboardLink>
                                 </li>
                             </ul>
@@ -101,25 +155,28 @@ const Dashboard = () => {
                     </li>
                 </ul>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
                 <ul>
                     <li className="submenu">
                         <h3>{_('User configuration')}</h3>
                         <div>
                             <ul>
                                 <li>
-                                    <StyledDashboardLink to={entities.OutgoingDdiRule.path}>
-                                        {entities.OutgoingDdiRule.title}
+                                    <StyledDashboardLink to={OutgoingDdiRule.path}>
+                                        {OutgoingDdiRule.icon}
+                                        {OutgoingDdiRule.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.PickUpGroup.path}>
-                                        {entities.PickUpGroup.title}
+                                    <StyledDashboardLink to={PickUpGroup.path}>
+                                        {PickUpGroup.icon}
+                                        {PickUpGroup.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.CallAcl.path}>
-                                        {entities.CallAcl.title}
+                                    <StyledDashboardLink to={CallAcl.path}>
+                                        {CallAcl.icon}
+                                        {CallAcl.title}
                                     </StyledDashboardLink>
                                 </li>
                             </ul>
@@ -130,31 +187,36 @@ const Dashboard = () => {
                         <div>
                             <ul>
                                 <li>
-                                    <StyledDashboardLink to={entities.Locution.path}>
-                                        {entities.Locution.title}
+                                    <StyledDashboardLink to={Locution.path}>
+                                        {Locution.icon}
+                                        {Locution.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.MusicOnHold.path}>
-                                        {entities.MusicOnHold.title}
+                                    <StyledDashboardLink to={MusicOnHold.path}>
+                                        {MusicOnHold.icon}
+                                        {MusicOnHold.title}
                                     </StyledDashboardLink>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <StyledDashboardLink to={entities.Fax.path}>
-                            {entities.Fax.title}
+                        <StyledDashboardLink to={Fax.path}>
+                            {Fax.icon}
+                            {Fax.title}
                         </StyledDashboardLink>
                     </li>
                     <li>
-                        <StyledDashboardLink to={entities.CompanyService.path}>
-                            {entities.CompanyService.title}
+                        <StyledDashboardLink to={CompanyService.path}>
+                            {CompanyService.icon}
+                            {CompanyService.title}
                         </StyledDashboardLink>
                     </li>
                     <li>
-                        <StyledDashboardLink to={entities.RatingProfile.path}>
-                            {entities.RatingProfile.title} (FORBIDEN)
+                        <StyledDashboardLink to={RatingProfile.path}>
+                            {RatingProfile.icon}
+                            {RatingProfile.title} (FORBIDEN)
                         </StyledDashboardLink>
                     </li>
                     <li className="submenu">
@@ -162,26 +224,30 @@ const Dashboard = () => {
                         <div>
                             <ul>
                                 <li>
-                                    Active calls
+                                    <ReadMoreIcon /> Active calls
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.UsersCdr.path}>
-                                        {entities.UsersCdr.title}
+                                    <StyledDashboardLink to={UsersCdr.path}>
+                                        {UsersCdr.icon}
+                                        {UsersCdr.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.BillableCall.path}>
-                                        {entities.BillableCall.title}
+                                    <StyledDashboardLink to={BillableCall.path}>
+                                        {BillableCall.icon}
+                                        {BillableCall.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.CallCsvScheduler.path}>
-                                        {entities.CallCsvScheduler.title}
+                                    <StyledDashboardLink to={CallCsvScheduler.path}>
+                                        {CallCsvScheduler.icon}
+                                        {CallCsvScheduler.title}
                                     </StyledDashboardLink>
                                 </li>
                                 <li>
-                                    <StyledDashboardLink to={entities.Recording.path}>
-                                        {entities.Recording.title}
+                                    <StyledDashboardLink to={Recording.path}>
+                                        {Recording.icon}
+                                        {Recording.title}
                                     </StyledDashboardLink>
                                 </li>
                             </ul>

@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
 import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
@@ -72,7 +72,7 @@ const columns = [
 
 const billableCall: EntityInterface = {
     ...DefaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <ChatBubbleIcon />,
     iden: 'BillableCall',
     title: _('External call', { count: 2 }),
     path: '/billable_calls',

@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import QuickreplyIcon from '@mui/icons-material/Quickreply';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -67,7 +67,7 @@ const columns = [
 
 const outgoingDdiRule: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <QuickreplyIcon />,
     iden: 'OutgoingDdiRule',
     title: _('Outgoing DDI Rule', { count: 2 }),
     path: '/outgoing_ddi_rules',

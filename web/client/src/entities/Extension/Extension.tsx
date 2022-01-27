@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import ShortcutIcon from '@mui/icons-material/Shortcut';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
@@ -258,7 +258,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const extension: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <ShortcutIcon />,
     iden: 'Extension',
     title: _('Extension', { count: 2 }),
     path: '/extensions',

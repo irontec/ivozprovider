@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -16,7 +16,7 @@ const properties: MusicOnHoldProperties = {
 
 const musicOnHold: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <AudiotrackIcon />,
     iden: 'MusicOnHold',
     title: _('Music on hold', { count: 2 }),
     path: '/music_on_holds',

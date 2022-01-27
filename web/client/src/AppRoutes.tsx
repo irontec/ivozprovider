@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 
-import Dashboard from './Dashboard';
+import Dashboard from './Dashboard.styles';
 import { Login } from 'lib/components';
 import EntityService from "lib/services/entity/EntityService";
 import { RouteSpec, parseRoutes } from 'lib/entities/Routes';

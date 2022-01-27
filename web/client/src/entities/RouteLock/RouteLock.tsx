@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import LockIcon from '@mui/icons-material/Lock';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -43,7 +43,7 @@ const columns = [
 
 const routeLock: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <LockIcon />,
     iden: 'RouteLock',
     title: _('Route Lock', { count: 2 }),
     path: '/route_locks',

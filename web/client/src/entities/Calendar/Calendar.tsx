@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -12,7 +12,7 @@ const properties: CalendarProperties = {
 
 const calendar: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <CalendarTodayIcon />,
     iden: 'Calendar',
     title: _('Calendar', { count: 2 }),
     path: '/calendars',

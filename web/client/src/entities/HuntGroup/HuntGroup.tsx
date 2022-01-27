@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import GroupsIcon from '@mui/icons-material/Groups';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -122,7 +122,7 @@ const properties: HuntGroupProperties = {
 
 const huntGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <GroupsIcon />,
     iden: 'HuntGroup',
     title: _('Hunt Group', { count: 2 }),
     path: '/hunt_groups',

@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import EntityInterface, { foreignKeyResolverType, OrderDirection } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -187,7 +187,7 @@ const columns = [
 
 const usersCdr: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <ChatBubbleOutlineIcon />,
     iden: 'UsersCdr',
     title: _('Call registry', { count: 2 }),
     path: '/users_cdrs',

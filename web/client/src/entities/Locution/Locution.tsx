@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import CampaignIcon from '@mui/icons-material/Campaign';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -34,7 +34,7 @@ const properties: LocutionProperties = {
 
 const locution: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <CampaignIcon />,
     iden: 'Locution',
     title: _('Locution', { count: 2 }),
     path: '/locutions',

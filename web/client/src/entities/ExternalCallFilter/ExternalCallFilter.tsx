@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -311,7 +311,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const externalCallFilter: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <FilterAltIcon />,
     iden: 'ExternalCallFilter',
     title: _('External call filter', { count: 2 }),
     path: '/external_call_filters',
