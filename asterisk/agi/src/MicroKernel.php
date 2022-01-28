@@ -98,7 +98,9 @@ class MicroKernel extends Kernel
             $routeHandler = $this->container->get($uri);
             $routeHandler->process();
         } catch (\Exception $e) {
-            $this->fastagi->error($e->getMessage());
+            if ($this->fastagi != null) {
+                $this->fastagi->error($e->getMessage());
+            }
         }
 
         return new Response('');
