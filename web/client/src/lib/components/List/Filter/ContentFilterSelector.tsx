@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Grid, Button } from '@mui/material';
-import { FkProperty, KeyValList, isPropertyFk, PropertySpec } from 'lib/services/api/ParsedApiSpecInterface';
+import { FkProperty, KeyValList, isPropertyFk, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import FormFieldFactory, { FormFieldFactoryChoices } from 'lib/services/form/FormFieldFactory';
 import { FormOnChangeEvent, NullablePropertyFkChoices } from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
@@ -78,6 +78,8 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
     const column = columns[name];
     if (isPropertyFk(column)) {
         (valueBoxSpec as FkProperty).$ref = column.$ref;
+    } else if (column.enum) {
+        (valueBoxSpec as ScalarProperty).enum = column.enum;
     }
 
     const initialValues: CriteriaFilterValue = {

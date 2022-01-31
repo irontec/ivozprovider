@@ -30,9 +30,12 @@ export function FilterCriteria(props: FilterCriteriaProps): JSX.Element | null {
         }
         const fieldStr = column.label;
 
-        const valueStr = isPropertyFk(column)
-          ? (fkChoices[name])?.[value as string]
-          : value;
+        let valueStr: string | JSX.Element = value as string;
+        if (isPropertyFk(column)) {
+          valueStr = (fkChoices[name])?.[value as string] as string;
+        } else if (column.enum) {
+          valueStr = column.enum[value as string] as string | JSX.Element;
+        }
 
         const icon = (
           <StyledChipIcon fieldName={fieldStr}>
