@@ -5,7 +5,7 @@ import { isPropertyFk } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import { useStoreActions, useStoreState } from 'store';
 import { ROUTE_ORDER_KEY } from 'store/route';
-import { CriteriaFilterValue } from '../Filter/ContentFilter';
+import { CriteriaFilterValue } from '../../../Filter/ContentFilter';
 import { StyledTableSortLabelVisuallyHidden } from './ContentTableHead.styles';
 
 interface ContentTableHead {

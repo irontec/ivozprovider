@@ -1,15 +1,13 @@
-/* eslint-disable no-script-url */
-
 import React, { useState } from 'react';
 import { Table, TableBody, Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
 import { ContentFilter } from 'lib/components/List/Filter/ContentFilter';
-import ContentTableHead from './ContentTableHead';
-import ContentTableRow from './ContentTableRow';
+import ContentTableHead from './Table/ContentTableHead';
+import ContentTableRow from './Table/ContentTableRow';
 import EntityService from 'lib/services/entity/EntityService';
 import _ from 'lib/services/translations/translate';
-import { StyledActionButtonContainer, StyledLink, StyledFab } from './ContentTable.styles';
+import { StyledActionButtonContainer, StyledLink, StyledFab } from './ListContent.styles';
 
 interface ContentTableProps {
   path: string,
@@ -18,7 +16,7 @@ interface ContentTableProps {
   preloadData: boolean
 }
 
-export default function ContentTable(props: ContentTableProps): JSX.Element {
+export default function ListContent(props: ContentTableProps): JSX.Element {
   const {
     path,
     entityService,

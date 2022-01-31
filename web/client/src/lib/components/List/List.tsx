@@ -6,8 +6,8 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import EntityService from 'lib/services/entity/EntityService';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
 import { criteriaToArray, queryStringToCriteria } from './List.helpers';
-import ContentTable from './ContentTable/ContentTable';
-import ContentTablePagination from './ContentTable/ContentTablePagination';
+import ListContent from './Content/ListContent';
+import Pagination from './Pagination';
 import useQueryStringParams from './useQueryStringParams';
 import useCancelToken from 'lib/hooks/useCancelToken';
 
@@ -154,7 +154,6 @@ const List = function (props: any & RouteComponentProps) {
         ]
     );
 
-
     // @TODO move into store/api
     const recordCount = parseInt(
         headers['x-total-items'] ?? 0,
@@ -163,13 +162,13 @@ const List = function (props: any & RouteComponentProps) {
 
     return (
         <>
-            <ContentTable
+            <ListContent
                 path={path}
                 rows={rows}
                 preloadData={currentQueryParams.length > 0}
                 entityService={entityService}
             />
-            <ContentTablePagination
+            <Pagination
                 recordCount={recordCount}
             />
         </>

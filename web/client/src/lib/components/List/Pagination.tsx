@@ -4,13 +4,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as locales from '@mui/material/locale';
 import { useStoreState, useStoreActions } from 'store';
 import { ROUTE_ITEMS_PER_PAGE_KEY, ROUTE_PAGE_KEY } from 'store/route';
-import { CriteriaFilterValue } from '../Filter/ContentFilter';
+import { CriteriaFilterValue } from './Filter/ContentFilter';
 
 interface ContentTablePaginationProps {
   recordCount: number
 }
 
-export default function ContentTablePagination(props: ContentTablePaginationProps): JSX.Element {
+export default function Pagination(props: ContentTablePaginationProps): JSX.Element {
   const {
     recordCount
   } = props;
