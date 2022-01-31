@@ -7,7 +7,6 @@ import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import Country from './Country/Country';
 import Ddi from './Ddi/Ddi';
-import EntityInterface from 'lib/entities/EntityInterface';
 import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
@@ -32,12 +31,9 @@ import Terminal from './Terminal/Terminal';
 import TerminalModel from './TerminalModel/TerminalModel';
 import User from './User/User';
 import UsersCdr from './UsersCdr/UsersCdr';
+import { EntityList } from 'lib/router/parseRoutes';
 
-interface EntityList {
-  [name: string]: Readonly<EntityInterface>
-}
-
-const entities: Readonly<EntityList> = {
+const entities: EntityList = {
   BillableCall,
   Calendar,
   CallAcl,

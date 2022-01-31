@@ -129,13 +129,11 @@ const api: ApiStore = {
         cancelToken
       );
     } catch (error: any) {
-      debugger;
       const msg = error?.data?.detail || error?.statusText;
       actions.setErrorMsg(msg);
       handleApiErrors(error as ApiError, getStoreActions);
 
     } finally {
-      debugger;
       actions.restRequest();
     }
   }),

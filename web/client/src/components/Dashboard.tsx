@@ -2,7 +2,7 @@ import { withRouter } from "react-router-dom";
 import { Grid } from "@mui/material";
 import _ from 'lib/services/translations/translate';
 import { StyledDashboardLink } from './Dashboard.styles';
-import entities from './entities';
+import entities from '../entities';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import BuildIcon from '@mui/icons-material/Build';
@@ -47,7 +47,6 @@ const Dashboard = ( props: DashboardProps ) => {
         CallCsvScheduler,
         Recording,
     } = entities;
-
 
     return (
         <Grid container spacing={3} className={className}>

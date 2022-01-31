@@ -3,14 +3,9 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from "react-router-dom";
 import { Header, Footer } from 'lib/components';
-import { StyledAppContent, StyledAppBarSpacer, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
-import ParsedApiSpecInterface from './services/api/ParsedApiSpecInterface';
+import { StyledAppContent, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
 import { useStoreActions, useStoreState } from 'store';
-
-export interface AppRoutesProps {
-  token: string,
-  apiSpec: ParsedApiSpecInterface
-}
+import { AppRoutesProps } from 'components/AppRoutes';
 
 interface AppProps {
   children: React.FunctionComponent<AppRoutesProps>
@@ -26,8 +21,8 @@ export default function App(props: AppProps): JSX.Element {
   apiSpecInitFn();
   authInit();
 
-  const token = useStoreState((state: any) => state.auth.token);
-  const apiSpec = useStoreState((state: any) => state.spec.spec);
+  const token = useStoreState((state) => state.auth.token);
+  const apiSpec = useStoreState((state) => state.spec.spec);
   const basename = process.env.PUBLIC_URL;
 
   if (!apiSpec || Object.keys(apiSpec).length === 0) {
@@ -47,12 +42,11 @@ export default function App(props: AppProps): JSX.Element {
         <BrowserRouter basename={basename}>
           <Header loggedIn={!!token} />
           <StyledAppContent>
-            <StyledAppBarSpacer />
             <StyledContainer>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <StyledAppPaper>
-                    <props.children token={token} apiSpec={apiSpec} />
+                    <props.children token={token as string} apiSpec={apiSpec} />
                   </StyledAppPaper>
                 </Grid>
                 <Grid item xs={12}>

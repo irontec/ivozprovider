@@ -3,10 +3,16 @@ import { Switch, Route } from "react-router-dom";
 import Dashboard from './Dashboard.styles';
 import { Login } from 'lib/components';
 import EntityService from "lib/services/entity/EntityService";
-import { RouteSpec, parseRoutes } from 'lib/entities/Routes';
+import parseRoutes, { RouteSpec } from 'lib/router/parseRoutes';
 import { useStoreActions } from "store";
 import { useEffect } from "react";
-import { AppRoutesProps } from "lib/App";
+import entities from "../entities";
+import ParsedApiSpecInterface from "lib/services/api/ParsedApiSpecInterface";
+
+export interface AppRoutesProps {
+  token: string,
+  apiSpec: ParsedApiSpecInterface
+}
 
 export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
@@ -21,7 +27,7 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
       <Route exact key='login' path='/'>
         <DashboardRoute loggedIn={!!token} />
       </Route>
-      {token && parseRoutes(apiSpec).map((route: RouteSpec) => (
+      {token && parseRoutes(apiSpec, entities).map((route: RouteSpec) => (
         <Route exact key={route.key} path={route.path}>
           <RouteContent route={route} {...props} />
         </Route>
@@ -57,12 +63,13 @@ const RouteContent = (props: any) => {
   });
 
   const path = route.path;
+  const title = route.entity.title;
   useEffect(
     () => {
       setRoute(path);
-      setRouteName(route.entity.title);
+      setRouteName(title);
     },
-    [path, route.entity.title, setRoute, setRouteName]
+    [path, title, setRoute, setRouteName]
   );
 
   const entity = route.entity;
