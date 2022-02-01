@@ -96,16 +96,6 @@ parameters:
 			path: src/Controller/My/PutProfileAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$object of function get_class expects object, string\\|Stringable\\|Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface given\\.$#"
-			count: 1
-			path: src/Controller/My/PutProfileAction.php
-
-		-
-			message: "#^Parameter \\#2 \\$type of method Symfony\\\\Component\\\\Serializer\\\\Normalizer\\\\DenormalizerInterface\\:\\:denormalize\\(\\) expects string, class\\-string\\<Stringable\\>\\|class\\-string\\<Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\>\\|false given\\.$#"
-			count: 1
-			path: src/Controller/My/PutProfileAction.php
-
-		-
 			message: "#^Cannot call method getDomain\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Domain\\\\DomainInterface\\|null\\.$#"
 			count: 1
 			path: src/Controller/My/StatusAction.php

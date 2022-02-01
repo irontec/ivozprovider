@@ -20,11 +20,15 @@ class PutProfileAction
     {
         $token =  $this->tokenStorage->getToken();
 
-        if (!$token || !$token->getUser()) {
+        if (!$token) {
             throw new ResourceClassNotFoundException('User not found');
         }
 
         $user = $token->getUser();
+        if (!$user) {
+            throw new ResourceClassNotFoundException('User not found');
+        }
+
         $request = $this->requestStack->getCurrentRequest();
 
         /** @phpstan-ignore-next-line  */

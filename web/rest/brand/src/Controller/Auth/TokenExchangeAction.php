@@ -51,7 +51,7 @@ class TokenExchangeAction
         $request = $this->requestStack->getCurrentRequest();
 
         /** @var ?string  $inputToken */
-        $inputToken =  $request->get('token', null);
+        $inputToken =  $request->request->get('token', null);
         if (is_null($inputToken)) {
             throw new \DomainException(
                 'Token not found'
@@ -59,10 +59,10 @@ class TokenExchangeAction
         }
 
         /** @var ?string $username */
-        $username = $request->get('username');
+        $username = $request->request->get('username');
 
         /** @var ?int  $brandId */
-        $brandId = $request->get('brandId', null);
+        $brandId = $request->request->get('brandId', null);
 
         if (!$username && !$brandId) {
             throw new \DomainException(

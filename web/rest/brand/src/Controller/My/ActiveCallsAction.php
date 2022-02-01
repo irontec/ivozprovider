@@ -39,7 +39,7 @@ class ActiveCallsAction
         $user = $token->getUser();
         $brand = $user->getBrand();
 
-        $companyId = $request->get('company');
+        $companyId = $request->query->get('company');
         if (!$companyId) {
             $activeCalls = $this
                 ->trunksClient
