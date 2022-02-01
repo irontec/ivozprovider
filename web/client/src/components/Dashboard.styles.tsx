@@ -15,7 +15,7 @@ const StyledDashboard = styled(
                 margin: '5px 0',
             },
             '& ul li svg': {
-                verticalAlign: 'sub',
+                verticalAlign: 'middle',
                 marginRight: '5px',
             }
         }

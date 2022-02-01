@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useFormik } from 'formik';
-import { Button } from '@mui/material';
 import ErrorMessage from './shared/ErrorMessage';
 import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
 import { useFormikType } from 'lib/services/form/types';
 import { useStoreActions, useStoreState } from 'store';
-import _ from 'lib/services/translations/translate';
 import { KeyValList, ScalarProperty } from "lib/services/api/ParsedApiSpecInterface";
 import useCancelToken from "lib/hooks/useCancelToken";
+import SaveButton from "./shared/Button/SaveButton";
 
 interface CreateProps extends EntityInterface {
   entityService: EntityService,
@@ -105,9 +104,7 @@ const Create = (props: CreateProps & RouteComponentProps) => {
       <form onSubmit={formik.handleSubmit}>
         <EntityForm {...props} formik={formik} create={true} validationErrors={errorList} />
 
-        <Button variant="contained" type="submit">
-          {_('Save')}
-        </Button>
+        <SaveButton />
         {reqError && <ErrorMessage message={reqError} />}
       </form>
     </div>
