@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useFormik } from 'formik';
-import { Button } from '@mui/material';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import EntityService from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
 import { useFormikType } from 'lib/services/form/types';
 import { useStoreActions, useStoreState } from 'store';
-import _ from 'lib/services/translations/translate';
 import withRowData from './withRowData';
 import { KeyValList } from "lib/services/api/ParsedApiSpecInterface";
+import useCancelToken from "lib/hooks/useCancelToken";
+import SaveButton from "./shared/Button/SaveButton";
 
 interface EditProps extends EntityInterface {
   entityService: EntityService,
@@ -20,16 +20,16 @@ interface EditProps extends EntityInterface {
 
 const Edit: any = (props: EditProps & RouteComponentProps) => {
 
-  const { marshaller, unmarshaller, history, match, row, properties } = props;
+  const { marshaller, unmarshaller, history, match, row, properties, path } = props;
   const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
 
   const entityId = match.params.id;
 
   const reqError = useStoreState((store) => store.api.errorMsg);
   const apiPut = useStoreActions((actions) => actions.api.put);
+  const [, cancelToken] = useCancelToken();
   const [validationError, setValidationError] = useState<KeyValList>({});
 
-  //const properties = entityService.getProperties();
   const initialValues = unmarshaller(
     row,
     properties
@@ -45,12 +45,18 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
     const payload = marshaller(values, properties);
     const formData = entityService.prepareFormData(payload);
 
-    await apiPut({
-      path: putPath.replace('{id}', entityId),
-      values: formData
-    });
+    try {
+      const resp = await apiPut({
+        path: putPath.replace('{id}', entityId),
+        values: formData,
+        cancelToken
+      });
 
-    history.goBack();
+      if (resp !== undefined) {
+        history.push(path);
+      }
+
+    } catch {}
   };
 
   const formik: useFormikType = useFormik({
@@ -87,10 +93,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
     <div>
       <form onSubmit={formik.handleSubmit}>
         <EntityForm  {...props} formik={formik} edit={true} validationErrors={errorList} />
-
-        <Button variant="contained" type="submit">
-          {_('Save')}
-        </Button>
+        <SaveButton />
         {reqError && <ErrorMessage message={reqError} />}
       </form>
     </div>

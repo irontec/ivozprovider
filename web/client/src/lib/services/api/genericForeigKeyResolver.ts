@@ -1,14 +1,26 @@
 import { EntityValues } from '../entity/EntityService';
 import store from 'store';
+import EntityInterface from 'lib/entities/EntityInterface';
+import { CancelToken } from 'axios';
 
-export default async function genericForeignKeyResolver(
+interface GenericForeignKeyResolverProps {
     data: Array<EntityValues> | EntityValues,
     fkFld: string,
-    entityEndpoint: string,
-    toStr: (row: EntityValues) => string,
-    addLink = true,
-    dataPreprocesor?: (data: Record<string, any>) => Promise<void>
-): Promise<Array<EntityValues> | EntityValues> {
+    entity: EntityInterface,
+    addLink?: boolean,
+    dataPreprocesor?: (data: Record<string, any>) => Promise<void>,
+    cancelToken?: CancelToken,
+}
+
+export default async function genericForeignKeyResolver(props: GenericForeignKeyResolverProps): Promise<Array<EntityValues> | EntityValues> {
+
+    const {
+        data, fkFld, entity, addLink = true, dataPreprocesor, cancelToken
+    } = props;
+
+    const {
+        path, toStr
+    } = entity;
 
     if (typeof data !== 'object') {
         return data;
@@ -58,11 +70,12 @@ export default async function genericForeignKeyResolver(
         const getAction = store.getActions().api.get;
 
         await getAction({
-            path: entityEndpoint,
+            path,
             params: {
                 id: ids,
                 _pagination: false
             },
+            cancelToken: cancelToken,
             successCallback: async (response: any) => {
 
                 try {
@@ -101,7 +114,7 @@ export default async function genericForeignKeyResolver(
 
                         data[idx][`${fkFld}Id`] = data[idx][fkFld];
                         if (addLink) {
-                            data[idx][`${fkFld}Link`] = `${entityEndpoint}/${scalarFk}/update`;
+                            data[idx][`${fkFld}Link`] = `${path}/${scalarFk}/update`;
                         }
                         data[idx][fkFld] = entities[scalarFk];
                     }
@@ -114,7 +127,6 @@ export default async function genericForeignKeyResolver(
 }
 
 export const remapFk = (row: EntityValues, from: string, to: string): void => {
-
     row[to] = row[from];
     row[`${to}Id`] = row[`${from}Id`];
     row[`${to}Link`] = row[`${from}Link`];

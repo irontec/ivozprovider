@@ -1,5 +1,5 @@
 import { action, Action, Computed, computed, Thunk, thunk } from 'easy-peasy';
-import axios from 'axios';
+import { CancelTokenSource } from 'axios';
 import { AppStore } from 'store';
 
 type NullableRecordType = Record<string, string | number> | null;
@@ -11,6 +11,12 @@ interface RecordLocutionServiceState {
   companyRecordLocutionService: NullableRecordType,
 }
 
+interface CancelTokenSourceProps {
+  cancelTokenSource: CancelTokenSource
+}
+
+type loadCompanyRecordLocutionServiceProps = CancelTokenSourceProps & { id:number };
+
 interface RecordLocutionServiceActions {
   reset: Action<RecordLocutionServiceState, void>,
   setLoading: Action<RecordLocutionServiceState, void>,
@@ -18,9 +24,9 @@ interface RecordLocutionServiceActions {
   setRecordLocutionService: Action<RecordLocutionServiceState, NullableRecordType>,
   setCompanyRecordLocutionService: Action<RecordLocutionServiceState, NullableRecordType>,
 
-  load: Thunk<() => Promise<void>>,
-  loadRecordLocutionService: Thunk<() => Promise<void>>,
-  loadCompanyRecordLocutionService: Thunk<() => Promise<void>, number, any, AppStore>,
+  load: Thunk<RecordLocutionServiceStore, CancelTokenSourceProps>,
+  loadRecordLocutionService: Thunk<RecordLocutionServiceStore, CancelTokenSourceProps>,
+  loadCompanyRecordLocutionService: Thunk<() => Promise<void>, loadCompanyRecordLocutionServiceProps, any, AppStore>,
 }
 
 export type RecordLocutionServiceStore = RecordLocutionServiceActions & RecordLocutionServiceState;
@@ -60,32 +66,32 @@ const recordLocutionService: RecordLocutionServiceStore  = {
   ///////////////////////////////
   // Thunks
   ///////////////////////////////
-  load: thunk<RecordLocutionServiceStore>(async (actions, payload: unknown, {getState}) => {
+  load: thunk<RecordLocutionServiceStore, CancelTokenSourceProps>(
+    async (actions, { cancelTokenSource }, {getState}) => {
 
-    const state = getState();
-    if (state.loading) {
-      return;
-    }
+      const state = getState();
+      if (state.loading) {
+        return;
+      }
 
-    actions.setLoading();
-    const recordLocutionService = await actions.loadRecordLocutionService();
-    if (recordLocutionService) {
-      actions.loadCompanyRecordLocutionService(recordLocutionService.id)
+      actions.setLoading();
+
+      const recordLocutionService = await actions.loadRecordLocutionService({cancelTokenSource});
+      if (recordLocutionService) {
+        actions.loadCompanyRecordLocutionService({id: recordLocutionService.id, cancelTokenSource})
+      }
     }
-  }),
-  loadRecordLocutionService: thunk<RecordLocutionServiceStore, undefined, any, AppStore>(
-    async (actions, payload: undefined, {getStoreActions}) => {
+  ),
+  loadRecordLocutionService: thunk<RecordLocutionServiceStore, CancelTokenSourceProps, any, AppStore>(
+    async (actions, { cancelTokenSource }, {getStoreActions}) => {
 
       const apiGet = getStoreActions().api.get;
-
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
 
       const resp = await apiGet({
         path: '/services',
         params: {iden: 'RecordLocution'},
         successCallback: async () => { return; },
-        cancelToken: source.token
+        cancelToken: cancelTokenSource.token
       });
 
       if (! resp?.data?.length) {
@@ -98,19 +104,16 @@ const recordLocutionService: RecordLocutionServiceStore  = {
       return recordLocutionService;
     }
   ),
-  loadCompanyRecordLocutionService: thunk<RecordLocutionServiceStore, number, any, AppStore>(
-    async (actions, payload: number, {getStoreActions}) => {
+  loadCompanyRecordLocutionService: thunk<RecordLocutionServiceStore, loadCompanyRecordLocutionServiceProps, any, AppStore>(
+    async (actions, { id, cancelTokenSource }, { getStoreActions }) => {
 
       const apiGet = getStoreActions().api.get;
 
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
-
       const resp = await apiGet({
         path: '/company_services',
-        params: {service: payload},
+        params: {service: id},
         successCallback: async () => { return; },
-        cancelToken: source.token
+        cancelToken: cancelTokenSource.token
       });
 
       if (! resp?.data?.length) {

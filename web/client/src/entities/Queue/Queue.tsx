@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -187,7 +187,7 @@ const columns = [
 
 const queue: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <HourglassTopIcon />,
     iden: 'Queue',
     title: _('Queue', { count: 2 }),
     path: '/queues',

@@ -1,9 +1,10 @@
-import { Theme, Breakpoint, Paper, Container } from '@mui/material';
+import { Theme, Paper, Container } from '@mui/material';
 import { styled } from '@mui/styles';
-import { CreateCSSProperties } from '@mui/styles/withStyles';
 
 export const StyledAppFlexDiv = styled('div')(() => {
-  return { display: 'flex' };
+  return {
+    maxWidth: '1920px',
+  };
 });
 
 export const StyledAppApiLoading = styled('div')({
@@ -13,30 +14,32 @@ export const StyledAppApiLoading = styled('div')({
 export const StyledAppContent = styled('main')({
   flexGrow: 1,
   flexFlow: 'row wrap',
-  height: '100vh',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
-export const StyledAppBarSpacer = styled('div')(({ theme }: { theme: Theme }) => {
-  return (theme.mixins.toolbar as CreateCSSProperties);
-});
-
-export const StyledAppPaper = styled(Paper)(({ theme }: { theme: Theme }) => {
-  return {
-    padding: theme.spacing(2),
-    overflow: 'auto',
-    maxWidth: 'none'
-  };
-});
+export const StyledAppPaper = styled(
+  (props:any): JSX.Element => {
+    return (
+      <Paper elevation={1}>{props.children}</Paper >
+    );
+  }
+)(
+  ({ theme }: { theme: Theme }) => {
+    return {
+      padding: theme.spacing(2),
+      overflow: 'auto',
+      maxWidth: 'none'
+    };
+  }
+);
 
 interface ContainerWrapperProps {
   children: JSX.Element | JSX.Element[],
-  className: string,
-  maxWidth: Breakpoint | false,
+  className: string
 }
 const ContainerWrapper = (props: ContainerWrapperProps): JSX.Element => {
   return (
-    <Container maxWidth={props.maxWidth} className={props.className}>{props.children}</Container >
+    <Container maxWidth={false} className={props.className}>{props.children}</Container >
   );
 }
 

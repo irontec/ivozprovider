@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
@@ -85,19 +85,21 @@ const properties: TerminalProperties = {
     },
 };
 
-async function foreignKeyResolver(data: TerminalPropertiesList): Promise<TerminalPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<TerminalPropertiesList> {
 
     const promises = [];
     const { TerminalModel } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'terminalModel',
-            TerminalModel.path,
-            TerminalModel.toStr,
-            TerminalModel.acl.update
-        )
+            fkFld: 'terminalModel',
+            entity: TerminalModel,
+            addLink: TerminalModel.acl.update,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -107,7 +109,7 @@ async function foreignKeyResolver(data: TerminalPropertiesList): Promise<Termina
 
 const terminal: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <PhoneIcon />,
     iden: 'Terminal',
     title: _('Terminal', { count: 2 }),
     path: '/terminals',

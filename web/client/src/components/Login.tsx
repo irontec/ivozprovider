@@ -8,7 +8,7 @@ import ApiClient from 'lib/services/api/ApiClient';
 import Title from 'lib/components/Title';
 import ErrorMessage from 'lib/components/shared/ErrorMessage';
 import { useFormikType } from 'lib/services/form/types';
-import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from './Login.styles';
+import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from '../lib/components/Login.styles';
 import { EntityValidator } from 'lib/entities/EntityInterface';
 
 interface LoginProps {
@@ -47,8 +47,7 @@ export default function Login(props: LoginProps): JSX.Element {
 
     } catch (error: any) {
       console.error(error);
-      setError(error.toString());
-    } finally {
+      setError(error?.data?.message);
     }
   };
 

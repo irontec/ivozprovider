@@ -1,5 +1,5 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -21,30 +21,32 @@ const properties: RatingProfileProperties = {
     },
 };
 
-async function foreignKeyResolver(data: RatingProfilePropertiesList): Promise<RatingProfilePropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<RatingProfilePropertiesList> {
 
     const promises = [];
 
     const { RoutingTag } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ratingPlanGroup',
-            RatingPlanGroup.path,
-            RatingPlanGroup.toStr,
-            false
-        )
+            fkFld: 'ratingPlanGroup',
+            entity: RatingPlanGroup,
+            addLink: false,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'routingTag',
-            RoutingTag.path,
-            RoutingTag.toStr,
-            false
-        )
+            fkFld: 'routingTag',
+            entity: RoutingTag,
+            addLink: false,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);

@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -18,18 +18,20 @@ const properties: PickUpGroupProperties = {
     }
 };
 
-async function foreignKeyResolver(data: PickUpGroupPropertiesList): Promise<PickUpGroupPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<PickUpGroupPropertiesList> {
 
     const promises = [];
     const { User } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'userIds',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'userIds',
+            entity: User,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -39,7 +41,7 @@ async function foreignKeyResolver(data: PickUpGroupPropertiesList): Promise<Pick
 
 const pickUpGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <PhoneCallbackIcon />,
     iden: 'PickUpGroup',
     title: _('Pick up group', { count: 2 }),
     path: '/pick_up_groups',

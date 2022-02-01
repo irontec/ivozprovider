@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import DialpadIcon from '@mui/icons-material/Dialpad';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -155,8 +155,8 @@ const columns = [
     'target',
 ];
 
-async function foreignKeyResolver(
-    data: DdiPropertiesList
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
 ): Promise<DdiPropertiesList> {
 
     const promises = [];
@@ -166,94 +166,94 @@ async function foreignKeyResolver(
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'country',
-            Country.path,
-            Country.toStr,
-            false
-        )
+            fkFld: 'country',
+            entity: Country,
+            addLink: false,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'externalCallFilter',
-            ExternalCallFilter.path,
-            ExternalCallFilter.toStr
-        )
+            fkFld: 'externalCallFilter',
+            entity: ExternalCallFilter,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            User.toStr
-        )
+            fkFld: 'user',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ivr',
-            Ivr.path,
-            Ivr.toStr,
-        )
+            fkFld: 'ivr',
+            entity: Ivr,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'huntGroup',
-            HuntGroup.path,
-            HuntGroup.toStr,
-        )
+            fkFld: 'huntGroup',
+            entity: HuntGroup,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'fax',
-            Fax.path,
-            Fax.toStr,
-        )
+            fkFld: 'fax',
+            entity: Fax,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conferenceRoom',
-            ConferenceRoom.path,
-            ConferenceRoom.toStr,
-        )
+            fkFld: 'conferenceRoom',
+            entity: ConferenceRoom,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'residentialDevice',
-            ResidentialDevice.path,
-            ResidentialDevice.toStr,
-        )
+            fkFld: 'residentialDevice',
+            entity: ResidentialDevice,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'queue',
-            Queue.path,
-            Queue.toStr,
-        )
+            fkFld: 'queue',
+            entity: Queue,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conditionalRoute',
-            ConditionalRoute.path,
-            ConditionalRoute.toStr,
-        )
+            fkFld: 'conditionalRoute',
+            entity: ConditionalRoute,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -319,7 +319,7 @@ async function foreignKeyResolver(
 
 const ddi: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <DialpadIcon />,
     iden: 'Ddi',
     title: _('DDI', { count: 2 }),
     path: '/ddis',

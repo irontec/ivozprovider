@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import GavelIcon from '@mui/icons-material/Gavel';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -21,7 +21,7 @@ const properties: CallAclProperties = {
 
 const CallAcl: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <GavelIcon />,
     iden: 'CallAcl',
     title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',

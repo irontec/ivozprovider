@@ -1,9 +1,10 @@
 import { styled } from '@mui/material';
+import { CancelTokenSource } from 'axios';
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps,
     CustomFunctionComponentContext
 } from 'lib/services/form/Field/CustomComponentWrapper';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 import { LocutionPropertyList } from '../LocutionProperties';
 
@@ -18,11 +19,20 @@ const RecordingExtension: RecordingExtensionType = (props): JSX.Element | null =
     const recordLocutionServiceLoader = useStoreActions((actions) => {
         return actions.clientSession.recordLocutionService.load;
     });
+    const cancelTokenSourceFactory = useStoreState(
+        (store) => store.api.reqCancelTokenSourceFactory
+    );
+    const [cancelTokenSource,] = useState<CancelTokenSource>(cancelTokenSourceFactory());
+
     useEffect(
         () => {
-            recordLocutionServiceLoader();
+            recordLocutionServiceLoader({ cancelTokenSource });
+
+            return (() => {
+                cancelTokenSource.cancel();
+            });
         },
-        [recordLocutionServiceLoader]
+        [recordLocutionServiceLoader, cancelTokenSource]
     );
 
     const recordLocutionService = useStoreState(

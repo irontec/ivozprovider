@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import ShortcutIcon from '@mui/icons-material/Shortcut';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -125,72 +125,78 @@ const columns = [
     'target'
 ];
 
-async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<ExtensionPropertiesList> {
+
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<ExtensionPropertiesList> {
 
     const promises = [];
     const { User, Country, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            User.toStr
-        )
+            fkFld: 'user',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'numberCountry',
-            Country.path,
-            (row: any) => `${row.countryCode}`,
-        )
+            fkFld: 'numberCountry',
+            entity: {
+                ...Country,
+                toStr: (row: any) => `${row.countryCode}`
+            },
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ivr',
-            Ivr.path,
-            Ivr.toStr,
-        )
+            fkFld: 'ivr',
+            entity: Ivr,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conferenceRoom',
-            ConferenceRoom.path,
-            ConferenceRoom.toStr,
-        )
+            fkFld: 'conferenceRoom',
+            entity: ConferenceRoom,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'huntGroup',
-            HuntGroup.path,
-            HuntGroup.toStr,
-        )
+            fkFld: 'huntGroup',
+            entity: HuntGroup,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'queue',
-            Queue.path,
-            Queue.toStr,
-        )
+            fkFld: 'queue',
+            entity: Queue,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conditionalRoute',
-            ConditionalRoute.path,
-            ConditionalRoute.toStr,
-        )
+            fkFld: 'conditionalRoute',
+            entity: ConditionalRoute,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -252,7 +258,7 @@ async function foreignKeyResolver(data: ExtensionPropertiesList): Promise<Extens
 
 const extension: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <ShortcutIcon />,
     iden: 'Extension',
     title: _('Extension', { count: 2 }),
     path: '/extensions',

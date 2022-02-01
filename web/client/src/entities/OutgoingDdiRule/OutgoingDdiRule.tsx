@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import QuickreplyIcon from '@mui/icons-material/Quickreply';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
@@ -37,19 +37,21 @@ const properties: PartialPropertyList = {
     }
 };
 
-async function foreignKeyResolver(data: EntityValues): Promise<EntityValues> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<EntityValues> {
 
     const promises = [];
     const { Ddi } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'forcedDdi',
-            Ddi.path,
-            Ddi.toStr,
-            Ddi.acl.update
-        )
+            fkFld: 'forcedDdi',
+            entity: Ddi,
+            addLink: Ddi.acl.update,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -65,7 +67,7 @@ const columns = [
 
 const outgoingDdiRule: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <QuickreplyIcon />,
     iden: 'OutgoingDdiRule',
     title: _('Outgoing DDI Rule', { count: 2 }),
     path: '/outgoing_ddi_rules',

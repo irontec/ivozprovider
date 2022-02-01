@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -55,7 +55,7 @@ const columns = [
 
 const schedule: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <WatchLaterIcon />,
     iden: 'Schedule',
     title: _('Schedule', { count: 2 }),
     path: '/schedules',

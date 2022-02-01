@@ -6,10 +6,10 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import EntityService from 'lib/services/entity/EntityService';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
 import { criteriaToArray, queryStringToCriteria } from './List.helpers';
-import ContentTable from './ContentTable/ContentTable';
-import ContentTablePagination from './ContentTable/ContentTablePagination';
+import ListContent from './Content/ListContent';
+import Pagination from './Pagination';
 import useQueryStringParams from './useQueryStringParams';
-import axios from 'axios';
+import useCancelToken from 'lib/hooks/useCancelToken';
 
 const List = function (props: any & RouteComponentProps) {
 
@@ -22,6 +22,8 @@ const List = function (props: any & RouteComponentProps) {
     const apiGet = useStoreActions((actions: any) => {
         return actions.api.get
     });
+    const [mounted, cancelToken] = useCancelToken();
+
     const [criteriaIsReady, setCriteriaIsReady] = useState<boolean>(false);
     const queryStringCriteria: CriteriaFilterValues = useStoreState(
         (state) => state.route.queryStringCriteria
@@ -84,9 +86,9 @@ const List = function (props: any & RouteComponentProps) {
     useEffect(
         () => {
 
-            let mounted = true;
-            const CancelToken = axios.CancelToken;
-            const source = CancelToken.source();
+            if (!mounted) {
+                return;
+            }
 
             // Fetch data request
             if (!criteriaIsReady) {
@@ -114,6 +116,7 @@ const List = function (props: any & RouteComponentProps) {
 
             apiGet({
                 path: reqPath,
+                cancelToken,
                 successCallback: async (data: any, headers: any) => {
 
                     if (!mounted) {
@@ -125,9 +128,12 @@ const List = function (props: any & RouteComponentProps) {
                     }
 
                     setRows(data);
-
-                    foreignKeyResolver(data, true, entityService)
+                    foreignKeyResolver({data, allowLinks: true, entityService, cancelToken })
                         .then((data: any) => {
+
+                            if (!mounted) {
+                                return;
+                            }
 
                             const fixedData = [];
                             for (const idx in data) {
@@ -138,18 +144,13 @@ const List = function (props: any & RouteComponentProps) {
 
                             setRows(fixedData);
                         });
-                },
-                cancelToken: source.token
+                }
             });
-
-            return () => {
-                mounted = false;
-                source.cancel();
-            }
         },
         [
             foreignKeyResolver, entityService, criteriaIsReady,
-            path, currentQueryParams, apiGet, reqQuerystring
+            path, currentQueryParams, apiGet, reqQuerystring,
+            cancelToken, mounted
         ]
     );
 
@@ -161,13 +162,13 @@ const List = function (props: any & RouteComponentProps) {
 
     return (
         <>
-            <ContentTable
+            <ListContent
                 path={path}
                 rows={rows}
                 preloadData={currentQueryParams.length > 0}
                 entityService={entityService}
             />
-            <ContentTablePagination
+            <Pagination
                 recordCount={recordCount}
             />
         </>

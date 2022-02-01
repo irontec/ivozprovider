@@ -6,8 +6,8 @@ import { StoreProvider } from "easy-peasy";
 import store from 'store';
 import i18n from './i18n';
 import './index.css';
-import App, { AppRoutesProps } from 'lib/App';
-import AppRoutes from './AppRoutes';
+import App from './App';
+import AppRoutes, { AppRoutesProps } from './components/AppRoutes';
 
 const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'

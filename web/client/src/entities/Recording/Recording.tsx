@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -49,7 +49,7 @@ const columns = [
 
 const recording: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <SettingsVoiceIcon />,
     iden: 'Recording',
     title: _('Recording', { count: 2 }),
     path: '/recordings',

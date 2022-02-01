@@ -1,4 +1,4 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import ForumIcon from '@mui/icons-material/Forum';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -39,7 +39,7 @@ const properties: ConferenceRoomProperties = {
 
 const conferenceRoom: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <ForumIcon />,
     iden: 'ConferenceRoom',
     title: _('Conference room', { count: 2 }),
     path: '/conference_rooms',

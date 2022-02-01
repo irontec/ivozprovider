@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import EntityInterface, { foreignKeyResolverType, OrderDirection } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
@@ -95,67 +95,72 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
     return row;
 }
 
-export async function foreignKeyResolver(data: UsersCdrRows, allowLinks = true): Promise<UsersCdrRows> {
+export const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, allowLinks = true, cancelToken }
+): Promise<UsersCdrRows> {
 
     const promises = [];
     const { User, Extension, Friend, ResidentialDevice, RetailAccount } = entities;
 
     promises.push(
         // User & User.extension
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            (row: any) => {
-                let response = `${row.name} ${row.lastname}`;
-                if (row.extensionId) {
-                    response += ` (${row.extension})`
-                }
+            fkFld: 'user',
+            entity: {
+                ...User,
+                toStr: (row: any) => {
+                    let response = `${row.name} ${row.lastname}`;
+                    if (row.extensionId) {
+                        response += ` (${row.extension})`
+                    }
 
-                return response;
+                    return response;
+                }
             },
-            allowLinks,
-            async (rows: any) => {
+            addLink: allowLinks,
+            cancelToken,
+            dataPreprocesor: async (rows: any) => {
                 try {
-                    await genericForeignKeyResolver(
-                        Array.isArray(rows) ? rows : [rows],
-                        'extension',
-                        Extension.path,
-                        Extension.toStr,
-                        false,
-                    );
+                    await genericForeignKeyResolver({
+                        data: Array.isArray(rows) ? rows : [rows],
+                        fkFld: 'extension',
+                        entity: Extension,
+                        addLink: false,
+                        cancelToken,
+                    });
                 } catch { }
 
                 return rows;
             }
-        )
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'friend',
-            Friend.path,
-            Friend.toStr,
-        )
+            fkFld: 'friend',
+            entity: Friend,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'residentialDevice',
-            ResidentialDevice.path,
-            ResidentialDevice.toStr,
-        )
+            fkFld: 'residentialDevice',
+            entity: ResidentialDevice,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'retailAccount',
-            RetailAccount.path,
-            RetailAccount.toStr,
-        )
+            fkFld: 'retailAccount',
+            entity: RetailAccount,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -182,7 +187,7 @@ const columns = [
 
 const usersCdr: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <ChatBubbleOutlineIcon />,
     iden: 'UsersCdr',
     title: _('Call registry', { count: 2 }),
     path: '/users_cdrs',

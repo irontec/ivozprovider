@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import FaxIcon from '@mui/icons-material/Fax';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -46,18 +46,20 @@ const columns = [
     'email',
 ];
 
-async function foreignKeyResolver(data: FaxPropertiesList): Promise<FaxPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<FaxPropertiesList> {
 
     const promises = [];
     const { Ddi } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outgoingDdi',
-            Ddi.path,
-            Ddi.toStr,
-        )
+            fkFld: 'outgoingDdi',
+            entity: Ddi,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -71,7 +73,7 @@ async function foreignKeyResolver(data: FaxPropertiesList): Promise<FaxPropertie
 
 const fax: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <FaxIcon />,
     iden: 'Fax',
     title: _('Fax', { count: 2 }),
     path: '/faxes',

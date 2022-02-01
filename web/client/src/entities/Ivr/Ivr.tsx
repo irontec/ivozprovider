@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
@@ -178,7 +178,9 @@ const columns = [
     'errorTarget',
 ];
 
-async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<IvrPropertiesList> {
 
     const promises = [];
     const {
@@ -186,57 +188,63 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'noInputExtension',
-            Extension.path,
-            Extension.toStr
-        )
+            fkFld: 'noInputExtension',
+            entity: Extension,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'noInputVoiceMailUser',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'noInputVoiceMailUser',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'noInputNumberCountry',
-            Country.path,
-            (row: any) => `${row.countryCode}`,
-        )
+            fkFld: 'noInputNumberCountry',
+            entity: {
+                ...Country,
+                toStr: (row: any) => `${row.countryCode}`
+            },
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'errorExtension',
-            Extension.path,
-            Extension.toStr,
-        )
+            fkFld: 'errorExtension',
+            entity: Extension,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'errorVoiceMailUser',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'errorVoiceMailUser',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'errorNumberCountry',
-            Country.path,
-            (row: any) => `${row.countryCode}`,
-        )
+            fkFld: 'errorNumberCountry',
+            entity: {
+                ...Country,
+                toStr: (row: any) => `${row.countryCode}`
+            },
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -301,7 +309,7 @@ async function foreignKeyResolver(data: IvrPropertiesList): Promise<IvrPropertie
 
 const ivr: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <AccountTreeIcon />,
     iden: 'Ivr',
     title: _('IVR', { count: 2 }),
     path: '/ivrs',

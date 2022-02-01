@@ -2,7 +2,10 @@ import { List, Create, Edit, View } from 'lib/components';
 import ParsedApiSpecInterface from 'lib/services/api/ParsedApiSpecInterface';
 import EntityService from 'lib/services/entity/EntityService';
 import EntityInterface from 'lib/entities/EntityInterface';
-import entities from '../../entities';
+
+export interface EntityList {
+    [name: string]: Readonly<EntityInterface>
+  }
 
 export type RouteSpec = {
     key: string,
@@ -10,9 +13,8 @@ export type RouteSpec = {
     entity: EntityInterface,
     component: React.ComponentClass<any, any>
 };
-const routes: Array<RouteSpec> = [];
 
-export const parseRoutes = (apiSpec: ParsedApiSpecInterface): RouteSpec[] => {
+const parseRoutes = (apiSpec: ParsedApiSpecInterface, entities: EntityList): RouteSpec[] => {
 
     const routes: Array<RouteSpec> = [];
 
@@ -70,4 +72,4 @@ export const parseRoutes = (apiSpec: ParsedApiSpecInterface): RouteSpec[] => {
     return routes;
 }
 
-export default routes;
+export default parseRoutes;

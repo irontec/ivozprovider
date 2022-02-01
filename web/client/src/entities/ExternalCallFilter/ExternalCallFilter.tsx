@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
@@ -160,7 +160,9 @@ const columns = [
     'outOfScheduleTarget',
 ];
 
-async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promise<ExternalCallFilterPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<ExternalCallFilterPropertiesList> {
 
     const promises = [];
     const {
@@ -168,77 +170,77 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'holidayLocution',
-            Locution.path,
-            Locution.toStr,
-        )
+            fkFld: 'holidayLocution',
+            entity: Locution,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'holidayExtension',
-            Extension.path,
-            Extension.toStr
-        )
+            fkFld: 'holidayExtension',
+            entity: Extension,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'holidayVoiceMailUser',
-            User.path,
-            User.toStr
-        )
+            fkFld: 'holidayVoiceMailUser',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'holidayNumberCountry',
-            Country.path,
-            Country.toStr,
-        )
+            fkFld: 'holidayNumberCountry',
+            entity: Country,
+            cancelToken,
+        })
     );
 
     //////////////////
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outOfScheduleLocution',
-            Locution.path,
-            Locution.toStr,
-        )
+            fkFld: 'outOfScheduleLocution',
+            entity: Locution,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outOfScheduleExtension',
-            Extension.path,
-            Extension.toStr
-        )
+            fkFld: 'outOfScheduleExtension',
+            entity: Extension,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outOfScheduleVoiceMailUser',
-            User.path,
-            User.toStr
-        )
+            fkFld: 'outOfScheduleVoiceMailUser',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outOfScheduleNumberCountry',
-            Country.path,
-            Country.toStr,
-        )
+            fkFld: 'outOfScheduleNumberCountry',
+            entity: Country,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -309,7 +311,7 @@ async function foreignKeyResolver(data: ExternalCallFilterPropertiesList): Promi
 
 const externalCallFilter: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <FilterAltIcon />,
     iden: 'ExternalCallFilter',
     title: _('External call filter', { count: 2 }),
     path: '/external_call_filters',

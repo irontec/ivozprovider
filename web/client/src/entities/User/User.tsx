@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import PersonIcon from '@mui/icons-material/Person';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
@@ -103,8 +103,8 @@ const properties: UserProperties = {
     'maxCalls': {
         label: _('Call waiting'),
         default: 0,
-        // @TODO min: 0
-        // @TODO max: 100
+        minimum: 0,
+        maximum: 100,
         helpText: _('Limits received calls when already handling this number of calls. Set 0 for unlimited.'),
     },
     'voicemailEnabled': {
@@ -200,35 +200,37 @@ const columns = [
     // @TODO status
 ];
 
-async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropertiesList> {
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
+): Promise<UserPropertiesList> {
     const promises = [];
     const { Ddi, Extension, Terminal } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'terminal',
-            Terminal.path,
-            Terminal.toStr
-        )
+            fkFld: 'terminal',
+            entity: Terminal,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'extension',
-            Extension.path,
-            Extension.toStr,
-        )
+            fkFld: 'extension',
+            entity: Extension,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'outgoingDdi',
-            Ddi.path,
-            Ddi.toStr,
-        )
+            fkFld: 'outgoingDdi',
+            entity: Ddi,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -238,7 +240,7 @@ async function foreignKeyResolver(data: UserPropertiesList): Promise<UserPropert
 
 const user: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <PersonIcon />,
     iden: 'User',
     title: _('User', { count: 2 }),
     path: '/users',

@@ -1,5 +1,5 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
+import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
+import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
@@ -142,8 +142,8 @@ const columns = [
     'target',
 ];
 
-async function foreignKeyResolver(
-    data: ConditionalRoutePropertiesList
+const foreignKeyResolver: foreignKeyResolverType = async function(
+    { data, cancelToken }
 ): Promise<ConditionalRoutePropertiesList> {
 
     const promises = [];
@@ -152,93 +152,93 @@ async function foreignKeyResolver(
     } = entities;
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'user',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'user',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'ivr',
-            Ivr.path,
-            Ivr.toStr
-        )
+            fkFld: 'ivr',
+            entity: Ivr,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'huntGroup',
-            HuntGroup.path,
-            HuntGroup.toStr
-        )
+            fkFld: 'huntGroup',
+            entity: HuntGroup,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'voicemailUser',
-            User.path,
-            User.toStr,
-        )
+            fkFld: 'voicemailUser',
+            entity: User,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'numberCountry',
-            Country.path,
-            Country.toStr,
-        )
+            fkFld: 'numberCountry',
+            entity: Country,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'friend',
-            Friend.path,
-            Friend.toStr,
-        )
+            fkFld: 'friend',
+            entity: Friend,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'queue',
-            Queue.path,
-            Queue.toStr,
-        )
+            fkFld: 'queue',
+            entity: Queue,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'conferenceRoom',
-            ConferenceRoom.path,
-            ConferenceRoom.toStr,
-        )
+            fkFld: 'conferenceRoom',
+            entity: ConferenceRoom,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'extension',
-            Extension.path,
-            Extension.toStr,
-        )
+            fkFld: 'extension',
+            entity: Extension,
+            cancelToken,
+        })
     );
 
     promises.push(
-        genericForeignKeyResolver(
+        genericForeignKeyResolver({
             data,
-            'locution',
-            Locution.path,
-            Locution.toStr,
-        )
+            fkFld: 'locution',
+            entity: Locution,
+            cancelToken,
+        })
     );
 
     await Promise.all(promises);
@@ -302,7 +302,7 @@ async function foreignKeyResolver(
 
 const ConditionalRoute: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: <SwitchCameraIcon />,
     iden: 'ConditionalRoute',
     title: _('Conditional Route', { count: 2 }),
     path: '/conditional_routes',
