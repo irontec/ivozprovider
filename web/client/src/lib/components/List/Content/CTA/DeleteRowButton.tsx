@@ -51,7 +51,9 @@ const DeleteRowButton = (props: DeleteRowButtonProps): JSX.Element => {
     return (
       <>
         <Tooltip title={_('Delete')} placement="bottom">
-          <StyledDeleteIcon onClick={() => setShowDelete(true)} />
+          <a>
+            <StyledDeleteIcon onClick={() => setShowDelete(true)} />
+          </a>
         </Tooltip>
         <ConfirmDialog
           text={`You're about to remove item #${row.id}`}

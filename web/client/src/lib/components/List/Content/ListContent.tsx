@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Table, TableBody, Tooltip, Fab } from '@mui/material';
+import { Tooltip, Fab } from '@mui/material';
 import QueueIcon from '@mui/icons-material/Queue';
 import SearchIcon from '@mui/icons-material/Search';
 import { ContentFilter } from 'lib/components/List/Filter/ContentFilter';
-import ContentTableHead from './Table/ContentTableHead';
-import ContentTableRow from './Table/ContentTableRow';
 import EntityService from 'lib/services/entity/EntityService';
 import _ from 'lib/services/translations/translate';
 import { StyledActionButtonContainer, StyledLink, StyledFab } from './ListContent.styles';
+import { Box } from '@mui/system';
+import ContentTable from './Table/ContentTable';
+import ContentCard from './Card/ContentCard';
 
 interface ContentTableProps {
   path: string,
@@ -62,23 +63,20 @@ export default function ListContent(props: ContentTableProps): JSX.Element {
         preloadData={preloadData}
       />
 
-      <Table size="medium" sx={{"tableLayout": 'fixed'}}>
-        <ContentTableHead
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+        <ContentTable
           entityService={entityService}
+          rows={rows}
+          path={path}
         />
-        <TableBody>
-          {rows.map((row: any, key: any) => {
-            return (
-              <ContentTableRow
-                entityService={entityService}
-                row={row}
-                key={key}
-                path={path}
-              />
-            );
-          })}
-        </TableBody>
-      </Table>
+      </Box>
+      <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+        <ContentCard
+          entityService={entityService}
+          rows={rows}
+          path={path}
+        />
+      </Box>
     </React.Fragment >
   );
 }
