@@ -1,6 +1,6 @@
 {
     "name": "irontec/ivoz-provider-bundle",
-    "version": "2.5.23",
+    "version": "2.5.24",
     "type": "symfony-bundle",
     "description": "Symfony bridge for IvozProvider",
     "license": "GPL-3.0-or-later",
@@ -46,6 +46,7 @@
         "symfony/translation": "^5.1",
         "symfony/twig-bundle": "^5.1",
         "symfony/validator": "^5.1",
+        "symfony/var-dumper": "^5.1",
         "symfony/stopwatch": "^5.1",
         "incenteev/composer-parameter-handler": "^2.1",
         "beberlei/doctrineextensions": "^1.2"
