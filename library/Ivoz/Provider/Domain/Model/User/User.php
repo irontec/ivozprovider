@@ -6,13 +6,14 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
+use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * User
  */
-class User extends UserAbstract implements UserInterface, SymfonyUserInterface, \Serializable
+class User extends UserAbstract implements UserInterface, SymfonyUserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
 {
     use UserTrait;
     use UserSecurityTrait;
