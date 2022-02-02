@@ -11,7 +11,7 @@ export default function Header(props: headerProps): JSX.Element {
 
   return (
     <StyledHeaderContainer>
-      <StyledAppBar position="static">
+      <StyledAppBar position="fixed">
         <StyledToolbar>
           {loggedIn && <CollapsedBreadcrumbs />}
         </StyledToolbar>

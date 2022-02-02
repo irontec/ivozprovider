@@ -14,7 +14,7 @@ interface DashboardProps {
     className?: string,
 }
 
-const Dashboard = ( props: DashboardProps ) => {
+const Dashboard = (props: DashboardProps) => {
 
     const { className } = props;
 
@@ -76,6 +76,18 @@ const Dashboard = ( props: DashboardProps ) => {
                             {Ddi.title}
                         </StyledDashboardLink>
                     </li>
+                    <li>
+                        <StyledDashboardLink to={CompanyService.path}>
+                            {CompanyService.icon}
+                            {CompanyService.title}
+                        </StyledDashboardLink>
+                    </li>
+                    <li>
+                        <StyledDashboardLink to={RatingProfile.path}>
+                            {RatingProfile.icon}
+                            {RatingProfile.title} (FORBIDEN)
+                        </StyledDashboardLink>
+                    </li>
                     <li className="submenu">
                         <h3>
                             <DirectionsIcon /> {_('Routing endpoints')}
@@ -116,6 +128,12 @@ const Dashboard = ( props: DashboardProps ) => {
                                     <StyledDashboardLink to={ConferenceRoom.path}>
                                         {ConferenceRoom.icon}
                                         {ConferenceRoom.title}
+                                    </StyledDashboardLink>
+                                </li>
+                                <li>
+                                    <StyledDashboardLink to={Fax.path}>
+                                        {Fax.icon}
+                                        {Fax.title}
                                     </StyledDashboardLink>
                                 </li>
                             </ul>
@@ -214,24 +232,6 @@ const Dashboard = ( props: DashboardProps ) => {
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li>
-                        <StyledDashboardLink to={Fax.path}>
-                            {Fax.icon}
-                            {Fax.title}
-                        </StyledDashboardLink>
-                    </li>
-                    <li>
-                        <StyledDashboardLink to={CompanyService.path}>
-                            {CompanyService.icon}
-                            {CompanyService.title}
-                        </StyledDashboardLink>
-                    </li>
-                    <li>
-                        <StyledDashboardLink to={RatingProfile.path}>
-                            {RatingProfile.icon}
-                            {RatingProfile.title} (FORBIDEN)
-                        </StyledDashboardLink>
                     </li>
                     <li className="submenu">
                         <h3>

@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from "react-router-dom";
 import { Header, Footer } from 'lib/components';
-import { StyledAppContent, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
+import { StyledAppContent, StyledAppApiLoading, StyledAppBodyContainer, StyledContainer, StyledAppFlexDiv, StyledAppBarSpacer } from './App.styles';
 import { useStoreActions, useStoreState } from 'store';
 import { AppRoutesProps } from 'components/AppRoutes';
 
@@ -42,12 +42,13 @@ export default function App(props: AppProps): JSX.Element {
         <BrowserRouter basename={basename}>
           <Header loggedIn={!!token} />
           <StyledAppContent>
+            <StyledAppBarSpacer />
             <StyledContainer>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
-                  <StyledAppPaper>
+                  <StyledAppBodyContainer>
                     <props.children token={token as string} apiSpec={apiSpec} />
-                  </StyledAppPaper>
+                  </StyledAppBodyContainer>
                 </Grid>
                 <Grid item xs={12}>
                   <Footer />

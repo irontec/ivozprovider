@@ -1,6 +1,6 @@
 
 import { styled } from '@mui/styles';
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, Theme } from '@mui/material';
 
 export const StyledGroupLegend = styled(
     (props) => {
@@ -23,9 +23,11 @@ export const StyledGroupGrid = styled(
         return (<Grid container spacing={3} className={className}>{children}</Grid>);
     }
 )(
-    () => {
+    ({ theme }: { theme: Theme }) => {
         return {
-            paddingLeft: '15px',
+            [theme.breakpoints.up('md')]: {
+                paddingLeft: '15px',
+            },
             marginBottom: '15px',
         }
     }

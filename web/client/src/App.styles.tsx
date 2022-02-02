@@ -1,5 +1,5 @@
-import { Theme, Paper, Container } from '@mui/material';
-import { styled } from '@mui/styles';
+import { Theme, Container } from '@mui/material';
+import { CreateCSSProperties, styled } from '@mui/styles';
 
 export const StyledAppFlexDiv = styled('div')(() => {
   return {
@@ -11,16 +11,26 @@ export const StyledAppApiLoading = styled('div')({
   'text-align': 'center',
 });
 
+export const StyledAppBarSpacer = styled('div')(({ theme }: { theme: Theme }) => {
+  return (theme.mixins.toolbar as CreateCSSProperties);
+});
+
+
+
 export const StyledAppContent = styled('main')({
   flexGrow: 1,
   flexFlow: 'row wrap',
   overflow: 'auto',
+  height: '100vh',
 });
 
-export const StyledAppPaper = styled(
-  (props:any): JSX.Element => {
+export const StyledAppBodyContainer = styled(
+  (props: any): JSX.Element => {
+
+    const { className } = props;
+
     return (
-      <Paper elevation={1}>{props.children}</Paper >
+      <div className={className}>{props.children}</div>
     );
   }
 )(
@@ -28,7 +38,8 @@ export const StyledAppPaper = styled(
     return {
       padding: theme.spacing(2),
       overflow: 'auto',
-      maxWidth: 'none'
+      maxWidth: 'none',
+      borderBottom: '1px solid #ccc',
     };
   }
 );
