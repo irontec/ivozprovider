@@ -9,16 +9,19 @@ import { StyledActionButtonContainer, StyledLink, StyledFab } from './ListConten
 import { Box } from '@mui/system';
 import ContentTable from './Table/ContentTable';
 import ContentCard from './Card/ContentCard';
+import { RouteMapItem } from 'lib/router/routeMapParser';
 
-interface ContentTableProps {
+interface ListContentProps {
+  childEntities: Array<RouteMapItem>,
   path: string,
   entityService: EntityService,
   rows: any,
   preloadData: boolean
 }
 
-export default function ListContent(props: ContentTableProps): JSX.Element {
+export default function ListContent(props: ListContentProps): JSX.Element {
   const {
+    childEntities,
     path,
     entityService,
     rows,
@@ -68,6 +71,7 @@ export default function ListContent(props: ContentTableProps): JSX.Element {
           entityService={entityService}
           rows={rows}
           path={path}
+          childEntities={childEntities}
         />
       </Box>
       <Box sx={{ display: { xs: 'block', md: 'none' } }}>
@@ -75,6 +79,7 @@ export default function ListContent(props: ContentTableProps): JSX.Element {
           entityService={entityService}
           rows={rows}
           path={path}
+          childEntities={childEntities}
         />
       </Box>
     </React.Fragment >

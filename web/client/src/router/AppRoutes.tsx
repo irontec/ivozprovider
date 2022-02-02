@@ -1,12 +1,12 @@
 import { Switch, Route } from "react-router-dom";
 
-import Dashboard from './Dashboard.styles';
+import Dashboard from '../components/Dashboard.styles';
 import { Login } from 'lib/components';
 import EntityService from "lib/services/entity/EntityService";
 import parseRoutes, { RouteSpec } from 'lib/router/parseRoutes';
 import { useStoreActions } from "store";
 import { useEffect } from "react";
-import entities from "../entities";
+import entityMap from "./EntityMap";
 import ParsedApiSpecInterface from "lib/services/api/ParsedApiSpecInterface";
 
 export interface AppRoutesProps {
@@ -22,18 +22,20 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
     return (<Login />);
   }
 
-  return (
+  const resp = (
     <Switch>
       <Route exact key='login' path='/'>
         <DashboardRoute loggedIn={!!token} />
       </Route>
-      {token && parseRoutes(apiSpec, entities).map((route: RouteSpec) => (
+      {token && parseRoutes(apiSpec, entityMap).map((route: RouteSpec) => (
         <Route exact key={route.key} path={route.path}>
           <RouteContent route={route} {...props} />
         </Route>
       ))}
     </Switch>
   );
+
+  return resp;
 }
 
 const DashboardRoute = (props: any) => {

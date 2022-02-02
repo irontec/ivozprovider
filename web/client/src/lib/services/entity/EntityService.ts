@@ -1,6 +1,6 @@
 import { SearchFilterType } from 'lib/components/List/Filter/icons/FilterIconFactory';
 import
-EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection, RowIconsType }
+EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection }
     from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
@@ -344,10 +344,6 @@ export default class EntityService {
 
     public getListDecorator(): React.FunctionComponent<ListDecoratorPropsType> {
         return this.entityConfig.ListDecorator;
-    }
-
-    public getRowActions(): RowIconsType {
-        return this.entityConfig.RowIcons;
     }
 
     public getPropertyFilters(propertyName: string, path?: string): Array<SearchFilterType> {

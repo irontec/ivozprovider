@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { WithRouterProps, WithRouterStatics } from "react-router";
 import EntityService from 'lib/services/entity/EntityService';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
 import { criteriaToArray, queryStringToCriteria } from './List.helpers';
@@ -10,11 +11,20 @@ import ListContent from './Content/ListContent';
 import Pagination from './Pagination';
 import useQueryStringParams from './useQueryStringParams';
 import useCancelToken from 'lib/hooks/useCancelToken';
+import { RouteMapItem } from 'lib/router/routeMapParser';
+import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 
-const List = function (props: any & RouteComponentProps) {
+type RouterProps = RouteComponentProps & WithRouterProps<any> & WithRouterStatics<any>;
+type ListProps = RouterProps & {
+    path: string,
+    childEntities: Array<RouteMapItem>,
+    entityService: EntityService,
+    foreignKeyResolver: foreignKeyResolverType
+}
 
-    const { path, history, foreignKeyResolver } = props;
-    const { entityService }: { entityService: EntityService } = props;
+const List = function (props: ListProps) {
+
+    const { path, history, childEntities, foreignKeyResolver, entityService } = props;
 
     const [rows, setRows] = useState<Array<any>>([]);
     const [headers, setHeaders] = useState<{ [id: string]: string }>({});
@@ -128,7 +138,7 @@ const List = function (props: any & RouteComponentProps) {
                     }
 
                     setRows(data);
-                    foreignKeyResolver({data, allowLinks: true, entityService, cancelToken })
+                    foreignKeyResolver({ data, allowLinks: true, entityService, cancelToken })
                         .then((data: any) => {
 
                             if (!mounted) {
@@ -163,6 +173,7 @@ const List = function (props: any & RouteComponentProps) {
     return (
         <>
             <ListContent
+                childEntities={childEntities}
                 path={path}
                 rows={rows}
                 preloadData={currentQueryParams.length > 0}
@@ -177,4 +188,3 @@ const List = function (props: any & RouteComponentProps) {
 }
 
 export default withRouter(List);
-

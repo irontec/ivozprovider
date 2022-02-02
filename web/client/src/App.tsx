@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Header, Footer } from 'lib/components';
 import { StyledAppContent, StyledAppApiLoading, StyledAppBodyContainer, StyledContainer, StyledAppFlexDiv, StyledAppBarSpacer } from './App.styles';
 import { useStoreActions, useStoreState } from 'store';
-import { AppRoutesProps } from 'components/AppRoutes';
+import { AppRoutesProps } from 'router/AppRoutes';
 
 interface AppProps {
   children: React.FunctionComponent<AppRoutesProps>

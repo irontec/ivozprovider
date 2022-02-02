@@ -4,7 +4,7 @@ import EntityService from "lib/services/entity/EntityService";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useStoreActions } from "store";
-import { StyledDeleteIcon } from "../Table/ContentTableRow/ContentTableRow.styles";
+import { StyledDeleteIcon } from "../Table/ContentTable.styles";
 import _ from 'lib/services/translations/translate';
 
 interface DeleteRowButtonProps {

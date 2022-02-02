@@ -1,12 +1,15 @@
 import { CardContent, Typography } from '@mui/material';
+import { RouteMapItem } from 'lib/router/routeMapParser';
 import EntityService from 'lib/services/entity/EntityService';
 import DeleteRowButton from '../CTA/DeleteRowButton';
 import EditRowButton from '../CTA/EditRowButton';
 import ViewRowButton from '../CTA/ViewRowButton';
 import ListContentValue from '../ListContentValue';
+import ChildEntityLinks from '../Shared/ChildEntityLinks';
 import { StyledCardActions, StyledCard } from './ContentCard.styles';
 
 interface ContentCardProps {
+  childEntities: Array<RouteMapItem>,
   entityService: EntityService,
   rows: Record<string, any>,
   path: string,
@@ -14,11 +17,10 @@ interface ContentCardProps {
 
 const ContentCard = (props: ContentCardProps): JSX.Element => {
 
-  const { entityService, rows, path } = props;
+  const { childEntities, entityService, rows, path } = props;
 
   const columns = entityService.getCollectionColumns();
   const acl = entityService.getAcls();
-  const RowActions: React.FunctionComponent | any = entityService.getRowActions();
 
   return (
     <>
@@ -47,7 +49,7 @@ const ContentCard = (props: ContentCardProps): JSX.Element => {
               {acl.update && <EditRowButton row={row} path={path} />}
               &nbsp;
               {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
-              {<RowActions row={row} />}
+              <ChildEntityLinks childEntities={childEntities} row={row} />
             </StyledCardActions>
           </StyledCard>
         );
