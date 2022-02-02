@@ -41,7 +41,7 @@ class RegistrationSummaryAction
 
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
-        $companyId = $request->get('company');
+        $companyId = $request->query->get('company');
 
         if (!$companyId) {
             $userLocations = $this->brandRegistrationSummary->getUsersLocations(

@@ -2,12 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
+use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Administrator
  */
-class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, \Serializable
+class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
 {
     use AdministratorTrait, AdministratorSecurityTrait {
         AdministratorTrait::getRelPublicEntities insteadof AdministratorSecurityTrait;

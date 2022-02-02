@@ -30,12 +30,12 @@ class ActiveCallsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
-        $brandId = $request->get('brand');
+        $brandId = $request->query->get('brand');
         if ($brandId) {
             Assertion::numeric($brandId);
         }
 
-        $activeCalls = $brandId
+        $activeCalls = $brandId !== null
             ? $this->apiClient->getBrandActiveCalls(intval($brandId))
             : $this->apiClient->getPlatformActiveCalls();
 
