@@ -16,8 +16,8 @@ Feature: Create terminal models
           "description": "New SIP Model",
           "genericTemplate": "",
           "specificTemplate": "",
-          "genericUrlPattern": "",
-          "specificUrlPattern": "",
+          "genericUrlPattern": "genericUrlPattern",
+          "specificUrlPattern": "specificUrlPattern",
           "terminalManufacturer": 1
       }
     """
@@ -32,8 +32,8 @@ Feature: Create terminal models
           "description": "New SIP Model",
           "genericTemplate": "",
           "specificTemplate": "",
-          "genericUrlPattern": "",
-          "specificUrlPattern": "",
+          "genericUrlPattern": "genericUrlPattern",
+          "specificUrlPattern": "specificUrlPattern",
           "id": 3,
           "terminalManufacturer": 1
       }
@@ -54,8 +54,8 @@ Feature: Create terminal models
           "description": "New SIP Model",
           "genericTemplate": "",
           "specificTemplate": "",
-          "genericUrlPattern": "",
-          "specificUrlPattern": "",
+          "genericUrlPattern": "genericUrlPattern",
+          "specificUrlPattern": "specificUrlPattern",
           "id": 3,
           "terminalManufacturer": {
               "iden": "Generic",
