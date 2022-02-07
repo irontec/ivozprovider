@@ -9,6 +9,9 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
     usersCdr_brandId:
       columns:
         - brandId
+    usersCdr_startTime:
+      columns:
+        - start_time
     usersCdr_companyId_hidden_startTime:
       columns:
         - companyId
