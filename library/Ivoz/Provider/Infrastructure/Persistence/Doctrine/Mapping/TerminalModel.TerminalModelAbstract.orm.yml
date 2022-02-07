@@ -4,6 +4,9 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelAbstract:
     terminalModel_iden:
       columns:
         - iden
+    terminalModel_genericUrlPattern:
+      columns:
+        - genericUrlPattern
   fields:
     iden:
       type: string
