@@ -13,17 +13,19 @@ interface ContentTableProps {
   childEntities: Array<RouteMapItem>,
   entityService: EntityService,
   rows: Record<string, any>,
+  ignoreColumn: string | undefined,
   path: string,
 }
 
 const ContentTable = (props: ContentTableProps): JSX.Element => {
 
-  const { childEntities, entityService, rows, path } = props;
+  const { childEntities, entityService, rows, path, ignoreColumn } = props;
 
   return (
     <Table size="medium" sx={{ "tableLayout": 'fixed' }}>
       <ContentTableHead
         entityService={entityService}
+        ignoreColumn={ignoreColumn}
       />
       <TableBody>
         {rows.map((row: any, key: any) => {
@@ -34,6 +36,11 @@ const ContentTable = (props: ContentTableProps): JSX.Element => {
           return (
             <TableRow hover key={key}>
               {Object.keys(columns).map((key: string) => {
+
+                if (key === ignoreColumn) {
+                  return null;
+                }
+
                 const column = columns[key];
 
                 return (

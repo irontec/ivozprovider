@@ -9,83 +9,92 @@ import { CriteriaFilterValue } from '../../../Filter/ContentFilter';
 import { StyledTableSortLabelVisuallyHidden } from './ContentTableHead.styles';
 
 interface ContentTableHead {
-    entityService: EntityService
+    entityService: EntityService,
+    ignoreColumn: string | undefined,
 }
 
 const ContentTableHead = function (props: ContentTableHead): JSX.Element {
 
-    const {
-        entityService
-    } = props;
+  const {
+    entityService,
+    ignoreColumn
+  } = props;
 
-    const columns = entityService.getCollectionColumns();
+  const columns = entityService.getCollectionColumns();
 
-    const order = useStoreState(
-        (state) => state.route.order
-    );
-    const direction = order?.direction || false;
-    const replaceInQueryStringCriteria = useStoreActions((actions) => {
-        return actions.route.replaceInQueryStringCriteria;
-    });
+  const order = useStoreState(
+    (state) => state.route.order
+  );
+  const direction = order?.direction || false;
+  const replaceInQueryStringCriteria = useStoreActions((actions) => {
+    return actions.route.replaceInQueryStringCriteria;
+  });
 
-    const setSort = (property: string, direction: 'asc' | 'desc') => {
-        const order: CriteriaFilterValue = {
-            name: ROUTE_ORDER_KEY,
-            type: property,
-            value: direction,
-        }
-
-        replaceInQueryStringCriteria(order);
+  const setSort = (property: string, direction: 'asc' | 'desc') => {
+    const order: CriteriaFilterValue = {
+      name: ROUTE_ORDER_KEY,
+      type: property,
+      value: direction,
     }
 
-    const createSortHandler = (property: string) => () => {
-        const isDesc = order?.name === property && direction === 'desc';
-        setSort(
-            property,
-            isDesc ? 'asc' : 'desc'
-        );
-    };
+    replaceInQueryStringCriteria(order);
+  }
 
-    return (
-        <TableHead>
-            <TableRow>
-                {Object.keys(columns).map((key: string) => (
-                    <TableCell
-                        key={key}
-                        align='left'
-                        padding='normal'
-                        sortDirection={order?.name === key ? direction : false}
-                    >
-                        {!isPropertyFk(columns[key]) && <TableSortLabel
-                            active={order?.name === key}
-                            direction={order?.direction}
-                            onClick={createSortHandler(key)}
-                        >
-                            {columns[key].label}
-                            {order?.name === key ? (
-                                <StyledTableSortLabelVisuallyHidden>
-                                    {order?.direction === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                </StyledTableSortLabelVisuallyHidden>
-                            ) : null}
-                        </TableSortLabel>}
-                        {isPropertyFk(columns[key]) && <>
-                            {columns[key].label}
-                            {order?.name === key ? (
-                                <StyledTableSortLabelVisuallyHidden>
-                                    {order?.direction === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                </StyledTableSortLabelVisuallyHidden>
-                            ) : null}
-                        </>}
-                    </TableCell>
-                ))}
-                <TableCell
-                    key={'empty slot'}
-                    align='left'
-                    padding='normal'
-                ></TableCell>
-            </TableRow>
-        </TableHead>
+  const createSortHandler = (property: string) => () => {
+    const isDesc = order?.name === property && direction === 'desc';
+    setSort(
+      property,
+      isDesc ? 'asc' : 'desc'
     );
+  };
+
+  return (
+    <TableHead>
+      <TableRow>
+        {Object.keys(columns).map((key: string) => {
+
+          if (key === ignoreColumn) {
+              return null;
+          }
+
+          return (
+            <TableCell
+              key={key}
+              align='left'
+              padding='normal'
+              sortDirection={order?.name === key ? direction : false}
+            >
+              {!isPropertyFk(columns[key]) && <TableSortLabel
+                active={order?.name === key}
+                direction={order?.direction}
+                onClick={createSortHandler(key)}
+              >
+                {columns[key].label}
+                {order?.name === key ? (
+                  <StyledTableSortLabelVisuallyHidden>
+                      {order?.direction === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                  </StyledTableSortLabelVisuallyHidden>
+                ) : null}
+              </TableSortLabel>}
+              {isPropertyFk(columns[key]) && <>
+                {columns[key].label}
+                {order?.name === key ? (
+                  <StyledTableSortLabelVisuallyHidden>
+                      {order?.direction === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                  </StyledTableSortLabelVisuallyHidden>
+                ) : null}
+              </>}
+            </TableCell>
+          )}
+        )}
+        <TableCell
+          key={'empty slot'}
+          align='left'
+          padding='normal'
+        ></TableCell>
+      </TableRow>
+    </TableHead>
+  );
 }
 
 export default ContentTableHead;

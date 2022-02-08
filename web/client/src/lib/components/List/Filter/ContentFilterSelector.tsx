@@ -16,7 +16,8 @@ interface ContentFilterRowProps {
     addCriteria: (data: CriteriaFilterValue) => void,
     apply: (waitForStateUpdate:boolean) => void,
     path: string
-    className?: string
+    className?: string,
+    ignoreColumn: string | undefined,
 }
 
 export default function ContentFilterSelector(props: ContentFilterRowProps): JSX.Element {
@@ -27,11 +28,13 @@ export default function ContentFilterSelector(props: ContentFilterRowProps): JSX
         apply,
         path,
         fkChoices,
-        className
+        className,
+        ignoreColumn
     } = props;
 
     const columns = entityService.getCollectionParamList();
-    const columnNames: Array<string> = Object.keys(columns);
+
+    const columnNames: Array<string> = Object.keys(columns).filter(column => column !== ignoreColumn);
     const filters: FormFieldFactoryChoices = {};
 
     for (const idx in columnNames) {

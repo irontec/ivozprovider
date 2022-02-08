@@ -20,7 +20,8 @@ interface ContentFilterMenuProps {
     open: boolean,
     handleClose: () => void,
     path: string,
-    preloadData: boolean
+    preloadData: boolean,
+    ignoreColumn: string | undefined,
 }
 
 export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null {
@@ -30,7 +31,8 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
         open,
         handleClose,
         path,
-        preloadData
+        preloadData,
+        ignoreColumn
     } = props;
 
     const queryStringCriteria: CriteriaFilterValues = useStoreState(
@@ -122,6 +124,7 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
                         entityService={entityService}
                         fkChoices={foreignEntities}
                         addCriteria={addCriteria}
+                        ignoreColumn={ignoreColumn}
                         apply={apply}
                         path={path}
                     />

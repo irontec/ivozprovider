@@ -15,7 +15,11 @@ export type RouteSpec = {
     component: React.ComponentClass<any, any> | React.FunctionComponent,
 };
 
-const parseRouteMapItems = (apiSpec: ParsedApiSpecInterface, items: RouteMapItem[]): RouteSpec[] => {
+const parseRouteMapItems = (
+    apiSpec: ParsedApiSpecInterface,
+    items: RouteMapItem[],
+    routeMap: RouteMap
+): RouteSpec[] => {
 
     const routes: Array<RouteSpec> = [];
 
@@ -45,7 +49,7 @@ const parseRouteMapItems = (apiSpec: ParsedApiSpecInterface, items: RouteMapItem
                     return (
                         <List
                             {...props}
-                            childEntities={routeMapItem.children || []}
+                            routeMap={routeMap}
                         />
                     );
                 },
@@ -79,7 +83,7 @@ const parseRouteMapItems = (apiSpec: ParsedApiSpecInterface, items: RouteMapItem
         }
 
         if (children && children.length) {
-            const childRoutes = parseRouteMapItems(apiSpec, children);
+            const childRoutes = parseRouteMapItems(apiSpec, children, routeMap);
             routes.push(...childRoutes);
         }
     }
@@ -87,16 +91,16 @@ const parseRouteMapItems = (apiSpec: ParsedApiSpecInterface, items: RouteMapItem
     return routes;
 }
 
-const parseRoutes = (apiSpec: ParsedApiSpecInterface, entities: RouteMap): RouteSpec[] => {
+const parseRoutes = (apiSpec: ParsedApiSpecInterface, routeMap: RouteMap): RouteSpec[] => {
 
     const routes: Array<RouteSpec> = [];
-    for (const entity of entities) {
+    for (const entity of routeMap) {
 
         if (!entity.children) {
             continue;
         }
 
-        const childrenRoutes = parseRouteMapItems(apiSpec, entity.children);
+        const childrenRoutes = parseRouteMapItems(apiSpec, entity.children, routeMap);
         routes.push(...childrenRoutes);
     }
 

@@ -16,6 +16,7 @@ interface ListContentProps {
   path: string,
   entityService: EntityService,
   rows: any,
+  ignoreColumn: string | undefined,
   preloadData: boolean
 }
 
@@ -25,6 +26,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
     path,
     entityService,
     rows,
+    ignoreColumn,
     preloadData
   } = props;
 
@@ -64,12 +66,14 @@ export default function ListContent(props: ListContentProps): JSX.Element {
         handleClose={handleFiltersClose}
         path={path}
         preloadData={preloadData}
+        ignoreColumn={ignoreColumn}
       />
 
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <ContentTable
           entityService={entityService}
           rows={rows}
+          ignoreColumn={ignoreColumn}
           path={path}
           childEntities={childEntities}
         />
@@ -78,6 +82,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
         <ContentCard
           entityService={entityService}
           rows={rows}
+          ignoreColumn={ignoreColumn}
           path={path}
           childEntities={childEntities}
         />

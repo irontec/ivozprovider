@@ -12,12 +12,13 @@ interface ContentCardProps {
   childEntities: Array<RouteMapItem>,
   entityService: EntityService,
   rows: Record<string, any>,
+  ignoreColumn: string | undefined,
   path: string,
 }
 
 const ContentCard = (props: ContentCardProps): JSX.Element => {
 
-  const { childEntities, entityService, rows, path } = props;
+  const { childEntities, entityService, rows, path, ignoreColumn } = props;
 
   const columns = entityService.getCollectionColumns();
   const acl = entityService.getAcls();
@@ -25,11 +26,16 @@ const ContentCard = (props: ContentCardProps): JSX.Element => {
   return (
     <>
       {rows.map((row: any, rKey: any) => {
+
         return (
           <StyledCard key={rKey}>
             <CardContent>
               {Object.keys(columns).map((key: string) => {
+                if (key === ignoreColumn) {
+                  return null;
+                }
                 const column = columns[key];
+
                 return (
                   <Typography key={key}>
                     <strong>{column.label}:</strong>
