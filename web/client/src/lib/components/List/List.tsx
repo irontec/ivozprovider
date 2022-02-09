@@ -51,6 +51,7 @@ const List = function (props: ListProps) {
     ////////////////////////////
     const currentQueryParams = useQueryStringParams();
     const filterBy: Array<string> = [];
+
     if (currentRoute?.filterBy) {
         filterBy.push(
             currentRoute.filterBy
@@ -119,9 +120,12 @@ const List = function (props: ListProps) {
                 return;
             }
 
-            let reqPath = currentQueryParams.length
-                ? path + '?' + encodeURI([...currentQueryParams, filterByStr].join('&'))
-                : path;
+            let reqPath = path;
+            if (currentQueryParams.length) {
+                reqPath = path + '?' + encodeURI([...currentQueryParams, filterByStr].join('&'));
+            } else if (filterByStr) {
+                reqPath = path + '?' + encodeURI(filterByStr);
+            }
 
             let orderBy = currentQueryParams.find(
                 (str: string) => str.indexOf('_order[') === 0
@@ -130,7 +134,7 @@ const List = function (props: ListProps) {
                 orderBy = encodeURI(
                     `_order[${entityService.getOrderBy()}]=${entityService.getOrderDirection()}`
                 );
-                const glue = currentQueryParams.length > 0
+                const glue = filterByStr || currentQueryParams.length > 0
                     ? '&'
                     : '?';
 

@@ -1,17 +1,16 @@
 import { Switch, Route } from "react-router-dom";
 
-import Dashboard from '../components/Dashboard.styles';
 import { Login } from 'lib/components';
-import EntityService from "lib/services/entity/EntityService";
 import parseRoutes, { RouteSpec } from 'lib/router/parseRoutes';
-import { useStoreActions } from "store";
-import { useEffect } from "react";
 import entityMap from "./EntityMap";
 import ParsedApiSpecInterface from "lib/services/api/ParsedApiSpecInterface";
+import RouteContent from "../lib/router/RouteContent";
+import AppRouteContentWrapper from "./AppRouteContentWrapper";
+import Dashboard from "components/Dashboard";
 
 export interface AppRoutesProps {
   token: string,
-  apiSpec: ParsedApiSpecInterface
+  apiSpec: ParsedApiSpecInterface,
 }
 
 export default function AppRoutes(props: AppRoutesProps): JSX.Element {
@@ -25,11 +24,15 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
   const resp = (
     <Switch>
       <Route exact key='login' path='/'>
-        <DashboardRoute loggedIn={!!token} />
+        <AppRouteContentWrapper loggedIn={!!token} routeMap={entityMap}>
+          <Dashboard />
+        </AppRouteContentWrapper>
       </Route>
       {token && parseRoutes(apiSpec, entityMap).map((route: RouteSpec) => (
         <Route exact key={route.key} path={route.path}>
-          <RouteContent route={route} {...props} />
+          <AppRouteContentWrapper loggedIn={!!token} routeMap={entityMap}>
+            <RouteContent route={route} {...props} />
+          </AppRouteContentWrapper>
         </Route>
       ))}
     </Switch>
@@ -37,51 +40,3 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
   return resp;
 }
-
-const DashboardRoute = (props: any) => {
-  const { loggedIn } = props;
-  const setRoute = useStoreActions((actions: any) => {
-    return actions.route.setRoute;
-  });
-
-  useEffect(
-    () => {
-      setRoute('/');
-    },
-    [setRoute]
-  );
-
-  return (<Dashboard loggedIn={loggedIn} />);
-};
-
-const RouteContent = (props: any) => {
-
-  const { route, apiSpec } = props;
-  const setRoute = useStoreActions((actions: any) => {
-    return actions.route.setRoute;
-  });
-  const setRouteName = useStoreActions((actions: any) => {
-    return actions.route.setName;
-  });
-
-  const path = route.path;
-  const title = route.entity.title;
-  useEffect(
-    () => {
-      setRoute(path);
-      setRouteName(title);
-    },
-    [path, title, setRoute, setRouteName]
-  );
-
-  const entity = route.entity;
-  const entityService = new EntityService(
-    apiSpec[entity.iden].actions,
-    apiSpec[entity.iden].properties,
-    entity
-  );
-
-  const properties = entityService.getProperties();
-
-  return (<route.component {...entity} entityService={entityService} properties={properties} />);
-};

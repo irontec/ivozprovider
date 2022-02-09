@@ -10,6 +10,7 @@ import { Box } from '@mui/system';
 import ContentTable from './Table/ContentTable';
 import ContentCard from './Card/ContentCard';
 import { RouteMapItem } from 'lib/router/routeMapParser';
+import { useLocation } from 'react-router-dom';
 
 interface ListContentProps {
   childEntities: Array<RouteMapItem>,
@@ -30,6 +31,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
     preloadData
   } = props;
 
+  const location = useLocation();
   const acl = entityService.getAcls();
   const [showFilters, setShowFilters] = useState(false);
   const handleFiltersClose = () => {
@@ -50,7 +52,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
               <SearchIcon />
             </StyledFab>
           </Tooltip>
-          {acl.create && <StyledLink to={`${path}/create`}>
+          {acl.create && <StyledLink to={`${location.pathname}/create`}>
             <Tooltip title="Add" arrow>
               <Fab color="secondary" size="small" variant="extended">
                 <QueueIcon />

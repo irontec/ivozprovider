@@ -7,7 +7,6 @@ import store from 'store';
 import i18n from './i18n';
 import './index.css';
 import App from './App';
-import AppRoutes, { AppRoutesProps } from './router/AppRoutes';
 
 const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'
@@ -32,11 +31,7 @@ ReactDOM.render(
   <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <StoreProvider store={store}>
-        <App>
-          {(props: AppRoutesProps) => {
-            return (<AppRoutes {...props} />);
-          }}
-        </App>
+        <App />
       </StoreProvider>
     </ThemeProvider>
   </StyledEngineProvider>

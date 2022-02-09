@@ -12,7 +12,7 @@ export type RouteSpec = {
     key: string,
     path: string,
     entity: EntityInterface,
-    component: React.ComponentClass<any, any> | React.FunctionComponent,
+    component: React.ComponentClass<any, any> | React.FunctionComponent<any>,
 };
 
 const parseRouteMapItems = (

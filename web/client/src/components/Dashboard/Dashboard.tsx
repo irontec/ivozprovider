@@ -2,7 +2,7 @@ import { withRouter } from "react-router-dom";
 import { Grid, styled, Theme } from "@mui/material";
 import { StyledDashboardLink } from './Dashboard.styles';
 import SettingsIcon from '@mui/icons-material/Settings';
-import EntityMap from '../router/EntityMap';
+import EntityMap from '../../router/EntityMap';
 import { RouteMapBlock, RouteMapItem } from "lib/router/routeMapParser";
 
 interface DashboardProps {
