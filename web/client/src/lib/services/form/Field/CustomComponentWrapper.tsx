@@ -44,12 +44,14 @@ export const CustomComponentWrapper: React.FunctionComponent<CustomComponentWrap
     }
 
 const withCustomComponentWrapper =
-    function <V, T extends PropertyCustomFunctionComponentProps<any> = PropertyCustomFunctionComponentProps<V>>(InnerComponent: React.FunctionComponent<any>): PropertyCustomFunctionComponent<T> {
+    function <V, T extends PropertyCustomFunctionComponentProps<any> = PropertyCustomFunctionComponentProps<V>>(
+        InnerComponent: React.FunctionComponent<any>
+    ): PropertyCustomFunctionComponent<T> {
 
         const displayName = `withCustomComponentWrapper(${InnerComponent.displayName || InnerComponent.name})`;
         const WrappedComponent: React.FunctionComponent<any> = (props: PropertyCustomFunctionComponentProps<unknown>): JSX.Element => {
 
-            const { property, hasChanged, _context, formik } = props;
+            const { property, hasChanged, _context, formik, disabled } = props;
 
             const isListValue = !formik && _context === CustomFunctionComponentContext.read;
             if (isListValue) {
@@ -59,7 +61,7 @@ const withCustomComponentWrapper =
             }
 
             return (
-                <CustomComponentWrapper property={property} hasChanged={hasChanged}>
+                <CustomComponentWrapper property={property} hasChanged={hasChanged} disabled={disabled}>
                     <InnerComponent {...props} />
                 </CustomComponentWrapper>
             );

@@ -1,15 +1,17 @@
 import EntityService from "../services/entity/EntityService";
 import ParsedApiSpecInterface from "../services/api/ParsedApiSpecInterface";
 import { RouteSpec } from "./parseRoutes";
+import { RouteMap } from "./routeMapParser";
 
 export interface RouteContentProps {
   route: RouteSpec,
-  apiSpec: ParsedApiSpecInterface
+  apiSpec: ParsedApiSpecInterface,
+  routeMap: RouteMap,
 }
 
 const RouteContent = (props: RouteContentProps): JSX.Element => {
 
-  const { route, apiSpec } = props;
+  const { route, apiSpec, routeMap } = props;
 
   const entity = route.entity;
   const entityService = new EntityService(
@@ -24,6 +26,7 @@ const RouteContent = (props: RouteContentProps): JSX.Element => {
     <route.component
       {...entity}
       entityService={entityService}
+      routeMap={routeMap}
       properties={properties}
     />
   );

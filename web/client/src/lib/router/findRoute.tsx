@@ -1,6 +1,26 @@
 import { RouteMap, RouteMapItem } from './routeMapParser';
 import { match } from 'react-router-dom';
 
+const matchRoute = (route: RouteMapItem, match: match, includeChildren = false): RouteMapItem | undefined => {
+
+    const routePaths = [
+        route.route,
+        route.route + '/create',
+        route.route + '/:id/update',
+        route.route + '/:id/detailed',
+    ];
+
+    if (routePaths.includes(match.path)) {
+
+        const resp: RouteMapItem = { ...route };
+        if (!includeChildren) {
+            delete resp.children;
+        }
+
+        return resp;
+    }
+};
+
 const _filterRoutePathItems = (route: RouteMapItem, match: match): RouteMapItem | undefined => {
 
     if (route.children) {
@@ -17,23 +37,17 @@ const _filterRoutePathItems = (route: RouteMapItem, match: match): RouteMapItem 
         }
     }
 
-    const routePaths = [
-        route.route,
-        route.route + '/create',
-        route.route + '/:id/update',
-        route.route + '/:id/detailed',
-    ];
-
-    if (routePaths.includes(match.path)) {
-        return { entity: route.entity, route: route.route };
-    }
+    return matchRoute(route, match);
 }
 
 export const filterRouteMapPath = (routeMap: RouteMap, match: match): RouteMapItem | undefined => {
 
     for (const item of routeMap) {
         for (const child of item.children) {
-            return _filterRoutePathItems(child, match);
+            const resp = _filterRoutePathItems(child, match);
+            if (resp) {
+                return resp;
+            }
         }
     }
 }
@@ -49,9 +63,7 @@ const _findRoute = (route: RouteMapItem, match: match): RouteMapItem | undefined
         }
     }
 
-    if (route.route === match.path) {
-        return route;
-    }
+    return matchRoute(route, match, true);
 }
 
 const findRoute = (routeMap: RouteMap, match: match): RouteMapItem | undefined => {

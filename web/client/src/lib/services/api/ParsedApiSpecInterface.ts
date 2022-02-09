@@ -53,9 +53,12 @@ export interface visualToggle {
     hide: Array<string>,
 }
 
+type PropertyType = 'array' | 'file' | 'boolean' | 'integer' | 'string';
+type PropertyFormat = 'date-time' | 'date' | 'time';
+
 export interface ScalarProperty {
-    type?: string,
-    format?: string,
+    type?: PropertyType,
+    format?: PropertyFormat,
     readOnly?: boolean,
     description?: string,
     maxLength?: number,
@@ -74,13 +77,14 @@ export interface ScalarProperty {
 }
 
 export interface FkProperty {
-    type?: string,
+    type?: PropertyType,
     $ref: string,
     readOnly?: boolean,
     label: string | React.ReactElement<any>,
     prefix?: string | React.ReactElement<any>,
     null?: string | React.ReactElement<any>,
     required: boolean,
+    component?: PropertyCustomFunctionComponent<any>,
     helpText?: string,
 }
 
@@ -102,11 +106,18 @@ export interface PropertyList {
     [key: string]: PropertySpec
 }
 
+<<<<<<< HEAD
+=======
+export interface fkPropertyList {
+    [key: string]: FkProperty,
+}
+
+>>>>>>> a9484f5ed (fixup lib)
 export interface EntitySpec {
     actions: ActionsSpec,
     properties: PropertyList,
 }
 
 export default interface ParsedApiSpecInterface {
-    [key: string]: EntitySpec
+    [key: string]: EntitySpec,
 }

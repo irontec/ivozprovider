@@ -53,7 +53,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
             </StyledFab>
           </Tooltip>
           {acl.create && <StyledLink to={`${location.pathname}/create`}>
-            <Tooltip title="Add" arrow>
+            <Tooltip title="Add" enterTouchDelay={0} arrow>
               <Fab color="secondary" size="small" variant="extended">
                 <QueueIcon />
               </Fab>

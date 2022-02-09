@@ -35,9 +35,29 @@ export const validator: EntityValidator = (
         }
 
         const required = (properties[idx] as ScalarProperty)?.required;
-        if (required && values[idx] === '') {
+        const isEmpty = ['', '__null__', null].includes(values[idx]);
+
+        if (required && isEmpty) {
             response[idx] = _('required value');
         }
+    }
+
+    for (const fld in visualToggle) {
+
+        if (!visualToggle[fld]) {
+            continue;
+        }
+
+        if (values[fld] !== undefined) {
+            continue;
+        }
+
+        const required = (properties[fld] as ScalarProperty)?.required;
+        if (!required) {
+            continue;
+        }
+
+        response[fld] = _('required value');
     }
 
     return response;
@@ -46,6 +66,7 @@ export const validator: EntityValidator = (
 export type MarshallerValues = { [key: string]: any };
 export const marshaller = (values: MarshallerValues, properties: PartialPropertyList): MarshallerValues => {
 
+    values = { ...values };
     for (const idx in values) {
 
         const property: any = properties[idx];
@@ -108,7 +129,12 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
 
         } else if (typeof row[idx] === 'object' && row[idx].id) {
             // flatten foreign keys
-            normalizedData[idx] = row[idx].id;
+            const hasCustomComponent = properties[idx].component !== undefined;
+
+            normalizedData[idx] = hasCustomComponent
+                ? row[idx]
+                : row[idx].id;
+
         } else if (typeof row[idx] === 'string' && row[idx].match(dateTimeRegExp)) {
             // formik datetime format: "yyyy-MM-ddThh:mm" followed by optional ":ss" or ":ss.SSS"
             normalizedData[idx] = row[idx].replace(' ', 'T');
@@ -208,8 +234,8 @@ export type EntityFormProps = EntityInterface & {
     edit?: boolean,
     entityService: EntityService,
     formik: useFormikType,
-    groups: Array<FieldsetGroups | false>,
-    fkChoices: FkChoices,
+    groups?: Array<FieldsetGroups | false>,
+    fkChoices?: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
     validationErrors: Record<string, JSX.Element>,
     row?: Record<string, any>,
@@ -244,13 +270,14 @@ const filterFieldsetGroups = (groups: Array<FieldsetGroups | false>): Array<Fiel
     return resp;
 }
 
+export type EntityFormType = (props: EntityFormProps) => JSX.Element;
+const Form: EntityFormType = (props) => {
 
-const Form = (props: EntityFormProps): JSX.Element => {
+    const {
+        entityService, formik, readOnlyProperties, validationErrors, fkChoices
+    } = props;
 
-    const { entityService, formik, readOnlyProperties, validationErrors } = props;
-    const { fkChoices } = props;
-
-    const columns = entityService.getColumns();
+    const columns = entityService.getProperties();
     const columnNames = Object.keys(columns);
 
     let groups: Array<FieldsetGroups> = [];

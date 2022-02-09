@@ -57,8 +57,8 @@ const ContentTable = (props: ContentTableProps): JSX.Element => {
               <StyledActionsTableCell key="actions">
                 {acl.update && <EditRowButton row={row} path={path} />}
                 {!acl.update && <ViewRowButton row={row} path={path} />}
-                &nbsp;
                 {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
+                &nbsp;
                 <ChildEntityLinks childEntities={childEntities} row={row} />
               </StyledActionsTableCell>
             </TableRow>

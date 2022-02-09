@@ -6,7 +6,7 @@ import EditRowButton from '../CTA/EditRowButton';
 import ViewRowButton from '../CTA/ViewRowButton';
 import ListContentValue from '../ListContentValue';
 import ChildEntityLinks from '../Shared/ChildEntityLinks';
-import { StyledCardActions, StyledCard } from './ContentCard.styles';
+import { StyledCardActions, StyledCard, StyledCardContainer } from './ContentCard.styles';
 
 interface ContentCardProps {
   childEntities: Array<RouteMapItem>,
@@ -51,11 +51,14 @@ const ContentCard = (props: ContentCardProps): JSX.Element => {
               })}
             </CardContent>
             <StyledCardActions>
-              {!acl.update && <ViewRowButton row={row} path={path} />}
-              {acl.update && <EditRowButton row={row} path={path} />}
-              &nbsp;
-              {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
-              <ChildEntityLinks childEntities={childEntities} row={row} />
+              <StyledCardContainer>
+                {!acl.update && <ViewRowButton row={row} path={path} />}
+                {acl.update && <EditRowButton row={row} path={path} />}
+                {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
+              </StyledCardContainer>
+              <StyledCardContainer>
+                <ChildEntityLinks childEntities={childEntities} row={row} />
+              </StyledCardContainer>
             </StyledCardActions>
           </StyledCard>
         );

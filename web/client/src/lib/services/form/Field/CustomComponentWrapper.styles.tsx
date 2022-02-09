@@ -102,8 +102,8 @@ export const StyledFieldset = styled(
                 visibility: 'hidden',
                 fontSize: '0.8rem',
             },
-            '& customComponentContainer': {
-                padding: '0 5px',
+            '& .customComponentContainer': {
+                padding: '0 6px',
                 fontSize: '1rem',
                 color: theme.palette.text.secondary,
             }

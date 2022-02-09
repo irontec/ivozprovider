@@ -31,7 +31,7 @@ export default function FilterBoxContent(props: FilterDialogContentProps): JSX.E
     <div className={className}>
       <StyledToolbar>
         <IconButton edge="start" color="inherit" onClick={close} aria-label="close">
-          <Tooltip title={_('Close')} arrow placement='right'>
+          <Tooltip title={_('Close')} arrow placement='right' enterTouchDelay={0}>
             <CloseIcon />
           </Tooltip>
         </IconButton>

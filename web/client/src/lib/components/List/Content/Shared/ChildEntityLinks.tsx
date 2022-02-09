@@ -1,7 +1,7 @@
 import { Tooltip } from '@mui/material';
 import { RouteMapItem } from 'lib/router/routeMapParser';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { StyledTableRowLink } from '../Table/ContentTable.styles';
+import { StyledTableRowEntityCta } from '../Table/ContentTable.styles';
 import buildLink from './BuildLink';
 
 type ChildEntityLinksProps = RouteComponentProps & {
@@ -16,15 +16,20 @@ const ChildEntityLinks = (props: ChildEntityLinksProps): JSX.Element => {
   return (
     <>
         {childEntities.map((routeMapItem, key: number) => {
-            const icon = routeMapItem.entity?.icon as JSX.Element;
+            const Icon = routeMapItem.entity?.icon as React.FunctionComponent;
             const title = routeMapItem.entity?.title as JSX.Element;
             const link = buildLink(routeMapItem.route || '', match, row.id);
 
             return (
-                <Tooltip key={key} title={title} placement="bottom">
-                    <StyledTableRowLink to={link}>
-                        {icon}
-                    </StyledTableRowLink>
+                <Tooltip
+                  key={key}
+                  title={title}
+                  placement="bottom-start"
+                  enterTouchDelay={0}
+                >
+                    <StyledTableRowEntityCta to={link}>
+                        <Icon />
+                    </StyledTableRowEntityCta>
                 </Tooltip>
             );
         })}
