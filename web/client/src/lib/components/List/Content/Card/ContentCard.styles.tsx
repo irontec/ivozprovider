@@ -13,6 +13,10 @@ export const StyledCard = styled(Card)(
   () => {
     return {
       'margin': '0 0 10px',
+      'padding': '0 0 20px',
+      'boxShadow': 'none',
+      'borderBottom': '1px solid #ccc',
+      'borderRadius': 'unset',
     };
   }
 );

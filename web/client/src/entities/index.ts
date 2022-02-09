@@ -12,6 +12,7 @@ import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
 import Friend from './Friend/Friend';
 import HuntGroup from './HuntGroup/HuntGroup';
+import HuntGroupsRelUser from './HuntGroupsRelUser/HuntGroupsRelUser';
 import Ivr from './Ivr/Ivr';
 import Locution from './Locution/Locution';
 import MatchList from './MatchList/MatchList';
@@ -48,6 +49,7 @@ const entities: EntityList = {
   Fax,
   Friend,
   HuntGroup,
+  HuntGroupsRelUser,
   Ivr,
   Locution,
   MatchList,

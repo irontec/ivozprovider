@@ -6,7 +6,7 @@ import store from "store";
 import { Alert, AlertTitle, Grid } from '@mui/material';
 import { isPropertyScalar, PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityInterface, {
-    EntityValidator, EntityValidatorValues, EntityValidatorResponse, RowIconsType, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType
 } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
@@ -187,12 +187,6 @@ export const ListDecorator = (props: ListDecoratorPropsType): JSX.Element | stri
         ? value
         : '';
 }
-
-export const RowIcons: RowIconsType = (): JSX.Element => {
-    return (
-        <React.Fragment />
-    );
-};
 
 export type FieldsetGroups = {
     legend: string | React.ReactElement,
@@ -438,7 +432,6 @@ const DefaultEntityBehavior = {
     toStr: (row: EntityValues): string => {
         return (row.id as string || '[*]');
     },
-    RowIcons,
     Form,
     View,
     fetchFks,

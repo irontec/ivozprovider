@@ -1,17 +1,12 @@
-import { Grid, LinearProgress, CssBaseline } from '@mui/material';
+import { LinearProgress, CssBaseline } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from "react-router-dom";
-import { Header, Footer } from 'lib/components';
-import { StyledAppContent, StyledAppApiLoading, StyledAppPaper, StyledContainer, StyledAppFlexDiv } from './App.styles';
+import { StyledAppApiLoading, StyledAppFlexDiv } from './App.styles';
 import { useStoreActions, useStoreState } from 'store';
-import { AppRoutesProps } from 'components/AppRoutes';
+import AppRoutes from './router/AppRoutes';
 
-interface AppProps {
-  children: React.FunctionComponent<AppRoutesProps>
-}
-
-export default function App(props: AppProps): JSX.Element {
+export default function App(): JSX.Element {
 
   const apiSpecInitFn = useStoreActions((actions: any) => {
     return actions.spec.init;
@@ -40,21 +35,7 @@ export default function App(props: AppProps): JSX.Element {
       <CssBaseline />
       <StyledAppFlexDiv>
         <BrowserRouter basename={basename}>
-          <Header loggedIn={!!token} />
-          <StyledAppContent>
-            <StyledContainer>
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <StyledAppPaper>
-                    <props.children token={token as string} apiSpec={apiSpec} />
-                  </StyledAppPaper>
-                </Grid>
-                <Grid item xs={12}>
-                  <Footer />
-                </Grid>
-              </Grid>
-            </StyledContainer>
-          </StyledAppContent>
+          <AppRoutes token={token as string} apiSpec={apiSpec} />
         </BrowserRouter>
       </StyledAppFlexDiv>
     </LocalizationProvider>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { WithRouterProps, WithRouterStatics } from "react-router";
 import EntityService from 'lib/services/entity/EntityService';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
 import { criteriaToArray, queryStringToCriteria } from './List.helpers';
@@ -10,12 +11,25 @@ import ListContent from './Content/ListContent';
 import Pagination from './Pagination';
 import useQueryStringParams from './useQueryStringParams';
 import useCancelToken from 'lib/hooks/useCancelToken';
+import { RouteMap } from 'lib/router/routeMapParser';
+import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import findRoute from 'lib/router/findRoute';
 
-const List = function (props: any & RouteComponentProps) {
+type RouterProps = RouteComponentProps & WithRouterProps<any> & WithRouterStatics<any>;
+type ListProps = RouterProps & {
+    path: string,
+    routeMap: RouteMap,
+    entityService: EntityService,
+    foreignKeyResolver: foreignKeyResolverType
+}
 
-    const { path, history, foreignKeyResolver } = props;
-    const { entityService }: { entityService: EntityService } = props;
+const List = function (props: ListProps) {
 
+    const {
+        path, history, foreignKeyResolver, entityService, routeMap, match, location
+    } = props;
+
+    const currentRoute = findRoute(routeMap, match);
     const [rows, setRows] = useState<Array<any>>([]);
     const [headers, setHeaders] = useState<{ [id: string]: string }>({});
 
@@ -36,6 +50,17 @@ const List = function (props: any & RouteComponentProps) {
     // Filters
     ////////////////////////////
     const currentQueryParams = useQueryStringParams();
+    const filterBy: Array<string> = [];
+
+    if (currentRoute?.filterBy) {
+        filterBy.push(
+            currentRoute.filterBy
+        );
+        filterBy.push(
+            Object.values(match.params).pop() as string
+        );
+    }
+    const filterByStr = filterBy.join('[]=');
     const reqQuerystring = currentQueryParams.join('&');
     const [prevReqQuerystring, setPrevReqQuerystring] = useState<string | null>(null);
 
@@ -66,19 +91,19 @@ const List = function (props: any & RouteComponentProps) {
                 return;
             }
 
-            const newReqQuerystring = criteriaToArray(queryStringCriteria).join('&')
+            const newReqQuerystring = criteriaToArray(queryStringCriteria).join('&');
 
             if (reqQuerystring === newReqQuerystring) {
                 return;
             }
 
             history.push({
-                pathname: path,
+                pathname: location.pathname,
                 search: newReqQuerystring
             });
         },
         [
-            reqQuerystring, prevReqQuerystring, path, queryStringCriteria,
+            reqQuerystring, prevReqQuerystring, location.pathname, queryStringCriteria,
             history
         ]
     );
@@ -95,19 +120,21 @@ const List = function (props: any & RouteComponentProps) {
                 return;
             }
 
+            let reqPath = path;
+            if (currentQueryParams.length) {
+                reqPath = path + '?' + encodeURI([...currentQueryParams, filterByStr].join('&'));
+            } else if (filterByStr) {
+                reqPath = path + '?' + encodeURI(filterByStr);
+            }
+
             let orderBy = currentQueryParams.find(
                 (str: string) => str.indexOf('_order[') === 0
             );
-
-            let reqPath = currentQueryParams.length
-                ? path + '?' + encodeURI(currentQueryParams.join('&'))
-                : path;
-
             if (!orderBy) {
                 orderBy = encodeURI(
                     `_order[${entityService.getOrderBy()}]=${entityService.getOrderDirection()}`
                 );
-                const glue = currentQueryParams.length > 0
+                const glue = filterByStr || currentQueryParams.length > 0
                     ? '&'
                     : '?';
 
@@ -128,7 +155,7 @@ const List = function (props: any & RouteComponentProps) {
                     }
 
                     setRows(data);
-                    foreignKeyResolver({data, allowLinks: true, entityService, cancelToken })
+                    foreignKeyResolver({ data, allowLinks: true, entityService, cancelToken })
                         .then((data: any) => {
 
                             if (!mounted) {
@@ -150,7 +177,7 @@ const List = function (props: any & RouteComponentProps) {
         [
             foreignKeyResolver, entityService, criteriaIsReady,
             path, currentQueryParams, apiGet, reqQuerystring,
-            cancelToken, mounted
+            filterByStr, cancelToken, mounted
         ]
     );
 
@@ -163,8 +190,10 @@ const List = function (props: any & RouteComponentProps) {
     return (
         <>
             <ListContent
+                childEntities={currentRoute?.children || []}
                 path={path}
                 rows={rows}
+                ignoreColumn={filterBy[0]}
                 preloadData={currentQueryParams.length > 0}
                 entityService={entityService}
             />
@@ -177,4 +206,3 @@ const List = function (props: any & RouteComponentProps) {
 }
 
 export default withRouter(List);
-

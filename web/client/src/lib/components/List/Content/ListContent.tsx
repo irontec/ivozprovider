@@ -9,22 +9,29 @@ import { StyledActionButtonContainer, StyledLink, StyledFab } from './ListConten
 import { Box } from '@mui/system';
 import ContentTable from './Table/ContentTable';
 import ContentCard from './Card/ContentCard';
+import { RouteMapItem } from 'lib/router/routeMapParser';
+import { useLocation } from 'react-router-dom';
 
-interface ContentTableProps {
+interface ListContentProps {
+  childEntities: Array<RouteMapItem>,
   path: string,
   entityService: EntityService,
   rows: any,
+  ignoreColumn: string | undefined,
   preloadData: boolean
 }
 
-export default function ListContent(props: ContentTableProps): JSX.Element {
+export default function ListContent(props: ListContentProps): JSX.Element {
   const {
+    childEntities,
     path,
     entityService,
     rows,
+    ignoreColumn,
     preloadData
   } = props;
 
+  const location = useLocation();
   const acl = entityService.getAcls();
   const [showFilters, setShowFilters] = useState(false);
   const handleFiltersClose = () => {
@@ -45,7 +52,7 @@ export default function ListContent(props: ContentTableProps): JSX.Element {
               <SearchIcon />
             </StyledFab>
           </Tooltip>
-          {acl.create && <StyledLink to={`${path}/create`}>
+          {acl.create && <StyledLink to={`${location.pathname}/create`}>
             <Tooltip title="Add" arrow>
               <Fab color="secondary" size="small" variant="extended">
                 <QueueIcon />
@@ -61,20 +68,25 @@ export default function ListContent(props: ContentTableProps): JSX.Element {
         handleClose={handleFiltersClose}
         path={path}
         preloadData={preloadData}
+        ignoreColumn={ignoreColumn}
       />
 
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <ContentTable
           entityService={entityService}
           rows={rows}
+          ignoreColumn={ignoreColumn}
           path={path}
+          childEntities={childEntities}
         />
       </Box>
       <Box sx={{ display: { xs: 'block', md: 'none' } }}>
         <ContentCard
           entityService={entityService}
           rows={rows}
+          ignoreColumn={ignoreColumn}
           path={path}
+          childEntities={childEntities}
         />
       </Box>
     </React.Fragment >

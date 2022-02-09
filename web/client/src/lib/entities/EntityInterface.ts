@@ -26,7 +26,6 @@ type AclType = {
     delete: boolean,
 };
 
-export type RowIconsType = (props: EntityValues) => JSX.Element;
 export interface ViewProps {
     entityService: EntityService,
     row: any,
@@ -60,7 +59,6 @@ export default interface EntityInterface {
     Form: React.FunctionComponent<EntityFormProps>,
     View: ViewType,
     ListDecorator: ListDecoratorType,
-    RowIcons: RowIconsType,
     acl: AclType,
     iden: string,
     title: string | JSX.Element,

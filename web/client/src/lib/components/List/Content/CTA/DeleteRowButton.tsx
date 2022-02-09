@@ -2,9 +2,9 @@ import { Tooltip } from "@mui/material";
 import ConfirmDialog from "lib/components/shared/ConfirmDialog";
 import EntityService from "lib/services/entity/EntityService";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useStoreActions } from "store";
-import { StyledDeleteIcon } from "../Table/ContentTableRow/ContentTableRow.styles";
+import { StyledDeleteIcon } from "../Table/ContentTable.styles";
 import _ from 'lib/services/translations/translate';
 
 interface DeleteRowButtonProps {
@@ -15,6 +15,7 @@ interface DeleteRowButtonProps {
 const DeleteRowButton = (props: DeleteRowButtonProps): JSX.Element => {
 
     const { row, entityService } = props;
+    const location = useLocation();
     const [showDelete, setShowDelete] = useState<boolean>(false);
     const handleHideDelete = (): void => {
       setShowDelete(false);
