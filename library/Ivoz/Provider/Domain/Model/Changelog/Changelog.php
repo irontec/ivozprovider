@@ -42,6 +42,15 @@ class Changelog extends ChangelogAbstract implements LoggerEntityInterface, Chan
     }
 
     /**
+     * @param array $data | null
+     * @return static
+     */
+    public function replaceData($data = null)
+    {
+        $this->setData($data);
+    }
+
+    /**
      * Get id
      * @codeCoverageIgnore
      * @return string

@@ -1962,8 +1962,7 @@
             ],
             "description": "Symfony bridge for IvozProvider",
             "transport-options": {
-                "symlink": false,
-                "relative": true
+                "symlink": false
             }
         },
         {
@@ -4681,7 +4680,7 @@
                 "symfony",
                 "words"
             ],
-            "abandoned": "use `EnglishInflector` from the String component instead",
+            "abandoned": "EnglishInflector from the String component",
             "time": "2020-05-04T07:08:14+00:00"
         },
         {
@@ -6258,6 +6257,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
+            "abandoned": "symfony/mailer",
             "time": "2019-11-07T21:01:35+00:00"
         },
         {
@@ -7112,12 +7112,6 @@
                 "future",
                 "non-blocking",
                 "promise"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/amphp",
-                    "type": "github"
-                }
             ],
             "time": "2020-07-14T21:47:18+00:00"
         },
