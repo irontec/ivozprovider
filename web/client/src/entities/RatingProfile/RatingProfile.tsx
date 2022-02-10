@@ -18,6 +18,7 @@ const properties: RatingProfileProperties = {
     },
     'routingTag': {
         label: _('Routing Tag'),
+        null: _("No routing tag"),
     },
 };
 

@@ -2,11 +2,15 @@ import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import { CallForwardSettingProperties, CallForwardSettingPropertiesList } from './CallForwardSettingProperties';
+import Form from './Form';
 import entities from '../index';
 import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import Target from './Field/Target';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import { foreignKeyGetter } from './useFkChoices';
 
-const properties: any = {
+const properties: CallForwardSettingProperties = {
     user: {
         label: _('User'),
         required: true,
@@ -125,6 +129,7 @@ const properties: any = {
     },
     targetTypeValue: {
         label: _('Target type value'),
+        component: Target,
     },
     enabled: {
         label: _('Enabled'),
@@ -138,7 +143,7 @@ const properties: any = {
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
     { data, cancelToken }
-): Promise<any> {
+): Promise<CallForwardSettingPropertiesList> {
     const promises = [];
     const { User, Extension, Ddi, RetailAccount, ResidentialDevice, Country } = entities;
 
@@ -168,7 +173,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
             cancelToken,
         })
     );
-
 
     promises.push(
         genericForeignKeyResolver({
@@ -254,6 +258,9 @@ const CallForwardSetting: EntityInterface = {
         'targetType',
         'targetTypeValue',
     ],
+    Form,
+    foreignKeyResolver,
+    foreignKeyGetter,
 };
 
 export default CallForwardSetting;

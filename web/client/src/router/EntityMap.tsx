@@ -22,6 +22,10 @@ const map: RouteMap = [
                         },
                         filterBy: 'user',
                     },
+                    {
+                        entity: entities.CallForwardSetting,
+                        filterBy: 'user',
+                    }
                 ],
             },
             {
@@ -32,12 +36,24 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Ddi,
+                children: [
+                    {
+                        entity: entities.BillableCall,
+                        filterBy: 'ddi',
+                    },
+                ],
             },
             {
                 entity: entities.CompanyService,
             },
             {
-                entity: entities.RatingProfile,
+                entity: {
+                    ...entities.RatingProfile,
+                    acl: {
+                        ...entities.RatingProfile.acl,
+                        detail: false,
+                    },
+                },
             },
         ]
     },
@@ -46,6 +62,12 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.Ivr,
+                children: [
+                    {
+                        entity: entities.IvrEntry,
+                        filterBy: 'ivr',
+                    },
+                ],
             },
             {
                 entity: entities.HuntGroup,

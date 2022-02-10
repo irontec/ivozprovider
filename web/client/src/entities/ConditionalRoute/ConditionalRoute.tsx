@@ -9,6 +9,7 @@ import { foreignKeyGetter } from './useFkChoices';
 import {
     ConditionalRouteProperties, ConditionalRoutePropertiesList
 } from './ConditionalRouteProperties';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const routableFields = [
     'numberCountry',
@@ -69,7 +70,7 @@ const properties: ConditionalRouteProperties = {
                 hide: routableFields,
             },
             'number': {
-                show: ['numbervalue'],
+                show: ['numberCountry', 'numbervalue'],
                 hide: routableFields,
             },
             'friend': {
@@ -191,7 +192,10 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
         genericForeignKeyResolver({
             data,
             fkFld: 'numberCountry',
-            entity: Country,
+            entity: {
+                ...Country,
+                toStr: (row: CountryPropertyList<string>) => row.countryCode as string,
+            },
             cancelToken,
         })
     );
