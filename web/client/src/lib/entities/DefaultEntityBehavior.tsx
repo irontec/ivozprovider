@@ -6,7 +6,7 @@ import store from "store";
 import { Alert, AlertTitle, Grid } from '@mui/material';
 import { isPropertyScalar, PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityInterface, {
-    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType, EntityAclType
 } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
@@ -161,9 +161,10 @@ export const columns = [];
 
 export const properties = {};
 
-export const acl = {
+export const acl: EntityAclType = {
     create: true,
     read: true,
+    detail: true,
     update: true,
     delete: true,
 };

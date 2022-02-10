@@ -311,7 +311,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const externalCallFilter: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <FilterAltIcon />,
+    icon: FilterAltIcon,
     iden: 'ExternalCallFilter',
     title: _('External call filter', { count: 2 }),
     path: '/external_call_filters',

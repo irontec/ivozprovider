@@ -155,7 +155,7 @@ export const unmarshaller = (
 
 const CallCsvScheduler: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'CallCsvScheduler',
     title: _('Call csv scheduler', { count: 2 }),
     path: '/call_csv_schedulers',

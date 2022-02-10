@@ -20,7 +20,7 @@ const columns = [
 
 const routingTag: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'RoutingTag',
     title: _('Routing tag', { count: 2 }),
     path: '/routing_tags',

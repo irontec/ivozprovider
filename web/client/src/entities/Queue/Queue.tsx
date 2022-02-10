@@ -187,7 +187,7 @@ const columns = [
 
 const queue: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <HourglassTopIcon />,
+    icon: HourglassTopIcon,
     iden: 'Queue',
     title: _('Queue', { count: 2 }),
     path: '/queues',

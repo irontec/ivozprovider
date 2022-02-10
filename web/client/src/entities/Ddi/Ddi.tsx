@@ -319,7 +319,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ddi: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <DialpadIcon />,
+    icon: DialpadIcon,
     iden: 'Ddi',
     title: _('DDI', { count: 2 }),
     path: '/ddis',

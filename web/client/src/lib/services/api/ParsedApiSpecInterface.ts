@@ -106,13 +106,10 @@ export interface PropertyList {
     [key: string]: PropertySpec
 }
 
-<<<<<<< HEAD
-=======
 export interface fkPropertyList {
     [key: string]: FkProperty,
 }
 
->>>>>>> a9484f5ed (fixup lib)
 export interface EntitySpec {
     actions: ActionsSpec,
     properties: PropertyList,

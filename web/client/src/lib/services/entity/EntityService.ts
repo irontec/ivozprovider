@@ -1,6 +1,7 @@
 import { SearchFilterType } from 'lib/components/List/Filter/icons/FilterIconFactory';
 import
-EntityInterface, { ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection }
+EntityInterface, { EntityAclType,
+ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection }
     from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
@@ -11,12 +12,6 @@ export type VisualToggleStates = { [key: string]: boolean };
 export type EntityValue = string | number | File | Array<string | number>;
 export type EntityValues = {
     [key: string]: EntityValue | EntityValues
-};
-export type EntityAcls = {
-    create: boolean,
-    read: boolean,
-    update: boolean,
-    delete: boolean
 };
 
 export default class EntityService {
@@ -311,12 +306,16 @@ export default class EntityService {
         return this.entityConfig?.defaultOrderDirection || OrderDirection.asc;
     }
 
-    public getAcls(): EntityAcls {
+    public getAcls(): EntityAclType {
         const create: boolean = this.entityConfig.acl.create && this.actions.post
             ? true
             : false;
 
         const read: boolean = this.entityConfig.acl.read && this.actions.get
+            ? true
+            : false;
+
+        const detail: boolean = this.entityConfig.acl.detail && this.actions.get
             ? true
             : false;
 
@@ -331,6 +330,7 @@ export default class EntityService {
         const acl = {
             create,
             read,
+            detail,
             update,
             delete: remove,
         };

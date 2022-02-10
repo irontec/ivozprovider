@@ -48,7 +48,7 @@ const columns = [
 
 const companyService: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <MiscellaneousServicesIcon />,
+    icon: MiscellaneousServicesIcon,
     iden: 'CompanyService',
     title: _('Service', { count: 2 }),
     path: '/company_services',

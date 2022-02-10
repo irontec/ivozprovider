@@ -12,7 +12,7 @@ const properties: CalendarProperties = {
 
 const calendar: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <CalendarTodayIcon />,
+    icon: CalendarTodayIcon,
     iden: 'Calendar',
     title: _('Calendar', { count: 2 }),
     path: '/calendars',

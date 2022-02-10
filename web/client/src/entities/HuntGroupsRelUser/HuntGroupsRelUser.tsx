@@ -71,7 +71,7 @@ const properties: HuntGroupsRelUserProperties = {
 
 const huntGroupsRelUser: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <GroupsIcon />,
+    icon: GroupsIcon,
     iden: 'HuntGroupsRelUser',
     title: _('Hunt Group', { count: 2 }),
     path: '/hunt_groups_rel_users',

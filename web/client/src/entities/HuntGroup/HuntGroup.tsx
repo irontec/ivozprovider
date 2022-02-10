@@ -122,7 +122,7 @@ const properties: HuntGroupProperties = {
 
 const huntGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <GroupsIcon />,
+    icon: GroupsIcon,
     iden: 'HuntGroup',
     title: _('Hunt Group', { count: 2 }),
     path: '/hunt_groups',

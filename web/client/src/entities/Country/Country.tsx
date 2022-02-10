@@ -13,7 +13,7 @@ const properties: CountryProperties = {
 
 const country: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'Country',
     title: _('Country', { count: 2 }),
     path: '/countries',

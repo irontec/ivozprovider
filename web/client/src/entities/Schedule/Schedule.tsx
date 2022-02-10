@@ -55,7 +55,7 @@ const columns = [
 
 const schedule: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <WatchLaterIcon />,
+    icon: WatchLaterIcon,
     iden: 'Schedule',
     title: _('Schedule', { count: 2 }),
     path: '/schedules',

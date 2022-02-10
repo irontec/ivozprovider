@@ -67,7 +67,7 @@ const columns = [
 
 const outgoingDdiRule: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <QuickreplyIcon />,
+    icon: QuickreplyIcon,
     iden: 'OutgoingDdiRule',
     title: _('Outgoing DDI Rule', { count: 2 }),
     path: '/outgoing_ddi_rules',

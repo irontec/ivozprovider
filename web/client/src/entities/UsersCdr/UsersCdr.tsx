@@ -187,7 +187,7 @@ const columns = [
 
 const usersCdr: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <ChatBubbleOutlineIcon />,
+    icon: ChatBubbleOutlineIcon,
     iden: 'UsersCdr',
     title: _('Call registry', { count: 2 }),
     path: '/users_cdrs',

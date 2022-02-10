@@ -72,7 +72,7 @@ const columns = [
 
 const billableCall: EntityInterface = {
     ...DefaultEntityBehavior,
-    icon: <ChatBubbleIcon />,
+    icon: ChatBubbleIcon,
     iden: 'BillableCall',
     title: _('External call', { count: 2 }),
     path: '/billable_calls',

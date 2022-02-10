@@ -49,7 +49,7 @@ const columns = [
 
 const recording: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsVoiceIcon />,
+    icon: SettingsVoiceIcon,
     iden: 'Recording',
     title: _('Recording', { count: 2 }),
     path: '/recordings',

@@ -6,7 +6,7 @@ import { getI18n } from 'react-i18next';
 
 const companyService: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <MiscellaneousServicesIcon />,
+    icon: MiscellaneousServicesIcon,
     iden: 'Service',
     title: _('Service', { count: 2 }),
     path: '/services',

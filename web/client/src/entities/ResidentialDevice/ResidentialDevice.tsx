@@ -224,7 +224,7 @@ const properties: PartialPropertyList = {
 
 const residentialDevice: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'ResidentialDevice',
     title: _('Residential device', { count: 2 }),
     path: '/residential_devices',

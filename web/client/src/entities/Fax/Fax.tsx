@@ -73,7 +73,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const fax: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <FaxIcon />,
+    icon: FaxIcon,
     iden: 'Fax',
     title: _('Fax', { count: 2 }),
     path: '/faxes',

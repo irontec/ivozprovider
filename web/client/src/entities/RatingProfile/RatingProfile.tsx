@@ -56,7 +56,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ratingProfile: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'RatingProfile',
     title: _('Rating profile', { count: 2 }),
     path: '/rating_profiles',

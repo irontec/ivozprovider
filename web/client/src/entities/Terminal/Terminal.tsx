@@ -109,7 +109,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const terminal: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <PhoneIcon />,
+    icon: PhoneIcon,
     iden: 'Terminal',
     title: _('Terminal', { count: 2 }),
     path: '/terminals',

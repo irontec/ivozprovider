@@ -41,7 +41,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const pickUpGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <PhoneCallbackIcon />,
+    icon: PhoneCallbackIcon,
     iden: 'PickUpGroup',
     title: _('Pick up group', { count: 2 }),
     path: '/pick_up_groups',

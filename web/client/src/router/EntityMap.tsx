@@ -10,7 +10,16 @@ const map: RouteMap = [
                 entity: entities.User,
                 children: [
                     {
-                        entity: entities.HuntGroupsRelUser,
+                        entity: {
+                            ...entities.HuntGroupsRelUser,
+                            acl: {
+                                read: true,
+                                detail: false,
+                                create: false,
+                                update: false,
+                                delete: true,
+                            }
+                        },
                         filterBy: 'user',
                     },
                 ],

@@ -260,7 +260,7 @@ const columns = [
 
 const friend: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <FavoriteIcon />,
+    icon: FavoriteIcon,
     iden: 'Friend',
     title: _('Friend', { count: 2 }),
     path: '/friends',

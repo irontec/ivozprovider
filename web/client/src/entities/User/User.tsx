@@ -240,7 +240,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const user: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <PersonIcon />,
+    icon: PersonIcon,
     iden: 'User',
     title: _('User', { count: 2 }),
     path: '/users',

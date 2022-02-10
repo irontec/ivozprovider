@@ -6,7 +6,7 @@ import { getI18n } from 'react-i18next';
 
 const ratingPlanGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'RatingPlanGroups',
     title: _('Rating plan groups', { count: 2 }),
     path: '/rating_plan_groups',

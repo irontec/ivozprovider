@@ -302,7 +302,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ConditionalRoute: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SwitchCameraIcon />,
+    icon: SwitchCameraIcon,
     iden: 'ConditionalRoute',
     title: _('Conditional Route', { count: 2 }),
     path: '/conditional_routes',

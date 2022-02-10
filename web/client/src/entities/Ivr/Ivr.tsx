@@ -309,7 +309,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const ivr: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <AccountTreeIcon />,
+    icon: AccountTreeIcon,
     iden: 'Ivr',
     title: _('IVR', { count: 2 }),
     path: '/ivrs',

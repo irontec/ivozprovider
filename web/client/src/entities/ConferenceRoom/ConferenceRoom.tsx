@@ -39,7 +39,7 @@ const properties: ConferenceRoomProperties = {
 
 const conferenceRoom: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <ForumIcon />,
+    icon: ForumIcon,
     iden: 'ConferenceRoom',
     title: _('Conference room', { count: 2 }),
     path: '/conference_rooms',

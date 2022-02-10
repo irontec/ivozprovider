@@ -258,7 +258,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
 
 const extension: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <ShortcutIcon />,
+    icon: ShortcutIcon,
     iden: 'Extension',
     title: _('Extension', { count: 2 }),
     path: '/extensions',

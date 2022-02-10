@@ -52,7 +52,7 @@ const ContentCard = (props: ContentCardProps): JSX.Element => {
             </CardContent>
             <StyledCardActions>
               <StyledCardContainer>
-                {!acl.update && <ViewRowButton row={row} path={path} />}
+                {acl.detail && !acl.update && <ViewRowButton row={row} path={path} />}
                 {acl.update && <EditRowButton row={row} path={path} />}
                 {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
               </StyledCardContainer>
