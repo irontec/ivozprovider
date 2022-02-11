@@ -3,7 +3,7 @@ import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
 import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
 import { BillableCallProperties } from './BillableCallProperties';
 import View from './View';
 

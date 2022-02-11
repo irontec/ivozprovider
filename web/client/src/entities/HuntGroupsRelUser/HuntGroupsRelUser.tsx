@@ -1,11 +1,11 @@
 import GroupsIcon from '@mui/icons-material/Groups';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import { HuntGroupsRelUserProperties, HuntGroupsRelUserPropertiesList } from './HuntGroupsRelUserProperties';
+import { HuntGroupsRelUserProperties } from './HuntGroupsRelUserProperties';
 import Type from './Field/Target';
-import entities from '../index';
 import Form from './Form';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: HuntGroupsRelUserProperties = {
     'huntGroup': {
@@ -59,28 +59,6 @@ const columns = [
     'timeoutTime',
     'priority'
 ];
-
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data }
-): Promise<HuntGroupsRelUserPropertiesList> {
-
-    const { HuntGroup } = entities;
-    const iterable = Array.isArray(data)
-        ?  data
-        : [data];
-
-    for (const idx in iterable) {
-        if (typeof iterable[idx].huntGroup === 'string') {
-            continue;
-        }
-
-        iterable[idx]['huntGroupId'] = iterable[idx].huntGroup.id;
-        //data[idx]['huntGroupLink'] = HuntGroup.path + '/edit/' + data[idx].huntGroup.id;
-        iterable[idx].huntGroup = HuntGroup.toStr(iterable[idx].huntGroup)
-    }
-
-    return data;
-}
 
 const huntGroupsRelUser: EntityInterface = {
     ...defaultEntityBehavior,

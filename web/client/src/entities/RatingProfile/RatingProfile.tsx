@@ -1,13 +1,11 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
-import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
-import entities from '../index';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
-import { RatingProfileProperties, RatingProfilePropertiesList } from './RatingProfileProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { RatingProfileProperties } from './RatingProfileProperties';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: RatingProfileProperties = {
     'activationTime': {
@@ -21,39 +19,6 @@ const properties: RatingProfileProperties = {
         null: _("No routing tag"),
     },
 };
-
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
-): Promise<RatingProfilePropertiesList> {
-
-    const promises = [];
-
-    const { RoutingTag } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ratingPlanGroup',
-            entity: RatingPlanGroup,
-            addLink: false,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'routingTag',
-            entity: RoutingTag,
-            addLink: false,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    return data;
-}
 
 const ratingProfile: EntityInterface = {
     ...defaultEntityBehavior,

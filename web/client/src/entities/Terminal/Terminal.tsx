@@ -1,13 +1,12 @@
 import PhoneIcon from '@mui/icons-material/Phone';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import _ from 'lib/services/translations/translate';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
-import entities from '../index';
-import { TerminalProperties, TerminalPropertiesList } from './TerminalProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { TerminalProperties } from './TerminalProperties';
 import Password from './Field/Password';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: TerminalProperties = {
     'name': {
@@ -84,28 +83,6 @@ const properties: TerminalProperties = {
         label: _('Domain'),
     },
 };
-
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
-): Promise<TerminalPropertiesList> {
-
-    const promises = [];
-    const { TerminalModel } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'terminalModel',
-            entity: TerminalModel,
-            addLink: TerminalModel.acl.update,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    return data;
-}
 
 const terminal: EntityInterface = {
     ...defaultEntityBehavior,

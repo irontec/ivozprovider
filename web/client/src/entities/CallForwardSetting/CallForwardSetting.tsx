@@ -1,14 +1,12 @@
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import { CallForwardSettingProperties, CallForwardSettingPropertiesList } from './CallForwardSettingProperties';
+import { CallForwardSettingProperties } from './CallForwardSettingProperties';
 import Form from './Form';
-import entities from '../index';
-import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import Target from './Field/Target';
-import { CountryPropertyList } from 'entities/Country/CountryProperties';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: CallForwardSettingProperties = {
     user: {
@@ -140,109 +138,6 @@ const properties: CallForwardSettingProperties = {
         default: '1',
     },
 };
-
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
-): Promise<CallForwardSettingPropertiesList> {
-    const promises = [];
-    const { User, Extension, Ddi, RetailAccount, ResidentialDevice, Country } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'user',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'voiceMailUser',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'extension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ddi',
-            entity: Ddi,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'retailAccount',
-            entity: RetailAccount,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'residentialDevice',
-            entity: ResidentialDevice,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'numberCountry',
-            entity: {
-                ...Country,
-                toStr: (row: CountryPropertyList<string>) => row.countryCode as string,
-            },
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'cfwToRetailAccount',
-            entity: RetailAccount,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    for (const values of data) {
-        switch(values.targetType) {
-            case 'extension':
-                remapFk(values, 'extension', 'targetTypeValue');
-                break;
-            case 'voicemail':
-                remapFk(values, 'voiceMailUser', 'targetTypeValue');
-                break;
-            case 'retail':
-                remapFk(values, 'cfwToretailAccount', 'targetTypeValue');
-                break;
-            case 'number':
-                values.targetTypeValue = `${values.numberCountry} ${values.numberValue}`;
-                break;
-        }
-    }
-
-    return data;
-}
 
 const CallForwardSetting: EntityInterface = {
     ...defaultEntityBehavior,

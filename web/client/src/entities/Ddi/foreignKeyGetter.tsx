@@ -1,5 +1,3 @@
-import { FkChoices } from 'lib/entities/DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
 import ExternalCallFilterSelectOptions from 'entities/ExternalCallFilter/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import IvrSelectOptions from 'entities/Ivr/SelectOptions';
@@ -13,7 +11,7 @@ import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 import { DdiPropertyList } from './DdiProperties';
-import axios, { CancelToken } from 'axios';
+import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
@@ -109,42 +107,3 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken
 
     return response;
 };
-
-const useFkChoices = (): FkChoices => {
-
-    const [fkChoices, setFkChoices] = useState<any>({});
-
-    useEffect(
-        () => {
-
-            let mounted = true;
-
-            const CancelToken = axios.CancelToken;
-            const source = CancelToken.source();
-
-            foreignKeyGetter(source.token).then((options) => {
-
-                if (!mounted) {
-                    return;
-                }
-
-                setFkChoices((fkChoices: any) => {
-                    return {
-                        ...fkChoices,
-                        ...options
-                    }
-                });
-            });
-
-            return () => {
-                mounted = false;
-                source.cancel();
-            }
-        },
-        []
-    );
-
-    return fkChoices;
-}
-
-export default useFkChoices;

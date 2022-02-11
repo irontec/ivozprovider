@@ -71,9 +71,28 @@ const map: RouteMap = [
             },
             {
                 entity: entities.HuntGroup,
+                children: [
+                    {
+                        entity: {
+                            ...entities.HuntGroupsRelUser,
+                            columns: [
+                                'routeType',
+                                'target',
+                                'timeoutTime',
+                            ],
+                        },
+                        filterBy: 'huntGroup',
+                    },
+                ],
             },
             {
                 entity: entities.Queue,
+                children: [
+                    {
+                        entity: entities.QueueMember,
+                        filterBy: 'queue',
+                    }
+                ],
             },
             {
                 entity: entities.ConditionalRoute,

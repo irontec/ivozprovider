@@ -1,14 +1,12 @@
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
-import entities from '../index';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
-import { IvrEntryProperties, IvrEntryPropertiesList } from './IvrEntryProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { IvrEntryProperties } from './IvrEntryProperties';
 import Target from './Field/Target';
-import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const toggleFlds = [
   'numberCountry',
@@ -97,102 +95,6 @@ const properties: IvrEntryProperties = {
         component: Target,
     },
 };
-
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
-): Promise<IvrEntryPropertiesList> {
-    const promises = [];
-    const {
-        Ivr, Locution, Country, Ddi, Extension, User, ConditionalRoute,
-    } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ivr',
-            entity: Ivr,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'welcomeLocution',
-            entity: Locution,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'numberCountry',
-            entity: {
-                ...Country,
-                toStr: (row: CountryPropertyList<string>) => row.countryCode as string,
-            },
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ddi',
-            entity: Ddi,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'extension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'voiceMailUser',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'conditionalRoute',
-            entity: ConditionalRoute,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    for (const values of data) {
-        switch(values.routeType) {
-            case 'extension':
-                remapFk(values, 'extension', 'target');
-                break;
-            case 'voicemail':
-                remapFk(values, 'voiceMailUser', 'target');
-                break;
-            case 'conditional':
-                remapFk(values, 'conditionalRoute', 'target');
-                break;
-            case 'number':
-                values.target = `${values.numberCountry} ${values.numberValue}`;
-                break;
-        }
-    }
-
-    return data;
-}
 
 const IvrEntry: EntityInterface = {
     ...defaultEntityBehavior,

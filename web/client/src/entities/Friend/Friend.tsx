@@ -4,7 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
 import { FriendProperties } from './FriendProperties';
 import Password from 'entities/Terminal/Field/Password';
 

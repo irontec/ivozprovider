@@ -1,5 +1,5 @@
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
-import useFkChoices from './useFkChoices';
+import useFkChoices from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 

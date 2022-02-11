@@ -1,12 +1,11 @@
 import FaxIcon from '@mui/icons-material/Fax';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
-import entities from '../index';
-import { FaxProperties, FaxPropertiesList } from './FaxProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { FaxProperties } from './FaxProperties';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: FaxProperties = {
     'name': {
@@ -45,31 +44,6 @@ const columns = [
     'sendByEmail',
     'email',
 ];
-
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
-): Promise<FaxPropertiesList> {
-
-    const promises = [];
-    const { Ddi } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outgoingDdi',
-            entity: Ddi,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    if (!Array.isArray(data)) {
-        return data;
-    }
-
-    return data;
-}
 
 const fax: EntityInterface = {
     ...defaultEntityBehavior,
