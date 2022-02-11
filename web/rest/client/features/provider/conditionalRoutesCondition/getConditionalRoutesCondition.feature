@@ -17,7 +17,18 @@ Feature: Retrieve conditional routes conditions
           {
               "priority": 1,
               "routeType": null,
-              "id": 1
+              "numberValue": null,
+              "friendValue": null,
+              "id": 1,
+              "ivr": null,
+              "huntGroup": null,
+              "voicemailUser": null,
+              "user": null,
+              "queue": null,
+              "locution": null,
+              "conferenceRoom": null,
+              "extension": null,
+              "numberCountry": null
           }
       ]
     """

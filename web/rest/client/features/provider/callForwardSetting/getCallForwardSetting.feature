@@ -18,29 +18,65 @@ Feature: Retrieve callForwardSetting
               "callTypeFilter": "internal",
               "callForwardType": "inconditional",
               "targetType": "number",
+              "numberValue": "946002053",
               "enabled": true,
-              "id": 1
+              "id": 1,
+              "user": 1,
+              "extension": null,
+              "voiceMailUser": null,
+              "numberCountry": 68,
+              "residentialDevice": null,
+              "retailAccount": null,
+              "cfwToRetailAccount": null,
+              "ddi": null
           },
           {
               "callTypeFilter": "external",
               "callForwardType": "noAnswer",
               "targetType": "number",
+              "numberValue": "946002053",
               "enabled": true,
-              "id": 2
+              "id": 2,
+              "user": 1,
+              "extension": null,
+              "voiceMailUser": null,
+              "numberCountry": 68,
+              "residentialDevice": null,
+              "retailAccount": null,
+              "cfwToRetailAccount": null,
+              "ddi": null
           },
           {
               "callTypeFilter": "external",
               "callForwardType": "busy",
               "targetType": "number",
+              "numberValue": "946002053",
               "enabled": true,
-              "id": 3
+              "id": 3,
+              "user": 1,
+              "extension": null,
+              "voiceMailUser": null,
+              "numberCountry": 68,
+              "residentialDevice": null,
+              "retailAccount": null,
+              "cfwToRetailAccount": null,
+              "ddi": null
           },
           {
               "callTypeFilter": "external",
               "callForwardType": "userNotRegistered",
               "targetType": "number",
+              "numberValue": "946002054",
               "enabled": true,
-              "id": 4
+              "id": 4,
+              "user": 1,
+              "extension": null,
+              "voiceMailUser": null,
+              "numberCountry": 68,
+              "residentialDevice": null,
+              "retailAccount": null,
+              "cfwToRetailAccount": null,
+              "ddi": null
           }
       ]
     """
