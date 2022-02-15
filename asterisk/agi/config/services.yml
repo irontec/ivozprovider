@@ -63,6 +63,9 @@ services:
   Dialplan\Friends:
     arguments: ~
 
+  Dialplan\FriendStatus:
+    arguments: ~
+
   Dialplan\UserStatus:
     arguments: ~
 
@@ -133,6 +136,10 @@ services:
       $mailer: '@mailer'
 
   Agi\Action\FriendCallAction:
+    lazy: true
+    arguments: ~
+
+  Agi\Action\FriendStatusAction:
     lazy: true
     arguments: ~
 
