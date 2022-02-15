@@ -26,6 +26,10 @@ Dialplan/Friends:
   path: '/Dialplan/Friends'
   controller: 'kernel:handleRequestAction'
 
+Dialplan/FriendStatus:
+  path: '/Dialplan/FriendStatus'
+  controller: 'kernel:handleRequestAction'
+
 Dialplan/Headers:
   path: '/Dialplan/Headers'
   controller: 'kernel:handleRequestAction'
