@@ -3,13 +3,16 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * TrunksCdrDoctrineRepository
@@ -119,6 +122,68 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ->setParameter(':parserScheduledAt', $now->format('Y-m-d H:i:s'))
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    /**
+     * @inheritdoc
+     * @see TrunksCdrRepository::resetOrphanCgrids
+     */
+    public function resetOrphanCgrids(array $billableCallIds): int
+    {
+        $qb = $this->_em
+            ->createQueryBuilder()
+            ->select('self.callid')
+            ->from(BillableCall::class, 'self')
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $billableCallIds);
+
+        $callIds = array_column(
+            $qb->getQuery()->getResult(),
+            'callid'
+        );
+
+        if (empty($callIds)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self.id, tpCdr.cgrid')
+            ->leftJoin(
+                TpCdr::class,
+                'tpCdr',
+                'WITH',
+                'self.cgrid = tpCdr.cgrid'
+            )
+            ->where('self.callid in (:callIds)')
+            ->andWhere('self.cgrid IS NOT NULL')
+            ->andWhere('tpCdr.cgrid IS NULL')
+            ->setParameter(':callIds', $callIds);
+
+        $idsToReset = array_map(
+            'intval',
+            array_column(
+                $qb->getQuery()->getResult(),
+                'id'
+            )
+        );
+
+        if (empty($idsToReset)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.cgrid', ':nullValue')
+            ->setParameter(':nullValue', null)
+            ->where('self.id in (:idsToReset)')
+            ->setParameter(':idsToReset', $idsToReset);
 
         return $this->queryRunner->execute(
             $this->getEntityName(),
