@@ -96,6 +96,11 @@ class SyncFromCsv
                         $company,
                         ...$outboundDdiArgs
                     );
+
+                    if ($ddi->isNew()) {
+                        $user->setOutgoingDdi($ddi);
+                    }
+
                     $entities[] = $ddi;
                 }
 
