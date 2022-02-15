@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist;
 
 class ConditionalRoutesConditionsRelMatchlistDto extends ConditionalRoutesConditionsRelMatchlistDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
