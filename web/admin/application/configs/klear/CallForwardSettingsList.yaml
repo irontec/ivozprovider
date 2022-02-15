@@ -35,6 +35,7 @@ production:
           voicemail: true
           noAnswerTimeout: true
           user: true
+          friend: true
           residentialDevice: true
           cfwToretailAccount: true
       options:
@@ -58,6 +59,7 @@ production:
         blacklist: &callForwardSettingsNewBlacklist_Link
           targetTypeValue: true
           user: true
+          friend: true
           residentialDevice: true
           voicemail: ${auth.companyResidential}
         order: &callForwardSettingsOrder_Link
@@ -98,6 +100,7 @@ production:
           user: true
           residentialDevice: true
           voicemail: ${auth.companyResidential}
+          friend: true
         order:
           <<: *callForwardSettingsOrder_Link
       fixedPositions:
