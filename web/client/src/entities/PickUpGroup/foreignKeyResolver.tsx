@@ -1,23 +1,15 @@
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import entities from '../index';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import { PickUpGroupPropertiesList } from './PickUpGroupProperties';
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
+    { data, cancelToken, entityService }
 ): Promise<PickUpGroupPropertiesList> {
 
-    const promises = [];
-    const { User } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'userIds',
-            entity: User,
-            cancelToken,
-        })
-    );
+    const promises = autoForeignKeyResolver({
+        data, cancelToken, entityService, entities
+    });
 
     await Promise.all(promises);
 

@@ -13,6 +13,7 @@ import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styl
 import _ from 'lib/services/translations/translate';
 import { CancelToken } from 'axios';
 import { CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 
 export const initialValues = {};
 
@@ -150,8 +151,55 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
     return normalizedData;
 };
 
+export const autoForeignKeyResolver = (
+    props: foreignKeyResolverProps
+): Array<Promise<EntityValues | EntityValues[]>> => {
+
+    const { data, cancelToken, entityService, entities, skip } = props;
+    if (!entities) {
+        return [];
+    }
+
+    const promises = [];
+    const fkProperties = entityService?.getFkProperties();
+
+    for (const idx in fkProperties) {
+
+        if (skip && skip.includes(idx)) {
+            continue;
+        }
+
+        const ref = fkProperties[idx].$ref.replace('#/definitions/', '');
+        const entity = entities[ref];
+
+        if (!entity) {
+            console.log('foreignKeyResolver', `${entity} not found`);
+            continue;
+        }
+
+        promises.push(
+            genericForeignKeyResolver({
+                data,
+                fkFld: idx,
+                entity: entity,
+                cancelToken,
+            })
+        );
+    }
+
+    return promises;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const foreignKeyResolver: foreignKeyResolverType = async (props: foreignKeyResolverProps): Promise<EntityValues> => props.data;
+export const foreignKeyResolver: foreignKeyResolverType = async (
+    props: foreignKeyResolverProps
+): Promise<EntityValues> => {
+
+    const promises = autoForeignKeyResolver(props);
+    await Promise.all(promises);
+
+    return props.data
+};
 
 export const foreignKeyGetter = async (): Promise<any> => {
     return {};

@@ -1,3 +1,4 @@
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
@@ -45,11 +46,20 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
 }
 
 export const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, allowLinks = true, cancelToken }
+    { data, allowLinks = true, cancelToken, entityService }
 ): Promise<UsersCdrRows> {
 
-    const promises = [];
-    const { User, Extension, Friend, ResidentialDevice, RetailAccount } = entities;
+    const { User, Extension } = entities;
+
+    const promises = autoForeignKeyResolver({
+        data,
+        cancelToken,
+        entityService,
+        entities,
+        skip: [
+            'user',
+        ]
+    });
 
     promises.push(
         // User & User.extension
@@ -82,33 +92,6 @@ export const foreignKeyResolver: foreignKeyResolverType = async function(
 
                 return rows;
             }
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'friend',
-            entity: Friend,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'residentialDevice',
-            entity: ResidentialDevice,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'retailAccount',
-            entity: RetailAccount,
-            cancelToken,
         })
     );
 

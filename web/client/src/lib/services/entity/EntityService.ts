@@ -5,7 +5,7 @@ ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection }
     from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
-    ActionModelSpec, visualToggleList
+    ActionModelSpec, visualToggleList, isPropertyFk, FkProperty, fkPropertyList
 } from "lib/services/api/ParsedApiSpecInterface";
 
 export type VisualToggleStates = { [key: string]: boolean };
@@ -36,6 +36,22 @@ export default class EntityService {
                 ...propertyOverwrite,
                 label
             };
+        }
+
+        return response;
+    }
+
+    public getFkProperties(): fkPropertyList {
+        const response: fkPropertyList = {};
+        const properties = this.getProperties();
+
+        for (const idx in properties) {
+
+            if (!isPropertyFk(properties[idx])) {
+                continue;
+            }
+
+            response[idx] = properties[idx] as FkProperty;
         }
 
         return response;

@@ -5,6 +5,7 @@ import CallCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import CallForwardSetting from './CallForwardSetting/CallForwardSetting';
 import CompanyService from './CompanyService/CompanyService';
 import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
+import ConditionalRoutesCondition from './ConditionalRoutesCondition/ConditionalRoutesCondition';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import Country from './Country/Country';
 import Ddi from './Ddi/Ddi';
@@ -45,6 +46,7 @@ const entities: EntityList = {
   CallForwardSetting,
   CompanyService,
   ConditionalRoute,
+  ConditionalRoutesCondition,
   ConferenceRoom,
   Country,
   Ddi,

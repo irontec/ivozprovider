@@ -1,40 +1,15 @@
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { UserPropertiesList } from './UserProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
+    { data, cancelToken, entityService }
 ): Promise<UserPropertiesList> {
-    const promises = [];
-    const { Ddi, Extension, Terminal } = entities;
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'terminal',
-            entity: Terminal,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'extension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outgoingDdi',
-            entity: Ddi,
-            cancelToken,
-        })
-    );
+    const promises = autoForeignKeyResolver({
+        data, cancelToken, entityService, entities
+    });
 
     await Promise.all(promises);
 

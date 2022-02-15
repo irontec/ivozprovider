@@ -3,32 +3,23 @@ import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericFore
 import entities from '../index';
 import { IvrEntryPropertiesList } from './IvrEntryProperties';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
+    { data, cancelToken, entityService }
 ): Promise<IvrEntryPropertiesList> {
-    const promises = [];
-    const {
-        Ivr, Locution, Country, Ddi, Extension, User, ConditionalRoute,
-    } = entities;
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ivr',
-            entity: Ivr,
-            cancelToken,
-        })
-    );
+    const { Country } = entities;
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'welcomeLocution',
-            entity: Locution,
-            cancelToken,
-        })
-    );
+    const promises = autoForeignKeyResolver({
+        data,
+        cancelToken,
+        entityService,
+        entities,
+        skip: [
+            'numberCountry',
+        ]
+    });
 
     promises.push(
         genericForeignKeyResolver({
@@ -38,42 +29,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
                 ...Country,
                 toStr: (row: CountryPropertyList<string>) => row.countryCode as string,
             },
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ddi',
-            entity: Ddi,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'extension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'voiceMailUser',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'conditionalRoute',
-            entity: ConditionalRoute,
             cancelToken,
         })
     );

@@ -1,24 +1,15 @@
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import { EntityValues } from 'lib/services/entity/EntityService';
 import entities from '../index';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
+    { data, cancelToken, entityService }
 ): Promise<EntityValues> {
 
-    const promises = [];
-    const { Ddi } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'forcedDdi',
-            entity: Ddi,
-            addLink: Ddi.acl.update,
-            cancelToken,
-        })
-    );
+    const promises = autoForeignKeyResolver({
+        data, cancelToken, entityService, entities
+    });
 
     await Promise.all(promises);
 

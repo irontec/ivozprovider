@@ -1,4 +1,5 @@
 import { CancelToken } from "axios";
+import { EntityList } from "lib/router/parseRoutes";
 import { PartialPropertyList, PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import EntityService, { EntityValues, VisualToggleStates } from "lib/services/entity/EntityService";
 import React from "react";
@@ -15,7 +16,9 @@ export interface foreignKeyResolverProps {
     data: any,
     allowLinks?: boolean,
     entityService?: EntityService,
-    cancelToken?: CancelToken
+    cancelToken?: CancelToken,
+    entities?: EntityList,
+    skip?: Array<string>
 }
 
 export type foreignKeyResolverType = (props: foreignKeyResolverProps) => Promise<any>;

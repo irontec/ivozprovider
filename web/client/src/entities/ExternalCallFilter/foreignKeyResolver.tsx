@@ -1,90 +1,16 @@
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { ExternalCallFilterPropertiesList } from './ExternalCallFilterProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
+    { data, cancelToken, entityService }
 ): Promise<ExternalCallFilterPropertiesList> {
 
-    const promises = [];
-    const {
-        User, Extension, Country, Locution
-    } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'holidayLocution',
-            entity: Locution,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'holidayExtension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'holidayVoiceMailUser',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'holidayNumberCountry',
-            entity: Country,
-            cancelToken,
-        })
-    );
-
-    //////////////////
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outOfScheduleLocution',
-            entity: Locution,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outOfScheduleExtension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outOfScheduleVoiceMailUser',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outOfScheduleNumberCountry',
-            entity: Country,
-            cancelToken,
-        })
-    );
+    const promises = autoForeignKeyResolver({
+        data, cancelToken, entityService, entities
+    });
 
     await Promise.all(promises);
 

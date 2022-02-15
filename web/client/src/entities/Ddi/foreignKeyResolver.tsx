@@ -2,16 +2,23 @@ import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericFore
 import entities from '../index';
 import { DdiPropertiesList } from './DdiProperties';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
+    { data, cancelToken, entityService }
 ): Promise<DdiPropertiesList> {
 
-    const promises = [];
-    const {
-        User, Ivr, HuntGroup, ConferenceRoom, Queue, ConditionalRoute,
-        Fax, ResidentialDevice, ExternalCallFilter, Country
-    } = entities;
+    const { Country } = entities;
+
+    const promises = autoForeignKeyResolver({
+        data,
+        cancelToken,
+        entityService,
+        entities,
+        skip: [
+            'country'
+        ],
+    });
 
     promises.push(
         genericForeignKeyResolver({
@@ -19,87 +26,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
             fkFld: 'country',
             entity: Country,
             addLink: false,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'externalCallFilter',
-            entity: ExternalCallFilter,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'user',
-            entity: User,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ivr',
-            entity: Ivr,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'huntGroup',
-            entity: HuntGroup,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'fax',
-            entity: Fax,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'conferenceRoom',
-            entity: ConferenceRoom,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'residentialDevice',
-            entity: ResidentialDevice,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'queue',
-            entity: Queue,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'conditionalRoute',
-            entity: ConditionalRoute,
             cancelToken,
         })
     );
