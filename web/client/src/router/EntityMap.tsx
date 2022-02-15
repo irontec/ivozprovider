@@ -96,6 +96,12 @@ const map: RouteMap = [
             },
             {
                 entity: entities.ConditionalRoute,
+                children: [
+                    {
+                        entity: entities.ConditionalRoutesCondition,
+                        filterBy: 'conditionalRoute'
+                    }
+                ]
             },
             {
                 entity: entities.Friend,

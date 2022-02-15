@@ -173,7 +173,9 @@ export const autoForeignKeyResolver = (
         const entity = entities[ref];
 
         if (!entity) {
-            console.log('foreignKeyResolver', `${entity} not found`);
+            if (ref) {
+                console.log('foreignKeyResolver', `${ref} not found`);
+            }
             continue;
         }
 

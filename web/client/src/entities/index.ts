@@ -6,6 +6,10 @@ import CallForwardSetting from './CallForwardSetting/CallForwardSetting';
 import CompanyService from './CompanyService/CompanyService';
 import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
 import ConditionalRoutesCondition from './ConditionalRoutesCondition/ConditionalRoutesCondition';
+import ConditionalRoutesConditionsRelCalendar from './ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendar';
+import ConditionalRoutesConditionsRelMatchList from './ConditionalRoutesConditionsRelMatchList/ConditionalRoutesConditionsRelMatchList';
+import ConditionalRoutesConditionsRelRouteLock from './ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLock';
+import ConditionalRoutesConditionsRelSchedule from './ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelSchedule';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import Country from './Country/Country';
 import Ddi from './Ddi/Ddi';
@@ -47,6 +51,10 @@ const entities: EntityList = {
   CompanyService,
   ConditionalRoute,
   ConditionalRoutesCondition,
+  ConditionalRoutesConditionsRelCalendar,
+  ConditionalRoutesConditionsRelMatchList,
+  ConditionalRoutesConditionsRelRouteLock,
+  ConditionalRoutesConditionsRelSchedule,
   ConferenceRoom,
   Country,
   Ddi,
