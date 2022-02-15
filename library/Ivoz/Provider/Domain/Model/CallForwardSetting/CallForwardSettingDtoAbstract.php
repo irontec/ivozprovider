@@ -51,6 +51,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     private $user;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     */
+    private $friend;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto | null
      */
     private $extension;
@@ -111,6 +116,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'enabled' => 'enabled',
             'id' => 'id',
             'userId' => 'user',
+            'friendId' => 'friend',
             'extensionId' => 'extension',
             'voiceMailUserId' => 'voiceMailUser',
             'numberCountryId' => 'numberCountry',
@@ -135,6 +141,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'enabled' => $this->getEnabled(),
             'id' => $this->getId(),
             'user' => $this->getUser(),
+            'friend' => $this->getFriend(),
             'extension' => $this->getExtension(),
             'voiceMailUser' => $this->getVoiceMailUser(),
             'numberCountry' => $this->getNumberCountry(),
@@ -338,6 +345,52 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendDto $friend
+     *
+     * @return static
+     */
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendDto $friend = null)
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendDto | null
+     */
+    public function getFriend()
+    {
+        return $this->friend;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setFriendId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            : null;
+
+        return $this->setFriend($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
             return $dto->getId();
         }
 

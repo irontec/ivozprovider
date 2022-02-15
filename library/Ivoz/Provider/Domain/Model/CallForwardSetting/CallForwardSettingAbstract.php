@@ -52,6 +52,11 @@ abstract class CallForwardSettingAbstract
     protected $user;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    protected $friend;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null
      */
     protected $extension;
@@ -183,6 +188,7 @@ abstract class CallForwardSettingAbstract
             ->setTargetType($dto->getTargetType())
             ->setNumberValue($dto->getNumberValue())
             ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
@@ -216,6 +222,7 @@ abstract class CallForwardSettingAbstract
             ->setNoAnswerTimeout($dto->getNoAnswerTimeout())
             ->setEnabled($dto->getEnabled())
             ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
@@ -244,6 +251,7 @@ abstract class CallForwardSettingAbstract
             ->setNoAnswerTimeout(self::getNoAnswerTimeout())
             ->setEnabled(self::getEnabled())
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
+            ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
             ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
             ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
             ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth))
@@ -266,6 +274,7 @@ abstract class CallForwardSettingAbstract
             'noAnswerTimeout' => self::getNoAnswerTimeout(),
             'enabled' => self::getEnabled(),
             'userId' => self::getUser() ? self::getUser()->getId() : null,
+            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null,
@@ -481,6 +490,30 @@ abstract class CallForwardSettingAbstract
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set friend
+     *
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
+     *
+     * @return static
+     */
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null)
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    /**
+     * Get friend
+     *
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    public function getFriend()
+    {
+        return $this->friend;
     }
 
     /**
