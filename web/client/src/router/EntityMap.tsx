@@ -44,6 +44,9 @@ const map: RouteMap = [
                 ],
             },
             {
+                entity: entities.Fax,
+            },
+            {
                 entity: entities.CompanyService,
             },
             {
@@ -105,12 +108,15 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Friend,
+                children: [
+                    {
+                        entity: entities.FriendsPattern,
+                        filterBy: 'friend',
+                    },
+                ],
             },
             {
                 entity: entities.ConferenceRoom,
-            },
-            {
-                entity: entities.Fax,
             },
         ],
     },
@@ -122,6 +128,12 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Calendar,
+                children: [
+                    {
+                        entity: entities.HolidayDate,
+                        filterBy: 'calendar',
+                    }
+                ],
             },
             {
                 entity: entities.Schedule,

@@ -45,6 +45,12 @@ const conferenceRoom: EntityInterface = {
     path: '/conference_rooms',
     toStr: (row: any) => row.name,
     properties,
+    columns: [
+        'name',
+        'maxMembers',
+        'pinProtected',
+        'pinCode',
+    ],
     Form
 };
 

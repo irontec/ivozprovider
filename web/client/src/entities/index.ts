@@ -17,6 +17,8 @@ import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
 import Friend from './Friend/Friend';
+import FriendsPattern from './FriendsPattern/FriendsPattern';
+import HolidayDate from './HolidayDate/HolidayDate';
 import HuntGroup from './HuntGroup/HuntGroup';
 import HuntGroupsRelUser from './HuntGroupsRelUser/HuntGroupsRelUser';
 import Ivr from './Ivr/Ivr';
@@ -62,6 +64,8 @@ const entities: EntityList = {
   ExternalCallFilter,
   Fax,
   Friend,
+  FriendsPattern,
+  HolidayDate,
   HuntGroup,
   HuntGroupsRelUser,
   Ivr,
