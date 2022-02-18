@@ -14,7 +14,17 @@ class HolidayDateDto extends HolidayDateDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'eventDate' => 'eventDate'
+                'eventDate' => 'eventDate',
+                'locutionId' => 'locution',
+                'wholeDayEvent' => 'wholeDayEvent',
+                'timeIn' => 'timeIn',
+                'timeOut' => 'timeOut',
+                'routeType' => 'routeType',
+                'numberCountryId' => 'numberCountry',
+                'numberValue' => 'numberValue',
+                'calendarId' => 'calendar',
+                'extensionId' => 'extension',
+                'voiceMailUserId' => 'voiceMailUser',
             ];
         }
 

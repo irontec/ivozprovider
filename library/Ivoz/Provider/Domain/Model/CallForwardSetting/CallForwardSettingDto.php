@@ -19,14 +19,22 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
      */
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
-
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'callTypeFilter' => 'callTypeFilter',
                 'callForwardType' => 'callForwardType',
                 'targetType' => 'targetType',
                 'id' => 'id',
-                'enabled' => 'enabled'
+                'enabled' => 'enabled',
+                'numberValue' => 'numberValue',
+                'numberCountryId' => 'numberCountry',
+                'userId' => 'user',
+                'voiceMailUserId' => 'voiceMailUser',
+                'extensionId' => 'extension',
+                'residentialDeviceId' => 'residentialDevice',
+                'retailAccountId' => 'retailAccount',
+                'cfwToRetailAccountId' => 'cfwToRetailAccount',
+                'ddiId' => 'ddi',
             ];
         }
 

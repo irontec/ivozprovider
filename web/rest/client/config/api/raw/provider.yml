@@ -458,10 +458,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
     delete: ~
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -942,9 +944,12 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
       inherited:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
     write_access_control:
-      inherited:
-        user: 'Ivoz\Provider\Domain\Model\User\User'
-        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - and:
+        - inherited:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
     swagger_context:
       required:
       - user
