@@ -32,6 +32,7 @@ Feature: Update users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
+          "location": null,
           "voicemail": null,
           "pickupGroupIds": [
             1
@@ -67,6 +68,7 @@ Feature: Update users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
+          "location": null,
           "voicemail": null,
           "pickupGroupIds": [
             1
