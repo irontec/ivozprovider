@@ -1725,6 +1725,11 @@ msgstr "La dirección local no puede estar vacía."
 msgid "Locales"
 msgstr "Configuracions locals"
 
+msgid "Location"
+msgid_plural "Locations"
+msgstr[0] "Ubicació"
+msgstr[1] "Ubicacions"
+
 msgid "Locution"
 msgid_plural "Locutions"
 msgstr[0] "Locució"

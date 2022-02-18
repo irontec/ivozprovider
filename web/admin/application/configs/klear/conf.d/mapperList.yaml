@@ -223,6 +223,10 @@ mappers:
         modelFile: Ivr,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr'
     }
+  - &Locations {
+        modelFile: Locations,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Location\\Location'
+    }
   - &Locutions {
         modelFile: Locutions,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Locution\\Locution'

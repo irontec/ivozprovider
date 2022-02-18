@@ -1711,6 +1711,11 @@ msgstr "Local socket cannot be empty."
 msgid "Locales"
 msgstr "Locales"
 
+msgid "Location"
+msgid_plural "Locations"
+msgstr[0] "Location"
+msgstr[1] "Locations"
+
 msgid "Locution"
 msgid_plural "Locutions"
 msgstr[0] "Locution"
