@@ -25,15 +25,25 @@ Personal data
         Email used to send the user's received voicemails. This is also used to 
         identify the user in their portal.
 
-    Country code / Area code
-        Defines the way the user calls and the way the numbers are presented to 
-        this user.
+
+************************
+Geographic Configuration
+************************
+
+.. glossary::
 
     Language
         When a locution is played to this user, this language is used.
 
     Timezone
         User portal call list times will use this timezone.
+
+    Numeric transformation
+        Defines how numbers are converted from user format to E.164 and
+        the other way around.
+
+    Location
+        User geographical location where the user is working at.
 
 
 **********
