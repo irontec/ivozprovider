@@ -17,7 +17,14 @@ Feature: Retrieve ivr entries
           {
               "entry": "test",
               "routeType": "number",
-              "id": 1
+              "numberValue": "946002050",
+              "id": 1,
+              "ivr": 1,
+              "welcomeLocution": 1,
+              "extension": null,
+              "voiceMailUser": null,
+              "conditionalRoute": null,
+              "numberCountry": 68
           }
       ]
     """

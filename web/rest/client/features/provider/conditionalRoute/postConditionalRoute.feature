@@ -13,7 +13,7 @@ Feature: Create conditional routes
       {
           "name": "testPost",
           "routetype": "user",
-          "numbervalue": "",
+          "numberValue": null,
           "friendvalue": "",
           "id": 1,
           "ivr": null,

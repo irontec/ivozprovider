@@ -13,7 +13,7 @@ Feature: Create conditional routes conditions
       {
           "priority": 2,
           "routeType": "extension",
-          "numberValue": "",
+          "numberValue": null,
           "friendValue": "",
           "id": 1,
           "conditionalRoute": 1,
@@ -143,16 +143,16 @@ Feature: Create conditional routes conditions
           },
           "numberCountry": null,
           "matchListIds": [
-            2
+              2
           ],
           "scheduleIds": [
-            1
+              1
           ],
           "calendarIds": [
-            2
+              2
           ],
           "routeLockIds": [
-            1
+              1
           ]
       }
     """

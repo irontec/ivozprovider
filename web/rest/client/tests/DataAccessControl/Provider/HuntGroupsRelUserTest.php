@@ -58,15 +58,28 @@ class HuntGroupsRelUserTest extends KernelTestCase
             $accessControl,
             [
                 [
-                    'user',
-                    'in',
-                    'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                    'and' => [
+                        [
+                            'huntGroup',
+                            'in',
+                            'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])',
+                        ],
+                    ],
                 ],
                 [
-                    'huntGroup',
-                    'in',
-                    'HuntGroupRepository([["company","eq","user.getCompany().getId()"]])'
-                ]
+                    'or' => [
+                        [
+                            'user',
+                            'in',
+                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'user',
+                            'isNull',
+                            null
+                        ],
+                    ],
+                ],
             ]
         );
     }
