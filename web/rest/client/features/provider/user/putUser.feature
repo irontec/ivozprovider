@@ -4,7 +4,7 @@ Feature: Update users
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update a schedule
+  Scenario: Update a user
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -36,6 +36,7 @@ Feature: Update users
           "outgoingDdi": null,
           "outgoingDdiRule": null,
           "voicemailLocution": null,
+          "location": null,
           "pickupGroupIds": [
             1
           ]
@@ -74,6 +75,7 @@ Feature: Update users
           "outgoingDdi": null,
           "outgoingDdiRule": null,
           "voicemailLocution": null,
+          "location": null,
           "pickupGroupIds": [
             1
           ]
