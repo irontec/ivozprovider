@@ -426,6 +426,21 @@ production:
         icon: help
         text: _("Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring.")
         label: _("Need help?")
+    location:
+      title: ngettext('Location', 'Locations', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity:  \Ivoz\Provider\Domain\Model\Location\Location
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Location.name: asc
+        'null': _("Unassigned")
 staging:
   _extends: production
 testing:

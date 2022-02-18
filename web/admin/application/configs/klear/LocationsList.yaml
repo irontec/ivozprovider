@@ -1,0 +1,89 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: locationsList_screen
+  screens: &locations_screensLink
+    locationsList_screen: &locationsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Locations
+      class: ui-silk-arrow-in
+      title: _("List of %s %2s", ngettext('Location', 'Locations', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/client/vpbx/locations.html"
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            locationsEdit_screen: $[${auth.acls.Locations.update} && ${auth.companyVPBX}]
+          dialogs:
+            locationsDel_dialog: $[${auth.acls.Locations.delete} && ${auth.companyVPBX}]
+          default: locationsEdit_screen
+        order: &locations_orderLink
+          name: true
+          description: true
+      options:
+        title: _("Options")
+        screens:
+          locationsNew_screen: $[${auth.acls.Locations.create} && ${auth.companyVPBX}]
+        dialogs:
+          locationsDel_dialog: $[${auth.acls.Locations.delete} && ${auth.companyVPBX}]
+    locationsNew_screen: &locationsNew_screenLink
+      <<: *Locations
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s %2s", ngettext('Location', 'Locations', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        order:
+          <<: *locations_orderLink
+      fixedPositions: &locations_fixedPositionsLink
+        group0:
+          colsPerRow: 12
+          fields:
+            name: 8
+            description: 12
+    locationsEdit_screen: &locationsEdit_screenLink
+      <<: *Locations
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Location', 'Locations', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        order:
+          <<: *locations_orderLink
+      fixedPositions:
+        <<: *locations_fixedPositionsLink
+  dialogs: &locations_dialogsLink
+    locationsDel_dialog: &locationsDel_dialogLink
+      <<: *Locations
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Location', 'Locations', 1))
+      description: _("Do you want to delete this %s?", ngettext('Location', 'Locations', 1))
+      message: _("%s successfully deleted.", ngettext('Location', 'Locations', 1))
+      multiItem: 1
+      labelOnList: 1
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
