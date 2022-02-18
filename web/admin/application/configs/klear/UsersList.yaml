@@ -75,6 +75,7 @@ production:
           tokenKey: true
           transformationRuleSet: true
           language: true
+          location: true
           externalIpCalls: true
           outgoingDdiRule: true
           rejectCallMethod: true
@@ -117,6 +118,7 @@ production:
           maxCalls: true
           tokenKey: true
           language: true
+          location: true
           transformationRuleSet: true
           externalIpCalls: true
           statusIcon: true
@@ -166,7 +168,8 @@ production:
           fields:
             language: 6
             timezone: 6
-            transformationRuleSet: 8
+            transformationRuleSet: 6
+            location: 6
         group2:
           label: _("Login Info")
           colsPerRow: 3

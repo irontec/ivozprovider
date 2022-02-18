@@ -1735,6 +1735,11 @@ msgstr "Il socket locale non può essere vuoto."
 msgid "Locales"
 msgstr "Locali"
 
+msgid "Location"
+msgid_plural "Locations"
+msgstr[0] "Ubicazione"
+msgstr[1] "Ubicazioni"
+
 msgid "Locution"
 msgid_plural "Locutions"
 msgstr[0] "Messaggio vocale"
