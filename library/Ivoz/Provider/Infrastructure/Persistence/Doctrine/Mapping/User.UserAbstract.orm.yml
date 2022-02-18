@@ -248,3 +248,14 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    location:
+      targetEntity: \Ivoz\Provider\Domain\Model\Location\LocationInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: users
+      joinColumns:
+        locationId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

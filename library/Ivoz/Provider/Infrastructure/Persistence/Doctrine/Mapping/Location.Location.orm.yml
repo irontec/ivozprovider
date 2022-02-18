@@ -1,0 +1,18 @@
+Ivoz\Provider\Domain\Model\Location\Location:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\LocationDoctrineRepository
+  type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
+  table: Locations
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    users:
+      targetEntity: Ivoz\Provider\Domain\Model\User\UserInterface
+      mappedBy: location
