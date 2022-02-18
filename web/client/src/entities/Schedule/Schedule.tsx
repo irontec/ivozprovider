@@ -4,6 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { ScheduleProperties } from './ScheduleProperties';
+import { EntityValues } from 'lib/services/entity/EntityService';
 
 const properties: ScheduleProperties = {
     'name': {
@@ -59,9 +60,10 @@ const schedule: EntityInterface = {
     iden: 'Schedule',
     title: _('Schedule', { count: 2 }),
     path: '/schedules',
+    toStr: (row: EntityValues) => (row.name as string || ''),
     properties,
     columns,
-    Form
+    Form,
 };
 
 export default schedule;

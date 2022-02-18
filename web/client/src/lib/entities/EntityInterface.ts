@@ -38,9 +38,6 @@ export interface ViewProps {
 }
 export type ViewType = (props: ViewProps) => JSX.Element | null;
 
-
-type ToStrType = (row: EntityValues) => string;
-
 export interface EntityValidatorValues { [label: string]: string }
 export type EntityValidatorResponse = Record<string, string | JSX.Element>;
 export type EntityValidator = (
@@ -70,7 +67,7 @@ export default interface EntityInterface {
     path: string,
     columns: Array<string>,
     properties: PartialPropertyList,
-    toStr: ToStrType,
+    toStr: (row: EntityValues) => string,
     defaultOrderBy: string,
     defaultOrderDirection: OrderDirection,
     icon: React.FunctionComponent

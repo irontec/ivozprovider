@@ -1,5 +1,7 @@
 import BillableCall from './BillableCall/BillableCall';
 import Calendar from './Calendar/Calendar';
+import CalendarPeriod from './CalendarPeriod/CalendarPeriod';
+import CalendarPeriodsRelSchedule from './CalendarPeriodsRelSchedule/CalendarPeriodsRelSchedule';
 import CallAcl from './CallAcl/CallAcl';
 import CallCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import CallForwardSetting from './CallForwardSetting/CallForwardSetting';
@@ -47,6 +49,8 @@ import { EntityList } from 'lib/router/parseRoutes';
 const entities: EntityList = {
   BillableCall,
   Calendar,
+  CalendarPeriod,
+  CalendarPeriodsRelSchedule,
   CallAcl,
   CallCsvScheduler,
   CallForwardSetting,

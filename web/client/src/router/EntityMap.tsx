@@ -132,7 +132,11 @@ const map: RouteMap = [
                     {
                         entity: entities.HolidayDate,
                         filterBy: 'calendar',
-                    }
+                    },
+                    {
+                        entity: entities.CalendarPeriod,
+                        filterBy: 'calendar',
+                    },
                 ],
             },
             {
