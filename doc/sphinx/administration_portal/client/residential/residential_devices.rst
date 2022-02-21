@@ -165,6 +165,7 @@ Device peer
 .. warning:: *Residential devices* MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.
 
-.. note:: As from username is used to identify the retail account, P-Asserted-Identity must be used to specify caller number.
+.. note:: As From username is used to identify the residential device, P-Asserted-Identity (or P-Preferred-Identity or Remote-Party-Id) must be used to specify caller number.
+          Prevalence among these source headers is: PAI > PPI > RPID.
 
 
