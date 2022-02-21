@@ -7,6 +7,7 @@ class ConditionalRoutesConditionsRelRouteLockDto extends ConditionalRoutesCondit
     /**
      * @inheritdoc
      * @codeCoverageIgnore
+     * @return array<array-key, string>
      */
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
@@ -18,6 +19,6 @@ class ConditionalRoutesConditionsRelRouteLockDto extends ConditionalRoutesCondit
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        return parent::getPropertyMap($context, $role);
     }
 }

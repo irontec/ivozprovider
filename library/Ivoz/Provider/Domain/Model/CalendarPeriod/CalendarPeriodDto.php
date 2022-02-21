@@ -17,6 +17,9 @@ class CalendarPeriodDto extends CalendarPeriodDtoAbstract
      */
     private $scheduleIds = [];
 
+    /**
+     * @return string[]
+     */
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
@@ -41,6 +44,9 @@ class CalendarPeriodDto extends CalendarPeriodDtoAbstract
         return $response;
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
@@ -55,6 +61,9 @@ class CalendarPeriodDto extends CalendarPeriodDtoAbstract
         return $response;
     }
 
+    /**
+     * @param array<array-key, mixed> $data
+     */
     public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
