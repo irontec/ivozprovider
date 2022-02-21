@@ -37,4 +37,10 @@ class DdiProviderRegistration extends DdiProviderRegistrationAbstract implements
             $this->setContactUsername('');
         }
     }
+
+    protected function setAuthPassword(string $authPassword): static
+    {
+        $authPassword = trim($authPassword);
+        return parent::setAuthPassword($authPassword);
+    }
 }

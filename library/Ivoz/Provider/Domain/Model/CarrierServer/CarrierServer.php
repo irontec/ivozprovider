@@ -109,4 +109,13 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
                 (int) $this->getId()
             );
     }
+
+    protected function setAuthPassword(?string $authPassword = null): static
+    {
+        if ($authPassword) {
+            $authPassword = trim($authPassword);
+        }
+
+        return parent::setAuthPassword($authPassword);
+    }
 }
