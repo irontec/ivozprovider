@@ -369,11 +369,6 @@ production:
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
           showOnlyIf: $[${auth.companyResidential} && ${auth.acls.DDIs.read}]
-        LocationsList:
-          title: ngettext('Location', 'Locations', 0)
-          class: ui-silk-arrow-in
-          description: _("List of %s", ngettext('Location', 'Locations', 0))
-          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Locations.read}]
         MatchListsList:
           title: ngettext('Match List', 'Match Lists', 0)
           class: ui-silk-text-list-numbers
@@ -474,6 +469,11 @@ production:
               class: ui-silk-telephone-key
               description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
               showOnlyIf: ${auth.acls.CallACL.read}
+            LocationsList:
+              title: ngettext('Location', 'Locations', 0)
+              class: ui-silk-arrow-in
+              description: _("List of %s", ngettext('Location', 'Locations', 0))
+              showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Locations.read}]
         Multimedia:
           title: _("Multimedia")
           class: ui-silk-cd
