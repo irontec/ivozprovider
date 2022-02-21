@@ -19,6 +19,7 @@
         <MoreSpecificImplementedParamType errorLevel="suppress" />
         <RedundantConditionGivenDocblockType errorLevel="suppress" />
         <PropertyNotSetInConstructor errorLevel="suppress" />
+        <MixedReturnTypeCoercion errorLevel="suppress" />
     </issueHandlers>
     <projectFiles>
         <directory name="Ivoz" />

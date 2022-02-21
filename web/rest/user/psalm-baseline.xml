@@ -102,9 +102,6 @@
     <MixedAssignment occurrences="1">
       <code>$data</code>
     </MixedAssignment>
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$user</code>
-    </PossiblyInvalidArgument>
     <UndefinedInterfaceMethod occurrences="1">
       <code>decode</code>
     </UndefinedInterfaceMethod>
