@@ -173,6 +173,7 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function setPassword($password = null)
     {
+        $password = trim($password);
         if (empty($password)) {
             $password = null;
         } else {
