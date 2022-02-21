@@ -20,6 +20,12 @@ interface ChangelogInterface extends EntityInterface
     public static function fromEvent(EntityEventInterface $event, CommandlogInterface $command);
 
     /**
+     * @param array<array-key, mixed> $data | null
+     * @return static
+     */
+    public function replaceData($data = null);
+
+    /**
      * Get id
      * @codeCoverageIgnore
      * @return string

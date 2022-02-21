@@ -56,6 +56,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+            $response['priceDetails'] = [];
         }
 
         if ($role === 'ROLE_SUPER_ADMIN') {
