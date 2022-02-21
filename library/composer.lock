@@ -2467,30 +2467,36 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.7",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "7fddb426c5629325f240a1cb10c2edc8a09ff8f8"
+                "reference": "ac9566ac170076262731fb2e34665f73f9ea39d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/7fddb426c5629325f240a1cb10c2edc8a09ff8f8",
-                "reference": "7fddb426c5629325f240a1cb10c2edc8a09ff8f8",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/ac9566ac170076262731fb2e34665f73f9ea39d3",
+                "reference": "ac9566ac170076262731fb2e34665f73f9ea39d3",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "^3.0",
+                "doctrine/dbal": "^2.12.1",
+                "doctrine/doctrine-migrations-bundle": "^3.0.3",
                 "doctrine/orm": "^2.8",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=8.0",
                 "ramsey/uuid": "^4.2",
+                "swiftmailer/swiftmailer": "6.2.*",
                 "symfony/expression-language": "^5.1",
                 "symfony/finder": "^5.1",
                 "symfony/http-foundation": "^5.1",
                 "symfony/serializer": "^5.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -2519,9 +2525,9 @@
             "description": "Core library for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core/issues",
-                "source": "https://github.com/irontec/ivoz-core/tree/4.7"
+                "source": "https://github.com/irontec/ivoz-core/tree/4.7.1"
             },
-            "time": "2021-11-17T09:03:46+00:00"
+            "time": "2022-02-21T10:37:07+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
