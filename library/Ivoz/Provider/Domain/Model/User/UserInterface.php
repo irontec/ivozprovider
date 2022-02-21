@@ -325,6 +325,22 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailLocution();
 
     /**
+     * Set location
+     *
+     * @param \Ivoz\Provider\Domain\Model\Location\LocationInterface $location | null
+     *
+     * @return static
+     */
+    public function setLocation(\Ivoz\Provider\Domain\Model\Location\LocationInterface $location = null);
+
+    /**
+     * Get location
+     *
+     * @return \Ivoz\Provider\Domain\Model\Location\LocationInterface | null
+     */
+    public function getLocation();
+
+    /**
      * @return bool
      */
     public function isInitialized(): bool;

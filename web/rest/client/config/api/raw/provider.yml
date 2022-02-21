@@ -1157,6 +1157,20 @@ Ivoz\Provider\Domain\Model\Language\Language:
     access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Language\Name:
 
+Ivoz\Provider\Domain\Model\Location\Location:
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
     access_control: >-
@@ -1170,6 +1184,8 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
     swagger_context:
       required:
       - company
+
+
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations: []
@@ -1824,6 +1840,9 @@ Ivoz\Provider\Domain\Model\User\User:
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            location: 'Ivoz\Provider\Domain\Model\Location\Location'
     swagger_context:
       required:
       - company

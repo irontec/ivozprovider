@@ -53,7 +53,8 @@ Feature: Create pick up rel users
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "voicemailLocution": null,
+              "location": 1
           }
       }
     """
@@ -100,7 +101,8 @@ Feature: Create pick up rel users
                 "timezone": 145,
                 "outgoingDdi": null,
                 "outgoingDdiRule": null,
-                "voicemailLocution": null
+                "voicemailLocution": null,
+                "location": 1
             }
       }
     """
