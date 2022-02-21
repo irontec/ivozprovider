@@ -12,7 +12,6 @@ This section will explain all these topics related to the most feature-full type
     terminals
     extensions
     ddis
-    locations
     routing_endpoints/index
     routing_tools/index
     user_configuration/index

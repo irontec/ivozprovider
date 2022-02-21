@@ -11,3 +11,4 @@ This section groups features that may be assigned to users/friends:
     outgoing_ddi_rules
     pick_up_groups
     call_acls
+    locations
