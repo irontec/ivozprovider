@@ -1,6 +1,6 @@
 production:
   entity: \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
-  fields: 
+  fields:
     user:
       title: ngettext('User', 'Users', 1)
       type: select
@@ -9,12 +9,27 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\User\User
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name
             template: '%name%'
           order:
             User.name: asc
+      default: true
+    friend:
+      title: ngettext('Friend', 'Friends', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Friend\Friend
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Friend.name: asc
       default: true
     residentialDevice:
       title: ngettext('Residential Device', 'Residential Devices', 1)

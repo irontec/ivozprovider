@@ -389,4 +389,35 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     *
+     * @return static
+     */
+    public function addCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+
+    /**
+     * Remove callForwardSetting
+     *
+     * @param \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting
+     */
+    public function removeCallForwardSetting(\Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface $callForwardSetting);
+
+    /**
+     * Replace callForwardSettings
+     *
+     * @param ArrayCollection $callForwardSettings of Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+     * @return static
+     */
+    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings);
+
+    /**
+     * Get callForwardSettings
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
+     */
+    public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);
 }

@@ -160,6 +160,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
      */
     private $patterns = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto[] | null
+     */
+    private $callForwardSettings = null;
+
 
     use DtoNormalizer;
 
@@ -244,7 +249,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'language' => $this->getLanguage(),
             'interCompany' => $this->getInterCompany(),
             'psEndpoints' => $this->getPsEndpoints(),
-            'patterns' => $this->getPatterns()
+            'patterns' => $this->getPatterns(),
+            'callForwardSettings' => $this->getCallForwardSettings()
         ];
 
         if (!$hideSensitiveData) {
@@ -1041,5 +1047,25 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getPatterns()
     {
         return $this->patterns;
+    }
+
+    /**
+     * @param array $callForwardSettings
+     *
+     * @return static
+     */
+    public function setCallForwardSettings($callForwardSettings = null)
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    /**
+     * @return array | null
+     */
+    public function getCallForwardSettings()
+    {
+        return $this->callForwardSettings;
     }
 }
