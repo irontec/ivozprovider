@@ -159,7 +159,8 @@ Configuration will be something like this:
 .. warning:: *Friends*, like terminals, MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.
 
-.. note:: As from username is used to identify the friend, P-Asserted-Identity must be used to specify caller number.
+.. note:: As From username is used to identify the friend, P-Asserted-Identity (or P-Preferred-Identity or Remote-Party-Id) must be used to specify caller number.
+          Prevalence among these source headers is: PAI > PPI > RPID.
 
 Summary of remote friends
 -------------------------
