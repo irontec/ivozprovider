@@ -1,3 +1,31 @@
+Tue, 15 Feb 2022 10:49:17 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.20.0 released
+
+    * Portals
+        - Retail client administrators can now edit retail account data (except name)
+        - Passwords are now trimed in: Carrier servers, ddi providers, friends, residential devices, re
+tail accounts and terminals
+
+    * API
+        - device/status endpoint now returns multiple devices status properly
+        - /users/mass_import API endpoint assigns just created ddis to it's user now
+
+    * Proxies
+        - Upgraded Kamailio version to 5.1.10
+
+    * Provisioning
+        - Terminal Provisioning Generic URL is now unique
+
+    * Application Server
+        - Custom Music on Hold is now randomly sorted
+        - Set max call duration to 3 hours
+        - Set 20 sec timeout to service enabled noanswer cfws
+
+    * Other
+        - Apache2 logs are now redirected to journald
+
+
 Tue, 09 Nov 2021 13:26:18 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.19.0 released
