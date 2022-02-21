@@ -13,7 +13,7 @@ Feature: Update conditional routes conditions
       {
           "priority": 1,
           "routeType": "ivr",
-          "numberValue": "",
+          "numberValue": null,
           "friendValue": "",
           "conditionalRoute": 1,
           "ivr": 1,

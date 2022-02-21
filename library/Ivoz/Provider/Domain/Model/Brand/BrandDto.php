@@ -58,7 +58,6 @@ class BrandDto extends BrandDtoAbstract
     }
 
     /**
-     * @return array
      * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = self::CONTEXT_COLLECTION, string $role = null): array

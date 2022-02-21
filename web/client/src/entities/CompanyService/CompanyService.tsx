@@ -1,12 +1,11 @@
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
-import entities from '../index';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
-import { CompanyServiceProperties, CompanyServicePropertiesList } from './CompanyServiceProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { CompanyServiceProperties } from './CompanyServiceProperties';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: CompanyServiceProperties = {
     service: {
@@ -20,27 +19,6 @@ const properties: CompanyServiceProperties = {
     },
 };
 
-const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken }
-): Promise<CompanyServicePropertiesList> {
-    const promises = [];
-    const { Service } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'service',
-            entity: Service,
-            addLink: false,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    return data;
-}
-
 const columns = [
     'service',
     'code',
@@ -48,7 +26,7 @@ const columns = [
 
 const companyService: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <MiscellaneousServicesIcon />,
+    icon: MiscellaneousServicesIcon,
     iden: 'CompanyService',
     title: _('Service', { count: 2 }),
     path: '/company_services',

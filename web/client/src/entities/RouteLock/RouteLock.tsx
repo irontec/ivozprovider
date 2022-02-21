@@ -43,7 +43,7 @@ const columns = [
 
 const routeLock: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <LockIcon />,
+    icon: LockIcon,
     iden: 'RouteLock',
     title: _('Route Lock', { count: 2 }),
     path: '/route_locks',

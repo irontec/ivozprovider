@@ -6,13 +6,14 @@ import store from "store";
 import { Alert, AlertTitle, Grid } from '@mui/material';
 import { isPropertyScalar, PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityInterface, {
-    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType, EntityAclType
 } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
 import _ from 'lib/services/translations/translate';
 import { CancelToken } from 'axios';
 import { CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
+import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 
 export const initialValues = {};
 
@@ -35,9 +36,29 @@ export const validator: EntityValidator = (
         }
 
         const required = (properties[idx] as ScalarProperty)?.required;
-        if (required && values[idx] === '') {
+        const isEmpty = ['', '__null__', null].includes(values[idx]);
+
+        if (required && isEmpty) {
             response[idx] = _('required value');
         }
+    }
+
+    for (const fld in visualToggle) {
+
+        if (!visualToggle[fld]) {
+            continue;
+        }
+
+        if (values[fld] !== undefined) {
+            continue;
+        }
+
+        const required = (properties[fld] as ScalarProperty)?.required;
+        if (!required) {
+            continue;
+        }
+
+        response[fld] = _('required value');
     }
 
     return response;
@@ -46,6 +67,7 @@ export const validator: EntityValidator = (
 export type MarshallerValues = { [key: string]: any };
 export const marshaller = (values: MarshallerValues, properties: PartialPropertyList): MarshallerValues => {
 
+    values = { ...values };
     for (const idx in values) {
 
         const property: any = properties[idx];
@@ -108,7 +130,12 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
 
         } else if (typeof row[idx] === 'object' && row[idx].id) {
             // flatten foreign keys
-            normalizedData[idx] = row[idx].id;
+            const hasCustomComponent = properties[idx].component !== undefined;
+
+            normalizedData[idx] = hasCustomComponent
+                ? row[idx]
+                : row[idx].id;
+
         } else if (typeof row[idx] === 'string' && row[idx].match(dateTimeRegExp)) {
             // formik datetime format: "yyyy-MM-ddThh:mm" followed by optional ":ss" or ":ss.SSS"
             normalizedData[idx] = row[idx].replace(' ', 'T');
@@ -124,8 +151,57 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
     return normalizedData;
 };
 
+export const autoForeignKeyResolver = (
+    props: foreignKeyResolverProps
+): Array<Promise<EntityValues | EntityValues[]>> => {
+
+    const { data, cancelToken, entityService, entities, skip } = props;
+    if (!entities) {
+        return [];
+    }
+
+    const promises = [];
+    const fkProperties = entityService?.getFkProperties();
+
+    for (const idx in fkProperties) {
+
+        if (skip && skip.includes(idx)) {
+            continue;
+        }
+
+        const ref = fkProperties[idx].$ref.replace('#/definitions/', '');
+        const entity = entities[ref];
+
+        if (!entity) {
+            if (ref) {
+                console.log('foreignKeyResolver', `${ref} not found`);
+            }
+            continue;
+        }
+
+        promises.push(
+            genericForeignKeyResolver({
+                data,
+                fkFld: idx,
+                entity: entity,
+                cancelToken,
+            })
+        );
+    }
+
+    return promises;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const foreignKeyResolver: foreignKeyResolverType = async (props: foreignKeyResolverProps): Promise<EntityValues> => props.data;
+export const foreignKeyResolver: foreignKeyResolverType = async (
+    props: foreignKeyResolverProps
+): Promise<EntityValues> => {
+
+    const promises = autoForeignKeyResolver(props);
+    await Promise.all(promises);
+
+    return props.data
+};
 
 export const foreignKeyGetter = async (): Promise<any> => {
     return {};
@@ -135,9 +211,10 @@ export const columns = [];
 
 export const properties = {};
 
-export const acl = {
+export const acl: EntityAclType = {
     create: true,
     read: true,
+    detail: true,
     update: true,
     delete: true,
 };
@@ -208,8 +285,8 @@ export type EntityFormProps = EntityInterface & {
     edit?: boolean,
     entityService: EntityService,
     formik: useFormikType,
-    groups: Array<FieldsetGroups | false>,
-    fkChoices: FkChoices,
+    groups?: Array<FieldsetGroups | false>,
+    fkChoices?: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
     validationErrors: Record<string, JSX.Element>,
     row?: Record<string, any>,
@@ -244,13 +321,14 @@ const filterFieldsetGroups = (groups: Array<FieldsetGroups | false>): Array<Fiel
     return resp;
 }
 
+export type EntityFormType = (props: EntityFormProps) => JSX.Element;
+const Form: EntityFormType = (props) => {
 
-const Form = (props: EntityFormProps): JSX.Element => {
+    const {
+        entityService, formik, readOnlyProperties, validationErrors, fkChoices
+    } = props;
 
-    const { entityService, formik, readOnlyProperties, validationErrors } = props;
-    const { fkChoices } = props;
-
-    const columns = entityService.getColumns();
+    const columns = entityService.getProperties();
     const columnNames = Object.keys(columns);
 
     let groups: Array<FieldsetGroups> = [];

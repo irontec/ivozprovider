@@ -11,13 +11,14 @@ const properties: PartialPropertyList = {
 export const acl = {
     create: false,
     read: true,
+    detail: false,
     update: false,
     delete: false,
 };
 
-const terminal: EntityInterface = {
+const terminalModel: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'TerminalModel',
     title: _('Terminal model', { count: 2 }),
     path: '/terminal_models',
@@ -26,4 +27,4 @@ const terminal: EntityInterface = {
     acl
 };
 
-export default terminal;
+export default terminalModel;

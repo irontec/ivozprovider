@@ -1,6 +1,8 @@
 import { CancelToken } from "axios";
+import { EntityList } from "lib/router/parseRoutes";
 import { PartialPropertyList, PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import EntityService, { EntityValues, VisualToggleStates } from "lib/services/entity/EntityService";
+import React from "react";
 import { EntityFormProps } from "./DefaultEntityBehavior";
 
 export type ListDecoratorPropsType = {
@@ -14,14 +16,17 @@ export interface foreignKeyResolverProps {
     data: any,
     allowLinks?: boolean,
     entityService?: EntityService,
-    cancelToken?: CancelToken
+    cancelToken?: CancelToken,
+    entities?: EntityList,
+    skip?: Array<string>
 }
 
 export type foreignKeyResolverType = (props: foreignKeyResolverProps) => Promise<any>;
 export type ForeignKeyGetterType = (cancelToken?: CancelToken) => Promise<any>;
-type AclType = {
+export type EntityAclType = {
     create: boolean,
     read: boolean,
+    detail: boolean,
     update: boolean,
     delete: boolean,
 };
@@ -32,9 +37,6 @@ export interface ViewProps {
     groups: any,
 }
 export type ViewType = (props: ViewProps) => JSX.Element | null;
-
-
-type ToStrType = (row: EntityValues) => string;
 
 export interface EntityValidatorValues { [label: string]: string }
 export type EntityValidatorResponse = Record<string, string | JSX.Element>;
@@ -59,14 +61,14 @@ export default interface EntityInterface {
     Form: React.FunctionComponent<EntityFormProps>,
     View: ViewType,
     ListDecorator: ListDecoratorType,
-    acl: AclType,
+    acl: EntityAclType,
     iden: string,
     title: string | JSX.Element,
     path: string,
     columns: Array<string>,
     properties: PartialPropertyList,
-    toStr: ToStrType,
+    toStr: (row: EntityValues) => string,
     defaultOrderBy: string,
     defaultOrderDirection: OrderDirection,
-    icon: JSX.Element
+    icon: React.FunctionComponent
 }

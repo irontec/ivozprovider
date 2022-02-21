@@ -3,6 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { CalendarProperties } from './CalendarProperties';
+import { EntityValues } from 'lib/services/entity/EntityService';
 
 const properties: CalendarProperties = {
     'name': {
@@ -12,11 +13,12 @@ const properties: CalendarProperties = {
 
 const calendar: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <CalendarTodayIcon />,
+    icon: CalendarTodayIcon,
     iden: 'Calendar',
     title: _('Calendar', { count: 2 }),
     path: '/calendars',
     properties,
+    toStr: (row: EntityValues) => (row?.name as string | ''),
 };
 
 export default calendar;

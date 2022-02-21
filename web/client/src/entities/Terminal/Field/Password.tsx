@@ -19,7 +19,7 @@ const RegeneratePasswordIcon = (props: RegeneratePasswordIconProps): JSX.Element
     const { label, ...rest } = props;
 
     return (
-        <Tooltip title={label}>
+        <Tooltip title={label} enterTouchDelay={0}>
             <AutorenewIcon {...rest} />
         </Tooltip>
     );

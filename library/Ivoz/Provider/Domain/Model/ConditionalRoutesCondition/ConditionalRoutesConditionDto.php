@@ -67,7 +67,18 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
             return [
                 'id' => 'id',
                 'priority' => 'priority',
-                'routeType' => 'routeType'
+                'routeType' => 'routeType',
+                'locutionId' => 'locution',
+                'numberCountryId' => 'numberCountry',
+                'numberValue' => 'numberValue',
+                'ivrId' => 'ivr',
+                'userId' => 'user',
+                'huntGroupId' => 'huntGroup',
+                'voicemailUserId' => 'voicemailUser',
+                'friendValue' => 'friendValue',
+                'queueId' => 'queue',
+                'conferenceRoomId' => 'conferenceRoom',
+                'extensionId' => 'extension',
             ];
         }
 

@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
 import { HuntGroupProperties } from './HuntGroupProperties';
 
 const routableFields = [
@@ -122,7 +122,7 @@ const properties: HuntGroupProperties = {
 
 const huntGroup: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <GroupsIcon />,
+    icon: GroupsIcon,
     iden: 'HuntGroup',
     title: _('Hunt Group', { count: 2 }),
     path: '/hunt_groups',

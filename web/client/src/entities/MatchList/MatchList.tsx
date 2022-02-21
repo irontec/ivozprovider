@@ -12,7 +12,7 @@ const properties: MatchListProperties = {
 
 const matchList: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <FormatListNumberedIcon />,
+    icon: FormatListNumberedIcon,
     iden: 'MatchList',
     title: _('Match List', { count: 2 }),
     path: '/match_lists',

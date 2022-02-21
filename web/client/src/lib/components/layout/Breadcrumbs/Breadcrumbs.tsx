@@ -57,7 +57,7 @@ const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
       aria-label="breadcrumb"
     >
       <StyledCollapsedBreadcrumbsLink to={''}>
-        <Tooltip title={_('Dashboard')}>
+        <Tooltip title={_('Dashboard')} enterTouchDelay={0}>
           {homeIcon}
         </Tooltip>
       </StyledCollapsedBreadcrumbsLink>
@@ -79,8 +79,8 @@ const Breadcrumbs = (props: BreadcrumbsProps): JSX.Element => {
 
         return (
           <StyledCollapsedBreadcrumbsLink to={to} key={key}>
-            <Tooltip title={routeItem.entity.title}>
-              {routeItem.entity.icon}
+            <Tooltip title={routeItem.entity.title} enterTouchDelay={0}>
+              <routeItem.entity.icon />
             </Tooltip>
           </StyledCollapsedBreadcrumbsLink>
         );

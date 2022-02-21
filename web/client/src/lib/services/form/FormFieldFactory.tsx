@@ -26,6 +26,7 @@ export default class FormFieldFactory {
     }
 
     public getFormField(fld: string, choices: NullableFormFieldFactoryChoices, readOnly = false): JSX.Element | null {
+
         const property = this.getProperty(fld);
         if (!property) {
             console.error(`Property ${fld} was not found`);
@@ -70,7 +71,7 @@ export default class FormFieldFactory {
         const fileUpload = (property as ScalarProperty).type === 'file';
         const hasChanged = this.formik.initialValues[fld] != this.formik.values[fld];
 
-        if (isPropertyScalar(property) && property.component) {
+        if (property.component) {
 
             const PropertyComponent = (property as ScalarProperty).component as PropertyCustomFunctionComponent<any>;
 
@@ -98,7 +99,7 @@ export default class FormFieldFactory {
                 );
             }
 
-            if (property.null) {
+            if (property.null && !multiSelect) {
                 (choices as PropertyFkChoices)['__null__'] = property.null;
             }
 
@@ -217,12 +218,12 @@ export default class FormFieldFactory {
 
         if (isPropertyScalar(property) && property.type === 'integer') {
 
-            if (property.minimum) {
+            if (property.minimum !== undefined) {
                 inputProps.min = property.minimum;
             }
 
-            if (property.maximum) {
-                inputProps.max = property.minimum;
+            if (property.maximum !== undefined) {
+                inputProps.max = property.maximum;
             }
 
             return (
@@ -237,6 +238,7 @@ export default class FormFieldFactory {
                     onBlur={this.handleBlur}
                     error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                     helperText={this.formik.touched[fld] && this.formik.errors[fld]}
+                    inputProps={inputProps}
                     InputProps={InputProps}
                     hasChanged={hasChanged}
                 />
@@ -262,6 +264,25 @@ export default class FormFieldFactory {
                         error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
                         helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         fullWidth={true}
+                        InputProps={InputProps}
+                        hasChanged={hasChanged}
+                    />
+                );
+            }
+
+            if (property.format === 'date') {
+                return (
+                    <StyledTextField
+                        name={fld}
+                        type="date"
+                        value={this.formik.values[fld]}
+                        disabled={disabled}
+                        label={property.label}
+                        required={property.required}
+                        onChange={this.changeHandler}
+                        onBlur={this.handleBlur}
+                        error={this.formik.touched[fld] && Boolean(this.formik.errors[fld])}
+                        helperText={this.formik.touched[fld] && this.formik.errors[fld]}
                         InputProps={InputProps}
                         hasChanged={hasChanged}
                     />

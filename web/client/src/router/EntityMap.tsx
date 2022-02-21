@@ -10,9 +10,22 @@ const map: RouteMap = [
                 entity: entities.User,
                 children: [
                     {
-                        entity: entities.HuntGroupsRelUser,
+                        entity: {
+                            ...entities.HuntGroupsRelUser,
+                            acl: {
+                                read: true,
+                                detail: false,
+                                create: false,
+                                update: false,
+                                delete: true,
+                            }
+                        },
                         filterBy: 'user',
                     },
+                    {
+                        entity: entities.CallForwardSetting,
+                        filterBy: 'user',
+                    }
                 ],
             },
             {
@@ -23,12 +36,27 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Ddi,
+                children: [
+                    {
+                        entity: entities.BillableCall,
+                        filterBy: 'ddi',
+                    },
+                ],
+            },
+            {
+                entity: entities.Fax,
             },
             {
                 entity: entities.CompanyService,
             },
             {
-                entity: entities.RatingProfile,
+                entity: {
+                    ...entities.RatingProfile,
+                    acl: {
+                        ...entities.RatingProfile.acl,
+                        detail: false,
+                    },
+                },
             },
         ]
     },
@@ -37,24 +65,58 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.Ivr,
+                children: [
+                    {
+                        entity: entities.IvrEntry,
+                        filterBy: 'ivr',
+                    },
+                ],
             },
             {
                 entity: entities.HuntGroup,
+                children: [
+                    {
+                        entity: {
+                            ...entities.HuntGroupsRelUser,
+                            columns: [
+                                'routeType',
+                                'target',
+                                'timeoutTime',
+                            ],
+                        },
+                        filterBy: 'huntGroup',
+                    },
+                ],
             },
             {
                 entity: entities.Queue,
+                children: [
+                    {
+                        entity: entities.QueueMember,
+                        filterBy: 'queue',
+                    }
+                ],
             },
             {
                 entity: entities.ConditionalRoute,
+                children: [
+                    {
+                        entity: entities.ConditionalRoutesCondition,
+                        filterBy: 'conditionalRoute'
+                    }
+                ]
             },
             {
                 entity: entities.Friend,
+                children: [
+                    {
+                        entity: entities.FriendsPattern,
+                        filterBy: 'friend',
+                    },
+                ],
             },
             {
                 entity: entities.ConferenceRoom,
-            },
-            {
-                entity: entities.Fax,
             },
         ],
     },
@@ -66,6 +128,16 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Calendar,
+                children: [
+                    {
+                        entity: entities.HolidayDate,
+                        filterBy: 'calendar',
+                    },
+                    {
+                        entity: entities.CalendarPeriod,
+                        filterBy: 'calendar',
+                    },
+                ],
             },
             {
                 entity: entities.Schedule,

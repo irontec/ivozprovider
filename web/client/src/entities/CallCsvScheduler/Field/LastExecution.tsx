@@ -16,7 +16,7 @@ const LastExecution: LastExecutionType = (props) => {
     if (lastExecutionError) {
         return (
             <span>
-                <Tooltip title={lastExecutionError}>
+                <Tooltip title={lastExecutionError} enterTouchDelay={0}>
                     <StyledLastExecutionErrorMsg>&#9888;</StyledLastExecutionErrorMsg>
                 </Tooltip>
                 {lastExecution}
@@ -26,7 +26,7 @@ const LastExecution: LastExecutionType = (props) => {
 
     return (
         <span>
-            <Tooltip title={_('Successful execution')}>
+            <Tooltip title={_('Successful execution')} enterTouchDelay={0}>
                 <StyledLastExecutionSuccessMsg>&#10004;</StyledLastExecutionSuccessMsg>
             </Tooltip>
             {lastExecution}

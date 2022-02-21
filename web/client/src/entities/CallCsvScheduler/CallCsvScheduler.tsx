@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior, { MarshallerValues } from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
 import LastExecution from './Field/LastExecution';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
@@ -155,7 +155,7 @@ export const unmarshaller = (
 
 const CallCsvScheduler: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
+    icon: SettingsApplications,
     iden: 'CallCsvScheduler',
     title: _('Call csv scheduler', { count: 2 }),
     path: '/call_csv_schedulers',

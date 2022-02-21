@@ -16,7 +16,7 @@ const properties: MusicOnHoldProperties = {
 
 const musicOnHold: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <AudiotrackIcon />,
+    icon: AudiotrackIcon,
     iden: 'MusicOnHold',
     title: _('Music on hold', { count: 2 }),
     path: '/music_on_holds',

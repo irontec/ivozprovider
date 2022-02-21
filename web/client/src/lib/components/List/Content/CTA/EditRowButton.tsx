@@ -1,5 +1,5 @@
 import { Tooltip } from "@mui/material";
-import { StyledTableRowLink } from "../Table/ContentTable.styles";
+import { StyledTableRowCta } from "../Table/ContentTable.styles";
 import _ from 'lib/services/translations/translate';
 import EditIcon from '@mui/icons-material/Edit';
 import { RouteComponentProps, withRouter } from "react-router-dom";
@@ -17,9 +17,9 @@ const EditRowButton = (props: EditRowButtonProps): JSX.Element => {
 
     return (
       <Tooltip title={_('Edit')} placement="bottom">
-        <StyledTableRowLink to={`${link}/${row.id}/update`}>
+        <StyledTableRowCta to={`${link}/${row.id}/update`}>
           <EditIcon />
-        </StyledTableRowLink>
+        </StyledTableRowCta>
       </Tooltip>
     );
   }

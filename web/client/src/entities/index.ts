@@ -1,9 +1,17 @@
 import BillableCall from './BillableCall/BillableCall';
 import Calendar from './Calendar/Calendar';
+import CalendarPeriod from './CalendarPeriod/CalendarPeriod';
+import CalendarPeriodsRelSchedule from './CalendarPeriodsRelSchedule/CalendarPeriodsRelSchedule';
 import CallAcl from './CallAcl/CallAcl';
 import CallCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
+import CallForwardSetting from './CallForwardSetting/CallForwardSetting';
 import CompanyService from './CompanyService/CompanyService';
 import ConditionalRoute from './ConditionalRoute/ConditionalRoute';
+import ConditionalRoutesCondition from './ConditionalRoutesCondition/ConditionalRoutesCondition';
+import ConditionalRoutesConditionsRelCalendar from './ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendar';
+import ConditionalRoutesConditionsRelMatchList from './ConditionalRoutesConditionsRelMatchList/ConditionalRoutesConditionsRelMatchList';
+import ConditionalRoutesConditionsRelRouteLock from './ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLock';
+import ConditionalRoutesConditionsRelSchedule from './ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelSchedule';
 import ConferenceRoom from './ConferenceRoom/ConferenceRoom';
 import Country from './Country/Country';
 import Ddi from './Ddi/Ddi';
@@ -11,15 +19,19 @@ import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
 import Friend from './Friend/Friend';
+import FriendsPattern from './FriendsPattern/FriendsPattern';
+import HolidayDate from './HolidayDate/HolidayDate';
 import HuntGroup from './HuntGroup/HuntGroup';
 import HuntGroupsRelUser from './HuntGroupsRelUser/HuntGroupsRelUser';
 import Ivr from './Ivr/Ivr';
+import IvrEntry from './IvrEntry/IvrEntry';
 import Locution from './Locution/Locution';
 import MatchList from './MatchList/MatchList';
 import MusicOnHold from './MusicOnHold/MusicOnHold';
 import OutgoingDdiRule from './OutgoingDdiRule/OutgoingDdiRule';
 import PickUpGroup from './PickUpGroup/PickUpGroup';
 import Queue from './Queue/Queue';
+import QueueMember from './QueueMember/QueueMember';
 import RatingProfile from './RatingProfile/RatingProfile';
 import Recording from './Recording/Recording';
 import ResidentialDevice from './ResidentialDevice/ResidentialDevice';
@@ -37,10 +49,18 @@ import { EntityList } from 'lib/router/parseRoutes';
 const entities: EntityList = {
   BillableCall,
   Calendar,
+  CalendarPeriod,
+  CalendarPeriodsRelSchedule,
   CallAcl,
   CallCsvScheduler,
+  CallForwardSetting,
   CompanyService,
   ConditionalRoute,
+  ConditionalRoutesCondition,
+  ConditionalRoutesConditionsRelCalendar,
+  ConditionalRoutesConditionsRelMatchList,
+  ConditionalRoutesConditionsRelRouteLock,
+  ConditionalRoutesConditionsRelSchedule,
   ConferenceRoom,
   Country,
   Ddi,
@@ -48,15 +68,19 @@ const entities: EntityList = {
   ExternalCallFilter,
   Fax,
   Friend,
+  FriendsPattern,
+  HolidayDate,
   HuntGroup,
   HuntGroupsRelUser,
   Ivr,
+  IvrEntry,
   Locution,
   MatchList,
   MusicOnHold,
   OutgoingDdiRule,
   PickUpGroup,
   Queue,
+  QueueMember,
   RatingProfile,
   Recording,
   ResidentialDevice,

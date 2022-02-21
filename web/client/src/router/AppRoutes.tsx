@@ -31,7 +31,7 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
       {token && parseRoutes(apiSpec, entityMap).map((route: RouteSpec) => (
         <Route exact key={route.key} path={route.path}>
           <AppRouteContentWrapper loggedIn={!!token} routeMap={entityMap}>
-            <RouteContent route={route} {...props} />
+            <RouteContent route={route} routeMap={entityMap} {...props} />
           </AppRouteContentWrapper>
         </Route>
       ))}

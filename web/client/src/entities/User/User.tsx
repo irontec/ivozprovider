@@ -1,12 +1,11 @@
 import PersonIcon from '@mui/icons-material/Person';
-import EntityInterface, { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
-import { foreignKeyGetter } from './useFkChoices'
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
-import entities from '../index';
-import { UserProperties, UserPropertiesList } from './UserProperties';
+import { foreignKeyGetter } from './foreignKeyGetter'
+import { UserProperties } from './UserProperties';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: UserProperties = {
     'name': {
@@ -200,47 +199,9 @@ const columns = [
     // @TODO status
 ];
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
-    { data, cancelToken }
-): Promise<UserPropertiesList> {
-    const promises = [];
-    const { Ddi, Extension, Terminal } = entities;
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'terminal',
-            entity: Terminal,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'extension',
-            entity: Extension,
-            cancelToken,
-        })
-    );
-
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'outgoingDdi',
-            entity: Ddi,
-            cancelToken,
-        })
-    );
-
-    await Promise.all(promises);
-
-    return data;
-}
-
 const user: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <PersonIcon />,
+    icon: PersonIcon,
     iden: 'User',
     title: _('User', { count: 2 }),
     path: '/users',

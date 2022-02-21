@@ -13,8 +13,15 @@ class IvrEntryDto extends IvrEntryDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
+                'ivrId' => 'ivr',
                 'entry' => 'entry',
-                'routeType' => 'routeType'
+                'welcomeLocutionId' => 'welcomeLocution',
+                'routeType' => 'routeType',
+                'numberCountryId' => 'numberCountry',
+                'numberValue' => 'numberValue',
+                'extensionId' => 'extension',
+                'voiceMailUserId' => 'voiceMailUser',
+                'conditionalRouteId' => 'conditionalRoute',
             ];
         }
 

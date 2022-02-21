@@ -17,12 +17,32 @@ Feature: Retrieve holiday dates
           {
               "name": "Name",
               "eventDate": "2021-12-21",
-              "id": 1
+              "wholeDayEvent": true,
+              "timeIn": null,
+              "timeOut": null,
+              "routeType": null,
+              "numberValue": null,
+              "id": 1,
+              "calendar": 1,
+              "locution": null,
+              "extension": null,
+              "voiceMailUser": null,
+              "numberCountry": null
           },
           {
               "name": "timeRangeEvent",
               "eventDate": "2021-12-21",
-              "id": 2
+              "wholeDayEvent": false,
+              "timeIn": "00:00:00",
+              "timeOut": "10:00:00",
+              "routeType": null,
+              "numberValue": null,
+              "id": 2,
+              "calendar": 1,
+              "locution": null,
+              "extension": null,
+              "voiceMailUser": null,
+              "numberCountry": null
           }
       ]
     """

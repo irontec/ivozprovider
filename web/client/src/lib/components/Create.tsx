@@ -9,44 +9,35 @@ import { useStoreActions, useStoreState } from 'store';
 import { KeyValList, ScalarProperty } from "lib/services/api/ParsedApiSpecInterface";
 import useCancelToken from "lib/hooks/useCancelToken";
 import SaveButton from "./shared/Button/SaveButton";
+import findRoute from "lib/router/findRoute";
+import { RouteMap } from 'lib/router/routeMapParser';
+import { EntityFormType } from "lib/entities/DefaultEntityBehavior";
 
-interface CreateProps extends EntityInterface {
+type CreateProps = RouteComponentProps<Record<string, string>> & EntityInterface & {
   entityService: EntityService,
-  history: any,
-  match: any
+  routeMap: RouteMap,
+  Form: EntityFormType,
 }
 
 const Create = (props: CreateProps & RouteComponentProps) => {
 
-  const { marshaller, unmarshaller, path, history, properties } = props;
+  const {
+    marshaller, unmarshaller, path, history, properties, routeMap, match, entityService
+  } = props;
 
-  const { Form: EntityForm, entityService }: { Form: any, entityService: EntityService } = props;
+  const parentRoute = findRoute(routeMap, match);
+  let returnPath = parentRoute?.route || '';
+  for (const idx in match.params) {
+    returnPath = returnPath.replace(`:${idx}`, match.params[idx]);
+  }
+
+  const { Form: EntityForm } = props;
   const reqError = useStoreState((store) => store.api.errorMsg);
   const [validationError, setValidationError] = useState<KeyValList>({});
   const apiPost = useStoreActions((actions) => actions.api.post);
   const [, cancelToken] = useCancelToken();
 
   const columns = entityService.getProperties();
-
-  const submit = async (values: any) => {
-
-    const payload = marshaller(values, columns);
-    const formData = entityService.prepareFormData(payload);
-
-    try {
-      const resp = await apiPost({
-        path,
-        values: formData,
-        contentType: 'application/json',
-        cancelToken
-      });
-
-      if (resp !== undefined) {
-        history.push(path);
-      }
-
-    } catch {}
-  };
 
   let initialValues: EntityValues = {
     ...entityService.getDefultValues(),
@@ -73,6 +64,10 @@ const Create = (props: CreateProps & RouteComponentProps) => {
     initialValues,
     validate: (values: any) => {
 
+      if (parentRoute?.filterBy) {
+        values[parentRoute.filterBy] = Object.values(match.params).pop();
+      }
+
       const visualToggles = entityService.getVisualToggles(values);
 
       const validationErrors = props.validator(
@@ -84,7 +79,25 @@ const Create = (props: CreateProps & RouteComponentProps) => {
 
       return validationErrors;
     },
-    onSubmit: submit,
+    onSubmit: async (values: any) => {
+
+      const payload = marshaller(values, columns);
+      const formData = entityService.prepareFormData(payload);
+
+      try {
+        const resp = await apiPost({
+          path,
+          values: formData,
+          contentType: 'application/json',
+          cancelToken
+        });
+
+        if (resp !== undefined) {
+          history.push(returnPath);
+        }
+
+      } catch {}
+    },
   });
 
   const errorList: { [k: string]: JSX.Element } = {};
@@ -102,7 +115,13 @@ const Create = (props: CreateProps & RouteComponentProps) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <EntityForm {...props} formik={formik} create={true} validationErrors={errorList} />
+        <EntityForm
+          {...props}
+          entityService={entityService}
+          formik={formik}
+          create={true}
+          validationErrors={errorList}
+        />
 
         <SaveButton />
         {reqError && <ErrorMessage message={reqError} />}

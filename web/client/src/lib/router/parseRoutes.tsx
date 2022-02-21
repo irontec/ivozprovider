@@ -45,14 +45,7 @@ const parseRouteMapItems = (
                 key: `${iden}-list`,
                 path: `${route}`,
                 entity: entity,
-                component: (props: any): JSX.Element => {
-                    return (
-                        <List
-                            {...props}
-                            routeMap={routeMap}
-                        />
-                    );
-                },
+                component: List,
             });
         }
 

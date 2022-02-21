@@ -21,7 +21,7 @@ const properties: CallAclProperties = {
 
 const CallAcl: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <GavelIcon />,
+    icon: GavelIcon,
     iden: 'CallAcl',
     title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',

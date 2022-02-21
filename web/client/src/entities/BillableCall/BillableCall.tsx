@@ -3,7 +3,7 @@ import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
 import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
 import { BillableCallProperties } from './BillableCallProperties';
 import View from './View';
 
@@ -72,7 +72,7 @@ const columns = [
 
 const billableCall: EntityInterface = {
     ...DefaultEntityBehavior,
-    icon: <ChatBubbleIcon />,
+    icon: ChatBubbleIcon,
     iden: 'BillableCall',
     title: _('External call', { count: 2 }),
     path: '/billable_calls',

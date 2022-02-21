@@ -5,7 +5,15 @@ export const StyledCardActions = styled(CardActions)(
   () => {
     return {
       'padding': '0 16px',
+      'display': 'flex',
+      'justifyContent': 'space-between',
     };
+  }
+);
+
+export const StyledCardContainer = styled('div')(
+  () => {
+    return {};
   }
 );
 

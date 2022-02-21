@@ -3,7 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './useFkChoices';
+import { foreignKeyGetter } from './foreignKeyGetter';
 import { QueueProperties } from './QueueProperties';
 
 const timeoutFields = [
@@ -187,7 +187,7 @@ const columns = [
 
 const queue: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <HourglassTopIcon />,
+    icon: HourglassTopIcon,
     iden: 'Queue',
     title: _('Queue', { count: 2 }),
     path: '/queues',

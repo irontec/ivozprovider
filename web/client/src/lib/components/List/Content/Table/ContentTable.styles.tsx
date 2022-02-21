@@ -1,4 +1,4 @@
-import { TableCell } from '@mui/material';
+import { TableCell, Theme } from '@mui/material';
 import { styled } from '@mui/styles';
 import { Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,8 +7,8 @@ import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import { forwardRef } from 'react';
 
 const linkSharedStyles = {
-  color: 'inherit',
   cursor: 'pointer',
+  color: 'black',
 };
 
 const TableRowLink = forwardRef<any, any>((props, ref) => {
@@ -17,11 +17,27 @@ const TableRowLink = forwardRef<any, any>((props, ref) => {
 });
 TableRowLink.displayName = 'TableRowLink';
 
-export const StyledTableRowLink = styled(TableRowLink)(
+export const StyledTableRowCta = styled(TableRowLink)(
   () => {
     return {
       ...linkSharedStyles,
       textDecoration: 'none',
+      '& > *': {
+        marginRight: '5px',
+      }
+    };
+  }
+);
+
+export const StyledTableRowEntityCta = styled(TableRowLink)(
+  ({ theme }: { theme: Theme }) => {
+    return {
+      ...linkSharedStyles,
+      textDecoration: 'none',
+      color: theme.palette.primary.dark,
+      '& > *': {
+        marginLeft: '5px',
+      }
     };
   }
 );
@@ -40,7 +56,14 @@ export const StyledTableRowFkLink = styled(
 const _DeleteIcon = forwardRef<any, any>(
   (props, ref) => {
     const { className, onClick, ...rest } = props;
-    return (<DeleteIcon {...rest} className={className} onClick={onClick} ref={ref} />);
+    return (
+      <DeleteIcon
+        {...rest}
+        className={className}
+        onClick={onClick}
+        ref={ref}
+      />
+    );
   }
 );
 _DeleteIcon.displayName = '_DeleteIcon';

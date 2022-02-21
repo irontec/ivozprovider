@@ -34,7 +34,7 @@ const properties: LocutionProperties = {
 
 const locution: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <CampaignIcon />,
+    icon: CampaignIcon,
     iden: 'Locution',
     title: _('Locution', { count: 2 }),
     path: '/locutions',

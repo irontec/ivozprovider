@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { WithRouterProps, WithRouterStatics } from "react-router";
 import EntityService from 'lib/services/entity/EntityService';
 import { CriteriaFilterValues } from './Filter/ContentFilter';
 import { criteriaToArray, queryStringToCriteria } from './List.helpers';
@@ -15,8 +14,7 @@ import { RouteMap } from 'lib/router/routeMapParser';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import findRoute from 'lib/router/findRoute';
 
-type RouterProps = RouteComponentProps & WithRouterProps<any> & WithRouterStatics<any>;
-type ListProps = RouterProps & {
+type ListProps = RouteComponentProps & {
     path: string,
     routeMap: RouteMap,
     entityService: EntityService,

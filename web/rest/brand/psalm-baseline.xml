@@ -41,18 +41,12 @@
       <code>$code</code>
     </InvalidScalarArgument>
   </file>
-  <file src="src/Controller/My/ActiveCallsAction.php">
-    <MixedAssignment occurrences="1">
-      <code>$companyId</code>
-    </MixedAssignment>
-  </file>
   <file src="src/Controller/My/RegistrationSummaryAction.php">
     <MixedArgument occurrences="1">
       <code>$company</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="1">
       <code>$company</code>
-      <code>$companyId</code>
     </MixedAssignment>
   </file>
   <file src="src/Controller/Provider/PostUsersMassImportAction.php">

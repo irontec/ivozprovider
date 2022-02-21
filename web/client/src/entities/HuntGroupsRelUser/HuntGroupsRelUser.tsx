@@ -3,6 +3,9 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { HuntGroupsRelUserProperties } from './HuntGroupsRelUserProperties';
+import Type from './Field/Target';
+import Form from './Form';
+import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: HuntGroupsRelUserProperties = {
     'huntGroup': {
@@ -10,6 +13,20 @@ const properties: HuntGroupsRelUserProperties = {
     },
     'routeType': {
         label: _('Target type'),
+        enum: {
+            'user': _('User'),
+            'number': _('Number'),
+        },
+        visualToggle: {
+            'user': {
+                show: ['user'],
+                hide: ['numberCountry', 'numberValue'],
+            },
+            'number': {
+                show: ['numberCountry', 'numberValue'],
+                hide: ['user'],
+            },
+        }
     },
     'numberCountry': {
         label: _('Country'),
@@ -28,55 +45,32 @@ const properties: HuntGroupsRelUserProperties = {
     },
     'target': {
         label: _('Target'),
+        component: Type,
+        readOnly: true,
     },
-    //'strategy': {
-    //    label: _('Strategy'),
-    //    required: false,
-    //    enum: {
-    //        'ringAll': _('Ring all'),
-    //        'linear': _('Linear'),
-    //        'roundRobin': _('Round Robin'),
-    //        'random': _('Random')
-    //    },
-    //    visualToggle: {
-    //        'ringAll': {
-    //            show: ['ringAllTimeout'],
-    //            hide: [],
-    //        },
-    //        'linear': {
-    //            show: [],
-    //            hide: ['ringAllTimeout'],
-    //        },
-    //        'roundRobin': {
-    //            show: [],
-    //            hide: ['ringAllTimeout'],
-    //        },
-    //        'random': {
-    //            show: [],
-    //            hide: ['ringAllTimeout'],
-    //        },
-    //    },
-    //    helpText: _('Determines the order users will be called')
-    //},
-    //'preventMissedCalls': {
-    //    label: _('Prevent missed calls'),
-    //    enum: {
-    //        '0': _('No'),
-    //        '1': _('Yes'),
-    //    },
-    //    default: '1',
-    //    helpText: _("When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll huntgroups if someone answers."),
-    //},
 };
+
+const columns = [
+    'target',
+    'huntGroup',
+    'routeType',
+    'numberCountry',
+    'numberValue',
+    'timeoutTime',
+    'priority'
+];
 
 const huntGroupsRelUser: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: <GroupsIcon />,
+    icon: GroupsIcon,
     iden: 'HuntGroupsRelUser',
-    title: _('Hunt Group', { count: 2 }),
+    title: _('Hunt Group member', { count: 2 }),
     path: '/hunt_groups_rel_users',
     toStr: (row: any) => row.name,
     properties,
+    columns,
+    foreignKeyResolver,
+    Form,
 };
 
 export default huntGroupsRelUser;
