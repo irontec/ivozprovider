@@ -4,9 +4,8 @@ import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import { HuntGroupPropertyList } from './HuntGroupProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import { CancelToken } from 'axios';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: HuntGroupPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];

@@ -6,10 +6,9 @@ import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];

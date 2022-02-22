@@ -7,10 +7,9 @@ import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: ConditionalRoutePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

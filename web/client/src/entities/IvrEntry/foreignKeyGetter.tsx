@@ -3,11 +3,10 @@ import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import UserSelectOptions from 'entities/User/SelectOptions';
 import { IvrEntryPropertyList } from './IvrEntryProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: IvrEntryPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];

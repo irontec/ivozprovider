@@ -5,8 +5,9 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
+    const { entityService } = props;
     const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices = useFkChoices(foreignKeyGetter);
+    const fkChoices = useFkChoices(foreignKeyGetter, entityService);
 
     const edit = props.edit || false;
     const groups: Array<FieldsetGroups | false> = [

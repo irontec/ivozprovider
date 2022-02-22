@@ -6,10 +6,9 @@ import UserSelectOptions from 'entities/User/SelectOptions';
 import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 import { ExtensionPropertyList } from './ExtensionProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: ExtensionPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];

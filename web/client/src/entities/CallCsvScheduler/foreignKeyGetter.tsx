@@ -6,9 +6,8 @@ import FaxSelectOptions from 'entities/Fax/SelectOptions';
 import FriendSelectOptions from 'entities/Friend/SelectOptions';
 import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import { CancelToken } from 'axios';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: CallCsvSchedulerPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

@@ -7,7 +7,6 @@ import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import { ConditionalRoutesConditionPropertyList } from './ConditionalRoutesConditionProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
@@ -15,7 +14,7 @@ import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import FriendSelectOptions from 'entities/Friend/SelectOptions';
 import RouteLockSelectOptions from 'entities/RouteLock/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: ConditionalRoutesConditionPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

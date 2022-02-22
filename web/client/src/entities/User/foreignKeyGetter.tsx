@@ -11,10 +11,9 @@ import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import UserSelectOptions from './SelectOptions';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import { UserPropertyList } from './UserProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: UserPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

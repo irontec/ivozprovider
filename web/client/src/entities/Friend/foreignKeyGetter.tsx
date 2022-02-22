@@ -3,10 +3,9 @@ import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/S
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import { FriendPropertyList } from './FriendProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: FriendPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];

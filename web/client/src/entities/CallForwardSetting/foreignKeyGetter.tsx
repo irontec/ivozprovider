@@ -2,13 +2,12 @@ import UserSelectOptions from 'entities/User/SelectOptions';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import { CallForwardSettingPropertyList } from './CallForwardSettingProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: CallForwardSettingPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

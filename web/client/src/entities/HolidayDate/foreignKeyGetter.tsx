@@ -2,11 +2,10 @@ import UserSelectOptions from 'entities/User/SelectOptions';
 import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import { HolidayDatePropertyList } from './HolidayDateProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import LocutionSelectOptions from 'entities/Locution/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: HolidayDatePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

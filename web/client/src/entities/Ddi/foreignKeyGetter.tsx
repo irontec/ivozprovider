@@ -11,10 +11,9 @@ import QueueSelectOptions from 'entities/Queue/SelectOptions';
 import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 import { DdiPropertyList } from './DdiProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: DdiPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
