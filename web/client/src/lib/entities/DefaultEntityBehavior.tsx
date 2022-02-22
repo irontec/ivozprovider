@@ -6,7 +6,8 @@ import store from "store";
 import { Alert, AlertTitle, Grid } from '@mui/material';
 import { isPropertyScalar, PartialPropertyList, PropertySpec, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import EntityInterface, {
-    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType, OrderDirection, foreignKeyResolverProps, foreignKeyResolverType, EntityAclType
+    EntityValidator, EntityValidatorValues, EntityValidatorResponse, ViewProps, ListDecoratorPropsType,
+    OrderDirection, foreignKeyResolverProps, foreignKeyResolverType, EntityAclType, FetchFksCallback
 } from './EntityInterface';
 import ViewFieldValue from 'lib/services/form/Field/ViewFieldValue';
 import { StyledGroupLegend, StyledGroupGrid } from './DefaultEntityBehavior.styles';
@@ -477,7 +478,7 @@ const View = (props: ViewProps): JSX.Element | null => {
     );
 };
 
-export type FetchFksCallback = (data: { [key: string]: any }) => void;
+
 
 const fetchFks = (endpoint: string, properties: Array<string>, setter: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
 
