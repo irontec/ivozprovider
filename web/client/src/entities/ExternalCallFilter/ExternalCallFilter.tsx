@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { ExternalCallFilterProperties } from './ExternalCallFilterProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const holidayFields = [
     'holidayNumberCountry',
@@ -170,7 +171,8 @@ const externalCallFilter: EntityInterface = {
     columns,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions,
 };
 
 export default externalCallFilter;

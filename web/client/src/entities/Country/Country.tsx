@@ -4,6 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
 import { CountryProperties } from './CountryProperties';
+import selectOptions from './SelectOptions';
 
 const properties: CountryProperties = {
     name: {
@@ -22,6 +23,7 @@ const country: EntityInterface = {
         return row.name[language];
     },
     properties,
+    selectOptions,
 };
 
 export default country;

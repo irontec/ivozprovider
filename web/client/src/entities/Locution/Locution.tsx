@@ -6,6 +6,7 @@ import Form from './Form';
 import { LocutionProperties } from './LocutionProperties';
 import RecordingExtension from './Field/RecordingExtension';
 import { EntityValues } from 'lib/services/entity/EntityService';
+import selectOptions from './SelectOptions';
 
 const properties: LocutionProperties = {
     'name': {
@@ -47,6 +48,7 @@ const locution: EntityInterface = {
     ],
     Form,
     toStr: (row: EntityValues) => row.name as string,
+    selectOptions,
 };
 
 export default locution;

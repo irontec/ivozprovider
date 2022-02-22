@@ -5,6 +5,7 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { QueueProperties } from './QueueProperties';
+import selectOptions from './SelectOptions';
 
 const timeoutFields = [
     'timeoutNumberCountry',
@@ -195,7 +196,8 @@ const queue: EntityInterface = {
     properties,
     columns,
     Form,
-    foreignKeyGetter
+    foreignKeyGetter,
+    selectOptions,
 };
 
 export default queue;

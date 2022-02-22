@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { ExtensionProperties } from './ExtensionProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const allRoutableFields = [
     'numberCountry',
@@ -135,7 +136,8 @@ const extension: EntityInterface = {
     properties,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions,
 };
 
 export default extension;

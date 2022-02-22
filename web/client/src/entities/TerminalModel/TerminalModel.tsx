@@ -3,6 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
 import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
 
@@ -24,7 +25,8 @@ const terminalModel: EntityInterface = {
     path: '/terminal_models',
     toStr: (row: any) => row.name,
     properties,
-    acl
+    acl,
+    selectOptions,
 };
 
 export default terminalModel;

@@ -5,6 +5,7 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { ScheduleProperties } from './ScheduleProperties';
 import { EntityValues } from 'lib/services/entity/EntityService';
+import selectOptions from './SelectOptions';
 
 const properties: ScheduleProperties = {
     'name': {
@@ -64,6 +65,7 @@ const schedule: EntityInterface = {
     properties,
     columns,
     Form,
+    selectOptions,
 };
 
 export default schedule;

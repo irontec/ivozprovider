@@ -6,6 +6,7 @@ import Form from './Form'
 import { foreignKeyGetter } from './foreignKeyGetter'
 import { UserProperties } from './UserProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const properties: UserProperties = {
     'name': {
@@ -210,7 +211,8 @@ const user: EntityInterface = {
     columns,
     Form,
     foreignKeyResolver,
-    foreignKeyGetter
+    foreignKeyGetter,
+    selectOptions,
 };
 
 export default user;

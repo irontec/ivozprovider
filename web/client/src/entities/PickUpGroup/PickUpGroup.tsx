@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { PickUpGroupProperties } from './PickUpGroupProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const properties: PickUpGroupProperties = {
     'name': {
@@ -26,7 +27,8 @@ const pickUpGroup: EntityInterface = {
     properties,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions,
 };
 
 export default pickUpGroup;

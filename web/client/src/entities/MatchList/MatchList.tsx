@@ -3,6 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { MatchListProperties } from './MatchListProperties';
+import selectOptions from './SelectOptions';
 
 const properties: MatchListProperties = {
     'name': {
@@ -16,7 +17,8 @@ const matchList: EntityInterface = {
     iden: 'MatchList',
     title: _('Match List', { count: 2 }),
     path: '/match_lists',
-    properties
+    properties,
+    selectOptions,
 };
 
 export default matchList;

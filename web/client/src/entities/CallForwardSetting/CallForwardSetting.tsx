@@ -7,6 +7,7 @@ import Form from './Form';
 import Target from './Field/Target';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const properties: CallForwardSettingProperties = {
     user: {
@@ -156,6 +157,7 @@ const CallForwardSetting: EntityInterface = {
     Form,
     foreignKeyResolver,
     foreignKeyGetter,
+    selectOptions,
 };
 
 export default CallForwardSetting;

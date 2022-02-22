@@ -7,6 +7,7 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 import { TerminalProperties } from './TerminalProperties';
 import Password from './Field/Password';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const properties: TerminalProperties = {
     'name': {
@@ -94,7 +95,8 @@ const terminal: EntityInterface = {
     properties,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions,
 };
 
 export default terminal;

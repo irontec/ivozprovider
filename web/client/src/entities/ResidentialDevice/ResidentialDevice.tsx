@@ -3,6 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
     company: {
@@ -229,6 +230,7 @@ const residentialDevice: EntityInterface = {
     title: _('Residential device', { count: 2 }),
     path: '/residential_devices',
     properties,
+    selectOptions,
 };
 
 export default residentialDevice;
