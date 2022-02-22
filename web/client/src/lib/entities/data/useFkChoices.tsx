@@ -2,8 +2,9 @@ import { FkChoices } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import EntityService from 'lib/services/entity/EntityService';
 
-const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType): FkChoices => {
+const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType, entityService: EntityService): FkChoices => {
 
     const [fkChoices, setFkChoices] = useState<FkChoices>({});
 
@@ -15,7 +16,10 @@ const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType): FkChoices => {
             const CancelToken = axios.CancelToken;
             const source = CancelToken.source();
 
-            foreignKeyGetter(source.token).then((options) => {
+            foreignKeyGetter({
+                cancelToken: source.token,
+                entityService
+            }).then((options) => {
 
                 if (!mounted) {
                     return;
@@ -34,7 +38,7 @@ const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType): FkChoices => {
                 source.cancel();
             }
         },
-        [foreignKeyGetter]
+        [foreignKeyGetter, entityService]
     );
 
     return fkChoices;

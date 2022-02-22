@@ -15,6 +15,7 @@ import _ from 'lib/services/translations/translate';
 import { CancelToken } from 'axios';
 import { CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import { EntityList } from 'lib/router/parseRoutes';
 
 export const initialValues = {};
 
@@ -186,6 +187,80 @@ export const autoForeignKeyResolver = (
                 fkFld: idx,
                 entity: entity,
                 cancelToken,
+            })
+        );
+    }
+
+    return promises;
+};
+
+type AutoForeignKeyResolverArgs = {
+    cancelToken?: CancelToken,
+    entities: EntityList,
+    entityService: EntityService,
+    skip?: string[],
+    response: Record<string, Array<unknown>> | any,
+}
+
+export const autoSelectOptions = (
+    props: AutoForeignKeyResolverArgs
+): Array<Promise<unknown>> => {
+
+    const { cancelToken, response, entityService, entities } = props;
+    const skip = props.skip || [];
+
+    if (!entities) {
+        return [];
+    }
+
+    const promises = [];
+    const fkProperties = entityService?.getFkProperties();
+
+    const alreadyRequested: string[] = [];
+    for (const idx in fkProperties) {
+
+        if (skip && skip.includes(idx)) {
+            continue;
+        }
+
+        const ref = fkProperties[idx].$ref;
+        const cleanRef = fkProperties[idx].$ref.replace('#/definitions/', '');
+        const entity = entities[cleanRef];
+
+        if (alreadyRequested.includes(cleanRef)) {
+            continue;
+        }
+        alreadyRequested.push(cleanRef);
+
+        if (!entity) {
+            if (cleanRef) {
+                console.log('autoSelectOptions', `${cleanRef} not found`);
+            }
+            continue;
+        }
+
+        if (!entity.selectOptions) {
+            if (cleanRef) {
+                console.log('autoSelectOptions', `${cleanRef} selectOption is not defined`);
+            }
+            continue;
+        }
+
+        promises.push(
+            entity.selectOptions({
+                callback: (options: any) => {
+                    for (const k in fkProperties) {
+
+                        if (skip.includes(k)) {
+                            continue;
+                        }
+
+                        if (fkProperties[k].$ref === ref) {
+                            response[k] = options;
+                        }
+                    }
+                },
+                cancelToken
             })
         );
     }

@@ -22,7 +22,10 @@ export interface foreignKeyResolverProps {
 }
 
 export type foreignKeyResolverType = (props: foreignKeyResolverProps) => Promise<any>;
-export type ForeignKeyGetterType = (cancelToken?: CancelToken) => Promise<any>;
+export type ForeignKeyGetterTypeArgs = {
+    cancelToken?: CancelToken, entityService: EntityService
+}
+export type ForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs) => Promise<any>;
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
 export type SelectOptionsArgs = {
     callback: FetchFksCallback,
