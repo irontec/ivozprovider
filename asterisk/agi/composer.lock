@@ -1416,11 +1416,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "4d344148268f287bdfa1dd4e6dd8da337353353b"
+                "reference": "e27887b4f102991a8201e6ea7cc13a64d5675e05"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
