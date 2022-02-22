@@ -8,54 +8,54 @@ import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOptions';
 import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: CallForwardSettingPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.user = options;
             response.voiceMailUser = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ExtensionSelectOptions({
+        callback: (options: any) => {
             response.extension = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = DdiSelectOptions(
-        (options: any) => {
+    promises[promises.length] = DdiSelectOptions({
+        callback: (options: any) => {
             response.ddi = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ResidentialDeviceSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ResidentialDeviceSelectOptions({
+        callback: (options: any) => {
             response.residentialDevice = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
+    promises[promises.length] = CountrySelectOptions({
+        callback: (options: any) => {
             response.numberCountry = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = RetailAccountSelectOptions(
-        (options: any) => {
+    promises[promises.length] = RetailAccountSelectOptions({
+        callback: (options: any) => {
             //response.retailAccount = options;
             response.cfwToretailAccount = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

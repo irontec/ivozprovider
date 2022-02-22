@@ -10,67 +10,67 @@ import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: ConditionalRoutePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LocutionSelectOptions({
+        callback: (options: any) => {
             response.locution = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = IvrSelectOptions(
-        (options: any) => {
+    promises[promises.length] = IvrSelectOptions({
+        callback: (options: any) => {
             response.ivr = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = HuntGroupSelectOptions(
-        (options: any) => {
+    promises[promises.length] = HuntGroupSelectOptions({
+        callback: (options: any) => {
             response.huntGroup = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.voicemailUser = options;
             response.user = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
+    promises[promises.length] = CountrySelectOptions({
+        callback: (options: any) => {
             response.numberCountry = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = QueueSelectOptions(
-        (options: any) => {
+    promises[promises.length] = QueueSelectOptions({
+        callback: (options: any) => {
             response.queue = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ConferenceRoomSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ConferenceRoomSelectOptions({
+        callback: (options: any) => {
             response.conferenceRoom = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ExtensionSelectOptions({
+        callback: (options: any) => {
             response.extension = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

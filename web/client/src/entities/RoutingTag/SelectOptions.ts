@@ -1,8 +1,8 @@
-import { CancelToken } from 'axios';
-import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from 'lib/entities/EntityInterface';
 import RoutingTag from './RoutingTag';
 
-const RoutingTagSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
+const RoutingTagSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         RoutingTag.path,

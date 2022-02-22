@@ -6,38 +6,38 @@ import { HuntGroupPropertyList } from './HuntGroupProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import { CancelToken } from 'axios';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: HuntGroupPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LocutionSelectOptions({
+        callback: (options: any) => {
             response.noAnswerLocution = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
+    promises[promises.length] = CountrySelectOptions({
+        callback: (options: any) => {
             response.noAnswerNumberCountry = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ExtensionSelectOptions({
+        callback: (options: any) => {
             response.noAnswerExtension = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.noAnswerVoiceMailUser = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

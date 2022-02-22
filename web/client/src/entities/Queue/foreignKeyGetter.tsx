@@ -6,43 +6,43 @@ import { QueuePropertyList } from './QueueProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: QueuePropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LocutionSelectOptions({
+        callback: (options: any) => {
             response.timeoutLocution = options;
             response.fullLocution = options;
             response.periodicAnnounceLocution = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
+    promises[promises.length] = CountrySelectOptions({
+        callback: (options: any) => {
             response.timeoutNumberCountry = options;
             response.fullNumberCountry = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ExtensionSelectOptions({
+        callback: (options: any) => {
             response.timeoutExtension = options;
             response.fullExtension = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.timeoutVoiceMailUser = options;
             response.fullVoiceMailUser = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

@@ -14,94 +14,94 @@ import { UserPropertyList } from './UserProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: UserPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.bossAssistant = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = MatchListSelectOptions(
-        (options: any) => {
+    promises[promises.length] = MatchListSelectOptions({
+        callback: (options: any) => {
             response.bossAssistantWhiteList = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = TransformationRuleSetSelectOptions(
-        (options: any) => {
+    promises[promises.length] = TransformationRuleSetSelectOptions({
+        callback: (options: any) => {
             response.transformationRuleSet = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = LanguageSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LanguageSelectOptions({
+        callback: (options: any) => {
             response.language = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ExtensionSelectOptions({
+        callback: (options: any) => {
             response.extension = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = TimezoneSelectOptions(
-        (options: any) => {
+    promises[promises.length] = TimezoneSelectOptions({
+        callback: (options: any) => {
             response.timezone = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = DdiSelectOptions(
-        (options: any) => {
+    promises[promises.length] = DdiSelectOptions({
+        callback: (options: any) => {
             response.outgoingDdi = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = OutgoingDdiRuleSelectOptions(
-        (options: any) => {
+    promises[promises.length] = OutgoingDdiRuleSelectOptions({
+        callback: (options: any) => {
             response.outgoingDdiRule = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LocutionSelectOptions({
+        callback: (options: any) => {
             response.voicemailLocution = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = TerminalSelectOptions(
-        (options: any) => {
+    promises[promises.length] = TerminalSelectOptions({
+        callback: (options: any) => {
             response.terminal = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CallAclSelectOptions(
-        (options: any) => {
+    promises[promises.length] = CallAclSelectOptions({
+        callback: (options: any) => {
             response.callAcl = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = PickUpGroupSelectOptions(
-        (options: any) => {
+    promises[promises.length] = PickUpGroupSelectOptions({
+        callback: (options: any) => {
             response.pickupGroupIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

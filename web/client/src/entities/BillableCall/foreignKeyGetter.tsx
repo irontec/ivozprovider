@@ -3,17 +3,17 @@ import { BillableCallPropertyList } from './BillableCallProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import { CancelToken } from 'axios';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: BillableCallPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = InvoiceSelectOptions(
-        (options: any) => {
+    promises[promises.length] = InvoiceSelectOptions({
+        callback: (options: any) => {
             response.invoice = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

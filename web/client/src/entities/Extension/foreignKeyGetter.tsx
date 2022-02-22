@@ -9,59 +9,59 @@ import { ExtensionPropertyList } from './ExtensionProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: ExtensionPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
+    promises[promises.length] = CountrySelectOptions({
+        callback: (options: any) => {
             response.numberCountry = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = IvrSelectOptions(
-        (options: any) => {
+    promises[promises.length] = IvrSelectOptions({
+        callback: (options: any) => {
             response.ivr = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = HuntGroupSelectOptions(
-        (options: any) => {
+    promises[promises.length] = HuntGroupSelectOptions({
+        callback: (options: any) => {
             response.huntGroup = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ConferenceRoomSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ConferenceRoomSelectOptions({
+        callback: (options: any) => {
             response.conferenceRoom = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.user = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = QueueSelectOptions(
-        (options: any) => {
+    promises[promises.length] = QueueSelectOptions({
+        callback: (options: any) => {
             response.queue = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ConditionalRouteSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ConditionalRouteSelectOptions({
+        callback: (options: any) => {
             response.conditionalRoute = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

@@ -3,17 +3,17 @@ import { OutgoingDdiRulePropertyList } from './OutgoingDdiRuleProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: OutgoingDdiRulePropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = DdiSelectOptions(
-        (options: any) => {
+    promises[promises.length] = DdiSelectOptions({
+        callback: (options: any) => {
             response.forcedDdi = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

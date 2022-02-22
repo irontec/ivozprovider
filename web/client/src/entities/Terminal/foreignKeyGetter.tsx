@@ -3,17 +3,17 @@ import { TerminalPropertyList } from './TerminalProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: TerminalPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = TerminalModelSelectOptions(
-        (options: any) => {
+    promises[promises.length] = TerminalModelSelectOptions({
+        callback: (options: any) => {
             response.terminalModel = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

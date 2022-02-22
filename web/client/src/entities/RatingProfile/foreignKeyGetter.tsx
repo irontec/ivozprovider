@@ -4,24 +4,24 @@ import { RatingProfilePropertyList } from './RatingProfileProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: RatingProfilePropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = RatingPlanGroupSelectOptions(
-        (options: any) => {
+    promises[promises.length] = RatingPlanGroupSelectOptions({
+        callback: (options: any) => {
             response.ratingPlanGroup = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = RoutingTagSelectOptions(
-        (options: any) => {
+    promises[promises.length] = RoutingTagSelectOptions({
+        callback: (options: any) => {
             response.routingTag = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

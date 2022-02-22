@@ -7,7 +7,7 @@ import axios, { CancelToken } from 'axios';
 type CompanyServiceForeignKeyGetterType = (cancelToken?: CancelToken, currentServiceId?: number) => Promise<any>
 
 export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
-    token,
+    cancelToken,
     currentServiceId
 ): Promise<any> => {
 
@@ -15,11 +15,15 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
     const promises: Array<Promise<unknown>> = [];
 
     promises[promises.length] = ServiceSelectOptions(
-        (options: any) => {
-            response.service = options;
+        {
+            callback: (options: any) => {
+                response.service = options;
+            },
+            cancelToken
         },
-        currentServiceId,
-        token
+        {
+            includeId: currentServiceId,
+        }
     );
 
     await Promise.all(promises);

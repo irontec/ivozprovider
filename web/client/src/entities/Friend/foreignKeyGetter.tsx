@@ -6,38 +6,38 @@ import { FriendPropertyList } from './FriendProperties';
 import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: FriendPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = CallAclSelectOptions(
-        (options: any) => {
+    promises[promises.length] = CallAclSelectOptions({
+        callback: (options: any) => {
             response.callAcl = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = TransformationRuleSetSelectOptions(
-        (options: any) => {
+    promises[promises.length] = TransformationRuleSetSelectOptions({
+        callback: (options: any) => {
             response.transformationRuleSet = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = DdiSelectOptions(
-        (options: any) => {
+    promises[promises.length] = DdiSelectOptions({
+        callback: (options: any) => {
             response.outgoingDdi = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = LanguageSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LanguageSelectOptions({
+        callback: (options: any) => {
             response.language = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

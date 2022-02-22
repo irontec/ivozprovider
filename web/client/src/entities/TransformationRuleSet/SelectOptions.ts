@@ -1,8 +1,8 @@
-import { CancelToken } from 'axios';
-import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from 'lib/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
 
-const TransformationRuleSetSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
+const TransformationRuleSetSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         '/transformation_rule_sets',

@@ -8,52 +8,52 @@ import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import { CancelToken } from 'axios';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: CallCsvSchedulerPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = DdiSelectOptions(
-        (options: any) => {
+    promises[promises.length] = DdiSelectOptions({
+        callback: (options: any) => {
             response.ddi = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = RetailAccountSelectOptions(
-        (options: any) => {
+    promises[promises.length] = RetailAccountSelectOptions({
+        callback: (options: any) => {
             response.retailAccount = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ResidentialDeviceSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ResidentialDeviceSelectOptions({
+        callback: (options: any) => {
             response.residentialDevice = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.user = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = FaxSelectOptions(
-        (options: any) => {
+    promises[promises.length] = FaxSelectOptions({
+        callback: (options: any) => {
             response.fax = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = FriendSelectOptions(
-        (options: any) => {
+    promises[promises.length] = FriendSelectOptions({
+        callback: (options: any) => {
             response.friend = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

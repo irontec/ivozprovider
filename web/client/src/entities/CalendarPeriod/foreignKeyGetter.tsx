@@ -7,45 +7,45 @@ import CountrySelectOptions from 'entities/Country/SelectOptions';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (cancelToken?: CancelToken): Promise<any> => {
 
     const response: CalendarPeriodPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = LocutionSelectOptions({
+        callback: (options: any) => {
             response.locution = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
+    promises[promises.length] = CountrySelectOptions({
+        callback: (options: any) => {
             response.numberCountry = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.voiceMailUser = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ExtensionSelectOptions({
+        callback: (options: any) => {
             response.extension = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ScheduleSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ScheduleSelectOptions({
+        callback: (options: any) => {
             response.scheduleIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 
