@@ -1,4 +1,4 @@
-import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
@@ -13,11 +13,12 @@ const properties: MatchListProperties = {
 
 const matchList: EntityInterface = {
     ...defaultEntityBehavior,
-    icon: FormatListNumberedIcon,
+    icon: FormatListBulletedIcon,
     iden: 'MatchList',
     title: _('Match List', { count: 2 }),
     path: '/match_lists',
     properties,
+    toStr: (item: MatchListProperties) => { return item.name as string || ''; },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 

@@ -1,25 +1,17 @@
-import { UserPropertyList } from './UserProperties';
+import { MatchListPatternPropertyList } from './MatchListPatternProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 import entities from '../index';
-import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
-    const response: UserPropertyList<unknown> = {};
+    const response: MatchListPatternPropertyList<Array<string | number>> = {};
 
     const promises = autoSelectOptions({
         entities,
         entityService,
         cancelToken,
         response,
-    });
-
-    promises[promises.length] = PickUpGroupSelectOptions({
-        callback: (options: any) => {
-            response.pickupGroupIds = options;
-        },
-        cancelToken
     });
 
     await Promise.all(promises);

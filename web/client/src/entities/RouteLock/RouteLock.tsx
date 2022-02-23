@@ -5,8 +5,13 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { RouteLockProperties } from './RouteLockProperties';
 import selectOptions from './SelectOptions';
+import Status from './Field/Status';
 
 const properties: RouteLockProperties = {
+    'status': {
+        label: _('Status'),
+        component: Status,
+    },
     'name': {
         label: _('Name'),
     },
@@ -34,6 +39,7 @@ const properties: RouteLockProperties = {
 };
 
 const columns = [
+    'status',
     'name',
     'description',
     'open',

@@ -1,18 +1,38 @@
-import { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { ConditionalRoutesConditionPropertiesList } from './ConditionalRoutesConditionProperties';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 import store from 'store';
 import { EntityList } from 'lib/router/parseRoutes';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
+const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken, entityService }
 ): Promise<ConditionalRoutesConditionPropertiesList> {
 
     const promises = autoForeignKeyResolver({
-        data, cancelToken, entityService, entities
+        data,
+        cancelToken,
+        entityService,
+        entities,
+        skip: [
+            'numberCountry',
+            'conditionalRoute',
+        ],
     });
+
+    promises.push(
+        genericForeignKeyResolver({
+            data,
+            fkFld: 'numberCountry',
+            entity: {
+                ...entities.Country,
+                toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
+            },
+            cancelToken,
+        })
+    );
 
     const getAction = store.getActions().api.get;
     const {
@@ -20,7 +40,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
         ConditionalRoutesConditionsRelMatchList,
         ConditionalRoutesConditionsRelRouteLock,
         ConditionalRoutesConditionsRelSchedule,
-     } = entities;
+    } = entities;
 
     const conditionMatchEntities: EntityList = {
         calendar: ConditionalRoutesConditionsRelCalendar,
@@ -52,7 +72,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
                             continue;
                         }
 
-                        if (row.conditionMatch ===  undefined) {
+                        if (row.conditionMatch === undefined) {
                             row.conditionMatch = [];
                         }
 
@@ -66,6 +86,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
     }
 
     await Promise.all(promises);
+    console.log(data);
 
     if (!Array.isArray(data)) {
         return data;
