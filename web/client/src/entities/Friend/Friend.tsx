@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { FriendProperties } from './FriendProperties';
 import Password from 'entities/Terminal/Field/Password';
+import selectOptions from './SelectOptions';
 
 const properties: FriendProperties = {
     'name': {
@@ -267,7 +268,8 @@ const friend: EntityInterface = {
     properties,
     columns,
     Form,
-    foreignKeyGetter
+    foreignKeyGetter,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default friend;

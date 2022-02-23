@@ -14,7 +14,7 @@ const companyService: EntityInterface = {
         const language = getI18n().language.substring(0, 2);
 
         return row?.name[language]
-    },
+    }
 };
 
 export default companyService;

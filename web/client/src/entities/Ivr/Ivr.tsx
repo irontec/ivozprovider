@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { IvrProperties } from './IvrProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const noInputFields = [
     'noInputNumberCountry',
@@ -188,7 +189,8 @@ const ivr: EntityInterface = {
     columns,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default ivr;

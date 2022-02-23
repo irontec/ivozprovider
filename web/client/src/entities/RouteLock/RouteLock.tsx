@@ -4,6 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { RouteLockProperties } from './RouteLockProperties';
+import selectOptions from './SelectOptions';
 
 const properties: RouteLockProperties = {
     'name': {
@@ -49,7 +50,8 @@ const routeLock: EntityInterface = {
     path: '/route_locks',
     properties,
     columns,
-    Form
+    Form,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default routeLock;

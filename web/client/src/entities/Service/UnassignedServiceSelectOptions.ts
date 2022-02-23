@@ -1,8 +1,18 @@
-import { CancelToken } from 'axios';
-import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from 'lib/entities/EntityInterface';
 import Service from './Service';
 
-const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number, cancelToken?: CancelToken): Promise<unknown> => {
+type ServiceSelectOptionsArgs = {
+    includeId?: number,
+}
+
+const UnassignedServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs> = (
+    props,
+    customProps = {}
+): Promise<unknown> => {
+
+    const {callback, cancelToken} = props;
+    const { includeId } = customProps;
 
     let path = `${Service.path}/unassigned`;
     if (includeId) {
@@ -24,4 +34,4 @@ const ServiceSelectOptions = (callback: FetchFksCallback, includeId?: number, ca
     );
 }
 
-export default ServiceSelectOptions;
+export default UnassignedServiceSelectOptions;

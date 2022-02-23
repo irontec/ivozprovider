@@ -1,51 +1,18 @@
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
 import { IvrEntryPropertyList } from './IvrEntryProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: IvrEntryPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
-            response.welcomeLocution = options;
-        },
-        token
-    );
-
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
-            response.numberCountry = options;
-        },
-        token
-    );
-
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
-            response.extension = options;
-        },
-        token
-    );
-
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
-            response.voiceMailUser = options;
-        },
-        token
-    );
-
-    promises[promises.length] = ConditionalRouteSelectOptions(
-        (options: any) => {
-            response.conditionalRoute = options;
-        },
-        token
-    );
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+    });
 
     await Promise.all(promises);
 

@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { DdiProperties } from './DdiProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const allRoutableFields = [
     'ivr',
@@ -165,7 +166,8 @@ const ddi: EntityInterface = {
     properties,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default ddi;

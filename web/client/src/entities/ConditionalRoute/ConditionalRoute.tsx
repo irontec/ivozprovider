@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { ConditionalRouteProperties } from './ConditionalRouteProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const routableFields = [
     'numberCountry',
@@ -150,7 +151,8 @@ const ConditionalRoute: EntityInterface = {
     columns,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default ConditionalRoute;

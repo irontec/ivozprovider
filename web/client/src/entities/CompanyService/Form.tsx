@@ -3,9 +3,11 @@ import useFkChoices from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
+    const { entityService } = props;
+
     const currentServiceId: number | undefined = props?.row?.service?.id;
     const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices = useFkChoices(currentServiceId);
+    const fkChoices = useFkChoices(entityService, currentServiceId);
 
     const groups: Array<FieldsetGroups> = [
         {

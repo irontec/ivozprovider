@@ -1,9 +1,9 @@
-import { CancelToken } from 'axios';
-import defaultEntityBehavior, { FetchFksCallback } from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import calendarPeriodsRelSchedule from './CalendarPeriodsRelSchedule';
 import Schedule from '../Schedule/Schedule';
+import { SelectOptionsType } from 'lib/entities/EntityInterface';
 
-const CalendarPeriodsRelScheduleSelectOptions = (callback: FetchFksCallback, cancelToken?: CancelToken): Promise<unknown> => {
+const CalendarPeriodsRelScheduleSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         calendarPeriodsRelSchedule.path,

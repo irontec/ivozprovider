@@ -22,7 +22,17 @@ export interface foreignKeyResolverProps {
 }
 
 export type foreignKeyResolverType = (props: foreignKeyResolverProps) => Promise<any>;
-export type ForeignKeyGetterType = (cancelToken?: CancelToken) => Promise<any>;
+export type ForeignKeyGetterTypeArgs = {
+    cancelToken?: CancelToken, entityService: EntityService
+}
+export type ForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs) => Promise<any>;
+export type FetchFksCallback = (data: { [key: string]: any }) => void;
+export type SelectOptionsArgs = {
+    callback: FetchFksCallback,
+    cancelToken?: CancelToken,
+}
+export type SelectOptionsType<T = any> = (props: SelectOptionsArgs, customProps?: T) => Promise<unknown>;
+
 export type EntityAclType = {
     create: boolean,
     read: boolean,
@@ -51,6 +61,7 @@ export enum OrderDirection {
     desc = 'desc',
 }
 
+
 export default interface EntityInterface {
     initialValues: any,
     validator: EntityValidator,
@@ -58,6 +69,7 @@ export default interface EntityInterface {
     unmarshaller: (T: any, properties: PartialPropertyList) => any,
     foreignKeyResolver: foreignKeyResolverType,
     foreignKeyGetter: ForeignKeyGetterType,
+    selectOptions?: SelectOptionsType,
     Form: React.FunctionComponent<EntityFormProps>,
     View: ViewType,
     ListDecorator: ListDecoratorType,

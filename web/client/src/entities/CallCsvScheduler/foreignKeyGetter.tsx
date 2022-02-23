@@ -1,59 +1,18 @@
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
-import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
-import FaxSelectOptions from 'entities/Fax/SelectOptions';
-import FriendSelectOptions from 'entities/Friend/SelectOptions';
 import { CallCsvSchedulerPropertyList } from './CallCsvSchedulerProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import { CancelToken } from 'axios';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entityService}): Promise<any> => {
 
     const response: CallCsvSchedulerPropertyList<unknown> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = DdiSelectOptions(
-        (options: any) => {
-            response.ddi = options;
-        },
-        token
-    );
-
-    promises[promises.length] = RetailAccountSelectOptions(
-        (options: any) => {
-            response.retailAccount = options;
-        },
-        token
-    );
-
-    promises[promises.length] = ResidentialDeviceSelectOptions(
-        (options: any) => {
-            response.residentialDevice = options;
-        },
-        token
-    );
-
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
-            response.user = options;
-        },
-        token
-    );
-
-    promises[promises.length] = FaxSelectOptions(
-        (options: any) => {
-            response.fax = options;
-        },
-        token
-    );
-
-    promises[promises.length] = FriendSelectOptions(
-        (options: any) => {
-            response.friend = options;
-        },
-        token
-    );
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response
+    });
 
     await Promise.all(promises);
 

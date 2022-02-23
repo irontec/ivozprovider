@@ -4,6 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form'
 import { CallAclProperties } from './CallAclProperties';
+import selectOptions from './SelectOptions';
 
 const properties: CallAclProperties = {
     'name': {
@@ -26,7 +27,8 @@ const CallAcl: EntityInterface = {
     title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',
     properties,
-    Form
+    Form,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default CallAcl;

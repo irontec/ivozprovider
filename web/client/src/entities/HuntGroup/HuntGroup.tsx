@@ -5,6 +5,7 @@ import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { HuntGroupProperties } from './HuntGroupProperties';
+import selectOptions from './SelectOptions';
 
 const routableFields = [
     'noAnswerNumberCountry',
@@ -129,7 +130,8 @@ const huntGroup: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     Form,
-    foreignKeyGetter
+    foreignKeyGetter,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default huntGroup;

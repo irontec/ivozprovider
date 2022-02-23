@@ -1,19 +1,18 @@
-import TerminalModelSelectOptions from '../TerminalModel/SelectOptions';
 import { TerminalPropertyList } from './TerminalProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: TerminalPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = TerminalModelSelectOptions(
-        (options: any) => {
-            response.terminalModel = options;
-        },
-        token
-    );
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+    });
 
     await Promise.all(promises);
 

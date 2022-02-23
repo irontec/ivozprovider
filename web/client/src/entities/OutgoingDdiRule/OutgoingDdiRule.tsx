@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter'
 import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
     'name': {
@@ -51,7 +52,8 @@ const outgoingDdiRule: EntityInterface = {
     columns,
     Form,
     foreignKeyGetter,
-    foreignKeyResolver
+    foreignKeyResolver,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default outgoingDdiRule;

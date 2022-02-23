@@ -1,25 +1,31 @@
 import { FkChoices } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
-import ServiceSelectOptions from 'entities/Service/SelectOptions';
+import UnassignedServiceSelectOptions from 'entities/Service/UnassignedServiceSelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
-import axios, { CancelToken } from 'axios';
+import axios from 'axios';
+import { ForeignKeyGetterTypeArgs } from 'lib/entities/EntityInterface';
+import EntityService from 'lib/services/entity/EntityService';
 
-type CompanyServiceForeignKeyGetterType = (cancelToken?: CancelToken, currentServiceId?: number) => Promise<any>
+type CompanyServiceForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs, currentServiceId?: number) => Promise<any>
 
 export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
-    token,
+    {cancelToken},
     currentServiceId
 ): Promise<any> => {
 
     const response: CompanyServicePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = ServiceSelectOptions(
-        (options: any) => {
-            response.service = options;
+    promises[promises.length] = UnassignedServiceSelectOptions(
+        {
+            callback: (options: any) => {
+                response.service = options;
+            },
+            cancelToken
         },
-        currentServiceId,
-        token
+        {
+            includeId: currentServiceId,
+        }
     );
 
     await Promise.all(promises);
@@ -27,7 +33,7 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
     return response;
 };
 
-const useFkChoices = (currentServiceId?: number): FkChoices => {
+const useFkChoices = (entityService: EntityService, currentServiceId?: number): FkChoices => {
 
     const [fkChoices, setFkChoices] = useState<FkChoices>({});
 
@@ -39,7 +45,7 @@ const useFkChoices = (currentServiceId?: number): FkChoices => {
             const CancelToken = axios.CancelToken;
             const source = CancelToken.source();
 
-            foreignKeyGetter(source.token, currentServiceId).then((options) => {
+            foreignKeyGetter({cancelToken: source.token, entityService}, currentServiceId).then((options) => {
 
                 if (!mounted) {
                     return;
@@ -58,7 +64,7 @@ const useFkChoices = (currentServiceId?: number): FkChoices => {
                 source.cancel();
             }
         },
-        [currentServiceId]
+        [currentServiceId, entityService]
     );
 
     return fkChoices;

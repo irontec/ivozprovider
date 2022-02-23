@@ -194,6 +194,7 @@ const List = function (props: ListProps) {
                 ignoreColumn={filterBy[0]}
                 preloadData={currentQueryParams.length > 0}
                 entityService={entityService}
+                cancelToken={cancelToken}
             />
             <Pagination
                 recordCount={recordCount}

@@ -3,6 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
     'name': {
@@ -29,6 +30,7 @@ const routingTag: EntityInterface = {
     },
     properties,
     columns,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default routingTag;

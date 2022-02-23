@@ -1,51 +1,29 @@
-import UserSelectOptions from 'entities/User/SelectOptions';
 import { CalendarPeriodPropertyList } from './CalendarPeriodProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import { CancelToken } from 'axios';
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entityService}): Promise<any> => {
 
     const response: CalendarPeriodPropertyList<unknown> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
-            response.locution = options;
-        },
-        token
-    );
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+        skip: [
+            'scheduleIds',
+        ]
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
-            response.numberCountry = options;
-        },
-        token
-    );
-
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
-            response.voiceMailUser = options;
-        },
-        token
-    );
-
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
-            response.extension = options;
-        },
-        token
-    );
-
-    promises[promises.length] = ScheduleSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ScheduleSelectOptions({
+        callback: (options: any) => {
             response.scheduleIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

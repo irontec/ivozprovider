@@ -1,27 +1,18 @@
-import RatingPlanGroupSelectOptions from 'entities/RatingPlanGroup/SelectOptions';
-import RoutingTagSelectOptions from 'entities/RoutingTag/SelectOptions';
 import { RatingProfilePropertyList } from './RatingProfileProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: RatingProfilePropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = RatingPlanGroupSelectOptions(
-        (options: any) => {
-            response.ratingPlanGroup = options;
-        },
-        token
-    );
-
-    promises[promises.length] = RoutingTagSelectOptions(
-        (options: any) => {
-            response.routingTag = options;
-        },
-        token
-    );
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+    });
 
     await Promise.all(promises);
 

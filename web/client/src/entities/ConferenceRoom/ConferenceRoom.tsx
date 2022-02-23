@@ -4,6 +4,7 @@ import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { ConferenceRoomProperties } from './ConferenceRoomProperties';
+import selectOptions from './SelectOptions';
 
 const properties: ConferenceRoomProperties = {
     'name': {
@@ -51,7 +52,8 @@ const conferenceRoom: EntityInterface = {
         'pinProtected',
         'pinCode',
     ],
-    Form
+    Form,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default conferenceRoom;

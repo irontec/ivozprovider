@@ -18,7 +18,9 @@ export const StyledAppBar = styled(
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
-      })
+      }),
+      maxWidth: '1920px',
+      left: 0,
     }
   }
 );

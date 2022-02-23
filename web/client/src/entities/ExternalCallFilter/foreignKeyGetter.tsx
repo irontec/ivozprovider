@@ -1,73 +1,49 @@
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import entities from '../index';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions(
-        (options: any) => {
-            response.welcomeLocution = options;
-            response.holidayLocution = options;
-            response.outOfScheduleLocution = options;
-        },
-        token
-    );
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+        skip: [
+            'whiteListIds',
+            'blackListIds',
+            'scheduleIds',
+            'calendarIds',
+        ],
+    });
 
-    promises[promises.length] = CountrySelectOptions(
-        (options: any) => {
-            response.holidayNumberCountry = options;
-            response.outOfScheduleNumberCountry = options;
-        },
-        token
-    );
-
-    promises[promises.length] = ExtensionSelectOptions(
-        (options: any) => {
-            response.holidayExtension = options;
-            response.outOfScheduleExtension = options;
-        },
-        token
-    );
-
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
-            response.holidayVoiceMailUser = options;
-            response.outOfScheduleVoiceMailUser = options;
-        },
-        token
-    );
-
-    promises[promises.length] = MatchListSelectOptions(
-        (options: any) => {
+    promises[promises.length] = MatchListSelectOptions({
+        callback: (options: any) => {
             response.whiteListIds = options;
             response.blackListIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = ScheduleSelectOptions(
-        (options: any) => {
+    promises[promises.length] = ScheduleSelectOptions({
+        callback: (options: any) => {
             response.scheduleIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
-    promises[promises.length] = CalendarSelectOptions(
-        (options: any) => {
+    promises[promises.length] = CalendarSelectOptions({
+        callback: (options: any) => {
             response.calendarIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

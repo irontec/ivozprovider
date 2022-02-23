@@ -3,6 +3,7 @@ import EntityInterface from 'lib/entities/EntityInterface';
 import _ from 'lib/services/translations/translate';
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { RetailAccountProperties } from './RetailAccountProperties';
+import selectOptions from './SelectOptions';
 
 const properties: RetailAccountProperties = {
     company: {
@@ -128,6 +129,7 @@ const retailAccount: EntityInterface = {
     title: _('Retail accounts', { count: 2 }),
     path: '/retail_accounts',
     properties,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default retailAccount;

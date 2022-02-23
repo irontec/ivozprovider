@@ -1,19 +1,18 @@
 import UserSelectOptions from 'entities/User/SelectOptions';
 import { PickUpGroupPropertyList } from './PickUpGroupProperties';
-import { CancelToken } from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async (token?: CancelToken): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
 
     const response: PickUpGroupPropertyList<Array<string | number>> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = UserSelectOptions(
-        (options: any) => {
+    promises[promises.length] = UserSelectOptions({
+        callback: (options: any) => {
             response.userIds = options;
         },
-        token
-    );
+        cancelToken
+    });
 
     await Promise.all(promises);
 

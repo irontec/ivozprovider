@@ -11,6 +11,7 @@ import ContentTable from './Table/ContentTable';
 import ContentCard from './Card/ContentCard';
 import { RouteMapItem } from 'lib/router/routeMapParser';
 import { useLocation } from 'react-router-dom';
+import { CancelToken } from 'axios';
 
 interface ListContentProps {
   childEntities: Array<RouteMapItem>,
@@ -18,7 +19,8 @@ interface ListContentProps {
   entityService: EntityService,
   rows: any,
   ignoreColumn: string | undefined,
-  preloadData: boolean
+  preloadData: boolean,
+  cancelToken: CancelToken,
 }
 
 export default function ListContent(props: ListContentProps): JSX.Element {
@@ -28,7 +30,8 @@ export default function ListContent(props: ListContentProps): JSX.Element {
     entityService,
     rows,
     ignoreColumn,
-    preloadData
+    preloadData,
+    cancelToken
   } = props;
 
   const location = useLocation();
@@ -69,6 +72,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
         path={path}
         preloadData={preloadData}
         ignoreColumn={ignoreColumn}
+        cancelToken={cancelToken}
       />
 
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>

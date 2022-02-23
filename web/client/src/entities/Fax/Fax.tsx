@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { FaxProperties } from './FaxProperties';
 import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
 
 const properties: FaxProperties = {
     'name': {
@@ -57,6 +58,7 @@ const fax: EntityInterface = {
     Form,
     foreignKeyGetter,
     foreignKeyResolver,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
     initialValues: {
         outgoingDdi: null,
     }

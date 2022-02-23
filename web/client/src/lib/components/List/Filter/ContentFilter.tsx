@@ -6,6 +6,7 @@ import StyledContentFilterSelector from './ContentFilterSelector.styles';
 import { SearchFilterType } from './icons/FilterIconFactory';
 import { FilterCriteria } from './FilterCriteria';
 import { useStoreState, useStoreActions } from 'store';
+import { CancelToken } from 'axios';
 
 export interface CriteriaFilterValue {
     name: string,
@@ -22,6 +23,7 @@ interface ContentFilterMenuProps {
     path: string,
     preloadData: boolean,
     ignoreColumn: string | undefined,
+    cancelToken: CancelToken,
 }
 
 export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null {
@@ -32,7 +34,8 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
         handleClose,
         path,
         preloadData,
-        ignoreColumn
+        ignoreColumn,
+        cancelToken
     } = props;
 
     const queryStringCriteria: CriteriaFilterValues = useStoreState(
@@ -74,14 +77,17 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
     useEffect(
         () => {
             if ((preloadData || open) && loading) {
-                foreignKeyGetter()
-                    .then((foreignEntities: any) => {
-                        setForeignEntities(foreignEntities);
-                        setLoading(false);
-                    });
+                foreignKeyGetter({
+                    entityService,
+                    cancelToken
+                })
+                .then((foreignEntities: any) => {
+                    setForeignEntities(foreignEntities);
+                    setLoading(false);
+                });
             }
         },
-        [preloadData, open, loading, foreignKeyGetter]
+        [preloadData, open, loading, foreignKeyGetter, entityService, cancelToken]
     );
 
     useEffect(
