@@ -230,7 +230,7 @@ const residentialDevice: EntityInterface = {
     title: _('Residential device', { count: 2 }),
     path: '/residential_devices',
     properties,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default residentialDevice;

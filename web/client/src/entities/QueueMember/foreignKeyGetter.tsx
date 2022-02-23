@@ -1,17 +1,17 @@
-import UserSelectOptions from 'entities/User/SelectOptions';
 import { QueueMemberPropertyList } from './QueueMemberProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: QueueMemberPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = UserSelectOptions({
-        callback: (options: any) => {
-            response.user = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
     });
 
     await Promise.all(promises);

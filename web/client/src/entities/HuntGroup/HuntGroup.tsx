@@ -131,7 +131,7 @@ const huntGroup: EntityInterface = {
     properties,
     Form,
     foreignKeyGetter,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default huntGroup;

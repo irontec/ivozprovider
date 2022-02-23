@@ -65,7 +65,7 @@ const schedule: EntityInterface = {
     properties,
     columns,
     Form,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default schedule;

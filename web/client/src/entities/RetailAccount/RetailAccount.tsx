@@ -129,7 +129,7 @@ const retailAccount: EntityInterface = {
     title: _('Retail accounts', { count: 2 }),
     path: '/retail_accounts',
     properties,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default retailAccount;

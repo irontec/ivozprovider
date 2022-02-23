@@ -5,7 +5,7 @@ export type CallForwardSettingPropertyList<T> = {
     'user'?: T,
     'residentialDevice'?: T,
     'ddi'?: T,
-    //'retailAccount'?: T,
+    'retailAccount'?: T,
     'cfwToretailAccount'?: T,
     'callTypeFilter'?: T,
     'callForwardType'?: T,

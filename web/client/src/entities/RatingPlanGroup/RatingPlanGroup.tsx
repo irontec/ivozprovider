@@ -16,7 +16,7 @@ const ratingPlanGroup: EntityInterface = {
 
         return row?.name[language]
     },
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default ratingPlanGroup;

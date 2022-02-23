@@ -269,7 +269,7 @@ const friend: EntityInterface = {
     columns,
     Form,
     foreignKeyGetter,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default friend;

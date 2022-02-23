@@ -1,41 +1,17 @@
-import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
-import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import LanguageSelectOptions from 'entities/Language/SelectOptions';
 import { FriendPropertyList } from './FriendProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: FriendPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = CallAclSelectOptions({
-        callback: (options: any) => {
-            response.callAcl = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = TransformationRuleSetSelectOptions({
-        callback: (options: any) => {
-            response.transformationRuleSet = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = DdiSelectOptions({
-        callback: (options: any) => {
-            response.outgoingDdi = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = LanguageSelectOptions({
-        callback: (options: any) => {
-            response.language = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
     });
 
     await Promise.all(promises);

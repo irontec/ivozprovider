@@ -212,7 +212,7 @@ const user: EntityInterface = {
     Form,
     foreignKeyResolver,
     foreignKeyGetter,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default user;

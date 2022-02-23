@@ -1,25 +1,17 @@
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
 import { HuntGroupsRelUserPropertyList } from './HuntGroupsRelUserProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: HuntGroupsRelUserPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = CountrySelectOptions({
-        callback: (options: any) => {
-            response.numberCountry = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = UserSelectOptions({
-        callback: (options: any) => {
-            response.user = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
     });
 
     await Promise.all(promises);

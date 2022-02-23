@@ -1,17 +1,17 @@
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
 import { FaxPropertyList } from './FaxProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: FaxPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = DdiSelectOptions({
-        callback: (options: any) => {
-            response.outgoingDdi = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
     });
 
     await Promise.all(promises);

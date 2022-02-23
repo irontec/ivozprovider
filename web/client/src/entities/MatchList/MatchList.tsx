@@ -18,7 +18,7 @@ const matchList: EntityInterface = {
     title: _('Match List', { count: 2 }),
     path: '/match_lists',
     properties,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default matchList;

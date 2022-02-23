@@ -1,6 +1,6 @@
 import { FkChoices } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
-import ServiceSelectOptions from 'entities/Service/SelectOptions';
+import UnassignedServiceSelectOptions from 'entities/Service/UnassignedServiceSelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios from 'axios';
 import { ForeignKeyGetterTypeArgs } from 'lib/entities/EntityInterface';
@@ -16,7 +16,7 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
     const response: CompanyServicePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = ServiceSelectOptions(
+    promises[promises.length] = UnassignedServiceSelectOptions(
         {
             callback: (options: any) => {
                 response.service = options;

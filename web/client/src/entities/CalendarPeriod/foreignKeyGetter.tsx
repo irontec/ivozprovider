@@ -1,42 +1,21 @@
-import UserSelectOptions from 'entities/User/SelectOptions';
 import { CalendarPeriodPropertyList } from './CalendarPeriodProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entityService}): Promise<any> => {
 
     const response: CalendarPeriodPropertyList<unknown> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions({
-        callback: (options: any) => {
-            response.locution = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = CountrySelectOptions({
-        callback: (options: any) => {
-            response.numberCountry = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = UserSelectOptions({
-        callback: (options: any) => {
-            response.voiceMailUser = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = ExtensionSelectOptions({
-        callback: (options: any) => {
-            response.extension = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+        skip: [
+            'scheduleIds',
+        ]
     });
 
     promises[promises.length] = ScheduleSelectOptions({

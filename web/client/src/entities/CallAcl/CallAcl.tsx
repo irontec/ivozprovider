@@ -28,7 +28,7 @@ const CallAcl: EntityInterface = {
     path: '/call_acls',
     properties,
     Form,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default CallAcl;

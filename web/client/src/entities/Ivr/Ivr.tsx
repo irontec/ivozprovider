@@ -190,7 +190,7 @@ const ivr: EntityInterface = {
     Form,
     foreignKeyGetter,
     foreignKeyResolver,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default ivr;

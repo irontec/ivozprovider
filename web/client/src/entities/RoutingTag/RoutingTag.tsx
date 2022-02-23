@@ -30,7 +30,7 @@ const routingTag: EntityInterface = {
     },
     properties,
     columns,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default routingTag;

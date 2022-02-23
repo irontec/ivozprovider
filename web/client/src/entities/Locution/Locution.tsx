@@ -48,7 +48,7 @@ const locution: EntityInterface = {
     ],
     Form,
     toStr: (row: EntityValues) => row.name as string,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default locution;

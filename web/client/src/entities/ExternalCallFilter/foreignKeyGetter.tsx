@@ -1,49 +1,26 @@
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import entities from '../index';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions({
-        callback: (options: any) => {
-            response.welcomeLocution = options;
-            response.holidayLocution = options;
-            response.outOfScheduleLocution = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = CountrySelectOptions({
-        callback: (options: any) => {
-            response.holidayNumberCountry = options;
-            response.outOfScheduleNumberCountry = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = ExtensionSelectOptions({
-        callback: (options: any) => {
-            response.holidayExtension = options;
-            response.outOfScheduleExtension = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = UserSelectOptions({
-        callback: (options: any) => {
-            response.holidayVoiceMailUser = options;
-            response.outOfScheduleVoiceMailUser = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
+        skip: [
+            'whiteListIds',
+            'blackListIds',
+            'scheduleIds',
+            'calendarIds',
+        ],
     });
 
     promises[promises.length] = MatchListSelectOptions({

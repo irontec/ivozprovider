@@ -24,8 +24,9 @@ const properties: CallForwardSettingProperties = {
         default: '__null__',
         //@TODO required: true,
     },
+    //TODO retailAccount: {},
     cfwToretailAccount: {
-        label: _('Retail Account'),
+        label: _('Retail Account'), //TODO
         null: _("Unassigned"),
         default: '__null__',
         //@TODO required: true,
@@ -157,7 +158,7 @@ const CallForwardSetting: EntityInterface = {
     Form,
     foreignKeyResolver,
     foreignKeyGetter,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default CallForwardSetting;

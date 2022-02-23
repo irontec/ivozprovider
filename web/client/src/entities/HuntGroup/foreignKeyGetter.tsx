@@ -1,41 +1,17 @@
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
 import { HuntGroupPropertyList } from './HuntGroupProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import entities from '../index';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
     const response: HuntGroupPropertyList<Array<string | number>> = {};
-    const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = LocutionSelectOptions({
-        callback: (options: any) => {
-            response.noAnswerLocution = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = CountrySelectOptions({
-        callback: (options: any) => {
-            response.noAnswerNumberCountry = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = ExtensionSelectOptions({
-        callback: (options: any) => {
-            response.noAnswerExtension = options;
-        },
-        cancelToken
-    });
-
-    promises[promises.length] = UserSelectOptions({
-        callback: (options: any) => {
-            response.noAnswerVoiceMailUser = options;
-        },
-        cancelToken
+    const promises = autoSelectOptions({
+        entities,
+        entityService,
+        cancelToken,
+        response,
     });
 
     await Promise.all(promises);

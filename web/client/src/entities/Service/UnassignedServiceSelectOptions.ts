@@ -6,7 +6,7 @@ type ServiceSelectOptionsArgs = {
     includeId?: number,
 }
 
-const ServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs> = (
+const UnassignedServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs> = (
     props,
     customProps = {}
 ): Promise<unknown> => {
@@ -34,4 +34,4 @@ const ServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs> = (
     );
 }
 
-export default ServiceSelectOptions;
+export default UnassignedServiceSelectOptions;

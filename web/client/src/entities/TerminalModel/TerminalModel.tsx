@@ -26,7 +26,7 @@ const terminalModel: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     acl,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default terminalModel;

@@ -23,7 +23,7 @@ const country: EntityInterface = {
         return row.name[language];
     },
     properties,
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default country;

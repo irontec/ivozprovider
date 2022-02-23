@@ -20,7 +20,7 @@ const calendar: EntityInterface = {
     path: '/calendars',
     properties,
     toStr: (row: EntityValues) => (row?.name as string | ''),
-    selectOptions,
+    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default calendar;
