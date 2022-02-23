@@ -1,5 +1,91 @@
 # Changelog
 
+## 2.20.0
+* Endpoints:
+    - /call_forward_settings:
+        - Added friend[] and friend[exists] filter parameters
+        - Added numberValue[start|end|exact|exists|partial] filter parameters
+        - Added _order[numberValue] querystring argument
+
+    - /conditional_routes_conditions:
+        - Added friendValue[start|end|exact|exists|partial] filter parameters
+        - Added numberValue[start|end|exact|exists|partial] filter parameters
+        - Added _order[friendValue] querystring argument
+        - Added _order[numberValue] querystring argument
+
+    - /hunt_groups_rel_users:
+        - Added user.location filter parameters
+
+    - /ivr_entries:
+        - Added numberValue[start|end|exact|exists|partial] filter parameters
+        - Added _order[numberValue] querystring argument
+
+    - /locations:
+        - Added [GET|POST|PUT|DELETE] endpoints
+
+    - /pick_up_rel_users:
+        - Added user.location filter parameters
+
+    - /queue_members:
+        - Added user.location filter parameters
+
+    - /users:
+        - Added location[] and location[exists] filter parameters
+
+* Models:
+    - CallForwardSetting:
+        - Added friend property
+    - CallForwardSetting-collection:
+        - Added numberValue property
+        - Added numberCountry property
+        - Added user property
+        - Added voiceMailUser property
+        - Added extension property
+        - Added residentialDevice property
+        - Added retailAccount property
+        - Added cfwToRetailAccount property
+        - Added ddi property
+    - CallForwardSetting-detailed:
+        - Added friend property
+    - ConditionalRoutesCondition-collection:
+        - Added locution property
+        - Added numberCountry property
+        - Added numberValue property
+        - Added ivr property
+        - Added user property
+        - Added huntGroup property
+        - Added voicemailUser property
+        - Added friendValue property
+        - Added queue property
+        - Added conferenceRoom property
+        - Added extension property
+    - IvrEntry-collection:
+        - Added ivr property
+        - Added welcomeLocution property
+        - Added numberCountry property
+        - Added numberValue property
+        - Added extension property
+        - Added voiceMailUser property
+        - Added conditionalRoute property
+    - Location:
+        - Added model
+    - Location-collection:
+        - Added model
+    - Location-detailed:
+        - Added model
+    - RetailAccount:
+        - Name property is readonly now
+    - RetailAccount-collection:
+        - Name property is readonly now
+    - RetailAccount-detailed:
+        - Name property is readonly now
+    - RetailAccount-status:
+        - Name property is readonly now
+    - User:
+        - Added location property
+    - User-detailed:
+        - Added location property
+
 ## 2.18.1
 * Endpoints:
   - /call_csv_schedulers:

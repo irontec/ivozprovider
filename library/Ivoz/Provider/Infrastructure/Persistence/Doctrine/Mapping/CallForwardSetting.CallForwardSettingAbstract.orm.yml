@@ -58,6 +58,18 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
+    friend:
+      targetEntity: \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: callForwardSettings
+      joinColumns:
+        friendId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false
     extension:
       targetEntity: \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
       cascade: {  }

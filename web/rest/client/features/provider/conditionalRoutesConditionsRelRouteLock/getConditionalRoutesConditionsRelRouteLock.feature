@@ -16,8 +16,32 @@ Feature: Retrieve conditional routes conditions route lock
       [
           {
               "id": 1,
-              "condition": 1,
-              "routeLock": 1
+              "condition": {
+                  "priority": 1,
+                  "routeType": null,
+                  "numberValue": null,
+                  "friendValue": null,
+                  "id": 1,
+                  "conditionalRoute": 1,
+                  "ivr": null,
+                  "huntGroup": null,
+                  "voicemailUser": null,
+                  "user": null,
+                  "queue": null,
+                  "locution": null,
+                  "conferenceRoom": null,
+                  "extension": null,
+                  "numberCountry": null
+              },
+              "routeLock": {
+                  "name": "Lock name",
+                  "description": "Lock description",
+                  "open": true,
+                  "id": 1,
+                  "closeExtension": "",
+                  "openExtension": "",
+                  "toggleExtension": ""
+              }
           }
       ]
     """

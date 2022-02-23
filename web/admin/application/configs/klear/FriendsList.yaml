@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include FriendsPatternsList.yaml
+#include CallForwardSettingsList.yaml
 
 production:
   main:
@@ -61,6 +62,7 @@ production:
           screens:
             friendsEdit_screen: $[${auth.acls.Friends.update} && ${auth.companyVPBX}]
             friendsPatternsList_screen: $[${auth.acls.FriendsPatterns.read} && ${auth.companyVPBX}]
+            callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.acls.CallForwardSettings.read} && ${auth.companyVPBX}]
           dialogs:
             friendsDel_dialog: ${auth.acls.Friends.delete}
           default: friendsEdit_screen
@@ -209,6 +211,35 @@ production:
       <<: *friendsPatternsEdit_screenLink
       filterField: Friend
 
+    # CallForwardSettings:
+    <<: *callForwardSettings_screensLink
+    callForwardSettingsList_screen:
+      <<: *callForwardSettingsList_screenLink
+      filterField: friend
+      fields:
+        <<: *callForwardSettingsListFields_Link
+        blacklist:
+          <<: *callForwardSettingsListBlacklist_Link
+          ddi: true
+      parentOptionCustomizer:
+        - recordCount
+    callForwardSettingsNew_screen:
+      <<: *callForwardSettingsNew_screenLink
+      filterField: friend
+      fields:
+        <<: *callForwardSettingsNewFields_Link
+        blacklist:
+          <<: *callForwardSettingsNewBlacklist_Link
+          ddi: true
+    callForwardSettingsEdit_screen:
+      <<: *callForwardSettingsEdit_screenLink
+      filterField: friend
+      fields:
+        <<: *callForwardSettingsEditFields_Link
+        blacklist:
+          <<: *callForwardSettingsEditBlacklist_Link
+          ddi: true
+
   dialogs: &friends_dialogsLink
     friendsDel_dialog: &friendsDel_dialogLink
       <<: *Friends
@@ -222,6 +253,9 @@ production:
       labelOnList: 1
   # friendsPatterns dialogs:
     <<: *friendsPatterns_dialogsLink
+
+    # CallForwardSettings dialogs:
+    <<: *callForwardSettings_dialogsLink
 
   commands:
     generatePassword_command:

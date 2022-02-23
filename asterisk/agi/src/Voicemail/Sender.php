@@ -9,6 +9,7 @@ use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use PhpMimeMailParser\Parser;
+use Psr\Log\LoggerInterface;
 use RouteHandlerAbstract;
 
 class Sender extends RouteHandlerAbstract
@@ -41,25 +42,42 @@ class Sender extends RouteHandlerAbstract
     protected $parser;
 
     /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * Sender constructor.
      * @param EntityManagerInterface $em
      * @param Parser $parser
      * @param \Swift_Mailer $mailer
+     * @param LoggerInterface $logger
      */
     public function __construct(
         EntityManagerInterface $em,
         Parser $parser,
-        \Swift_Mailer $mailer
+        \Swift_Mailer $mailer,
+        LoggerInterface $logger
     ) {
         $this->em = $em;
         $this->parser = $parser;
         $this->mailer = $mailer;
+        $this->logger = $logger;
+    }
+
+    public function process()
+    {
+        try {
+            $this->processSendMail();
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
     }
 
     /**
      * @throws \InvalidArgumentException
      */
-    public function process()
+    public function processSendMail()
     {
         // Load Email data
         $this->parser->setStream(fopen("php://stdin", "r"));

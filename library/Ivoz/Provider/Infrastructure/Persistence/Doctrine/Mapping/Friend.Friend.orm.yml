@@ -19,3 +19,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     patterns:
       targetEntity: Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface
       mappedBy: friend
+    callForwardSettings:
+      targetEntity: Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+      mappedBy: friend

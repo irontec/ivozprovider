@@ -489,7 +489,7 @@ class ServiceAction
             ->setCallTypeFilter(CallForwardSettingInterface::CALLTYPEFILTER_BOTH)
             ->setCallForwardType($callForwardType)
             ->setTargetType($targetType)
-            ->setNoAnswerTimeout(10);
+            ->setNoAnswerTimeout(20);
 
         if ($targetType == CallForwardSettingInterface::TARGETTYPE_NUMBER) {
             $callForwardSettingDto

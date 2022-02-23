@@ -26,7 +26,16 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'callForwardType' => 'callForwardType',
                 'targetType' => 'targetType',
                 'id' => 'id',
-                'enabled' => 'enabled'
+                'enabled' => 'enabled',
+                'numberValue' => 'numberValue',
+                'numberCountryId' => 'numberCountry',
+                'userId' => 'user',
+                'voiceMailUserId' => 'voiceMailUser',
+                'extensionId' => 'extension',
+                'residentialDeviceId' => 'residentialDevice',
+                'retailAccountId' => 'retailAccount',
+                'cfwToRetailAccountId' => 'cfwToRetailAccount',
+                'ddiId' => 'ddi',
             ];
         }
 

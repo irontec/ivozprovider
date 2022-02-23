@@ -151,6 +151,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $voicemailLocution;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Location\LocationDto | null
+     */
+    private $location;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto[] | null
      */
     private $pickUpRelUsers = null;
@@ -210,7 +215,8 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'timezoneId' => 'timezone',
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
-            'voicemailLocutionId' => 'voicemailLocution'
+            'voicemailLocutionId' => 'voicemailLocution',
+            'locationId' => 'location'
         ];
     }
 
@@ -248,6 +254,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
             'voicemailLocution' => $this->getVoicemailLocution(),
+            'location' => $this->getLocation(),
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
             'callForwardSettings' => $this->getCallForwardSettings()
@@ -1133,6 +1140,52 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getVoicemailLocutionId()
     {
         if ($dto = $this->getVoicemailLocution()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Location\LocationDto $location
+     *
+     * @return static
+     */
+    public function setLocation(\Ivoz\Provider\Domain\Model\Location\LocationDto $location = null)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Location\LocationDto | null
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setLocationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Location\LocationDto($id)
+            : null;
+
+        return $this->setLocation($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getLocationId()
+    {
+        if ($dto = $this->getLocation()) {
             return $dto->getId();
         }
 

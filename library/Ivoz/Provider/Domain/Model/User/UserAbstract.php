@@ -151,6 +151,11 @@ abstract class UserAbstract
      */
     protected $voicemailLocution;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Location\LocationInterface | null
+     */
+    protected $location;
+
 
     use ChangelogTrait;
 
@@ -286,6 +291,7 @@ abstract class UserAbstract
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
             ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()))
+            ->setLocation($fkTransformer->transform($dto->getLocation()))
         ;
 
         $self->initChangelog();
@@ -331,7 +337,8 @@ abstract class UserAbstract
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
-            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()));
+            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()))
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
 
 
@@ -372,7 +379,8 @@ abstract class UserAbstract
             ->setTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getTimezone(), $depth))
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
-            ->setVoicemailLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getVoicemailLocution(), $depth));
+            ->setVoicemailLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getVoicemailLocution(), $depth))
+            ->setLocation(\Ivoz\Provider\Domain\Model\Location\Location::entityToDto(self::getLocation(), $depth));
     }
 
     /**
@@ -407,7 +415,8 @@ abstract class UserAbstract
             'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
-            'voicemailLocutionId' => self::getVoicemailLocution() ? self::getVoicemailLocution()->getId() : null
+            'voicemailLocutionId' => self::getVoicemailLocution() ? self::getVoicemailLocution()->getId() : null,
+            'locationId' => self::getLocation() ? self::getLocation()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -1125,6 +1134,30 @@ abstract class UserAbstract
     public function getVoicemailLocution()
     {
         return $this->voicemailLocution;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \Ivoz\Provider\Domain\Model\Location\LocationInterface $location | null
+     *
+     * @return static
+     */
+    public function setLocation(\Ivoz\Provider\Domain\Model\Location\LocationInterface $location = null)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \Ivoz\Provider\Domain\Model\Location\LocationInterface | null
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 
     // @codeCoverageIgnoreEnd

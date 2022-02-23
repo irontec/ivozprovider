@@ -66,6 +66,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setTerminal($fixture->getReference('_reference_ProviderTerminal2'));
+            $this->setLocation($fixture->getReference('_reference_ProviderLocation1'));
 //        $this->setExtension($fixture->getReference('_reference_ProviderExtension2'));
             $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
         })->call($item2);
@@ -81,6 +82,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
     {
         return array(
             ProviderTransformationRuleSet::class,
+            ProviderLocation::class,
             ProviderTerminal::class,
 //            ProviderExtension::class,
             ProviderTimezone::class,

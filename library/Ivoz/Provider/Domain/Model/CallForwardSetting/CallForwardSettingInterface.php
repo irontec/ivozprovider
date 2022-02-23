@@ -113,6 +113,22 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getUser();
 
     /**
+     * Set friend
+     *
+     * @param \Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend | null
+     *
+     * @return static
+     */
+    public function setFriend(\Ivoz\Provider\Domain\Model\Friend\FriendInterface $friend = null);
+
+    /**
+     * Get friend
+     *
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface | null
+     */
+    public function getFriend();
+
+    /**
      * Get extension
      *
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface | null

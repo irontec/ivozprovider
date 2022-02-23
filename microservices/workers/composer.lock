@@ -1366,11 +1366,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.4.4",
+            "version": "3.5.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core",
-                "reference": "3eccde9473af434e448ed7cf15736d21852508cb"
+                "reference": "9f7417f523ebf1af7929fe9d04ac3661ec18a936"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -1416,11 +1416,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "4d344148268f287bdfa1dd4e6dd8da337353353b"
+                "reference": "e27887b4f102991a8201e6ea7cc13a64d5675e05"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
@@ -1463,11 +1463,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.10",
+            "version": "2.5.11",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "0a62fd51534ca37a96150bb229b36a1b3fcc0b75"
+                "reference": "41d890fcc379ed07610b7d950187a49881febd34"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -2789,11 +2789,11 @@
         },
         {
             "name": "symfony/asset",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/asset",
-                "reference": "86dc86fe186790d2e8d5a87cd50066d387dcc04c"
+                "reference": "0970d65388724df88c982111ec37c08457506ce3"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -2806,11 +2806,6 @@
                 "symfony/http-foundation": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Asset\\": ""
@@ -2835,16 +2830,17 @@
             "description": "Symfony Asset Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/cache",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/cache",
-                "reference": "0dc6b972cfd110df3bc317b9d6033243b41b4f4f"
+                "reference": "a7a14c4832760bd1fbd31be2859ffedc9b6ff813"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -2867,11 +2863,6 @@
                 "predis/predis": "^1.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Cache\\": ""
@@ -2906,11 +2897,11 @@
         },
         {
             "name": "symfony/class-loader",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/class-loader",
-                "reference": "e4636a4f23f157278a19e5db160c63de0da297d8"
+                "reference": "a22265a9f3511c0212bf79f54910ca5a77c0e92c"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -2923,11 +2914,6 @@
                 "symfony/polyfill-apcu": "For using ApcClassLoader on HHVM"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\ClassLoader\\": ""
@@ -2952,16 +2938,17 @@
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/config",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/config",
-                "reference": "9e2aa97f0d51f114983666f5aa362426d53e004a"
+                "reference": "bc6b3fd3930d4b53a60b42fe2ed6fc466b75f03f"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -2982,11 +2969,6 @@
                 "symfony/yaml": "To use the yaml reference dumper"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Config\\": ""
@@ -3017,11 +2999,11 @@
         },
         {
             "name": "symfony/console",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/console",
-                "reference": "afc7189694d2c59546cf24ea606a236fa46a966e"
+                "reference": "a10b1da6fc93080c180bba7219b5ff5b7518fe81"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3050,11 +3032,6 @@
                 "symfony/process": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Console\\": ""
@@ -3085,11 +3062,11 @@
         },
         {
             "name": "symfony/debug",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug",
-                "reference": "7ce874f4432d8b11cc45a80cc5130a6e2609728d"
+                "reference": "ab42889de57fdfcfcc0759ab102e2fd4ea72dcae"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3102,11 +3079,6 @@
                 "symfony/http-kernel": "~2.8|~3.0|~4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Debug\\": ""
@@ -3137,11 +3109,11 @@
         },
         {
             "name": "symfony/debug-bundle",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/debug-bundle",
-                "reference": "823be58018c34f902bfd41df8419e9533984163c"
+                "reference": "801ca5060ef44fe3e67f61fa53590251643045fa"
             },
             "require": {
                 "ext-xml": "*",
@@ -3163,11 +3135,6 @@
                 "symfony/dependency-injection": "For using as a service from the container"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bundle\\DebugBundle\\": ""
@@ -3192,16 +3159,17 @@
             "description": "Symfony DebugBundle",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dependency-injection",
-                "reference": "3a14abc01c36e81fc1c4c48b42c103b9dd892ed3"
+                "reference": "51d2a2708c6ceadad84393f8581df1dcf9e5e84b"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3229,11 +3197,6 @@
                 "symfony/yaml": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\DependencyInjection\\": ""
@@ -3264,11 +3227,11 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/doctrine-bridge",
-                "reference": "595cce17d5c646f2741bf72a2ec608d0ea2dd21d"
+                "reference": "19a2e7616c8b2e478890f2fb48e6d51cf4600a91"
             },
             "require": {
                 "doctrine/common": "~2.4",
@@ -3287,7 +3250,7 @@
                 "doctrine/orm": "^2.4.5",
                 "symfony/dependency-injection": "~3.4|~4.0",
                 "symfony/expression-language": "~2.8|~3.0|~4.0",
-                "symfony/form": "^3.3.10|~4.0",
+                "symfony/form": "^3.4.43|~4.4.11",
                 "symfony/http-kernel": "~2.8|~3.0|~4.0",
                 "symfony/property-access": "~2.8|~3.0|~4.0",
                 "symfony/property-info": "~2.8|3.0|~4.0",
@@ -3306,11 +3269,6 @@
                 "symfony/validator": ""
             },
             "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bridge\\Doctrine\\": ""
@@ -3341,11 +3299,11 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/dotenv",
-                "reference": "22577db70b4fbd2e93d6b331ce2ae5f3d49f20e6"
+                "reference": "1022723ac4f56b001d99691d96c6025dbf1404f1"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -3354,11 +3312,6 @@
                 "symfony/process": "^3.4.2|^4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Dotenv\\": ""
@@ -3388,16 +3341,17 @@
                 "environment"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/event-dispatcher",
-                "reference": "14d978f8e8555f2de719c00eb65376be7d2e9081"
+                "reference": "31fde73757b6bad247c54597beef974919ec6860"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -3408,6 +3362,7 @@
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/config": "~2.8|~3.0|~4.0",
+                "symfony/debug": "~3.4|~4.4",
                 "symfony/dependency-injection": "~3.3|~4.0",
                 "symfony/expression-language": "~2.8|~3.0|~4.0",
                 "symfony/stopwatch": "~2.8|~3.0|~4.0"
@@ -3417,11 +3372,6 @@
                 "symfony/http-kernel": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\EventDispatcher\\": ""
@@ -3446,16 +3396,17 @@
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/expression-language",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/expression-language",
-                "reference": "56de5bb3d653aca3a8641cb788f80646033275c9"
+                "reference": "de38e66398fca1fcb9c48e80279910e6889cb28f"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3463,11 +3414,6 @@
                 "symfony/polyfill-php70": "~1.6"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\ExpressionLanguage\\": ""
@@ -3498,22 +3444,17 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/filesystem",
-                "reference": "0f625d0cb1e59c8c4ba61abb170125175218ff10"
+                "reference": "e58d7841cddfed6e846829040dca2cca0ebbbbb3"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
                 "symfony/polyfill-ctype": "~1.8"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Filesystem\\": ""
@@ -3538,26 +3479,22 @@
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/finder",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/finder",
-                "reference": "5ec813ccafa8164ef21757e8c725d3a57da59200"
+                "reference": "b6b6ad3db3edb1b4b1c1896b1975fb684994de6e"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Finder\\": ""
@@ -3582,16 +3519,17 @@
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/form",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/form",
-                "reference": "d9c944e4d69dda3585f9639e4dedf2255793d5b0"
+                "reference": "62e841f089ec485e5ee425308b56b6ce2b5d11fa"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3620,7 +3558,7 @@
                 "symfony/http-kernel": "^3.3.5|~4.0",
                 "symfony/security-csrf": "^2.8.31|^3.3.13|~4.0",
                 "symfony/translation": "~2.8|~3.0|~4.0",
-                "symfony/validator": "^3.4.3|^4.0.3",
+                "symfony/validator": "^3.4.44|^4.0.3",
                 "symfony/var-dumper": "~3.3.11|~3.4|~4.0"
             },
             "suggest": {
@@ -3630,11 +3568,6 @@
                 "symfony/validator": "For form validation."
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Form\\": ""
@@ -3665,11 +3598,11 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/framework-bundle",
-                "reference": "7c8345e3ec1d9a2aa65451b9c1024720cd06ebc6"
+                "reference": "6c95e747b75ddd2af61152ce93bf87299d15710e"
             },
             "require": {
                 "ext-xml": "*",
@@ -3683,7 +3616,7 @@
                 "symfony/filesystem": "~2.8|~3.0|~4.0",
                 "symfony/finder": "~2.8|~3.0|~4.0",
                 "symfony/http-foundation": "^3.4.38|^4.3",
-                "symfony/http-kernel": "^3.4.31|^4.3.4",
+                "symfony/http-kernel": "^3.4.44|^4.3.4",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/routing": "^3.4.5|^4.0.5"
             },
@@ -3741,11 +3674,6 @@
                 "symfony/yaml": "For using the debug:config and lint:yaml commands"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bundle\\FrameworkBundle\\": ""
@@ -3776,11 +3704,11 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/http-foundation",
-                "reference": "5219dba1253aa07ed3ad82f73c08146fb3f517d0"
+                "reference": "b9885fcce6fe494201da4f70a9309770e9d13dc8"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3791,11 +3719,6 @@
                 "symfony/expression-language": "~2.8|~3.0|~4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\HttpFoundation\\": ""
@@ -3826,11 +3749,11 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "3.4.43.0",
+            "version": "v3.4.49",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/http-kernel",
-                "reference": "4a1c6b310806adce0f299411951d06747edf9e28"
+                "reference": "5aa72405f5bd5583c36ed6e756acb17d3f98ac40"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3877,11 +3800,6 @@
                 "symfony/var-dumper": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\HttpKernel\\": ""
@@ -3912,22 +3830,17 @@
         },
         {
             "name": "symfony/inflector",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/inflector",
-                "reference": "540e39d07cff9824eaf4fee2c9f489304e54d0c2"
+                "reference": "b557c5d061b72cadf454dd87cd1308d0710c8021"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
                 "symfony/polyfill-ctype": "~1.8"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Inflector\\": ""
@@ -3960,16 +3873,17 @@
                 "words"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/intl",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/intl",
-                "reference": "0c47952617207bba74bb42e58764f4a4adef087e"
+                "reference": "c0e22a40039977f11dc4de03a853ab9450c2b4cd"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -3982,11 +3896,6 @@
                 "ext-intl": "to use the component with locales other than \"en\""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Intl\\": ""
@@ -4036,11 +3945,11 @@
         },
         {
             "name": "symfony/monolog-bridge",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/monolog-bridge",
-                "reference": "2b53ee83ce4f77835e4edc5c69f028f716f83cf8"
+                "reference": "93915f0d981bc166dfa475698124435327f6ee63"
             },
             "require": {
                 "monolog/monolog": "~1.19",
@@ -4064,11 +3973,6 @@
                 "symfony/var-dumper": "For using the debugging handlers like the console handler or the log server handler."
             },
             "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bridge\\Monolog\\": ""
@@ -4158,21 +4062,16 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "3.4.44.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/options-resolver",
-                "reference": "0edf31d2e34f4adb72dd4d2e4a8aa21f84b943e5"
+                "reference": "c7efc97a47b2ebaabc19d5b6c6b50f5c37c92744"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\OptionsResolver\\": ""
@@ -4208,11 +4107,11 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
-                "reference": "f1d94a98e364f4b84252331a40cb7987b847e241"
+                "reference": "b44b51e7814c23bfbd793a16ead5d7ce43ed23c5"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4220,7 +4119,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4258,16 +4157,17 @@
                 "shim"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
-                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
+                "reference": "aed596913b70fae57be53d86faa2e9ef85a2297b"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4278,7 +4178,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4321,11 +4221,11 @@
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-iconv",
-                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36"
+                "reference": "085241787d52fa6f7a774fd034135fef0cfd5496"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4336,7 +4236,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4380,11 +4280,11 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
-                "reference": "4e45a6e39041a9cc78835b11abc47874ae302a55"
+                "reference": "f740dd60a5b5f1511229e107f7e59f404b102084"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -4396,7 +4296,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4438,11 +4338,11 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-idn",
-                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251"
+                "reference": "4ad5115c0f5d5172a9fe8147675ec6de266d8826"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -4456,7 +4356,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4505,11 +4405,11 @@
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-normalizer",
-                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e"
+                "reference": "8db0ae7936b42feb370840cf24de1a144fb0ef27"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4520,7 +4420,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4568,11 +4468,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a"
+                "reference": "b5f7b932ee6fa802fc792eabd77c4c88084517ce"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4583,7 +4483,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4627,11 +4527,11 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
-                "reference": "13df84e91cd168f247c2f2ec82cc0fa24901c011"
+                "reference": "ea19621731cbd973a6702cfedef3419768bf3372"
             },
             "require": {
                 "php": ">=5.3.3",
@@ -4640,7 +4540,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4683,11 +4583,11 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
-                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3"
+                "reference": "3fe414077251a81a1b15b1c709faf5c2fbae3d4e"
             },
             "require": {
                 "paragonie/random_compat": "~1.0|~2.0|~9.99",
@@ -4696,7 +4596,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4742,11 +4642,11 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php72",
-                "reference": "639447d008615574653fb3bc60d1986d7172eaae"
+                "reference": "beecef6b463b06954638f02378f52496cb84bacc"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4754,7 +4654,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4797,11 +4697,11 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "1.18.1.0",
+            "version": "v1.19.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
-                "reference": "46b910c71e9828f8ec2aa7a0314de1130d9b295a"
+                "reference": "8df0c3e6a4b85df9a5c6f3f2f46fba5c5c47058a"
             },
             "require": {
                 "php": ">=5.3.3"
@@ -4809,7 +4709,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.19-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4849,21 +4749,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "3.4.44.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/process",
-                "reference": "af8d812d75fcdf2eae30928b42396fe17df137e4"
+                "reference": "b8648cf1d5af12a44a51d07ef9bf980921f15fca"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Process\\": ""
@@ -4894,11 +4789,11 @@
         },
         {
             "name": "symfony/property-access",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-access",
-                "reference": "0be88586f85142ab5f82ab14e5a04b17739ef7bd"
+                "reference": "f1dc91d0c987f3ba95be1d7874527d11477b25ff"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -4912,11 +4807,6 @@
                 "psr/cache-implementation": "To cache access methods."
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\PropertyAccess\\": ""
@@ -4958,11 +4848,11 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "3.4.44.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/property-info",
-                "reference": "7b5c6a3791182d359dbf3211f388687b262c6fe1"
+                "reference": "a5f1e77c881342a5b1e05fdc12642650853bd112"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -4987,11 +4877,6 @@
                 "symfony/serializer": "To use Serializer metadata"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\PropertyInfo\\": ""
@@ -5030,11 +4915,11 @@
         },
         {
             "name": "symfony/proxy-manager-bridge",
-            "version": "3.4.43.0",
+            "version": "v3.4.45",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/proxy-manager-bridge",
-                "reference": "8807231226867bc74467671dba78d9a924a1181a"
+                "reference": "8cef0d24d1af3f832d14fc0130cc9427be4bcae3"
             },
             "require": {
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
@@ -5074,16 +4959,17 @@
             "description": "Symfony ProxyManager Bridge",
             "homepage": "https://symfony.com",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
             "name": "symfony/routing",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/routing",
-                "reference": "58381b7b815c1e3afaf60a534fbf769157fe5fe7"
+                "reference": "3e522ac69cadffd8131cc2b22157fa7662331a6c"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -5110,11 +4996,6 @@
                 "symfony/yaml": "For using the YAML loader"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Routing\\": ""
@@ -5225,11 +5106,11 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "3.4.44.0",
+            "version": "v3.4.48",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/security-bundle",
-                "reference": "b753a4c8b01b7cdcf0630ef792ee1b0e2bd2c3c5"
+                "reference": "84355eff4dd84293aa872402355479ac8cf888ee"
             },
             "require": {
                 "ext-xml": "*",
@@ -5272,11 +5153,6 @@
                 "symfony/security-acl": "For using the ACL functionality of this bundle"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bundle\\SecurityBundle\\": ""
@@ -5307,11 +5183,11 @@
         },
         {
             "name": "symfony/serializer",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/serializer",
-                "reference": "f64adecb8428febda812166bdc4baa99c039fc74"
+                "reference": "6d69ccc1dcfb64c1e9c9444588643e98718d1849"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5347,11 +5223,6 @@
                 "symfony/yaml": "For using the default YAML mapping loader."
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Serializer\\": ""
@@ -5443,11 +5314,11 @@
         },
         {
             "name": "symfony/templating",
-            "version": "3.4.44.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/templating",
-                "reference": "a1a9717979e1d6468221ce279b11062ea28c1630"
+                "reference": "84ca10f95aaff084ae2bcfc5c21ae551af173d5a"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5460,11 +5331,6 @@
                 "psr/log-implementation": "For using debug logging in loaders"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Templating\\": ""
@@ -5495,11 +5361,11 @@
         },
         {
             "name": "symfony/translation",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/translation",
-                "reference": "600b84224bf482441cd4d0026eba78755d2e2b34"
+                "reference": "be83ee6c065cb32becdb306ba61160d598b1ce88"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5526,11 +5392,6 @@
                 "symfony/yaml": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Translation\\": ""
@@ -5561,11 +5422,11 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/twig-bridge",
-                "reference": "a70a77e115f2456778abb33345ea38e2991a6b55"
+                "reference": "090d19d6f1ea5b9e1d79f372785aa5e5c9cd4042"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5613,11 +5474,6 @@
                 "symfony/yaml": "For using the YamlExtension"
             },
             "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bridge\\Twig\\": ""
@@ -5648,11 +5504,11 @@
         },
         {
             "name": "symfony/twig-bundle",
-            "version": "3.4.44.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/twig-bundle",
-                "reference": "ba4dc6a5059dca6b7e036cd111fbe7447ba3ceee"
+                "reference": "977b3096e2df96bc8a8d2329e83466cfc30c373d"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5684,11 +5540,6 @@
                 "symfony/yaml": "~2.8|~3.0|~4.0"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bundle\\TwigBundle\\": ""
@@ -5719,11 +5570,11 @@
         },
         {
             "name": "symfony/validator",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/validator",
-                "reference": "008b41843e9e1a871ce13417c7e35ac1395e1bf2"
+                "reference": "d25ceea5c99022aecf37adf157c76c31fc5dcbed"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5766,11 +5617,6 @@
                 "symfony/yaml": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Validator\\": ""
@@ -5801,11 +5647,11 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/var-dumper",
-                "reference": "276cdd86063d42f9468cd26dab32daf546765050"
+                "reference": "0719f6cf4633a38b2c1585140998579ce23b4b7d"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5824,11 +5670,6 @@
                 "ext-symfony_debug": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "files": [
                     "Resources/functions/dump.php"
@@ -5866,11 +5707,11 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "3.4.43.0",
+            "version": "v3.4.47",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/yaml",
-                "reference": "e7fa05917ae931332a42d65b577ece4d497aad81"
+                "reference": "88289caa3c166321883f67fe5130188ebbb47094"
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -5886,11 +5727,6 @@
                 "symfony/console": "For validating YAML files using the lint command"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Yaml\\": ""

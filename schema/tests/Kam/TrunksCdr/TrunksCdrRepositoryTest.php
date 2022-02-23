@@ -22,6 +22,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $this->it_finds_one_by_callid();
         $this->it_finds_unparsedCalls();
         $this->it_resets_parsed_calls();
+        $this->it_resets_orphan_cgrids();
     }
 
     public function its_instantiable()
@@ -117,5 +118,21 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         );
 
         $this->assertNotEmpty($result);
+    }
+
+    public function it_resets_orphan_cgrids()
+    {
+        /** @var TrunksCdrRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(TrunksCdr::class);
+
+        $affectedRows = $repository
+            ->resetOrphanCgrids([1,2,3]);
+
+        $this->assertEquals(
+            1,
+            $affectedRows
+        );
     }
 }

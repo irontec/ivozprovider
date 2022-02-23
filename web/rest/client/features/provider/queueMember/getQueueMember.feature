@@ -69,7 +69,8 @@ Feature: Retrieve queue members
                   "timezone": 145,
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
-                  "voicemailLocution": null
+                  "voicemailLocution": null,
+                  "location": null
               }
           }
       ]
@@ -139,7 +140,8 @@ Feature: Retrieve queue members
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "voicemailLocution": null,
+              "location": null
           }
       }
     """

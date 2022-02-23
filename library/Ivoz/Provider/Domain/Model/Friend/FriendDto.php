@@ -45,25 +45,9 @@ class FriendDto extends FriendDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
-        $response['status'] = $this->status;
-
-        return $response;
-    }
-
-    public function normalize(string $context, string $role = '')
-    {
-        $response = parent::normalize(...func_get_args());
-
-        if (!isset($response['status'])) {
-            return $response;
-        }
-
-        /**
-         * @var int $key
-         * @var RegistrationStatus $status
-         */
-        foreach ($response['status'] as $key => $status) {
-            $response['status'][$key] = $status->toArray();
+        $response['status'] = [];
+        foreach ($this->status as $status) {
+            $response['status'][] = $status->toArray();
         }
 
         return $response;
@@ -81,9 +65,11 @@ class FriendDto extends FriendDtoAbstract
                 'name' => 'name',
                 'domainName' => 'domainName',
                 'status' => [
-                    'contact',
-                    'expires',
-                    'userAgent'
+                    [
+                        'contact',
+                        'expires',
+                        'userAgent'
+                    ]
                 ]
             ];
 

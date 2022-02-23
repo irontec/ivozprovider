@@ -78,6 +78,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('phpstan') {
@@ -94,7 +95,10 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
-                        always  { cleanWs() }
+                        always  {
+                            cleanWs()
+                            notifyJira()
+                        }
                     }
                 }
                 stage ('codestyle') {
@@ -112,6 +116,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { jiraSendBuildInfo() }
                     }
                 }
                 stage ('i18n') {
@@ -128,6 +133,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('phpspec') {
@@ -144,6 +150,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('api-platform') {
@@ -161,6 +168,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('api-brand') {
@@ -178,6 +186,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('api-client') {
@@ -195,6 +204,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('orm') {
@@ -211,6 +221,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
                 stage ('generators') {
@@ -227,7 +238,10 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
-                        always  { cleanWs() }
+                        always {
+                            cleanWs()
+                            notifyJira()
+                        }
                     }
                 }
                 stage ('schema') {
@@ -249,6 +263,7 @@ pipeline {
                     post {
                         success { notifySuccessGithub() }
                         failure { notifyFailureGithub() }
+                        always  { notifyJira() }
                     }
                 }
             }
@@ -303,4 +318,8 @@ void notifyFixedMattermost() {
             message: ":thumbsup_all: Branch ${env.GIT_BRANCH} tests fixed :thumbsup_all: - (<${env.BUILD_URL}|Open>)"
         ])
     }
+}
+
+void notifyJira() {
+    jiraSendBuildInfo site: 'ironvoip.atlassian.net', branch: "${env.CHANGE_BRANCH}"
 }

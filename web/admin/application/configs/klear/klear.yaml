@@ -4,7 +4,7 @@ production:
     sitename: "Main administration portal"
     sitesubname: "Main website"
     logo: images/irontec.png
-    year: 2021
+    year: 2022
     lang: en
     langs:
       es:
@@ -469,6 +469,11 @@ production:
               class: ui-silk-telephone-key
               description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
               showOnlyIf: ${auth.acls.CallACL.read}
+            LocationsList:
+              title: ngettext('Location', 'Locations', 0)
+              class: ui-silk-arrow-in
+              description: _("List of %s", ngettext('Location', 'Locations', 0))
+              showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Locations.read}]
         Multimedia:
           title: _("Multimedia")
           class: ui-silk-cd

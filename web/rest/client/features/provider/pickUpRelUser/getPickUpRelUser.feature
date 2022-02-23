@@ -47,7 +47,8 @@ Feature: Retrieve pick up rel users
                   "timezone": 145,
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
-                  "voicemailLocution": null
+                  "voicemailLocution": null,
+                  "location": null
               }
           }
       ]
@@ -95,7 +96,8 @@ Feature: Retrieve pick up rel users
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "voicemailLocution": null,
+              "location": null
           }
       }
     """

@@ -497,10 +497,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
     delete: ~
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -1010,9 +1012,12 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
       inherited:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
     write_access_control:
-      inherited:
-        user: 'Ivoz\Provider\Domain\Model\User\User'
-        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - and:
+        - inherited:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
     swagger_context:
       required:
       - user
@@ -1152,6 +1157,20 @@ Ivoz\Provider\Domain\Model\Language\Language:
     access_control: '("ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Language\Name:
 
+Ivoz\Provider\Domain\Model\Location\Location:
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
     access_control: >-
@@ -1165,6 +1184,8 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
     swagger_context:
       required:
       - company
+
+
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations: []
@@ -1493,12 +1514,16 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     access_control: >-
-        "ROLE_COMPANY_ADMIN" in roles
-        && user.isRetailAdmin()
-        && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isRetailAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1815,6 +1840,9 @@ Ivoz\Provider\Domain\Model\User\User:
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            location: 'Ivoz\Provider\Domain\Model\Location\Location'
     swagger_context:
       required:
       - company
