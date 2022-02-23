@@ -4944,11 +4944,11 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.18.3",
+            "version": "v1.18.5",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/flex",
-                "reference": "d40a6b176b70ea323af2b08507319d1c417520fd"
+                "reference": "10e438f53a972439675dc720706f0cd5c0ed94f1"
             },
             "require": {
                 "composer-plugin-api": "^1.0|^2.0",
@@ -7100,11 +7100,11 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v3.5.3",
+            "version": "v3.5.4",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "fa7d78cbdf0a16a4da126c465f25f6547ad69cf6"
+                "reference": "9daab339f226ac958192bf89836cb3378cc0e652"
             },
             "require": {
                 "php": ">=7.1",
