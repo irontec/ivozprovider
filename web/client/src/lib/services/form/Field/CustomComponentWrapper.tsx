@@ -13,7 +13,7 @@ export interface PropertyCustomFunctionComponentProps<FormikValues> {
     _context?: CustomFunctionComponentContext,
     _columnName: string,
     formik?: FormikState<FormikValues> & FormikComputedProps<FormikValues> & FormikHelpers<FormikValues> & FormikHandlers,
-    values: Record<string, string | number | Record<string, unknown> | Array<string>>,
+    values: Record<string, boolean | string | number | Record<string, unknown> | Array<string>>,
     changeHandler: (event: FormOnChangeEvent) => void,
     onBlur: (event: React.FocusEvent) => void,
     property: PropertySpec,
