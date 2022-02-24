@@ -189,6 +189,7 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
     swagger_context:
       required:
       - company
+Ivoz\Provider\Domain\Model\CallCsvReport\Csv: ~
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   itemOperations:
