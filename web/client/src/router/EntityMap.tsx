@@ -144,6 +144,12 @@ const map: RouteMap = [
             },
             {
                 entity: entities.MatchList,
+                children: [
+                    {
+                        entity: entities.MatchListPattern,
+                        filterBy: 'matchList',
+                    }
+                ]
             },
             {
                 entity: entities.RouteLock,
@@ -155,6 +161,12 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.OutgoingDdiRule,
+                children: [
+                    {
+                        entity: entities.OutgoingDdiRulesPattern,
+                        filterBy: 'outgoingDdiRule',
+                    }
+                ],
             },
             {
                 entity: entities.PickUpGroup,
@@ -186,6 +198,12 @@ const map: RouteMap = [
             },
             {
                 entity: entities.CallCsvScheduler,
+                children: [
+                    {
+                        entity: entities.CallCsvReport,
+                        filterBy: 'callCsvScheduler',
+                    }
+                ],
             },
             {
                 entity: entities.Recording,

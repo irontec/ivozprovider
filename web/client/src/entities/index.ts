@@ -3,6 +3,7 @@ import Calendar from './Calendar/Calendar';
 import CalendarPeriod from './CalendarPeriod/CalendarPeriod';
 import CalendarPeriodsRelSchedule from './CalendarPeriodsRelSchedule/CalendarPeriodsRelSchedule';
 import CallAcl from './CallAcl/CallAcl';
+import CallCsvReport from './CallCsvReport/CallCsvReport';
 import CallCsvScheduler from './CallCsvScheduler/CallCsvScheduler';
 import CallForwardSetting from './CallForwardSetting/CallForwardSetting';
 import CompanyService from './CompanyService/CompanyService';
@@ -25,10 +26,13 @@ import HuntGroup from './HuntGroup/HuntGroup';
 import HuntGroupsRelUser from './HuntGroupsRelUser/HuntGroupsRelUser';
 import Ivr from './Ivr/Ivr';
 import IvrEntry from './IvrEntry/IvrEntry';
+import Language from './Language/Language';
 import Locution from './Locution/Locution';
 import MatchList from './MatchList/MatchList';
+import MatchListPattern from './MatchListPattern/MatchListPattern';
 import MusicOnHold from './MusicOnHold/MusicOnHold';
 import OutgoingDdiRule from './OutgoingDdiRule/OutgoingDdiRule';
+import OutgoingDdiRulesPattern from './OutgoingDdiRulesPattern/OutgoingDdiRulesPattern';
 import PickUpGroup from './PickUpGroup/PickUpGroup';
 import Queue from './Queue/Queue';
 import QueueMember from './QueueMember/QueueMember';
@@ -42,6 +46,8 @@ import Schedule from './Schedule/Schedule';
 import Service from './Service/Service';
 import Terminal from './Terminal/Terminal';
 import TerminalModel from './TerminalModel/TerminalModel';
+import Timezone from './Timezone/Timezone';
+import TransformationRuleSet from './TransformationRuleSet/TransformationRuleSet';
 import User from './User/User';
 import UsersCdr from './UsersCdr/UsersCdr';
 import { EntityList } from 'lib/router/parseRoutes';
@@ -52,6 +58,7 @@ const entities: EntityList = {
   CalendarPeriod,
   CalendarPeriodsRelSchedule,
   CallAcl,
+  CallCsvReport,
   CallCsvScheduler,
   CallForwardSetting,
   CompanyService,
@@ -74,10 +81,13 @@ const entities: EntityList = {
   HuntGroupsRelUser,
   Ivr,
   IvrEntry,
+  Language,
   Locution,
   MatchList,
+  MatchListPattern,
   MusicOnHold,
   OutgoingDdiRule,
+  OutgoingDdiRulesPattern,
   PickUpGroup,
   Queue,
   QueueMember,
@@ -91,6 +101,8 @@ const entities: EntityList = {
   Service,
   Terminal,
   TerminalModel,
+  Timezone,
+  TransformationRuleSet,
   User,
   UsersCdr,
 };

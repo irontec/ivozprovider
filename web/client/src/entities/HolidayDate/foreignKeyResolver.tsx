@@ -2,7 +2,8 @@ import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import { HolidayDatePropertiesList } from './HolidayDateProperties';
 import entities from '../index';
 import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
-import { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken, entityService }
@@ -13,8 +14,23 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
         cancelToken,
         entityService,
         entities,
-        skip: []
+        skip: [
+            'numberCountry',
+            'calendar',
+        ]
     });
+
+    promises.push(
+        genericForeignKeyResolver({
+            data,
+            fkFld: 'numberCountry',
+            entity: {
+                ...entities.Country,
+                toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
+            },
+            cancelToken,
+        })
+    );
 
     await Promise.all(promises);
 

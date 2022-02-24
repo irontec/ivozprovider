@@ -17,6 +17,14 @@ class CallCsvReportDto extends CallCsvReportDtoAbstract
                 'id' => 'id',
                 'inDate' => 'inDate',
                 'outDate' => 'outDate',
+                'csv' => [
+                    'fileSize',
+                    'mimeType',
+                    'baseName',
+                ],
+                'createdOn' => 'createdOn',
+                'sentTo' => 'sentTo',
+                'callCsvSchedulerId' => 'callCsvScheduler',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

@@ -1,21 +1,42 @@
 import { CallForwardSettingPropertiesList } from './CallForwardSettingProperties';
 import entities from '../index';
-import { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
+const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken, entityService }
 ): Promise<CallForwardSettingPropertiesList> {
 
     const promises = autoForeignKeyResolver({
-        data, cancelToken, entityService, entities
+        data,
+        cancelToken,
+        entityService,
+        entities,
+        skip: [
+            'numberCountry',
+            'user',
+        ],
     });
+
+
+    promises.push(
+        genericForeignKeyResolver({
+            data,
+            fkFld: 'numberCountry',
+            entity: {
+                ...entities.Country,
+                toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
+            },
+            cancelToken,
+        })
+    );
 
     await Promise.all(promises);
 
     for (const values of data) {
-        switch(values.targetType) {
+        switch (values.targetType) {
             case 'extension':
                 remapFk(values, 'extension', 'targetTypeValue');
                 break;

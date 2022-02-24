@@ -5,7 +5,7 @@ import { IvrEntryPropertiesList } from './IvrEntryProperties';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
+const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken, entityService }
 ): Promise<IvrEntryPropertiesList> {
 
@@ -18,6 +18,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
         entities,
         skip: [
             'numberCountry',
+            'ivr',
         ]
     });
 
@@ -36,7 +37,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
     await Promise.all(promises);
 
     for (const values of data) {
-        switch(values.routeType) {
+        switch (values.routeType) {
             case 'extension':
                 remapFk(values, 'extension', 'target');
                 break;

@@ -3,15 +3,36 @@ import { CalendarPeriodPropertiesList } from './CalendarPeriodProperties';
 import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
 import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
 import store from 'store';
-import { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken, entityService }
 ): Promise<CalendarPeriodPropertiesList> {
 
     const promises = autoForeignKeyResolver({
-        data, cancelToken, entityService, entities
+        data,
+        cancelToken,
+        entityService,
+        entities,
+        skip: [
+            'scheduleIds',
+            'numberCountry',
+            'calendar',
+        ],
     });
+
+    promises.push(
+        genericForeignKeyResolver({
+            data,
+            fkFld: 'numberCountry',
+            entity: {
+                ...entities.Country,
+                toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
+            },
+            cancelToken,
+        })
+    );
 
     const getAction = store.getActions().api.get;
     const { Schedule } = entities;

@@ -132,7 +132,7 @@ export const unmarshaller = (row: MarshallerValues, properties: PartialPropertyL
 
         } else if (typeof row[idx] === 'object' && row[idx].id) {
             // flatten foreign keys
-            const hasCustomComponent = properties[idx].component !== undefined;
+            const hasCustomComponent = properties[idx]?.component !== undefined;
 
             normalizedData[idx] = hasCustomComponent
                 ? row[idx]
@@ -300,7 +300,7 @@ export const ListDecorator = (props: ListDecoratorPropsType): JSX.Element | stri
     const { field, row, property } = props;
     let value = row[field];
 
-    if (isPropertyScalar(property) && property.component) {
+    if (property.component) {
         return (
             <property.component
                 _columnName={field}

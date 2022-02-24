@@ -19,7 +19,9 @@ Feature: Retrieve match list patterns
               "type": "number",
               "regexp": null,
               "numbervalue": "946002050",
-              "id": 1
+              "id": 1,
+              "matchList": 1,
+              "numberCountry": 68
           }
       ]
     """
