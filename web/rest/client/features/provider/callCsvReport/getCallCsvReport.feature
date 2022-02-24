@@ -15,9 +15,17 @@ Feature: Retrieve call CSV report
     """
       [
           {
+              "sentTo": "",
               "inDate": "2019-05-31 02:00:00",
               "outDate": "2019-06-01 01:59:59",
-              "id": 2
+              "createdOn": "2019-06-01 07:59:59",
+              "id": 2,
+              "csv": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "callCsvScheduler": 2
           }
       ]
     """
