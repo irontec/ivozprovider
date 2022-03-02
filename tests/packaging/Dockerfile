@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y \
     libjs-sphinxdoc \
     libjs-jquery \
     composer \
+    php8.0-cli \
     php8.0-mbstring \
     php8.0-xml \
     php8.0-zip \
