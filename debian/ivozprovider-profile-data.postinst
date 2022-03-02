@@ -22,6 +22,8 @@ function setup_bind()
     sed -r -i "s/(trunks          IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/data_address            || true
     sed -r -i "s/(data            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/cache_address           || true
+    sed -r -i "s/(cache           IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/storage_address         || true
     sed -r -i "s/(storage         IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/logs_address            || true
