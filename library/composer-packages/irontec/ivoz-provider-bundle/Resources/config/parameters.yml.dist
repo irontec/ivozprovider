@@ -32,5 +32,5 @@ parameters:
     local_storage_path: /opt/irontec/ivozprovider/storage
     raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
     sentinels:
-        - { host: 'data.ivozprovider.local', port: '26379' }
+        - { host: 'cache.ivozprovider.local', port: '26379' }
     redis_jobs_db: 2

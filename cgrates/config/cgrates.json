@@ -19,7 +19,7 @@
 	},
 	"data_db": {
 		"db_type": "redis",
-		"db_host": "data.ivozprovider.local",
+		"db_host": "cache.ivozprovider.local",
 		"db_port": 26379,
 		"db_name": "10",
 		"db_user": "cgrates",
