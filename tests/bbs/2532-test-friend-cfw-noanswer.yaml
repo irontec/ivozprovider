@@ -1,0 +1,32 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to friend noanswer forwarded to eve
+    timeout: 20
+    sessions:
+      - alice:
+          - wait: 2
+          - call:
+              dest: 2001
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
+      - friend:
+          - register:
+              <<: *friend_cred
+          - waitfor: INCOMING
+          - ringing
+          - waitfor: DISCONNCTD
+          - unregister
+      - eve:
+          - register:
+              <<: *eve_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait
+          - answer
+          - waitfor: DISCONNCTD
+
+
