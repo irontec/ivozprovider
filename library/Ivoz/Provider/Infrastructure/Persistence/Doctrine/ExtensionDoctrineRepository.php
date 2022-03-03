@@ -52,7 +52,7 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
     }
 
     /**
-     * @param $includeIds int[]
+     * @param int[] $includeIds
      * @return ExtensionInterface[]
      */
     public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array

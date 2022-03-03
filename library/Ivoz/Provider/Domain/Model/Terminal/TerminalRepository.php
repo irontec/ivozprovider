@@ -38,7 +38,7 @@ interface TerminalRepository extends ObjectRepository, Selectable
     public function countRegistrableDevices(array $companyIds): int;
 
     /**
-     * @param $includeIds int[]
+     * @param int[] $includeIds
      * @return TerminalInterface[]
      */
     public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array;

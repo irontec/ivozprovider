@@ -28,7 +28,11 @@ class HuntGroupUsersAvailableAction
     ) {
     }
 
-    public function __invoke()
+    /**
+     * @return array<int, mixed>
+     * @throws ResourceClassNotFoundException
+     */
+    public function __invoke(): array
     {
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
@@ -52,7 +56,7 @@ class HuntGroupUsersAvailableAction
         }
 
         $excludedUserIds = $this->huntGroupsRelUserRepository->findUserIdsInHuntGroup(
-            $huntGroup->getId()
+            (int) $huntGroup->getId()
         );
 
         $includeId = (int) $request->query->get('_includeId');
@@ -61,7 +65,7 @@ class HuntGroupUsersAvailableAction
         }
 
         $users = $this->userRepository->findCompanyUsersExcludingIds(
-            $company->getId(),
+            (int) $company->getId(),
             $excludedUserIds
         );
 

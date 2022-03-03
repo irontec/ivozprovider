@@ -23,7 +23,11 @@ class TerminalsUnassignedAction
     ) {
     }
 
-    public function __invoke()
+    /**
+     * @return array<int, mixed>
+     * @throws ResourceClassNotFoundException
+     */
+    public function __invoke(): array
     {
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();

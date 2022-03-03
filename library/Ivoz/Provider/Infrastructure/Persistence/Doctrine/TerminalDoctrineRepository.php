@@ -111,7 +111,7 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
     }
 
     /**
-     * @param $includeIds int[]
+     * @param int[] $includeIds
      * @return TerminalInterface[]
      */
     public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array

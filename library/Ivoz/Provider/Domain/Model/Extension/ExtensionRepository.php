@@ -20,7 +20,7 @@ interface ExtensionRepository extends ObjectRepository, Selectable
     public function findCompanyExtension(int $companyId, string $extensionNumber);
 
     /**
-     * @param $includeIds int[]
+     * @param int[] $includeIds
      * @return ExtensionInterface[]
      */
     public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array;

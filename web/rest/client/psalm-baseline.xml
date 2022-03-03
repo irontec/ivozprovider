@@ -41,6 +41,16 @@
       <code>$code</code>
     </InvalidScalarArgument>
   </file>
+  <file src="src/Controller/Provider/ExtensionsUnassignedAction.php">
+    <MixedAssignment occurrences="1">
+      <code>$response[]</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Controller/Provider/HuntGroupUsersAvailableAction.php">
+    <MixedAssignment occurrences="1">
+      <code>$response[]</code>
+    </MixedAssignment>
+  </file>
   <file src="src/Controller/Provider/RatingPlanPricesAction.php">
     <MissingClosureReturnType occurrences="1">
       <code>function (QueryBuilder $qb) use ($collectionExtensions, $request) {</code>
@@ -56,6 +66,11 @@
       <code>$disposition</code>
       <code>$item</code>
       <code>$value</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Controller/Provider/TerminalsUnassignedAction.php">
+    <MixedAssignment occurrences="1">
+      <code>$response[]</code>
     </MixedAssignment>
   </file>
   <file src="src/Kernel.php">
