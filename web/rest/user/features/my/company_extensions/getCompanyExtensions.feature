@@ -25,6 +25,10 @@ Feature: Retrieve company extensions
           {
               "number": "12346",
               "id": 3
+          },
+          {
+              "number": "987",
+              "id": 4
           }
       ]
     """
