@@ -7,5 +7,8 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface HuntGroupsRelUserRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return int[]
+     */
+    public function findUserIdsInHuntGroup(int $huntGroupId): array;
 }

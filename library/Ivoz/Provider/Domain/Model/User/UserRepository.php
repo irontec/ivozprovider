@@ -45,6 +45,15 @@ interface UserRepository extends ObjectRepository, Selectable
     );
 
     /**
+     * @param int[] $excludeIds
+     * @return UserInterface[]
+     */
+    public function findCompanyUsersExcludingIds(
+        int $companyId,
+        array $excludeIds
+    ): array;
+
+    /**
      * @return UserInterface | null
      */
     public function findOneByEmail(

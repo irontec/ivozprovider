@@ -50,4 +50,38 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
 
         return $response;
     }
+
+    /**
+     * @param $includeIds int[]
+     * @return ExtensionInterface[]
+     */
+    public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $routeConditions = [
+            $expression->isNull('self.routeType')
+        ];
+
+        if (!empty($includeIds)) {
+            $routeConditions[] = $expression->in('self.id', $includeIds);
+        }
+
+        $routeCondition = empty($includeIds)
+            ? $routeConditions[0]
+            : $expression->orX(...$routeConditions);
+
+        $qb
+            ->where(
+                $expression->eq('self.company', $companyId)
+            )
+            ->andWhere(
+                $routeCondition
+            );
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }

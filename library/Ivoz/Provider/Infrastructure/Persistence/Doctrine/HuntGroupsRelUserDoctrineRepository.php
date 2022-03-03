@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * HuntGroupsRelUserDoctrineRepository
@@ -20,5 +21,35 @@ class HuntGroupsRelUserDoctrineRepository extends ServiceEntityRepository implem
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, HuntGroupsRelUser::class);
+    }
+
+    /**
+     * @return int[]
+     */
+    public function findUserIdsInHuntGroup(
+        int $huntGroupId
+    ): array {
+        $qb = $this
+            ->createQueryBuilder('self');
+
+        $expression = $qb->expr();
+
+        $qb
+            ->select('IDENTITY(self.user) as user')
+            ->where(
+                $expression->eq('self.huntGroup', $huntGroupId)
+            )
+            ->andWhere(
+                $expression->isNotNull('self.user')
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_map(
+            function ($row) {
+                return (int) $row['user'];
+            },
+            $result
+        );
     }
 }

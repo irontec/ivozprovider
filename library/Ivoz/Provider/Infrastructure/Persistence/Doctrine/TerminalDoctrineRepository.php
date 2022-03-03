@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
+use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -107,5 +108,66 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
         ]);
 
         return $this->countByCriteria($criteria);
+    }
+
+    /**
+     * @param $includeIds int[]
+     * @return TerminalInterface[]
+     */
+    public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array
+    {
+        $qb = $this->createQueryBuilder('terminal');
+        $expression = $qb->expr();
+
+        $terminalIdsInUse = $this
+            ->findAssociatedTerminalIdsByCompanyId($companyId);
+
+        $excludedIds = array_diff($terminalIdsInUse, $includeIds);
+
+        $qb
+            ->select('terminal')
+            ->where(
+                $expression->eq('terminal.company', $companyId)
+            )
+            ->andWhere(
+                $expression->notIn('terminal.id', $excludedIds),
+            );
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @return int[]
+     */
+    private function findAssociatedTerminalIdsByCompanyId(int $companyId): array
+    {
+        $qb = $this->_em
+            ->createQueryBuilder()
+            ->select('IDENTITY(user.terminal) AS terminal')
+            ->from(User::class, 'user');
+        $expression = $qb->expr();
+
+        $qb
+            ->where(
+                $expression->eq('user.company', $companyId)
+            )
+            ->andWhere(
+                $expression->isNotNull('user.terminal')
+            );
+
+        $query = $qb->getQuery();
+        $result = $query->getScalarResult();
+
+        $ids = array_column(
+            $result,
+            'terminal'
+        );
+
+        return array_map(
+            fn($id) => (int) $id,
+            $ids
+        );
     }
 }
