@@ -45,6 +45,12 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Fax,
+                children: [
+                    {
+                        entity: entities.FaxesInOut,
+                        filterBy: 'fax',
+                    },
+                ],
             },
             {
                 entity: entities.CompanyService,
@@ -105,6 +111,9 @@ const map: RouteMap = [
                         filterBy: 'conditionalRoute'
                     }
                 ]
+            },
+            {
+                entity: entities.Invoice,
             },
             {
                 entity: entities.Friend,

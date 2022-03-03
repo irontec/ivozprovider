@@ -3,6 +3,7 @@ import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import entities from '../index';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
+import { VoicemailEnabledSelectOptions } from 'entities/User/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
@@ -17,6 +18,9 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
             'noInputExtension',
             'errorExtension',
             'excludedExtensionIds',
+
+            'noInputVoiceMailUser',
+            'errorVoiceMailUser',
         ],
     });
 
@@ -25,6 +29,14 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
             response.noInputExtension = options;
             response.errorExtension = options;
             response.excludedExtensionIds = options;
+        },
+        cancelToken
+    });
+
+    promises[promises.length] = VoicemailEnabledSelectOptions({
+        callback: (options: any) => {
+            response.noInputVoiceMailUser = options;
+            response.errorVoiceMailUser = options;
         },
         cancelToken
     });

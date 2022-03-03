@@ -6,18 +6,21 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { ExtensionProperties } from './ExtensionProperties';
 import foreignKeyResolver from './foreignKeyResolver';
-import selectOptions from './SelectOptions';
+import selectOptions from './SelectOptions/SelectOptions';
+
+/** TODO */
+const vpbx = true;
 
 const allRoutableFields = [
     'numberCountry',
     'numberValue',
-    'ivr',
-    'user',
-    'huntGroup',
+    vpbx && 'ivr',
+    vpbx && 'user',
+    vpbx && 'huntGroup',
     'conferenceRoom',
     'friendValue',
     'queue',
-    'conditionalRoute',
+    vpbx && 'conditionalRoute',
 ];
 
 const properties: ExtensionProperties = {

@@ -1,13 +1,33 @@
 import useFkChoices from 'lib/entities/data/useFkChoices';
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
+import { PropertyList, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
 import _ from 'lib/services/translations/translate';
 import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
-    const { entityService } = props;
+    const { entityService, row, match } = props;
+    let properties = props.properties;
+    const edit = props.edit;
+
     const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices = useFkChoices(foreignKeyGetter, entityService);
+    const fkChoices = useFkChoices({
+        foreignKeyGetter,
+        entityService,
+        row,
+        match
+    });
+
+    if (edit && row?.strategy !== 'linear') {
+
+        properties = { ...properties };
+        const strategyValues = { ...(properties.strategy as ScalarProperty).enum };
+        delete strategyValues.linear;
+
+        (properties.strategy as ScalarProperty).enum = strategyValues;
+
+        entityService.replaceProperties(properties as PropertyList);
+    }
 
     const groups: Array<FieldsetGroups> = [
         {

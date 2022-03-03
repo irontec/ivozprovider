@@ -1,6 +1,7 @@
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
-    PropertyCustomFunctionComponentProps
+    PropertyCustomFunctionComponentProps,
+    CustomFunctionComponentContext
 } from 'lib/services/form/Field/CustomComponentWrapper';
 import { HuntGroupsRelUserPropertyList } from '../HuntGroupsRelUserProperties';
 import User from '../../User/User';
@@ -13,9 +14,22 @@ type HuntGroupsRelUserValues = HuntGroupsRelUserPropertyList<
 >;
 type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
 
-const Type: TargetGhostType = (props): JSX.Element => {
+const Type: TargetGhostType = (props): JSX.Element | null => {
 
-    const { values } = props;
+    const { _context, choices } = props;
+    let { values } = props;
+
+    if (_context === CustomFunctionComponentContext.write) {
+
+        if (!choices) {
+            return null;
+        }
+
+        values = {
+            ...values,
+            ...choices,
+        };
+    }
 
     if (values.routeType === 'user') {
         return (

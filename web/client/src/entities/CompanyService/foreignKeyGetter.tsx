@@ -5,11 +5,12 @@ import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios from 'axios';
 import { ForeignKeyGetterTypeArgs } from 'lib/entities/EntityInterface';
 import EntityService from 'lib/services/entity/EntityService';
+import { match } from 'react-router-dom';
 
 type CompanyServiceForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs, currentServiceId?: number) => Promise<any>
 
 export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
-    {cancelToken},
+    { cancelToken },
     currentServiceId
 ): Promise<any> => {
 
@@ -33,8 +34,15 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
     return response;
 };
 
-const useFkChoices = (entityService: EntityService, currentServiceId?: number): FkChoices => {
+interface useFkChoicesArgs {
+    entityService: EntityService,
+    currentServiceId?: number,
+    match: match
+}
 
+const useFkChoices = (props: useFkChoicesArgs): FkChoices => {
+
+    const { entityService, currentServiceId, match } = props;
     const [fkChoices, setFkChoices] = useState<FkChoices>({});
 
     useEffect(
@@ -45,7 +53,15 @@ const useFkChoices = (entityService: EntityService, currentServiceId?: number): 
             const CancelToken = axios.CancelToken;
             const source = CancelToken.source();
 
-            foreignKeyGetter({cancelToken: source.token, entityService}, currentServiceId).then((options) => {
+            foreignKeyGetter(
+                {
+                    cancelToken: source.token,
+                    entityService,
+                    row: {},
+                    match
+                },
+                currentServiceId
+            ).then((options) => {
 
                 if (!mounted) {
                     return;
@@ -64,7 +80,7 @@ const useFkChoices = (entityService: EntityService, currentServiceId?: number): 
                 source.cancel();
             }
         },
-        [currentServiceId, entityService]
+        [currentServiceId, entityService, match]
     );
 
     return fkChoices;

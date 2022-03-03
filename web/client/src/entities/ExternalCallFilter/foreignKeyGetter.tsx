@@ -5,6 +5,7 @@ import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import entities from '../index';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import { VoicemailEnabledSelectOptions } from 'entities/User/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
@@ -16,11 +17,21 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken,
         response,
         skip: [
+            'holidayVoiceMailUser',
+            'outOfScheduleVoiceMailUser',
             'whiteListIds',
             'blackListIds',
             'scheduleIds',
             'calendarIds',
         ],
+    });
+
+    promises[promises.length] = VoicemailEnabledSelectOptions({
+        callback: (options: any) => {
+            response.holidayVoiceMailUser = options;
+            response.outOfScheduleVoiceMailUser = options;
+        },
+        cancelToken
     });
 
     promises[promises.length] = MatchListSelectOptions({

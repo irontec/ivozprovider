@@ -15,8 +15,9 @@ export type ConditionalRoutePropertyList<T> = {
     'queue'?: T,
     'conferenceRoom'?: T,
     'extension'?: T,
-    'target'?: T
+    'target'?: T,
+    'companyFeatures'?: T,
 };
 
 export type ConditionalRouteProperties = ConditionalRoutePropertyList<Partial<PropertySpec>>;
-export type ConditionalRoutePropertiesList = Array<ConditionalRoutePropertyList<EntityValue|EntityValues>>;
+export type ConditionalRoutePropertiesList = Array<ConditionalRoutePropertyList<EntityValue | EntityValues>>;

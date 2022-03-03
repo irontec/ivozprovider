@@ -2,8 +2,11 @@ import { ExtensionPropertyList } from './ExtensionProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 import entities from '../index';
+import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entityService}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (
+    {cancelToken, entityService}
+): Promise<any> => {
 
     const response: ExtensionPropertyList<Array<string | number>> = {};
 
@@ -13,6 +16,15 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entit
         cancelToken,
         response,
     });
+
+    promises[promises.length] = FeaturesRelCompanySelectOptions(
+        {
+            callback: (options: any) => {
+                response.companyFeatures = options;
+            },
+            cancelToken
+        }
+    );
 
     await Promise.all(promises);
 

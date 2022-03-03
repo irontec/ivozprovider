@@ -1,17 +1,17 @@
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from 'lib/entities/EntityInterface';
-import Terminal from './Terminal';
+import Extension from '../Extension';
 
-const TerminalSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
+const ExtensionSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        Terminal.path,
-        ['id', 'name'],
+        Extension.path,
+        ['id', 'number'],
         (data: any) => {
 
             const options: any = {};
             for (const item of data) {
-                options[item.id] = item.name;
+                options[item.id] = item.number;
             }
 
             callback(options);
@@ -20,4 +20,4 @@ const TerminalSelectOptions: SelectOptionsType = ({callback, cancelToken}): Prom
     );
 }
 
-export default TerminalSelectOptions;
+export default ExtensionSelectOptions;

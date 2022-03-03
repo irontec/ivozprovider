@@ -1,6 +1,6 @@
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from 'lib/entities/EntityInterface';
-import User from './User';
+import User from '../User';
 
 const UserSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
 

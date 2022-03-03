@@ -47,21 +47,28 @@ const properties: UserProperties = {
     'transformationRuleSet': {
         label: _('Numeric transformation'),
         default: '__null__',
-        null: _("Client's default")
+        null: _("Client's default"),
     },
     'terminal': {
         label: _('Terminal'),
+        null: _('Unassigned'),
+        default: '__null__',
     },
     // @TODO 'statusIcon': _('Status'),
     'extension': {
         label: _('Screen Extension'),
         null: _('Unassigned'),
+        default: '__null__',
     },
     'outgoingDdi': {
         label: _('Outgoing DDI'),
+        null: _("Client's default"),
+        default: '__null__',
     },
     'outgoingDdiRule': {
         label: _('Outgoing DDI Rule'),
+        null: _("Client's default"),
+        default: '__null__',
         helpText: _('Rules to manipulate outgoingDDI when user directly calls to external numbers.'),
     },
     'callAcl': {

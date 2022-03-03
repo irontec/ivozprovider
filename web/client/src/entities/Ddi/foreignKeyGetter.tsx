@@ -3,6 +3,7 @@ import { DdiPropertyList } from './DdiProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import entities from '../index';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entityService}): Promise<any> => {
 
@@ -24,6 +25,15 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken, entit
         },
         cancelToken
     });
+
+    promises[promises.length] = FeaturesRelCompanySelectOptions(
+        {
+            callback: (options: any) => {
+                response.companyFeatures = options;
+            },
+            cancelToken
+        }
+    );
 
     await Promise.all(promises);
 
