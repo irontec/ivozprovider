@@ -1,8 +1,7 @@
 {
 	"info": {
-		"name": "IvozProvider - BBS Dataset (artemis)",
-		"_postman_id": "bce451f6-e943-56a6-beae-19a0c3fef736",
-		"description": "",
+		"_postman_id": "05153f64-76a6-4b04-932b-f948d9961dd0",
+		"name": "IvozProvider - BBS Dataset (halliday)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -10,7 +9,7 @@
 			"name": "0000 - Authorization",
 			"item": [
 				{
-					"name": "Get Authorization Token",
+					"name": "Get Platform Authorization Token",
 					"event": [
 						{
 							"listen": "test",
@@ -24,7 +23,9 @@
 									"",
 									"tests[\"Response body has token field\"] = jsonData.token !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"api_auth\", 'Bearer ' + jsonData.token);",
+									"postman.setGlobalVariable(\"platform_api_auth\", 'Bearer ' + jsonData.token);",
+									"postman.setGlobalVariable(\"platform_api_token\", jsonData.token);",
+									"",
 									""
 								],
 								"type": "text/javascript"
@@ -44,13 +45,13 @@
 							"formdata": [
 								{
 									"key": "username",
-									"type": "text",
-									"value": "{{api_username}}"
+									"value": "{{api_username}}",
+									"type": "text"
 								},
 								{
 									"key": "password",
-									"type": "text",
-									"value": "{{api_password}}"
+									"value": "{{api_password}}",
+									"type": "text"
 								}
 							]
 						},
@@ -70,7 +71,6 @@
 		},
 		{
 			"name": "0001 - Brand Data",
-			"description": null,
 			"item": [
 				{
 					"name": "Delete BBS brand",
@@ -78,21 +78,19 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "36564c70-383c-4f0a-bb5b-fddf4880f35f",
-								"type": "text/javascript",
 								"exec": [
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "31177a7d-4dc1-4ce6-8f3d-a9b43f63c0e6",
-								"type": "text/javascript",
 								"exec": [
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -101,7 +99,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -152,7 +150,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -170,6 +168,162 @@
 							],
 							"path": [
 								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create BBS Brand Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"brandAdminId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{platform_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"brandadmin\",\n  \"pass\": \"unusedp4ssw0rd\",\n  \"email\": \"brandamin@bbs.com\",\n  \"active\": 1,\n  \"restricted\": 0,\n  \"brand\": {{brandId}},\n  \"timezone\": 145\n}"
+						},
+						"url": {
+							"raw": "{{platform_api_url}}/administrators",
+							"host": [
+								"{{platform_api_url}}"
+							],
+							"path": [
+								"administrators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Brand Authorization Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token field\"] = jsonData.token !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"brand_api_auth\", 'Bearer ' + jsonData.token);",
+									"postman.setGlobalVariable(\"brand_api_token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "{{platform_api_token}}",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "brandadmin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/token/exchange",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"token",
+								"exchange"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Trunk Address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{platform_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"brand\": {{brandId}},\n  \"proxyTrunk\": 1\n}"
+						},
+						"url": {
+							"raw": "{{platform_api_url}}/proxy_trunks_rel_brands",
+							"host": [
+								"{{platform_api_url}}"
+							],
+							"path": [
+								"proxy_trunks_rel_brands"
 							]
 						}
 					},
@@ -199,7 +353,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -246,7 +400,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -293,7 +447,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -340,7 +494,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -387,7 +541,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -434,7 +588,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -481,7 +635,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -528,7 +682,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -575,7 +729,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{platform_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -585,6 +739,100 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 9\n}"
+						},
+						"url": {
+							"raw": "{{platform_api_url}}/features_rel_brands",
+							"host": [
+								"{{platform_api_url}}"
+							],
+							"path": [
+								"features_rel_brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: Retail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{platform_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 11\n}"
+						},
+						"url": {
+							"raw": "{{platform_api_url}}/features_rel_brands",
+							"host": [
+								"{{platform_api_url}}"
+							],
+							"path": [
+								"features_rel_brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Brand Feature: vPBX",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{platform_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 12\n}"
 						},
 						"url": {
 							"raw": "{{platform_api_url}}/features_rel_brands",
@@ -625,7 +873,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -675,7 +923,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -704,8 +952,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dc6fa878-d388-4749-a223-a8db2c61356d",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -717,7 +963,8 @@
 									"",
 									"postman.setGlobalVariable(\"ddiProviderId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -726,7 +973,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -735,7 +982,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"BBS DDI Provider\",\n  \"name\": \"BBS DDI Provider\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70\n}\n"
+							"raw": "{\n  \"description\": \"BBS DDI Provider\",\n  \"name\": \"BBS DDI Provider\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70,\n  \"proxyTrunk\": 1\n}\n"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/ddi_providers",
@@ -745,19 +992,16 @@
 							"path": [
 								"ddi_providers"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create DDI Provider Address",
+					"name": "Create DDI Provider Address 1",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "275bfe1d-ea35-49d3-ace4-7594192ee9de",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -769,7 +1013,8 @@
 									"",
 									"postman.setGlobalVariable(\"ddiProviderAddressId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -778,7 +1023,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -797,8 +1042,57 @@
 							"path": [
 								"ddi_provider_addresses"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create DDI Provider Address 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"ddiProviderAddressId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ddiProvider\": {{ddiProviderId}},\n  \"ip\": \"151.80.161.20\"\n}\n"
 						},
-						"description": null
+						"url": {
+							"raw": "{{brand_api_url}}/ddi_provider_addresses",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddi_provider_addresses"
+							]
+						}
 					},
 					"response": []
 				},
@@ -808,8 +1102,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dceb00af-cc15-4a3b-97d5-cccc413fa3ab",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -821,7 +1113,8 @@
 									"",
 									"postman.setGlobalVariable(\"carrierId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -830,7 +1123,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -839,7 +1132,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"BBS Carrier\",\n  \"name\": \"BBS Carrier\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70\n}\n"
+							"raw": "{\n  \"description\": \"BBS Carrier\",\n  \"name\": \"BBS Carrier\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70,\n  \"proxyTrunk\": 1\n}\n"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/carriers",
@@ -849,8 +1142,7 @@
 							"path": [
 								"carriers"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -881,7 +1173,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -931,7 +1223,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -981,7 +1273,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1031,7 +1323,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1081,7 +1373,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1110,8 +1402,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2c02eca0-42c8-410f-89fe-b498c51f5bc3",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -1123,7 +1413,8 @@
 									"",
 									"postman.setGlobalVariable(\"destinationESId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1132,7 +1423,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1161,8 +1452,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dc308185-2e75-4396-b04e-c0bb9596f278",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -1174,7 +1463,8 @@
 									"",
 									"postman.setGlobalVariable(\"destinationUSId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1183,7 +1473,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1212,8 +1502,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "24f86570-6aca-4720-8f58-e7eb36480311",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -1225,7 +1513,8 @@
 									"",
 									"postman.setGlobalVariable(\"destinationRateGroupId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1234,7 +1523,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1273,7 +1562,6 @@
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									""
 								],
-								"id": "bc41beb0-8e5c-496d-93a2-ffc1e7a00aee",
 								"type": "text/javascript"
 							}
 						}
@@ -1283,7 +1571,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1322,7 +1610,6 @@
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									""
 								],
-								"id": "b2665ea2-81d0-4f6d-ba99-c311166c9f44",
 								"type": "text/javascript"
 							}
 						}
@@ -1332,7 +1619,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1361,8 +1648,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "386ee912-1549-40f8-b69b-7c47a1659ceb",
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"",
@@ -1374,7 +1659,8 @@
 									"",
 									"postman.setGlobalVariable(\"ratingPlanGroupId\", jsonData.id);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1383,7 +1669,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1423,7 +1709,6 @@
 									"",
 									""
 								],
-								"id": "a62b51cd-049c-4137-b5f6-0112019e6d5f",
 								"type": "text/javascript"
 							}
 						}
@@ -1433,7 +1718,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1459,7 +1744,7 @@
 			]
 		},
 		{
-			"name": "0010 - Company Data",
+			"name": "0010 - vPBX Client",
 			"item": [
 				{
 					"name": "Create BBS Company",
@@ -1488,7 +1773,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1497,7 +1782,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}},\n  \"country\": 70,\n  \"currency\": 1\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/companies",
@@ -1506,6 +1791,115 @@
 							],
 							"path": [
 								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create BBS Company Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"brandAdminId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"companyadmin\",\n  \"pass\": \"unusedp4ssw0rd\",\n  \"email\": \"companyadmin@bbs.com\",\n  \"active\": 1,\n  \"restricted\": 0,\n  \"brand\": {{brandId}},\n  \"company\": {{companyId}},\n  \"timezone\": 145\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/administrators",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"administrators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company Authorization Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token field\"] = jsonData.token !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"client_api_auth\", 'Bearer ' + jsonData.token);",
+									"postman.setGlobalVariable(\"client_api_token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "{{brand_api_token}}",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "companyadmin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{client_api_url}}/token/exchange",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"token",
+								"exchange"
 							]
 						}
 					},
@@ -1528,7 +1922,6 @@
 									"",
 									""
 								],
-								"id": "9d423fc8-954b-4358-be3d-a78ca5ddba30",
 								"type": "text/javascript"
 							}
 						}
@@ -1538,7 +1931,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1586,17 +1979,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Accept",
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
-						},
 						"url": {
 							"raw": "{{brand_api_url}}/companies/{{companyId}}",
 							"host": [
@@ -1636,7 +2025,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1685,7 +2074,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1734,7 +2123,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1783,7 +2172,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1832,7 +2221,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1881,7 +2270,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1931,7 +2320,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1982,7 +2371,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2032,7 +2421,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2082,7 +2471,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2091,15 +2480,65 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ddi\": \"999661001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{aliceUserId}},\n  \"peeringContract\": {{ddiProviderId}},\n  \"country\": 70\n}"
+							"raw": "{\n  \"ddi\": \"999661001\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/ddis",
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Alice DDI to Alice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"user\",\n  \"user\": {{aliceUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{aliceDDIId}}",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"ddis"
+								"ddis",
+								"{{aliceDDIId}}"
 							]
 						}
 					},
@@ -2133,7 +2572,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2183,7 +2622,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2234,7 +2673,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2284,7 +2723,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2293,15 +2732,65 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ddi\": \"999661002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{bobUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
+							"raw": "{\n  \"ddi\": \"999661002\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/ddis",
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Bob DDI to Bob",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"user\",\n  \"user\": {{bobUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{bobDDIId}}",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"ddis"
+								"ddis",
+								"{{bobDDIId}}"
 							]
 						}
 					},
@@ -2335,7 +2824,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2386,7 +2875,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2437,7 +2926,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2487,7 +2976,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2499,12 +2988,71 @@
 							"raw": "{\n  \"ddi\": \"999661003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{charlieUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/ddis",
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Charlie DDI to Charlie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"user\",\n  \"user\": {{charlieUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{charlieDDIId}}",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"ddis"
+								"ddis",
+								"{{charlieDDIId}}"
 							]
 						}
 					},
@@ -2538,7 +3086,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2589,7 +3137,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2639,7 +3187,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2689,7 +3237,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2701,12 +3249,71 @@
 							"raw": "\n{\n  \"ddi\": \"999661004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{daveUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/ddis",
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Dave DDI to Dave",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"user\",\n  \"user\": {{daveUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{daveDDIId}}",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"ddis"
+								"ddis",
+								"{{daveDDIId}}"
 							]
 						}
 					},
@@ -2739,7 +3346,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2790,7 +3397,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2841,7 +3448,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2891,7 +3498,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2903,12 +3510,71 @@
 							"raw": "{\n  \"ddi\": \"999661005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{eveUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/ddis",
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Eve DDI to Eve",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"user\",\n  \"user\": {{eveUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{eveDDIId}}",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"ddis"
+								"ddis",
+								"{{eveDDIId}}"
 							]
 						}
 					},
@@ -2942,7 +3608,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2991,7 +3657,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3040,7 +3706,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3090,7 +3756,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3140,7 +3806,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3190,7 +3856,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3240,7 +3906,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3252,12 +3918,71 @@
 							"raw": "\n{\n  \"ddi\": \"999661006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{frankUserId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/ddis",
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Frank DDI to Frank",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"user\",\n  \"user\": {{frankUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{frankDDIId}}",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"ddis"
+								"ddis",
+								"{{frankDDIId}}"
 							]
 						}
 					},
@@ -3298,7 +4023,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{brand_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3350,7 +4075,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3401,7 +4126,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3451,7 +4176,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3492,7 +4217,6 @@
 									"postman.setGlobalVariable(\"routeLockId\", jsonData.id);",
 									""
 								],
-								"id": "77e6a7d4-a6f1-4d8f-99f5-6299a36e10a5",
 								"type": "text/javascript"
 							}
 						}
@@ -3502,7 +4226,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -3528,810 +4252,7 @@
 			]
 		},
 		{
-			"name": "0020 - Residential Data",
-			"item": [
-				{
-					"name": "Create BBS Residential Client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"residentialId\", jsonData.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"type\": \"residential\",\n  \"name\": \"BBS - Residential for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Residential address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Residential town\",\n  \"province\": \"Residential province\",\n  \"countryName\": \"Residential country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/companies",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"companies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add  Residential Rating Profile",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"id": "9d423fc8-954b-4358-be3d-a78ca5ddba30",
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{residentialId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/rating_profiles",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"rating_profiles"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get BBS Residential data",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"residentialData\", responseBody);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/companies/{{residentialId}}",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"companies",
-								"{{residentialId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Residential Feature: Recordings",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\n{\n  \"company\": {{residentialId}},\n  \"feature\": 2\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/features_rel_companies",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"features_rel_companies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Residential Feature: Faxes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 3\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/features_rel_companies",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"features_rel_companies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Residential Feature: Progress",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 8\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/features_rel_companies",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"features_rel_companies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Residential Device",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"residentialDeviceId\", jsonData.id);",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3S1d3nT14lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}}\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/residential_devices",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"residential_devices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Residential DDI",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"residentialDDIId\", jsonData.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"residential\",\n  \"company\": {{residentialId}},\n  \"brand\": {{brandId}},\n  \"residentialDevice\": {{residentialDeviceId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/ddis",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"ddis"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Set Default Residential Client DDI",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"var residentialData = JSON.parse(postman.getGlobalVariable(\"residentialData\"));",
-									"",
-									"residentialData.outgoingDdi = postman.getGlobalVariable(\"residentialDDIId\");",
-									"",
-									"postman.setGlobalVariable(\"residentialData\", JSON.stringify(residentialData));",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{{residentialData}}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/companies/{{residentialId}}",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"companies",
-								"{{residentialId}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "0030 - Retail Data",
-			"item": [
-				{
-					"name": "Create BBS Retail Client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d609b235-753d-4a7f-a60e-6b4acd64bc3b",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"retailId\", jsonData.id);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/companies",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"companies"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add  Retail Rating Profile",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"id": "9d423fc8-954b-4358-be3d-a78ca5ddba30",
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{retailId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/rating_profiles",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"rating_profiles"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get BBS Retail data",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a38bddd8-1fd6-40e0-ab47-67a4e194a78c",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"retailData\", responseBody);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/companies/{{retailId}}",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"companies",
-								"{{retailId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Retail Account",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a543d4c6-5d7c-4e95-bd72-596ea3a4e915",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"retailAccountId\", jsonData.id);",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"999666001\",\n  \"transport\": \"udp\",\n  \"password\": \"r3t41lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}}\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/retail_accounts",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"retail_accounts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Retail DDI",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "ed864ccc-3c38-4ba9-ada0-44d39dbde1d9",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"retailDDIId\", jsonData.id);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ddi\": \"999666001\",\n  \"routeType\": \"retail\",\n  \"company\": {{retailId}},\n  \"brand\": {{brandId}},\n  \"retailAccount\": {{retailAccountId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/ddis",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"ddis"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Set Default Retail Client DDI",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "b3580b31-a5af-40be-8f07-98efa1d12fd9",
-								"type": "text/javascript",
-								"exec": [
-									"var retailData = JSON.parse(postman.getGlobalVariable(\"retailData\"));",
-									"",
-									"retailData.outgoingDdi = postman.getGlobalVariable(\"retailDDIId\");",
-									"",
-									"postman.setGlobalVariable(\"retailData\", JSON.stringify(retailData));",
-									"",
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "d0300aee-43ee-4594-8c8b-fbf06c19c1f7",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{{retailData}}"
-						},
-						"url": {
-							"raw": "{{brand_api_url}}/companies/{{retailId}}",
-							"host": [
-								"{{brand_api_url}}"
-							],
-							"path": [
-								"companies",
-								"{{retailId}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"id": "da1ec893-531a-468b-9014-41e176fad847",
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"id": "f8b5d42e-ebff-4f29-88ca-20da0b115d78",
-						"type": "text/javascript"
-					}
-				}
-			]
-		},
-		{
-			"name": "2000 - IVR",
+			"name": "0011 - IVR",
 			"item": [
 				{
 					"name": "Create IVR Generic",
@@ -4360,7 +4281,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4413,7 +4334,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4463,7 +4384,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4515,7 +4436,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4564,7 +4485,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4612,7 +4533,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4638,213 +4559,7 @@
 			]
 		},
 		{
-			"name": "2200 - Pickup",
-			"item": [
-				{
-					"name": "Create Pickup Group",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"pickupGroupId\", jsonData.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"BBS Pickup Group\",\n  \"company\": {{companyId}}\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/pick_up_groups",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"pick_up_groups"
-							]
-						},
-						"description": "POST"
-					},
-					"response": []
-				},
-				{
-					"name": "Add Alice to Pickup Group",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{aliceUserId}}\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/pick_up_rel_users",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"pick_up_rel_users"
-							]
-						},
-						"description": "POST"
-					},
-					"response": []
-				},
-				{
-					"name": "Add Bob to Pickup Group copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{bobUserId}}\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/pick_up_rel_users",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"pick_up_rel_users"
-							]
-						},
-						"description": "POST"
-					},
-					"response": []
-				},
-				{
-					"name": "Add Charlie to Pickup Group",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{charlieUserId}}\n}"
-						},
-						"url": {
-							"raw": "{{client_api_url}}/pick_up_rel_users",
-							"host": [
-								"{{client_api_url}}"
-							],
-							"path": [
-								"pick_up_rel_users"
-							]
-						},
-						"description": "POST"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "2300 - Conference",
+			"name": "0012 - Conference",
 			"item": [
 				{
 					"name": "Create Conference Room",
@@ -4873,7 +4588,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4924,7 +4639,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -4950,7 +4665,213 @@
 			]
 		},
 		{
-			"name": "2400 - HuntGroup",
+			"name": "0013 - Pickup",
+			"item": [
+				{
+					"name": "Create Pickup Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"pickupGroupId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"BBS Pickup Group\",\n  \"company\": {{companyId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/pick_up_groups",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"pick_up_groups"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Alice to Pickup Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{aliceUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/pick_up_rel_users",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"pick_up_rel_users"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Bob to Pickup Group copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{bobUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/pick_up_rel_users",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"pick_up_rel_users"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Charlie to Pickup Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{charlieUserId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/pick_up_rel_users",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"pick_up_rel_users"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "0014 - HuntGroup",
 			"item": [
 				{
 					"name": "Create HungGroup RingAll",
@@ -4979,7 +4900,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5029,7 +4950,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5078,7 +4999,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5087,7 +5008,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{bobUserId}}\n}"
+							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"routeType\": \"user\",\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/hunt_groups_rel_users",
@@ -5127,7 +5048,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5136,7 +5057,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{charlieUserId}}\n}"
+							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"routeType\": \"user\",\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/hunt_groups_rel_users",
@@ -5176,7 +5097,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5185,7 +5106,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{daveUserId}}\n}"
+							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"routeType\": \"user\",\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/hunt_groups_rel_users",
@@ -5226,7 +5147,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5276,7 +5197,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5325,7 +5246,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5334,7 +5255,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{bobUserId}}\n}"
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"routeType\": \"user\",\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/hunt_groups_rel_users",
@@ -5374,7 +5295,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5383,7 +5304,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{charlieUserId}}\n}"
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"routeType\": \"user\",\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/hunt_groups_rel_users",
@@ -5423,7 +5344,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5432,7 +5353,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 3,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{daveUserId}}\n}"
+							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 3,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"routeType\": \"user\",\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/hunt_groups_rel_users",
@@ -5449,7 +5370,7 @@
 			]
 		},
 		{
-			"name": "2600 - Conditional Routes",
+			"name": "0015 - Conditional Routes",
 			"item": [
 				{
 					"name": "Create Conditional Route",
@@ -5469,7 +5390,6 @@
 									"postman.setGlobalVariable(\"conditionalRouteId\", jsonData.id);",
 									""
 								],
-								"id": "dba5e667-324c-4798-89ad-b01622fad92e",
 								"type": "text/javascript"
 							}
 						}
@@ -5479,7 +5399,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5522,7 +5442,6 @@
 									"",
 									""
 								],
-								"id": "002d565c-8df2-4fb4-b6e6-b358df218807",
 								"type": "text/javascript"
 							}
 						}
@@ -5532,7 +5451,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5573,7 +5492,6 @@
 									"postman.setGlobalVariable(\"conditionalRouteConditionId\", jsonData.id);",
 									""
 								],
-								"id": "54e06dcd-6452-4c7d-a2ac-744f255cdd41",
 								"type": "text/javascript"
 							}
 						}
@@ -5583,7 +5501,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5623,7 +5541,6 @@
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									""
 								],
-								"id": "949b9034-923d-41ce-ad79-c315cb30d3aa",
 								"type": "text/javascript"
 							}
 						}
@@ -5633,7 +5550,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5665,7 +5582,6 @@
 						"exec": [
 							""
 						],
-						"id": "dee8a1ff-7b04-4f9e-a6ad-5f1d26af3127",
 						"type": "text/javascript"
 					}
 				},
@@ -5675,14 +5591,13 @@
 						"exec": [
 							""
 						],
-						"id": "3b2545c1-c583-4d8a-a6b1-afa8968ac642",
 						"type": "text/javascript"
 					}
 				}
 			]
 		},
 		{
-			"name": "3000 - Call Forward Settings",
+			"name": "0016 - Call Forward Settings",
 			"item": [
 				{
 					"name": "Call Forward Eve Busy",
@@ -5710,7 +5625,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5760,7 +5675,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5810,7 +5725,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5860,7 +5775,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}"
+								"value": "{{client_api_auth}}"
 							},
 							{
 								"key": "Content-Type",
@@ -5883,6 +5798,1277 @@
 						"description": "POST"
 					},
 					"response": []
+				},
+				{
+					"name": "Call Forward Friend Unregisted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"userNotRegistered\",\n  \"targetType\": \"extension\",\n  \"friend\": {{friendId}},\n  \"extension\": {{charlieExtensionId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/call_forward_settings",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"call_forward_settings"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Call Forward Friend Busy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"busy\",\n  \"targetType\": \"extension\",\n  \"friend\": {{friendId}},\n  \"extension\": {{daveExtensionId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/call_forward_settings",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"call_forward_settings"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Call Forward Friend NoAnswer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{client_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"noAnswer\",\n  \"targetType\": \"extension\",\n  \"friend\": {{friendId}},\n  \"extension\": {{bobExtensionId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/call_forward_settings",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"call_forward_settings"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "0020 - Residential Data",
+			"item": [
+				{
+					"name": "Create BBS Residential Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"residentialId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"residential\",\n  \"name\": \"BBS - Residential for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Residential address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Residential town\",\n  \"province\": \"Residential province\",\n  \"countryName\": \"Residential country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/companies",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create BBS Residential Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"brandAdminId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"residentialadmin\",\n  \"pass\": \"unusedp4ssw0rd\",\n  \"email\": \"residentialadmin@bbs.com\",\n  \"active\": 1,\n  \"restricted\": 0,\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}},\n  \"timezone\": 145\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/administrators",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"administrators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Residential Authorization Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token field\"] = jsonData.token !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"residential_api_auth\", 'Bearer ' + jsonData.token);",
+									"postman.setGlobalVariable(\"residential_api_token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "{{brand_api_token}}",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "residentialadmin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{client_api_url}}/token/exchange",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"token",
+								"exchange"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add  Residential Rating Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{residentialId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/rating_profiles",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"rating_profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BBS Residential data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"residentialData\", responseBody);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{brand_api_url}}/companies/{{residentialId}}",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"companies",
+								"{{residentialId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Residential Feature: Recordings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"company\": {{residentialId}},\n  \"feature\": 2\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/features_rel_companies",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"features_rel_companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Residential Feature: Faxes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 3\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/features_rel_companies",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"features_rel_companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Residential Feature: Progress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 8\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/features_rel_companies",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"features_rel_companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Residential Device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"residentialDeviceId\", jsonData.id);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3S1d3nT14lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}}\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/residential_devices",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"residential_devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Residential DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"residentialDDIId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ddi\": \"999920000\",\n  \"company\": {{residentialId}},\n  \"brand\": {{brandId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 235\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Residential DDI to Device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{residential_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"residential\",\n  \"residentialDevice\": {{residentialDeviceId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{residentialDDIId}}",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"ddis",
+								"{{residentialDDIId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Default Residential Client DDI",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var residentialData = JSON.parse(postman.getGlobalVariable(\"residentialData\"));",
+									"",
+									"residentialData.outgoingDdi = postman.getGlobalVariable(\"residentialDDIId\");",
+									"",
+									"postman.setGlobalVariable(\"residentialData\", JSON.stringify(residentialData));",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{residentialData}}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/companies/{{residentialId}}",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"companies",
+								"{{residentialId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "0030 - Retail Data",
+			"item": [
+				{
+					"name": "Create BBS Retail Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"retailId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/companies",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create BBS Retail Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"brandAdminId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"retailadmin\",\n  \"pass\": \"unusedp4ssw0rd\",\n  \"email\": \"retailadmin@bbs.com\",\n  \"active\": 1,\n  \"restricted\": 0,\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}},\n  \"timezone\": 145\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/administrators",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"administrators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Retail Authorization Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token field\"] = jsonData.token !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"retail_api_auth\", 'Bearer ' + jsonData.token);",
+									"postman.setGlobalVariable(\"retail_api_token\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "{{brand_api_token}}",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "retailadmin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{client_api_url}}/token/exchange",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"token",
+								"exchange"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add  Retail Rating Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{retailId}},\n  \"ratingPlanGroup\": {{ratingPlanGroupId}}\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/rating_profiles",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"rating_profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BBS Retail data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"retailData\", responseBody);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{brand_api_url}}/companies/{{retailId}}",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"companies",
+								"{{retailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Retail Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"retailAccountId\", jsonData.id);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"999666001\",\n  \"transport\": \"udp\",\n  \"password\": \"r3t41lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}}\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/retail_accounts",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"retail_accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Retail DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"retailDDIId\", jsonData.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ddi\": \"999666001\",\n  \"routeType\": \"retail\",\n  \"company\": {{retailId}},\n  \"brand\": {{brandId}},\n  \"retailAccount\": {{retailAccountId}},\n  \"ddiProvider\": {{ddiProviderId}},\n  \"country\": 70\n}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/ddis",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"ddis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Route Retail DDI to Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{retail_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"routeType\": \"retail\",\n  \"retailAccount\": {{retailAccountId}}\n}"
+						},
+						"url": {
+							"raw": "{{client_api_url}}/ddis/{{retailDDIId}}",
+							"host": [
+								"{{client_api_url}}"
+							],
+							"path": [
+								"ddis",
+								"{{retailDDIId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Default Retail Client DDI",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var retailData = JSON.parse(postman.getGlobalVariable(\"retailData\"));",
+									"",
+									"retailData.outgoingDdi = postman.getGlobalVariable(\"retailDDIId\");",
+									"",
+									"postman.setGlobalVariable(\"retailData\", JSON.stringify(retailData));",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{brand_api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{retailData}}"
+						},
+						"url": {
+							"raw": "{{brand_api_url}}/companies/{{retailId}}",
+							"host": [
+								"{{brand_api_url}}"
+							],
+							"path": [
+								"companies",
+								"{{retailId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
 				}
 			]
 		}
@@ -5894,7 +7080,6 @@
 				"exec": [
 					""
 				],
-				"id": "d0aa020a-fada-45a0-a6b6-ef98907ff7cf",
 				"type": "text/javascript"
 			}
 		},
@@ -5904,7 +7089,6 @@
 				"exec": [
 					""
 				],
-				"id": "003779a0-3e8c-4576-af85-5c167e825de7",
 				"type": "text/javascript"
 			}
 		}
