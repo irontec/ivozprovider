@@ -3,6 +3,7 @@ import { EntityList } from "lib/router/parseRoutes";
 import { PartialPropertyList, PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
 import EntityService, { EntityValues, VisualToggleStates } from "lib/services/entity/EntityService";
 import React from "react";
+import { match } from "react-router-dom";
 import { EntityFormProps } from "./DefaultEntityBehavior";
 
 export type ListDecoratorPropsType = {
@@ -23,7 +24,10 @@ export interface foreignKeyResolverProps {
 
 export type foreignKeyResolverType = (props: foreignKeyResolverProps) => Promise<any>;
 export type ForeignKeyGetterTypeArgs = {
-    cancelToken?: CancelToken, entityService: EntityService
+    cancelToken?: CancelToken,
+    entityService: EntityService,
+    row?: EntityValues,
+    match: match,
 }
 export type ForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs) => Promise<any>;
 export type FetchFksCallback = (data: { [key: string]: any }) => void;
