@@ -2357,29 +2357,41 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.5.1",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api.git",
-                "reference": "2ea7f3f2573afce8399be7ba3f9859eeb8840bc4"
+                "reference": "d76c42431af06e93878b5289faae6c06561ef4a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/2ea7f3f2573afce8399be7ba3f9859eeb8840bc4",
-                "reference": "2ea7f3f2573afce8399be7ba3f9859eeb8840bc4",
+                "url": "https://api.github.com/repos/irontec/ivoz-api/zipball/d76c42431af06e93878b5289faae6c06561ef4a2",
+                "reference": "d76c42431af06e93878b5289faae6c06561ef4a2",
                 "shasum": ""
             },
             "require": {
                 "api-platform/core": "2.6.*",
+                "doctrine/dbal": "^2.12.1",
                 "graze/guzzle-jsonrpc": "3.2.*",
                 "guzzlehttp/guzzle": "^6.3",
                 "irontec/ivoz-core": "^4.4",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=7.4",
-                "symfony/expression-language": "^5.1",
-                "symfony/finder": "^5.1",
-                "symfony/http-foundation": "^5.1",
-                "symfony/serializer": "^5.1"
+                "symfony/doctrine-bridge": "^5.3",
+                "symfony/expression-language": "^5.3",
+                "symfony/finder": "^5.3",
+                "symfony/http-foundation": "^5.3",
+                "symfony/routing": "^5.3",
+                "symfony/serializer": "^5.3",
+                "twig/twig": "^3.3"
+            },
+            "require-dev": {
+                "behat/behat": "^3.8.1",
+                "behat/mink-browserkit-driver": "^1.3",
+                "behatch/contexts": "^3.3",
+                "friends-of-behat/mink-extension": "^2.5",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^9.5.3"
             },
             "type": "library",
             "autoload": {
@@ -2408,27 +2420,27 @@
             "description": "Api library built on api-platform for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api/issues",
-                "source": "https://github.com/irontec/ivoz-api/tree/4.5.1"
+                "source": "https://github.com/irontec/ivoz-api/tree/4.6.4"
             },
-            "time": "2021-11-26T11:13:18+00:00"
+            "time": "2022-03-03T10:39:35+00:00"
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.3",
+            "version": "4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-api-bundle.git",
-                "reference": "f6d4b21f58e59a08ad3bc3ea82a39c6d2dfe8baf"
+                "reference": "7616053175e1985aa9cceaa3e24fd6ff1c428fa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/f6d4b21f58e59a08ad3bc3ea82a39c6d2dfe8baf",
-                "reference": "f6d4b21f58e59a08ad3bc3ea82a39c6d2dfe8baf",
+                "url": "https://api.github.com/repos/irontec/ivoz-api-bundle/zipball/7616053175e1985aa9cceaa3e24fd6ff1c428fa1",
+                "reference": "7616053175e1985aa9cceaa3e24fd6ff1c428fa1",
                 "shasum": ""
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
-                "irontec/ivoz-api": "^4.5",
+                "irontec/ivoz-api": "^4.6.4",
                 "irontec/ivoz-core-bundle": "^4.0.6",
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "nelmio/cors-bundle": "^2.0",
@@ -2461,9 +2473,9 @@
             "description": "Symfony bridge for ivoz-api",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-api-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.3"
+                "source": "https://github.com/irontec/ivoz-api-bundle/tree/4.4"
             },
-            "time": "2021-11-26T10:24:17+00:00"
+            "time": "2022-03-03T13:57:13+00:00"
         },
         {
             "name": "irontec/ivoz-core",
