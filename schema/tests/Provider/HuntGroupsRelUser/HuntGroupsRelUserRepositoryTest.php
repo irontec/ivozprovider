@@ -17,6 +17,7 @@ class HuntGroupsRelUserRepositoryTest extends KernelTestCase
     public function test_runner()
     {
         $this->its_instantiable();
+        $this->it_finds_user_ids_by_hunt_group_id();
     }
 
     public function its_instantiable()
@@ -29,6 +30,26 @@ class HuntGroupsRelUserRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             HuntGroupsRelUserRepository::class,
             $repository
+        );
+    }
+
+    public function it_finds_user_ids_by_hunt_group_id()
+    {
+        /** @var HuntGroupsRelUserRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(HuntGroupsRelUser::class);
+
+        $userIds = $repository->findUserIdsInHuntGroup(
+            1
+        );
+
+        $this->assertIsArray(
+            $userIds
+        );
+
+        $this->assertIsInt(
+            $userIds[0]
         );
     }
 }

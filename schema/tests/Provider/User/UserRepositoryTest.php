@@ -23,6 +23,7 @@ class UserRepositoryTest extends KernelTestCase
         $this->it_finds_supervised_userIds_by_admin();
         $this->it_gets_user_assistant_candidates();
         $this->it_gets_available_voicemails();
+        $this->it_users_by_company_excluding_ids();
         $this->it_searchs_one_by_company_and_name();
         $this->it_searchs_one_by_email();
     }
@@ -130,6 +131,39 @@ class UserRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             User::class,
             $user
+        );
+    }
+
+    public function it_users_by_company_excluding_ids()
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em
+            ->getRepository(User::class);
+
+        $allUsers = $userRepository
+            ->findCompanyUsersExcludingIds(
+                1,
+                [999999999]
+            );
+
+        $users = $userRepository
+            ->findCompanyUsersExcludingIds(
+                1,
+                [1]
+            );
+
+        $this->assertIsArray(
+            $users
+        );
+
+        $this->assertInstanceOf(
+            User::class,
+            $users[0]
+        );
+
+        $this->assertNotEquals(
+            count($allUsers),
+            count($users)
         );
     }
 
