@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
@@ -58,6 +59,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      * @var UserDto | null
      */
     private $user = null;
+
+    /**
+     * @var FriendDto | null
+     */
+    private $friend = null;
 
     /**
      * @var ExtensionDto | null
@@ -117,6 +123,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'enabled' => 'enabled',
             'id' => 'id',
             'userId' => 'user',
+            'friendId' => 'friend',
             'extensionId' => 'extension',
             'voiceMailUserId' => 'voiceMailUser',
             'numberCountryId' => 'numberCountry',
@@ -141,6 +148,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'enabled' => $this->getEnabled(),
             'id' => $this->getId(),
             'user' => $this->getUser(),
+            'friend' => $this->getFriend(),
             'extension' => $this->getExtension(),
             'voiceMailUser' => $this->getVoiceMailUser(),
             'numberCountry' => $this->getNumberCountry(),
@@ -272,6 +280,36 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setFriend(?FriendDto $friend): static
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    public function getFriend(): ?FriendDto
+    {
+        return $this->friend;
+    }
+
+    public function setFriendId($id): static
+    {
+        $value = !is_null($id)
+            ? new FriendDto($id)
+            : null;
+
+        return $this->setFriend($value);
+    }
+
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
             return $dto->getId();
         }
 

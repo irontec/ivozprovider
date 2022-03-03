@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -118,6 +119,10 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function setUser(?UserInterface $user = null): static;
 
     public function getUser(): ?UserInterface;
+
+    public function setFriend(?FriendInterface $friend = null): static;
+
+    public function getFriend(): ?FriendInterface;
 
     public function getExtension(): ?ExtensionInterface;
 

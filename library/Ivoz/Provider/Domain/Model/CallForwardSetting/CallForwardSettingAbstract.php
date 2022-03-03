@@ -10,12 +10,14 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
@@ -68,6 +70,12 @@ abstract class CallForwardSettingAbstract
      * inversedBy callForwardSettings
      */
     protected $user = null;
+
+    /**
+     * @var ?FriendInterface
+     * inversedBy callForwardSettings
+     */
+    protected $friend = null;
 
     /**
      * @var ?ExtensionInterface
@@ -199,6 +207,7 @@ abstract class CallForwardSettingAbstract
             ->setTargetType($dto->getTargetType())
             ->setNumberValue($dto->getNumberValue())
             ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
@@ -239,6 +248,7 @@ abstract class CallForwardSettingAbstract
             ->setNoAnswerTimeout($noAnswerTimeout)
             ->setEnabled($enabled)
             ->setUser($fkTransformer->transform($dto->getUser()))
+            ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
@@ -263,6 +273,7 @@ abstract class CallForwardSettingAbstract
             ->setNoAnswerTimeout(self::getNoAnswerTimeout())
             ->setEnabled(self::getEnabled())
             ->setUser(User::entityToDto(self::getUser(), $depth))
+            ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
             ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth))
@@ -282,6 +293,7 @@ abstract class CallForwardSettingAbstract
             'noAnswerTimeout' => self::getNoAnswerTimeout(),
             'enabled' => self::getEnabled(),
             'userId' => self::getUser()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
             'extensionId' => self::getExtension()?->getId(),
             'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
             'numberCountryId' => self::getNumberCountry()?->getId(),
@@ -415,6 +427,18 @@ abstract class CallForwardSettingAbstract
     public function getUser(): ?UserInterface
     {
         return $this->user;
+    }
+
+    public function setFriend(?FriendInterface $friend = null): static
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    public function getFriend(): ?FriendInterface
+    {
+        return $this->friend;
     }
 
     protected function setExtension(?ExtensionInterface $extension = null): static
