@@ -42,6 +42,15 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getLanguageCode();
 
+    /**
+     * Set user
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
+     *
+     * @return static
+     */
+    public function setUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user = null);
+
     public function setRouteType($routeType = null);
 
     /**
