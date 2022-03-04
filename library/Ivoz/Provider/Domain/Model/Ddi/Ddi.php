@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use \Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
@@ -101,6 +102,18 @@ class Ddi extends DdiAbstract implements DdiInterface
         }
 
         return $language->getIden();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user | null
+     *
+     * @return static
+     */
+    public function setUser(UserInterface $user = null)
+    {
+        return parent::setUser($user);
     }
 
     public function setRouteType($routeType = null)
