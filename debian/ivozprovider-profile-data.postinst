@@ -30,6 +30,8 @@ function setup_bind()
     sed -r -i "s/(logs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/jobs_address            || true
     sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/hep_address            || true
+    sed -r -i "s/(hep             IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
 
     # Restart Local DNS
     /bin/systemctl start bind9

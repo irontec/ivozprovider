@@ -20,3 +20,4 @@ data            IN      A       127.0.0.1
 cache           IN      A       127.0.0.1
 storage         IN      A       127.0.0.1
 logs            IN      A       127.0.0.1
+hep             IN      A       127.0.0.1
