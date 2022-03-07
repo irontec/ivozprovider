@@ -22,8 +22,8 @@ Description-es.UTF-8:
 Template: ivozprovider/menu_dns_server
 Type: select
 Choices: configure_users_address, configure_trunks_address, configure_jobs_address, configure_data_address, configure_storage_address, configure_logs_address, configure_back
-Choices-es.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivozprovider.local, data.ivozprovider.local, storage.ivozprovider.local, logs.ivozprovider.local, << Atrás
-Choices-en.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivozprovider.local, data.ivozprovider.local, storage.ivozprovider.local, logs.ivozprovider.local, << Back
+Choices-es.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivozprovider.local, data.ivozprovider.local, cache.ivozprovider.local, storage.ivozprovider.local, logs.ivozprovider.local, << Atrás
+Choices-en.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivozprovider.local, data.ivozprovider.local, cache.ivozprovider.local, storage.ivozprovider.local, logs.ivozprovider.local, << Back
 Default: configure_dns_address
 Description: Configure DNS server resolution for .local domain
 Description-es.UTF-8: Configure las entradas DNS para el dominio .local
@@ -51,6 +51,12 @@ Type: string
 Default: 127.0.0.1
 Description: Enter MySQL Database listen IP address:
 Description-es.UTF-8: Introduzca la IP para base de datos MySQL:
+
+Template: ivozprovider/cache_address
+Type: string
+Default: 127.0.0.1
+Description: Enter Redis server listen IP address:
+Description-es.UTF-8: Introduzca la IP para Redis server:
 
 Template: ivozprovider/storage_address
 Type: string
