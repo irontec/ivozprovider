@@ -20,6 +20,10 @@
         <RedundantConditionGivenDocblockType errorLevel="suppress" />
         <PropertyNotSetInConstructor errorLevel="suppress" />
         <MixedReturnTypeCoercion errorLevel="suppress" />
+        <MixedReturnStatement errorLevel="suppress" />
+        <MixedInferredReturnType errorLevel="suppress" />
+        <MixedArrayAccess errorLevel="suppress" />
+        <MixedAssignment errorLevel="suppress" />
     </issueHandlers>
     <projectFiles>
         <directory name="Ivoz" />

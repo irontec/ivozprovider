@@ -55,6 +55,20 @@ Feature: Retrieve extensions
               "queue": null,
               "conditionalRoute": null,
               "numberCountry": 68
+          },
+          {
+              "number": "987",
+              "routeType": null,
+              "numberValue": null,
+              "friendValue": null,
+              "id": 4,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null
           }
       ]
     """

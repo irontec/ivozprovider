@@ -162,6 +162,29 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
+     * @param int[] $excludeIds
+     * @return UserInterface[]
+     */
+    public function findCompanyUsersExcludingIds(
+        int $companyId,
+        array $excludeIds
+    ): array {
+        $qb = $this->createQueryBuilder('self');
+        $expr = $qb->expr();
+
+        $qb
+            ->select('self')
+            ->where(
+                $expr->eq('self.company', $companyId)
+            )
+            ->andWhere(
+                $expr->notIn('self.id', $excludeIds)
+            );
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
      * @return UserInterface | null
      */
     public function findOneByEmail(

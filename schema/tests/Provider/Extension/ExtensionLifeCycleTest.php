@@ -139,7 +139,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             $changelogEntries[1]->getData(),
             [
-                'extensionId' => 4
+                'extensionId' => 5
             ]
         );
     }

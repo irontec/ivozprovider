@@ -52,3 +52,30 @@ get_services_unassigned:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Service\Service'
     _api_collection_operation_name: 'get_services_unassigned'
     _api_receive: false
+
+get_terminals_unassigned:
+  path: '/terminals/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\TerminalsUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Terminal\Terminal'
+    _api_collection_operation_name: 'get_terminals_unassigned'
+    _api_receive: false
+
+get_extensions_unassigned:
+  path: '/extensions/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\ExtensionsUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Terminal\Terminal'
+    _api_collection_operation_name: 'get_extensions_unassigned'
+    _api_receive: false
+
+get_hunt_group_users_available:
+  path: '/hunt_groups/{id}/users_available'
+  methods: [ 'GET' ]
+  defaults:
+    _controller: Controller\Provider\HuntGroupUsersAvailableAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\User\User'
+    _api_collection_operation_name: 'get_hunt_group_users_available'
+    _api_receive: false

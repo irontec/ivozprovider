@@ -20,6 +20,7 @@ class ExtensionRepositoryTest extends KernelTestCase
         $this->its_instantiable();
         $this->it_finds_by_company_id();
         $this->it_finds_by_company_extension();
+        $this->it_finds_by_companyId();
     }
 
     public function its_instantiable()
@@ -54,7 +55,6 @@ class ExtensionRepositoryTest extends KernelTestCase
         );
     }
 
-
     public function it_finds_by_company_extension()
     {
         /** @var ExtensionRepository $repository */
@@ -71,6 +71,32 @@ class ExtensionRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             ExtensionInterface::class,
             $extensions
+        );
+    }
+
+    public function it_finds_by_companyId()
+    {
+        /** @var ExtensionRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Extension::class);
+
+        $includedIds = [1];
+        $extensions = $repository->findUnassignedByCompanyId(
+            1,
+            $includedIds
+        );
+
+        $this->assertIsArray($extensions);
+
+        $this->assertInstanceOf(
+            Extension::class,
+            $extensions[0]
+        );
+
+        $this->assertEquals(
+            $extensions[0]->getId(),
+            $includedIds[0]
         );
     }
 }

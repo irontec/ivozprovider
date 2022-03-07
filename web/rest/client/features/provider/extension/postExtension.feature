@@ -34,7 +34,7 @@ Feature: Create extensions
           "routeType": "user",
           "numberValue": null,
           "friendValue": null,
-          "id": 4,
+          "id": 5,
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,
@@ -48,7 +48,7 @@ Feature: Create extensions
   Scenario: Retrieve created extension
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "extensions/4"
+      And I send a "GET" request to "extensions/5"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -59,7 +59,7 @@ Feature: Create extensions
           "routeType": "user",
           "numberValue": null,
           "friendValue": null,
-          "id": 4,
+          "id": 5,
           "ivr": null,
           "huntGroup": null,
           "conferenceRoom": null,
@@ -73,17 +73,20 @@ Feature: Create extensions
               "active": true,
               "maxCalls": 1,
               "externalIpCalls": "0",
+              "rejectCallMethod": "rfc",
               "voicemailEnabled": true,
               "voicemailSendMail": true,
               "voicemailAttachSound": true,
+              "multiContact": true,
               "gsQRCode": false,
               "id": 1,
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
+              "transformationRuleSet": 1,
               "language": null,
               "terminal": 1,
-              "extension": 4,
+              "extension": 5,
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
@@ -92,5 +95,5 @@ Feature: Create extensions
           "queue": null,
           "conditionalRoute": null,
           "numberCountry": null
-      } 
+      }
     """

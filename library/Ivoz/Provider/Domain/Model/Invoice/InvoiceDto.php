@@ -18,12 +18,23 @@ class InvoiceDto extends InvoiceDtoAbstract
                 'total' => 'total',
                 'totalWithTax' => 'totalWithTax',
                 'status' => 'status',
-                'pdf' => ['fileSize','mimeType','baseName'],
+                'pdf' => [
+                    'fileSize',
+                    'mimeType',
+                    'baseName',
+                ],
                 'invoiceTemplateId' => 'invoiceTemplate',
                 'companyId' => 'company'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+        }
+
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($response['total']);
+            unset($response['status']);
+            unset($response['invoiceTemplateId']);
+            unset($response['companyId']);
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
