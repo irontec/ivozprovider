@@ -16,6 +16,7 @@ import { CancelToken } from 'axios';
 import { CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
 import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
 import { EntityList } from 'lib/router/parseRoutes';
+import { match } from 'react-router-dom';
 
 export const initialValues = {};
 
@@ -352,7 +353,7 @@ export type PropertyFkChoices = {
 
 export type NullablePropertyFkChoices = null | PropertyFkChoices;
 
-export type FkChoices = null | {
+export type FkChoices = {
     [key: string]: NullablePropertyFkChoices
 };
 
@@ -365,7 +366,8 @@ export type EntityFormProps = EntityInterface & {
     fkChoices?: FkChoices,
     readOnlyProperties?: { [attribute: string]: boolean },
     validationErrors: Record<string, JSX.Element>,
-    row?: Record<string, any>,
+    row?: EntityValues,
+    match: match,
 };
 
 export type FormOnChangeEvent = React.ChangeEvent<{ name: string, value: any }>;

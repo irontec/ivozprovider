@@ -5,18 +5,31 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
-    const { entityService } = props;
+    const { entityService, row, match } = props;
+    const edit = props.edit || false;
+    const create = props.create || false;
+
     const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices = useFkChoices(foreignKeyGetter, entityService);
+    const fkChoices = useFkChoices({
+        foreignKeyGetter,
+        entityService,
+        row,
+        match
+    });
+
+    const readOnlyProperties = {
+        routeType: edit
+    }
 
     const groups: Array<FieldsetGroups> = [
         {
             legend: _('Routing configuration'),
             fields: [
                 'routeType',
-                'user',
-                'numberCountry',
-                'numberValue',
+                create && 'user',
+                create && 'numberCountry',
+                create && 'numberValue',
+                edit && 'target',
             ]
         },
         {
@@ -27,7 +40,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         },
     ];
 
-    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />);
+    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} readOnlyProperties={readOnlyProperties} />);
 }
 
 export default Form;

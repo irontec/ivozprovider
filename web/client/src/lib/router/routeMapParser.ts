@@ -4,6 +4,7 @@ export interface RouteMapItem {
     entity: EntityInterface,
     route?: string,
     filterBy?: string,
+    queryString?: string[],
     children?: Array<RouteMapItem>,
 }
 

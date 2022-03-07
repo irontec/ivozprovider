@@ -81,6 +81,7 @@ export default class FormFieldFactory {
                     _columnName={fld}
                     formik={this.formik}
                     values={this.formik.values}
+                    choices={choices}
                     property={property}
                     disabled={disabled}
                     changeHandler={this.changeHandler}
@@ -212,6 +213,7 @@ export default class FormFieldFactory {
                     onBlur={this.handleBlur}
                     downloadPath={downloadPath}
                     hasChanged={hasChanged}
+                    choices={null}
                 />
             );
         }

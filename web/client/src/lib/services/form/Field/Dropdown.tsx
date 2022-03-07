@@ -29,6 +29,7 @@ const Dropdown = (props: SelectProps): JSX.Element => {
     name, label, value, required, disabled, onChange, onBlur,
     choices, error, helperText, hasChanged, className
   } = props;
+
   const labelId = `${name}-label`;
 
   const labelClassName = hasChanged
@@ -54,8 +55,8 @@ const Dropdown = (props: SelectProps): JSX.Element => {
           />
         }
       >
-        {Object.entries(choices).map(([value, label]: [any, any], key: number) => {
-          return (<MenuItem value={value} key={key}>{label}</MenuItem>);
+        {Object.entries(choices).filter(([, label]) => label !== false).map(([value, label]: [string, any], key: number) => {
+          return (<MenuItem value={value} key={`${value}-${key}`}>{label}</MenuItem>);
         })}
       </Select>
       {helperText && <FormHelperText>{helperText}</FormHelperText>}

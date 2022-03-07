@@ -14,6 +14,7 @@ export type ExtensionPropertyList<T> = {
     'queue'?: T,
     'conditionalRoute'?: T,
     'target'?: T,
+    'companyFeatures'?: T,
 };
 
 export type ExtensionProperties = ExtensionPropertyList<Partial<PropertySpec>>;

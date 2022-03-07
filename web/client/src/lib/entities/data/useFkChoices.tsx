@@ -2,10 +2,19 @@ import { FkChoices } from 'lib/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import EntityService from 'lib/services/entity/EntityService';
+import EntityService, { EntityValues } from 'lib/services/entity/EntityService';
+import { match } from 'react-router-dom';
 
-const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType, entityService: EntityService): FkChoices => {
+interface useFkChoicesArgs {
+    foreignKeyGetter: ForeignKeyGetterType,
+    entityService: EntityService,
+    row?: EntityValues,
+    match: match
+}
 
+const useFkChoices = (props: useFkChoicesArgs): FkChoices => {
+
+    const { foreignKeyGetter, entityService, row, match } = props;
     const [fkChoices, setFkChoices] = useState<FkChoices>({});
 
     useEffect(
@@ -18,7 +27,9 @@ const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType, entityService: Ent
 
             foreignKeyGetter({
                 cancelToken: source.token,
-                entityService
+                entityService,
+                row,
+                match,
             }).then((options) => {
 
                 if (!mounted) {
@@ -38,7 +49,7 @@ const useFkChoices = (foreignKeyGetter: ForeignKeyGetterType, entityService: Ent
                 source.cancel();
             }
         },
-        [foreignKeyGetter, entityService]
+        [foreignKeyGetter, entityService, row, match]
     );
 
     return fkChoices;

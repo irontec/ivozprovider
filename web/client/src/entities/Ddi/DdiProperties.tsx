@@ -20,6 +20,7 @@ export type DdiPropertyList<T> = {
     'conditionalRoute'?: T,
     'retailAccount'?: T,
     'target'?: T,
+    'companyFeatures'?: T,
 };
 
 export type DdiProperties = DdiPropertyList<Partial<PropertySpec>>;

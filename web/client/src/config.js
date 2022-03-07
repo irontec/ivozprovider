@@ -4,7 +4,7 @@ const defaults = {
 
 const dev = {
     ...defaults,
-    API_URL: 'http://10.10.3.31:3000/api/client' /*/dev.php*/
+    API_URL: `//${window.location.host}/api/client/dev.php`
 };
 
 const prod = {

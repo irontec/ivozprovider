@@ -1,17 +1,18 @@
 import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from 'lib/entities/EntityInterface';
-import Extension from './Extension';
+import FeaturesRelCompany from './FeaturesRelCompany';
 
-const ExtensionSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
+const FeaturesRelCompanySelectOptions: SelectOptionsType = (
+    { callback, cancelToken }
+): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
-        Extension.path,
-        ['id', 'number'],
+        FeaturesRelCompany.path,
+        ['feature'],
         (data: any) => {
-
             const options: any = {};
             for (const item of data) {
-                options[item.id] = item.number;
+                options[item.feature.id] = item.feature;
             }
 
             callback(options);
@@ -20,4 +21,4 @@ const ExtensionSelectOptions: SelectOptionsType = ({callback, cancelToken}): Pro
     );
 }
 
-export default ExtensionSelectOptions;
+export default FeaturesRelCompanySelectOptions;

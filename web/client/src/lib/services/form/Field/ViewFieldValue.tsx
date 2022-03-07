@@ -35,6 +35,7 @@ const ViewFieldValue = (props: ViewValueProps): JSX.Element => {
                 onBlur={() => { return; }}
                 downloadPath={downloadPath}
                 hasChanged={false}
+                choices={null}
             />
         );
 
@@ -42,7 +43,7 @@ const ViewFieldValue = (props: ViewValueProps): JSX.Element => {
 
         const component: PropertyCustomFunctionComponent<any> = (props: any) => {
 
-            const { values, property} = props;
+            const { values, property } = props;
             let val = values[columnName];
             if (val === null) {
                 val = '';

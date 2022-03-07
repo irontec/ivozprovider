@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 import ContentTable from './Table/ContentTable';
 import ContentCard from './Card/ContentCard';
 import { RouteMapItem } from 'lib/router/routeMapParser';
-import { useLocation } from 'react-router-dom';
+import { match, useLocation } from 'react-router-dom';
 import { CancelToken } from 'axios';
 
 interface ListContentProps {
@@ -21,6 +21,7 @@ interface ListContentProps {
   ignoreColumn: string | undefined,
   preloadData: boolean,
   cancelToken: CancelToken,
+  match: match,
 }
 
 export default function ListContent(props: ListContentProps): JSX.Element {
@@ -31,7 +32,8 @@ export default function ListContent(props: ListContentProps): JSX.Element {
     rows,
     ignoreColumn,
     preloadData,
-    cancelToken
+    cancelToken,
+    match,
   } = props;
 
   const location = useLocation();
@@ -73,6 +75,7 @@ export default function ListContent(props: ListContentProps): JSX.Element {
         preloadData={preloadData}
         ignoreColumn={ignoreColumn}
         cancelToken={cancelToken}
+        match={match}
       />
 
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>

@@ -86,7 +86,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
     }
 
     await Promise.all(promises);
-    console.log(data);
 
     if (!Array.isArray(data)) {
         return data;

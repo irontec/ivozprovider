@@ -19,11 +19,14 @@ import Ddi from './Ddi/Ddi';
 import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
+import FaxesInOut from './FaxesInOut/FaxesInOut';
+import FeaturesRelCompany from './FeaturesRelCompany/FeaturesRelCompany';
 import Friend from './Friend/Friend';
 import FriendsPattern from './FriendsPattern/FriendsPattern';
 import HolidayDate from './HolidayDate/HolidayDate';
 import HuntGroup from './HuntGroup/HuntGroup';
 import HuntGroupsRelUser from './HuntGroupsRelUser/HuntGroupsRelUser';
+import Invoice from './Invoice/Invoice';
 import Ivr from './Ivr/Ivr';
 import IvrEntry from './IvrEntry/IvrEntry';
 import Language from './Language/Language';
@@ -74,11 +77,14 @@ const entities: EntityList = {
   Extension,
   ExternalCallFilter,
   Fax,
+  FaxesInOut,
+  FeaturesRelCompany,
   Friend,
   FriendsPattern,
   HolidayDate,
   HuntGroup,
   HuntGroupsRelUser,
+  Invoice,
   Ivr,
   IvrEntry,
   Language,

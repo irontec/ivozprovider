@@ -103,9 +103,9 @@ export const StyledFieldset = styled(
                 fontSize: '0.8rem',
             },
             '& .customComponentContainer': {
-                padding: '0 6px',
                 fontSize: '1rem',
                 color: theme.palette.text.secondary,
+                padding: '0px 0 7px',
             }
         };
     }

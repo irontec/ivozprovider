@@ -25,7 +25,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
         }
     }
 
-    console.log('>>', data);
     return data;
 }
 

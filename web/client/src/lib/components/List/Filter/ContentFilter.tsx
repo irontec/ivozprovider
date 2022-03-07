@@ -7,6 +7,7 @@ import { SearchFilterType } from './icons/FilterIconFactory';
 import { FilterCriteria } from './FilterCriteria';
 import { useStoreState, useStoreActions } from 'store';
 import { CancelToken } from 'axios';
+import { match } from 'react-router-dom';
 
 export interface CriteriaFilterValue {
     name: string,
@@ -24,6 +25,7 @@ interface ContentFilterMenuProps {
     preloadData: boolean,
     ignoreColumn: string | undefined,
     cancelToken: CancelToken,
+    match: match,
 }
 
 export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null {
@@ -35,7 +37,8 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
         path,
         preloadData,
         ignoreColumn,
-        cancelToken
+        cancelToken,
+        match
     } = props;
 
     const queryStringCriteria: CriteriaFilterValues = useStoreState(
@@ -79,15 +82,16 @@ export function ContentFilter(props: ContentFilterMenuProps): JSX.Element | null
             if ((preloadData || open) && loading) {
                 foreignKeyGetter({
                     entityService,
-                    cancelToken
+                    cancelToken,
+                    match
                 })
-                .then((foreignEntities: any) => {
-                    setForeignEntities(foreignEntities);
-                    setLoading(false);
-                });
+                    .then((foreignEntities: any) => {
+                        setForeignEntities(foreignEntities);
+                        setLoading(false);
+                    });
             }
         },
-        [preloadData, open, loading, foreignKeyGetter, entityService, cancelToken]
+        [preloadData, open, loading, foreignKeyGetter, entityService, cancelToken, match]
     );
 
     useEffect(

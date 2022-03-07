@@ -41,6 +41,10 @@ export default class EntityService {
         return response;
     }
 
+    public replaceProperties(properties: PropertyList): void {
+        this.entityConfig.properties = properties;
+    }
+
     public getFkProperties(): fkPropertyList {
         const response: fkPropertyList = {};
         const properties = this.getProperties();

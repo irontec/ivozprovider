@@ -26,6 +26,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
   const {
     marshaller, unmarshaller, history, match, row, properties, routeMap, entityService
   } = props;
+
   const { Form: EntityForm } = props;
 
   const parentRoute = findRoute(routeMap, match);
@@ -106,6 +107,7 @@ const Edit: any = (props: EditProps & RouteComponentProps) => {
           formik={formik}
           edit={true}
           validationErrors={errorList}
+          match={match}
         />
 
         <SaveButton />
