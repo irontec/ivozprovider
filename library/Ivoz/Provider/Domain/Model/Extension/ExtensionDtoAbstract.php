@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 
 /**
 * ExtensionDtoAbstract
@@ -87,6 +88,11 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     private $numberCountry = null;
 
     /**
+     * @var VoicemailDto | null
+     */
+    private $voicemail = null;
+
+    /**
      * @var UserDto[] | null
      */
     private $users = null;
@@ -118,7 +124,8 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'userId' => 'user',
             'queueId' => 'queue',
             'conditionalRouteId' => 'conditionalRoute',
-            'numberCountryId' => 'numberCountry'
+            'numberCountryId' => 'numberCountry',
+            'voicemailId' => 'voicemail'
         ];
     }
 
@@ -141,6 +148,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'queue' => $this->getQueue(),
             'conditionalRoute' => $this->getConditionalRoute(),
             'numberCountry' => $this->getNumberCountry(),
+            'voicemail' => $this->getVoicemail(),
             'users' => $this->getUsers()
         ];
 
@@ -452,6 +460,36 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setVoicemail(?VoicemailDto $voicemail): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailDto
+    {
+        return $this->voicemail;
+    }
+
+    public function setVoicemailId($id): static
+    {
+        $value = !is_null($id)
+            ? new VoicemailDto($id)
+            : null;
+
+        return $this->setVoicemail($value);
+    }
+
+    public function getVoicemailId()
+    {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

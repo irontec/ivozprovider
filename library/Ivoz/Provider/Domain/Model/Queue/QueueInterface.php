@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 
 /**
@@ -131,13 +131,13 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getTimeoutExtension(): ?ExtensionInterface;
 
-    public function getTimeoutVoiceMailUser(): ?UserInterface;
+    public function getTimeoutVoicemail(): ?VoicemailInterface;
 
     public function getFullLocution(): ?LocutionInterface;
 
     public function getFullExtension(): ?ExtensionInterface;
 
-    public function getFullVoiceMailUser(): ?UserInterface;
+    public function getFullVoicemail(): ?VoicemailInterface;
 
     public function getTimeoutNumberCountry(): ?CountryInterface;
 

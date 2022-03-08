@@ -6,8 +6,6 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
 /**
 * VoicemailInterface
@@ -113,9 +111,9 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getStamp(): ?\DateTime;
 
-    public function getUser(): ?UserInterface;
+    public function setVoicemail(?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface $voicemail = null): static;
 
-    public function getResidentialDevice(): ?ResidentialDeviceInterface;
+    public function getVoicemail(): ?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 
     public function isInitialized(): bool;
 }

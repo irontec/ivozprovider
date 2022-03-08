@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
@@ -153,6 +154,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $language = null;
 
     /**
+     * @var VoicemailDto | null
+     */
+    private $voicemail = null;
+
+    /**
      * @var PsEndpointDto | null
      */
     private $psEndpoint = null;
@@ -213,6 +219,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
             'languageId' => 'language',
+            'voicemailId' => 'voicemail',
             'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
         ];
@@ -250,6 +257,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
+            'voicemail' => $this->getVoicemail(),
             'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
             'ddis' => $this->getDdis(),
@@ -684,6 +692,36 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setVoicemail(?VoicemailDto $voicemail): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailDto
+    {
+        return $this->voicemail;
+    }
+
+    public function setVoicemailId($id): static
+    {
+        $value = !is_null($id)
+            ? new VoicemailDto($id)
+            : null;
+
+        return $this->setVoicemail($value);
+    }
+
+    public function getVoicemailId()
+    {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

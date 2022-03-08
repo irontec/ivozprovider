@@ -12,12 +12,12 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -116,9 +116,9 @@ abstract class QueueAbstract
     protected $timeoutExtension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $timeoutVoiceMailUser = null;
+    protected $timeoutVoicemail = null;
 
     /**
      * @var ?LocutionInterface
@@ -131,9 +131,9 @@ abstract class QueueAbstract
     protected $fullExtension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $fullVoiceMailUser = null;
+    protected $fullVoicemail = null;
 
     /**
      * @var ?CountryInterface
@@ -238,10 +238,10 @@ abstract class QueueAbstract
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
             ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
-            ->setTimeoutVoiceMailUser($fkTransformer->transform($dto->getTimeoutVoiceMailUser()))
+            ->setTimeoutVoicemail($fkTransformer->transform($dto->getTimeoutVoicemail()))
             ->setFullLocution($fkTransformer->transform($dto->getFullLocution()))
             ->setFullExtension($fkTransformer->transform($dto->getFullExtension()))
-            ->setFullVoiceMailUser($fkTransformer->transform($dto->getFullVoiceMailUser()))
+            ->setFullVoicemail($fkTransformer->transform($dto->getFullVoicemail()))
             ->setTimeoutNumberCountry($fkTransformer->transform($dto->getTimeoutNumberCountry()))
             ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()));
 
@@ -283,10 +283,10 @@ abstract class QueueAbstract
             ->setPeriodicAnnounceLocution($fkTransformer->transform($dto->getPeriodicAnnounceLocution()))
             ->setTimeoutLocution($fkTransformer->transform($dto->getTimeoutLocution()))
             ->setTimeoutExtension($fkTransformer->transform($dto->getTimeoutExtension()))
-            ->setTimeoutVoiceMailUser($fkTransformer->transform($dto->getTimeoutVoiceMailUser()))
+            ->setTimeoutVoicemail($fkTransformer->transform($dto->getTimeoutVoicemail()))
             ->setFullLocution($fkTransformer->transform($dto->getFullLocution()))
             ->setFullExtension($fkTransformer->transform($dto->getFullExtension()))
-            ->setFullVoiceMailUser($fkTransformer->transform($dto->getFullVoiceMailUser()))
+            ->setFullVoicemail($fkTransformer->transform($dto->getFullVoicemail()))
             ->setTimeoutNumberCountry($fkTransformer->transform($dto->getTimeoutNumberCountry()))
             ->setFullNumberCountry($fkTransformer->transform($dto->getFullNumberCountry()));
 
@@ -316,10 +316,10 @@ abstract class QueueAbstract
             ->setPeriodicAnnounceLocution(Locution::entityToDto(self::getPeriodicAnnounceLocution(), $depth))
             ->setTimeoutLocution(Locution::entityToDto(self::getTimeoutLocution(), $depth))
             ->setTimeoutExtension(Extension::entityToDto(self::getTimeoutExtension(), $depth))
-            ->setTimeoutVoiceMailUser(User::entityToDto(self::getTimeoutVoiceMailUser(), $depth))
+            ->setTimeoutVoicemail(Voicemail::entityToDto(self::getTimeoutVoicemail(), $depth))
             ->setFullLocution(Locution::entityToDto(self::getFullLocution(), $depth))
             ->setFullExtension(Extension::entityToDto(self::getFullExtension(), $depth))
-            ->setFullVoiceMailUser(User::entityToDto(self::getFullVoiceMailUser(), $depth))
+            ->setFullVoicemail(Voicemail::entityToDto(self::getFullVoicemail(), $depth))
             ->setTimeoutNumberCountry(Country::entityToDto(self::getTimeoutNumberCountry(), $depth))
             ->setFullNumberCountry(Country::entityToDto(self::getFullNumberCountry(), $depth));
     }
@@ -344,10 +344,10 @@ abstract class QueueAbstract
             'periodicAnnounceLocutionId' => self::getPeriodicAnnounceLocution()?->getId(),
             'timeoutLocutionId' => self::getTimeoutLocution()?->getId(),
             'timeoutExtensionId' => self::getTimeoutExtension()?->getId(),
-            'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser()?->getId(),
+            'timeoutVoicemailId' => self::getTimeoutVoicemail()?->getId(),
             'fullLocutionId' => self::getFullLocution()?->getId(),
             'fullExtensionId' => self::getFullExtension()?->getId(),
-            'fullVoiceMailUserId' => self::getFullVoiceMailUser()?->getId(),
+            'fullVoicemailId' => self::getFullVoicemail()?->getId(),
             'timeoutNumberCountryId' => self::getTimeoutNumberCountry()?->getId(),
             'fullNumberCountryId' => self::getFullNumberCountry()?->getId()
         ];
@@ -597,16 +597,16 @@ abstract class QueueAbstract
         return $this->timeoutExtension;
     }
 
-    protected function setTimeoutVoiceMailUser(?UserInterface $timeoutVoiceMailUser = null): static
+    protected function setTimeoutVoicemail(?VoicemailInterface $timeoutVoicemail = null): static
     {
-        $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
+        $this->timeoutVoicemail = $timeoutVoicemail;
 
         return $this;
     }
 
-    public function getTimeoutVoiceMailUser(): ?UserInterface
+    public function getTimeoutVoicemail(): ?VoicemailInterface
     {
-        return $this->timeoutVoiceMailUser;
+        return $this->timeoutVoicemail;
     }
 
     protected function setFullLocution(?LocutionInterface $fullLocution = null): static
@@ -633,16 +633,16 @@ abstract class QueueAbstract
         return $this->fullExtension;
     }
 
-    protected function setFullVoiceMailUser(?UserInterface $fullVoiceMailUser = null): static
+    protected function setFullVoicemail(?VoicemailInterface $fullVoicemail = null): static
     {
-        $this->fullVoiceMailUser = $fullVoiceMailUser;
+        $this->fullVoicemail = $fullVoicemail;
 
         return $this;
     }
 
-    public function getFullVoiceMailUser(): ?UserInterface
+    public function getFullVoicemail(): ?VoicemailInterface
     {
-        return $this->fullVoiceMailUser;
+        return $this->fullVoicemail;
     }
 
     protected function setTimeoutNumberCountry(?CountryInterface $timeoutNumberCountry = null): static

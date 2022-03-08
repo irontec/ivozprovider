@@ -12,13 +12,13 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
@@ -63,9 +63,9 @@ abstract class IvrEntryAbstract
     protected $extension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $voiceMailUser = null;
+    protected $voicemail = null;
 
     /**
      * @var ?ConditionalRouteInterface
@@ -163,7 +163,7 @@ abstract class IvrEntryAbstract
             ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
@@ -196,7 +196,7 @@ abstract class IvrEntryAbstract
             ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
@@ -215,7 +215,7 @@ abstract class IvrEntryAbstract
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
             ->setWelcomeLocution(Locution::entityToDto(self::getWelcomeLocution(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
@@ -229,7 +229,7 @@ abstract class IvrEntryAbstract
             'ivrId' => self::getIvr()->getId(),
             'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
             'extensionId' => self::getExtension()?->getId(),
-            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId(),
             'conditionalRouteId' => self::getConditionalRoute()?->getId(),
             'numberCountryId' => self::getNumberCountry()?->getId()
         ];
@@ -325,16 +325,16 @@ abstract class IvrEntryAbstract
         return $this->extension;
     }
 
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserInterface
+    public function getVoicemail(): ?VoicemailInterface
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
     protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): static

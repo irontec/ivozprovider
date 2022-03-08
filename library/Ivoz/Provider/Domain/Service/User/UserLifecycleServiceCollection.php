@@ -24,10 +24,6 @@ class UserLifecycleServiceCollection implements LifecycleServiceCollectionInterf
             \Ivoz\Provider\Domain\Service\User\UnsetBossAssistant::class => 30,
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser::class => 40,
         ],
-        "pre_remove" =>
-        [
-            \Ivoz\Provider\Domain\Service\Ivr\UpdateByUser::class => 10,
-        ],
         "post_remove" =>
         [
             \Ivoz\Provider\Domain\Service\Extension\UpdateByUser::class => 10,

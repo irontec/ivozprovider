@@ -6,6 +6,7 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
@@ -24,6 +25,12 @@ trait ResidentialDeviceTrait
      * @var ?int
      */
     protected $id = null;
+
+    /**
+     * @var VoicemailInterface
+     * mappedBy residentialDevice
+     */
+    protected $voicemail;
 
     /**
      * @var PsEndpointInterface
@@ -72,6 +79,14 @@ trait ResidentialDeviceTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getVoicemail())) {
+            /** @var VoicemailInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getVoicemail()
+            );
+            $self->setVoicemail($entity);
+        }
+
         if (!is_null($dto->getPsEndpoint())) {
             /** @var PsEndpointInterface $entity */
             $entity = $fkTransformer->transform(
@@ -126,6 +141,14 @@ trait ResidentialDeviceTrait
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getVoicemail())) {
+            /** @var VoicemailInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getVoicemail()
+            );
+            $this->setVoicemail($entity);
+        }
+
         if (!is_null($dto->getPsEndpoint())) {
             /** @var PsEndpointInterface $entity */
             $entity = $fkTransformer->transform(
@@ -181,6 +204,18 @@ trait ResidentialDeviceTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+
+    public function setVoicemail(VoicemailInterface $voicemail): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailInterface
+    {
+        return $this->voicemail;
     }
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static

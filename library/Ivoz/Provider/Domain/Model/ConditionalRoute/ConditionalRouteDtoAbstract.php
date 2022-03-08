@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
@@ -64,9 +65,9 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     private $huntGroup = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $voicemailUser = null;
+    private $voicemail = null;
 
     /**
      * @var UserDto | null
@@ -126,7 +127,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
             'companyId' => 'company',
             'ivrId' => 'ivr',
             'huntGroupId' => 'huntGroup',
-            'voicemailUserId' => 'voicemailUser',
+            'voicemailId' => 'voicemail',
             'userId' => 'user',
             'queueId' => 'queue',
             'locutionId' => 'locution',
@@ -150,7 +151,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
             'company' => $this->getCompany(),
             'ivr' => $this->getIvr(),
             'huntGroup' => $this->getHuntGroup(),
-            'voicemailUser' => $this->getVoicemailUser(),
+            'voicemail' => $this->getVoicemail(),
             'user' => $this->getUser(),
             'queue' => $this->getQueue(),
             'locution' => $this->getLocution(),
@@ -324,30 +325,30 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    public function setVoicemailUser(?UserDto $voicemailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voicemailUser = $voicemailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoicemailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voicemailUser;
+        return $this->voicemail;
     }
 
-    public function setVoicemailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoicemailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoicemailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoicemailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

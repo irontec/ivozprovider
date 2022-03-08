@@ -49,7 +49,7 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'enabled' => 'enabled',
                 'userId' => 'user',
                 'extensionId' => 'extension',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
                 'numberCountryId' => 'numberCountry'
             ];
         }

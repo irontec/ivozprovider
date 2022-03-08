@@ -12,12 +12,12 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -106,14 +106,14 @@ abstract class IvrAbstract
     protected $errorExtension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $noInputVoiceMailUser = null;
+    protected $noInputVoicemail = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $errorVoiceMailUser = null;
+    protected $errorVoicemail = null;
 
     /**
      * @var ?CountryInterface
@@ -228,8 +228,8 @@ abstract class IvrAbstract
             ->setSuccessLocution($fkTransformer->transform($dto->getSuccessLocution()))
             ->setNoInputExtension($fkTransformer->transform($dto->getNoInputExtension()))
             ->setErrorExtension($fkTransformer->transform($dto->getErrorExtension()))
-            ->setNoInputVoiceMailUser($fkTransformer->transform($dto->getNoInputVoiceMailUser()))
-            ->setErrorVoiceMailUser($fkTransformer->transform($dto->getErrorVoiceMailUser()))
+            ->setNoInputVoicemail($fkTransformer->transform($dto->getNoInputVoicemail()))
+            ->setErrorVoicemail($fkTransformer->transform($dto->getErrorVoicemail()))
             ->setNoInputNumberCountry($fkTransformer->transform($dto->getNoInputNumberCountry()))
             ->setErrorNumberCountry($fkTransformer->transform($dto->getErrorNumberCountry()));
 
@@ -275,8 +275,8 @@ abstract class IvrAbstract
             ->setSuccessLocution($fkTransformer->transform($dto->getSuccessLocution()))
             ->setNoInputExtension($fkTransformer->transform($dto->getNoInputExtension()))
             ->setErrorExtension($fkTransformer->transform($dto->getErrorExtension()))
-            ->setNoInputVoiceMailUser($fkTransformer->transform($dto->getNoInputVoiceMailUser()))
-            ->setErrorVoiceMailUser($fkTransformer->transform($dto->getErrorVoiceMailUser()))
+            ->setNoInputVoicemail($fkTransformer->transform($dto->getNoInputVoicemail()))
+            ->setErrorVoicemail($fkTransformer->transform($dto->getErrorVoicemail()))
             ->setNoInputNumberCountry($fkTransformer->transform($dto->getNoInputNumberCountry()))
             ->setErrorNumberCountry($fkTransformer->transform($dto->getErrorNumberCountry()));
 
@@ -304,8 +304,8 @@ abstract class IvrAbstract
             ->setSuccessLocution(Locution::entityToDto(self::getSuccessLocution(), $depth))
             ->setNoInputExtension(Extension::entityToDto(self::getNoInputExtension(), $depth))
             ->setErrorExtension(Extension::entityToDto(self::getErrorExtension(), $depth))
-            ->setNoInputVoiceMailUser(User::entityToDto(self::getNoInputVoiceMailUser(), $depth))
-            ->setErrorVoiceMailUser(User::entityToDto(self::getErrorVoiceMailUser(), $depth))
+            ->setNoInputVoicemail(Voicemail::entityToDto(self::getNoInputVoicemail(), $depth))
+            ->setErrorVoicemail(Voicemail::entityToDto(self::getErrorVoicemail(), $depth))
             ->setNoInputNumberCountry(Country::entityToDto(self::getNoInputNumberCountry(), $depth))
             ->setErrorNumberCountry(Country::entityToDto(self::getErrorNumberCountry(), $depth));
     }
@@ -328,8 +328,8 @@ abstract class IvrAbstract
             'successLocutionId' => self::getSuccessLocution()?->getId(),
             'noInputExtensionId' => self::getNoInputExtension()?->getId(),
             'errorExtensionId' => self::getErrorExtension()?->getId(),
-            'noInputVoiceMailUserId' => self::getNoInputVoiceMailUser()?->getId(),
-            'errorVoiceMailUserId' => self::getErrorVoiceMailUser()?->getId(),
+            'noInputVoicemailId' => self::getNoInputVoicemail()?->getId(),
+            'errorVoicemailId' => self::getErrorVoicemail()?->getId(),
             'noInputNumberCountryId' => self::getNoInputNumberCountry()?->getId(),
             'errorNumberCountryId' => self::getErrorNumberCountry()?->getId()
         ];
@@ -555,28 +555,28 @@ abstract class IvrAbstract
         return $this->errorExtension;
     }
 
-    protected function setNoInputVoiceMailUser(?UserInterface $noInputVoiceMailUser = null): static
+    protected function setNoInputVoicemail(?VoicemailInterface $noInputVoicemail = null): static
     {
-        $this->noInputVoiceMailUser = $noInputVoiceMailUser;
+        $this->noInputVoicemail = $noInputVoicemail;
 
         return $this;
     }
 
-    public function getNoInputVoiceMailUser(): ?UserInterface
+    public function getNoInputVoicemail(): ?VoicemailInterface
     {
-        return $this->noInputVoiceMailUser;
+        return $this->noInputVoicemail;
     }
 
-    protected function setErrorVoiceMailUser(?UserInterface $errorVoiceMailUser = null): static
+    protected function setErrorVoicemail(?VoicemailInterface $errorVoicemail = null): static
     {
-        $this->errorVoiceMailUser = $errorVoiceMailUser;
+        $this->errorVoicemail = $errorVoicemail;
 
         return $this;
     }
 
-    public function getErrorVoiceMailUser(): ?UserInterface
+    public function getErrorVoicemail(): ?VoicemailInterface
     {
-        return $this->errorVoiceMailUser;
+        return $this->errorVoicemail;
     }
 
     protected function setNoInputNumberCountry(?CountryInterface $noInputNumberCountry = null): static

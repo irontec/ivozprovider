@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
@@ -71,9 +72,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     private $extension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $voiceMailUser = null;
+    private $voicemail = null;
 
     /**
      * @var CountryDto | null
@@ -125,7 +126,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'userId' => 'user',
             'friendId' => 'friend',
             'extensionId' => 'extension',
-            'voiceMailUserId' => 'voiceMailUser',
+            'voicemailId' => 'voicemail',
             'numberCountryId' => 'numberCountry',
             'residentialDeviceId' => 'residentialDevice',
             'retailAccountId' => 'retailAccount',
@@ -150,7 +151,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'user' => $this->getUser(),
             'friend' => $this->getFriend(),
             'extension' => $this->getExtension(),
-            'voiceMailUser' => $this->getVoiceMailUser(),
+            'voicemail' => $this->getVoicemail(),
             'numberCountry' => $this->getNumberCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
             'retailAccount' => $this->getRetailAccount(),
@@ -346,30 +347,30 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 
-    public function setVoiceMailUser(?UserDto $voiceMailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
-    public function setVoiceMailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoiceMailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoiceMailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoiceMailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

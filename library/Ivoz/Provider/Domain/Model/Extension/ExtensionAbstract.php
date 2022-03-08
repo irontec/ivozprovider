@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
@@ -25,6 +26,7 @@ use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 
 /**
 * ExtensionAbstract
@@ -41,7 +43,7 @@ abstract class ExtensionAbstract
 
     /**
      * @var ?string
-     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional
+     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional|voicemail
      */
     protected $routeType = null;
 
@@ -95,6 +97,11 @@ abstract class ExtensionAbstract
      * @var ?CountryInterface
      */
     protected $numberCountry = null;
+
+    /**
+     * @var ?VoicemailInterface
+     */
+    protected $voicemail = null;
 
     /**
      * Constructor
@@ -183,7 +190,8 @@ abstract class ExtensionAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
 
         $self->initChangelog();
 
@@ -217,7 +225,8 @@ abstract class ExtensionAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
 
         return $this;
     }
@@ -239,7 +248,8 @@ abstract class ExtensionAbstract
             ->setUser(User::entityToDto(self::getUser(), $depth))
             ->setQueue(Queue::entityToDto(self::getQueue(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
-            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth));
     }
 
     protected function __toArray(): array
@@ -256,7 +266,8 @@ abstract class ExtensionAbstract
             'userId' => self::getUser()?->getId(),
             'queueId' => self::getQueue()?->getId(),
             'conditionalRouteId' => self::getConditionalRoute()?->getId(),
-            'numberCountryId' => self::getNumberCountry()?->getId()
+            'numberCountryId' => self::getNumberCountry()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId()
         ];
     }
 
@@ -289,6 +300,7 @@ abstract class ExtensionAbstract
                     ExtensionInterface::ROUTETYPE_FRIEND,
                     ExtensionInterface::ROUTETYPE_QUEUE,
                     ExtensionInterface::ROUTETYPE_CONDITIONAL,
+                    ExtensionInterface::ROUTETYPE_VOICEMAIL,
                 ],
                 'routeTypevalue "%s" is not an element of the valid values: %s'
             );
@@ -430,5 +442,17 @@ abstract class ExtensionAbstract
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
+    }
+
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailInterface
+    {
+        return $this->voicemail;
     }
 }

@@ -77,7 +77,6 @@ class UserDto extends UserDtoAbstract
                 'terminalId' => 'terminal',
                 'extensionId' => 'extension',
                 'outgoingDdiId' => 'outgoingDdi',
-                'voicemailEnabled' => 'voicemailEnabled',
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {
@@ -98,7 +97,6 @@ class UserDto extends UserDtoAbstract
                 'maxCalls' => 'maxCalls',
                 'bossAssistantId' => 'bossAssistant',
                 'timezoneId' => 'timezone',
-                'voicemailEnabled' => 'voicemailEnabled',
             ];
         }
 

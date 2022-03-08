@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface;
 use Doctrine\Common\Collections\Collection;
@@ -84,7 +84,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function getExtension(): ?ExtensionInterface;
 
-    public function getVoiceMailUser(): ?UserInterface;
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function getNumberCountry(): ?CountryInterface;
 

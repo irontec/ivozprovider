@@ -12,6 +12,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
@@ -21,6 +22,7 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
@@ -74,9 +76,9 @@ abstract class ConditionalRoutesConditionAbstract
     protected $huntGroup = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $voicemailUser = null;
+    protected $voicemail = null;
 
     /**
      * @var ?UserInterface
@@ -191,7 +193,7 @@ abstract class ConditionalRoutesConditionAbstract
             ->setConditionalRoute($fkTransformer->transform($conditionalRoute))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
-            ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
@@ -227,7 +229,7 @@ abstract class ConditionalRoutesConditionAbstract
             ->setConditionalRoute($fkTransformer->transform($conditionalRoute))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
-            ->setVoicemailUser($fkTransformer->transform($dto->getVoicemailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
@@ -251,7 +253,7 @@ abstract class ConditionalRoutesConditionAbstract
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
             ->setHuntGroup(HuntGroup::entityToDto(self::getHuntGroup(), $depth))
-            ->setVoicemailUser(User::entityToDto(self::getVoicemailUser(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
             ->setUser(User::entityToDto(self::getUser(), $depth))
             ->setQueue(Queue::entityToDto(self::getQueue(), $depth))
             ->setLocution(Locution::entityToDto(self::getLocution(), $depth))
@@ -270,7 +272,7 @@ abstract class ConditionalRoutesConditionAbstract
             'conditionalRouteId' => self::getConditionalRoute()->getId(),
             'ivrId' => self::getIvr()?->getId(),
             'huntGroupId' => self::getHuntGroup()?->getId(),
-            'voicemailUserId' => self::getVoicemailUser()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId(),
             'userId' => self::getUser()?->getId(),
             'queueId' => self::getQueue()?->getId(),
             'locutionId' => self::getLocution()?->getId(),
@@ -391,16 +393,16 @@ abstract class ConditionalRoutesConditionAbstract
         return $this->huntGroup;
     }
 
-    protected function setVoicemailUser(?UserInterface $voicemailUser = null): static
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
     {
-        $this->voicemailUser = $voicemailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoicemailUser(): ?UserInterface
+    public function getVoicemail(): ?VoicemailInterface
     {
-        return $this->voicemailUser;
+        return $this->voicemail;
     }
 
     protected function setUser(?UserInterface $user = null): static

@@ -10,10 +10,7 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 
 /**
 * VoicemailAbstract
@@ -191,14 +188,10 @@ abstract class VoicemailAbstract
     protected $stamp = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface
+     * inversedBy astVoicemail
      */
-    protected $user = null;
-
-    /**
-     * @var ?ResidentialDeviceInterface
-     */
-    protected $residentialDevice = null;
+    protected $voicemail = null;
 
     /**
      * Constructor
@@ -311,8 +304,7 @@ abstract class VoicemailAbstract
             ->setImapport($dto->getImapport())
             ->setImapflags($dto->getImapflags())
             ->setStamp($dto->getStamp())
-            ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
 
         $self->initChangelog();
 
@@ -368,8 +360,7 @@ abstract class VoicemailAbstract
             ->setImapport($dto->getImapport())
             ->setImapflags($dto->getImapflags())
             ->setStamp($dto->getStamp())
-            ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()));
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
 
         return $this;
     }
@@ -413,8 +404,7 @@ abstract class VoicemailAbstract
             ->setImapport(self::getImapport())
             ->setImapflags(self::getImapflags())
             ->setStamp(self::getStamp())
-            ->setUser(User::entityToDto(self::getUser(), $depth))
-            ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth));
     }
 
     protected function __toArray(): array
@@ -453,8 +443,7 @@ abstract class VoicemailAbstract
             'imapport' => self::getImapport(),
             'imapflags' => self::getImapflags(),
             'stamp' => self::getStamp(),
-            'userId' => self::getUser()?->getId(),
-            'residentialDeviceId' => self::getResidentialDevice()?->getId()
+            'voicemailId' => self::getVoicemail()?->getId()
         ];
     }
 
@@ -943,27 +932,15 @@ abstract class VoicemailAbstract
         return !is_null($this->stamp) ? clone $this->stamp : null;
     }
 
-    protected function setUser(?UserInterface $user = null): static
+    public function setVoicemail(?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface $voicemail = null): static
     {
-        $this->user = $user;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getUser(): ?UserInterface
+    public function getVoicemail(): ?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface
     {
-        return $this->user;
-    }
-
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
-    {
-        $this->residentialDevice = $residentialDevice;
-
-        return $this;
-    }
-
-    public function getResidentialDevice(): ?ResidentialDeviceInterface
-    {
-        return $this->residentialDevice;
+        return $this->voicemail;
     }
 }

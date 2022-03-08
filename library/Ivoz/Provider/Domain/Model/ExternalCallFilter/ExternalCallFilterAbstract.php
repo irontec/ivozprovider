@@ -12,12 +12,12 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -91,14 +91,14 @@ abstract class ExternalCallFilterAbstract
     protected $outOfScheduleExtension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $holidayVoiceMailUser = null;
+    protected $holidayVoicemail = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $outOfScheduleVoiceMailUser = null;
+    protected $outOfScheduleVoicemail = null;
 
     /**
      * @var ?CountryInterface
@@ -202,8 +202,8 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleLocution($fkTransformer->transform($dto->getOutOfScheduleLocution()))
             ->setHolidayExtension($fkTransformer->transform($dto->getHolidayExtension()))
             ->setOutOfScheduleExtension($fkTransformer->transform($dto->getOutOfScheduleExtension()))
-            ->setHolidayVoiceMailUser($fkTransformer->transform($dto->getHolidayVoiceMailUser()))
-            ->setOutOfScheduleVoiceMailUser($fkTransformer->transform($dto->getOutOfScheduleVoiceMailUser()))
+            ->setHolidayVoicemail($fkTransformer->transform($dto->getHolidayVoicemail()))
+            ->setOutOfScheduleVoicemail($fkTransformer->transform($dto->getOutOfScheduleVoicemail()))
             ->setHolidayNumberCountry($fkTransformer->transform($dto->getHolidayNumberCountry()))
             ->setOutOfScheduleNumberCountry($fkTransformer->transform($dto->getOutOfScheduleNumberCountry()));
 
@@ -242,8 +242,8 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleLocution($fkTransformer->transform($dto->getOutOfScheduleLocution()))
             ->setHolidayExtension($fkTransformer->transform($dto->getHolidayExtension()))
             ->setOutOfScheduleExtension($fkTransformer->transform($dto->getOutOfScheduleExtension()))
-            ->setHolidayVoiceMailUser($fkTransformer->transform($dto->getHolidayVoiceMailUser()))
-            ->setOutOfScheduleVoiceMailUser($fkTransformer->transform($dto->getOutOfScheduleVoiceMailUser()))
+            ->setHolidayVoicemail($fkTransformer->transform($dto->getHolidayVoicemail()))
+            ->setOutOfScheduleVoicemail($fkTransformer->transform($dto->getOutOfScheduleVoicemail()))
             ->setHolidayNumberCountry($fkTransformer->transform($dto->getHolidayNumberCountry()))
             ->setOutOfScheduleNumberCountry($fkTransformer->transform($dto->getOutOfScheduleNumberCountry()));
 
@@ -268,8 +268,8 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleLocution(Locution::entityToDto(self::getOutOfScheduleLocution(), $depth))
             ->setHolidayExtension(Extension::entityToDto(self::getHolidayExtension(), $depth))
             ->setOutOfScheduleExtension(Extension::entityToDto(self::getOutOfScheduleExtension(), $depth))
-            ->setHolidayVoiceMailUser(User::entityToDto(self::getHolidayVoiceMailUser(), $depth))
-            ->setOutOfScheduleVoiceMailUser(User::entityToDto(self::getOutOfScheduleVoiceMailUser(), $depth))
+            ->setHolidayVoicemail(Voicemail::entityToDto(self::getHolidayVoicemail(), $depth))
+            ->setOutOfScheduleVoicemail(Voicemail::entityToDto(self::getOutOfScheduleVoicemail(), $depth))
             ->setHolidayNumberCountry(Country::entityToDto(self::getHolidayNumberCountry(), $depth))
             ->setOutOfScheduleNumberCountry(Country::entityToDto(self::getOutOfScheduleNumberCountry(), $depth));
     }
@@ -289,8 +289,8 @@ abstract class ExternalCallFilterAbstract
             'outOfScheduleLocutionId' => self::getOutOfScheduleLocution()?->getId(),
             'holidayExtensionId' => self::getHolidayExtension()?->getId(),
             'outOfScheduleExtensionId' => self::getOutOfScheduleExtension()?->getId(),
-            'holidayVoiceMailUserId' => self::getHolidayVoiceMailUser()?->getId(),
-            'outOfScheduleVoiceMailUserId' => self::getOutOfScheduleVoiceMailUser()?->getId(),
+            'holidayVoicemailId' => self::getHolidayVoicemail()?->getId(),
+            'outOfScheduleVoicemailId' => self::getOutOfScheduleVoicemail()?->getId(),
             'holidayNumberCountryId' => self::getHolidayNumberCountry()?->getId(),
             'outOfScheduleNumberCountryId' => self::getOutOfScheduleNumberCountry()?->getId()
         ];
@@ -476,28 +476,28 @@ abstract class ExternalCallFilterAbstract
         return $this->outOfScheduleExtension;
     }
 
-    protected function setHolidayVoiceMailUser(?UserInterface $holidayVoiceMailUser = null): static
+    protected function setHolidayVoicemail(?VoicemailInterface $holidayVoicemail = null): static
     {
-        $this->holidayVoiceMailUser = $holidayVoiceMailUser;
+        $this->holidayVoicemail = $holidayVoicemail;
 
         return $this;
     }
 
-    public function getHolidayVoiceMailUser(): ?UserInterface
+    public function getHolidayVoicemail(): ?VoicemailInterface
     {
-        return $this->holidayVoiceMailUser;
+        return $this->holidayVoicemail;
     }
 
-    protected function setOutOfScheduleVoiceMailUser(?UserInterface $outOfScheduleVoiceMailUser = null): static
+    protected function setOutOfScheduleVoicemail(?VoicemailInterface $outOfScheduleVoicemail = null): static
     {
-        $this->outOfScheduleVoiceMailUser = $outOfScheduleVoiceMailUser;
+        $this->outOfScheduleVoicemail = $outOfScheduleVoicemail;
 
         return $this;
     }
 
-    public function getOutOfScheduleVoiceMailUser(): ?UserInterface
+    public function getOutOfScheduleVoicemail(): ?VoicemailInterface
     {
-        return $this->outOfScheduleVoiceMailUser;
+        return $this->outOfScheduleVoicemail;
     }
 
     protected function setHolidayNumberCountry(?CountryInterface $holidayNumberCountry = null): static
