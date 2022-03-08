@@ -18,6 +18,10 @@ const properties: CallForwardSettingProperties = {
         label: _('Residential Device'),
         //@TODO required: true,
     },
+    friend: {
+        label: _('Friend'),
+        required: true,
+    },
     ddi: {
         label: _('Called DDI'),
         null: _('Any'),

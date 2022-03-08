@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "/client",
-  "proxy": "https://10.60.75.31/",
+  "proxy": "https://0.0.0.0/",
   "dependencies": {
     "@date-io/date-fns": "^2.10.8",
     "@emotion/react": "^11.4.1",

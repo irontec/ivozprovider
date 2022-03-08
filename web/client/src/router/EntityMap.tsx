@@ -122,6 +122,10 @@ const map: RouteMap = [
                         entity: entities.FriendsPattern,
                         filterBy: 'friend',
                     },
+                    {
+                        entity: entities.CallForwardSetting,
+                        filterBy: 'friend',
+                    },
                 ],
             },
             {
