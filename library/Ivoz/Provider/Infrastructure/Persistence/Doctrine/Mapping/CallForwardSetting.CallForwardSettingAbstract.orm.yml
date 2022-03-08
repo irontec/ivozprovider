@@ -70,14 +70,14 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
           onDelete: cascade
           nullable: true
       orphanRemoval: false
-    voiceMailUser:
-      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+    voicemail:
+      targetEntity: \Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        voiceMailUserId:
+        voicemailId:
           referencedColumnName: id
           onDelete: cascade
           nullable: true

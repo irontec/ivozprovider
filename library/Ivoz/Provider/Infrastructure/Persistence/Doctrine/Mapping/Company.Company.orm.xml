@@ -19,6 +19,7 @@
     <one-to-many field="terminals" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="ratingProfiles" target-entity="Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="musicsOnHold" target-entity="Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface" mapped-by="company" fetch="LAZY"/>
+    <one-to-many field="voicemails" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="recordings" target-entity="Ivoz\Provider\Domain\Model\Recording\RecordingInterface" mapped-by="company" fetch="LAZY"/>
     <one-to-many field="relFeatures" target-entity="Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface" mapped-by="company" orphan-removal="true" fetch="LAZY">
       <cascade>
