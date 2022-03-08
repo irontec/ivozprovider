@@ -47,6 +47,11 @@ class CallForwardSettingTest extends KernelTestCase
                             'ResidentialDeviceRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
+                            'friend',
+                            'in',
+                            'FriendRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
                             'retailAccount',
                             'in',
                             'RetailAccountRepository([["company","eq","user.getCompany().getId()"]])'
@@ -94,6 +99,20 @@ class CallForwardSettingTest extends KernelTestCase
                         ],
                         [
                             'residentialDevice',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'friend',
+                            'in',
+                            'FriendRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'friend',
                             'isNull',
                             null
                         ]
