@@ -3,12 +3,11 @@
 if [ "$1" == "--full" ]; then
     CHANGED_FILES="."
 elif [ "$1" == "--branch" ]; then
-    # Check if origin/bleeding is available
-    git branch -a --list origin/bleeding | grep origin/bleeding >/dev/null
-    if [ $? -eq 0 ]; then
-        CHANGED_FILES=$(git diff --name-only origin/bleeding --diff-filter=d -- '*.php')
+    # Check agains PR target branch
+    if [ -n "${CHANGE_BRANCH}" ]; then
+        CHANGED_FILES=$(git diff --name-only ${CHANGE_BRANCH} --diff-filter=d -- '*.php')
     else
-        echo "Can not compare with origin/bleeding. Forcing full check of all files..."
+        echo "Can not retrieve target branch name. Forcing full check of all files..."
         CHANGED_FILES="."
     fi
 else
