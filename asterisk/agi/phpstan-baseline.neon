@@ -171,6 +171,16 @@ parameters:
 			path: src/Agi/Action/FaxReceiveStatusAction.php
 
 		-
+			message: "#^Cannot call method getCallForwardSettings\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null\\.$#"
+			count: 2
+			path: src/Agi/Action/FriendCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FriendCallAction\\:\\:getDialTimeout\\(\\) should return string but returns int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendCallAction.php
+
+		-
 			message: "#^Method Agi\\\\Action\\\\FriendCallAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Agi/Action/FriendCallAction.php
@@ -179,6 +189,26 @@ parameters:
 			message: "#^Property Agi\\\\Action\\\\FriendCallAction\\:\\:\\$destination \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: src/Agi/Action/FriendCallAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FriendStatusAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FriendStatusAction\\:\\:setDialStatus\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FriendStatusAction\\:\\:setFriend\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendStatusAction.php
+
+		-
+			message: "#^Method Agi\\\\Action\\\\FriendStatusAction\\:\\:setFriend\\(\\) has parameter \\$friend with no typehint specified\\.$#"
+			count: 1
+			path: src/Agi/Action/FriendStatusAction.php
 
 		-
 			message: "#^Method Agi\\\\Action\\\\HuntGroupAction\\:\\:process\\(\\) has no return typehint specified\\.$#"
@@ -1344,6 +1374,11 @@ parameters:
 			message: "#^Method Dialplan\\\\FaxSendStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Dialplan/FaxSendStatus.php
+
+		-
+			message: "#^Method Dialplan\\\\FriendStatus\\:\\:process\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Dialplan/FriendStatus.php
 
 		-
 			message: "#^Cannot call method getCompany\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\|null\\.$#"
