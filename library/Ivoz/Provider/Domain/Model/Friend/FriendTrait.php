@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
 * @codeCoverageIgnore
@@ -43,12 +44,19 @@ trait FriendTrait
     protected $patterns;
 
     /**
+     * @var Collection<array-key, CallForwardSettingInterface> & Selectable<array-key, CallForwardSettingInterface>
+     * CallForwardSettingInterface mappedBy friend
+     */
+    protected $callForwardSettings;
+
+    /**
      * Constructor
      */
     protected function __construct()
     {
         parent::__construct(...func_get_args());
         $this->patterns = new ArrayCollection();
+        $this->callForwardSettings = new ArrayCollection();
     }
 
     abstract protected function sanitizeValues(): void;
@@ -88,6 +96,16 @@ trait FriendTrait
                 $patterns
             );
             $self->replacePatterns($replacement);
+        }
+
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
+            );
+            $self->replaceCallForwardSettings($replacement);
         }
 
         $self->sanitizeValues();
@@ -132,6 +150,16 @@ trait FriendTrait
                 $patterns
             );
             $this->replacePatterns($replacement);
+        }
+
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
+            );
+            $this->replaceCallForwardSettings($replacement);
         }
         $this->sanitizeValues();
 
@@ -236,5 +264,64 @@ trait FriendTrait
         }
 
         return $this->patterns->toArray();
+    }
+
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface
+    {
+        $this->callForwardSettings->add($callForwardSetting);
+
+        return $this;
+    }
+
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface
+    {
+        $this->callForwardSettings->removeElement($callForwardSetting);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): FriendInterface
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($callForwardSettings as $entity) {
+            /** @var string|int $index */
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setFriend($this);
+        }
+
+        foreach ($this->callForwardSettings as $key => $entity) {
+            $identity = $entity->getId();
+            if (!$identity) {
+                $this->callForwardSettings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
+                $this->callForwardSettings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
+            } else {
+                $this->callForwardSettings->remove($key);
+            }
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addCallForwardSetting($entity);
+        }
+
+        return $this;
+    }
+
+    public function getCallForwardSettings(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->callForwardSettings->matching($criteria)->toArray();
+        }
+
+        return $this->callForwardSettings->toArray();
     }
 }

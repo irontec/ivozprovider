@@ -41,6 +41,11 @@
         <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
+    <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" inversed-by="callForwardSettings" fetch="LAZY">
+      <join-columns>
+        <join-column name="friendId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="extension" target-entity="Ivoz\Provider\Domain\Model\Extension\ExtensionInterface" fetch="LAZY">
       <join-columns>
         <join-column name="extensionId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>

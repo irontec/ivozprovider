@@ -2505,13 +2505,15 @@
     </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingAbstract.php">
-    <MixedArgument occurrences="16">
+    <MixedArgument occurrences="18">
       <code>$fkTransformer-&gt;transform($dto-&gt;getCfwToRetailAccount())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCfwToRetailAccount())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getExtension())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFriend())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFriend())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
@@ -2526,7 +2528,8 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php">
-    <MissingParamType occurrences="10">
+    <MissingParamType occurrences="11">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -2538,10 +2541,11 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="8">
+    <MissingReturnType occurrences="9">
       <code>getCfwToRetailAccountId</code>
       <code>getDdiId</code>
       <code>getExtensionId</code>
+      <code>getFriendId</code>
       <code>getNumberCountryId</code>
       <code>getResidentialDeviceId</code>
       <code>getRetailAccountId</code>
@@ -4521,7 +4525,8 @@
       <code>getPsIdentifyId</code>
       <code>getTransformationRuleSetId</code>
     </MissingReturnType>
-    <MixedPropertyTypeCoercion occurrences="1">
+    <MixedPropertyTypeCoercion occurrences="2">
+      <code>$callForwardSettings</code>
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
   </file>

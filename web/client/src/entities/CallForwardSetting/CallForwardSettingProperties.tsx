@@ -4,6 +4,7 @@ import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
 export type CallForwardSettingPropertyList<T> = {
     'user'?: T,
     'residentialDevice'?: T,
+    'friend'?: T,
     'ddi'?: T,
     'retailAccount'?: T,
     'cfwToretailAccount'?: T,

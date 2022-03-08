@@ -4531,6 +4531,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getFriendId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
@@ -4567,6 +4572,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:setExtensionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:setFriendId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
@@ -8501,6 +8511,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Friend/Friend.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\Friend\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Friend/Friend.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\Friend\\:\\:getPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/Friend.php
@@ -8547,6 +8562,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getCallAclId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
 
@@ -8601,6 +8621,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:setCallForwardSettings\\(\\) has parameter \\$callForwardSettings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
@@ -8649,6 +8674,11 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:setTransformationRuleSetId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\:\\:getCallForwardSettings\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Friend/FriendInterface.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendInterface\\:\\:getPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"

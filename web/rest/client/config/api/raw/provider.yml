@@ -210,6 +210,8 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         - inherited:
             residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
         - inherited:
+            friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+        - inherited:
             retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
     write_access_control:
       ROLE_COMPANY_ADMIN:
@@ -219,6 +221,9 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       - or:
         - inheritedOrNull:
             residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
       - or:
         - inheritedOrNull:
             retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'

@@ -17,6 +17,7 @@ use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
 * FriendInterface
@@ -238,4 +239,15 @@ interface FriendInterface extends LoggableEntityInterface
     public function replacePatterns(Collection $patterns): FriendInterface;
 
     public function getPatterns(?Criteria $criteria = null): array;
+
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface;
+
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface;
+
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): FriendInterface;
+
+    public function getCallForwardSettings(?Criteria $criteria = null): array;
 }
