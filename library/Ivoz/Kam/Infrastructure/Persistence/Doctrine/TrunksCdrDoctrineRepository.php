@@ -131,26 +131,40 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 
     /**
      * @inheritdoc
-     * @see TrunksCdrRepository::resetOrphanCgrids
+     * @see TrunksCdrRepository::getCgridsByBillableCallIds
      */
-    public function resetOrphanCgrids(array $billableCallIds): int
+    public function getCgridsByBillableCallIds(array $billableCallIds): array
     {
         $qb = $this->_em
             ->createQueryBuilder()
-            ->select('self.callid')
-            ->from(BillableCall::class, 'self')
-            ->where('self.id in (:ids)')
+            ->select('TrunksCdr.cgrid')
+            ->from(BillableCall::class, 'BillableCall')
+            ->innerJoin(
+                TrunksCdr::class,
+                'TrunksCdr',
+                'WITH',
+                'BillableCall.trunksCdr = TrunksCdr.id'
+            )
+            ->where('BillableCall.id in (:ids)')
+            ->andWhere(
+                'TrunksCdr.cgrid IS NOT NULL'
+            )
             ->setParameter(':ids', $billableCallIds);
 
-        $callIds = array_column(
+        $cgrids = array_column(
             $qb->getQuery()->getResult(),
-            'callid'
+            'cgrid'
         );
 
-        if (empty($callIds)) {
-            return 0;
-        }
+        return $cgrids;
+    }
 
+    /**
+     * @inheritdoc
+     * @see TrunksCdrRepository::resetOrphanCgrids
+     */
+    public function resetOrphanCgrids(array $cgrids): int
+    {
         $qb = $this
             ->createQueryBuilder('self')
             ->select('self.id, tpCdr.cgrid')
@@ -160,15 +174,16 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
                 'WITH',
                 'self.cgrid = tpCdr.cgrid'
             )
-            ->where('self.callid in (:callIds)')
-            ->andWhere('self.cgrid IS NOT NULL')
+            ->where('self.cgrid in (:cgrids)')
             ->andWhere('tpCdr.cgrid IS NULL')
-            ->setParameter(':callIds', $callIds);
+            ->setParameter(':cgrids', $cgrids);
+
+        $results = $qb->getQuery()->getResult();
 
         $idsToReset = array_map(
             'intval',
             array_column(
-                $qb->getQuery()->getResult(),
+                $results,
                 'id'
             )
         );

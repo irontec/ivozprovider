@@ -84,4 +84,50 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
 
         return null;
     }
+
+    /**
+     * @param int[] $cgrids
+     * @return int affected rows
+     */
+    public function fixCorruptedByCgrids(array $cgrids): int
+    {
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self.cgrid,  COUNT(self) as rowNum')
+            ->groupBy(
+                'self.cgrid'
+            )
+            ->having(
+                'rowNum < 2'
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        $cgrIds = array_map(
+            function ($row) {
+                return $row['cgrid'];
+            },
+            $result
+        );
+
+        if (empty($cgrIds)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self');
+        $exp = $qb->expr();
+
+        $qb
+            ->delete(
+                $this->getEntityName(),
+                'self'
+            )
+            ->where(
+                $exp->in('self.cgrid', $cgrIds)
+            );
+
+        return $qb->getQuery()->execute();
+    }
 }
