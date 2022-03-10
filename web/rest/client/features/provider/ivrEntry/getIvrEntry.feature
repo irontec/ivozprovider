@@ -22,7 +22,7 @@ Feature: Retrieve ivr entries
               "ivr": 1,
               "welcomeLocution": 1,
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "conditionalRoute": null,
               "numberCountry": 68
           }
@@ -59,8 +59,8 @@ Feature: Retrieve ivr entries
               "successLocution": 1,
               "noInputExtension": null,
               "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
+              "noInputVoicemail": null,
+              "errorVoicemail": 1,
               "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
@@ -80,7 +80,7 @@ Feature: Retrieve ivr entries
               }
           },
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "conditionalRoute": null,
           "numberCountry": "~"
       }

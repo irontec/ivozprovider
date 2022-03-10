@@ -4,7 +4,7 @@ Feature: Update users
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update a schedule
+  Scenario: Update a user
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -20,9 +20,6 @@ Feature: Update users
           "maxCalls": 1,
           "externalIpCalls": "0",
           "rejectCallMethod": "rfc",
-          "voicemailEnabled": true,
-          "voicemailSendMail": true,
-          "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 1,
           "callAcl": null,
@@ -35,7 +32,7 @@ Feature: Update users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null,
+          "voicemail": null,
           "pickupGroupIds": [
             1
           ]
@@ -57,9 +54,6 @@ Feature: Update users
           "maxCalls": 1,
           "externalIpCalls": "0",
           "rejectCallMethod": "rfc",
-          "voicemailEnabled": true,
-          "voicemailSendMail": true,
-          "voicemailAttachSound": true,
           "multiContact": true,
           "gsQRCode": false,
           "id": 1,
@@ -73,7 +67,7 @@ Feature: Update users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null,
+          "voicemail": null,
           "pickupGroupIds": [
             1
           ]

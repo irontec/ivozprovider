@@ -98,12 +98,12 @@ class HuntGroupTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'noAnswerVoiceMailUser',
+                            'noAnswerVoicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'noAnswerVoiceMailUser',
+                            'noAnswerVoicemail',
                             'isNull',
                             null
                         ]

@@ -61,7 +61,7 @@ Feature: Create hunt groups rel users
               "id": 1,
               "noAnswerLocution": null,
               "noAnswerExtension": null,
-              "noAnswerVoiceMailUser": null,
+              "noAnswerVoicemail": null,
               "noAnswerNumberCountry": null
           },
           "user": "~",

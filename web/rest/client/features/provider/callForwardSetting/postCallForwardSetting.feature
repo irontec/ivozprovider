@@ -19,7 +19,7 @@ Feature: Create call forward setting
         "user": 2,
         "friend": null,
         "extension": null,
-        "voiceMailUser": null,
+        "voicemail": null,
         "numberCountry": 68,
         "enabled": true
       }
@@ -40,7 +40,7 @@ Feature: Create call forward setting
           "user": 2,
           "friend": null,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": 68,
           "residentialDevice": null,
           "retailAccount": null,
@@ -68,7 +68,7 @@ Feature: Create call forward setting
           "id": 5,
           "user": "~",
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": {
               "code": "ES",
               "countryCode": "+34",

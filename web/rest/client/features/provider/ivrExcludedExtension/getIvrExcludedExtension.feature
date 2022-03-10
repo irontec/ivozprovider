@@ -32,8 +32,8 @@ Feature: Retrieve ivr excluded extensions
                   "successLocution": 1,
                   "noInputExtension": null,
                   "errorExtension": null,
-                  "noInputVoiceMailUser": null,
-                  "errorVoiceMailUser": 1,
+                  "noInputVoicemail": null,
+                  "errorVoicemail": 1,
                   "noInputNumberCountry": 68,
                   "errorNumberCountry": null
               },
@@ -49,7 +49,8 @@ Feature: Retrieve ivr excluded extensions
                   "user": 1,
                   "queue": null,
                   "conditionalRoute": null,
-                  "numberCountry": null
+                  "numberCountry": null,
+                  "voicemail": null
               }
           }
       ]
@@ -82,8 +83,8 @@ Feature: Retrieve ivr excluded extensions
               "successLocution": 1,
               "noInputExtension": null,
               "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
+              "noInputVoicemail": null,
+              "errorVoicemail": 1,
               "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
@@ -99,7 +100,8 @@ Feature: Retrieve ivr excluded extensions
               "user": 1,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           }
       }
     """

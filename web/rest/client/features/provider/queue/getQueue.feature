@@ -81,7 +81,7 @@ Feature: Retrieve queues
               }
           },
           "timeoutExtension": null,
-          "timeoutVoiceMailUser": null,
+          "timeoutVoicemail": null,
           "fullLocution": {
               "name": "testLocution",
               "status": null,
@@ -98,7 +98,7 @@ Feature: Retrieve queues
               }
           },
           "fullExtension": null,
-          "fullVoiceMailUser": null,
+          "fullVoicemail": null,
           "timeoutNumberCountry": {
               "code": "ES",
               "countryCode": "+34",

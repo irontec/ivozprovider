@@ -26,8 +26,8 @@ Feature: Create IVRs
           "successLocution": 1,
           "noInputExtension": null,
           "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
+          "noInputVoicemail": null,
+          "errorVoicemail": null,
           "noInputNumberCountry": 2,
           "errorNumberCountry": 3,
           "excludedExtensionIds": [
@@ -85,8 +85,8 @@ Feature: Create IVRs
           },
           "noInputExtension": null,
           "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
+          "noInputVoicemail": null,
+          "errorVoicemail": null,
           "noInputNumberCountry": {
               "code": "AE",
               "countryCode": "+971",
@@ -181,8 +181,8 @@ Feature: Create IVRs
           },
           "noInputExtension": null,
           "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
+          "noInputVoicemail": null,
+          "errorVoicemail": null,
           "noInputNumberCountry": {
               "code": "AE",
               "countryCode": "+971",

@@ -28,8 +28,8 @@ Feature: Retrieve IVRs
               "successLocution": 1,
               "noInputExtension": null,
               "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
+              "noInputVoicemail": null,
+              "errorVoicemail": 1,
               "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
@@ -47,8 +47,8 @@ Feature: Retrieve IVRs
               "successLocution": 1,
               "noInputExtension": 1,
               "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
+              "noInputVoicemail": null,
+              "errorVoicemail": 1,
               "noInputNumberCountry": null,
               "errorNumberCountry": null
           }
@@ -108,33 +108,18 @@ Feature: Retrieve IVRs
           },
           "noInputExtension": null,
           "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": {
-              "name": "Alice",
-              "lastname": "Allison",
+          "noInputVoicemail": null,
+          "errorVoicemail": {
+              "enabled": true,
+              "name": "Voicemail For User1",
               "email": "alice@democompany.com",
-              "pass": "*****",
-              "doNotDisturb": false,
-              "isBoss": false,
-              "active": true,
-              "maxCalls": 1,
-              "externalIpCalls": "0",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
-              "gsQRCode": false,
+              "sendMail": true,
+              "attachSound": true,
               "id": 1,
-              "callAcl": null,
-              "bossAssistant": null,
-              "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
-              "language": null,
-              "terminal": 1,
-              "extension": null,
-              "timezone": 145,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "user": 1,
+              "residentialDevice": null,
+              "company": 1,
+              "locution": 1
           },
           "noInputNumberCountry": {
               "code": "ES",
@@ -143,12 +128,14 @@ Feature: Retrieve IVRs
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           },
           "errorNumberCountry": null,

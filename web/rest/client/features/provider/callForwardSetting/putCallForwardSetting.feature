@@ -20,7 +20,7 @@ Feature: Update call forward settings
         "user": 1,
         "friend": null,
         "extension": null,
-        "voiceMailUser": null,
+        "voicemail": null,
         "numberCountry": 1
       }
     """
@@ -40,7 +40,7 @@ Feature: Update call forward settings
           "user": 1,
           "friend": null,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": 1,
           "residentialDevice": null,
           "retailAccount": null,

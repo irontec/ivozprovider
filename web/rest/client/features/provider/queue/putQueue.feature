@@ -26,10 +26,10 @@ Feature: Update queues
           "periodicAnnounceLocution": 1,
           "timeoutLocution": 1,
           "timeoutExtension": null,
-          "timeoutVoiceMailUser": null,
+          "timeoutVoicemail": null,
           "fullLocution": 1,
           "fullExtension": null,
-          "fullVoiceMailUser": null,
+          "fullVoicemail": null,
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
@@ -57,10 +57,10 @@ Feature: Update queues
           "periodicAnnounceLocution": 1,
           "timeoutLocution": 1,
           "timeoutExtension": null,
-          "timeoutVoiceMailUser": null,
+          "timeoutVoicemail": null,
           "fullLocution": 1,
           "fullExtension": null,
-          "fullVoiceMailUser": null,
+          "fullVoicemail": null,
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }

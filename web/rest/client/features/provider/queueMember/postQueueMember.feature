@@ -42,10 +42,10 @@ Feature: Create queue members
               "periodicAnnounceLocution": 1,
               "timeoutLocution": 1,
               "timeoutExtension": null,
-              "timeoutVoiceMailUser": null,
+              "timeoutVoicemail": null,
               "fullLocution": 1,
               "fullExtension": null,
-              "fullVoiceMailUser": null,
+              "fullVoicemail": null,
               "timeoutNumberCountry": 68,
               "fullNumberCountry": 68
           },
@@ -60,9 +60,6 @@ Feature: Create queue members
               "maxCalls": 1,
               "externalIpCalls": "0",
               "rejectCallMethod": "rfc",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
               "multiContact": true,
               "gsQRCode": false,
               "id": 2,
@@ -76,7 +73,7 @@ Feature: Create queue members
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "voicemail": null
           }
       }
     """
@@ -111,10 +108,10 @@ Feature: Create queue members
               "periodicAnnounceLocution": 1,
               "timeoutLocution": 1,
               "timeoutExtension": null,
-              "timeoutVoiceMailUser": null,
+              "timeoutVoicemail": null,
               "fullLocution": 1,
               "fullExtension": null,
-              "fullVoiceMailUser": null,
+              "fullVoicemail": null,
               "timeoutNumberCountry": 68,
               "fullNumberCountry": 68
           },
@@ -129,9 +126,6 @@ Feature: Create queue members
               "maxCalls": 1,
               "externalIpCalls": "0",
               "rejectCallMethod": "rfc",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
               "multiContact": true,
               "gsQRCode": false,
               "id": 2,
@@ -145,7 +139,7 @@ Feature: Create queue members
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "voicemail": null
           }
       }
     """

@@ -26,7 +26,7 @@ Feature: Retrieve holiday dates
               "calendar": 1,
               "locution": null,
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": null
           },
           {
@@ -41,7 +41,7 @@ Feature: Retrieve holiday dates
               "calendar": 1,
               "locution": null,
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": null
           }
       ]
@@ -71,7 +71,7 @@ Feature: Retrieve holiday dates
           },
           "locution": null,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """

@@ -39,8 +39,8 @@ Feature: Create IVR excluded extensions
               "successLocution": 1,
               "noInputExtension": null,
               "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
+              "noInputVoicemail": null,
+              "errorVoicemail": 1,
               "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
@@ -56,7 +56,8 @@ Feature: Create IVR excluded extensions
               "user": 2,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           }
       }
     """
@@ -88,8 +89,8 @@ Feature: Create IVR excluded extensions
               "successLocution": 1,
               "noInputExtension": null,
               "errorExtension": null,
-              "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": 1,
+              "noInputVoicemail": null,
+              "errorVoicemail": 1,
               "noInputNumberCountry": 68,
               "errorNumberCountry": null
           },
@@ -105,7 +106,8 @@ Feature: Create IVR excluded extensions
               "user": 2,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           }
       }
     """
