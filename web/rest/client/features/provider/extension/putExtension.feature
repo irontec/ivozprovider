@@ -22,7 +22,8 @@ Feature: Update extensions
           "user": 1,
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": 2
+          "numberCountry": 2,
+          "voicemail": null
       }
     """
     Then the response status code should be 200
@@ -42,6 +43,7 @@ Feature: Update extensions
           "user": 1,
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "voicemail": null
       }
     """

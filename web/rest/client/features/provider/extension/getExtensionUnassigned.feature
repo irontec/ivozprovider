@@ -26,7 +26,8 @@ Feature: Retrieve extensions
               "user": null,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           }
       ]
     """

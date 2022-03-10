@@ -21,7 +21,8 @@ Feature: Create extensions
           "user": 1,
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "voicemail": null
       }
     """
     Then the response status code should be 201
@@ -41,7 +42,8 @@ Feature: Create extensions
           "user": 1,
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "voicemail": null
       }
     """
 
@@ -94,6 +96,7 @@ Feature: Create extensions
           },
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "voicemail": null
       }
     """

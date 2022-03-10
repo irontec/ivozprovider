@@ -54,7 +54,7 @@ Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
               calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
         - or:
           - inheritedOrNull:
-              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+              voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
         - or:
           - inheritedOrNull:
               extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
@@ -232,7 +232,7 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
             extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
 
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:
@@ -330,7 +330,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
             ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
       - or:
         - inheritedOrNull:
-            voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -649,6 +649,9 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       - or:
         - inheritedOrNull:
             conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+      - or:
+        - inheritedOrNull:
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -695,10 +698,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
             outOfScheduleExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            holidayVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            holidayVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
-            outOfScheduleVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            outOfScheduleVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -937,7 +940,7 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
             extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -967,7 +970,7 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
             noAnswerExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            noAnswerVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -1042,7 +1045,7 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
             conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
       - or:
         - inheritedOrNull:
-            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - ivr
@@ -1092,10 +1095,10 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
             successLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
       - or:
         - inheritedOrNull:
-            noInputVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            noInputVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
-            errorVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            errorVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
@@ -1362,7 +1365,7 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
             timeoutExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            timeoutVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            timeoutVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             fullLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -1371,7 +1374,7 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
             fullExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            fullVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -1782,9 +1785,6 @@ Ivoz\Provider\Domain\Model\User\User:
             outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
       - or:
         - inheritedOrNull:
-            voicemailLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-      - or:
-        - inheritedOrNull:
             bossAssistantWhiteList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
       - or:
         - inheritedOrNull:
@@ -1795,6 +1795,31 @@ Ivoz\Provider\Domain\Model\User\User:
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
+
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+    - and:
+      - company:
+          eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
     swagger_context:
       required:
       - company
