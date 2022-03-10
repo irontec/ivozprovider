@@ -99,6 +99,7 @@ production:
           targetTypeValue: true
           user: true
           residentialDevice: true
+          friend: true
           voiceMailUser: ${auth.companyResidential}
         order:
           <<: *callForwardSettingsOrder_Link
