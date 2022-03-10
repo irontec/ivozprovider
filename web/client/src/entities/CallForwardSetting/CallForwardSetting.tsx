@@ -84,24 +84,24 @@ const properties: CallForwardSettingProperties = {
         visualToggle: {
             '__null__': {
                 show: [],
-                hide: ['extension', 'voiceMailUser', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
+                hide: ['extension', 'voicemail', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
             },
             'number': {
                 show: ['numberCountry', 'numberValue'],
-                hide: ['extension', 'voiceMailUser', 'cfwToretailAccount'],
+                hide: ['extension', 'voicemail', 'cfwToretailAccount'],
             },
             'extension': {
                 show: ['extension'],
-                hide: ['numberCountry', 'numberValue', 'voiceMailUser', 'cfwToretailAccount'],
+                hide: ['numberCountry', 'numberValue', 'voicemail', 'cfwToretailAccount'],
             },
             'voicemail': {
-                show: ['voiceMailUser'],
+                show: ['voicemail'],
                 hide: ['extension', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
             },
             //@TODO
             'retail': {
                 show: ['cfwToretailAccount'],
-                hide: ['extension', 'numberCountry', 'numberValue', 'voiceMailUser'],
+                hide: ['extension', 'numberCountry', 'numberValue', 'voicemail'],
             },
         },
     },
@@ -120,7 +120,7 @@ const properties: CallForwardSettingProperties = {
         default: '__null__',
         required: true,
     },
-    voiceMailUser: {
+    voicemail: {
         label: _('Voicemail'),
         null: _("Unassigned"),
         default: '__null__',

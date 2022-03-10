@@ -1,11 +1,13 @@
 import useFkChoices from 'lib/entities/data/useFkChoices';
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
 import _ from 'lib/services/translations/translate';
-import { foreignKeyGetter } from './foreignKeyGetter';
+import {foreignKeyGetter} from "../Queue/foreignKeyGetter";
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const { entityService, row, match } = props;
+    const userVoicemail = row?.user != undefined;
+
     const DefaultEntityForm = defaultEntityBehavior.Form;
     const fkChoices = useFkChoices({
         foreignKeyGetter,
@@ -14,32 +16,36 @@ const Form = (props: EntityFormProps): JSX.Element => {
         match,
     });
 
+    const readOnlyProperties = {
+        name: userVoicemail,
+        email: userVoicemail,
+    };
+
     const groups: Array<FieldsetGroups> = [
         {
-            legend: _('Basic Configuration'),
+            legend: _('Basic configuration'),
             fields: [
+                'enabled',
                 'name',
-                'description',
-                'preventMissedCalls',
-                'allowCallForwards',
-                'strategy',
-                'ringAllTimeout',
             ]
         },
         {
-            legend: _('No answer configuration'),
+            legend: _('Notification configuration'),
             fields: [
-                'noAnswerLocution',
-                'noAnswerTargetType',
-                'noAnswerNumberCountry',
-                'noAnswerNumberValue',
-                'noAnswerExtension',
-                'noAnswerVoicemail',
+                'sendMail',
+                'email',
+                'attachSound',
+            ]
+        },
+        {
+            legend: _('Customization'),
+            fields: [
+                'locution',
             ]
         },
     ];
 
-    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />);
-}
+    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} readOnlyProperties={readOnlyProperties} />);
+};
 
 export default Form;

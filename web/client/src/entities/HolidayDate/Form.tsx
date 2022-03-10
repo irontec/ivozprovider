@@ -43,7 +43,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'routeType',
                 'numberCountry',
                 'numberValue',
-                'voiceMailUser',
+                'voicemail',
                 'extension',
             ],
         },

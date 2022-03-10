@@ -1,9 +1,9 @@
 import { CalendarPeriodPropertyList } from './CalendarPeriodProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
+import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 import entities from '../index';
-import { VoicemailEnabledSelectOptions } from 'entities/User/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
@@ -16,7 +16,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         response,
         skip: [
             'scheduleIds',
-            'voiceMailUser',
+            'voicemail',
         ]
     });
 
@@ -27,9 +27,9 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken
     });
 
-    promises[promises.length] = VoicemailEnabledSelectOptions({
+    promises[promises.length] = VoicemailSelectOptions({
         callback: (options: any) => {
-            response.voiceMailUser = options;
+            response.voicemail = options;
         },
         cancelToken
     });

@@ -2,7 +2,7 @@ import { HuntGroupPropertyList } from './HuntGroupProperties';
 import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 import entities from '../index';
-import { VoicemailEnabledSelectOptions } from 'entities/User/SelectOptions';
+import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
@@ -14,13 +14,13 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken,
         response,
         skip: [
-            'noAnswerVoiceMailUser'
+            'noAnswerVoicemail'
         ],
     });
 
-    promises[promises.length] = VoicemailEnabledSelectOptions({
+    promises[promises.length] = VoicemailSelectOptions({
         callback: (options: any) => {
-            response.noAnswerVoiceMailUser = options;
+            response.noAnswerVoicemail= options;
         },
         cancelToken
     });

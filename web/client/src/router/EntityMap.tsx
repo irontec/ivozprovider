@@ -187,6 +187,9 @@ const map: RouteMap = [
             {
                 entity: entities.CallAcl,
             },
+            {
+                entity: entities.Voicemail,
+            },
         ],
     },
     {

@@ -53,6 +53,7 @@ import Timezone from './Timezone/Timezone';
 import TransformationRuleSet from './TransformationRuleSet/TransformationRuleSet';
 import User from './User/User';
 import UsersCdr from './UsersCdr/UsersCdr';
+import Voicemail from './Voicemail/Voicemail';
 import { EntityList } from 'lib/router/parseRoutes';
 
 const entities: EntityList = {
@@ -111,6 +112,7 @@ const entities: EntityList = {
   TransformationRuleSet,
   User,
   UsersCdr,
+  Voicemail,
 };
 
 export default entities;

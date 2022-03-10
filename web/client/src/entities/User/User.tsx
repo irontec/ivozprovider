@@ -114,49 +114,6 @@ const properties: UserProperties = {
         maximum: 100,
         helpText: _('Limits received calls when already handling this number of calls. Set 0 for unlimited.'),
     },
-    'voicemailEnabled': {
-        label: _('Voicemail enabled'),
-        enum: {
-            '0': _('No'),
-            '1': _('Yes'),
-        },
-        default: '1',
-        visualToggle: {
-            '0': {
-                show: [],
-                hide: ['voicemailSendMail', 'voicemailAttachSound', 'voicemailLocution'],
-            },
-            '1': {
-                show: ['voicemailSendMail', 'voicemailAttachSound', 'voicemailLocution'],
-                hide: [],
-            }
-        }
-    },
-    'voicemailLocution': {
-        label: _('Voicemail Locution'),
-    },
-    'voicemailSendMail': {
-        label: _('Voicemail send mail'),
-        enum: {
-            '0': _('No'),
-            '1': _('Yes'),
-        },
-        default: '1',
-        visualToggle: {
-            '0': {
-                hide: ['voicemailAttachSound'],
-                show: [],
-            },
-            '1': {
-                show: ['voicemailAttachSound'],
-                hide: [],
-            }
-        }
-    },
-    'voicemailAttachSound': {
-        label: _('Voicemail attach sound'),
-        default: '1',
-    },
     'pickupGroupIds': {
         label: _('Pick Up Groups'),
     },

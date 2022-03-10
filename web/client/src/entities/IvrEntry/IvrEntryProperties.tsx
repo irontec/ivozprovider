@@ -9,7 +9,7 @@ export type IvrEntryPropertyList<T> = {
     'numberCountry'?: T,
     'numberValue'?: T,
     'extension'?: T,
-    'voiceMailUser'?: T,
+    'voicemail'?: T,
     'conditionalRoute'?: T,
     'target'?: T,
 };

@@ -12,14 +12,14 @@ const holidayFields = [
     'holidayNumberCountry',
     'holidayNumberValue',
     'holidayExtension',
-    'holidayVoiceMailUser',
+    'holidayVoicemail',
 ];
 
 const outOfScheduleFields = [
     'outOfScheduleNumberCountry',
     'outOfScheduleNumberValue',
     'outOfScheduleExtension',
-    'outOfScheduleVoiceMailUser',
+    'outOfScheduleVoicemail',
 ];
 
 const properties: ExternalCallFilterProperties = {
@@ -65,7 +65,7 @@ const properties: ExternalCallFilterProperties = {
                 hide: holidayFields,
             },
             'voicemail': {
-                show: ['holidayVoiceMailUser'],
+                show: ['holidayVoicemail'],
                 hide: holidayFields,
             },
         }
@@ -82,7 +82,7 @@ const properties: ExternalCallFilterProperties = {
         label: _('Extension'),
         required: true,
     },
-    'holidayVoiceMailUser': {
+    'holidayVoicemail': {
         label: _('Voicemail'),
         required: true,
     },
@@ -135,7 +135,7 @@ const properties: ExternalCallFilterProperties = {
                 hide: outOfScheduleFields,
             },
             'voicemail': {
-                show: ['outOfScheduleVoiceMailUser'],
+                show: ['outOfScheduleVoicemail'],
                 hide: outOfScheduleFields,
             },
         }
@@ -152,7 +152,7 @@ const properties: ExternalCallFilterProperties = {
         label: _('Extension'),
         required: true,
     },
-    'outOfScheduleVoiceMailUser': {
+    'outOfScheduleVoicemail': {
         label: _('Voicemail'),
         required: true,
     },

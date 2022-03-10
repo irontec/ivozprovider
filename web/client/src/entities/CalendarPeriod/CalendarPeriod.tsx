@@ -13,7 +13,7 @@ const routableFields = [
     'numberCountry',
     'numberValue',
     'extension',
-    'voiceMailUser',
+    'voicemail',
 ];
 
 const properties: CalendarPeriodProperties = {
@@ -54,7 +54,7 @@ const properties: CalendarPeriodProperties = {
                 hide: routableFields,
             },
             'voicemail': {
-                show: ['voiceMailUser'],
+                show: ['voicemail'],
                 hide: routableFields,
             },
             'extension': {
@@ -76,7 +76,7 @@ const properties: CalendarPeriodProperties = {
         pattern: new RegExp("^\\+?[0-9]+$"),
         required: true,
     },
-    'voiceMailUser': {
+    'voicemail': {
         label: _('Voicemail'),
         null: _("Unassigned"),
         default: '__null__',

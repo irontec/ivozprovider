@@ -11,7 +11,7 @@ const routableFields = [
     'noAnswerNumberCountry',
     'noAnswerNumberValue',
     'noAnswerExtension',
-    'noAnswerVoiceMailUser',
+    'noAnswerVoicemail',
 ];
 
 const properties: HuntGroupProperties = {
@@ -94,7 +94,7 @@ const properties: HuntGroupProperties = {
                 hide: routableFields,
             },
             'voicemail': {
-                show: ['noAnswerVoiceMailUser'],
+                show: ['noAnswerVoicemail'],
                 hide: routableFields,
             },
         },
@@ -115,7 +115,7 @@ const properties: HuntGroupProperties = {
         label: _('Extension'),
         required: true,
     },
-    'noAnswerVoiceMailUser': {
+    'noAnswerVoicemail': {
         label: _('Voicemail'),
         required: true,
     },

@@ -12,14 +12,14 @@ const noInputFields = [
     'noInputNumberCountry',
     'noInputNumberValue',
     'noInputExtension',
-    'noInputVoiceMailUser',
+    'noInputVoicemail',
 ];
 
 const errorFields = [
     'errorNumberCountry',
     'errorNumberValue',
     'errorExtension',
-    'errorVoiceMailUser',
+    'errorVoicemail',
 ];
 
 const properties: IvrProperties = {
@@ -95,7 +95,7 @@ const properties: IvrProperties = {
                 hide: noInputFields,
             },
             'voicemail': {
-                show: ['noInputVoiceMailUser'],
+                show: ['noInputVoicemail'],
                 hide: noInputFields,
             },
         }
@@ -112,7 +112,7 @@ const properties: IvrProperties = {
         label: _('Extension'),
         required: true,
     },
-    'noInputVoiceMailUser': {
+    'noInputVoicemail': {
         label: _('Voicemail'),
         required: true,
     },
@@ -139,7 +139,7 @@ const properties: IvrProperties = {
                 hide: errorFields,
             },
             'voicemail': {
-                show: ['errorVoiceMailUser'],
+                show: ['errorVoicemail'],
                 hide: errorFields,
             },
         }
@@ -156,7 +156,7 @@ const properties: IvrProperties = {
         label: _('Extension'),
         required: true,
     },
-    'errorVoiceMailUser': {
+    'errorVoicemail': {
         label: _('Voicemail'),
         required: true,
     },

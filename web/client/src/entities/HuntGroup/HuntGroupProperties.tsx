@@ -13,7 +13,7 @@ export type HuntGroupPropertyList<T> = {
     'noAnswerNumberCountry'?: T,
     'noAnswerNumberValue'?: T,
     'noAnswerExtension'?: T,
-    'noAnswerVoiceMailUser'?: T,
+    'noAnswerVoicemail'?: T,
 };
 
 export type HuntGroupProperties = HuntGroupPropertyList<Partial<PropertySpec>>;

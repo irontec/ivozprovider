@@ -40,7 +40,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'noInputNumberCountry',
                 'noInputNumberValue',
                 'noInputExtension',
-                'noInputVoiceMailUser',
+                'noInputVoicemail',
             ]
         },
         {
@@ -51,7 +51,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'errorNumberCountry',
                 'errorNumberValue',
                 'errorExtension',
-                'errorVoiceMailUser',
+                'errorVoicemail',
             ]
         },
     ];

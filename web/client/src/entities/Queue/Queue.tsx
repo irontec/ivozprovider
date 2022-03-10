@@ -11,14 +11,14 @@ const timeoutFields = [
     'timeoutNumberCountry',
     'timeoutNumberValue',
     'timeoutExtension',
-    'timeoutVoiceMailUser',
+    'timeoutVoicemail',
 ];
 
 const fullFields = [
     'fullNumberCountry',
     'fullNumberValue',
     'fullExtension',
-    'fullVoiceMailUser',
+    'fullVoicemail',
 ];
 
 const properties: QueueProperties = {
@@ -57,7 +57,7 @@ const properties: QueueProperties = {
                 hide: timeoutFields,
             },
             'voicemail': {
-                show: ['timeoutVoiceMailUser'],
+                show: ['timeoutVoicemail'],
                 hide: timeoutFields,
             },
         }
@@ -74,7 +74,7 @@ const properties: QueueProperties = {
         label: _('Extension'),
         required: true,
     },
-    'timeoutVoiceMailUser': {
+    'timeoutVoicemail': {
         label: _('Voicemail'),
         required: true,
     },
@@ -108,7 +108,7 @@ const properties: QueueProperties = {
                 hide: fullFields,
             },
             'voicemail': {
-                show: ['fullVoiceMailUser'],
+                show: ['fullVoicemail'],
                 hide: fullFields,
             },
         }
@@ -125,7 +125,7 @@ const properties: QueueProperties = {
         label: _('Extension'),
         required: true,
     },
-    'fullVoiceMailUser': {
+    'fullVoicemail': {
         label: _('Voicemail'),
         required: true,
     },

@@ -104,7 +104,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
                 remapFk(data[idx], 'huntGroup', 'target');
                 break;
             case 'voicemail':
-                remapFk(data[idx], 'voicemailUser', 'target');
+                remapFk(data[idx], 'voicemail', 'target');
                 break;
             case 'number':
                 data[idx].target =

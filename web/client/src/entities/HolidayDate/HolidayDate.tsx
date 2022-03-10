@@ -13,7 +13,7 @@ const routableFields = [
     'numberCountry',
     'numberValue',
     'extension',
-    'voiceMailUser',
+    'voicemail',
 ];
 
 const properties: HolidayDateProperties = {
@@ -81,7 +81,7 @@ const properties: HolidayDateProperties = {
                 hide: routableFields,
             },
             'voicemail': {
-                show: ['voiceMailUser'],
+                show: ['voicemail'],
                 hide: routableFields
             },
             'extension': {
@@ -103,7 +103,7 @@ const properties: HolidayDateProperties = {
         pattern: new RegExp('^\\+?[0-9]+$'),
         required: true,
     },
-    'voiceMailUser': {
+    'voicemail': {
         label: _('Voicemail'),
         required: true,
         null: _('Unassigned'),

@@ -12,7 +12,7 @@ export type HolidayDatePropertyList<T> = {
     'routeType'?: T,
     'numberCountry'?: T,
     'numberValue'?: T,
-    'voiceMailUser'?: T,
+    'voicemail'?: T,
     'extension'?: T,
     'target'?: T,
 };

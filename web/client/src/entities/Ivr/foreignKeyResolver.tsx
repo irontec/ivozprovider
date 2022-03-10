@@ -65,7 +65,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
                 remapFk(data[idx], 'noInputExtension', 'noInputTarget');
                 break;
             case 'voicemail':
-                remapFk(data[idx], 'noInputVoiceMailUser', 'noInputTarget');
+                remapFk(data[idx], 'noInputVoicemail', 'noInputTarget');
                 break;
             default:
                 console.error('Unkown route type ' + data[idx].noInputRouteType);
@@ -84,7 +84,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
                 remapFk(data[idx], 'errorExtension', 'errorTarget');
                 break;
             case 'voicemail':
-                remapFk(data[idx], 'errorVoiceMailUser', 'errorTarget');
+                remapFk(data[idx], 'errorVoicemail', 'errorTarget');
                 break;
             default:
                 console.error('Unkown route type ' + data[idx].errorRouteType);
@@ -95,12 +95,12 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
         delete (data[idx] as any).noInputNumberCountryId;
         delete (data[idx] as any).noInputNumberValue;
         delete (data[idx] as any).noInputExtensionId;
-        delete (data[idx] as any).noInputVoiceMailUserId;
+        delete (data[idx] as any).noInputVoicemailId;
 
         delete (data[idx] as any).errorNumberCountryId;
         delete (data[idx] as any).errorNumberValue;
         delete (data[idx] as any).errorExtensionId;
-        delete (data[idx] as any).errorVoiceMailUserId;
+        delete (data[idx] as any).errorVoicemailId;
     }
 
     return data;

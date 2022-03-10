@@ -20,7 +20,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
             legend: _('Personal data'),
             fields: [
                 'name',
-                edit && 'language',
                 'lastname',
                 'email',
             ]
@@ -62,15 +61,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 edit && 'externalIpCalls',
                 edit && 'multiContact',
                 edit && 'rejectCallMethod',
-            ]
-        },
-        edit && {
-            legend: _('Voicemail'),
-            fields: [
-                'voicemailEnabled',
-                'voicemailLocution',
-                'voicemailSendMail',
-                'voicemailAttachSound',
             ]
         },
         edit && {

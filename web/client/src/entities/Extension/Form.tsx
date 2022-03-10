@@ -76,6 +76,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'friendValue',
                 'queue',
                 'conditionalRoute',
+                'voicemail',
             ]
         },
     ];

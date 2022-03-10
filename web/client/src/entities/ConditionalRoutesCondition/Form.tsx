@@ -81,7 +81,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'ivr',
                 'user',
                 'huntGroup',
-                'voicemailUser',
+                'voicemail',
                 'friendValue',
                 'queue',
                 'conferenceRoom',

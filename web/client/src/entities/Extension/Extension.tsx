@@ -17,6 +17,7 @@ const allRoutableFields = [
     vpbx && 'ivr',
     vpbx && 'user',
     vpbx && 'huntGroup',
+    vpbx && 'voicemail',
     'conferenceRoom',
     'friendValue',
     'queue',
@@ -39,6 +40,7 @@ const properties: ExtensionProperties = {
             'friend': _('Friend'),
             'queue': _('Queue'),
             'conditional': _('Conditional Route'),
+            'voicemail': _('Voicemail'),
         },
         default: '__null__',
         null: _("Unassigned"),
@@ -78,6 +80,10 @@ const properties: ExtensionProperties = {
             'conditional': {
                 show: ['conditional'],
                 hide: allRoutableFields,
+            },
+            'voicemail': {
+                show: ['voicemail'],
+                hide: allRoutableFields,
             }
         }
     },
@@ -115,6 +121,10 @@ const properties: ExtensionProperties = {
     },
     'conditionalRoute': {
         label: _('Conditional Route'),
+        required: true,
+    },
+    'voicemail': {
+        label: _('Voicemail'),
         required: true,
     },
     'target': {

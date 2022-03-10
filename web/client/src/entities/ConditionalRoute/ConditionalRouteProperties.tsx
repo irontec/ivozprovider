@@ -7,7 +7,7 @@ export type ConditionalRoutePropertyList<T> = {
     'routetype'?: T,
     'ivr'?: T,
     'huntGroup'?: T,
-    'voicemailUser'?: T,
+    'voicemail'?: T,
     'user'?: T,
     'numberCountry'?: T,
     'numbervalue'?: T,

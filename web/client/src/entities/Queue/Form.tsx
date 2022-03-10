@@ -60,7 +60,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'timeoutLocution',
                 'timeoutTargetType',
                 'timeoutExtension',
-                'timeoutVoiceMailUser',
+                'timeoutVoicemail',
                 'timeoutNumberCountry',
                 'timeoutNumberValue',
             ]
@@ -72,7 +72,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'fullLocution',
                 'fullTargetType',
                 'fullExtension',
-                'fullVoiceMailUser',
+                'fullVoicemail',
                 'fullNumberCountry',
                 'fullNumberValue',
             ]
