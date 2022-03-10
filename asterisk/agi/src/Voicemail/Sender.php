@@ -3,9 +3,9 @@
 namespace Voicemail;
 
 use Assert\Assertion;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use PhpMimeMailParser\Parser;
@@ -67,17 +67,31 @@ class Sender extends RouteHandlerAbstract
         // Get Voicemail data from body content
         $vmdata = explode(PHP_EOL, $this->parser->getMessageBody());
 
-        /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository $vmRepository */
-        $vmRepository = $this->em->getRepository(Voicemail::class);
+        /** @var VoicemailRepository $astVoicemailRepository */
+        $astVoicemailRepository = $this->em->getRepository(Voicemail::class);
 
-        $vm = $vmRepository->findByMailboxAndContext(
+        // Find associated asterisk voicemail
+        $astVoicemail = $astVoicemailRepository->findByMailboxAndContext(
             $vmdata[self::VM_MAILBOX],
             $vmdata[self::VM_CONTEXT]
         );
 
         // No voicemail, this should not happen
         Assertion::notNull(
-            $vm,
+            $astVoicemail,
+            sprintf(
+                "Unable to find astVoicemail for %s@%s",
+                $vmdata[self::VM_MAILBOX],
+                $vmdata[self::VM_CONTEXT]
+            )
+        );
+
+        // Get provider voicemail
+        $voicemail = $astVoicemail->getVoicemail();
+
+        // No voicemail, this should not happen
+        Assertion::notNull(
+            $voicemail,
             sprintf(
                 "Unable to find voicemail for %s@%s",
                 $vmdata[self::VM_MAILBOX],
@@ -85,20 +99,8 @@ class Sender extends RouteHandlerAbstract
             )
         );
 
-        /** @var \Ivoz\Provider\Domain\Model\User\UserInterface $user */
-        $user = $vm->getUser();
-        Assertion::notNull(
-            $user,
-            sprintf(
-                "Unable to find user for voicemail %s@%s",
-                $vmdata[self::VM_MAILBOX],
-                $vmdata[self::VM_CONTEXT]
-            )
-        );
-
-        // Assume user has company and brand
-        $company = $user->getCompany();
-        $brand = $company->getBrand();
+        // Get voicemail company
+        $company = $voicemail->getCompany();
 
         $substitution = array(
             '${VM_CATEGORY}' => $vmdata[self::VM_CATEGORY],
@@ -118,12 +120,12 @@ class Sender extends RouteHandlerAbstract
         $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
         $vmNotificationTemplate = $notificationTemplateRepository->findVoicemailTemplateByCompany(
             $company,
-            $user->getLanguage()
+            $voicemail->getLanguage()
         );
 
         // Get Notification contents for required language
         $notificationTemplateContent = $vmNotificationTemplate->getContentsByLanguage(
-            $user->getLanguage()
+            $voicemail->getLanguage()
         );
 
         // Get data from template
@@ -143,7 +145,7 @@ class Sender extends RouteHandlerAbstract
         $mail->setBody($body, $bodyType)
             ->setSubject($subject)
             ->setFrom($fromAddress, $fromName)
-            ->setTo($vm->getEmail());
+            ->setTo($voicemail->getEmail());
 
         $attachments = $this->parser->getAttachments();
         foreach ($attachments as $attachment) {

@@ -65,6 +65,7 @@ class ExtensionAction
             ->setRouteFriendDestination($extension->getFriendValue())
             ->setRouteQueue($extension->getQueue())
             ->setRouteConditional($extension->getConditionalRoute())
+            ->setRouteVoicemail($extension->getVoicemail())
             ->route();
     }
 }

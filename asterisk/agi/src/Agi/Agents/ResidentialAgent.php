@@ -5,6 +5,7 @@ namespace Agi\Agents;
 use Agi\Wrapper;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 
 class ResidentialAgent implements AgentInterface
 {
@@ -117,20 +118,12 @@ class ResidentialAgent implements AgentInterface
     }
 
     /**
-     * Residential devices have always voicemail enabled
-     */
-    public function getVoicemailEnabled()
-    {
-        return true;
-    }
-
-    /**
      * Return residential voicemail identifier
-     * @return string
+     * @return VoicemailInterface
      */
-    public function getVoiceMail()
+    public function getVoicemail()
     {
-        return $this->residential->getVoiceMail();
+        return $this->residential->getVoicemail();
     }
 
     /**
