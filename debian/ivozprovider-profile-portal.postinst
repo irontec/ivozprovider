@@ -32,25 +32,31 @@ function setup_apache_certificates()
 function setup_apache_config()
 {
 
-    # Enable apache sites and modules
-    [   -L /etc/apache2/mods-enabled/php5.load ] && /usr/sbin/a2dismod php5
-    [ ! -L /etc/apache2/mods-enabled/php7.0.load ] && /usr/sbin/a2enmod php7.0
-    [ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
-    [ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
-    [   -L /etc/apache2/mods-enabled/http2.load ] && /usr/sbin/a2dismod http2 #requires mpm_event or mpm_worker
-    [ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
-    [ ! -L /etc/apache2/mods-enabled/proxy.load ] && /usr/sbin/a2enmod proxy
-    [ ! -L /etc/apache2/mods-enabled/proxy_http.load ] && /usr/sbin/a2enmod proxy_http
-    [ ! -L /etc/apache2/mods-enabled/proxy_wstunnel.load ] && /usr/sbin/a2enmod proxy_wstunnel
-    [ ! -L /etc/apache2/mods-enabled/mpm_event.load ] && /usr/sbin/a2enmod mpm_event
-    [   -L /etc/apache2/mods-enabled/mpm_prefork.load ] && /usr/sbin/a2dismod mpm_prefork
-    [ ! -L /etc/apache2/mods-enabled/proxy_fcgi.load ] && /usr/sbin/a2enmod proxy_fcgi setenvif
-    [ ! -L /etc/apache2/conf-enabled/realtime.conf ] && /usr/sbin/a2enconf realtime
-    [ ! -L /etc/apache2/conf-enabled/php8.0-fpm.conf ] && /usr/sbin/a2enconf php8.0-fpm
-    [   -L /etc/apache2/sites-enabled/000-default.conf ] && /usr/sbin/a2dissite 000-default
-    [ ! -L /etc/apache2/sites-enabled/020-ivozprovider-portals.conf ] && /usr/sbin/a2ensite 020-ivozprovider-portals.conf
-    [ ! -L /etc/apache2/sites-enabled/030-ivozprovider-prov.conf ] && /usr/sbin/a2ensite 030-ivozprovider-prov.conf
-    [ ! -L /etc/apache2/sites-enabled/060-ivozprovider-api.conf ] && /usr/sbin/a2ensite 060-ivozprovider-api.conf
+    # Disable not required apache modules
+    /usr/sbin/a2dismod -q mpm_prefork
+    /usr/sbin/a2dismod -q mpm_worker
+    /usr/sbin/a2dismod -q php8.0
+
+    # Enable required apache modules
+    /usr/sbin/a2enmod -q mpm_event
+    /usr/sbin/a2enmod -q http2
+    /usr/sbin/a2enmod -q headers
+    /usr/sbin/a2enmod -q rewrite
+    /usr/sbin/a2enmod -q ssl
+    /usr/sbin/a2enmod -q proxy
+    /usr/sbin/a2enmod -q proxy_http
+    /usr/sbin/a2enmod -q proxy_wstunnel
+    /usr/sbin/a2enmod -q proxy_fcgi setenvif
+
+    # Enable required apache configuration
+    /usr/sbin/a2enconf -q realtime
+    /usr/sbin/a2enconf -q php8.0-fpm
+
+    # Configure apache sites
+    /usr/sbin/a2dissite -q 000-default
+    /usr/sbin/a2ensite -q 020-ivozprovider-portals.conf
+    /usr/sbin/a2ensite -q 030-ivozprovider-prov.conf
+    /usr/sbin/a2ensite -q 060-ivozprovider-api.conf
 
     /bin/sed -i 's/^#ServerSignature Off/ServerSignature Off/g' 		/etc/apache2/conf-enabled/security.conf
     /bin/sed -i 's/^ServerSignature On/#ServerSignature On/g' 		/etc/apache2/conf-enabled/security.conf
