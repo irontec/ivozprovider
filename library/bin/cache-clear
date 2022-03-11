@@ -8,25 +8,21 @@ popd
 pushd /opt/irontec/ivozprovider/web/rest/platform
     php bin/console cache:clear -e dev --no-warmup
     php bin/console cache:clear -e prod
-    php bin/console api:swagger:export > web/swagger.json
 popd
 
 pushd /opt/irontec/ivozprovider/web/rest/brand
     php bin/console cache:clear -e dev --no-warmup
     php bin/console cache:clear -e prod
-    php bin/console api:swagger:export > web/swagger.json
 popd
 
 pushd /opt/irontec/ivozprovider/web/rest/client
     php bin/console cache:clear -e dev --no-warmup
     php bin/console cache:clear -e prod
-    php bin/console api:swagger:export > web/swagger.json
 popd
 
 pushd /opt/irontec/ivozprovider/web/rest/user
     php bin/console cache:clear -e dev --no-warmup
     php bin/console cache:clear -e prod
-    php bin/console api:swagger:export > web/swagger.json
 popd
 
 pushd /opt/irontec/ivozprovider/asterisk/agi
