@@ -42,8 +42,10 @@ function setup_mysql_access()
     # Allow root access from all hosts
     db_get ivozprovider/mysql_password          || true
     export MYSQL_PWD=$RET
-    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$RET'";
-    /usr/bin/mysql --user=root -e "FLUSH PRIVILEGES;"
+    /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "ALTER USER 'root'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'root'@'%'";
+    /usr/bin/mysql --user=root -e "FLUSH PRIVILEGES"
 }
 
 function setup_mysql_replication()
