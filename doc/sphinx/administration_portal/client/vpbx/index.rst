@@ -21,5 +21,6 @@ This section will explain all these topics related to the most feature-full type
     multimedia/index
     faxes
     services
+    voicemails
     rating_profiles
     calls/index
