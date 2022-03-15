@@ -43,6 +43,9 @@ The client admin can configure them in the following screen:
         filter of the image will redirect calls during holidays to the external
         number 676 676 676.
 
+    Out of schedule enabled
+        Set this to no to totally ignore out of schedule filtering.
+
     Out of schedule locution
         The locution will be played when, not being holiday, the current time
         is not in any of the time gaps defined in the schedules assigned to the
