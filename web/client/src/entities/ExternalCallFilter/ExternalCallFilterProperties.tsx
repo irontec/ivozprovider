@@ -11,6 +11,7 @@ export type ExternalCallFilterPropertyList<T> = {
     'holidayNumberValue'?: T,
     'holidayExtension'?: T,
     'holidayVoiceMailUser'?: T,
+    'outOfScheduleEnabled'?: T,
     'outOfScheduleTargetType'?: T,
     'outOfScheduleNumberCountry'?: T,
     'outOfScheduleNumberValue'?: T,

@@ -44,6 +44,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         {
             legend: _('Out of schedule configuration'),
             fields: [
+                'outOfScheduleEnabled',
                 'scheduleIds',
                 'outOfScheduleLocution',
                 'outOfScheduleTargetType',
