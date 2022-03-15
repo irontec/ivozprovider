@@ -22,6 +22,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $this->it_finds_one_by_callid();
         $this->it_finds_unparsedCalls();
         $this->it_resets_parsed_calls();
+        $this->it_get_cgrids_by_billableCalls();
         $this->it_resets_orphan_cgrids();
     }
 
@@ -120,6 +121,29 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $this->assertNotEmpty($result);
     }
 
+    public function it_get_cgrids_by_billableCalls()
+    {
+        /** @var TrunksCdrRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(TrunksCdr::class);
+
+        $cgrids = $repository
+            ->getCgridsByBillableCallIds([
+                1
+            ]);
+
+        $this->assertInternalType(
+            'array',
+            $cgrids
+        );
+
+        $this->assertEquals(
+            '5a364b1fe35e00fb2ac1923b43f84eeb78400e01',
+            $cgrids[0]
+        );
+    }
+
     public function it_resets_orphan_cgrids()
     {
         /** @var TrunksCdrRepository $repository */
@@ -128,7 +152,11 @@ class TrunksCdrRepositoryTest extends KernelTestCase
             ->getRepository(TrunksCdr::class);
 
         $affectedRows = $repository
-            ->resetOrphanCgrids([1,2,3]);
+            ->resetOrphanCgrids([
+                '5a364b1fe35e00fb2ac1923b43f84eeb78400e01',
+                '5a364b1fe35e00fb2ac1923b43f84eeb78400e02',
+                '5a364b1fe35e00fb2ac1923b43f84eeb78400e03',
+            ]);
 
         $this->assertEquals(
             1,
