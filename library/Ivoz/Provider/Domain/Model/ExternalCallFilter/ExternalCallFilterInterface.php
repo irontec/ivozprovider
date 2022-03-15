@@ -142,6 +142,8 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function getHolidayNumberValue(): ?string;
 
+    public function getOutOfScheduleEnabled(): bool;
+
     public function getOutOfScheduleTargetType(): ?string;
 
     public function getOutOfScheduleNumberValue(): ?string;

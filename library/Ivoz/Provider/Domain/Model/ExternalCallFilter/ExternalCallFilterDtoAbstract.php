@@ -38,6 +38,11 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     private $holidayNumberValue = null;
 
     /**
+     * @var bool|null
+     */
+    private $outOfScheduleEnabled = true;
+
+    /**
      * @var string|null
      */
     private $outOfScheduleTargetType = null;
@@ -140,6 +145,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
             'name' => 'name',
             'holidayTargetType' => 'holidayTargetType',
             'holidayNumberValue' => 'holidayNumberValue',
+            'outOfScheduleEnabled' => 'outOfScheduleEnabled',
             'outOfScheduleTargetType' => 'outOfScheduleTargetType',
             'outOfScheduleNumberValue' => 'outOfScheduleNumberValue',
             'id' => 'id',
@@ -165,6 +171,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
             'name' => $this->getName(),
             'holidayTargetType' => $this->getHolidayTargetType(),
             'holidayNumberValue' => $this->getHolidayNumberValue(),
+            'outOfScheduleEnabled' => $this->getOutOfScheduleEnabled(),
             'outOfScheduleTargetType' => $this->getOutOfScheduleTargetType(),
             'outOfScheduleNumberValue' => $this->getOutOfScheduleNumberValue(),
             'id' => $this->getId(),
@@ -232,6 +239,18 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     public function getHolidayNumberValue(): ?string
     {
         return $this->holidayNumberValue;
+    }
+
+    public function setOutOfScheduleEnabled(bool $outOfScheduleEnabled): static
+    {
+        $this->outOfScheduleEnabled = $outOfScheduleEnabled;
+
+        return $this;
+    }
+
+    public function getOutOfScheduleEnabled(): ?bool
+    {
+        return $this->outOfScheduleEnabled;
     }
 
     public function setOutOfScheduleTargetType(?string $outOfScheduleTargetType): static

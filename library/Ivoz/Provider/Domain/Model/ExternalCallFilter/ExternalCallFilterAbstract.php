@@ -45,6 +45,11 @@ abstract class ExternalCallFilterAbstract
     protected $holidayNumberValue = null;
 
     /**
+     * @var bool
+     */
+    protected $outOfScheduleEnabled = true;
+
+    /**
      * @var ?string
      * comment: enum:number|extension|voicemail
      */
@@ -109,9 +114,11 @@ abstract class ExternalCallFilterAbstract
      * Constructor
      */
     protected function __construct(
-        string $name
+        string $name,
+        bool $outOfScheduleEnabled
     ) {
         $this->setName($name);
+        $this->setOutOfScheduleEnabled($outOfScheduleEnabled);
     }
 
     abstract public function getId(): null|string|int;
@@ -174,11 +181,14 @@ abstract class ExternalCallFilterAbstract
         Assertion::isInstanceOf($dto, ExternalCallFilterDto::class);
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $outOfScheduleEnabled = $dto->getOutOfScheduleEnabled();
+        Assertion::notNull($outOfScheduleEnabled, 'getOutOfScheduleEnabled value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $name
+            $name,
+            $outOfScheduleEnabled
         );
 
         $self
@@ -214,6 +224,8 @@ abstract class ExternalCallFilterAbstract
 
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $outOfScheduleEnabled = $dto->getOutOfScheduleEnabled();
+        Assertion::notNull($outOfScheduleEnabled, 'getOutOfScheduleEnabled value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
@@ -221,6 +233,7 @@ abstract class ExternalCallFilterAbstract
             ->setName($name)
             ->setHolidayTargetType($dto->getHolidayTargetType())
             ->setHolidayNumberValue($dto->getHolidayNumberValue())
+            ->setOutOfScheduleEnabled($outOfScheduleEnabled)
             ->setOutOfScheduleTargetType($dto->getOutOfScheduleTargetType())
             ->setOutOfScheduleNumberValue($dto->getOutOfScheduleNumberValue())
             ->setCompany($fkTransformer->transform($company))
@@ -246,6 +259,7 @@ abstract class ExternalCallFilterAbstract
             ->setName(self::getName())
             ->setHolidayTargetType(self::getHolidayTargetType())
             ->setHolidayNumberValue(self::getHolidayNumberValue())
+            ->setOutOfScheduleEnabled(self::getOutOfScheduleEnabled())
             ->setOutOfScheduleTargetType(self::getOutOfScheduleTargetType())
             ->setOutOfScheduleNumberValue(self::getOutOfScheduleNumberValue())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -266,6 +280,7 @@ abstract class ExternalCallFilterAbstract
             'name' => self::getName(),
             'holidayTargetType' => self::getHolidayTargetType(),
             'holidayNumberValue' => self::getHolidayNumberValue(),
+            'outOfScheduleEnabled' => self::getOutOfScheduleEnabled(),
             'outOfScheduleTargetType' => self::getOutOfScheduleTargetType(),
             'outOfScheduleNumberValue' => self::getOutOfScheduleNumberValue(),
             'companyId' => self::getCompany()->getId(),
@@ -334,6 +349,18 @@ abstract class ExternalCallFilterAbstract
     public function getHolidayNumberValue(): ?string
     {
         return $this->holidayNumberValue;
+    }
+
+    protected function setOutOfScheduleEnabled(bool $outOfScheduleEnabled): static
+    {
+        $this->outOfScheduleEnabled = $outOfScheduleEnabled;
+
+        return $this;
+    }
+
+    public function getOutOfScheduleEnabled(): bool
+    {
+        return $this->outOfScheduleEnabled;
     }
 
     protected function setOutOfScheduleTargetType(?string $outOfScheduleTargetType = null): static
