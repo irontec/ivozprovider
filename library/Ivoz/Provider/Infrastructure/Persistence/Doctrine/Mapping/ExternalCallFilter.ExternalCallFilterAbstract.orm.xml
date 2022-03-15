@@ -20,6 +20,12 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="outOfScheduleEnabled" type="boolean" column="outOfScheduleEnabled" nullable="false">
+      <options>
+        <option name="default">1</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <field name="outOfScheduleTargetType" type="string" column="outOfScheduleTargetType" length="25" nullable="true">
       <options>
         <option name="fixed"/>
