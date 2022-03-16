@@ -185,6 +185,18 @@ export default class EntityService {
             return visualToggles;
         }
 
+        if (visualToggles[fld] === false) {
+            if (!rules[fld]["__null__"]) {
+                return visualToggles;
+            }
+
+            for (const hideFld of rules[fld]["__null__"]['hide']) {
+                visualToggles[hideFld] = false;
+            }
+
+            return visualToggles;
+        }
+
         const normalizedValue = typeof value === 'boolean'
             ? (value + 0)
             : value;
