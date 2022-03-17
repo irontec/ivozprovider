@@ -75,6 +75,16 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $subscribeContext = null;
+
+    /**
+     * @var string|null
+     */
+    private $hintExtension = null;
+
+    /**
+     * @var string|null
+     */
     private $sendDiversion = 'yes';
 
     /**
@@ -168,6 +178,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'directMediaMethod' => 'directMediaMethod',
             'mailboxes' => 'mailboxes',
             'namedPickupGroup' => 'namedPickupGroup',
+            'subscribeContext' => 'subscribeContext',
+            'hintExtension' => 'hintExtension',
             'sendDiversion' => 'sendDiversion',
             'sendPai' => 'sendPai',
             'oneHundredRel' => 'oneHundredRel',
@@ -202,6 +214,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'directMediaMethod' => $this->getDirectMediaMethod(),
             'mailboxes' => $this->getMailboxes(),
             'namedPickupGroup' => $this->getNamedPickupGroup(),
+            'subscribeContext' => $this->getSubscribeContext(),
+            'hintExtension' => $this->getHintExtension(),
             'sendDiversion' => $this->getSendDiversion(),
             'sendPai' => $this->getSendPai(),
             'oneHundredRel' => $this->getOneHundredRel(),
@@ -362,6 +376,30 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     public function getNamedPickupGroup(): ?string
     {
         return $this->namedPickupGroup;
+    }
+
+    public function setSubscribeContext(?string $subscribeContext): static
+    {
+        $this->subscribeContext = $subscribeContext;
+
+        return $this;
+    }
+
+    public function getSubscribeContext(): ?string
+    {
+        return $this->subscribeContext;
+    }
+
+    public function setHintExtension(?string $hintExtension): static
+    {
+        $this->hintExtension = $hintExtension;
+
+        return $this;
+    }
+
+    public function getHintExtension(): ?string
+    {
+        return $this->hintExtension;
     }
 
     public function setSendDiversion(?string $sendDiversion): static
