@@ -8,6 +8,7 @@ import ViewRowButton from '../CTA/ViewRowButton';
 import DeleteRowButton from '../CTA/DeleteRowButton';
 import { RouteMapItem } from 'lib/router/routeMapParser';
 import ChildEntityLinks from '../Shared/ChildEntityLinks';
+import { ChildDecorator } from 'lib/entities/DefaultEntityBehavior';
 
 interface ContentTableProps {
   childEntities: Array<RouteMapItem>,
@@ -20,6 +21,23 @@ interface ContentTableProps {
 const ContentTable = (props: ContentTableProps): JSX.Element => {
 
   const { childEntities, entityService, rows, path, ignoreColumn } = props;
+
+  const entity = entityService.getEntity();
+
+  const updateRouteMapItem: RouteMapItem = {
+    entity,
+    route: `${entity.path}/:id/update`,
+  };
+
+  const detailMapItem: RouteMapItem = {
+    entity,
+    route: `${entity.path}/:id/detailed`,
+  };
+
+  const deleteMapItem: RouteMapItem = {
+    entity,
+    route: `${entity.path}/:id`,
+  };
 
   return (
     <Table size="medium" sx={{ "tableLayout": 'fixed' }}>
@@ -35,18 +53,18 @@ const ContentTable = (props: ContentTableProps): JSX.Element => {
 
           return (
             <TableRow hover key={key}>
-              {Object.keys(columns).map((key: string) => {
+              {Object.keys(columns).map((columnKey: string) => {
 
-                if (key === ignoreColumn) {
+                if (columnKey === ignoreColumn) {
                   return null;
                 }
 
-                const column = columns[key];
+                const column = columns[columnKey];
 
                 return (
-                  <StyledTableCell key={key}>
+                  <StyledTableCell key={columnKey}>
                     <ListContentValue
-                      columnName={key}
+                      columnName={columnKey}
                       column={column}
                       row={row}
                       entityService={entityService}
@@ -55,11 +73,25 @@ const ContentTable = (props: ContentTableProps): JSX.Element => {
                 );
               })}
               <StyledActionsTableCell key="actions">
-                {acl.update && <EditRowButton row={row} path={path} />}
-                {acl.detail && !acl.update && <ViewRowButton row={row} path={path} />}
-                {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
+                {acl.update && (
+                  <ChildDecorator key={`${key}-edit`} routeMapItem={updateRouteMapItem} row={row}>
+                    <EditRowButton row={row} path={path} />
+                  </ChildDecorator>
+                )}
+                {acl.detail && !acl.update && (
+                  <ChildDecorator key={`${key}-view`} routeMapItem={detailMapItem} row={row}>
+                    <ViewRowButton row={row} path={path} />
+                  </ChildDecorator>
+                )
+                }
+                {acl.delete && (
+                  <ChildDecorator key={`${key}-delete`} routeMapItem={deleteMapItem} row={row}>
+                    <DeleteRowButton row={row} entityService={entityService} />
+                  </ChildDecorator>
+                )
+                }
                 &nbsp;
-                <ChildEntityLinks childEntities={childEntities} row={row} />
+                <ChildEntityLinks childEntities={childEntities} entityService={entityService} row={row} />
               </StyledActionsTableCell>
             </TableRow>
           );

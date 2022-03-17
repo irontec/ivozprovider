@@ -5,6 +5,7 @@ import EntityService, { EntityValues, VisualToggleStates } from "lib/services/en
 import React from "react";
 import { match } from "react-router-dom";
 import { EntityFormProps } from "./DefaultEntityBehavior";
+import { RouteMapItem } from '../router/routeMapParser';
 
 export type ListDecoratorPropsType = {
     field: string,
@@ -12,6 +13,11 @@ export type ListDecoratorPropsType = {
     property: PropertySpec
 };
 export type ListDecoratorType = (props: ListDecoratorPropsType) => any;
+
+export type ChildDecoratorType = React.FunctionComponent<{
+    routeMapItem: RouteMapItem,
+    row: Record<string, any>
+}>;
 
 export interface foreignKeyResolverProps {
     data: any,
@@ -77,6 +83,7 @@ export default interface EntityInterface {
     Form: React.FunctionComponent<EntityFormProps>,
     View: ViewType,
     ListDecorator: ListDecoratorType,
+    ChildDecorator: ChildDecoratorType,
     acl: EntityAclType,
     iden: string,
     title: string | JSX.Element,
