@@ -188,6 +188,8 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getCgrSubject(): string;
 
+    public function getSubcribeContext(): string;
+
     public function isVpbx(): bool;
 
     public function isRetail(): bool;

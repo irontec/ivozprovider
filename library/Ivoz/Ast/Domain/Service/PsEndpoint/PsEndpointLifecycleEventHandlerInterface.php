@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface PsEndpointLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(PsEndpointInterface $psEndpoint);
+    public function execute(PsEndpointInterface $psEndpoint): void;
 }

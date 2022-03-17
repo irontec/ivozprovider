@@ -451,6 +451,11 @@ class Company extends CompanyAbstract implements CompanyInterface
         return sprintf("c%d", (int) $this->getId());
     }
 
+    public function getSubcribeContext(): string
+    {
+        return sprintf("company%d", (int) $this->getId());
+    }
+
     public function isVpbx(): bool
     {
         return $this->getType() === self::TYPE_VPBX;

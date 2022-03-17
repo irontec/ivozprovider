@@ -6,6 +6,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleEventHandlerInterface;
 
@@ -47,6 +48,9 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             $endpointDto = $this->entityTools->entityToDto($endpoint);
         }
 
+        /** @var Company $company */
+        $company = $terminal->getCompany();
+
         // Update/Insert endpoint data
         $endpointDto
             ->setTerminalId($terminal->getId())
@@ -55,6 +59,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             ->setAors($terminal->getSorcery())
             ->setDisallow($terminal->getDisallow())
             ->setAllow($terminal->getAllow())
+            ->setSubscribeContext($company->getSubcribeContext())
             ->setDirectmediaMethod($terminal->getDirectmediaMethod())
             ->setT38Udptl($terminal->getT38Passthrough())
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr');
