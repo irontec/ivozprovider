@@ -25,3 +25,7 @@ kam-rpc-request:
 kam-rpc-delayed:
   path: /kam-rpc-delayed
   controller: Worker\KamRpc::delayed
+
+asterisk:
+  path: /asterisk
+  controller: Worker\Asterisk::reload
