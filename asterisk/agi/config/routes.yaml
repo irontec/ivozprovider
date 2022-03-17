@@ -77,3 +77,7 @@ Dialplan/FaxReceiveStatus:
 Voicemail/Sender:
   path: '/Voicemail/Sender'
   controller: 'kernel:handleRequestAction'
+
+Hints/Generator:
+  path: '/Hints/Generator'
+  controller: 'kernel:handleRequestAction'
