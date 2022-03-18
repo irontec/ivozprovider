@@ -86,6 +86,32 @@ const properties: ExternalCallFilterProperties = {
         label: _('Voicemail'),
         required: true,
     },
+    'outOfScheduleEnabled': {
+        label: _('Out of schedule enabled'),
+        enum: {
+            '0': _('No'),
+            '1': _('Yes'),
+        },
+        default: '1',
+        visualToggle: {
+            '0': {
+                show: [],
+                hide: [
+                    'scheduleIds',
+                    'outOfScheduleTargetType',
+                    'outOfScheduleLocution',
+                ],
+            },
+            '1': {
+                show: [
+                    'scheduleIds',
+                    'outOfScheduleTargetType',
+                    'outOfScheduleLocution',
+                ],
+                hide: [],
+            }
+        }
+    },
     'outOfScheduleTargetType': {
         label: _('Out of schedule target type'),
         enum: {
