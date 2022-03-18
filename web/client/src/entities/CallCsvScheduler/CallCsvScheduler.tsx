@@ -1,12 +1,12 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior, { MarshallerValues } from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior, { MarshallerValues } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import LastExecution from './Field/LastExecution';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
-import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 
 const properties: CallCsvSchedulerProperties = {
     'name': {

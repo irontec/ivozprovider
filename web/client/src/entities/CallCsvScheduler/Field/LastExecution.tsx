@@ -1,8 +1,8 @@
 import { Tooltip } from '@mui/material';
-import _ from 'lib/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { StyledLastExecutionErrorMsg, StyledLastExecutionSuccessMsg } from './LastExecution.styles';
 import { CallCsvSchedulerPropertyList } from '../CallCsvSchedulerProperties';
-import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from 'lib/services/form/Field/CustomComponentWrapper';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 type CallCsvSchedulerValues = CallCsvSchedulerPropertyList<string | number>;
 type LastExecutionType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<CallCsvSchedulerValues>>;

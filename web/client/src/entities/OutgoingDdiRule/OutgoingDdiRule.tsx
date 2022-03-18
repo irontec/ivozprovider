@@ -1,10 +1,10 @@
 import QuickreplyIcon from '@mui/icons-material/Quickreply';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter'
-import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 

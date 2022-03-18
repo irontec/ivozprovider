@@ -1,10 +1,10 @@
 import { ConditionalRoutesConditionPropertyList } from './ConditionalRoutesConditionProperties';
-import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import RouteLockSelectOptions from 'entities/RouteLock/SelectOptions';
-import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
 import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';

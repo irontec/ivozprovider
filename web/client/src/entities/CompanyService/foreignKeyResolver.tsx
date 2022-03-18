@@ -1,7 +1,7 @@
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { CompanyServicePropertiesList } from './CompanyServiceProperties';
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken }

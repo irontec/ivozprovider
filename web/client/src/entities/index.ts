@@ -54,7 +54,7 @@ import TransformationRuleSet from './TransformationRuleSet/TransformationRuleSet
 import User from './User/User';
 import UsersCdr from './UsersCdr/UsersCdr';
 import Voicemail from './Voicemail/Voicemail';
-import { EntityList } from 'lib/router/parseRoutes';
+import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
 
 const entities: EntityList = {
   BillableCall,

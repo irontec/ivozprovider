@@ -1,9 +1,9 @@
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { TerminalPropertiesList } from './TerminalProperties';
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
+const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken }
 ): Promise<TerminalPropertiesList> {
 

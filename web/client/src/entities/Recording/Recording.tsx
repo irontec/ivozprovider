@@ -1,7 +1,7 @@
 import SettingsVoiceIcon from '@mui/icons-material/SettingsVoice';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Type from './Field/Type';
 import { RecordingProperties } from './RecordingProperties';
 import View from './View';

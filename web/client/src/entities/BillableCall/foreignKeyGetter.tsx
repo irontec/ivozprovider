@@ -1,8 +1,8 @@
 import InvoiceSelectOptions from 'entities/Invoice/SelectOptions';
 import { BillableCallPropertyList } from './BillableCallProperties';
-import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({cancelToken}): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken }): Promise<any> => {
 
     const response: BillableCallPropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];

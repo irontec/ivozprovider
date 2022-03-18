@@ -1,4 +1,4 @@
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import entities from '../index';
 import { OutgoingDdiRulesPatternPropertiesList } from './OutgoingDdiRulesPatternProperties';
 
@@ -8,7 +8,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 
     const { MatchList, Ddi } = entities;
     const iterable = Array.isArray(data)
-        ?  data
+        ? data
         : [data];
 
     for (const row of iterable) {

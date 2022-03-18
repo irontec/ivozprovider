@@ -1,8 +1,8 @@
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { QueueMemberPropertiesList } from './QueueMemberProperties';
 import entities from '../index';
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
+const foreignKeyResolver: foreignKeyResolverType = async function (
     { data }
 ): Promise<QueueMemberPropertiesList> {
 

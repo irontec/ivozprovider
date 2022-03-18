@@ -1,7 +1,7 @@
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { IvrEntryPropertyList } from '../IvrEntryProperties';
 
 type HuntGroupsRelUserValues = IvrEntryPropertyList<

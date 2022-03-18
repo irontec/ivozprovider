@@ -1,6 +1,6 @@
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import EntityInterface from 'lib/entities/EntityInterface';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 
 const ConditionalRoutesCondition: EntityInterface = {
     ...defaultEntityBehavior,

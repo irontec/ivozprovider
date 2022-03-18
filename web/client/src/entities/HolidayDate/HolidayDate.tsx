@@ -1,7 +1,7 @@
 import CelebrationIcon from '@mui/icons-material/Celebration';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { HolidayDateProperties } from './HolidayDateProperties';
 import Form from './Form';
 import Target from './Field/Target';

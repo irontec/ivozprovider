@@ -1,14 +1,14 @@
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { HuntGroupsRelUserPropertiesList } from './HuntGroupsRelUserProperties';
 import entities from '../index';
 
-const foreignKeyResolver: foreignKeyResolverType = async function(
+const foreignKeyResolver: foreignKeyResolverType = async function (
     { data }
 ): Promise<HuntGroupsRelUserPropertiesList> {
 
     const { HuntGroup } = entities;
     const iterable = Array.isArray(data)
-        ?  data
+        ? data
         : [data];
 
     for (const idx in iterable) {

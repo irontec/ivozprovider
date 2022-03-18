@@ -1,11 +1,13 @@
 import clientSession, { ClientSessionStore } from './clientSession';
 import { createStore, createTypedHooks } from 'easy-peasy';
+import { storeModel as ivozStoreModel, IvozStore } from '@irontec/ivoz-ui/store';
 
-export interface AppStore {
+export interface AppStore extends IvozStore {
   clientSession: ClientSessionStore
 }
 
 const storeModel: AppStore = {
+  ...ivozStoreModel,
   clientSession
 }
 

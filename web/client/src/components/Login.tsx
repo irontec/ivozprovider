@@ -3,13 +3,13 @@ import { useFormik } from 'formik';
 import { Container } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useStoreActions } from 'store';
-import ApiClient from 'lib/services/api/ApiClient';
-import Title from 'lib/components/Title';
-import ErrorMessage from 'lib/components/shared/ErrorMessage';
-import { useFormikType } from 'lib/services/form/types';
-import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from '../lib/components/Login.styles';
-import { EntityValidator } from 'lib/entities/EntityInterface';
+import { useStoreActions } from '@irontec/ivoz-ui/store';
+import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
+import Title from '@irontec/ivoz-ui/components/Title';
+import ErrorMessage from '@irontec/ivoz-ui/components/shared/ErrorMessage';
+import { useFormikType } from '@irontec/ivoz-ui/services/form/types';
+import { StyledLoginContainer, StyledAvatar, StyledForm, StyledSubmitButton } from './Login.styles';
+import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 interface LoginProps {
   validator?: EntityValidator

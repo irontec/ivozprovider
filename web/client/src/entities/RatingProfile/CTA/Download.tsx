@@ -1,5 +1,5 @@
 import DownloadingIcon from '@mui/icons-material/Downloading';
-import { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps, CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
+import { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps, CustomFunctionComponentContext } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { RatingProfilePropertyList } from '../RatingProfileProperties';
 
 type RatingProfileValues = RatingProfilePropertyList<string | number>;

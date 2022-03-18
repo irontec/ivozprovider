@@ -2,7 +2,7 @@ import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps,
     CustomFunctionComponentContext
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { HuntGroupsRelUserPropertyList } from '../HuntGroupsRelUserProperties';
 import User from '../../User/User';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';

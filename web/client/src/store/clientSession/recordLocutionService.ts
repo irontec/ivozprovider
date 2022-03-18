@@ -1,6 +1,6 @@
 import { action, Action, Computed, computed, Thunk, thunk } from 'easy-peasy';
 import { CancelTokenSource } from 'axios';
-import { AppStore } from 'store';
+import { AppStore } from '../index';
 
 type NullableRecordType = Record<string, string | number> | null;
 

@@ -1,11 +1,11 @@
 import { UserPropertyList } from './UserProperties';
-import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
 import { UnassignedExtensionSelectOptions } from 'entities/Extension/SelectOptions';
-import { EntityValues } from 'lib/services/entity/EntityService';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { BossAssistantSelectOptions } from './SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService, row }): Promise<any> => {
@@ -17,7 +17,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         entityService,
         cancelToken,
         response,
-        skip:[
+        skip: [
             'terminal',
             'extension',
             'pickupGroupIds',

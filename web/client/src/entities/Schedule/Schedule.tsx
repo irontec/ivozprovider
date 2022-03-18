@@ -1,10 +1,10 @@
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { ScheduleProperties } from './ScheduleProperties';
-import { EntityValues } from 'lib/services/entity/EntityService';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import selectOptions from './SelectOptions';
 
 const properties: ScheduleProperties = {

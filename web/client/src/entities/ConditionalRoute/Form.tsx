@@ -1,7 +1,7 @@
-import useFkChoices from 'lib/entities/data/useFkChoices';
-import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
-import { PropertyList, ScalarProperty } from 'lib/services/api/ParsedApiSpecInterface';
-import _ from 'lib/services/translations/translate';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { PropertyList, ScalarProperty } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
 import { foreignKeyGetter } from './foreignKeyGetter';
 

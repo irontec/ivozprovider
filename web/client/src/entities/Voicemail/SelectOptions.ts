@@ -1,4 +1,4 @@
-import { SelectOptionsType } from 'lib/entities/EntityInterface';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import Voicemail from './Voicemail';
 import store from "../../store";
 

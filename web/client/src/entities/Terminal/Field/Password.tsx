@@ -1,7 +1,7 @@
 import { InputAdornment, Tooltip } from '@mui/material';
-import { isPropertyScalar } from 'lib/services/api/ParsedApiSpecInterface';
-import { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps, CustomFunctionComponentContext } from 'lib/services/form/Field/CustomComponentWrapper';
-import { StyledTextField } from 'lib/services/form/FormFieldFactory.styles';
+import { isPropertyScalar } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps, CustomFunctionComponentContext } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { StyledTextField } from '@irontec/ivoz-ui/services/form/FormFieldFactory.styles';
 import { TerminalPropertyList } from '../TerminalProperties';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { styled } from '@mui/styles';

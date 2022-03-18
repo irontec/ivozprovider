@@ -1,5 +1,5 @@
-import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
-import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
+import { PropertySpec } from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
+import { EntityValue, EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
 
 export type CallForwardSettingPropertyList<T> = {
     'user'?: T,
@@ -21,4 +21,4 @@ export type CallForwardSettingPropertyList<T> = {
 };
 
 export type CallForwardSettingProperties = CallForwardSettingPropertyList<Partial<PropertySpec>>;
-export type CallForwardSettingPropertiesList = Array<CallForwardSettingPropertyList<EntityValue|EntityValues>>;
+export type CallForwardSettingPropertiesList = Array<CallForwardSettingPropertyList<EntityValue | EntityValues>>;

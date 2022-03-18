@@ -1,5 +1,5 @@
-import { SelectOptionsType } from 'lib/entities/EntityInterface';
-import store from 'store';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from '@irontec/ivoz-ui/store';
 import User from '../User';
 
 type CustomPropsType = {
@@ -7,7 +7,7 @@ type CustomPropsType = {
 }
 
 const BossAssistantSelectOptions: SelectOptionsType<CustomPropsType> = (
-    {callback, cancelToken},
+    { callback, cancelToken },
     customProps
 ): Promise<unknown> => {
 

@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
 
-import { Login } from 'lib/components';
-import parseRoutes, { RouteSpec } from 'lib/router/parseRoutes';
+import Login from 'components/Login';
+import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
 import entityMap from "./EntityMap";
-import ParsedApiSpecInterface from "lib/services/api/ParsedApiSpecInterface";
-import RouteContent from "../lib/router/RouteContent";
+import ParsedApiSpecInterface from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
+import RouteContent from "@irontec/ivoz-ui/router/RouteContent";
 import AppRouteContentWrapper from "./AppRouteContentWrapper";
 import Dashboard from "components/Dashboard";
 

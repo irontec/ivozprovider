@@ -1,7 +1,7 @@
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import EntityInterface, { OrderDirection } from 'lib/entities/EntityInterface';
-import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import _ from 'lib/services/translations/translate';
+import EntityInterface, { OrderDirection } from '@irontec/ivoz-ui/entities/EntityInterface';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { BillableCallProperties } from './BillableCallProperties';
