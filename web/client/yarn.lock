@@ -1306,10 +1306,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@irontec/ivoz-ui@^0.2.2":
-  version "0.2.27"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.2.27.tgz#9b386f477b5cbfd732b9e543c8150549b4777b25"
-  integrity sha512-AJeligoSKTV12y42R9V0rMLZ9V4XgC0Qphtvp2HgpYd1upQgIRnUUNuG/izK7mgh5k388g/nEq6XNQVAJxsGbQ==
+"@irontec/ivoz-ui@^0.3.0":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.3.4.tgz#ce28ee7d7850e9cb2f65cb271520cb2f17f93dfe"
+  integrity sha512-wm0f06wkD9TIuqgebz586OVGEf6xvQJu+A6szTx2FV57gV/5SL5eEw7/EGWgk0P565IFgnDGnP6pMf/zyGI8uQ==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     "@emotion/react" "^11.4.1"
