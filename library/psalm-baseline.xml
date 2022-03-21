@@ -142,6 +142,16 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Ast/Domain/Service/PsEndpoint/PsEndpointLifecycleEventHandlerInterface.php">
+    <MissingReturnType occurrences="1">
+      <code>execute</code>
+    </MissingReturnType>
+  </file>
+  <file src="Ivoz/Ast/Domain/Service/PsEndpoint/PsEndpointLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Ast/Domain/Service/PsEndpoint/UpdateByExtension.php">
     <ParamNameMismatch occurrences="1">
       <code>$extension</code>
@@ -1274,20 +1284,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherAbstract.php">
-    <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherTrait.php">
-    <MixedArgument occurrences="1">
-      <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddress.php">
     <InvalidScalarArgument occurrences="1">
       <code>$mask</code>
@@ -1418,62 +1414,6 @@
     </MissingParamType>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrTrait.php">
-    <MixedArgument occurrences="1">
-      <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityAbstract.php">
-    <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityTrait.php">
-    <MixedArgument occurrences="1">
-      <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersPua/UsersPuaAbstract.php">
-    <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersPua/UsersPuaTrait.php">
-    <MixedArgument occurrences="1">
-      <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherAbstract.php">
-    <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherTrait.php">
-    <MixedArgument occurrences="1">
-      <code>func_get_args()</code>
-    </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapAbstract.php">
-    <UnsafeInstantiation occurrences="1"/>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php">
-    <MissingParamType occurrences="2">
-      <code>$id</code>
-      <code>$id</code>
-    </MissingParamType>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
