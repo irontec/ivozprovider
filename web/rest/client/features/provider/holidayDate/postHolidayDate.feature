@@ -34,7 +34,7 @@ Feature: Create holiday dates
           "calendar": 1,
           "locution": 1,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """
@@ -77,7 +77,7 @@ Feature: Create holiday dates
               }
           },
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """

@@ -14,7 +14,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
-use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
@@ -76,21 +76,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $rejectCallMethod = 'rfc';
-
-    /**
-     * @var bool|null
-     */
-    private $voicemailEnabled = true;
-
-    /**
-     * @var bool|null
-     */
-    private $voicemailSendMail = false;
-
-    /**
-     * @var bool|null
-     */
-    private $voicemailAttachSound = true;
 
     /**
      * @var bool|null
@@ -163,9 +148,9 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdiRule = null;
 
     /**
-     * @var LocutionDto | null
+     * @var VoicemailDto | null
      */
-    private $voicemailLocution = null;
+    private $voicemail = null;
 
     /**
      * @var PickUpRelUserDto[] | null
@@ -207,9 +192,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'maxCalls' => 'maxCalls',
             'externalIpCalls' => 'externalIpCalls',
             'rejectCallMethod' => 'rejectCallMethod',
-            'voicemailEnabled' => 'voicemailEnabled',
-            'voicemailSendMail' => 'voicemailSendMail',
-            'voicemailAttachSound' => 'voicemailAttachSound',
             'multiContact' => 'multiContact',
             'gsQRCode' => 'gsQRCode',
             'id' => 'id',
@@ -224,7 +206,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'timezoneId' => 'timezone',
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
-            'voicemailLocutionId' => 'voicemailLocution'
+            'voicemailId' => 'voicemail'
         ];
     }
 
@@ -244,9 +226,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'maxCalls' => $this->getMaxCalls(),
             'externalIpCalls' => $this->getExternalIpCalls(),
             'rejectCallMethod' => $this->getRejectCallMethod(),
-            'voicemailEnabled' => $this->getVoicemailEnabled(),
-            'voicemailSendMail' => $this->getVoicemailSendMail(),
-            'voicemailAttachSound' => $this->getVoicemailAttachSound(),
             'multiContact' => $this->getMultiContact(),
             'gsQRCode' => $this->getGsQRCode(),
             'id' => $this->getId(),
@@ -261,7 +240,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'timezone' => $this->getTimezone(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
-            'voicemailLocution' => $this->getVoicemailLocution(),
+            'voicemail' => $this->getVoicemail(),
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
             'callForwardSettings' => $this->getCallForwardSettings()
@@ -399,42 +378,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getRejectCallMethod(): ?string
     {
         return $this->rejectCallMethod;
-    }
-
-    public function setVoicemailEnabled(bool $voicemailEnabled): static
-    {
-        $this->voicemailEnabled = $voicemailEnabled;
-
-        return $this;
-    }
-
-    public function getVoicemailEnabled(): ?bool
-    {
-        return $this->voicemailEnabled;
-    }
-
-    public function setVoicemailSendMail(bool $voicemailSendMail): static
-    {
-        $this->voicemailSendMail = $voicemailSendMail;
-
-        return $this;
-    }
-
-    public function getVoicemailSendMail(): ?bool
-    {
-        return $this->voicemailSendMail;
-    }
-
-    public function setVoicemailAttachSound(bool $voicemailAttachSound): static
-    {
-        $this->voicemailAttachSound = $voicemailAttachSound;
-
-        return $this;
-    }
-
-    public function getVoicemailAttachSound(): ?bool
-    {
-        return $this->voicemailAttachSound;
     }
 
     public function setMultiContact(bool $multiContact): static
@@ -803,30 +746,30 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setVoicemailLocution(?LocutionDto $voicemailLocution): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voicemailLocution = $voicemailLocution;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoicemailLocution(): ?LocutionDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voicemailLocution;
+        return $this->voicemail;
     }
 
-    public function setVoicemailLocutionId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new LocutionDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoicemailLocution($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoicemailLocutionId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoicemailLocution()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

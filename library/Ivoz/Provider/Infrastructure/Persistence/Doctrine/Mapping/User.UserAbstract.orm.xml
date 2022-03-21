@@ -63,24 +63,6 @@
         <option name="default">rfc</option>
       </options>
     </field>
-    <field name="voicemailEnabled" type="boolean" column="voicemailEnabled" nullable="false">
-      <options>
-        <option name="default">1</option>
-        <option name="unsigned">1</option>
-      </options>
-    </field>
-    <field name="voicemailSendMail" type="boolean" column="voicemailSendMail" nullable="false">
-      <options>
-        <option name="default">0</option>
-        <option name="unsigned">1</option>
-      </options>
-    </field>
-    <field name="voicemailAttachSound" type="boolean" column="voicemailAttachSound" nullable="false">
-      <options>
-        <option name="default">1</option>
-        <option name="unsigned">1</option>
-      </options>
-    </field>
     <field name="multiContact" type="boolean" column="multiContact" nullable="false">
       <options>
         <option name="default">1</option>
@@ -146,11 +128,6 @@
     <many-to-one field="outgoingDdiRule" target-entity="Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface" fetch="LAZY">
       <join-columns>
         <join-column name="outgoingDdiRuleId" referenced-column-name="id" on-delete="SET NULL"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="voicemailLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="voicemailLocutionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

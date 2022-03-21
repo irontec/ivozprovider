@@ -19,9 +19,26 @@ interface ContentCardProps {
 const ContentCard = (props: ContentCardProps): JSX.Element => {
 
   const { childEntities, entityService, rows, path, ignoreColumn } = props;
+  const entity = entityService.getEntity();
+  const ChildDecorator = entity.ChildDecorator;
 
   const columns = entityService.getCollectionColumns();
   const acl = entityService.getAcls();
+
+  const updateRouteMapItem: RouteMapItem = {
+    entity,
+    route: `${entity.path}/:id/update`,
+  };
+
+  const detailMapItem: RouteMapItem = {
+    entity,
+    route: `${entity.path}/:id/detailed`,
+  };
+
+  const deleteMapItem: RouteMapItem = {
+    entity,
+    route: `${entity.path}/:id`,
+  };
 
   return (
     <>
@@ -52,12 +69,26 @@ const ContentCard = (props: ContentCardProps): JSX.Element => {
             </CardContent>
             <StyledCardActions>
               <StyledCardContainer>
-                {acl.detail && !acl.update && <ViewRowButton row={row} path={path} />}
-                {acl.update && <EditRowButton row={row} path={path} />}
-                {acl.delete && <DeleteRowButton row={row} entityService={entityService} />}
+                {acl.update && (
+                  <ChildDecorator routeMapItem={updateRouteMapItem} row={row}>
+                    <EditRowButton row={row} path={path} />
+                  </ChildDecorator>
+                )}
+                {acl.detail && !acl.update && (
+                  <ChildDecorator routeMapItem={detailMapItem} row={row}>
+                    <ViewRowButton row={row} path={path} />
+                  </ChildDecorator>
+                )
+                }
+                {acl.delete && (
+                  <ChildDecorator routeMapItem={deleteMapItem} row={row}>
+                    <DeleteRowButton row={row} entityService={entityService} />
+                  </ChildDecorator>
+                )
+                }
               </StyledCardContainer>
               <StyledCardContainer>
-                <ChildEntityLinks childEntities={childEntities} row={row} />
+                <ChildEntityLinks childEntities={childEntities} entityService={entityService} row={row} />
               </StyledCardContainer>
             </StyledCardActions>
           </StyledCard>

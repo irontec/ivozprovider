@@ -18,7 +18,7 @@ Feature: Create calendar periods
           "calendar": 1,
           "locution": null,
           "extension": 1,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """
@@ -36,7 +36,7 @@ Feature: Create calendar periods
           "calendar": 1,
           "locution": null,
           "extension": 1,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """
@@ -75,7 +75,7 @@ Feature: Create calendar periods
               "conditionalRoute": null,
               "numberCountry": null
           },
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """

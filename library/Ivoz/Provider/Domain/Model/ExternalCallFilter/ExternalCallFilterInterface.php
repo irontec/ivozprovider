@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface;
 use Doctrine\Common\Collections\Collection;
@@ -160,9 +160,9 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function getOutOfScheduleExtension(): ?ExtensionInterface;
 
-    public function getHolidayVoiceMailUser(): ?UserInterface;
+    public function getHolidayVoicemail(): ?VoicemailInterface;
 
-    public function getOutOfScheduleVoiceMailUser(): ?UserInterface;
+    public function getOutOfScheduleVoicemail(): ?VoicemailInterface;
 
     public function getHolidayNumberCountry(): ?CountryInterface;
 

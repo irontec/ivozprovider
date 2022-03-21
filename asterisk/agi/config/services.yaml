@@ -220,6 +220,6 @@ services:
         lazy: true
         arguments: ~
 
-    Agi\Action\VoiceMailAction:
+    Agi\Action\VoicemailAction:
         lazy: true
         arguments: ~

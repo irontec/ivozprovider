@@ -28,7 +28,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
                 remapFk(data[idx], 'holidayExtension', 'holidayTarget');
                 break;
             case 'voicemail':
-                remapFk(data[idx], 'holidayVoiceMailUser', 'holidayTarget');
+                remapFk(data[idx], 'holidayVoicemail', 'holidayTarget');
                 break;
             case 'number':
                 data[idx].holidayTarget =
@@ -50,7 +50,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
                 remapFk(data[idx], 'outOfScheduleExtension', 'outOfScheduleTarget');
                 break;
             case 'voicemail':
-                remapFk(data[idx], 'outOfScheduleVoiceMailUser', 'outOfScheduleTarget');
+                remapFk(data[idx], 'outOfScheduleVoicemail', 'outOfScheduleTarget');
                 break;
             case 'number':
                 data[idx].outOfScheduleTarget =
@@ -65,12 +65,12 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
         }
 
         delete data[idx].holidayExtension;
-        delete data[idx].holidayVoiceMailUser;
+        delete data[idx].holidayVoicemail;
         delete data[idx].holidayNumberCountry;
         delete data[idx].holidayNumberValue;
 
         delete data[idx].outOfScheduleExtension;
-        delete data[idx].outOfScheduleVoiceMailUser;
+        delete data[idx].outOfScheduleVoicemail;
         delete data[idx].outOfScheduleNumberCountry;
         delete data[idx].outOfScheduleNumberValue;
     }

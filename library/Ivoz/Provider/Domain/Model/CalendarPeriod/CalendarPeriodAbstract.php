@@ -12,12 +12,12 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -66,9 +66,9 @@ abstract class CalendarPeriodAbstract
     protected $extension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $voiceMailUser = null;
+    protected $voicemail = null;
 
     /**
      * @var ?CountryInterface
@@ -162,7 +162,7 @@ abstract class CalendarPeriodAbstract
             ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
@@ -195,7 +195,7 @@ abstract class CalendarPeriodAbstract
             ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         return $this;
@@ -214,7 +214,7 @@ abstract class CalendarPeriodAbstract
             ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth))
             ->setLocution(Locution::entityToDto(self::getLocution(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
@@ -228,7 +228,7 @@ abstract class CalendarPeriodAbstract
             'calendarId' => self::getCalendar()->getId(),
             'locutionId' => self::getLocution()?->getId(),
             'extensionId' => self::getExtension()?->getId(),
-            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId(),
             'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
@@ -334,16 +334,16 @@ abstract class CalendarPeriodAbstract
         return $this->extension;
     }
 
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserInterface
+    public function getVoicemail(): ?VoicemailInterface
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
     protected function setNumberCountry(?CountryInterface $numberCountry = null): static

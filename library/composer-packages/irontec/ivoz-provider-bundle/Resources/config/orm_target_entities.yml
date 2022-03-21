@@ -287,6 +287,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
       Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface:
         Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
+      Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface:
+        Ivoz\Provider\Domain\Model\Voicemail\Voicemail
       Ivoz\Cgr\Domain\Model\TpAccount\TpAccountInterface:
         Ivoz\Cgr\Domain\Model\TpAccount\TpAccount
       Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface:

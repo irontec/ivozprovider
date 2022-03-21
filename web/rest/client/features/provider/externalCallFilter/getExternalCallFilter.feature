@@ -25,8 +25,8 @@ Feature: Retrieve external call filters
               "outOfScheduleLocution": null,
               "holidayExtension": null,
               "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
+              "holidayVoicemail": null,
+              "outOfScheduleVoicemail": null,
               "holidayNumberCountry": null,
               "outOfScheduleNumberCountry": null
           }
@@ -54,8 +54,8 @@ Feature: Retrieve external call filters
           "outOfScheduleLocution": null,
           "holidayExtension": null,
           "outOfScheduleExtension": null,
-          "holidayVoiceMailUser": null,
-          "outOfScheduleVoiceMailUser": null,
+          "holidayVoicemail": null,
+          "outOfScheduleVoicemail": null,
           "holidayNumberCountry": null,
           "outOfScheduleNumberCountry": null,
           "scheduleIds": [

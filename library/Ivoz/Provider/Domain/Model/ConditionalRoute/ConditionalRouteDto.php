@@ -20,7 +20,7 @@ class ConditionalRouteDto extends ConditionalRouteDtoAbstract
                 'friendvalue' => 'friendvalue',
                 'ivrId' => 'ivr',
                 'huntGroupId' => 'huntGroup',
-                'voicemailUserId' => 'voicemailUser',
+                'voicemailId' => 'voicemail',
                 'userId' => 'user',
                 'queueId' => 'queue',
                 'conferenceRoomId' => 'conferenceRoom',

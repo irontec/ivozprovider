@@ -23,7 +23,7 @@ Feature: Retrieve calendar periods
               "calendar": 1,
               "locution": null,
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": 1,
               "scheduleIds": [
                   1
@@ -53,7 +53,7 @@ Feature: Retrieve calendar periods
           },
           "locution": null,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": {
               "code": "AD",
               "countryCode": "+376",

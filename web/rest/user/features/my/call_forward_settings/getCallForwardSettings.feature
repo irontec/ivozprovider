@@ -24,7 +24,7 @@ Feature: Retrieve call forward settings
               "id": 1,
               "user": "~",
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": "~"
           },
           {
@@ -37,7 +37,7 @@ Feature: Retrieve call forward settings
               "id": 2,
               "user": "~",
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": "~"
           },
           {
@@ -50,7 +50,7 @@ Feature: Retrieve call forward settings
               "id": 3,
               "user": "~",
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": "~"
           },
           {
@@ -63,7 +63,7 @@ Feature: Retrieve call forward settings
               "id": 4,
               "user": "~",
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": "~"
           }
       ]

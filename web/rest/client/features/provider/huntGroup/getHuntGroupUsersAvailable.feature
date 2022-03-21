@@ -17,7 +17,6 @@ Feature: Retrieve hunt groups available users
           {
               "name": "Bob",
               "lastname": "Bobson",
-              "voicemailEnabled": true,
               "id": 2,
               "terminal": 2,
               "extension": null,

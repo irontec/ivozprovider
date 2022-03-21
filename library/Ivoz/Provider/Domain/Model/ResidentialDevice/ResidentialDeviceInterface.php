@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Doctrine\Common\Collections\Collection;
@@ -122,21 +123,6 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail();
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser();
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext();
-
     public static function createDto(string|int|null $id = null): ResidentialDeviceDto;
 
     /**
@@ -210,6 +196,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getLanguage(): ?LanguageInterface;
 
     public function isInitialized(): bool;
+
+    public function setVoicemail(VoicemailInterface $voicemail): static;
+
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 

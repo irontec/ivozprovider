@@ -74,7 +74,7 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
                 'ivrId' => 'ivr',
                 'userId' => 'user',
                 'huntGroupId' => 'huntGroup',
-                'voicemailUserId' => 'voicemailUser',
+                'voicemailId' => 'voicemail',
                 'friendValue' => 'friendValue',
                 'queueId' => 'queue',
                 'conferenceRoomId' => 'conferenceRoom',

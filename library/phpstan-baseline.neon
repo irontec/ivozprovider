@@ -196,12 +196,7 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
 
@@ -211,12 +206,7 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setResidentialDeviceId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php
 
@@ -311,24 +301,9 @@ parameters:
 			path: Ivoz/Ast/Domain/Service/Queue/UpdateByIvozQueue.php
 
 		-
-			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\Voicemail\\\\UpdateByIvozVoicemail\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByResidentialDevice.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\Voicemail\\\\UpdateByResidentialDevice\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByResidentialDevice.php
-
-		-
-			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByUser.php
-
-		-
-			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\Voicemail\\\\UpdateByUser\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByUser.php
+			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByIvozVoicemail.php
 
 		-
 			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:_post\\(\\) has parameter \\$postdata with no value type specified in iterable type array\\.$#"
@@ -3936,7 +3911,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
 
@@ -3971,7 +3946,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:setVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDtoAbstract.php
 
@@ -4481,11 +4456,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php
 
 		-
-			message: "#^Cannot call method getFullName\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSetting.php
@@ -4556,7 +4526,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
@@ -4606,7 +4576,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:setVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallForwardSetting\\\\CallForwardSettingDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingDtoAbstract.php
 
@@ -5171,6 +5141,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/Company.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\Company\\:\\:getVoicemails\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/Company.php
+
+		-
 			message: "#^Parameter \\#1 \\$num of function round expects float\\|int, float\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/Company.php
@@ -5376,6 +5351,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getVoicemails\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setApplicationServerId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
@@ -5521,6 +5501,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setVoicemails\\(\\) has parameter \\$voicemails with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\:\\:getCompanyServices\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyInterface.php
@@ -5582,6 +5567,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\:\\:getTerminals\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyInterface.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\:\\:getVoicemails\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyInterface.php
 
@@ -5896,7 +5886,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getVoicemailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
@@ -5956,7 +5946,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:setVoicemailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDtoAbstract.php
 
@@ -6111,7 +6101,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getVoicemailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
 
@@ -6186,7 +6176,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:setVoicemailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesCondition\\\\ConditionalRoutesConditionDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAbstract.php
 
@@ -7536,6 +7526,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
@@ -7582,6 +7577,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:setUsers\\(\\) has parameter \\$users with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php
 
@@ -7711,7 +7711,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getHolidayVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getHolidayVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
@@ -7731,7 +7731,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getOutOfScheduleVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:getOutOfScheduleVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
@@ -7781,7 +7781,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:setHolidayVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:setHolidayVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
@@ -7806,7 +7806,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:setOutOfScheduleVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDtoAbstract\\:\\:setOutOfScheduleVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDtoAbstract.php
 
@@ -8776,7 +8776,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
 
@@ -8806,7 +8806,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:setVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HolidayDate\\\\HolidayDateDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateDtoAbstract.php
 
@@ -8881,7 +8881,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getNoAnswerVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
@@ -8916,7 +8916,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:setNoAnswerVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:setNoAnswerVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
@@ -9396,7 +9396,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getErrorVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
@@ -9421,7 +9421,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getNoInputVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:getNoInputVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
@@ -9461,7 +9461,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:setErrorVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:setErrorVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
@@ -9491,7 +9491,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:setNoInputVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDtoAbstract\\:\\:setNoInputVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrDtoAbstract.php
 
@@ -9531,7 +9531,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrRepository\\:\\:findByUser\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrRepository\\:\\:findByVoicemail\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ivr/IvrRepository.php
 
@@ -9576,7 +9576,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
 
@@ -9611,7 +9611,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:setVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\IvrEntry\\\\IvrEntryDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryDtoAbstract.php
 
@@ -10926,7 +10926,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getFullVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getFullVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
@@ -10951,7 +10951,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getTimeoutVoiceMailUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getTimeoutVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
@@ -10976,7 +10976,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:setFullVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:setFullVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
@@ -11006,7 +11006,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:setTimeoutVoiceMailUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:setTimeoutVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Queue/QueueDtoAbstract.php
 
@@ -11561,6 +11561,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:setBrandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
@@ -11612,6 +11617,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:setTransformationRuleSetId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
 
@@ -12961,7 +12971,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getVoicemailLocutionId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
@@ -13041,7 +13051,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:setVoicemailLocutionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
@@ -13104,6 +13114,96 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserRepository\\:\\:getSupervisedUserIdsByAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserRepository.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\Voicemail\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/Voicemail.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\Voicemail\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/Voicemail.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getAstVoicemailId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getLocutionId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setAstVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setLocutionId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setResidentialDeviceId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailDtoAbstract\\:\\:setUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailInterface.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailRepository.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Voicemail\\\\VoicemailRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortal\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -14026,9 +14126,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Ivr/UpdateByExtension.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Ivr\\\\UpdateByUser\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Ivr\\\\UpdateByVoicemail\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Service/Ivr/UpdateByUser.php
+			path: Ivoz/Provider/Domain/Service/Ivr/UpdateByVoicemail.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Locution\\\\LocutionLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
@@ -14411,6 +14511,26 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/User/UserLifecycleEventHandlerInterface.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Voicemail\\\\UpdateByResidentialDevice\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Voicemail/UpdateByResidentialDevice.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Voicemail\\\\UpdateByUser\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Voicemail/UpdateByUser.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Voicemail\\\\VoicemailLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Voicemail/VoicemailLifecycleEventHandlerInterface.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Voicemail\\\\VoicemailLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Voicemail/VoicemailLifecycleServiceCollection.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:appendAuthHeaders\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
@@ -14656,7 +14776,7 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrDoctrineRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\IvrDoctrineRepository\\:\\:findByUser\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\IvrDoctrineRepository\\:\\:findByVoicemail\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/IvrDoctrineRepository.php
 

@@ -164,12 +164,12 @@ class ConditionalRouteTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'voicemailUser',
+                            'voicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'voicemailUser',
+                            'voicemail',
                             'isNull',
                             null
                         ]

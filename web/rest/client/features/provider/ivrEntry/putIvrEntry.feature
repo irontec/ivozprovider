@@ -17,7 +17,7 @@ Feature: Update IVR entries
           "ivr": 1,
           "welcomeLocution": 1,
           "extension": null,
-          "voiceMailUser": 1,
+          "voicemail": 1,
           "conditionalRoute": null,
           "numberCountry": 2
       }
@@ -35,7 +35,7 @@ Feature: Update IVR entries
           "ivr": 1,
           "welcomeLocution": 1,
           "extension": null,
-          "voiceMailUser": 1,
+          "voicemail": 1,
           "conditionalRoute": null,
           "numberCountry": null
       }

@@ -34,7 +34,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'noAnswerNumberCountry',
                 'noAnswerNumberValue',
                 'noAnswerExtension',
-                'noAnswerVoiceMailUser',
+                'noAnswerVoicemail',
             ]
         },
     ];

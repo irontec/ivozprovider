@@ -134,21 +134,12 @@ class CallForwardAction
         // Set as diversion number the user extension
         $this->agi->setRedirecting('from-num', $caller->getExtensionNumber());
 
-        // Set voicemail destination
-        $isResidentialCallForward = $this->cfw->getResidentialDevice() !== null;
-        if ($isResidentialCallForward) {
-            $this->routerAction
-                ->setRouteVoicemailResidential($this->cfw->getResidentialDevice(), true);
-        } else {
-            $this->routerAction
-                ->setRouteVoicemailUser($this->cfw->getVoiceMailUser(), true);
-        }
-
         // Route based on configured type
         $this->routerAction
             ->setRouteType($this->cfw->getTargetType())
             ->setRouteExtension($this->cfw->getExtension())
             ->setRouteExternal($this->cfw->getNumberValueE164())
+            ->setRouteVoicemail($this->cfw->getVoicemail(), true)
             ->route();
     }
 }

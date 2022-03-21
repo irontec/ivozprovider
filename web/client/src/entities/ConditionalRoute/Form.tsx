@@ -70,7 +70,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'routetype',
                 'ivr',
                 'huntGroup',
-                'voicemailUser',
+                'voicemail',
                 'user',
                 'numberCountry',
                 'numbervalue',

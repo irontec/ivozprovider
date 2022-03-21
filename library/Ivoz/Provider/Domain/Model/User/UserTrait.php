@@ -6,6 +6,7 @@ namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,6 +24,12 @@ trait UserTrait
      * @var ?int
      */
     protected $id = null;
+
+    /**
+     * @var VoicemailInterface
+     * mappedBy user
+     */
+    protected $voicemail;
 
     /**
      * @var Collection<array-key, PickUpRelUserInterface> & Selectable<array-key, PickUpRelUserInterface>
@@ -67,6 +74,14 @@ trait UserTrait
     ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
+        if (!is_null($dto->getVoicemail())) {
+            /** @var VoicemailInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getVoicemail()
+            );
+            $self->setVoicemail($entity);
+        }
+
         $pickUpRelUsers = $dto->getPickUpRelUsers();
         if (!is_null($pickUpRelUsers)) {
 
@@ -115,6 +130,14 @@ trait UserTrait
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         parent::updateFromDto($dto, $fkTransformer);
+        if (!is_null($dto->getVoicemail())) {
+            /** @var VoicemailInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getVoicemail()
+            );
+            $this->setVoicemail($entity);
+        }
+
         $pickUpRelUsers = $dto->getPickUpRelUsers();
         if (!is_null($pickUpRelUsers)) {
 
@@ -164,6 +187,18 @@ trait UserTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+
+    public function setVoicemail(VoicemailInterface $voicemail): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailInterface
+    {
+        return $this->voicemail;
     }
 
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface

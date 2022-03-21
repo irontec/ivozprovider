@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto;
@@ -277,6 +278,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $musicsOnHold = null;
 
     /**
+     * @var VoicemailDto[] | null
+     */
+    private $voicemails = null;
+
+    /**
      * @var RecordingDto[] | null
      */
     private $recordings = null;
@@ -414,6 +420,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'terminals' => $this->getTerminals(),
             'ratingProfiles' => $this->getRatingProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
+            'voicemails' => $this->getVoicemails(),
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
             'relCountries' => $this->getRelCountries(),
@@ -1297,6 +1304,18 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMusicsOnHold(): ?array
     {
         return $this->musicsOnHold;
+    }
+
+    public function setVoicemails(?array $voicemails): static
+    {
+        $this->voicemails = $voicemails;
+
+        return $this;
+    }
+
+    public function getVoicemails(): ?array
+    {
+        return $this->voicemails;
     }
 
     public function setRecordings(?array $recordings): static

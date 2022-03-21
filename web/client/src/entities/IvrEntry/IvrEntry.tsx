@@ -12,7 +12,7 @@ const toggleFlds = [
   'numberCountry',
   'numberValue',
   'extension',
-  'voiceMailUser',
+  'voicemail',
   'conditionalRoute',
 ];
 
@@ -53,7 +53,7 @@ const properties: IvrEntryProperties = {
                 hide: toggleFlds,
             },
             'voicemail': {
-                show: ['voiceMailUser'],
+                show: ['voicemail'],
                 hide: toggleFlds,
             },
             'conditional': {
@@ -78,7 +78,7 @@ const properties: IvrEntryProperties = {
         null: _("Unassigned"),
         default: '__null__',
     },
-    'voiceMailUser': {
+    'voicemail': {
         label: _('Voicemail'),
         required: true,
         null: _("Unassigned"),

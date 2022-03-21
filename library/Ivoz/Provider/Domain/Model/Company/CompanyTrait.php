@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface;
@@ -76,6 +77,12 @@ trait CompanyTrait
     protected $musicsOnHold;
 
     /**
+     * @var Collection<array-key, VoicemailInterface> & Selectable<array-key, VoicemailInterface>
+     * VoicemailInterface mappedBy company
+     */
+    protected $voicemails;
+
+    /**
      * @var Collection<array-key, RecordingInterface> & Selectable<array-key, RecordingInterface>
      * RecordingInterface mappedBy company
      */
@@ -122,6 +129,7 @@ trait CompanyTrait
         $this->terminals = new ArrayCollection();
         $this->ratingProfiles = new ArrayCollection();
         $this->musicsOnHold = new ArrayCollection();
+        $this->voicemails = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
         $this->relCountries = new ArrayCollection();
@@ -210,6 +218,16 @@ trait CompanyTrait
                 $musicsOnHold
             );
             $self->replaceMusicsOnHold($replacement);
+        }
+
+        $voicemails = $dto->getVoicemails();
+        if (!is_null($voicemails)) {
+
+            /** @var Collection<array-key, VoicemailInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $voicemails
+            );
+            $self->replaceVoicemails($replacement);
         }
 
         $recordings = $dto->getRecordings();
@@ -348,6 +366,16 @@ trait CompanyTrait
                 $musicsOnHold
             );
             $this->replaceMusicsOnHold($replacement);
+        }
+
+        $voicemails = $dto->getVoicemails();
+        if (!is_null($voicemails)) {
+
+            /** @var Collection<array-key, VoicemailInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $voicemails
+            );
+            $this->replaceVoicemails($replacement);
         }
 
         $recordings = $dto->getRecordings();
@@ -832,6 +860,65 @@ trait CompanyTrait
         }
 
         return $this->musicsOnHold->toArray();
+    }
+
+    public function addVoicemail(VoicemailInterface $voicemail): CompanyInterface
+    {
+        $this->voicemails->add($voicemail);
+
+        return $this;
+    }
+
+    public function removeVoicemail(VoicemailInterface $voicemail): CompanyInterface
+    {
+        $this->voicemails->removeElement($voicemail);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, VoicemailInterface> $voicemails
+     */
+    public function replaceVoicemails(Collection $voicemails): CompanyInterface
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($voicemails as $entity) {
+            /** @var string|int $index */
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+
+        foreach ($this->voicemails as $key => $entity) {
+            $identity = $entity->getId();
+            if (!$identity) {
+                $this->voicemails->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
+                $this->voicemails->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
+            } else {
+                $this->voicemails->remove($key);
+            }
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addVoicemail($entity);
+        }
+
+        return $this;
+    }
+
+    public function getVoicemails(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->voicemails->matching($criteria)->toArray();
+        }
+
+        return $this->voicemails->toArray();
     }
 
     public function addRecording(RecordingInterface $recording): CompanyInterface

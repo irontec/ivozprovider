@@ -16,7 +16,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -75,21 +75,6 @@ interface UserInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getUserTerminalInterface();
-
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail();
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser();
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext();
 
     /**
      * @return string | null
@@ -209,12 +194,6 @@ interface UserInterface extends LoggableEntityInterface
 
     public function getRejectCallMethod(): string;
 
-    public function getVoicemailEnabled(): bool;
-
-    public function getVoicemailSendMail(): bool;
-
-    public function getVoicemailAttachSound(): bool;
-
     public function getMultiContact(): bool;
 
     public function getGsQRCode(): bool;
@@ -239,9 +218,11 @@ interface UserInterface extends LoggableEntityInterface
 
     public function getTimezone(): ?TimezoneInterface;
 
-    public function getVoicemailLocution(): ?LocutionInterface;
-
     public function isInitialized(): bool;
+
+    public function setVoicemail(VoicemailInterface $voicemail): static;
+
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 

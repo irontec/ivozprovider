@@ -53,7 +53,7 @@ class CallForwardSettingDoctrineRepository extends ServiceEntityRepository imple
                 $qb->expr()->eq('self.user', $user->getId())
             )
             ->leftJoin('self.extension', 'e')
-            ->leftJoin('self.voiceMailUser', 'v')
+            ->leftJoin('self.voicemail', 'v')
             ->getQuery();
 
         return $query->getResult();

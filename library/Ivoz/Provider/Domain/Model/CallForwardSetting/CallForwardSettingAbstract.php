@@ -12,6 +12,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
@@ -19,6 +20,7 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
@@ -83,9 +85,9 @@ abstract class CallForwardSettingAbstract
     protected $extension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $voiceMailUser = null;
+    protected $voicemail = null;
 
     /**
      * @var ?CountryInterface
@@ -209,7 +211,7 @@ abstract class CallForwardSettingAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
@@ -250,7 +252,7 @@ abstract class CallForwardSettingAbstract
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
             ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()))
@@ -275,7 +277,7 @@ abstract class CallForwardSettingAbstract
             ->setUser(User::entityToDto(self::getUser(), $depth))
             ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth))
             ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth))
@@ -295,7 +297,7 @@ abstract class CallForwardSettingAbstract
             'userId' => self::getUser()?->getId(),
             'friendId' => self::getFriend()?->getId(),
             'extensionId' => self::getExtension()?->getId(),
-            'voiceMailUserId' => self::getVoiceMailUser()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId(),
             'numberCountryId' => self::getNumberCountry()?->getId(),
             'residentialDeviceId' => self::getResidentialDevice()?->getId(),
             'retailAccountId' => self::getRetailAccount()?->getId(),
@@ -453,16 +455,16 @@ abstract class CallForwardSettingAbstract
         return $this->extension;
     }
 
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserInterface
+    public function getVoicemail(): ?VoicemailInterface
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
     protected function setNumberCountry(?CountryInterface $numberCountry = null): static

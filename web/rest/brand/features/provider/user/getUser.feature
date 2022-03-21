@@ -17,7 +17,6 @@ Feature: Retrieve users
           {
               "name": "Alice",
               "lastname": "Allison",
-              "voicemailEnabled": true,
               "id": 1,
               "company": 1,
               "terminal": 1,
@@ -26,7 +25,6 @@ Feature: Retrieve users
           {
               "name": "Bob",
               "lastname": "Bobson",
-              "voicemailEnabled": true,
               "id": 2,
               "company": 1,
               "terminal": 2,

@@ -14,7 +14,7 @@ export type CallForwardSettingPropertyList<T> = {
     'numberCountry'?: T,
     'numberValue'?: T,
     'extension'?: T,
-    'voiceMailUser'?: T,
+    'voicemail'?: T,
     'noAnswerTimeout'?: T,
     'targetTypeValue'?: T,
     'enabled'?: T,

@@ -15,18 +15,32 @@ Feature: Retrieve company voicemails
     """
       [
           {
-              "name": "Alice",
-              "lastname": "Allison",
-              "voicemailEnabled": true,
+              "enabled": true,
+              "name": "Voicemail For User1",
+              "email": "alice@democompany.com",
               "id": 1,
-              "extension": null
+              "user": 1
           },
           {
-              "name": "Bob",
-              "lastname": "Bobson",
-              "voicemailEnabled": true,
+              "enabled": true,
+              "name": "Voicemail For Residential 1",
+              "email": "",
               "id": 2,
-              "extension": null
+              "user": null
+          },
+          {
+              "enabled": true,
+              "name": "Voicemail Generic 1",
+              "email": "generic@voicemail.com",
+              "id": 3,
+              "user": null
+          },
+          {
+              "enabled": true,
+              "name": "Voicemail For User2",
+              "email": "bob@voicemail.com",
+              "id": 4,
+              "user": 2
           }
       ]
     """

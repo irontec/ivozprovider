@@ -13,9 +13,9 @@ use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryDto;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\User\UserDto;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -68,10 +68,10 @@ class IvrEntrySpec extends ObjectBehavior
         );
         $extensionDto = new ExtensionDto();
 
-        $voiceMailUser = $this->getInstance(
-            User::class
+        $voicemail = $this->getInstance(
+            Voicemail::class
         );
-        $voiceMailUserDto = new UserDto();
+        $voicemailDto = new VoicemailDto();
 
         $conditionalRoute = $this->getInstance(
             ConditionalRoute::class
@@ -83,14 +83,14 @@ class IvrEntrySpec extends ObjectBehavior
             ->setRouteType('number')
             ->setNumberValue('946002020')
             ->setExtension($extensionDto)
-            ->setVoiceMailUser($voiceMailUserDto)
+            ->setVoicemail($voicemailDto)
             ->setConditionalRoute($conditionalRouteDto);
 
         $this
             ->transformer
             ->appendFixedTransforms([
                 [$extensionDto, $extension],
-                [$voiceMailUserDto, $voiceMailUser],
+                [$voicemailDto, $voicemail],
                 [$conditionalRouteDto, $conditionalRoute],
             ]);
 
@@ -104,7 +104,7 @@ class IvrEntrySpec extends ObjectBehavior
             ->shouldBe(null);
 
         $this
-            ->getVoiceMailUser()
+            ->getVoicemail()
             ->shouldBe(null);
 
         $this

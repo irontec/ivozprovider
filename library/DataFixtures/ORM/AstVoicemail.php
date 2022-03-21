@@ -44,7 +44,7 @@ class AstVoicemail extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
-            ProviderUser::class,
+            ProviderVoicemail::class,
         );
     }
 }

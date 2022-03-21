@@ -31,7 +31,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'extension',
                 'voicemail',
                 'conditional',
-                'voiceMailUser',
+                'voicemail',
                 'conditionalRoute',
             ]
         },

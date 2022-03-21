@@ -31,9 +31,6 @@ Feature: Retrieve pick up rel users
                   "maxCalls": 1,
                   "externalIpCalls": "0",
                   "rejectCallMethod": "rfc",
-                  "voicemailEnabled": true,
-                  "voicemailSendMail": true,
-                  "voicemailAttachSound": true,
                   "multiContact": true,
                   "gsQRCode": false,
                   "id": 1,
@@ -47,7 +44,7 @@ Feature: Retrieve pick up rel users
                   "timezone": 145,
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
-                  "voicemailLocution": null
+                  "voicemail": null
               }
           }
       ]
@@ -79,9 +76,6 @@ Feature: Retrieve pick up rel users
               "maxCalls": 1,
               "externalIpCalls": "0",
               "rejectCallMethod": "rfc",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
               "multiContact": true,
               "gsQRCode": false,
               "id": 1,
@@ -95,7 +89,7 @@ Feature: Retrieve pick up rel users
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemailLocution": null
+              "voicemail": null
           }
       }
     """

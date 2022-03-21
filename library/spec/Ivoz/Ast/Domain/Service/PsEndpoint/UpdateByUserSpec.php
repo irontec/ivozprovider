@@ -7,6 +7,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -28,6 +29,11 @@ class UpdateByUserSpec extends ObjectBehavior
      * @var UserInterface
      */
     protected $user;
+
+    /**
+     * @var VoicemailInterface
+     */
+    protected $voicemail;
 
     /**
      * @var PsEndpointInterface
@@ -98,15 +104,24 @@ class UpdateByUserSpec extends ObjectBehavior
         $this->getterProphecy(
             $this->user,
             [
-                'getVoiceMail' => 'use@context',
                 'getPickUpGroupsIds' => '',
             ],
             true
         );
 
+        $this->user
+            ->getVoicemail()
+            ->willReturn($this->voicemail)
+            ->shouldBeCalled();
+
+        $this
+            ->voicemail
+            ->getVoicemailName()
+            ->willReturn('user@context');
+
         $this
             ->psEndpointDto
-            ->setMailboxes('use@context')
+            ->setMailboxes('user@context')
             ->willReturn($this->psEndpointDto)
             ->shouldBeCalled();
 
@@ -117,6 +132,9 @@ class UpdateByUserSpec extends ObjectBehavior
     {
         $this->user = $this->getTestDouble(
             UserInterface::class
+        );
+        $this->voicemail = $this->getTestDouble(
+            VoicemailInterface::class
         );
         $this->psEndpoint = $this->getTestDouble(
             PsEndpointInterface::class
@@ -129,6 +147,11 @@ class UpdateByUserSpec extends ObjectBehavior
             ->user
             ->getEndpoint()
             ->willReturn($this->psEndpoint);
+
+        $this
+            ->user
+            ->getVoicemail()
+            ->willReturn($this->voicemail);
 
         $this
             ->entityTools

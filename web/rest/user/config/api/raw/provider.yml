@@ -88,6 +88,28 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
+  itemOperations: []
+  collectionOperations:
+    get_my_company_voicemails:
+      method: 'GET'
+      path: '/my/voicemail'
+      route_name: 'get_my_company_voicemails'
+      normalization_context:
+      - collection
+      swagger_context:
+        produces:
+        - 'application/json'
+        - 'application/ld+json'
+        tags:
+        - My
+        parameters: []
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+    swagger_context:
+      required:
+      - company
+
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations: []
   collectionOperations: []

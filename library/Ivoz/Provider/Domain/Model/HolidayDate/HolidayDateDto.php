@@ -24,7 +24,7 @@ class HolidayDateDto extends HolidayDateDtoAbstract
                 'numberValue' => 'numberValue',
                 'calendarId' => 'calendar',
                 'extensionId' => 'extension',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
             ];
         }
 

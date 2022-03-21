@@ -82,14 +82,14 @@
         <join-column name="errorExtensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="noInputVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="noInputVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="noInputVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="noInputVoicemailId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="errorVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="errorVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="errorVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="errorVoicemailId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="noInputNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">

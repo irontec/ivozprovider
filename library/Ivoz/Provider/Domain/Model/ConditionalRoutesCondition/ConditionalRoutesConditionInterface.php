@@ -9,6 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
@@ -165,7 +166,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 
     public function getHuntGroup(): ?HuntGroupInterface;
 
-    public function getVoicemailUser(): ?UserInterface;
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function getUser(): ?UserInterface;
 

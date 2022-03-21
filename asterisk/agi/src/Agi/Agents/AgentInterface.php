@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 
 interface AgentInterface
 {
@@ -69,19 +70,9 @@ interface AgentInterface
     public function getPickUpGroups();
 
     /**
-     * @return string
+     * @return VoicemailInterface
      */
-    public function getVoiceMail();
-
-    /**
-     * @return bool
-     */
-    public function getVoicemailEnabled();
-
-    /**
-     * @return LocutionInterface | null
-     */
-    public function getVoiceMailLocution();
+    public function getVoicemail();
 
     /**
      * @brief Determine if Agent's endpoint has T.38 Passthrough enabled

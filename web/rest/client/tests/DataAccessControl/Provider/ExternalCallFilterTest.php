@@ -125,12 +125,12 @@ class ExternalCallFilterTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'holidayVoiceMailUser',
+                            'holidayVoicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'holidayVoiceMailUser',
+                            'holidayVoicemail',
                             'isNull',
                             null
                         ]
@@ -139,12 +139,12 @@ class ExternalCallFilterTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'outOfScheduleVoiceMailUser',
+                            'outOfScheduleVoicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'outOfScheduleVoiceMailUser',
+                            'outOfScheduleVoicemail',
                             'isNull',
                             null
                         ]

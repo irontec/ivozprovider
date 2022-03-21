@@ -5,6 +5,8 @@ namespace Tests\Provider\User;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\User\User;
@@ -22,7 +24,6 @@ class UserRepositoryTest extends KernelTestCase
         $this->it_finds_by_bossAssistantId();
         $this->it_finds_supervised_userIds_by_admin();
         $this->it_gets_user_assistant_candidates();
-        $this->it_gets_available_voicemails();
         $this->it_users_by_company_excluding_ids();
         $this->it_searchs_one_by_company_and_name();
         $this->it_searchs_one_by_email();
@@ -82,27 +83,6 @@ class UserRepositoryTest extends KernelTestCase
         $users = $userRepository
             ->getUserAssistantCandidates(
                 $userRepository->find(2)
-            );
-
-        $this->assertIsArray(
-            $users
-        );
-
-        $this->assertInstanceOf(
-            User::class,
-            $users[0]
-        );
-    }
-
-    public function it_gets_available_voicemails()
-    {
-        /** @var UserRepository $userRepository */
-        $userRepository = $this->em
-            ->getRepository(User::class);
-
-        $users = $userRepository
-            ->getAvailableVoicemails(
-                $userRepository->find(1)
             );
 
         $this->assertIsArray(

@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Doctrine\Common\Collections\Collection;
@@ -107,7 +107,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     public function getNoAnswerExtension(): ?ExtensionInterface;
 
-    public function getNoAnswerVoiceMailUser(): ?UserInterface;
+    public function getNoAnswerVoicemail(): ?VoicemailInterface;
 
     public function getNoAnswerNumberCountry(): ?CountryInterface;
 

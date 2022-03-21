@@ -34,7 +34,7 @@ Feature: Update holiday dates
           "calendar": 2,
           "locution": 1,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null
       }
     """

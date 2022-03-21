@@ -7,8 +7,7 @@
       <index name="voicemail_imapuser" columns="imapuser"/>
     </indexes>
     <unique-constraints>
-      <unique-constraint name="voicemail_user" columns="userId"/>
-      <unique-constraint name="voicemail_residential_device" columns="residentialDeviceId"/>
+      <unique-constraint name="voicemail_voicemail" columns="voicemailId"/>
     </unique-constraints>
     <field name="context" type="string" column="context" length="80" nullable="false">
       <options>
@@ -168,15 +167,10 @@
       </options>
     </field>
     <field name="stamp" type="datetime" column="stamp" nullable="true"/>
-    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <one-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" inversed-by="astVoicemail" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE"/>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="CASCADE"/>
       </join-columns>
-    </many-to-one>
-    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE"/>
-      </join-columns>
-    </many-to-one>
+    </one-to-one>
   </mapped-superclass>
 </doctrine-mapping>

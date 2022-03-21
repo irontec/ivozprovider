@@ -6,7 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\Ivr\IvrRepository;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,7 +47,7 @@ class IvrDoctrineRepository extends ServiceEntityRepository implements IvrReposi
     /**
      * @return array
      */
-    public function findByUser(UserInterface $user)
+    public function findByVoicemail(VoicemailInterface $voicemail)
     {
         $qb = $this->createQueryBuilder('self');
 
@@ -55,10 +55,10 @@ class IvrDoctrineRepository extends ServiceEntityRepository implements IvrReposi
             ->select('i')
             ->from(Ivr::class, 'i')
             ->where(
-                "i.noInputRouteType = 'voicemail' and i.noInputVoiceMailUser = " . $user->getId()
+                "i.noInputRouteType = 'voicemail' and i.noInputVoicemail = " . $voicemail->getId()
             )
             ->orWhere(
-                "i.errorRouteType = 'voicemail' and i.errorVoiceMailUser = " . $user->getId()
+                "i.errorRouteType = 'voicemail' and i.errorVoicemail = " . $voicemail->getId()
             );
 
         return $qb->getQuery()->getResult();

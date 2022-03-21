@@ -1,29 +1,27 @@
 import { SelectOptionsType } from 'lib/entities/EntityInterface';
-import store from 'store';
-import User from '../User';
+import Voicemail from './Voicemail';
+import store from "../../store";
 
-const VoicemailEnabledSelectOptions: SelectOptionsType = (
-    {callback, cancelToken}
-): Promise<unknown> => {
+const VoicemailSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
 
     const params: any = {
-        '_properties': ['id', 'name', 'lastname'],
-        'voicemailEnabled': 1,
+        '_properties': ['id', 'name' ],
+        'enabled': 1,
     };
 
     const getAction = store.getActions().api.get;
     return getAction({
-        path: User.path,
+        path: Voicemail.path,
         params,
         successCallback: async (data: any) => {
             const options: any = {};
             for (const item of data) {
-                options[item.id] = `${item.name} ${item.lastname}`;
+                options[item.id] = `${item.name}`;
             }
             callback(options);
         },
         cancelToken
     });
-}
+};
 
-export default VoicemailEnabledSelectOptions;
+export default VoicemailSelectOptions;

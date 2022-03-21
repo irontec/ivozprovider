@@ -9,7 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface;
 use Doctrine\Common\Collections\Collection;
@@ -127,9 +127,9 @@ interface IvrInterface extends LoggableEntityInterface
 
     public function getErrorExtension(): ?ExtensionInterface;
 
-    public function getNoInputVoiceMailUser(): ?UserInterface;
+    public function getNoInputVoicemail(): ?VoicemailInterface;
 
-    public function getErrorVoiceMailUser(): ?UserInterface;
+    public function getErrorVoicemail(): ?VoicemailInterface;
 
     public function getNoInputNumberCountry(): ?CountryInterface;
 

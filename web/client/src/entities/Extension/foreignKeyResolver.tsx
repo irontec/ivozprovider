@@ -69,6 +69,9 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
             case 'conditional':
                 remapFk(data[idx], 'conditionalRoute', 'target');
                 break;
+            case 'voicemail':
+                remapFk(data[idx], 'voicemail', 'target');
+                break;
             default:
                 console.error('Unkown route type ' + data[idx].routeType);
                 data[idx].target = '';
@@ -84,6 +87,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function(
         delete data[idx].friendValue;
         delete data[idx].queue;
         delete data[idx].conditionalRoute;
+        delete data[idx].voicemail;
     }
 
     return data;

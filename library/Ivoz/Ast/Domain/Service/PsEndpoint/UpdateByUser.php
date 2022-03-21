@@ -35,6 +35,11 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
             ->entityTools
             ->entityToDto($endpoint);
 
+        $voicemail = $user->getVoicemail();
+        $mailbox = $voicemail
+            ? $voicemail->getVoicemailName()
+            : null;
+
         $callerId = sprintf(
             '%s <%s>',
             $user->getFullName(),
@@ -43,7 +48,7 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
 
         $endpointDto
             ->setCallerid($callerId)
-            ->setMailboxes($user->getVoiceMail())
+            ->setMailboxes($mailbox)
             ->setNamedPickupGroup($user->getPickUpGroupsIds());
 
         $this

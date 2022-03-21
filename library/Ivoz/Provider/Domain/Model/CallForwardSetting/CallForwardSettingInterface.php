@@ -9,6 +9,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
@@ -64,7 +65,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     /**
      * @return (int|mixed|null|string)[]
      *
-     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voiceMailUserId: mixed|null, voiceMailUser: string, noAnswerTimeout: int}
+     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voicemailId: mixed|null, voicemail: string, noAnswerTimeout: int}
      */
     public function toArrayPortal();
 
@@ -126,7 +127,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
 
     public function getExtension(): ?ExtensionInterface;
 
-    public function getVoiceMailUser(): ?UserInterface;
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function getNumberCountry(): ?CountryInterface;
 

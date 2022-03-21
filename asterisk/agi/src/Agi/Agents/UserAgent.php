@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 
 class UserAgent implements AgentInterface
 {
@@ -101,28 +102,12 @@ class UserAgent implements AgentInterface
     }
 
     /**
-     * @return bool
-     */
-    public function getVoicemailEnabled()
-    {
-        return $this->user->getVoicemailEnabled();
-    }
-
-    /**
      * Return user voicemail identifier
-     * @return string
+     * @return VoicemailInterface
      */
-    public function getVoiceMail()
+    public function getVoicemail()
     {
-        return $this->user->getVoiceMail();
-    }
-
-    /**
-     * @return LocutionInterface|null
-     */
-    public function getVoiceMailLocution()
-    {
-        return $this->user->getVoicemailLocution();
+        return $this->user->getVoicemail();
     }
 
     /**

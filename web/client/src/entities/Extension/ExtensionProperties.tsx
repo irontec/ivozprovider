@@ -13,6 +13,7 @@ export type ExtensionPropertyList<T> = {
     'friendValue'?: T,
     'queue'?: T,
     'conditionalRoute'?: T,
+    'voicemail'?: T,
     'target'?: T,
     'companyFeatures'?: T,
 };

@@ -106,12 +106,15 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Ast/Domain/Model/Voicemail/Voicemail.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>Voicemail</code>
+    </MethodSignatureMismatch>
+  </file>
   <file src="Ivoz/Ast/Domain/Model/Voicemail/VoicemailAbstract.php">
-    <MixedArgument occurrences="4">
-      <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+    <MixedArgument occurrences="2">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <RedundantCast occurrences="1">
       <code>(float) $volgain</code>
@@ -119,15 +122,13 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Ast/Domain/Model/Voicemail/VoicemailDtoAbstract.php">
-    <MissingParamType occurrences="4">
-      <code>$id</code>
+    <MissingParamType occurrences="3">
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
-      <code>getResidentialDeviceId</code>
-      <code>getUserId</code>
+    <MissingReturnType occurrences="1">
+      <code>getVoicemailId</code>
     </MissingReturnType>
   </file>
   <file src="Ivoz/Ast/Domain/Model/Voicemail/VoicemailTrait.php">
@@ -2225,8 +2226,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -2245,7 +2246,7 @@
       <code>getExtensionId</code>
       <code>getLocutionId</code>
       <code>getNumberCountryId</code>
-      <code>getVoiceMailUserId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relSchedules</code>
@@ -2522,8 +2523,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -2550,7 +2551,7 @@
       <code>getResidentialDeviceId</code>
       <code>getRetailAccountId</code>
       <code>getUserId</code>
-      <code>getVoiceMailUserId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingTrait.php">
@@ -2867,7 +2868,7 @@
       <code>getTransformationRuleSetId</code>
       <code>getVoicemailNotificationTemplateId</code>
     </MissingReturnType>
-    <MixedPropertyTypeCoercion occurrences="12">
+    <MixedPropertyTypeCoercion occurrences="13">
       <code>$companyServices</code>
       <code>$ddis</code>
       <code>$extensions</code>
@@ -2880,6 +2881,7 @@
       <code>$relFeatures</code>
       <code>$relRoutingTags</code>
       <code>$terminals</code>
+      <code>$voicemails</code>
     </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyInterface.php">
@@ -3064,8 +3066,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueue())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -3099,7 +3101,7 @@
       <code>getNumberCountryId</code>
       <code>getQueueId</code>
       <code>getUserId</code>
-      <code>getVoicemailUserId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$conditions</code>
@@ -3135,8 +3137,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueue())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -3176,7 +3178,7 @@
       <code>getNumberCountryId</code>
       <code>getQueueId</code>
       <code>getUserId</code>
-      <code>getVoicemailUserId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="4">
       <code>$relCalendars</code>
@@ -3850,7 +3852,7 @@
     </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionAbstract.php">
-    <MixedArgument occurrences="16">
+    <MixedArgument occurrences="18">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getConditionalRoute())</code>
@@ -3867,6 +3869,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getQueue())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -3876,7 +3880,8 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionDtoAbstract.php">
-    <MissingParamType occurrences="10">
+    <MissingParamType occurrences="11">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -3888,7 +3893,7 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="8">
+    <MissingReturnType occurrences="9">
       <code>getCompanyId</code>
       <code>getConditionalRouteId</code>
       <code>getConferenceRoomId</code>
@@ -3897,6 +3902,7 @@
       <code>getNumberCountryId</code>
       <code>getQueueId</code>
       <code>getUserId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$users</code>
@@ -3927,16 +3933,16 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getHolidayVoicemail())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getOutOfScheduleVoicemail())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getWelcomeLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getWelcomeLocution())</code>
     </MixedArgument>
@@ -3973,11 +3979,11 @@
       <code>getHolidayExtensionId</code>
       <code>getHolidayLocutionId</code>
       <code>getHolidayNumberCountryId</code>
-      <code>getHolidayVoiceMailUserId</code>
+      <code>getHolidayVoicemailId</code>
       <code>getOutOfScheduleExtensionId</code>
       <code>getOutOfScheduleLocutionId</code>
       <code>getOutOfScheduleNumberCountryId</code>
-      <code>getOutOfScheduleVoiceMailUserId</code>
+      <code>getOutOfScheduleVoicemailId</code>
       <code>getWelcomeLocutionId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="4">
@@ -4582,8 +4588,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -4607,7 +4613,7 @@
       <code>getExtensionId</code>
       <code>getLocutionId</code>
       <code>getNumberCountryId</code>
-      <code>getVoiceMailUserId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateRepository.php">
@@ -4630,8 +4636,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getNoAnswerVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -4655,7 +4661,7 @@
       <code>getNoAnswerExtensionId</code>
       <code>getNoAnswerLocutionId</code>
       <code>getNoAnswerNumberCountryId</code>
-      <code>getNoAnswerVoiceMailUserId</code>
+      <code>getNoAnswerVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$huntGroupsRelUsers</code>
@@ -4920,16 +4926,16 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getErrorLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getErrorNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getErrorNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getErrorVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getErrorVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getErrorVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getErrorVoicemail())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getNoInputVoicemail())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getSuccessLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getSuccessLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getWelcomeLocution())</code>
@@ -4963,11 +4969,11 @@
       <code>getErrorExtensionId</code>
       <code>getErrorLocutionId</code>
       <code>getErrorNumberCountryId</code>
-      <code>getErrorVoiceMailUserId</code>
+      <code>getErrorVoicemailId</code>
       <code>getNoInputExtensionId</code>
       <code>getNoInputLocutionId</code>
       <code>getNoInputNumberCountryId</code>
-      <code>getNoInputVoiceMailUserId</code>
+      <code>getNoInputVoicemailId</code>
       <code>getSuccessLocutionId</code>
       <code>getWelcomeLocutionId</code>
     </MissingReturnType>
@@ -4979,7 +4985,7 @@
   <file src="Ivoz/Provider/Domain/Model/Ivr/IvrRepository.php">
     <MissingReturnType occurrences="2">
       <code>findByExtension</code>
-      <code>findByUser</code>
+      <code>findByVoicemail</code>
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ivr/IvrTrait.php">
@@ -5000,8 +5006,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getWelcomeLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getWelcomeLocution())</code>
       <code>$fkTransformer-&gt;transform($ivr)</code>
@@ -5030,7 +5036,7 @@
       <code>getExtensionId</code>
       <code>getIvrId</code>
       <code>getNumberCountryId</code>
-      <code>getVoiceMailUserId</code>
+      <code>getVoicemailId</code>
       <code>getWelcomeLocutionId</code>
     </MissingReturnType>
   </file>
@@ -5767,8 +5773,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getFullLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getFullNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getFullNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getFullVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getFullVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFullVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getFullVoicemail())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getPeriodicAnnounceLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getPeriodicAnnounceLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutExtension())</code>
@@ -5777,8 +5783,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutLocution())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutNumberCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutNumberCountry())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutVoiceMailUser())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutVoiceMailUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getTimeoutVoicemail())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -5807,12 +5813,12 @@
       <code>getFullExtensionId</code>
       <code>getFullLocutionId</code>
       <code>getFullNumberCountryId</code>
-      <code>getFullVoiceMailUserId</code>
+      <code>getFullVoicemailId</code>
       <code>getPeriodicAnnounceLocutionId</code>
       <code>getTimeoutExtensionId</code>
       <code>getTimeoutLocutionId</code>
       <code>getTimeoutNumberCountryId</code>
-      <code>getTimeoutVoiceMailUserId</code>
+      <code>getTimeoutVoicemailId</code>
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Queue/QueueTrait.php">
@@ -6144,7 +6150,8 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php">
-    <MissingParamType occurrences="10">
+    <MissingParamType occurrences="11">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -6156,7 +6163,7 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="8">
+    <MissingReturnType occurrences="9">
       <code>getBrandId</code>
       <code>getCompanyId</code>
       <code>getDomainId</code>
@@ -6165,6 +6172,7 @@
       <code>getPsEndpointId</code>
       <code>getPsIdentifyId</code>
       <code>getTransformationRuleSetId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="2">
       <code>$callForwardSettings</code>
@@ -6828,7 +6836,7 @@
     </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserAbstract.php">
-    <MixedArgument occurrences="24">
+    <MixedArgument occurrences="22">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getBossAssistant())</code>
@@ -6851,8 +6859,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getTimezone())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getTransformationRuleSet())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailLocution())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemailLocution())</code>
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
@@ -6891,7 +6897,7 @@
       <code>getTerminalId</code>
       <code>getTimezoneId</code>
       <code>getTransformationRuleSetId</code>
-      <code>getVoicemailLocutionId</code>
+      <code>getVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="3">
       <code>$callForwardSettings</code>
@@ -6921,6 +6927,55 @@
     </MissingReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Voicemail/Voicemail.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>array</code>
+    </LessSpecificImplementedReturnType>
+    <MethodSignatureMismatch occurrences="1">
+      <code>Voicemail</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailAbstract.php">
+    <MixedArgument occurrences="8">
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocution())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailDto.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailDtoAbstract.php">
+    <MissingParamType occurrences="7">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="5">
+      <code>getAstVoicemailId</code>
+      <code>getCompanyId</code>
+      <code>getLocutionId</code>
+      <code>getResidentialDeviceId</code>
+      <code>getUserId</code>
+    </MissingReturnType>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
@@ -7672,9 +7727,9 @@
       <code>setErrorRouteType</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/Ivr/UpdateByUser.php">
+  <file src="Ivoz/Provider/Domain/Service/Ivr/UpdateByVoicemail.php">
     <MixedMethodCall occurrences="1">
-      <code>setErrorVoiceMailUserId</code>
+      <code>setErrorVoicemailId</code>
     </MixedMethodCall>
     <UndefinedInterfaceMethod occurrences="1">
       <code>setErrorRouteType</code>
@@ -7962,16 +8017,26 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/Voicemail/VoicemailLifecycleEventHandlerInterface.php">
+    <MissingReturnType occurrences="1">
+      <code>execute</code>
+    </MissingReturnType>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/Voicemail/VoicemailLifecycleServiceCollection.php">
+    <MissingParamType occurrences="1">
+      <code>$service</code>
+    </MissingParamType>
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
   <file src="Ivoz/Provider/Domain/Traits/RoutableTrait.php">
-    <MixedArgument occurrences="5">
+    <MixedArgument occurrences="3">
       <code>$routeType</code>
       <code>$this-&gt;{$userGetter}()-&gt;getLastname()</code>
       <code>$this-&gt;{$userGetter}()-&gt;getName()</code>
-      <code>$this-&gt;{$voicemailGetter}()-&gt;getLastname()</code>
-      <code>$this-&gt;{$voicemailGetter}()-&gt;getName()</code>
     </MixedArgument>
-    <MixedMethodCall occurrences="9">
-      <code>getLastname</code>
+    <MixedMethodCall occurrences="8">
       <code>getLastname</code>
       <code>getName</code>
       <code>getName</code>

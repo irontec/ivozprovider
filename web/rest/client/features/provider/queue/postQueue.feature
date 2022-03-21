@@ -27,10 +27,10 @@ Feature: Create queues
           "periodicAnnounceLocution": 1,
           "timeoutLocution": 1,
           "timeoutExtension": null,
-          "timeoutVoiceMailUser": null,
+          "timeoutVoicemail": null,
           "fullLocution": 1,
           "fullExtension": null,
-          "fullVoiceMailUser": null,
+          "fullVoicemail": null,
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
@@ -58,10 +58,10 @@ Feature: Create queues
           "periodicAnnounceLocution": 1,
           "timeoutLocution": 1,
           "timeoutExtension": null,
-          "timeoutVoiceMailUser": null,
+          "timeoutVoicemail": null,
           "fullLocution": 1,
           "fullExtension": null,
-          "fullVoiceMailUser": null,
+          "fullVoicemail": null,
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
@@ -121,7 +121,7 @@ Feature: Create queues
               }
           },
           "timeoutExtension": null,
-          "timeoutVoiceMailUser": null,
+          "timeoutVoicemail": null,
           "fullLocution": {
               "name": "testLocution",
               "status": null,
@@ -138,7 +138,7 @@ Feature: Create queues
               }
           },
           "fullExtension": null,
-          "fullVoiceMailUser": null,
+          "fullVoicemail": null,
           "timeoutNumberCountry": {
               "code": "ES",
               "countryCode": "+34",

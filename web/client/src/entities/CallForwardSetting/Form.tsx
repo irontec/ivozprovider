@@ -37,7 +37,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
                 'noAnswerTimeout',
                 'targetType',
                 'extension',
-                'voiceMailUser',
+                'voicemail',
                 'numberCountry',
                 'numberValue',
                 'cfwToretailAccount',

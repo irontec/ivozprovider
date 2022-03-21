@@ -31,14 +31,12 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setIsBoss(false);
             $this->setActive(true);
             $this->setMaxCalls(1);
-            $this->setVoicemailEnabled(true);
-            $this->setVoicemailSendMail(true);
-            $this->setVoicemailAttachSound(true);
             $this->setGsQRCode(false);
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setTerminal($fixture->getReference('_reference_ProviderTerminal1'));
 //        $this->setExtension($fixture->getReference('_reference_ProviderExtension1'));
+//        $this->setVoicemail($fixture->getReference('_reference_ProviderVoicemail1'));
             $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
         })->call($item1);
 
@@ -56,9 +54,6 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setIsBoss(true);
             $this->setActive(true);
             $this->setMaxCalls(1);
-            $this->setVoicemailEnabled(true);
-            $this->setVoicemailSendMail(true);
-            $this->setVoicemailAttachSound(true);
             $this->setGsQRCode(false);
             $this->setBossAssistant(
                 $fixture->getReference('_reference_ProviderUser1')
@@ -67,6 +62,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             $this->setTransformationRuleSet($fixture->getReference('_reference_ProviderTransformationRuleSet70'));
             $this->setTerminal($fixture->getReference('_reference_ProviderTerminal2'));
 //        $this->setExtension($fixture->getReference('_reference_ProviderExtension2'));
+//        $this->setVoicemail($fixture->getReference('_reference_ProviderVoicemail2'));
             $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
         })->call($item2);
 
@@ -83,6 +79,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
             ProviderTransformationRuleSet::class,
             ProviderTerminal::class,
 //            ProviderExtension::class,
+//            ProviderVoicemail::class,
             ProviderTimezone::class,
             ProviderCompany::class
         );

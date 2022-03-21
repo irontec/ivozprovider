@@ -92,9 +92,9 @@
         <join-column name="timeoutExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="timeoutVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="timeoutVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="timeoutVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="timeoutVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="fullLocution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
@@ -107,9 +107,9 @@
         <join-column name="fullExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="fullVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="fullVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="fullVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="fullVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="timeoutNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">

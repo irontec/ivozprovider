@@ -19,7 +19,6 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Model\User\User;
@@ -31,7 +30,6 @@ use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
-use Ivoz\Provider\Domain\Model\Locution\Locution;
 
 /**
 * UserAbstract
@@ -93,21 +91,6 @@ abstract class UserAbstract
      * comment: enum:rfc|486|600
      */
     protected $rejectCallMethod = 'rfc';
-
-    /**
-     * @var bool
-     */
-    protected $voicemailEnabled = true;
-
-    /**
-     * @var bool
-     */
-    protected $voicemailSendMail = false;
-
-    /**
-     * @var bool
-     */
-    protected $voicemailAttachSound = true;
 
     /**
      * @var bool
@@ -177,11 +160,6 @@ abstract class UserAbstract
     protected $outgoingDdiRule = null;
 
     /**
-     * @var ?LocutionInterface
-     */
-    protected $voicemailLocution = null;
-
-    /**
      * Constructor
      */
     protected function __construct(
@@ -193,9 +171,6 @@ abstract class UserAbstract
         int $maxCalls,
         string $externalIpCalls,
         string $rejectCallMethod,
-        bool $voicemailEnabled,
-        bool $voicemailSendMail,
-        bool $voicemailAttachSound,
         bool $multiContact,
         bool $gsQRCode
     ) {
@@ -207,9 +182,6 @@ abstract class UserAbstract
         $this->setMaxCalls($maxCalls);
         $this->setExternalIpCalls($externalIpCalls);
         $this->setRejectCallMethod($rejectCallMethod);
-        $this->setVoicemailEnabled($voicemailEnabled);
-        $this->setVoicemailSendMail($voicemailSendMail);
-        $this->setVoicemailAttachSound($voicemailAttachSound);
         $this->setMultiContact($multiContact);
         $this->setGsQRCode($gsQRCode);
     }
@@ -288,12 +260,6 @@ abstract class UserAbstract
         Assertion::notNull($externalIpCalls, 'getExternalIpCalls value is null, but non null value was expected.');
         $rejectCallMethod = $dto->getRejectCallMethod();
         Assertion::notNull($rejectCallMethod, 'getRejectCallMethod value is null, but non null value was expected.');
-        $voicemailEnabled = $dto->getVoicemailEnabled();
-        Assertion::notNull($voicemailEnabled, 'getVoicemailEnabled value is null, but non null value was expected.');
-        $voicemailSendMail = $dto->getVoicemailSendMail();
-        Assertion::notNull($voicemailSendMail, 'getVoicemailSendMail value is null, but non null value was expected.');
-        $voicemailAttachSound = $dto->getVoicemailAttachSound();
-        Assertion::notNull($voicemailAttachSound, 'getVoicemailAttachSound value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
         $gsQRCode = $dto->getGsQRCode();
@@ -310,9 +276,6 @@ abstract class UserAbstract
             $maxCalls,
             $externalIpCalls,
             $rejectCallMethod,
-            $voicemailEnabled,
-            $voicemailSendMail,
-            $voicemailAttachSound,
             $multiContact,
             $gsQRCode
         );
@@ -330,8 +293,7 @@ abstract class UserAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
-            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()));
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()));
 
         $self->initChangelog();
 
@@ -364,12 +326,6 @@ abstract class UserAbstract
         Assertion::notNull($externalIpCalls, 'getExternalIpCalls value is null, but non null value was expected.');
         $rejectCallMethod = $dto->getRejectCallMethod();
         Assertion::notNull($rejectCallMethod, 'getRejectCallMethod value is null, but non null value was expected.');
-        $voicemailEnabled = $dto->getVoicemailEnabled();
-        Assertion::notNull($voicemailEnabled, 'getVoicemailEnabled value is null, but non null value was expected.');
-        $voicemailSendMail = $dto->getVoicemailSendMail();
-        Assertion::notNull($voicemailSendMail, 'getVoicemailSendMail value is null, but non null value was expected.');
-        $voicemailAttachSound = $dto->getVoicemailAttachSound();
-        Assertion::notNull($voicemailAttachSound, 'getVoicemailAttachSound value is null, but non null value was expected.');
         $multiContact = $dto->getMultiContact();
         Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
         $gsQRCode = $dto->getGsQRCode();
@@ -388,9 +344,6 @@ abstract class UserAbstract
             ->setMaxCalls($maxCalls)
             ->setExternalIpCalls($externalIpCalls)
             ->setRejectCallMethod($rejectCallMethod)
-            ->setVoicemailEnabled($voicemailEnabled)
-            ->setVoicemailSendMail($voicemailSendMail)
-            ->setVoicemailAttachSound($voicemailAttachSound)
             ->setMultiContact($multiContact)
             ->setGsQRCode($gsQRCode)
             ->setCompany($fkTransformer->transform($company))
@@ -403,8 +356,7 @@ abstract class UserAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
-            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()));
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()));
 
         return $this;
     }
@@ -425,9 +377,6 @@ abstract class UserAbstract
             ->setMaxCalls(self::getMaxCalls())
             ->setExternalIpCalls(self::getExternalIpCalls())
             ->setRejectCallMethod(self::getRejectCallMethod())
-            ->setVoicemailEnabled(self::getVoicemailEnabled())
-            ->setVoicemailSendMail(self::getVoicemailSendMail())
-            ->setVoicemailAttachSound(self::getVoicemailAttachSound())
             ->setMultiContact(self::getMultiContact())
             ->setGsQRCode(self::getGsQRCode())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -440,8 +389,7 @@ abstract class UserAbstract
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
             ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth))
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setOutgoingDdiRule(OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
-            ->setVoicemailLocution(Locution::entityToDto(self::getVoicemailLocution(), $depth));
+            ->setOutgoingDdiRule(OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth));
     }
 
     protected function __toArray(): array
@@ -457,9 +405,6 @@ abstract class UserAbstract
             'maxCalls' => self::getMaxCalls(),
             'externalIpCalls' => self::getExternalIpCalls(),
             'rejectCallMethod' => self::getRejectCallMethod(),
-            'voicemailEnabled' => self::getVoicemailEnabled(),
-            'voicemailSendMail' => self::getVoicemailSendMail(),
-            'voicemailAttachSound' => self::getVoicemailAttachSound(),
             'multiContact' => self::getMultiContact(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany()->getId(),
@@ -472,8 +417,7 @@ abstract class UserAbstract
             'extensionId' => self::getExtension()?->getId(),
             'timezoneId' => self::getTimezone()?->getId(),
             'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId(),
-            'voicemailLocutionId' => self::getVoicemailLocution()?->getId()
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId()
         ];
     }
 
@@ -634,42 +578,6 @@ abstract class UserAbstract
         return $this->rejectCallMethod;
     }
 
-    protected function setVoicemailEnabled(bool $voicemailEnabled): static
-    {
-        $this->voicemailEnabled = $voicemailEnabled;
-
-        return $this;
-    }
-
-    public function getVoicemailEnabled(): bool
-    {
-        return $this->voicemailEnabled;
-    }
-
-    protected function setVoicemailSendMail(bool $voicemailSendMail): static
-    {
-        $this->voicemailSendMail = $voicemailSendMail;
-
-        return $this;
-    }
-
-    public function getVoicemailSendMail(): bool
-    {
-        return $this->voicemailSendMail;
-    }
-
-    protected function setVoicemailAttachSound(bool $voicemailAttachSound): static
-    {
-        $this->voicemailAttachSound = $voicemailAttachSound;
-
-        return $this;
-    }
-
-    public function getVoicemailAttachSound(): bool
-    {
-        return $this->voicemailAttachSound;
-    }
-
     protected function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
@@ -824,17 +732,5 @@ abstract class UserAbstract
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface
     {
         return $this->outgoingDdiRule;
-    }
-
-    protected function setVoicemailLocution(?LocutionInterface $voicemailLocution = null): static
-    {
-        $this->voicemailLocution = $voicemailLocution;
-
-        return $this;
-    }
-
-    public function getVoicemailLocution(): ?LocutionInterface
-    {
-        return $this->voicemailLocution;
     }
 }

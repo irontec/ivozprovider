@@ -1,7 +1,9 @@
 import { SearchFilterType } from 'lib/components/List/Filter/icons/FilterIconFactory';
 import
-EntityInterface, { EntityAclType,
-ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection }
+EntityInterface, {
+    EntityAclType,
+    ForeignKeyGetterType, ListDecoratorPropsType, OrderDirection
+}
     from 'lib/entities/EntityInterface';
 import {
     ActionsSpec, PropertyList, ActionModelList, ScalarProperty,
@@ -20,6 +22,10 @@ export default class EntityService {
         private properties: PropertyList,
         private entityConfig: EntityInterface
     ) {
+    }
+
+    public getEntity(): EntityInterface {
+        return this.entityConfig;
     }
 
     public getProperties(): PropertyList {

@@ -42,7 +42,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
                 remapFk(values, 'extension', 'target');
                 break;
             case 'voicemail':
-                remapFk(values, 'voiceMailUser', 'target');
+                remapFk(values, 'voicemail', 'target');
                 break;
             case 'conditional':
                 remapFk(values, 'conditionalRoute', 'target');

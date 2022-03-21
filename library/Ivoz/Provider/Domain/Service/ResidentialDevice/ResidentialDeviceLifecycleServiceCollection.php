@@ -23,9 +23,9 @@ class ResidentialDeviceLifecycleServiceCollection implements LifecycleServiceCol
         ],
         "post_persist" =>
         [
-            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByResidentialDevice::class => 10,
+            \Ivoz\Provider\Domain\Service\Voicemail\UpdateByResidentialDevice::class => 100,
+            \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByResidentialDevice::class => 200,
             \Ivoz\Ast\Domain\Service\PsIdentify\UpdateByResidentialDevice::class => 200,
-            \Ivoz\Ast\Domain\Service\Voicemail\UpdateByResidentialDevice::class => 200,
         ],
     ];
 

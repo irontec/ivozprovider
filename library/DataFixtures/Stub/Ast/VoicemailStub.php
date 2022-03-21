@@ -25,7 +25,7 @@ class VoicemailStub
             ->setEmail('alice@democompany.com')
             ->setAttach('yes')
             ->setTz('Europe/Madrid')
-            ->setUserId(
+            ->setVoicemailId(
                 1
             );
         $this->append($dto);
@@ -38,7 +38,7 @@ class VoicemailStub
             ->setEmail('bob@democompany.com')
             ->setAttach('yes')
             ->setTz('Europe/Madrid')
-            ->setUserId(
+            ->setVoicemailId(
                 2
             );
         $this->append($dto);
@@ -51,8 +51,8 @@ class VoicemailStub
             ->setEmail('residential@democompany.com')
             ->setAttach('yes')
             ->setTz('Europe/Madrid')
-            ->setResidentialDeviceId(
-                1
+            ->setVoicemailId(
+                3
             );
         $this->append($dto);
     }

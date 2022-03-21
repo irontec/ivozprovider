@@ -7,7 +7,7 @@ import RouteLockSelectOptions from 'entities/RouteLock/SelectOptions';
 import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
 import entities from '../index';
 import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
-import { VoicemailEnabledSelectOptions } from 'entities/User/SelectOptions';
+import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
@@ -23,7 +23,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
             'scheduleIds',
             'calendarIds',
             'routeLockIds',
-            'voicemailUser',
+            'voicemail',
         ]
     });
 
@@ -55,9 +55,9 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken
     });
 
-    promises[promises.length] = VoicemailEnabledSelectOptions({
+    promises[promises.length] = VoicemailSelectOptions({
         callback: (options: any) => {
-            response.voicemailUser = options;
+            response.voicemail = options;
         },
         cancelToken
     });

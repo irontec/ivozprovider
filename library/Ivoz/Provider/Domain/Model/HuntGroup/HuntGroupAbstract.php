@@ -12,12 +12,12 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -86,9 +86,9 @@ abstract class HuntGroupAbstract
     protected $noAnswerExtension = null;
 
     /**
-     * @var ?UserInterface
+     * @var ?VoicemailInterface
      */
-    protected $noAnswerVoiceMailUser = null;
+    protected $noAnswerVoicemail = null;
 
     /**
      * @var ?CountryInterface
@@ -198,7 +198,7 @@ abstract class HuntGroupAbstract
             ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
-            ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
+            ->setNoAnswerVoicemail($fkTransformer->transform($dto->getNoAnswerVoicemail()))
             ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
 
         $self->initChangelog();
@@ -241,7 +241,7 @@ abstract class HuntGroupAbstract
             ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
-            ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
+            ->setNoAnswerVoicemail($fkTransformer->transform($dto->getNoAnswerVoicemail()))
             ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
 
         return $this;
@@ -264,7 +264,7 @@ abstract class HuntGroupAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setNoAnswerLocution(Locution::entityToDto(self::getNoAnswerLocution(), $depth))
             ->setNoAnswerExtension(Extension::entityToDto(self::getNoAnswerExtension(), $depth))
-            ->setNoAnswerVoiceMailUser(User::entityToDto(self::getNoAnswerVoiceMailUser(), $depth))
+            ->setNoAnswerVoicemail(Voicemail::entityToDto(self::getNoAnswerVoicemail(), $depth))
             ->setNoAnswerNumberCountry(Country::entityToDto(self::getNoAnswerNumberCountry(), $depth));
     }
 
@@ -282,7 +282,7 @@ abstract class HuntGroupAbstract
             'companyId' => self::getCompany()->getId(),
             'noAnswerLocutionId' => self::getNoAnswerLocution()?->getId(),
             'noAnswerExtensionId' => self::getNoAnswerExtension()?->getId(),
-            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser()?->getId(),
+            'noAnswerVoicemailId' => self::getNoAnswerVoicemail()?->getId(),
             'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry()?->getId()
         ];
     }
@@ -456,16 +456,16 @@ abstract class HuntGroupAbstract
         return $this->noAnswerExtension;
     }
 
-    protected function setNoAnswerVoiceMailUser(?UserInterface $noAnswerVoiceMailUser = null): static
+    protected function setNoAnswerVoicemail(?VoicemailInterface $noAnswerVoicemail = null): static
     {
-        $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
+        $this->noAnswerVoicemail = $noAnswerVoicemail;
 
         return $this;
     }
 
-    public function getNoAnswerVoiceMailUser(): ?UserInterface
+    public function getNoAnswerVoicemail(): ?VoicemailInterface
     {
-        return $this->noAnswerVoiceMailUser;
+        return $this->noAnswerVoicemail;
     }
 
     protected function setNoAnswerNumberCountry(?CountryInterface $noAnswerNumberCountry = null): static

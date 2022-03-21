@@ -4,7 +4,7 @@ Feature: Manage users
   I need to be able to delete them through the API.
 
   @createSchema
-  Scenario: Remove a schedule
+  Scenario: Remove a user
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"

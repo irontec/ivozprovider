@@ -6,15 +6,15 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrRepository;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Service\Voicemail\VoicemailLifecycleEventHandlerInterface;
 
 /**
- * Class UpdateByUser
+ * Class UpdateByVoicemail
  */
-class UpdateByUser implements UserLifecycleEventHandlerInterface
+class UpdateByVoicemail implements VoicemailLifecycleEventHandlerInterface
 {
-    public const PRE_REMOVE_PRIORITY = 10;
+    public const PRE_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         private EntityTools $entityTools,
@@ -30,33 +30,33 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
     }
 
     /**
-     * @param UserInterface $user
+     * @param VoicemailInterface $voicemail
      *
      * @return void
      */
-    public function execute(UserInterface $user)
+    public function execute(VoicemailInterface $voicemail)
     {
         /** @var Ivr[] $ivrs */
-        $ivrs = $this->ivrRepository->findByUser($user);
+        $ivrs = $this->ivrRepository->findByVoicemail($voicemail);
         foreach ($ivrs as $ivr) {
-            $noInputUser = $ivr->getNoInputVoiceMailUser();
-            $errorUser = $ivr->getErrorVoiceMailUser();
+            $noInputVoicemail = $ivr->getNoInputVoicemail();
+            $errorVoicemail = $ivr->getErrorVoicemail();
 
             /** @var IvrDto $ivrDto */
             $ivrDto = $this->entityTools->entityToDto($ivr);
 
-            if ($noInputUser && $noInputUser->getId() === $user->getId()) {
+            if ($noInputVoicemail && $noInputVoicemail->getId() === $voicemail->getId()) {
                 $ivrDto
                     ->setNoInputRouteType(null)
-                    ->setNoInputVoiceMailUserId(null);
+                    ->setNoInputVoicemailId(null);
 
                 $this->entityTools->persistDto($ivrDto, $ivr);
             }
 
-            if ($errorUser && $errorUser->getId() === $user->getId()) {
+            if ($errorVoicemail && $errorVoicemail->getId() === $voicemail->getId()) {
                 $ivrDto
                     ->setErrorRouteType(null)
-                    ->setErrorVoiceMailUserId(null);
+                    ->setErrorVoicemailId(null);
 
                 $this->entityTools->persistDto($ivrDto, $ivr);
             }

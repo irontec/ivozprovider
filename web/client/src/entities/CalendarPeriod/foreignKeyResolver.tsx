@@ -81,7 +81,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
 
         switch (data[idx].routeType) {
             case 'voicemail':
-                remapFk(data[idx], 'voicemailUser', 'target');
+                remapFk(data[idx], 'voicemail', 'target');
                 break;
             case 'number':
                 data[idx].target =

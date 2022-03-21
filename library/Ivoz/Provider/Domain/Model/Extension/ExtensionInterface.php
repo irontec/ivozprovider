@@ -14,6 +14,7 @@ use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
@@ -37,6 +38,8 @@ interface ExtensionInterface extends LoggableEntityInterface
     public const ROUTETYPE_QUEUE = 'queue';
 
     public const ROUTETYPE_CONDITIONAL = 'conditional';
+
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
@@ -129,6 +132,8 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getConditionalRoute(): ?ConditionalRouteInterface;
 
     public function getNumberCountry(): ?CountryInterface;
+
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function isInitialized(): bool;
 

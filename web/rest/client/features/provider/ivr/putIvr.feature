@@ -26,8 +26,8 @@ Feature: Update IVRs
           "successLocution": 1,
           "noInputExtension": null,
           "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
+          "noInputVoicemail": null,
+          "errorVoicemail": null,
           "noInputNumberCountry": 68,
           "errorNumberCountry": 68,
           "excludedExtensionIds": [
@@ -56,8 +56,8 @@ Feature: Update IVRs
           "successLocution": 1,
           "noInputExtension": null,
           "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
+          "noInputVoicemail": null,
+          "errorVoicemail": null,
           "noInputNumberCountry": 68,
           "errorNumberCountry": 68,
           "excludedExtensionIds": [

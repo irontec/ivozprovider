@@ -29,7 +29,7 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'numberValue' => 'numberValue',
                 'numberCountryId' => 'numberCountry',
                 'userId' => 'user',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
                 'extensionId' => 'extension',
                 'residentialDeviceId' => 'residentialDevice',
                 'retailAccountId' => 'retailAccount',
@@ -49,7 +49,7 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'enabled' => 'enabled',
                 'userId' => 'user',
                 'extensionId' => 'extension',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
                 'numberCountryId' => 'numberCountry'
             ];
         }

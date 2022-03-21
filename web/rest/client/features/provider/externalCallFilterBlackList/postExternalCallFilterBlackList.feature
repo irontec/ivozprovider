@@ -36,8 +36,8 @@ Feature: Create external call filter black lists
               "outOfScheduleLocution": null,
               "holidayExtension": null,
               "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
+              "holidayVoicemail": null,
+              "outOfScheduleVoicemail": null,
               "holidayNumberCountry": null,
               "outOfScheduleNumberCountry": null
           },
@@ -72,8 +72,8 @@ Feature: Create external call filter black lists
               "outOfScheduleLocution": null,
               "holidayExtension": null,
               "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
+              "holidayVoicemail": null,
+              "outOfScheduleVoicemail": null,
               "holidayNumberCountry": null,
               "outOfScheduleNumberCountry": null
           },

@@ -18,7 +18,7 @@ Feature: Update calendar periods
           "calendar": 1,
           "locution": null,
           "extension": 1,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null,
           "scheduleIds": [
               2
@@ -39,7 +39,7 @@ Feature: Update calendar periods
           "calendar": 1,
           "locution": null,
           "extension": 1,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": null,
           "scheduleIds": [
               2

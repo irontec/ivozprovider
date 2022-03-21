@@ -26,6 +26,7 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface;
@@ -373,6 +374,17 @@ interface CompanyInterface extends LoggableEntityInterface
     public function replaceMusicsOnHold(Collection $musicsOnHold): CompanyInterface;
 
     public function getMusicsOnHold(?Criteria $criteria = null): array;
+
+    public function addVoicemail(VoicemailInterface $voicemail): CompanyInterface;
+
+    public function removeVoicemail(VoicemailInterface $voicemail): CompanyInterface;
+
+    /**
+     * @param Collection<array-key, VoicemailInterface> $voicemails
+     */
+    public function replaceVoicemails(Collection $voicemails): CompanyInterface;
+
+    public function getVoicemails(?Criteria $criteria = null): array;
 
     public function addRecording(RecordingInterface $recording): CompanyInterface;
 

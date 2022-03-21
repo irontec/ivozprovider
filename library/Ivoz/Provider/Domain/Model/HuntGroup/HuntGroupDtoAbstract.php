@@ -7,7 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
 
@@ -80,9 +80,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     private $noAnswerExtension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $noAnswerVoiceMailUser = null;
+    private $noAnswerVoicemail = null;
 
     /**
      * @var CountryDto | null
@@ -121,7 +121,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'noAnswerLocutionId' => 'noAnswerLocution',
             'noAnswerExtensionId' => 'noAnswerExtension',
-            'noAnswerVoiceMailUserId' => 'noAnswerVoiceMailUser',
+            'noAnswerVoicemailId' => 'noAnswerVoicemail',
             'noAnswerNumberCountryId' => 'noAnswerNumberCountry'
         ];
     }
@@ -144,7 +144,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'noAnswerLocution' => $this->getNoAnswerLocution(),
             'noAnswerExtension' => $this->getNoAnswerExtension(),
-            'noAnswerVoiceMailUser' => $this->getNoAnswerVoiceMailUser(),
+            'noAnswerVoicemail' => $this->getNoAnswerVoicemail(),
             'noAnswerNumberCountry' => $this->getNoAnswerNumberCountry(),
             'huntGroupsRelUsers' => $this->getHuntGroupsRelUsers()
         ];
@@ -361,30 +361,30 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setNoAnswerVoiceMailUser(?UserDto $noAnswerVoiceMailUser): static
+    public function setNoAnswerVoicemail(?VoicemailDto $noAnswerVoicemail): static
     {
-        $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
+        $this->noAnswerVoicemail = $noAnswerVoicemail;
 
         return $this;
     }
 
-    public function getNoAnswerVoiceMailUser(): ?UserDto
+    public function getNoAnswerVoicemail(): ?VoicemailDto
     {
-        return $this->noAnswerVoiceMailUser;
+        return $this->noAnswerVoicemail;
     }
 
-    public function setNoAnswerVoiceMailUserId($id): static
+    public function setNoAnswerVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setNoAnswerVoiceMailUser($value);
+        return $this->setNoAnswerVoicemail($value);
     }
 
-    public function getNoAnswerVoiceMailUserId()
+    public function getNoAnswerVoicemailId()
     {
-        if ($dto = $this->getNoAnswerVoiceMailUser()) {
+        if ($dto = $this->getNoAnswerVoicemail()) {
             return $dto->getId();
         }
 

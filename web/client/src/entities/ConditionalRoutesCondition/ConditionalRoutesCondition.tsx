@@ -14,7 +14,7 @@ const routableFields = [
     'ivr',
     'user',
     'huntGroup',
-    'voicemailUser',
+    'voicemail',
     'friendValue',
     'queue',
     'conferenceRoom',
@@ -94,7 +94,7 @@ const properties: ConditionalRoutesConditionProperties = {
                 hide: routableFields,
             },
             'voicemail': {
-                show: ['voicemailUser'],
+                show: ['voicemail'],
                 hide: routableFields,
             },
             'number': {
@@ -131,7 +131,7 @@ const properties: ConditionalRoutesConditionProperties = {
         null: _("Unassigned"),
         default: '__null__',
     },
-    'voicemailUser': {
+    'voicemail': {
         label: _('Voicemail'),
         required: true,
         null: _("Unassigned"),

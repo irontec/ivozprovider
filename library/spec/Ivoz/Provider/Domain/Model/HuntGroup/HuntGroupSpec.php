@@ -9,9 +9,9 @@ use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\User\UserDto;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -64,12 +64,12 @@ class HuntGroupSpec extends ObjectBehavior
     }
 
     function it_resets_noAnswer_targets_but_current(
-        UserInterface $noAnswerVoiceMailUser,
+        VoicemailInterface $noAnswerVoicemail,
         ExtensionInterface $noAnswerExtension
     ) {
-        $noAnswerVoiceMailUserDto = new UserDto();
-        $noAnswerVoiceMailUser = $this->getInstance(
-            User::class
+        $noAnswerVoicemailDto = new VoicemailDto();
+        $noAnswerVoicemail = $this->getInstance(
+            Voicemail::class
         );
 
         $noAnswerExtensionDto = new ExtensionDto();
@@ -81,12 +81,12 @@ class HuntGroupSpec extends ObjectBehavior
             ->setNoAnswerTargetType('number')
             ->setNoAnswerNumberValue('1234')
             ->setNoAnswerExtension($noAnswerExtensionDto)
-            ->setNoAnswerVoiceMailUser($noAnswerVoiceMailUserDto)
+            ->setNoAnswerVoicemail($noAnswerVoicemailDto)
         ;
 
         $this->transformer->appendFixedTransforms([
             [$noAnswerExtensionDto, $noAnswerExtension],
-            [$noAnswerVoiceMailUserDto, $noAnswerVoiceMailUser],
+            [$noAnswerVoicemailDto, $noAnswerVoicemail],
         ]);
 
         $this
@@ -94,7 +94,7 @@ class HuntGroupSpec extends ObjectBehavior
             ->shouldBe(null);
 
         $this
-            ->getNoAnswerVoiceMailUser()
+            ->getNoAnswerVoicemail()
             ->shouldBe(null);
     }
 }

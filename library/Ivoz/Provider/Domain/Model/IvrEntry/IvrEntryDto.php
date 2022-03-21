@@ -20,7 +20,7 @@ class IvrEntryDto extends IvrEntryDtoAbstract
                 'numberCountryId' => 'numberCountry',
                 'numberValue' => 'numberValue',
                 'extensionId' => 'extension',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
                 'conditionalRouteId' => 'conditionalRoute',
             ];
         }

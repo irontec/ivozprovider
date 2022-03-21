@@ -17,7 +17,6 @@ Feature: Retrieve users
           {
               "name": "Alice",
               "lastname": "Allison",
-              "voicemailEnabled": true,
               "id": 1,
               "terminal": 1,
               "extension": null,
@@ -26,7 +25,6 @@ Feature: Retrieve users
           {
               "name": "Bob",
               "lastname": "Bobson",
-              "voicemailEnabled": true,
               "id": 2,
               "terminal": 2,
               "extension": null,
@@ -35,7 +33,7 @@ Feature: Retrieve users
       ]
     """
 
-  Scenario: Retrieve certain schedule json
+  Scenario: Retrieve certain user json
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "users/1"
@@ -54,9 +52,6 @@ Feature: Retrieve users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
-          "voicemailEnabled": true,
-          "voicemailSendMail": true,
-          "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 1,
           "callAcl": null,
@@ -104,7 +99,7 @@ Feature: Retrieve users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null,
+          "voicemail": null,
           "pickupGroupIds": []
       }
     """

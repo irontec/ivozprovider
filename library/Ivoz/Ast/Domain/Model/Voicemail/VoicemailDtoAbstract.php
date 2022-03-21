@@ -4,8 +4,7 @@ namespace Ivoz\Ast\Domain\Model\Voicemail;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
-use Ivoz\Provider\Domain\Model\User\UserDto;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 
 /**
 * VoicemailDtoAbstract
@@ -186,14 +185,9 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     private $id = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $user = null;
-
-    /**
-     * @var ResidentialDeviceDto | null
-     */
-    private $residentialDevice = null;
+    private $voicemail = null;
 
     public function __construct($id = null)
     {
@@ -244,8 +238,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'imapflags' => 'imapflags',
             'stamp' => 'stamp',
             'id' => 'id',
-            'userId' => 'user',
-            'residentialDeviceId' => 'residentialDevice'
+            'voicemailId' => 'voicemail'
         ];
     }
 
@@ -289,8 +282,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'imapflags' => $this->getImapflags(),
             'stamp' => $this->getStamp(),
             'id' => $this->getId(),
-            'user' => $this->getUser(),
-            'residentialDevice' => $this->getResidentialDevice()
+            'voicemail' => $this->getVoicemail()
         ];
 
         if (!$hideSensitiveData) {
@@ -715,60 +707,30 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 
-    public function setUser(?UserDto $user): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->user = $user;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->user;
+        return $this->voicemail;
     }
 
-    public function setUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getUser()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
-    {
-        $this->residentialDevice = $residentialDevice;
-
-        return $this;
-    }
-
-    public function getResidentialDevice(): ?ResidentialDeviceDto
-    {
-        return $this->residentialDevice;
-    }
-
-    public function setResidentialDeviceId($id): static
-    {
-        $value = !is_null($id)
-            ? new ResidentialDeviceDto($id)
-            : null;
-
-        return $this->setResidentialDevice($value);
-    }
-
-    public function getResidentialDeviceId()
-    {
-        if ($dto = $this->getResidentialDevice()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

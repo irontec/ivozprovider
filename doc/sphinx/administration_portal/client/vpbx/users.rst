@@ -103,31 +103,6 @@ Basic Configuration
         current device for 480/486. Choose whether you want to force one behaviour or another no
         matter which response code your SIP device sends on call rejection.
 
-*********
-Voicemail
-*********
-
-
-    VoiceMail enabled
-        Enables or disables the **existance** of a users voicemail.
-        This only makes the voicemail available to be routed as destination of a call forwarding.
-
-    Voicemail Locution
-        If set, this locution is played as voicemail welcome message when a voicemail
-        for this user is going to be recorded. This only applies for call forwards
-        to voicemail.
-
-    Email notification
-        Send an email to the configured user address when a new voicemail is 
-        received.
-
-    Attach sounds:
-        Attach the audio message to the sent email.
-
-.. note:: If voicemail locution is not assigned, default locution will be used as long as
-          the user has not recorded a custom message through the voicemail menu (calling to
-          voicemail service code).
-
 **************
 Boss-Assistant
 **************
