@@ -1,12 +1,12 @@
 import VoicemailIcon from '@mui/icons-material/Voicemail';
-import EntityInterface, { ChildDecoratorType } from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface, { ChildDecoratorType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { VoicemailProperties } from './VoicemailProperties';
-import { EntityValues } from 'lib/services/entity/EntityService';
 import selectOptions from './SelectOptions';
-import DefaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
 
 const properties: VoicemailProperties = {
     'enabled': {

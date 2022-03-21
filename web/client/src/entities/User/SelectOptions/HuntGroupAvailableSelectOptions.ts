@@ -1,5 +1,5 @@
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import store from '@irontec/ivoz-ui/store';
+import store from 'store';
 import HuntGroup from '../../HuntGroup/HuntGroup';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { match } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import store from '@irontec/ivoz-ui/store';
+import store from 'store';
 import Terminal from '../Terminal';
 
 type CustomPropsType = {

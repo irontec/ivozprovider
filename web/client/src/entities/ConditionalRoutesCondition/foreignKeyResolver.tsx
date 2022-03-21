@@ -3,7 +3,7 @@ import entities from '../index';
 import { ConditionalRoutesConditionPropertiesList } from './ConditionalRoutesConditionProperties';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import store from '@irontec/ivoz-ui/store';
+import store from 'store';
 import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 

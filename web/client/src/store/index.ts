@@ -1,6 +1,6 @@
 import clientSession, { ClientSessionStore } from './clientSession';
 import { createStore, createTypedHooks } from 'easy-peasy';
-import { storeModel as ivozStoreModel, IvozStore,  } from '@irontec/ivoz-ui/store';
+import { storeModel as ivozStoreModel, IvozStore, StoreContainer } from '@irontec/ivoz-ui/store';
 import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
 import config from 'config';
 
@@ -16,6 +16,7 @@ const storeModel: AppStore = {
 }
 
 const store = createStore<AppStore>(storeModel);
+StoreContainer.store = store;
 
 export default store;
 
