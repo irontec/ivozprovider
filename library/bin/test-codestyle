@@ -4,8 +4,8 @@ if [ "$1" == "--full" ]; then
     CHANGED_FILES="."
 elif [ "$1" == "--branch" ]; then
     # Check agains PR target branch
-    if [ -n "${CHANGE_BRANCH}" ]; then
-        CHANGED_FILES=$(git diff --name-only ${CHANGE_BRANCH} --diff-filter=d -- '*.php')
+    if [ -n "${CHANGE_TARGET}" ]; then
+        CHANGED_FILES=$(git diff --name-only origin/${CHANGE_TARGET} --diff-filter=d -- '*.php')
     else
         echo "Can not retrieve target branch name. Forcing full check of all files..."
         CHANGED_FILES="."
