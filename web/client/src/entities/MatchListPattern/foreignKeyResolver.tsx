@@ -1,7 +1,7 @@
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import { EntityValues } from 'lib/services/entity/EntityService';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import entities from '../index';
-import genericForeignKeyResolver from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (

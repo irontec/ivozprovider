@@ -3,7 +3,7 @@ import { CancelTokenSource } from 'axios';
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps,
     CustomFunctionComponentContext
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'store';
 import { LocutionPropertyList } from '../LocutionProperties';

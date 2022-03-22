@@ -1,7 +1,7 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { RetailAccountProperties } from './RetailAccountProperties';
 import selectOptions from './SelectOptions';
 
@@ -88,7 +88,7 @@ const properties: RetailAccountProperties = {
     },
     status: {
         label: _('Status'),
-       //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getRetailAccountStatus
+        //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getRetailAccountStatus
     },
     transformationRuleSet: {
         label: _('Numeric transformation'),

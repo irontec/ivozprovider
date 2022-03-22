@@ -1,6 +1,6 @@
 import { FriendPropertyList } from './FriendProperties';
-import { ForeignKeyGetterType } from 'lib/entities/EntityInterface';
-import { autoSelectOptions } from 'lib/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {

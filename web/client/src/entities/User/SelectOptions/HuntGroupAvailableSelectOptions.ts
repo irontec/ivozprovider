@@ -1,7 +1,7 @@
-import { SelectOptionsType } from 'lib/entities/EntityInterface';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 import HuntGroup from '../../HuntGroup/HuntGroup';
-import { EntityValues } from 'lib/services/entity/EntityService';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { match } from 'react-router-dom';
 
 interface CustomArgs {

@@ -1,7 +1,7 @@
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { ConditionalRoutesConditionPropertyList } from '../ConditionalRoutesConditionProperties';
 
 type HuntGroupsRelUserValues = ConditionalRoutesConditionPropertyList<
@@ -9,7 +9,7 @@ type HuntGroupsRelUserValues = ConditionalRoutesConditionPropertyList<
 >;
 type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
 
-const Type: TargetGhostType = (props): JSX.Element|null => {
+const Type: TargetGhostType = (props): JSX.Element | null => {
 
     const { values } = props;
 

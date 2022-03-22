@@ -1,8 +1,8 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
@@ -62,20 +62,20 @@ const properties: PartialPropertyList = {
         maxLength: 100,
         helpText: (
             <div>
-              Comma separated codec names in preferred order. For example: alaw,g729,ulaw
-              <br/>
-              <pre>
-                 <b>alaw </b>  <i>G.711 a-law</i><br/>
-                 <b>ulaw </b>  <i>G.711 u-law</i><br/>
-                 <b>gsm  </b>  <i>GSM</i><br/>
-                 <b>speex</b>  <i>SpeeX 32khz</i><br/>
-                 <b>g722 </b>  <i>G722</i><br/>
-                 <b>g726 </b>  <i>G.726 RFC3551</i><br/>
-                 <b>g729 </b>  <i>G.729A</i><br/>
-                 <b>ilbc </b>  <i>iLBC</i><br/>
-                 <b>opus </b>  <i>Opus Codec</i><br/>
-                 <b>all  </b>  <i>All the previous</i>
-              </pre>
+                Comma separated codec names in preferred order. For example: alaw,g729,ulaw
+                <br />
+                <pre>
+                    <b>alaw </b>  <i>G.711 a-law</i><br />
+                    <b>ulaw </b>  <i>G.711 u-law</i><br />
+                    <b>gsm  </b>  <i>GSM</i><br />
+                    <b>speex</b>  <i>SpeeX 32khz</i><br />
+                    <b>g722 </b>  <i>G722</i><br />
+                    <b>g726 </b>  <i>G.726 RFC3551</i><br />
+                    <b>g729 </b>  <i>G.729A</i><br />
+                    <b>ilbc </b>  <i>iLBC</i><br />
+                    <b>opus </b>  <i>Opus Codec</i><br />
+                    <b>all  </b>  <i>All the previous</i>
+                </pre>
             </div>),
     },
     allow: {
@@ -108,9 +108,9 @@ const properties: PartialPropertyList = {
                 <br /><br />
                 However, some phones do not support UPDATE, so INVITE legacy method is also supported.
                 <pre>
-                    <b>Cisco </b>    <i>UPDATE</i><br/>
-                    <b>Yealink </b>  <i>INVITE</i><br/>
-                    <b>Bria </b>     <i>INVITE</i><br/>
+                    <b>Cisco </b>    <i>UPDATE</i><br />
+                    <b>Yealink </b>  <i>INVITE</i><br />
+                    <b>Bria </b>     <i>INVITE</i><br />
                 </pre>
                 Read manufacturer&apos;s documentation to choose correctly, please.
             </div>
@@ -149,8 +149,8 @@ const properties: PartialPropertyList = {
         label: _('Direct connectivity'),
         default: 'no',
         enum: {
-          'yes': _('Yes'),
-          'no': _('No'),
+            'yes': _('Yes'),
+            'no': _('No'),
         },
         visualToggle: {
             'yes': {
@@ -176,11 +176,11 @@ const properties: PartialPropertyList = {
         label: _('Language'),
         null: _("Client's default")
     },
-    statusIcon:  {
+    statusIcon: {
         label: _('Status'),
         // @TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatusIcon
     },
-    status:  {
+    status: {
         label: _('Status'),
         // @TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatus
     },

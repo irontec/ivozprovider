@@ -1,9 +1,9 @@
 import entities from '../index';
 import { CalendarPeriodPropertiesList } from './CalendarPeriodProperties';
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import store from 'store';
-import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import genericForeignKeyResolver, { remapFk } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (

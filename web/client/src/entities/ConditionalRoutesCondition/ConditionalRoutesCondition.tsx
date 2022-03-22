@@ -1,7 +1,7 @@
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ConditionalRoutesConditionProperties } from './ConditionalRoutesConditionProperties';
 import Target from './Field/Target';
 import ConditionMatch from './Field/ConditionMatch';
@@ -31,7 +31,7 @@ const properties: ConditionalRoutesConditionProperties = {
         minimum: 0,
         maximum: 100,
     },
-    'matchListIds':  {
+    'matchListIds': {
         label: _('Origin'),
         type: 'array',
         helpText: _("If caller matches any selected matchlist, this criteria is considered fulfilled."),

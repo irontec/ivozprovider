@@ -1,7 +1,7 @@
 import { withRouter } from "react-router-dom";
 import { Grid, styled, Theme } from "@mui/material";
 import EntityMap from '../../router/EntityMap';
-import { RouteMapBlock } from "lib/router/routeMapParser";
+import { RouteMapBlock } from "@irontec/ivoz-ui/router/routeMapParser";
 import DashboardBlock from "./DashboardBlock";
 
 interface DashboardProps {

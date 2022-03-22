@@ -1,5 +1,5 @@
-import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
-import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
+import { PropertySpec } from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
+import { EntityValue, EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
 
 export type CallAclPropertyList<T> = {
     'attr'?: T,
@@ -8,4 +8,4 @@ export type CallAclPropertyList<T> = {
 };
 
 export type CallAclProperties = CallAclPropertyList<Partial<PropertySpec>>;
-export type CallAclPropertiesList = Array<CallAclPropertyList<EntityValue|EntityValues>>;
+export type CallAclPropertiesList = Array<CallAclPropertyList<EntityValue | EntityValues>>;

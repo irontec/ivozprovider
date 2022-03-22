@@ -1,5 +1,5 @@
-import defaultEntityBehavior, { FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
-import { ViewProps } from 'lib/entities/EntityInterface';
+import defaultEntityBehavior, { FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ViewProps } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 const View = (props: ViewProps): JSX.Element | null => {
 

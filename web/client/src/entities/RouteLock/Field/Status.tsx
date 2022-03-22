@@ -2,7 +2,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { RouteLockPropertyList } from '../RouteLockProperties';
 
 type HuntGroupsRelUserValues = RouteLockPropertyList<

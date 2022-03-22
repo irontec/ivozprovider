@@ -1,5 +1,5 @@
-import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
-import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
+import { PropertySpec } from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
+import { EntityValue, EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
 
 export type CountryPropertyList<T> = {
     'name'?: T,
@@ -7,4 +7,4 @@ export type CountryPropertyList<T> = {
 };
 
 export type CountryProperties = CountryPropertyList<Partial<PropertySpec>>;
-export type CountryPropertiesList = Array<CountryPropertyList<EntityValue|EntityValues>>;
+export type CountryPropertiesList = Array<CountryPropertyList<EntityValue | EntityValues>>;

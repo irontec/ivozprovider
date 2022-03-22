@@ -1,7 +1,7 @@
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { CallForwardSettingProperties } from './CallForwardSettingProperties';
 import Form from './Form';
 import Target from './Field/Target';
@@ -38,9 +38,9 @@ const properties: CallForwardSettingProperties = {
     callTypeFilter: {
         label: _('Call type'),
         enum: {
-          'internal': _('Internal'),
-          'external': _('External'),
-          'both': _('Both'),
+            'internal': _('Internal'),
+            'external': _('External'),
+            'both': _('Both'),
         },
     },
     callForwardType: {
@@ -138,7 +138,7 @@ const properties: CallForwardSettingProperties = {
     enabled: {
         label: _('Enabled'),
         enum: {
-            '0':  _("No"),
+            '0': _("No"),
             '1': _("Yes"),
         },
         default: '1',

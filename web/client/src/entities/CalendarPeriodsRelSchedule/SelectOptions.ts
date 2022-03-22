@@ -1,9 +1,9 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import calendarPeriodsRelSchedule from './CalendarPeriodsRelSchedule';
 import Schedule from '../Schedule/Schedule';
-import { SelectOptionsType } from 'lib/entities/EntityInterface';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
-const CalendarPeriodsRelScheduleSelectOptions: SelectOptionsType = ({callback, cancelToken}): Promise<unknown> => {
+const CalendarPeriodsRelScheduleSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
     return defaultEntityBehavior.fetchFks(
         calendarPeriodsRelSchedule.path,

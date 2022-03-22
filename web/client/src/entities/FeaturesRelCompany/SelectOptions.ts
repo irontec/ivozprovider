@@ -1,5 +1,5 @@
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from 'lib/entities/EntityInterface';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import FeaturesRelCompany from './FeaturesRelCompany';
 
 const FeaturesRelCompanySelectOptions: SelectOptionsType = (

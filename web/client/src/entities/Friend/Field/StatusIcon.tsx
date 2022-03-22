@@ -1,8 +1,8 @@
-import _ from 'lib/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { Tooltip } from '@mui/material';
 import { StyledStatusIconArrowForwardIcon, StyledStatusIconRotateLeftIcon } from './StatusIcon.styles';
 import { FriendPropertyList } from '../FriendProperties';
-import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from 'lib/services/form/Field/CustomComponentWrapper';
+import withCustomComponentWrapper, { PropertyCustomFunctionComponent, PropertyCustomFunctionComponentProps } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 type FriendPropertyListValues = FriendPropertyList<string | number>;
 type StatusIconType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<FriendPropertyListValues>>;

@@ -1,5 +1,5 @@
-import { PropertySpec } from "lib/services/api/ParsedApiSpecInterface";
-import { EntityValue, EntityValues } from "lib/services/entity/EntityService";
+import { PropertySpec } from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
+import { EntityValue, EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
 
 export type MusicOnHoldPropertyList<T> = {
     'name'?: T,
@@ -7,4 +7,4 @@ export type MusicOnHoldPropertyList<T> = {
 };
 
 export type MusicOnHoldProperties = MusicOnHoldPropertyList<Partial<PropertySpec>>;
-export type MusicOnHoldPropertiesList = Array<MusicOnHoldPropertyList<EntityValue|EntityValues>>;
+export type MusicOnHoldPropertiesList = Array<MusicOnHoldPropertyList<EntityValue | EntityValues>>;

@@ -1,9 +1,9 @@
 import DateRangeIcon from '@mui/icons-material/DateRange';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { CalendarPeriodProperties } from './CalendarPeriodProperties';
-import { EntityValues } from 'lib/services/entity/EntityService';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import Target from './Field/Target';
 import foreignKeyResolver from './foreignKeyResolver';
 import { foreignKeyGetter } from './foreignKeyGetter';

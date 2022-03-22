@@ -1,9 +1,9 @@
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { CalendarProperties } from './CalendarProperties';
-import { EntityValues } from 'lib/services/entity/EntityService';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import selectOptions from './SelectOptions';
 
 const properties: CalendarProperties = {

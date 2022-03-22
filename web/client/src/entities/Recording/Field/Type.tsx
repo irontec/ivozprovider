@@ -1,9 +1,9 @@
-import _ from 'lib/services/translations/translate';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { RecordingPropertyList } from '../RecordingProperties';
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 type RecordingValues = RecordingPropertyList<string | number>;
 type TypeGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RecordingValues>>;

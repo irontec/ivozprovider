@@ -1,6 +1,6 @@
 import entities from "../entities";
-import _ from 'lib/services/translations/translate';
-import routeMapParser, { RouteMap } from "lib/router/routeMapParser";
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import routeMapParser, { RouteMap } from "@irontec/ivoz-ui/router/routeMapParser";
 
 const map: RouteMap = [
     {

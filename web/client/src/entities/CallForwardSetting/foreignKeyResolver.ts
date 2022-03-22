@@ -1,8 +1,8 @@
 import { CallForwardSettingPropertiesList } from './CallForwardSettingProperties';
 import entities from '../index';
-import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
+import genericForeignKeyResolver, { remapFk } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (

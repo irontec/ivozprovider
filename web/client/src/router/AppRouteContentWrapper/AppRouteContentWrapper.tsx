@@ -1,12 +1,12 @@
 import { Grid } from '@mui/material';
-import { Header, Footer } from 'lib/components';
+import { Header, Footer } from '@irontec/ivoz-ui/components/layout';
 import {
   StyledAppContent,
   StyledAppBodyContainer,
   StyledContainer,
   StyledAppBarSpacer
 } from './AppRouteContentWrapper.styles';
-import { RouteMap } from 'lib/router/routeMapParser';
+import { RouteMap } from '@irontec/ivoz-ui/router/routeMapParser';
 
 interface AppRouteContentProps {
   routeMap: RouteMap,

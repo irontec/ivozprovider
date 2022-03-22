@@ -1,10 +1,10 @@
-import { FkChoices } from 'lib/entities/DefaultEntityBehavior';
+import { FkChoices } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
 import UnassignedServiceSelectOptions from 'entities/Service/UnassignedServiceSelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios from 'axios';
-import { ForeignKeyGetterTypeArgs } from 'lib/entities/EntityInterface';
-import EntityService from 'lib/services/entity/EntityService';
+import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityService from '@irontec/ivoz-ui/services/entity/EntityService';
 import { match } from 'react-router-dom';
 
 type CompanyServiceForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs, currentServiceId?: number) => Promise<any>

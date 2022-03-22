@@ -1,8 +1,8 @@
 import SettingsApplications from '@mui/icons-material/SettingsApplications';
-import EntityInterface from 'lib/entities/EntityInterface';
-import _ from 'lib/services/translations/translate';
-import defaultEntityBehavior from 'lib/entities/DefaultEntityBehavior';
-import { PartialPropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {

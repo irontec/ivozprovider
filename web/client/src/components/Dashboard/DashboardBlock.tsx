@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
-import { RouteMapBlock } from "lib/router/routeMapParser";
+import { RouteMapBlock } from "@irontec/ivoz-ui/router/routeMapParser";
 import DashboardItemList from './DashboardItemList';
 
 interface LinkBlockProps {

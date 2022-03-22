@@ -1,7 +1,7 @@
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
-} from 'lib/services/form/Field/CustomComponentWrapper';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { HolidayDatePropertyList } from '../HolidayDateProperties';
 import entities from '../../index';
 import { Link } from 'react-router-dom';

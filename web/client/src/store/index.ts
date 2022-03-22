@@ -1,27 +1,22 @@
-import auth, { AuthStore } from './auth';
-import spec, { SpecStore } from './apiSpec';
-import api, { ApiStore } from './api';
-import route, { RouteStore } from './route';
 import clientSession, { ClientSessionStore } from './clientSession';
 import { createStore, createTypedHooks } from 'easy-peasy';
+import { storeModel as ivozStoreModel, IvozStore, StoreContainer } from '@irontec/ivoz-ui/store';
+import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
+import config from 'config';
 
-export interface AppStore {
-  auth: AuthStore,
-  spec: SpecStore,
-  api: ApiStore,
-  route: RouteStore,
+ApiClient.API_URL = config.API_URL;
+
+export interface AppStore extends IvozStore {
   clientSession: ClientSessionStore
 }
 
 const storeModel: AppStore = {
-  auth,
-  spec,
-  api,
-  route,
+  ...ivozStoreModel,
   clientSession
 }
 
 const store = createStore<AppStore>(storeModel);
+StoreContainer.store = store;
 
 export default store;
 

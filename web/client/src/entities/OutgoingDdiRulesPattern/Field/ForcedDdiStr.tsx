@@ -1,8 +1,8 @@
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
-} from 'lib/services/form/Field/CustomComponentWrapper';
-import _ from 'lib/services/translations/translate';
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 import { OutgoingDdiRulesPatternPropertyList } from '../OutgoingDdiRulesPatternProperties';
 

@@ -1,5 +1,5 @@
 import StyledDashboardLink from './DashboardItemList.styles';
-import { RouteMapItem } from "lib/router/routeMapParser";
+import { RouteMapItem } from "@irontec/ivoz-ui/router/routeMapParser";
 
 const DashboardItemList = (props: { items: RouteMapItem[] }): JSX.Element => {
 

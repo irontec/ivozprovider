@@ -1,9 +1,9 @@
-import { foreignKeyResolverType } from 'lib/entities/EntityInterface';
-import genericForeignKeyResolver, { remapFk } from 'lib/services/api/genericForeigKeyResolver';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver, { remapFk } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import entities from '../index';
 import { IvrEntryPropertiesList } from './IvrEntryProperties';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
-import { autoForeignKeyResolver } from 'lib/entities/DefaultEntityBehavior';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
     { data, cancelToken, entityService }

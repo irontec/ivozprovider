@@ -1,6 +1,6 @@
-import useFkChoices from 'lib/entities/data/useFkChoices';
-import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from 'lib/entities/DefaultEntityBehavior';
-import { PropertyList } from 'lib/services/api/ParsedApiSpecInterface';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { PropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import User from '../User/User';
 import Friend from '../Friend/Friend';
