@@ -16,6 +16,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\Collection;
@@ -217,6 +218,10 @@ interface UserInterface extends LoggableEntityInterface
     public function getExtension(): ?ExtensionInterface;
 
     public function getTimezone(): ?TimezoneInterface;
+
+    public function setLocation(?LocationInterface $location = null): static;
+
+    public function getLocation(): ?LocationInterface;
 
     public function isInitialized(): bool;
 

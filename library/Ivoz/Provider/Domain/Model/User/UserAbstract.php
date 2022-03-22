@@ -19,6 +19,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
+use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Model\User\User;
@@ -30,6 +31,7 @@ use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
+use Ivoz\Provider\Domain\Model\Location\Location;
 
 /**
 * UserAbstract
@@ -158,6 +160,12 @@ abstract class UserAbstract
      * @var ?OutgoingDdiRuleInterface
      */
     protected $outgoingDdiRule = null;
+
+    /**
+     * @var ?LocationInterface
+     * inversedBy users
+     */
+    protected $location = null;
 
     /**
      * Constructor
@@ -293,7 +301,8 @@ abstract class UserAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()));
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
         $self->initChangelog();
 
@@ -356,7 +365,8 @@ abstract class UserAbstract
             ->setExtension($fkTransformer->transform($dto->getExtension()))
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()));
+            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
         return $this;
     }
@@ -389,7 +399,8 @@ abstract class UserAbstract
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
             ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth))
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setOutgoingDdiRule(OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth));
+            ->setOutgoingDdiRule(OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
+            ->setLocation(Location::entityToDto(self::getLocation(), $depth));
     }
 
     protected function __toArray(): array
@@ -417,7 +428,8 @@ abstract class UserAbstract
             'extensionId' => self::getExtension()?->getId(),
             'timezoneId' => self::getTimezone()?->getId(),
             'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId()
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId(),
+            'locationId' => self::getLocation()?->getId()
         ];
     }
 
@@ -732,5 +744,17 @@ abstract class UserAbstract
     public function getOutgoingDdiRule(): ?OutgoingDdiRuleInterface
     {
         return $this->outgoingDdiRule;
+    }
+
+    public function setLocation(?LocationInterface $location = null): static
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getLocation(): ?LocationInterface
+    {
+        return $this->location;
     }
 }
