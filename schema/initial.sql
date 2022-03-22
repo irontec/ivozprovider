@@ -4005,7 +4005,7 @@ CREATE TABLE `Terminals` (
 
 LOCK TABLES `Terminals` WRITE;
 /*!40000 ALTER TABLE `Terminals` DISABLE KEYS */;
-INSERT INTO `Terminals` VALUES (1,1,'alice',3,'all','alaw',NULL,'invite','alice',1,NULL,NULL,'no',0),(2,1,'bob',3,'all','alaw',NULL,'invite','bob',1,NULL,NULL,'no',0);
+INSERT INTO `Terminals` VALUES (1,1,'alice',3,'all','alaw',NULL,'invite','alice**PA55W0RD',1,NULL,NULL,'no',0),(2,1,'bob',3,'all','alaw',NULL,'invite','bob**PA55W0RD',1,NULL,NULL,'no',0);
 /*!40000 ALTER TABLE `Terminals` ENABLE KEYS */;
 UNLOCK TABLES;
 
