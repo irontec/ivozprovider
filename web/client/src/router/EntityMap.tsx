@@ -190,6 +190,9 @@ const map: RouteMap = [
             {
                 entity: entities.Voicemail,
             },
+            {
+                entity: entities.Location,
+            },
         ],
     },
     {
