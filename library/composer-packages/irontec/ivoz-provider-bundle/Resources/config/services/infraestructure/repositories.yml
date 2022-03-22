@@ -19,3 +19,7 @@ services:
   Ivoz\Provider\Infrastructure\Persistence\Doctrine\:
     resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Infrastructure/Persistence/Doctrine/*'
     tags: [{ name: 'domain.repository'}]
+
+  Ivoz\Core\Infrastructure\Persistence\Doctrine\:
+    resource: '/opt/irontec/ivozprovider/library/vendor/irontec/ivoz-core/Infrastructure/Persistence/Doctrine/*Repository.php'
+    tags: [{ name: 'domain.repository'}]

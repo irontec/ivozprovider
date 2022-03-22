@@ -3,7 +3,7 @@
 namespace Tests\Provider\Destination;
 
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
-use Ivoz\Provider\Domain\Model\Changelog\Changelog;
+use Ivoz\Core\Domain\Model\Changelog\Changelog;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\Destination\Destination;

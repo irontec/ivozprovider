@@ -53,12 +53,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Carrier\Carrier
       Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface:
         Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer
-      Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
-        Ivoz\Provider\Domain\Model\Commandlog\Commandlog
       Ivoz\Provider\Domain\Model\Codec\CodecInterface:
         Ivoz\Provider\Domain\Model\Codec\Codec
-      Ivoz\Provider\Domain\Model\Changelog\ChangelogInterface:
-        Ivoz\Provider\Domain\Model\Changelog\Changelog
       Ivoz\Provider\Domain\Model\Company\CompanyInterface:
         Ivoz\Provider\Domain\Model\Company\Company
       Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface:
@@ -309,3 +305,8 @@ doctrine:
         Ivoz\Cgr\Domain\Model\TpTiming\TpTiming
       Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface:
         Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStat
+
+      Ivoz\Core\Domain\Model\Changelog\ChangelogInterface:
+        Ivoz\Core\Domain\Model\Changelog\Changelog
+      Ivoz\Core\Domain\Model\Commandlog\CommandlogInterface:
+        Ivoz\Core\Domain\Model\Commandlog\Commandlog
