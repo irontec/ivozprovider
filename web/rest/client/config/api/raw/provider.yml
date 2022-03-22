@@ -1461,6 +1461,11 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
 Ivoz\Provider\Domain\Model\Recording\RecordedFile: ~
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: >-
         "ROLE_COMPANY_ADMIN" in roles
