@@ -12,16 +12,6 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
     use RatingPlanTrait;
 
     /**
-     * @deprecated
-     */
-    public const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
-
-    /**
-     * @deprecated
-     */
-    public const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
-
-    /**
      * Get id
      * @codeCoverageIgnore
      * @return integer
@@ -102,7 +92,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      */
     public function getCgrTimingTag()
     {
-        if ($this->getTimingType() == self::TIMING_TYPE_ALWAYS) {
+        if ($this->getTimingType() == self::TIMINGTYPE_ALWAYS) {
             return TpTiming::TIMING_ANY;
         }
 

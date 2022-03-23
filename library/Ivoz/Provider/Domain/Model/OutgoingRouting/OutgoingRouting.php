@@ -19,15 +19,6 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     public const TYPE_FAX       = 'fax';
 
     /**
-     * Available OugoingRoutings Route Mode
-     */
-    /** @deprecated */
-    public const MODE_STATIC = self::ROUTINGMODE_STATIC;
-
-    /** @deprecated */
-    public const MODE_LCR    = self::ROUTINGMODE_LCR;
-
-    /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
      */
@@ -70,10 +61,10 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
         }
 
         switch ($this->getRoutingMode()) {
-            case self::MODE_STATIC:
+            case self::ROUTINGMODE_STATIC:
                 $this->replaceRelCarriers(new ArrayCollection());
                 break;
-            case self::MODE_LCR:
+            case self::ROUTINGMODE_LCR:
                 $this->setCarrier(null);
                 break;
             case self::ROUTINGMODE_BLOCK:
