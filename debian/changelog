@@ -1,8 +1,14 @@
-ivozprovider (2.20~2.20.0) UNRELEASED; urgency=medium
+ivozprovider (2.20~2.20.1) UNRELEASED; urgency=medium
+
+  * Version bump to 2.20.1
+
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 23 Feb 2022 18:25:56 +0100
+
+ivozprovider (2.20~2.20.0) stable; urgency=medium
 
   * Version bump to 2.20.0
 
- -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Fri, 10 Dec 2021 11:04:45 +0100
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 23 Feb 2022 18:25:55 +0100
 
 ivozprovider (2.19~2.19.0) stable; urgency=medium
 

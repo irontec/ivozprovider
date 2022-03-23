@@ -1,0 +1,33 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from alice to friend busy forwarded to dave
+    timeout: 20
+    sessions:
+      - alice:
+          - wait: 2
+          - call:
+              dest: 2001
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - wait: 5
+          - hangup
+          - waitfor: DISCONNCTD
+      - friend:
+          - register:
+              <<: *friend_cred
+          - waitfor: INCOMING
+          - busy
+          - waitfor: DISCONNCTD
+          - unregister
+      - dave:
+          - wait
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait
+          - answer
+          - waitfor: DISCONNCTD
+
+
