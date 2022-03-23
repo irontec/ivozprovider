@@ -2,6 +2,7 @@
 
 namespace Services;
 
+use Doctrine\DBAL\Exception\ConnectionLost;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
@@ -36,8 +37,9 @@ class RegistrationChannelResolver
         array $registerCriteria
     ) {
         $connection = $this->em->getConnection();
-        $pingError = !$connection->ping();
-        if ($pingError) {
+        try {
+            $connection->executeStatement('SELECT 1');
+        } catch (ConnectionLost $e) {
             $connection->close();
             $connection->connect();
         }
