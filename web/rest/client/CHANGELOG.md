@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.20.1
+* Models:
+    - ResidentialDevice:
+        - Name property is readonly now
+
 ## 2.20.0
 * Endpoints:
     - /call_forward_settings:
