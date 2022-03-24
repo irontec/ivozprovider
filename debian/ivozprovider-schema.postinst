@@ -29,7 +29,7 @@ function schema_initialize()
     cd /opt/irontec/ivozprovider/schema
     bin/console doctrine:database:create
     if [ $? -eq 0 ]; then
-        bin/console doctrine:database:import initial.sql
+        mysql --user=root --password="$RET" ivozprovider < initial.sql
     fi
 }
 
