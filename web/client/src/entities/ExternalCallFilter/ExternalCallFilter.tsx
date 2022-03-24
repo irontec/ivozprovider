@@ -42,6 +42,32 @@ const properties: ExternalCallFilterProperties = {
         default: '__null__',
         null: _('Unassigned'),
     },
+    'holidayEnabled': {
+        label: _('Holidays enabled'),
+        enum: {
+            '0': _('No'),
+            '1': _('Yes'),
+        },
+        default: '1',
+        visualToggle: {
+            '0': {
+                show: [],
+                hide: [
+                    'calendarIds',
+                    'holidayTargetType',
+                    'holidayLocution',
+                ],
+            },
+            '1': {
+                show: [
+                    'calendarIds',
+                    'holidayTargetType',
+                    'holidayLocution',
+                ],
+                hide: [],
+            }
+        }
+    },
     'holidayTargetType': {
         label: _('Holiday target type'),
         enum: {

@@ -32,6 +32,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
         {
             legend: _('Holidays configuration'),
             fields: [
+                'holidayEnabled',
                 'calendarIds',
                 'holidayLocution',
                 'holidayTargetType',
