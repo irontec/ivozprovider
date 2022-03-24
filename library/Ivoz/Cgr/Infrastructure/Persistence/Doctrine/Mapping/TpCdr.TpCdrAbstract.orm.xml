@@ -78,7 +78,7 @@
       </options>
     </field>
     <field name="cost" type="decimal" column="cost" precision="20" scale="4" nullable="false"/>
-    <field name="costDetails" type="json_array" column="cost_details" nullable="false"/>
+    <field name="costDetails" type="json" column="cost_details" nullable="false"/>
     <field name="extraInfo" type="text" column="extra_info" nullable="false">
       <options>
         <option name="fixed"/>

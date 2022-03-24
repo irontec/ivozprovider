@@ -17,6 +17,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="importerArguments" type="json_array" column="fileImporterArguments" nullable="true"/>
+    <field name="importerArguments" type="json" column="fileImporterArguments" nullable="true"/>
   </embeddable>
 </doctrine-mapping>
