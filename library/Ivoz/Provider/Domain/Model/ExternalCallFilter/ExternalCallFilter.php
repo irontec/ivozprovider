@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList;
@@ -54,6 +55,28 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     {
         $this->sanitizeRouteValues('Holiday');
         $this->sanitizeRouteValues('OutOfSchedule');
+
+        // Clear holiday filtering related fields
+        if (!$this->getHolidayEnabled()) {
+            $this->replaceCalendars(new ArrayCollection());
+            $this->setHolidayLocution(null);
+            $this->setHolidayTargetType(null);
+            $this->setHolidayNumberCountry(null);
+            $this->setHolidayNumberValue(null);
+            $this->setHolidayExtension(null);
+            $this->setHolidayVoicemail(null);
+        }
+
+        // Clear outOfSchedule filtering related fields
+        if (!$this->getOutOfScheduleEnabled()) {
+            $this->replaceSchedules(new ArrayCollection());
+            $this->setOutOfScheduleLocution(null);
+            $this->setOutOfScheduleTargetType(null);
+            $this->setOutOfScheduleNumberCountry(null);
+            $this->setOutOfScheduleNumberValue(null);
+            $this->setOutOfScheduleExtension(null);
+            $this->setOutOfScheduleVoicemail(null);
+        }
     }
 
     /**
@@ -107,6 +130,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function getHolidayDateForToday()
     {
+        if (!$this->getHolidayEnabled()) {
+            return null;
+        }
+
         $externalCallFilterRelCalendars = $this->getCalendars();
         if (empty($externalCallFilterRelCalendars)) {
             return null;
@@ -130,6 +157,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
     public function getCalendarPeriodForToday()
     {
+        if (!$this->getHolidayEnabled()) {
+            return null;
+        }
+
         $externalCallFilterRelCalendars = $this->getCalendars();
         if (empty($externalCallFilterRelCalendars)) {
             return null;
