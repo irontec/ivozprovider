@@ -121,16 +121,6 @@ parameters:
 			path: src/Controller/My/WebThemeAction.php
 
 		-
-			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
 			message: "#^Method Model\\\\CallStats\\:\\:__construct\\(\\) has parameter \\$totalCalls with no typehint specified\\.$#"
 			count: 1
 			path: src/Model/CallStats.php

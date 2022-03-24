@@ -9,4 +9,3 @@ parameters:
         - %currentWorkingDirectory%/library/Ivoz/Provider/Domain/Service/Invoice/Generator.php
     ignoreErrors:
         - '#Unsafe usage of new static\(\)#'
-        - '#.*Doctrine\\ORM\\QueryBuilder::setParameters\(\) expects#'

@@ -1,16 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
 			count: 1
 			path: src/Recording/Encoder.php

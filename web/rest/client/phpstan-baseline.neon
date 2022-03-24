@@ -11,11 +11,6 @@ parameters:
 			path: src/Controller/Provider/RatingPlanPricesAction.php
 
 		-
-			message: "#^Method Controller\\\\Provider\\\\RatingPlanPricesAction\\:\\:array2csv\\(\\) has parameter \\$fields with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Controller/Provider/RatingPlanPricesAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$from of function stream_copy_to_stream expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: src/Controller/Provider/RatingPlanPricesAction.php
@@ -69,16 +64,6 @@ parameters:
 			message: "#^Method Controller\\\\Provider\\\\ServicesUnassignedAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Controller/Provider/ServicesUnassignedAction.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
 
 		-
 			message: "#^Method Model\\\\RatingPlanPrices\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"

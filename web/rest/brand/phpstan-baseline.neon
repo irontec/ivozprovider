@@ -61,16 +61,6 @@ parameters:
 			path: src/Controller/Provider/PutBillableCallRatingAction.php
 
 		-
-			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
 			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
 			count: 2
 			path: src/Service/AuthEndpointDecorator.php

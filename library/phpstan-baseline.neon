@@ -1116,6 +1116,11 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpCdrDoctrineRepository.php
 
 		-
+			message: "#^Parameter \\#2 \\$entityClass of method Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\<Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpCdrStatDoctrineRepository\\>\\:\\:__construct\\(\\) expects class\\-string\\<Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpCdrStatDoctrineRepository\\>, string given\\.$#"
+			count: 1
+			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpCdrStatDoctrineRepository.php
+
+		-
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpDerivedChargerDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDerivedChargerDoctrineRepository.php
@@ -1134,6 +1139,16 @@ parameters:
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpDestinationRateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDestinationRateDoctrineRepository.php
+
+		-
+			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\ConnectionException\\|Doctrine\\\\DBAL\\\\DBALException is not subtype of Throwable$#"
+			count: 1
+			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpDestinationRateDoctrineRepository.php
+
+		-
+			message: "#^Parameter \\#2 \\$entityClass of method Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\<Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpLcrRuleDoctrineRepository\\>\\:\\:__construct\\(\\) expects class\\-string\\<Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpLcrRuleDoctrineRepository\\>, string given\\.$#"
+			count: 1
+			path: Ivoz/Cgr/Infrastructure/Persistence/Doctrine/TpLcrRuleDoctrineRepository.php
 
 		-
 			message: "#^Class Ivoz\\\\Cgr\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TpRateDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
@@ -4866,81 +4881,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\Changelog\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/Changelog.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogAbstract\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogAbstract\\:\\:setData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogAbstract\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:getCommandId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:setCommandId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:setData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogDtoAbstract\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogInterface\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogInterface.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Changelog\\\\ChangelogRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Changelog/ChangelogRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Codec\\\\Codec\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Codec/Codec.php
@@ -4969,106 +4909,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Codec\\\\CodecRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Codec/CodecRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\Commandlog\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/Commandlog.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:getAgent\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:getArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:setAgent\\(\\) has parameter \\$agent with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:setArguments\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:\\$agent type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogAbstract\\:\\:\\$arguments type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:getAgent\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:getArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:setAgent\\(\\) has parameter \\$agent with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:setArguments\\(\\) has parameter \\$arguments with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$agent type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Property Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogDtoAbstract\\:\\:\\$arguments type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogInterface\\:\\:getAgent\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogInterface\\:\\:getArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogInterface.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\CommandlogRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Commandlog/CommandlogRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\Company\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -7116,6 +6956,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Destination/DestinationRepository.php
 
 		-
+			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\ConnectionException\\|Doctrine\\\\DBAL\\\\DBALException is not subtype of Throwable$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Destination/DestinationRepository.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRate\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRate.php
@@ -7187,6 +7032,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRate\\\\DestinationRateRepository\\:\\:insertIgnoreFromArray\\(\\) has parameter \\$destinationRates with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateRepository.php
+
+		-
+			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\ConnectionException\\|Doctrine\\\\DBAL\\\\DBALException is not subtype of Throwable$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateRepository.php
 
@@ -13266,6 +13116,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalRepository.php
 
 		-
+			message: "#^Type Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalInterface in generic type Doctrine\\\\Common\\\\Collections\\\\Selectable\\<Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalInterface\\> in PHPDoc tag @extends is not subtype of template type TKey of \\(int\\|string\\) of interface Doctrine\\\\Common\\\\Collections\\\\Selectable\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalRepository.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Administrator\\\\AdministratorLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Administrator/AdministratorLifecycleEventHandlerInterface.php
@@ -13389,6 +13244,11 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\BillableCall\\\\CsvExporter\\:\\:addEndpointType\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/BillableCall/CsvExporter.php
+
+		-
+			message: "#^Class Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Commandlog\\\\Commandlog not found\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/BillableCall/MigrateFromUnparsedTrunksCdr.php
 
 		-
 			message: "#^Cannot call method getLanguageCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
@@ -13781,6 +13641,16 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/DdiProviderRegistrationLifecycleEventHandlerInterface.php
 
 		-
+			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/PersistErrorHandler.php
+
+		-
+			message: "#^Class Doctrine\\\\DBAL\\\\Driver\\\\PDOException not found\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/PersistErrorHandler.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProviderRegistration\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/DdiProviderRegistration/PersistErrorHandler.php
@@ -13789,6 +13659,16 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Destination\\\\DestinationLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Destination/DestinationLifecycleEventHandlerInterface.php
+
+		-
+			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Destination/PersistErrorHandler.php
+
+		-
+			message: "#^Class Doctrine\\\\DBAL\\\\Driver\\\\PDOException not found\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Destination/PersistErrorHandler.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Destination\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -13944,6 +13824,16 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\FriendLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Friend/FriendLifecycleEventHandlerInterface.php
+
+		-
+			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Friend/PersistErrorHandler.php
+
+		-
+			message: "#^Class Doctrine\\\\DBAL\\\\Driver\\\\PDOException not found\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Friend/PersistErrorHandler.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Friend\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -14291,6 +14181,16 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RatingPlan/CheckValidCurrency.php
 
 		-
+			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/RatingPlan/PersistErrorHandler.php
+
+		-
+			message: "#^Class Doctrine\\\\DBAL\\\\Driver\\\\PDOException not found\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/RatingPlan/PersistErrorHandler.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingPlan\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RatingPlan/PersistErrorHandler.php
@@ -14481,6 +14381,16 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/TransformationRuleSetLifecycleEventHandlerInterface.php
 
 		-
+			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/User/PersistErrorHandler.php
+
+		-
+			message: "#^Class Doctrine\\\\DBAL\\\\Driver\\\\PDOException not found\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/User/PersistErrorHandler.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\PersistErrorHandler\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/User/PersistErrorHandler.php
@@ -14584,11 +14494,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\FakeClient\\:\\:put\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Api/Client/FakeClient.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Jwt\\\\UserAuthenticationSuccessHandler\\:\\:handleAuthenticationSuccess\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Api/Jwt/UserAuthenticationSuccessHandler.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Jwt\\\\UserAuthenticationSuccessHandler\\:\\:handleAuthenticationSuccess\\(\\) has parameter \\$jwt with no typehint specified\\.$#"
@@ -14751,7 +14656,17 @@ parameters:
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php
 
 		-
+			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\ConnectionException\\|Doctrine\\\\DBAL\\\\DBALException is not subtype of Throwable$#"
+			count: 1
+			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationDoctrineRepository.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\DestinationRateDoctrineRepository\\:\\:insertIgnoreFromArray\\(\\) has parameter \\$destinationRates with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateDoctrineRepository.php
+
+		-
+			message: "#^PHPDoc tag @throws with type Doctrine\\\\DBAL\\\\ConnectionException\\|Doctrine\\\\DBAL\\\\DBALException is not subtype of Throwable$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/DestinationRateDoctrineRepository.php
 
@@ -14819,6 +14734,11 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\TransformationRuleSetDoctrineRepository\\:\\:getIdsByBrandId\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/TransformationRuleSetDoctrineRepository.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\DBAL\\\\Connection\\:\\:fetchAll\\(\\)\\.$#"
+			count: 1
+			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
 
 		-
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
