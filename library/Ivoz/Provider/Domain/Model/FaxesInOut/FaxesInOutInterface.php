@@ -39,7 +39,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function getId(): ?int;
 
-    public function setCalldate(DateTimeInterface $calldate = null): static;
+    public function setCalldate(DateTimeInterface|string|null $calldate = null): static;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'

@@ -50,7 +50,7 @@ abstract class UsersPresentityAbstract
     protected $receivedTime;
 
     /**
-     * @var string
+     * @var resource
      */
     protected $body;
 
@@ -351,14 +351,25 @@ abstract class UsersPresentityAbstract
 
     protected function setBody(string $body): static
     {
-        $this->body = $body;
+        $stream = fopen('php://memory', 'r+');
+        if (!$stream) {
+            throw new \DomainException('Unable to create a file in php://memory');
+        }
+
+        fwrite($stream, $body);
+        rewind($stream);
+        $this->body = $stream;
 
         return $this;
     }
 
     public function getBody(): string
     {
-        return $this->body;
+        /** @var string $response */
+        $response = stream_get_contents($this->body);
+        rewind($this->body);
+
+        return $response;
     }
 
     protected function setSender(string $sender): static
