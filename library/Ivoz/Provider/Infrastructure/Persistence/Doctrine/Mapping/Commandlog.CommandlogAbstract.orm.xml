@@ -12,8 +12,8 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="arguments" type="json_array" column="arguments" nullable="true"/>
-    <field name="agent" type="json_array" column="agent" nullable="true"/>
+    <field name="arguments" type="json" column="arguments" nullable="true"/>
+    <field name="agent" type="json" column="agent" nullable="true"/>
     <field name="createdOn" type="datetime" column="createdOn" nullable="false"/>
     <field name="microtime" type="smallint" column="microtime" nullable="false"/>
   </mapped-superclass>

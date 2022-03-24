@@ -33,7 +33,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
             $this->name = new Name('Standard', 'Standard', 'Standard', 'Standard');
             $this->description = new Description('', '', '', '');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
-            $this->file = new File(null, null, null, null);
+            $this->file = new File(null, null, null, []);
         })->call($item1);
 
         $this->addReference('_reference_ProviderDestinationRateGroup1', $item1);
@@ -49,7 +49,7 @@ class ProviderDestinationRateGroup extends Fixture implements DependentFixtureIn
             $this->name = new Name('Fallback', 'Fallback', 'Fallback', 'Fallback');
             $this->description = new Description('', '', '', '');
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
-            $this->file = new File(null, null, null, null);
+            $this->file = new File(null, null, null, []);
         })->call($item2);
 
         $this->addReference('_reference_ProviderDestinationRateGroup2', $item2);

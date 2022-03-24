@@ -12,7 +12,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="data" type="json_array" column="data" nullable="true"/>
+    <field name="data" type="json" column="data" nullable="true"/>
     <field name="createdOn" type="datetime" column="createdOn" nullable="false"/>
     <field name="microtime" type="smallint" column="microtime" nullable="false"/>
     <many-to-one field="command" target-entity="Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface" fetch="LAZY">
