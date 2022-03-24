@@ -13,7 +13,7 @@ pushd /opt/irontec/ivozprovider/schema
     # Create database and load initial data
     bin/console doctrine:database:drop --force || true
     bin/console doctrine:database:create -vv
-    bin/console doctrine:database:import initial.sql -vv
+    mysql -uroot -hdata.ivozprovider.local ivozprovider < initial.sql
 
     # Apply all migrations
     bin/console doctrine:migrations:migrate -vv --no-interaction
