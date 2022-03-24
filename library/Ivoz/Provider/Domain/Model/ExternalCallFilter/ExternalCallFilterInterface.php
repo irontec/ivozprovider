@@ -138,6 +138,8 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
+    public function getHolidayEnabled(): bool;
+
     public function getHolidayTargetType(): ?string;
 
     public function getHolidayNumberValue(): ?string;
