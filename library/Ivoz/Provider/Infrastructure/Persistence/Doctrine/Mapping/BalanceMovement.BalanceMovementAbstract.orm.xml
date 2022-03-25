@@ -3,12 +3,12 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementAbstract" table="balance_movement_abstract">
     <field name="amount" type="decimal" column="amount" precision="10" scale="4" nullable="true">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="balance" type="decimal" column="balance" precision="10" scale="4" nullable="true">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="createdOn" type="datetime" column="createdOn" nullable="true">

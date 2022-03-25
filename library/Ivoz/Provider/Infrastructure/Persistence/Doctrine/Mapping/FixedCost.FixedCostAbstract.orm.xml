@@ -9,7 +9,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="description" type="text" column="description" nullable="true"/>
+    <field name="description" type="string" length="255" column="description" nullable="true"/>
     <field name="cost" type="decimal" column="cost" precision="10" scale="4" nullable="true"/>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>

@@ -69,7 +69,7 @@
     <field name="weight" type="decimal" column="weight" precision="8" scale="2" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="default">10</option>
+        <option name="default">10.00</option>
       </options>
     </field>
     <field name="createdAt" type="datetime" column="created_at" nullable="false">
