@@ -12,6 +12,32 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 */
 interface QueueInterface extends LoggableEntityInterface
 {
+    public const AUTOPAUSE_YES = 'yes';
+
+    public const AUTOPAUSE_NO = 'no';
+
+    public const AUTOPAUSE_ALL = 'all';
+
+    public const RINGINUSE_YES = 'yes';
+
+    public const RINGINUSE_NO = 'no';
+
+    public const STRATEGY_RINGALL = 'ringall';
+
+    public const STRATEGY_LEASTRECENT = 'leastrecent';
+
+    public const STRATEGY_FEWESTCALLS = 'fewestcalls';
+
+    public const STRATEGY_RANDOM = 'random';
+
+    public const STRATEGY_RRMEMORY = 'rrmemory';
+
+    public const STRATEGY_LINEAR = 'linear';
+
+    public const STRATEGY_WRANDOM = 'wrandom';
+
+    public const STRATEGY_RRORDERED = 'rrordered';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

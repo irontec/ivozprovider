@@ -16,11 +16,33 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 */
 interface PsEndpointInterface extends LoggableEntityInterface
 {
+    public const DIRECTMEDIA_YES = 'yes';
+
+    public const DIRECTMEDIA_NO = 'no';
+
     public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
     public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
     public const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+
+    public const SENDDIVERSION_YES = 'yes';
+
+    public const SENDDIVERSION_NO = 'no';
+
+    public const SENDPAI_YES = 'yes';
+
+    public const SENDPAI_NO = 'no';
+
+    public const ONEHUNDREDREL_NO = 'no';
+
+    public const ONEHUNDREDREL_REQUIRED = 'required';
+
+    public const ONEHUNDREDREL_YES = 'yes';
+
+    public const TRUSTIDINBOUND_NO = 'no';
+
+    public const TRUSTIDINBOUND_YES = 'yes';
 
     public const T38UDPTL_YES = 'yes';
 

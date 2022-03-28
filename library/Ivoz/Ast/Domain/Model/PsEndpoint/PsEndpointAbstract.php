@@ -66,6 +66,7 @@ abstract class PsEndpointAbstract
     /**
      * @var ?string
      * column: direct_media
+     * comment: enum:yes|no
      */
     protected $directMedia = 'yes';
 
@@ -90,18 +91,21 @@ abstract class PsEndpointAbstract
     /**
      * @var ?string
      * column: send_diversion
+     * comment: enum:yes|no
      */
     protected $sendDiversion = 'yes';
 
     /**
      * @var ?string
      * column: send_pai
+     * comment: enum:yes|no
      */
     protected $sendPai = 'yes';
 
     /**
      * @var string
      * column: 100rel
+     * comment: enum:no|required|yes
      */
     protected $oneHundredRel = 'no';
 
@@ -114,6 +118,7 @@ abstract class PsEndpointAbstract
     /**
      * @var ?string
      * column: trust_id_inbound
+     * comment: enum:no|yes
      */
     protected $trustIdInbound = null;
 
@@ -530,6 +535,18 @@ abstract class PsEndpointAbstract
 
     protected function setDirectMedia(?string $directMedia = null): static
     {
+        if (!is_null($directMedia)) {
+            Assertion::maxLength($directMedia, 25, 'directMedia value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $directMedia,
+                [
+                    PsEndpointInterface::DIRECTMEDIA_YES,
+                    PsEndpointInterface::DIRECTMEDIA_NO,
+                ],
+                'directMediavalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->directMedia = $directMedia;
 
         return $this;
@@ -543,6 +560,7 @@ abstract class PsEndpointAbstract
     protected function setDirectMediaMethod(?string $directMediaMethod = null): static
     {
         if (!is_null($directMediaMethod)) {
+            Assertion::maxLength($directMediaMethod, 25, 'directMediaMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice(
                 $directMediaMethod,
                 [
@@ -598,6 +616,18 @@ abstract class PsEndpointAbstract
 
     protected function setSendDiversion(?string $sendDiversion = null): static
     {
+        if (!is_null($sendDiversion)) {
+            Assertion::maxLength($sendDiversion, 25, 'sendDiversion value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $sendDiversion,
+                [
+                    PsEndpointInterface::SENDDIVERSION_YES,
+                    PsEndpointInterface::SENDDIVERSION_NO,
+                ],
+                'sendDiversionvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->sendDiversion = $sendDiversion;
 
         return $this;
@@ -610,6 +640,18 @@ abstract class PsEndpointAbstract
 
     protected function setSendPai(?string $sendPai = null): static
     {
+        if (!is_null($sendPai)) {
+            Assertion::maxLength($sendPai, 25, 'sendPai value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $sendPai,
+                [
+                    PsEndpointInterface::SENDPAI_YES,
+                    PsEndpointInterface::SENDPAI_NO,
+                ],
+                'sendPaivalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->sendPai = $sendPai;
 
         return $this;
@@ -622,6 +664,17 @@ abstract class PsEndpointAbstract
 
     protected function setOneHundredRel(string $oneHundredRel): static
     {
+        Assertion::maxLength($oneHundredRel, 25, 'oneHundredRel value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $oneHundredRel,
+            [
+                PsEndpointInterface::ONEHUNDREDREL_NO,
+                PsEndpointInterface::ONEHUNDREDREL_REQUIRED,
+                PsEndpointInterface::ONEHUNDREDREL_YES,
+            ],
+            'oneHundredRelvalue "%s" is not an element of the valid values: %s'
+        );
+
         $this->oneHundredRel = $oneHundredRel;
 
         return $this;
@@ -650,6 +703,18 @@ abstract class PsEndpointAbstract
 
     protected function setTrustIdInbound(?string $trustIdInbound = null): static
     {
+        if (!is_null($trustIdInbound)) {
+            Assertion::maxLength($trustIdInbound, 25, 'trustIdInbound value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $trustIdInbound,
+                [
+                    PsEndpointInterface::TRUSTIDINBOUND_NO,
+                    PsEndpointInterface::TRUSTIDINBOUND_YES,
+                ],
+                'trustIdInboundvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->trustIdInbound = $trustIdInbound;
 
         return $this;
@@ -662,6 +727,7 @@ abstract class PsEndpointAbstract
 
     protected function setT38Udptl(string $t38Udptl): static
     {
+        Assertion::maxLength($t38Udptl, 25, 't38Udptl value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $t38Udptl,
             [
@@ -683,6 +749,7 @@ abstract class PsEndpointAbstract
 
     protected function setT38UdptlEc(string $t38UdptlEc): static
     {
+        Assertion::maxLength($t38UdptlEc, 25, 't38UdptlEc value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $t38UdptlEc,
             [
@@ -719,6 +786,7 @@ abstract class PsEndpointAbstract
 
     protected function setT38UdptlNat(string $t38UdptlNat): static
     {
+        Assertion::maxLength($t38UdptlNat, 25, 't38UdptlNat value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $t38UdptlNat,
             [

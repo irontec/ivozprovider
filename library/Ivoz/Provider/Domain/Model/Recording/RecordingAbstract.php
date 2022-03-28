@@ -292,6 +292,7 @@ abstract class RecordingAbstract
 
     protected function setType(string $type): static
     {
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $type,
             [

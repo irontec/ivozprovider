@@ -11,14 +11,6 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     use OutgoingRoutingTrait;
 
     /**
-     * Available OutgoingRoutings Types
-     * @todo restrict values on the setter
-     */
-    public const TYPE_PATTERN   = 'pattern';
-    public const TYPE_GROUP     = 'group';
-    public const TYPE_FAX       = 'fax';
-
-    /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
      */

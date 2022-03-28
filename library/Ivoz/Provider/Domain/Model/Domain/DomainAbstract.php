@@ -25,6 +25,7 @@ abstract class DomainAbstract
 
     /**
      * @var string
+     * comment: enum:proxyusers|proxytrunks
      */
     protected $pointsTo = 'proxyusers';
 
@@ -179,6 +180,16 @@ abstract class DomainAbstract
 
     protected function setPointsTo(string $pointsTo): static
     {
+        Assertion::maxLength($pointsTo, 25, 'pointsTo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $pointsTo,
+            [
+                DomainInterface::POINTSTO_PROXYUSERS,
+                DomainInterface::POINTSTO_PROXYTRUNKS,
+            ],
+            'pointsTovalue "%s" is not an element of the valid values: %s'
+        );
+
         $this->pointsTo = $pointsTo;
 
         return $this;

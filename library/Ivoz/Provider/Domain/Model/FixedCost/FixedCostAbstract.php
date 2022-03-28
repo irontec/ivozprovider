@@ -188,6 +188,10 @@ abstract class FixedCostAbstract
 
     protected function setDescription(?string $description = null): static
     {
+        if (!is_null($description)) {
+            Assertion::maxLength($description, 255, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
         $this->description = $description;
 
         return $this;

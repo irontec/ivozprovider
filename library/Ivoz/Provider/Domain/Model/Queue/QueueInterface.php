@@ -29,6 +29,22 @@ interface QueueInterface extends LoggableEntityInterface
 
     public const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
 
+    public const STRATEGY_RINGALL = 'ringall';
+
+    public const STRATEGY_LEASTRECENT = 'leastrecent';
+
+    public const STRATEGY_FEWESTCALLS = 'fewestcalls';
+
+    public const STRATEGY_RANDOM = 'random';
+
+    public const STRATEGY_RRMEMORY = 'rrmemory';
+
+    public const STRATEGY_LINEAR = 'linear';
+
+    public const STRATEGY_WRANDOM = 'wrandom';
+
+    public const STRATEGY_RRORDERED = 'rrordered';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

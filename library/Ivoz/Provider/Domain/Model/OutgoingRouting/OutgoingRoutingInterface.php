@@ -25,6 +25,12 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 */
 interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
+    public const TYPE_PATTERN = 'pattern';
+
+    public const TYPE_GROUP = 'group';
+
+    public const TYPE_FAX = 'fax';
+
     public const ROUTINGMODE_STATIC = 'static';
 
     public const ROUTINGMODE_LCR = 'lcr';

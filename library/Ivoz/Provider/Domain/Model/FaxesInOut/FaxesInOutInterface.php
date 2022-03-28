@@ -21,6 +21,14 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
 
     public const TYPE_OUT = 'Out';
 
+    public const STATUS_ERROR = 'error';
+
+    public const STATUS_PENDING = 'pending';
+
+    public const STATUS_INPROGRESS = 'inprogress';
+
+    public const STATUS_COMPLETED = 'completed';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

@@ -624,6 +624,7 @@ abstract class FriendAbstract
 
     protected function setDirectMediaMethod(string $directMediaMethod): static
     {
+        Assertion::maxLength($directMediaMethod, 25, 'directMediaMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $directMediaMethod,
             [
@@ -645,6 +646,7 @@ abstract class FriendAbstract
 
     protected function setCalleridUpdateHeader(string $calleridUpdateHeader): static
     {
+        Assertion::maxLength($calleridUpdateHeader, 10, 'calleridUpdateHeader value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $calleridUpdateHeader,
             [
@@ -666,6 +668,7 @@ abstract class FriendAbstract
 
     protected function setUpdateCallerid(string $updateCallerid): static
     {
+        Assertion::maxLength($updateCallerid, 10, 'updateCallerid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $updateCallerid,
             [

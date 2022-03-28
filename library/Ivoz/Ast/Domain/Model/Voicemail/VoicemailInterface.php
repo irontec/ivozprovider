@@ -12,6 +12,42 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 */
 interface VoicemailInterface extends LoggableEntityInterface
 {
+    public const ATTACH_YES = 'yes';
+
+    public const ATTACH_NO = 'no';
+
+    public const DELETEVOICEMAIL_YES = 'yes';
+
+    public const DELETEVOICEMAIL_NO = 'no';
+
+    public const SENDVOICEMAIL_YES = 'yes';
+
+    public const SENDVOICEMAIL_NO = 'no';
+
+    public const REVIEW_YES = 'yes';
+
+    public const REVIEW_NO = 'no';
+
+    public const TEMPGREETWARN_YES = 'yes';
+
+    public const TEMPGREETWARN_NO = 'no';
+
+    public const OPERATOR_YES = 'yes';
+
+    public const OPERATOR_NO = 'no';
+
+    public const ENVELOPE_YES = 'yes';
+
+    public const ENVELOPE_NO = 'no';
+
+    public const FORCENAME_YES = 'yes';
+
+    public const FORCENAME_NO = 'no';
+
+    public const FORCEGREETINGS_YES = 'yes';
+
+    public const FORCEGREETINGS_NO = 'no';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
