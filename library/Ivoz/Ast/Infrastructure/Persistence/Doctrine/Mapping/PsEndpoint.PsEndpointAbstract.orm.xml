@@ -48,14 +48,14 @@
         <option name="default">all</option>
       </options>
     </field>
-    <field name="directMedia" type="string" length="0" column-definition="ENUM('yes','no') DEFAULT 'yes' COMMENT '[enum:yes|no]'" column="direct_media" nullable="true">
+    <field name="directMedia" type="string" length="25" column="direct_media" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:yes|no]</option>
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="directMediaMethod" type="string" length="0" column-definition="ENUM('invite','reinvite','update')" column="direct_media_method" nullable="true">
+    <field name="directMediaMethod" type="string" length="25" column="direct_media_method" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:update|invite|reinvite]</option>
@@ -72,22 +72,28 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="sendDiversion" type="string" length="0" column-definition="ENUM('yes','no') DEFAULT 'yes' COMMENT '[enum:yes|no]'" column="send_diversion" nullable="true">
+    <field name="sendDiversion" type="string" length="25" column="send_diversion" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="default">yes</option>
+        <option name="comment">[enum:yes|no]</option>
+
       </options>
     </field>
-    <field name="sendPai" type="string" length="0" column-definition="ENUM('yes','no') DEFAULT 'yes' COMMENT '[enum:yes|no]'" column="send_pai" nullable="true">
+    <field name="sendPai" type="string" length="25" column="send_pai" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="default">yes</option>
+        <option name="comment">[enum:yes|no]</option>
+
       </options>
     </field>
-    <field name="oneHundredRel" type="string" length="0" column-definition="ENUM('no','required','yes') DEFAULT 'no' COMMENT '[enum:no|required|yes]" column="`100rel`" nullable="false">
+    <field name="oneHundredRel" type="string" length="25" column="`100rel`" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">no</option>
+        <option name="comment">[enum:no|required|yes]</option>
+
       </options>
     </field>
     <field name="outboundProxy" type="string" column="outbound_proxy" length="256" nullable="true">
@@ -95,19 +101,20 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="trustIdInbound" type="string" length="0" column-definition="ENUM('yes','no') COMMENT = '[enum:no|yes]'" column="trust_id_inbound" nullable="true">
+    <field name="trustIdInbound" type="string" length="25" column="trust_id_inbound" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:no|yes]</option>
       </options>
     </field>
-    <field name="t38Udptl" type="string" column="t38_udptl" nullable="false">
+    <field name="t38Udptl" type="string" length="25" column="t38_udptl" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:yes|no]</option>
         <option name="default">no</option>
       </options>
     </field>
-    <field name="t38UdptlEc" type="string" column="t38_udptl_ec" nullable="false">
+    <field name="t38UdptlEc" type="string" length="25" column="t38_udptl_ec" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:none|fec|redundancy]</option>
@@ -120,7 +127,7 @@
         <option name="unsigned">1</option>
       </options>
     </field>
-    <field name="t38UdptlNat" type="string" column="t38_udptl_nat" nullable="false">
+    <field name="t38UdptlNat" type="string" length="25" column="t38_udptl_nat" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:yes|no]</option>

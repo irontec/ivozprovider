@@ -44,9 +44,10 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="attach" type="string" length="0" column="attach" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="attach" type="string" length="25" column="attach" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
     <field name="attachfmt" type="string" column="attachfmt" length="10" nullable="true">
@@ -69,9 +70,11 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="deleteVoicemail" type="string" length="0" column="deleteast_voicemail"  column-definition="ENUM('yes','no')" nullable="true">
+    <field name="deleteVoicemail" type="string" length="25" column="deleteast_voicemail" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+
       </options>
     </field>
     <field name="saycid" type="string" column="saycid" nullable="true">
@@ -80,29 +83,34 @@
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="sendVoicemail" type="string" length="0" column="sendast_voicemail" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="sendVoicemail" type="string" length="25" column="sendast_voicemail" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="review" type="string" length="0" column="review" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="review" type="string" length="25" column="review" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="tempgreetwarn" type="string" length="0" column="tempgreetwarn" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="tempgreetwarn" type="string" length="25" column="tempgreetwarn" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="operator" type="string" length="0" column="operator" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="operator" type="string" length="25" column="operator" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="envelope" type="string" length="0" column="envelope" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="envelope" type="string" length="25" column="envelope" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
     <field name="sayduration" type="integer" column="sayduration" nullable="true">
@@ -110,14 +118,16 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="forcename" type="string" length="0" column="forcename" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="forcename" type="string" length="25" column="forcename" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="forcegreetings" type="string" length="0" column="forcegreetings" column-definition="ENUM('yes','no')" nullable="true">
+    <field name="forcegreetings" type="string" length="25" column="forcegreetings" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
     <field name="callback" type="string" column="callback" length="80" nullable="true">
