@@ -12,6 +12,7 @@ Feature: Create external call filters
     """
       {
           "name": "newFilter",
+          "holidayEnabled": true,
           "holidayTargetType": "number",
           "holidayNumberValue": "946002021",
           "outOfScheduleEnabled": true,
@@ -47,6 +48,7 @@ Feature: Create external call filters
     """
       {
           "name": "newFilter",
+          "holidayEnabled": true,
           "holidayTargetType": "number",
           "holidayNumberValue": "946002021",
           "outOfScheduleEnabled": true,

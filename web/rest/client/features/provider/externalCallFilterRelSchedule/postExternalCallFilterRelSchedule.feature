@@ -24,6 +24,7 @@ Feature: Create external call filter rel schedules
           "id": 2,
           "filter": {
               "name": "testFilter",
+              "holidayEnabled": true,
               "holidayTargetType": null,
               "holidayNumberValue": null,
               "outOfScheduleEnabled": true,
@@ -69,6 +70,7 @@ Feature: Create external call filter rel schedules
           "id": 2,
           "filter": {
               "name": "testFilter",
+              "holidayEnabled": true,
               "holidayTargetType": null,
               "holidayNumberValue": null,
               "outOfScheduleEnabled": true,
