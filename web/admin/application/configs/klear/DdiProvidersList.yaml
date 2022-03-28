@@ -155,6 +155,7 @@ production:
           conditionalRoute: true
           routeType: true
           target: true
+          retailAccount: true
         options:
           title: _("Options")
           screens:
