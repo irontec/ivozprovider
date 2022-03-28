@@ -9,7 +9,7 @@
     <unique-constraints>
       <unique-constraint name="voicemail_voicemail" columns="voicemailId"/>
     </unique-constraints>
-    <field name="context" type="string" column="context" length="80" nullable="false">
+    <field name="context" type="string" column-definition="" column="context" length="80" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -44,7 +44,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="attach" type="string" column="attach" nullable="true">
+    <field name="attach" type="string" length="0" column="attach" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -69,7 +69,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="deleteVoicemail" type="string" column="deleteast_voicemail" nullable="true">
+    <field name="deleteVoicemail" type="string" length="0" column="deleteast_voicemail"  column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -80,27 +80,27 @@
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="sendVoicemail" type="string" column="sendast_voicemail" nullable="true">
+    <field name="sendVoicemail" type="string" length="0" column="sendast_voicemail" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="review" type="string" column="review" nullable="true">
+    <field name="review" type="string" length="0" column="review" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="tempgreetwarn" type="string" column="tempgreetwarn" nullable="true">
+    <field name="tempgreetwarn" type="string" length="0" column="tempgreetwarn" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="operator" type="string" column="operator" nullable="true">
+    <field name="operator" type="string" length="0" column="operator" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="envelope" type="string" column="envelope" nullable="true">
+    <field name="envelope" type="string" length="0" column="envelope" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -110,12 +110,12 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="forcename" type="string" column="forcename" nullable="true">
+    <field name="forcename" type="string" length="0" column="forcename" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="forcegreetings" type="string" column="forcegreetings" nullable="true">
+    <field name="forcegreetings" type="string" length="0" column="forcegreetings" column-definition="ENUM('yes','no')" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

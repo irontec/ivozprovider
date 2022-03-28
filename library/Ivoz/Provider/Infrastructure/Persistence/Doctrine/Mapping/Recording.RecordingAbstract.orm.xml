@@ -12,7 +12,7 @@
         <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
-    <field name="type" type="string" column="type" nullable="false">
+    <field name="type" type="string" length="25" column="type" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:ondemand|ddi]</option>

@@ -24,13 +24,13 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="autopause" type="string" column="autopause" nullable="false">
+    <field name="autopause" type="string" length="0" column-definition="ENUM('yes','no','all')" column="autopause" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">no</option>
       </options>
     </field>
-    <field name="ringinuse" type="string" column="ringinuse" nullable="false">
+    <field name="ringinuse" type="string" length="0" column-definition="ENUM('yes','no')" column="ringinuse" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">no</option>
@@ -46,7 +46,7 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="strategy" type="string" column="strategy" nullable="true">
+    <field name="strategy" type="string" length="0" column-definition="ENUM('ringall','leastrecent','fewestcalls','random','rrmemory','linear','wrandom','rrordered')" column="strategy" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

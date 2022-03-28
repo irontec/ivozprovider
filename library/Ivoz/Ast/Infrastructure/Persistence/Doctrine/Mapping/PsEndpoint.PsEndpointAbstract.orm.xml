@@ -48,13 +48,14 @@
         <option name="default">all</option>
       </options>
     </field>
-    <field name="directMedia" type="string" column="direct_media" nullable="true">
+    <field name="directMedia" type="string" length="0" column-definition="ENUM('yes','no') DEFAULT 'yes' COMMENT '[enum:yes|no]'" column="direct_media" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="directMediaMethod" type="string" column="direct_media_method" nullable="true">
+    <field name="directMediaMethod" type="string" length="0" column-definition="ENUM('invite','reinvite','update')" column="direct_media_method" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:update|invite|reinvite]</option>
@@ -71,19 +72,19 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="sendDiversion" type="string" column="send_diversion" nullable="true">
+    <field name="sendDiversion" type="string" length="0" column-definition="ENUM('yes','no') DEFAULT 'yes' COMMENT '[enum:yes|no]'" column="send_diversion" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="sendPai" type="string" column="send_pai" nullable="true">
+    <field name="sendPai" type="string" length="0" column-definition="ENUM('yes','no') DEFAULT 'yes' COMMENT '[enum:yes|no]'" column="send_pai" nullable="true">
       <options>
         <option name="fixed"/>
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="oneHundredRel" type="string" column="`100rel`" nullable="false">
+    <field name="oneHundredRel" type="string" length="0" column-definition="ENUM('no','required','yes') DEFAULT 'no' COMMENT '[enum:no|required|yes]" column="`100rel`" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">no</option>
@@ -94,7 +95,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="trustIdInbound" type="string" column="trust_id_inbound" nullable="true">
+    <field name="trustIdInbound" type="string" length="0" column-definition="ENUM('yes','no') COMMENT = '[enum:no|yes]'" column="trust_id_inbound" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

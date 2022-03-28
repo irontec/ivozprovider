@@ -9,10 +9,11 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="pointsTo" type="string" column="pointsTo" nullable="false">
+    <field name="pointsTo" type="string" length="25" column="pointsTo" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">proxyusers</option>
+        <option name="comment">[enum:proxyusers|proxytrunks]</option>
       </options>
     </field>
     <field name="description" type="string" column="description" length="500" nullable="true">

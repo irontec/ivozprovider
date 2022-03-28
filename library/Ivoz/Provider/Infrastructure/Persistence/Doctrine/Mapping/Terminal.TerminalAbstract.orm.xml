@@ -30,7 +30,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="directMediaMethod" type="string" column="direct_media_method" nullable="false">
+    <field name="directMediaMethod" type="string" length="25" column="direct_media_method" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:update|invite|reinvite]</option>
