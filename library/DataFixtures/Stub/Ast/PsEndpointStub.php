@@ -29,7 +29,9 @@ class PsEndpointStub
             ->setDirectMediaMethod('invite')
             ->setMailboxes('101@company1')
             ->setNamedPickupGroup('')
-            ->setOneHundredRel('')
+            ->setOneHundredRel(
+                PsEndpointInterface::ONEHUNDREDREL_NO
+            )
             ->setT38Udptl(PsEndpointInterface::T38UDPTL_NO)
             ->setT38UdptlEc(PsEndpointInterface::T38UDPTLEC_REDUNDANCY)
             ->setT38UdptlMaxdatagram(0)
@@ -50,7 +52,9 @@ class PsEndpointStub
             ->setDirectMediaMethod('invite')
             ->setMailboxes('102@company1')
             ->setNamedPickupGroup('')
-            ->setOneHundredRel('')
+            ->setOneHundredRel(
+                PsEndpointInterface::ONEHUNDREDREL_NO
+            )
             ->setT38Udptl(PsEndpointInterface::T38UDPTL_NO)
             ->setT38UdptlEc(PsEndpointInterface::T38UDPTLEC_REDUNDANCY)
             ->setT38UdptlMaxdatagram(0)
@@ -69,7 +73,9 @@ class PsEndpointStub
             ->setDisallow('')
             ->setDirectMediaMethod('invite')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
-            ->setOneHundredRel('')
+            ->setOneHundredRel(
+                PsEndpointInterface::ONEHUNDREDREL_NO
+            )
             ->setT38Udptl(PsEndpointInterface::T38UDPTL_NO)
             ->setT38UdptlEc(PsEndpointInterface::T38UDPTLEC_REDUNDANCY)
             ->setT38UdptlMaxdatagram(0)
@@ -89,7 +95,9 @@ class PsEndpointStub
             ->setDirectMediaMethod('invite')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setTrustIdInbound('yes')
-            ->setOneHundredRel('')
+            ->setOneHundredRel(
+                PsEndpointInterface::ONEHUNDREDREL_NO
+            )
             ->setT38Udptl(PsEndpointInterface::T38UDPTL_NO)
             ->setT38UdptlEc(PsEndpointInterface::T38UDPTLEC_REDUNDANCY)
             ->setT38UdptlMaxdatagram(0)
@@ -110,7 +118,9 @@ class PsEndpointStub
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setTrustIdInbound('yes')
             ->setMailboxes('residential1@company1')
-            ->setOneHundredRel('')
+            ->setOneHundredRel(
+                PsEndpointInterface::ONEHUNDREDREL_NO
+            )
             ->setT38Udptl(PsEndpointInterface::T38UDPTL_NO)
             ->setT38UdptlEc(PsEndpointInterface::T38UDPTLEC_REDUNDANCY)
             ->setT38UdptlMaxdatagram(0)
