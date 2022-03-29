@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageAbstract" table="voicemailmessages_abstract">
+    <field name="calldate" type="datetime" column="calldate" nullable="false"/>
+    <field name="folder" type="string" column="folder" length="64" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="caller" type="string" column="caller" length="128" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="duration" type="integer" column="duration" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <embedded name="recordingFile" class="Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile" use-column-prefix="false" />
+    <embedded name="metadataFile" class="Ivoz\Provider\Domain\Model\VoicemailMessage\MetadataFile" use-column-prefix="false" />
+    <many-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="astVoicemailMessage" target-entity="Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="astVoicemailMessageId" referenced-column-name="id" on-delete="CASCADE"/>
+      </join-columns>
+    </many-to-one>
+  </mapped-superclass>
+</doctrine-mapping>
