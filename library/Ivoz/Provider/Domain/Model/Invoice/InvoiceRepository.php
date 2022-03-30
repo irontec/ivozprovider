@@ -7,7 +7,6 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface InvoiceRepository extends ObjectRepository, Selectable
 {
-
     /**
      * @param int $companyId
      * @param int $brandId

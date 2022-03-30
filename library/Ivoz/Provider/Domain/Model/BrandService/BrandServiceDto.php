@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\BrandService;
 
 class BrandServiceDto extends BrandServiceDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ProxyTrunk;
 
 class ProxyTrunkDto extends ProxyTrunkDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

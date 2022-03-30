@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList;
 
 class ExternalCallFilterWhiteListDto extends ExternalCallFilterWhiteListDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

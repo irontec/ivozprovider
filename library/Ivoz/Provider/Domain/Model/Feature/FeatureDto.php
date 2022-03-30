@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Feature;
 
 class FeatureDto extends FeatureDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList;
 
 class ExternalCallFilterBlackListDto extends ExternalCallFilterBlackListDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

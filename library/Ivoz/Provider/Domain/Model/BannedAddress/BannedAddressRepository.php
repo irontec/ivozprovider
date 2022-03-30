@@ -7,5 +7,4 @@ use Doctrine\Common\Collections\Selectable;
 
 interface BannedAddressRepository extends ObjectRepository, Selectable
 {
-
 }

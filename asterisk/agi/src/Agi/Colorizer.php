@@ -4,7 +4,6 @@ namespace Agi;
 
 class Colorizer
 {
-
     /**
      * @var array
      */

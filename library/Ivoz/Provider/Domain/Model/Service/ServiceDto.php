@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Service;
 
 class ServiceDto extends ServiceDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

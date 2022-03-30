@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
 class NotificationTemplateContentDto extends NotificationTemplateContentDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

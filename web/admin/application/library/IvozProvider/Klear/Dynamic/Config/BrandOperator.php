@@ -4,7 +4,6 @@ namespace IvozProvider\Klear\Dynamic\Config;
 
 class BrandOperator extends Base
 {
-
     protected $_title = '[Brand]';
     protected $_subTitle = '[brand operator session]';
 

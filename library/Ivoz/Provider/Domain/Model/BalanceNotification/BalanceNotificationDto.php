@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\BalanceNotification;
 
 class BalanceNotificationDto extends BalanceNotificationDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

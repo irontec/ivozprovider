@@ -13,7 +13,6 @@ use RouteHandlerAbstract;
 
 class FaxSendStatus extends RouteHandlerAbstract
 {
-
     /**
      * @var Wrapper
      */

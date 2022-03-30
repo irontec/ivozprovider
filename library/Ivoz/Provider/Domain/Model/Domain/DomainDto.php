@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Domain;
 
 class DomainDto extends DomainDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

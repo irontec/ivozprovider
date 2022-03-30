@@ -7,7 +7,6 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface ExtensionRepository extends ObjectRepository, Selectable
 {
-
     /**
      * @param int $id
      * @return ExtensionInterface[]

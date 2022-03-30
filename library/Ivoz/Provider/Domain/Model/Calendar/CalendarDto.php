@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Calendar;
 
 class CalendarDto extends CalendarDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

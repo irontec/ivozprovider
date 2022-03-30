@@ -7,5 +7,4 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface TpDerivedChargerRepository extends ObjectRepository, Selectable
 {
-
 }

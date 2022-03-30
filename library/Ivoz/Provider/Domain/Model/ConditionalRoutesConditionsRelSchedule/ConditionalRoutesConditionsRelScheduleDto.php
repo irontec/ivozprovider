@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule;
 
 class ConditionalRoutesConditionsRelScheduleDto extends ConditionalRoutesConditionsRelScheduleDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

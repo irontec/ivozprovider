@@ -12,7 +12,6 @@ use Ivoz\Provider\Domain\Model\Company\CompanyDto;
  */
 class IvozProvider_Klear_Filter_CallForwardTypes implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
-
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
         return true;

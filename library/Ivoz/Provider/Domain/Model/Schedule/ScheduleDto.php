@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Schedule;
 
 class ScheduleDto extends ScheduleDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

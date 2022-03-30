@@ -7,5 +7,4 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface FeatureRepository extends ObjectRepository, Selectable
 {
-
 }

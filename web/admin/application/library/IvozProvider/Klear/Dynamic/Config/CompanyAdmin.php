@@ -6,7 +6,6 @@ use IvozProvider\Mapper\Sql\Companies;
 
 class CompanyAdmin extends Base
 {
-
     protected $_title = '[Company Admin]';
     protected $_subTitle = '[admin operator session]';
 

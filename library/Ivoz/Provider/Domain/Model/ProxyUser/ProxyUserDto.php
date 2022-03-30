@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\ProxyUser;
 
 class ProxyUserDto extends ProxyUserDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

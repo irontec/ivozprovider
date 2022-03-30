@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\Country;
 
 class CountryDto extends CountryDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

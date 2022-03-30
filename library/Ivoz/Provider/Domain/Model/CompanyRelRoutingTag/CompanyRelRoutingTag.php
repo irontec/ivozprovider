@@ -12,6 +12,10 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
 {
     use CompanyRelRoutingTagTrait;
 
+    /**
+     * @param CompanyInterface|null $company
+     * @return static
+     */
     public function setCompany(CompanyInterface $company = null): static
     {
         $companyType = $company->getType();

@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 interface BillableCallRepository extends ObjectRepository, Selectable
 {
-
     /**
      * @param string $callid
      * @param int $brandId

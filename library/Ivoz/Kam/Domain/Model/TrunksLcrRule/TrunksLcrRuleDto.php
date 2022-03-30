@@ -4,7 +4,6 @@ namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
 class TrunksLcrRuleDto extends TrunksLcrRuleDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

@@ -7,7 +7,6 @@ use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 
 class TokenHelper
 {
-
     public static function renewToken($user, $brandId)
     {
         $dataGateway = \Zend_Registry::get('data_gateway');

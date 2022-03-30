@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Model\BalanceMovement;
 
 class BalanceMovementDto extends BalanceMovementDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore

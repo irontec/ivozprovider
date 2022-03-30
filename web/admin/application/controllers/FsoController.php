@@ -2,7 +2,6 @@
 
 class FsoController extends \Zend_Controller_Action
 {
-
     /**
      * Multiplicador de tamaños de las imagenes. Las vistas normales son x1
      * y las vistas retina son x2 y x3, según el dispositivo.

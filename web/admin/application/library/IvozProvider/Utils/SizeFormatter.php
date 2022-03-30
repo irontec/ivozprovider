@@ -4,7 +4,6 @@ namespace IvozProvider\Utils;
 
 class SizeFormatter
 {
-
     public static function sizeToHuman($total)
     {
         $size = array('B','KB','MB','GB','TB','PB','EB','ZB','YB');

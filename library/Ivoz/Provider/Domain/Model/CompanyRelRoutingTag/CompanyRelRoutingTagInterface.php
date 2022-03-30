@@ -14,7 +14,10 @@ use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 */
 interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
 {
-
+    /**
+     * @param CompanyInterface|null $company
+     * @return static
+     */
     public function setCompany(?CompanyInterface $company = null): static;
 
     /**

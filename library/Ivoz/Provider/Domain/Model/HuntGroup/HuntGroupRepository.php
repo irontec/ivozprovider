@@ -7,5 +7,4 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface HuntGroupRepository extends ObjectRepository, Selectable
 {
-
 }

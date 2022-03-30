@@ -4,7 +4,6 @@ namespace IvozProvider\Klear\Importer;
 
 class CsvParser
 {
-
     protected $_delimiter;
     protected $_enclosure;
     protected $_scape;

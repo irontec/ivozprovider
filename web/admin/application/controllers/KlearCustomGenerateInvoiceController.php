@@ -4,7 +4,6 @@ use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 
 class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
 {
-
     protected $_mainRouter;
 
     protected $_brandId;
