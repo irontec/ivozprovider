@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f6a7be2f3e28ec73bd432828560cb75",
+    "content-hash": "6e7ec972249467d803d423a68cdcb41d",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2691,16 +2691,16 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.8.8",
+            "version": "5.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-dev-tools.git",
-                "reference": "acc408c5831e446d72183880fbd2889511b2af1f"
+                "reference": "aa5f913a434d343d2856ddea208d5da4d24aecfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/acc408c5831e446d72183880fbd2889511b2af1f",
-                "reference": "acc408c5831e446d72183880fbd2889511b2af1f",
+                "url": "https://api.github.com/repos/irontec/ivoz-dev-tools/zipball/aa5f913a434d343d2856ddea208d5da4d24aecfe",
+                "reference": "aa5f913a434d343d2856ddea208d5da4d24aecfe",
                 "shasum": ""
             },
             "require": {
@@ -2741,9 +2741,9 @@
             "description": "DevTools for ivozprovider",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-dev-tools/issues",
-                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.8.8"
+                "source": "https://github.com/irontec/ivoz-dev-tools/tree/5.8.9"
             },
-            "time": "2022-03-24T12:21:52+00:00"
+            "time": "2022-03-30T16:34:52+00:00"
         },
         {
             "name": "irontec/ivoz-provider-bundle",
@@ -14034,26 +14034,26 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "4.0.x-dev",
+            "version": "3.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "669b4ea91a971d772afe6450edee60c0b1e0aa83"
+                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/669b4ea91a971d772afe6450edee60c0b1e0aa83",
-                "reference": "669b4ea91a971d772afe6450edee60c0b1e0aa83",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5e4e71592f69da17871dba6e80dd51bce74a351a",
+                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
-                "php": ">=7.2.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.0 || ^9.0"
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "bin": [
                 "bin/phpcs",
@@ -14086,7 +14086,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2022-03-18T03:28:35+00:00"
+            "time": "2021-12-12T21:44:58+00:00"
         },
         {
             "name": "swoole/ide-helper",
