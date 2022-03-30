@@ -362,6 +362,7 @@ abstract class TerminalAbstract
 
     protected function setDirectMediaMethod(string $directMediaMethod): static
     {
+        Assertion::maxLength($directMediaMethod, 25, 'directMediaMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $directMediaMethod,
             [

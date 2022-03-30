@@ -3,7 +3,7 @@
 namespace Tests\Provider\Brand;
 
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
-use Ivoz\Provider\Domain\Model\Changelog\Changelog;
+use Ivoz\Core\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;

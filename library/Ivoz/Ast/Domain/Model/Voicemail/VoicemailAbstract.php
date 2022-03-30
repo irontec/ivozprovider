@@ -57,6 +57,7 @@ abstract class VoicemailAbstract
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $attach = null;
 
@@ -83,6 +84,7 @@ abstract class VoicemailAbstract
     /**
      * @var ?string
      * column: deleteast_voicemail
+     * comment: enum:yes|no
      */
     protected $deleteVoicemail = null;
 
@@ -94,26 +96,31 @@ abstract class VoicemailAbstract
     /**
      * @var ?string
      * column: sendast_voicemail
+     * comment: enum:yes|no
      */
     protected $sendVoicemail = null;
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $review = null;
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $tempgreetwarn = null;
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $operator = null;
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $envelope = null;
 
@@ -124,11 +131,13 @@ abstract class VoicemailAbstract
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $forcename = null;
 
     /**
      * @var ?string
+     * comment: enum:yes|no
      */
     protected $forcegreetings = null;
 
@@ -557,6 +566,18 @@ abstract class VoicemailAbstract
 
     protected function setAttach(?string $attach = null): static
     {
+        if (!is_null($attach)) {
+            Assertion::maxLength($attach, 25, 'attach value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $attach,
+                [
+                    VoicemailInterface::ATTACH_YES,
+                    VoicemailInterface::ATTACH_NO,
+                ],
+                'attachvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->attach = $attach;
 
         return $this;
@@ -633,6 +654,18 @@ abstract class VoicemailAbstract
 
     protected function setDeleteVoicemail(?string $deleteVoicemail = null): static
     {
+        if (!is_null($deleteVoicemail)) {
+            Assertion::maxLength($deleteVoicemail, 25, 'deleteVoicemail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $deleteVoicemail,
+                [
+                    VoicemailInterface::DELETEVOICEMAIL_YES,
+                    VoicemailInterface::DELETEVOICEMAIL_NO,
+                ],
+                'deleteVoicemailvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->deleteVoicemail = $deleteVoicemail;
 
         return $this;
@@ -657,6 +690,18 @@ abstract class VoicemailAbstract
 
     protected function setSendVoicemail(?string $sendVoicemail = null): static
     {
+        if (!is_null($sendVoicemail)) {
+            Assertion::maxLength($sendVoicemail, 25, 'sendVoicemail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $sendVoicemail,
+                [
+                    VoicemailInterface::SENDVOICEMAIL_YES,
+                    VoicemailInterface::SENDVOICEMAIL_NO,
+                ],
+                'sendVoicemailvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->sendVoicemail = $sendVoicemail;
 
         return $this;
@@ -669,6 +714,18 @@ abstract class VoicemailAbstract
 
     protected function setReview(?string $review = null): static
     {
+        if (!is_null($review)) {
+            Assertion::maxLength($review, 25, 'review value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $review,
+                [
+                    VoicemailInterface::REVIEW_YES,
+                    VoicemailInterface::REVIEW_NO,
+                ],
+                'reviewvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->review = $review;
 
         return $this;
@@ -681,6 +738,18 @@ abstract class VoicemailAbstract
 
     protected function setTempgreetwarn(?string $tempgreetwarn = null): static
     {
+        if (!is_null($tempgreetwarn)) {
+            Assertion::maxLength($tempgreetwarn, 25, 'tempgreetwarn value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $tempgreetwarn,
+                [
+                    VoicemailInterface::TEMPGREETWARN_YES,
+                    VoicemailInterface::TEMPGREETWARN_NO,
+                ],
+                'tempgreetwarnvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->tempgreetwarn = $tempgreetwarn;
 
         return $this;
@@ -693,6 +762,18 @@ abstract class VoicemailAbstract
 
     protected function setOperator(?string $operator = null): static
     {
+        if (!is_null($operator)) {
+            Assertion::maxLength($operator, 25, 'operator value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $operator,
+                [
+                    VoicemailInterface::OPERATOR_YES,
+                    VoicemailInterface::OPERATOR_NO,
+                ],
+                'operatorvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->operator = $operator;
 
         return $this;
@@ -705,6 +786,18 @@ abstract class VoicemailAbstract
 
     protected function setEnvelope(?string $envelope = null): static
     {
+        if (!is_null($envelope)) {
+            Assertion::maxLength($envelope, 25, 'envelope value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $envelope,
+                [
+                    VoicemailInterface::ENVELOPE_YES,
+                    VoicemailInterface::ENVELOPE_NO,
+                ],
+                'envelopevalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->envelope = $envelope;
 
         return $this;
@@ -729,6 +822,18 @@ abstract class VoicemailAbstract
 
     protected function setForcename(?string $forcename = null): static
     {
+        if (!is_null($forcename)) {
+            Assertion::maxLength($forcename, 25, 'forcename value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $forcename,
+                [
+                    VoicemailInterface::FORCENAME_YES,
+                    VoicemailInterface::FORCENAME_NO,
+                ],
+                'forcenamevalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->forcename = $forcename;
 
         return $this;
@@ -741,6 +846,18 @@ abstract class VoicemailAbstract
 
     protected function setForcegreetings(?string $forcegreetings = null): static
     {
+        if (!is_null($forcegreetings)) {
+            Assertion::maxLength($forcegreetings, 25, 'forcegreetings value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $forcegreetings,
+                [
+                    VoicemailInterface::FORCEGREETINGS_YES,
+                    VoicemailInterface::FORCEGREETINGS_NO,
+                ],
+                'forcegreetingsvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->forcegreetings = $forcegreetings;
 
         return $this;

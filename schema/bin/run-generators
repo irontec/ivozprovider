@@ -29,8 +29,9 @@ shift $(expr $OPTIND - 1 )
 
 pushd /opt/irontec/ivozprovider/schema
     while test $# -gt 0; do
-        bin/console provider:make:entities $1
+        bin/console ivoz:make:entities $1
+        bin/console ivoz:make:interfaces $1
+        bin/console ivoz:make:repositories $1
         shift
     done
 popd
-

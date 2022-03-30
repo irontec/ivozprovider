@@ -34,6 +34,7 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * @var ?string
+     * comment: enum:pattern|group|fax
      */
     protected $type = 'group';
 
@@ -303,6 +304,19 @@ abstract class OutgoingRoutingAbstract
 
     protected function setType(?string $type = null): static
     {
+        if (!is_null($type)) {
+            Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $type,
+                [
+                    OutgoingRoutingInterface::TYPE_PATTERN,
+                    OutgoingRoutingInterface::TYPE_GROUP,
+                    OutgoingRoutingInterface::TYPE_FAX,
+                ],
+                'typevalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->type = $type;
 
         return $this;

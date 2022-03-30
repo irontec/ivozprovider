@@ -1,12 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#2 \\$redisPoolSize of method Services\\\\AbstractWsServer\\:\\:start\\(\\) expects int, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\$redisPoolSize of method Services\\\\AbstractWsServer\\:\\:start\\(\\) expects int, array\\|bool\\|float\\|int\\|string\\|UnitEnum\\|null given\\.$#"
 			count: 1
 			path: src/App.php
 
 		-
-			message: "#^Parameter \\#3 \\$redisDb of method Services\\\\AbstractWsServer\\:\\:start\\(\\) expects int, array\\|bool\\|float\\|int\\|string\\|null given\\.$#"
+			message: "#^Parameter \\#3 \\$redisDb of method Services\\\\AbstractWsServer\\:\\:start\\(\\) expects int, array\\|bool\\|float\\|int\\|string\\|UnitEnum\\|null given\\.$#"
 			count: 1
 			path: src/App.php
 
@@ -104,16 +104,6 @@ parameters:
 			message: "#^Property Feeder\\\\UsersCall\\:\\:\\$party has no typehint specified\\.$#"
 			count: 1
 			path: src/Feeder/UsersCall.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureContainer\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
-			message: "#^Method Kernel\\:\\:configureRoutes\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Kernel.php
 
 		-
 			message: "#^Method Model\\\\Message\\:\\:__construct\\(\\) has parameter \\$payload with no typehint specified\\.$#"

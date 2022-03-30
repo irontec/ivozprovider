@@ -274,7 +274,7 @@ pipeline {
                                     sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
                                 }
                                 docker.image('ironartemis/ivozprovider-testing-base:halliday')
-                                      .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
+                                      .inside("--env MYSQL_PWD=changeme --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-duplicate-keys'
                                 }

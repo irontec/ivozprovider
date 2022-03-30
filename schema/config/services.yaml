@@ -28,3 +28,26 @@ services:
         class: IgnoreMappedEntitiesListener
         tags:
             - {name: doctrine.event_listener, event: postGenerateSchema }
+
+    doctrine.migrations.dependency_factory:
+        class: Migrations\DependencyFactory
+        public: true
+        factory: ['Migrations\DependencyFactory', 'fromEntityManager']
+        arguments:
+            $configurationLoader: '@doctrine.migrations.configuration_loader'
+            $emLoader: '@doctrine.migrations.entity_manager_registry_loader'
+
+    Migrations\DependencyFactory:
+        factory: ['Migrations\DependencyFactory', 'fromEntityManager']
+        arguments:
+            $configurationLoader: '@doctrine.migrations.configuration_loader'
+            $emLoader: '@doctrine.migrations.entity_manager_registry_loader'
+
+    doctrine_migrations.diff_command:
+        class: Doctrine\Migrations\Tools\Console\Command\DiffCommand
+        public: true
+        arguments:
+            $dependencyFactory: '@Migrations\DependencyFactory'
+        tags:
+            - { name: console.command, command: doctrine:migrations:diff }
+            - { name: hello.world }

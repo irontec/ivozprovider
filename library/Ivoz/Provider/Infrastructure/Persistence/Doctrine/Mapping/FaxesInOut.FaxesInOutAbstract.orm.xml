@@ -25,9 +25,10 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="status" type="string" column="status" nullable="true">
+    <field name="status" type="string" length="25" column="status" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:error|pending|inprogress|completed]</option>
       </options>
     </field>
     <many-to-one field="fax" target-entity="Ivoz\Provider\Domain\Model\Fax\FaxInterface" fetch="LAZY">

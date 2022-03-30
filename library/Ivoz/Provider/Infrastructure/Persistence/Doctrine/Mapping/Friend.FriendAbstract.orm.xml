@@ -55,21 +55,21 @@
         <option name="default">alaw</option>
       </options>
     </field>
-    <field name="directMediaMethod" type="string" column="direct_media_method" nullable="false">
+    <field name="directMediaMethod" type="string" length="25" column="direct_media_method" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:invite|update]</option>
         <option name="default">update</option>
       </options>
     </field>
-    <field name="calleridUpdateHeader" type="string" column="callerid_update_header" nullable="false">
+    <field name="calleridUpdateHeader" type="string" length="10" column="callerid_update_header" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:pai|rpid]</option>
         <option name="default">pai</option>
       </options>
     </field>
-    <field name="updateCallerid" type="string" column="update_callerid" nullable="false">
+    <field name="updateCallerid" type="string" length="10" column="update_callerid" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:yes|no]</option>

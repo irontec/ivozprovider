@@ -49,7 +49,7 @@ class DeletedByRatingPlanSpec extends ObjectBehavior
             $this->ratingPlan,
             [
                 'getTpTiming' => $this->tpTiming,
-                'getTimingType' => RatingPlan::TIMING_TYPE_ALWAYS
+                'getTimingType' => RatingPlan::TIMINGTYPE_ALWAYS
             ]
         );
     }

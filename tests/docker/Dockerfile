@@ -18,6 +18,7 @@ RUN apt-get install --assume-yes --force-yes \
         sphinx-intl \
         nodejs \
         npm \
+        mysql-client \
         php8.0 \
         php8.0-cli \
         php8.0-mysql \

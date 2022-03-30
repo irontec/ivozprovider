@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
+<files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">
       <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>
@@ -36,9 +36,6 @@
     </UnresolvableInclude>
   </file>
   <file src="src/Worker/Cgrates.php">
-    <InvalidReturnType occurrences="1">
-      <code>Response</code>
-    </InvalidReturnType>
     <MixedArgument occurrences="4">
       <code>$cgratesTpid</code>
       <code>$cgratesTpid</code>
@@ -55,11 +52,11 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="1">
+      <code>$response</code>
+    </PossiblyNullArgument>
   </file>
   <file src="src/Worker/Invoices.php">
-    <InvalidReturnType occurrences="1">
-      <code>?Response</code>
-    </InvalidReturnType>
     <MixedArgument occurrences="2">
       <code>$totals["totalPrice"]</code>
       <code>$totals["totalWithTaxes"]</code>
@@ -71,6 +68,9 @@
     <MixedAssignment occurrences="1">
       <code>$totals</code>
     </MixedAssignment>
+    <PossiblyNullArgument occurrences="1">
+      <code>$response</code>
+    </PossiblyNullArgument>
     <PossiblyNullOperand occurrences="1">
       <code>$invoice-&gt;getNumber()</code>
     </PossiblyNullOperand>
@@ -111,7 +111,8 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="3">
+    <PossiblyNullArgument occurrences="4">
+      <code>$response</code>
       <code>$server-&gt;getIp()</code>
       <code>$server-&gt;getIp()</code>
       <code>$server-&gt;getName()</code>
@@ -153,9 +154,10 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="2">
+    <PossiblyNullArgument occurrences="3">
       <code>$process-&gt;getExitCode()</code>
       <code>$process-&gt;getExitCode()</code>
+      <code>$response</code>
     </PossiblyNullArgument>
     <UndefinedInterfaceMethod occurrences="4">
       <code>getOriginalFileBaseName</code>
@@ -232,8 +234,9 @@
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="1">
+    <PossiblyNullArgument occurrences="2">
       <code>$importerArguments['columns']</code>
+      <code>$response</code>
     </PossiblyNullArgument>
     <PossiblyNullArrayAccess occurrences="2">
       <code>$importerArguments['columns']</code>

@@ -82,6 +82,7 @@ abstract class QueueAbstract
 
     /**
      * @var ?string
+     * comment: enum:ringall|leastrecent|fewestcalls|random|rrmemory|linear|wrandom|rrordered
      */
     protected $strategy = null;
 
@@ -513,6 +514,24 @@ abstract class QueueAbstract
 
     protected function setStrategy(?string $strategy = null): static
     {
+        if (!is_null($strategy)) {
+            Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $strategy,
+                [
+                    QueueInterface::STRATEGY_RINGALL,
+                    QueueInterface::STRATEGY_LEASTRECENT,
+                    QueueInterface::STRATEGY_FEWESTCALLS,
+                    QueueInterface::STRATEGY_RANDOM,
+                    QueueInterface::STRATEGY_RRMEMORY,
+                    QueueInterface::STRATEGY_LINEAR,
+                    QueueInterface::STRATEGY_WRANDOM,
+                    QueueInterface::STRATEGY_RRORDERED,
+                ],
+                'strategyvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->strategy = $strategy;
 
         return $this;

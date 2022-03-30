@@ -146,7 +146,7 @@ class RatingPlanPricesAction
     }
 
     /**
-     * @param array $fields
+     * @param array<array-key, \Stringable|null|scalar> $fields
      * @return string
      */
     private function array2csv(array $fields): string

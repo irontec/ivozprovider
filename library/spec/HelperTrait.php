@@ -103,6 +103,10 @@ trait HelperTrait
 
         foreach ($publicMethods as $publicMethod) {
             $methodName = $publicMethod->getName();
+            if ($publicMethod->isFinal()) {
+                continue;
+            }
+
             if (strpos($methodName, '__') === 0) {
                 continue;
             }

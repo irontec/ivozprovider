@@ -52,6 +52,7 @@ abstract class FaxesInOutAbstract
 
     /**
      * @var ?string
+     * comment: enum:error|pending|inprogress|completed
      */
     protected $status = null;
 
@@ -337,6 +338,20 @@ abstract class FaxesInOutAbstract
 
     protected function setStatus(?string $status = null): static
     {
+        if (!is_null($status)) {
+            Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $status,
+                [
+                    FaxesInOutInterface::STATUS_ERROR,
+                    FaxesInOutInterface::STATUS_PENDING,
+                    FaxesInOutInterface::STATUS_INPROGRESS,
+                    FaxesInOutInterface::STATUS_COMPLETED,
+                ],
+                'statusvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->status = $status;
 
         return $this;

@@ -24,7 +24,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         /** @var OutgoingRouting $item1 */
         $item1 = $this->createEntityInstance(OutgoingRouting::class);
         (function () use ($fixture) {
-            $this->setRoutingMode(OutgoingRouting::MODE_STATIC);
+            $this->setRoutingMode(OutgoingRouting::ROUTINGMODE_STATIC);
             $this->setType("pattern");
             $this->setPriority(1);
             $this->setWeight(1);
@@ -46,7 +46,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
 
         $item2 = $this->createEntityInstance(OutgoingRouting::class);
         (function () use ($fixture) {
-            $this->setRoutingMode(OutgoingRouting::MODE_STATIC);
+            $this->setRoutingMode(OutgoingRouting::ROUTINGMODE_STATIC);
             $this->setType("pattern");
             $this->setPriority(11);
             $this->setWeight(6);

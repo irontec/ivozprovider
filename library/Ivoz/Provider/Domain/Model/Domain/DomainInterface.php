@@ -17,6 +17,10 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 */
 interface DomainInterface extends LoggableEntityInterface
 {
+    public const POINTSTO_PROXYUSERS = 'proxyusers';
+
+    public const POINTSTO_PROXYTRUNKS = 'proxytrunks';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>

@@ -125,17 +125,4 @@ class OutgoingRoutingSpec extends ObjectBehavior
             ->getRoutingPatternGroup()
             ->shouldBe(null);
     }
-
-
-    function it_throws_exception_on_unexpected_type()
-    {
-
-        $dto = clone $this->dto;
-        $dto->setType('something');
-
-        $exception = new \Exception('Incorrect Outgoing Routing Type');
-        $this
-            ->shouldThrow($exception)
-            ->during('updateFromDto', [$dto, $this->transformer]);
-    }
 }

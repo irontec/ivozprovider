@@ -29,7 +29,7 @@ abstract class UsersXcapAbstract
     protected $domain;
 
     /**
-     * @var string
+     * @var resource
      */
     protected $doc;
 
@@ -276,14 +276,25 @@ abstract class UsersXcapAbstract
 
     protected function setDoc(string $doc): static
     {
-        $this->doc = $doc;
+        $stream = fopen('php://memory', 'r+');
+        if (!$stream) {
+            throw new \DomainException('Unable to create a file in php://memory');
+        }
+
+        fwrite($stream, $doc);
+        rewind($stream);
+        $this->doc = $stream;
 
         return $this;
     }
 
     public function getDoc(): string
     {
-        return $this->doc;
+        /** @var string $response */
+        $response = stream_get_contents($this->doc);
+        rewind($this->doc);
+
+        return $response;
     }
 
     protected function setDocType(int $docType): static

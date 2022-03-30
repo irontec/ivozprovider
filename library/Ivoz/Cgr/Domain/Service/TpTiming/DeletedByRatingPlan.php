@@ -30,7 +30,7 @@ class DeletedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
     {
         $tpTiming = $ratingPlan->getTpTiming();
 
-        $alwaysTimingType = ($ratingPlan->getTimingType() == RatingPlan::TIMING_TYPE_ALWAYS);
+        $alwaysTimingType = ($ratingPlan->getTimingType() == RatingPlan::TIMINGTYPE_ALWAYS);
 
         // Always RatingPlans should not have TpTiming
         if ($tpTiming && $alwaysTimingType) {

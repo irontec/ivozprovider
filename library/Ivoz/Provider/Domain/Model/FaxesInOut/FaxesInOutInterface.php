@@ -21,6 +21,14 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
 
     public const TYPE_OUT = 'Out';
 
+    public const STATUS_ERROR = 'error';
+
+    public const STATUS_PENDING = 'pending';
+
+    public const STATUS_INPROGRESS = 'inprogress';
+
+    public const STATUS_COMPLETED = 'completed';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -39,7 +47,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
      */
     public function getId(): ?int;
 
-    public function setCalldate(DateTimeInterface $calldate = null): static;
+    public function setCalldate(DateTimeInterface|string|null $calldate = null): static;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
