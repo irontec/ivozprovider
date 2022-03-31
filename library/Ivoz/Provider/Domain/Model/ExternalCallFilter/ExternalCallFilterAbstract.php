@@ -36,7 +36,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * @var bool
      */
-    protected $holidayEnabled = true;
+    protected $holidayEnabled = false;
 
     /**
      * @var ?string
@@ -52,7 +52,7 @@ abstract class ExternalCallFilterAbstract
     /**
      * @var bool
      */
-    protected $outOfScheduleEnabled = true;
+    protected $outOfScheduleEnabled = false;
 
     /**
      * @var ?string

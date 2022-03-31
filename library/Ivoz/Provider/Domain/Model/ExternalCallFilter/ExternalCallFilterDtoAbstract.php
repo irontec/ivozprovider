@@ -30,7 +30,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     /**
      * @var bool|null
      */
-    private $holidayEnabled = true;
+    private $holidayEnabled = false;
 
     /**
      * @var string|null
@@ -45,7 +45,7 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
     /**
      * @var bool|null
      */
-    private $outOfScheduleEnabled = true;
+    private $outOfScheduleEnabled = false;
 
     /**
      * @var string|null
