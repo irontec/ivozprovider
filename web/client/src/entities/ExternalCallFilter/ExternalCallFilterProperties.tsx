@@ -6,6 +6,7 @@ export type ExternalCallFilterPropertyList<T> = {
     'welcomeLocution'?: T,
     'holidayLocution'?: T,
     'outOfScheduleLocution'?: T,
+    'holidayEnabled'?: T,
     'holidayTargetType'?: T,
     'holidayNumberCountry'?: T,
     'holidayNumberValue'?: T,

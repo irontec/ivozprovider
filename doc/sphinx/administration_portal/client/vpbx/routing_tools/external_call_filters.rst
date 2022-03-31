@@ -32,6 +32,9 @@ The client admin can configure them in the following screen:
         destination, skipping the filter process. Take into account that black
         listed are checked before white lists.
 
+    Holiday enabled
+        Set this to no to totally ignore holidays filtering.
+
     Holiday locution
         The locution will be  played when the day is marked as holiday in any
         of the calendars associated with the filter **if the calendar entry has
