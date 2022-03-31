@@ -13,7 +13,7 @@ use Ivoz\Core\Domain\Service\TempFile;
 /**
 * VoicemailMessageInterface
 */
-interface VoicemailMessageInterface extends LoggableEntityInterface
+interface VoicemailMessageInterface extends LoggableEntityInterface, FileContainerInterface
 {
     /**
      * @codeCoverageIgnore
@@ -25,6 +25,11 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
      * @codeCoverageIgnore
      */
     public function getId(): ?int;
+
+    /**
+     * @return array
+     */
+    public function getFileObjects(?int $filter = null): array;
 
     public static function createDto(string|int|null $id = null): VoicemailMessageDto;
 
@@ -63,4 +68,26 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
     public function getAstVoicemailMessage(): ?\Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 
     public function isInitialized(): bool;
+
+    /**
+     * @return void
+     */
+    public function addTmpFile(string $fldName, TempFile $file);
+
+    /**
+     * @throws \Exception
+     * @return void
+     */
+    public function removeTmpFile(TempFile $file);
+
+    /**
+     * @return \Ivoz\Core\Domain\Service\TempFile[]
+     */
+    public function getTempFiles();
+
+    /**
+     * @var string $fldName
+     * @return null | \Ivoz\Core\Domain\Service\TempFile
+     */
+    public function getTempFileByFieldName($fldName);
 }

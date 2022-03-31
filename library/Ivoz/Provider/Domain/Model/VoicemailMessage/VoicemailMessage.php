@@ -2,12 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\VoicemailMessage;
 
+use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
+
 /**
  * VoicemailMessage
  */
-class VoicemailMessage extends VoicemailMessageAbstract implements VoicemailMessageInterface
+class VoicemailMessage extends VoicemailMessageAbstract implements FileContainerInterface, VoicemailMessageInterface
 {
     use VoicemailMessageTrait;
+    use TempFileContainnerTrait;
 
     /**
      * @codeCoverageIgnore
@@ -24,5 +28,25 @@ class VoicemailMessage extends VoicemailMessageAbstract implements VoicemailMess
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFileObjects(int $filter = null): array
+    {
+        $fileObjects = [
+            'RecordingFile' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+            ],
+            'MetadataFile' => [
+                FileContainerInterface::DOWNLOADABLE_FILE,
+            ]
+        ];
+
+        return $this->filterFileObjects(
+            $fileObjects,
+            $filter
+        );
     }
 }

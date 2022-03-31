@@ -25,6 +25,16 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
      */
     public function getId(): ?int;
 
+    public function getVoicemailMessageFilePattern(): string;
+
+    public function getRecordingFileBaseName(): string;
+
+    public function getRecordingFileName(): string;
+
+    public function getMetadataFileBaseName(): string;
+
+    public function getMetadataFileName(): string;
+
     public static function createDto(string|int|null $id = null): VoicemailMessageDto;
 
     /**

@@ -114,3 +114,14 @@ services:
   ## RouteLock
   ##########################################
   Ivoz\Provider\Application\Service\RouteLock\RouteLockDtoAssembler: ~
+
+  ##########################################
+  ## VoicemailMessage
+  ##########################################
+  Ivoz\Provider\Application\Service\VoicemailMessage\VoicemailMessageAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::VoicemailMessage'
+
+  Ivoz\Provider\Application\Service\VoicemailMessage\VoicemailMessageDtoAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::VoicemailMessage'
