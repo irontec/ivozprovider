@@ -14,6 +14,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
+use Ivoz\Provider\Domain\Model\Location\LocationDto;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto;
@@ -148,6 +149,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdiRule = null;
 
     /**
+     * @var LocationDto | null
+     */
+    private $location = null;
+
+    /**
      * @var VoicemailDto | null
      */
     private $voicemail = null;
@@ -206,6 +212,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'timezoneId' => 'timezone',
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
+            'locationId' => 'location',
             'voicemailId' => 'voicemail'
         ];
     }
@@ -240,6 +247,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'timezone' => $this->getTimezone(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
+            'location' => $this->getLocation(),
             'voicemail' => $this->getVoicemail(),
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
@@ -740,6 +748,36 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getOutgoingDdiRuleId()
     {
         if ($dto = $this->getOutgoingDdiRule()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setLocation(?LocationDto $location): static
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getLocation(): ?LocationDto
+    {
+        return $this->location;
+    }
+
+    public function setLocationId($id): static
+    {
+        $value = !is_null($id)
+            ? new LocationDto($id)
+            : null;
+
+        return $this->setLocation($value);
+    }
+
+    public function getLocationId()
+    {
+        if ($dto = $this->getLocation()) {
             return $dto->getId();
         }
 

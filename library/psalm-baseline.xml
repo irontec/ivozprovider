@@ -5736,6 +5736,42 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/Location/LocationAbstract.php">
+    <MixedArgument occurrences="2">
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Location/LocationDto.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php">
+    <MissingParamType occurrences="3">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="1">
+      <code>getCompanyId</code>
+    </MissingReturnType>
+    <MixedPropertyTypeCoercion occurrences="1">
+      <code>$users</code>
+    </MixedPropertyTypeCoercion>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Location/LocationInterface.php">
+    <PossiblyUnusedReturnValue occurrences="2">
+      <code>LocationInterface</code>
+      <code>LocationInterface</code>
+    </PossiblyUnusedReturnValue>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Location/LocationTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/Locution/LocutionAbstract.php">
     <MixedArgument occurrences="2">
       <code>$fkTransformer-&gt;transform($company)</code>
@@ -7653,7 +7689,7 @@
     </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserAbstract.php">
-    <MixedArgument occurrences="22">
+    <MixedArgument occurrences="24">
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($company)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getBossAssistant())</code>
@@ -7666,6 +7702,8 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getExtension())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getLanguage())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getLocation())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdi())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getOutgoingDdiRule())</code>
@@ -7686,7 +7724,8 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php">
-    <MissingParamType occurrences="14">
+    <MissingParamType occurrences="15">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -7702,13 +7741,14 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="12">
+    <MissingReturnType occurrences="13">
       <code>getBossAssistantId</code>
       <code>getBossAssistantWhiteListId</code>
       <code>getCallAclId</code>
       <code>getCompanyId</code>
       <code>getExtensionId</code>
       <code>getLanguageId</code>
+      <code>getLocationId</code>
       <code>getOutgoingDdiId</code>
       <code>getOutgoingDdiRuleId</code>
       <code>getTerminalId</code>
@@ -7733,13 +7773,14 @@
       <code>eraseCredentials</code>
       <code>unserialize</code>
     </MissingReturnType>
-    <PossiblyUnusedReturnValue occurrences="8">
+    <PossiblyUnusedReturnValue occurrences="9">
       <code>UserInterface</code>
       <code>UserInterface</code>
       <code>UserInterface</code>
       <code>UserInterface</code>
       <code>UserInterface</code>
       <code>UserInterface</code>
+      <code>static</code>
       <code>static</code>
       <code>static</code>
     </PossiblyUnusedReturnValue>

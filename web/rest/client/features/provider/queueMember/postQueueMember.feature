@@ -73,6 +73,7 @@ Feature: Create queue members
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
+              "location": 1,
               "voicemail": null
           }
       }
@@ -139,6 +140,7 @@ Feature: Create queue members
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
+              "location": 1,
               "voicemail": null
           }
       }

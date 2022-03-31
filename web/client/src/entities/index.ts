@@ -30,6 +30,7 @@ import Invoice from './Invoice/Invoice';
 import Ivr from './Ivr/Ivr';
 import IvrEntry from './IvrEntry/IvrEntry';
 import Language from './Language/Language';
+import Location from './Location/Location';
 import Locution from './Locution/Locution';
 import MatchList from './MatchList/MatchList';
 import MatchListPattern from './MatchListPattern/MatchListPattern';
@@ -89,6 +90,7 @@ const entities: EntityList = {
   Ivr,
   IvrEntry,
   Language,
+  Location,
   Locution,
   MatchList,
   MatchListPattern,

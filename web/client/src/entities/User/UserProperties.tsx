@@ -9,6 +9,7 @@ export type UserPropertyList<T> = {
     'active'?: T,
     'timezone'?: T,
     'transformationRuleSet'?: T,
+    'location'?: T,
     'terminal'?: T,
     'extension'?: T,
     'outgoingDdi'?: T,

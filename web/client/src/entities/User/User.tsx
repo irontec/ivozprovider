@@ -49,6 +49,11 @@ const properties: UserProperties = {
         default: '__null__',
         null: _("Client's default"),
     },
+    'location': {
+        label: _('Location'),
+        null: _('Unassigned'),
+        default: '__null__',
+    },
     'terminal': {
         label: _('Terminal'),
         null: _('Unassigned'),

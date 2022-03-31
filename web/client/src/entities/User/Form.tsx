@@ -27,9 +27,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
         edit && {
             legend: _('Geographic Configuration'),
             fields: [
-                edit && 'language',
+                'language',
                 'timezone',
                 'transformationRuleSet',
+                'location',
             ]
         },
         edit && {

@@ -163,7 +163,21 @@ class UserTest extends KernelTestCase
                             null
                         ]
                     ]
-                ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'location',
+                            'in',
+                            'LocationRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'location',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
             ]
         );
     }
