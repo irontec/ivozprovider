@@ -13,3 +13,7 @@ billable-calls-historic:
 call-csv-to-email:
   path: /call-csv-to-email
   controller: CallCsvController:indexAction
+
+voicemail-messages:
+  path: /voicemail-messages
+  controller: VoicemailMessageController:indexAction
