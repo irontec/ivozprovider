@@ -189,6 +189,12 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Voicemail,
+                children: [
+                    {
+                        entity: entities.VoicemailMessage,
+                        filterBy: 'voicemail',
+                    }
+                ],
             },
             {
                 entity: entities.Location,
