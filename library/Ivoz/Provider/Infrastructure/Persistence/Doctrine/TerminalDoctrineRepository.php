@@ -122,16 +122,19 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
         $terminalIdsInUse = $this
             ->findAssociatedTerminalIdsByCompanyId($companyId);
 
-        $excludedIds = array_diff($terminalIdsInUse, $includeIds);
-
         $qb
             ->select('terminal')
             ->where(
                 $expression->eq('terminal.company', $companyId)
-            )
-            ->andWhere(
+            );
+
+        $excludedIds = array_diff($terminalIdsInUse, $includeIds);
+
+        if (!empty($excludedIds)) {
+            $qb->andWhere(
                 $expression->notIn('terminal.id', $excludedIds),
             );
+        }
 
         $query = $qb->getQuery();
 
