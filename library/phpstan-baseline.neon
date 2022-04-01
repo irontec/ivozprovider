@@ -221,6 +221,26 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailRepository.php
 
 		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessage\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessage.php
+
+		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\PsEndpoint\\\\SendDialplanReload\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Service/PsEndpoint/SendDialplanReload.php
@@ -311,6 +331,11 @@ parameters:
 			path: Ivoz/Ast/Domain/Service/Voicemail/UpdateByIvozVoicemail.php
 
 		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\VoicemailMessage\\\\DeletedByIvozVoicemailMessage\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Service/VoicemailMessage/DeletedByIvozVoicemailMessage.php
+
+		-
 			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:_post\\(\\) has parameter \\$postdata with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
@@ -339,6 +364,11 @@ parameters:
 			message: "#^Class Ivoz\\\\Ast\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\VoicemailDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailDoctrineRepository.php
+
+		-
+			message: "#^Class Ivoz\\\\Ast\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\VoicemailMessageDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Domain\\\\Model\\\\TpAccountAction\\\\TpAccountAction\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -2394,6 +2424,11 @@ parameters:
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Application/Service/User/UserDtoAssembler.php
+
+		-
+			message: "#^Parameter \\#1 \\$path of function pathinfo expects string, string\\|null given\\.$#"
+			count: 1
+			path: Ivoz/Provider/Application/Service/VoicemailMessage/StoragePathResolver.php
 
 		-
 			message: "#^Parameter \\#1 \\$threshold of method Ivoz\\\\Provider\\\\Domain\\\\Events\\\\AbstractBalanceThresholdWasBroken\\:\\:setThreshold\\(\\) expects float, float\\|null given\\.$#"
@@ -12966,6 +13001,76 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Voicemail/VoicemailRepository.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessage\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessage.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessage\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessage.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:getAstVoicemailMessageId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:getVoicemailId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:setAstVoicemailMessageId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageDtoAbstract\\:\\:setVoicemailId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageInterface\\:\\:getChangeSet\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageInterface\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageRepository.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageRepository.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortal\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortal.php
@@ -14361,6 +14466,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Voicemail/VoicemailLifecycleServiceCollection.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\VoicemailMessage\\\\VoicemailMessageLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/VoicemailMessage/VoicemailMessageLifecycleEventHandlerInterface.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Api\\\\Client\\\\Client\\:\\:appendAuthHeaders\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Api/Client/Client.php
@@ -14664,6 +14774,11 @@ parameters:
 			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/UserDoctrineRepository.php
+
+		-
+			message: "#^Class Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\VoicemailMessageDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Redis\\\\Job\\\\RatesImporter\\:\\:getParams\\(\\) return type has no value type specified in iterable type array\\.$#"

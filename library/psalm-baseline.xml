@@ -142,6 +142,20 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageAbstract.php">
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php">
+    <MissingParamType occurrences="2">
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+  </file>
+  <file src="Ivoz/Ast/Domain/Model/VoicemailMessage/VoicemailMessageTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Ast/Domain/Service/PsEndpoint/PsEndpointLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
       <code>execute</code>
@@ -187,6 +201,16 @@
     <ParamNameMismatch occurrences="1">
       <code>$ivozVoicemail</code>
     </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Ast/Domain/Service/VoicemailMessage/DeletedByIvozVoicemailMessage.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$ivozVoicemailMessage</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Ast/Infrastructure/Persistence/Doctrine/VoicemailMessageDoctrineRepository.php">
+    <MixedArgument occurrences="1">
+      <code>$results</code>
+    </MixedArgument>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpAccountAction/TpAccountActionAbstract.php">
     <MixedArgument occurrences="4">
@@ -1792,6 +1816,25 @@
     <PossiblyNullArgument occurrences="1">
       <code>$user-&gt;getPass()</code>
     </PossiblyNullArgument>
+  </file>
+  <file src="Ivoz/Provider/Application/Service/VoicemailMessage/StoragePathResolver.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>null | string</code>
+    </ImplementedReturnTypeMismatch>
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;originalFileName</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="Ivoz/Provider/Application/Service/VoicemailMessage/VoicemailMessageAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$voicemailMessage</code>
+      <code>$voicemailMessageDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Application/Service/VoicemailMessage/VoicemailMessageDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$voicemailMessage</code>
+    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Application/Service/WebPortal/WebPortalAssembler.php">
     <ParamNameMismatch occurrences="2">
@@ -7797,6 +7840,45 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageAbstract.php">
+    <MixedArgument occurrences="4">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getAstVoicemailMessage())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getAstVoicemailMessage())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getVoicemail())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDto.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageDtoAbstract.php">
+    <MissingParamType occurrences="4">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="2">
+      <code>getAstVoicemailMessageId</code>
+      <code>getVoicemailId</code>
+    </MissingReturnType>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php">
+    <MissingParamType occurrences="1">
+      <code>$fldName</code>
+    </MissingParamType>
+    <PossiblyInvalidDocblockTag occurrences="1">
+      <code>@var string $fldName</code>
+    </PossiblyInvalidDocblockTag>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortal.php">
     <LessSpecificReturnStatement occurrences="1">
       <code>parent::setUrl($url)</code>
@@ -8992,6 +9074,16 @@
     <MissingParamType occurrences="1">
       <code>$service</code>
     </MissingParamType>
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/VoicemailMessage/VoicemailMessageLifecycleEventHandlerInterface.php">
+    <MissingReturnType occurrences="1">
+      <code>execute</code>
+    </MissingReturnType>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/VoicemailMessage/VoicemailMessageLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
