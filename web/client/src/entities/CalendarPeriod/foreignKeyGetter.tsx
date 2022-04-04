@@ -1,7 +1,7 @@
 import { CalendarPeriodPropertyList } from './CalendarPeriodProperties';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
-import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';
+import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
 
@@ -27,7 +27,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken
     });
 
-    promises[promises.length] = VoicemailSelectOptions({
+    promises[promises.length] = EnabledVoicemailSelectOptions({
         callback: (options: any) => {
             response.voicemail = options;
         },

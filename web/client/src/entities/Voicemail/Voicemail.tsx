@@ -6,7 +6,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { VoicemailProperties } from './VoicemailProperties';
-import selectOptions from './SelectOptions';
+import selectOptions from './EnabledVoicemailSelectOptions';
 
 const properties: VoicemailProperties = {
     'enabled': {
@@ -91,7 +91,7 @@ const Voicemail: EntityInterface = {
     columns,
     Form,
     ChildDecorator,
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+    selectOptions,
 };
 
 export default Voicemail;
