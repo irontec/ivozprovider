@@ -9,7 +9,7 @@ const timezone: EntityInterface = {
     icon: AccountTreeIcon,
     iden: 'Timezone',
     title: _('Timezone', { count: 2 }),
-    path: '/timezone',
+    path: '/timezones',
     toStr: (row: any) => row.name,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

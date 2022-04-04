@@ -3,10 +3,9 @@ import EntityInterface, { ChildDecoratorType } from '@irontec/ivoz-ui/entities/E
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { VoicemailProperties } from './VoicemailProperties';
-import selectOptions from './EnabledVoicemailSelectOptions';
+import enabledVoicemailSelectOptions from './EnabledVoicemailSelectOptions';
 
 const properties: VoicemailProperties = {
     'enabled': {
@@ -77,7 +76,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
         }
     }
 
-    return DefaultEntityBehavior.ChildDecorator(props);
+    return defaultEntityBehavior.ChildDecorator(props);
 }
 
 const Voicemail: EntityInterface = {
@@ -91,7 +90,7 @@ const Voicemail: EntityInterface = {
     columns,
     Form,
     ChildDecorator,
-    selectOptions,
+    selectOptions: (props, customProps) => { return enabledVoicemailSelectOptions(props, customProps); },
 };
 
 export default Voicemail;

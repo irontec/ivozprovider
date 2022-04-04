@@ -4,52 +4,74 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import entities from '../index';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
-import { UnassignedExtensionSelectOptions } from 'entities/Extension/SelectOptions';
+import { UnassignedExtensionSelectOptions, UserExtensionSelectOptions } from 'entities/Extension/SelectOptions';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { BossAssistantSelectOptions } from './SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService, row }): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService, row, filterContext }): Promise<any> => {
 
     const response: UserPropertyList<unknown> = {};
+
+    const skip = [
+        'pickupGroupIds',
+        'bossAssistant',
+        'extension',
+    ];
+
+    if (!filterContext) {
+        skip.push(...[
+            'terminal',
+        ]);
+    }
 
     const promises = autoSelectOptions({
         entities,
         entityService,
         cancelToken,
         response,
-        skip: [
-            'terminal',
-            'extension',
-            'pickupGroupIds',
-            'bossAssistant',
-        ],
+        skip,
     });
 
-    const _includeTerminalId = (row?.terminal as EntityValues)?.id as number;
-    promises[promises.length] = UnassignedTerminalSelectOptions(
-        {
-            callback: (options: any) => {
-                response.terminal = options;
-            },
-            cancelToken
-        },
-        {
-            '_includeId': _includeTerminalId
-        }
-    );
+    if (filterContext) {
 
-    const _includeExtensionlId = (row?.extension as EntityValues)?.id as number;
-    promises[promises.length] = UnassignedExtensionSelectOptions(
-        {
-            callback: (options: any) => {
-                response.extension = options;
+        promises[promises.length] = UserExtensionSelectOptions(
+            {
+                callback: (options: any) => {
+                    response.extension = options;
+                },
+                cancelToken
             },
-            cancelToken
-        },
-        {
-            '_includeId': _includeExtensionlId
-        }
-    );
+        );
+
+    } else {
+
+        const _includeTerminalId = (row?.terminal as EntityValues)?.id as number;
+        promises[promises.length] = UnassignedTerminalSelectOptions(
+            {
+                callback: (options: any) => {
+                    response.terminal = options;
+                },
+                cancelToken
+            },
+            {
+                '_includeId': _includeTerminalId
+            }
+        );
+
+        const _includeExtensionlId = (row?.extension as EntityValues)?.id as number;
+        promises[promises.length] = UnassignedExtensionSelectOptions(
+            {
+                callback: (options: any) => {
+                    response.extension = options;
+                },
+                cancelToken
+            },
+            {
+                '_includeId': _includeExtensionlId
+            }
+        );
+    }
+
 
     promises[promises.length] = PickUpGroupSelectOptions({
         callback: (options: any) => {

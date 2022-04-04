@@ -1,6 +1,6 @@
 import { FkChoices } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { useEffect, useState } from 'react';
-import UnassignedServiceSelectOptions from 'entities/Service/UnassignedServiceSelectOptions';
+import SelectOptions, { UnassignedServiceSelectOptions } from 'entities/Service/SelectOptions';
 import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios from 'axios';
 import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
@@ -10,24 +10,38 @@ import { match } from 'react-router-dom';
 type CompanyServiceForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs, currentServiceId?: number) => Promise<any>
 
 export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
-    { cancelToken },
+    { cancelToken, filterContext },
     currentServiceId
 ): Promise<any> => {
 
     const response: CompanyServicePropertyList<unknown> = {};
     const promises: Array<Promise<unknown>> = [];
 
-    promises[promises.length] = UnassignedServiceSelectOptions(
-        {
-            callback: (options: any) => {
-                response.service = options;
+    if (filterContext) {
+
+        promises[promises.length] = SelectOptions(
+            {
+                callback: (options: any) => {
+                    response.service = options;
+                },
+                cancelToken
+            }
+        );
+
+    } else {
+
+        promises[promises.length] = UnassignedServiceSelectOptions(
+            {
+                callback: (options: any) => {
+                    response.service = options;
+                },
+                cancelToken
             },
-            cancelToken
-        },
-        {
-            includeId: currentServiceId,
-        }
-    );
+            {
+                includeId: currentServiceId,
+            }
+        );
+    }
 
     await Promise.all(promises);
 
