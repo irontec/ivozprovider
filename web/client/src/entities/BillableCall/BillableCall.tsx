@@ -3,7 +3,6 @@ import EntityInterface, { OrderDirection } from '@irontec/ivoz-ui/entities/Entit
 import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import { BillableCallProperties } from './BillableCallProperties';
 import View from './View';
 
@@ -78,7 +77,6 @@ const billableCall: EntityInterface = {
     path: '/billable_calls',
     properties,
     columns,
-    foreignKeyGetter,
     Form,
     View,
     defaultOrderBy: 'startTime',
