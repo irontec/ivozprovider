@@ -50,6 +50,12 @@ services:
     Hints\Generator:
         arguments: ~
 
+    Hints\ExtensionHintsGenerator:
+        arguments: ~
+
+    Hints\RouteLockHintsGenerator:
+        arguments: ~
+
     ##################################
     ## Handlers
     ##################################
