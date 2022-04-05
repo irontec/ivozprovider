@@ -63,3 +63,6 @@ services:
         resource: '../src/Controller/Provider/*'
         tags: ['controller.service_arguments']
 
+    Controller\My\:
+        resource: '../src/Controller/My/*'
+        tags: ['controller.service_arguments']
