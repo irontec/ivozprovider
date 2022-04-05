@@ -2,11 +2,11 @@
 
 namespace Ivoz\Ast\Infrastructure\Redis\Job;
 
-use Ivoz\Ast\Domain\Job\AriJobInterface;
+use Ivoz\Ast\Domain\Job\AriDialplanReloadJobInterface;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Psr\Log\LoggerInterface;
 
-class DialplanReloadJob implements AriJobInterface
+class DialplanReloadJob implements AriDialplanReloadJobInterface
 {
     public function __construct(
         private RedisMasterFactory $redisMasterFactory,
