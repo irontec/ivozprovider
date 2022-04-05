@@ -78,7 +78,7 @@ const properties: ExtensionProperties = {
                 hide: allRoutableFields,
             },
             'conditional': {
-                show: ['conditional'],
+                show: ['conditionalRoute'],
                 hide: allRoutableFields,
             },
             'voicemail': {
