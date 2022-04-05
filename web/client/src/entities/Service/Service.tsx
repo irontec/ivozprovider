@@ -3,6 +3,7 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { getI18n } from 'react-i18next';
+import selectOptions from './SelectOptions';
 
 const companyService: EntityInterface = {
     ...defaultEntityBehavior,
@@ -14,7 +15,8 @@ const companyService: EntityInterface = {
         const language = getI18n().language.substring(0, 2);
 
         return row?.name[language]
-    }
+    },
+    selectOptions,
 };
 
 export default companyService;

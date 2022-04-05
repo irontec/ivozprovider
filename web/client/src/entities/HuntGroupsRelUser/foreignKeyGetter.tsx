@@ -9,32 +9,39 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
     props
 ): Promise<any> => {
 
-    const { cancelToken, entityService, match } = props;
+    const { cancelToken, entityService, match, filterContext } = props;
     const row: HuntGroupsRelUserPropertyList<string | number | EntityValues> | undefined = props.row;
     const response: HuntGroupsRelUserPropertyList<null | string | number | EntityValues> = {};
+
+    const skip = [];
+    if (!filterContext) {
+        skip.push(...[
+            'user'
+        ]);
+    }
 
     const promises = autoSelectOptions({
         entities,
         entityService,
         cancelToken,
         response,
-        skip: [
-            'user'
-        ],
+        skip,
     });
 
-    promises[promises.length] = HuntGroupAvailableSelectOptions(
-        {
-            callback: (options: any) => {
-                response.user = options;
+    if (!filterContext) {
+        promises[promises.length] = HuntGroupAvailableSelectOptions(
+            {
+                callback: (options: any) => {
+                    response.user = options;
+                },
+                cancelToken
             },
-            cancelToken
-        },
-        {
-            row,
-            match
-        }
-    );
+            {
+                row,
+                match
+            }
+        );
+    }
 
     await Promise.all(promises);
 
