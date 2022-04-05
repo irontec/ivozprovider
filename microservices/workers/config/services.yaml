@@ -48,7 +48,13 @@ services:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
 
-    Worker\Asterisk:
+    Worker\AsteriskDialplan:
+        public: true
+        arguments:
+            $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
+
+    Worker\AsteriskHintUpdater:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'

@@ -26,6 +26,10 @@ kam-rpc-delayed:
   path: /kam-rpc-delayed
   controller: Worker\KamRpc::delayed
 
-asterisk:
-  path: /asterisk
-  controller: Worker\Asterisk::reload
+asterisk-dialplan-reload:
+  path: /asterisk-dialplan-reload
+  controller: Worker\AsteriskDialplan::reload
+
+asterisk-hint-update:
+  path: /asterisk-hint-update
+  controller: Worker\AsteriskHintUpdater::send

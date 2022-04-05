@@ -10,7 +10,7 @@ $input = new ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], getenv('APP_ENV') ?: 'dev');
 
 $kernel = new Kernel($env, false);
-$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/asterisk']);
+$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/asterisk-dialplan-reload']);
 
 $response = $kernel->handle($request);
 $response->send();
