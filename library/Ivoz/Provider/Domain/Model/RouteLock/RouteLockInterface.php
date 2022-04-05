@@ -33,6 +33,11 @@ interface RouteLockInterface extends LoggableEntityInterface
      */
     public function isOpen();
 
+    /**
+     * Return the DeviceName used to create Hints
+     */
+    public function getHintDeviceName(): string;
+
     public static function createDto(string|int|null $id = null): RouteLockDto;
 
     /**

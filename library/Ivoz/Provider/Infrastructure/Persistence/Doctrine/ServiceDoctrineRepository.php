@@ -3,10 +3,10 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
-use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * ServiceDoctrineRepository
@@ -38,5 +38,16 @@ class ServiceDoctrineRepository extends ServiceEntityRepository implements Servi
             ->getQuery();
 
         return $query->getResult();
+    }
+
+    /**
+     * return ServiceInterface
+     */
+    public function findByIden(string $iden): ?ServiceInterface
+    {
+        return $this
+            ->findOneBy(
+                [ "iden" => $iden ]
+            );
     }
 }
