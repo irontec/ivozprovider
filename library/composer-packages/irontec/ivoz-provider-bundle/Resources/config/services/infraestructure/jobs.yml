@@ -51,3 +51,7 @@ services:
   Ivoz\Ast\Infrastructure\Redis\Job\DialplanReloadJob:
     arguments:
       $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Ast\Infrastructure\Redis\Job\HintUpdateJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
