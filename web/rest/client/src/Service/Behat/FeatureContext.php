@@ -11,25 +11,34 @@ class FeatureContext extends BaseFeatureContext
     /**
      * @Given I add Company Authorization header
      */
-    public function setCompanyAuthorizationHeader()
+    public function setCompanyAuthorizationHeader(): void
     {
-        return $this->setAuthorizationHeader('test_company_admin');
+        $this->setAuthorizationHeader('test_company_admin');
     }
+
+    /**
+     * @Given I add restricted Company Authorization header
+     */
+    public function setRestrictedCompanyAuthorizationHeader(): void
+    {
+        $this->setAuthorizationHeader('restrictedCompanyAdmin');
+    }
+
 
     /**
      * @Given I add Residential Company Authorization header
      */
-    public function setResidentialCompanyAuthorizationHeader()
+    public function setResidentialCompanyAuthorizationHeader(): void
     {
-        return $this->setAuthorizationHeader('test_residential_admin');
+        $this->setAuthorizationHeader('test_residential_admin');
     }
 
     /**
      * @Given I add Retail Company Authorization header
      */
-    public function setRetailCompanyAuthorizationHeader()
+    public function setRetailCompanyAuthorizationHeader(): void
     {
-        return $this->setAuthorizationHeader('test_retail_admin');
+        $this->setAuthorizationHeader('test_retail_admin');
     }
 
     /**
