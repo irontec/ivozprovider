@@ -71,7 +71,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^9.4.4",
         "dms/phpunit-arraysubset-asserts": "^0.2.1",
-        "squizlabs/php_codesniffer": "^4.0",
+        "squizlabs/php_codesniffer": "^3.0",
         "symfony/phpunit-bridge": "^5.1.6"
     },
     "extra": {
