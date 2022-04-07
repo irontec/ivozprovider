@@ -33,7 +33,7 @@ abstract class RouteLockAbstract
     /**
      * @var bool
      */
-    protected $open = false;
+    protected $open = true;
 
     /**
      * @var CompanyInterface
