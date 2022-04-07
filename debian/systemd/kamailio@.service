@@ -13,6 +13,7 @@ PIDFile=/run/kamailio-%i.pid
 EnvironmentFile=/etc/default/kam%i
 ExecStart=/usr/sbin/kamailio -A IP=%i -f /etc/kamailio/proxy%i/kamailio.cfg -m ${SH_MEM} -M ${PRIV_MEM} -P /run/kamailio-%i.pid
 ExecStopPost=/bin/rm -f /run/kamailio-%i.pid
+TimeoutStopSec=30s
 Restart=on-abort
 
 [Install]
