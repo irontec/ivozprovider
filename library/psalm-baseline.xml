@@ -8814,6 +8814,26 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/RouteLock/RouteLockLifecycleEventHandlerInterface.php">
+    <MissingReturnType occurrences="1">
+      <code>execute</code>
+    </MissingReturnType>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/RouteLock/RouteLockLifecycleServiceCollection.php">
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;services[$event][]</code>
+    </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/RouteLock/SendDialplanReload.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$routeLock</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/RouteLock/SendUpdateHintState.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$routeLock</code>
+    </ParamNameMismatch>
+  </file>
   <file src="Ivoz/Provider/Domain/Service/RoutingPattern/RoutingPatternLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
       <code>execute</code>

@@ -37,4 +37,12 @@ class RouteLock extends RouteLockAbstract implements RouteLockInterface
     {
         return $this->getOpen() == '1';
     }
+
+    /**
+     * Return the DeviceName used to create Hints
+     */
+    public function getHintDeviceName(): string
+    {
+        return "Stasis:RouteLock" . $this->getId();
+    }
 }

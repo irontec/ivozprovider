@@ -2,9 +2,9 @@
 
 namespace Ivoz\Ast\Domain\Job;
 
-interface AriJobInterface
+interface AriDialplanReloadJobInterface
 {
-    public const CHANNEL = 'Asterisk';
+    public const CHANNEL = 'AsteriskDialplanReload';
 
     public const METHODS = [
         self::CHANNEL,

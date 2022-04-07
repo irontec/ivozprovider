@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLock;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
 use Ivoz\Provider\Domain\Model\RouteLock\RouteLockRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,5 +21,18 @@ class RouteLockDoctrineRepository extends ServiceEntityRepository implements Rou
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, RouteLock::class);
+    }
+
+    /**
+     * @return array<RouteLockInterface>
+     */
+    public function findAllOrderByCompany(): array
+    {
+        return $this->findBy(
+            [],
+            [
+                "company" => "ASC"
+            ]
+        );
     }
 }

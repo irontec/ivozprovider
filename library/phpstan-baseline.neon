@@ -14161,6 +14161,16 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RetailAccount/RetailAccountLifecycleEventHandlerInterface.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RouteLock\\\\SendDialplanReload\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/RouteLock/SendDialplanReload.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RouteLock\\\\SendUpdateHintState\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/RouteLock/SendUpdateHintState.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RoutingPattern\\\\RoutingPatternLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RoutingPattern/RoutingPatternLifecycleEventHandlerInterface.php

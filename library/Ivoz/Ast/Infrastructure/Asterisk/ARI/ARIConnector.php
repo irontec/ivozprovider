@@ -206,4 +206,45 @@ class ARIConnector
             }
         }
     }
+
+    /**
+     * Sends an ARI request to all Applications Servers to update device state
+     *
+     * @return void
+     */
+    public function sendHintUpdateRequest(string $deviceName, string $deviceState)
+    {
+        $this->_logger->info("Sending request to set $deviceName to $deviceState state");
+
+        $applicationServers = $this->applicationServerRepository->findAll();
+
+        /** @var ApplicationServer $as */
+        foreach ($applicationServers as $as) {
+            $asAddress = $as->getIp();
+
+            // Get a new connection handler for this application server
+            $ch = $this->_createConnectionHandler();
+
+            // Get Application server restAPI URL
+            $url = sprintf(
+                "http://%s:%d/ari/deviceStates/%s?deviceState=%s",
+                $asAddress,
+                $this->_port,
+                $deviceName,
+                $deviceState,
+            );
+            $this->_logger->info("Sending ARI Request to $url");
+
+            // Request reload
+            $response = $this->_put($ch, $url, []);
+
+            if ($response !== false) {
+                $this->_logger->info("Request successfully enqueued to $url");
+                continue;
+            }
+
+            // Error sending request
+            $this->_logger->error("Error setting hint state to $url:" . curl_error($ch));
+        }
+    }
 }

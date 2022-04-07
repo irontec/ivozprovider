@@ -2,7 +2,7 @@
 
 namespace Worker;
 
-use Ivoz\Ast\Domain\Job\AriJobInterface;
+use Ivoz\Ast\Domain\Job\AriHintUpdateJobInterface;
 use Ivoz\Ast\Infrastructure\Asterisk\ARI\ARIConnector;
 use Ivoz\Core\Application\RegisterCommandTrait;
 use Ivoz\Core\Application\RequestId;
@@ -11,7 +11,7 @@ use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Symfony\Component\HttpFoundation\Response;
 use Psr\Log\LoggerInterface;
 
-class Asterisk
+class AsteriskHintUpdater
 {
     use RegisterCommandTrait;
 
@@ -27,18 +27,21 @@ class Asterisk
         $this->requestId = $requestId;
     }
 
-    public function reload(): Response
+    public function send(): Response
     {
         try {
-            $this->registerCommand('Worker', 'asterisk::reload');
+            $this->registerCommand('Worker', 'asterisk::hintUpdate');
 
-            $this->waitForChannelTrigger(
-                AriJobInterface::CHANNEL
+            $job = $this->getJobPayload(
+                AriHintUpdateJobInterface::CHANNEL
             );
 
             $this
                 ->ariConnector
-                ->sendDialplanReloadRequest();
+                ->sendHintUpdateRequest(
+                    $job['deviceName'],
+                    $job['deviceState'],
+                );
         } catch (\Exception $e) {
             $this->logger->error(
                 $e->getMessage()
@@ -50,7 +53,11 @@ class Asterisk
         return new Response('');
     }
 
-    private function waitForChannelTrigger(string $channel): void
+    /**
+     * @param string $channel
+     * @return array<array-key, string>
+     */
+    private function getJobPayload(string $channel): array
     {
         $redisMaster = $this
             ->redisMasterFactory
@@ -60,10 +67,16 @@ class Asterisk
 
         try {
             $timeoutSeconds = 60 * 60;
-            $redisMaster->blPop(
+            $response = $redisMaster->blPop(
                 [$channel],
                 $timeoutSeconds
             );
+
+            $data = end($response);
+
+            /** @var array<array-key, string> $resp */
+            $resp = \json_decode($data, true);
+            return $resp;
         } catch (\RedisException $e) {
             $this->logger->error('Asterisk worker timeout: ' . $e->getMessage());
             exit(1);

@@ -12,7 +12,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
             fields: [
                 'name',
                 'description',
-                'open',
+                edit && 'open',
             ]
         },
         edit && {
