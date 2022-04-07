@@ -7,17 +7,19 @@ import ParsedApiSpecInterface from "@irontec/ivoz-ui/services/api/ParsedApiSpecI
 import RouteContent from "@irontec/ivoz-ui/router/RouteContent";
 import AppRouteContentWrapper from "./AppRouteContentWrapper";
 import Dashboard from "components/Dashboard";
+import { Profile } from "store/clientSession/acls";
 
 export interface AppRoutesProps {
   token: string,
   apiSpec: ParsedApiSpecInterface,
+  acls: Profile | null
 }
 
 export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
-  const { token, apiSpec } = props;
+  const { token, apiSpec, acls } = props;
 
-  if (!token) {
+  if (!token || !acls) {
     return (<Login />);
   }
 

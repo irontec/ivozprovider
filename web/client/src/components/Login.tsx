@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import { useFormik } from 'formik';
 import { Container } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useStoreActions } from '@irontec/ivoz-ui/store';
-import ApiClient from '@irontec/ivoz-ui/services/api/ApiClient';
+import { useStoreActions, useStoreState } from 'store';
 import Title from '@irontec/ivoz-ui/components/Title';
 import ErrorMessage from '@irontec/ivoz-ui/components/shared/ErrorMessage';
 import { useFormikType } from '@irontec/ivoz-ui/services/form/types';
@@ -17,37 +15,33 @@ interface LoginProps {
 
 export default function Login(props: LoginProps): JSX.Element {
 
-  const [error, setError] = useState<string | null>(null);
+  const error = useStoreState(
+    (store) => store.api.errorMsg
+  );
 
   const setToken = useStoreActions((actions) => actions.auth.setToken);
+  const loadProfile = useStoreActions((actions) => actions.clientSession.acls.load);
   const setRefreshToken = useStoreActions((actions) => actions.auth.setRefreshToken);
+  const apiPost = useStoreActions((actions) => actions.api.post)
   const submit = async (values: any) => {
 
     try {
 
-      const response = await ApiClient.post(
-        '/admin_login',
+      const response = await apiPost({
+        path: '/admin_login',
         values,
-        'application/x-www-form-urlencoded'
-      );
+        contentType: 'application/x-www-form-urlencoded'
+      });
 
       if (response.data && response.data.token) {
         setToken(response.data.token);
         setRefreshToken(response.data.refreshToken);
-        setError(null);
+        await loadProfile();
         return;
       }
 
-      const error = {
-        error: 'Token not found',
-        toString: function () { return this.error }
-      };
-
-      throw error;
-
     } catch (error: any) {
       console.error(error);
-      setError(error?.data?.message);
     }
   };
 
