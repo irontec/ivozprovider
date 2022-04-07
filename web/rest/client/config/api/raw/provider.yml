@@ -1730,6 +1730,7 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\TransformationRuleSet\Name: ~
 
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:

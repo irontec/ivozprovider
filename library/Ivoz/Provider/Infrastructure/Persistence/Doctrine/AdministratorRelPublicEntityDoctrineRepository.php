@@ -9,6 +9,7 @@ use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
+use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 
 /**
@@ -147,6 +148,30 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
             $this->getEntityName(),
             $qb->getQuery()
         );
+    }
+
+    /**
+     * @return AdministratorRelPublicEntityInterface[]
+     */
+    public function getByAdministratorId(int $id): array
+    {
+        $qb = $this
+            ->createQueryBuilder('self');
+        $expr = $qb->expr();
+
+        $qb
+            ->select(
+                'self, publicEntity'
+            )
+            ->innerJoin(
+                'self.publicEntity',
+                'publicEntity'
+            )
+            ->where(
+                $expr->eq('self.administrator', $id)
+            );
+
+        return $qb->getQuery()->getResult();
     }
 
     private function prepareUpdateQuery(bool $read, bool $write): QueryBuilder
