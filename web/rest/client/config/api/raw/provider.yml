@@ -1818,7 +1818,6 @@ Ivoz\Provider\Domain\Model\User\User:
       - company
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
-
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -1841,3 +1840,20 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
     swagger_context:
       required:
       - company
+
+Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+    write_access_control:
+      inherited:
+        voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+
+Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~

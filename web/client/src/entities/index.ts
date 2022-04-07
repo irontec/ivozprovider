@@ -55,6 +55,7 @@ import TransformationRuleSet from './TransformationRuleSet/TransformationRuleSet
 import User from './User/User';
 import UsersCdr from './UsersCdr/UsersCdr';
 import Voicemail from './Voicemail/Voicemail';
+import VoicemailMessage from './VoicemailMessage/VoicemailMessage';
 import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
 
 const entities: EntityList = {
@@ -115,6 +116,7 @@ const entities: EntityList = {
   User,
   UsersCdr,
   Voicemail,
+  VoicemailMessage,
 };
 
 export default entities;
