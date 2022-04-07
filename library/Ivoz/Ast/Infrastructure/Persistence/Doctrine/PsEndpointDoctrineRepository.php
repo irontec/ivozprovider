@@ -7,6 +7,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 /**
  * PsEndpointDoctrineRepository
@@ -90,5 +91,30 @@ class PsEndpointDoctrineRepository extends ServiceEntityRepository implements Ps
         ]);
 
         return $response;
+    }
+
+    /**
+     * @inheritdoc
+     * @return PsEndpointInterface[]
+     * @throws \Doctrine\ORM\Query\QueryException
+     * @see PsEndpointRepository::getEndpointsWithExtensionOrderByContext
+     */
+    public function getEndpointsWithExtensionOrderByContext(): array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    'and' => [
+                        ['hintExtension', 'neq', ''],
+                        ['hintExtension', 'isNotNull'],
+                    ],
+                ])
+            )
+            ->orderBy('self.subscribeContext');
+
+        return $qb->getQuery()->getResult();
     }
 }

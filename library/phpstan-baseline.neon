@@ -221,6 +221,11 @@ parameters:
 			path: Ivoz/Ast/Domain/Model/Voicemail/VoicemailRepository.php
 
 		-
+			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\PsEndpoint\\\\SendDialplanReload\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Ast/Domain/Service/PsEndpoint/SendDialplanReload.php
+
+		-
 			message: "#^Method Ivoz\\\\Ast\\\\Domain\\\\Service\\\\PsEndpoint\\\\UpdateByDomain\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Ast/Domain/Service/PsEndpoint/UpdateByDomain.php
@@ -307,6 +312,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:_post\\(\\) has parameter \\$postdata with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
+
+		-
+			message: "#^Method Ivoz\\\\Ast\\\\Infrastructure\\\\Asterisk\\\\ARI\\\\ARIConnector\\:\\:_put\\(\\) has parameter \\$postdata with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Ast/Infrastructure/Asterisk/ARI/ARIConnector.php
 
@@ -1766,36 +1776,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/Trusted/TrustedRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcher\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcher.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherDtoAbstract.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersActiveWatcher\\\\UsersActiveWatcherRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersActiveWatcher/UsersActiveWatcherRepository.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersAddress\\\\UsersAddress\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddress.php
@@ -2024,126 +2004,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersLocationAttr\\\\UsersLocationAttrRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersLocationAttr/UsersLocationAttrRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentity\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentity.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityDtoAbstract.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPresentity\\\\UsersPresentityRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPresentity/UsersPresentityRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPua\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPua.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaDtoAbstract.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersPua\\\\UsersPuaRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersPua/UsersPuaRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcher\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcher.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherDtoAbstract.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersWatcher\\\\UsersWatcherRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersWatcher/UsersWatcherRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcap\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcap.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapDtoAbstract.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersXcap\\\\UsersXcapRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersXcap/UsersXcapRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\Dispatcher\\\\UpdateByApplicationServer\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -2461,11 +2321,6 @@ parameters:
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/TrustedDoctrineRepository.php
 
 		-
-			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersActiveWatcherDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersActiveWatcherDoctrineRepository.php
-
-		-
 			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersAddressDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersAddressDoctrineRepository.php
@@ -2489,26 +2344,6 @@ parameters:
 			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersLocationDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersLocationDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersPresentityDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersPresentityDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersPuaDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersPuaDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersWatcherDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersWatcherDoctrineRepository.php
-
-		-
-			message: "#^Class Ivoz\\\\Kam\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\UsersXcapDoctrineRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersXcapDoctrineRepository.php
 
 		-
 			message: "#^Cannot call method getLUuid\\(\\) on Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregInterface\\|null\\.$#"

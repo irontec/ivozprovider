@@ -56,7 +56,11 @@ class Kernel extends BaseKernel
             $routeHandler = $this->container->get($uri);
             $routeHandler->process();
         } catch (\Exception $e) {
-            $this->fastagi->error($e->getMessage());
+            if ($this->fastagi) {
+                $this->fastagi->error($e->getMessage());
+            } else {
+                echo $e->getMessage();
+            }
         }
 
         return new Response('');

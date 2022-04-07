@@ -47,6 +47,9 @@ services:
             $parser: '@PhpMimeMailParser\Parser'
             $mailer: '@mailer'
 
+    Hints\Generator:
+        arguments: ~
+
     ##################################
     ## Handlers
     ##################################

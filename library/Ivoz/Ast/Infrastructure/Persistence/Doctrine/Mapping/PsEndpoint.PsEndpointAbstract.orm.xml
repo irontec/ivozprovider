@@ -72,6 +72,16 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="subscribeContext" type="string" column="subscribe_context" length="40" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="hintExtension" type="string" column="hint_extension" length="10" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="sendDiversion" type="string" length="25" column="send_diversion" nullable="true">
       <options>
         <option name="fixed"/>

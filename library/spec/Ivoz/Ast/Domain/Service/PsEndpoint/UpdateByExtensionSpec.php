@@ -111,8 +111,18 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->getExtensionNumber()
             ->willReturn('ExtensionNumber');
 
+        $extension
+            ->getNumber()
+            ->willReturn('ExtensionNumber')
+            ->shouldBecalled();
+
         $psEndpointDto
             ->setCallerid('Name <ExtensionNumber>')
+            ->willReturn($psEndpointDto)
+            ->shouldBeCalled();
+
+        $psEndpointDto
+            ->setHintExtension('ExtensionNumber')
             ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 

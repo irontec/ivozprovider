@@ -90,6 +90,18 @@ abstract class PsEndpointAbstract
 
     /**
      * @var ?string
+     * column: subscribe_context
+     */
+    protected $subscribeContext = null;
+
+    /**
+     * @var ?string
+     * column: hint_extension
+     */
+    protected $hintExtension = null;
+
+    /**
+     * @var ?string
      * column: send_diversion
      * comment: enum:yes|no
      */
@@ -295,6 +307,8 @@ abstract class PsEndpointAbstract
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
             ->setNamedPickupGroup($dto->getNamedPickupGroup())
+            ->setSubscribeContext($dto->getSubscribeContext())
+            ->setHintExtension($dto->getHintExtension())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
             ->setOutboundProxy($dto->getOutboundProxy())
@@ -350,6 +364,8 @@ abstract class PsEndpointAbstract
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
             ->setNamedPickupGroup($dto->getNamedPickupGroup())
+            ->setSubscribeContext($dto->getSubscribeContext())
+            ->setHintExtension($dto->getHintExtension())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
             ->setOneHundredRel($oneHundredRel)
@@ -384,6 +400,8 @@ abstract class PsEndpointAbstract
             ->setDirectMediaMethod(self::getDirectMediaMethod())
             ->setMailboxes(self::getMailboxes())
             ->setNamedPickupGroup(self::getNamedPickupGroup())
+            ->setSubscribeContext(self::getSubscribeContext())
+            ->setHintExtension(self::getHintExtension())
             ->setSendDiversion(self::getSendDiversion())
             ->setSendPai(self::getSendPai())
             ->setOneHundredRel(self::getOneHundredRel())
@@ -413,6 +431,8 @@ abstract class PsEndpointAbstract
             'direct_media_method' => self::getDirectMediaMethod(),
             'mailboxes' => self::getMailboxes(),
             'named_pickup_group' => self::getNamedPickupGroup(),
+            'subscribe_context' => self::getSubscribeContext(),
+            'hint_extension' => self::getHintExtension(),
             'send_diversion' => self::getSendDiversion(),
             'send_pai' => self::getSendPai(),
             '100rel' => self::getOneHundredRel(),
@@ -612,6 +632,38 @@ abstract class PsEndpointAbstract
     public function getNamedPickupGroup(): ?string
     {
         return $this->namedPickupGroup;
+    }
+
+    protected function setSubscribeContext(?string $subscribeContext = null): static
+    {
+        if (!is_null($subscribeContext)) {
+            Assertion::maxLength($subscribeContext, 40, 'subscribeContext value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->subscribeContext = $subscribeContext;
+
+        return $this;
+    }
+
+    public function getSubscribeContext(): ?string
+    {
+        return $this->subscribeContext;
+    }
+
+    protected function setHintExtension(?string $hintExtension = null): static
+    {
+        if (!is_null($hintExtension)) {
+            Assertion::maxLength($hintExtension, 10, 'hintExtension value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->hintExtension = $hintExtension;
+
+        return $this;
+    }
+
+    public function getHintExtension(): ?string
+    {
+        return $this->hintExtension;
     }
 
     protected function setSendDiversion(?string $sendDiversion = null): static

@@ -35,6 +35,23 @@
       <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
     </UnresolvableInclude>
   </file>
+  <file src="src/Worker/Asterisk.php">
+    <MixedArgument occurrences="1">
+      <code>$data</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$data</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>\json_decode($data, true)</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="1">
+      <code>$response</code>
+    </PossiblyNullArgument>
+  </file>
   <file src="src/Worker/Cgrates.php">
     <MixedArgument occurrences="4">
       <code>$cgratesTpid</code>

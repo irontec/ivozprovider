@@ -47,3 +47,10 @@ services:
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+
+    Worker\Asterisk:
+        public: true
+        arguments:
+            $logger: '@monolog.logger.workers'
+            $redisDb: '%redis_jobs_db%'
+

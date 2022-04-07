@@ -113,6 +113,10 @@ interface PsEndpointInterface extends LoggableEntityInterface
 
     public function getNamedPickupGroup(): ?string;
 
+    public function getSubscribeContext(): ?string;
+
+    public function getHintExtension(): ?string;
+
     public function getSendDiversion(): ?string;
 
     public function getSendPai(): ?string;
