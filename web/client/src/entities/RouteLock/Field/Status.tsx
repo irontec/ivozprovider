@@ -1,14 +1,15 @@
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import withCustomComponentWrapper, {
     PropertyCustomFunctionComponent,
     PropertyCustomFunctionComponentProps
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { RouteLockPropertyList } from '../RouteLockProperties';
 
-type HuntGroupsRelUserValues = RouteLockPropertyList<
+type RouteLockValues = RouteLockPropertyList<
     string | number | boolean
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RouteLockValues>>;
 
 const Status: TargetGhostType = (props): JSX.Element => {
 
@@ -16,10 +17,10 @@ const Status: TargetGhostType = (props): JSX.Element => {
     const { open } = values;
 
     if (open === true) {
-        return (<FiberManualRecordIcon style={{ color: 'green' }} />);
+        return (<LockOpenIcon />);
     }
 
-    return (<FiberManualRecordIcon style={{ color: 'red' }} />);
+    return (<LockIcon />);
 }
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Status);
+export default withCustomComponentWrapper<RouteLockValues>(Status);
