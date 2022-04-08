@@ -1,14 +1,14 @@
 import recordLocutionService, { RecordLocutionServiceStore } from './recordLocutionService';
-import Acls, { AclsStore } from './acls';
+import aboutMe, { AboutMeStore } from './aboutMe';
 
 export interface ClientSessionStore {
   recordLocutionService: RecordLocutionServiceStore,
-  acls: AclsStore,
+  aboutMe: AboutMeStore,
 }
 
 const clientSession: ClientSessionStore = {
   recordLocutionService,
-  acls: Acls
+  aboutMe
 }
 
 export default clientSession;

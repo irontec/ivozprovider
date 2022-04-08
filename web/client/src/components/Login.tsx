@@ -20,7 +20,7 @@ export default function Login(props: LoginProps): JSX.Element {
   );
 
   const setToken = useStoreActions((actions) => actions.auth.setToken);
-  const loadProfile = useStoreActions((actions) => actions.clientSession.acls.load);
+  const loadProfile = useStoreActions((actions) => actions.clientSession.aboutMe.load);
   const setRefreshToken = useStoreActions((actions) => actions.auth.setRefreshToken);
   const apiPost = useStoreActions((actions) => actions.api.post)
   const submit = async (values: any) => {

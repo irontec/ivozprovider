@@ -2,7 +2,7 @@ import { action, Action, Thunk, thunk } from 'easy-peasy';
 import axios from 'axios';
 import { AppStore } from '../index';
 
-interface EntityAcl {
+export interface EntityAcl {
   iden: string,
   create: boolean,
   read: boolean,
@@ -10,7 +10,7 @@ interface EntityAcl {
   delete: boolean
 }
 
-export interface Profile {
+export interface AboutMe {
   pbx: boolean,
   residential: boolean,
   retail: boolean,
@@ -19,27 +19,27 @@ export interface Profile {
   acls: Array<EntityAcl>
 }
 
-export type AclsState = {
-  profile: Profile | null,
+export type AboutMeState = {
+  profile: AboutMe | null,
 }
 
-interface AclsActions {
-  setProfile: Action<AclsState, Profile>,
-  load: Thunk<AclsStore, undefined, unknown, AppStore>,
-  init: Thunk<AclsStore>,
+interface AboutMeActions {
+  setProfile: Action<AboutMeState, AboutMe>,
+  load: Thunk<AboutMeStore, undefined, unknown, AppStore>,
+  init: Thunk<AboutMeStore>,
 }
 
-export type AclsStore = AclsActions & AclsState;
+export type AboutMeStore = AboutMeActions & AboutMeState;
 
-const Acls: AclsStore = {
+const Acls: AboutMeStore = {
   profile: null,
   // actions
-  setProfile: action<AclsState, Profile>((state, profile) => {
+  setProfile: action<AboutMeState, AboutMe>((state, profile) => {
     state.profile = profile;
   }),
 
   // thunks
-  load: thunk<AclsStore, undefined, unknown, AppStore>(async (actions, payload, { getStoreActions }) => {
+  load: thunk<AboutMeStore, undefined, unknown, AppStore>(async (actions, payload, { getStoreActions }) => {
 
     const storeActions = getStoreActions();
 
@@ -55,7 +55,7 @@ const Acls: AclsStore = {
         successCallback: async (response: any) => {
           sessionStorage.setItem(
             'profile',
-            JSON.stringify(response as Profile)
+            JSON.stringify(response as AboutMe)
           );
           actions.init();
         }
@@ -67,10 +67,10 @@ const Acls: AclsStore = {
       storeActions.api.setErrorMsg('Unable to load ACLs');
     }
   }),
-  init: thunk<AclsStore>(async (actions) => {
+  init: thunk<AboutMeStore>(async (actions) => {
     const profile = sessionStorage.getItem('profile') as string | undefined;
     if (profile) {
-      actions.setProfile(JSON.parse(profile) as Profile);
+      actions.setProfile(JSON.parse(profile) as AboutMe);
     }
   }),
 };

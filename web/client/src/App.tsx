@@ -3,7 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from "react-router-dom";
 import { StyledAppApiLoading, StyledAppFlexDiv } from './App.styles';
-import { useStoreActions, useStoreState} from 'store';
+import { useStoreActions, useStoreState } from 'store';
 import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
 
@@ -13,17 +13,17 @@ export default function App(): JSX.Element {
     return actions.spec.init;
   });
   const authInit = useStoreActions((actions: any) => actions.auth.init);
-  const alcsInit = useStoreActions((actions: any) => actions.clientSession.acls.init);
+  const aboutMeInit = useStoreActions((actions: any) => actions.clientSession.aboutMe.init);
   const token = useStoreState((state) => state.auth.token);
-  const acls = useStoreState((state) => state.clientSession.acls.profile);
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   useEffect(
     () => {
       apiSpecInitFn();
       authInit();
-      alcsInit();
+      aboutMeInit();
     },
-    [token, apiSpecInitFn, authInit, alcsInit]
+    [token, apiSpecInitFn, authInit, aboutMeInit]
   )
 
   const apiSpec = useStoreState((state) => state.spec.spec);
@@ -44,7 +44,7 @@ export default function App(): JSX.Element {
       <CssBaseline />
       <StyledAppFlexDiv>
         <BrowserRouter basename={basename}>
-          <AppRoutes token={token as string} acls={acls} apiSpec={apiSpec} />
+          <AppRoutes token={token as string} aboutMe={aboutMe} apiSpec={apiSpec} />
         </BrowserRouter>
       </StyledAppFlexDiv>
     </LocalizationProvider>
