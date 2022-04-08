@@ -161,6 +161,10 @@ const CallCsvScheduler: EntityInterface = {
     path: '/call_csv_schedulers',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CallCsvSchedulers',
+    },
     Form,
     foreignKeyGetter,
     marshaller,

@@ -267,6 +267,10 @@ const friend: EntityInterface = {
     path: '/friends',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Friends',
+    },
     Form,
     foreignKeyGetter,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },

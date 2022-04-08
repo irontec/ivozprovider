@@ -50,6 +50,10 @@ const outgoingDdiRule: EntityInterface = {
     path: '/outgoing_ddi_rules',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'OutgoingDDIRules',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

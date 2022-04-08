@@ -34,6 +34,10 @@ const Invoice: EntityInterface = {
     title: _('Invoice', { count: 2 }),
     path: '/invoices',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Invoices',
+    },
     toStr: (row: EntityValues) => row.number as string,
 };
 

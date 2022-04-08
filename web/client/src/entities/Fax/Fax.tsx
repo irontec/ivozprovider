@@ -55,6 +55,10 @@ const fax: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Faxes',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

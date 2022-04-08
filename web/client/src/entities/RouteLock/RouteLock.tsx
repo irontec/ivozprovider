@@ -56,6 +56,10 @@ const routeLock: EntityInterface = {
     path: '/route_locks',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'RouteLocks',
+    },
     Form,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

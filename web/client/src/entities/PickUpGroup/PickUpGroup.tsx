@@ -25,6 +25,10 @@ const pickUpGroup: EntityInterface = {
     title: _('Pick up group', { count: 2 }),
     path: '/pick_up_groups',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'PickUpGroups',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

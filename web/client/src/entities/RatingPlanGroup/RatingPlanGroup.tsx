@@ -8,9 +8,13 @@ import selectOptions from './SelectOptions';
 const ratingPlanGroup: EntityInterface = {
     ...defaultEntityBehavior,
     icon: SettingsApplications,
-    iden: 'RatingPlanGroups',
+    iden: 'RatingPlanGroup',
     title: _('Rating plan groups', { count: 2 }),
     path: '/rating_plan_groups',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'RatingPlanGroups',
+    },
     toStr: (row: any) => {
         const language = getI18n().language.substring(0, 2);
 

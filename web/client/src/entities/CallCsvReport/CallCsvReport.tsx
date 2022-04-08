@@ -34,6 +34,10 @@ const CallCsvReport: EntityInterface = {
     title: _('Call CSV report', { count: 2 }),
     path: '/call_csv_reports',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CallCsvReports',
+    },
     toStr: (row: EntityValues) => (row?.name as string | ''),
     defaultOrderBy: 'id',
     defaultOrderDirection: OrderDirection.desc,

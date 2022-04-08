@@ -27,6 +27,10 @@ const CallAcl: EntityInterface = {
     title: _('Call ACLs', { count: 2 }),
     path: '/call_acls',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CallACL',
+    },
     Form,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

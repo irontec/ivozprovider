@@ -175,6 +175,10 @@ const user: EntityInterface = {
     iden: 'User',
     title: _('User', { count: 2 }),
     path: '/users',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Users',
+    },
     toStr: (row: any) => `${row.name} ${row.lastname}`,
     properties,
     columns,

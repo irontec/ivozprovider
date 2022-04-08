@@ -10,6 +10,10 @@ const timezone: EntityInterface = {
     iden: 'Timezone',
     title: _('Timezone', { count: 2 }),
     path: '/timezones',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Timezones',
+    },
     toStr: (row: any) => row.name,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

@@ -195,6 +195,10 @@ const queue: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Queues',
+    },
     Form,
     foreignKeyGetter,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },

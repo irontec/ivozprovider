@@ -33,6 +33,10 @@ const QueueMember: EntityInterface = {
     path: '/queue_members',
     toStr: (row: any) => row.name,
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'QueueMembers',
+    },
     foreignKeyResolver,
     Form,
 };

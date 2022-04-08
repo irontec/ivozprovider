@@ -23,6 +23,10 @@ const country: EntityInterface = {
         return row.name[language];
     },
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Countries',
+    },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 

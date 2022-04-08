@@ -10,6 +10,10 @@ const language: EntityInterface = {
     iden: 'Language',
     title: _('Language', { count: 2 }),
     path: '/languages',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Languages',
+    },
     toStr: (row: any) => row.name,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

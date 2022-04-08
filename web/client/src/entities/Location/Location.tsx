@@ -29,6 +29,10 @@ const location: EntityInterface = {
     toStr: (row: any) => row?.name || '',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Locations',
+    },
     Form,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

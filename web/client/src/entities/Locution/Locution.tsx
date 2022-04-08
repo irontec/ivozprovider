@@ -46,6 +46,10 @@ const locution: EntityInterface = {
         'recordingExtension',
         'status',
     ],
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Locutions',
+    },
     Form,
     toStr: (row: EntityValues) => row.name as string,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },

@@ -97,6 +97,10 @@ const OutgoingDdiRulesPattern: EntityInterface = {
         'action',
         'forcedDdiStr',
     ],
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'OutgoingDDIRulesPatterns',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

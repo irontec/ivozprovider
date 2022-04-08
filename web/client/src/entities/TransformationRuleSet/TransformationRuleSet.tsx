@@ -10,6 +10,10 @@ const transformationRuleSet: EntityInterface = {
     iden: 'TransformationRuleSet',
     title: _('TransformationRuleSet', { count: 2 }),
     path: '/transformation_rule_sets',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'TransformationRuleSets',
+    },
     toStr: (row: any) => row.name,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

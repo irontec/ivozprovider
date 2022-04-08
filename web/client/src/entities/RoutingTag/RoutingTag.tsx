@@ -30,6 +30,10 @@ const routingTag: EntityInterface = {
     },
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'RoutingTags',
+    },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 

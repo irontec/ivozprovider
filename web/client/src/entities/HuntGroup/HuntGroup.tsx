@@ -129,6 +129,10 @@ const huntGroup: EntityInterface = {
     path: '/hunt_groups',
     toStr: (row: any) => row.name,
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'HuntGroups',
+    },
     Form,
     foreignKeyGetter,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },

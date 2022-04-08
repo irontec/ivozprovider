@@ -169,6 +169,10 @@ const ddi: EntityInterface = {
     toStr: (row: any) => row.ddie164,
     columns,
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'DDIs',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

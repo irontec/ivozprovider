@@ -147,6 +147,10 @@ const extension: EntityInterface = {
     toStr: (row: any) => row.number,
     columns,
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Extensions',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

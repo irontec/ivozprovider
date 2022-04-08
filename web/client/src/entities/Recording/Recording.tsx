@@ -55,6 +55,10 @@ const recording: EntityInterface = {
     path: '/recordings',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Recordings',
+    },
     View,
 };
 

@@ -43,6 +43,10 @@ const FaxesInOut: EntityInterface = {
     iden: 'FaxesInOut',
     title: _('Faxfile', { count: 2 }),
     path: '/faxes_in_outs',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'FaxesInOut',
+    },
     toStr: (row: any) => row.name,
     properties,
 };

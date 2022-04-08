@@ -125,10 +125,14 @@ const properties: RetailAccountProperties = {
 const retailAccount: EntityInterface = {
     ...defaultEntityBehavior,
     icon: SettingsApplications,
-    iden: 'RetailAccounts',
+    iden: 'RetailAccount',
     title: _('Retail accounts', { count: 2 }),
     path: '/retail_accounts',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'RetailAccounts',
+    },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 

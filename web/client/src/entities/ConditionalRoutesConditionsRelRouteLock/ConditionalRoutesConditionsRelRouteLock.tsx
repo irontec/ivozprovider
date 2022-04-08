@@ -8,6 +8,10 @@ const ConditionalRoutesCondition: EntityInterface = {
     iden: 'ConditionalRoutesConditionsRelRouteLock',
     title: '',
     path: '/conditional_routes_conditions_rel_route_locks',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'ConditionalRoutesConditionsRelRouteLocks',
+    },
     toStr: (row: any) => row.id,
     properties: {},
 };

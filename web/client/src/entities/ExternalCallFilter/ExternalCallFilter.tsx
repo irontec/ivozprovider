@@ -221,6 +221,10 @@ const externalCallFilter: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'ExternalCallFilters',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,
