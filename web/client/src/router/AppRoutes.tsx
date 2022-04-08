@@ -7,19 +7,29 @@ import ParsedApiSpecInterface from "@irontec/ivoz-ui/services/api/ParsedApiSpecI
 import RouteContent from "@irontec/ivoz-ui/router/RouteContent";
 import AppRouteContentWrapper from "./AppRouteContentWrapper";
 import Dashboard from "components/Dashboard";
-import { Profile } from "store/clientSession/acls";
+import { AboutMe } from "store/clientSession/aboutMe";
+import useAclFilteredEntityMap from "./useAclFilteredEntityMap";
 
 export interface AppRoutesProps {
   token: string,
   apiSpec: ParsedApiSpecInterface,
-  acls: Profile | null
+  aboutMe: AboutMe | null
 }
 
 export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
-  const { token, apiSpec, acls } = props;
+  const { token, apiSpec, aboutMe } = props;
 
-  if (!token || !acls) {
+  const aclFilteredEntityMap = useAclFilteredEntityMap({
+    entityMap,
+    aboutMe
+  });
+
+  const routes = aboutMe
+    ? parseRoutes(apiSpec, aclFilteredEntityMap)
+    : [];
+
+  if (!token || !aboutMe) {
     return (<Login />);
   }
 
@@ -30,13 +40,15 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
           <Dashboard />
         </AppRouteContentWrapper>
       </Route>
-      {token && parseRoutes(apiSpec, entityMap).map((route: RouteSpec) => (
-        <Route exact key={route.key} path={route.path}>
-          <AppRouteContentWrapper loggedIn={!!token} routeMap={entityMap}>
-            <RouteContent route={route} routeMap={entityMap} {...props} />
-          </AppRouteContentWrapper>
-        </Route>
-      ))}
+      {routes.map((route: RouteSpec) => {
+        return (
+          <Route exact key={route.key} path={route.path}>
+            <AppRouteContentWrapper loggedIn={!!token} routeMap={entityMap}>
+              <RouteContent route={route} routeMap={entityMap} {...props} />
+            </AppRouteContentWrapper>
+          </Route>
+        );
+      })}
     </Switch>
   );
 
