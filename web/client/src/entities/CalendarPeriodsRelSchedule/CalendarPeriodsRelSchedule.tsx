@@ -21,6 +21,10 @@ const CalendarPeriod: EntityInterface = {
     title: _('Calendar Period <-> Schedule', { count: 2 }),
     path: '/calendar_periods_rel_schedules',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CalendarPeriodsRelSchedules',
+    },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 

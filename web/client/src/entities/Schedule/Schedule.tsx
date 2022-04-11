@@ -64,6 +64,10 @@ const schedule: EntityInterface = {
     toStr: (row: EntityValues) => (row.name as string || ''),
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Schedules',
+    },
     Form,
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

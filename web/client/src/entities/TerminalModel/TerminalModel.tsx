@@ -10,6 +10,7 @@ const properties: PartialPropertyList = {
 };
 
 export const acl = {
+    iden: 'TerminalModels',
     create: false,
     read: true,
     detail: false,

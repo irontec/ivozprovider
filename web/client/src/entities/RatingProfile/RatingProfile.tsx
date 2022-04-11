@@ -27,6 +27,10 @@ const ratingProfile: EntityInterface = {
     title: _('Rating profile', { count: 2 }),
     path: '/rating_profiles',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'RatingProfiles',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

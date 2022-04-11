@@ -13,6 +13,7 @@ const map: RouteMap = [
                         entity: {
                             ...entities.HuntGroupsRelUser,
                             acl: {
+                                iden: entities.HuntGroupsRelUser.acl.iden,
                                 read: true,
                                 detail: false,
                                 create: false,

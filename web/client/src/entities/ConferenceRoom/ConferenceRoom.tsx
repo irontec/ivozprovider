@@ -53,6 +53,10 @@ const conferenceRoom: EntityInterface = {
         'pinCode',
     ],
     Form,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'ConferenceRooms',
+    },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 

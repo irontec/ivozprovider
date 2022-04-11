@@ -93,6 +93,10 @@ const terminal: EntityInterface = {
     path: '/terminals',
     toStr: (row: any) => row.name,
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Terminals',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

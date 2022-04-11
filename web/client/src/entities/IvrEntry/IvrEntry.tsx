@@ -9,11 +9,11 @@ import Target from './Field/Target';
 import foreignKeyResolver from './foreignKeyResolver';
 
 const toggleFlds = [
-  'numberCountry',
-  'numberValue',
-  'extension',
-  'voicemail',
-  'conditionalRoute',
+    'numberCountry',
+    'numberValue',
+    'extension',
+    'voicemail',
+    'conditionalRoute',
 ];
 
 const properties: IvrEntryProperties = {
@@ -110,6 +110,10 @@ const IvrEntry: EntityInterface = {
         'routeType',
         'target',
     ],
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'IVREntries',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

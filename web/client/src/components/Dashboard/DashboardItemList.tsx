@@ -15,6 +15,10 @@ const DashboardItemList = (props: { items: RouteMapItem[] }): JSX.Element => {
                     return null;
                 }
 
+                if (!entity.acl.read) {
+                    return null;
+                }
+
                 return (
                     <li key={key}>
                         <StyledDashboardLink to={route}>

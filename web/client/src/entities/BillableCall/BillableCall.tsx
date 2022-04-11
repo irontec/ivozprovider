@@ -77,6 +77,10 @@ const billableCall: EntityInterface = {
     path: '/billable_calls',
     properties,
     columns,
+    acl: {
+        ...DefaultEntityBehavior.acl,
+        iden: 'BillableCalls',
+    },
     Form,
     View,
     defaultOrderBy: 'startTime',

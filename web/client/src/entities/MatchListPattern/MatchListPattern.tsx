@@ -62,6 +62,10 @@ const matchListPattern: EntityInterface = {
     path: '/match_list_patterns',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'MatchListPatterns',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

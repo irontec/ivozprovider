@@ -138,6 +138,10 @@ const HolidayDate: EntityInterface = {
         'routeType',
         'target',
     ],
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'HolidayDates',
+    },
     Form,
     foreignKeyResolver,
     foreignKeyGetter,

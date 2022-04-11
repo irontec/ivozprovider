@@ -69,6 +69,10 @@ const usersCdr: EntityInterface = {
     path: '/users_cdrs',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'kam_users_cdrs',
+    },
     foreignKeyResolver,
     View,
     defaultOrderBy: 'startTime',

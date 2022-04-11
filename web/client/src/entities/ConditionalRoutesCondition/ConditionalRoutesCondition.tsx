@@ -199,6 +199,10 @@ const ConditionalRoutesCondition: EntityInterface = {
         'routeType',
         'target'
     ],
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'ConditionalRoutesConditions',
+    },
     foreignKeyResolver,
     Form,
 };

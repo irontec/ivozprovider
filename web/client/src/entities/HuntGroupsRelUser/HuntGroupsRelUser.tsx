@@ -69,6 +69,10 @@ const huntGroupsRelUser: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'HuntGroupsRelUsers',
+    },
     foreignKeyResolver,
     Form,
 };

@@ -25,6 +25,10 @@ const FriendsPattern: EntityInterface = {
     title: _('Friend Pattern', { count: 2 }),
     path: '/friends_patterns',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'FriendsPatterns',
+    },
     Form,
 };
 

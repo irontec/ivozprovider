@@ -8,6 +8,10 @@ const ConditionalRoutesCondition: EntityInterface = {
     iden: 'ConditionalRoutesConditionsRelCalendar',
     title: '',
     path: '/conditional_routes_conditions_rel_calendars',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'ConditionalRoutesConditionsRelCalendars',
+    },
     toStr: (row: any) => row.id,
     properties: {},
 };

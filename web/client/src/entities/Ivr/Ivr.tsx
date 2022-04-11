@@ -187,6 +187,10 @@ const ivr: EntityInterface = {
     toStr: (row: any) => row.name,
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'IVRs',
+    },
     Form,
     foreignKeyGetter,
     foreignKeyResolver,

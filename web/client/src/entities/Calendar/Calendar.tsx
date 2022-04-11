@@ -19,6 +19,10 @@ const calendar: EntityInterface = {
     title: _('Calendar', { count: 2 }),
     path: '/calendars',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Calendars',
+    },
     toStr: (row: EntityValues) => (row?.name as string | ''),
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

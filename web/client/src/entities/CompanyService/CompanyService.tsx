@@ -32,6 +32,10 @@ const companyService: EntityInterface = {
     path: '/company_services',
     properties,
     columns,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CompanyServices',
+    },
     foreignKeyResolver,
     Form,
     foreignKeyGetter

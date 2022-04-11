@@ -18,6 +18,10 @@ const matchList: EntityInterface = {
     title: _('Match List', { count: 2 }),
     path: '/match_lists',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'MatchLists',
+    },
     toStr: (item: MatchListProperties) => { return item.name as string || ''; },
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

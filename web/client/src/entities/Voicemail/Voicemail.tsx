@@ -85,6 +85,10 @@ const Voicemail: EntityInterface = {
     iden: 'Voicemail',
     title: _('Voicemail', { count: 2 }),
     path: '/voicemails',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'Voicemails',
+    },
     toStr: (row: EntityValues) => (row.name as string || ''),
     properties,
     columns,

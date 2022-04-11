@@ -99,6 +99,10 @@ const CalendarPeriod: EntityInterface = {
     title: _('Calendar Period', { count: 2 }),
     path: '/calendar_periods',
     properties,
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CalendarPeriods',
+    },
     toStr: (row: EntityValues) => (row?.name as string | ''),
     columns: [
         'startDate',

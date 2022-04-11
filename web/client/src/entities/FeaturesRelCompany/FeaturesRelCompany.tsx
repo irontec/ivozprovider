@@ -11,6 +11,10 @@ const FeaturesRelCompany: EntityInterface = {
     iden: 'FeaturesRelCompany',
     title: _('FeaturesRelCompany', { count: 2 }),
     path: '/features_rel_companies',
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'FeaturesRelCompanies',
+    },
     toStr: (row: EntityValues) => (row?.feature as EntityValues)?.iden as string || '',
     selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };

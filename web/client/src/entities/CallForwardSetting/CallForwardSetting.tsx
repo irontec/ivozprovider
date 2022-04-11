@@ -159,6 +159,10 @@ const CallForwardSetting: EntityInterface = {
         'targetType',
         'targetTypeValue',
     ],
+    acl: {
+        ...defaultEntityBehavior.acl,
+        iden: 'CallForwardSettings',
+    },
     Form,
     foreignKeyResolver,
     foreignKeyGetter,
