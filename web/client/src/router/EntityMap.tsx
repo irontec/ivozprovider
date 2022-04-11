@@ -1,13 +1,21 @@
 import entities from "../entities";
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import routeMapParser, { RouteMap } from "@irontec/ivoz-ui/router/routeMapParser";
+import routeMapParser, { RouteMap, RouteMapItem } from "@irontec/ivoz-ui/router/routeMapParser";
+import { AboutMe } from "store/clientSession/aboutMe";
 
-const map: RouteMap = [
+type isAccessibleType = (aboutMe: AboutMe) => boolean;
+export type ExtendedRouteMapItem = RouteMapItem & {
+    isAccessible?: isAccessibleType,
+};
+export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
+
+const map: ExtendedRouteMap = [
     {
         label: _('General'),
         children: [
             {
                 entity: entities.User,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: {
@@ -31,12 +39,15 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Terminal,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.Extension,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.Ddi,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.BillableCall,
@@ -55,6 +66,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.CompanyService,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: {
@@ -72,6 +84,7 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.Ivr,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.IvrEntry,
@@ -81,6 +94,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.HuntGroup,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: {
@@ -97,6 +111,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Queue,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.QueueMember,
@@ -106,6 +121,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.ConditionalRoute,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.ConditionalRoutesCondition,
@@ -118,6 +134,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Friend,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.FriendsPattern,
@@ -131,6 +148,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.ConferenceRoom,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
         ],
     },
@@ -139,9 +157,11 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.ExternalCallFilter,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.Calendar,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.HolidayDate,
@@ -155,9 +175,11 @@ const map: RouteMap = [
             },
             {
                 entity: entities.Schedule,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.MatchList,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.MatchListPattern,
@@ -167,6 +189,7 @@ const map: RouteMap = [
             },
             {
                 entity: entities.RouteLock,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
         ],
     },
@@ -175,6 +198,7 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.OutgoingDdiRule,
+                isAccessible: (aboutMe) => aboutMe.pbx,
                 children: [
                     {
                         entity: entities.OutgoingDdiRulesPattern,
@@ -184,9 +208,11 @@ const map: RouteMap = [
             },
             {
                 entity: entities.PickUpGroup,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.CallAcl,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.Voicemail,
@@ -207,9 +233,11 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.Locution,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.MusicOnHold,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
         ],
     },
@@ -218,6 +246,7 @@ const map: RouteMap = [
         children: [
             {
                 entity: entities.UsersCdr,
+                isAccessible: (aboutMe) => aboutMe.pbx,
             },
             {
                 entity: entities.BillableCall,
@@ -238,4 +267,4 @@ const map: RouteMap = [
     }
 ];
 
-export default routeMapParser(map);
+export default routeMapParser<ExtendedRouteMapItem>(map);
