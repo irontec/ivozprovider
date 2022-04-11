@@ -8,20 +8,17 @@ import { ExtensionProperties } from './ExtensionProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions/SelectOptions';
 
-/** TODO */
-const vpbx = true;
-
 const allRoutableFields = [
     'numberCountry',
     'numberValue',
-    vpbx && 'ivr',
-    vpbx && 'user',
-    vpbx && 'huntGroup',
-    vpbx && 'voicemail',
+    'ivr',
+    'user',
+    'huntGroup',
+    'voicemail',
     'conferenceRoom',
     'friendValue',
     'queue',
-    vpbx && 'conditionalRoute',
+    'conditionalRoute',
 ];
 
 const properties: ExtensionProperties = {
