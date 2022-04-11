@@ -7,11 +7,7 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 import { DdiProperties } from './DdiProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
-
-/** TODO */
-const vpbx = true;
-const retail = false;
-const residential = false;
+import RouteType from './Field/RouteType';
 
 const allRoutableFields = [
     'ivr',
@@ -35,17 +31,18 @@ const properties: DdiProperties = {
     },
     'routeType': {
         label: _('Route type'),
+        component: RouteType,
         enum: {
-            'user': vpbx && _('User'),
-            'ivr': vpbx && _('IVR'),
-            'huntGroup': vpbx && _('Hunt Group'),
+            'user': _('User'),
+            'ivr': _('IVR'),
+            'huntGroup': _('Hunt Group'),
             'fax': _('Fax'),
             'conferenceRoom': _('Conference room'),
             'friend': _('Friend'),
             'queue': _('Queue'),
-            'residential': residential && _('Residential Device'),
-            'conditional': vpbx && _('Conditional Route'),
-            'retail': retail && _('Retail Account'),
+            'residential': _('Residential Device'),
+            'conditional': _('Conditional Route'),
+            'retail': _('Retail Account'),
         },
         null: _("Unassigned"),
         visualToggle: {

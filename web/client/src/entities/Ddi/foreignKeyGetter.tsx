@@ -5,7 +5,12 @@ import entities from '../index';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async (props): Promise<any> => {
+
+
+    const { cancelToken, entityService } = props;
+    const skip = props.skip || [];
+    skip.push('language');
 
     const response: DdiPropertyList<unknown> = {};
 
@@ -14,9 +19,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         entityService,
         cancelToken,
         response,
-        skip: [
-            'language',
-        ]
+        skip,
     });
 
     promises[promises.length] = LanguageSelectOptions({
