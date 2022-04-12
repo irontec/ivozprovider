@@ -1,35 +1,35 @@
 import StyledDashboardLink from './DashboardItemList.styles';
-import { RouteMapItem } from "@irontec/ivoz-ui/router/routeMapParser";
+import { RouteMapItem } from '@irontec/ivoz-ui/router/routeMapParser';
 
 const DashboardItemList = (props: { items: RouteMapItem[] }): JSX.Element => {
 
-    const { items } = props;
+  const { items } = props;
 
-    return (
+  return (
         <ul>
             {items.map((item: RouteMapItem, key: number) => {
 
-                const { route, entity } = item;
+              const { route, entity } = item;
 
-                if (!entity) {
-                    return null;
-                }
+              if (!entity) {
+                return null;
+              }
 
-                if (!entity.acl.read) {
-                    return null;
-                }
+              if (!entity.acl.read) {
+                return null;
+              }
 
-                return (
+              return (
                     <li key={key}>
                         <StyledDashboardLink to={route}>
                             <entity.icon />
                             {entity.title}
                         </StyledDashboardLink>
                     </li>
-                );
+              );
             })}
         </ul>
-    );
-}
+  );
+};
 
 export default DashboardItemList;

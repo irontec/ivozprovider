@@ -4,24 +4,24 @@ import { PickUpGroupPropertiesList } from './PickUpGroupProperties';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
-    data, cancelToken
+  data, cancelToken,
 }): Promise<PickUpGroupPropertiesList> {
 
-    const promises = [];
-    const { User } = entities;
+  const promises = [];
+  const { User } = entities;
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'userIds',
-            entity: User,
-            cancelToken,
-        })
-    );
+  promises.push(
+    genericForeignKeyResolver({
+      data,
+      fkFld: 'userIds',
+      entity: User,
+      cancelToken,
+    }),
+  );
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;

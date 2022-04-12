@@ -5,6 +5,6 @@ import UserExtensionSelectOptions from './UserExtensionSelectOptions';
 export default SelectOptions;
 
 export {
-    UnassignedExtensionSelectOptions,
-    UserExtensionSelectOptions
+  UnassignedExtensionSelectOptions,
+  UserExtensionSelectOptions,
 };

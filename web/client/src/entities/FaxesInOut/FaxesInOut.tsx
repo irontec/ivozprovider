@@ -5,50 +5,50 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { FaxesInOutProperties } from './FaxesInOutProperties';
 
 const properties: FaxesInOutProperties = {
-    'calldate': {
-        label: _('Calldate'),
-        format: 'date-time'
+  'calldate': {
+    label: _('Calldate'),
+    format: 'date-time',
+  },
+  'src': {
+    label: _('Source'),
+  },
+  'dst': {
+    label: _('Destination'),
+  },
+  'type': {
+    label: _('Type'),
+    enum: {
+      'In': _('In'),
+      'Out': _('Out'),
     },
-    'src': {
-        label: _('Source'),
+  },
+  'status': {
+    label: _('Status'),
+    enum: {
+      'error': _('Error'),
+      'pending': _('Pending'),
+      'completed': _('Completed'),
+      'inprogress': _('In Progress'),
     },
-    'dst': {
-        label: _('Destination'),
-    },
-    'type': {
-        label: _('Type'),
-        enum: {
-            'In': _('In'),
-            'Out': _('Out'),
-        }
-    },
-    'status': {
-        label: _('Status'),
-        enum: {
-            'error': _('Error'),
-            'pending': _('Pending'),
-            'completed': _('Completed'),
-            'inprogress': _('In Progress'),
-        },
-    },
-    'file': {
-        label: _('PDF File'),
-        type: 'file',
-    },
+  },
+  'file': {
+    label: _('PDF File'),
+    type: 'file',
+  },
 };
 
 const FaxesInOut: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: OutboundIcon,
+  ...defaultEntityBehavior,
+  icon: OutboundIcon,
+  iden: 'FaxesInOut',
+  title: _('Faxfile', { count: 2 }),
+  path: '/faxes_in_outs',
+  acl: {
+    ...defaultEntityBehavior.acl,
     iden: 'FaxesInOut',
-    title: _('Faxfile', { count: 2 }),
-    path: '/faxes_in_outs',
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'FaxesInOut',
-    },
-    toStr: (row: any) => row.name,
-    properties,
+  },
+  toStr: (row: any) => row.name,
+  properties,
 };
 
 export default FaxesInOut;

@@ -5,36 +5,36 @@ import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericFore
 import { RatingProfilePropertiesList } from './RatingProfileProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken }
+  { data, cancelToken },
 ): Promise<RatingProfilePropertiesList> {
 
-    const promises = [];
+  const promises = [];
 
-    const { RoutingTag } = entities;
+  const { RoutingTag } = entities;
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'ratingPlanGroup',
-            entity: RatingPlanGroup,
-            addLink: false,
-            cancelToken,
-        })
-    );
+  promises.push(
+    genericForeignKeyResolver({
+      data,
+      fkFld: 'ratingPlanGroup',
+      entity: RatingPlanGroup,
+      addLink: false,
+      cancelToken,
+    }),
+  );
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'routingTag',
-            entity: RoutingTag,
-            addLink: false,
-            cancelToken,
-        })
-    );
+  promises.push(
+    genericForeignKeyResolver({
+      data,
+      fkFld: 'routingTag',
+      entity: RoutingTag,
+      addLink: false,
+      cancelToken,
+    }),
+  );
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;

@@ -4,20 +4,20 @@ import entities from '../index';
 import { FaxPropertiesList } from './FaxProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken, entityService }
+  { data, cancelToken, entityService },
 ): Promise<FaxPropertiesList> {
 
-    const promises = autoForeignKeyResolver({
-        data, cancelToken, entityService, entities
-    });
+  const promises = autoForeignKeyResolver({
+    data, cancelToken, entityService, entities,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    if (!Array.isArray(data)) {
-        return data;
-    }
-
+  if (!Array.isArray(data)) {
     return data;
-}
+  }
+
+  return data;
+};
 
 export default foreignKeyResolver;

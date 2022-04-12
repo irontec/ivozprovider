@@ -5,21 +5,21 @@ import transformationRuleSet from './TransformationRuleSet';
 
 const TransformationRuleSetSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        transformationRuleSet.path,
-        ['id', 'name'],
-        (data: any) => {
+  return defaultEntityBehavior.fetchFks(
+    transformationRuleSet.path,
+    ['id', 'name'],
+    (data: any) => {
 
-            const options: any = {};
-            for (const item of data) {
-                const language = getI18n().language.substring(0, 2);
-                options[item.id] = item.name[language];
-            }
+      const options: any = {};
+      for (const item of data) {
+        const language = getI18n().language.substring(0, 2);
+        options[item.id] = item.name[language];
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default TransformationRuleSetSelectOptions;

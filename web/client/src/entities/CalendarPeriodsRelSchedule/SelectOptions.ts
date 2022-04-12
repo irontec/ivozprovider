@@ -5,20 +5,20 @@ import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 const CalendarPeriodsRelScheduleSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        calendarPeriodsRelSchedule.path,
-        ['id', 'schedule'],
-        (data: any) => {
+  return defaultEntityBehavior.fetchFks(
+    calendarPeriodsRelSchedule.path,
+    ['id', 'schedule'],
+    (data: any) => {
 
-            const options: any = {};
-            for (const item of data) {
-                options[item.id] = Schedule.toStr(item.schedule);
-            }
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = Schedule.toStr(item.schedule);
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default CalendarPeriodsRelScheduleSelectOptions;

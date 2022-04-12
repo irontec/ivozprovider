@@ -4,16 +4,16 @@ import entities from '../index';
 import { UserPropertiesList } from './UserProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken, entityService }
+  { data, cancelToken, entityService },
 ): Promise<UserPropertiesList> {
 
-    const promises = autoForeignKeyResolver({
-        data, cancelToken, entityService, entities
-    });
+  const promises = autoForeignKeyResolver({
+    data, cancelToken, entityService, entities,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;

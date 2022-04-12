@@ -8,7 +8,7 @@ export interface ClientSessionStore {
 
 const clientSession: ClientSessionStore = {
   recordLocutionService,
-  aboutMe
-}
+  aboutMe,
+};
 
 export default clientSession;

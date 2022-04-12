@@ -5,16 +5,16 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
-    const response: OutgoingDdiRulesPatternPropertyList<Array<string | number>> = {};
+  const response: OutgoingDdiRulesPatternPropertyList<Array<string | number>> = {};
 
-    const promises = autoSelectOptions({
-        entities,
-        entityService,
-        cancelToken,
-        response,
-    });
+  const promises = autoSelectOptions({
+    entities,
+    entityService,
+    cancelToken,
+    response,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return response;
+  return response;
 };

@@ -5,48 +5,48 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
-    const { entityService, row, match } = props;
+  const { entityService, row, match } = props;
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices: ExtensionPropertyList<any> = useFkChoices({
-        foreignKeyGetter,
-        entityService,
-        row,
-        match,
-    });
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices: ExtensionPropertyList<any> = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const groups: Array<FieldsetGroups> = [
-        {
-            legend: '',
-            fields: [
-                'number',
-            ]
-        },
-        {
-            legend: '',
-            fields: [
-                'routeType',
-                'ivr',
-                'huntGroup',
-                'conferenceRoom',
-                'user',
-                'numberCountry',
-                'numberValue',
-                'friendValue',
-                'queue',
-                'conditionalRoute',
-                'voicemail',
-            ]
-        },
-    ];
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: '',
+      fields: [
+        'number',
+      ],
+    },
+    {
+      legend: '',
+      fields: [
+        'routeType',
+        'ivr',
+        'huntGroup',
+        'conferenceRoom',
+        'user',
+        'numberCountry',
+        'numberValue',
+        'friendValue',
+        'queue',
+        'conditionalRoute',
+        'voicemail',
+      ],
+    },
+  ];
 
-    return (
+  return (
         <DefaultEntityForm
             {...props}
             fkChoices={fkChoices}
             groups={groups}
         />
-    );
-}
+  );
+};
 
 export default Form;

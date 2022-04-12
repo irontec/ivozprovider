@@ -56,18 +56,18 @@ const recordLocutionService: RecordLocutionServiceStore  = {
   setRecordLocutionService: action<RecordLocutionServiceState, NullableRecordType>(
     (state, recordLocutionService) => {
       state.recordLocutionService = recordLocutionService;
-    }
+    },
   ),
   setCompanyRecordLocutionService: action<RecordLocutionServiceState, NullableRecordType>(
     (state, companyRecordLocutionService) => {
       state.companyRecordLocutionService = companyRecordLocutionService;
-    }
+    },
   ),
   ///////////////////////////////
   // Thunks
   ///////////////////////////////
   load: thunk<RecordLocutionServiceStore, CancelTokenSourceProps>(
-    async (actions, { cancelTokenSource }, {getState}) => {
+    async (actions, { cancelTokenSource }, { getState }) => {
 
       const state = getState();
       if (state.loading) {
@@ -76,33 +76,33 @@ const recordLocutionService: RecordLocutionServiceStore  = {
 
       actions.setLoading();
 
-      const recordLocutionService = await actions.loadRecordLocutionService({cancelTokenSource});
+      const recordLocutionService = await actions.loadRecordLocutionService({ cancelTokenSource });
       if (recordLocutionService) {
-        actions.loadCompanyRecordLocutionService({id: recordLocutionService.id, cancelTokenSource})
+        actions.loadCompanyRecordLocutionService({ id: recordLocutionService.id, cancelTokenSource });
       }
-    }
+    },
   ),
   loadRecordLocutionService: thunk<RecordLocutionServiceStore, CancelTokenSourceProps, any, AppStore>(
-    async (actions, { cancelTokenSource }, {getStoreActions}) => {
+    async (actions, { cancelTokenSource }, { getStoreActions }) => {
 
       const apiGet = getStoreActions().api.get;
 
       const resp = await apiGet({
         path: '/services',
-        params: {iden: 'RecordLocution'},
+        params: { iden: 'RecordLocution' },
         successCallback: async () => { return; },
-        cancelToken: cancelTokenSource.token
+        cancelToken: cancelTokenSource.token,
       });
 
       if (! resp?.data?.length) {
-          return;
+        return;
       }
 
       const recordLocutionService = resp?.data[0];
       actions.setRecordLocutionService(recordLocutionService);
 
       return recordLocutionService;
-    }
+    },
   ),
   loadCompanyRecordLocutionService: thunk<RecordLocutionServiceStore, loadCompanyRecordLocutionServiceProps, any, AppStore>(
     async (actions, { id, cancelTokenSource }, { getStoreActions }) => {
@@ -111,20 +111,20 @@ const recordLocutionService: RecordLocutionServiceStore  = {
 
       const resp = await apiGet({
         path: '/company_services',
-        params: {service: id},
+        params: { service: id },
         successCallback: async () => { return; },
-        cancelToken: cancelTokenSource.token
+        cancelToken: cancelTokenSource.token,
       });
 
       if (! resp?.data?.length) {
-          return;
+        return;
       }
 
       const companyRecordLocutionService = resp?.data[0];
       actions.setCompanyRecordLocutionService(companyRecordLocutionService);
 
       return companyRecordLocutionService;
-    }
+    },
   ),
 };
 

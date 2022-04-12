@@ -16,7 +16,7 @@ export const StyledAppBodyContainer = styled(
     return (
       <div className={className}>{props.children}</div>
     );
-  }
+  },
 )(
   ({ theme }: { theme: Theme }) => {
     return {
@@ -25,7 +25,7 @@ export const StyledAppBodyContainer = styled(
       maxWidth: 'none',
       borderBottom: '1px solid #ccc',
     };
-  }
+  },
 );
 
 interface ContainerWrapperProps {
@@ -36,13 +36,13 @@ const ContainerWrapper = (props: ContainerWrapperProps): JSX.Element => {
   return (
     <Container maxWidth={false} className={props.className}>{props.children}</Container >
   );
-}
+};
 
 export const StyledContainer = styled(ContainerWrapper)(({ theme }: { theme: Theme }) => {
   return {
     padding: theme.spacing(2),
     marginLeft: 0,
-  }
+  };
 });
 
 export const StyledAppBarSpacer = styled('div')(({ theme }: { theme: Theme }) => {

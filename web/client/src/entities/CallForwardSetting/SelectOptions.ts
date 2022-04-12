@@ -4,20 +4,20 @@ import CallForwardSetting from './CallForwardSetting';
 
 const CallForwardSettingSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        CallForwardSetting.path,
-        ['id'],
-        (data: any) => {
+  return defaultEntityBehavior.fetchFks(
+    CallForwardSetting.path,
+    ['id'],
+    (data: any) => {
 
-            const options: any = {};
-            for (const item of data) {
-                options[item.id] = item.id;
-            }
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = item.id;
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default CallForwardSettingSelectOptions;

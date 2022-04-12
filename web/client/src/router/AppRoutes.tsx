@@ -1,14 +1,14 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 
 import Login from 'components/Login';
 import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
-import entityMap from "./EntityMap";
-import ParsedApiSpecInterface from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
-import RouteContent from "@irontec/ivoz-ui/router/RouteContent";
-import AppRouteContentWrapper from "./AppRouteContentWrapper";
-import Dashboard from "components/Dashboard";
-import { AboutMe } from "store/clientSession/aboutMe";
-import useAclFilteredEntityMap from "./useAclFilteredEntityMap";
+import entityMap from './EntityMap';
+import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import RouteContent from '@irontec/ivoz-ui/router/RouteContent';
+import AppRouteContentWrapper from './AppRouteContentWrapper';
+import Dashboard from 'components/Dashboard';
+import { AboutMe } from 'store/clientSession/aboutMe';
+import useAclFilteredEntityMap from './useAclFilteredEntityMap';
 
 export interface AppRoutesProps {
   token: string,
@@ -22,7 +22,7 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
   const aclFilteredEntityMap = useAclFilteredEntityMap({
     entityMap,
-    aboutMe
+    aboutMe,
   });
 
   const routes = aboutMe

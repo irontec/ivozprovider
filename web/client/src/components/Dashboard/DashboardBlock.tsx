@@ -1,18 +1,18 @@
-import { Grid } from "@mui/material";
+import { Grid } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { RouteMapBlock } from "@irontec/ivoz-ui/router/routeMapParser";
+import { RouteMapBlock } from '@irontec/ivoz-ui/router/routeMapParser';
 import DashboardItemList from './DashboardItemList';
-import { ExtendedRouteMapItem } from "router/EntityMap";
+import { ExtendedRouteMapItem } from 'router/EntityMap';
 
 interface LinkBlockProps {
-    routeMapBlock: RouteMapBlock<ExtendedRouteMapItem>
+  routeMapBlock: RouteMapBlock<ExtendedRouteMapItem>
 }
 const DashboardBlock = (props: LinkBlockProps): JSX.Element => {
 
-    const { label, children } = props.routeMapBlock;
+  const { label, children } = props.routeMapBlock;
 
-    if (label) {
-        return (
+  if (label) {
+    return (
             <Grid item lg={4} md={6} xs={12}>
                 <ul>
                     <li className="submenu">
@@ -26,14 +26,14 @@ const DashboardBlock = (props: LinkBlockProps): JSX.Element => {
                     </li>
                 </ul>
             </Grid>
-        );
-    }
+    );
+  }
 
-    return (
+  return (
         <Grid item lg={4} md={6} xs={12}>
             <DashboardItemList items={children || []} />
         </Grid>
-    );
-}
+  );
+};
 
 export default DashboardBlock;

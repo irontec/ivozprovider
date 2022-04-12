@@ -7,27 +7,27 @@ import { CountryProperties } from './CountryProperties';
 import selectOptions from './SelectOptions';
 
 const properties: CountryProperties = {
-    name: {
-        label: _('name')
-    }
+  name: {
+    label: _('name'),
+  },
 };
 
 const country: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: SettingsApplications,
-    iden: 'Country',
-    title: _('Country', { count: 2 }),
-    path: '/countries',
-    toStr: (row: any) => {
-        const language = getI18n().language.substring(0, 2);
-        return row.name[language];
-    },
-    properties,
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'Countries',
-    },
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  ...defaultEntityBehavior,
+  icon: SettingsApplications,
+  iden: 'Country',
+  title: _('Country', { count: 2 }),
+  path: '/countries',
+  toStr: (row: any) => {
+    const language = getI18n().language.substring(0, 2);
+    return row.name[language];
+  },
+  properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Countries',
+  },
+  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default country;

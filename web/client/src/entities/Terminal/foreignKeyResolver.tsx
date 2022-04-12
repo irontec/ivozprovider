@@ -4,25 +4,25 @@ import entities from '../index';
 import { TerminalPropertiesList } from './TerminalProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken }
+  { data, cancelToken },
 ): Promise<TerminalPropertiesList> {
 
-    const promises = [];
-    const { TerminalModel } = entities;
+  const promises = [];
+  const { TerminalModel } = entities;
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'terminalModel',
-            entity: TerminalModel,
-            addLink: TerminalModel.acl.update,
-            cancelToken,
-        })
-    );
+  promises.push(
+    genericForeignKeyResolver({
+      data,
+      fkFld: 'terminalModel',
+      entity: TerminalModel,
+      addLink: TerminalModel.acl.update,
+      cancelToken,
+    }),
+  );
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;

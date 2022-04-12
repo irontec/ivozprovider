@@ -16,13 +16,13 @@ interface LoginProps {
 export default function Login(props: LoginProps): JSX.Element {
 
   const error = useStoreState(
-    (store) => store.api.errorMsg
+    (store) => store.api.errorMsg,
   );
 
   const setToken = useStoreActions((actions) => actions.auth.setToken);
   const loadProfile = useStoreActions((actions) => actions.clientSession.aboutMe.load);
   const setRefreshToken = useStoreActions((actions) => actions.auth.setRefreshToken);
-  const apiPost = useStoreActions((actions) => actions.api.post)
+  const apiPost = useStoreActions((actions) => actions.api.post);
   const submit = async (values: any) => {
 
     try {
@@ -30,7 +30,7 @@ export default function Login(props: LoginProps): JSX.Element {
       const response = await apiPost({
         path: '/admin_login',
         values,
-        contentType: 'application/x-www-form-urlencoded'
+        contentType: 'application/x-www-form-urlencoded',
       });
 
       if (response.data && response.data.token) {
@@ -40,15 +40,15 @@ export default function Login(props: LoginProps): JSX.Element {
         return;
       }
 
-    } catch (error: any) {
-      console.error(error);
+    } catch (exception: any) {
+      console.error(exception);
     }
   };
 
   const formik: useFormikType = useFormik({
     initialValues: {
       'username': '',
-      'password': ''
+      'password': '',
     },
     validationSchema: props.validator,
     onSubmit: submit,
@@ -95,5 +95,5 @@ export default function Login(props: LoginProps): JSX.Element {
         </StyledForm>
       </StyledLoginContainer>
     </Container>
-  )
+  );
 }

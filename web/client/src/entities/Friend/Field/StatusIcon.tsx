@@ -9,48 +9,48 @@ type StatusIconType = PropertyCustomFunctionComponent<PropertyCustomFunctionComp
 
 const StatusIcon: StatusIconType = (props): JSX.Element => {
 
-    const _context = props._context;
-    const { directConnectivity } = props.values;
-    const writeContext = (_context === 'write');
+  const _context = props._context;
+  const { directConnectivity } = props.values;
+  const writeContext = (_context === 'write');
 
-    if (directConnectivity === 'yes') {
+  if (directConnectivity === 'yes') {
 
-        if (writeContext) {
-            return (
+    if (writeContext) {
+      return (
                 <span>
                     <StyledStatusIconArrowForwardIcon />
                     {_('Direct connectivity')}
                 </span>
-            );
-        }
+      );
+    }
 
-        return (
+    return (
             <Tooltip title={_('Direct connectivity')}>
                 <StyledStatusIconArrowForwardIcon />
             </Tooltip>
-        );
-    }
+    );
+  }
 
-    if (directConnectivity === 'intervpbx') {
+  if (directConnectivity === 'intervpbx') {
 
-        if (writeContext) {
-            return (
+    if (writeContext) {
+      return (
                 <span>
                     <StyledStatusIconRotateLeftIcon />
                     {_('Inter company connectivity')}
                 </span>
-            );
-        }
+      );
+    }
 
-        return (
+    return (
             <Tooltip title={_('Inter company connectivity')}>
                 <StyledStatusIconRotateLeftIcon />
             </Tooltip>
-        );
-    }
+    );
+  }
 
-    //@TODO POSPONED else RegisterStatus::getLocationStatus
-    return (<span />);
-}
+  //@TODO POSPONED else RegisterStatus::getLocationStatus
+  return (<span />);
+};
 
 export default withCustomComponentWrapper<FriendPropertyListValues>(StatusIcon);

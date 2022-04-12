@@ -9,54 +9,54 @@ import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSe
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
-    const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
+  const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
 
-    const promises = autoSelectOptions({
-        entities,
-        entityService,
-        cancelToken,
-        response,
-        skip: [
-            'holidayVoicemail',
-            'outOfScheduleVoicemail',
-            'whiteListIds',
-            'blackListIds',
-            'scheduleIds',
-            'calendarIds',
-        ],
-    });
+  const promises = autoSelectOptions({
+    entities,
+    entityService,
+    cancelToken,
+    response,
+    skip: [
+      'holidayVoicemail',
+      'outOfScheduleVoicemail',
+      'whiteListIds',
+      'blackListIds',
+      'scheduleIds',
+      'calendarIds',
+    ],
+  });
 
-    promises[promises.length] = EnabledVoicemailSelectOptions({
-        callback: (options: any) => {
-            response.holidayVoicemail = options;
-            response.outOfScheduleVoicemail = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = EnabledVoicemailSelectOptions({
+    callback: (options: any) => {
+      response.holidayVoicemail = options;
+      response.outOfScheduleVoicemail = options;
+    },
+    cancelToken,
+  });
 
-    promises[promises.length] = MatchListSelectOptions({
-        callback: (options: any) => {
-            response.whiteListIds = options;
-            response.blackListIds = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = MatchListSelectOptions({
+    callback: (options: any) => {
+      response.whiteListIds = options;
+      response.blackListIds = options;
+    },
+    cancelToken,
+  });
 
-    promises[promises.length] = ScheduleSelectOptions({
-        callback: (options: any) => {
-            response.scheduleIds = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = ScheduleSelectOptions({
+    callback: (options: any) => {
+      response.scheduleIds = options;
+    },
+    cancelToken,
+  });
 
-    promises[promises.length] = CalendarSelectOptions({
-        callback: (options: any) => {
-            response.calendarIds = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = CalendarSelectOptions({
+    callback: (options: any) => {
+      response.calendarIds = options;
+    },
+    cancelToken,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return response;
+  return response;
 };

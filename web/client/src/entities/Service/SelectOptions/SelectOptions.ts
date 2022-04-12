@@ -3,24 +3,24 @@ import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import Service from '../Service';
 
 const SelectOptions: SelectOptionsType = (
-    props
+  props,
 ): Promise<unknown> => {
 
-    const { callback, cancelToken } = props;
+  const { callback, cancelToken } = props;
 
-    return defaultEntityBehavior.fetchFks(
-        Service.path,
-        ['id', 'name'],
-        (data: any) => {
-            const options: any = {};
-            for (const item of data) {
-                options[item.id] = Service.toStr(item);
-            }
+  return defaultEntityBehavior.fetchFks(
+    Service.path,
+    ['id', 'name'],
+    (data: any) => {
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = Service.toStr(item);
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default SelectOptions;

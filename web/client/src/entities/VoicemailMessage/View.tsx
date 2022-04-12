@@ -4,26 +4,26 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 const View = (props: ViewProps): JSX.Element | null => {
 
-    const DefaultEntityView = defaultEntityBehavior.View;
+  const DefaultEntityView = defaultEntityBehavior.View;
 
-    const groups: Array<FieldsetGroups | false> = [
-        {
-            legend: _('Basic Information'),
-            fields: [
-                'calldate',
-                'caller',
-                'duration',
-            ]
-        },
-        {
-            legend: _('Recording'),
-            fields: [
-                'recordingFile',
-            ]
-        },
-    ];
+  const groups: Array<FieldsetGroups | false> = [
+    {
+      legend: _('Basic Information'),
+      fields: [
+        'calldate',
+        'caller',
+        'duration',
+      ],
+    },
+    {
+      legend: _('Recording'),
+      fields: [
+        'recordingFile',
+      ],
+    },
+  ];
 
-    return (<DefaultEntityView {...props} groups={groups} />);
-}
+  return (<DefaultEntityView {...props} groups={groups} />);
+};
 
 export default View;

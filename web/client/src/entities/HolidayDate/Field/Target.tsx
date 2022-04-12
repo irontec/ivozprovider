@@ -1,19 +1,19 @@
 import withCustomComponentWrapper, {
-    PropertyCustomFunctionComponent,
-    PropertyCustomFunctionComponentProps
+  PropertyCustomFunctionComponent,
+  PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { HolidayDatePropertyList } from '../HolidayDateProperties';
 
 type HuntGroupsRelUserValues = HolidayDatePropertyList<
-    string | number
+string | number
 >;
 type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
 
 const Type: TargetGhostType = (props): JSX.Element => {
 
-    const { values } = props;
+  const { values } = props;
 
-    return (<span>{values.target}</span>);
-}
+  return (<span>{values.target}</span>);
+};
 
 export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Type);

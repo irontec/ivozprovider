@@ -6,54 +6,54 @@ import { CountryPropertyList } from 'entities/Country/CountryProperties';
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken, entityService }
+  { data, cancelToken, entityService },
 ): Promise<IvrEntryPropertiesList> {
 
-    const { Country } = entities;
+  const { Country } = entities;
 
-    const promises = autoForeignKeyResolver({
-        data,
-        cancelToken,
-        entityService,
-        entities,
-        skip: [
-            'numberCountry',
-            'ivr',
-        ]
-    });
+  const promises = autoForeignKeyResolver({
+    data,
+    cancelToken,
+    entityService,
+    entities,
+    skip: [
+      'numberCountry',
+      'ivr',
+    ],
+  });
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'numberCountry',
-            entity: {
-                ...Country,
-                toStr: (row: CountryPropertyList<string>) => row.countryCode as string,
-            },
-            cancelToken,
-        })
-    );
+  promises.push(
+    genericForeignKeyResolver({
+      data,
+      fkFld: 'numberCountry',
+      entity: {
+        ...Country,
+        toStr: (row: CountryPropertyList<string>) => row.countryCode as string,
+      },
+      cancelToken,
+    }),
+  );
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    for (const values of data) {
-        switch (values.routeType) {
-            case 'extension':
-                remapFk(values, 'extension', 'target');
-                break;
-            case 'voicemail':
-                remapFk(values, 'voicemail', 'target');
-                break;
-            case 'conditional':
-                remapFk(values, 'conditionalRoute', 'target');
-                break;
-            case 'number':
-                values.target = `${values.numberCountry} ${values.numberValue}`;
-                break;
-        }
+  for (const values of data) {
+    switch (values.routeType) {
+      case 'extension':
+        remapFk(values, 'extension', 'target');
+        break;
+      case 'voicemail':
+        remapFk(values, 'voicemail', 'target');
+        break;
+      case 'conditional':
+        remapFk(values, 'conditionalRoute', 'target');
+        break;
+      case 'number':
+        values.target = `${values.numberCountry} ${values.numberValue}`;
+        break;
     }
+  }
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;
