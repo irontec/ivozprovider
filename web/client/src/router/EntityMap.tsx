@@ -57,6 +57,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Fax,
+        isAccessible: (aboutMe) => !aboutMe.wholesale,
         children: [
           {
             entity: entities.FaxesInOut,
@@ -76,6 +77,7 @@ const map: ExtendedRouteMap = [
             detail: false,
           },
         },
+        isAccessible: (aboutMe) => !aboutMe.wholesale,
       },
     ],
   },
@@ -131,6 +133,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Invoice,
+        isAccessible: (aboutMe) => !aboutMe.wholesale,
       },
       {
         entity: entities.Friend,
@@ -216,6 +219,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Voicemail,
+        isAccessible: (aboutMe) => aboutMe.pbx || aboutMe.residential,
         children: [
           {
             entity: entities.VoicemailMessage,
@@ -225,6 +229,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Location,
+        isAccessible: (aboutMe) => aboutMe.pbx,
       },
     ],
   },
@@ -262,6 +267,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Recording,
+        isAccessible: (aboutMe) => !aboutMe.wholesale,
       },
     ],
   },
