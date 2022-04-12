@@ -15,7 +15,6 @@ export type ExtensionPropertyList<T> = {
     'conditionalRoute'?: T,
     'voicemail'?: T,
     'target'?: T,
-    'companyFeatures'?: T,
 };
 
 export type ExtensionProperties = ExtensionPropertyList<Partial<PropertySpec>>;
