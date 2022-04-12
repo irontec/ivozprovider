@@ -1313,9 +1313,9 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@irontec/ivoz-ui@^0.3.10":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.3.12.tgz#b7511ddf629d5654d74f9713eb70180432f56d40"
-  integrity sha512-Njau7d2PZ9gslL/pcGayAttdJeaUN9v2ruKeeHodR0LZkJHwXv/GYZbdmU+xUeD4blxiZuvLEaBADch9hCBhRQ==
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.3.13.tgz#385b28858d61e7a811453240ee4048f2582483d1"
+  integrity sha512-6zsAeKXZ1r3YUbrnQz5IMLUNjveJHlRjndjjBt4knJet95A65gxKKuN2krDU3q+9S8yMJ3xXGT+dQ4kFcD0nBA==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     "@types/axios" "^0.14.0"

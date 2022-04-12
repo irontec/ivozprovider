@@ -2,9 +2,10 @@ import { Grid } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import { RouteMapBlock } from "@irontec/ivoz-ui/router/routeMapParser";
 import DashboardItemList from './DashboardItemList';
+import { ExtendedRouteMapItem } from "router/EntityMap";
 
 interface LinkBlockProps {
-    routeMapBlock: RouteMapBlock
+    routeMapBlock: RouteMapBlock<ExtendedRouteMapItem>
 }
 const DashboardBlock = (props: LinkBlockProps): JSX.Element => {
 

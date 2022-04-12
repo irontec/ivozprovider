@@ -1,7 +1,6 @@
 import { withRouter } from "react-router-dom";
 import { Grid, styled, Theme } from "@mui/material";
 import EntityMap from '../../router/EntityMap';
-import { RouteMapBlock } from "@irontec/ivoz-ui/router/routeMapParser";
 import DashboardBlock from "./DashboardBlock";
 
 interface DashboardProps {
@@ -14,7 +13,12 @@ const Dashboard = (props: DashboardProps) => {
 
     return (
         <Grid container spacing={3} className={className}>
-            {EntityMap.map((routeMapBlock: RouteMapBlock, key: number) => {
+            {EntityMap.map((routeMapBlock, key: number) => {
+
+                if (!routeMapBlock.children.length) {
+                    return null;
+                }
+
                 return (
                     <DashboardBlock key={key} routeMapBlock={routeMapBlock} />
                 );

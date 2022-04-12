@@ -6,6 +6,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { QueueProperties } from './QueueProperties';
 import selectOptions from './SelectOptions';
+import Strategy from './Field/Strategy';
 
 const timeoutFields = [
     'timeoutNumberCountry',
@@ -150,6 +151,7 @@ const properties: QueueProperties = {
     },
     'strategy': {
         label: _('Strategy'),
+        component: Strategy,
         enum: {
             'ringall': _('Ring all'),
             'leastrecent': _('Least recent'),

@@ -1,14 +1,11 @@
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { PropertyList, ScalarProperty } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
     const { entityService, row, match } = props;
-    let properties = props.properties;
-    const edit = props.edit;
 
     const DefaultEntityForm = defaultEntityBehavior.Form;
     const fkChoices = useFkChoices({
@@ -17,17 +14,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         row,
         match
     });
-
-    if (edit && row?.strategy !== 'linear') {
-
-        properties = { ...properties };
-        const strategyValues = { ...(properties.strategy as ScalarProperty).enum };
-        delete strategyValues.linear;
-
-        (properties.strategy as ScalarProperty).enum = strategyValues;
-
-        entityService.replaceProperties(properties as PropertyList);
-    }
 
     const groups: Array<FieldsetGroups> = [
         {
