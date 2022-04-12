@@ -7,6 +7,7 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 import { ConditionalRouteProperties } from './ConditionalRouteProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
+import RouteType from './Field/RouteType';
 
 const routableFields = [
     'numberCountry',
@@ -32,6 +33,7 @@ const properties: ConditionalRouteProperties = {
     },
     'routetype': {
         label: _('Route type'),
+        component: RouteType,
         enum: {
             'user': _('User'),
             'ivr': _('IVR'),

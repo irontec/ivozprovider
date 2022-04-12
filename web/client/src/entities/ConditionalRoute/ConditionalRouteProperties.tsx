@@ -16,7 +16,6 @@ export type ConditionalRoutePropertyList<T> = {
     'conferenceRoom'?: T,
     'extension'?: T,
     'target'?: T,
-    'companyFeatures'?: T,
 };
 
 export type ConditionalRouteProperties = ConditionalRoutePropertyList<Partial<PropertySpec>>;

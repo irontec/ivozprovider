@@ -2,7 +2,6 @@ import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
-import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
@@ -25,15 +24,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         },
         cancelToken
     });
-
-    promises[promises.length] = FeaturesRelCompanySelectOptions(
-        {
-            callback: (options: any) => {
-                response.companyFeatures = options;
-            },
-            cancelToken
-        }
-    );
 
     await Promise.all(promises);
 
