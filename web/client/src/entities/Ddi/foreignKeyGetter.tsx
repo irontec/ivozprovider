@@ -3,7 +3,6 @@ import { DdiPropertyList } from './DdiProperties';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import entities from '../index';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async (props): Promise<any> => {
 
@@ -28,15 +27,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (props): Promise<any
         },
         cancelToken
     });
-
-    promises[promises.length] = FeaturesRelCompanySelectOptions(
-        {
-            callback: (options: any) => {
-                response.companyFeatures = options;
-            },
-            cancelToken
-        }
-    );
 
     await Promise.all(promises);
 

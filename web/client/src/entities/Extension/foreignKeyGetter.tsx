@@ -2,7 +2,6 @@ import { ExtensionPropertyList } from './ExtensionProperties';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
-import FeaturesRelCompanySelectOptions from 'entities/FeaturesRelCompany/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async (
     { cancelToken, entityService }
@@ -16,15 +15,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
         cancelToken,
         response,
     });
-
-    promises[promises.length] = FeaturesRelCompanySelectOptions(
-        {
-            callback: (options: any) => {
-                response.companyFeatures = options;
-            },
-            cancelToken
-        }
-    );
 
     await Promise.all(promises);
 

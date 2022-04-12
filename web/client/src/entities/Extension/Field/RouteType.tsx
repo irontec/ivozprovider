@@ -4,9 +4,9 @@ import {
     PropertyCustomFunctionComponentProps
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
-import { DdiPropertyList } from '../DdiProperties';
+import { ExtensionPropertyList } from '../ExtensionProperties';
 
-type RouteTypeValues = DdiPropertyList<string>;
+type RouteTypeValues = ExtensionPropertyList<string>;
 type RouteTypeProps = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RouteTypeValues>>;
 
 const RouteType: RouteTypeProps = (props): JSX.Element | null => {
@@ -37,23 +37,6 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     const enumValues = {
         ...modifiedProperty.enum
     };
-
-
-
-    if (!aboutMe.pbx) {
-        delete enumValues.user;
-        delete enumValues.ivr;
-        delete enumValues.huntGroup;
-        delete enumValues.conditional;
-    }
-
-    if (!aboutMe.residential) {
-        delete enumValues.residentialDevice;
-    }
-
-    if (!aboutMe.retail) {
-        delete enumValues.retail;
-    }
 
     const companyFeatures = aboutMe.features;
     const conditionalFeatures: Record<string, string> = {

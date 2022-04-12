@@ -4,9 +4,9 @@ import {
     PropertyCustomFunctionComponentProps
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
-import { DdiPropertyList } from '../DdiProperties';
+import { ConditionalRoutesConditionPropertyList } from '../ConditionalRoutesConditionProperties';
 
-type RouteTypeValues = DdiPropertyList<string>;
+type RouteTypeValues = ConditionalRoutesConditionPropertyList<string>;
 type RouteTypeProps = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RouteTypeValues>>;
 
 const RouteType: RouteTypeProps = (props): JSX.Element | null => {
@@ -21,7 +21,6 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     }
 
     const { choices, readOnly } = props;
-
     const modifiedProperty = { ...property } as ScalarProperty;
     delete modifiedProperty.component;
 
@@ -34,35 +33,15 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
         );
     }
 
-    const enumValues = {
-        ...modifiedProperty.enum
-    };
-
-
-
-    if (!aboutMe.pbx) {
-        delete enumValues.user;
-        delete enumValues.ivr;
-        delete enumValues.huntGroup;
-        delete enumValues.conditional;
-    }
-
-    if (!aboutMe.residential) {
-        delete enumValues.residentialDevice;
-    }
-
-    if (!aboutMe.retail) {
-        delete enumValues.retail;
-    }
-
     const companyFeatures = aboutMe.features;
     const conditionalFeatures: Record<string, string> = {
         'queues': 'queue',
-        'friends': 'friend',
-        'faxes': 'fax',
         'conferences': 'conferenceRoom',
     };
     const conditionalFeaturesKeys = Object.keys(conditionalFeatures);
+    const enumOptions = {
+        ...modifiedProperty.enum
+    };
 
     for (const conditionalFeature of conditionalFeaturesKeys) {
 
@@ -70,12 +49,12 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
             continue;
         }
 
-        delete enumValues[
+        delete enumOptions[
             conditionalFeatures[conditionalFeature]
         ];
     }
 
-    modifiedProperty.enum = enumValues;
+    modifiedProperty.enum = enumOptions;
 
     return formFieldFactory.getInputField(
         _columnName,

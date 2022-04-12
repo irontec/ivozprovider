@@ -7,6 +7,7 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 import { ExtensionProperties } from './ExtensionProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions/SelectOptions';
+import RouteType from './Field/RouteType';
 
 const allRoutableFields = [
     'numberCountry',
@@ -28,6 +29,7 @@ const properties: ExtensionProperties = {
     },
     'routeType': {
         label: _('Route type'),
+        component: RouteType,
         enum: {
             'user': _('User'),
             'ivr': _('IVR'),

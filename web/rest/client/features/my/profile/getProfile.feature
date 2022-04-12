@@ -16,7 +16,14 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": false,
           "wholesale": false,
-          "acls": []
+          "acls": [],
+          "features": [
+              "queues",
+              "recordings",
+              "faxes",
+              "friends",
+              "conferences"
+          ]
       }
     """
 
@@ -35,7 +42,8 @@ Feature: Retrieve active calls
           "residential": true,
           "retail": false,
           "wholesale": false,
-          "acls": []
+          "acls": [],
+          "features": []
       }
     """
 
@@ -54,7 +62,8 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": true,
           "wholesale": false,
-          "acls": []
+          "acls": [],
+          "features": []
       }
     """
 
@@ -536,6 +545,13 @@ Feature: Retrieve active calls
                   "update": false,
                   "delete": false
               }
+          ],
+          "features": [
+              "queues",
+              "recordings",
+              "faxes",
+              "friends",
+              "conferences"
           ]
       }
     """

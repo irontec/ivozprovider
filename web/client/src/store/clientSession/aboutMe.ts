@@ -16,7 +16,8 @@ export interface AboutMe {
   retail: boolean,
   wholesale: boolean,
   restricted: boolean,
-  acls: Array<EntityAcl>
+  acls: Array<EntityAcl>,
+  features: Array<string>,
 }
 
 export type AboutMeState = {

@@ -6,6 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
+use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyRepository;
 use Model\Profile;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -14,7 +15,8 @@ class ProfileAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private AdministratorRelPublicEntityRepository $adminRelPublicEntityRepository
+        private AdministratorRelPublicEntityRepository $adminRelPublicEntityRepository,
+        private FeaturesRelCompanyRepository $featuresRelCompanyRepository
     ) {
     }
 
@@ -47,10 +49,17 @@ class ProfileAction
 
         $type = $company->getType();
 
+        $features = $this
+            ->featuresRelCompanyRepository
+            ->findFeatureIdensByCompanyId(
+                (int) $company->getId()
+            );
+
         return new Profile(
             $restricted,
             $type,
-            $adminRelPublicEntities
+            $adminRelPublicEntities,
+            $features
         );
     }
 }
