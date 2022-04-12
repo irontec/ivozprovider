@@ -15,6 +15,7 @@ export interface AboutMe {
   residential: boolean,
   retail: boolean,
   wholesale: boolean,
+  billingInfo: boolean,
   restricted: boolean,
   acls: Array<EntityAcl>,
   features: Array<string>,
