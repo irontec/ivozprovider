@@ -7,6 +7,7 @@ import Target from './Field/Target';
 import ConditionMatch from './Field/ConditionMatch';
 import foreignKeyResolver from './foreignKeyResolver';
 import Form from './Form';
+import RouteType from './Field/RouteType';
 
 const routableFields = [
     'numberCountry',
@@ -54,7 +55,6 @@ const properties: ConditionalRoutesConditionProperties = {
     'ConditionMatch': {
         label: _('Match'),
         component: ConditionMatch,
-        // class: IvozProvider_Klear_Ghost_ConditionalRoutes::getMatchData
     },
     'locution': {
         label: _('Locution'),
@@ -63,6 +63,7 @@ const properties: ConditionalRoutesConditionProperties = {
     },
     'routeType': {
         label: _('Route type'),
+        component: RouteType,
         null: _("Unassigned"),
         default: '__null__',
         enum: {
