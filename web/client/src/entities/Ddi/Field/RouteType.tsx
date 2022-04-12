@@ -25,23 +25,54 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     const modifiedProperty = { ...property } as ScalarProperty;
     delete modifiedProperty.component;
 
+    if (!aboutMe) {
+        return formFieldFactory.getInputField(
+            _columnName,
+            modifiedProperty,
+            choices,
+            readOnly
+        );
+    }
+
     const enumValues = {
         ...modifiedProperty.enum
     };
 
-    if (!aboutMe?.pbx) {
+
+
+    if (!aboutMe.pbx) {
         delete enumValues.user;
         delete enumValues.ivr;
         delete enumValues.huntGroup;
         delete enumValues.conditional;
     }
 
-    if (!aboutMe?.residential) {
+    if (!aboutMe.residential) {
         delete enumValues.residentialDevice;
     }
 
-    if (!aboutMe?.retail) {
+    if (!aboutMe.retail) {
         delete enumValues.retail;
+    }
+
+    const companyFeatures = aboutMe.features;
+    const conditionalFeatures: Record<string, string> = {
+        'queues': 'queue',
+        'friends': 'friend',
+        'faxes': 'fax',
+        'conferences': 'conferenceRoom',
+    };
+    const conditionalFeaturesKeys = Object.keys(conditionalFeatures);
+
+    for (const conditionalFeature of conditionalFeaturesKeys) {
+
+        if (companyFeatures.includes(conditionalFeature)) {
+            continue;
+        }
+
+        delete enumValues[
+            conditionalFeatures[conditionalFeature]
+        ];
     }
 
     modifiedProperty.enum = enumValues;
