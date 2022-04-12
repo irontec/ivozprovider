@@ -6,24 +6,24 @@ import { MatchListProperties } from './MatchListProperties';
 import selectOptions from './SelectOptions';
 
 const properties: MatchListProperties = {
-    'name': {
-        label: _('Name'),
-    },
+  'name': {
+    label: _('Name'),
+  },
 };
 
 const matchList: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: FormatListBulletedIcon,
-    iden: 'MatchList',
-    title: _('Match List', { count: 2 }),
-    path: '/match_lists',
-    properties,
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'MatchLists',
-    },
-    toStr: (item: MatchListProperties) => { return item.name as string || ''; },
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  ...defaultEntityBehavior,
+  icon: FormatListBulletedIcon,
+  iden: 'MatchList',
+  title: _('Match List', { count: 2 }),
+  path: '/match_lists',
+  properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'MatchLists',
+  },
+  toStr: (item: MatchListProperties) => { return item.name as string || ''; },
+  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default matchList;

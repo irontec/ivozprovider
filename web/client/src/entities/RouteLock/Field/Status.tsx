@@ -1,26 +1,26 @@
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import withCustomComponentWrapper, {
-    PropertyCustomFunctionComponent,
-    PropertyCustomFunctionComponentProps
+  PropertyCustomFunctionComponent,
+  PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { RouteLockPropertyList } from '../RouteLockProperties';
 
 type RouteLockValues = RouteLockPropertyList<
-    string | number | boolean
+string | number | boolean
 >;
 type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RouteLockValues>>;
 
 const Status: TargetGhostType = (props): JSX.Element => {
 
-    const { values } = props;
-    const { open } = values;
+  const { values } = props;
+  const { open } = values;
 
-    if (open === true) {
-        return (<LockOpenIcon />);
-    }
+  if (open === true) {
+    return (<LockOpenIcon />);
+  }
 
-    return (<LockIcon />);
-}
+  return (<LockIcon />);
+};
 
 export default withCustomComponentWrapper<RouteLockValues>(Status);

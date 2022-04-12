@@ -22,7 +22,7 @@ export interface AboutMe {
 
 export type AboutMeState = {
   profile: AboutMe | null,
-}
+};
 
 interface AboutMeActions {
   setProfile: Action<AboutMeState, AboutMe>,
@@ -56,10 +56,10 @@ const Acls: AboutMeStore = {
         successCallback: async (response: any) => {
           sessionStorage.setItem(
             'profile',
-            JSON.stringify(response as AboutMe)
+            JSON.stringify(response as AboutMe),
           );
           actions.init();
-        }
+        },
       });
 
     } catch (error: any) {

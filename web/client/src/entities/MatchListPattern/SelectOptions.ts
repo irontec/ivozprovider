@@ -4,20 +4,20 @@ import OutgoingDdiRule from './MatchListPattern';
 
 const OutgoingDdiRuleSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        OutgoingDdiRule.path,
-        ['id', 'name'],
-        (data: any) => {
+  return defaultEntityBehavior.fetchFks(
+    OutgoingDdiRule.path,
+    ['id', 'name'],
+    (data: any) => {
 
-            const options: any = {};
-            for (const item of data) {
-                options[item.id] = item.name;
-            }
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = item.name;
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default OutgoingDdiRuleSelectOptions;

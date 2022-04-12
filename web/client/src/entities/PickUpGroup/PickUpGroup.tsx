@@ -9,30 +9,30 @@ import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 
 const properties: PickUpGroupProperties = {
-    'name': {
-        label: _('Name'),
-        required: true,
-    },
-    'userIds': {
-        label: _('User'),
-    }
+  'name': {
+    label: _('Name'),
+    required: true,
+  },
+  'userIds': {
+    label: _('User'),
+  },
 };
 
 const pickUpGroup: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: PhoneCallbackIcon,
-    iden: 'PickUpGroup',
-    title: _('Pick up group', { count: 2 }),
-    path: '/pick_up_groups',
-    properties,
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'PickUpGroups',
-    },
-    Form,
-    foreignKeyGetter,
-    foreignKeyResolver,
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  ...defaultEntityBehavior,
+  icon: PhoneCallbackIcon,
+  iden: 'PickUpGroup',
+  title: _('Pick up group', { count: 2 }),
+  path: '/pick_up_groups',
+  properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'PickUpGroups',
+  },
+  Form,
+  foreignKeyGetter,
+  foreignKeyResolver,
+  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default pickUpGroup;

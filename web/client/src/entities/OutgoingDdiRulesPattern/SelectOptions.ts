@@ -4,20 +4,20 @@ import pickUpGroup from './OutgoingDdiRulesPattern';
 
 const PickUpGroupSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        pickUpGroup.path,
-        ['id', 'name'],
-        (data: any) => {
+  return defaultEntityBehavior.fetchFks(
+    pickUpGroup.path,
+    ['id', 'name'],
+    (data: any) => {
 
-            const options: any = {};
-            for (const item of data) {
-                options[item.id] = item.name;
-            }
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = item.name;
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default PickUpGroupSelectOptions;

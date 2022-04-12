@@ -3,18 +3,18 @@ import { QueueMemberPropertiesList } from './QueueMemberProperties';
 import entities from '../index';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data }
+  { data },
 ): Promise<QueueMemberPropertiesList> {
 
-    const { User } = entities;
+  const { User } = entities;
 
-    for (const row of data) {
-        row.userId = row.user;
-        row.userLink = User.path + `/${row.userId}/update`;
-        row.user = User.toStr(row.user);
-    }
+  for (const row of data) {
+    row.userId = row.user;
+    row.userLink = User.path + `/${row.userId}/update`;
+    row.user = User.toStr(row.user);
+  }
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;

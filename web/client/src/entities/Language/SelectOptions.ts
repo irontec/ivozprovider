@@ -5,20 +5,20 @@ import language from './Language';
 
 const LanguageSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        language.path,
-        ['id', 'name'],
-        (data: any) => {
-            const options: any = {};
-            const language = getI18n().language.substring(0, 2);
-            for (const item of data) {
-                options[item.id] = item.name[language];
-            }
+  return defaultEntityBehavior.fetchFks(
+    language.path,
+    ['id', 'name'],
+    (data: any) => {
+      const options: any = {};
+      const language = getI18n().language.substring(0, 2);
+      for (const item of data) {
+        options[item.id] = item.name[language];
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default LanguageSelectOptions;

@@ -6,35 +6,35 @@ import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpec
 import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
-    'name': {
-        label: _('Name'),
-    },
-    'tag': {
-        label: _('Tag'),
-    },
+  'name': {
+    label: _('Name'),
+  },
+  'tag': {
+    label: _('Tag'),
+  },
 };
 
 const columns = [
-    'name',
-    'tag',
+  'name',
+  'tag',
 ];
 
 const routingTag: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: SettingsApplications,
-    iden: 'RoutingTag',
-    title: _('Routing tag', { count: 2 }),
-    path: '/routing_tags',
-    toStr: (row: any) => {
-        return `${row.name} (${row.tag})`;
-    },
-    properties,
-    columns,
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'RoutingTags',
-    },
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  ...defaultEntityBehavior,
+  icon: SettingsApplications,
+  iden: 'RoutingTag',
+  title: _('Routing tag', { count: 2 }),
+  path: '/routing_tags',
+  toStr: (row: any) => {
+    return `${row.name} (${row.tag})`;
+  },
+  properties,
+  columns,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'RoutingTags',
+  },
+  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default routingTag;

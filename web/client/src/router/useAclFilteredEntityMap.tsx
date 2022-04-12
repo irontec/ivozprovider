@@ -1,6 +1,6 @@
-import { AboutMe, EntityAcl } from "store/clientSession/aboutMe";
-import { useState, useEffect } from "react";
-import { ExtendedRouteMap, ExtendedRouteMapItem } from "./EntityMap";
+import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
+import { useState, useEffect } from 'react';
+import { ExtendedRouteMap, ExtendedRouteMapItem } from './EntityMap';
 
 interface updateEntityMapProps {
   entityMap: ExtendedRouteMap,
@@ -16,7 +16,7 @@ const updateEntityMapByAcls = (props: updateEntityMapProps): ExtendedRouteMap =>
 
       const resp = updateRouteMapItemByAcls({
         routeMapItem: block.children[idx],
-        aboutMe
+        aboutMe,
       });
 
       if (!resp) {
@@ -35,7 +35,7 @@ const updateEntityMapByAcls = (props: updateEntityMapProps): ExtendedRouteMap =>
   }
 
   return [...entityMap];
-}
+};
 
 interface updateRouteMapProps {
   routeMapItem: ExtendedRouteMapItem,
@@ -64,7 +64,7 @@ const updateRouteMapItemByAcls = (props: updateRouteMapProps): ExtendedRouteMapI
   }
 
   const apiAcls: EntityAcl | undefined = aboutMe.acls.find(
-    (acl) => entityAcls?.iden === acl.iden
+    (acl) => entityAcls?.iden === acl.iden,
   );
 
   if (!apiAcls) {
@@ -79,8 +79,8 @@ const updateRouteMapItemByAcls = (props: updateRouteMapProps): ExtendedRouteMapI
       create: entityAcls.create && apiAcls.create,
       update: entityAcls.update && apiAcls.update,
       delete: entityAcls.delete && apiAcls.delete,
-    }
-  }
+    },
+  };
 
   if (!routeMapItem.children) {
     return routeMapItem;
@@ -90,7 +90,7 @@ const updateRouteMapItemByAcls = (props: updateRouteMapProps): ExtendedRouteMapI
 
     const resp = updateRouteMapItemByAcls({
       routeMapItem: routeMapItem.children[idx],
-      aboutMe
+      aboutMe,
     });
 
     if (!resp) {
@@ -104,7 +104,7 @@ const updateRouteMapItemByAcls = (props: updateRouteMapProps): ExtendedRouteMapI
   routeMapItem.children = routeMapItem.children.filter(item => item);
 
   return routeMapItem;
-}
+};
 
 export interface AppRoutesProps {
   entityMap: ExtendedRouteMap,
@@ -129,8 +129,8 @@ export default function useAclFilteredEntityMap(props: AppRoutesProps): Extended
       });
       setRoutes(resp);
     },
-    [entityMap, aboutMe]
-  )
+    [entityMap, aboutMe],
+  );
 
   return routes;
 }

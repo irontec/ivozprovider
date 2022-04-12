@@ -7,28 +7,28 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 export const foreignKeyGetter: ForeignKeyGetterType = async (props): Promise<any> => {
 
 
-    const { cancelToken, entityService } = props;
-    const skip = props.skip || [];
-    skip.push('language');
+  const { cancelToken, entityService } = props;
+  const skip = props.skip || [];
+  skip.push('language');
 
-    const response: DdiPropertyList<unknown> = {};
+  const response: DdiPropertyList<unknown> = {};
 
-    const promises = autoSelectOptions({
-        entities,
-        entityService,
-        cancelToken,
-        response,
-        skip,
-    });
+  const promises = autoSelectOptions({
+    entities,
+    entityService,
+    cancelToken,
+    response,
+    skip,
+  });
 
-    promises[promises.length] = LanguageSelectOptions({
-        callback: (options: any) => {
-            response.language = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = LanguageSelectOptions({
+    callback: (options: any) => {
+      response.language = options;
+    },
+    cancelToken,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return response;
+  return response;
 };

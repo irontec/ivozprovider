@@ -1,7 +1,7 @@
 import { LinearProgress, CssBaseline } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { StyledAppApiLoading, StyledAppFlexDiv } from './App.styles';
 import { useStoreActions, useStoreState } from 'store';
 import AppRoutes from './router/AppRoutes';
@@ -23,8 +23,8 @@ export default function App(): JSX.Element {
       authInit();
       aboutMeInit();
     },
-    [token, apiSpecInitFn, authInit, aboutMeInit]
-  )
+    [token, apiSpecInitFn, authInit, aboutMeInit],
+  );
 
   const apiSpec = useStoreState((state) => state.spec.spec);
   const basename = process.env.PUBLIC_URL;

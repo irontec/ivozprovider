@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
 import * as locales from '@mui/material/locale';
 import reportWebVitals from './reportWebVitals';
-import { StoreProvider } from "easy-peasy";
+import { StoreProvider } from 'easy-peasy';
 import store from 'store';
 import i18n from './i18n';
 import './index.css';
@@ -23,7 +23,7 @@ const theme = createTheme(
       },
     },
   },
-  locales[currentLanguage]
+  locales[currentLanguage],
 );
 
 ReactDOM.render(
@@ -37,7 +37,7 @@ ReactDOM.render(
   </StyledEngineProvider>
   //</React.StrictMode>
   ,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

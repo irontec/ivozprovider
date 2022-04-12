@@ -12,8 +12,8 @@ export interface AppStore extends IvozStore {
 
 const storeModel: AppStore = {
   ...ivozStoreModel,
-  clientSession
-}
+  clientSession,
+};
 
 const store = createStore<AppStore>(storeModel);
 StoreContainer.store = store;
@@ -24,12 +24,12 @@ const {
   useStoreActions,
   useStoreState,
   useStoreDispatch,
-  useStore
+  useStore,
 } = createTypedHooks<AppStore>();
 
 export {
   useStoreActions,
   useStoreState,
   useStoreDispatch,
-  useStore
+  useStore,
 };

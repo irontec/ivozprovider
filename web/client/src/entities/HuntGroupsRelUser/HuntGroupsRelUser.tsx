@@ -8,73 +8,73 @@ import Form from './Form';
 import foreignKeyResolver from './foreignKeyResolver';
 
 const properties: HuntGroupsRelUserProperties = {
-    'huntGroup': {
-        label: _('Hunt Group'),
+  'huntGroup': {
+    label: _('Hunt Group'),
+  },
+  'routeType': {
+    label: _('Target type'),
+    enum: {
+      'user': _('User'),
+      'number': _('Number'),
     },
-    'routeType': {
-        label: _('Target type'),
-        enum: {
-            'user': _('User'),
-            'number': _('Number'),
-        },
-        visualToggle: {
-            'user': {
-                show: ['user'],
-                hide: ['numberCountry', 'numberValue'],
-            },
-            'number': {
-                show: ['numberCountry', 'numberValue'],
-                hide: ['user'],
-            },
-        }
+    visualToggle: {
+      'user': {
+        show: ['user'],
+        hide: ['numberCountry', 'numberValue'],
+      },
+      'number': {
+        show: ['numberCountry', 'numberValue'],
+        hide: ['user'],
+      },
     },
-    'numberCountry': {
-        label: _('Country'),
-    },
-    'numberValue': {
-        label: _('Number'),
-    },
-    'user': {
-        label: _('User'),
-    },
-    'timeoutTime': {
-        label: _('Timeout time'),
-    },
-    'priority': {
-        label: _('Priority'),
-    },
-    'target': {
-        label: _('Target'),
-        component: Type,
-        readOnly: true,
-    },
+  },
+  'numberCountry': {
+    label: _('Country'),
+  },
+  'numberValue': {
+    label: _('Number'),
+  },
+  'user': {
+    label: _('User'),
+  },
+  'timeoutTime': {
+    label: _('Timeout time'),
+  },
+  'priority': {
+    label: _('Priority'),
+  },
+  'target': {
+    label: _('Target'),
+    component: Type,
+    readOnly: true,
+  },
 };
 
 const columns = [
-    'target',
-    'huntGroup',
-    'routeType',
-    'numberCountry',
-    'numberValue',
-    'timeoutTime',
-    'priority'
+  'target',
+  'huntGroup',
+  'routeType',
+  'numberCountry',
+  'numberValue',
+  'timeoutTime',
+  'priority',
 ];
 
 const huntGroupsRelUser: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: GroupsIcon,
-    iden: 'HuntGroupsRelUser',
-    title: _('Hunt Group member', { count: 2 }),
-    path: '/hunt_groups_rel_users',
-    toStr: (row: any) => row.name,
-    properties,
-    columns,
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'HuntGroupsRelUsers',
-    },
-    foreignKeyResolver,
-    Form,
+  ...defaultEntityBehavior,
+  icon: GroupsIcon,
+  iden: 'HuntGroupsRelUser',
+  title: _('Hunt Group member', { count: 2 }),
+  path: '/hunt_groups_rel_users',
+  toStr: (row: any) => row.name,
+  properties,
+  columns,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'HuntGroupsRelUsers',
+  },
+  foreignKeyResolver,
+  Form,
 };
 
 export default huntGroupsRelUser;

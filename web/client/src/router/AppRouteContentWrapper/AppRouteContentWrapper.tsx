@@ -4,7 +4,7 @@ import {
   StyledAppContent,
   StyledAppBodyContainer,
   StyledContainer,
-  StyledAppBarSpacer
+  StyledAppBarSpacer,
 } from './AppRouteContentWrapper.styles';
 import { RouteMap } from '@irontec/ivoz-ui/router/routeMapParser';
 

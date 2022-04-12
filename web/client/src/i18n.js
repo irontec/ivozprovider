@@ -22,8 +22,8 @@ i18n
     },
     overloadTranslationOptionHandler: sprintf.overloadTranslationOptionHandler,
     resources: {
-        ...translations
-    }
+      ...translations,
+    },
   });
 
 export default i18n;

@@ -6,10 +6,10 @@ type RatingProfileValues = RatingProfilePropertyList<string | number>;
 type DownloadType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RatingProfileValues>>;
 
 const Download: DownloadType = (props): JSX.Element => {
-    //@TODO
-    return (
+  //@TODO
+  return (
         <DownloadingIcon />
-    );
-}
+  );
+};
 
 export default Download;

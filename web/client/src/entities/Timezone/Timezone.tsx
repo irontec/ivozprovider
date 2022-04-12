@@ -5,17 +5,17 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import selectOptions from './SelectOptions';
 
 const timezone: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: AccountTreeIcon,
-    iden: 'Timezone',
-    title: _('Timezone', { count: 2 }),
-    path: '/timezones',
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'Timezones',
-    },
-    toStr: (row: any) => row.name,
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  ...defaultEntityBehavior,
+  icon: AccountTreeIcon,
+  iden: 'Timezone',
+  title: _('Timezone', { count: 2 }),
+  path: '/timezones',
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Timezones',
+  },
+  toStr: (row: any) => row.name,
+  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
 };
 
 export default timezone;

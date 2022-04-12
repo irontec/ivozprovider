@@ -9,63 +9,63 @@ import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 
 const properties: FaxProperties = {
-    'name': {
-        label: _('Name'),
+  'name': {
+    label: _('Name'),
+  },
+  'email': {
+    label: _('Email'),
+  },
+  'sendByEmail': {
+    label: _('Send by email'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
     },
-    'email': {
-        label: _('Email'),
+    default: '1',
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['email'],
+      },
+      '1': {
+        show: ['email'],
+        hide: [],
+      },
     },
-    'sendByEmail': {
-        label: _('Send by email'),
-        enum: {
-            '0': _('No'),
-            '1': _('Yes'),
-        },
-        default: '1',
-        visualToggle: {
-            '0': {
-                show: [],
-                hide: ['email'],
-            },
-            '1': {
-                show: ['email'],
-                hide: [],
-            },
-        }
-    },
-    'outgoingDdi': {
-        label: _('Outgoing DDI'),
-        null: _("Client's default")
-    },
+  },
+  'outgoingDdi': {
+    label: _('Outgoing DDI'),
+    null: _("Client's default"),
+  },
 };
 
 const columns = [
-    'name',
-    'outgoingDdi',
-    'sendByEmail',
-    'email',
+  'name',
+  'outgoingDdi',
+  'sendByEmail',
+  'email',
 ];
 
 const fax: EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: FaxIcon,
-    iden: 'Fax',
-    title: _('Fax', { count: 2 }),
-    path: '/faxes',
-    toStr: (row: any) => row.name,
-    properties,
-    columns,
-    acl: {
-        ...defaultEntityBehavior.acl,
-        iden: 'Faxes',
-    },
-    Form,
-    foreignKeyGetter,
-    foreignKeyResolver,
-    selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
-    initialValues: {
-        outgoingDdi: null,
-    }
+  ...defaultEntityBehavior,
+  icon: FaxIcon,
+  iden: 'Fax',
+  title: _('Fax', { count: 2 }),
+  path: '/faxes',
+  toStr: (row: any) => row.name,
+  properties,
+  columns,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'Faxes',
+  },
+  Form,
+  foreignKeyGetter,
+  foreignKeyResolver,
+  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  initialValues: {
+    outgoingDdi: null,
+  },
 };
 
 export default fax;

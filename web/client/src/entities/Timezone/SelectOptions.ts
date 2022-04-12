@@ -4,20 +4,20 @@ import timezone from './Timezone';
 
 const TimezoneSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
 
-    return defaultEntityBehavior.fetchFks(
-        timezone.path,
-        ['id', 'tz'],
-        (data: any) => {
+  return defaultEntityBehavior.fetchFks(
+    timezone.path,
+    ['id', 'tz'],
+    (data: any) => {
 
-            const options: any = {};
-            for (const item of data) {
-                options[item.id] = item.tz;
-            }
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = item.tz;
+      }
 
-            callback(options);
-        },
-        cancelToken
-    );
-}
+      callback(options);
+    },
+    cancelToken,
+  );
+};
 
 export default TimezoneSelectOptions;

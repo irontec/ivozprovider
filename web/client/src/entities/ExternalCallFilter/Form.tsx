@@ -5,59 +5,59 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
-    const { entityService, row, match } = props;
-    const DefaultEntityForm = defaultEntityBehavior.Form;
-    const fkChoices = useFkChoices({
-        foreignKeyGetter,
-        entityService,
-        row,
-        match,
-    });
+  const { entityService, row, match } = props;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const groups: Array<FieldsetGroups> = [
-        {
-            legend: _('Basic Info'),
-            fields: [
-                'name',
-                'welcomeLocution',
-            ]
-        },
-        {
-            legend: _('Filtering info'),
-            fields: [
-                'whiteListIds',
-                'blackListIds',
-            ]
-        },
-        {
-            legend: _('Holidays configuration'),
-            fields: [
-                'holidayEnabled',
-                'calendarIds',
-                'holidayLocution',
-                'holidayTargetType',
-                'holidayNumberCountry',
-                'holidayNumberValue',
-                'holidayExtension',
-                'holidayVoicemail',
-            ]
-        },
-        {
-            legend: _('Out of schedule configuration'),
-            fields: [
-                'outOfScheduleEnabled',
-                'scheduleIds',
-                'outOfScheduleLocution',
-                'outOfScheduleTargetType',
-                'outOfScheduleNumberCountry',
-                'outOfScheduleNumberValue',
-                'outOfScheduleExtension',
-                'outOfScheduleVoicemail',
-            ]
-        },
-    ];
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('Basic Info'),
+      fields: [
+        'name',
+        'welcomeLocution',
+      ],
+    },
+    {
+      legend: _('Filtering info'),
+      fields: [
+        'whiteListIds',
+        'blackListIds',
+      ],
+    },
+    {
+      legend: _('Holidays configuration'),
+      fields: [
+        'holidayEnabled',
+        'calendarIds',
+        'holidayLocution',
+        'holidayTargetType',
+        'holidayNumberCountry',
+        'holidayNumberValue',
+        'holidayExtension',
+        'holidayVoicemail',
+      ],
+    },
+    {
+      legend: _('Out of schedule configuration'),
+      fields: [
+        'outOfScheduleEnabled',
+        'scheduleIds',
+        'outOfScheduleLocution',
+        'outOfScheduleTargetType',
+        'outOfScheduleNumberCountry',
+        'outOfScheduleNumberValue',
+        'outOfScheduleExtension',
+        'outOfScheduleVoicemail',
+      ],
+    },
+  ];
 
-    return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />);
-}
+  return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />);
+};
 
 export default Form;

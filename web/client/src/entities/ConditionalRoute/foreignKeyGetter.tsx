@@ -6,26 +6,26 @@ import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSe
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
-    const response: ConditionalRoutePropertyList<unknown> = {};
+  const response: ConditionalRoutePropertyList<unknown> = {};
 
-    const promises = autoSelectOptions({
-        entities,
-        entityService,
-        cancelToken,
-        response,
-        skip: [
-            'voicemail',
-        ],
-    });
+  const promises = autoSelectOptions({
+    entities,
+    entityService,
+    cancelToken,
+    response,
+    skip: [
+      'voicemail',
+    ],
+  });
 
-    promises[promises.length] = EnabledVoicemailSelectOptions({
-        callback: (options: any) => {
-            response.voicemail = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = EnabledVoicemailSelectOptions({
+    callback: (options: any) => {
+      response.voicemail = options;
+    },
+    cancelToken,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return response;
+  return response;
 };

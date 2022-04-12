@@ -7,41 +7,41 @@ import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSe
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
-    const response: IvrPropertyList<Array<string | number>> = {};
+  const response: IvrPropertyList<Array<string | number>> = {};
 
-    const promises = autoSelectOptions({
-        entities,
-        entityService,
-        cancelToken,
-        response,
-        skip: [
-            'noInputExtension',
-            'errorExtension',
-            'excludedExtensionIds',
+  const promises = autoSelectOptions({
+    entities,
+    entityService,
+    cancelToken,
+    response,
+    skip: [
+      'noInputExtension',
+      'errorExtension',
+      'excludedExtensionIds',
 
-            'noInputVoicemail',
-            'errorVoicemail',
-        ],
-    });
+      'noInputVoicemail',
+      'errorVoicemail',
+    ],
+  });
 
-    promises[promises.length] = ExtensionSelectOptions({
-        callback: (options: any) => {
-            response.noInputExtension = options;
-            response.errorExtension = options;
-            response.excludedExtensionIds = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = ExtensionSelectOptions({
+    callback: (options: any) => {
+      response.noInputExtension = options;
+      response.errorExtension = options;
+      response.excludedExtensionIds = options;
+    },
+    cancelToken,
+  });
 
-    promises[promises.length] = EnabledVoicemailSelectOptions({
-        callback: (options: any) => {
-            response.noInputVoicemail = options;
-            response.errorVoicemail = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = EnabledVoicemailSelectOptions({
+    callback: (options: any) => {
+      response.noInputVoicemail = options;
+      response.errorVoicemail = options;
+    },
+    cancelToken,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return response;
+  return response;
 };

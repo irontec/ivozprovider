@@ -6,28 +6,28 @@ import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSe
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
 
-    const response: QueuePropertyList<Array<string | number>> = {};
+  const response: QueuePropertyList<Array<string | number>> = {};
 
-    const promises = autoSelectOptions({
-        entities,
-        entityService,
-        cancelToken,
-        response,
-        skip: [
-            'timeoutVoicemail',
-            'fullVoicemail',
-        ]
-    });
+  const promises = autoSelectOptions({
+    entities,
+    entityService,
+    cancelToken,
+    response,
+    skip: [
+      'timeoutVoicemail',
+      'fullVoicemail',
+    ],
+  });
 
-    promises[promises.length] = EnabledVoicemailSelectOptions({
-        callback: (options: any) => {
-            response.timeoutVoicemail = options;
-            response.fullVoicemail = options;
-        },
-        cancelToken
-    });
+  promises[promises.length] = EnabledVoicemailSelectOptions({
+    callback: (options: any) => {
+      response.timeoutVoicemail = options;
+      response.fullVoicemail = options;
+    },
+    cancelToken,
+  });
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return response;
+  return response;
 };

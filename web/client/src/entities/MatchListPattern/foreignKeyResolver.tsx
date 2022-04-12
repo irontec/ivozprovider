@@ -5,26 +5,26 @@ import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericFore
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function (
-    { data, cancelToken }
+  { data, cancelToken },
 ): Promise<EntityValues> {
 
-    const promises: Array<Promise<unknown>> = [];
+  const promises: Array<Promise<unknown>> = [];
 
-    promises.push(
-        genericForeignKeyResolver({
-            data,
-            fkFld: 'numberCountry',
-            entity: {
-                ...entities.Country,
-                toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
-            },
-            cancelToken,
-        })
-    );
+  promises.push(
+    genericForeignKeyResolver({
+      data,
+      fkFld: 'numberCountry',
+      entity: {
+        ...entities.Country,
+        toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
+      },
+      cancelToken,
+    }),
+  );
 
-    await Promise.all(promises);
+  await Promise.all(promises);
 
-    return data;
-}
+  return data;
+};
 
 export default foreignKeyResolver;
