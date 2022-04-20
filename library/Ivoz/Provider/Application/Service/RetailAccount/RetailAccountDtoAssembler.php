@@ -30,10 +30,6 @@ class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto = $retailAccount->toDto($depth);
 
-        if (RetailAccountDto::CONTEXT_STATUS !== $context) {
-            return $dto;
-        }
-
         $domain = $retailAccount->getDomain();
         if (!$domain) {
             return $dto;

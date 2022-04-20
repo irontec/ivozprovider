@@ -60,11 +60,20 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      */
     public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null): array
     {
-        if ($context === self::CONTEXT_STATUS) {
+        $showStatus = in_array(
+            $context,
+            [
+                RetailAccountDto::CONTEXT_STATUS,
+                RetailAccountDto::CONTEXT_COLLECTION
+            ]
+        );
+
+        if ($showStatus) {
             $baseAttributes = [
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
+                'description' => 'description',
                 'status' => [[
                     'contact',
                     'expires',
@@ -79,15 +88,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             return $baseAttributes;
         }
 
-        if ($context === self::CONTEXT_COLLECTION) {
-            $response = [
-                'id' => 'id',
-                'name' => 'name',
-                'transport' => 'transport'
-            ];
-        } else {
-            $response = parent::getPropertyMap($context);
-        }
+        $response = parent::getPropertyMap($context);
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             return self::filterFieldsForBrandAdmin($response);
