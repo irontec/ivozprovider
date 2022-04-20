@@ -54,7 +54,8 @@ class UsersLocationDoctrineRepository extends ServiceEntityRepository implements
                     [ 'username', 'eq', $username ],
                     [ 'expires', 'gte', $now->getTimestamp() ]
                 ])
-            );
+            )
+            ->orderBy('self.expires', 'DESC');
 
         return $qb->getQuery()->getResult();
     }
