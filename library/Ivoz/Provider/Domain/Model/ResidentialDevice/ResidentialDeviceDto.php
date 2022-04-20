@@ -67,6 +67,8 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
                 'domainName' => 'domainName',
                 'status' => [[
                     'contact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
@@ -170,6 +172,8 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'outgoingDdiId',
             'languageId',
             'transport',
+            'ip',
+            'port',
             'password',
         ];
 

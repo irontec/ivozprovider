@@ -64,7 +64,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             $context,
             [
                 RetailAccountDto::CONTEXT_STATUS,
-                RetailAccountDto::CONTEXT_COLLECTION
+                RetailAccountDto::CONTEXT_COLLECTION,
             ]
         );
 
@@ -73,9 +73,13 @@ class RetailAccountDto extends RetailAccountDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
+                'directConnectivity' => 'directConnectivity',
                 'description' => 'description',
                 'status' => [[
                     'contact',
+                    'publicContact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
@@ -89,6 +93,24 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         }
 
         $response = parent::getPropertyMap($context);
+
+        $showStatus = in_array(
+            $context,
+            [
+                RetailAccountDto::CONTEXT_SIMPLE,
+                RetailAccountDto::CONTEXT_DETAILED,
+            ]
+        );
+        if ($showStatus) {
+            $response['status'] = [[
+                'contact',
+                'publicContact',
+                'received',
+                'publicReceived',
+                'expires',
+                'userAgent'
+            ]];
+        }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             return self::filterFieldsForBrandAdmin($response);
@@ -136,7 +158,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'id',
             'companyId',
             'transformationRuleSetId',
-            'outgoingDdiId'
+            'outgoingDdiId',
+            'status',
         ];
 
         return array_filter(
@@ -157,11 +180,15 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $allowedFields = [
             'name',
             'description',
+            'directConnectivity',
             'transport',
+            'ip',
+            'port',
             'id',
             'transformationRuleSetId',
             'outgoingDdiId',
             'password',
+            'status',
         ];
 
         return array_filter(

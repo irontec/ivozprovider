@@ -68,6 +68,8 @@ class FriendDto extends FriendDtoAbstract
                 'domainName' => 'domainName',
                 'status' => [[
                     'contact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
