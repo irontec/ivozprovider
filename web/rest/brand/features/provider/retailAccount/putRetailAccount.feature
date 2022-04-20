@@ -45,6 +45,7 @@ Feature: Update ddi
           "id": 1,
           "company": 1,
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "status": []
       }
     """

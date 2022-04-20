@@ -27,6 +27,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
         (function () use ($domain, $fixture) {
             $this->expires = new \DateTime('2030-12-31 23:59:59');
             $this->setContact('sip:yealinktest@10.10.1.106:5060');
+            $this->setReceived('sip:212.64.172.23:5060');
             $this->setUserAgent('Yealink SIP-T23G 44.80.0.130');
             $this->setDomain($domain->getDomain());
             $this->setUsername('alice');
@@ -44,6 +45,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
         (function () use ($domain, $fixture) {
             $this->expires = new \DateTime('2030-12-31 23:59:59');
             $this->setContact('sip:yealinktest@10.10.1.107:5060');
+            $this->setReceived('sip:212.64.172.24:5060');
             $this->setUserAgent('Yealink SIP-T23G 44.80.0.130');
             $this->setDomain($domain->getDomain());
             $this->setUsername('testFriend');
@@ -61,6 +63,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
         (function () use ($domain, $fixture) {
             $this->expires = new \DateTime('2030-12-31 23:59:59');
             $this->setContact('sip:yealinktest@10.10.1.108:5060');
+            $this->setReceived('sip:212.64.172.25:5060');
             $this->setUserAgent('Yealink SIP-T23G 44.80.0.130');
             $this->setDomain($domain->getDomain());
             $this->setUsername('residentialDevice');
@@ -74,6 +77,7 @@ class KamUsersLocation extends Fixture implements DependentFixtureInterface
         (function () use ($domain, $fixture) {
             $this->expires = new \DateTime('2030-12-31 23:59:59');
             $this->setContact('sip:yealinktest@10.10.1.109:5060');
+            $this->setReceived('sip:212.64.172.26:5060');
             $this->setUserAgent('Yealink SIP-T23G 44.80.0.130');
             $this->setDomain($domain->getDomain());
             $this->setUsername('testRetailAccount');

@@ -16,6 +16,7 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": false,
           "wholesale": false,
+          "billingInfo": true,
           "acls": [],
           "features": [
               "queues",
@@ -42,6 +43,7 @@ Feature: Retrieve active calls
           "residential": true,
           "retail": false,
           "wholesale": false,
+          "billingInfo": false,
           "acls": [],
           "features": []
       }
@@ -62,6 +64,7 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": true,
           "wholesale": false,
+          "billingInfo": true,
           "acls": [],
           "features": []
       }
@@ -82,6 +85,7 @@ Feature: Retrieve active calls
           "residential": false,
           "retail": false,
           "wholesale": false,
+          "billingInfo": true,
           "acls": [
               {
                   "iden": "_RatingPlanPrices",
