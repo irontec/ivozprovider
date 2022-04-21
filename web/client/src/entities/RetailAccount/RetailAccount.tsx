@@ -4,6 +4,11 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { RetailAccountProperties } from './RetailAccountProperties';
 import selectOptions from './SelectOptions';
+import Status from './Field/Status';
+import StatusIcon from './Field/StatusIcon';
+import Password from '../Terminal/Field/Password';
+import Form from './Form';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
 const properties: RetailAccountProperties = {
   company: {
@@ -11,16 +16,21 @@ const properties: RetailAccountProperties = {
   },
   name: {
     label: _('Name'),
+    readOnly: true,
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
-    //@TODO maxLength: 100
+    maxLength: 100,
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
+
   },
   domain: {
     label: _('Domain'),
   },
+  domainName: {
+    label: _('Domain'),
+  },
   description: {
     label: _('Description'),
-    //@TODO maxLength: 500
+    maxLength: 500,
   },
   transport: {
     label: _('Transport'),
@@ -42,18 +52,18 @@ const properties: RetailAccountProperties = {
   },
   password: {
     label: _('Password'),
-    pattern: '^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$',
+    pattern: new RegExp('^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$'),
     helpText: _("Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"),
-    //@TODO generatePassword_command: true
+    component: Password,
   },
   outgoingDdi: {
-    title: _('Fallback Outgoing DDI'),
+    label: _('Fallback Outgoing DDI'),
     null: _("Client's default"),
     helpText: _("This DDI will be used if presented DDI doesn't match any of the company DDIs"),
   },
   fromDomain: {
-    title: _('From domain'),
-    //@TODO maxLength: 190
+    label: _('From domain'),
+    maxLength: 190,
   },
   directConnectivity: {
     label: _('Direct connectivity'),
@@ -64,12 +74,12 @@ const properties: RetailAccountProperties = {
     },
     visualToggle: {
       'yes': {
-        show: ['ip', 'port', 'transport', 'auth_needed'],
-        hide: ['multiContact'],
+        show: ['ip', 'port', 'transport'],
+        hide: [],
       },
       'no': {
-        hide: ['ip', 'port', 'transport', 'auth_needed'],
-        show: ['multiContact'],
+        hide: ['ip', 'port', 'transport'],
+        show: [],
       },
     },
   },
@@ -84,11 +94,11 @@ const properties: RetailAccountProperties = {
   },
   statusIcon: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getRetailAccountStatusIcon
+    component: StatusIcon,
   },
   status: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getRetailAccountStatus
+    component: Status,
   },
   transformationRuleSet: {
     label: _('Numeric transformation'),
@@ -100,7 +110,7 @@ const properties: RetailAccountProperties = {
       'yes': _('Yes'),
       'no': _('No'),
     },
-    defaultValue: 'no',
+    default: 'no',
   },
   rtpEncryption: {
     label: _('RTP encryption'),
@@ -112,8 +122,8 @@ const properties: RetailAccountProperties = {
     helpText: _("Enable to force audio encryption. Call won't be established unless it is encrypted."),
   },
   multiContact: {
-    title: _('Multi contact'),
-    defautl: 1,
+    label: _('Multi contact'),
+    default: 1,
     enum: {
       '0': _('No'),
       '1': _('Yes'),
@@ -129,11 +139,19 @@ const retailAccount: EntityInterface = {
   title: _('Retail accounts', { count: 2 }),
   path: '/retail_accounts',
   properties,
+  columns: [
+    'name',
+    'domainName',
+    'description',
+    'statusIcon',
+  ],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'RetailAccounts',
   },
   selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  Form,
+  foreignKeyGetter,
 };
 
 export default retailAccount;

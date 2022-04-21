@@ -48,6 +48,16 @@ const map: ExtendedRouteMap = [
       {
         entity: entities.RetailAccount,
         isAccessible: (aboutMe) => aboutMe.retail,
+        children: [
+          {
+            entity: entities.CallForwardSetting,
+            filterBy: 'retailAccount',
+          },
+          {
+            entity: entities.Ddi,
+            filterBy: 'retailAccount',
+          },
+        ],
       },
       {
         entity: entities.Ddi,
