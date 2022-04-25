@@ -52,6 +52,9 @@ const map: ExtendedRouteMap = [
           {
             entity: entities.CallForwardSetting,
             filterBy: 'retailAccount',
+            fixedValues: {
+              callTypeFilter: 'both',
+            },
           },
           {
             entity: entities.Ddi,

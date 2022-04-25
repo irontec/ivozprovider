@@ -4,10 +4,10 @@ import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/Enti
 export type CallForwardSettingPropertyList<T> = {
   'user'?: T,
   'residentialDevice'?: T,
+  'retailAccount'?: T,
   'friend'?: T,
   'ddi'?: T,
-  'retailAccount'?: T,
-  'cfwToretailAccount'?: T,
+  'cfwToRetailAccount'?: T,
   'callTypeFilter'?: T,
   'callForwardType'?: T,
   'targetType'?: T,

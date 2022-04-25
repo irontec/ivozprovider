@@ -12,11 +12,12 @@ import selectOptions from './SelectOptions';
 const properties: CallForwardSettingProperties = {
   user: {
     label: _('User'),
-    required: true,
   },
   residentialDevice: {
     label: _('Residential Device'),
-    //@TODO required: true,
+  },
+  retailAccount: {
+    label: _('Retail Account'),
   },
   friend: {
     label: _('Friend'),
@@ -26,14 +27,13 @@ const properties: CallForwardSettingProperties = {
     label: _('Called DDI'),
     null: _('Any'),
     default: '__null__',
-    //@TODO required: true,
+    required: true,
   },
-  //TODO retailAccount: {},
-  cfwToretailAccount: {
-    label: _('Retail Account'), //TODO
+  cfwToRetailAccount: {
+    label: _('Retail Account'),
     null: _('Unassigned'),
     default: '__null__',
-    //@TODO required: true,
+    required: true,
   },
   callTypeFilter: {
     label: _('Call type'),
@@ -84,23 +84,22 @@ const properties: CallForwardSettingProperties = {
     visualToggle: {
       '__null__': {
         show: [],
-        hide: ['extension', 'voicemail', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
+        hide: ['extension', 'voicemail', 'numberCountry', 'numberValue', 'cfwToRetailAccount'],
       },
       'number': {
         show: ['numberCountry', 'numberValue'],
-        hide: ['extension', 'voicemail', 'cfwToretailAccount'],
+        hide: ['extension', 'voicemail', 'cfwToRetailAccount'],
       },
       'extension': {
         show: ['extension'],
-        hide: ['numberCountry', 'numberValue', 'voicemail', 'cfwToretailAccount'],
+        hide: ['numberCountry', 'numberValue', 'voicemail', 'cfwToRetailAccount'],
       },
       'voicemail': {
         show: ['voicemail'],
-        hide: ['extension', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
+        hide: ['extension', 'numberCountry', 'numberValue', 'cfwToRetailAccount'],
       },
-      //@TODO
       'retail': {
-        show: ['cfwToretailAccount'],
+        show: ['cfwToRetailAccount'],
         hide: ['extension', 'numberCountry', 'numberValue', 'voicemail'],
       },
     },
