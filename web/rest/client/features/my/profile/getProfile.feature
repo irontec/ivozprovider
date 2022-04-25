@@ -12,9 +12,10 @@ Feature: Retrieve active calls
     """
       {
           "restricted": false,
-          "pbx": true,
+          "vpbx": true,
           "residential": false,
           "retail": false,
+          "wholesale": false,
           "wholesale": false,
           "billingInfo": true,
           "acls": [],
@@ -39,7 +40,7 @@ Feature: Retrieve active calls
     """
       {
           "restricted": false,
-          "pbx": false,
+          "vpbx": false,
           "residential": true,
           "retail": false,
           "wholesale": false,
@@ -60,7 +61,7 @@ Feature: Retrieve active calls
     """
       {
           "restricted": false,
-          "pbx": false,
+          "vpbx": false,
           "residential": false,
           "retail": true,
           "wholesale": false,
@@ -81,7 +82,7 @@ Feature: Retrieve active calls
     """
       {
           "restricted": true,
-          "pbx": true,
+          "vpbx": true,
           "residential": false,
           "retail": false,
           "wholesale": false,
