@@ -6,7 +6,6 @@ use Assert\Assertion;
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 
 /**
  * @codeCoverageIgnore
@@ -23,7 +22,7 @@ class Profile
      * @var bool
      * @AttributeDefinition(type="bool")
      */
-    private $pbx = false;
+    private $vpbx = false;
 
     /**
      * @var bool
@@ -108,7 +107,7 @@ class Profile
 
         switch ($type) {
             case CompanyInterface::TYPE_VPBX:
-                $this->pbx = true;
+                $this->vpbx = true;
                 break;
             case CompanyInterface::TYPE_RETAIL:
                 $this->retail = true;
@@ -143,9 +142,9 @@ class Profile
         return $this->restricted;
     }
 
-    public function isPbx(): bool
+    public function isVpbx(): bool
     {
-        return $this->pbx;
+        return $this->vpbx;
     }
 
     public function isResidential(): bool
