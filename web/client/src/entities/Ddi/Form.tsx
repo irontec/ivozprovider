@@ -15,7 +15,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const retailAccountPath = match.path.includes(RetailAccount.path);
 
   const skip: Array<string> = [];
-  if (!aboutMe?.pbx) {
+  if (!aboutMe?.vpbx) {
     skip.push(...[
       'user',
       'ivr',

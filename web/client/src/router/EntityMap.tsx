@@ -15,7 +15,7 @@ const map: ExtendedRouteMap = [
     children: [
       {
         entity: entities.User,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: {
@@ -39,11 +39,11 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Terminal,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.Extension,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.RetailAccount,
@@ -64,7 +64,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Ddi,
-        isAccessible: (aboutMe) => aboutMe.pbx || aboutMe.retail,
+        isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.retail,
         children: [
           {
             entity: entities.BillableCall,
@@ -84,7 +84,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.CompanyService,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: {
@@ -103,7 +103,7 @@ const map: ExtendedRouteMap = [
     children: [
       {
         entity: entities.Ivr,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.IvrEntry,
@@ -113,7 +113,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.HuntGroup,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: {
@@ -130,7 +130,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Queue,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.QueueMember,
@@ -140,7 +140,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.ConditionalRoute,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.ConditionalRoutesCondition,
@@ -154,7 +154,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Friend,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.FriendsPattern,
@@ -168,7 +168,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.ConferenceRoom,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
     ],
   },
@@ -177,11 +177,11 @@ const map: ExtendedRouteMap = [
     children: [
       {
         entity: entities.ExternalCallFilter,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.Calendar,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.HolidayDate,
@@ -195,11 +195,11 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Schedule,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.MatchList,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.MatchListPattern,
@@ -209,7 +209,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.RouteLock,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
     ],
   },
@@ -218,7 +218,7 @@ const map: ExtendedRouteMap = [
     children: [
       {
         entity: entities.OutgoingDdiRule,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
         children: [
           {
             entity: entities.OutgoingDdiRulesPattern,
@@ -228,15 +228,15 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.PickUpGroup,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.CallAcl,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.Voicemail,
-        isAccessible: (aboutMe) => aboutMe.pbx || aboutMe.residential,
+        isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
         children: [
           {
             entity: entities.VoicemailMessage,
@@ -246,7 +246,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Location,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
     ],
   },
@@ -255,11 +255,11 @@ const map: ExtendedRouteMap = [
     children: [
       {
         entity: entities.Locution,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.MusicOnHold,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
     ],
   },
@@ -268,7 +268,7 @@ const map: ExtendedRouteMap = [
     children: [
       {
         entity: entities.UsersCdr,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx,
       },
       {
         entity: entities.BillableCall,
