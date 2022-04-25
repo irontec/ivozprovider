@@ -16,12 +16,11 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
 
   if (_context === 'read' || !formFieldFactory) {
     return (
-            <ListDecorator field={_columnName} row={values} property={property} ignoreCustomComponent={true} />
+      <ListDecorator field={_columnName} row={values} property={property} ignoreCustomComponent={true} />
     );
   }
 
   const { choices, readOnly } = props;
-
   const modifiedProperty = { ...property } as ScalarProperty;
   delete modifiedProperty.component;
 
@@ -38,8 +37,6 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     ...modifiedProperty.enum,
   };
 
-
-
   if (!aboutMe.pbx) {
     delete enumValues.user;
     delete enumValues.ivr;
@@ -48,7 +45,7 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
   }
 
   if (!aboutMe.residential) {
-    delete enumValues.residentialDevice;
+    delete enumValues.residential;
   }
 
   if (!aboutMe.retail) {
