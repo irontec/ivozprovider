@@ -6,12 +6,12 @@ Feature: Retrieve voicemails
   @createSchema
   Scenario: Retrieve the voicemails json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "voicemails"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemails"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
     """
       [
           {
@@ -45,14 +45,39 @@ Feature: Retrieve voicemails
       ]
     """
 
+  Scenario: Retrieve the voicemails json list
+    Given I add Residential Company Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemails"
+     Then the response status code should be 200
+     And the response should be in JSON
+     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+     And the JSON should be equal to:
+    """
+      [
+      ]
+    """
+
+  Scenario: Retrieve voicemails as retail admin
+    Given I add Retail Company Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemails"
+     Then the response status code should be 403
+
+  Scenario: Retrieve the voicemails json list
+    Given I add Retail Company Authorization header
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemails"
+     Then the response status code should be 403
+
   Scenario: Retrieve certain voicemail json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "voicemails/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemails/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
     """
       {
           "enabled": true,

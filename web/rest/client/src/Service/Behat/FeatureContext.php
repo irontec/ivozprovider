@@ -24,13 +24,20 @@ class FeatureContext extends BaseFeatureContext
         $this->setAuthorizationHeader('restrictedCompanyAdmin');
     }
 
-
     /**
      * @Given I add Residential Company Authorization header
      */
     public function setResidentialCompanyAuthorizationHeader(): void
     {
         $this->setAuthorizationHeader('test_residential_admin');
+    }
+
+    /**
+     * @Given I add Wholesale Company Authorization header
+     */
+    public function setWholesaleCompanyAuthorizationHeader(): void
+    {
+        $this->setAuthorizationHeader('test_wholesale_admin');
     }
 
     /**
