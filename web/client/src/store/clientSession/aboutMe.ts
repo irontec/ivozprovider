@@ -11,7 +11,7 @@ export interface EntityAcl {
 }
 
 export interface AboutMe {
-  pbx: boolean,
+  vpbx: boolean,
   residential: boolean,
   retail: boolean,
   wholesale: boolean,

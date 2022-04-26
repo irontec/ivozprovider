@@ -38,11 +38,11 @@ const TargetType: TargetTypeCustomComponent = (props): JSX.Element | null => {
     ...modifiedProperty.enum,
   };
 
-  if (!aboutMe.pbx && !aboutMe.residential) {
+  if (!aboutMe.vpbx && !aboutMe.residential) {
     delete enumValues.voicemail;
   }
 
-  if (!aboutMe?.pbx) {
+  if (!aboutMe?.vpbx) {
     delete enumValues.extension;
   }
 

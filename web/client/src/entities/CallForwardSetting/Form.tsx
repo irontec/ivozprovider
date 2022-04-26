@@ -16,7 +16,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   const skip: Array<string> = [];
-  if (aboutMe?.pbx) {
+  if (aboutMe?.vpbx) {
     skip.push(...[
       'cfwToRetailAccount',
       'residentialDevice',
@@ -82,8 +82,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'callForwardType',
         'noAnswerTimeout',
         'targetType',
-        aboutMe?.pbx && 'extension',
-        (aboutMe?.pbx || aboutMe?.residential) && 'voicemail',
+        aboutMe?.vpbx && 'extension',
+        (aboutMe?.vpbx || aboutMe?.residential) && 'voicemail',
         'numberCountry',
         'numberValue',
         aboutMe?.retail && 'cfwToRetailAccount',

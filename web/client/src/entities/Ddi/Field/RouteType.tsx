@@ -37,7 +37,7 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     ...modifiedProperty.enum,
   };
 
-  if (!aboutMe.pbx) {
+  if (!aboutMe.vpbx) {
     delete enumValues.user;
     delete enumValues.ivr;
     delete enumValues.huntGroup;
