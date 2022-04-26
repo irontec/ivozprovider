@@ -1819,7 +1819,10 @@ Ivoz\Provider\Domain\Model\User\User:
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && (user.isVpbxAdmin() || user.isResidentialAdmin())
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
