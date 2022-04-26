@@ -46,8 +46,25 @@ const map: ExtendedRouteMap = [
         isAccessible: (aboutMe) => aboutMe.pbx,
       },
       {
+        entity: entities.RetailAccount,
+        isAccessible: (aboutMe) => aboutMe.retail,
+        children: [
+          {
+            entity: entities.CallForwardSetting,
+            filterBy: 'retailAccount',
+            fixedValues: {
+              callTypeFilter: 'both',
+            },
+          },
+          {
+            entity: entities.Ddi,
+            filterBy: 'retailAccount',
+          },
+        ],
+      },
+      {
         entity: entities.Ddi,
-        isAccessible: (aboutMe) => aboutMe.pbx,
+        isAccessible: (aboutMe) => aboutMe.pbx || aboutMe.retail,
         children: [
           {
             entity: entities.BillableCall,
@@ -57,7 +74,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Fax,
-        isAccessible: (aboutMe) => !aboutMe.wholesale,
+        isAccessible: (aboutMe) => aboutMe.features.includes('faxes'),
         children: [
           {
             entity: entities.FaxesInOut,
@@ -77,7 +94,7 @@ const map: ExtendedRouteMap = [
             detail: false,
           },
         },
-        isAccessible: (aboutMe) => !aboutMe.wholesale,
+        isAccessible: (aboutMe) => aboutMe.billingInfo,
       },
     ],
   },
@@ -133,7 +150,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Invoice,
-        isAccessible: (aboutMe) => !aboutMe.wholesale,
+        isAccessible: (aboutMe) => aboutMe.billingInfo,
       },
       {
         entity: entities.Friend,

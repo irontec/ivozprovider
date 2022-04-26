@@ -1,15 +1,16 @@
+import { RouteComponentProps } from 'react-router-dom';
 import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { useStoreState } from 'store';
-import { DdiPropertyList } from '../DdiProperties';
+import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
 
-type RouteTypeValues = DdiPropertyList<string>;
-type RouteTypeProps = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RouteTypeValues>>;
+type TargetTypeValues = CallForwardSettingPropertyList<string>;
+type TargetTypeCustomComponent = PropertyCustomFunctionComponent<RouteComponentProps & PropertyCustomFunctionComponentProps<TargetTypeValues>>;
 
-const RouteType: RouteTypeProps = (props): JSX.Element | null => {
+const TargetType: TargetTypeCustomComponent = (props): JSX.Element | null => {
 
   const { _context, _columnName, property, values, formFieldFactory } = props;
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
@@ -37,40 +38,16 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     ...modifiedProperty.enum,
   };
 
-  if (!aboutMe.pbx) {
-    delete enumValues.user;
-    delete enumValues.ivr;
-    delete enumValues.huntGroup;
-    delete enumValues.conditional;
+  if (!aboutMe.pbx && !aboutMe.residential) {
+    delete enumValues.voicemail;
   }
 
-  if (!aboutMe.residential) {
-    delete enumValues.residential;
+  if (!aboutMe?.pbx) {
+    delete enumValues.extension;
   }
 
-  if (!aboutMe.retail) {
+  if (!aboutMe?.retail) {
     delete enumValues.retail;
-    delete enumValues.retailAccount;
-  }
-
-  const companyFeatures = aboutMe.features;
-  const conditionalFeatures: Record<string, string> = {
-    'queues': 'queue',
-    'friends': 'friend',
-    'faxes': 'fax',
-    'conferences': 'conferenceRoom',
-  };
-  const conditionalFeaturesKeys = Object.keys(conditionalFeatures);
-
-  for (const conditionalFeature of conditionalFeaturesKeys) {
-
-    if (companyFeatures.includes(conditionalFeature)) {
-      continue;
-    }
-
-    delete enumValues[
-      conditionalFeatures[conditionalFeature]
-    ];
   }
 
   modifiedProperty.enum = enumValues;
@@ -83,4 +60,4 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
   );
 };
 
-export default RouteType;
+export default TargetType;

@@ -4,26 +4,29 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import entities from '../index';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
+export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService, skip }): Promise<any> => {
 
   const response: CallForwardSettingPropertyList<unknown> = {};
+
+  skip = skip || [];
+  const skipEntities = [...skip, 'skipEntities'];
 
   const promises = autoSelectOptions({
     entities,
     entityService,
     cancelToken,
     response,
-    skip: [
-      'voicemail',
-    ],
+    skip: skipEntities,
   });
 
-  promises[promises.length] = EnabledVoicemailSelectOptions({
-    callback: (options: any) => {
-      response.voicemail = options;
-    },
-    cancelToken,
-  });
+  if (!skip.includes('voicemail')) {
+    promises[promises.length] = EnabledVoicemailSelectOptions({
+      callback: (options: any) => {
+        response.voicemail = options;
+      },
+      cancelToken,
+    });
+  }
 
   await Promise.all(promises);
 

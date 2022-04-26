@@ -60,13 +60,26 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      */
     public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null): array
     {
-        if ($context === self::CONTEXT_STATUS) {
+        $showStatus = in_array(
+            $context,
+            [
+                RetailAccountDto::CONTEXT_STATUS,
+                RetailAccountDto::CONTEXT_COLLECTION,
+            ]
+        );
+
+        if ($showStatus) {
             $baseAttributes = [
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
+                'directConnectivity' => 'directConnectivity',
+                'description' => 'description',
                 'status' => [[
                     'contact',
+                    'publicContact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
@@ -79,14 +92,24 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             return $baseAttributes;
         }
 
-        if ($context === self::CONTEXT_COLLECTION) {
-            $response = [
-                'id' => 'id',
-                'name' => 'name',
-                'transport' => 'transport'
-            ];
-        } else {
-            $response = parent::getPropertyMap($context);
+        $response = parent::getPropertyMap($context);
+
+        $showStatus = in_array(
+            $context,
+            [
+                RetailAccountDto::CONTEXT_SIMPLE,
+                RetailAccountDto::CONTEXT_DETAILED,
+            ]
+        );
+        if ($showStatus) {
+            $response['status'] = [[
+                'contact',
+                'publicContact',
+                'received',
+                'publicReceived',
+                'expires',
+                'userAgent'
+            ]];
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -135,7 +158,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'id',
             'companyId',
             'transformationRuleSetId',
-            'outgoingDdiId'
+            'outgoingDdiId',
+            'status',
         ];
 
         return array_filter(
@@ -156,11 +180,15 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $allowedFields = [
             'name',
             'description',
+            'directConnectivity',
             'transport',
+            'ip',
+            'port',
             'id',
             'transformationRuleSetId',
             'outgoingDdiId',
             'password',
+            'status',
         ];
 
         return array_filter(

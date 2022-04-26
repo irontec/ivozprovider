@@ -4,12 +4,15 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 import { DdiPropertyList } from './DdiProperties';
 import { foreignKeyGetter } from './foreignKeyGetter';
+import RetailAccount from '../RetailAccount/RetailAccount';
 
 const Form = (props: EntityFormProps): JSX.Element => {
 
   const { entityService, row, match } = props;
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+
+  const retailAccountPath = match.path.includes(RetailAccount.path);
 
   const skip: Array<string> = [];
   if (!aboutMe?.pbx) {
@@ -20,6 +23,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
       'conditionalRoute',
       'conferenceRoom',
       'queue',
+      'fax',
+      'externalCallFilter',
     ]);
   }
 
@@ -44,7 +49,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     skip,
   });
 
-  const groups: Array<FieldsetGroups> = [
+  const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Number data'),
       fields: [
@@ -54,13 +59,13 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'language',
       ],
     },
-    {
+    !aboutMe?.retail && {
       legend: _('Filters data'),
       fields: [
         'externalCallFilter',
       ],
     },
-    {
+    !retailAccountPath && {
       legend: _('Routing configuration'),
       fields: [
         'routeType',
@@ -79,7 +84,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     {
       legend: _('Recording data'),
       fields: [
-        'recordCalls',
+        aboutMe?.features.includes('recordings') && 'recordCalls',
       ],
     },
   ];

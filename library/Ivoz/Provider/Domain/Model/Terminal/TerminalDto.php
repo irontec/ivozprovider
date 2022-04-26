@@ -53,6 +53,8 @@ class TerminalDto extends TerminalDtoAbstract
                 'domainName' => 'domainName',
                 'status' => [[
                     'contact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]

@@ -6,7 +6,6 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 
 export const foreignKeyGetter: ForeignKeyGetterType = async (props): Promise<any> => {
 
-
   const { cancelToken, entityService } = props;
   const skip = props.skip || [];
   skip.push('language');

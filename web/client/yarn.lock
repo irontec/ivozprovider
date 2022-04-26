@@ -1313,9 +1313,9 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@irontec/ivoz-ui@^0.3.10":
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.3.13.tgz#385b28858d61e7a811453240ee4048f2582483d1"
-  integrity sha512-6zsAeKXZ1r3YUbrnQz5IMLUNjveJHlRjndjjBt4knJet95A65gxKKuN2krDU3q+9S8yMJ3xXGT+dQ4kFcD0nBA==
+  version "0.3.18"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.3.18.tgz#e50198b02901c4b14d6906b6a5882cb31ab7fed9"
+  integrity sha512-BuOX/buwmeBrnRVLDFlajp/B+j/vub6FM4r0F/XM14uoRmK8c6um5dpjeqPXKs3n+OLJz6D3MHPUgDB4ga2XqQ==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     "@types/axios" "^0.14.0"
@@ -9707,9 +9707,9 @@ react-fast-compare@^2.0.1:
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
 react-i18next@^11.8.15:
-  version "11.16.5"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.16.5.tgz#5258784b9b617c443811307072a434ec7447c70a"
-  integrity sha512-dkDN9suVU/jaD9A0xM4qNU9++LwgueWZn5XGTDEKTZeBgsd3q17ssTQXlSbEb0Gl0iLDdUKU7MrdjQjDc33ztA==
+  version "11.16.7"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.16.7.tgz#8d0680b7f4c8e43f59996336b7183ad576a28df7"
+  integrity sha512-7yotILJLnKfvUfrl/nt9eK9vFpVFjZPLWAwBzWL6XppSZZEvlmlKk0GBGDCAPfLfs8oND7WAbry8wGzdoiW5Nw==
   dependencies:
     "@babel/runtime" "^7.14.5"
     html-escaper "^2.0.2"

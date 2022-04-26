@@ -3311,7 +3311,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandAbstract.php
 
 		-
-			message: "#^Cannot assign new offset to array\\<string\\>\\|string\\.$#"
+			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
 
@@ -3761,7 +3761,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDto\\:\\:getPropertyMap\\(\\) should return array\\<string\\> but returns array\\<array\\<string\\>\\|string\\>\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CalendarPeriod\\\\CalendarPeriodDto\\:\\:getPropertyMap\\(\\) should return array\\<string\\> but returns array\\<array\\<array\\<int, string\\>\\|string\\>\\|string\\>\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodDto.php
 
@@ -6031,7 +6031,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockDto\\:\\:getPropertyMap\\(\\) should return array\\<string\\> but returns array\\<array\\<string\\>\\|string\\>\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoutesConditionsRelRouteLock\\\\ConditionalRoutesConditionsRelRouteLockDto\\:\\:getPropertyMap\\(\\) should return array\\<string\\> but returns array\\<array\\<array\\<int, string\\>\\|string\\>\\|string\\>\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockDto.php
 
@@ -6971,7 +6971,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupAbstract.php
 
 		-
-			message: "#^Cannot assign new offset to array\\<string\\>\\|string\\.$#"
+			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php
 
@@ -8271,11 +8271,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDto\\:\\:getPropertyMap\\(\\) should return array\\<array\\<string\\>\\|string\\> but returns array\\<string, array\\<int, array\\<int, string\\>\\>\\|string\\>\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Friend/FriendDtoAbstract.php
@@ -9531,7 +9526,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionAbstract.php
 
 		-
-			message: "#^Cannot assign new offset to array\\<string\\>\\|string\\.$#"
+			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
 
@@ -9826,7 +9821,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldAbstract.php
 
 		-
-			message: "#^Cannot assign new offset to array\\<string\\>\\|string\\.$#"
+			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
 
@@ -11286,11 +11281,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDto\\:\\:getPropertyMap\\(\\) should return array\\<array\\<string\\>\\|string\\> but returns array\\<string, array\\<int, array\\<int, string\\>\\>\\|string\\>\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDtoAbstract.php
@@ -11477,11 +11467,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDto\\:\\:filterFieldsForCompanyAdmin\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDto\\:\\:getPropertyMap\\(\\) should return array\\<array\\<string\\>\\|string\\> but returns array\\<string, array\\<int, array\\<int, string\\>\\>\\|string\\>\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDto.php
 
@@ -12217,11 +12202,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDto.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDto\\:\\:getPropertyMap\\(\\) should return array\\<array\\<string\\>\\|string\\> but returns array\\<string, array\\<int, array\\<int, string\\>\\>\\|string\\>\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDto.php
 
@@ -13086,7 +13066,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalAbstract.php
 
 		-
-			message: "#^Cannot assign new offset to array\\<string\\>\\|string\\.$#"
+			message: "#^Cannot assign new offset to array\\<array\\<int, string\\>\\|string\\>\\|string\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDto.php
 

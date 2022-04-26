@@ -4,7 +4,9 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { CallForwardSettingProperties } from './CallForwardSettingProperties';
 import Form from './Form';
-import Target from './Field/Target';
+import TargetTypeValue from './Field/TargetTypeValue';
+import TargetType from './Field/TargetType';
+import CallForwardType from './Field/CallForwardType';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
@@ -12,28 +14,26 @@ import selectOptions from './SelectOptions';
 const properties: CallForwardSettingProperties = {
   user: {
     label: _('User'),
-    required: true,
   },
   residentialDevice: {
     label: _('Residential Device'),
-    //@TODO required: true,
+  },
+  retailAccount: {
+    label: _('Retail Account'),
   },
   friend: {
     label: _('Friend'),
-    required: true,
   },
   ddi: {
     label: _('Called DDI'),
     null: _('Any'),
     default: '__null__',
-    //@TODO required: true,
   },
-  //TODO retailAccount: {},
-  cfwToretailAccount: {
-    label: _('Retail Account'), //TODO
+  cfwToRetailAccount: {
+    label: _('Retail Account'),
     null: _('Unassigned'),
     default: '__null__',
-    //@TODO required: true,
+    required: true,
   },
   callTypeFilter: {
     label: _('Call type'),
@@ -45,6 +45,7 @@ const properties: CallForwardSettingProperties = {
   },
   callForwardType: {
     label: _('Call forward type'),
+    component: CallForwardType,
     enum: {
       'inconditional': _('Inconditional'),
       'noAnswer': _('No Answer'),
@@ -73,6 +74,7 @@ const properties: CallForwardSettingProperties = {
   },
   targetType: {
     label: _('Target type'),
+    component: TargetType,
     enum: {
       'number': _('Number'),
       'extension': _('Extension'),
@@ -84,23 +86,22 @@ const properties: CallForwardSettingProperties = {
     visualToggle: {
       '__null__': {
         show: [],
-        hide: ['extension', 'voicemail', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
+        hide: ['extension', 'voicemail', 'numberCountry', 'numberValue', 'cfwToRetailAccount'],
       },
       'number': {
         show: ['numberCountry', 'numberValue'],
-        hide: ['extension', 'voicemail', 'cfwToretailAccount'],
+        hide: ['extension', 'voicemail', 'cfwToRetailAccount'],
       },
       'extension': {
         show: ['extension'],
-        hide: ['numberCountry', 'numberValue', 'voicemail', 'cfwToretailAccount'],
+        hide: ['numberCountry', 'numberValue', 'voicemail', 'cfwToRetailAccount'],
       },
       'voicemail': {
         show: ['voicemail'],
-        hide: ['extension', 'numberCountry', 'numberValue', 'cfwToretailAccount'],
+        hide: ['extension', 'numberCountry', 'numberValue', 'cfwToRetailAccount'],
       },
-      //@TODO
       'retail': {
-        show: ['cfwToretailAccount'],
+        show: ['cfwToRetailAccount'],
         hide: ['extension', 'numberCountry', 'numberValue', 'voicemail'],
       },
     },
@@ -133,7 +134,7 @@ const properties: CallForwardSettingProperties = {
   },
   targetTypeValue: {
     label: _('Target type value'),
-    component: Target,
+    component: TargetTypeValue,
   },
   enabled: {
     label: _('Enabled'),

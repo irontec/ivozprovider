@@ -44,6 +44,12 @@ class Profile
     private $wholesale = false;
 
     /**
+     * @var bool
+     * @AttributeDefinition(type="bool")
+     */
+    private $billingInfo;
+
+    /**
      * @var ProfileAcl[]
      * @AttributeDefinition(
      *     type="array",
@@ -68,11 +74,13 @@ class Profile
     public function __construct(
         bool $restricted,
         string $type,
+        ?bool $showBillingInfo,
         array $adminRelPublicEntities,
         array $features
     ) {
         $this->restricted = $restricted;
         $this->setType($type);
+        $this->billingInfo = $showBillingInfo ?? false;
 
         foreach ($adminRelPublicEntities as $adminRelPublicEntity) {
             $this->addAcl(
@@ -153,6 +161,11 @@ class Profile
     public function isWholesale(): bool
     {
         return $this->wholesale;
+    }
+
+    public function hasBillingInfo(): bool
+    {
+        return $this->billingInfo;
     }
 
     /**

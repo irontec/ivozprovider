@@ -58,6 +58,7 @@ class ProfileAction
         return new Profile(
             $restricted,
             $type,
+            $company->getShowInvoices(),
             $adminRelPublicEntities,
             $features
         );
