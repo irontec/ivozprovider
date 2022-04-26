@@ -14,7 +14,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-
   const groups: Array<FieldsetGroups> = [
     {
       legend: _('Basic Configuration'),
