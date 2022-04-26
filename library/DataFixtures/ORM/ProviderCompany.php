@@ -149,7 +149,6 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
-
         $item5 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
             $this->setName("Wholesale Company");

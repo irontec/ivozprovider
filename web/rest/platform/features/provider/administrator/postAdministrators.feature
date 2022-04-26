@@ -37,7 +37,7 @@ Feature: Create administrators
           "restricted": false,
           "name": "post",
           "lastname": "test",
-          "id": 12,
+          "id": 13,
           "brand": null,
           "company": null,
           "timezone": 145
@@ -47,7 +47,7 @@ Feature: Create administrators
   Scenario: Retrieve created administrator
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "administrators/12"
+      And I send a "GET" request to "administrators/13"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -61,7 +61,7 @@ Feature: Create administrators
           "restricted": false,
           "name": "post",
           "lastname": "test",
-          "id": 12,
+          "id": 13,
           "brand": null,
           "company": null,
           "timezone": {
