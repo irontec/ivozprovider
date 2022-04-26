@@ -56,7 +56,7 @@ class TerminalDto extends TerminalDtoAbstract
                     'received',
                     'publicReceived',
                     'expires',
-                    'userAgent'
+                    'userAgent',
                 ]]
             ];
 
@@ -74,11 +74,29 @@ class TerminalDto extends TerminalDtoAbstract
                 'mac' => 'mac',
                 'lastProvisionDate' => 'lastProvisionDate',
                 'domainId' => 'domain',
-                'terminalModelId' => 'terminalModel'
+                'terminalModelId' => 'terminalModel',
+                'domainName' => 'domainName',
+                'status' => [[
+                    'contact',
+                    'received',
+                    'publicReceived',
+                    'expires',
+                    'userAgent',
+                ]]
             ];
         }
 
         $response = parent::getPropertyMap(...func_get_args());
+
+        if (in_array($context, [self::CONTEXT_DETAILED])) {
+            $response['status'] = [[
+                'contact',
+                'received',
+                'publicReceived',
+                'expires',
+                'userAgent',
+            ]];
+        }
 
         if (array_key_exists('domainId', $response)) {
             unset($response['domainId']);
