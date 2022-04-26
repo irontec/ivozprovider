@@ -4,7 +4,9 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { CallForwardSettingProperties } from './CallForwardSettingProperties';
 import Form from './Form';
-import Target from './Field/Target';
+import TargetTypeValue from './Field/TargetTypeValue';
+import TargetType from './Field/TargetType';
+import CallForwardType from './Field/CallForwardType';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
@@ -21,13 +23,11 @@ const properties: CallForwardSettingProperties = {
   },
   friend: {
     label: _('Friend'),
-    required: true,
   },
   ddi: {
     label: _('Called DDI'),
     null: _('Any'),
     default: '__null__',
-    required: true,
   },
   cfwToRetailAccount: {
     label: _('Retail Account'),
@@ -45,6 +45,7 @@ const properties: CallForwardSettingProperties = {
   },
   callForwardType: {
     label: _('Call forward type'),
+    component: CallForwardType,
     enum: {
       'inconditional': _('Inconditional'),
       'noAnswer': _('No Answer'),
@@ -73,6 +74,7 @@ const properties: CallForwardSettingProperties = {
   },
   targetType: {
     label: _('Target type'),
+    component: TargetType,
     enum: {
       'number': _('Number'),
       'extension': _('Extension'),
@@ -132,7 +134,7 @@ const properties: CallForwardSettingProperties = {
   },
   targetTypeValue: {
     label: _('Target type value'),
-    component: Target,
+    component: TargetTypeValue,
   },
   enabled: {
     label: _('Enabled'),
