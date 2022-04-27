@@ -15,3 +15,8 @@ zone "ivozprovider.local" {
     type master;
     file "/etc/bind/db.ivozprovider.local";
 };
+
+zone "rpz.local" {
+    type master;
+    file "/etc/bind/db.rpz.local";
+};
