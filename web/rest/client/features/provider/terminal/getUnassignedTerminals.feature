@@ -20,7 +20,9 @@ Feature: Retrieve terminals
               "lastProvisionDate": null,
               "id": 3,
               "domain": 3,
-              "terminalModel": 1
+              "terminalModel": 1,
+              "domainName": "127.0.0.1",
+              "status": []
           }
       ]
     """
@@ -41,7 +43,17 @@ Feature: Retrieve terminals
               "lastProvisionDate": null,
               "id": 1,
               "domain": 3,
-              "terminalModel": 1
+              "terminalModel": 1,
+              "domainName": "127.0.0.1",
+              "status": [
+                  {
+                      "contact": "sip:yealinktest@10.10.1.106:5060",
+                      "received": "sip:212.64.172.23:5060",
+                      "publicReceived": true,
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  }
+              ]
           },
           {
               "name": "testTerminal",
@@ -49,7 +61,9 @@ Feature: Retrieve terminals
               "lastProvisionDate": null,
               "id": 3,
               "domain": 3,
-              "terminalModel": 1
+              "terminalModel": 1,
+              "domainName": "127.0.0.1",
+              "status": []
           }
       ]
     """
