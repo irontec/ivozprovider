@@ -8,6 +8,8 @@ import { TerminalProperties } from './TerminalProperties';
 import Password from './Field/Password';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
+import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import Status from '../RetailAccount/Field/Status';
 
 const properties: TerminalProperties = {
   'name': {
@@ -83,6 +85,17 @@ const properties: TerminalProperties = {
   'domain': {
     label: _('Domain'),
   },
+  'domainName': {
+    label: _('Domain'),
+  },
+  'statusIcon': {
+    label: _('Status'),
+    component: StatusIcon,
+  },
+  status: {
+    label: _('Status'),
+    component: Status,
+  },
 };
 
 const terminal: EntityInterface = {
@@ -93,6 +106,13 @@ const terminal: EntityInterface = {
   path: '/terminals',
   toStr: (row: any) => row.name,
   properties,
+  columns: [
+    'name',
+    'domainName',
+    'terminalModel',
+    'mac',
+    'statusIcon',
+  ],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'Terminals',

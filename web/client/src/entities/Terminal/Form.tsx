@@ -41,6 +41,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
         edit && 'lastProvisionDate',
       ],
     },
+    {
+      legend: _('Status'),
+      fields: [
+        'status',
+      ],
+    },
   ];
 
   return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />);

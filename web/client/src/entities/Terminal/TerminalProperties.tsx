@@ -14,6 +14,9 @@ export type TerminalPropertyList<T> = {
   'rtpEncryption'?: T,
   'terminalModel'?: T,
   'domain'?: T,
+  'domainName'?: T,
+  'statusIcon'?: T,
+  'status'?: T,
 };
 
 export type TerminalProperties = TerminalPropertyList<Partial<PropertySpec>>;

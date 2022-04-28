@@ -30,18 +30,37 @@ class TerminalDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto = $terminal->toDto($depth);
 
-        if (TerminalDto::CONTEXT_STATUS !== $context) {
+        $showStatus = in_array(
+            $context,
+            [
+                TerminalDto::CONTEXT_STATUS,
+                TerminalDto::CONTEXT_COLLECTION,
+                TerminalDto::CONTEXT_DETAILED,
+            ]
+        );
+
+        $showDomainName = in_array(
+            $context,
+            [
+                TerminalDto::CONTEXT_STATUS,
+                TerminalDto::CONTEXT_COLLECTION,
+            ]
+        );
+
+        if (!$showStatus && !$showDomainName) {
             return $dto;
         }
 
         $domain = $terminal->getDomain();
-        if (!$domain) {
-            return $dto;
+        if ($domain && $showDomainName) {
+            $dto->setDomainName(
+                $domain->getDomain()
+            );
         }
 
-        $dto->setDomainName(
-            $domain->getDomain()
-        );
+        if (!$showStatus || !$domain) {
+            return $dto;
+        }
 
         $userLocations = $this
             ->usersLocationRepository
