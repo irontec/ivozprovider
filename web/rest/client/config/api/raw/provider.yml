@@ -489,6 +489,7 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
+      && user.companyHasFeature('conferences')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -870,6 +871,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
+      && user.companyHasFeature('friends')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -1359,6 +1361,7 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
+      && user.companyHasFeature('queues')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       company:
