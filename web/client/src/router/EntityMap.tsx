@@ -1,7 +1,7 @@
 import entities from '../entities';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import routeMapParser, { RouteMap, RouteMapItem } from '@irontec/ivoz-ui/router/routeMapParser';
-import { AboutMe } from 'store/clientSession/aboutMe';
+import { AboutMe, ClientFeatures } from 'store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
 export type ExtendedRouteMapItem = RouteMapItem & {
@@ -74,7 +74,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Fax,
-        isAccessible: (aboutMe) => aboutMe.features.includes('faxes'),
+        isAccessible: (aboutMe) => aboutMe.features.includes(ClientFeatures.faxes),
         children: [
           {
             entity: entities.FaxesInOut,
@@ -130,7 +130,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Queue,
-        isAccessible: (aboutMe) => aboutMe.vpbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx && aboutMe.features.includes(ClientFeatures.queues),
         children: [
           {
             entity: entities.QueueMember,
@@ -154,7 +154,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Friend,
-        isAccessible: (aboutMe) => aboutMe.vpbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx && aboutMe.features.includes(ClientFeatures.friends),
         children: [
           {
             entity: entities.FriendsPattern,
@@ -168,7 +168,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.ConferenceRoom,
-        isAccessible: (aboutMe) => aboutMe.vpbx,
+        isAccessible: (aboutMe) => aboutMe.vpbx && aboutMe.features.includes(ClientFeatures.conferences),
       },
     ],
   },
@@ -284,7 +284,7 @@ const map: ExtendedRouteMap = [
       },
       {
         entity: entities.Recording,
-        isAccessible: (aboutMe) => !aboutMe.wholesale,
+        isAccessible: (aboutMe) => !aboutMe.wholesale && aboutMe.features.includes(ClientFeatures.recordings),
       },
     ],
   },
