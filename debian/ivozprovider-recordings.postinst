@@ -3,7 +3,7 @@
 #DEBHELPER#
 
 # Set current environment
-export SYMFONY_ENV=prod
+export APP_ENV=prod
 
 # Create project cache
 cd /opt/irontec/ivozprovider/microservices/recordings

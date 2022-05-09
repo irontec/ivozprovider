@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-export SYMFONY_ENV=prod
+export APP_ENV=prod
 export GEM_PATH = $(PWD)/web/user/gems/
 export PATH := $(GEM_PATH)/bin/:$(PATH)
 

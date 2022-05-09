@@ -5,9 +5,9 @@
 . /usr/share/debconf/confmodule
 
 ## Set environment
-grep -q SYMFONY_ENV /etc/systemd/system.conf
+grep -q APP_ENV /etc/systemd/system.conf
 if [ $? -ne 0 ]; then
-    echo "DefaultEnvironment=SYMFONY_ENV=prod" >> /etc/systemd/system.conf
+    echo "DefaultEnvironment=APP_ENV=prod" >> /etc/systemd/system.conf
 fi
 
 # Setup local dns server

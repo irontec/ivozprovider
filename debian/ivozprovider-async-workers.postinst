@@ -3,7 +3,7 @@
 #DEBHELPER#
 
 # Set current environment
-export SYMFONY_ENV=prod
+export APP_ENV=prod
 
 cd /opt/irontec/ivozprovider/microservices/workers
 
