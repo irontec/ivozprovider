@@ -3,6 +3,7 @@
 export SYMFONY_ENV=prod
 export GEM_PATH = $(PWD)/web/user/gems/
 export PATH := $(GEM_PATH)/bin/:$(PATH)
+export TEMP=/tmp
 
 build_doc:
 	# Build doc using sphinx
@@ -36,8 +37,8 @@ build_webclient:
 
 build_webuser: build_library build_webadmin
 	cd web/user ; gem install --install-dir $(GEM_PATH) compass
+	cd web/user ; npm_config_yes=true npm install
 	cd web/user ; npm install bower grunt-cli karma grunt-karma
-	cd web/user ; npm install
 	cd web/user ; node_modules/bower/bin/bower install --allow-root
 	cd web/user ; node_modules/grunt-cli/bin/grunt build
 	cd web/user ; rm -f dist/.htaccess
@@ -53,7 +54,7 @@ build_microservices: build_library
 build_schema: build_library
 	cd schema ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
-override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webclient
+override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webclient build_webuser
 
 override_dh_install:
 	dh_install
