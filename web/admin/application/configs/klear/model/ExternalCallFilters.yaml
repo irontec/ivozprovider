@@ -72,6 +72,33 @@ production:
           extraDataAttributes:
             iden: companyId
         'null': _("Unassigned")
+    holidayEnabled:
+      title: _('Holiday enabled')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              hide:
+                - calendars
+                - holidayLocution
+                - holidayTargetType
+                - holidayNumberCountry
+                - holidayNumberValue
+                - holidayExtension
+                - holidayVoicemail
+              show: []
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show:
+                - calendars
+                - holidayLocution
+                - holidayTargetType
+              hide: []
     holidayTargetType:
       title: _('Holiday target type')
       type: select
