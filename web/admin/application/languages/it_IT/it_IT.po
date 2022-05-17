@@ -227,6 +227,9 @@ msgstr "Prefisso"
 msgid "Assistant"
 msgstr "Assistente"
 
+msgid "Attach sound"
+msgstr "Suono collegata"
+
 msgid "Audio Transcoding"
 msgstr "Transcodifica audio"
 
@@ -662,6 +665,9 @@ msgstr[0] "Consumo del giorno corrente"
 msgstr[1] "Consumi del giorno corrente"
 
 msgid "Custom"
+msgstr "Personalizzato"
+
+msgid "Customization"
 msgstr "Personalizzato"
 
 msgid "DDI"
@@ -2003,6 +2009,9 @@ msgstr "No routing tag"
 msgid "None"
 msgstr "Nessuno"
 
+msgid "Notification Configuration"
+msgstr "Configurazione notification"
+
 msgid "Notification Threshold"
 msgstr "Soglia per notifica"
 
@@ -3134,22 +3143,10 @@ msgid_plural "Voicemails"
 msgstr[0] "Voicemail"
 msgstr[1] "Voicemails"
 
-msgid "Voicemail Locution"
-msgstr "Messaggio Voicemail"
-
 msgid "Voicemail Notification"
 msgid_plural "Voicemail Notifications"
 msgstr[0] "Notifica Voicemail"
 msgstr[1] "Notifiche Voicemail"
-
-msgid "Voicemail attach sound"
-msgstr "Suono collegata alla Voicemail"
-
-msgid "Voicemail enabled"
-msgstr "Voicemail abilitato"
-
-msgid "Voicemail send mail"
-msgstr "Voicemail invia posta"
 
 msgid "Waiting"
 msgstr "Attesa"

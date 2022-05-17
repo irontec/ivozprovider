@@ -220,6 +220,9 @@ msgstr "Area code"
 msgid "Assistant"
 msgstr "Assistant"
 
+msgid "Attach sound"
+msgstr "Attach sound"
+
 msgid "Audio Transcoding"
 msgstr "Audio Transcoding"
 
@@ -653,6 +656,9 @@ msgstr[1] "Current Day Usages"
 
 msgid "Custom"
 msgstr "Custom"
+
+msgid "Customization"
+msgstr "Customization"
 
 msgid "DDI"
 msgid_plural "DDIs"
@@ -1973,6 +1979,9 @@ msgstr "No routing tag"
 msgid "None"
 msgstr "None"
 
+msgid "Notification Configuration"
+msgstr "Notification Configuration"
+
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 
@@ -3088,22 +3097,10 @@ msgid_plural "Voicemails"
 msgstr[0] "Voicemail"
 msgstr[1] "Voicemails"
 
-msgid "Voicemail Locution"
-msgstr "Voicemail Locution"
-
 msgid "Voicemail Notification"
 msgid_plural "Voicemail Notifications"
 msgstr[0] "Voicemail Notification"
 msgstr[1] "Voicemail Notifications"
-
-msgid "Voicemail attach sound"
-msgstr "Voicemail attach sound"
-
-msgid "Voicemail enabled"
-msgstr "Voicemail enabled"
-
-msgid "Voicemail send mail"
-msgstr "Voicemail send mail"
 
 msgid "Waiting"
 msgstr "Waiting"
