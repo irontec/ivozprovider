@@ -39,6 +39,7 @@ production:
           holidayNumberValue: true
           holidayExtension: true
           holidayVoicemail: true
+          outOfScheduleEnabled: true
           outOfScheduleTargetType: false
           outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
@@ -58,6 +59,7 @@ production:
           holidayNumberValue: true
           holidayExtension: true
           holidayVoicemail: true
+          outOfScheduleEnabled: true
           outOfScheduleLocution: true
           outOfScheduleTargetType: true
           outOfScheduleTarget: true
@@ -122,6 +124,8 @@ production:
           colsPerRow: 6
           label: _("Out of schedule configuration")
           fields:
+            outOfScheduleEnabled: 2
+            __empty: 4
             schedules: 3
             outOfScheduleLocution: 3
             outOfScheduleTargetType: 2

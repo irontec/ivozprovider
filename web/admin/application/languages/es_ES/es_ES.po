@@ -2090,6 +2090,9 @@ msgstr "Fecha fin"
 msgid "Out of schedule configuration"
 msgstr "Configuración fuera horario"
 
+msgid "Out of schedule enabled"
+msgstr "Habilitar fuera horario"
+
 msgid "Out of schedule locution"
 msgstr "Locución fuera horario"
 
