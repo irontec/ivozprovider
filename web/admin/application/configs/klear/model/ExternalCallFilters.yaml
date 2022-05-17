@@ -159,6 +159,33 @@ production:
           order:
             Voicemail.name: asc
         'null': _("Unassigned")
+    outOfScheduleEnabled:
+      title: _('Out of schedule enabled')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              hide:
+                - schedules
+                - outOfScheduleLocution
+                - outOfScheduleTargetType
+                - outOfScheduleNumberCountry
+                - outOfScheduleNumberValue
+                - outOfScheduleExtension
+                - outOfScheduleVoicemail
+              show: []
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show:
+                - schedules
+                - outOfScheduleLocution
+                - outOfScheduleTargetType
+              hide: []
     outOfScheduleTargetType:
       title: _('Out of schedule target type')
       type: select

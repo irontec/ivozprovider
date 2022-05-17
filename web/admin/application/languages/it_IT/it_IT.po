@@ -2094,6 +2094,9 @@ msgstr "Data di Scadenza"
 msgid "Out of schedule configuration"
 msgstr "Configurazione fuori orario"
 
+msgid "Out of schedule enabled"
+msgstr "Abilitati fuori orario"
+
 msgid "Out of schedule locution"
 msgstr "Messaggio fuori orario"
 

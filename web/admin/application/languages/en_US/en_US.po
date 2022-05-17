@@ -2061,6 +2061,9 @@ msgstr "Out date"
 msgid "Out of schedule configuration"
 msgstr "Out of schedule configuration"
 
+msgid "Out of schedule enabled"
+msgstr "Out of schedule enabled"
+
 msgid "Out of schedule locution"
 msgstr "Out of schedule locution"
 

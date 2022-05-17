@@ -2079,6 +2079,9 @@ msgstr "Data de sortida"
 msgid "Out of schedule configuration"
 msgstr "Configuració fora d'horari"
 
+msgid "Out of schedule enabled"
+msgstr "Habilitat fora d'horari"
+
 msgid "Out of schedule locution"
 msgstr "Locució fora d'horari"
 
