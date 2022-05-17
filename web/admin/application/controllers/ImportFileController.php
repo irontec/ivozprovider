@@ -42,7 +42,7 @@ class ImportFileController extends Zend_Controller_Action
             'timeOut',
             'numberCountry',
             'numberValue',
-            'voiceMailUser',
+            'voicemail',
             'extension',
         ];
 

@@ -38,12 +38,12 @@ production:
           holidayNumberCountry: true
           holidayNumberValue: true
           holidayExtension: true
-          holidayVoiceMailUser: true
+          holidayVoicemail: true
           outOfScheduleTargetType: false
           outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
           outOfScheduleExtension: true
-          outOfScheduleVoiceMailUser: true
+          outOfScheduleVoicemail: true
           whiteLists: true
           blackLists: true
         order: &externalCallFilters_orderLink
@@ -57,14 +57,14 @@ production:
           holidayNumberCountry: true
           holidayNumberValue: true
           holidayExtension: true
-          holidayVoiceMailUser: true
+          holidayVoicemail: true
           outOfScheduleLocution: true
           outOfScheduleTargetType: true
           outOfScheduleTarget: true
           outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
           outOfScheduleExtension: true
-          outOfScheduleVoiceMailUser: true
+          outOfScheduleVoicemail: true
           calendars: true
           schedules: true
       options:
@@ -117,7 +117,7 @@ production:
             holidayNumberCountry: 2
             holidayNumberValue: 2
             holidayExtension: 3
-            holidayVoiceMailUser: 3
+            holidayVoicemail: 3
         group4:
           colsPerRow: 6
           label: _("Out of schedule configuration")
@@ -128,7 +128,7 @@ production:
             outOfScheduleNumberCountry: 2
             outOfScheduleNumberValue: 2
             outOfScheduleExtension: 3
-            outOfScheduleVoiceMailUser: 3
+            outOfScheduleVoicemail: 3
 
     externalCallFiltersEdit_screen: &externalCallFiltersEdit_screenLink
       <<: *ExternalCallFilters

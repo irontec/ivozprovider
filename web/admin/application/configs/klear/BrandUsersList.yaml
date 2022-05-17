@@ -45,10 +45,6 @@ production:
           isBoss: true
           maxCalls: true
           tokenKey: true
-          voicemailEnabled: true
-          voicemailLocution: true
-          voicemailAttachSound: true
-          voicemailSendMail: true
           transformationRuleSet: true
           language: true
           externalIpCalls: true

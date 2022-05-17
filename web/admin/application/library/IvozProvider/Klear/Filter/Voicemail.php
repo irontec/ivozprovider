@@ -15,7 +15,7 @@ class IvozProvider_Klear_Filter_Voicemail extends IvozProvider_Klear_Filter_Comp
         parent::setRouteDispatcher($routeDispatcher);
 
         // Only show users with voicemail enabled
-        $this->_condition[] = "self::voicemailEnabled = 1";
+        $this->_condition[] = "self::enabled = 1";
 
         return true;
     }

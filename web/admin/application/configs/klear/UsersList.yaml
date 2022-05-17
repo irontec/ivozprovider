@@ -51,7 +51,6 @@ production:
           outgoingDdi: true
           statusIcon: true
           callACL: true
-          voicemailEnabled: true
           isBoss: true
           bossAssistant: true
           bossAssistantWhiteList: true
@@ -74,10 +73,6 @@ production:
           isBoss: true
           maxCalls: true
           tokenKey: true
-          voicemailEnabled: true
-          voicemailLocution: true
-          voicemailAttachSound: true
-          voicemailSendMail: true
           transformationRuleSet: true
           language: true
           externalIpCalls: true
@@ -121,10 +116,6 @@ production:
           isBoss: true
           maxCalls: true
           tokenKey: true
-          voicemailEnabled: true
-          voicemailLocution: true
-          voicemailAttachSound: true
-          voicemailSendMail: true
           language: true
           transformationRuleSet: true
           externalIpCalls: true
@@ -205,14 +196,6 @@ production:
             multiContact: 6
             _empty: 6
             rejectCallMethod: 10
-        group5:
-          label: _("Voicemail")
-          colsPerRow: 2
-          fields:
-            voicemailEnabled: 1
-            voicemailLocution: 1
-            voicemailSendMail: 1
-            voicemailAttachSound: 1
         group6:
           label: _("Group belonging")
           colsPerRow: 3

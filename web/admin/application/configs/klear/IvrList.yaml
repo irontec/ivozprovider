@@ -38,11 +38,11 @@ production:
           noInputNumberCountry: true
           noInputNumberValue: true
           noInputExtension: true
-          noInputVoiceMailUser: true
+          noInputVoicemail: true
           errorNumberCountry: true
           errorNumberValue: true
           errorExtension: true
-          errorVoiceMailUser: true
+          errorVoicemail: true
         options:
           title: _("Options")
           screens:
@@ -107,7 +107,7 @@ production:
             noInputNumberCountry: 1
             noInputNumberValue: 1
             noInputExtension: 1
-            noInputVoiceMailUser: 1
+            noInputVoicemail: 1
         group3:
           label: _("Error configuration")
           colsPerRow: 6
@@ -118,7 +118,7 @@ production:
             errorNumberValue: 2
             errorExtension: 2
             errorUser: 2
-            errorVoiceMailUser: 2
+            errorVoicemail: 2
     ivrEdit_screen: &ivrEdit_screenLink
       <<: *Ivr
       controller: edit

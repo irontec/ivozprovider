@@ -1,0 +1,112 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+  fields:
+    company:
+      title: ngettext('Client', 'Clients', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+    user:
+      title: ngettext('User', 'Users', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+    residentialDevice:
+      title: ngettext('Residential Device', 'Residential Devices', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+    enabled:
+      title: _('Enabled')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      default: true
+    email:
+      title: ngettext('Email', 'Emails', 1)
+      type: text
+      maxLength: 100
+      trim: both
+    locution:
+      title: _('Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity:  \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Locution.name: asc
+        'null': _("Unassigned")
+    sendMail:
+      title: _('Send by email')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              hide: [email, attachSound]
+              show: []
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: [email, attachSound]
+              hide: []
+    attachSound:
+      title: _('Attach sound')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
