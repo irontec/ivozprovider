@@ -110,7 +110,7 @@ production:
                 - noAnswerNumberCountry
                 - noAnswerNumberValue
                 - noAnswerExtension
-                - noAnswerVoiceMailUser
+                - noAnswerVoicemail
           'number':
             title: _('Number')
             visualFilter:
@@ -126,7 +126,7 @@ production:
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ noAnswerVoiceMailUser ]
+              show: [ noAnswerVoicemail ]
               hide:
                 <<: *routableFields
     noAnswerLocution:
@@ -180,22 +180,21 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    noAnswerVoiceMailUser:
+    noAnswerVoicemail:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
-          filterClass: IvozProvider_Klear_Filter_Voicemail
-          fieldName: 
-            fields: 
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
 staging:
   _extends: production

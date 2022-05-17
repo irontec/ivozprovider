@@ -71,7 +71,7 @@ production:
                 - timeoutNumberCountry
                 - timeoutNumberValue
                 - timeoutExtension
-                - timeoutVoiceMailUser
+                - timeoutVoicemail
           'number':
             title: _('Number')
             visualFilter:
@@ -87,7 +87,7 @@ production:
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ timeoutVoiceMailUser ]
+              show: [ timeoutVoicemail ]
               hide:
                 <<: *timeoutFields
     timeoutNumberCountry:
@@ -126,22 +126,21 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    timeoutVoiceMailUser:
+    timeoutVoicemails:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
-          filterClass: IvozProvider_Klear_Filter_Voicemail
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
     maxlen:
       title: _('Max queue length')
@@ -183,7 +182,7 @@ production:
                 - fullNumberCountry
                 - fullNumberValue
                 - fullExtension
-                - fullVoiceMailUser
+                - fullVoicemail
           'number':
             title: _('Number')
             visualFilter:
@@ -199,7 +198,7 @@ production:
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ fullVoiceMailUser ]
+              show: [ fullVoicemail ]
               hide:
                 <<: *fullFields
     fullNumberCountry:
@@ -238,22 +237,21 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    fullVoiceMailUser:
+    fullVoicemail:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
-          filterClass: IvozProvider_Klear_Filter_Voicemail
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+          filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
     periodicAnnounceLocution:
       title: _('Periodic Annouce Locution')

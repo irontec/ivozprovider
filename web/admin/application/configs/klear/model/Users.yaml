@@ -257,66 +257,6 @@ production:
         icon: help
         text: _("Limits received calls when already handling this number of calls. Set 0 for unlimited.")
         label: _("Need help?")
-    voicemailEnabled:
-      title: _('Voicemail enabled')
-      type: select
-      defaultValue: 1
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-            visualFilter:
-              show: []
-              hide: ["voicemailSendMail", "voicemailAttachSound", "voicemailLocution"]
-          '1':
-            title: _("Yes")
-            visualFilter:
-              show: ["voicemailSendMail", "voicemailAttachSound", "voicemailLocution"]
-              hide: []
-    voicemailLocution:
-      title: _('Voicemail Locution')
-      type: select
-      source:
-        data: mapper
-        config:
-          entity:  \Ivoz\Provider\Domain\Model\Locution\Locution
-          filterClass: IvozProvider_Klear_Filter_Company
-          fieldName:
-            fields:
-              - name
-            template: '%name%'
-          order:
-            Locution.name: asc
-        'null': _("Unassigned")
-    voicemailSendMail:
-      title: _('Voicemail send mail')
-      type: select
-      defaultValue: 1
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-            visualFilter:
-              hide: ["voicemailAttachSound"]
-              show: []
-          '1':
-            title: _("Yes")
-            visualFilter:
-              show: ["voicemailAttachSound"]
-              hide: []
-    voicemailAttachSound:
-      title: _('Voicemail attach sound')
-      type: select
-      defaultValue: 1
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-          '1':
-            title: _("Yes")
     PickUpRelUsers:
       title: _('Pick Up Groups')
       type: multiselect

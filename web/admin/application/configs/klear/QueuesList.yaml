@@ -43,7 +43,7 @@ production:
         blacklist:
           timeoutLocution: true
           timeoutTargetType: true
-          timeoutVoiceMailUser: true
+          timeoutVoicemail: true
           timeoutExtension: true
           timeoutNumberCountry: true
           timeoutNumberValue: true
@@ -52,7 +52,7 @@ production:
           fullExtension: true
           fullNumberCountry: true
           fullNumberValue: true
-          fullVoiceMailUser: true
+          fullVoicemail: true
           periodicAnnounceLocution: true
           periodicAnnounceFrequency: true
           preventMissedCalls: true
@@ -108,7 +108,7 @@ production:
             timeoutLocution: 6
             timeoutTargetType: 4
             timeoutExtension: 6
-            timeoutVoiceMailUser: 6
+            timeoutVoicemail: 6
             timeoutNumberCountry: 4
             timeoutNumberValue: 4
         group5:
@@ -119,7 +119,7 @@ production:
             fullLocution: 6
             fullTargetType: 4
             fullExtension: 6
-            fullVoiceMailUser: 6
+            fullVoicemail: 6
             fullNumberCountry: 4
             fullNumberValue: 4
     queuesEdit_screen: &queuesEdit_screenLink

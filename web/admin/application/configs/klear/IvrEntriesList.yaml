@@ -24,7 +24,7 @@ production:
           numberCountry: true
           numberValue: true
           extension: true
-          voiceMailUser: true
+          voicemail: true
           conditionalRoute: true
         options:
           title: _("Options")
@@ -68,7 +68,7 @@ production:
             numberCountry: 4
             numberValue: 4
             extension: 4
-            voiceMailUser: 5
+            voicemail: 5
             conditionalRoute: 5
 
     ivrEntriesEdit_screen: &ivrEntriesEdit_screenLink

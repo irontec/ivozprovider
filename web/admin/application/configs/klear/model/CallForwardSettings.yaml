@@ -110,27 +110,27 @@ production:
             title: _('Unassigned')
             visualFilter:
               show: [ ]
-              hide: [ extension, voiceMailUser, numberCountry, numberValue, cfwToretailAccount ]
+              hide: [ extension, voicemail, numberCountry, numberValue, cfwToretailAccount ]
           'number':
             title: _('Number')
             visualFilter:
               show: [ numberCountry, numberValue ]
-              hide: [ extension, voiceMailUser, cfwToretailAccount ]
+              hide: [ extension, voicemail, cfwToretailAccount ]
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
               show: [ extension ]
-              hide: [ numberCountry, numberValue, voiceMailUser, cfwToretailAccount ]
+              hide: [ numberCountry, numberValue, voicemail, cfwToretailAccount ]
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ voiceMailUser ]
+              show: [ voicemail ]
               hide: [ extension, numberCountry, numberValue, cfwToretailAccount ]
           'retail':
             title: ngettext('Retail Account', 'Retail Accounts', 1)
             visualFilter:
               show: [ cfwToretailAccount ]
-              hide: [ extension, numberCountry, numberValue, voiceMailUser ]
+              hide: [ extension, numberCountry, numberValue, voicemail ]
     numberCountry:
       title: _('Country')
       type: select
@@ -175,15 +175,14 @@ production:
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
-          filterClass: IvozProvider_Klear_Filter_Voicemail
-          fieldName: 
-            fields: 
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
     noAnswerTimeout:
       title: _('No answer timeout')

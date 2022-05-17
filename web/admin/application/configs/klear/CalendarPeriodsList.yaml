@@ -22,7 +22,7 @@ production:
           numberCountry: true
           numberValue: true
           extension: true
-          voiceMailUser: true
+          voiceMail: true
         order:
           startDate: true
           endDate: true
@@ -72,7 +72,7 @@ production:
             numberCountry: 4
             numberValue: 3
             extension: 3
-            voiceMailUser: 3
+            voicemail: 3
     calendarPeriodsEdit_screen: &calendarPeriodsEdit_screenLink
       <<: *CalendarPeriods
       controller: edit

@@ -379,6 +379,10 @@ mappers:
         modelFile: Users,
         entity: 'Ivoz\\Provider\\Domain\\Model\\User\\User'
     }
+  - &Voicemails {
+    modelFile: Voicemails,
+    entity: 'Ivoz\\Provider\\Domain\\Model\\Voicemail\\Voicemail'
+  }
   - &WholesaleClients {
         modelFile: WholesaleClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
