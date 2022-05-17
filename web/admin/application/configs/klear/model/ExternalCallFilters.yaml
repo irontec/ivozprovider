@@ -75,7 +75,7 @@ production:
     holidayEnabled:
       title: _('Holiday enabled')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source:
         data: inline
         values:
@@ -189,7 +189,7 @@ production:
     outOfScheduleEnabled:
       title: _('Out of schedule enabled')
       type: select
-      defaultValue: 1
+      defaultValue: 0
       source:
         data: inline
         values:
