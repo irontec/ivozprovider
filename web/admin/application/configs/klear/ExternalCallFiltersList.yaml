@@ -34,6 +34,7 @@ production:
           welcomeLocution: true
           holidayLocution: true
           outOfScheduleLocution: true
+          holidayEnabled: true
           holidayTargetType: false
           holidayNumberCountry: true
           holidayNumberValue: true
@@ -53,6 +54,7 @@ production:
           whiteLists: true
           blackLists: true
           holidayLocution: true
+          holidayEnabled: true
           holidayTargetType: true
           holidayTarget: true
           holidayNumberCountry: true
@@ -113,6 +115,8 @@ production:
           colsPerRow: 7
           label: _("Holidays configuration")
           fields:
+            holidayEnabled: 2
+            __empty: 4
             calendars: 3
             holidayLocution: 3
             holidayTargetType: 2

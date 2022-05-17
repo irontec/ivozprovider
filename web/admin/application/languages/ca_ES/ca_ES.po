@@ -1330,6 +1330,9 @@ msgid_plural "Holiday dates range"
 msgstr[0] "Rango de festivo"
 msgstr[1] "Rango de festivos"
 
+msgid "Holiday enabled"
+msgstr "Habilitat Festius"
+
 msgid "Holiday importer system"
 msgstr "Sistema d'importació de festius"
 
