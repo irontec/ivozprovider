@@ -225,6 +225,9 @@ msgstr "Codi d'àrea"
 msgid "Assistant"
 msgstr "Assistent"
 
+msgid "Attach sound"
+msgstr "Adjunta àudio"
+
 msgid "Audio Transcoding"
 msgstr "Transcodificació de so"
 
@@ -657,6 +660,9 @@ msgstr[0] "Consum dia en curs"
 msgstr[1] "Consums dia en curs"
 
 msgid "Custom"
+msgstr "Personalitzat"
+
+msgid "Customization"
 msgstr "Personalitzat"
 
 msgid "DDI"
@@ -1990,6 +1996,9 @@ msgstr "Sense etiqueta de ruta"
 msgid "None"
 msgstr "Cap"
 
+msgid "Notification Configuration"
+msgstr "Configuració notificació"
+
 msgid "Notification Threshold"
 msgstr "Llindar de notificació"
 
@@ -3117,22 +3126,10 @@ msgid_plural "Voicemails"
 msgstr[0] "Bústia de veu"
 msgstr[1] "Bústies de veu"
 
-msgid "Voicemail Locution"
-msgstr "Locució de bústia de veu"
-
 msgid "Voicemail Notification"
 msgid_plural "Voicemail Notifications"
 msgstr[0] "Notificació bústia de veu"
 msgstr[1] "Notificacions bústia de veu"
-
-msgid "Voicemail attach sound"
-msgstr "Adjunta àudio bústia de veu"
-
-msgid "Voicemail enabled"
-msgstr "Bústia de veu habilitada"
-
-msgid "Voicemail send mail"
-msgstr "Envia notificació per correu de la bústia de veu"
 
 msgid "Waiting"
 msgstr "Esperant"

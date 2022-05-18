@@ -18,7 +18,7 @@ production:
           numberCountry: true
           numberValue: true
           extension: true
-          voiceMailUser: true
+          voicemail: true
         order:
           name: true
           eventDate: true
@@ -76,7 +76,7 @@ production:
             numberCountry: 4
             numberValue: 3
             extension: 3
-            voiceMailUser: 3
+            voicemail: 3
 
     holidayDatesRangeNew_screen: &holidayDatesRangeNew_screenLink
       <<: *HolidayDatesRange

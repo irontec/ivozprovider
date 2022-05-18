@@ -86,7 +86,7 @@ production:
                 - holidayNumberCountry
                 - holidayNumberValue
                 - holidayExtension
-                - holidayVoiceMailUser
+                - holidayVoicemail
           'number':
             title: _("Number")
             visualFilter:
@@ -102,7 +102,7 @@ production:
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ holidayVoiceMailUser ]
+              show: [ holidayVoicemail ]
               hide:
                 <<: *holidayFields
     holidayNumberCountry:
@@ -143,22 +143,21 @@ production:
           extraDataAttributes:
             iden: companyId
         'null': _("Unassigned")
-    holidayVoiceMailUser:
+    holidayVoicemail:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
           filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
     outOfScheduleTargetType:
       title: _('Out of schedule target type')
@@ -174,7 +173,7 @@ production:
                 - outOfScheduleNumberCountry
                 - outOfScheduleNumberValue
                 - outOfScheduleExtension
-                - outOfScheduleVoiceMailUser
+                - outOfScheduleVoicemail
           'number':
             title: _('Number')
             visualFilter:
@@ -190,7 +189,7 @@ production:
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ outOfScheduleVoiceMailUser ]
+              show: [ outOfScheduleVoicemail ]
               hide:
                 <<: *outOfScheduleFields
     outOfScheduleNumberCountry:
@@ -231,22 +230,21 @@ production:
           extraDataAttributes:
             iden: companyId
         'null': _("Unassigned")
-    outOfScheduleVoiceMailUser:
+    outOfScheduleVoicemail:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
           filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
     schedules:
       title: ngettext('Schedule', 'Schedules', 0)

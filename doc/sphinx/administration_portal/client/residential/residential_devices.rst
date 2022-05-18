@@ -102,6 +102,8 @@ Voicemail settings
 
 Every residential device has a voicemail that can be accessed using voicemail service code defined at brand level.
 
+Additionally, voicemails can be configured to send their messages to an email address in :ref:`Residential Voicemails <residential_voicemails>`.
+
 .. _residential_devices_cfw:
 
 Call forwarding settings

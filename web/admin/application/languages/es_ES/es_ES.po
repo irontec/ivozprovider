@@ -225,6 +225,9 @@ msgstr "Código de Area"
 msgid "Assistant"
 msgstr "Asistente"
 
+msgid "Attach sound"
+msgstr "Adjuntar audio del mensaje"
+
 msgid "Audio Transcoding"
 msgstr "Audio Transcoding"
 
@@ -660,6 +663,9 @@ msgstr[1] "Consumos Día En Curso"
 
 msgid "Custom"
 msgstr "A medida"
+
+msgid "Customization"
+msgstr "Customizaciones"
 
 msgid "DDI"
 msgid_plural "DDIs"
@@ -2001,6 +2007,9 @@ msgstr "Sin etiqueta de enrutado"
 msgid "None"
 msgstr "Ninguna"
 
+msgid "Notification Configuration"
+msgstr "Configuración notificaciones"
+
 msgid "Notification Threshold"
 msgstr "Límite de notificación"
 
@@ -3128,22 +3137,10 @@ msgid_plural "Voicemails"
 msgstr[0] "Buzón de voz"
 msgstr[1] "Buzones de voz"
 
-msgid "Voicemail Locution"
-msgstr "Locución de buzón"
-
 msgid "Voicemail Notification"
 msgid_plural "Voicemail Notifications"
 msgstr[0] "Notificación de buzón de voz"
 msgstr[1] "Notificaciones de buzón de voz"
-
-msgid "Voicemail attach sound"
-msgstr "Adjuntar audio del mensaje"
-
-msgid "Voicemail enabled"
-msgstr "Buzón de voz"
-
-msgid "Voicemail send mail"
-msgstr "Notificar por email"
 
 msgid "Waiting"
 msgstr "Esperando"

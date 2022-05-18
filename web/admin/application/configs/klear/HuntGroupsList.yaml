@@ -38,7 +38,7 @@ production:
           noAnswerNumberCountry: true
           noAnswerNumberValue: true
           noAnswerExtension: true
-          noAnswerVoiceMailUser: true
+          noAnswerVoicemail: true
           preventMissedCalls: true
           allowCallForwards: true
       options:
@@ -81,7 +81,7 @@ production:
             noAnswerNumberCountry: 2
             noAnswerNumberValue: 2
             noAnswerExtension: 3
-            noAnswerVoiceMailUser: 3
+            noAnswerVoicemail: 3
     huntGroupsEdit_screen: &huntGroupsEdit_screenLink
       <<: *HuntGroups
       controller: edit

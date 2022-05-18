@@ -30,7 +30,7 @@ production:
           huntGroup: true
           conferenceRoom: true
           user: true
-          voiceMailUser: true
+          voicemail: true
           numberCountry: true
           numberValue: true
           friendValue: true
@@ -95,7 +95,7 @@ production:
             routeType: 2
             ivr: 3
             huntGroup: 3
-            voiceMailUser: 3
+            voicemail: 3
             user: 3
             numberCountry: 2
             numberValue: 2
