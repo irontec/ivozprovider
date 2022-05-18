@@ -1177,6 +1177,9 @@ msgid_plural "Fixed costs"
 msgstr[0] "Coste fijo"
 msgstr[1] "Costes fijos"
 
+msgid "Folder"
+msgstr "Directorio"
+
 msgid "For instance:"
 msgstr "Por ejemplo:"
 
@@ -2392,6 +2395,9 @@ msgstr "Grabaciones"
 msgid "Recording extension"
 msgstr "Extensión de grabado"
 
+msgid "Recording file"
+msgstr "Fichero grabado"
+
 msgid "Register"
 msgstr "Registro"
 
@@ -3136,6 +3142,11 @@ msgid "Voicemail"
 msgid_plural "Voicemails"
 msgstr[0] "Buzón de voz"
 msgstr[1] "Buzones de voz"
+
+msgid "Voicemail Message"
+msgid_plural "Voicemail Messages"
+msgstr[0] "Mensaje de Buzón de voz"
+msgstr[1] "Mensajes de Buzón de voz"
 
 msgid "Voicemail Notification"
 msgid_plural "Voicemail Notifications"

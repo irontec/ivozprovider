@@ -383,6 +383,10 @@ mappers:
         modelFile: Voicemails,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Voicemail\\Voicemail'
   }
+  - &VoicemailMessages {
+        modelFile: VoicemailMessages,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\VoicemailMessage\\VoicemailMessage'
+  }
   - &WholesaleClients {
         modelFile: WholesaleClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'

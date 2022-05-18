@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
+#include VoicemailMessagesList.yaml
 
 production:
   main:
@@ -28,6 +29,7 @@ production:
           screens:
             voicemailsEdit_screen: ${auth.acls.Voicemails.update}
             voicemailsEditLimited_screen: ${auth.acls.Voicemails.update}
+            voicemailMessagesList_screen: true
           dialogs:
             voicemailsDel_dialog: ${auth.acls.Voicemails.delete}
         order: &voicemails_orderLink
@@ -65,7 +67,7 @@ production:
           company: true
           user: true
           residentialDevice: true
-      fixedPositions: &voicemialsFixedPositions_link
+      fixedPositions: &voicemailsFixedPositions_link
         group0:
           label: _("Basic Configuration")
           colsPerRow: 16
@@ -100,7 +102,7 @@ production:
         order:
           <<: *voicemails_orderLink
       fixedPositions:
-          <<: *voicemialsFixedPositions_link
+          <<: *voicemailsFixedPositions_link
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForVoicemail
 
@@ -122,9 +124,21 @@ production:
         order:
           <<: *voicemails_orderLink
       fixedPositions:
-        <<: *voicemialsFixedPositions_link
+        <<: *voicemailsFixedPositions_link
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForVoicemail
+
+    # VoicemailMessages
+    <<: *voicemailMessages_screensLink
+    voicemailMessagesList_screen:
+      <<: *voicemailMessagesList_screenLink
+      title: _("List of %s %2s", ngettext('Voicemail Message', 'Voicemail Messages', 0), "[format| (%parent%)]")
+      filterField: Voicemail
+      parentOptionCustomizer:
+        - recordCount
+    voicemailMessagesView_screen:
+      <<: *voicemailMessagesView_screenLink
+      filterField: Voicemail
 
   dialogs: &voicemails_dialogsLink
     voicemailsDel_dialog: &voicemailsDel_dialogLink
@@ -139,6 +153,13 @@ production:
       labelOnList: 1
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForVoicemail
+
+    # VoicemailMessages
+    <<: *voicemailMessages_dialogsLink
+
+  commands: &voicemails_commandsLink
+    # VoicemailMessages
+    <<: *voicemailMessages_commandsLink
 
 staging:
   _extends: production
