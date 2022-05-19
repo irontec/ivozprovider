@@ -208,22 +208,22 @@
 
                     </div>
 
-                    <div class="form-group col-md-12" ng-show="voiceMailUserShow">
+                    <div class="form-group col-md-12" ng-show="voicemailShow">
 
                         <label
-                                for="voiceMailUser"
+                                for="voicemail"
                                 class="col-sm-4 control-label"
-                                translate="voiceMailUser"
+                                translate="voicemail"
                         ></label>
 
                         <div class="col-sm-8">
                             <select
                                     class="form-control"
-                                    id="voiceMailUser"
-                                    name="voiceMailUser"
-                                    ng-model="detour.voiceMailUser.id"
-                                    ng-options="user.id as user.fullName for user in users"
+                                    id="voicemail"
+                                    name="voicemail"
+                                    ng-model="detour.voicemail"
                             >
+                                <option ng-repeat="voicemail in voicemails" value="{{voicemail.id}}">{{voicemail.name}}</option>
                             </select>
                         </div>
 
