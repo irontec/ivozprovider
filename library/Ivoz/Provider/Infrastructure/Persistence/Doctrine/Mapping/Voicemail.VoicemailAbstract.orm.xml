@@ -40,12 +40,12 @@
     </many-to-one>
     <one-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" inversed-by="voicemail" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </one-to-one>
     <one-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" inversed-by="voicemail" fetch="LAZY">
       <join-columns>
-        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </one-to-one>
     <many-to-one field="locution" target-entity="Ivoz\Provider\Domain\Model\Locution\LocutionInterface" fetch="LAZY">
