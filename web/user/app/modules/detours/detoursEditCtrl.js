@@ -23,21 +23,18 @@ angular
 
     $scope.extensions = [];
     $scope.countries = [];
+    $scope.voicemails = [];
 
     $scope.callForwardTypeNoAnswer = true;
     $scope.numberValueShow = true;
     $scope.extensionShow = true;
-    $scope.voiceMailUserShow = true;
+    $scope.voicemailShow = true;
 
     $http.get(
         appConfig.urlRest + 'my/company_voicemails',
         {headers: {accept: 'application/json'}}
-    ).then(function(users) {
-        $scope.users = users.data;
-
-        for (var idx in $scope.users) {
-            $scope.users[idx].fullName = $scope.users[idx].name + " " + $scope.users[idx].lastname;
-        }
+    ).then(function(voicemails) {
+        $scope.voicemails = voicemails.data;
 
         var extensionPromise = $http.get(
             appConfig.urlRest + 'my/company_extensions',
@@ -84,11 +81,25 @@ angular
         $scope.success = false;
         $scope.error = false;
         $scope.formAction = true;
-        
+
+        var data = {
+          "callForwardType": $scope.detour.callForwardType,
+          "callTypeFilter": $scope.detour.callTypeFilter,
+          "enabled": $scope.detour.enabled,
+          "extension": $scope.detour.extension ? $scope.detour.extension.id : null,
+          "id": $scope.detour.id,
+          "noAnswerTimeout": $scope.detour.noAnswerTimeout,
+          "numberCountry": $scope.detour.numberCountry ? $scope.detour.numberCountry.id : null,
+          "numberValue": $scope.detour.numberValue,
+          "targetType": $scope.detour.targetType,
+          "user": $scope.detour.user ? $scope.detour.user.id : null,
+          "voicemail": $scope.detour.voicemail ? $scope.detour.voicemail.id : null,
+        };
+
         ngProgress.start();
         $http.put(
             appConfig.urlRest + 'call_forward_settings/' + detourId,
-            $scope.detour,
+            data,
             {headers: {accept: 'application/json'}}
         ).then(
             UpdateSuccessHandler,
@@ -132,23 +143,23 @@ angular
             case 'extension':
                 $scope.extensionShow = true;
                 $scope.numberValueShow = false;
-                $scope.voiceMailUserShow = false;
+                $scope.voicemailShow = false;
                 break;
 
             case 'voicemail':
-                $scope.voiceMailUserShow = true;
+                $scope.voicemailShow = true;
                 $scope.extensionShow = false;
                 $scope.numberValueShow = false;
                 break;
 
             case 'number':
-                $scope.voiceMailUserShow = false;
+                $scope.voicemailShow = false;
                 $scope.numberValueShow = true;
                 $scope.extensionShow = false;
                 break;
 
             default:
-                $scope.voiceMailUserShow = false;
+                $scope.voicemailShow = false;
                 $scope.numberValueShow = false;
                 $scope.extensionShow = false;
 

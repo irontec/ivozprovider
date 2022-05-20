@@ -109,7 +109,9 @@ angular
         var defered = $q.defer();
         var promise = defered.promise;
         var params = $scope.callsParams.search;
-        params._pagination = false;
+        params._pagination = true;
+        params._page = 1;
+        params._itemsPerPage = 10000;
 
         var endpoint = 'my/call_history?';
         if ($scope.callsParams._order) {

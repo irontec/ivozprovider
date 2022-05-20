@@ -73,6 +73,8 @@ angular
         }
 
         delete data['pass'];
+        delete data['timezone'];
+        delete data['bossAssistant'];
 
         if ($scope.user.changePass) {
             data['pass'] = $scope.user.newPass;

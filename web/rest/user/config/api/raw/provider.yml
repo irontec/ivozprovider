@@ -4,6 +4,9 @@
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   itemOperations:
+    get: ~
+    put: ~
+    delete: ~
     post_my_call_forward_settings:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'POST'
@@ -61,7 +64,8 @@ Ivoz\Provider\Domain\Model\Country\Country:
         tags:
         - My
         parameters: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
     pagination_client_enabled: true
     access_control: '"ROLE_COMPANY_USER" in roles'
@@ -112,7 +116,11 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
 
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
+  attributes:
+    pagination_client_enabled: true
+    access_control: '"ROLE_COMPANY_USER" in roles'
 
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:

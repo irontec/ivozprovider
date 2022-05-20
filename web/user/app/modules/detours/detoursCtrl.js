@@ -38,7 +38,7 @@ angular
         } else if (type === 'extension') {
             result = detour.extension.number;
         } else if (type === 'voicemail') {
-            result = detour.voiceMailUser.name;
+            result = detour.voicemail.name;
         } else {
             result = '';
         }
