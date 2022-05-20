@@ -81,11 +81,25 @@ angular
         $scope.success = false;
         $scope.error = false;
         $scope.formAction = true;
-        
+
+        var data = {
+          "callForwardType": $scope.detour.callForwardType,
+          "callTypeFilter": $scope.detour.callTypeFilter,
+          "enabled": $scope.detour.enabled,
+          "extension": $scope.detour.extension ? $scope.detour.extension.id : null,
+          "id": $scope.detour.id,
+          "noAnswerTimeout": $scope.detour.noAnswerTimeout,
+          "numberCountry": $scope.detour.numberCountry ? $scope.detour.numberCountry.id : null,
+          "numberValue": $scope.detour.numberValue,
+          "targetType": $scope.detour.targetType,
+          "user": $scope.detour.user ? $scope.detour.user.id : null,
+          "voicemail": $scope.detour.voicemail ? $scope.detour.voicemail.id : null,
+        };
+
         ngProgress.start();
         $http.put(
             appConfig.urlRest + 'call_forward_settings/' + detourId,
-            $scope.detour,
+            data,
             {headers: {accept: 'application/json'}}
         ).then(
             UpdateSuccessHandler,
