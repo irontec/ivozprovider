@@ -5,6 +5,8 @@ namespace Agi\Action;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Model\Mailer\Message;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
@@ -28,7 +30,7 @@ class FaxReceiveStatusAction
     protected $entityTools;
 
     /**
-     * @var \Swift_Mailer
+     * @var MailerClientInterface
      */
     protected $mailer;
 
@@ -42,7 +44,7 @@ class FaxReceiveStatusAction
         Wrapper $agi,
         EntityManagerInterface $em,
         EntityTools $entityTools,
-        \Swift_Mailer $mailer
+        MailerClientInterface $mailer
     ) {
         $this->agi = $agi;
         $this->em = $em;
@@ -139,10 +141,6 @@ class FaxReceiveStatusAction
             $company = $fax->getCompany();
             $brand = $company->getBrand();
 
-            // Create attachment for PDF file
-            $attach = \Swift_Attachment::fromPath($faxInDto->getFilePath(), 'application/pdf');
-            $attach->setFilename($faxPdfName);
-
             // Get faxdata values for mail message body and subject
             $substitution = array(
                     '${FAX_NAME}'       => $fax->getName(),
@@ -175,15 +173,31 @@ class FaxReceiveStatusAction
             }
 
             // Create a new mail and attach the PDF file
-            $mail = new \Swift_Message();
-            $mail->setBody($body, $bodyType)
+            $message = new Message();
+            $message->setBody($body, $bodyType)
                 ->setSubject($subject)
-                ->setFrom($fromAddress, $fromName)
-                ->setTo($fax->getEmail())
-                ->attach($attach);
+                ->setFromName((string) $fromName)
+                ->setFromAddress((string) $fromAddress)
+                ->setToAddress((string) $fax->getEmail());
+
+            $faxPdfPath = $faxInDto->getFilePath();
+
+            if (!file_exists((string) $faxPdfPath)) {
+                $this->agi->error("Unable to find file %s", $faxPdfPath);
+                return;
+            }
+
+            // Create attachment for PDF file
+            $message->addAttachment(
+                $faxPdfPath,
+                $faxPdfName,
+                'application/pdf'
+            );
 
             // Send the email
-            $this->mailer->send($mail);
+            $this->mailer->send(
+                $message
+            );
         }
     }
 }
