@@ -46,6 +46,7 @@ services:
         arguments:
             $parser: '@PhpMimeMailParser\Parser'
             $mailer: '@mailer'
+            $localStoragePath: '%local_storage_path%/asterisk/spool/voicemail'
 
     Hints\Generator:
         arguments: ~
