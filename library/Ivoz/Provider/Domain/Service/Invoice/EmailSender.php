@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Model\Mailer\Message;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
@@ -12,14 +14,9 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
 {
     public const ON_COMMIT_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_LOW;
 
-    /**
-     * Sender constructor.
-     * @param EntityTools $entityTools
-     * @param \Swift_Mailer $mailer
-     */
     public function __construct(
         private EntityTools $entityTools,
-        private \Swift_Mailer $mailer,
+        private MailerClientInterface $mailer,
         private NotificationTemplateRepository $notificationTemplateRepository
     ) {
     }
@@ -31,19 +28,16 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return false|int
-     */
-    public function execute(InvoiceInterface $invoice)
+    public function execute(InvoiceInterface $invoice): void
     {
         $targetEmail = $this->getTargetEmail($invoice);
         if (!$targetEmail) {
-            return false;
+            return;
         }
 
         $notificationTemplateContent = $this->getNotificationTemplateContent($invoice);
         if (!$notificationTemplateContent) {
-            return false;
+            return;
         }
 
         // Get data from template
@@ -68,50 +62,44 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
             );
         }
 
-        $pdf = \Swift_Attachment::fromPath(
-            $pdfPath,
-            'application/pdf'
-        );
-        $pdf->setFilename(
-            $invoiceDto->getPdfBaseName()
-        );
-
         // Create a new mail and attach the PDF file
-        $mail = new \Swift_Message();
-        $mail->setBody($body, $bodyType)
+        $message = new Message();
+        $message->setBody($body, $bodyType)
             ->setSubject($subject)
-            ->setFrom($fromAddress, $fromName)
-            ->setTo($targetEmail)
-            ->attach($pdf);
+            ->setFromAddress((string) $fromAddress)
+            ->setFromName((string) $fromName)
+            ->setToAddress($targetEmail);
+
+        $message->setAttachment(
+            $pdfPath,
+            $invoiceDto->getPdfBaseName(),
+            'application/pdf',
+        );
 
         // Send the email
-        $successfulRecipients = $this->mailer->send($mail);
-
-        return $successfulRecipients;
+        $this->mailer->send(
+            $message
+        );
     }
 
-    /**
-     * @param InvoiceInterface $invoice
-     * @return bool|string
-     */
-    private function getTargetEmail(InvoiceInterface $invoice)
+    private function getTargetEmail(InvoiceInterface $invoice): ?string
     {
         if (!$invoice->hasChanged('status')) {
-            return false;
+            return null;
         }
 
         if ($invoice->getStatus() !== 'created') {
-            return false;
+            return null;
         }
 
         $scheduler = $invoice->getScheduler();
         if (!$scheduler) {
-            return false;
+            return null;
         }
 
         $email = $scheduler->getEmail();
         if (empty($email)) {
-            return false;
+            return null;
         }
 
         return $email;
