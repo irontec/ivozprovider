@@ -13906,16 +13906,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
 
 		-
-			message: "#^Parameter \\#1 \\$addresses of method Swift_Mime_SimpleMessage\\:\\:setFrom\\(\\) expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
-
-		-
-			message: "#^Parameter \\#1 \\$filename of method Swift_Mime_Attachment\\:\\:setFilename\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Invoice/EmailSender.php
-
-		-
 			message: "#^Binary operation \"\\+\" between 0\\|string and int results in an error\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
