@@ -81,7 +81,7 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         );
     }
 
-    function it_reconnectes_if_necessary()
+    function it_reconnects_if_necessary()
     {
         $this
             ->em
@@ -90,8 +90,8 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->connection
-            ->executeStatement('SELECT 1')
+            ->administratorRepository
+            ->find(0)
             ->willThrow(
                 new ConnectionLost(
                     new ConnectionFailed('something'),
@@ -289,8 +289,8 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->connection
-            ->executeStatement('SELECT 1')
+            ->administratorRepository
+            ->find(0)
             ->shouldBeCalled();
     }
 

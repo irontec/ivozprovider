@@ -38,7 +38,7 @@ class RegistrationChannelResolver
     ) {
         $connection = $this->em->getConnection();
         try {
-            $connection->executeStatement('SELECT 1');
+            $this->administratorRepository->find(0);
         } catch (ConnectionLost $e) {
             $connection->close();
             $connection->connect();
