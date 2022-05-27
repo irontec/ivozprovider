@@ -1915,11 +1915,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.13",
+            "version": "4.15.3",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core",
-                "reference": "d8b8f2a5485096731f737cc2043318ac4f26cb79"
+                "reference": "f9891cdf67f6db6b374edbc4bbc105d4a41d365c"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -1931,10 +1931,10 @@
                 "lexik/jwt-authentication-bundle": "^2.5",
                 "php": ">=8.0",
                 "ramsey/uuid": "^4.2",
-                "swiftmailer/swiftmailer": "6.2.*",
                 "symfony/expression-language": "^5.1",
                 "symfony/finder": "^5.1",
                 "symfony/http-foundation": "^5.1",
+                "symfony/mailer": "^5.4",
                 "symfony/serializer": "^5.1"
             },
             "conflict": {
@@ -1990,19 +1990,18 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.4.3",
+            "version": "4.5.2",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "a161dcbd2f5f802b16b3cf7269731faa9a1c79c3"
+                "reference": "8c7d1a042f422904f5bd0c392d07684cc11af450"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
-                "irontec/ivoz-core": "^4.13",
+                "irontec/ivoz-core": "^4.15",
                 "php": ">=7.4",
                 "symfony/monolog-bundle": "^3.5",
-                "symfony/proxy-manager-bridge": "^5.1",
-                "symfony/swiftmailer-bundle": "^3.1"
+                "symfony/proxy-manager-bridge": "^5.1"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2083,17 +2082,17 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.30",
+            "version": "2.5.31",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "01134f55f8e31402af1e2a7fe4efae12f73550ac"
+                "reference": "bb65338d586e8970c51c0eff0fada16ea4cbf19f"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
                 "incenteev/composer-parameter-handler": "^2.1",
-                "irontec/ivoz-core": "^4.3.3",
-                "irontec/ivoz-core-bundle": "^4.0",
+                "irontec/ivoz-core": "^4.15.3",
+                "irontec/ivoz-core-bundle": "^4.5.2",
                 "php": ">=8.0",
                 "symfony/asset": "^5.1",
                 "symfony/console": "^5.1",
@@ -3192,68 +3191,6 @@
                 "guid",
                 "identifier",
                 "uuid"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.7",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/swiftmailer/swiftmailer",
-                "reference": "15f7faf8508e04471f666633addacf54c0ab5933"
-            },
-            "require": {
-                "egulias/email-validator": "^2.0|^3.1",
-                "php": ">=7.0.0",
-                "symfony/polyfill-iconv": "^1.0",
-                "symfony/polyfill-intl-idn": "^1.10",
-                "symfony/polyfill-mbstring": "^1.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0"
-            },
-            "suggest": {
-                "ext-intl": "Needed to support internationalized email addresses"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.2-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "lib/swift_required.php"
-                ]
-            },
-            "autoload-dev": {
-                "psr-0": {
-                    "Swift_": "tests/unit"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Corbyn"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Swiftmailer, free feature-rich PHP mailer",
-            "homepage": "https://swiftmailer.symfony.com",
-            "keywords": [
-                "email",
-                "mail",
-                "mailer"
             ],
             "transport-options": {
                 "symlink": true,
@@ -4599,6 +4536,61 @@
             }
         },
         {
+            "name": "symfony/mailer",
+            "version": "v5.4.8",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/mailer",
+                "reference": "c6e7aa958cb2884d68562264f421ffea59cdad41"
+            },
+            "require": {
+                "egulias/email-validator": "^2.1.10|^3",
+                "php": ">=7.2.5",
+                "psr/event-dispatcher": "^1",
+                "psr/log": "^1|^2|^3",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/event-dispatcher": "^4.4|^5.0|^6.0",
+                "symfony/mime": "^5.2.6|^6.0",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/service-contracts": "^1.1|^2|^3"
+            },
+            "conflict": {
+                "symfony/http-kernel": "<4.4"
+            },
+            "require-dev": {
+                "symfony/http-client-contracts": "^1.1|^2|^3",
+                "symfony/messenger": "^4.4|^5.0|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps sending emails",
+            "homepage": "https://symfony.com",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "symfony/maker-bundle",
             "version": "v1.38.0",
             "dist": {
@@ -4663,6 +4655,66 @@
                 "generator",
                 "scaffold",
                 "scaffolding"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v6.0.8",
+            "dist": {
+                "type": "path",
+                "url": "../library/vendor/symfony/mime",
+                "reference": "c1701e88ad0ca49fc6ad6cdf360bc0e1209fb5e1"
+            },
+            "require": {
+                "php": ">=8.0.2",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0"
+            },
+            "conflict": {
+                "egulias/email-validator": "~3.0.0",
+                "phpdocumentor/reflection-docblock": "<3.2.2",
+                "phpdocumentor/type-resolver": "<1.4.0",
+                "symfony/mailer": "<5.4"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10|^3.1",
+                "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/property-access": "^5.4|^6.0",
+                "symfony/property-info": "^5.4|^6.0",
+                "symfony/serializer": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows manipulating MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
             ],
             "transport-options": {
                 "symlink": true,
@@ -4953,68 +5005,6 @@
             }
         },
         {
-            "name": "symfony/polyfill-iconv",
-            "version": "v1.24.0",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/symfony/polyfill-iconv",
-                "reference": "f1aed619e28cb077fc83fac8c4c0383578356e40"
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "provide": {
-                "ext-iconv": "*"
-            },
-            "suggest": {
-                "ext-iconv": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.23-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Iconv\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for the Iconv extension",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "iconv",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
             "name": "symfony/polyfill-intl-grapheme",
             "version": "v1.24.0",
             "dist": {
@@ -5076,7 +5066,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.24.0",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-icu",
@@ -5142,7 +5132,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.24.0",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-idn",
@@ -6368,64 +6358,6 @@
                 "utf-8",
                 "utf8"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "symfony/swiftmailer-bundle",
-            "version": "v3.5.4",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "9daab339f226ac958192bf89836cb3378cc0e652"
-            },
-            "require": {
-                "php": ">=7.1",
-                "swiftmailer/swiftmailer": "^6.1.3",
-                "symfony/config": "^4.4|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
-                "symfony/http-kernel": "^4.4|^5.0"
-            },
-            "conflict": {
-                "twig/twig": "<1.41|>=2.0,<2.10"
-            },
-            "require-dev": {
-                "symfony/console": "^4.4|^5.0",
-                "symfony/framework-bundle": "^4.4|^5.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0",
-                "symfony/yaml": "^4.4|^5.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "3.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Bundle\\SwiftmailerBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony SwiftmailerBundle",
-            "homepage": "http://symfony.com",
             "transport-options": {
                 "symlink": true,
                 "relative": true

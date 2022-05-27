@@ -6,10 +6,14 @@ use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
+use Ivoz\Core\Domain\Model\Mailer\Attachment;
+use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use PhpMimeMailParser\Parser;
+use Psr\Log\LoggerInterface;
 use RouteHandlerAbstract;
+use Symfony\Component\Mailer\MailerInterface;
 
 class Sender extends RouteHandlerAbstract
 {
@@ -25,35 +29,13 @@ class Sender extends RouteHandlerAbstract
     const VM_DATE        = 9;
     const VM_MESSAGEFILE = 10;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
-
-    /**
-     * @var \Swift_Mailer
-     */
-    protected $mailer;
-
-    /**
-     * @var Parser
-     */
-    protected $parser;
-
-    /**
-     * Sender constructor.
-     * @param EntityManagerInterface $em
-     * @param Parser $parser
-     * @param \Swift_Mailer $mailer
-     */
     public function __construct(
-        EntityManagerInterface $em,
-        Parser $parser,
-        \Swift_Mailer $mailer
+        private EntityManagerInterface $em,
+        private Parser $parser,
+        private MailerInterface $mailer,
+        private LoggerInterface $logger,
+        private string $localStoragePath,
     ) {
-        $this->em = $em;
-        $this->parser = $parser;
-        $this->mailer = $mailer;
     }
 
     /**
@@ -134,28 +116,50 @@ class Sender extends RouteHandlerAbstract
         $bodyType = $notificationTemplateContent->getBodyType();
         $body = $notificationTemplateContent->getBody();
         $subject = $notificationTemplateContent->getSubject();
+        $toAddress = $voicemail->getEmail();
 
         foreach ($substitution as $search => $replace) {
             $body = str_replace($search, $replace, $body);
             $subject = str_replace($search, $replace, $subject);
         }
 
+        $this->logger->info(
+            "Preparing email to " . $toAddress
+        );
+
         // Create a new mail and attach the PDF file
-        $mail = new \Swift_Message();
-        $mail->setBody($body, $bodyType)
+        $message = new Message();
+        $message->setBody($body, $bodyType)
             ->setSubject($subject)
-            ->setFrom($fromAddress, $fromName)
-            ->setTo($voicemail->getEmail());
+            ->setFromAddress((string) $fromAddress)
+            ->setFromName((string) $fromName)
+            ->setToAddress((string) $toAddress);
 
         $attachments = $this->parser->getAttachments();
         foreach ($attachments as $attachment) {
-            $wavContent = $attachment->getContent();
-            $wavName = sprintf("msg%04d.wav", $vmdata[self::VM_MSGNUM]);
-            $att = new \Swift_Attachment($wavContent, $wavName, "audio/x-wav");
-            $att->setEncoder(new \Swift_Mime_ContentEncoder_Base64ContentEncoder());
-            $mail->attach($att);
+            $wavName = sprintf("msg%04d.wav", (int) $vmdata[self::VM_MSGNUM] - 1);
+            $wavFilePath = sprintf(
+                "%s/%s/%s/INBOX/%s",
+                $this->localStoragePath,
+                $vmdata[self::VM_CONTEXT],
+                $vmdata[self::VM_MAILBOX],
+                $wavName,
+            );
+
+            $message->addAttachment(
+                $wavFilePath,
+                $wavName,
+                "audio/x-wav"
+            );
         }
+
         // Send the email
-        $this->mailer->send($mail);
+        $this->mailer->send(
+            $message->toEmail()
+        );
+
+        $this->logger->info(
+            "Voicemail sent to " . $toAddress
+        );
     }
 }
