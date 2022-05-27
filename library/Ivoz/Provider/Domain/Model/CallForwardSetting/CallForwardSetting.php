@@ -46,6 +46,19 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
         $this->sanitizeRouteValues();
 
+        // Retail target type in Call Forward Settings is an exception in routes naming convention and must
+        // be checked individually instead of using RoutableTrait::sanitizeRouteValues()
+        // @see CallForwardSettings::getCallForwardTarget()
+        if ($this->getRouteType() == CallForwardSettingInterface::TARGETTYPE_RETAIL) {
+            if (!$this->cfwToRetailAccount) {
+                throw new \DomainException(
+                    "Target Retail Account (cfwToRetailAccountId) is required for targetType 'retail'"
+                );
+            }
+        } else {
+            $this->setCfwToRetailAccount(null);
+        }
+
         // Timeout only makes sense in NoAnswer Call Forwards
         if ($this->callForwardType != self::CALLFORWARDTYPE_NOANSWER) {
             $this->setNoAnswerTimeout(0);
@@ -57,6 +70,9 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
             $this->setDdi(null);
 
             return;
+        } else {
+            // Force filter type in Retail account Call Forward Settings
+            $this->setCallTypeFilter(self::CALLTYPEFILTER_BOTH);
         }
 
         $isValidRetailCfs = in_array(
