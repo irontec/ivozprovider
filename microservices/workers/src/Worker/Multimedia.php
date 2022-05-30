@@ -26,10 +26,13 @@ class Multimedia
         private EntityTools $entityTools,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     /**
@@ -143,10 +146,9 @@ class Multimedia
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [RecoderJobInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);

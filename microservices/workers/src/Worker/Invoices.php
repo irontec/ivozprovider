@@ -29,10 +29,13 @@ class Invoices
         private Generator $generator,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     public function create(): ?Response
@@ -118,10 +121,9 @@ class Invoices
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [InvoicerJobInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             return intval(end($response));

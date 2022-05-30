@@ -29,10 +29,13 @@ class KamRpc
         private EntityManagerInterface $em,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     public function send(): Response
@@ -180,10 +183,9 @@ class KamRpc
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [$channel],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);

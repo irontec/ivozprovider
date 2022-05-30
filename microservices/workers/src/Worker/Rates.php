@@ -45,11 +45,14 @@ class Rates
         private EntityTools $entityTools,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private Logger $logger,
         private ReloadService $reloadService
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     public function import(): Response
@@ -415,10 +418,9 @@ class Rates
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [RatesImporterJobInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);
