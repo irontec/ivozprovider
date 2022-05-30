@@ -22,6 +22,7 @@ services:
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
 
     Worker\Rates:
         public: true
@@ -29,17 +30,20 @@ services:
             $em: '@=service("doctrine.orm.entity_manager")'
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
 
     Worker\Invoices:
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
         public: true
 
     Worker\Cgrates:
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
         public: true
 
     Worker\KamRpc:
@@ -47,16 +51,19 @@ services:
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
 
     Worker\AsteriskDialplan:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
 
     Worker\AsteriskHintUpdater:
         public: true
         arguments:
             $logger: '@monolog.logger.workers'
             $redisDb: '%redis_jobs_db%'
+            $redisTimeout: '%redis_timeout%'
 

@@ -21,10 +21,13 @@ class AsteriskHintUpdater
         private ARIConnector $ariConnector,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     public function send(): Response
@@ -66,10 +69,9 @@ class AsteriskHintUpdater
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [$channel],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);

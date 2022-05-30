@@ -21,10 +21,13 @@ class AsteriskDialplan
         private ARIConnector $ariConnector,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     public function reload(): Response
@@ -59,10 +62,9 @@ class AsteriskDialplan
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $redisMaster->blPop(
                 [$channel],
-                $timeoutSeconds
+                $this->redisTimeout
             );
         } catch (\RedisException $e) {
             $this->logger->error('Asterisk worker timeout: ' . $e->getMessage());

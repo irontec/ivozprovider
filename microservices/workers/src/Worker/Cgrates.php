@@ -21,10 +21,13 @@ class Cgrates
         private ReloadService $reloadService,
         private RedisMasterFactory $redisMasterFactory,
         private int $redisDb,
+        private int $redisTimeout,
         private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
     public function reload(): Response
@@ -80,10 +83,9 @@ class Cgrates
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [RaterReloadInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);
