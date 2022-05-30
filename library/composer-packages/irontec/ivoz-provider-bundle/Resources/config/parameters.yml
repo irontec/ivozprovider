@@ -28,4 +28,5 @@ parameters:
     sentinels:
         - { host: 'cache.ivozprovider.local', port: '26379' }
     redis_jobs_db: 2
+    redis_timeout: 3600
     behat.feature_context.admin_repository: 'Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository'
