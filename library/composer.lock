@@ -2754,16 +2754,16 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.31",
+            "version": "2.5.32",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "b6acb4f129f5f35036d974534364121e2bbecd3c"
+                "reference": "ba63651c4810369b6142ca043255ca9cee17982a"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
                 "incenteev/composer-parameter-handler": "^2.1",
-                "irontec/ivoz-core": "^4.15.2",
+                "irontec/ivoz-core": "^4.15.3",
                 "irontec/ivoz-core-bundle": "^4.5.2",
                 "php": ">=8.0",
                 "symfony/asset": "^5.1",
