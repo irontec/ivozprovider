@@ -2236,11 +2236,6 @@ parameters:
 			path: Ivoz/Kam/Infrastructure/Kamailio/RpcClient.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Kamailio\\\\TrunksClient\\:\\:getActiveCalls\\(\\) has parameter \\$payload with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Infrastructure/Kamailio/TrunksClient.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Infrastructure\\\\Kamailio\\\\TrunksClient\\:\\:getLcrGatewayInfo\\(\\) has parameter \\$gw_id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Infrastructure/Kamailio/TrunksClient.php
