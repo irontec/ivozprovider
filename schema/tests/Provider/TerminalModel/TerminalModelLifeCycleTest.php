@@ -23,8 +23,8 @@ class TerminalModelLifeCycleTest extends KernelTestCase
             ->setDescription('Test SIP Model')
             ->setGenericTemplate('')
             ->setSpecificTemplate('')
-            ->setGenericUrlPattern('')
-            ->setSpecificUrlPattern('')
+            ->setGenericUrlPattern('genericUrlPattern')
+            ->setSpecificUrlPattern('specificUrlPattern')
             ->setTerminalManufacturerId(1);
 
         return $terminalModelDto;
@@ -73,7 +73,7 @@ class TerminalModelLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_persists_routing_tags()
+    public function it_persists_terminal_model()
     {
         $terminalModelRepository = $this->em
             ->getRepository(TerminalModel::class);

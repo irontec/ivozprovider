@@ -74,6 +74,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      */
     public function setPassword(string $password): static
     {
+        $password = trim($password);
         Assertion::regex(
             $password,
             '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'

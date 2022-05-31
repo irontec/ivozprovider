@@ -51,7 +51,7 @@ production:
         options:
           title: _("Options")
           screens:
-            retailAccountsEdit_screen: $[${auth.acls.RetailAccounts.update} && ${auth.canSeeBrand} && ${auth.companyRetail}]
+            retailAccountsEdit_screen: $[${auth.acls.RetailAccounts.update} && ${auth.companyRetail}]
             ddisList_screen: ${auth.acls.DDIs.read}
             callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.companyRetail}]
           dialogs:
@@ -151,6 +151,8 @@ production:
         name: jquery.passwordgenedit.js
       plugin: passwordgen
       fields:
+        readOnly:
+          name: ${auth.isCompanyOperator}
         order:
           <<: *retailAccounts_orderLink
         blacklist:

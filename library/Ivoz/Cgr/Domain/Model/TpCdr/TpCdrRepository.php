@@ -25,4 +25,10 @@ interface TpCdrRepository extends ObjectRepository, Selectable
      * @return TpCdrInterface | null
      */
     public function getCarrierRunByCgrid(string $cgrid);
+
+    /**
+     * @param int[] $cgrids
+     * @return int affected rows
+     */
+    public function fixCorruptedByCgrids(array $cgrids): int;
 }

@@ -78,6 +78,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      */
     public function setPassword(?string $password = null): static
     {
+        $password = trim($password);
         if (!empty($password)) {
             Assertion::regex(
                 $password,

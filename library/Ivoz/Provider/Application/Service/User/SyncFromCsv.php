@@ -6,6 +6,8 @@ namespace Ivoz\Provider\Application\Service\User;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
@@ -96,6 +98,13 @@ class SyncFromCsv
                         $company,
                         ...$outboundDdiArgs
                     );
+
+                    if ($ddi->isNew() || $ddi->getRouteType() === null) {
+                        $ddi
+                            ->setRouteType(DdiInterface::ROUTETYPE_USER)
+                            ->setUser($user);
+                    }
+
                     $entities[] = $ddi;
                 }
 

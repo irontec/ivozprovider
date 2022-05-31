@@ -823,6 +823,22 @@ msgstr "Texto en pantalla"
 msgid "Distribute method"
 msgstr "Método de distribución"
 
+msgid ""
+"Do NOT select any codec before reading <a href=/doc/en/administration_portal/"
+"brand/clients/retail.html target=_blank>documentation</a>."
+msgstr ""
+"No seleccionar ningún codec sin leer la <a href=/doc/en/"
+"administration_portal/brand/clients/retail.html target=_blank>documentacion</"
+"a>."
+
+msgid ""
+"Do NOT select any codec before reading <a href=/doc/en/administration_portal/"
+"brand/clients/wholesale.html target=_blank>documentation</a>."
+msgstr ""
+"No seleccionar ningún codec sin leer la <a href=/doc/en/"
+"administration_portal/brand/clients/wholesale.html "
+"target=_blank>documentacion</a>."
+
 msgid "Do not disturb"
 msgstr "No molestar"
 

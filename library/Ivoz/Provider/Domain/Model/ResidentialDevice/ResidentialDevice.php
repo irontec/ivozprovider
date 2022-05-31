@@ -85,6 +85,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      */
     public function setPassword(?string $password = null): static
     {
+        $password = trim($password);
         if (!empty($password)) {
             Assertion::regex(
                 $password,

@@ -1507,11 +1507,16 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: >-
-        "ROLE_COMPANY_ADMIN" in roles
-        && user.isRetailAdmin()
-        && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isRetailAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:

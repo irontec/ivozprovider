@@ -4,11 +4,35 @@ ivozprovider (3.0~3.0.0) UNRELEASED; urgency=medium
 
  -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Mon, 12 Apr 2021 12:06:11 +0100
 
-ivozprovider (2.18~2.18.1) UNRELEASED; urgency=medium
+ivozprovider (2.21~2.21.0) UNRELEASED; urgency=medium
+
+  * Version bump to 2.21.0
+
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 23 Mar 2022 17:43:31 +0100
+
+ivozprovider (2.20~2.20.1) stable; urgency=medium
+
+  * Version bump to 2.20.1
+
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 23 Feb 2022 18:25:56 +0100
+
+ivozprovider (2.20~2.20.0) stable; urgency=medium
+
+  * Version bump to 2.20.0
+
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 23 Feb 2022 18:25:55 +0100
+
+ivozprovider (2.19~2.19.0) stable; urgency=medium
+
+  * Version bump to 2.19.0
+
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Fri, 10 Dec 2021 11:04:45 +0100
+
+ivozprovider (2.18~2.18.1) stable; urgency=medium
 
   * Version bump to 2.18.1
 
- -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Wed, 04 Aug 2021 15:39:31 +0200
+ -- Irontec IvozProvider Team <ivozprovider@irontec.com>  Tue, 28 Sep 2021 16:56:45 +0200
 
 ivozprovider (2.18~2.18.0) stable; urgency=medium
 

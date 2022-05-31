@@ -1,4 +1,24 @@
 # Changelog
+## 2.19.0
+* Endpoints:
+    - /brands:
+      - Added currency|currency[] filter parameters
+    - /currencies:
+      - Added [GET] endpoint
+
+* Models:
+    - Brand:
+      - Added currency required property
+    - Brand-detailed:
+      - Added currency required property 
+    - Brand-withFeatures:
+      - Added currency required property
+    - Carrier:
+      - Added currency property
+    - Company:
+      - Added currency property
+    - Currency:
+      - Added model
 
 ## 2.18.1
 * Endpoints:

@@ -98,6 +98,15 @@ class BrandDto extends BrandDtoAbstract
     {
         $contextProperties = self::getPropertyMap($context, $role);
 
+        if (!isset($data['currency'])) {
+            /**
+             * @deprecated
+             * just for compatibility reasons
+             * It will be removed in v3.0
+             */
+            $data['currency'] = 1;
+        }
+
         if ($context === self::CONTEXT_SIMPLE) {
             $contextProperties['logo'][] = 'path';
         }

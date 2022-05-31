@@ -50,7 +50,8 @@ function setup_mysql_access()
 
 function setup_mysql_replication()
 {
-    sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"      /etc/mysql/mysql.conf.d/mysqld.cnf
+    # MySQL, MariaDB, Percona XtraDB
+    sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"   /etc/mysql/*.conf.d/mysqld.cnf
 }
 
 #######################################################################################################################

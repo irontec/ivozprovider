@@ -27,6 +27,11 @@ RUN echo "$UNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN apt-key --keyring /usr/share/keyrings/debian-archive-keyring.gpg del ED6D65271AACF0FF15D123036FB2A1C265FFB764
 RUN apt-key --keyring /usr/share/keyrings/debian-archive-keyring.gpg del 6FB2A1C265FFB764
 
+# Update debian keyring
+RUN wget -q http://ftp.us.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2021.07.26_all.deb
+RUN wget -q http://ftp.us.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2021.1.1_all.deb
+RUN dpkg -i debian-*keyring*.deb
+
 # Base project
 USER $UNAME
 

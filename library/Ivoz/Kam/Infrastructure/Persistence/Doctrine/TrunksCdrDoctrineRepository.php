@@ -3,6 +3,7 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineQueryRunner;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
@@ -10,6 +11,9 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
+use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * TrunksCdrDoctrineRepository
@@ -114,6 +118,83 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ->setParameter(':parserScheduledAt', $now->format('Y-m-d H:i:s'))
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    /**
+     * @inheritdoc
+     * @see TrunksCdrRepository::getCgridsByBillableCallIds
+     */
+    public function getCgridsByBillableCallIds(array $billableCallIds): array
+    {
+        $qb = $this->_em
+            ->createQueryBuilder()
+            ->select('TrunksCdr.cgrid')
+            ->from(BillableCall::class, 'BillableCall')
+            ->innerJoin(
+                TrunksCdr::class,
+                'TrunksCdr',
+                'WITH',
+                'BillableCall.trunksCdr = TrunksCdr.id'
+            )
+            ->where('BillableCall.id in (:ids)')
+            ->andWhere(
+                'TrunksCdr.cgrid IS NOT NULL'
+            )
+            ->setParameter(':ids', $billableCallIds);
+
+        $cgrids = array_column(
+            $qb->getQuery()->getResult(),
+            'cgrid'
+        );
+
+        return $cgrids;
+    }
+
+    /**
+     * @inheritdoc
+     * @see TrunksCdrRepository::resetOrphanCgrids
+     */
+    public function resetOrphanCgrids(array $cgrids): int
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self.id, tpCdr.cgrid')
+            ->leftJoin(
+                TpCdr::class,
+                'tpCdr',
+                'WITH',
+                'self.cgrid = tpCdr.cgrid'
+            )
+            ->where('self.cgrid in (:cgrids)')
+            ->andWhere('tpCdr.cgrid IS NULL')
+            ->setParameter(':cgrids', $cgrids);
+
+        $results = $qb->getQuery()->getResult();
+
+        $idsToReset = array_map(
+            'intval',
+            array_column(
+                $results,
+                'id'
+            )
+        );
+
+        if (empty($idsToReset)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.cgrid', ':nullValue')
+            ->setParameter(':nullValue', null)
+            ->where('self.id in (:idsToReset)')
+            ->setParameter(':idsToReset', $idsToReset);
 
         return $this->queryRunner->execute(
             $this->getEntityName(),

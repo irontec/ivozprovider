@@ -38,10 +38,19 @@ class Sender extends RouteHandlerAbstract
     ) {
     }
 
+    public function process()
+    {
+        try {
+            $this->processSendMail();
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
     /**
      * @throws \InvalidArgumentException
      */
-    public function process()
+    public function processSendMail()
     {
         // Load Email data
         $this->parser->setStream(fopen("php://stdin", "r"));

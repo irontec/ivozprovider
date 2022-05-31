@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Brand;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
@@ -45,6 +46,11 @@ class BrandSpec extends ObjectBehavior
      */
     private $transformer;
 
+    /**
+     * @var CurrencyInterface
+     */
+    protected $currency;
+
     public function let()
     {
         $this->transformer = new DtoToEntityFakeTransformer();
@@ -70,6 +76,8 @@ class BrandSpec extends ObjectBehavior
 
         $timezoneDto = new TimezoneDto();
         $this->timezone = $this->getTestDouble(TimezoneInterface::class);
+        $currencyDto = new CurrencyDto();
+        $this->currency = $this->getTestDouble(CurrencyInterface::class);
 
         $this->dto = new BrandDto();
 
@@ -84,6 +92,7 @@ class BrandSpec extends ObjectBehavior
             ->setInvoiceCountry('')
             ->setInvoiceRegistryData('')
             ->setDefaultTimezone($timezoneDto)
+            ->setCurrency($currencyDto)
             ->setLanguage($languageDto);
 
         $this->transformer->appendFixedTransforms([
