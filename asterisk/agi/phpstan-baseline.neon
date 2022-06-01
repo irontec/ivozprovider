@@ -1566,11 +1566,6 @@ parameters:
 			path: src/Voicemail/Sender.php
 
 		-
-			message: "#^Method Voicemail\\\\Sender\\:\\:process\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Voicemail/Sender.php
-
-		-
 			message: "#^Parameter \\#1 \\$language of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateInterface\\:\\:getContentsByLanguage\\(\\) expects Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Language\\\\LanguageInterface\\|null given\\.$#"
 			count: 1
 			path: src/Voicemail/Sender.php
