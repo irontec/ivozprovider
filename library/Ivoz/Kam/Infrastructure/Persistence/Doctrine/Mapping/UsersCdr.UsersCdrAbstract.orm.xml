@@ -3,6 +3,7 @@
   <mapped-superclass name="Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract" table="users_cdr_abstract">
     <indexes>
       <index name="usersCdr_brandId" columns="brandId"/>
+      <index name="usersCdr_startTime" columns="start_time"/>
       <index name="usersCdr_companyId_hidden_startTime" columns="companyId,hidden,start_time"/>
       <index name="usersCdr_userId" columns="userId"/>
       <index name="usersCdr_friendId" columns="friendId"/>
