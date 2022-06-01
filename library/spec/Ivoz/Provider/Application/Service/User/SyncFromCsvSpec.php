@@ -263,6 +263,14 @@ EOE;
             DdiInterface::class
         );
 
+        $this->getterProphecy(
+            $this->ddi,
+            [
+                'isNew' => true,
+            ],
+            false
+        );
+
         $this
             ->ddiFactory
             ->fromMassProvisioningCsv(
