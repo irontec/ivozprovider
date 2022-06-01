@@ -33,7 +33,7 @@ interface TrunksClientInterface
      * @param int $companyId
      * @return int[] inbound/outbound
      */
-    public function getCompanyActiveCalls(int $companyId): array;
+    public function getCompanyActiveCalls(int $brandId, int $companyId): array;
 
     /**
      * @param int $brandId

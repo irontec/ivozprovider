@@ -317,11 +317,16 @@ class WsServer extends AbstractWsServer
         $this->logger->debug(
             "[SETEX] " . $channel . " " . $logInfo
         );
+
+        $ttl = $event === AbstractCall::IN_CALL
+            ? self::REDIS_KEYS_IN_CALL_TTL
+            : self::REDIS_KEYS_TTL;
+
         $this
             ->controlRedisClient
             ->setEx(
                 $channel,
-                self::REDIS_KEYS_TTL,
+                $ttl,
                 json_encode($data)
             );
     }
