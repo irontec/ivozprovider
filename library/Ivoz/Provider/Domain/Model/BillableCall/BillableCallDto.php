@@ -75,7 +75,6 @@ class BillableCallDto extends BillableCallDtoAbstract
         return $response;
     }
 
-
     /**
      * @param array $response
      * @return array
