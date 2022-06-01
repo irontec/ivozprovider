@@ -22,6 +22,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $this->it_finds_one_by_callid();
         $this->it_finds_unparsedCalls();
         $this->it_resets_parsed_calls();
+        $this->it_get_cgrids_by_billableCalls();
         $this->it_resets_orphan_cgrids();
     }
 
@@ -46,7 +47,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
             ->getRepository(TrunksCdr::class);
 
         $result = $repository
-            ->findByCallid('1262640e-18d5-4641-880d-e4f411786711');
+            ->findByCallid('017cc7c8-eb38-4bbd-9318-524a274f7000');
 
         $this->assertCount(
             1,
@@ -67,7 +68,7 @@ class TrunksCdrRepositoryTest extends KernelTestCase
             ->getRepository(TrunksCdr::class);
 
         $result = $repository
-            ->findOneByCallid('1262640e-18d5-4641-880d-e4f411786711');
+            ->findOneByCallid('017cc7c8-eb38-4bbd-9318-524a274f7000');
 
         $this->assertInstanceOf(
             TrunksCdrInterface::class,
@@ -120,6 +121,33 @@ class TrunksCdrRepositoryTest extends KernelTestCase
         $this->assertNotEmpty($result);
     }
 
+    public function it_get_cgrids_by_billableCalls()
+    {
+        /** @var TrunksCdrRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(TrunksCdr::class);
+
+        $cgrids = $repository
+            ->getCgridsByBillableCallIds([
+                1
+            ]);
+
+        $this->assertCount(
+            1,
+            $cgrids
+        );
+
+        $this->assertIsArray(
+            $cgrids
+        );
+
+        $this->assertEquals(
+            '5a364b1fe35e00fb2ac1923b43f84eeb78400e01',
+            $cgrids[0]
+        );
+    }
+
     public function it_resets_orphan_cgrids()
     {
         /** @var TrunksCdrRepository $repository */
@@ -128,7 +156,11 @@ class TrunksCdrRepositoryTest extends KernelTestCase
             ->getRepository(TrunksCdr::class);
 
         $affectedRows = $repository
-            ->resetOrphanCgrids([1,2,3]);
+            ->resetOrphanCgrids([
+                '5a364b1fe35e00fb2ac1923b43f84eeb78400e01',
+                '5a364b1fe35e00fb2ac1923b43f84eeb78400e02',
+                '5a364b1fe35e00fb2ac1923b43f84eeb78400e03',
+            ]);
 
         $this->assertEquals(
             1,
