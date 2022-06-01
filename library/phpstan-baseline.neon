@@ -1121,11 +1121,6 @@ parameters:
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/ProcessExternalCdr.php
 
 		-
-			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\RerateCallService\\:\\:execute\\(\\) has parameter \\$pks with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/RerateCallService.php
-
-		-
 			message: "#^Method Ivoz\\\\Cgr\\\\Infrastructure\\\\Cgrates\\\\Service\\\\RerateCallService\\:\\:rerate\\(\\) has parameter \\$cgrIds with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Cgr/Infrastructure/Cgrates/Service/RerateCallService.php
@@ -2071,11 +2066,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Service/TrunksAddress/UpdateByDdiProviderAddress.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksCdr\\\\RerateCallServiceInterface\\:\\:execute\\(\\) has parameter \\$pks with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Service/TrunksCdr/RerateCallServiceInterface.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Service\\\\TrunksCdr\\\\TrunksCdrLifecycleServiceCollection\\:\\:addService\\(\\) has parameter \\$service with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Service/TrunksCdr/TrunksCdrLifecycleServiceCollection.php
@@ -3012,11 +3002,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallRepository\\:\\:getGeneratorByConditions\\(\\) return type has no value type specified in iterable type Generator\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BillableCall\\\\BillableCallRepository\\:\\:getUnratedCallIdsByInvoice\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BillableCall/BillableCallRepository.php
 
@@ -14542,11 +14527,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallDoctrineRepository\\:\\:getGeneratorByInvoice\\(\\) return type has no value type specified in iterable type Generator\\.$#"
-			count: 1
-			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallDoctrineRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Infrastructure\\\\Persistence\\\\Doctrine\\\\BillableCallDoctrineRepository\\:\\:getUnratedCallIdsByInvoice\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Infrastructure/Persistence/Doctrine/BillableCallDoctrineRepository.php
 

@@ -55,6 +55,11 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     public function execute(array $pks)
     {
         $error = false;
+
+        $this
+            ->trunksCdrRepository
+            ->resetOrphanCgrids($pks);
+
         $cgrIds = $this
             ->billableCallRepository
             ->findRerateableCgridsInGroup($pks);

@@ -71,7 +71,7 @@ interface BillableCallRepository extends ObjectRepository, Selectable
 
     /**
      * @param InvoiceInterface $invoice
-     * @return array
+     * @return array<int>
      */
     public function getUnratedCallIdsByInvoice(InvoiceInterface $invoice): array;
 
