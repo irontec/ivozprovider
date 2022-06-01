@@ -30,3 +30,5 @@ doc/doctrees/
 kamailio/users/config/kamailio-selfsigned.key
 kamailio/trunks/config/kamailio-selfsigned.key
 
+kamailio/users/config/listeners.cfg
+kamailio/trunks/config/listeners.cfg
