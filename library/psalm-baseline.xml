@@ -156,11 +156,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Ast/Domain/Service/PsEndpoint/PsEndpointLifecycleEventHandlerInterface.php">
-    <MissingReturnType occurrences="1">
-      <code>execute</code>
-    </MissingReturnType>
-  </file>
   <file src="Ivoz/Ast/Domain/Service/PsEndpoint/PsEndpointLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
@@ -2935,20 +2930,23 @@
     <InvalidScalarArgument occurrences="1">
       <code>$port</code>
     </InvalidScalarArgument>
-    <LessSpecificReturnStatement occurrences="1">
+    <LessSpecificReturnStatement occurrences="2">
+      <code>parent::setAuthPassword($authPassword)</code>
       <code>parent::setIp($ip)</code>
     </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>CarrierServer</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
+    <MoreSpecificReturnType occurrences="2">
+      <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="2">
       <code>$this-&gt;getOutboundProxy()</code>
       <code>$this-&gt;getSipProxy()</code>
     </PossiblyNullArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
+    <PossiblyUnusedReturnValue occurrences="2">
+      <code>static</code>
       <code>static</code>
     </PossiblyUnusedReturnValue>
   </file>
@@ -4022,9 +4020,15 @@
     </TooManyArguments>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistration.php">
+    <LessSpecificReturnStatement occurrences="1">
+      <code>parent::setAuthPassword($authPassword)</code>
+    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>DdiProviderRegistration</code>
     </MethodSignatureMismatch>
+    <MoreSpecificReturnType occurrences="1">
+      <code>static</code>
+    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationAbstract.php">
     <MixedArgument occurrences="2">
@@ -8596,10 +8600,6 @@
     <InvalidArgument occurrences="1">
       <code>array_values($substitution)</code>
     </InvalidArgument>
-    <PossiblyNullArgument occurrences="2">
-      <code>$fromAddress</code>
-      <code>$invoiceDto-&gt;getPdfBaseName()</code>
-    </PossiblyNullArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Invoice/Generator.php">
     <DocblockTypeContradiction occurrences="2">
@@ -8896,25 +8896,10 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/RouteLock/RouteLockLifecycleEventHandlerInterface.php">
-    <MissingReturnType occurrences="1">
-      <code>execute</code>
-    </MissingReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/RouteLock/RouteLockLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/RouteLock/SendDialplanReload.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$routeLock</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/RouteLock/SendUpdateHintState.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$routeLock</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/RoutingPattern/RoutingPatternLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
