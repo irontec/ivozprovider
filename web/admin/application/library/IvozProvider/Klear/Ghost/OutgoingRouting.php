@@ -3,8 +3,8 @@
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto;
 
@@ -23,12 +23,12 @@ class IvozProvider_Klear_Ghost_OutgoingRouting extends KlearMatrix_Model_Field_G
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         switch ($outgoingRouting->getRoutingMode()) {
-            case OutgoingRouting::MODE_STATIC:
+            case OutgoingRoutingInterface::ROUTINGMODE_STATIC:
                 $carrierIds = array(
                     $outgoingRouting->getCarrierId()
                 );
                 break;
-            case OutgoingRouting::MODE_LCR:
+            case OutgoingRoutingInterface::ROUTINGMODE_LCR:
                 /** @var OutgoingRoutingRelCarrierDto[] $outgoingRoutingRelCarriers */
                 $outgoingRoutingRelCarriers = $dataGateway->findBy(OutgoingRoutingRelCarrier::class, [
                     "OutgoingRoutingRelCarrier.outgoingRouting = " . $outgoingRouting->getId()
@@ -41,7 +41,7 @@ class IvozProvider_Klear_Ghost_OutgoingRouting extends KlearMatrix_Model_Field_G
                     $outgoingRoutingRelCarriers
                 );
                 break;
-            case OutgoingRouting::ROUTINGMODE_BLOCK:
+            case OutgoingRoutingInterface::ROUTINGMODE_BLOCK:
                 return "";
             default:
                 return Klear_Model_Gettext::gettextCheck('_("Invalid route mode")');
