@@ -170,6 +170,16 @@ const map: ExtendedRouteMap = [
         entity: entities.ConferenceRoom,
         isAccessible: (aboutMe) => aboutMe.vpbx && aboutMe.features.includes(ClientFeatures.conferences),
       },
+      {
+        entity: entities.Voicemail,
+        isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
+        children: [
+          {
+            entity: entities.VoicemailMessage,
+            filterBy: 'voicemail',
+          },
+        ],
+      },
     ],
   },
   {
@@ -233,16 +243,6 @@ const map: ExtendedRouteMap = [
       {
         entity: entities.CallAcl,
         isAccessible: (aboutMe) => aboutMe.vpbx,
-      },
-      {
-        entity: entities.Voicemail,
-        isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
-        children: [
-          {
-            entity: entities.VoicemailMessage,
-            filterBy: 'voicemail',
-          },
-        ],
       },
       {
         entity: entities.Location,
