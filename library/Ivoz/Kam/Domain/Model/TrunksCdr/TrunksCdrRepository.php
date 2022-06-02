@@ -25,10 +25,16 @@ interface TrunksCdrRepository extends ObjectRepository, Selectable
 
     /**
      * @param array<int> $billableCallIds
+     * @return array<int>
+     */
+    public function getCgridsByBillableCallIds(array $billableCallIds): array;
+
+    /**
+     * @param array<int> $cgrids
      * @return int affected rows
      * @psalm-suppress PossiblyUnusedReturnValue
      */
-    public function resetOrphanCgrids(array $billableCallIds): int;
+    public function resetOrphanCgrids(array $cgrids): int;
 
     /**
      * @param string $callid
