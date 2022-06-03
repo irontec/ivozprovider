@@ -175,6 +175,7 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
                 'getCallee' => '+34600',
                 'getStartTime' => new \DateTime(),
                 'getDuration' => 3.6,
+                'getDirection' => 'outbound',
             ],
             true
         );
@@ -205,6 +206,13 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
     {
         $billableCallDto = $this->mockBillableCallDto();
         $trunksCdrDto = $this->mockTrunksCdrDto();
+        $this->getterProphecy(
+            $trunksCdrDto,
+            [
+                'getDirection' => 'outbound',
+            ],
+            true
+        );
 
         $trunksCdrDto
             ->getRetailAccountId()
@@ -223,8 +231,15 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
 
     function it_sets_endpoint_info_if_retail_account_exists()
     {
-        $trunksCdrDto = $this->mockTrunksCdrDto();
         $billableCallDto = $this->mockBillableCallDto();
+        $trunksCdrDto = $this->mockTrunksCdrDto();
+        $this->getterProphecy(
+            $trunksCdrDto,
+            [
+                'getDirection' => 'outbound',
+            ],
+            true
+        );
 
         $trunksCdrDto
             ->getRetailAccountId()
@@ -263,6 +278,7 @@ class CreateOrUpdateByTrunksCdrSpec extends ObjectBehavior
                 'startTime' => new \DateTime(),
                 'endTime' => new \DateTime(),
                 'parserScheduledAt' => new \DateTime(),
+                'direction' => 'outbound',
             ]
         );
 
