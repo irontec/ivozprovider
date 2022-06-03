@@ -109,7 +109,7 @@ abstract class BillableCallAbstract
     protected $endpointName = null;
 
     /**
-     * @var ?string
+     * @var string
      * comment: enum:inbound|outbound
      */
     protected $direction = 'outbound';
@@ -163,9 +163,11 @@ abstract class BillableCallAbstract
      * Constructor
      */
     protected function __construct(
-        float $duration
+        float $duration,
+        string $direction
     ) {
         $this->setDuration($duration);
+        $this->setDirection($direction);
     }
 
     abstract public function getId(): null|string|int;
@@ -228,9 +230,12 @@ abstract class BillableCallAbstract
         Assertion::isInstanceOf($dto, BillableCallDto::class);
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
 
         $self = new static(
-            $duration
+            $duration,
+            $direction
         );
 
         $self
@@ -247,7 +252,6 @@ abstract class BillableCallAbstract
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
             ->setEndpointName($dto->getEndpointName())
-            ->setDirection($dto->getDirection())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -275,6 +279,8 @@ abstract class BillableCallAbstract
 
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
 
         $this
             ->setCallid($dto->getCallid())
@@ -291,7 +297,7 @@ abstract class BillableCallAbstract
             ->setEndpointType($dto->getEndpointType())
             ->setEndpointId($dto->getEndpointId())
             ->setEndpointName($dto->getEndpointName())
-            ->setDirection($dto->getDirection())
+            ->setDirection($direction)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
@@ -603,25 +609,23 @@ abstract class BillableCallAbstract
         return $this->endpointName;
     }
 
-    protected function setDirection(?string $direction = null): static
+    protected function setDirection(string $direction): static
     {
-        if (!is_null($direction)) {
-            Assertion::choice(
-                $direction,
-                [
-                    BillableCallInterface::DIRECTION_INBOUND,
-                    BillableCallInterface::DIRECTION_OUTBOUND,
-                ],
-                'directionvalue "%s" is not an element of the valid values: %s'
-            );
-        }
+        Assertion::choice(
+            $direction,
+            [
+                BillableCallInterface::DIRECTION_INBOUND,
+                BillableCallInterface::DIRECTION_OUTBOUND,
+            ],
+            'directionvalue "%s" is not an element of the valid values: %s'
+        );
 
         $this->direction = $direction;
 
         return $this;
     }
 
-    public function getDirection(): ?string
+    public function getDirection(): string
     {
         return $this->direction;
     }
