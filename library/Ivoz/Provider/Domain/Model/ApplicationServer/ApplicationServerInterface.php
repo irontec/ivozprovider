@@ -47,7 +47,7 @@ interface ApplicationServerInterface extends LoggableEntityInterface
 
     public function getIp(): string;
 
-    public function getName(): ?string;
+    public function getName(): string;
 
     public function isInitialized(): bool;
 }
