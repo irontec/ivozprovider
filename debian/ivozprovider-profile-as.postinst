@@ -15,8 +15,18 @@ function setup_php()
     /bin/sed -i 's/;*date.timezone =.*/date.timezone = UTC/g'                   /etc/php/8.0/cli/php.ini
 }
 
+function setup_mysql_access()
+{
+    db_get ivozprovider/mysql_password          || true
+    MYSQL_PWD=$RET
+
+    # Replace password in configuration files
+    sed -i -r "s/(Password *= *).*/\1$MYSQL_PWD/" /etc/odbc.ini.ivozprovider
+}
+
 #######################################################################################################################
 #######################################################################################################################
 setup_php
+setup_mysql_access
 
 :
