@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -17,10 +17,10 @@ use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
-* HuntGroupsRelUserAbstract
+* HuntGroupMemberAbstract
 * @codeCoverageIgnore
 */
-abstract class HuntGroupsRelUserAbstract
+abstract class HuntGroupMemberAbstract
 {
     use ChangelogTrait;
 
@@ -47,7 +47,7 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * @var ?HuntGroupInterface
-     * inversedBy huntGroupsRelUsers
+     * inversedBy huntGroupMembers
      */
     protected $huntGroup = null;
 
@@ -76,7 +76,7 @@ abstract class HuntGroupsRelUserAbstract
     {
         return sprintf(
             "%s#%s",
-            "HuntGroupsRelUser",
+            "HuntGroupMember",
             (string) $this->getId()
         );
     }
@@ -88,22 +88,22 @@ abstract class HuntGroupsRelUserAbstract
     {
     }
 
-    public static function createDto(string|int|null $id = null): HuntGroupsRelUserDto
+    public static function createDto(string|int|null $id = null): HuntGroupMemberDto
     {
-        return new HuntGroupsRelUserDto($id);
+        return new HuntGroupMemberDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param null|HuntGroupsRelUserInterface $entity
+     * @param null|HuntGroupMemberInterface $entity
      */
-    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?HuntGroupsRelUserDto
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?HuntGroupMemberDto
     {
         if (!$entity) {
             return null;
         }
 
-        Assertion::isInstanceOf($entity, HuntGroupsRelUserInterface::class);
+        Assertion::isInstanceOf($entity, HuntGroupMemberInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -121,13 +121,13 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param HuntGroupsRelUserDto $dto
+     * @param HuntGroupMemberDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
-        Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
+        Assertion::isInstanceOf($dto, HuntGroupMemberDto::class);
         $routeType = $dto->getRouteType();
         Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
 
@@ -150,13 +150,13 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param HuntGroupsRelUserDto $dto
+     * @param HuntGroupMemberDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
-        Assertion::isInstanceOf($dto, HuntGroupsRelUserDto::class);
+        Assertion::isInstanceOf($dto, HuntGroupMemberDto::class);
 
         $routeType = $dto->getRouteType();
         Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
@@ -176,7 +176,7 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * @internal use EntityTools instead
      */
-    public function toDto(int $depth = 0): HuntGroupsRelUserDto
+    public function toDto(int $depth = 0): HuntGroupMemberDto
     {
         return self::createDto()
             ->setTimeoutTime(self::getTimeoutTime())
@@ -231,8 +231,8 @@ abstract class HuntGroupsRelUserAbstract
         Assertion::choice(
             $routeType,
             [
-                HuntGroupsRelUserInterface::ROUTETYPE_NUMBER,
-                HuntGroupsRelUserInterface::ROUTETYPE_USER,
+                HuntGroupMemberInterface::ROUTETYPE_NUMBER,
+                HuntGroupMemberInterface::ROUTETYPE_USER,
             ],
             'routeTypevalue "%s" is not an element of the valid values: %s'
         );

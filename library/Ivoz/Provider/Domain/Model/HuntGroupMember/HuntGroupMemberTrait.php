@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 /**
 * @codeCoverageIgnore
 */
-trait HuntGroupsRelUserTrait
+trait HuntGroupMemberTrait
 {
     /**
      * @var ?int
@@ -30,7 +30,7 @@ trait HuntGroupsRelUserTrait
     /**
      * Factory method
      * @internal use EntityTools instead
-     * @param HuntGroupsRelUserDto $dto
+     * @param HuntGroupMemberDto $dto
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
@@ -50,7 +50,7 @@ trait HuntGroupsRelUserTrait
 
     /**
      * @internal use EntityTools instead
-     * @param HuntGroupsRelUserDto $dto
+     * @param HuntGroupMemberDto $dto
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
@@ -66,7 +66,7 @@ trait HuntGroupsRelUserTrait
     /**
      * @internal use EntityTools instead
      */
-    public function toDto(int $depth = 0): HuntGroupsRelUserDto
+    public function toDto(int $depth = 0): HuntGroupMemberDto
     {
         $dto = parent::toDto($depth);
         return $dto

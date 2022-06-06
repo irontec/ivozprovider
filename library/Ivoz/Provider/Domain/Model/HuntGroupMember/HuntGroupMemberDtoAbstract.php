@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
@@ -9,10 +9,10 @@ use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
-* HuntGroupsRelUserDtoAbstract
+* HuntGroupMemberDtoAbstract
 * @codeCoverageIgnore
 */
-abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterface
+abstract class HuntGroupMemberDtoAbstract implements DataTransferObjectInterface
 {
     use DtoNormalizer;
 

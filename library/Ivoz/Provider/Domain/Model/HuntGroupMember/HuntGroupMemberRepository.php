@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Doctrine\Common\Collections\Selectable;
 use Doctrine\Persistence\ObjectRepository;
 
-interface HuntGroupsRelUserRepository extends ObjectRepository, Selectable
+interface HuntGroupMemberRepository extends ObjectRepository, Selectable
 {
     /**
-     * @return int[]
+     * @return array<int>
      */
     public function findUserIdsInHuntGroup(int $huntGroupId): array;
 }

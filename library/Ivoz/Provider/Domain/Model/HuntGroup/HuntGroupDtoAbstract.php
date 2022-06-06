@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberDto;
 
 /**
 * HuntGroupDtoAbstract
@@ -90,9 +90,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     private $noAnswerNumberCountry = null;
 
     /**
-     * @var HuntGroupsRelUserDto[] | null
+     * @var HuntGroupMemberDto[] | null
      */
-    private $huntGroupsRelUsers = null;
+    private $huntGroupMembers = null;
 
     public function __construct($id = null)
     {
@@ -146,7 +146,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'noAnswerExtension' => $this->getNoAnswerExtension(),
             'noAnswerVoicemail' => $this->getNoAnswerVoicemail(),
             'noAnswerNumberCountry' => $this->getNoAnswerNumberCountry(),
-            'huntGroupsRelUsers' => $this->getHuntGroupsRelUsers()
+            'huntGroupMembers' => $this->getHuntGroupMembers()
         ];
 
         if (!$hideSensitiveData) {
@@ -421,15 +421,15 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setHuntGroupsRelUsers(?array $huntGroupsRelUsers): static
+    public function setHuntGroupMembers(?array $huntGroupMembers): static
     {
-        $this->huntGroupsRelUsers = $huntGroupsRelUsers;
+        $this->huntGroupMembers = $huntGroupMembers;
 
         return $this;
     }
 
-    public function getHuntGroupsRelUsers(): ?array
+    public function getHuntGroupMembers(): ?array
     {
-        return $this->huntGroupsRelUsers;
+        return $this->huntGroupMembers;
     }
 }

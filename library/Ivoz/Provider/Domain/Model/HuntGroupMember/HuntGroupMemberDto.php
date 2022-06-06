@@ -1,8 +1,8 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
-class HuntGroupsRelUserDto extends HuntGroupsRelUserDtoAbstract
+class HuntGroupMemberDto extends HuntGroupMemberDtoAbstract
 {
     /**
      * @inheritdoc

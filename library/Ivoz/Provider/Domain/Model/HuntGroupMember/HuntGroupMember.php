@@ -1,22 +1,23 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
- * HuntGroupsRelUser
+ * HuntGroupMember
  */
-class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsRelUserInterface
+class HuntGroupMember extends HuntGroupMemberAbstract implements HuntGroupMemberInterface
 {
-    use HuntGroupsRelUserTrait;
+    use HuntGroupMemberTrait;
     use RoutableTrait;
 
     protected function sanitizeValues(): void
     {
         $huntGroup = $this->getHuntGroup();
+        Assertion::notNull($huntGroup, 'huntGroup value is null, but non null value was expected.');
 
         $priorityRequired = !in_array(
             $huntGroup->getStrategy(),
@@ -71,7 +72,7 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -83,9 +84,9 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
      *
      * @return string
      */
-    public function getNumberValueE164()
+    public function getNumberValueE164(): string
     {
-        if (!$this->getNumberCountry()) {
+        if (is_null($this->getNumberCountry())) {
             return "";
         }
 
