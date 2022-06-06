@@ -6084,9 +6084,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-04-12 11:43:23
-
--- Add needed users to db
-CREATE USER IF NOT EXISTS 'asterisk'@'%' IDENTIFIED BY 'ironsecret';
-GRANT ALL PRIVILEGES ON `ivozprovider`.* TO 'asterisk'@'%';
-CREATE USER IF NOT EXISTS 'kamailio'@'%' IDENTIFIED BY 'ironsecret';
-GRANT ALL PRIVILEGES ON `ivozprovider`.* TO 'kamailio'@'%';
