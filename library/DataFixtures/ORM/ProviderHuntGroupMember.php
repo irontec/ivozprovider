@@ -6,9 +6,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
 
-class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInterface
+class ProviderHuntGroupMember extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -19,9 +19,9 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
     {
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
-        $manager->getClassMetadata(HuntGroupsRelUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
+        $manager->getClassMetadata(HuntGroupMember::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item1 = $this->createEntityInstance(HuntGroupsRelUser::class);
+        $item1 = $this->createEntityInstance(HuntGroupMember::class);
         (function () use ($fixture) {
             $this->setRouteType("user");
             $this->setTimeoutTime(1);
@@ -30,11 +30,11 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
             $this->setUser($fixture->getReference('_reference_ProviderUser1'));
         })->call($item1);
 
-        $this->addReference('_reference_ProviderHuntGroupsRelUser1', $item1);
+        $this->addReference('_reference_ProviderHuntGroupMember1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-        $item2 = $this->createEntityInstance(HuntGroupsRelUser::class);
+        $item2 = $this->createEntityInstance(HuntGroupMember::class);
         (function () use ($fixture) {
             $this->setRouteType("number");
             $this->setTimeoutTime(1);
@@ -44,7 +44,7 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
             $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item2);
 
-        $this->addReference('_reference_ProviderHuntGroupsRelUser2', $item2);
+        $this->addReference('_reference_ProviderHuntGroupMember2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
         $manager->flush();
