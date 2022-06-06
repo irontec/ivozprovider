@@ -156,10 +156,15 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
             ->select('self')
             ->where(
                 $expr->eq('self.company', $companyId)
-            )
-            ->andWhere(
-                $expr->notIn('self.id', $excludeIds)
             );
+
+        if (!empty($excludeIds)) {
+            $qb
+                ->andWhere(
+                    $expr->notIn('self.id', $excludeIds)
+                );
+        }
+
 
         return $qb->getQuery()->getResult();
     }

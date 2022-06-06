@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\HuntGroupsRelUser;
+namespace Ivoz\Provider\Domain\Service\HuntGroupMember;
 
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
@@ -11,7 +11,7 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 /**
  * @codeCoverageIgnore
  */
-class HuntGroupsRelUserLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+class HuntGroupMemberLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
@@ -19,13 +19,13 @@ class HuntGroupsRelUserLifecycleServiceCollection implements LifecycleServiceCol
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
-            \Ivoz\Provider\Domain\Service\HuntGroupsRelUser\AvoidUpdates::class => 100,
+            \Ivoz\Provider\Domain\Service\HuntGroupMember\AvoidUpdates::class => 100,
         ],
     ];
 
     protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
-        Assertion::isInstanceOf($service, HuntGroupsRelUserLifecycleEventHandlerInterface::class);
+        Assertion::isInstanceOf($service, HuntGroupMemberLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;
     }
 }
