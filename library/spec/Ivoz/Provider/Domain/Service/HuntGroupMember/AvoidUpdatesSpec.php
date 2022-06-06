@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\HuntGroupsRelUser;
+namespace spec\Ivoz\Provider\Domain\Service\HuntGroupMember;
 
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
-use Ivoz\Provider\Domain\Service\HuntGroupsRelUser\AvoidUpdates;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface;
+use Ivoz\Provider\Domain\Service\HuntGroupMember\AvoidUpdates;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,7 +15,7 @@ class AvoidUpdatesSpec extends ObjectBehavior
     }
 
     function it_throws_exception_on_fk_update(
-        HuntGroupsRelUserInterface $entity
+        HuntGroupMemberInterface $entity
     ) {
         $entity
             ->getId()
@@ -32,7 +32,7 @@ class AvoidUpdatesSpec extends ObjectBehavior
                 'userId',
             ]);
 
-        $message = 'Update operation is not allowed on HuntGroupsRelUser';
+        $message = 'Update operation is not allowed on HuntGroupMember';
         $exception = new \DomainException($message, 403);
 
         $this
@@ -41,7 +41,7 @@ class AvoidUpdatesSpec extends ObjectBehavior
     }
 
     function it_does_not_throw_exception_on_attribute_update(
-        HuntGroupsRelUserInterface $entity
+        HuntGroupMemberInterface $entity
     ) {
         $entity
             ->getId()

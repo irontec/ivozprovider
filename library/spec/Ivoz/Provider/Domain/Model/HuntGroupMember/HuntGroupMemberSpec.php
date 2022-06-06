@@ -1,23 +1,23 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
+namespace spec\Ivoz\Provider\Domain\Model\HuntGroupMember;
 
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use spec\HelperTrait;
 use spec\DtoToEntityFakeTransformer;
 
-class HuntGroupsRelUserSpec extends ObjectBehavior
+class HuntGroupMemberSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var HuntGroupsRelUserDto
+     * @var HuntGroupMemberDto
      */
     private $dto;
 
@@ -28,7 +28,7 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
 
     public function let()
     {
-        $this->dto = new HuntGroupsRelUserDto();
+        $this->dto = new HuntGroupMemberDto();
 
         $huntGroupDto = new HuntGroupDto();
         $huntGroup = $this->getTestDouble(
@@ -68,7 +68,7 @@ class HuntGroupsRelUserSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(HuntGroupsRelUser::class);
+        $this->shouldHaveType(HuntGroupMember::class);
     }
 
     function it_throws_exception_on_empty_timeout()
