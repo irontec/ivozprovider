@@ -48,12 +48,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getId(): ?int;
 
     /**
-     * Get this Hungroup related users
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
-     */
-    public function getHuntGroupUsersArray();
-
-    /**
      * @return string
      */
     public function getNoAnswerRouteType(): ?string;
