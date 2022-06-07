@@ -5223,7 +5223,7 @@
       <code>getNoAnswerVoicemailId</code>
     </MissingReturnType>
     <MixedPropertyTypeCoercion occurrences="1">
-      <code>$huntGroupsRelUsers</code>
+      <code>$huntGroupMembers</code>
     </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupInterface.php">
@@ -5237,12 +5237,12 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUser.php">
+  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMember.php">
     <MethodSignatureMismatch occurrences="1">
-      <code>HuntGroupsRelUser</code>
+      <code>HuntGroupMember</code>
     </MethodSignatureMismatch>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserAbstract.php">
+  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberAbstract.php">
     <MixedArgument occurrences="6">
       <code>$fkTransformer-&gt;transform($dto-&gt;getHuntGroup())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getHuntGroup())</code>
@@ -5253,12 +5253,12 @@
     </MixedArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDto.php">
+  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDto.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php">
+  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php">
     <MissingParamType occurrences="5">
       <code>$id</code>
       <code>$id</code>
@@ -5272,12 +5272,12 @@
       <code>getUserId</code>
     </MissingReturnType>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserInterface.php">
+  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberInterface.php">
     <PossiblyUnusedReturnValue occurrences="1">
       <code>static</code>
     </PossiblyUnusedReturnValue>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserTrait.php">
+  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
@@ -8578,12 +8578,7 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/HuntGroupsRelUser/HuntGroupsRelUserLifecycleEventHandlerInterface.php">
-    <MissingReturnType occurrences="1">
-      <code>execute</code>
-    </MissingReturnType>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/HuntGroupsRelUser/HuntGroupsRelUserLifecycleServiceCollection.php">
+  <file src="Ivoz/Provider/Domain/Service/HuntGroupMember/HuntGroupMemberLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
