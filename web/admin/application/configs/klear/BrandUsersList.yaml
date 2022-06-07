@@ -39,7 +39,7 @@ production:
           callACL: true
           bossAssistant: true
           bossAssistantWhiteList: true
-          HuntGroupsRelUsers: true
+          HuntGroupMembers: true
           PickUpRelUsers: true
           timeout: true
           isBoss: true

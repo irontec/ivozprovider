@@ -41,11 +41,11 @@ class IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup implements 
     {
         $show = true;
 
-        if ($this->_option->getName() == 'huntGroupsRelUsersList_screen' && ($parentModel->getStrategy() == 'ringAll' || $parentModel->getStrategy() == 'random')) {
+        if ($this->_option->getName() == 'huntGroupMembersList_screen' && ($parentModel->getStrategy() == 'ringAll' || $parentModel->getStrategy() == 'random')) {
             $show = false;
-        } elseif ($this->_option->getName() == 'huntGroupsRelUsersFilterRingAllList_screen' && $parentModel->getStrategy() != 'ringAll') {
+        } elseif ($this->_option->getName() == 'huntGroupMembersFilterRingAllList_screen' && $parentModel->getStrategy() != 'ringAll') {
             $show = false;
-        } elseif ($this->_option->getName() == 'huntGroupsRelUsersFilterRandomList_screen' && $parentModel->getStrategy() != 'random') {
+        } elseif ($this->_option->getName() == 'huntGroupMembersFilterRandomList_screen' && $parentModel->getStrategy() != 'random') {
             $show = false;
         }
 

@@ -5,16 +5,16 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: huntGroupsRelUsersList_screen
-  screens: &huntGroupsRelUsers_screensLink
-    huntGroupsRelUsersList_screen: &huntGroupsRelUsersList_screenLink
+    defaultScreen: huntGroupMembersList_screen
+  screens: &huntGroupMembers_screensLink
+    huntGroupMembersList_screen: &huntGroupMembersList_screenLink
       controller: list
       class: ui-silk-group-go
       pagination:
         items: 25
-      <<: *HuntGroupsRelUsers
+      <<: *HuntGroupMembers
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
-      fields: &huntGroupsRelUsersList_fields
+      fields: &huntGroupMembersList_fields
         order:
           routeType: true
           target: true
@@ -25,18 +25,18 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
+            huntGroupMembersEdit_screen: ${auth.acls.HuntGroupMembers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-          default: huntGroupsRelUsersEdit_screen
+            huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+          default: huntGroupMembersEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
+          huntGroupMembersNew_screen: ${auth.acls.HuntGroupMembers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-    huntGroupsRelUsersNew_screen: &huntGroupsRelUsersNew_screenLink
-      <<: *HuntGroupsRelUsers
+          huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+    huntGroupMembersNew_screen: &huntGroupMembersNew_screenLink
+      <<: *HuntGroupMembers
       controller: new
       class: ui-silk-add
       label: true
@@ -48,7 +48,7 @@ production:
         blacklist:
           target: true
       shortcutOption: N
-      fixedPositions: &huntGroupsRelUsersFixedPositions_link
+      fixedPositions: &huntGroupMembersFixedPositions_link
         group1:
           label: _("Routing configuration")
           colsPerRow: 12
@@ -65,8 +65,8 @@ production:
             timeoutTime: 4
             priority: 4
 
-    huntGroupsRelUsersEdit_screen: &huntGroupsRelUsersEdit_screenLink
-      <<: *HuntGroupsRelUsers
+    huntGroupMembersEdit_screen: &huntGroupMembersEdit_screenLink
+      <<: *HuntGroupMembers
       controller: edit
       class: ui-silk-pencil
       label: false
@@ -82,11 +82,11 @@ production:
           routeType: true
           target: true
       fixedPositions:
-        <<: *huntGroupsRelUsersFixedPositions_link
+        <<: *huntGroupMembersFixedPositions_link
 
-  dialogs: &huntGroupsRelUsers_dialogsLink
-    huntGroupsRelUsersDel_dialog: &huntGroupsRelUsersDel_dialogLink
-      <<: *HuntGroupsRelUsers
+  dialogs: &huntGroupMembers_dialogsLink
+    huntGroupMembersDel_dialog: &huntGroupMembersDel_dialogLink
+      <<: *HuntGroupMembers
       controller: delete
       class: ui-silk-bin
       labelOption: false

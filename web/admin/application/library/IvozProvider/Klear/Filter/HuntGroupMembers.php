@@ -3,15 +3,16 @@
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberDto;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface;
 
 /**
- * Class IvozProvider_Klear_Filter_HuntGroupsRelUsers
+ * Class IvozProvider_Klear_Filter_HuntGroupMembers
  *
  * Filter Users Listbox to avoid displaying Users already present in the HuntGroup
  */
-class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Filter_Company
+class IvozProvider_Klear_Filter_HuntGroupMembers extends IvozProvider_Klear_Filter_Company
 {
     protected $_condition = array();
 
@@ -46,16 +47,16 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
             $huntGroupId
         );
 
-        $condition = "HuntGroupsRelUser.huntGroup = " . $huntGroupId;
+        $condition = "HuntGroupMember.huntGroup = " . $huntGroupId;
         $currentPk = $routeDispatcher->getParam("pk", false);
         $isEditScreen = $routeDispatcher->getControllerName() === 'edit';
         if ($isEditScreen && $currentPk) {
-            $condition .= ' AND HuntGroupsRelUser.id != ' . $currentPk;
+            $condition .= ' AND HuntGroupMember.id != ' . $currentPk;
         }
 
-        /** @var HuntGroupsRelUserDto[] $existingRelationships */
+        /** @var HuntGroupMemberDto[] $existingRelationships */
         $existingRelationships = $dataGateway->findBy(
-            HuntGroupsRelUser::class,
+            HuntGroupMember::class,
             [$condition]
         );
 
@@ -65,7 +66,7 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
 
         $userIdsInUse = [];
         foreach ($existingRelationships as $existingRelationship) {
-            if ($existingRelationship->getRouteType() == HuntGroupsRelUser::ROUTETYPE_USER) {
+            if ($existingRelationship->getRouteType() == HuntGroupMemberInterface::ROUTETYPE_USER) {
                 $userIdsInUse[] = $existingRelationship->getUserId();
             }
         }

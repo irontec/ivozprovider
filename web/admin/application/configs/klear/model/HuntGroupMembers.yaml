@@ -1,5 +1,5 @@
 production:
-  entity: Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
+  entity: Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember
   fields: 
     huntGroup:
       title: ngettext('Hunt Group', 'Hunt Groups', 1)
@@ -62,7 +62,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterClass: IvozProvider_Klear_Filter_HuntGroupsRelUsers
+          filterClass: IvozProvider_Klear_Filter_HuntGroupMembers
           fieldName: 
             fields: 
               - name
