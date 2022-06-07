@@ -6,10 +6,10 @@ import { HolidayDatePropertyList } from '../HolidayDateProperties';
 import entities from '../../index';
 import { Link } from 'react-router-dom';
 
-type HuntGroupsRelUserValues = HolidayDatePropertyList<
+type HolidayDateValues = HolidayDatePropertyList<
 string | number
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HolidayDateValues>>;
 
 const Type: TargetGhostType = (props): JSX.Element => {
 
@@ -31,4 +31,4 @@ const Type: TargetGhostType = (props): JSX.Element => {
   return (<span></span>);
 };
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Type);
+export default withCustomComponentWrapper<HolidayDateValues>(Type);

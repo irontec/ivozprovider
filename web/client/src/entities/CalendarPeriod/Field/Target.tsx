@@ -4,10 +4,10 @@ import withCustomComponentWrapper, {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { CalendarPeriodPropertyList } from '../CalendarPeriodProperties';
 
-type HuntGroupsRelUserValues = CalendarPeriodPropertyList<
+type CalendarPeriodValues = CalendarPeriodPropertyList<
 string | number | Record<string, string | number>
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<CalendarPeriodValues>>;
 
 const Target: TargetGhostType = (props): JSX.Element => {
 
@@ -17,4 +17,4 @@ const Target: TargetGhostType = (props): JSX.Element => {
   return (<span>{target}</span>);
 };
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Target);
+export default withCustomComponentWrapper<CalendarPeriodValues>(Target);

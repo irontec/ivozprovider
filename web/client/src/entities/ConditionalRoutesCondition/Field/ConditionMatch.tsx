@@ -4,10 +4,10 @@ import withCustomComponentWrapper, {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { ConditionalRoutesConditionPropertyList } from '../ConditionalRoutesConditionProperties';
 
-type HuntGroupsRelUserValues = ConditionalRoutesConditionPropertyList<
+type ConditionalRoutesConditionValues = ConditionalRoutesConditionPropertyList<
 string | number | Array<string>
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<ConditionalRoutesConditionValues>>;
 
 const Type: TargetGhostType = (props): JSX.Element | null => {
 
@@ -22,4 +22,4 @@ const Type: TargetGhostType = (props): JSX.Element | null => {
   return (<span>{conditionMatch}</span>);
 };
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Type);
+export default withCustomComponentWrapper<ConditionalRoutesConditionValues>(Type);
