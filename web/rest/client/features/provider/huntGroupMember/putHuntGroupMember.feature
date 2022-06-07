@@ -8,7 +8,7 @@ Feature: Update hunt groups rel users
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/hunt_groups_rel_users/1" with body:
+      And I send a "PUT" request to "/hunt_group_members/1" with body:
     """
       {
           "timeoutTime": 2,

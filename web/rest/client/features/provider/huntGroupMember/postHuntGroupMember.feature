@@ -8,7 +8,7 @@ Feature: Create hunt groups rel users
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/hunt_groups_rel_users" with body:
+      And I send a "POST" request to "/hunt_group_members" with body:
     """
       {
           "timeoutTime": 1,
@@ -39,7 +39,7 @@ Feature: Create hunt groups rel users
   Scenario: Retrieve created hunt group rel user
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "hunt_groups_rel_users/3"
+      And I send a "GET" request to "hunt_group_members/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"

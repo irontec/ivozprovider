@@ -3,16 +3,16 @@
 namespace Tests\DataAccessControl\Provider;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class HuntGroupsRelUserTest extends KernelTestCase
+class HuntGroupMemberTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
     protected function getResourceClass(): string
     {
-        return HuntGroupsRelUser::class;
+        return HuntGroupMember::class;
     }
 
     protected function getAdminCriteria(): array

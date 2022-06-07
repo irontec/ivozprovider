@@ -7,7 +7,7 @@ Feature: Retrieve hunt groups rel users
   Scenario: Retrieve the hunt groups rel users json list
     Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "hunt_groups_rel_users"
+    And I send a "GET" request to "hunt_group_members"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -40,7 +40,7 @@ Feature: Retrieve hunt groups rel users
   Scenario: Retrieve certain hunt groups rel user json
     Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "hunt_groups_rel_users/1"
+    And I send a "GET" request to "hunt_group_members/1"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
