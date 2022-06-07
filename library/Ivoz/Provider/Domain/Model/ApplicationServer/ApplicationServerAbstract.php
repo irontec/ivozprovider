@@ -24,17 +24,19 @@ abstract class ApplicationServerAbstract
     protected $ip;
 
     /**
-     * @var ?string
+     * @var string
      */
-    protected $name = null;
+    protected $name;
 
     /**
      * Constructor
      */
     protected function __construct(
-        string $ip
+        string $ip,
+        string $name
     ) {
         $this->setIp($ip);
+        $this->setName($name);
     }
 
     abstract public function getId(): null|string|int;
@@ -97,13 +99,15 @@ abstract class ApplicationServerAbstract
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
         $ip = $dto->getIp();
         Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $ip
+            $ip,
+            $name
         );
 
-        $self
-            ->setName($dto->getName());
+        ;
 
         $self->initChangelog();
 
@@ -122,10 +126,12 @@ abstract class ApplicationServerAbstract
 
         $ip = $dto->getIp();
         Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $this
             ->setIp($ip)
-            ->setName($dto->getName());
+            ->setName($name);
 
         return $this;
     }
@@ -162,18 +168,16 @@ abstract class ApplicationServerAbstract
         return $this->ip;
     }
 
-    protected function setName(?string $name = null): static
+    protected function setName(string $name): static
     {
-        if (!is_null($name)) {
-            Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
