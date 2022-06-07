@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Provider\HuntGroupsRelUser;
+namespace Tests\Provider\HuntGroupMember;
 
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserRepository;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
 
-class HuntGroupsRelUserRepositoryTest extends KernelTestCase
+class HuntGroupMemberRepositoryTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
@@ -22,23 +22,23 @@ class HuntGroupsRelUserRepositoryTest extends KernelTestCase
 
     public function its_instantiable()
     {
-        /** @var HuntGroupsRelUserRepository $repository */
+        /** @var HuntGroupMemberRepository $repository */
         $repository = $this
             ->em
-            ->getRepository(HuntGroupsRelUser::class);
+            ->getRepository(HuntGroupMember::class);
 
         $this->assertInstanceOf(
-            HuntGroupsRelUserRepository::class,
+            HuntGroupMemberRepository::class,
             $repository
         );
     }
 
     public function it_finds_user_ids_by_hunt_group_id()
     {
-        /** @var HuntGroupsRelUserRepository $repository */
+        /** @var HuntGroupMemberRepository $repository */
         $repository = $this
             ->em
-            ->getRepository(HuntGroupsRelUser::class);
+            ->getRepository(HuntGroupMember::class);
 
         $userIds = $repository->findUserIdsInHuntGroup(
             1
