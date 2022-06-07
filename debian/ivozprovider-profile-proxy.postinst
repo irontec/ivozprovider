@@ -29,9 +29,20 @@ function setup_media_relays()
     sed -i -r "s/(EXTRA_OPTS *= *).*/\1\"-m $MEDIA_RELAY_MINPORT -M $MEDIA_RELAY_MAXPORT\"/"  /etc/default/rtpengine
 }
 
+function setup_mysql_access()
+{
+    db_get ivozprovider/mysql_password          || true
+    MYSQL_PWD=$RET
+
+    # Replace password in configuration files
+    sed -i -r "s/(password *= *).*/\1$MYSQL_PWD/" /etc/mysql/conf.d/kamailio.cnf
+    sed -i -r "s/(\"db_password\": *)\".+\"/\1\"$MYSQL_PWD\"/" /etc/cgrates/cgrates.json
+}
+
 #######################################################################################################################
 #######################################################################################################################
 setup_media_relays
+setup_mysql_access
 db_stop
 
 :

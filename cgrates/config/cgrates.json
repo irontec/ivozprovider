@@ -15,7 +15,7 @@
 		"db_port": 3306,
 		"db_name": "ivozprovider",
 		"db_user": "kamailio",
-		"db_password": "ironsecret"
+		"db_password": "changeme"
 	},
 	"data_db": {
 		"db_type": "redis",

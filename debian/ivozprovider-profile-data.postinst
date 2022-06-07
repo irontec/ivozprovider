@@ -45,6 +45,12 @@ function setup_mysql_access()
     /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '$RET'";
     /usr/bin/mysql --user=root -e "ALTER USER 'root'@'%' IDENTIFIED BY '$RET'";
     /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'root'@'%'";
+    /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'kamailio'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "ALTER USER 'kamailio'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'kamailio'@'%'";
+    /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'asterisk'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "ALTER USER 'asterisk'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'asterisk'@'%'";
     /usr/bin/mysql --user=root -e "FLUSH PRIVILEGES"
 }
 
