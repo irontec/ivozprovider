@@ -4,10 +4,10 @@ import withCustomComponentWrapper, {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { MatchListPatternPropertyList } from '../MatchListPatternProperties';
 
-type HuntGroupsRelUserValues = MatchListPatternPropertyList<
+type MatchListPatternValues = MatchListPatternPropertyList<
 string | number | Record<string, string | number>
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<MatchListPatternValues>>;
 
 const Target: TargetGhostType = (props): JSX.Element => {
 
@@ -21,4 +21,4 @@ const Target: TargetGhostType = (props): JSX.Element => {
   return (<span>{regexp}</span>);
 };
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Target);
+export default withCustomComponentWrapper<MatchListPatternValues>(Target);

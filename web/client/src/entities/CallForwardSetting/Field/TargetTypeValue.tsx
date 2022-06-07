@@ -4,10 +4,10 @@ import withCustomComponentWrapper, {
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
 
-type HuntGroupsRelUserValues = CallForwardSettingPropertyList<
+type CallForwardSettingValues = CallForwardSettingPropertyList<
 string | number | Record<string, string | number>
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<CallForwardSettingValues>>;
 
 const TargetTypeValue: TargetGhostType = (props): JSX.Element => {
 
@@ -16,4 +16,4 @@ const TargetTypeValue: TargetGhostType = (props): JSX.Element => {
   return (<span>{values.targetTypeValue}</span>);
 };
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(TargetTypeValue);
+export default withCustomComponentWrapper<CallForwardSettingValues>(TargetTypeValue);
