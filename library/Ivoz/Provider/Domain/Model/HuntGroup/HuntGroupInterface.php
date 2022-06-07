@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
@@ -46,12 +46,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
-
-    /**
-     * Get this Hungroup related users
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
-     */
-    public function getHuntGroupUsersArray();
 
     /**
      * @return string
@@ -113,16 +107,16 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     public function isInitialized(): bool;
 
-    public function addHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface;
+    public function addHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;
 
-    public function removeHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface;
+    public function removeHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;
 
     /**
-     * @param Collection<array-key, HuntGroupsRelUserInterface> $huntGroupsRelUsers
+     * @param Collection<array-key, HuntGroupMemberInterface> $huntGroupMembers
      */
-    public function replaceHuntGroupsRelUsers(Collection $huntGroupsRelUsers): HuntGroupInterface;
+    public function replaceHuntGroupMembers(Collection $huntGroupMembers): HuntGroupInterface;
 
-    public function getHuntGroupsRelUsers(?Criteria $criteria = null): array;
+    public function getHuntGroupMembers(?Criteria $criteria = null): array;
 
     /**
      * @param string $prefix

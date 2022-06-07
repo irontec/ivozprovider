@@ -5011,12 +5011,12 @@
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"routeType\": \"user\",\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_group_members",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"hunt_groups_rel_users"
+								"hunt_group_members"
 							]
 						}
 					},
@@ -5060,12 +5060,12 @@
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"routeType\": \"user\",\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_group_members",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"hunt_groups_rel_users"
+								"hunt_group_members"
 							]
 						}
 					},
@@ -5109,12 +5109,12 @@
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"routeType\": \"user\",\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_group_members",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"hunt_groups_rel_users"
+								"hunt_group_members"
 							]
 						}
 					},
@@ -5258,12 +5258,12 @@
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"routeType\": \"user\",\n  \"user\": {{bobUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_group_members",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"hunt_groups_rel_users"
+								"hunt_group_members"
 							]
 						}
 					},
@@ -5307,12 +5307,12 @@
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"routeType\": \"user\",\n  \"user\": {{charlieUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_group_members",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"hunt_groups_rel_users"
+								"hunt_group_members"
 							]
 						}
 					},
@@ -5356,12 +5356,12 @@
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 3,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"routeType\": \"user\",\n  \"user\": {{daveUserId}}\n}"
 						},
 						"url": {
-							"raw": "{{client_api_url}}/hunt_groups_rel_users",
+							"raw": "{{client_api_url}}/hunt_group_members",
 							"host": [
 								"{{client_api_url}}"
 							],
 							"path": [
-								"hunt_groups_rel_users"
+								"hunt_group_members"
 							]
 						}
 					},

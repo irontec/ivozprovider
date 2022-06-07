@@ -19,9 +19,9 @@ const map: ExtendedRouteMap = [
         children: [
           {
             entity: {
-              ...entities.HuntGroupsRelUser,
+              ...entities.HuntGroupMember,
               acl: {
-                iden: entities.HuntGroupsRelUser.acl.iden,
+                iden: entities.HuntGroupMember.acl.iden,
                 read: true,
                 detail: false,
                 create: false,
@@ -117,7 +117,7 @@ const map: ExtendedRouteMap = [
         children: [
           {
             entity: {
-              ...entities.HuntGroupsRelUser,
+              ...entities.HuntGroupMember,
               columns: [
                 'routeType',
                 'target',

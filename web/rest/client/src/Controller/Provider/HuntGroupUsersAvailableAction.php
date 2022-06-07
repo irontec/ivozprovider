@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupRepository;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserRepository;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberRepository;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
@@ -21,7 +21,7 @@ class HuntGroupUsersAvailableAction
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private HuntGroupRepository $huntGroupRepository,
-        private HuntGroupsRelUserRepository $huntGroupsRelUserRepository,
+        private HuntGroupMemberRepository $huntGroupsMemberRepository,
         private UserRepository $userRepository,
         private RequestStack $requestStack,
         private DenormalizerInterface $denormalizer
@@ -55,7 +55,7 @@ class HuntGroupUsersAvailableAction
             throw new ResourceClassNotFoundException('HuntGroup not found');
         }
 
-        $excludedUserIds = $this->huntGroupsRelUserRepository->findUserIdsInHuntGroup(
+        $excludedUserIds = $this->huntGroupsMemberRepository->findUserIdsInHuntGroup(
             (int) $huntGroup->getId()
         );
 

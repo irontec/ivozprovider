@@ -25,7 +25,7 @@ import Friend from './Friend/Friend';
 import FriendsPattern from './FriendsPattern/FriendsPattern';
 import HolidayDate from './HolidayDate/HolidayDate';
 import HuntGroup from './HuntGroup/HuntGroup';
-import HuntGroupsRelUser from './HuntGroupsRelUser/HuntGroupsRelUser';
+import HuntGroupMember from './HuntGroupMember/HuntGroupMember';
 import Invoice from './Invoice/Invoice';
 import Ivr from './Ivr/Ivr';
 import IvrEntry from './IvrEntry/IvrEntry';
@@ -86,7 +86,7 @@ const entities: EntityList = {
   FriendsPattern,
   HolidayDate,
   HuntGroup,
-  HuntGroupsRelUser,
+  HuntGroupMember,
   Invoice,
   Ivr,
   IvrEntry,

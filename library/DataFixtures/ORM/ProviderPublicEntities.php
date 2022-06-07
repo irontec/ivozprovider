@@ -98,7 +98,7 @@ class ProviderPublicEntities extends Fixture implements FixtureInterface
             ["FriendsPatterns","Ivoz\\Provider\\Domain\\Model\\FriendsPattern\\FriendsPattern","0","0","1"],
             ["HolidayDates","Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate","0","0","1"],
             ["HuntGroups","Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup","0","0","1"],
-            ["HuntGroupsRelUsers","Ivoz\\Provider\\Domain\\Model\\HuntGroupsRelUser\\HuntGroupsRelUser","0","0","1"],
+            ["HuntGroupMembers","Ivoz\\Provider\\Domain\\Model\\HuntGroupMember\\HuntGroupMember","0","0","1"],
             ["Invoices","Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice","1","1","1"],
             ["IVREntries","Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry","0","0","1"],
             ["IVRs","Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr","0","0","1"],

@@ -8531,7 +8531,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroup.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroup\\:\\:getHuntGroupsRelUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroup\\:\\:getHuntGroupMembers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroup.php
 
@@ -8556,7 +8556,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getHuntGroupsRelUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getHuntGroupMembers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
@@ -8586,7 +8586,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:setHuntGroupsRelUsers\\(\\) has parameter \\$huntGroupsRelUsers with no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:setHuntGroupMembers\\(\\) has parameter \\$huntGroupMembers with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
@@ -8616,7 +8616,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\:\\:getHuntGroupsRelUsers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\:\\:getHuntGroupMembers\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupInterface.php
 
@@ -8631,74 +8631,64 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupRepository.php
 
 		-
-			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMember\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUser.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMember.php
 
 		-
-			message: "#^Cannot call method getStrategy\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupInterface\\|null\\.$#"
-			count: 2
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUser.php
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUser\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUser.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserAbstract\\:\\:__toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:__construct\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:getHuntGroupId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:getNumberCountryId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:setHuntGroupId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:setHuntGroupId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:setNumberCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberDtoAbstract\\:\\:setUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:setNumberCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserDtoAbstract\\:\\:setUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupMember\\\\HuntGroupMemberRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserDtoAbstract.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserRepository.php
-
-		-
-			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroupsRelUser/HuntGroupsRelUserRepository.php
+			path: Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberRepository.php
 
 		-
 			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
@@ -13831,14 +13821,9 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/HolidayDate/HolidayDateLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupsRelUser\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupMember\\\\AvoidUpdates\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Ivoz/Provider/Domain/Service/HuntGroupsRelUser/AvoidUpdates.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\HuntGroupsRelUser\\\\HuntGroupsRelUserLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/HuntGroupsRelUser/HuntGroupsRelUserLifecycleEventHandlerInterface.php
+			path: Ivoz/Provider/Domain/Service/HuntGroupMember/AvoidUpdates.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Invoice\\\\AutoRateCalls\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"

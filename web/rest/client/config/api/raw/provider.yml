@@ -977,7 +977,7 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
       required:
       - company
 
-Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
+Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember:
   collectionOperations:
     get:
       depth: 1

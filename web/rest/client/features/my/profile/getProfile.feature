@@ -334,7 +334,7 @@ Feature: Retrieve active calls
                   "delete": false
               },
               {
-                  "iden": "HuntGroupsRelUsers",
+                  "iden": "HuntGroupMembers",
                   "create": false,
                   "read": true,
                   "update": false,

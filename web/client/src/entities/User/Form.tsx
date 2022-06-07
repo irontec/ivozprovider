@@ -76,7 +76,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Group belonging'),
       fields: [
         'pickupGroupIds',
-        //@TODO 'HuntGroupsRelUsers',
+        //@TODO 'HuntGroupMembers',
       ],
     },
   ];

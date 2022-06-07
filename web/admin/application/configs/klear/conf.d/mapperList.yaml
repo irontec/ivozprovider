@@ -195,9 +195,9 @@ mappers:
         modelFile: HuntGroups,
         entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup'
     }
-  - &HuntGroupsRelUsers {
-        modelFile: HuntGroupsRelUsers,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroupRelUser\\HuntGroupRelUser'
+  - &HuntGroupMembers {
+        modelFile: HuntGroupMembers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroupMember\\HuntGroupMember'
     }
   - &Invoices {
         modelFile: Invoices,

@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -42,30 +41,6 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
         if ($isRingAll && $nullTimeout) {
             throw new \DomainException('Empty ring all timeout');
         }
-    }
-
-    /**
-     * Get this Hungroup related users
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
-     */
-    public function getHuntGroupUsersArray()
-    {
-        $huntGroupUsersArray = array();
-
-        /** @var HuntGroupsRelUserInterface[] $huntGroupRelUsers */
-        $huntGroupRelUsers = $this->getHuntGroupsRelUsers(
-            Criteria::create()->orderBy(['priority' => Criteria::ASC])
-        );
-
-        foreach ($huntGroupRelUsers as $huntGroupRelUser) {
-            $user = $huntGroupRelUser->getUser();
-            if (empty($user)) {
-                continue;
-            }
-            $huntGroupUsersArray[] = $user;
-        }
-
-        return $huntGroupUsersArray;
     }
 
     /**

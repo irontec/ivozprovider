@@ -133,8 +133,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate
       Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface:
         Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
-      Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface:
-        Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
+      Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface:
+        Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember
       Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface:
         Ivoz\Provider\Domain\Model\Invoice\Invoice
       Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface:
