@@ -1,4 +1,4 @@
-import { HuntGroupsRelUserPropertyList } from './HuntGroupsRelUserProperties';
+import { HuntGroupMemberPropertyList } from './HuntGroupMemberProperties';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import entities from '../index';
@@ -10,8 +10,8 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
 ): Promise<any> => {
 
   const { cancelToken, entityService, match, filterContext } = props;
-  const row: HuntGroupsRelUserPropertyList<string | number | EntityValues> | undefined = props.row;
-  const response: HuntGroupsRelUserPropertyList<null | string | number | EntityValues> = {};
+  const row: HuntGroupMemberPropertyList<string | number | EntityValues> | undefined = props.row;
+  const response: HuntGroupMemberPropertyList<null | string | number | EntityValues> = {};
 
   const skip = [];
   if (!filterContext) {

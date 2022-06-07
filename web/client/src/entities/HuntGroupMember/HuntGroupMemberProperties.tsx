@@ -1,7 +1,7 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 
-export type HuntGroupsRelUserPropertyList<T> = {
+export type HuntGroupMemberPropertyList<T> = {
   'huntGroup'?: T,
   'routeType'?: T,
   'numberCountry'?: T,
@@ -12,6 +12,6 @@ export type HuntGroupsRelUserPropertyList<T> = {
   'target'?: T,
 };
 
-export type HuntGroupsRelUserProperties = HuntGroupsRelUserPropertyList<Partial<PropertySpec>>;
+export type HuntGroupMemberProperties = HuntGroupMemberPropertyList<Partial<PropertySpec>>;
 
-export type HuntGroupsRelUserPropertiesList = Array<HuntGroupsRelUserPropertyList<EntityValue | EntityValues>>;
+export type HuntGroupMemberPropertiesList = Array<HuntGroupMemberPropertyList<EntityValue | EntityValues>>;

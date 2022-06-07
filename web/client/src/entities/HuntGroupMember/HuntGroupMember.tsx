@@ -2,12 +2,12 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { HuntGroupsRelUserProperties } from './HuntGroupsRelUserProperties';
+import { HuntGroupMemberProperties } from './HuntGroupMemberProperties';
 import Type from './Field/Target';
 import Form from './Form';
 import foreignKeyResolver from './foreignKeyResolver';
 
-const properties: HuntGroupsRelUserProperties = {
+const properties: HuntGroupMemberProperties = {
   'huntGroup': {
     label: _('Hunt Group'),
   },
@@ -60,21 +60,21 @@ const columns = [
   'priority',
 ];
 
-const huntGroupsRelUser: EntityInterface = {
+const huntGroupMember: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GroupsIcon,
-  iden: 'HuntGroupsRelUser',
+  iden: 'HuntGroupMember',
   title: _('Hunt Group member', { count: 2 }),
-  path: '/hunt_groups_rel_users',
+  path: '/hunt_group_members',
   toStr: (row: any) => row.name,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: 'HuntGroupsRelUsers',
+    iden: 'HuntGroupMembers',
   },
   foreignKeyResolver,
   Form,
 };
 
-export default huntGroupsRelUser;
+export default huntGroupMember;

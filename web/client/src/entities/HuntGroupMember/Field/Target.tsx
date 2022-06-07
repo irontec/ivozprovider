@@ -3,16 +3,16 @@ import withCustomComponentWrapper, {
   PropertyCustomFunctionComponentProps,
   CustomFunctionComponentContext,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { HuntGroupsRelUserPropertyList } from '../HuntGroupsRelUserProperties';
+import { HuntGroupMemberPropertyList } from '../HuntGroupMemberProperties';
 import User from '../../User/User';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 type CountryProperty = CountryPropertyList<string>;
 
-type HuntGroupsRelUserValues = HuntGroupsRelUserPropertyList<
+type HuntGroupMemberValues = HuntGroupMemberPropertyList<
 string | number | CountryProperty
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupsRelUserValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<HuntGroupMemberValues>>;
 
 const Type: TargetGhostType = (props): JSX.Element | null => {
 
@@ -48,4 +48,4 @@ const Type: TargetGhostType = (props): JSX.Element | null => {
   );
 };
 
-export default withCustomComponentWrapper<HuntGroupsRelUserValues>(Type);
+export default withCustomComponentWrapper<HuntGroupMemberValues>(Type);
