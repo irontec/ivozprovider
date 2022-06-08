@@ -98,7 +98,7 @@ interface BillableCallInterface extends LoggableEntityInterface
 
     public function getEndpointName(): ?string;
 
-    public function getDirection(): ?string;
+    public function getDirection(): string;
 
     public function getBrand(): ?BrandInterface;
 

@@ -405,7 +405,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->endpointName;
     }
 
-    public function setDirection(?string $direction): static
+    public function setDirection(string $direction): static
     {
         $this->direction = $direction;
 

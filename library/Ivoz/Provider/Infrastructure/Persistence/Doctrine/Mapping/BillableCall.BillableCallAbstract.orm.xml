@@ -64,7 +64,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="direction" type="string" column="direction" nullable="true">
+    <field name="direction" type="string" column="direction" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="comment">[enum:inbound|outbound]</option>
