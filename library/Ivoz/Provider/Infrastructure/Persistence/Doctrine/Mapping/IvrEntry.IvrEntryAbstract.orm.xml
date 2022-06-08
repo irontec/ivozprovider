@@ -9,6 +9,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="displayName" type="string" column="displayName" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="routeType" type="string" column="routeType" length="25" nullable="false">
       <options>
         <option name="fixed"/>
