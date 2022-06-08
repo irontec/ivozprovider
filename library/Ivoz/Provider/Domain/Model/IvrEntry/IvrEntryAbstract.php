@@ -36,6 +36,11 @@ abstract class IvrEntryAbstract
     protected $entry;
 
     /**
+     * @var ?string
+     */
+    protected $displayName = null;
+
+    /**
      * @var string
      * comment: enum:number|extension|voicemail|conditional
      */
@@ -159,6 +164,7 @@ abstract class IvrEntryAbstract
         );
 
         $self
+            ->setDisplayName($dto->getDisplayName())
             ->setNumberValue($dto->getNumberValue())
             ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
@@ -191,6 +197,7 @@ abstract class IvrEntryAbstract
 
         $this
             ->setEntry($entry)
+            ->setDisplayName($dto->getDisplayName())
             ->setRouteType($routeType)
             ->setNumberValue($dto->getNumberValue())
             ->setIvr($fkTransformer->transform($ivr))
@@ -210,6 +217,7 @@ abstract class IvrEntryAbstract
     {
         return self::createDto()
             ->setEntry(self::getEntry())
+            ->setDisplayName(self::getDisplayName())
             ->setRouteType(self::getRouteType())
             ->setNumberValue(self::getNumberValue())
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
@@ -227,6 +235,7 @@ abstract class IvrEntryAbstract
     {
         return [
             'entry' => self::getEntry(),
+            'displayName' => self::getDisplayName(),
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'ivrId' => self::getIvr()->getId(),
@@ -250,6 +259,22 @@ abstract class IvrEntryAbstract
     public function getEntry(): string
     {
         return $this->entry;
+    }
+
+    protected function setDisplayName(?string $displayName = null): static
+    {
+        if (!is_null($displayName)) {
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
     }
 
     protected function setRouteType(string $routeType): static
