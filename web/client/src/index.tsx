@@ -1,12 +1,16 @@
-import ReactDOM from 'react-dom';
-import { ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
-import * as locales from '@mui/material/locale';
-import reportWebVitals from './reportWebVitals';
-import { StoreProvider } from 'easy-peasy';
-import store from 'store';
-import i18n from './i18n';
-import './index.css';
-import App from './App';
+import { createRoot } from "react-dom/client";
+import {
+  ThemeProvider,
+  createTheme,
+  StyledEngineProvider,
+} from "@mui/material";
+import * as locales from "@mui/material/locale";
+import reportWebVitals from "./reportWebVitals";
+import { StoreProvider } from "easy-peasy";
+import store from "store";
+import i18n from "./i18n";
+import "./index.css";
+import App from "./App";
 
 const currentLanguage = i18n.language.substring(0, 2) === 'es'
   ? 'esES'
@@ -26,8 +30,9 @@ const theme = createTheme(
   locales[currentLanguage],
 );
 
-ReactDOM.render(
-  //<React.StrictMode>
+const container = document.getElementById("root");
+const root = createRoot(container as any);
+root.render(
   <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <StoreProvider store={store}>
@@ -35,9 +40,6 @@ ReactDOM.render(
       </StoreProvider>
     </ThemeProvider>
   </StyledEngineProvider>
-  //</React.StrictMode>
-  ,
-  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

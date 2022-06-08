@@ -3,9 +3,11 @@ import EntityInterface, { ChildDecoratorType } from '@irontec/ivoz-ui/entities/E
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { isEntityItem } from '@irontec/ivoz-ui';
 import Form from './Form';
 import { VoicemailProperties } from './VoicemailProperties';
 import enabledVoicemailSelectOptions from './EnabledVoicemailSelectOptions';
+
 
 const properties: VoicemailProperties = {
   'enabled': {
@@ -67,7 +69,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
 
   const { routeMapItem, row } = props;
 
-  if (routeMapItem.entity.iden === Voicemail.iden) {
+  if (isEntityItem(routeMapItem) && routeMapItem.entity.iden === Voicemail.iden) {
 
     const isDeletePath = routeMapItem.route === `${Voicemail.path}/:id`;
     const allowDelete = row.user === null;
