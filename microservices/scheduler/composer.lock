@@ -4840,7 +4840,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "dev-main",
+            "version": "v1.24.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
@@ -4906,7 +4906,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-main",
+            "version": "v1.24.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-idn",

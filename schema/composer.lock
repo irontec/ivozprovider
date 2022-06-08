@@ -2034,11 +2034,11 @@
         },
         {
             "name": "irontec/ivoz-dev-tools",
-            "version": "5.8.9",
+            "version": "5.8.13",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/irontec/ivoz-dev-tools",
-                "reference": "aa5f913a434d343d2856ddea208d5da4d24aecfe"
+                "reference": "fd2e64a4a274bb8c9d5d37453d89fa6503e46d20"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
@@ -5066,7 +5066,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "dev-main",
+            "version": "v1.24.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-icu",
@@ -5132,7 +5132,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-main",
+            "version": "v1.24.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/symfony/polyfill-intl-idn",

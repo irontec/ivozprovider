@@ -2125,11 +2125,11 @@
         },
         {
             "name": "irontec/ivoz-api",
-            "version": "4.8",
+            "version": "4.8.3",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api",
-                "reference": "928f9a3396e66e787d9684047990756e3548ded2"
+                "reference": "653e6c30126f5264e81a8f4dda446c58a47237a6"
             },
             "require": {
                 "api-platform/core": "2.6.*",
@@ -2186,11 +2186,11 @@
         },
         {
             "name": "irontec/ivoz-api-bundle",
-            "version": "4.5",
+            "version": "4.5.1",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-api-bundle",
-                "reference": "cdf1700c533ad4b1ca7ab2c5f7878cffda6cc4ff"
+                "reference": "90c02b9cc60480ced7a7bc6d6d4f54071e580051"
             },
             "require": {
                 "gesdinet/jwt-refresh-token-bundle": "^0.12",
@@ -5401,7 +5401,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "dev-main",
+            "version": "v1.24.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-intl-icu",
@@ -5467,7 +5467,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "dev-main",
+            "version": "v1.24.0",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/polyfill-intl-idn",
