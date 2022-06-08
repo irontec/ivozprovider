@@ -116,6 +116,9 @@ interface HuntGroupInterface extends LoggableEntityInterface
      */
     public function replaceHuntGroupMembers(Collection $huntGroupMembers): HuntGroupInterface;
 
+    /**
+     * @return array<array-key, HuntGroupMemberInterface>
+     */
     public function getHuntGroupMembers(?Criteria $criteria = null): array;
 
     /**

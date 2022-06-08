@@ -246,6 +246,9 @@ abstract class TpRateAbstract
             ->setDestinationRate(DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

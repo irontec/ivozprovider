@@ -285,6 +285,9 @@ abstract class CallForwardSettingAbstract
             ->setDdi(Ddi::entityToDto(self::getDdi(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

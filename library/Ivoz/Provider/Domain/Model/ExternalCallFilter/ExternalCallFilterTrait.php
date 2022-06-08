@@ -190,6 +190,9 @@ trait ExternalCallFilterTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -247,6 +250,9 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ExternalCallFilterRelCalendarInterface>
+     */
     public function getCalendars(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -306,6 +312,9 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ExternalCallFilterBlackListInterface>
+     */
     public function getBlackLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -365,6 +374,9 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ExternalCallFilterWhiteListInterface>
+     */
     public function getWhiteLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -424,6 +436,9 @@ trait ExternalCallFilterTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ExternalCallFilterRelScheduleInterface>
+     */
     public function getSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

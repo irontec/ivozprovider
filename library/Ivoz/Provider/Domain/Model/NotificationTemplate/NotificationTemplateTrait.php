@@ -102,6 +102,9 @@ trait NotificationTemplateTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -159,6 +162,9 @@ trait NotificationTemplateTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, NotificationTemplateContentInterface>
+     */
     public function getContents(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

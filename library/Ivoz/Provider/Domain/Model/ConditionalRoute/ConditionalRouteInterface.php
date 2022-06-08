@@ -122,6 +122,9 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
      */
     public function replaceConditions(Collection $conditions): ConditionalRouteInterface;
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionInterface>
+     */
     public function getConditions(?Criteria $criteria = null): array;
 
     /**

@@ -20,12 +20,12 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     private $name = null;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeIn = null;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeout = null;
 
@@ -74,6 +74,9 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
      */
     private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -150,26 +153,26 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTimeIn(\DateTimeInterface $timeIn): static
+    public function setTimeIn(\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): ?\DateTimeInterface
+    public function getTimeIn(): \DateTimeInterface|string|null
     {
         return $this->timeIn;
     }
 
-    public function setTimeout(\DateTimeInterface $timeout): static
+    public function setTimeout(\DateTimeInterface|string $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    public function getTimeout(): ?\DateTimeInterface
+    public function getTimeout(): \DateTimeInterface|string|null
     {
         return $this->timeout;
     }

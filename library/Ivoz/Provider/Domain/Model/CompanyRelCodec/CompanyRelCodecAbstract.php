@@ -142,6 +142,9 @@ abstract class CompanyRelCodecAbstract
             ->setCodec(Codec::entityToDto(self::getCodec(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

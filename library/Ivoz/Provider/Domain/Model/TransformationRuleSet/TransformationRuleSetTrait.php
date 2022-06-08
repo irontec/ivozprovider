@@ -102,6 +102,9 @@ trait TransformationRuleSetTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -159,6 +162,9 @@ trait TransformationRuleSetTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TransformationRuleInterface>
+     */
     public function getRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -138,6 +138,9 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             ->setRoutingPatternGroup(RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

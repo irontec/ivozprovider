@@ -234,6 +234,9 @@ abstract class RecordingAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

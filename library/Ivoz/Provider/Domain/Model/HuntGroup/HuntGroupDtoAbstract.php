@@ -94,6 +94,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
      */
     private $huntGroupMembers = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

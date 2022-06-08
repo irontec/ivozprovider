@@ -179,6 +179,9 @@ abstract class RatingProfileAbstract
             ->setRoutingTag(RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

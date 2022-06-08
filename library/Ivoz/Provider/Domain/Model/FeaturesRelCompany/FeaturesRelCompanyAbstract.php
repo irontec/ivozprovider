@@ -142,6 +142,9 @@ abstract class FeaturesRelCompanyAbstract
             ->setFeature(Feature::entityToDto(self::getFeature(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

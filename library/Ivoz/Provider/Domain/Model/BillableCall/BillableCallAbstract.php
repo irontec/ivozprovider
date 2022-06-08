@@ -343,6 +343,9 @@ abstract class BillableCallAbstract
             ->setDdiProvider(DdiProvider::entityToDto(self::getDdiProvider(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

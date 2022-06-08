@@ -142,6 +142,9 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
             ->setMatchlist(MatchList::entityToDto(self::getMatchlist(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

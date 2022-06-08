@@ -46,6 +46,9 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
      */
     private $patterns = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

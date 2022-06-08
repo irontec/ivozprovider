@@ -396,6 +396,9 @@ abstract class UsersLocationAbstract
             ->setPartition(self::getPartition());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

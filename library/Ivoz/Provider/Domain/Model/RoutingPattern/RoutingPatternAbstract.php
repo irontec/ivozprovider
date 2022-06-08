@@ -113,6 +113,10 @@ abstract class RoutingPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
         $prefix = $dto->getPrefix();
         Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -156,6 +160,10 @@ abstract class RoutingPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
         $prefix = $dto->getPrefix();
         Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -202,6 +210,9 @@ abstract class RoutingPatternAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

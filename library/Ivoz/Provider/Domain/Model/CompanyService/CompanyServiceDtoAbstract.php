@@ -35,6 +35,9 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
      */
     private $service = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

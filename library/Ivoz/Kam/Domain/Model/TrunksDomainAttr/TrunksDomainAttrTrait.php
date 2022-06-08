@@ -73,6 +73,9 @@ trait TrunksDomainAttrTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [

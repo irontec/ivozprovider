@@ -218,6 +218,9 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function replaceDdis(Collection $ddis): ResidentialDeviceInterface;
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface;
@@ -229,5 +232,8 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings): ResidentialDeviceInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

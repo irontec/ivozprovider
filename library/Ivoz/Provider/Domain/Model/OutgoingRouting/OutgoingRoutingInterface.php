@@ -151,6 +151,9 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      */
     public function replaceLcrRules(Collection $lcrRules): OutgoingRoutingInterface;
 
+    /**
+     * @return array<array-key, TrunksLcrRuleInterface>
+     */
     public function getLcrRules(?Criteria $criteria = null): array;
 
     public function addLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
@@ -162,6 +165,9 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      */
     public function replaceLcrRuleTargets(Collection $lcrRuleTargets): OutgoingRoutingInterface;
 
+    /**
+     * @return array<array-key, TrunksLcrRuleTargetInterface>
+     */
     public function getLcrRuleTargets(?Criteria $criteria = null): array;
 
     public function addRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
@@ -173,5 +179,8 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      */
     public function replaceRelCarriers(Collection $relCarriers): OutgoingRoutingInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getRelCarriers(?Criteria $criteria = null): array;
 }

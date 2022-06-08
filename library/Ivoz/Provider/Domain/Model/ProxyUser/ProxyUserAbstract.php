@@ -132,6 +132,9 @@ abstract class ProxyUserAbstract
             ->setIp(self::getIp());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

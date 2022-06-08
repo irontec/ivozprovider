@@ -28,7 +28,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     private $timingType = 'always';
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeIn = null;
 
@@ -92,6 +92,9 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     private $tpRatingPlan = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -186,14 +189,14 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->timingType;
     }
 
-    public function setTimeIn(\DateTimeInterface $timeIn): static
+    public function setTimeIn(\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): ?\DateTimeInterface
+    public function getTimeIn(): \DateTimeInterface|string|null
     {
         return $this->timeIn;
     }

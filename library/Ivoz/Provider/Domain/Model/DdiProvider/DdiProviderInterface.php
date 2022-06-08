@@ -78,6 +78,9 @@ interface DdiProviderInterface extends LoggableEntityInterface
      */
     public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations): DdiProviderInterface;
 
+    /**
+     * @return array<array-key, DdiProviderRegistrationInterface>
+     */
     public function getDdiProviderRegistrations(?Criteria $criteria = null): array;
 
     public function addDdiProviderAddress(DdiProviderAddressInterface $ddiProviderAddress): DdiProviderInterface;
@@ -89,5 +92,8 @@ interface DdiProviderInterface extends LoggableEntityInterface
      */
     public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses): DdiProviderInterface;
 
+    /**
+     * @return array<array-key, DdiProviderAddressInterface>
+     */
     public function getDdiProviderAddresses(?Criteria $criteria = null): array;
 }

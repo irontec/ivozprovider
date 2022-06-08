@@ -103,6 +103,9 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings): CarrierInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
     public function addOutgoingRoutingsRelCarrier(OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier): CarrierInterface;
@@ -114,6 +117,9 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers): CarrierInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getOutgoingRoutingsRelCarriers(?Criteria $criteria = null): array;
 
     public function addServer(CarrierServerInterface $server): CarrierInterface;
@@ -125,6 +131,9 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function replaceServers(Collection $servers): CarrierInterface;
 
+    /**
+     * @return array<array-key, CarrierServerInterface>
+     */
     public function getServers(?Criteria $criteria = null): array;
 
     public function addRatingProfile(RatingProfileInterface $ratingProfile): CarrierInterface;
@@ -136,6 +145,9 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function replaceRatingProfiles(Collection $ratingProfiles): CarrierInterface;
 
+    /**
+     * @return array<array-key, RatingProfileInterface>
+     */
     public function getRatingProfiles(?Criteria $criteria = null): array;
 
     public function addTpCdrStat(TpCdrStatInterface $tpCdrStat): CarrierInterface;
@@ -147,5 +159,8 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function replaceTpCdrStats(Collection $tpCdrStats): CarrierInterface;
 
+    /**
+     * @return array<array-key, TpCdrStatInterface>
+     */
     public function getTpCdrStats(?Criteria $criteria = null): array;
 }

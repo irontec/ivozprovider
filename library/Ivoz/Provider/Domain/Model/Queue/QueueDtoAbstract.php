@@ -138,6 +138,9 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      */
     private $fullNumberCountry = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

@@ -98,6 +98,10 @@ abstract class LanguageAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
@@ -130,6 +134,10 @@ abstract class LanguageAbstract
     ): static {
         Assertion::isInstanceOf($dto, LanguageDto::class);
 
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
@@ -160,6 +168,9 @@ abstract class LanguageAbstract
             ->setNameIt(self::getName()->getIt());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

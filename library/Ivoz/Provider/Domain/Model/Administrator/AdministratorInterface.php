@@ -115,6 +115,9 @@ interface AdministratorInterface extends LoggableEntityInterface
      */
     public function replaceRelPublicEntities(Collection $relPublicEntities): AdministratorInterface;
 
+    /**
+     * @return array<array-key, AdministratorRelPublicEntityInterface>
+     */
     public function getRelPublicEntities(?Criteria $criteria = null): array;
 
     /**

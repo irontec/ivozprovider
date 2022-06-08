@@ -66,5 +66,8 @@ interface LocationInterface extends LoggableEntityInterface
      */
     public function replaceUsers(Collection $users): LocationInterface;
 
+    /**
+     * @return array<array-key, UserInterface>
+     */
     public function getUsers(?Criteria $criteria = null): array;
 }

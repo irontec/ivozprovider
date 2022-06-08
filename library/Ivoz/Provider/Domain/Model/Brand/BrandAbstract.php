@@ -184,6 +184,12 @@ abstract class BrandAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
+        Assertion::notNull($dto->getInvoiceNif(), 'invoiceNif value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoicePostalAddress(), 'invoicePostalAddress value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoicePostalCode(), 'invoicePostalCode value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoiceTown(), 'invoiceTown value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoiceProvince(), 'invoiceProvince value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoiceCountry(), 'invoiceCountry value is null, but non null value was expected.');
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $maxCalls = $dto->getMaxCalls();
@@ -245,6 +251,12 @@ abstract class BrandAbstract
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
+        Assertion::notNull($dto->getInvoiceNif(), 'invoiceNif value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoicePostalAddress(), 'invoicePostalAddress value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoicePostalCode(), 'invoicePostalCode value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoiceTown(), 'invoiceTown value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoiceProvince(), 'invoiceProvince value is null, but non null value was expected.');
+        Assertion::notNull($dto->getInvoiceCountry(), 'invoiceCountry value is null, but non null value was expected.');
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $maxCalls = $dto->getMaxCalls();
@@ -323,6 +335,9 @@ abstract class BrandAbstract
             ->setMaxDailyUsageNotificationTemplate(NotificationTemplate::entityToDto(self::getMaxDailyUsageNotificationTemplate(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

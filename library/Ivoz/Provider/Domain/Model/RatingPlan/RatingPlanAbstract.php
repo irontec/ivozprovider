@@ -9,6 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
@@ -242,6 +243,9 @@ abstract class RatingPlanAbstract
             ->setDestinationRateGroup(DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [
@@ -296,8 +300,19 @@ abstract class RatingPlanAbstract
         return $this->timingType;
     }
 
-    protected function setTimeIn(\DateTimeInterface $timeIn): static
+    protected function setTimeIn(string|\DateTimeInterface $timeIn): static
     {
+
+        /** @var \Datetime */
+        $timeIn = DateTimeHelper::createOrFix(
+            $timeIn,
+            null
+        );
+
+        if ($this->isInitialized() && $this->timeIn == $timeIn) {
+            return $this;
+        }
+
         $this->timeIn = $timeIn;
 
         return $this;

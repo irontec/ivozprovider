@@ -161,6 +161,9 @@ abstract class CodecAbstract
             ->setName(self::getName());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

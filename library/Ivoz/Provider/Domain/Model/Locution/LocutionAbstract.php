@@ -205,6 +205,9 @@ abstract class LocutionAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

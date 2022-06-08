@@ -159,6 +159,9 @@ trait RoutingPatternTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -216,6 +219,9 @@ trait RoutingPatternTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -275,6 +281,9 @@ trait RoutingPatternTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RoutingPatternGroupsRelPatternInterface>
+     */
     public function getRelPatternGroups(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -334,6 +343,9 @@ trait RoutingPatternTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TrunksLcrRuleInterface>
+     */
     public function getLcrRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

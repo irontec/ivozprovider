@@ -9,6 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -248,6 +249,9 @@ abstract class HolidayDateAbstract
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [
@@ -280,8 +284,19 @@ abstract class HolidayDateAbstract
         return $this->name;
     }
 
-    protected function setEventDate(\DateTimeInterface $eventDate): static
+    protected function setEventDate(string|\DateTimeInterface $eventDate): static
     {
+
+        /** @var \Datetime */
+        $eventDate = DateTimeHelper::createOrFix(
+            $eventDate,
+            null
+        );
+
+        if ($this->isInitialized() && $this->eventDate == $eventDate) {
+            return $this;
+        }
+
         $this->eventDate = $eventDate;
 
         return $this;
@@ -304,8 +319,21 @@ abstract class HolidayDateAbstract
         return $this->wholeDayEvent;
     }
 
-    protected function setTimeIn(?\DateTimeInterface $timeIn = null): static
+    protected function setTimeIn(string|\DateTimeInterface|null $timeIn = null): static
     {
+        if (!is_null($timeIn)) {
+
+            /** @var ?\Datetime */
+            $timeIn = DateTimeHelper::createOrFix(
+                $timeIn,
+                null
+            );
+
+            if ($this->isInitialized() && $this->timeIn == $timeIn) {
+                return $this;
+            }
+        }
+
         $this->timeIn = $timeIn;
 
         return $this;
@@ -316,8 +344,21 @@ abstract class HolidayDateAbstract
         return $this->timeIn;
     }
 
-    protected function setTimeOut(?\DateTimeInterface $timeOut = null): static
+    protected function setTimeOut(string|\DateTimeInterface|null $timeOut = null): static
     {
+        if (!is_null($timeOut)) {
+
+            /** @var ?\Datetime */
+            $timeOut = DateTimeHelper::createOrFix(
+                $timeOut,
+                null
+            );
+
+            if ($this->isInitialized() && $this->timeOut == $timeOut) {
+                return $this;
+            }
+        }
+
         $this->timeOut = $timeOut;
 
         return $this;

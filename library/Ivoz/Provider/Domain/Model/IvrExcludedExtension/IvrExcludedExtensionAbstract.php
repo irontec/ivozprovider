@@ -142,6 +142,9 @@ abstract class IvrExcludedExtensionAbstract
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

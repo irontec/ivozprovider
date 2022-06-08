@@ -28,6 +28,9 @@ abstract class ProxyTrunkDtoAbstract implements DataTransferObjectInterface
      */
     private $id = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

@@ -99,6 +99,9 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      */
     public function replaceRelSchedules(Collection $relSchedules): CalendarPeriodInterface;
 
+    /**
+     * @return array<array-key, CalendarPeriodsRelScheduleInterface>
+     */
     public function getRelSchedules(?Criteria $criteria = null): array;
 
     /**

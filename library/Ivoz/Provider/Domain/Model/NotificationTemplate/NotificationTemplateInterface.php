@@ -89,5 +89,8 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      */
     public function replaceContents(Collection $contents): NotificationTemplateInterface;
 
+    /**
+     * @return array<array-key, NotificationTemplateContentInterface>
+     */
     public function getContents(?Criteria $criteria = null): array;
 }

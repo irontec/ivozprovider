@@ -36,6 +36,9 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
      */
     private $tpRatingProfiles = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

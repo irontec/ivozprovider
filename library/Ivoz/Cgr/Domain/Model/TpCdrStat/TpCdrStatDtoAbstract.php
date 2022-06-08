@@ -159,6 +159,9 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
      */
     private $carrier = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

@@ -212,6 +212,9 @@ abstract class UsersLocationAttrAbstract
             ->setLastModified(self::getLastModified());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -138,6 +138,9 @@ abstract class PickUpRelUserAbstract
             ->setUser(User::entityToDto(self::getUser(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

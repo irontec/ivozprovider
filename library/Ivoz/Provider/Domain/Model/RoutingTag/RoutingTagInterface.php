@@ -71,6 +71,9 @@ interface RoutingTagInterface extends LoggableEntityInterface
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingTagInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
     public function addRelCompany(CompanyRelRoutingTagInterface $relCompany): RoutingTagInterface;
@@ -82,5 +85,8 @@ interface RoutingTagInterface extends LoggableEntityInterface
      */
     public function replaceRelCompanies(Collection $relCompanies): RoutingTagInterface;
 
+    /**
+     * @return array<array-key, CompanyRelRoutingTagInterface>
+     */
     public function getRelCompanies(?Criteria $criteria = null): array;
 }

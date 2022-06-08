@@ -238,6 +238,9 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function replacePickUpRelUsers(Collection $pickUpRelUsers): UserInterface;
 
+    /**
+     * @return array<array-key, PickUpRelUserInterface>
+     */
     public function getPickUpRelUsers(?Criteria $criteria = null): array;
 
     public function addQueueMember(QueueMemberInterface $queueMember): UserInterface;
@@ -249,6 +252,9 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function replaceQueueMembers(Collection $queueMembers): UserInterface;
 
+    /**
+     * @return array<array-key, QueueMemberInterface>
+     */
     public function getQueueMembers(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
@@ -260,6 +266,9 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings): UserInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 
     /**

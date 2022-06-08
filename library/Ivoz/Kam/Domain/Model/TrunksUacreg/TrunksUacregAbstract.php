@@ -368,6 +368,9 @@ abstract class TrunksUacregAbstract
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

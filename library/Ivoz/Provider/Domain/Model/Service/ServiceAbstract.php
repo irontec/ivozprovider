@@ -120,6 +120,14 @@ abstract class ServiceAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEn(), 'descriptionEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEs(), 'descriptionEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionCa(), 'descriptionCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionIt(), 'descriptionIt value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
         $defaultCode = $dto->getDefaultCode();
@@ -166,6 +174,14 @@ abstract class ServiceAbstract
     ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEn(), 'descriptionEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEs(), 'descriptionEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionCa(), 'descriptionCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionIt(), 'descriptionIt value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
         $defaultCode = $dto->getDefaultCode();
@@ -216,6 +232,9 @@ abstract class ServiceAbstract
             ->setDescriptionIt(self::getDescription()->getIt());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

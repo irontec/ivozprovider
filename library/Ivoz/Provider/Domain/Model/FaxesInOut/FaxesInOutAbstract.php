@@ -224,6 +224,9 @@ abstract class FaxesInOutAbstract
             ->setDstCountry(Country::entityToDto(self::getDstCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

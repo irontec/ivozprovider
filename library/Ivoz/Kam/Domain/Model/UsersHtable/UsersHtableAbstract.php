@@ -192,6 +192,9 @@ abstract class UsersHtableAbstract
             ->setExpires(self::getExpires());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

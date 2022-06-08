@@ -146,6 +146,9 @@ interface ExtensionInterface extends LoggableEntityInterface
      */
     public function replaceUsers(Collection $users): ExtensionInterface;
 
+    /**
+     * @return array<array-key, UserInterface>
+     */
     public function getUsers(?Criteria $criteria = null): array;
 
     /**

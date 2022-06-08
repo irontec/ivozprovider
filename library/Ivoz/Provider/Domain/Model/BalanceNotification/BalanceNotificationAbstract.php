@@ -171,6 +171,9 @@ abstract class BalanceNotificationAbstract
             ->setNotificationTemplate(NotificationTemplate::entityToDto(self::getNotificationTemplate(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

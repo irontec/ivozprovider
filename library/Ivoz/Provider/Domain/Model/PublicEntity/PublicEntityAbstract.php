@@ -210,6 +210,9 @@ abstract class PublicEntityAbstract
             ->setNameIt(self::getName()->getIt());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -183,6 +183,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
      */
     private $callForwardSettings = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

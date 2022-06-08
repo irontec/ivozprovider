@@ -205,6 +205,9 @@ abstract class OutgoingDdiRulesPatternAbstract
             ->setForcedDdi(Ddi::entityToDto(self::getForcedDdi(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

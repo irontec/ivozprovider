@@ -140,6 +140,9 @@ abstract class ProxyTrunkAbstract
             ->setIp(self::getIp());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

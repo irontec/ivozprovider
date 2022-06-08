@@ -191,6 +191,9 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function replaceRelMatchlists(Collection $relMatchlists): ConditionalRoutesConditionInterface;
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelMatchlistInterface>
+     */
     public function getRelMatchlists(?Criteria $criteria = null): array;
 
     public function addRelSchedule(ConditionalRoutesConditionsRelScheduleInterface $relSchedule): ConditionalRoutesConditionInterface;
@@ -202,6 +205,9 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function replaceRelSchedules(Collection $relSchedules): ConditionalRoutesConditionInterface;
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelScheduleInterface>
+     */
     public function getRelSchedules(?Criteria $criteria = null): array;
 
     public function addRelCalendar(ConditionalRoutesConditionsRelCalendarInterface $relCalendar): ConditionalRoutesConditionInterface;
@@ -213,6 +219,9 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function replaceRelCalendars(Collection $relCalendars): ConditionalRoutesConditionInterface;
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelCalendarInterface>
+     */
     public function getRelCalendars(?Criteria $criteria = null): array;
 
     public function addRelRouteLock(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock): ConditionalRoutesConditionInterface;
@@ -224,6 +233,9 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function replaceRelRouteLocks(Collection $relRouteLocks): ConditionalRoutesConditionInterface;
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelRouteLockInterface>
+     */
     public function getRelRouteLocks(?Criteria $criteria = null): array;
 
     /**

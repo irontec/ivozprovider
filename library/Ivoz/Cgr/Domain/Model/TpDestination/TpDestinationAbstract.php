@@ -185,6 +185,9 @@ abstract class TpDestinationAbstract
             ->setDestination(Destination::entityToDto(self::getDestination(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

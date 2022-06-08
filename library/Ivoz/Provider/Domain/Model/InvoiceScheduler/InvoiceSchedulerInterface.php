@@ -111,5 +111,8 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
      */
     public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceSchedulerInterface;
 
+    /**
+     * @return array<array-key, FixedCostsRelInvoiceSchedulerInterface>
+     */
     public function getRelFixedCosts(?Criteria $criteria = null): array;
 }

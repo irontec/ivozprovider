@@ -9,6 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -230,6 +231,9 @@ abstract class ScheduleAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [
@@ -261,8 +265,19 @@ abstract class ScheduleAbstract
         return $this->name;
     }
 
-    protected function setTimeIn(\DateTimeInterface $timeIn): static
+    protected function setTimeIn(string|\DateTimeInterface $timeIn): static
     {
+
+        /** @var \Datetime */
+        $timeIn = DateTimeHelper::createOrFix(
+            $timeIn,
+            null
+        );
+
+        if ($this->isInitialized() && $this->timeIn == $timeIn) {
+            return $this;
+        }
+
         $this->timeIn = $timeIn;
 
         return $this;
@@ -273,8 +288,19 @@ abstract class ScheduleAbstract
         return $this->timeIn;
     }
 
-    protected function setTimeout(\DateTimeInterface $timeout): static
+    protected function setTimeout(string|\DateTimeInterface $timeout): static
     {
+
+        /** @var \Datetime */
+        $timeout = DateTimeHelper::createOrFix(
+            $timeout,
+            null
+        );
+
+        if ($this->isInitialized() && $this->timeout == $timeout) {
+            return $this;
+        }
+
         $this->timeout = $timeout;
 
         return $this;

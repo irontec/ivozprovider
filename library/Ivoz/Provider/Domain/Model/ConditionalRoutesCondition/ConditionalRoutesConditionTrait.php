@@ -190,6 +190,9 @@ trait ConditionalRoutesConditionTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -247,6 +250,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelMatchlistInterface>
+     */
     public function getRelMatchlists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -306,6 +312,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelScheduleInterface>
+     */
     public function getRelSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -365,6 +374,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelCalendarInterface>
+     */
     public function getRelCalendars(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -424,6 +436,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelRouteLockInterface>
+     */
     public function getRelRouteLocks(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

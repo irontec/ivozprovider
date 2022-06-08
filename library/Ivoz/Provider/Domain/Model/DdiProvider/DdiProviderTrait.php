@@ -130,6 +130,9 @@ trait DdiProviderTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -187,6 +190,9 @@ trait DdiProviderTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiProviderRegistrationInterface>
+     */
     public function getDdiProviderRegistrations(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -246,6 +252,9 @@ trait DdiProviderTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiProviderAddressInterface>
+     */
     public function getDdiProviderAddresses(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

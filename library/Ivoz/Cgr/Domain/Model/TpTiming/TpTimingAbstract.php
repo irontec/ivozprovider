@@ -243,6 +243,9 @@ abstract class TpTimingAbstract
             ->setRatingPlan(RatingPlan::entityToDto(self::getRatingPlan(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

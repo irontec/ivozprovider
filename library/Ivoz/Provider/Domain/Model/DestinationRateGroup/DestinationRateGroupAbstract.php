@@ -139,6 +139,14 @@ abstract class DestinationRateGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEn(), 'descriptionEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEs(), 'descriptionEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionCa(), 'descriptionCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionIt(), 'descriptionIt value is null, but non null value was expected.');
         $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
         Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -193,6 +201,14 @@ abstract class DestinationRateGroupAbstract
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
 
+        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEn(), 'descriptionEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionEs(), 'descriptionEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionCa(), 'descriptionCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getDescriptionIt(), 'descriptionIt value is null, but non null value was expected.');
         $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
         Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -257,6 +273,9 @@ abstract class DestinationRateGroupAbstract
             ->setCurrency(Currency::entityToDto(self::getCurrency(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -142,6 +142,9 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             ->setRouteLock(RouteLock::entityToDto(self::getRouteLock(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

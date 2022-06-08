@@ -203,6 +203,9 @@ abstract class AdministratorRelPublicEntityAbstract
             ->setPublicEntity(PublicEntity::entityToDto(self::getPublicEntity(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

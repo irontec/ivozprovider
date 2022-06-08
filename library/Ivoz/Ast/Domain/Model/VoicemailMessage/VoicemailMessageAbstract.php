@@ -273,6 +273,9 @@ abstract class VoicemailMessageAbstract
             ->setParsed(self::getParsed());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -150,6 +150,9 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setInvoiceScheduler(InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -288,6 +288,9 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleNumberCountry(Country::entityToDto(self::getOutOfScheduleNumberCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

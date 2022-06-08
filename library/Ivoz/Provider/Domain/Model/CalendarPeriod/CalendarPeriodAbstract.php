@@ -9,6 +9,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
@@ -218,6 +219,9 @@ abstract class CalendarPeriodAbstract
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [
@@ -233,8 +237,19 @@ abstract class CalendarPeriodAbstract
         ];
     }
 
-    protected function setStartDate(\DateTimeInterface $startDate): static
+    protected function setStartDate(string|\DateTimeInterface $startDate): static
     {
+
+        /** @var \Datetime */
+        $startDate = DateTimeHelper::createOrFix(
+            $startDate,
+            null
+        );
+
+        if ($this->isInitialized() && $this->startDate == $startDate) {
+            return $this;
+        }
+
         $this->startDate = $startDate;
 
         return $this;
@@ -245,8 +260,19 @@ abstract class CalendarPeriodAbstract
         return $this->startDate;
     }
 
-    protected function setEndDate(\DateTimeInterface $endDate): static
+    protected function setEndDate(string|\DateTimeInterface $endDate): static
     {
+
+        /** @var \Datetime */
+        $endDate = DateTimeHelper::createOrFix(
+            $endDate,
+            null
+        );
+
+        if ($this->isInitialized() && $this->endDate == $endDate) {
+            return $this;
+        }
+
         $this->endDate = $endDate;
 
         return $this;

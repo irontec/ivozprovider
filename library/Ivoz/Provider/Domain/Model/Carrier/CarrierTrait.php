@@ -214,6 +214,9 @@ trait CarrierTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -271,6 +274,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -330,6 +336,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getOutgoingRoutingsRelCarriers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -389,6 +398,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CarrierServerInterface>
+     */
     public function getServers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -448,6 +460,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RatingProfileInterface>
+     */
     public function getRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -507,6 +522,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TpCdrStatInterface>
+     */
     public function getTpCdrStats(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

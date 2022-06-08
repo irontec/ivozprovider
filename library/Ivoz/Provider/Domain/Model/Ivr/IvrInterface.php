@@ -146,6 +146,9 @@ interface IvrInterface extends LoggableEntityInterface
      */
     public function replaceEntries(Collection $entries): IvrInterface;
 
+    /**
+     * @return array<array-key, IvrEntryInterface>
+     */
     public function getEntries(?Criteria $criteria = null): array;
 
     public function addExcludedExtension(IvrExcludedExtensionInterface $excludedExtension): IvrInterface;
@@ -157,5 +160,8 @@ interface IvrInterface extends LoggableEntityInterface
      */
     public function replaceExcludedExtensions(Collection $excludedExtensions): IvrInterface;
 
+    /**
+     * @return array<array-key, IvrExcludedExtensionInterface>
+     */
     public function getExcludedExtensions(?Criteria $criteria = null): array;
 }

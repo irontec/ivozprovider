@@ -161,6 +161,9 @@ abstract class FriendsPatternAbstract
             ->setFriend(Friend::entityToDto(self::getFriend(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -240,6 +240,9 @@ abstract class TrunksLcrGatewayAbstract
             ->setCarrierServer(CarrierServer::entityToDto(self::getCarrierServer(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -102,6 +102,9 @@ trait RatingPlanGroupTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -159,6 +162,9 @@ trait RatingPlanGroupTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RatingPlanInterface>
+     */
     public function getRatingPlan(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

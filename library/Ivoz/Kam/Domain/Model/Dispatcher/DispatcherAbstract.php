@@ -216,6 +216,9 @@ abstract class DispatcherAbstract
             ->setApplicationServer(ApplicationServer::entityToDto(self::getApplicationServer(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [
