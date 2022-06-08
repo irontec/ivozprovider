@@ -3955,7 +3955,15 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Country/CountryAbstract.php">
-    <PossiblyNullArgument occurrences="8">
+    <PossiblyNullArgument occurrences="16">
+      <code>$dto-&gt;getNameCa()</code>
+      <code>$dto-&gt;getNameCa()</code>
+      <code>$dto-&gt;getNameEn()</code>
+      <code>$dto-&gt;getNameEn()</code>
+      <code>$dto-&gt;getNameEs()</code>
+      <code>$dto-&gt;getNameEs()</code>
+      <code>$dto-&gt;getNameIt()</code>
+      <code>$dto-&gt;getNameIt()</code>
       <code>$dto-&gt;getZoneCa()</code>
       <code>$dto-&gt;getZoneCa()</code>
       <code>$dto-&gt;getZoneEn()</code>
