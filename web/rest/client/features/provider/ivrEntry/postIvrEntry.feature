@@ -12,6 +12,7 @@ Feature: Create IVR entries
     """
       {
           "entry": "new ivr entry",
+          "displayName": "New display name",
           "routeType": "extension",
           "numberValue": null,
           "id": 1,
@@ -30,6 +31,7 @@ Feature: Create IVR entries
     """
       {
           "entry": "new ivr entry",
+          "displayName": "New display name",
           "routeType": "extension",
           "numberValue": null,
           "id": 2,
@@ -53,6 +55,7 @@ Feature: Create IVR entries
     """
       {
           "entry": "new ivr entry",
+          "displayName": "New display name",
           "routeType": "extension",
           "numberValue": null,
           "id": 2,

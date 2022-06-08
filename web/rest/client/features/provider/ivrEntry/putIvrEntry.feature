@@ -12,6 +12,7 @@ Feature: Update IVR entries
     """
       {
           "entry": "test",
+          "displayName": "New display name",
           "routeType": "voicemail",
           "numberValue": null,
           "ivr": 1,
@@ -29,6 +30,7 @@ Feature: Update IVR entries
     """
      {
           "entry": "test",
+          "displayName": "New display name",
           "routeType": "voicemail",
           "numberValue": null,
           "id": 1,
