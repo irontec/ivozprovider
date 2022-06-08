@@ -56,7 +56,7 @@ class HuntGroupMember extends RouteHandlerAbstract
     public function process()
     {
         /** @var HuntGroupMemberRepository $huntGroupMemberRepository */
-        $huntGroupMemberRepository = $this->em->getRepository(HuntGroupMember::class);
+        $huntGroupMemberRepository = $this->em->getRepository(HuntGroupMemberInterface::class);
 
         // Get conference Id from extension
         $huntGroupMemberId = $this->agi->getExtension();
