@@ -148,6 +148,7 @@ const properties: DdiProperties = {
   },
   target: {
     label: _("Target"),
+    memoize: false,
   },
 };
 

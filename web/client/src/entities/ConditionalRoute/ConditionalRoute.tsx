@@ -132,6 +132,7 @@ const properties: ConditionalRouteProperties = {
   },
   target: {
     label: _("Target"),
+    memoize: false,
   },
 };
 

@@ -194,9 +194,11 @@ const properties: ExternalCallFilterProperties = {
   },
   holidayTarget: {
     label: _("Holiday target"),
+    memoize: false,
   },
   outOfScheduleTarget: {
     label: _("Out of schedule target"),
+    memoize: false,
   },
 };
 

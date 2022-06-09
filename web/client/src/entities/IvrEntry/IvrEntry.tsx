@@ -99,6 +99,7 @@ const properties: IvrEntryProperties = {
   target: {
     label: _("Target"),
     component: Target,
+    memoize: false,
   },
 };
 

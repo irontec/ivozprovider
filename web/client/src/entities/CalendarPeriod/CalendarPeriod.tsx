@@ -33,6 +33,7 @@ const properties: CalendarPeriodProperties = {
   scheduleIds: {
     label: _("Schedule", { count: 2 }),
     null: _("There are not associated elements"),
+    memoize: false,
   },
   locution: {
     label: _("Locution"),

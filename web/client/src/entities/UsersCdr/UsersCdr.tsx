@@ -16,6 +16,7 @@ const properties: UsersCdrProperties = {
   owner: {
     label: _("Owner"),
     readOnly: true,
+    memoize: false,
   },
   duration: {
     label: _("Duration"),
@@ -52,6 +53,7 @@ const properties: UsersCdrProperties = {
   party: {
     label: _("Party"),
     readOnly: true,
+    memoize: false,
   },
 };
 

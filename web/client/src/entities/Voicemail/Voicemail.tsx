@@ -4,7 +4,9 @@ import EntityInterface, {
 } from "@irontec/ivoz-ui/entities/EntityInterface";
 import _ from "@irontec/ivoz-ui/services/translations/translate";
 import { EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
 import { isEntityItem } from "@irontec/ivoz-ui";
 import Form from "./Form";
 import { VoicemailProperties } from "./VoicemailProperties";
@@ -76,7 +78,7 @@ export const ChildDecorator: ChildDecoratorType = (props) => {
     }
   }
 
-  return defaultEntityBehavior.ChildDecorator(props);
+  return DefaultChildDecorator(props);
 };
 
 const Voicemail: EntityInterface = {

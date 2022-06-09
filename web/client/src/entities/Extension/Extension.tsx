@@ -128,6 +128,7 @@ const properties: ExtensionProperties = {
   },
   target: {
     label: _("Target"),
+    memoize: false,
   },
 };
 

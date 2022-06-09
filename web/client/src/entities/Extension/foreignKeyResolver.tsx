@@ -69,6 +69,9 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
       case "voicemail":
         remapFk(data[idx], "voicemail", "target");
         break;
+      case null:
+        data[idx].target = "";
+        break;
       default:
         console.error("Unkown route type " + data[idx].routeType);
         data[idx].target = "";

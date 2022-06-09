@@ -166,9 +166,11 @@ const properties: IvrProperties = {
   },
   noInputTarget: {
     label: _("No input target"),
+    memoize: false,
   },
   errorTarget: {
     label: _("Error target"),
+    memoize: false,
   },
 };
 
