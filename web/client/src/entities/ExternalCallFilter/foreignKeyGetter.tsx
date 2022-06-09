@@ -1,14 +1,16 @@
-import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
-import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
-import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
-import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import entities from '../index';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
+import MatchListSelectOptions from "entities/MatchList/SelectOptions";
+import ScheduleSelectOptions from "entities/Schedule/SelectOptions";
+import CalendarSelectOptions from "entities/Calendar/SelectOptions";
+import { ExternalCallFilterPropertyList } from "./ExternalCallFilterProperties";
+import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import entities from "../index";
+import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+}): Promise<any> => {
   const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
 
   const promises = autoSelectOptions({
@@ -17,12 +19,12 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
     cancelToken,
     response,
     skip: [
-      'holidayVoicemail',
-      'outOfScheduleVoicemail',
-      'whiteListIds',
-      'blackListIds',
-      'scheduleIds',
-      'calendarIds',
+      "holidayVoicemail",
+      "outOfScheduleVoicemail",
+      "whiteListIds",
+      "blackListIds",
+      "scheduleIds",
+      "calendarIds",
     ],
   });
 

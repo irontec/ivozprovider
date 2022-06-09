@@ -1,33 +1,28 @@
-import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
 
 const Form = (props: EntityFormProps): JSX.Element => {
-
   const edit = props.edit || false;
   const DefaultEntityForm = defaultEntityBehavior.Form;
 
   const groups: Array<FieldsetGroups> = [
     {
-      legend: '',
-      fields: [
-        'name',
-        edit && 'recordingExtension',
-      ],
+      legend: "",
+      fields: ["name", edit && "recordingExtension"],
     },
     {
-      legend: '',
-      fields: [
-        'originalFile',
-      ],
+      legend: "",
+      fields: ["originalFile"],
     },
     {
-      legend: '',
-      fields: [
-        edit && 'status',
-      ],
+      legend: "",
+      fields: [edit && "status"],
     },
   ];
 
-  return (<DefaultEntityForm {...props} groups={groups} />);
+  return <DefaultEntityForm {...props} groups={groups} />;
 };
 
 export default Form;

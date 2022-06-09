@@ -1,37 +1,37 @@
-import genericForeignKeyResolver, { remapFk } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
-import { ConditionalRoutesConditionPropertiesList } from './ConditionalRoutesConditionProperties';
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import store from 'store';
-import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
-import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import genericForeignKeyResolver, {
+  remapFk,
+} from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
+import entities from "../index";
+import { ConditionalRoutesConditionPropertiesList } from "./ConditionalRoutesConditionProperties";
+import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import store from "store";
+import { EntityList } from "@irontec/ivoz-ui/router/parseRoutes";
+import { CountryPropertyList } from "entities/Country/CountryProperties";
 
-const foreignKeyResolver: foreignKeyResolverType = async function (
-  { data, cancelToken, entityService },
-): Promise<ConditionalRoutesConditionPropertiesList> {
-
+const foreignKeyResolver: foreignKeyResolverType = async function ({
+  data,
+  cancelToken,
+  entityService,
+}): Promise<ConditionalRoutesConditionPropertiesList> {
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
     entityService,
     entities,
-    skip: [
-      'numberCountry',
-      'conditionalRoute',
-    ],
+    skip: ["numberCountry", "conditionalRoute"],
   });
 
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: 'numberCountry',
+      fkFld: "numberCountry",
       entity: {
         ...entities.Country,
         toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
       },
       cancelToken,
-    }),
+    })
   );
 
   const getAction = store.getActions().api.get;
@@ -55,7 +55,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
   }
 
   for (const fld in conditionMatchEntities) {
-
     const entity = conditionMatchEntities[fld];
     promises[promises.length] = getAction({
       path: entity.path,
@@ -65,7 +64,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
       },
       cancelToken: cancelToken,
       successCallback: async (response: any) => {
-
         for (const item of response) {
           for (const row of data) {
             if (item.condition.id !== row.id) {
@@ -76,9 +74,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
               row.conditionMatch = [];
             }
 
-            row.conditionMatch.push(
-              item[fld].name,
-            );
+            row.conditionMatch.push(item[fld].name);
           }
         }
       },
@@ -92,41 +88,38 @@ const foreignKeyResolver: foreignKeyResolverType = async function (
   }
 
   for (const idx in data) {
-
     switch (data[idx].routeType) {
-      case 'user':
-        remapFk(data[idx], 'user', 'target');
+      case "user":
+        remapFk(data[idx], "user", "target");
         break;
-      case 'ivr':
-        remapFk(data[idx], 'ivr', 'target');
+      case "ivr":
+        remapFk(data[idx], "ivr", "target");
         break;
-      case 'huntGroup':
-        remapFk(data[idx], 'huntGroup', 'target');
+      case "huntGroup":
+        remapFk(data[idx], "huntGroup", "target");
         break;
-      case 'voicemail':
-        remapFk(data[idx], 'voicemail', 'target');
+      case "voicemail":
+        remapFk(data[idx], "voicemail", "target");
         break;
-      case 'number':
+      case "number":
         data[idx].target =
-                    data[idx].numberCountry
-                    + ' '
-                    + data[idx].numbervalue;
+          data[idx].numberCountry + " " + data[idx].numbervalue;
         break;
-      case 'friend':
+      case "friend":
         data[idx].target = data[idx].friendValue;
         break;
-      case 'queue':
-        remapFk(data[idx], 'queue', 'target');
+      case "queue":
+        remapFk(data[idx], "queue", "target");
         break;
-      case 'conferenceRoom':
-        remapFk(data[idx], 'conferenceRoom', 'target');
+      case "conferenceRoom":
+        remapFk(data[idx], "conferenceRoom", "target");
         break;
-      case 'extension':
-        remapFk(data[idx], 'extension', 'target');
+      case "extension":
+        remapFk(data[idx], "extension", "target");
         break;
       default:
-        console.error('Unkown route type:', data[idx].routetype);
-        data[idx].target = '';
+        console.error("Unkown route type:", data[idx].routetype);
+        data[idx].target = "";
         break;
     }
   }

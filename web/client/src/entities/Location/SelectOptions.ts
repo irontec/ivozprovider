@@ -1,12 +1,14 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Location from './Location';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import Location from "./Location";
 
-const LocationSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const LocationSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Location.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
@@ -15,7 +17,7 @@ const LocationSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Pr
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

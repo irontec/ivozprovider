@@ -1,42 +1,41 @@
-import ReceiptIcon from '@mui/icons-material/Receipt';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { InvoiceProperties } from './InvoiceProperties';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
+import _ from "@irontec/ivoz-ui/services/translations/translate";
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { InvoiceProperties } from "./InvoiceProperties";
+import { EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
 
 const properties: InvoiceProperties = {
-  'number': {
-    label: _('Number'),
+  number: {
+    label: _("Number"),
   },
-  'inDate': {
-    label: _('In date'),
-    format: 'date-time',
+  inDate: {
+    label: _("In date"),
+    format: "date-time",
   },
-  'outDate': {
-    label: _('Out date'),
-    format: 'date-time',
+  outDate: {
+    label: _("Out date"),
+    format: "date-time",
   },
-  'totalWithTax': {
-    label: _('Total with tax'),
-
+  totalWithTax: {
+    label: _("Total with tax"),
   },
-  'pdf': {
-    label: _('Pdf file'),
-    type: 'file',
+  pdf: {
+    label: _("Pdf file"),
+    type: "file",
   },
 };
 
 const Invoice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: ReceiptIcon,
-  iden: 'Invoice',
-  title: _('Invoice', { count: 2 }),
-  path: '/invoices',
+  iden: "Invoice",
+  title: _("Invoice", { count: 2 }),
+  path: "/invoices",
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: 'Invoices',
+    iden: "Invoices",
   },
   toStr: (row: EntityValues) => row.number as string,
 };

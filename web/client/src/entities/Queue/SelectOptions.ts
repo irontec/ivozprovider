@@ -1,14 +1,15 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Queue from './Queue';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import Queue from "./Queue";
 
-const QueueSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const QueueSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Queue.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.name;
@@ -16,7 +17,7 @@ const QueueSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promi
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

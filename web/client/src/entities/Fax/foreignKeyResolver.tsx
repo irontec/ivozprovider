@@ -1,14 +1,18 @@
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import entities from '../index';
-import { FaxPropertiesList } from './FaxProperties';
+import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import entities from "../index";
+import { FaxPropertiesList } from "./FaxProperties";
 
-const foreignKeyResolver: foreignKeyResolverType = async function (
-  { data, cancelToken, entityService },
-): Promise<FaxPropertiesList> {
-
+const foreignKeyResolver: foreignKeyResolverType = async function ({
+  data,
+  cancelToken,
+  entityService,
+}): Promise<FaxPropertiesList> {
   const promises = autoForeignKeyResolver({
-    data, cancelToken, entityService, entities,
+    data,
+    cancelToken,
+    entityService,
+    entities,
   });
 
   await Promise.all(promises);

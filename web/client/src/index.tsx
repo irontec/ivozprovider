@@ -12,22 +12,21 @@ import i18n from "./i18n";
 import "./index.css";
 import App from "./App";
 
-const currentLanguage = i18n.language.substring(0, 2) === 'es'
-  ? 'esES'
-  : 'enUS';
+const currentLanguage =
+  i18n.language.substring(0, 2) === "es" ? "esES" : "enUS";
 
 const theme = createTheme(
   {
     palette: {
       primary: {
-        main: '#4383cc',
+        main: "#4383cc",
       },
       secondary: {
-        main: '#e53935',
+        main: "#e53935",
       },
     },
   },
-  locales[currentLanguage],
+  locales[currentLanguage]
 );
 
 const container = document.getElementById("root");

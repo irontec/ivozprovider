@@ -1,16 +1,14 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Service from '../Service';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import Service from "../Service";
 
 type ServiceSelectOptionsArgs = {
-  includeId?: number,
+  includeId?: number;
 };
 
-const UnassignedServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs> = (
-  props,
-  customProps = {},
-): Promise<unknown> => {
-
+const UnassignedServiceSelectOptions: SelectOptionsType<
+  ServiceSelectOptionsArgs
+> = (props, customProps = {}): Promise<unknown> => {
   const { callback, cancelToken } = props;
   const { includeId } = customProps;
 
@@ -21,7 +19,7 @@ const UnassignedServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs
 
   return defaultEntityBehavior.fetchFks(
     path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
@@ -30,7 +28,7 @@ const UnassignedServiceSelectOptions: SelectOptionsType<ServiceSelectOptionsArgs
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

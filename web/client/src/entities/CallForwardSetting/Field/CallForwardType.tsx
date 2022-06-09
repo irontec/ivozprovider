@@ -1,22 +1,28 @@
-import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
+import { ListDecorator, ScalarProperty } from "@irontec/ivoz-ui";
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { useStoreState } from 'store';
-import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
+} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
+import { useStoreState } from "store";
+import { CallForwardSettingPropertyList } from "../CallForwardSettingProperties";
 
 type CallForwardTypeValues = CallForwardSettingPropertyList<string>;
-type CallForwardTypeProps = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<CallForwardTypeValues>>;
+type CallForwardTypeProps = PropertyCustomFunctionComponent<
+  PropertyCustomFunctionComponentProps<CallForwardTypeValues>
+>;
 
 const CallForwardType: CallForwardTypeProps = (props): JSX.Element | null => {
-
   const { _context, _columnName, property, values, formFieldFactory } = props;
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
-  if (_context === 'read' || !formFieldFactory) {
+  if (_context === "read" || !formFieldFactory) {
     return (
-      <ListDecorator field={_columnName} row={values} property={property} ignoreCustomComponent={true} />
+      <ListDecorator
+        field={_columnName}
+        row={values}
+        property={property}
+        ignoreCustomComponent={true}
+      />
     );
   }
 
@@ -29,7 +35,7 @@ const CallForwardType: CallForwardTypeProps = (props): JSX.Element | null => {
       _columnName,
       modifiedProperty,
       choices,
-      readOnly,
+      readOnly
     );
   }
 
@@ -48,7 +54,7 @@ const CallForwardType: CallForwardTypeProps = (props): JSX.Element | null => {
     _columnName,
     modifiedProperty,
     choices,
-    readOnly,
+    readOnly
   );
 };
 

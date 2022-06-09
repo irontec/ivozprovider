@@ -1,14 +1,15 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import RoutingTag from './RoutingTag';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import RoutingTag from "./RoutingTag";
 
-const RoutingTagSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const RoutingTagSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     RoutingTag.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.name;
@@ -16,7 +17,7 @@ const RoutingTagSelectOptions: SelectOptionsType = ({ callback, cancelToken }): 
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

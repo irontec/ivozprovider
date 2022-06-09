@@ -1,11 +1,13 @@
-import { QueuePropertyList } from './QueueProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
-import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
+import { QueuePropertyList } from "./QueueProperties";
+import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import entities from "../index";
+import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+}): Promise<any> => {
   const response: QueuePropertyList<Array<string | number>> = {};
 
   const promises = autoSelectOptions({
@@ -13,10 +15,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
     entityService,
     cancelToken,
     response,
-    skip: [
-      'timeoutVoicemail',
-      'fullVoicemail',
-    ],
+    skip: ["timeoutVoicemail", "fullVoicemail"],
   });
 
   promises[promises.length] = EnabledVoicemailSelectOptions({

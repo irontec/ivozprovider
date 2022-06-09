@@ -1,77 +1,77 @@
-import GroupsIcon from '@mui/icons-material/Groups';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { HuntGroupMemberProperties } from './HuntGroupMemberProperties';
-import Type from './Field/Target';
-import Form from './Form';
-import foreignKeyResolver from './foreignKeyResolver';
+import GroupsIcon from "@mui/icons-material/Groups";
+import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
+import _ from "@irontec/ivoz-ui/services/translations/translate";
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { HuntGroupMemberProperties } from "./HuntGroupMemberProperties";
+import Type from "./Field/Target";
+import Form from "./Form";
+import foreignKeyResolver from "./foreignKeyResolver";
 
 const properties: HuntGroupMemberProperties = {
-  'huntGroup': {
-    label: _('Hunt Group'),
+  huntGroup: {
+    label: _("Hunt Group"),
   },
-  'routeType': {
-    label: _('Target type'),
+  routeType: {
+    label: _("Target type"),
     enum: {
-      'user': _('User'),
-      'number': _('Number'),
+      user: _("User"),
+      number: _("Number"),
     },
     visualToggle: {
-      'user': {
-        show: ['user'],
-        hide: ['numberCountry', 'numberValue'],
+      user: {
+        show: ["user"],
+        hide: ["numberCountry", "numberValue"],
       },
-      'number': {
-        show: ['numberCountry', 'numberValue'],
-        hide: ['user'],
+      number: {
+        show: ["numberCountry", "numberValue"],
+        hide: ["user"],
       },
     },
   },
-  'numberCountry': {
-    label: _('Country'),
+  numberCountry: {
+    label: _("Country"),
   },
-  'numberValue': {
-    label: _('Number'),
+  numberValue: {
+    label: _("Number"),
   },
-  'user': {
-    label: _('User'),
+  user: {
+    label: _("User"),
   },
-  'timeoutTime': {
-    label: _('Timeout time'),
+  timeoutTime: {
+    label: _("Timeout time"),
   },
-  'priority': {
-    label: _('Priority'),
+  priority: {
+    label: _("Priority"),
   },
-  'target': {
-    label: _('Target'),
+  target: {
+    label: _("Target"),
     component: Type,
     readOnly: true,
   },
 };
 
 const columns = [
-  'target',
-  'huntGroup',
-  'routeType',
-  'numberCountry',
-  'numberValue',
-  'timeoutTime',
-  'priority',
+  "target",
+  "huntGroup",
+  "routeType",
+  "numberCountry",
+  "numberValue",
+  "timeoutTime",
+  "priority",
 ];
 
 const huntGroupMember: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GroupsIcon,
-  iden: 'HuntGroupMember',
-  title: _('Hunt Group member', { count: 2 }),
-  path: '/hunt_group_members',
+  iden: "HuntGroupMember",
+  title: _("Hunt Group member", { count: 2 }),
+  path: "/hunt_group_members",
   toStr: (row: any) => row.name,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: 'HuntGroupMembers',
+    iden: "HuntGroupMembers",
   },
   foreignKeyResolver,
   Form,

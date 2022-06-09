@@ -1,21 +1,22 @@
-import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
-import { useState, useEffect } from 'react';
-import { ExtendedRouteMap, ExtendedRouteMapItem } from './EntityMap';
-import { isEntityItem } from '@irontec/ivoz-ui';
+import { AboutMe, EntityAcl } from "store/clientSession/aboutMe";
+import { useState, useEffect } from "react";
+import { ExtendedRouteMap, ExtendedRouteMapItem } from "./EntityMap";
+import { isEntityItem } from "@irontec/ivoz-ui";
 
 interface updateEntityMapProps {
-  entityMap: ExtendedRouteMap,
-  aboutMe: AboutMe
+  entityMap: ExtendedRouteMap;
+  aboutMe: AboutMe;
 }
 
-const updateEntityMapByAcls = (props: updateEntityMapProps): ExtendedRouteMap => {
+const updateEntityMapByAcls = (
+  props: updateEntityMapProps
+): ExtendedRouteMap => {
   const { entityMap, aboutMe } = props;
   //const originalEntityMapStr = JSON.stringify(entityMap);
   let updated = false;
 
   for (const block of entityMap) {
     for (const idx in block.children) {
-
       const resp = updateRouteMapItemByAcls({
         routeMapItem: block.children[idx],
         aboutMe,
@@ -33,7 +34,7 @@ const updateEntityMapByAcls = (props: updateEntityMapProps): ExtendedRouteMap =>
       block.children[idx] = resp[0];
     }
 
-    block.children = block.children.filter(item => item);
+    block.children = block.children.filter((item) => item);
   }
 
   if (!updated) {
@@ -77,7 +78,7 @@ const updateRouteMapItemByAcls = (
   }
 
   const apiAcls: EntityAcl | undefined = aboutMe.acls.find(
-    (acl) => entityAcls?.iden === acl.iden,
+    (acl) => entityAcls?.iden === acl.iden
   );
 
   if (!apiAcls) {
@@ -126,35 +127,33 @@ const updateRouteMapItemByAcls = (
     routeMapItem.children[idx] = resp;
   }
 
-  routeMapItem.children = routeMapItem.children.filter(item => item);
+  routeMapItem.children = routeMapItem.children.filter((item) => item);
 
   return [routeMapItem, updated];
 };
 
 export interface AppRoutesProps {
-  entityMap: ExtendedRouteMap,
-  aboutMe: AboutMe | null
+  entityMap: ExtendedRouteMap;
+  aboutMe: AboutMe | null;
 }
 
-export default function useAclFilteredEntityMap(props: AppRoutesProps): ExtendedRouteMap {
-
+export default function useAclFilteredEntityMap(
+  props: AppRoutesProps
+): ExtendedRouteMap {
   const { entityMap, aboutMe } = props;
   const [routes, setRoutes] = useState<ExtendedRouteMap>(entityMap);
 
-  useEffect(
-    () => {
+  useEffect(() => {
+    if (!aboutMe) {
+      return;
+    }
 
-      if (!aboutMe) {
-        return;
-      }
-
-      const resp = updateEntityMapByAcls({
-        entityMap: routes,
-        aboutMe,
-      });
-      setRoutes(resp);
-
-    }, [routes, aboutMe]);
+    const resp = updateEntityMapByAcls({
+      entityMap: routes,
+      aboutMe,
+    });
+    setRoutes(resp);
+  }, [routes, aboutMe]);
 
   return routes;
 }

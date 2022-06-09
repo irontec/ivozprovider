@@ -6,13 +6,13 @@ import Login from "components/Login";
 import { Route, Switch } from "react-router-dom";
 import AppRouteContentWrapper from "./AppRouteContentWrapper";
 import getEntityMap from "./EntityMap";
-import { AboutMe } from 'store/clientSession/aboutMe';
-import useAclFilteredEntityMap from './useAclFilteredEntityMap';
+import { AboutMe } from "store/clientSession/aboutMe";
+import useAclFilteredEntityMap from "./useAclFilteredEntityMap";
 
 export interface AppRoutesProps {
-  token: string,
-  apiSpec: ParsedApiSpecInterface,
-  aboutMe: AboutMe | null,
+  token: string;
+  apiSpec: ParsedApiSpecInterface;
+  aboutMe: AboutMe | null;
 }
 
 export default function AppRoutes(props: AppRoutesProps): JSX.Element {
@@ -23,9 +23,7 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
     aboutMe,
   });
 
-  const routes = aboutMe
-    ? parseRoutes(apiSpec, aclFilteredEntityMap)
-    : [];
+  const routes = aboutMe ? parseRoutes(apiSpec, aclFilteredEntityMap) : [];
 
   if (!token || !aboutMe) {
     return <Login />;
@@ -34,14 +32,24 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
   const resp = (
     <Switch>
       <Route exact key="login" path="/">
-        <AppRouteContentWrapper loggedIn={!!token} routeMap={aclFilteredEntityMap}>
+        <AppRouteContentWrapper
+          loggedIn={!!token}
+          routeMap={aclFilteredEntityMap}
+        >
           <Dashboard routeMap={aclFilteredEntityMap} />
         </AppRouteContentWrapper>
       </Route>
       {routes.map((route: RouteSpec) => (
         <Route exact key={route.key} path={route.path}>
-          <AppRouteContentWrapper loggedIn={!!token} routeMap={aclFilteredEntityMap}>
-            <RouteContent route={route} routeMap={aclFilteredEntityMap} {...props} />
+          <AppRouteContentWrapper
+            loggedIn={!!token}
+            routeMap={aclFilteredEntityMap}
+          >
+            <RouteContent
+              route={route}
+              routeMap={aclFilteredEntityMap}
+              {...props}
+            />
           </AppRouteContentWrapper>
         </Route>
       ))}

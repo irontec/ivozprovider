@@ -1,3 +1,3 @@
-import AppRouteContentWrapper from './AppRouteContentWrapper';
+import AppRouteContentWrapper from "./AppRouteContentWrapper";
 
 export default AppRouteContentWrapper;
