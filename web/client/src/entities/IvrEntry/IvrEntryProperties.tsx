@@ -5,6 +5,7 @@ export type IvrEntryPropertyList<T> = {
   'ivr'?: T,
   'entry'?: T,
   'welcomeLocution'?: T,
+  'displayName'?: T,
   'routeType'?: T,
   'numberCountry'?: T,
   'numberValue'?: T,

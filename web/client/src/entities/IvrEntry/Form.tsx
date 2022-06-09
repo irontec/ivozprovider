@@ -20,6 +20,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       fields: [
         'entry',
         'welcomeLocution',
+        'displayName',
       ],
     },
     {
