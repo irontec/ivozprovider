@@ -24,6 +24,7 @@ class ProviderIvrEntry extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstance(IvrEntry::class);
         (function () use ($fixture) {
             $this->setEntry("test");
+            $this->setDisplayName("Entry display name");
             $this->setRouteType("number");
             $this->setNumberValue("946002050");
             $this->setIvr($fixture->getReference('_reference_ProviderIvr1'));

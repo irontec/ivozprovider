@@ -68,6 +68,8 @@ interface IvrEntryInterface extends LoggableEntityInterface
 
     public function getEntry(): string;
 
+    public function getDisplayName(): ?string;
+
     public function getRouteType(): string;
 
     public function getNumberValue(): ?string;

@@ -27,6 +27,11 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $displayName = null;
+
+    /**
+     * @var string|null
+     */
     private $routeType = null;
 
     /**
@@ -88,6 +93,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
 
         return [
             'entry' => 'entry',
+            'displayName' => 'displayName',
             'routeType' => 'routeType',
             'numberValue' => 'numberValue',
             'id' => 'id',
@@ -107,6 +113,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     {
         $response = [
             'entry' => $this->getEntry(),
+            'displayName' => $this->getDisplayName(),
             'routeType' => $this->getRouteType(),
             'numberValue' => $this->getNumberValue(),
             'id' => $this->getId(),
@@ -142,6 +149,18 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     public function getEntry(): ?string
     {
         return $this->entry;
+    }
+
+    public function setDisplayName(?string $displayName): static
+    {
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
     }
 
     public function setRouteType(string $routeType): static

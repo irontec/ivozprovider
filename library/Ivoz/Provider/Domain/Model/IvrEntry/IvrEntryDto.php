@@ -15,6 +15,7 @@ class IvrEntryDto extends IvrEntryDtoAbstract
                 'id' => 'id',
                 'ivrId' => 'ivr',
                 'entry' => 'entry',
+                'displayName' => 'displayName',
                 'welcomeLocutionId' => 'welcomeLocution',
                 'routeType' => 'routeType',
                 'numberCountryId' => 'numberCountry',

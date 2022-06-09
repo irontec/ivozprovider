@@ -16,6 +16,7 @@ Feature: Retrieve ivr entries
       [
           {
               "entry": "test",
+              "displayName": "Entry display name",
               "routeType": "number",
               "numberValue": "946002050",
               "id": 1,
@@ -40,6 +41,7 @@ Feature: Retrieve ivr entries
     """
       {
           "entry": "test",
+          "displayName": "Entry display name",
           "routeType": "number",
           "numberValue": "946002050",
           "id": 1,

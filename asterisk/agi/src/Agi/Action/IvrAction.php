@@ -108,6 +108,11 @@ class IvrAction
 
                 $this->agi->playbackLocution($successLocution);
 
+                // Check if this entry has custom Display Name
+                if (!empty($entry->getDisplayName())) {
+                    $this->agi->setCallerIdName($entry->getDisplayName());
+                }
+
                 // Route to destination
                 $this->routerAction
                     ->setRouteType($entry->getRouteType())

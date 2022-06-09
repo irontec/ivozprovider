@@ -25,6 +25,10 @@ const properties: IvrEntryProperties = {
     required: true,
     helpText: _('You can use regular expressions to define values this entry will match.'),
   },
+  'displayName': {
+    label: _('Display Name'),
+    helpText: _('This value will be displayed in the called terminals'),
+  },
   'welcomeLocution': {
     label: _('Success locution'),
     null: _('Unassigned'),
@@ -106,6 +110,7 @@ const IvrEntry: EntityInterface = {
   properties,
   columns: [
     'entry',
+    'displayName',
     'welcomeLocution',
     'routeType',
     'target',
