@@ -130,6 +130,9 @@ trait RoutingTagTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -187,6 +190,9 @@ trait RoutingTagTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -246,6 +252,9 @@ trait RoutingTagTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyRelRoutingTagInterface>
+     */
     public function getRelCompanies(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

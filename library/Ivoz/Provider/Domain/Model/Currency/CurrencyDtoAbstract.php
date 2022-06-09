@@ -48,6 +48,9 @@ abstract class CurrencyDtoAbstract implements DataTransferObjectInterface
      */
     private $nameIt = '';
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

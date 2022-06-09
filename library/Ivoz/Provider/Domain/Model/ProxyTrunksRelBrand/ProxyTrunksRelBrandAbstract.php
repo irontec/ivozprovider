@@ -142,6 +142,9 @@ abstract class ProxyTrunksRelBrandAbstract
             ->setProxyTrunk(ProxyTrunk::entityToDto(self::getProxyTrunk(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

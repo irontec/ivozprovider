@@ -125,6 +125,9 @@ trait DestinationTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -194,6 +197,9 @@ trait DestinationTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DestinationRateInterface>
+     */
     public function getDestinationRates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

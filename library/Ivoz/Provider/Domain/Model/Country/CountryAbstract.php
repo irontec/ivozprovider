@@ -111,6 +111,10 @@ abstract class CountryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
+        Assertion::notNull($dto->getZoneEn(), 'zoneEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getZoneEs(), 'zoneEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getZoneCa(), 'zoneCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getZoneIt(), 'zoneIt value is null, but non null value was expected.');
         $code = $dto->getCode();
         Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
@@ -152,6 +156,10 @@ abstract class CountryAbstract
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
+        Assertion::notNull($dto->getZoneEn(), 'zoneEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getZoneEs(), 'zoneEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getZoneCa(), 'zoneCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getZoneIt(), 'zoneIt value is null, but non null value was expected.');
         $code = $dto->getCode();
         Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
@@ -196,6 +204,9 @@ abstract class CountryAbstract
             ->setZoneIt(self::getZone()->getIt());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

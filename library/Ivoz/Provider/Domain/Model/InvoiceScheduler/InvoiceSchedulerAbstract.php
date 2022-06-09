@@ -256,6 +256,9 @@ abstract class InvoiceSchedulerAbstract
             ->setNumberSequence(InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

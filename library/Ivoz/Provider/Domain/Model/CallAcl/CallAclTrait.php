@@ -103,6 +103,9 @@ trait CallAclTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -160,6 +163,9 @@ trait CallAclTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CallAclRelMatchListInterface>
+     */
     public function getRelMatchLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

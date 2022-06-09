@@ -142,6 +142,9 @@ abstract class ExternalCallFilterRelCalendarAbstract
             ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

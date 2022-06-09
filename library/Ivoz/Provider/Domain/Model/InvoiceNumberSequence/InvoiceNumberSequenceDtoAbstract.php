@@ -59,6 +59,9 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
      */
     private $brand = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

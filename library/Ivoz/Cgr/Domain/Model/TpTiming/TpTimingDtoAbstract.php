@@ -64,6 +64,9 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
      */
     private $ratingPlan = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

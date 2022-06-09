@@ -267,6 +267,9 @@ abstract class InvoiceAbstract
             ->setScheduler(InvoiceScheduler::entityToDto(self::getScheduler(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

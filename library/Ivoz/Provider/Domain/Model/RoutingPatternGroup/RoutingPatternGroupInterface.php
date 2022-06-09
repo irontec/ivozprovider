@@ -76,6 +76,9 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      */
     public function replaceRelPatterns(Collection $relPatterns): RoutingPatternGroupInterface;
 
+    /**
+     * @return array<array-key, RoutingPatternGroupsRelPatternInterface>
+     */
     public function getRelPatterns(?Criteria $criteria = null): array;
 
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): RoutingPatternGroupInterface;
@@ -87,5 +90,8 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingPatternGroupInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 }

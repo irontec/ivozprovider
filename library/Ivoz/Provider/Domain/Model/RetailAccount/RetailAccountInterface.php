@@ -165,6 +165,9 @@ interface RetailAccountInterface extends LoggableEntityInterface
      */
     public function replaceDdis(Collection $ddis): RetailAccountInterface;
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface;
@@ -176,5 +179,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings): RetailAccountInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

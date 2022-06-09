@@ -199,6 +199,9 @@ trait ResidentialDeviceTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -292,6 +295,9 @@ trait ResidentialDeviceTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -351,6 +357,9 @@ trait ResidentialDeviceTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

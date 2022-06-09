@@ -158,6 +158,9 @@ trait DomainTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -215,6 +218,9 @@ trait DomainTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FriendInterface>
+     */
     public function getFriends(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -274,6 +280,9 @@ trait DomainTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ResidentialDeviceInterface>
+     */
     public function getResidentialDevices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -333,6 +342,9 @@ trait DomainTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TerminalInterface>
+     */
     public function getTerminals(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

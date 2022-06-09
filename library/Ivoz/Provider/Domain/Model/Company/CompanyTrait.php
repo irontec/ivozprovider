@@ -442,6 +442,9 @@ trait CompanyTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -499,6 +502,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ExtensionInterface>
+     */
     public function getExtensions(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -558,6 +564,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -617,6 +626,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FriendInterface>
+     */
     public function getFriends(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -676,6 +688,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyServiceInterface>
+     */
     public function getCompanyServices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -735,6 +750,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TerminalInterface>
+     */
     public function getTerminals(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -794,6 +812,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RatingProfileInterface>
+     */
     public function getRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -853,6 +874,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, MusicOnHoldInterface>
+     */
     public function getMusicsOnHold(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -912,6 +936,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, VoicemailInterface>
+     */
     public function getVoicemails(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -971,6 +998,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RecordingInterface>
+     */
     public function getRecordings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -1030,6 +1060,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FeaturesRelCompanyInterface>
+     */
     public function getRelFeatures(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -1089,6 +1122,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyRelGeoIPCountryInterface>
+     */
     public function getRelCountries(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -1148,6 +1184,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyRelCodecInterface>
+     */
     public function getRelCodecs(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -1207,6 +1246,9 @@ trait CompanyTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyRelRoutingTagInterface>
+     */
     public function getRelRoutingTags(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

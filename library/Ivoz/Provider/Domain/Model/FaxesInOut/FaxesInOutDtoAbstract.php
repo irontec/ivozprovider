@@ -75,6 +75,9 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
      */
     private $dstCountry = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

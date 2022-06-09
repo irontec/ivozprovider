@@ -30,6 +30,9 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
      */
     private $schedule = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

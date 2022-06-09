@@ -61,6 +61,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
      */
     private $destinationRates = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

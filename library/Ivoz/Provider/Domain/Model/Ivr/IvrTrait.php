@@ -131,6 +131,9 @@ trait IvrTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -188,6 +191,9 @@ trait IvrTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, IvrEntryInterface>
+     */
     public function getEntries(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -247,6 +253,9 @@ trait IvrTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, IvrExcludedExtensionInterface>
+     */
     public function getExcludedExtensions(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

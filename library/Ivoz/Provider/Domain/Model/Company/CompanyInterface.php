@@ -309,6 +309,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceExtensions(Collection $extensions): CompanyInterface;
 
+    /**
+     * @return array<array-key, ExtensionInterface>
+     */
     public function getExtensions(?Criteria $criteria = null): array;
 
     public function addDdi(DdiInterface $ddi): CompanyInterface;
@@ -320,6 +323,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceDdis(Collection $ddis): CompanyInterface;
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(?Criteria $criteria = null): array;
 
     public function addFriend(FriendInterface $friend): CompanyInterface;
@@ -331,6 +337,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceFriends(Collection $friends): CompanyInterface;
 
+    /**
+     * @return array<array-key, FriendInterface>
+     */
     public function getFriends(?Criteria $criteria = null): array;
 
     public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
@@ -342,6 +351,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceCompanyServices(Collection $companyServices): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyServiceInterface>
+     */
     public function getCompanyServices(?Criteria $criteria = null): array;
 
     public function addTerminal(TerminalInterface $terminal): CompanyInterface;
@@ -353,6 +365,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceTerminals(Collection $terminals): CompanyInterface;
 
+    /**
+     * @return array<array-key, TerminalInterface>
+     */
     public function getTerminals(?Criteria $criteria = null): array;
 
     public function addRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface;
@@ -364,6 +379,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceRatingProfiles(Collection $ratingProfiles): CompanyInterface;
 
+    /**
+     * @return array<array-key, RatingProfileInterface>
+     */
     public function getRatingProfiles(?Criteria $criteria = null): array;
 
     public function addMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface;
@@ -375,6 +393,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceMusicsOnHold(Collection $musicsOnHold): CompanyInterface;
 
+    /**
+     * @return array<array-key, MusicOnHoldInterface>
+     */
     public function getMusicsOnHold(?Criteria $criteria = null): array;
 
     public function addVoicemail(VoicemailInterface $voicemail): CompanyInterface;
@@ -386,6 +407,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceVoicemails(Collection $voicemails): CompanyInterface;
 
+    /**
+     * @return array<array-key, VoicemailInterface>
+     */
     public function getVoicemails(?Criteria $criteria = null): array;
 
     public function addRecording(RecordingInterface $recording): CompanyInterface;
@@ -397,6 +421,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceRecordings(Collection $recordings): CompanyInterface;
 
+    /**
+     * @return array<array-key, RecordingInterface>
+     */
     public function getRecordings(?Criteria $criteria = null): array;
 
     public function addRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface;
@@ -408,6 +435,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceRelFeatures(Collection $relFeatures): CompanyInterface;
 
+    /**
+     * @return array<array-key, FeaturesRelCompanyInterface>
+     */
     public function getRelFeatures(?Criteria $criteria = null): array;
 
     public function addRelCountry(CompanyRelGeoIPCountryInterface $relCountry): CompanyInterface;
@@ -419,6 +449,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceRelCountries(Collection $relCountries): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyRelGeoIPCountryInterface>
+     */
     public function getRelCountries(?Criteria $criteria = null): array;
 
     public function addRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface;
@@ -430,6 +463,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceRelCodecs(Collection $relCodecs): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyRelCodecInterface>
+     */
     public function getRelCodecs(?Criteria $criteria = null): array;
 
     public function addRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface;
@@ -441,5 +477,8 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function replaceRelRoutingTags(Collection $relRoutingTags): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyRelRoutingTagInterface>
+     */
     public function getRelRoutingTags(?Criteria $criteria = null): array;
 }

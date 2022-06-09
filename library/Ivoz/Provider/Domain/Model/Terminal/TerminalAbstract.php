@@ -283,6 +283,9 @@ abstract class TerminalAbstract
             ->setTerminalModel(TerminalModel::entityToDto(self::getTerminalModel(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

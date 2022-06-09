@@ -249,6 +249,9 @@ abstract class AdministratorAbstract
             ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -309,6 +309,9 @@ abstract class UsersCdrAbstract
             ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

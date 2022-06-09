@@ -328,6 +328,9 @@ trait BrandTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -385,6 +388,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyInterface>
+     */
     public function getCompanies(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -444,6 +450,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, BrandServiceInterface>
+     */
     public function getServices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -503,6 +512,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, WebPortalInterface>
+     */
     public function getUrls(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -562,6 +574,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FeaturesRelBrandInterface>
+     */
     public function getRelFeatures(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -621,6 +636,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ProxyTrunksRelBrandInterface>
+     */
     public function getRelProxyTrunks(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -680,6 +698,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ResidentialDeviceInterface>
+     */
     public function getResidentialDevices(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -739,6 +760,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, MusicOnHoldInterface>
+     */
     public function getMusicsOnHold(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -798,6 +822,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, MatchListInterface>
+     */
     public function getMatchLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -857,6 +884,9 @@ trait BrandTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

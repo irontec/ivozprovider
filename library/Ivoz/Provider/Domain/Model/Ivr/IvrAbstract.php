@@ -310,6 +310,9 @@ abstract class IvrAbstract
             ->setErrorNumberCountry(Country::entityToDto(self::getErrorNumberCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

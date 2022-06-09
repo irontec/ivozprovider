@@ -436,6 +436,9 @@ abstract class ResidentialDeviceAbstract
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

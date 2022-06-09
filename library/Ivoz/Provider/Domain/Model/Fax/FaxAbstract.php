@@ -178,6 +178,9 @@ abstract class FaxAbstract
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

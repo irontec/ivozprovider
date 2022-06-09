@@ -176,6 +176,9 @@ trait FriendTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -257,6 +260,9 @@ trait FriendTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FriendsPatternInterface>
+     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -316,6 +322,9 @@ trait FriendTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

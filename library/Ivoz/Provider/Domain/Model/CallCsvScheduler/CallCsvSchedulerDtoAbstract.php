@@ -124,6 +124,9 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $ddiProvider = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

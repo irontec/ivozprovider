@@ -234,6 +234,9 @@ abstract class QueueAbstract
             ->setQueue(Queue::entityToDto(self::getQueue(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -178,6 +178,9 @@ abstract class SpecialNumberAbstract
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

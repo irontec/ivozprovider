@@ -232,6 +232,9 @@ abstract class VoicemailMessageAbstract
             ->setAstVoicemailMessage(VoicemailMessage::entityToDto(self::getAstVoicemailMessage(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

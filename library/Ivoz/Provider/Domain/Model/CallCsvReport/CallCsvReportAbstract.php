@@ -230,6 +230,9 @@ abstract class CallCsvReportAbstract
             ->setCallCsvScheduler(CallCsvScheduler::entityToDto(self::getCallCsvScheduler(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

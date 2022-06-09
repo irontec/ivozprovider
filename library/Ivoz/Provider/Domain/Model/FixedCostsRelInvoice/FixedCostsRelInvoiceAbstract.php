@@ -150,6 +150,9 @@ abstract class FixedCostsRelInvoiceAbstract
             ->setInvoice(Invoice::entityToDto(self::getInvoice(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

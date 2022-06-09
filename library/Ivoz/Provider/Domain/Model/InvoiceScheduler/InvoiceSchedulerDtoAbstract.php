@@ -88,6 +88,9 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
      */
     private $relFixedCosts = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

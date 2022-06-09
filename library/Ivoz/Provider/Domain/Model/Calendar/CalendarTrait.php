@@ -130,6 +130,9 @@ trait CalendarTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -187,6 +190,9 @@ trait CalendarTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, HolidayDateInterface>
+     */
     public function getHolidayDates(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -246,6 +252,9 @@ trait CalendarTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CalendarPeriodInterface>
+     */
     public function getCalendarPeriods(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

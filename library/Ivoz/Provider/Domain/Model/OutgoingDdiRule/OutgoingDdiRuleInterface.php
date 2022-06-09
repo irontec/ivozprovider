@@ -86,5 +86,8 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      */
     public function replacePatterns(Collection $patterns): OutgoingDdiRuleInterface;
 
+    /**
+     * @return array<array-key, OutgoingDdiRulesPatternInterface>
+     */
     public function getPatterns(?Criteria $criteria = null): array;
 }

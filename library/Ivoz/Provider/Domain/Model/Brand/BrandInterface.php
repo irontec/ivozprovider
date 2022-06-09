@@ -167,6 +167,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceCompanies(Collection $companies): BrandInterface;
 
+    /**
+     * @return array<array-key, CompanyInterface>
+     */
     public function getCompanies(?Criteria $criteria = null): array;
 
     public function addService(BrandServiceInterface $service): BrandInterface;
@@ -178,6 +181,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceServices(Collection $services): BrandInterface;
 
+    /**
+     * @return array<array-key, BrandServiceInterface>
+     */
     public function getServices(?Criteria $criteria = null): array;
 
     public function addUrl(WebPortalInterface $url): BrandInterface;
@@ -189,6 +195,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceUrls(Collection $urls): BrandInterface;
 
+    /**
+     * @return array<array-key, WebPortalInterface>
+     */
     public function getUrls(?Criteria $criteria = null): array;
 
     public function addRelFeature(FeaturesRelBrandInterface $relFeature): BrandInterface;
@@ -200,6 +209,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceRelFeatures(Collection $relFeatures): BrandInterface;
 
+    /**
+     * @return array<array-key, FeaturesRelBrandInterface>
+     */
     public function getRelFeatures(?Criteria $criteria = null): array;
 
     public function addRelProxyTrunk(ProxyTrunksRelBrandInterface $relProxyTrunk): BrandInterface;
@@ -211,6 +223,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceRelProxyTrunks(Collection $relProxyTrunks): BrandInterface;
 
+    /**
+     * @return array<array-key, ProxyTrunksRelBrandInterface>
+     */
     public function getRelProxyTrunks(?Criteria $criteria = null): array;
 
     public function addResidentialDevice(ResidentialDeviceInterface $residentialDevice): BrandInterface;
@@ -222,6 +237,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceResidentialDevices(Collection $residentialDevices): BrandInterface;
 
+    /**
+     * @return array<array-key, ResidentialDeviceInterface>
+     */
     public function getResidentialDevices(?Criteria $criteria = null): array;
 
     public function addMusicsOnHold(MusicOnHoldInterface $musicsOnHold): BrandInterface;
@@ -233,6 +251,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceMusicsOnHold(Collection $musicsOnHold): BrandInterface;
 
+    /**
+     * @return array<array-key, MusicOnHoldInterface>
+     */
     public function getMusicsOnHold(?Criteria $criteria = null): array;
 
     public function addMatchList(MatchListInterface $matchList): BrandInterface;
@@ -244,6 +265,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceMatchLists(Collection $matchLists): BrandInterface;
 
+    /**
+     * @return array<array-key, MatchListInterface>
+     */
     public function getMatchLists(?Criteria $criteria = null): array;
 
     public function addOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): BrandInterface;
@@ -255,6 +279,9 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings): BrandInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(?Criteria $criteria = null): array;
 
     /**

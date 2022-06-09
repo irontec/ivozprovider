@@ -172,6 +172,9 @@ abstract class CallAclRelMatchListAbstract
             ->setMatchList(MatchList::entityToDto(self::getMatchList(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

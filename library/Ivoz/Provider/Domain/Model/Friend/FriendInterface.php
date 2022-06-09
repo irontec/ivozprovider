@@ -238,6 +238,9 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function replacePatterns(Collection $patterns): FriendInterface;
 
+    /**
+     * @return array<array-key, FriendsPatternInterface>
+     */
     public function getPatterns(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface;
@@ -249,5 +252,8 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings): FriendInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

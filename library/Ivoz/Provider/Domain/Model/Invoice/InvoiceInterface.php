@@ -118,6 +118,9 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
      */
     public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceInterface;
 
+    /**
+     * @return array<array-key, FixedCostsRelInvoiceInterface>
+     */
     public function getRelFixedCosts(?Criteria $criteria = null): array;
 
     /**

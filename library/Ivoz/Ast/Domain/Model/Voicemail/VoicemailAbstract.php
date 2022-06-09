@@ -416,6 +416,9 @@ abstract class VoicemailAbstract
             ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

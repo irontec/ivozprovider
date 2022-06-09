@@ -71,6 +71,9 @@ interface DomainInterface extends LoggableEntityInterface
      */
     public function replaceFriends(Collection $friends): DomainInterface;
 
+    /**
+     * @return array<array-key, FriendInterface>
+     */
     public function getFriends(?Criteria $criteria = null): array;
 
     public function addResidentialDevice(ResidentialDeviceInterface $residentialDevice): DomainInterface;
@@ -82,6 +85,9 @@ interface DomainInterface extends LoggableEntityInterface
      */
     public function replaceResidentialDevices(Collection $residentialDevices): DomainInterface;
 
+    /**
+     * @return array<array-key, ResidentialDeviceInterface>
+     */
     public function getResidentialDevices(?Criteria $criteria = null): array;
 
     public function addTerminal(TerminalInterface $terminal): DomainInterface;
@@ -93,5 +99,8 @@ interface DomainInterface extends LoggableEntityInterface
      */
     public function replaceTerminals(Collection $terminals): DomainInterface;
 
+    /**
+     * @return array<array-key, TerminalInterface>
+     */
     public function getTerminals(?Criteria $criteria = null): array;
 }

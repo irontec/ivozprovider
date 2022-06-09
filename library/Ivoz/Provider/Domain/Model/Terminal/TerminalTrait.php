@@ -148,6 +148,9 @@ trait TerminalTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -229,6 +232,9 @@ trait TerminalTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, UserInterface>
+     */
     public function getUsers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

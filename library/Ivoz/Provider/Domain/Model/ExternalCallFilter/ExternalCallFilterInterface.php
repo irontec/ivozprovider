@@ -181,6 +181,9 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      */
     public function replaceCalendars(Collection $calendars): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterRelCalendarInterface>
+     */
     public function getCalendars(?Criteria $criteria = null): array;
 
     public function addBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface;
@@ -192,6 +195,9 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      */
     public function replaceBlackLists(Collection $blackLists): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterBlackListInterface>
+     */
     public function getBlackLists(?Criteria $criteria = null): array;
 
     public function addWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface;
@@ -203,6 +209,9 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      */
     public function replaceWhiteLists(Collection $whiteLists): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterWhiteListInterface>
+     */
     public function getWhiteLists(?Criteria $criteria = null): array;
 
     public function addSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface;
@@ -214,6 +223,9 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      */
     public function replaceSchedules(Collection $schedules): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterRelScheduleInterface>
+     */
     public function getSchedules(?Criteria $criteria = null): array;
 
     /**

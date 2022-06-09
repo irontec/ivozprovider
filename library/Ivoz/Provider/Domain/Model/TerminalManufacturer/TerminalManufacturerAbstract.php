@@ -160,6 +160,9 @@ abstract class TerminalManufacturerAbstract
             ->setDescription(self::getDescription());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

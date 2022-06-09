@@ -103,6 +103,9 @@ trait HuntGroupTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -160,6 +163,9 @@ trait HuntGroupTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, HuntGroupMemberInterface>
+     */
     public function getHuntGroupMembers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

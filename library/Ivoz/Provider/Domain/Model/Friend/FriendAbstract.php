@@ -448,6 +448,9 @@ abstract class FriendAbstract
             ->setInterCompany(Company::entityToDto(self::getInterCompany(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

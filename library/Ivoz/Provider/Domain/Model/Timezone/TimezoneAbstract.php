@@ -110,6 +110,10 @@ abstract class TimezoneAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
+        Assertion::notNull($dto->getLabelEn(), 'labelEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getLabelEs(), 'labelEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getLabelCa(), 'labelCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getLabelIt(), 'labelIt value is null, but non null value was expected.');
         $tz = $dto->getTz();
         Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
@@ -144,6 +148,10 @@ abstract class TimezoneAbstract
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
+        Assertion::notNull($dto->getLabelEn(), 'labelEn value is null, but non null value was expected.');
+        Assertion::notNull($dto->getLabelEs(), 'labelEs value is null, but non null value was expected.');
+        Assertion::notNull($dto->getLabelCa(), 'labelCa value is null, but non null value was expected.');
+        Assertion::notNull($dto->getLabelIt(), 'labelIt value is null, but non null value was expected.');
         $tz = $dto->getTz();
         Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
@@ -178,6 +186,9 @@ abstract class TimezoneAbstract
             ->setCountry(Country::entityToDto(self::getCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -155,6 +155,9 @@ abstract class DomainAbstract
             ->setDescription(self::getDescription());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -24,7 +24,7 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     private $name = null;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface|string|null
      */
     private $eventDate = null;
 
@@ -34,12 +34,12 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
     private $wholeDayEvent = true;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeIn = null;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface|string|null
      */
     private $timeOut = null;
 
@@ -83,6 +83,9 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
      */
     private $numberCountry = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -161,14 +164,14 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setEventDate(\DateTimeInterface $eventDate): static
+    public function setEventDate(\DateTimeInterface|string $eventDate): static
     {
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    public function getEventDate(): ?\DateTimeInterface
+    public function getEventDate(): \DateTimeInterface|string|null
     {
         return $this->eventDate;
     }
@@ -185,26 +188,26 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return $this->wholeDayEvent;
     }
 
-    public function setTimeIn(?\DateTimeInterface $timeIn): static
+    public function setTimeIn(null|\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): ?\DateTimeInterface
+    public function getTimeIn(): \DateTimeInterface|string|null
     {
         return $this->timeIn;
     }
 
-    public function setTimeOut(?\DateTimeInterface $timeOut): static
+    public function setTimeOut(null|\DateTimeInterface|string $timeOut): static
     {
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    public function getTimeOut(): ?\DateTimeInterface
+    public function getTimeOut(): \DateTimeInterface|string|null
     {
         return $this->timeOut;
     }

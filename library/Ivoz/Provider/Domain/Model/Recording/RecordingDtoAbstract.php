@@ -74,6 +74,9 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
      */
     private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

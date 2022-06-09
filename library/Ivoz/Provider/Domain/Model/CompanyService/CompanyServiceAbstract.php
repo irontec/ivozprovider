@@ -161,6 +161,9 @@ abstract class CompanyServiceAbstract
             ->setService(Service::entityToDto(self::getService(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

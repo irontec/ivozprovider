@@ -83,5 +83,8 @@ interface DestinationInterface extends LoggableEntityInterface
      */
     public function replaceDestinationRates(Collection $destinationRates): DestinationInterface;
 
+    /**
+     * @return array<array-key, DestinationRateInterface>
+     */
     public function getDestinationRates(?Criteria $criteria = null): array;
 }

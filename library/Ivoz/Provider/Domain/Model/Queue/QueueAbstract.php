@@ -325,6 +325,9 @@ abstract class QueueAbstract
             ->setFullNumberCountry(Country::entityToDto(self::getFullNumberCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

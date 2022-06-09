@@ -142,6 +142,9 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             ->setSchedule(Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -403,6 +403,9 @@ abstract class UserAbstract
             ->setLocation(Location::entityToDto(self::getLocation(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -257,6 +257,9 @@ abstract class TpAccountActionAbstract
             ->setCarrier(Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

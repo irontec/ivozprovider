@@ -102,6 +102,9 @@ trait MatchListTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -159,6 +162,9 @@ trait MatchListTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, MatchListPatternInterface>
+     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

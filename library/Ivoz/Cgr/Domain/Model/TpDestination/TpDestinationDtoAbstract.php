@@ -44,6 +44,9 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
      */
     private $destination = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);

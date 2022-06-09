@@ -146,6 +146,9 @@ abstract class ApplicationServerAbstract
             ->setName(self::getName());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

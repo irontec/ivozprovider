@@ -436,6 +436,9 @@ abstract class TpCdrAbstract
             ->setDeletedAt(self::getDeletedAt());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

@@ -192,6 +192,9 @@ abstract class TrunksAddressAbstract
             ->setDdiProviderAddress(DdiProviderAddress::entityToDto(self::getDdiProviderAddress(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

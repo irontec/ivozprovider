@@ -82,6 +82,9 @@ interface CalendarInterface extends LoggableEntityInterface
      */
     public function replaceHolidayDates(Collection $holidayDates): CalendarInterface;
 
+    /**
+     * @return array<array-key, HolidayDateInterface>
+     */
     public function getHolidayDates(?Criteria $criteria = null): array;
 
     public function addCalendarPeriod(CalendarPeriodInterface $calendarPeriod): CalendarInterface;
@@ -93,5 +96,8 @@ interface CalendarInterface extends LoggableEntityInterface
      */
     public function replaceCalendarPeriods(Collection $calendarPeriods): CalendarInterface;
 
+    /**
+     * @return array<array-key, CalendarPeriodInterface>
+     */
     public function getCalendarPeriods(?Criteria $criteria = null): array;
 }

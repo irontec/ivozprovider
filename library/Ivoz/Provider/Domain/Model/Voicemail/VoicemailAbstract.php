@@ -229,6 +229,9 @@ abstract class VoicemailAbstract
             ->setLocution(Locution::entityToDto(self::getLocution(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [

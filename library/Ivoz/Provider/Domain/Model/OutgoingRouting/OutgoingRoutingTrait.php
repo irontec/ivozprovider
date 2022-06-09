@@ -182,6 +182,9 @@ trait OutgoingRoutingTrait
             ->setId($this->getId());
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return parent::__toArray() + [
@@ -251,6 +254,9 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TrunksLcrRuleInterface>
+     */
     public function getLcrRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -310,6 +316,9 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TrunksLcrRuleTargetInterface>
+     */
     public function getLcrRuleTargets(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -369,6 +378,9 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getRelCarriers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

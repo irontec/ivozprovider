@@ -122,6 +122,9 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface, FileCon
      */
     public function replaceDestinationRates(Collection $destinationRates): DestinationRateGroupInterface;
 
+    /**
+     * @return array<array-key, DestinationRateInterface>
+     */
     public function getDestinationRates(?Criteria $criteria = null): array;
 
     /**

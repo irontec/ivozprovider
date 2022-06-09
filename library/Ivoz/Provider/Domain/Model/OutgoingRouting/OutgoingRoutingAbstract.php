@@ -281,6 +281,9 @@ abstract class OutgoingRoutingAbstract
             ->setClidCountry(Country::entityToDto(self::getClidCountry(), $depth));
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function __toArray(): array
     {
         return [
