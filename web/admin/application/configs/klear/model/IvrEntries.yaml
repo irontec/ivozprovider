@@ -27,6 +27,16 @@ production:
         icon: help
         text: _("You can use regular expressions to define values this entry will match.")
         label: _("Need help?")
+    displayName:
+      title: _('Display name')
+      type: text
+      maxLength: 50
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("This value will be displayed in the called terminals")
+        label: _("Need help?")
     welcomeLocution:
       title: _('Success locution')
       type: select

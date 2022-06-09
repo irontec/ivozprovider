@@ -17,6 +17,7 @@ production:
       fields:
         order:
           entry: true
+          displayName: true
           welcomeLocution: true
           routeType: true
           target: true
@@ -60,6 +61,7 @@ production:
           fields:
             entry: 4
             welcomeLocution: 4
+            displayName: 4
         group1:
           label: _("Routing configuration")
           colsPerRow: 12
