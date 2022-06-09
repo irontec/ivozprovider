@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "05153f64-76a6-4b04-932b-f948d9961dd0",
 		"name": "IvozProvider - BBS Dataset (halliday)",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "628603"
 	},
 	"item": [
 		{
@@ -4542,7 +4543,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"entry\": \"5\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{eveExtensionId}}\n}"
+							"raw": "{\n  \"entry\": \"5\",\n  \"displayName\": \"Option IVR 5\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{eveExtensionId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/ivr_entries",
