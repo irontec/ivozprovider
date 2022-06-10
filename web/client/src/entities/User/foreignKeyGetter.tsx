@@ -1,27 +1,28 @@
-import { UserPropertyList } from './UserProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
-import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
-import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
-import { UnassignedExtensionSelectOptions, UserExtensionSelectOptions } from 'entities/Extension/SelectOptions';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import { BossAssistantSelectOptions } from './SelectOptions';
+import { UserPropertyList } from "./UserProperties";
+import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import entities from "../index";
+import PickUpGroupSelectOptions from "entities/PickUpGroup/SelectOptions";
+import { UnassignedTerminalSelectOptions } from "entities/Terminal/SelectOptions";
+import {
+  UnassignedExtensionSelectOptions,
+  UserExtensionSelectOptions,
+} from "entities/Extension/SelectOptions";
+import { EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
+import { BossAssistantSelectOptions } from "./SelectOptions";
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService, row, filterContext }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+  row,
+  filterContext,
+}): Promise<any> => {
   const response: UserPropertyList<unknown> = {};
 
-  const skip = [
-    'pickupGroupIds',
-    'bossAssistant',
-    'extension',
-  ];
+  const skip = ["pickupGroupIds", "bossAssistant", "extension"];
 
   if (!filterContext) {
-    skip.push(...[
-      'terminal',
-    ]);
+    skip.push(...["terminal"]);
   }
 
   const promises = autoSelectOptions({
@@ -33,18 +34,13 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
   });
 
   if (filterContext) {
-
-    promises[promises.length] = UserExtensionSelectOptions(
-      {
-        callback: (options: any) => {
-          response.extension = options;
-        },
-        cancelToken,
+    promises[promises.length] = UserExtensionSelectOptions({
+      callback: (options: any) => {
+        response.extension = options;
       },
-    );
-
+      cancelToken,
+    });
   } else {
-
     const _includeTerminalId = (row?.terminal as EntityValues)?.id as number;
     promises[promises.length] = UnassignedTerminalSelectOptions(
       {
@@ -54,8 +50,8 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken,
       },
       {
-        '_includeId': _includeTerminalId,
-      },
+        _includeId: _includeTerminalId,
+      }
     );
 
     const _includeExtensionlId = (row?.extension as EntityValues)?.id as number;
@@ -67,11 +63,10 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
         cancelToken,
       },
       {
-        '_includeId': _includeExtensionlId,
-      },
+        _includeId: _includeExtensionlId,
+      }
     );
   }
-
 
   promises[promises.length] = PickUpGroupSelectOptions({
     callback: (options: any) => {
@@ -89,8 +84,8 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
       cancelToken,
     },
     {
-      '_excludeId': _excludeId,
-    },
+      _excludeId: _excludeId,
+    }
   );
 
   await Promise.all(promises);

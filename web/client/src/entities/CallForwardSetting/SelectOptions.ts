@@ -1,14 +1,15 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import CallForwardSetting from './CallForwardSetting';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import CallForwardSetting from "./CallForwardSetting";
 
-const CallForwardSettingSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const CallForwardSettingSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     CallForwardSetting.path,
-    ['id'],
+    ["id"],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.id;
@@ -16,7 +17,7 @@ const CallForwardSettingSelectOptions: SelectOptionsType = ({ callback, cancelTo
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

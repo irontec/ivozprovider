@@ -1,12 +1,14 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Ivr from './Ivr';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import Ivr from "./Ivr";
 
-const IvrSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const IvrSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Ivr.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
@@ -15,7 +17,7 @@ const IvrSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

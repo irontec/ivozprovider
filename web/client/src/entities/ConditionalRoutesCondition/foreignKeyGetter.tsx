@@ -1,15 +1,17 @@
-import { ConditionalRoutesConditionPropertyList } from './ConditionalRoutesConditionProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
-import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
-import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
-import RouteLockSelectOptions from 'entities/RouteLock/SelectOptions';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
-import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
+import { ConditionalRoutesConditionPropertyList } from "./ConditionalRoutesConditionProperties";
+import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import MatchListSelectOptions from "entities/MatchList/SelectOptions";
+import ScheduleSelectOptions from "entities/Schedule/SelectOptions";
+import CalendarSelectOptions from "entities/Calendar/SelectOptions";
+import RouteLockSelectOptions from "entities/RouteLock/SelectOptions";
+import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import entities from "../index";
+import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
 
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+}): Promise<any> => {
   const response: ConditionalRoutesConditionPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
@@ -18,11 +20,11 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, enti
     cancelToken,
     response,
     skip: [
-      'matchListIds',
-      'scheduleIds',
-      'calendarIds',
-      'routeLockIds',
-      'voicemail',
+      "matchListIds",
+      "scheduleIds",
+      "calendarIds",
+      "routeLockIds",
+      "voicemail",
     ],
   });
 

@@ -1,10 +1,12 @@
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
-import defaultEntityBehavior, { EntityFormProps, FieldsetGroups } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { foreignKeyGetter } from '../Queue/foreignKeyGetter';
+import useFkChoices from "@irontec/ivoz-ui/entities/data/useFkChoices";
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import _ from "@irontec/ivoz-ui/services/translations/translate";
+import { foreignKeyGetter } from "../Queue/foreignKeyGetter";
 
 const Form = (props: EntityFormProps): JSX.Element => {
-
   const { entityService, row, match } = props;
   const userVoicemail = row?.user != undefined;
 
@@ -23,29 +25,27 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups> = [
     {
-      legend: _('Basic configuration'),
-      fields: [
-        'enabled',
-        'name',
-      ],
+      legend: _("Basic configuration"),
+      fields: ["enabled", "name"],
     },
     {
-      legend: _('Notification configuration'),
-      fields: [
-        'sendMail',
-        'email',
-        'attachSound',
-      ],
+      legend: _("Notification configuration"),
+      fields: ["sendMail", "email", "attachSound"],
     },
     {
-      legend: _('Customization'),
-      fields: [
-        'locution',
-      ],
+      legend: _("Customization"),
+      fields: ["locution"],
     },
   ];
 
-  return (<DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} readOnlyProperties={readOnlyProperties} />);
+  return (
+    <DefaultEntityForm
+      {...props}
+      fkChoices={fkChoices}
+      groups={groups}
+      readOnlyProperties={readOnlyProperties}
+    />
+  );
 };
 
 export default Form;

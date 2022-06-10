@@ -1,14 +1,15 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import MatchList from './MatchList';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import MatchList from "./MatchList";
 
-const MatchListSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const MatchListSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     MatchList.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.name;
@@ -16,7 +17,7 @@ const MatchListSelectOptions: SelectOptionsType = ({ callback, cancelToken }): P
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

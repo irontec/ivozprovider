@@ -1,12 +1,14 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Fax from './Fax';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import Fax from "./Fax";
 
-const FaxSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const FaxSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Fax.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
@@ -15,7 +17,7 @@ const FaxSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

@@ -1,11 +1,10 @@
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
-import { UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
+import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import genericForeignKeyResolver from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
+import entities from "../index";
+import { UsersCdrRow, UsersCdrRows } from "./UsersCdrProperties";
 
 function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
-
   // Owner
   if (row.userId) {
     row.owner = row.user;
@@ -29,14 +28,14 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
       row.ownerId = row.residentialDeviceId;
       row.ownerLink = row.residentialDeviceLink;
     }
-  } else if (row.direction === 'outbound') {
+  } else if (row.direction === "outbound") {
     row.owner = row.caller;
   } else {
     row.owner = row.callee;
   }
 
   // Party
-  if (row.direction === 'outbound') {
+  if (row.direction === "outbound") {
     row.party = row.callee;
   } else {
     row.party = row.caller;
@@ -45,10 +44,12 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
   return row;
 }
 
-export const foreignKeyResolver: foreignKeyResolverType = async function (
-  { data, allowLinks = true, cancelToken, entityService },
-): Promise<UsersCdrRows> {
-
+export const foreignKeyResolver: foreignKeyResolverType = async function ({
+  data,
+  allowLinks = true,
+  cancelToken,
+  entityService,
+}): Promise<UsersCdrRows> {
   const { User, Extension } = entities;
 
   const promises = autoForeignKeyResolver({
@@ -56,16 +57,14 @@ export const foreignKeyResolver: foreignKeyResolverType = async function (
     cancelToken,
     entityService,
     entities,
-    skip: [
-      'user',
-    ],
+    skip: ["user"],
   });
 
   promises.push(
     // User & User.extension
     genericForeignKeyResolver({
       data,
-      fkFld: 'user',
+      fkFld: "user",
       entity: {
         ...User,
         toStr: (row: any) => {
@@ -83,23 +82,21 @@ export const foreignKeyResolver: foreignKeyResolverType = async function (
         try {
           await genericForeignKeyResolver({
             data: Array.isArray(rows) ? rows : [rows],
-            fkFld: 'extension',
+            fkFld: "extension",
             entity: Extension,
             addLink: false,
             cancelToken,
           });
-        } catch { }
+        } catch {}
 
         return rows;
       },
-    }),
+    })
   );
 
   await Promise.all(promises);
 
-  const iterable = Array.isArray(data)
-    ? data
-    : [data];
+  const iterable = Array.isArray(data) ? data : [data];
 
   for (const idx in iterable) {
     iterable[idx] = ownerAndPartyResolver(iterable[idx]);

@@ -1,19 +1,22 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
+} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
+import { CallForwardSettingPropertyList } from "../CallForwardSettingProperties";
 
 type CallForwardSettingValues = CallForwardSettingPropertyList<
-string | number | Record<string, string | number>
+  string | number | Record<string, string | number>
 >;
-type TargetGhostType = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<CallForwardSettingValues>>;
+type TargetGhostType = PropertyCustomFunctionComponent<
+  PropertyCustomFunctionComponentProps<CallForwardSettingValues>
+>;
 
 const TargetTypeValue: TargetGhostType = (props): JSX.Element => {
-
   const { values } = props;
 
-  return (<span>{values.targetTypeValue}</span>);
+  return <span>{values.targetTypeValue}</span>;
 };
 
-export default withCustomComponentWrapper<CallForwardSettingValues>(TargetTypeValue);
+export default withCustomComponentWrapper<CallForwardSettingValues>(
+  TargetTypeValue
+);

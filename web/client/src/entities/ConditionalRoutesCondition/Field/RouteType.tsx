@@ -1,22 +1,28 @@
-import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
+import { ListDecorator, ScalarProperty } from "@irontec/ivoz-ui";
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { useStoreState } from 'store';
-import { ConditionalRoutesConditionPropertyList } from '../ConditionalRoutesConditionProperties';
+} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
+import { useStoreState } from "store";
+import { ConditionalRoutesConditionPropertyList } from "../ConditionalRoutesConditionProperties";
 
 type RouteTypeValues = ConditionalRoutesConditionPropertyList<string>;
-type RouteTypeProps = PropertyCustomFunctionComponent<PropertyCustomFunctionComponentProps<RouteTypeValues>>;
+type RouteTypeProps = PropertyCustomFunctionComponent<
+  PropertyCustomFunctionComponentProps<RouteTypeValues>
+>;
 
 const RouteType: RouteTypeProps = (props): JSX.Element | null => {
-
   const { _context, _columnName, property, values, formFieldFactory } = props;
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
-  if (_context === 'read' || !formFieldFactory) {
+  if (_context === "read" || !formFieldFactory) {
     return (
-            <ListDecorator field={_columnName} row={values} property={property} ignoreCustomComponent={true} />
+      <ListDecorator
+        field={_columnName}
+        row={values}
+        property={property}
+        ignoreCustomComponent={true}
+      />
     );
   }
 
@@ -29,14 +35,14 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
       _columnName,
       modifiedProperty,
       choices,
-      readOnly,
+      readOnly
     );
   }
 
   const companyFeatures = aboutMe.features;
   const conditionalFeatures: Record<string, string> = {
-    'queues': 'queue',
-    'conferences': 'conferenceRoom',
+    queues: "queue",
+    conferences: "conferenceRoom",
   };
   const conditionalFeaturesKeys = Object.keys(conditionalFeatures);
   const enumOptions = {
@@ -44,14 +50,11 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
   };
 
   for (const conditionalFeature of conditionalFeaturesKeys) {
-
     if (companyFeatures.includes(conditionalFeature)) {
       continue;
     }
 
-    delete enumOptions[
-      conditionalFeatures[conditionalFeature]
-    ];
+    delete enumOptions[conditionalFeatures[conditionalFeature]];
   }
 
   modifiedProperty.enum = enumOptions;
@@ -60,7 +63,7 @@ const RouteType: RouteTypeProps = (props): JSX.Element | null => {
     _columnName,
     modifiedProperty,
     choices,
-    readOnly,
+    readOnly
   );
 };
 

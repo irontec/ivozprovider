@@ -12,8 +12,6 @@ const prod = {
 };
 
 // Default to dev if not set
-const config = process.env.APP_ENV === 'dev'
-  ? dev
-  : prod;
+const config = process.env.APP_ENV === "dev" ? dev : prod;
 
 export default config;

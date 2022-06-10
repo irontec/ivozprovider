@@ -1,35 +1,34 @@
-import { FkChoices } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import SelectOptions, { UnassignedServiceSelectOptions } from 'entities/Service/SelectOptions';
-import { CompanyServicePropertyList } from './CompanyServiceProperties';
-import axios from 'axios';
-import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
-import EntityService from '@irontec/ivoz-ui/services/entity/EntityService';
-import { match } from 'react-router-dom';
+import { FkChoices } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { useEffect, useState } from "react";
+import SelectOptions, {
+  UnassignedServiceSelectOptions,
+} from "entities/Service/SelectOptions";
+import { CompanyServicePropertyList } from "./CompanyServiceProperties";
+import axios from "axios";
+import { ForeignKeyGetterTypeArgs } from "@irontec/ivoz-ui/entities/EntityInterface";
+import EntityService from "@irontec/ivoz-ui/services/entity/EntityService";
+import { match } from "react-router-dom";
 
-type CompanyServiceForeignKeyGetterType = (props: ForeignKeyGetterTypeArgs, currentServiceId?: number) => Promise<any>;
+type CompanyServiceForeignKeyGetterType = (
+  props: ForeignKeyGetterTypeArgs,
+  currentServiceId?: number
+) => Promise<any>;
 
 export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
   { cancelToken, filterContext },
-  currentServiceId,
+  currentServiceId
 ): Promise<any> => {
-
   const response: CompanyServicePropertyList<unknown> = {};
   const promises: Array<Promise<unknown>> = [];
 
   if (filterContext) {
-
-    promises[promises.length] = SelectOptions(
-      {
-        callback: (options: any) => {
-          response.service = options;
-        },
-        cancelToken,
+    promises[promises.length] = SelectOptions({
+      callback: (options: any) => {
+        response.service = options;
       },
-    );
-
+      cancelToken,
+    });
   } else {
-
     promises[promises.length] = UnassignedServiceSelectOptions(
       {
         callback: (options: any) => {
@@ -39,7 +38,7 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
       },
       {
         includeId: currentServiceId,
-      },
+      }
     );
   }
 
@@ -49,53 +48,47 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
 };
 
 interface useFkChoicesArgs {
-  entityService: EntityService,
-  currentServiceId?: number,
-  match: match
+  entityService: EntityService;
+  currentServiceId?: number;
+  match: match;
 }
 
 const useFkChoices = (props: useFkChoicesArgs): FkChoices => {
-
   const { entityService, currentServiceId, match } = props;
   const [fkChoices, setFkChoices] = useState<FkChoices>({});
 
-  useEffect(
-    () => {
+  useEffect(() => {
+    let mounted = true;
 
-      let mounted = true;
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
 
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
+    foreignKeyGetter(
+      {
+        cancelToken: source.token,
+        entityService,
+        row: {},
+        match,
+      },
+      currentServiceId
+    ).then((options) => {
+      if (!mounted) {
+        return;
+      }
 
-      foreignKeyGetter(
-        {
-          cancelToken: source.token,
-          entityService,
-          row: {},
-          match,
-        },
-        currentServiceId,
-      ).then((options) => {
-
-        if (!mounted) {
-          return;
-        }
-
-        setFkChoices((fkChoices: any) => {
-          return {
-            ...fkChoices,
-            ...options,
-          };
-        });
+      setFkChoices((fkChoices: any) => {
+        return {
+          ...fkChoices,
+          ...options,
+        };
       });
+    });
 
-      return () => {
-        mounted = false;
-        source.cancel();
-      };
-    },
-    [currentServiceId, entityService, match],
-  );
+    return () => {
+      mounted = false;
+      source.cancel();
+    };
+  }, [currentServiceId, entityService, match]);
 
   return fkChoices;
 };

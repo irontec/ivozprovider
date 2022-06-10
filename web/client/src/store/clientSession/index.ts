@@ -1,9 +1,11 @@
-import recordLocutionService, { RecordLocutionServiceStore } from './recordLocutionService';
-import aboutMe, { AboutMeStore } from './aboutMe';
+import recordLocutionService, {
+  RecordLocutionServiceStore,
+} from "./recordLocutionService";
+import aboutMe, { AboutMeStore } from "./aboutMe";
 
 export interface ClientSessionStore {
-  recordLocutionService: RecordLocutionServiceStore,
-  aboutMe: AboutMeStore,
+  recordLocutionService: RecordLocutionServiceStore;
+  aboutMe: AboutMeStore;
 }
 
 const clientSession: ClientSessionStore = {

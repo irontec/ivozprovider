@@ -1,14 +1,15 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Terminal from '../Terminal';
+import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import Terminal from "../Terminal";
 
-const TerminalSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const TerminalSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Terminal.path,
-    ['id', 'name'],
+    ["id", "name"],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.name;
@@ -16,7 +17,7 @@ const TerminalSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Pr
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 
