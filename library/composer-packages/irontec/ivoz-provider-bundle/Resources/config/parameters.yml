@@ -1,16 +1,8 @@
 # This file is auto-generated during the composer install
 imports:
-    -
-        resource: orm_soft_delete.yml
+    - resource: orm_soft_delete.yml
 parameters:
     doctrine.orm.entity_manager.class: Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\EntityManager
-    database_host: data.ivozprovider.local
-    database_port: 3306
-    database_name: ivozprovider
-    database_user: root
-    database_password: changeme
-    database_unix_socket: ~
-    database_version: 8.0
     api_platform_base_url: 'https://localhost/api/platform/index.html'
     api_brand_base_url: 'https://localhost/api/brand/index.html'
     api_client_base_url: 'https://localhost/api/client/index.html'
