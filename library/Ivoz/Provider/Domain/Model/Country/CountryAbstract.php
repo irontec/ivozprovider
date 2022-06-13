@@ -111,29 +111,37 @@ abstract class CountryAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneEn(), 'zoneEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneEs(), 'zoneEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneCa(), 'zoneCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneIt(), 'zoneIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $zoneEn = $dto->getZoneEn();
+        Assertion::notNull($zoneEn, 'zoneEn value is null, but non null value was expected.');
+        $zoneEs = $dto->getZoneEs();
+        Assertion::notNull($zoneEs, 'zoneEs value is null, but non null value was expected.');
+        $zoneCa = $dto->getZoneCa();
+        Assertion::notNull($zoneCa, 'zoneCa value is null, but non null value was expected.');
+        $zoneIt = $dto->getZoneIt();
+        Assertion::notNull($zoneIt, 'zoneIt value is null, but non null value was expected.');
         $code = $dto->getCode();
         Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $zone = new Zone(
-            $dto->getZoneEn(),
-            $dto->getZoneEs(),
-            $dto->getZoneCa(),
-            $dto->getZoneIt()
+            $zoneEn,
+            $zoneEs,
+            $zoneCa,
+            $zoneIt
         );
 
         $self = new static(
@@ -160,29 +168,37 @@ abstract class CountryAbstract
     ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneEn(), 'zoneEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneEs(), 'zoneEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneCa(), 'zoneCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getZoneIt(), 'zoneIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $zoneEn = $dto->getZoneEn();
+        Assertion::notNull($zoneEn, 'zoneEn value is null, but non null value was expected.');
+        $zoneEs = $dto->getZoneEs();
+        Assertion::notNull($zoneEs, 'zoneEs value is null, but non null value was expected.');
+        $zoneCa = $dto->getZoneCa();
+        Assertion::notNull($zoneCa, 'zoneCa value is null, but non null value was expected.');
+        $zoneIt = $dto->getZoneIt();
+        Assertion::notNull($zoneIt, 'zoneIt value is null, but non null value was expected.');
         $code = $dto->getCode();
         Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $zone = new Zone(
-            $dto->getZoneEn(),
-            $dto->getZoneEs(),
-            $dto->getZoneCa(),
-            $dto->getZoneIt()
+            $zoneEn,
+            $zoneEs,
+            $zoneCa,
+            $zoneIt
         );
 
         $this

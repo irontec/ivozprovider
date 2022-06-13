@@ -184,12 +184,18 @@ abstract class BrandAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
-        Assertion::notNull($dto->getInvoiceNif(), 'invoiceNif value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoicePostalAddress(), 'invoicePostalAddress value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoicePostalCode(), 'invoicePostalCode value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoiceTown(), 'invoiceTown value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoiceProvince(), 'invoiceProvince value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoiceCountry(), 'invoiceCountry value is null, but non null value was expected.');
+        $invoiceNif = $dto->getInvoiceNif();
+        Assertion::notNull($invoiceNif, 'invoiceNif value is null, but non null value was expected.');
+        $invoicePostalAddress = $dto->getInvoicePostalAddress();
+        Assertion::notNull($invoicePostalAddress, 'invoicePostalAddress value is null, but non null value was expected.');
+        $invoicePostalCode = $dto->getInvoicePostalCode();
+        Assertion::notNull($invoicePostalCode, 'invoicePostalCode value is null, but non null value was expected.');
+        $invoiceTown = $dto->getInvoiceTown();
+        Assertion::notNull($invoiceTown, 'invoiceTown value is null, but non null value was expected.');
+        $invoiceProvince = $dto->getInvoiceProvince();
+        Assertion::notNull($invoiceProvince, 'invoiceProvince value is null, but non null value was expected.');
+        $invoiceCountry = $dto->getInvoiceCountry();
+        Assertion::notNull($invoiceCountry, 'invoiceCountry value is null, but non null value was expected.');
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $maxCalls = $dto->getMaxCalls();
@@ -206,12 +212,12 @@ abstract class BrandAbstract
         );
 
         $invoice = new Invoice(
-            $dto->getInvoiceNif(),
-            $dto->getInvoicePostalAddress(),
-            $dto->getInvoicePostalCode(),
-            $dto->getInvoiceTown(),
-            $dto->getInvoiceProvince(),
-            $dto->getInvoiceCountry(),
+            $invoiceNif,
+            $invoicePostalAddress,
+            $invoicePostalCode,
+            $invoiceTown,
+            $invoiceProvince,
+            $invoiceCountry,
             $dto->getInvoiceRegistryData()
         );
 
@@ -251,12 +257,18 @@ abstract class BrandAbstract
     ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
 
-        Assertion::notNull($dto->getInvoiceNif(), 'invoiceNif value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoicePostalAddress(), 'invoicePostalAddress value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoicePostalCode(), 'invoicePostalCode value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoiceTown(), 'invoiceTown value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoiceProvince(), 'invoiceProvince value is null, but non null value was expected.');
-        Assertion::notNull($dto->getInvoiceCountry(), 'invoiceCountry value is null, but non null value was expected.');
+        $invoiceNif = $dto->getInvoiceNif();
+        Assertion::notNull($invoiceNif, 'invoiceNif value is null, but non null value was expected.');
+        $invoicePostalAddress = $dto->getInvoicePostalAddress();
+        Assertion::notNull($invoicePostalAddress, 'invoicePostalAddress value is null, but non null value was expected.');
+        $invoicePostalCode = $dto->getInvoicePostalCode();
+        Assertion::notNull($invoicePostalCode, 'invoicePostalCode value is null, but non null value was expected.');
+        $invoiceTown = $dto->getInvoiceTown();
+        Assertion::notNull($invoiceTown, 'invoiceTown value is null, but non null value was expected.');
+        $invoiceProvince = $dto->getInvoiceProvince();
+        Assertion::notNull($invoiceProvince, 'invoiceProvince value is null, but non null value was expected.');
+        $invoiceCountry = $dto->getInvoiceCountry();
+        Assertion::notNull($invoiceCountry, 'invoiceCountry value is null, but non null value was expected.');
         $name = $dto->getName();
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $maxCalls = $dto->getMaxCalls();
@@ -273,12 +285,12 @@ abstract class BrandAbstract
         );
 
         $invoice = new Invoice(
-            $dto->getInvoiceNif(),
-            $dto->getInvoicePostalAddress(),
-            $dto->getInvoicePostalCode(),
-            $dto->getInvoiceTown(),
-            $dto->getInvoiceProvince(),
-            $dto->getInvoiceCountry(),
+            $invoiceNif,
+            $invoicePostalAddress,
+            $invoicePostalCode,
+            $invoiceTown,
+            $invoiceProvince,
+            $invoiceCountry,
             $dto->getInvoiceRegistryData()
         );
 

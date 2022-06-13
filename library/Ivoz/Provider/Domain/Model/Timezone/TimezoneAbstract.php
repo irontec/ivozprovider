@@ -110,18 +110,22 @@ abstract class TimezoneAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
-        Assertion::notNull($dto->getLabelEn(), 'labelEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getLabelEs(), 'labelEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getLabelCa(), 'labelCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getLabelIt(), 'labelIt value is null, but non null value was expected.');
+        $labelEn = $dto->getLabelEn();
+        Assertion::notNull($labelEn, 'labelEn value is null, but non null value was expected.');
+        $labelEs = $dto->getLabelEs();
+        Assertion::notNull($labelEs, 'labelEs value is null, but non null value was expected.');
+        $labelCa = $dto->getLabelCa();
+        Assertion::notNull($labelCa, 'labelCa value is null, but non null value was expected.');
+        $labelIt = $dto->getLabelIt();
+        Assertion::notNull($labelIt, 'labelIt value is null, but non null value was expected.');
         $tz = $dto->getTz();
         Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
         $label = new Label(
-            $dto->getLabelEn(),
-            $dto->getLabelEs(),
-            $dto->getLabelCa(),
-            $dto->getLabelIt()
+            $labelEn,
+            $labelEs,
+            $labelCa,
+            $labelIt
         );
 
         $self = new static(
@@ -148,18 +152,22 @@ abstract class TimezoneAbstract
     ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
-        Assertion::notNull($dto->getLabelEn(), 'labelEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getLabelEs(), 'labelEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getLabelCa(), 'labelCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getLabelIt(), 'labelIt value is null, but non null value was expected.');
+        $labelEn = $dto->getLabelEn();
+        Assertion::notNull($labelEn, 'labelEn value is null, but non null value was expected.');
+        $labelEs = $dto->getLabelEs();
+        Assertion::notNull($labelEs, 'labelEs value is null, but non null value was expected.');
+        $labelCa = $dto->getLabelCa();
+        Assertion::notNull($labelCa, 'labelCa value is null, but non null value was expected.');
+        $labelIt = $dto->getLabelIt();
+        Assertion::notNull($labelIt, 'labelIt value is null, but non null value was expected.');
         $tz = $dto->getTz();
         Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
         $label = new Label(
-            $dto->getLabelEn(),
-            $dto->getLabelEs(),
-            $dto->getLabelCa(),
-            $dto->getLabelIt()
+            $labelEn,
+            $labelEs,
+            $labelCa,
+            $labelIt
         );
 
         $this
