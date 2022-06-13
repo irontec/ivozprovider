@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
+<files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
   <file src="../../../library/Ivoz/Provider/Infrastructure/Api/Security/User/UserProviderTrait.php">
     <DeprecatedClass occurrences="2">
       <code>new UsernameNotFoundException($errorMsg)</code>
@@ -40,14 +40,6 @@
     <InvalidScalarArgument occurrences="1">
       <code>$code</code>
     </InvalidScalarArgument>
-  </file>
-  <file src="src/Controller/My/RegistrationSummaryAction.php">
-    <MixedArgument occurrences="1">
-      <code>$company</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$company</code>
-    </MixedAssignment>
   </file>
   <file src="src/Controller/Provider/PostUsersMassImportAction.php">
     <InvalidScalarArgument occurrences="1">

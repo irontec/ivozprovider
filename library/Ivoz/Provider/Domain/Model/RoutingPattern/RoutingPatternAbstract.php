@@ -113,20 +113,24 @@ abstract class RoutingPatternAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
         $prefix = $dto->getPrefix();
         Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
@@ -160,20 +164,24 @@ abstract class RoutingPatternAbstract
     ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
         $prefix = $dto->getPrefix();
         Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(

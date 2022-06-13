@@ -139,31 +139,39 @@ abstract class DestinationRateGroupAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionEn(), 'descriptionEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionEs(), 'descriptionEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionCa(), 'descriptionCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionIt(), 'descriptionIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $descriptionEn = $dto->getDescriptionEn();
+        Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
+        $descriptionEs = $dto->getDescriptionEs();
+        Assertion::notNull($descriptionEs, 'descriptionEs value is null, but non null value was expected.');
+        $descriptionCa = $dto->getDescriptionCa();
+        Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
+        $descriptionIt = $dto->getDescriptionIt();
+        Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
         $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
         Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs(),
-            $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $descriptionEn,
+            $descriptionEs,
+            $descriptionCa,
+            $descriptionIt
         );
 
         $file = new File(
@@ -201,31 +209,39 @@ abstract class DestinationRateGroupAbstract
     ): static {
         Assertion::isInstanceOf($dto, DestinationRateGroupDto::class);
 
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionEn(), 'descriptionEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionEs(), 'descriptionEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionCa(), 'descriptionCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getDescriptionIt(), 'descriptionIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $descriptionEn = $dto->getDescriptionEn();
+        Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
+        $descriptionEs = $dto->getDescriptionEs();
+        Assertion::notNull($descriptionEs, 'descriptionEs value is null, but non null value was expected.');
+        $descriptionCa = $dto->getDescriptionCa();
+        Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
+        $descriptionIt = $dto->getDescriptionIt();
+        Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
         $deductibleConnectionFee = $dto->getDeductibleConnectionFee();
         Assertion::notNull($deductibleConnectionFee, 'getDeductibleConnectionFee value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs(),
-            $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $descriptionEn,
+            $descriptionEs,
+            $descriptionCa,
+            $descriptionIt
         );
 
         $file = new File(

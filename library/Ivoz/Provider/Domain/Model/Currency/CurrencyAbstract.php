@@ -105,20 +105,24 @@ abstract class CurrencyAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
         $symbol = $dto->getSymbol();
         Assertion::notNull($symbol, 'getSymbol value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $self = new static(
@@ -144,20 +148,24 @@ abstract class CurrencyAbstract
     ): static {
         Assertion::isInstanceOf($dto, CurrencyDto::class);
 
-        Assertion::notNull($dto->getNameEn(), 'nameEn value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameEs(), 'nameEs value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameCa(), 'nameCa value is null, but non null value was expected.');
-        Assertion::notNull($dto->getNameIt(), 'nameIt value is null, but non null value was expected.');
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
         $iden = $dto->getIden();
         Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
         $symbol = $dto->getSymbol();
         Assertion::notNull($symbol, 'getSymbol value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $this

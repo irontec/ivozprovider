@@ -2361,20 +2361,6 @@
       <code>$fkTransformer-&gt;transform($language)</code>
       <code>$fkTransformer-&gt;transform($language)</code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="12">
-      <code>$dto-&gt;getInvoiceCountry()</code>
-      <code>$dto-&gt;getInvoiceCountry()</code>
-      <code>$dto-&gt;getInvoiceNif()</code>
-      <code>$dto-&gt;getInvoiceNif()</code>
-      <code>$dto-&gt;getInvoicePostalAddress()</code>
-      <code>$dto-&gt;getInvoicePostalAddress()</code>
-      <code>$dto-&gt;getInvoicePostalCode()</code>
-      <code>$dto-&gt;getInvoicePostalCode()</code>
-      <code>$dto-&gt;getInvoiceProvince()</code>
-      <code>$dto-&gt;getInvoiceProvince()</code>
-      <code>$dto-&gt;getInvoiceTown()</code>
-      <code>$dto-&gt;getInvoiceTown()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandDto.php">
@@ -3955,24 +3941,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Country/CountryAbstract.php">
-    <PossiblyNullArgument occurrences="16">
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getZoneCa()</code>
-      <code>$dto-&gt;getZoneCa()</code>
-      <code>$dto-&gt;getZoneEn()</code>
-      <code>$dto-&gt;getZoneEn()</code>
-      <code>$dto-&gt;getZoneEs()</code>
-      <code>$dto-&gt;getZoneEs()</code>
-      <code>$dto-&gt;getZoneIt()</code>
-      <code>$dto-&gt;getZoneIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Country/CountryDto.php">
@@ -3991,16 +3959,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Currency/CurrencyAbstract.php">
-    <PossiblyNullArgument occurrences="8">
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Currency/CurrencyDto.php">
@@ -4450,24 +4408,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="16">
-      <code>$dto-&gt;getDescriptionCa()</code>
-      <code>$dto-&gt;getDescriptionCa()</code>
-      <code>$dto-&gt;getDescriptionEn()</code>
-      <code>$dto-&gt;getDescriptionEn()</code>
-      <code>$dto-&gt;getDescriptionEs()</code>
-      <code>$dto-&gt;getDescriptionEs()</code>
-      <code>$dto-&gt;getDescriptionIt()</code>
-      <code>$dto-&gt;getDescriptionIt()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php">
@@ -5047,16 +4987,6 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Feature/FeatureAbstract.php">
-    <PossiblyNullArgument occurrences="8">
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Feature/FeatureDto.php">
@@ -6067,16 +5997,6 @@
     </TooManyArguments>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Language/LanguageAbstract.php">
-    <PossiblyNullArgument occurrences="8">
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Language/LanguageDto.php">
@@ -7130,24 +7050,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="16">
-      <code>$dto-&gt;getDescriptionCa()</code>
-      <code>$dto-&gt;getDescriptionCa()</code>
-      <code>$dto-&gt;getDescriptionEn()</code>
-      <code>$dto-&gt;getDescriptionEn()</code>
-      <code>$dto-&gt;getDescriptionEs()</code>
-      <code>$dto-&gt;getDescriptionEs()</code>
-      <code>$dto-&gt;getDescriptionIt()</code>
-      <code>$dto-&gt;getDescriptionIt()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDto.php">
@@ -7530,16 +7432,6 @@
       <code>$fkTransformer-&gt;transform($brand)</code>
       <code>$fkTransformer-&gt;transform($brand)</code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="8">
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDto.php">
@@ -7772,24 +7664,6 @@
     </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Service/ServiceAbstract.php">
-    <PossiblyNullArgument occurrences="16">
-      <code>$dto-&gt;getDescriptionCa()</code>
-      <code>$dto-&gt;getDescriptionCa()</code>
-      <code>$dto-&gt;getDescriptionEn()</code>
-      <code>$dto-&gt;getDescriptionEn()</code>
-      <code>$dto-&gt;getDescriptionEs()</code>
-      <code>$dto-&gt;getDescriptionEs()</code>
-      <code>$dto-&gt;getDescriptionIt()</code>
-      <code>$dto-&gt;getDescriptionIt()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Service/ServiceDto.php">
@@ -8002,16 +7876,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCountry())</code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="8">
-      <code>$dto-&gt;getLabelCa()</code>
-      <code>$dto-&gt;getLabelCa()</code>
-      <code>$dto-&gt;getLabelEn()</code>
-      <code>$dto-&gt;getLabelEn()</code>
-      <code>$dto-&gt;getLabelEs()</code>
-      <code>$dto-&gt;getLabelEs()</code>
-      <code>$dto-&gt;getLabelIt()</code>
-      <code>$dto-&gt;getLabelIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Timezone/TimezoneDto.php">
@@ -8098,16 +7962,6 @@
       <code>$fkTransformer-&gt;transform($dto-&gt;getCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCountry())</code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="8">
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameCa()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEn()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameEs()</code>
-      <code>$dto-&gt;getNameIt()</code>
-      <code>$dto-&gt;getNameIt()</code>
-    </PossiblyNullArgument>
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDto.php">
