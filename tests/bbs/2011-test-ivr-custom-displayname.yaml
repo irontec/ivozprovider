@@ -24,7 +24,7 @@ scenarios:
           - register:
               <<: *eve_cred
           - waitfor: INCOMING
-          - callid: "Option IVR 5"
+          - callidname: "Option IVR 5"
           - ringing
           - wait
           - answer
