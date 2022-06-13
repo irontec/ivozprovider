@@ -75,7 +75,6 @@
         "behat/mink-extension": "^2.2",
         "friends-of-behat/symfony-extension": "^2.0",
         "behatch/contexts": "^3.3",
-        "docteurklein/test-double-bundle": "^1.0",
         "irontec/prophecy": "^1.13",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^9.4.4",

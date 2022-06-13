@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e7ec972249467d803d423a68cdcb41d",
+    "content-hash": "442b905109929c0bac441a2e254364a4",
     "packages": [
         {
             "name": "api-platform/core",
@@ -11208,38 +11208,6 @@
                 "source": "https://github.com/dnoegel/php-xdg-base-dir/tree/v0.1.1"
             },
             "time": "2019-12-04T15:06:13+00:00"
-        },
-        {
-            "name": "docteurklein/test-double-bundle",
-            "version": "1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/irontec/TestDoubleBundle.git",
-                "reference": "b026d959519546f75ed2de1faaf4e23664c62438"
-            },
-            "require": {
-                "php": ">=7.4",
-                "phpspec/prophecy": "^1.8",
-                "symfony/dependency-injection": "^4.0|^5.0",
-                "symfony/http-kernel": "^4.0|^5.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "DocteurKlein\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Klein Florian",
-                    "email": "florian.klein@free.fr"
-                }
-            ],
-            "description": "Easily create test doubles using symfony DIC",
-            "time": "2020-09-28T11:10:57+00:00"
         },
         {
             "name": "doctrine/data-fixtures",

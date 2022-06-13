@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87bff4fa2d5b2fa4e3f54ee7c284e7aa",
+    "content-hash": "481ca8a44de038c0696931a2de01de50",
     "packages": [
         {
             "name": "api-platform/core",
@@ -8432,41 +8432,6 @@
                 "MIT"
             ],
             "description": "implementation of xdg base directory specification for php",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "docteurklein/test-double-bundle",
-            "version": "1.2",
-            "dist": {
-                "type": "path",
-                "url": "../../../library/vendor/docteurklein/test-double-bundle",
-                "reference": "b026d959519546f75ed2de1faaf4e23664c62438"
-            },
-            "require": {
-                "php": ">=7.4",
-                "phpspec/prophecy": "^1.8",
-                "symfony/dependency-injection": "^4.0|^5.0",
-                "symfony/http-kernel": "^4.0|^5.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "DocteurKlein\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Klein Florian",
-                    "email": "florian.klein@free.fr"
-                }
-            ],
-            "description": "Easily create test doubles using symfony DIC",
             "transport-options": {
                 "symlink": true,
                 "relative": true

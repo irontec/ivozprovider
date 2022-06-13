@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2de821d599fb480e2f3b0d0875ab998",
+    "content-hash": "47906b192594384a5a322f64de9367cc",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -7079,41 +7079,6 @@
                 }
             ],
             "description": "This package provides ArraySubset and related asserts once deprecated in PHPUnit 8",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "docteurklein/test-double-bundle",
-            "version": "1.2",
-            "dist": {
-                "type": "path",
-                "url": "../library/vendor/docteurklein/test-double-bundle",
-                "reference": "b026d959519546f75ed2de1faaf4e23664c62438"
-            },
-            "require": {
-                "php": ">=7.4",
-                "phpspec/prophecy": "^1.8",
-                "symfony/dependency-injection": "^4.0|^5.0",
-                "symfony/http-kernel": "^4.0|^5.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "DocteurKlein\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Klein Florian",
-                    "email": "florian.klein@free.fr"
-                }
-            ],
-            "description": "Easily create test doubles using symfony DIC",
             "transport-options": {
                 "symlink": true,
                 "relative": true

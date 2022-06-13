@@ -64,9 +64,6 @@
     "dnoegel/php-xdg-base-dir": {
         "version": "v0.1.1"
     },
-    "docteurklein/test-double-bundle": {
-        "version": "1.1"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
