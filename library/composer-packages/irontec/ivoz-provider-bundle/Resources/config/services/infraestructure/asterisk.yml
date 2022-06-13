@@ -9,11 +9,20 @@ services:
       $userName: '%ari_user%'
       $password: '%ari_password%'
       $port: '%ari_port%'
-    tags:
-      - { name: test_double, fake: 'Ivoz\Ast\Infrastructure\Asterisk\ARI\FakeARIConnector' }
 
-  Ivoz\Ast\Infrastructure\Asterisk\ARI\FakeARIConnector:
-    arguments:
-      $userName: ''
-      $password: ''
-      $port: ''
+###############################################
+## TEST
+###############################################
+when@test:
+  services:
+    _defaults:
+      autowire: true
+      autoconfigure: true
+      public: false
+
+    Ivoz\Ast\Infrastructure\Asterisk\ARI\ARIConnector:
+      class: Ivoz\Ast\Infrastructure\Asterisk\ARI\FakeARIConnector
+      arguments:
+        $userName: ''
+        $password: ''
+        $port: ''
