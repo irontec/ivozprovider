@@ -42,14 +42,6 @@
             }
         },
         {
-            "url": "https://github.com/irontec/TestDoubleBundle.git",
-            "type": "git"
-        },
-        {
-            "url": "https://github.com/irontec/GearmanBundle.git",
-            "type": "git"
-        },
-        {
             "url": "https://github.com/irontec/wkhtmltopdf-amd64.git",
             "type": "git"
         },
@@ -105,7 +97,6 @@
         "behat/mink-extension": "^2.2",
         "behatch/contexts": "^3.3",
         "dms/phpunit-arraysubset-asserts": "^0.2.1",
-        "docteurklein/test-double-bundle": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "friends-of-behat/symfony-extension": "^2.0",
         "friends-of-phpspec/phpspec-code-coverage": "^6.0",

@@ -66,7 +66,6 @@
         "symfony/flex": "^1.9"
     },
     "require-dev": {
-        "docteurklein/test-double-bundle": "^1.2",
         "irontec/prophecy": "^1.13",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^9.4.4",

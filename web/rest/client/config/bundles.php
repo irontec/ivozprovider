@@ -12,7 +12,6 @@ return [
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
-    DocteurKlein\TestDoubleBundle::class => ['test' => true],
     FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true],
     Ivoz\CoreBundle\CoreBundle::class => ['all' => true],
     Ivoz\ProviderBundle\ProviderBundle::class => ['all' => true],

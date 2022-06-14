@@ -2313,11 +2313,11 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.6",
+            "version": "4.6.2",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-core-bundle",
-                "reference": "7b3505d09aed30ce46ee5ec1d27b62fe30023cc0"
+                "reference": "1b1abbe4d0a747104f76d3e114d4eb607f5b5a18"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^2.0",
@@ -2357,11 +2357,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.33",
+            "version": "2.5.34",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "f70072269869ff0afa54987f0a3c00fbc288e4ed"
+                "reference": "5f92ab43c4ab8b676fc2c6083bb0ff5a2557d899"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",

@@ -1,0 +1,52 @@
+#!/bin/bash
+
+if [ "$1" == "--full" ]; then
+    pushd /opt/irontec/ivozprovider/library
+        composer remove $*
+    popd
+fi
+
+pushd /opt/irontec/ivozprovider/asterisk/agi
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/recordings
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/workers
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/balances
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/scheduler
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/realtime
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/schema
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/platform
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/brand
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/client
+    composer remove $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/user
+    composer remove $*
+popd
+

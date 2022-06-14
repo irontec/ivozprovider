@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e7ec972249467d803d423a68cdcb41d",
+    "content-hash": "4b2edbda11f5de504db1d4a58f3da0d9",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2646,16 +2646,16 @@
         },
         {
             "name": "irontec/ivoz-core-bundle",
-            "version": "4.6",
+            "version": "4.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core-bundle.git",
-                "reference": "7b3505d09aed30ce46ee5ec1d27b62fe30023cc0"
+                "reference": "1b1abbe4d0a747104f76d3e114d4eb607f5b5a18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/7b3505d09aed30ce46ee5ec1d27b62fe30023cc0",
-                "reference": "7b3505d09aed30ce46ee5ec1d27b62fe30023cc0",
+                "url": "https://api.github.com/repos/irontec/ivoz-core-bundle/zipball/1b1abbe4d0a747104f76d3e114d4eb607f5b5a18",
+                "reference": "1b1abbe4d0a747104f76d3e114d4eb607f5b5a18",
                 "shasum": ""
             },
             "require": {
@@ -2692,9 +2692,9 @@
             "description": "Symfony bridge for ivoz-core",
             "support": {
                 "issues": "https://github.com/irontec/ivoz-core-bundle/issues",
-                "source": "https://github.com/irontec/ivoz-core-bundle/tree/4.6"
+                "source": "https://github.com/irontec/ivoz-core-bundle/tree/4.6.2"
             },
-            "time": "2022-06-13T07:54:22+00:00"
+            "time": "2022-06-14T09:01:06+00:00"
         },
         {
             "name": "irontec/ivoz-dev-tools",
@@ -2754,11 +2754,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.33",
+            "version": "2.5.34",
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "67da4a18e1117566a30d6ca787e0e02524e0d3e3"
+                "reference": "7ce50833849e839c8e69e9941724156885a81267"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -11208,38 +11208,6 @@
                 "source": "https://github.com/dnoegel/php-xdg-base-dir/tree/v0.1.1"
             },
             "time": "2019-12-04T15:06:13+00:00"
-        },
-        {
-            "name": "docteurklein/test-double-bundle",
-            "version": "1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/irontec/TestDoubleBundle.git",
-                "reference": "b026d959519546f75ed2de1faaf4e23664c62438"
-            },
-            "require": {
-                "php": ">=7.4",
-                "phpspec/prophecy": "^1.8",
-                "symfony/dependency-injection": "^4.0|^5.0",
-                "symfony/http-kernel": "^4.0|^5.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "DocteurKlein\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Klein Florian",
-                    "email": "florian.klein@free.fr"
-                }
-            ],
-            "description": "Easily create test doubles using symfony DIC",
-            "time": "2020-09-28T11:10:57+00:00"
         },
         {
             "name": "doctrine/data-fixtures",
