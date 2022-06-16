@@ -55,17 +55,8 @@ function setup_mysql()
     # Change database password
     /usr/bin/mysql --user=root << EOF
             CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
-            CREATE USER IF NOT EXISTS 'root'@'127.0.0.1' IDENTIFIED BY '$MYSQL_PASSWORD';
-            CREATE USER IF NOT EXISTS 'root'@'::1' IDENTIFIED BY '$MYSQL_PASSWORD';
-            CREATE USER IF NOT EXISTS 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
             ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
-            ALTER USER 'root'@'127.0.0.1' IDENTIFIED BY '$MYSQL_PASSWORD';
-            ALTER USER 'root'@'::1' IDENTIFIED BY '$MYSQL_PASSWORD';
-            ALTER USER 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
             GRANT ALL ON ivozprovider.* TO 'root'@'localhost';
-            GRANT ALL ON ivozprovider.* TO 'root'@'127.0.0.1';
-            GRANT ALL ON ivozprovider.* TO 'root'@'::1';
-            GRANT ALL ON ivozprovider.* TO 'root'@'$HOSTNAME';
             FLUSH PRIVILEGES;
 EOF
 

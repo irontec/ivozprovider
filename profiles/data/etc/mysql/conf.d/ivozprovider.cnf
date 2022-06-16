@@ -5,6 +5,7 @@ default-character-set = utf8
 default-time-zone = utc
 character-set-server = utf8
 skip-character-set-client-handshake
+default-authentication-plugin=mysql_native_password
 
 # Increase connection max idle timeout
 wait_timeout = 604800
