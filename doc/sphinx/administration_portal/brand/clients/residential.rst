@@ -29,7 +29,7 @@ These are the fields shown when **adding** a new residential client:
         Used to reference this particular client.
 
     Billing method
-        To choose among postpaid, prepaid and pseudo-prepaid.
+        To choose among postpaid, prepaid and pseudo-prepaid. 'none' disables billing.
 
     Features
         Enable/Disable faxing and call recording for this particular client.

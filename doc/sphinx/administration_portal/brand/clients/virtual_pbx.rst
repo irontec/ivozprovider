@@ -20,7 +20,8 @@ that require feature-full call flows.
         Related sections are hidden consequently and the client cannot use them.
 
     Billing method
-        When billing feature is enabled determines when calls will be priced. See :ref:`Billing` section.
+        When billing feature is enabled determines when calls will be priced. 'none' disables billing.
+        See :ref:`Billing` section.
 
     Geographic Configuration
         General client configuration for language and timezones. Most of the settings in the section can be
