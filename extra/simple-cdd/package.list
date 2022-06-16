@@ -21,8 +21,6 @@ ivozprovider-kamailio-json-modules
 ivozprovider-kamailio-json-modules-dbgsym
 ivozprovider-kamailio-mysql-modules
 ivozprovider-kamailio-mysql-modules-dbgsym
-ivozprovider-kamailio-presence-modules
-ivozprovider-kamailio-presence-modules-dbgsym
 ivozprovider-kamailio-redis-modules
 ivozprovider-kamailio-redis-modules-dbgsym
 ivozprovider-kamailio-tls-modules
@@ -49,6 +47,7 @@ ivozprovider-schema
 ivozprovider-web-admin
 ivozprovider-web-rest
 ivozprovider-web-user
+ivozprovider-web-client 
 klear
 klear-library
 klear-matrix

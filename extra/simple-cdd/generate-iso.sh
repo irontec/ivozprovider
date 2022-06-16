@@ -9,10 +9,10 @@ wget http://packages.irontec.com/public.key -q -O - | sudo apt-key add -
 # Update apt-cache
 sudo apt-get update
 
-# Download ivozprovider packages for given rlease
+# Download ivozprovider packages for given release
 pushd local
 cat ../package.list | xargs apt-get download -t halliday
 popd
 
 # Generate iso file
-build-simple-cdd --force-root --conf simple-cdd.conf --verbose --force-preseed --dist bullseye
+build-simple-cdd --dvd --force-root --conf simple-cdd.conf --verbose --force-preseed --dist bullseye

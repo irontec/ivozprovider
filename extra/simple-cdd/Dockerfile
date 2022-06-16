@@ -1,4 +1,3 @@
-# See https://github.com/docker-library/php/blob/4677ca134fe48d20c820a19becb99198824d78e3/7.0/fpm/Dockerfile
 FROM debian:bullseye
 
 MAINTAINER Irontec IvozProvider Team <ivozprovider@irontec.com>
@@ -9,9 +8,6 @@ RUN apt-get update && apt-get install -y \
     reprepro \
     sudo \
     simple-cdd
-
-# Iso target architecture
-ARG ARCH=amd64
 
 # Create jenkins user (configurable)
 ARG UNAME=jenkins

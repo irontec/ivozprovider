@@ -188,7 +188,9 @@ d-i     popularity-contest/participate  boolean false
 d-i preseed/early_command string anna-install simple-cdd-profiles
 
 ## Preseed mysql passwords
-mysql-server-5.5 mysql-server/root_password string changeme
-mysql-server-5.5 mysql-server/root_password seen true
-mysql-server-5.5 mysql-server/root_password_again string changeme
-mysql-server-5.5 mysql-server/root_password_again seen true
+percona-server-server percona-server-server/root-pass string changeme
+percona-server-server percona-server-server/root-pass seen true
+percona-server-server percona-server-server/re-root-pass string changeme
+percona-server-server percona-server-server/re-root-pass seen true
+percona-server-server percona-server-server/default-auth-override string "Use Legacy Authentication Method (Retain MySQL 5.x Compatibility)"
+percona-server-server percona-server-server/default-auth-override seen true
