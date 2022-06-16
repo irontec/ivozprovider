@@ -1,5 +1,29 @@
 # Changelog
-
+## 3.0.0
+* Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
+* Endpoints:
+    - Added not equal [neq] filters
+    - Added exits[fldName] filters
+    - Fixed downloadable file spec
+    - Fixed embeddable model spec
+* Models:
+    - Some properties added into response models (not listed below unless they involve a BC)
+    - BillableCall:
+      - Set direction as required
+    - Brand:
+      - Set language as required
+      - Set currency as not required
+    - Country_Name:
+      - Set all properties as required
+    - OutgoingRouting:
+      - Set type property as enum
+    - RetailAccount-collection:
+      - Removed transport property
+    - User:
+      - Removed voicemailAttachSound property
+      - Removed voicemailEnabled property
+      - Removed voicemailSendMail property
+    
 ## 2.18.1
 * Endpoints:
     - /brands:
