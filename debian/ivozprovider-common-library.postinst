@@ -12,7 +12,7 @@ function setup_mysql_password()
     # Setup global mysql password
     db_get ivozprovider/mysql_password || true
     sed -r -i "s/root:[^@]+@/root:$RET@/" \
-         /opt/irontec/ivozprovider/library/vendor/irontec/ivoz-provider-bundle/.env
+        /opt/irontec/ivozprovider/library/vendor/irontec/ivoz-provider-bundle/.env
 }
 
 #######################################################################################################################
