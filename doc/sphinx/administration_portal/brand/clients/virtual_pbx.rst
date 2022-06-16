@@ -54,6 +54,10 @@ that require feature-full call flows.
     Notifications
         Configure the email :ref:`notification templates` to use for this client.
 
+    Rate calls
+        Setting to 'yes' causes external calls to be rated using active rating plan. Setting to 'no', on the other hand,
+        disables rating for external calls, so no rating plan will be used and calls will have no price.
+
     Outgoing DDI
         Selects a DDI for outgoing calls of this client, if it is no overridden in
         a lower level.
