@@ -19,7 +19,7 @@ G.729 codec is optimized for each CPU type and version of asterisk, so each
 installation may require a different codec module.
 
 You can download codec from `here <http://asterisk.hosting.lv/>`_ under the
-section Asterisk 13.
+section Asterisk 18.
 
 Once downloaded, move the `.so` file to **/usr/lib/asterisk/modules/** and rename
 it to **codec_g729.so**
