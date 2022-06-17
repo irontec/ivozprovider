@@ -1,12 +1,13 @@
 import PersonIcon from "@mui/icons-material/Person";
 import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
 import _ from "@irontec/ivoz-ui/services/translations/translate";
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import defaultEntityBehavior, { MarshallerValues } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
 import Form from "./Form";
 import { foreignKeyGetter } from "./foreignKeyGetter";
 import { UserProperties } from "./UserProperties";
 import foreignKeyResolver from "./foreignKeyResolver";
 import selectOptions from "./SelectOptions";
+import { PartialPropertyList } from "@irontec/ivoz-ui";
 
 const properties: UserProperties = {
   name: {
@@ -179,6 +180,17 @@ const columns = [
   // @TODO status
 ];
 
+const marshaller = (
+  values: MarshallerValues, 
+  properties: PartialPropertyList,
+): MarshallerValues => {
+  if (values.pass === "*****") {
+    delete values.pass;
+  }
+
+  return defaultEntityBehavior.marshaller(values, properties);
+};
+
 const user: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PersonIcon,
@@ -193,6 +205,7 @@ const user: EntityInterface = {
   properties,
   columns,
   Form,
+  marshaller,
   foreignKeyResolver,
   foreignKeyGetter,
   selectOptions: (props, customProps) => {
