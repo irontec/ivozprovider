@@ -200,7 +200,7 @@ class Encoder
                 $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
 
                 $convertProcess = new Process([
-                    "/usr/bin/avconv",
+                    "/usr/bin/ffmpeg",
                     "-y",
                     "-i",
                     $convertWav,
