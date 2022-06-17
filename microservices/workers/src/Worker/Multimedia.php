@@ -68,10 +68,10 @@ class Multimedia
             $originalFile = $entityDto->getOriginalFilePath();
             $originalFileNoExt = pathinfo($entityDto->getOriginalFileBaseName(), PATHINFO_FILENAME);
 
-            // Convert original file to raw wav using avconv
+            // Convert original file to raw wav using ffmpeg
             $dumpWavFile = sprintf("/tmp/%s%draw.wav", $entityClass, $entityId);
             $process = new Process([
-                "avconv",
+                "/usr/bin/ffmpeg",
                 "-i", $originalFile,
                 "-b:a", "64k",
                 "-ar", "8000",
