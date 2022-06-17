@@ -3,6 +3,7 @@
 *.settings
 *.idea
 .idea/*
+.vscode
 
 vendor
 **/coverage/
