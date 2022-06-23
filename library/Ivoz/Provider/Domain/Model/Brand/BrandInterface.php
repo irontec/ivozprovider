@@ -144,7 +144,7 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function getDefaultTimezone(): TimezoneInterface;
 
-    public function getCurrency(): ?CurrencyInterface;
+    public function getCurrency(): CurrencyInterface;
 
     public function getVoicemailNotificationTemplate(): ?NotificationTemplateInterface;
 

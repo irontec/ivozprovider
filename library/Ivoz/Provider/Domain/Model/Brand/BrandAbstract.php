@@ -82,9 +82,9 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var ?CurrencyInterface
+     * @var CurrencyInterface
      */
-    protected $currency = null;
+    protected $currency;
 
     /**
      * @var ?NotificationTemplateInterface
@@ -204,6 +204,8 @@ abstract class BrandAbstract
         Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
         $defaultTimezone = $dto->getDefaultTimezone();
         Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
+        $currency = $dto->getCurrency();
+        Assertion::notNull($currency, 'getCurrency value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -235,7 +237,7 @@ abstract class BrandAbstract
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setLanguage($fkTransformer->transform($language))
             ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setCurrency($fkTransformer->transform($currency))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
@@ -277,6 +279,8 @@ abstract class BrandAbstract
         Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
         $defaultTimezone = $dto->getDefaultTimezone();
         Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
+        $currency = $dto->getCurrency();
+        Assertion::notNull($currency, 'getCurrency value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -305,7 +309,7 @@ abstract class BrandAbstract
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setLanguage($fkTransformer->transform($language))
             ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setCurrency($fkTransformer->transform($currency))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
@@ -371,7 +375,7 @@ abstract class BrandAbstract
             'domainId' => self::getDomain()?->getId(),
             'languageId' => self::getLanguage()->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
-            'currencyId' => self::getCurrency()?->getId(),
+            'currencyId' => self::getCurrency()->getId(),
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
@@ -520,14 +524,14 @@ abstract class BrandAbstract
         return $this->defaultTimezone;
     }
 
-    protected function setCurrency(?CurrencyInterface $currency = null): static
+    protected function setCurrency(CurrencyInterface $currency): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    public function getCurrency(): ?CurrencyInterface
+    public function getCurrency(): CurrencyInterface
     {
         return $this->currency;
     }

@@ -2571,16 +2571,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/BillableCallHistoric/BillableCallHistoricRepository.php
 
 		-
-			message: "#^Cannot call method getIden\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/Brand.php
-
-		-
-			message: "#^Cannot call method getSymbol\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Currency\\\\CurrencyInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/Brand.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\Brand\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/Brand.php

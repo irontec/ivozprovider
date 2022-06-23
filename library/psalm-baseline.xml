@@ -2342,12 +2342,12 @@
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandAbstract.php">
     <MixedArgument occurrences="18">
+      <code>$fkTransformer-&gt;transform($currency)</code>
+      <code>$fkTransformer-&gt;transform($currency)</code>
       <code>$fkTransformer-&gt;transform($defaultTimezone)</code>
       <code>$fkTransformer-&gt;transform($defaultTimezone)</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCallCsvNotificationTemplate())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getCurrency())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDomain())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getDomain())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getFaxNotificationTemplate())</code>
