@@ -883,7 +883,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"Spanish\",\n  \"internationalCode\": \"00\",\n  \"trunkPrefix\": \"\",\n  \"areaCode\": \"\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"Spanish Operator\",\n     \"es\": \"Operador Español\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
+							"raw": "{\n  \"description\": \"Spanish\",\n  \"internationalCode\": \"00\",\n  \"trunkPrefix\": \"\",\n  \"areaCode\": \"\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"Spanish Operator\",\n     \"es\": \"Operador Español\",\n     \"ca\": \"Operador Español\",\n     \"it\": \"Spanihs Operator\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/transformation_rule_sets",
@@ -933,7 +933,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"description\": \"USA (Area 999)\",\n  \"internationalCode\": \"011\",\n  \"trunkPrefix\": \"1\",\n  \"areaCode\": \"999\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"USA (Area 999)\",\n     \"es\": \"USA (Area 999)\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 235\n}"
+							"raw": "{\n  \"description\": \"USA (Area 999)\",\n  \"internationalCode\": \"011\",\n  \"trunkPrefix\": \"1\",\n  \"areaCode\": \"999\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"USA (Area 999)\",\n     \"es\": \"USA (Area 999)\",\n     \"ca\": \"USA (Area 999)\",\n     \"it\": \"USA (Area 999)\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 235\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/transformation_rule_sets",
@@ -1233,7 +1233,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"prefix\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"prefix\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\",\n    \"ca\": \"España\",\n    \"it\": \"Spain\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\",\n  \t\"ca\": \"BBS - España\",  \t\n  \t\"it\": \"BBS - Spain\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/routing_patterns",
@@ -1333,7 +1333,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"prefix\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"prefix\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\",\n    \"ca\": \"Estados Unidos\",\n    \"it\": \"USA\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\",\n  \t\"it\": \"BBS - Usa\",  \t\n  \t\"ca\": \"BBS - Estados Unidos\"      \n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/routing_patterns",
@@ -1533,7 +1533,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"description\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\",\n  \t\"it\": \"Standard\",\n  \t\"ca\": \"Estándar\"\n  },\n  \"description\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\",\n  \t\"it\": \"Standard\",\n  \t\"ca\": \"Estándar\"      \n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/destination_rate_groups",
@@ -1679,7 +1679,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard 2017\",\n  \t\"es\": \"Estándar 2017\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard 2017\",\n  \t\"es\": \"Estándar 2017\",\n  \t\"it\": \"Standard 2017\",\n  \t\"ca\": \"Estándar 2017\"      \n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\",\n  \t\"ca\": \"\",\n  \t\"it\": \"\"      \n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{brand_api_url}}/rating_plan_groups",
@@ -1968,7 +1968,14 @@
 									"",
 									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"companyData\", responseBody);",
+									"jsonData.language = jsonData.language.id;",
+									"jsonData.defaultTimezone = jsonData.defaultTimezone.id;",
+									"jsonData.country = jsonData.country.id;",
+									"jsonData.currency = jsonData.currency.id;",
+									"jsonData.transformationRuleSet = jsonData.transformationRuleSet.id;",
+									"delete jsonData.featureIds;",
+									"",
+									"postman.setGlobalVariable(\"companyData\", JSON.stringify(jsonData));",
 									""
 								],
 								"type": "text/javascript"
@@ -6176,7 +6183,13 @@
 									"",
 									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"residentialData\", responseBody);",
+									"jsonData.language = jsonData.language.id;",
+									"jsonData.defaultTimezone = jsonData.defaultTimezone.id;",
+									"jsonData.country = jsonData.country.id;",
+									"jsonData.transformationRuleSet = jsonData.transformationRuleSet.id;",
+									"delete jsonData.featureIds;",
+									"",
+									"postman.setGlobalVariable(\"residentialData\", JSON.stringify(jsonData));",
 									""
 								],
 								"type": "text/javascript"
@@ -6800,7 +6813,13 @@
 									"",
 									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"retailData\", responseBody);",
+									"jsonData.language = jsonData.language.id;",
+									"jsonData.defaultTimezone = jsonData.defaultTimezone.id;",
+									"jsonData.country = jsonData.country.id;",
+									"jsonData.transformationRuleSet = jsonData.transformationRuleSet.id;",
+									"delete jsonData.featureIds;",
+									"",
+									"postman.setGlobalVariable(\"retailData\", JSON.stringify(jsonData));",
 									""
 								],
 								"type": "text/javascript"
