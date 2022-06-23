@@ -132,7 +132,7 @@
     </many-to-one>
     <many-to-one field="location" target-entity="Ivoz\Provider\Domain\Model\Location\LocationInterface" inversed-by="users" fetch="LAZY">
       <join-columns>
-        <join-column name="location" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="locationId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>
