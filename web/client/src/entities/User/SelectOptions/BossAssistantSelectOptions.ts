@@ -1,6 +1,6 @@
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import store from "store";
-import User from "../User";
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from 'store';
+import User from '../User';
 
 type CustomPropsType = {
   _excludeId?: number;
@@ -11,13 +11,13 @@ const BossAssistantSelectOptions: SelectOptionsType<CustomPropsType> = (
   customProps
 ): Promise<unknown> => {
   const params: any = {
-    _properties: ["id", "name", "lastname"],
+    _properties: ['id', 'name', 'lastname'],
     isBoss: 0,
   };
 
   const _excludeId = customProps?._excludeId;
   if (_excludeId) {
-    params["id[neq]"] = _excludeId;
+    params['id[neq]'] = _excludeId;
   }
 
   const getAction = store.getActions().api.get;

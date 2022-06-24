@@ -1,85 +1,85 @@
-import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import EntityInterface, {
   OrderDirection,
-} from "@irontec/ivoz-ui/entities/EntityInterface";
-import DefaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import Form from "./Form";
-import { BillableCallProperties } from "./BillableCallProperties";
-import View from "./View";
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import Form from './Form';
+import { BillableCallProperties } from './BillableCallProperties';
+import View from './View';
 
 const properties: BillableCallProperties = {
   startTime: {
-    label: "Start time",
+    label: 'Start time',
   },
   callid: {
-    label: "Call ID",
+    label: 'Call ID',
   },
   caller: {
-    label: "Caller",
+    label: 'Caller',
   },
   callee: {
-    label: "Callee",
+    label: 'Callee',
   },
   destinationName: {
-    label: "Destination",
+    label: 'Destination',
   },
   direction: {
-    label: "Direction",
+    label: 'Direction',
     enum: {
-      inbound: _("Inbound"),
-      outbound: _("Outbound"),
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
     },
   },
   invoice: {
-    label: "Invoice",
+    label: 'Invoice',
   },
   price: {
-    label: "Price",
+    label: 'Price',
   },
   duration: {
-    label: "Duration",
+    label: 'Duration',
   },
   cost: {
-    label: "Cost",
+    label: 'Cost',
   },
   carrierName: {
-    label: "Carrier",
+    label: 'Carrier',
   },
   ratingPlanName: {
-    label: "Rating plan",
+    label: 'Rating plan',
   },
   endpointType: {
-    label: "Endpoint type",
+    label: 'Endpoint type',
   },
   endpointId: {
-    label: "Endpoint id",
+    label: 'Endpoint id',
   },
   endpointName: {
-    label: "Endpoint name",
+    label: 'Endpoint name',
   },
   ddiProvider: {
-    label: "DDI Provider",
+    label: 'DDI Provider',
   },
 };
 
-const columns = ["startTime", "direction", "caller", "callee", "duration"];
+const columns = ['startTime', 'direction', 'caller', 'callee', 'duration'];
 
 const billableCall: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: ChatBubbleIcon,
-  iden: "BillableCall",
-  title: _("External call", { count: 2 }),
-  path: "/billable_calls",
+  iden: 'BillableCall',
+  title: _('External call', { count: 2 }),
+  path: '/billable_calls',
   properties,
   columns,
   acl: {
     ...DefaultEntityBehavior.acl,
-    iden: "BillableCalls",
+    iden: 'BillableCalls',
   },
   Form,
   View,
-  defaultOrderBy: "startTime",
+  defaultOrderBy: 'startTime',
   defaultOrderDirection: OrderDirection.desc,
 };
 

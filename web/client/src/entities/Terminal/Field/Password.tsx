@@ -1,14 +1,14 @@
-import { InputAdornment, Tooltip } from "@mui/material";
-import { isPropertyScalar } from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
+import { InputAdornment, Tooltip } from '@mui/material';
+import { isPropertyScalar } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
   CustomFunctionComponentContext,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { StyledTextField } from "@irontec/ivoz-ui/services/form/FormFieldFactory.styles";
-import { TerminalPropertyList } from "../TerminalProperties";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
-import { styled } from "@mui/styles";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { StyledTextField } from '@irontec/ivoz-ui/services/form/FormFieldFactory.styles';
+import { TerminalPropertyList } from '../TerminalProperties';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import { styled } from '@mui/styles';
 
 type TerminalValues = TerminalPropertyList<string | number>;
 type PasswordType = PropertyCustomFunctionComponent<
@@ -34,17 +34,17 @@ const RegeneratePasswordIcon = (
 
 const StyledRegeneratePasswordIcon = styled(RegeneratePasswordIcon)(() => {
   return {
-    cursor: "pointer",
+    cursor: 'pointer',
   };
 });
 
 const randomPass = (): string => {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const digits = "0123456789";
-  const simbols = "+*_-";
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
+  const simbols = '+*_-';
 
   const randomValFromString = (haystack: string, length: number): string => {
-    let retVal = "";
+    let retVal = '';
     for (let i = 0, n = haystack.length; i < length; ++i) {
       retVal += haystack.charAt(Math.floor(Math.random() * n));
     }
@@ -57,10 +57,10 @@ const randomPass = (): string => {
       .sort(() => {
         return Math.random() - 0.5;
       })
-      .join("");
+      .join('');
   };
 
-  let retVal = "";
+  let retVal = '';
 
   // 3 uppercase letters
   retVal += randomValFromString(alphabet.toUpperCase(), 3);
@@ -103,7 +103,7 @@ const Password: PasswordType = (props): JSX.Element => {
     endAdornment: (
       <InputAdornment position="end">
         <StyledRegeneratePasswordIcon
-          label={"Generate new secure password"}
+          label={'Generate new secure password'}
           onClick={passGenerator}
         />
       </InputAdornment>

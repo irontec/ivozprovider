@@ -1,10 +1,10 @@
-import useFkChoices from "@irontec/ivoz-ui/entities/data/useFkChoices";
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
-} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import { foreignKeyGetter } from "./foreignKeyGetter";
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
@@ -25,18 +25,18 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups> = [
     {
-      legend: _("Routing configuration"),
+      legend: _('Routing configuration'),
       fields: [
-        "routeType",
-        create && "user",
-        create && "numberCountry",
-        create && "numberValue",
-        edit && "target",
+        'routeType',
+        create && 'user',
+        create && 'numberCountry',
+        create && 'numberValue',
+        edit && 'target',
       ],
     },
     {
-      legend: _("Entry information"),
-      fields: ["timeoutTime"],
+      legend: _('Entry information'),
+      fields: ['timeoutTime'],
     },
   ];
 

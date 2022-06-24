@@ -1,8 +1,8 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { HolidayDatePropertyList } from "../HolidayDateProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { HolidayDatePropertyList } from '../HolidayDateProperties';
 
 type HolidayDateValues = HolidayDatePropertyList<string | number>;
 type TargetGhostType = PropertyCustomFunctionComponent<

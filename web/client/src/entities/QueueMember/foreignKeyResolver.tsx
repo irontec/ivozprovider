@@ -1,6 +1,6 @@
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { QueueMemberPropertiesList } from "./QueueMemberProperties";
-import entities from "../index";
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { QueueMemberPropertiesList } from './QueueMemberProperties';
+import entities from '../index';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,

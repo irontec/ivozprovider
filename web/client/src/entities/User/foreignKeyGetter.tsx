@@ -1,15 +1,15 @@
-import { UserPropertyList } from "./UserProperties";
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import entities from "../index";
-import PickUpGroupSelectOptions from "entities/PickUpGroup/SelectOptions";
-import { UnassignedTerminalSelectOptions } from "entities/Terminal/SelectOptions";
+import { UserPropertyList } from './UserProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import entities from '../index';
+import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
+import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
 import {
   UnassignedExtensionSelectOptions,
   UserExtensionSelectOptions,
-} from "entities/Extension/SelectOptions";
-import { EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
-import { BossAssistantSelectOptions } from "./SelectOptions";
+} from 'entities/Extension/SelectOptions';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import { BossAssistantSelectOptions } from './SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -19,10 +19,10 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
 }): Promise<any> => {
   const response: UserPropertyList<unknown> = {};
 
-  const skip = ["pickupGroupIds", "bossAssistant", "extension"];
+  const skip = ['pickupGroupIds', 'bossAssistant', 'extension'];
 
   if (!filterContext) {
-    skip.push(...["terminal"]);
+    skip.push(...['terminal']);
   }
 
   const promises = autoSelectOptions({

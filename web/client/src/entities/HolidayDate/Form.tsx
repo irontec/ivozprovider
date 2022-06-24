@@ -1,9 +1,9 @@
-import useFkChoices from "@irontec/ivoz-ui/entities/data/useFkChoices";
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
-} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { foreignKeyGetter } from "./foreignKeyGetter";
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { edit } = props;
@@ -18,25 +18,25 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: "",
-      fields: [edit && "calendar"],
+      legend: '',
+      fields: [edit && 'calendar'],
     },
     {
-      legend: "",
-      fields: ["name", "locution"],
+      legend: '',
+      fields: ['name', 'locution'],
     },
     {
-      legend: "",
-      fields: ["eventDate", "wholeDayEvent", "timeIn", "timeOut"],
+      legend: '',
+      fields: ['eventDate', 'wholeDayEvent', 'timeIn', 'timeOut'],
     },
     {
-      legend: "",
+      legend: '',
       fields: [
-        "routeType",
-        "numberCountry",
-        "numberValue",
-        "voicemail",
-        "extension",
+        'routeType',
+        'numberCountry',
+        'numberValue',
+        'voicemail',
+        'extension',
       ],
     },
   ];

@@ -1,7 +1,7 @@
-import { AboutMe, EntityAcl } from "store/clientSession/aboutMe";
-import { useState, useEffect } from "react";
-import { ExtendedRouteMap, ExtendedRouteMapItem } from "./EntityMap";
-import { isEntityItem } from "@irontec/ivoz-ui";
+import { AboutMe, EntityAcl } from 'store/clientSession/aboutMe';
+import { useState, useEffect } from 'react';
+import { ExtendedRouteMap, ExtendedRouteMapItem } from './EntityMap';
+import { isEntityItem } from '@irontec/ivoz-ui';
 
 interface updateEntityMapProps {
   entityMap: ExtendedRouteMap;

@@ -1,6 +1,6 @@
-import { action, Action, Computed, computed, Thunk, thunk } from "easy-peasy";
-import { CancelTokenSource } from "axios";
-import { AppStore } from "../index";
+import { action, Action, Computed, computed, Thunk, thunk } from 'easy-peasy';
+import { CancelTokenSource } from 'axios';
+import { AppStore } from '../index';
 
 type NullableRecordType = Record<string, string | number> | null;
 
@@ -117,8 +117,8 @@ const recordLocutionService: RecordLocutionServiceStore = {
     const apiGet = getStoreActions().api.get;
 
     const resp = await apiGet({
-      path: "/services",
-      params: { iden: "RecordLocution" },
+      path: '/services',
+      params: { iden: 'RecordLocution' },
       successCallback: async () => {
         return;
       },
@@ -143,7 +143,7 @@ const recordLocutionService: RecordLocutionServiceStore = {
     const apiGet = getStoreActions().api.get;
 
     const resp = await apiGet({
-      path: "/company_services",
+      path: '/company_services',
       params: { service: id },
       successCallback: async () => {
         return;

@@ -1,13 +1,13 @@
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import Voicemail from "./Voicemail";
-import store from "store";
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import Voicemail from './Voicemail';
+import store from 'store';
 
 const EnabledVoicemailSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const params: any = {
-    _properties: ["id", "name"],
+    _properties: ['id', 'name'],
     enabled: 1,
   };
 

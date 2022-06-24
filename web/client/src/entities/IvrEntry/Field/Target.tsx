@@ -1,8 +1,8 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { IvrEntryPropertyList } from "../IvrEntryProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { IvrEntryPropertyList } from '../IvrEntryProperties';
 
 type IvrEntryValues = IvrEntryPropertyList<
   string | number | Record<string, string | number>

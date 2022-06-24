@@ -1,9 +1,9 @@
-import { IvrPropertyList } from "./IvrProperties";
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import entities from "../index";
-import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import ExtensionSelectOptions from "entities/Extension/SelectOptions";
-import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
+import { IvrPropertyList } from './IvrProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import entities from '../index';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
+import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -17,12 +17,12 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     cancelToken,
     response,
     skip: [
-      "noInputExtension",
-      "errorExtension",
-      "excludedExtensionIds",
+      'noInputExtension',
+      'errorExtension',
+      'excludedExtensionIds',
 
-      "noInputVoicemail",
-      "errorVoicemail",
+      'noInputVoicemail',
+      'errorVoicemail',
     ],
   });
 

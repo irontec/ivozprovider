@@ -1,10 +1,10 @@
-import LockIcon from "@mui/icons-material/Lock";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { RouteLockPropertyList } from "../RouteLockProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { RouteLockPropertyList } from '../RouteLockProperties';
 
 type RouteLockValues = RouteLockPropertyList<string | number | boolean>;
 type TargetGhostType = PropertyCustomFunctionComponent<

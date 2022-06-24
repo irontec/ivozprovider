@@ -1,7 +1,7 @@
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import genericForeignKeyResolver from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
-import entities from "../index";
-import { TerminalPropertiesList } from "./TerminalProperties";
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import entities from '../index';
+import { TerminalPropertiesList } from './TerminalProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -13,7 +13,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "terminalModel",
+      fkFld: 'terminalModel',
       entity: TerminalModel,
       addLink: TerminalModel.acl.update,
       cancelToken,

@@ -1,7 +1,7 @@
-import { RatingProfilePropertyList } from "./RatingProfileProperties";
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import entities from "../index";
+import { RatingProfilePropertyList } from './RatingProfileProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import entities from '../index';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,

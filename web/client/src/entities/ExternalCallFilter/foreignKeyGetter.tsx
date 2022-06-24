@@ -1,11 +1,11 @@
-import MatchListSelectOptions from "entities/MatchList/SelectOptions";
-import ScheduleSelectOptions from "entities/Schedule/SelectOptions";
-import CalendarSelectOptions from "entities/Calendar/SelectOptions";
-import { ExternalCallFilterPropertyList } from "./ExternalCallFilterProperties";
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import entities from "../index";
-import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
+import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
+import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
+import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
+import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import entities from '../index';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -19,12 +19,12 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     cancelToken,
     response,
     skip: [
-      "holidayVoicemail",
-      "outOfScheduleVoicemail",
-      "whiteListIds",
-      "blackListIds",
-      "scheduleIds",
-      "calendarIds",
+      'holidayVoicemail',
+      'outOfScheduleVoicemail',
+      'whiteListIds',
+      'blackListIds',
+      'scheduleIds',
+      'calendarIds',
     ],
   });
 

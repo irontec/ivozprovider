@@ -1,12 +1,12 @@
-import entities from "../index";
-import { CalendarPeriodPropertiesList } from "./CalendarPeriodProperties";
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import store from "store";
+import entities from '../index';
+import { CalendarPeriodPropertiesList } from './CalendarPeriodProperties';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import store from 'store';
 import genericForeignKeyResolver, {
   remapFk,
-} from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
-import { CountryPropertyList } from "entities/Country/CountryProperties";
+} from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -18,13 +18,13 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     cancelToken,
     entityService,
     entities,
-    skip: ["scheduleIds", "numberCountry", "calendar"],
+    skip: ['scheduleIds', 'numberCountry', 'calendar'],
   });
 
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "numberCountry",
+      fkFld: 'numberCountry',
       entity: {
         ...entities.Country,
         toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
@@ -73,22 +73,22 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   }
 
   for (const idx in data) {
-    data[idx].scheduleIds = data[idx].scheduleIds.join(", ");
+    data[idx].scheduleIds = data[idx].scheduleIds.join(', ');
 
     switch (data[idx].routeType) {
-      case "voicemail":
-        remapFk(data[idx], "voicemail", "target");
+      case 'voicemail':
+        remapFk(data[idx], 'voicemail', 'target');
         break;
-      case "number":
+      case 'number':
         data[idx].target =
-          data[idx].numberCountry + " " + data[idx].numberValue;
+          data[idx].numberCountry + ' ' + data[idx].numberValue;
         break;
-      case "extension":
-        remapFk(data[idx], "extension", "target");
+      case 'extension':
+        remapFk(data[idx], 'extension', 'target');
         break;
       default:
-        console.error("Unkown route type:", data[idx].routetype);
-        data[idx].target = "";
+        console.error('Unkown route type:', data[idx].routetype);
+        data[idx].target = '';
         break;
     }
   }

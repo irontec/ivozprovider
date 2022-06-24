@@ -1,8 +1,8 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { CalendarPeriodPropertyList } from "../CalendarPeriodProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { CalendarPeriodPropertyList } from '../CalendarPeriodProperties';
 
 type CalendarPeriodValues = CalendarPeriodPropertyList<
   string | number | Record<string, string | number>
