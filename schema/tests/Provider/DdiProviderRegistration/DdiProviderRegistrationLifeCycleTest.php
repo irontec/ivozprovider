@@ -132,7 +132,7 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
             'flags' => 0,
             'reg_delay' => 0,
             'socket' => 'udp:127.0.0.1:5060',
-            'contact_addr' => ''
+            'contact_addr' => '127.0.0.1:5060'
         ];
 
         $this->assertEquals(
