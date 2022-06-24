@@ -131,7 +131,7 @@ class DdiProviderRegistrationLifeCycleTest extends KernelTestCase
             'auth_ha1' => '',
             'flags' => 0,
             'reg_delay' => 0,
-            'socket' => '',
+            'socket' => 'udp:127.0.0.1:5060',
             'contact_addr' => ''
         ];
 
