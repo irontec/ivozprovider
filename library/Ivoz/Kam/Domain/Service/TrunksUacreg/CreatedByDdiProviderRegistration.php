@@ -56,7 +56,7 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
             ->setAuthProxy($ddiProviderRegistration->getAuthProxy())
             ->setExpires($ddiProviderRegistration->getExpires());
 
-        // Set socket depending on DDIProvider proxytrunks address
+        // Set socket and contactAddr depending on DDIProvider proxytrunks address
         $trunks = $ddiProviderRegistration->getDdiProvider()->getProxyTrunk();
         if (is_null($trunks)) {
             $trunks = $this->proxyTrunkRepository->getProxyMainAddress();
@@ -65,8 +65,11 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
         $trunksIp  = $trunks->getIp();
 
         $socket = 'udp:' . $trunksIp . ':5060';
+        $contactAddr = $trunksIp . ':5060';
 
-        $trunksUacregDto->setSocket($socket);
+        $trunksUacregDto
+            ->setSocket($socket)
+            ->setContactAddr($contactAddr);
 
         // Update registration contact if required
         $contactUsernameChanged = $ddiProviderRegistration->hasChanged('multiDdi')
