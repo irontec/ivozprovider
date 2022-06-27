@@ -22,7 +22,6 @@ production:
       fields:
         blacklist: &residentialDevices_blacklistLink
           transport: true
-          authNeeded: true
           password: true
           areaCode: true
           country: true
