@@ -1,7 +1,7 @@
-import es from "./es";
-import en from "./en";
-import ca from "./ca";
-import it from "./it";
+import es from './es';
+import en from './en';
+import ca from './ca';
+import it from './it';
 
 const translations = {
   es: {

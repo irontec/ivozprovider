@@ -1,13 +1,13 @@
-import { FkChoices } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { useEffect, useState } from "react";
+import { FkChoices } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useEffect, useState } from 'react';
 import SelectOptions, {
   UnassignedServiceSelectOptions,
-} from "entities/Service/SelectOptions";
-import { CompanyServicePropertyList } from "./CompanyServiceProperties";
-import axios from "axios";
-import { ForeignKeyGetterTypeArgs } from "@irontec/ivoz-ui/entities/EntityInterface";
-import EntityService from "@irontec/ivoz-ui/services/entity/EntityService";
-import { match } from "react-router-dom";
+} from 'entities/Service/SelectOptions';
+import { CompanyServicePropertyList } from './CompanyServiceProperties';
+import axios from 'axios';
+import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityService from '@irontec/ivoz-ui/services/entity/EntityService';
+import { match } from 'react-router-dom';
 
 type CompanyServiceForeignKeyGetterType = (
   props: ForeignKeyGetterTypeArgs,

@@ -2,10 +2,10 @@ import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
   CustomFunctionComponentContext,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { HuntGroupMemberPropertyList } from "../HuntGroupMemberProperties";
-import User from "../../User/User";
-import { CountryPropertyList } from "entities/Country/CountryProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { HuntGroupMemberPropertyList } from '../HuntGroupMemberProperties';
+import User from '../../User/User';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 type CountryProperty = CountryPropertyList<string>;
 
@@ -31,7 +31,7 @@ const Type: TargetGhostType = (props): JSX.Element | null => {
     };
   }
 
-  if (values.routeType === "user") {
+  if (values.routeType === 'user') {
     return <span>{User.toStr(values.user as Record<string, any>)}</span>;
   }
 

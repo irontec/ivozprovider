@@ -1,10 +1,10 @@
-import useFkChoices from "@irontec/ivoz-ui/entities/data/useFkChoices";
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
-} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import { foreignKeyGetter } from "./foreignKeyGetter";
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const edit = props.edit || false;
@@ -17,7 +17,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const interVpbxEdition = edit && row?.directConnectivity === "intervpbx";
+  const interVpbxEdition = edit && row?.directConnectivity === 'intervpbx';
   const readOnlyProperties = {
     directConnectivity: interVpbxEdition,
     priority: interVpbxEdition,
@@ -26,44 +26,44 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _("Basic Configuration"),
+      legend: _('Basic Configuration'),
       fields: [
-        "directConnectivity",
-        "priority",
-        "description",
-        "name",
-        "password",
-        "transport",
-        "ip",
-        "port",
-        "alwaysApplyTransformations",
+        'directConnectivity',
+        'priority',
+        'description',
+        'name',
+        'password',
+        'transport',
+        'ip',
+        'port',
+        'alwaysApplyTransformations',
       ],
     },
     edit &&
       !interVpbxEdition && {
-        legend: _("Geographic Configuration"),
-        fields: ["language", "transformationRuleSet"],
+        legend: _('Geographic Configuration'),
+        fields: ['language', 'transformationRuleSet'],
       },
     edit &&
       !interVpbxEdition && {
-        legend: _("Outgoing Configuration"),
-        fields: ["callAcl", "outgoingDdi"],
+        legend: _('Outgoing Configuration'),
+        fields: ['callAcl', 'outgoingDdi'],
       },
     !interVpbxEdition && {
-      legend: _("Advanced Configuration"),
+      legend: _('Advanced Configuration'),
       fields: [
-        edit && "fromUser",
-        edit && "fromDomain",
-        edit && "allow",
-        edit && "ddiIn",
-        edit && "t38Passthrough",
-        edit && "rtpEncryption",
-        "multiContact",
+        edit && 'fromUser',
+        edit && 'fromDomain',
+        edit && 'allow',
+        edit && 'ddiIn',
+        edit && 't38Passthrough',
+        edit && 'rtpEncryption',
+        'multiContact',
       ],
     },
     {
-      legend: "",
-      fields: [edit && "statusIcon"],
+      legend: '',
+      fields: [edit && 'statusIcon'],
     },
   ];
 

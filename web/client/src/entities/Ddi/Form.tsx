@@ -1,13 +1,13 @@
-import useFkChoices from "@irontec/ivoz-ui/entities/data/useFkChoices";
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
-} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import { useStoreState } from "store";
-import { DdiPropertyList } from "./DdiProperties";
-import { foreignKeyGetter } from "./foreignKeyGetter";
-import RetailAccount from "../RetailAccount/RetailAccount";
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
+import { DdiPropertyList } from './DdiProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import RetailAccount from '../RetailAccount/RetailAccount';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
@@ -20,24 +20,24 @@ const Form = (props: EntityFormProps): JSX.Element => {
   if (!aboutMe?.vpbx) {
     skip.push(
       ...[
-        "user",
-        "ivr",
-        "huntGroup",
-        "conditionalRoute",
-        "conferenceRoom",
-        "queue",
-        "fax",
-        "externalCallFilter",
+        'user',
+        'ivr',
+        'huntGroup',
+        'conditionalRoute',
+        'conferenceRoom',
+        'queue',
+        'fax',
+        'externalCallFilter',
       ]
     );
   }
 
   if (!aboutMe?.residential) {
-    skip.push(...["residentialDevice"]);
+    skip.push(...['residentialDevice']);
   }
 
   if (!aboutMe?.retail) {
-    skip.push(...["retailAccount"]);
+    skip.push(...['retailAccount']);
   }
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -51,32 +51,32 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _("Number data"),
-      fields: ["country", "ddi", "displayName", "language"],
+      legend: _('Number data'),
+      fields: ['country', 'ddi', 'displayName', 'language'],
     },
     !aboutMe?.retail && {
-      legend: _("Filters data"),
-      fields: ["externalCallFilter"],
+      legend: _('Filters data'),
+      fields: ['externalCallFilter'],
     },
     !retailAccountPath && {
-      legend: _("Routing configuration"),
+      legend: _('Routing configuration'),
       fields: [
-        "routeType",
-        "user",
-        "fax",
-        "ivr",
-        "huntGroup",
-        "conferenceRoom",
-        "friendValue",
-        "queue",
-        "residentialDevice",
-        "conditionalRoute",
-        "retailAccount",
+        'routeType',
+        'user',
+        'fax',
+        'ivr',
+        'huntGroup',
+        'conferenceRoom',
+        'friendValue',
+        'queue',
+        'residentialDevice',
+        'conditionalRoute',
+        'retailAccount',
       ],
     },
     {
-      legend: _("Recording data"),
-      fields: [aboutMe?.features.includes("recordings") && "recordCalls"],
+      legend: _('Recording data'),
+      fields: [aboutMe?.features.includes('recordings') && 'recordCalls'],
     },
   ];
 

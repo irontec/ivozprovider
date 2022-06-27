@@ -1,21 +1,21 @@
-import { styled } from "@mui/styles";
-import { Tooltip } from "@mui/material";
-import DoneIcon from "@mui/icons-material/Done";
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
-import CloseIcon from "@mui/icons-material/Close";
-import EastIcon from "@mui/icons-material/East";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import PublicIcon from "@mui/icons-material/Public";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
+import { styled } from '@mui/styles';
+import { Tooltip } from '@mui/material';
+import DoneIcon from '@mui/icons-material/Done';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import CloseIcon from '@mui/icons-material/Close';
+import EastIcon from '@mui/icons-material/East';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import PublicIcon from '@mui/icons-material/Public';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 import {
   RetailAccountPropertyList,
   RetailAccountStatus,
-} from "../RetailAccountProperties";
+} from '../RetailAccountProperties';
 
 type ScalarRowTypes = RetailAccountPropertyList<string | boolean>;
 type StatusValues = ScalarRowTypes & { status: Array<RetailAccountStatus> };
@@ -26,14 +26,14 @@ type StatusIconProps = PropertyCustomFunctionComponent<
 const Status: StatusIconProps = (props): JSX.Element | null => {
   const { _context, values } = props;
 
-  if (_context !== "write" || !values) {
+  if (_context !== 'write' || !values) {
     return null;
   }
 
-  const iconStyles = { verticalAlign: "bottom" };
+  const iconStyles = { verticalAlign: 'bottom' };
   const iconStyler = () => iconStyles;
 
-  if (values.directConnectivity === "yes") {
+  if (values.directConnectivity === 'yes') {
     const StyledIcon = styled(EastIcon)(iconStyler);
     return (
       <span>
@@ -42,7 +42,7 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
     );
   }
 
-  if (values.directConnectivity === "intervpbx") {
+  if (values.directConnectivity === 'intervpbx') {
     const StyledIcon = styled(RestartAltIcon)(iconStyler);
     return (
       <span>
@@ -79,24 +79,24 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
         const contact = row.contact.match(/sips?:([^@]+@)?(.+)/)?.pop();
         const publicContact = row.publicContact;
 
-        let hintMsg: string | React.ReactElement = "";
+        let hintMsg: string | React.ReactElement = '';
         if (!received) {
           hintMsg = publicContact
-            ? _("No NAT with public Contact (hint: SIP ALG / STUN)")
-            : _("No NAT with private Contact (hint: internal routing)");
+            ? _('No NAT with public Contact (hint: SIP ALG / STUN)')
+            : _('No NAT with private Contact (hint: internal routing)');
         } else if (contact === received) {
-          hintMsg = _("Regular NAT detected");
+          hintMsg = _('Regular NAT detected');
         } else if (publicReceived && !publicContact) {
-          hintMsg = _("Regular NAT detected");
+          hintMsg = _('Regular NAT detected');
         } else {
-          const contactVisibility = publicContact ? _("Public") : _("Private");
+          const contactVisibility = publicContact ? _('Public') : _('Private');
 
           const receivedVisibility = publicReceived
-            ? _("Public")
-            : _("Private");
+            ? _('Public')
+            : _('Private');
 
           hintMsg = _(
-            "Awkward NAT detected (<0 /> Contact, <1 /> Received)",
+            'Awkward NAT detected (<0 /> Contact, <1 /> Received)',
             {},
             [contactVisibility, receivedVisibility]
           );
@@ -106,26 +106,26 @@ const Status: StatusIconProps = (props): JSX.Element | null => {
           <div key={key}>
             <div>
               <Tooltip
-                title={_("Registered until: {{date}}", { date: expires })}
+                title={_('Registered until: {{date}}', { date: expires })}
               >
                 <StyledDoneIcon />
               </Tooltip>
               {userAgent}
             </div>
             <div>
-              <Tooltip title={_("Contact Address")}>
+              <Tooltip title={_('Contact Address')}>
                 <StyledPhoneAndroidIcon />
               </Tooltip>
               {contact}
             </div>
             <div>
-              <Tooltip title={_("Received Address")}>
+              <Tooltip title={_('Received Address')}>
                 <StyledPublicIcon />
               </Tooltip>
               {received}
             </div>
             <div>
-              <Tooltip title={_("Hint")}>
+              <Tooltip title={_('Hint')}>
                 <StyledLightbulbIcon />
               </Tooltip>
               {hintMsg}

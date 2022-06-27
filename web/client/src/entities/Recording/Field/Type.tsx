@@ -1,9 +1,9 @@
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import { RecordingPropertyList } from "../RecordingProperties";
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { RecordingPropertyList } from '../RecordingProperties';
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 type RecordingValues = RecordingPropertyList<string | number>;
 type TypeGhostType = PropertyCustomFunctionComponent<
@@ -12,7 +12,7 @@ type TypeGhostType = PropertyCustomFunctionComponent<
 
 const Type: TypeGhostType = (props): JSX.Element => {
   const values = props.values;
-  const type = _((values?.type as string) || "");
+  const type = _((values?.type as string) || '');
   const recorder = values?.recorder;
 
   const response = recorder ? (

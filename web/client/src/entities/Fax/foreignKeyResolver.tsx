@@ -1,7 +1,7 @@
-import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import entities from "../index";
-import { FaxPropertiesList } from "./FaxProperties";
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import entities from '../index';
+import { FaxPropertiesList } from './FaxProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,

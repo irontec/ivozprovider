@@ -1,8 +1,8 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { CallForwardSettingPropertyList } from "../CallForwardSettingProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
 
 type CallForwardSettingValues = CallForwardSettingPropertyList<
   string | number | Record<string, string | number>

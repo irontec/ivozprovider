@@ -1,6 +1,6 @@
-import { action, Action, Thunk, thunk } from "easy-peasy";
-import axios from "axios";
-import { AppStore } from "../index";
+import { action, Action, Thunk, thunk } from 'easy-peasy';
+import axios from 'axios';
+import { AppStore } from '../index';
 
 export interface EntityAcl {
   iden: string;
@@ -11,11 +11,11 @@ export interface EntityAcl {
 }
 
 export enum ClientFeatures {
-  "queues" = "queues",
-  "recordings" = "recordings",
-  "faxes" = "faxes",
-  "friends" = "friends",
-  "conferences" = "conferences",
+  'queues' = 'queues',
+  'recordings' = 'recordings',
+  'faxes' = 'faxes',
+  'friends' = 'friends',
+  'conferences' = 'conferences',
 }
 
 export interface AboutMe {
@@ -58,12 +58,12 @@ const Acls: AboutMeStore = {
         const cancelTokenSource = axios.CancelToken.source();
 
         await apiGet({
-          path: "/my/profile",
+          path: '/my/profile',
           params: {},
           cancelToken: cancelTokenSource.token,
           successCallback: async (response: any) => {
             localStorage.setItem(
-              "profile",
+              'profile',
               JSON.stringify(response as AboutMe)
             );
             actions.init();
@@ -71,12 +71,12 @@ const Acls: AboutMeStore = {
         });
       } catch (error: any) {
         storeActions.auth.setToken(null);
-        storeActions.api.setErrorMsg("Unable to load ACLs");
+        storeActions.api.setErrorMsg('Unable to load ACLs');
       }
     }
   ),
   init: thunk<AboutMeStore>(async (actions) => {
-    const profile = localStorage.getItem("profile") as string | undefined;
+    const profile = localStorage.getItem('profile') as string | undefined;
     if (profile) {
       actions.setProfile(JSON.parse(profile) as AboutMe);
     }

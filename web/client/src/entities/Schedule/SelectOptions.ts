@@ -1,6 +1,6 @@
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import Schedule from "./Schedule";
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import Schedule from './Schedule';
 
 const ScheduleSelectOptions: SelectOptionsType = ({
   callback,
@@ -8,7 +8,7 @@ const ScheduleSelectOptions: SelectOptionsType = ({
 }): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Schedule.path,
-    ["id", "name"],
+    ['id', 'name'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {

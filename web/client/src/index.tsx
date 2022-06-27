@@ -1,35 +1,35 @@
-import { createRoot } from "react-dom/client";
+import { createRoot } from 'react-dom/client';
 import {
   ThemeProvider,
   createTheme,
   StyledEngineProvider,
-} from "@mui/material";
-import * as locales from "@mui/material/locale";
-import reportWebVitals from "./reportWebVitals";
-import { StoreProvider } from "easy-peasy";
-import store from "store";
-import i18n from "./i18n";
-import "./index.css";
-import App from "./App";
+} from '@mui/material';
+import * as locales from '@mui/material/locale';
+import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from 'easy-peasy';
+import store from 'store';
+import i18n from './i18n';
+import './index.css';
+import App from './App';
 
 const currentLanguage =
-  i18n.language.substring(0, 2) === "es" ? "esES" : "enUS";
+  i18n.language.substring(0, 2) === 'es' ? 'esES' : 'enUS';
 
 const theme = createTheme(
   {
     palette: {
       primary: {
-        main: "#4383cc",
+        main: '#4383cc',
       },
       secondary: {
-        main: "#e53935",
+        main: '#e53935',
       },
     },
   },
   locales[currentLanguage]
 );
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 const root = createRoot(container as any);
 root.render(
   <StyledEngineProvider injectFirst>

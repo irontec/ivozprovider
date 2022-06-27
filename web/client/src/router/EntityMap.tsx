@@ -1,10 +1,10 @@
-import entities from "../entities";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
+import entities from '../entities';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import routeMapParser, {
   RouteMap,
   RouteMapItem,
-} from "@irontec/ivoz-ui/router/routeMapParser";
-import { AboutMe, ClientFeatures } from "store/clientSession/aboutMe";
+} from '@irontec/ivoz-ui/router/routeMapParser';
+import { AboutMe, ClientFeatures } from 'store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
 export type ExtendedRouteMapItem = RouteMapItem & {
@@ -15,7 +15,7 @@ export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
-      label: _("General"),
+      label: _('General'),
       children: [
         {
           entity: entities.User,
@@ -33,11 +33,11 @@ const getEntityMap = (): ExtendedRouteMap => {
                   delete: true,
                 },
               },
-              filterBy: "user",
+              filterBy: 'user',
             },
             {
               entity: entities.CallForwardSetting,
-              filterBy: "user",
+              filterBy: 'user',
             },
           ],
         },
@@ -55,14 +55,14 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.CallForwardSetting,
-              filterBy: "retailAccount",
+              filterBy: 'retailAccount',
               fixedValues: {
-                callTypeFilter: "both",
+                callTypeFilter: 'both',
               },
             },
             {
               entity: entities.Ddi,
-              filterBy: "retailAccount",
+              filterBy: 'retailAccount',
             },
           ],
         },
@@ -72,7 +72,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.BillableCall,
-              filterBy: "ddi",
+              filterBy: 'ddi',
             },
           ],
         },
@@ -83,7 +83,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.FaxesInOut,
-              filterBy: "fax",
+              filterBy: 'fax',
             },
           ],
         },
@@ -104,7 +104,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _("Routing endpoints"),
+      label: _('Routing endpoints'),
       children: [
         {
           entity: entities.Ivr,
@@ -112,7 +112,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.IvrEntry,
-              filterBy: "ivr",
+              filterBy: 'ivr',
             },
           ],
         },
@@ -123,9 +123,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: {
                 ...entities.HuntGroupMember,
-                columns: ["routeType", "target", "timeoutTime"],
+                columns: ['routeType', 'target', 'timeoutTime'],
               },
-              filterBy: "huntGroup",
+              filterBy: 'huntGroup',
             },
           ],
         },
@@ -136,7 +136,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.QueueMember,
-              filterBy: "queue",
+              filterBy: 'queue',
             },
           ],
         },
@@ -146,7 +146,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.ConditionalRoutesCondition,
-              filterBy: "conditionalRoute",
+              filterBy: 'conditionalRoute',
             },
           ],
         },
@@ -161,11 +161,11 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.FriendsPattern,
-              filterBy: "friend",
+              filterBy: 'friend',
             },
             {
               entity: entities.CallForwardSetting,
-              filterBy: "friend",
+              filterBy: 'friend',
             },
           ],
         },
@@ -181,14 +181,14 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.VoicemailMessage,
-              filterBy: "voicemail",
+              filterBy: 'voicemail',
             },
           ],
         },
       ],
     },
     {
-      label: _("Routing tools"),
+      label: _('Routing tools'),
       children: [
         {
           entity: entities.ExternalCallFilter,
@@ -200,11 +200,11 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.HolidayDate,
-              filterBy: "calendar",
+              filterBy: 'calendar',
             },
             {
               entity: entities.CalendarPeriod,
-              filterBy: "calendar",
+              filterBy: 'calendar',
             },
           ],
         },
@@ -218,7 +218,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.MatchListPattern,
-              filterBy: "matchList",
+              filterBy: 'matchList',
             },
           ],
         },
@@ -229,7 +229,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _("User configuration"),
+      label: _('User configuration'),
       children: [
         {
           entity: entities.OutgoingDdiRule,
@@ -237,7 +237,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.OutgoingDdiRulesPattern,
-              filterBy: "outgoingDdiRule",
+              filterBy: 'outgoingDdiRule',
             },
           ],
         },
@@ -256,7 +256,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _("Multimedia"),
+      label: _('Multimedia'),
       children: [
         {
           entity: entities.Locution,
@@ -269,7 +269,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _("Calls"),
+      label: _('Calls'),
       children: [
         {
           entity: entities.UsersCdr,
@@ -283,7 +283,7 @@ const getEntityMap = (): ExtendedRouteMap => {
           children: [
             {
               entity: entities.CallCsvReport,
-              filterBy: "callCsvScheduler",
+              filterBy: 'callCsvScheduler',
             },
           ],
         },

@@ -1,10 +1,10 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 
-import { OutgoingDdiRulesPatternPropertyList } from "../OutgoingDdiRulesPatternProperties";
+import { OutgoingDdiRulesPatternPropertyList } from '../OutgoingDdiRulesPatternProperties';
 
 type OutgoingDdiRulesPatternValues = OutgoingDdiRulesPatternPropertyList<
   string | number | Record<string, string | number>
@@ -17,7 +17,7 @@ const ForcedDdiStr: ForcedDdiStrType = (props): JSX.Element | null => {
   const { values } = props;
   const { action, forcedDdi } = values;
 
-  if (action === "keep") {
+  if (action === 'keep') {
     return null;
   }
 
@@ -25,7 +25,7 @@ const ForcedDdiStr: ForcedDdiStrType = (props): JSX.Element | null => {
     return <span>{_("Company's default")}</span>;
   }
 
-  if (typeof forcedDdi !== "string") {
+  if (typeof forcedDdi !== 'string') {
     return null;
   }
 

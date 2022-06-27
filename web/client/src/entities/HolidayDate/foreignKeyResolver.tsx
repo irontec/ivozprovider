@@ -1,11 +1,11 @@
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { HolidayDatePropertiesList } from "./HolidayDateProperties";
-import entities from "../index";
-import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { HolidayDatePropertiesList } from './HolidayDateProperties';
+import entities from '../index';
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import genericForeignKeyResolver, {
   remapFk,
-} from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
-import { CountryPropertyList } from "entities/Country/CountryProperties";
+} from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { CountryPropertyList } from 'entities/Country/CountryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -17,13 +17,13 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     cancelToken,
     entityService,
     entities,
-    skip: ["numberCountry", "calendar"],
+    skip: ['numberCountry', 'calendar'],
   });
 
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "numberCountry",
+      fkFld: 'numberCountry',
       entity: {
         ...entities.Country,
         toStr: (row: CountryPropertyList<string>) => `${row.countryCode}`,
@@ -36,16 +36,16 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 
   for (const values of data) {
     switch (values.routeType) {
-      case "extension":
-        remapFk(values, "extension", "target");
+      case 'extension':
+        remapFk(values, 'extension', 'target');
         break;
-      case "voicemail":
-        remapFk(values, "voicemail", "target");
+      case 'voicemail':
+        remapFk(values, 'voicemail', 'target');
         break;
-      case "retail":
-        remapFk(values, "cfwToretailAccount", "target");
+      case 'retail':
+        remapFk(values, 'cfwToretailAccount', 'target');
         break;
-      case "number":
+      case 'number':
         values.targetTypeValue = `${values.numberCountry} ${values.numberValue}`;
         break;
     }

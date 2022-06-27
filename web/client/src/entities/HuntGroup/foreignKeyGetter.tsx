@@ -1,8 +1,8 @@
-import { HuntGroupPropertyList } from "./HuntGroupProperties";
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import entities from "../index";
-import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
+import { HuntGroupPropertyList } from './HuntGroupProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import entities from '../index';
+import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -15,7 +15,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     entityService,
     cancelToken,
     response,
-    skip: ["noAnswerVoicemail"],
+    skip: ['noAnswerVoicemail'],
   });
 
   promises[promises.length] = EnabledVoicemailSelectOptions({

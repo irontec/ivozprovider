@@ -1,155 +1,155 @@
-import SwitchCameraIcon from "@mui/icons-material/SwitchCamera";
-import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import Form from "./Form";
-import { foreignKeyGetter } from "./foreignKeyGetter";
-import { ConditionalRouteProperties } from "./ConditionalRouteProperties";
-import foreignKeyResolver from "./foreignKeyResolver";
-import selectOptions from "./SelectOptions";
-import RouteType from "./Field/RouteType";
+import SwitchCameraIcon from '@mui/icons-material/SwitchCamera';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import Form from './Form';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import { ConditionalRouteProperties } from './ConditionalRouteProperties';
+import foreignKeyResolver from './foreignKeyResolver';
+import selectOptions from './SelectOptions';
+import RouteType from './Field/RouteType';
 
 const routableFields = [
-  "numberCountry",
-  "numbervalue",
-  "ivr",
-  "user",
-  "huntGroup",
-  "voicemail",
-  "friendvalue",
-  "queue",
-  "conferenceRoom",
-  "extension",
+  'numberCountry',
+  'numbervalue',
+  'ivr',
+  'user',
+  'huntGroup',
+  'voicemail',
+  'friendvalue',
+  'queue',
+  'conferenceRoom',
+  'extension',
 ];
 
 const properties: ConditionalRouteProperties = {
   name: {
-    label: _("Name"),
+    label: _('Name'),
   },
   locution: {
-    label: _("Locution"),
-    null: _("Unassgined"),
-    default: "__null__",
+    label: _('Locution'),
+    null: _('Unassgined'),
+    default: '__null__',
   },
   routetype: {
-    label: _("Route type"),
+    label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _("User"),
-      ivr: _("IVR"),
-      huntGroup: _("Hunt Group"),
-      voicemail: _("Voicemail"),
-      number: _("Number"),
-      friend: _("Friend"),
-      queue: _("Queue"),
-      conferenceRoom: _("Conference room"),
-      extension: _("Extension"),
+      user: _('User'),
+      ivr: _('IVR'),
+      huntGroup: _('Hunt Group'),
+      voicemail: _('Voicemail'),
+      number: _('Number'),
+      friend: _('Friend'),
+      queue: _('Queue'),
+      conferenceRoom: _('Conference room'),
+      extension: _('Extension'),
     },
-    null: _("Unassigned"),
-    default: "__null__",
+    null: _('Unassigned'),
+    default: '__null__',
     visualToggle: {
       __null__: {
         show: [],
         hide: routableFields,
       },
       user: {
-        show: ["user"],
+        show: ['user'],
         hide: routableFields,
       },
       ivr: {
-        show: ["ivr"],
+        show: ['ivr'],
         hide: routableFields,
       },
       huntGroup: {
-        show: ["huntGroup"],
+        show: ['huntGroup'],
         hide: routableFields,
       },
       voicemail: {
-        show: ["voicemail"],
+        show: ['voicemail'],
         hide: routableFields,
       },
       number: {
-        show: ["numberCountry", "numbervalue"],
+        show: ['numberCountry', 'numbervalue'],
         hide: routableFields,
       },
       friend: {
-        show: ["friendvalue"],
+        show: ['friendvalue'],
         hide: routableFields,
       },
       queue: {
-        show: ["queue"],
+        show: ['queue'],
         hide: routableFields,
       },
       conferenceRoom: {
-        show: ["conferenceRoom"],
+        show: ['conferenceRoom'],
         hide: routableFields,
       },
       extension: {
-        show: ["extension"],
+        show: ['extension'],
         hide: routableFields,
       },
     },
   },
   ivr: {
-    label: _("IVR"),
+    label: _('IVR'),
     required: true,
   },
   huntGroup: {
-    label: _("Hunt Group"),
+    label: _('Hunt Group'),
     required: true,
   },
   voicemail: {
-    label: _("Voicemail"),
+    label: _('Voicemail'),
     required: true,
   },
   user: {
-    label: _("User"),
+    label: _('User'),
     required: true,
   },
   numberCountry: {
-    label: _("Country"),
+    label: _('Country'),
     required: true,
   },
   numbervalue: {
-    label: _("Number"),
+    label: _('Number'),
     required: true,
   },
   friendvalue: {
-    label: _("Friend value"),
+    label: _('Friend value'),
     required: true,
   },
   queue: {
-    label: _("Queue"),
+    label: _('Queue'),
     required: true,
   },
   conferenceRoom: {
-    label: _("Conference room"),
+    label: _('Conference room'),
     required: true,
   },
   extension: {
-    label: _("Extension"),
+    label: _('Extension'),
     required: true,
   },
   target: {
-    label: _("Target"),
+    label: _('Target'),
     memoize: false,
   },
 };
 
-const columns = ["name", "locution", "routetype", "target"];
+const columns = ['name', 'locution', 'routetype', 'target'];
 
 const ConditionalRoute: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SwitchCameraIcon,
-  iden: "ConditionalRoute",
-  title: _("Conditional Route", { count: 2 }),
-  path: "/conditional_routes",
+  iden: 'ConditionalRoute',
+  title: _('Conditional Route', { count: 2 }),
+  path: '/conditional_routes',
   toStr: (row: any) => row.name,
   properties,
   columns,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: "ConditionalRoutes",
+    iden: 'ConditionalRoutes',
   },
   Form,
   foreignKeyGetter,

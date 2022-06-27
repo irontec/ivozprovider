@@ -1,10 +1,10 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { HolidayDatePropertyList } from "../HolidayDateProperties";
-import entities from "../../index";
-import { Link } from "react-router-dom";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { HolidayDatePropertyList } from '../HolidayDateProperties';
+import entities from '../../index';
+import { Link } from 'react-router-dom';
 
 type HolidayDateValues = HolidayDatePropertyList<string | number>;
 type TargetGhostType = PropertyCustomFunctionComponent<
@@ -22,7 +22,7 @@ const Type: TargetGhostType = (props): JSX.Element => {
     const calendarStr = Calendar?.toStr(calendarVal);
 
     return (
-      <Link to={calendarLink} style={{ color: "inherit" }}>
+      <Link to={calendarLink} style={{ color: 'inherit' }}>
         {calendarStr}
       </Link>
     );

@@ -1,13 +1,13 @@
-import { styled } from "@mui/material";
-import { CancelTokenSource } from "axios";
+import { styled } from '@mui/material';
+import { CancelTokenSource } from 'axios';
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
   CustomFunctionComponentContext,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { useEffect, useState } from "react";
-import { useStoreActions, useStoreState } from "store";
-import { LocutionPropertyList } from "../LocutionProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { useEffect, useState } from 'react';
+import { useStoreActions, useStoreState } from 'store';
+import { LocutionPropertyList } from '../LocutionProperties';
 
 type RecordingExtensionValues = LocutionPropertyList<string | number>;
 type RecordingExtensionType = PropertyCustomFunctionComponent<
@@ -48,9 +48,9 @@ const RecordingExtension: RecordingExtensionType = (
     (state) => state.clientSession.recordLocutionService.serviceEnabled
   );
 
-  const className = isListValue ? "" : props.className;
+  const className = isListValue ? '' : props.className;
 
-  let code = "";
+  let code = '';
   if (recordLocutionService !== null && serviceEnabled) {
     code = `*${recordLocutionService.defaultCode}${values.id}`;
   }
@@ -60,7 +60,7 @@ const RecordingExtension: RecordingExtensionType = (
 
 export const StyledRecordingExtension = styled(RecordingExtension)(() => {
   return {
-    color: "rgba(0, 0, 0, 0.5)",
+    color: 'rgba(0, 0, 0, 0.5)',
   };
 });
 

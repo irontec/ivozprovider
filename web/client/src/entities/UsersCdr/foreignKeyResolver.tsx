@@ -1,8 +1,8 @@
-import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import genericForeignKeyResolver from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
-import entities from "../index";
-import { UsersCdrRow, UsersCdrRows } from "./UsersCdrProperties";
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import entities from '../index';
+import { UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
 
 function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
   // Owner
@@ -28,14 +28,14 @@ function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
       row.ownerId = row.residentialDeviceId;
       row.ownerLink = row.residentialDeviceLink;
     }
-  } else if (row.direction === "outbound") {
+  } else if (row.direction === 'outbound') {
     row.owner = row.caller;
   } else {
     row.owner = row.callee;
   }
 
   // Party
-  if (row.direction === "outbound") {
+  if (row.direction === 'outbound') {
     row.party = row.callee;
   } else {
     row.party = row.caller;
@@ -57,14 +57,14 @@ export const foreignKeyResolver: foreignKeyResolverType = async function ({
     cancelToken,
     entityService,
     entities,
-    skip: ["user"],
+    skip: ['user'],
   });
 
   promises.push(
     // User & User.extension
     genericForeignKeyResolver({
       data,
-      fkFld: "user",
+      fkFld: 'user',
       entity: {
         ...User,
         toStr: (row: any) => {
@@ -82,7 +82,7 @@ export const foreignKeyResolver: foreignKeyResolverType = async function ({
         try {
           await genericForeignKeyResolver({
             data: Array.isArray(rows) ? rows : [rows],
-            fkFld: "extension",
+            fkFld: 'extension',
             entity: Extension,
             addLink: false,
             cancelToken,

@@ -1,6 +1,6 @@
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import Country from "./Country";
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import Country from './Country';
 
 const CountrySelectOptions: SelectOptionsType = ({
   callback,
@@ -8,7 +8,7 @@ const CountrySelectOptions: SelectOptionsType = ({
 }): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     Country.path,
-    ["id", "name", "countryCode"],
+    ['id', 'name', 'countryCode'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {

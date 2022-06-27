@@ -1,8 +1,8 @@
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { ConditionalRoutesConditionPropertyList } from "../ConditionalRoutesConditionProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { ConditionalRoutesConditionPropertyList } from '../ConditionalRoutesConditionProperties';
 
 type ConditionalRoutesConditionValues = ConditionalRoutesConditionPropertyList<
   string | number | Record<string, string | number>

@@ -1,55 +1,55 @@
-import SettingsApplications from "@mui/icons-material/SettingsApplications";
-import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { PartialPropertyList } from "@irontec/ivoz-ui/services/api/ParsedApiSpecInterface";
-import selectOptions from "./SelectOptions";
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
   company: {
-    label: _("Client"),
+    label: _('Client'),
   },
   name: {
-    label: _("Name"),
-    pattern: new RegExp("^[a-zA-Z0-9_*]+$"),
+    label: _('Name'),
+    pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
   },
   domain: {
-    label: _("Domain"),
+    label: _('Domain'),
   },
   description: {
-    label: _("Description"),
+    label: _('Description'),
   },
   transport: {
-    label: _("Transport"),
+    label: _('Transport'),
     enum: {
-      udp: "UDP",
-      tcp: "TCP",
-      tls: "TLS",
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
-    label: _("Destination IP address"),
-    pattern: new RegExp("^[.0-9]+$"),
-    helpText: _("e.g. 8.8.8.8"),
+    label: _('Destination IP address'),
+    pattern: new RegExp('^[.0-9]+$'),
+    helpText: _('e.g. 8.8.8.8'),
   },
   port: {
-    label: _("Port"),
-    pattern: new RegExp("^[0-9]+$"),
+    label: _('Port'),
+    pattern: new RegExp('^[0-9]+$'),
     default: 5060,
   },
   authNeeded: {
-    label: _("Auth needed"),
-    default: "no",
+    label: _('Auth needed'),
+    default: 'no',
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
   },
   password: {
-    label: _("Password"),
+    label: _('Password'),
     pattern: new RegExp(
-      "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
+      '^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$'
     ),
     helpText: _(
       "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"
@@ -57,14 +57,14 @@ const properties: PartialPropertyList = {
     // @TODO generatePassword_command: true
   },
   outgoingDdi: {
-    label: _("Fallback Outgoing DDI"),
+    label: _('Fallback Outgoing DDI'),
     null: _("Client's default"),
     helpText: _(
       "This DDI will be used if presented DDI doesn't match any of the company DDIs"
     ),
   },
   disallow: {
-    label: _("Disallowed audio codecs"),
+    label: _('Disallowed audio codecs'),
     maxLength: 100,
     helpText: (
       <div>
@@ -96,25 +96,25 @@ const properties: PartialPropertyList = {
     ),
   },
   allow: {
-    label: _("Allowed audio codecs"),
-    default: "alaw",
+    label: _('Allowed audio codecs'),
+    default: 'alaw',
     enum: {
-      alaw: "alaw - G.711 a-law",
-      ulaw: "ulaw - G.711 u-law",
-      gsm: "gsm - GSM",
-      speex: "speex - SpeeX 32khz",
-      g722: "g722 - G.722",
-      g726: "g726 - G.726 RFC3551",
-      g729: "g729 - G.729A",
-      ilbc: "ilbc - iLBC",
-      opus: "opus - Opus codec",
+      alaw: 'alaw - G.711 a-law',
+      ulaw: 'ulaw - G.711 u-law',
+      gsm: 'gsm - GSM',
+      speex: 'speex - SpeeX 32khz',
+      g722: 'g722 - G.722',
+      g726: 'g726 - G.726 RFC3551',
+      g729: 'g729 - G.729A',
+      ilbc: 'ilbc - iLBC',
+      opus: 'opus - Opus codec',
     },
   },
   directMediaMethod: {
-    label: _("CallerID update method"),
+    label: _('CallerID update method'),
     enum: {
-      invite: "invite",
-      update: "update",
+      invite: 'invite',
+      update: 'update',
     },
     helpText: (
       <div>
@@ -141,113 +141,113 @@ const properties: PartialPropertyList = {
     ),
   },
   calleridUpdateHeader: {
-    label: _("CallerID update header"),
+    label: _('CallerID update header'),
     enum: {
-      pai: "P-Asserted-Identity (PAI)",
-      rpid: "Remote-Party-ID (RPID)",
+      pai: 'P-Asserted-Identity (PAI)',
+      rpid: 'Remote-Party-ID (RPID)',
     },
-    default: "pai",
+    default: 'pai',
   },
   updateCallerid: {
-    label: _("Update CallerID?"),
+    label: _('Update CallerID?'),
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
-    default: "yes",
+    default: 'yes',
     visualToggle: {
       yes: {
-        show: ["direct_media_method", "callerid_update_header"],
+        show: ['direct_media_method', 'callerid_update_header'],
         hide: [],
       },
       no: {
         show: [],
-        hide: ["direct_media_method", "callerid_update_header"],
+        hide: ['direct_media_method', 'callerid_update_header'],
       },
     },
   },
   fromDomain: {
-    label: _("From domain"),
+    label: _('From domain'),
   },
   directConnectivity: {
-    label: _("Direct connectivity"),
-    default: "no",
+    label: _('Direct connectivity'),
+    default: 'no',
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
     visualToggle: {
       yes: {
-        show: ["ip", "port", "transport", "auth_needed"],
-        hide: ["multiContact"],
+        show: ['ip', 'port', 'transport', 'auth_needed'],
+        hide: ['multiContact'],
       },
       no: {
-        show: ["multiContact"],
-        hide: ["ip", "port", "transport", "auth_needed"],
+        show: ['multiContact'],
+        hide: ['ip', 'port', 'transport', 'auth_needed'],
       },
     },
   },
   ddiIn: {
-    label: _("DDI In"),
-    default: "yes",
+    label: _('DDI In'),
+    default: 'yes',
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
     helpText: _(
       "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this residential device."
     ),
   },
   language: {
-    label: _("Language"),
+    label: _('Language'),
     null: _("Client's default"),
   },
   statusIcon: {
-    label: _("Status"),
+    label: _('Status'),
     // @TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatusIcon
   },
   status: {
-    label: _("Status"),
+    label: _('Status'),
     // @TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatus
   },
   transformationRuleSet: {
-    label: _("Numeric transformation"),
+    label: _('Numeric transformation'),
     null: _("Client's default"),
   },
   maxCalls: {
-    label: _("Call waiting"),
+    label: _('Call waiting'),
     default: 1,
     // @TODO min: 0
     // @TODO  max: 100
     helpText: _(
-      "Limits received calls when already handling this number of calls. Set 0 for unlimited."
+      'Limits received calls when already handling this number of calls. Set 0 for unlimited.'
     ),
   },
   t38Passthrough: {
-    label: _("Enable T.38 passthrough"),
-    default: "no",
+    label: _('Enable T.38 passthrough'),
+    default: 'no',
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
   },
   rtpEncryption: {
-    label: _("RTP encryption"),
+    label: _('RTP encryption'),
     default: 0,
     enum: {
-      "0": _("No"),
-      "1": _("Yes"),
+      '0': _('No'),
+      '1': _('Yes'),
     },
     helpText: _(
       "Enable to force audio encryption. Call won't be established unless it is encrypted."
     ),
   },
   multiContact: {
-    label: _("Multi contact"),
+    label: _('Multi contact'),
     default: 1,
     enum: {
-      "0": _("No"),
-      "1": _("Yes"),
+      '0': _('No'),
+      '1': _('Yes'),
     },
     helpText: _(
       "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
@@ -258,13 +258,13 @@ const properties: PartialPropertyList = {
 const residentialDevice: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
-  iden: "ResidentialDevice",
-  title: _("Residential device", { count: 2 }),
-  path: "/residential_devices",
+  iden: 'ResidentialDevice',
+  title: _('Residential device', { count: 2 }),
+  path: '/residential_devices',
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: "ResidentialDevices",
+    iden: 'ResidentialDevices',
   },
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);

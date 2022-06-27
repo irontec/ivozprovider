@@ -1,14 +1,14 @@
-import { Tooltip } from "@mui/material";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
+import { Tooltip } from '@mui/material';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 import {
   StyledLastExecutionErrorMsg,
   StyledLastExecutionSuccessMsg,
-} from "./LastExecution.styles";
-import { CallCsvSchedulerPropertyList } from "../CallCsvSchedulerProperties";
+} from './LastExecution.styles';
+import { CallCsvSchedulerPropertyList } from '../CallCsvSchedulerProperties';
 import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
 
 type CallCsvSchedulerValues = CallCsvSchedulerPropertyList<string | number>;
 type LastExecutionType = PropertyCustomFunctionComponent<
@@ -18,8 +18,8 @@ type LastExecutionType = PropertyCustomFunctionComponent<
 const LastExecution: LastExecutionType = (props) => {
   const values = props.values;
   const lastExecution = (
-    (values?.lastExecution as string | undefined) || ""
-  ).replace("T", " ");
+    (values?.lastExecution as string | undefined) || ''
+  ).replace('T', ' ');
   const lastExecutionError = values?.lastExecutionError as string | undefined;
 
   if (lastExecutionError) {
@@ -35,7 +35,7 @@ const LastExecution: LastExecutionType = (props) => {
 
   return (
     <span>
-      <Tooltip title={_("Successful execution")} enterTouchDelay={0}>
+      <Tooltip title={_('Successful execution')} enterTouchDelay={0}>
         <StyledLastExecutionSuccessMsg>&#10004;</StyledLastExecutionSuccessMsg>
       </Tooltip>
       {lastExecution}

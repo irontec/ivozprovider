@@ -1,6 +1,6 @@
-import UserSelectOptions from "entities/User/SelectOptions";
-import { PickUpGroupPropertyList } from "./PickUpGroupProperties";
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import UserSelectOptions from 'entities/User/SelectOptions';
+import { PickUpGroupPropertyList } from './PickUpGroupProperties';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,

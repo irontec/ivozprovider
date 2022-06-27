@@ -1,6 +1,6 @@
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import HuntGroup from "./HuntGroup";
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import HuntGroup from './HuntGroup';
 
 const HuntGroupSelectOptions: SelectOptionsType = ({
   callback,
@@ -8,7 +8,7 @@ const HuntGroupSelectOptions: SelectOptionsType = ({
 }): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     HuntGroup.path,
-    ["id", "name"],
+    ['id', 'name'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {

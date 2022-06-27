@@ -1,8 +1,8 @@
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
-} from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import useFkChoices from "./foreignKeyGetter";
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import useFkChoices from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, match } = props;
@@ -18,8 +18,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups> = [
     {
-      legend: "",
-      fields: ["service", "code"],
+      legend: '',
+      fields: ['service', 'code'],
     },
   ];
 

@@ -1,6 +1,6 @@
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import FeaturesRelCompany from "./FeaturesRelCompany";
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import FeaturesRelCompany from './FeaturesRelCompany';
 
 const FeaturesRelCompanySelectOptions: SelectOptionsType = ({
   callback,
@@ -8,7 +8,7 @@ const FeaturesRelCompanySelectOptions: SelectOptionsType = ({
 }): Promise<unknown> => {
   return defaultEntityBehavior.fetchFks(
     FeaturesRelCompany.path,
-    ["feature"],
+    ['feature'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {

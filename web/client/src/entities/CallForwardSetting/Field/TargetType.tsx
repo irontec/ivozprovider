@@ -1,11 +1,11 @@
-import { RouteComponentProps } from "react-router-dom";
-import { ListDecorator, ScalarProperty } from "@irontec/ivoz-ui";
+import { RouteComponentProps } from 'react-router-dom';
+import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
 import {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
-} from "@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper";
-import { useStoreState } from "store";
-import { CallForwardSettingPropertyList } from "../CallForwardSettingProperties";
+} from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import { useStoreState } from 'store';
+import { CallForwardSettingPropertyList } from '../CallForwardSettingProperties';
 
 type TargetTypeValues = CallForwardSettingPropertyList<string>;
 type TargetTypeCustomComponent = PropertyCustomFunctionComponent<
@@ -16,7 +16,7 @@ const TargetType: TargetTypeCustomComponent = (props): JSX.Element | null => {
   const { _context, _columnName, property, values, formFieldFactory } = props;
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
-  if (_context === "read" || !formFieldFactory) {
+  if (_context === 'read' || !formFieldFactory) {
     return (
       <ListDecorator
         field={_columnName}

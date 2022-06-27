@@ -1,8 +1,8 @@
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import store from "store";
-import HuntGroup from "../../HuntGroup/HuntGroup";
-import { EntityValues } from "@irontec/ivoz-ui/services/entity/EntityService";
-import { match } from "react-router-dom";
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from 'store';
+import HuntGroup from '../../HuntGroup/HuntGroup';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import { match } from 'react-router-dom';
 
 interface CustomArgs {
   row?: EntityValues;
@@ -17,7 +17,7 @@ const HuntGroupAvailableSelectOptions: SelectOptionsType<CustomArgs> = (
   const id = (match?.params as Record<string, string>)?.parent_id_1;
 
   const params: any = {
-    _properties: ["id", "name", "lastname"],
+    _properties: ['id', 'name', 'lastname'],
   };
 
   const includeId = (customArgs?.row?.user as EntityValues)?.id as

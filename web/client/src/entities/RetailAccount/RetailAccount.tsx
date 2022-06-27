@@ -1,58 +1,58 @@
-import SettingsApplications from "@mui/icons-material/SettingsApplications";
-import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { RetailAccountProperties } from "./RetailAccountProperties";
-import selectOptions from "./SelectOptions";
-import Status from "./Field/Status";
-import StatusIcon from "./Field/StatusIcon";
-import Password from "../Terminal/Field/Password";
-import Form from "./Form";
-import { foreignKeyGetter } from "./foreignKeyGetter";
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { RetailAccountProperties } from './RetailAccountProperties';
+import selectOptions from './SelectOptions';
+import Status from './Field/Status';
+import StatusIcon from './Field/StatusIcon';
+import Password from '../Terminal/Field/Password';
+import Form from './Form';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
 const properties: RetailAccountProperties = {
   company: {
-    label: _("Client"),
+    label: _('Client'),
   },
   name: {
-    label: _("Name"),
+    label: _('Name'),
     readOnly: true,
-    pattern: new RegExp("^[a-zA-Z0-9_*]+$"),
+    pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
     maxLength: 100,
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
   },
   domain: {
-    label: _("Domain"),
+    label: _('Domain'),
   },
   domainName: {
-    label: _("Domain"),
+    label: _('Domain'),
   },
   description: {
-    label: _("Description"),
+    label: _('Description'),
     maxLength: 500,
   },
   transport: {
-    label: _("Transport"),
+    label: _('Transport'),
     enum: {
-      udp: "UDP",
-      tcp: "TCP",
-      tls: "TLS",
+      udp: 'UDP',
+      tcp: 'TCP',
+      tls: 'TLS',
     },
   },
   ip: {
-    label: _("Destination IP address"),
-    pattern: new RegExp("^[.0-9]+$"),
-    helpText: _("e.g. 8.8.8.8"),
+    label: _('Destination IP address'),
+    pattern: new RegExp('^[.0-9]+$'),
+    helpText: _('e.g. 8.8.8.8'),
   },
   port: {
-    label: _("Port"),
-    pattern: new RegExp("^[0-9]+$"),
+    label: _('Port'),
+    pattern: new RegExp('^[0-9]+$'),
     default: 5060,
   },
   password: {
-    label: _("Password"),
+    label: _('Password'),
     pattern: new RegExp(
-      "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
+      '^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$'
     ),
     helpText: _(
       "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"
@@ -60,82 +60,82 @@ const properties: RetailAccountProperties = {
     component: Password,
   },
   outgoingDdi: {
-    label: _("Fallback Outgoing DDI"),
+    label: _('Fallback Outgoing DDI'),
     null: _("Client's default"),
     helpText: _(
       "This DDI will be used if presented DDI doesn't match any of the company DDIs"
     ),
   },
   fromDomain: {
-    label: _("From domain"),
+    label: _('From domain'),
     maxLength: 190,
   },
   directConnectivity: {
-    label: _("Direct connectivity"),
-    default: "no",
+    label: _('Direct connectivity'),
+    default: 'no',
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
     visualToggle: {
       yes: {
-        show: ["ip", "port", "transport"],
+        show: ['ip', 'port', 'transport'],
         hide: [],
       },
       no: {
-        hide: ["ip", "port", "transport"],
+        hide: ['ip', 'port', 'transport'],
         show: [],
       },
     },
   },
   ddiIn: {
-    label: _("DDI In"),
-    default: "yes",
+    label: _('DDI In'),
+    default: 'yes',
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
     helpText: _(
       "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this retail account."
     ),
   },
   statusIcon: {
-    label: _("Status"),
+    label: _('Status'),
     component: StatusIcon,
   },
   status: {
-    label: _("Status"),
+    label: _('Status'),
     component: Status,
   },
   transformationRuleSet: {
-    label: _("Numeric transformation"),
+    label: _('Numeric transformation'),
     null: _("Client's default"),
   },
   t38Passthrough: {
-    label: _("Enable T.38 passthrough"),
+    label: _('Enable T.38 passthrough'),
     enum: {
-      yes: _("Yes"),
-      no: _("No"),
+      yes: _('Yes'),
+      no: _('No'),
     },
-    default: "no",
+    default: 'no',
   },
   rtpEncryption: {
-    label: _("RTP encryption"),
+    label: _('RTP encryption'),
     default: 0,
     enum: {
-      "0": _("No"),
-      "1": _("Yes"),
+      '0': _('No'),
+      '1': _('Yes'),
     },
     helpText: _(
       "Enable to force audio encryption. Call won't be established unless it is encrypted."
     ),
   },
   multiContact: {
-    label: _("Multi contact"),
+    label: _('Multi contact'),
     default: 1,
     enum: {
-      "0": _("No"),
-      "1": _("Yes"),
+      '0': _('No'),
+      '1': _('Yes'),
     },
     helpText: _(
       "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
@@ -146,14 +146,14 @@ const properties: RetailAccountProperties = {
 const retailAccount: EntityInterface = {
   ...defaultEntityBehavior,
   icon: SettingsApplications,
-  iden: "RetailAccount",
-  title: _("Retail accounts", { count: 2 }),
-  path: "/retail_accounts",
+  iden: 'RetailAccount',
+  title: _('Retail accounts', { count: 2 }),
+  path: '/retail_accounts',
   properties,
-  columns: ["name", "domainName", "description", "statusIcon"],
+  columns: ['name', 'domainName', 'description', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: "RetailAccounts",
+    iden: 'RetailAccounts',
   },
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);

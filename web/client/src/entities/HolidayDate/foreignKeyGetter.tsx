@@ -1,8 +1,8 @@
-import { ForeignKeyGetterType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import { autoSelectOptions } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import entities from "../index";
-import { HolidayDatePropertyList } from "./HolidayDateProperties";
-import EnabledVoicemailSelectOptions from "entities/Voicemail/EnabledVoicemailSelectOptions";
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import entities from '../index';
+import { HolidayDatePropertyList } from './HolidayDateProperties';
+import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -15,7 +15,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     entityService,
     cancelToken,
     response,
-    skip: ["voicemail"],
+    skip: ['voicemail'],
   });
 
   promises[promises.length] = EnabledVoicemailSelectOptions({

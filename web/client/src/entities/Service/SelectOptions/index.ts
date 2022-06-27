@@ -1,5 +1,5 @@
-import SelectOptions from "./SelectOptions";
-import UnassignedServiceSelectOptions from "./UnassignedServiceSelectOptions";
+import SelectOptions from './SelectOptions';
+import UnassignedServiceSelectOptions from './UnassignedServiceSelectOptions';
 
 export default SelectOptions;
 

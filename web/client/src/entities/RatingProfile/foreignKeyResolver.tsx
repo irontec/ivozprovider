@@ -1,8 +1,8 @@
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import RatingPlanGroup from "../RatingPlanGroup/RatingPlanGroup";
-import entities from "../index";
-import genericForeignKeyResolver from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
-import { RatingProfilePropertiesList } from "./RatingProfileProperties";
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
+import entities from '../index';
+import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { RatingProfilePropertiesList } from './RatingProfileProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -15,7 +15,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "ratingPlanGroup",
+      fkFld: 'ratingPlanGroup',
       entity: RatingPlanGroup,
       addLink: false,
       cancelToken,
@@ -25,7 +25,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "routingTag",
+      fkFld: 'routingTag',
       entity: RoutingTag,
       addLink: false,
       cancelToken,

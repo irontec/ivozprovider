@@ -1,18 +1,18 @@
-import { SelectOptionsType } from "@irontec/ivoz-ui/entities/EntityInterface";
-import store from "store";
-import Extension from "../Extension";
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from 'store';
+import Extension from '../Extension';
 
 const UserExtensionSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const params: any = {
-    _properties: ["id", "number"],
+    _properties: ['id', 'number'],
   };
 
   const getAction = store.getActions().api.get;
   return getAction({
-    path: Extension.path + "?routeType[exact]=user",
+    path: Extension.path + '?routeType[exact]=user',
     params,
     successCallback: async (data: any) => {
       const options: any = {};

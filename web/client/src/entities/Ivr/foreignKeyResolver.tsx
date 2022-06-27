@@ -1,10 +1,10 @@
-import { autoForeignKeyResolver } from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import { foreignKeyResolverType } from "@irontec/ivoz-ui/entities/EntityInterface";
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver, {
   remapFk,
-} from "@irontec/ivoz-ui/services/api/genericForeigKeyResolver";
-import entities from "../index";
-import { IvrPropertiesList } from "./IvrProperties";
+} from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import entities from '../index';
+import { IvrPropertiesList } from './IvrProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -18,13 +18,13 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     cancelToken,
     entityService,
     entities,
-    skip: ["noInputNumberCountry", "errorNumberCountry"],
+    skip: ['noInputNumberCountry', 'errorNumberCountry'],
   });
 
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "noInputNumberCountry",
+      fkFld: 'noInputNumberCountry',
       entity: {
         ...Country,
         toStr: (row: any) => `${row.countryCode}`,
@@ -36,7 +36,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   promises.push(
     genericForeignKeyResolver({
       data,
-      fkFld: "errorNumberCountry",
+      fkFld: 'errorNumberCountry',
       entity: {
         ...Country,
         toStr: (row: any) => `${row.countryCode}`,
@@ -53,36 +53,36 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 
   for (const idx in data) {
     switch (data[idx].noInputRouteType) {
-      case "number":
+      case 'number':
         data[idx].errorTarget =
-          data[idx].noInputNumberCountry + " " + data[idx].noInputNumberValue;
+          data[idx].noInputNumberCountry + ' ' + data[idx].noInputNumberValue;
         break;
-      case "extension":
-        remapFk(data[idx], "noInputExtension", "noInputTarget");
+      case 'extension':
+        remapFk(data[idx], 'noInputExtension', 'noInputTarget');
         break;
-      case "voicemail":
-        remapFk(data[idx], "noInputVoicemail", "noInputTarget");
+      case 'voicemail':
+        remapFk(data[idx], 'noInputVoicemail', 'noInputTarget');
         break;
       default:
-        console.error("Unkown route type " + data[idx].noInputRouteType);
-        data[idx].noInputTarget = "";
+        console.error('Unkown route type ' + data[idx].noInputRouteType);
+        data[idx].noInputTarget = '';
         break;
     }
 
     switch (data[idx].errorRouteType) {
-      case "number":
+      case 'number':
         data[idx].errorTarget =
-          data[idx].errorNumberCountry + " " + data[idx].errorNumberValue;
+          data[idx].errorNumberCountry + ' ' + data[idx].errorNumberValue;
         break;
-      case "extension":
-        remapFk(data[idx], "errorExtension", "errorTarget");
+      case 'extension':
+        remapFk(data[idx], 'errorExtension', 'errorTarget');
         break;
-      case "voicemail":
-        remapFk(data[idx], "errorVoicemail", "errorTarget");
+      case 'voicemail':
+        remapFk(data[idx], 'errorVoicemail', 'errorTarget');
         break;
       default:
-        console.error("Unkown route type " + data[idx].errorRouteType);
-        data[idx].errorTarget = "";
+        console.error('Unkown route type ' + data[idx].errorRouteType);
+        data[idx].errorTarget = '';
         break;
     }
 

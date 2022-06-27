@@ -1,20 +1,20 @@
-import GavelIcon from "@mui/icons-material/Gavel";
-import EntityInterface from "@irontec/ivoz-ui/entities/EntityInterface";
-import _ from "@irontec/ivoz-ui/services/translations/translate";
-import defaultEntityBehavior from "@irontec/ivoz-ui/entities/DefaultEntityBehavior";
-import Form from "./Form";
-import { CallAclProperties } from "./CallAclProperties";
-import selectOptions from "./SelectOptions";
+import GavelIcon from '@mui/icons-material/Gavel';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import Form from './Form';
+import { CallAclProperties } from './CallAclProperties';
+import selectOptions from './SelectOptions';
 
 const properties: CallAclProperties = {
   name: {
-    label: _("Name"),
+    label: _('Name'),
   },
   defaultPolicy: {
-    label: _("Default policy"),
+    label: _('Default policy'),
     enum: {
-      allow: _("allow"),
-      deny: _("deny"),
+      allow: _('allow'),
+      deny: _('deny'),
     },
   },
   //@TODO POSPONED CallAclRelMatchLists subscreen list
@@ -23,13 +23,13 @@ const properties: CallAclProperties = {
 const CallAcl: EntityInterface = {
   ...defaultEntityBehavior,
   icon: GavelIcon,
-  iden: "CallAcl",
-  title: _("Call ACLs", { count: 2 }),
-  path: "/call_acls",
+  iden: 'CallAcl',
+  title: _('Call ACLs', { count: 2 }),
+  path: '/call_acls',
   properties,
   acl: {
     ...defaultEntityBehavior.acl,
-    iden: "CallACL",
+    iden: 'CallACL',
   },
   Form,
   selectOptions: (props, customProps) => {
