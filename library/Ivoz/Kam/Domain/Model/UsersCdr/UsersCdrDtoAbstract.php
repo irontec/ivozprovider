@@ -8,8 +8,6 @@ use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 
 /**
 * UsersCdrDtoAbstract
@@ -80,11 +78,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     private $xcallid = null;
 
     /**
-     * @var bool|null
-     */
-    private $hidden = false;
-
-    /**
      * @var int|null
      */
     private $id = null;
@@ -108,16 +101,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
      * @var FriendDto | null
      */
     private $friend = null;
-
-    /**
-     * @var ResidentialDeviceDto | null
-     */
-    private $residentialDevice = null;
-
-    /**
-     * @var RetailAccountDto | null
-     */
-    private $retailAccount = null;
 
     /**
      * @param string|int|null $id
@@ -149,14 +132,11 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => 'callid',
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
-            'hidden' => 'hidden',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
             'userId' => 'user',
-            'friendId' => 'friend',
-            'residentialDeviceId' => 'residentialDevice',
-            'retailAccountId' => 'retailAccount'
+            'friendId' => 'friend'
         ];
     }
 
@@ -178,14 +158,11 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callid' => $this->getCallid(),
             'callidHash' => $this->getCallidHash(),
             'xcallid' => $this->getXcallid(),
-            'hidden' => $this->getHidden(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
             'user' => $this->getUser(),
-            'friend' => $this->getFriend(),
-            'residentialDevice' => $this->getResidentialDevice(),
-            'retailAccount' => $this->getRetailAccount()
+            'friend' => $this->getFriend()
         ];
 
         if (!$hideSensitiveData) {
@@ -346,18 +323,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->xcallid;
     }
 
-    public function setHidden(bool $hidden): static
-    {
-        $this->hidden = $hidden;
-
-        return $this;
-    }
-
-    public function getHidden(): ?bool
-    {
-        return $this->hidden;
-    }
-
     public function setId($id): static
     {
         $this->id = $id;
@@ -484,66 +449,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     public function getFriendId()
     {
         if ($dto = $this->getFriend()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    public function setResidentialDevice(?ResidentialDeviceDto $residentialDevice): static
-    {
-        $this->residentialDevice = $residentialDevice;
-
-        return $this;
-    }
-
-    public function getResidentialDevice(): ?ResidentialDeviceDto
-    {
-        return $this->residentialDevice;
-    }
-
-    public function setResidentialDeviceId($id): static
-    {
-        $value = !is_null($id)
-            ? new ResidentialDeviceDto($id)
-            : null;
-
-        return $this->setResidentialDevice($value);
-    }
-
-    public function getResidentialDeviceId()
-    {
-        if ($dto = $this->getResidentialDevice()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    public function setRetailAccount(?RetailAccountDto $retailAccount): static
-    {
-        $this->retailAccount = $retailAccount;
-
-        return $this;
-    }
-
-    public function getRetailAccount(): ?RetailAccountDto
-    {
-        return $this->retailAccount;
-    }
-
-    public function setRetailAccountId($id): static
-    {
-        $value = !is_null($id)
-            ? new RetailAccountDto($id)
-            : null;
-
-        return $this->setRetailAccount($value);
-    }
-
-    public function getRetailAccountId()
-    {
-        if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
         }
 
