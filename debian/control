@@ -88,6 +88,7 @@ Pre-Depends: bind9, mysql-server
 Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-schema (=${binary:Version}),
     ivozprovider-balances (=${binary:Version}),
+    python3-mysql.connector,
     libstring-crc32-perl,
     redis-server,
     redis-sentinel
