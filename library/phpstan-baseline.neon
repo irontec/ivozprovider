@@ -1446,16 +1446,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getResidentialDeviceId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getRetailAccountId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
@@ -1477,16 +1467,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:setResidentialDeviceId\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
-
-		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:setRetailAccountId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
 
