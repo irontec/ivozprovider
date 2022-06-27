@@ -49,7 +49,8 @@ These are the configurable settings of *Retail accounts*:
 
     Password
         When the *retail account* send requests, IvozProvider will authenticate it using
-        this password. Like remaining SIP entities in IvozProvider (except Wholesale) **using password IS MANDATORY**.
+        this password. **Using password IS A MUST in "Register" mode**. In "Direct" mode,
+        leaving it blank disables SIP authentication and enables IP source check.
 
     Direct connectivity
         If you choose 'Yes' here, you'll have to fill the protocol, address and
