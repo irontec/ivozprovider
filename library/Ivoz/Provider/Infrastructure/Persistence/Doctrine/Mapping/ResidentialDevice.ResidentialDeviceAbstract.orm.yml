@@ -37,14 +37,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
       nullable: true
       options:
         unsigned: true
-    authNeeded:
-      type: string
-      nullable: false
-      length: null
-      options:
-        fixed: false
-        default: 'yes'
-      column: auth_needed
     password:
       type: string
       nullable: true
