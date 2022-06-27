@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Service\DdiProviderRegistration\DdiProviderRegistrationLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkRepository;
 
 /**
  * Class CreatedByDdiProviderRegistration
@@ -16,7 +17,8 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
     public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        private EntityTools $entityTools
+        private EntityTools $entityTools,
+        private ProxyTrunkRepository $proxyTrunkRepository
     ) {
     }
 
@@ -53,6 +55,18 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
             ->setAuthPassword($ddiProviderRegistration->getAuthPassword())
             ->setAuthProxy($ddiProviderRegistration->getAuthProxy())
             ->setExpires($ddiProviderRegistration->getExpires());
+
+        // Set socket depending on DDIProvider proxytrunks address
+        $trunks = $ddiProviderRegistration->getDdiProvider()->getProxyTrunk();
+        if (is_null($trunks)) {
+            $trunks = $this->proxyTrunkRepository->getProxyMainAddress();
+        }
+
+        $trunksIp  = $trunks->getIp();
+
+        $socket = 'udp:' . $trunksIp . ':5060';
+
+        $trunksUacregDto->setSocket($socket);
 
         // Update registration contact if required
         $contactUsernameChanged = $ddiProviderRegistration->hasChanged('multiDdi')
