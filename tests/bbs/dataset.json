@@ -5942,7 +5942,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"noAnswer\",\n  \"targetType\": \"extension\",\n  \"friend\": {{friendId}},\n  \"extension\": {{bobExtensionId}}\n}"
+							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"noAnswer\",\n  \"targetType\": \"extension\",\n  \"friend\": {{friendId}},\n  \"extension\": {{eveExtensionId}}\n}"
 						},
 						"url": {
 							"raw": "{{client_api_url}}/call_forward_settings",
