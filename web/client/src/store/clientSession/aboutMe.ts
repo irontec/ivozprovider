@@ -35,8 +35,9 @@ export type AboutMeState = {
 
 interface AboutMeActions {
   setProfile: Action<AboutMeState, AboutMe>;
-  load: Thunk<AboutMeStore, undefined, unknown, AppStore>;
+  resetProfile: Action<AboutMeState>;
   init: Thunk<AboutMeStore>;
+  load: Thunk<AboutMeStore, undefined, unknown, AppStore>;
 }
 
 export type AboutMeStore = AboutMeActions & AboutMeState;
@@ -47,7 +48,16 @@ const Acls: AboutMeStore = {
   setProfile: action<AboutMeState, AboutMe>((state, profile) => {
     state.profile = profile;
   }),
-
+  resetProfile: action<AboutMeState>((state) => {
+    localStorage.removeItem('profile');
+    state.profile = null;
+  }),
+  init: thunk<AboutMeStore>(async (actions) => {
+    const profile = localStorage.getItem('profile') as string | undefined;
+    if (profile) {
+      actions.setProfile(JSON.parse(profile) as AboutMe);
+    }
+  }),
   // thunks
   load: thunk<AboutMeStore, undefined, unknown, AppStore>(
     async (actions, payload, { getStoreActions }) => {
@@ -75,12 +85,6 @@ const Acls: AboutMeStore = {
       }
     }
   ),
-  init: thunk<AboutMeStore>(async (actions) => {
-    const profile = localStorage.getItem('profile') as string | undefined;
-    if (profile) {
-      actions.setProfile(JSON.parse(profile) as AboutMe);
-    }
-  }),
 };
 
 export default Acls;

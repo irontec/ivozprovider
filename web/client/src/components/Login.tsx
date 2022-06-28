@@ -1,4 +1,5 @@
-import { useStoreActions } from 'store';
+import { useEffect } from 'react';
+import { useStoreActions, useStoreState } from 'store';
 import { EntityValidator } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { Login as DefaultLogin } from '@irontec/ivoz-ui/components';
 
@@ -6,39 +7,25 @@ interface LoginProps {
   validator?: EntityValidator;
 }
 
-export default function Login(props: LoginProps): JSX.Element {
+export default function Login(props: LoginProps): JSX.Element | null {
   const { validator } = props;
 
-  const setToken = useStoreActions((actions) => actions.auth.setToken);
+  const loggedIn = useStoreState((state) => state.auth.loggedIn);
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+
   const loadProfile = useStoreActions(
     (actions) => actions.clientSession.aboutMe.load
   );
-  const setRefreshToken = useStoreActions(
-    (actions) => actions.auth.setRefreshToken
-  );
-  const apiPost = useStoreActions((actions) => actions.api.post);
 
-  const onSubmit = async (values: any) => {
-    try {
-      const response = await apiPost({
-        path: '/admin_login',
-        values,
-        contentType: 'application/x-www-form-urlencoded',
-      });
-
-      if (response.data && response.data.token) {
-        setToken(response.data.token);
-        setRefreshToken(response.data.refreshToken);
-        await loadProfile();
-      }
-
-      return response;
-    } catch (exception: any) {
-      console.error(exception);
+  useEffect(() => {
+    if (loggedIn && !aboutMe) {
+      loadProfile();
     }
+  }, [loggedIn, aboutMe, loadProfile]);
 
-    return {};
-  };
+  if (loggedIn) {
+    return null;
+  }
 
-  return <DefaultLogin onSubmit={onSubmit} validator={validator} />;
+  return <DefaultLogin validator={validator} />;
 }

@@ -12,17 +12,19 @@ export default function App(): JSX.Element {
     return actions.spec.init;
   });
   const authInit = useStoreActions((actions: any) => actions.auth.init);
+  const aboutMeResetProfile = useStoreActions(
+    (actions: any) => actions.clientSession.aboutMe.resetProfile
+  );
   const aboutMeInit = useStoreActions(
     (actions: any) => actions.clientSession.aboutMe.init
   );
-  const token = useStoreState((state) => state.auth.token);
-  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   useEffect(() => {
     apiSpecInitFn();
     authInit();
+    aboutMeResetProfile();
     aboutMeInit();
-  }, [token, apiSpecInitFn, authInit, aboutMeInit]);
+  }, [apiSpecInitFn, authInit, aboutMeInit, aboutMeResetProfile]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
   const basename = process.env.PUBLIC_URL;
@@ -42,11 +44,7 @@ export default function App(): JSX.Element {
       <CssBaseline />
       <StyledAppFlexDiv>
         <BrowserRouter basename={basename}>
-          <AppRoutes
-            token={token as string}
-            aboutMe={aboutMe}
-            apiSpec={apiSpec}
-          />
+          <AppRoutes apiSpec={apiSpec} />
         </BrowserRouter>
       </StyledAppFlexDiv>
     </LocalizationProvider>
