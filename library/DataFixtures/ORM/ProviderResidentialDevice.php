@@ -27,7 +27,6 @@ class ProviderResidentialDevice extends Fixture implements DependentFixtureInter
         (function () use ($fixture) {
             $this->setName('residentialDevice');
             $this->setTransport('udp');
-            $this->setAuthNeeded('yes');
             $this->setPassword('+rA778LidL');
             $this->setDisallow('all');
             $this->setAllow('alaw');
