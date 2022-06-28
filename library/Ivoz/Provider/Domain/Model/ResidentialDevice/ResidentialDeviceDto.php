@@ -85,8 +85,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
-                'transport' => 'transport',
-                'authNeeded' => 'authNeeded'
+                'transport' => 'transport'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -134,7 +133,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'transport',
             'ip',
             'port',
-            'authNeeded',
             'password',
             'allow',
             'fromDomain',
