@@ -3612,7 +3612,6 @@ CREATE TABLE `ResidentialDevices` (
   `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
   `port` smallint unsigned DEFAULT NULL,
-  `auth_needed` varchar(255) NOT NULL DEFAULT 'yes',
   `password` varchar(64) DEFAULT NULL,
   `outgoingDdiId` int unsigned DEFAULT NULL,
   `disallow` varchar(200) NOT NULL DEFAULT 'all',
@@ -6152,4 +6151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-30 13:17:43
+-- Dump completed on 2022-06-30 13:26:01
