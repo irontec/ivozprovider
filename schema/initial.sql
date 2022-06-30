@@ -1,19 +1,28 @@
--- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25-15, for Linux (x86_64)
 --
--- Host: data.ivozprovider.local    Database: ivozprovider
+-- Host: localhost    Database: ivozprovider
 -- ------------------------------------------------------
--- Server version	5.7.19
+-- Server version	8.0.25-15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!50717 SELECT COUNT(*) INTO @rocksdb_has_p_s_session_variables FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'performance_schema' AND TABLE_NAME = 'session_variables' */;
+/*!50717 SET @rocksdb_get_is_supported = IF (@rocksdb_has_p_s_session_variables, 'SELECT COUNT(*) INTO @rocksdb_is_supported FROM performance_schema.session_variables WHERE VARIABLE_NAME=\'rocksdb_bulk_load\'', 'SELECT 0') */;
+/*!50717 PREPARE s FROM @rocksdb_get_is_supported */;
+/*!50717 EXECUTE s */;
+/*!50717 DEALLOCATE PREPARE s */;
+/*!50717 SET @rocksdb_enable_bulk_load = IF (@rocksdb_is_supported, 'SET SESSION rocksdb_bulk_load = 1', 'SET @rocksdb_dummy_bulk_load = 0') */;
+/*!50717 PREPARE s FROM @rocksdb_enable_bulk_load */;
+/*!50717 EXECUTE s */;
+/*!50717 DEALLOCATE PREPARE s */;
 
 --
 -- Table structure for table `AdministratorRelPublicEntities`
@@ -21,11 +30,11 @@
 
 DROP TABLE IF EXISTS `AdministratorRelPublicEntities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `AdministratorRelPublicEntities` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `administratorId` int(10) unsigned NOT NULL,
-  `publicEntityId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `administratorId` int unsigned NOT NULL,
+  `publicEntityId` int unsigned NOT NULL,
   `create` tinyint(1) NOT NULL DEFAULT '0',
   `read` tinyint(1) NOT NULL DEFAULT '1',
   `update` tinyint(1) NOT NULL DEFAULT '0',
@@ -35,7 +44,7 @@ CREATE TABLE `AdministratorRelPublicEntities` (
   KEY `IDX_76F8BC9320C8F565` (`publicEntityId`),
   CONSTRAINT `FK_76F8BC9320C8F565` FOREIGN KEY (`publicEntityId`) REFERENCES `PublicEntities` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_76F8BC93607ED20D` FOREIGN KEY (`administratorId`) REFERENCES `Administrators` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,18 +63,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Administrators`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Administrators` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(65) COLLATE utf8_unicode_ci NOT NULL,
-  `pass` varchar(80) COLLATE utf8_unicode_ci NOT NULL COMMENT '[password]',
-  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(65) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '[password]',
+  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `active` tinyint(1) NOT NULL DEFAULT '1',
-  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lastname` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `timezoneId` int(10) unsigned DEFAULT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `timezoneId` int unsigned DEFAULT NULL,
   `restricted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `administrator_username` (`username`),
@@ -75,7 +84,7 @@ CREATE TABLE `Administrators` (
   CONSTRAINT `FK_CA5E09B72480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_CA5E09B731D2BA8E` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_CA5E09B79CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,15 +103,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ApplicationServers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ApplicationServers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `ip` varchar(50) NOT NULL,
   `name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `applicationServer_ip` (`ip`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,20 +130,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `BalanceMovements`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `BalanceMovements` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `amount` decimal(10,4) DEFAULT '0.0000',
   `balance` decimal(10,4) DEFAULT '0.0000',
   `createdOn` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A8AD782F2480E723` (`companyId`),
   KEY `IDX_A8AD782F6709B1C` (`carrierId`),
   CONSTRAINT `FK_A8AD782F2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_A8AD782F6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,15 +161,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `BalanceNotifications`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `BalanceNotifications` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `toAddress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `toAddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `threshold` decimal(10,4) DEFAULT '0.0000',
   `lastSent` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `notificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `notificationTemplateId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_DD0872322480E723` (`companyId`),
   KEY `IDX_DD0872321333F77D` (`notificationTemplateId`),
@@ -168,7 +177,7 @@ CREATE TABLE `BalanceNotifications` (
   CONSTRAINT `FK_DD0872321333F77D` FOREIGN KEY (`notificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_DD0872322480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_DD0872326709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,16 +195,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `BannedAddresses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `BannedAddresses` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `blocker` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:antiflood|ipfilter|antibruteforce]',
-  `description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `ip` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blocker` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:antiflood|ipfilter|antibruteforce]',
+  `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `lastTimeBanned` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `aor` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `aor` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_63B7B3C79CBEC244` (`brandId`),
   KEY `IDX_63B7B3C72480E723` (`companyId`),
@@ -203,7 +212,7 @@ CREATE TABLE `BannedAddresses` (
   KEY `bannedAddress_ip_blocker` (`ip`,`blocker`),
   CONSTRAINT `FK_63B7B3C72480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_63B7B3C79CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,33 +230,33 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `BillableCallHistorics`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `BillableCallHistorics` (
-  `id` int(10) unsigned NOT NULL,
-  `callid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL,
+  `callid` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `startTime` datetime NOT NULL COMMENT '(DC2Type:datetime)',
   `duration` double NOT NULL DEFAULT '0',
-  `caller` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `callee` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `caller` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `callee` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `cost` decimal(20,4) DEFAULT NULL COMMENT '(DC2Type:decimal)',
   `price` decimal(20,4) DEFAULT NULL COMMENT '(DC2Type:decimal)',
-  `priceDetails` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
-  `carrierName` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `destinationName` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ratingPlanName` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
-  `destinationId` int(10) unsigned DEFAULT NULL,
-  `ratingPlanGroupId` int(10) unsigned DEFAULT NULL,
-  `invoiceId` int(10) unsigned DEFAULT NULL,
-  `trunksCdrId` int(10) unsigned DEFAULT NULL,
-  `endpointType` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]',
-  `endpointId` int(10) unsigned DEFAULT NULL,
-  `direction` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
-  `ddiId` int(10) unsigned DEFAULT NULL,
-  `ddiProviderId` int(10) unsigned DEFAULT NULL,
-  `endpointName` varchar(65) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `priceDetails` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
+  `carrierName` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `destinationName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ratingPlanName` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
+  `destinationId` int unsigned DEFAULT NULL,
+  `ratingPlanGroupId` int unsigned DEFAULT NULL,
+  `invoiceId` int unsigned DEFAULT NULL,
+  `trunksCdrId` int unsigned DEFAULT NULL,
+  `endpointType` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]',
+  `endpointId` int unsigned DEFAULT NULL,
+  `direction` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
+  `ddiId` int unsigned DEFAULT NULL,
+  `ddiProviderId` int unsigned DEFAULT NULL,
+  `endpointName` varchar(65) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`,`startTime`),
   KEY `billableCallHistoric_startTime_idx` (`startTime`),
   KEY `billableCallHistoric_callid_idx` (`callid`),
@@ -255,8 +264,8 @@ CREATE TABLE `BillableCallHistorics` (
   KEY `billableCallHistoric_callee_idx` (`callee`),
   KEY `billableCallHistoric_brand_company_idx` (`brandId`,`companyId`),
   KEY `billableCallHistoric_company_idx` (`companyId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
-/*!50100 PARTITION BY HASH (YEAR(startTime))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci
+/*!50100 PARTITION BY HASH (year(`startTime`))
 PARTITIONS 6 */;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -275,33 +284,33 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `BillableCalls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `BillableCalls` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `callid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `callid` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `startTime` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
   `duration` double NOT NULL DEFAULT '0',
-  `caller` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `callee` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `caller` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `callee` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `cost` decimal(20,4) DEFAULT NULL,
   `price` decimal(20,4) DEFAULT NULL,
-  `priceDetails` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
-  `carrierName` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `destinationName` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ratingPlanName` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
-  `destinationId` int(10) unsigned DEFAULT NULL,
-  `ratingPlanGroupId` int(10) unsigned DEFAULT NULL,
-  `invoiceId` int(10) unsigned DEFAULT NULL,
-  `trunksCdrId` int(10) unsigned DEFAULT NULL,
-  `endpointType` varchar(55) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]',
-  `endpointId` int(10) unsigned DEFAULT NULL,
-  `direction` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
-  `ddiId` int(10) unsigned DEFAULT NULL,
-  `ddiProviderId` int(10) unsigned DEFAULT NULL,
-  `endpointName` varchar(65) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `priceDetails` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
+  `carrierName` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `destinationName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ratingPlanName` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
+  `destinationId` int unsigned DEFAULT NULL,
+  `ratingPlanGroupId` int unsigned DEFAULT NULL,
+  `invoiceId` int unsigned DEFAULT NULL,
+  `trunksCdrId` int unsigned DEFAULT NULL,
+  `endpointType` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:RetailAccount|ResidentialDevice|User|Friend|Fax]',
+  `endpointId` int unsigned DEFAULT NULL,
+  `direction` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
+  `ddiId` int unsigned DEFAULT NULL,
+  `ddiProviderId` int unsigned DEFAULT NULL,
+  `endpointName` varchar(65) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E6F2DA352480E723` (`companyId`),
   KEY `IDX_E6F2DA356709B1C` (`carrierId`),
@@ -325,7 +334,7 @@ CREATE TABLE `BillableCalls` (
   CONSTRAINT `FK_E6F2DA356A765F36` FOREIGN KEY (`ratingPlanGroupId`) REFERENCES `RatingPlanGroups` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA359CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E6F2DA35BF3434FC` FOREIGN KEY (`destinationId`) REFERENCES `Destinations` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,18 +352,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `BrandServices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `BrandServices` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `serviceId` int(10) unsigned NOT NULL,
-  `brandId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `serviceId` int unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
   `code` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `brandService_brand_service` (`brandId`,`serviceId`),
   KEY `IDX_AA498CCC89697FA8` (`serviceId`),
   CONSTRAINT `BrandServices_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `BrandServices_ibfk_2` FOREIGN KEY (`serviceId`) REFERENCES `Services` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -373,15 +382,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Brands`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Brands` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
-  `domainId` int(10) unsigned DEFAULT NULL,
+  `domainId` int unsigned DEFAULT NULL,
   `nif` varchar(25) NOT NULL,
   `domain_users` varchar(190) DEFAULT NULL,
-  `defaultTimezoneId` int(10) unsigned NOT NULL,
-  `logoFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
+  `defaultTimezoneId` int unsigned NOT NULL,
+  `logoFileSize` int unsigned DEFAULT NULL COMMENT '[FSO]',
   `logoMimeType` varchar(80) DEFAULT NULL,
   `logoBaseName` varchar(255) DEFAULT NULL,
   `postalAddress` varchar(255) NOT NULL,
@@ -390,16 +399,16 @@ CREATE TABLE `Brands` (
   `province` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `registryData` varchar(1024) DEFAULT NULL,
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `recordingsLimitMB` int(10) DEFAULT NULL,
+  `languageId` int unsigned DEFAULT NULL,
+  `recordingsLimitMB` int DEFAULT NULL,
   `recordingsLimitEmail` varchar(250) DEFAULT NULL,
-  `maxCalls` int(10) unsigned NOT NULL DEFAULT '0',
-  `currencyId` int(10) unsigned NOT NULL,
-  `vmNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `faxNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `invoiceNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `callCsvNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `maxDailyUsageNotificationTemplateId` int(10) unsigned DEFAULT NULL,
+  `maxCalls` int unsigned NOT NULL DEFAULT '0',
+  `currencyId` int unsigned NOT NULL,
+  `vmNotificationTemplateId` int unsigned DEFAULT NULL,
+  `faxNotificationTemplateId` int unsigned DEFAULT NULL,
+  `invoiceNotificationTemplateId` int unsigned DEFAULT NULL,
+  `callCsvNotificationTemplateId` int unsigned DEFAULT NULL,
+  `maxDailyUsageNotificationTemplateId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `brand_name` (`name`),
   KEY `IDX_790E4102A27130E4` (`defaultTimezoneId`),
@@ -420,7 +429,7 @@ CREATE TABLE `Brands` (
   CONSTRAINT `FK_790E4102A29D8295` FOREIGN KEY (`invoiceNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_790E4102E559D278` FOREIGN KEY (`faxNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_790E4102E81EFEBD` FOREIGN KEY (`maxDailyUsageNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -439,18 +448,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CalendarPeriods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CalendarPeriods` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
-  `routeType` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `numberValue` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `calendarId` int(10) unsigned NOT NULL,
-  `locutionId` int(10) unsigned DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `routeType` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
+  `numberValue` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `calendarId` int unsigned NOT NULL,
+  `locutionId` int unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `voiceMailUserId` int unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_733A607F2D4F56A6` (`calendarId`),
   KEY `IDX_733A607F54690B0` (`locutionId`),
@@ -462,7 +471,7 @@ CREATE TABLE `CalendarPeriods` (
   CONSTRAINT `FK_733A607F54690B0` FOREIGN KEY (`locutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_733A607FAF230FFD` FOREIGN KEY (`voiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_733A607FD7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -480,17 +489,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CalendarPeriodsRelSchedules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CalendarPeriodsRelSchedules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `conditionId` int(10) unsigned NOT NULL,
-  `scheduleId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `conditionId` int unsigned NOT NULL,
+  `scheduleId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A4FBF3A7128AE9F0` (`conditionId`),
   KEY `IDX_A4FBF3A7B745014E` (`scheduleId`),
   CONSTRAINT `FK_A4FBF3A7128AE9F0` FOREIGN KEY (`conditionId`) REFERENCES `CalendarPeriods` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_A4FBF3A7B745014E` FOREIGN KEY (`scheduleId`) REFERENCES `Schedules` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -508,16 +517,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Calendars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Calendars` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `calendar_name_company` (`name`,`companyId`),
   KEY `IDX_62E00AC2480E723` (`companyId`),
   CONSTRAINT `Calendars_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -535,16 +544,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CallACL`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CallACL` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `defaultPolicy` varchar(10) NOT NULL COMMENT '[enum:allow|deny]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `CallAcl_company_name` (`companyId`,`name`),
   CONSTRAINT `CallAcl_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -562,19 +571,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CallAclRelMatchLists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CallAclRelMatchLists` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `priority` smallint(6) NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `priority` smallint NOT NULL,
   `policy` varchar(25) NOT NULL COMMENT '[enum:allow|deny]',
-  `CallAclId` int(10) unsigned NOT NULL,
-  `matchListId` int(10) unsigned NOT NULL,
+  `CallAclId` int unsigned NOT NULL,
+  `matchListId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_callAclId_priority` (`CallAclId`,`priority`),
   KEY `IDX_9BCB3376283E7346` (`matchListId`),
   CONSTRAINT `FK_A09BB695283E7346` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_A09BB69548DE28A4` FOREIGN KEY (`CallAclId`) REFERENCES `CallACL` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -592,19 +601,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CallCsvReports`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CallCsvReports` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `sentTo` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `sentTo` varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `inDate` datetime NOT NULL COMMENT '(DC2Type:datetime)',
   `outDate` datetime NOT NULL COMMENT '(DC2Type:datetime)',
   `createdOn` datetime NOT NULL COMMENT '(DC2Type:datetime)',
-  `csvFileSize` int(10) unsigned DEFAULT NULL COMMENT '[FSO]',
-  `csvMimeType` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `csvBaseName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `callCsvSchedulerId` int(10) unsigned DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
+  `csvFileSize` int unsigned DEFAULT NULL COMMENT '[FSO]',
+  `csvMimeType` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `csvBaseName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `callCsvSchedulerId` int unsigned DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3DC217432480E723` (`companyId`),
   KEY `IDX_3DC217431A2D1FF1` (`callCsvSchedulerId`),
@@ -612,7 +621,7 @@ CREATE TABLE `CallCsvReports` (
   CONSTRAINT `FK_3DC217431A2D1FF1` FOREIGN KEY (`callCsvSchedulerId`) REFERENCES `CallCsvSchedulers` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_3DC217432480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_3DC217439CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -630,28 +639,28 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CallCsvSchedulers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CallCsvSchedulers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `unit` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'month' COMMENT '[enum:day|week|month]',
-  `frequency` smallint(5) unsigned NOT NULL,
-  `email` varchar(140) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `unit` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'month' COMMENT '[enum:day|week|month]',
+  `frequency` smallint unsigned NOT NULL,
+  `email` varchar(140) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lastExecution` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
   `nextExecution` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `lastExecutionError` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `callCsvNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `callDirection` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
-  `ddiId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
-  `retailAccountId` int(10) unsigned DEFAULT NULL,
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `faxId` int(10) unsigned DEFAULT NULL,
-  `friendId` int(10) unsigned DEFAULT NULL,
-  `ddiProviderId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `lastExecutionError` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `callCsvNotificationTemplateId` int unsigned DEFAULT NULL,
+  `callDirection` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'outbound' COMMENT '[enum:inbound|outbound]',
+  `ddiId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
+  `retailAccountId` int unsigned DEFAULT NULL,
+  `residentialDeviceId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `faxId` int unsigned DEFAULT NULL,
+  `friendId` int unsigned DEFAULT NULL,
+  `ddiProviderId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `CallCsvScheduler_brand_name` (`brandId`,`name`),
   KEY `IDX_100E171E2480E723` (`companyId`),
@@ -675,7 +684,7 @@ CREATE TABLE `CallCsvSchedulers` (
   CONSTRAINT `FK_100E171E893BA339` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_100E171E8B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_100E171E9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -693,24 +702,24 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CallForwardSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CallForwardSettings` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `userId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int unsigned DEFAULT NULL,
   `callTypeFilter` varchar(25) NOT NULL COMMENT '[enum:internal|external|both]',
   `callForwardType` varchar(25) NOT NULL COMMENT '[enum:inconditional|noAnswer|busy|userNotRegistered]',
   `targetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail|retail]',
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   `numberValue` varchar(25) DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `noAnswerTimeout` smallint(4) NOT NULL DEFAULT '10',
-  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
-  `retailAccountId` int(10) unsigned DEFAULT NULL,
-  `cfwToRetailAccountId` int(10) unsigned DEFAULT NULL,
-  `ddiId` int(10) unsigned DEFAULT NULL,
-  `friendId` int(10) unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `voiceMailUserId` int unsigned DEFAULT NULL,
+  `noAnswerTimeout` smallint NOT NULL DEFAULT '10',
+  `enabled` tinyint unsigned NOT NULL DEFAULT '1',
+  `residentialDeviceId` int unsigned DEFAULT NULL,
+  `retailAccountId` int unsigned DEFAULT NULL,
+  `cfwToRetailAccountId` int unsigned DEFAULT NULL,
+  `ddiId` int unsigned DEFAULT NULL,
+  `friendId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E71B58A464B64DCC` (`userId`),
   KEY `IDX_E71B58A412AB7F65` (`extensionId`),
@@ -730,7 +739,7 @@ CREATE TABLE `CallForwardSettings` (
   CONSTRAINT `FK_E71B58A48B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E71B58A4D7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_E71B58A4DE65F396` FOREIGN KEY (`cfwToRetailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -748,31 +757,31 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CarrierServers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CarrierServers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `hostname` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `port` smallint(5) unsigned DEFAULT NULL,
-  `uriScheme` smallint(5) unsigned DEFAULT NULL,
-  `transport` smallint(5) unsigned DEFAULT NULL,
-  `sendPAI` tinyint(1) unsigned DEFAULT '0',
-  `sendRPID` tinyint(1) unsigned DEFAULT '0',
-  `authNeeded` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  `authUser` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `authPassword` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `sipProxy` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `outboundProxy` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fromUser` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fromDomain` varchar(190) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `carrierId` int(10) unsigned NOT NULL,
-  `brandId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `ip` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hostname` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `port` smallint unsigned DEFAULT NULL,
+  `uriScheme` smallint unsigned DEFAULT NULL,
+  `transport` smallint unsigned DEFAULT NULL,
+  `sendPAI` tinyint unsigned DEFAULT '0',
+  `sendRPID` tinyint unsigned DEFAULT '0',
+  `authNeeded` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `authUser` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `authPassword` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sipProxy` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `outboundProxy` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fromUser` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fromDomain` varchar(190) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `carrierId` int unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_991132C66709B1C` (`carrierId`),
   KEY `IDX_991132C69CBEC244` (`brandId`),
   CONSTRAINT `FK_991132C66709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_991132C69CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -790,19 +799,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Carriers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Carriers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
-  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `externallyRated` tinyint(1) unsigned DEFAULT '0',
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `externallyRated` tinyint unsigned DEFAULT '0',
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
   `balance` decimal(10,4) DEFAULT '0.0000',
-  `calculateCost` tinyint(1) unsigned DEFAULT '0',
-  `currencyId` int(10) unsigned DEFAULT NULL,
-  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
-  `mediaRelaySetsId` int(10) unsigned DEFAULT NULL,
+  `calculateCost` tinyint unsigned DEFAULT '0',
+  `currencyId` int unsigned DEFAULT NULL,
+  `proxyTrunkId` int unsigned DEFAULT NULL,
+  `mediaRelaySetsId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `carrier_nameBrand` (`name`,`brandId`),
   KEY `IDX_F63EC8E39CBEC244` (`brandId`),
@@ -815,7 +824,7 @@ CREATE TABLE `Carriers` (
   CONSTRAINT `FK_F63EC8E391000B8A` FOREIGN KEY (`currencyId`) REFERENCES `Currencies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_F63EC8E39CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_F63EC8E3C8555117` FOREIGN KEY (`mediaRelaySetsId`) REFERENCES `MediaRelaySets` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -833,22 +842,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Changelog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Changelog` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `entity` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `entityId` varchar(36) COLLATE utf8_unicode_ci NOT NULL,
-  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
+  `id` char(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `entity` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `entityId` varchar(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `data` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
   `createdOn` datetime NOT NULL,
-  `commandId` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `microtime` smallint(6) NOT NULL,
+  `commandId` char(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `microtime` smallint NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_4AB3A4A28F36C645` (`commandId`),
   KEY `changelog_createdOn` (`createdOn`),
   KEY `changelog_entity_id_idx` (`entity`,`entityId`),
   KEY `changelog_entity_createdOn` (`entity`,`createdOn`),
   CONSTRAINT `FK_4AB3A4A28F36C645` FOREIGN KEY (`commandId`) REFERENCES `Commandlog` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -866,14 +875,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Codecs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Codecs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `type` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'audio' COMMENT '[enum:audio|video]',
-  `iden` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'audio' COMMENT '[enum:audio|video]',
+  `iden` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -892,20 +901,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Commandlog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Commandlog` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `requestId` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `class` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `method` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `arguments` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
+  `id` char(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `requestId` char(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `class` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `method` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `arguments` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
   `createdOn` datetime NOT NULL,
-  `microtime` smallint(6) NOT NULL,
-  `agent` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
+  `microtime` smallint NOT NULL,
+  `agent` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
   PRIMARY KEY (`id`),
   KEY `commandlog_requestId` (`requestId`),
   KEY `commandlog_createdOn` (`createdOn`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -923,49 +932,49 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Companies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Companies` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
   `type` varchar(25) NOT NULL DEFAULT 'vpbx' COMMENT '[enum:vpbx|retail|wholesale|residential]',
   `name` varchar(80) NOT NULL,
-  `domainId` int(10) unsigned DEFAULT NULL,
+  `domainId` int unsigned DEFAULT NULL,
   `domain_users` varchar(190) DEFAULT NULL,
   `nif` varchar(25) NOT NULL,
-  `defaultTimezoneId` int(10) unsigned DEFAULT NULL,
+  `defaultTimezoneId` int unsigned DEFAULT NULL,
   `distributeMethod` varchar(25) NOT NULL DEFAULT 'hash' COMMENT '[enum:static|rr|hash]',
-  `applicationServerId` int(10) unsigned DEFAULT NULL,
-  `maxCalls` int(10) unsigned NOT NULL DEFAULT '0',
+  `applicationServerId` int unsigned DEFAULT NULL,
+  `maxCalls` int unsigned NOT NULL DEFAULT '0',
   `postalAddress` varchar(255) NOT NULL,
   `postalCode` varchar(10) NOT NULL,
   `town` varchar(255) NOT NULL,
   `province` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
-  `countryId` int(10) unsigned NOT NULL,
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `mediaRelaySetsId` int(10) unsigned DEFAULT NULL,
+  `countryId` int unsigned NOT NULL,
+  `languageId` int unsigned DEFAULT NULL,
+  `mediaRelaySetsId` int unsigned DEFAULT NULL,
   `ipFilter` tinyint(1) DEFAULT '1',
-  `onDemandRecord` smallint(6) DEFAULT '0',
+  `onDemandRecord` smallint DEFAULT '0',
   `onDemandRecordCode` varchar(3) DEFAULT NULL,
   `externallyExtraOpts` text,
-  `recordingsLimitMB` int(10) DEFAULT NULL,
+  `recordingsLimitMB` int DEFAULT NULL,
   `recordingsLimitEmail` varchar(250) DEFAULT NULL,
-  `outgoingDDIId` int(10) unsigned DEFAULT NULL,
-  `outgoingDDIRuleId` int(10) unsigned DEFAULT NULL,
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
-  `vmNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `faxNotificationTemplateId` int(10) unsigned DEFAULT NULL,
+  `outgoingDDIId` int unsigned DEFAULT NULL,
+  `outgoingDDIRuleId` int unsigned DEFAULT NULL,
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
+  `vmNotificationTemplateId` int unsigned DEFAULT NULL,
+  `faxNotificationTemplateId` int unsigned DEFAULT NULL,
   `billingMethod` varchar(25) NOT NULL DEFAULT 'postpaid' COMMENT '[enum:postpaid|prepaid|pseudoprepaid]',
   `balance` decimal(10,4) DEFAULT '0.0000',
-  `invoiceNotificationTemplateId` int(10) unsigned DEFAULT NULL,
+  `invoiceNotificationTemplateId` int unsigned DEFAULT NULL,
   `showInvoices` tinyint(1) DEFAULT '0',
-  `callCsvNotificationTemplateId` int(10) unsigned DEFAULT NULL,
-  `currencyId` int(10) unsigned DEFAULT NULL,
-  `maxDailyUsage` int(10) unsigned NOT NULL DEFAULT '1000000',
+  `callCsvNotificationTemplateId` int unsigned DEFAULT NULL,
+  `currencyId` int unsigned DEFAULT NULL,
+  `maxDailyUsage` int unsigned NOT NULL DEFAULT '1000000',
   `allowRecordingRemoval` tinyint(1) NOT NULL DEFAULT '1',
   `currentDayUsage` decimal(10,4) DEFAULT '0.0000' COMMENT '(DC2Type:decimal)',
   `maxDailyUsageEmail` varchar(100) DEFAULT NULL,
-  `maxDailyUsageNotificationTemplateId` int(10) unsigned DEFAULT NULL,
+  `maxDailyUsageNotificationTemplateId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `company_name_brand` (`name`,`brandId`),
   UNIQUE KEY `domain_unique` (`domain_users`),
@@ -1001,7 +1010,7 @@ CREATE TABLE `Companies` (
   CONSTRAINT `FK_B52899E559D278` FOREIGN KEY (`faxNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B52899E81EFEBD` FOREIGN KEY (`maxDailyUsageNotificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_B52899FBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1020,17 +1029,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CompaniesRelCodecs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CompaniesRelCodecs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
-  `codecId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
+  `codecId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_BF72F1B22480E723` (`companyId`),
   KEY `IDX_BF72F1B29F2FC641` (`codecId`),
   CONSTRAINT `FK_BF72F1B22480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_BF72F1B29F2FC641` FOREIGN KEY (`codecId`) REFERENCES `Codecs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1048,17 +1057,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CompaniesRelGeoIPCountries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CompaniesRelGeoIPCountries` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
-  `countryId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
+  `countryId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_4A16E7792480E723` (`companyId`),
   KEY `IDX_4A16E779FBA2A6B4` (`countryId`),
   CONSTRAINT `FK_4A16E7792480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_4A16E779FBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1076,17 +1085,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CompaniesRelRoutingTags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CompaniesRelRoutingTags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
-  `routingTagId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
+  `routingTagId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1CE5AE3C2480E723` (`companyId`),
   KEY `IDX_1CE5AE3CA48EA1F0` (`routingTagId`),
   CONSTRAINT `FK_1CE5AE3C2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_1CE5AE3CA48EA1F0` FOREIGN KEY (`routingTagId`) REFERENCES `RoutingTags` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1104,18 +1113,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `CompanyServices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CompanyServices` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `serviceId` int(10) unsigned NOT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `serviceId` int unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   `code` varchar(3) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyService_company_service` (`companyId`,`serviceId`),
   KEY `IDX_569B460B89697FA8` (`serviceId`),
   CONSTRAINT `CompanyServices_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `CompanyServices_ibfk_2` FOREIGN KEY (`serviceId`) REFERENCES `Services` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1134,23 +1143,23 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConditionalRoutes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConditionalRoutes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
-  `locutionId` int(10) unsigned DEFAULT NULL,
+  `locutionId` int unsigned DEFAULT NULL,
   `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension]',
-  `huntGroupId` int(10) unsigned DEFAULT NULL,
-  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `huntGroupId` int unsigned DEFAULT NULL,
+  `voiceMailUserId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   `numberValue` varchar(25) DEFAULT NULL,
   `friendValue` varchar(25) DEFAULT NULL,
-  `queueId` int(10) unsigned DEFAULT NULL,
-  `conferenceRoomId` int(10) unsigned DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `ivrId` int(10) unsigned DEFAULT NULL,
+  `queueId` int unsigned DEFAULT NULL,
+  `conferenceRoomId` int unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `ivrId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_AFB65F0D2480E723` (`companyId`),
   KEY `IDX_AFB65F0D54690B0` (`locutionId`),
@@ -1172,7 +1181,7 @@ CREATE TABLE `ConditionalRoutes` (
   CONSTRAINT `FK_AFB65F0D2045F052` FOREIGN KEY (`ivrId`) REFERENCES `IVRs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_AFB65F0DAF230FFD` FOREIGN KEY (`voiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_AFB65F0DD7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1190,23 +1199,23 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConditionalRoutesConditions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConditionalRoutesConditions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `conditionalRouteId` int(10) unsigned NOT NULL,
-  `priority` smallint(6) NOT NULL DEFAULT '1',
-  `locutionId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `conditionalRouteId` int unsigned NOT NULL,
+  `priority` smallint NOT NULL DEFAULT '1',
+  `locutionId` int unsigned DEFAULT NULL,
   `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension]',
-  `huntGroupId` int(10) unsigned DEFAULT NULL,
-  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `huntGroupId` int unsigned DEFAULT NULL,
+  `voiceMailUserId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   `numberValue` varchar(25) DEFAULT NULL,
   `friendValue` varchar(25) DEFAULT NULL,
-  `queueId` int(10) unsigned DEFAULT NULL,
-  `conferenceRoomId` int(10) unsigned DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `ivrId` int(10) unsigned DEFAULT NULL,
+  `queueId` int unsigned DEFAULT NULL,
+  `conferenceRoomId` int unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `ivrId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `conditionalRouteId` (`conditionalRouteId`,`priority`),
   KEY `IDX_425473C954690B0` (`locutionId`),
@@ -1228,7 +1237,7 @@ CREATE TABLE `ConditionalRoutesConditions` (
   CONSTRAINT `FK_425473C92045F052` FOREIGN KEY (`ivrId`) REFERENCES `IVRs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_425473C9AF230FFD` FOREIGN KEY (`voiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_425473C9D7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1246,17 +1255,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConditionalRoutesConditionsRelCalendars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConditionalRoutesConditionsRelCalendars` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `conditionId` int(10) unsigned NOT NULL,
-  `calendarId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `conditionId` int unsigned NOT NULL,
+  `calendarId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_4BBC13BA128AE9F0` (`conditionId`),
   KEY `IDX_4BBC13BA2D4F56A6` (`calendarId`),
   CONSTRAINT `ConditionalRoutesConditionsRelCalendars_ibfk_1` FOREIGN KEY (`conditionId`) REFERENCES `ConditionalRoutesConditions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ConditionalRoutesConditionsRelCalendars_ibfk_2` FOREIGN KEY (`calendarId`) REFERENCES `Calendars` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1274,17 +1283,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConditionalRoutesConditionsRelMatchLists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConditionalRoutesConditionsRelMatchLists` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `conditionId` int(10) unsigned NOT NULL,
-  `matchListId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `conditionId` int unsigned NOT NULL,
+  `matchListId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_4E69555A128AE9F0` (`conditionId`),
   KEY `IDX_4E69555A283E7346` (`matchListId`),
   CONSTRAINT `ConditionalRoutesConditionsRelMatchLists_ibfk_1` FOREIGN KEY (`conditionId`) REFERENCES `ConditionalRoutesConditions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ConditionalRoutesConditionsRelMatchLists_ibfk_2` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1302,17 +1311,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConditionalRoutesConditionsRelRouteLocks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConditionalRoutesConditionsRelRouteLocks` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `conditionId` int(10) unsigned NOT NULL,
-  `routeLockId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `conditionId` int unsigned NOT NULL,
+  `routeLockId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_7654179F128AE9F0` (`conditionId`),
   KEY `IDX_7654179FC308783B` (`routeLockId`),
   CONSTRAINT `FK_7654179F128AE9F0` FOREIGN KEY (`conditionId`) REFERENCES `ConditionalRoutesConditions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_7654179FC308783B` FOREIGN KEY (`routeLockId`) REFERENCES `RouteLocks` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1330,17 +1339,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConditionalRoutesConditionsRelSchedules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConditionalRoutesConditionsRelSchedules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `conditionId` int(10) unsigned NOT NULL,
-  `scheduleId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `conditionId` int unsigned NOT NULL,
+  `scheduleId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_FE584D3B128AE9F0` (`conditionId`),
   KEY `IDX_FE584D3BB745014E` (`scheduleId`),
   CONSTRAINT `ConditionalRoutesConditionsRelSchedules_ibfk_1` FOREIGN KEY (`conditionId`) REFERENCES `ConditionalRoutesConditions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ConditionalRoutesConditionsRelSchedules_ibfk_2` FOREIGN KEY (`scheduleId`) REFERENCES `Schedules` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1358,18 +1367,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ConferenceRooms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ConferenceRooms` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `pinProtected` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `pinProtected` tinyint unsigned NOT NULL DEFAULT '0',
   `pinCode` varchar(6) DEFAULT NULL,
-  `maxMembers` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `maxMembers` smallint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ConferenceRoomsUniqueCompanyname` (`companyId`,`name`),
   CONSTRAINT `ConferenceRooms_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1387,9 +1396,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Countries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Countries` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(100) NOT NULL DEFAULT '',
   `name_en` varchar(100) DEFAULT NULL,
   `name_es` varchar(100) DEFAULT NULL,
@@ -1402,7 +1411,7 @@ CREATE TABLE `Countries` (
   `countryCode` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `languageCode` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1421,9 +1430,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Currencies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Currencies` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(10) NOT NULL,
   `symbol` varchar(5) NOT NULL,
   `name_en` varchar(25) NOT NULL DEFAULT '',
@@ -1432,7 +1441,7 @@ CREATE TABLE `Currencies` (
   `name_it` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `currencyIden` (`iden`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1451,16 +1460,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `DDIProviderAddresses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DDIProviderAddresses` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ddiProviderId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `ip` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ddiProviderId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_FEDB46FE53615680` (`ddiProviderId`),
   CONSTRAINT `FK_FEDB46FE53615680` FOREIGN KEY (`ddiProviderId`) REFERENCES `DDIProviders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1478,24 +1487,24 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `DDIProviderRegistrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DDIProviderRegistrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `domain` varchar(190) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `realm` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `authUsername` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `authPassword` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `authProxy` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `expires` int(11) NOT NULL DEFAULT '0',
-  `multiDdi` tinyint(1) unsigned DEFAULT '0',
-  `contactUsername` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `ddiProviderId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `domain` varchar(190) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `realm` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `authUsername` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `authPassword` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `authProxy` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `expires` int NOT NULL DEFAULT '0',
+  `multiDdi` tinyint unsigned DEFAULT '0',
+  `contactUsername` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `ddiProviderId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ddiProviderRegistration_username_domain` (`username`,`domain`),
   KEY `IDX_B2E9E33B53615680` (`ddiProviderId`),
   CONSTRAINT `FK_BBD03C6953615680` FOREIGN KEY (`ddiProviderId`) REFERENCES `DDIProviders` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1513,16 +1522,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `DDIProviders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DDIProviders` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `externallyRated` tinyint(1) unsigned DEFAULT '0',
-  `brandId` int(10) unsigned NOT NULL,
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
-  `proxyTrunkId` int(10) unsigned DEFAULT NULL,
-  `mediaRelaySetsId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `externallyRated` tinyint unsigned DEFAULT '0',
+  `brandId` int unsigned NOT NULL,
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
+  `proxyTrunkId` int unsigned DEFAULT NULL,
+  `mediaRelaySetsId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ddiProvider_nameBrand` (`name`,`brandId`),
   KEY `IDX_CA534EFD9CBEC244` (`brandId`),
@@ -1533,7 +1542,7 @@ CREATE TABLE `DDIProviders` (
   CONSTRAINT `FK_CA534EFD7504E30F` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_CA534EFD9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_CA534EFDC8555117` FOREIGN KEY (`mediaRelaySetsId`) REFERENCES `MediaRelaySets` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1551,31 +1560,31 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `DDIs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DDIs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   `DDI` varchar(25) NOT NULL,
   `DDIE164` varchar(25) DEFAULT NULL,
-  `externalCallFilterId` int(10) unsigned DEFAULT NULL,
+  `externalCallFilterId` int unsigned DEFAULT NULL,
   `recordCalls` varchar(25) NOT NULL DEFAULT 'none' COMMENT '[enum:none|all|inbound|outbound]',
   `displayName` varchar(50) DEFAULT NULL,
   `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail]',
-  `userId` int(10) unsigned DEFAULT NULL,
-  `huntGroupId` int(10) unsigned DEFAULT NULL,
-  `faxId` int(10) unsigned DEFAULT NULL,
-  `conferenceRoomId` int(10) unsigned DEFAULT NULL,
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
-  `ddiProviderId` int(10) unsigned DEFAULT NULL,
-  `countryId` int(10) unsigned DEFAULT NULL,
-  `billInboundCalls` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `userId` int unsigned DEFAULT NULL,
+  `huntGroupId` int unsigned DEFAULT NULL,
+  `faxId` int unsigned DEFAULT NULL,
+  `conferenceRoomId` int unsigned DEFAULT NULL,
+  `residentialDeviceId` int unsigned DEFAULT NULL,
+  `ddiProviderId` int unsigned DEFAULT NULL,
+  `countryId` int unsigned DEFAULT NULL,
+  `billInboundCalls` tinyint unsigned NOT NULL DEFAULT '0',
   `friendValue` varchar(25) DEFAULT NULL,
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `queueId` int(10) unsigned DEFAULT NULL,
-  `conditionalRouteId` int(10) unsigned DEFAULT NULL,
-  `ivrId` int(10) unsigned DEFAULT NULL,
-  `retailAccountId` int(10) unsigned DEFAULT NULL,
+  `languageId` int unsigned DEFAULT NULL,
+  `queueId` int unsigned DEFAULT NULL,
+  `conditionalRouteId` int unsigned DEFAULT NULL,
+  `ivrId` int unsigned DEFAULT NULL,
+  `retailAccountId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `DDIcountry` (`DDI`,`countryId`),
   KEY `IDX_AA16E1A02480E723` (`companyId`),
@@ -1609,7 +1618,7 @@ CREATE TABLE `DDIs` (
   CONSTRAINT `FK_AA16E1A05EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_AA16E1A08B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_AA16E1A0FBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1627,32 +1636,32 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `DestinationRateGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DestinationRateGroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `status` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:waiting|inProgress|imported|error]',
-  `name_en` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `name_es` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ca` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `name_it` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description_es` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description_ca` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description_it` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `fileFileSize` int(10) unsigned DEFAULT NULL COMMENT '[FSO]',
-  `fileMimeType` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fileBaseName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fileImporterArguments` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
-  `brandId` int(10) unsigned NOT NULL,
-  `currencyId` int(10) unsigned DEFAULT NULL,
-  `deductibleConnectionFee` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `lastExecutionError` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `status` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '[enum:waiting|inProgress|imported|error]',
+  `name_en` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_es` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_ca` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_it` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description_es` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description_ca` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description_it` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `fileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO]',
+  `fileMimeType` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fileBaseName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fileImporterArguments` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '(DC2Type:json_array)',
+  `brandId` int unsigned NOT NULL,
+  `currencyId` int unsigned DEFAULT NULL,
+  `deductibleConnectionFee` tinyint unsigned NOT NULL DEFAULT '0',
+  `lastExecutionError` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_2930FE169CBEC244` (`brandId`),
   KEY `IDX_2930FE1691000B8A` (`currencyId`),
   CONSTRAINT `FK_2930FE1691000B8A` FOREIGN KEY (`currencyId`) REFERENCES `Currencies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_2930FE169CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1670,21 +1679,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `DestinationRates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `DestinationRates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `destinationRateGroupId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `destinationRateGroupId` int unsigned NOT NULL,
   `rate` decimal(10,4) NOT NULL,
   `connectFee` decimal(10,4) NOT NULL,
   `rateIncrement` varchar(16) NOT NULL,
   `groupIntervalStart` varchar(16) NOT NULL DEFAULT '0s',
-  `destinationId` int(10) unsigned NOT NULL,
+  `destinationId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `destinationRate_destination` (`destinationRateGroupId`,`destinationId`),
   KEY `IDX_6CAE066FBF3434FC` (`destinationId`),
   CONSTRAINT `FK_6CAE066FBF3434FC` FOREIGN KEY (`destinationId`) REFERENCES `Destinations` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_6CAE066FC11683D9` FOREIGN KEY (`destinationRateGroupId`) REFERENCES `DestinationRateGroups` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1702,20 +1711,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Destinations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Destinations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `prefix` varchar(24) NOT NULL,
   `name_en` varchar(100) DEFAULT NULL,
   `name_es` varchar(100) DEFAULT NULL,
   `name_ca` varchar(100) DEFAULT NULL,
   `name_it` varchar(100) DEFAULT NULL,
-  `brandId` int(10) unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `destination_prefix_brand` (`prefix`,`brandId`),
   KEY `IDX_3502983B9CBEC244` (`brandId`),
   CONSTRAINT `FK_3502983B9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1733,15 +1742,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Domains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Domains` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `domain` varchar(190) NOT NULL,
   `pointsTo` enum('proxyusers','proxytrunks') NOT NULL DEFAULT 'proxyusers',
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `domain` (`domain`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1760,21 +1769,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Extensions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Extensions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `number` varchar(10) NOT NULL,
   `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional]',
-  `huntGroupId` int(10) unsigned DEFAULT NULL,
-  `conferenceRoomId` int(10) unsigned DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `huntGroupId` int unsigned DEFAULT NULL,
+  `conferenceRoomId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   `numberValue` varchar(25) DEFAULT NULL,
   `friendValue` varchar(25) DEFAULT NULL,
-  `queueId` int(10) unsigned DEFAULT NULL,
-  `conditionalRouteId` int(10) unsigned DEFAULT NULL,
-  `ivrId` int(10) unsigned DEFAULT NULL,
+  `queueId` int unsigned DEFAULT NULL,
+  `conditionalRouteId` int unsigned DEFAULT NULL,
+  `ivrId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `extension_company_number` (`companyId`,`number`),
   KEY `IDX_9AAD9F79921B2343` (`huntGroupId`),
@@ -1792,7 +1801,7 @@ CREATE TABLE `Extensions` (
   CONSTRAINT `FK_9AAD9F792045F052` FOREIGN KEY (`ivrId`) REFERENCES `IVRs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_9AAD9F7923E42D0D` FOREIGN KEY (`conferenceRoomId`) REFERENCES `ConferenceRooms` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_9AAD9F79D7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1811,17 +1820,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ExternalCallFilterBlackLists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ExternalCallFilterBlackLists` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `filterId` int(10) unsigned NOT NULL,
-  `matchListId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `filterId` int unsigned NOT NULL,
+  `matchListId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3088282B2E051C4F` (`filterId`),
   KEY `IDX_3088282B283E7346` (`matchListId`),
   CONSTRAINT `ExternalCallFilterBlackLists_ibfk_1` FOREIGN KEY (`filterId`) REFERENCES `ExternalCallFilters` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ExternalCallFilterBlackLists_ibfk_2` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1839,17 +1848,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ExternalCallFilterRelCalendars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ExternalCallFilterRelCalendars` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `filterId` int(10) unsigned NOT NULL,
-  `calendarId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `filterId` int unsigned NOT NULL,
+  `calendarId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_283700E12E051C4F` (`filterId`),
   KEY `IDX_283700E12D4F56A6` (`calendarId`),
   CONSTRAINT `ExternalCallFilterRelCalendars_ibfk_1` FOREIGN KEY (`filterId`) REFERENCES `ExternalCallFilters` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ExternalCallFilterRelCalendars_ibfk_2` FOREIGN KEY (`calendarId`) REFERENCES `Calendars` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1867,17 +1876,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ExternalCallFilterRelSchedules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ExternalCallFilterRelSchedules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `filterId` int(10) unsigned NOT NULL,
-  `scheduleId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `filterId` int unsigned NOT NULL,
+  `scheduleId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9DD35E602E051C4F` (`filterId`),
   KEY `IDX_9DD35E60B745014E` (`scheduleId`),
   CONSTRAINT `ExternalCallFilterRelSchedules_ibfk_1` FOREIGN KEY (`filterId`) REFERENCES `ExternalCallFilters` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ExternalCallFilterRelSchedules_ibfk_2` FOREIGN KEY (`scheduleId`) REFERENCES `Schedules` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1895,17 +1904,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ExternalCallFilterWhiteLists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ExternalCallFilterWhiteLists` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `filterId` int(10) unsigned NOT NULL,
-  `matchListId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `filterId` int unsigned NOT NULL,
+  `matchListId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E775EB0E2E051C4F` (`filterId`),
   KEY `IDX_E775EB0E283E7346` (`matchListId`),
   CONSTRAINT `ExternalCallFilterWhiteLists_ibfk_1` FOREIGN KEY (`filterId`) REFERENCES `ExternalCallFilters` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ExternalCallFilterWhiteLists_ibfk_2` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1923,24 +1932,24 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ExternalCallFilters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ExternalCallFilters` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
-  `holidayLocutionId` int(10) unsigned DEFAULT NULL,
-  `outOfScheduleLocutionId` int(10) unsigned DEFAULT NULL,
+  `welcomeLocutionId` int unsigned DEFAULT NULL,
+  `holidayLocutionId` int unsigned DEFAULT NULL,
+  `outOfScheduleLocutionId` int unsigned DEFAULT NULL,
   `holidayTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `holidayNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `holidayNumberCountryId` int unsigned DEFAULT NULL,
   `holidayNumberValue` varchar(25) DEFAULT NULL,
-  `holidayExtensionId` int(10) unsigned DEFAULT NULL,
-  `holidayVoiceMailUserId` int(10) unsigned DEFAULT NULL,
+  `holidayExtensionId` int unsigned DEFAULT NULL,
+  `holidayVoiceMailUserId` int unsigned DEFAULT NULL,
   `outOfScheduleTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `outOfScheduleNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `outOfScheduleNumberCountryId` int unsigned DEFAULT NULL,
   `outOfScheduleNumberValue` varchar(25) DEFAULT NULL,
-  `outOfScheduleExtensionId` int(10) unsigned DEFAULT NULL,
-  `outOfScheduleVoiceMailUserId` int(10) unsigned DEFAULT NULL,
+  `outOfScheduleExtensionId` int unsigned DEFAULT NULL,
+  `outOfScheduleVoiceMailUserId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `externalCallFilter_name_company` (`name`,`companyId`),
   KEY `IDX_528CEED92480E723` (`companyId`),
@@ -1963,7 +1972,7 @@ CREATE TABLE `ExternalCallFilters` (
   CONSTRAINT `FK_528CEED99FB29831` FOREIGN KEY (`holidayLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_528CEED9A7D09CD9` FOREIGN KEY (`holidayNumberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_528CEED9AEC84907` FOREIGN KEY (`outOfScheduleNumberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1981,20 +1990,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Faxes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Faxes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `sendByEmail` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `outgoingDDIId` int(10) unsigned DEFAULT NULL,
+  `sendByEmail` tinyint unsigned NOT NULL DEFAULT '1',
+  `outgoingDDIId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Fax_companyId_name` (`companyId`,`name`),
   KEY `IDX_196F4C1E508D43B5` (`outgoingDDIId`),
   CONSTRAINT `Faxes_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Faxes_ibfk_2` FOREIGN KEY (`outgoingDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2012,26 +2021,26 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FaxesInOut`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FaxesInOut` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `calldate` datetime NOT NULL,
-  `faxId` int(10) unsigned NOT NULL,
+  `faxId` int unsigned NOT NULL,
   `src` varchar(128) DEFAULT NULL,
-  `dstCountryId` int(10) unsigned DEFAULT NULL,
+  `dstCountryId` int unsigned DEFAULT NULL,
   `dst` varchar(128) DEFAULT NULL,
   `type` varchar(20) DEFAULT 'Out' COMMENT '[enum:In|Out]',
   `pages` varchar(64) DEFAULT NULL,
   `status` enum('error','pending','inprogress','completed') DEFAULT NULL,
-  `fileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
+  `fileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO]',
   `fileMimeType` varchar(80) DEFAULT NULL,
   `fileBaseName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E047541D624C8D73` (`faxId`),
   KEY `IDX_E047541D57B9B0B1` (`dstCountryId`),
-  CONSTRAINT `FK_E047541D57B9B0B1` FOREIGN KEY (`dstCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `FaxesInOut_ibfk_2` FOREIGN KEY (`faxId`) REFERENCES `Faxes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+  CONSTRAINT `FaxesInOut_ibfk_2` FOREIGN KEY (`faxId`) REFERENCES `Faxes` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_E047541D57B9B0B1` FOREIGN KEY (`dstCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2049,9 +2058,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Features`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Features` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name_en` varchar(50) NOT NULL DEFAULT '',
   `name_es` varchar(50) NOT NULL DEFAULT '',
@@ -2059,7 +2068,7 @@ CREATE TABLE `Features` (
   `name_it` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `featureIden` (`iden`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2078,17 +2087,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FeaturesRelBrands`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FeaturesRelBrands` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
-  `featureId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
+  `featureId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `featureRelBrand_feature_brand` (`featureId`,`brandId`),
   KEY `IDX_6BA104879CBEC244` (`brandId`),
   CONSTRAINT `FeaturesRelBrands_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FeaturesRelBrands_ibfk_2` FOREIGN KEY (`featureId`) REFERENCES `Features` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2107,17 +2116,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FeaturesRelCompanies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FeaturesRelCompanies` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
-  `featureId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
+  `featureId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `featureRelCompany_feature_brand` (`featureId`,`companyId`),
   KEY `IDX_2C2CF4D92480E723` (`companyId`),
   CONSTRAINT `FeaturesRelCompanies_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FeaturesRelCompanies_ibfk_2` FOREIGN KEY (`featureId`) REFERENCES `Features` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2136,17 +2145,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FixedCosts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FixedCosts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text,
   `cost` decimal(10,4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `descBrand` (`brandId`,`name`),
   CONSTRAINT `FixedCosts_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2164,18 +2173,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FixedCostsRelInvoiceSchedulers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FixedCostsRelInvoiceSchedulers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `quantity` int(10) unsigned DEFAULT NULL,
-  `fixedCostId` int(10) unsigned NOT NULL,
-  `invoiceSchedulerId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `quantity` int unsigned DEFAULT NULL,
+  `fixedCostId` int unsigned NOT NULL,
+  `invoiceSchedulerId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `FixedCostsRelInvoiceScheduler_invoiceScheduler_fixedCost` (`invoiceSchedulerId`,`fixedCostId`),
   KEY `IDX_D9D0952B81256364` (`fixedCostId`),
   CONSTRAINT `FK_D9D0952B1D113CF5` FOREIGN KEY (`invoiceSchedulerId`) REFERENCES `InvoiceSchedulers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_D9D0952B81256364` FOREIGN KEY (`fixedCostId`) REFERENCES `FixedCosts` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2193,18 +2202,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FixedCostsRelInvoices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FixedCostsRelInvoices` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fixedCostId` int(10) unsigned NOT NULL,
-  `invoiceId` int(10) unsigned NOT NULL,
-  `quantity` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `fixedCostId` int unsigned NOT NULL,
+  `invoiceId` int unsigned NOT NULL,
+  `quantity` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1374A9A581256364` (`fixedCostId`),
   KEY `IDX_1374A9A53D7BDC51` (`invoiceId`),
   CONSTRAINT `FixedCostsRelInvoices_ibfk_2` FOREIGN KEY (`fixedCostId`) REFERENCES `FixedCosts` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FixedCostsRelInvoices_ibfk_3` FOREIGN KEY (`invoiceId`) REFERENCES `Invoices` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2222,20 +2231,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Friends`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Friends` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(65) NOT NULL,
-  `domainId` int(10) unsigned DEFAULT NULL,
+  `domainId` int unsigned DEFAULT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
   `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
-  `port` smallint(5) unsigned DEFAULT NULL,
+  `port` smallint unsigned DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
-  `callACLId` int(10) unsigned DEFAULT NULL,
-  `outgoingDDIId` int(10) unsigned DEFAULT NULL,
-  `priority` smallint(6) NOT NULL DEFAULT '1',
+  `callACLId` int unsigned DEFAULT NULL,
+  `outgoingDDIId` int unsigned DEFAULT NULL,
+  `priority` smallint NOT NULL DEFAULT '1',
   `disallow` varchar(200) NOT NULL DEFAULT 'all',
   `allow` varchar(200) NOT NULL DEFAULT 'alaw',
   `direct_media_method` enum('invite','update') NOT NULL DEFAULT 'update' COMMENT '[enum:invite|update]',
@@ -2243,15 +2252,15 @@ CREATE TABLE `Friends` (
   `update_callerid` enum('yes','no') NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   `from_domain` varchar(190) DEFAULT NULL,
   `directConnectivity` varchar(20) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no|intervpbx]',
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `languageId` int unsigned DEFAULT NULL,
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
   `ddiIn` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
-  `interCompanyId` int(10) unsigned DEFAULT NULL,
+  `interCompanyId` int unsigned DEFAULT NULL,
   `t38Passthrough` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
   `alwaysApplyTransformations` tinyint(1) NOT NULL DEFAULT '0',
   `rtpEncryption` tinyint(1) NOT NULL DEFAULT '0',
   `from_user` varchar(190) DEFAULT NULL,
-  `multiContact` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `multiContact` tinyint unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `companyPrio` (`companyId`,`priority`),
   UNIQUE KEY `name_domain` (`name`,`domainId`),
@@ -2268,7 +2277,7 @@ CREATE TABLE `Friends` (
   CONSTRAINT `Friends_ibfk_3` FOREIGN KEY (`callACLId`) REFERENCES `CallACL` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Friends_ibfk_4` FOREIGN KEY (`outgoingDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Friends_ibfk_5` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2286,16 +2295,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FriendsPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `FriendsPatterns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `friendId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `friendId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `regExp` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_933D96E5893BA339` (`friendId`),
   CONSTRAINT `FriendsPatterns_ibfk_1` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2313,21 +2322,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `HolidayDates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `HolidayDates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `calendarId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `calendarId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `eventDate` date NOT NULL,
-  `locutionId` int(10) unsigned DEFAULT NULL,
+  `locutionId` int unsigned DEFAULT NULL,
   `wholeDayEvent` tinyint(1) NOT NULL DEFAULT '1',
   `timeIn` time DEFAULT NULL,
   `timeOut` time DEFAULT NULL,
   `routeType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
   `numberValue` varchar(25) DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `voiceMailUserId` int unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_4C5712802D4F56A6` (`calendarId`),
   KEY `IDX_4C57128054690B0` (`locutionId`),
@@ -2339,7 +2348,7 @@ CREATE TABLE `HolidayDates` (
   CONSTRAINT `FK_4C571280D7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `HolidayDates_ibfk_1` FOREIGN KEY (`calendarId`) REFERENCES `Calendars` (`id`) ON DELETE CASCADE,
   CONSTRAINT `HolidayDates_ibfk_2` FOREIGN KEY (`locutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2357,22 +2366,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `HuntGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `HuntGroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(500) NOT NULL DEFAULT '',
-  `companyId` int(10) unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   `strategy` varchar(25) NOT NULL COMMENT '[enum:ringAll|linear|roundRobin|random]',
-  `ringAllTimeout` smallint(6) DEFAULT NULL,
-  `noAnswerLocutionId` int(10) unsigned DEFAULT NULL,
+  `ringAllTimeout` smallint DEFAULT NULL,
+  `noAnswerLocutionId` int unsigned DEFAULT NULL,
   `noAnswerTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `noAnswerNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `noAnswerNumberCountryId` int unsigned DEFAULT NULL,
   `noAnswerNumberValue` varchar(25) DEFAULT NULL,
-  `noAnswerExtensionId` int(10) unsigned DEFAULT NULL,
-  `noAnswerVoiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `preventMissedCalls` int(10) unsigned NOT NULL DEFAULT '1',
-  `allowCallForwards` int(10) unsigned NOT NULL DEFAULT '0',
+  `noAnswerExtensionId` int unsigned DEFAULT NULL,
+  `noAnswerVoiceMailUserId` int unsigned DEFAULT NULL,
+  `preventMissedCalls` int unsigned NOT NULL DEFAULT '1',
+  `allowCallForwards` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `huntGroup_name_company` (`name`,`companyId`),
   KEY `IDX_4F9672EC2480E723` (`companyId`),
@@ -2385,7 +2394,7 @@ CREATE TABLE `HuntGroups` (
   CONSTRAINT `HuntGroups_ibfk_2` FOREIGN KEY (`noAnswerLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `HuntGroups_ibfk_3` FOREIGN KEY (`noAnswerExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `HuntGroups_ibfk_4` FOREIGN KEY (`noAnswerVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2403,16 +2412,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `HuntGroupsRelUsers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `HuntGroupsRelUsers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `huntGroupId` int(10) unsigned NOT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `timeoutTime` smallint(6) DEFAULT NULL,
-  `priority` smallint(6) DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `huntGroupId` int unsigned NOT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `timeoutTime` smallint DEFAULT NULL,
+  `priority` smallint DEFAULT NULL,
   `routeType` varchar(25) NOT NULL COMMENT '[enum:number|user]',
   `numberValue` varchar(25) DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `userHuntgroup` (`userId`,`huntGroupId`),
   UNIQUE KEY `prioHuntgroup` (`priority`,`huntGroupId`),
@@ -2421,7 +2430,7 @@ CREATE TABLE `HuntGroupsRelUsers` (
   CONSTRAINT `FK_79ED31ABD7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `HuntGroupsRelUsers_ibfk_1` FOREIGN KEY (`huntGroupId`) REFERENCES `HuntGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `HuntGroupsRelUsers_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2439,18 +2448,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `IVREntries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `IVREntries` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ivrId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `ivrId` int unsigned NOT NULL,
   `entry` varchar(40) NOT NULL,
-  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
+  `welcomeLocutionId` int unsigned DEFAULT NULL,
   `routeType` varchar(25) NOT NULL COMMENT '[enum:number|extension|voicemail|conditional]',
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   `numberValue` varchar(25) DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `voiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `conditionalRouteId` int(10) unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `voiceMailUserId` int unsigned DEFAULT NULL,
+  `conditionalRouteId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UniqueIVRCutomIdAndEntry` (`ivrId`,`entry`),
   KEY `IDX_E847DD7C2ECAF600` (`welcomeLocutionId`),
@@ -2464,7 +2473,7 @@ CREATE TABLE `IVREntries` (
   CONSTRAINT `FK_E847DD7C9E2CE667` FOREIGN KEY (`conditionalRouteId`) REFERENCES `ConditionalRoutes` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E847DD7CAF230FFD` FOREIGN KEY (`voiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E847DD7CD7819488` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2482,17 +2491,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `IVRExcludedExtensions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `IVRExcludedExtensions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ivrId` int(10) unsigned NOT NULL,
-  `extensionId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `ivrId` int unsigned NOT NULL,
+  `extensionId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniqueExtension` (`ivrId`,`extensionId`),
   KEY `IDX_36E264F212AB7F65` (`extensionId`),
   CONSTRAINT `FK_36E264F212AB7F65` FOREIGN KEY (`extensionId`) REFERENCES `Extensions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_36E264F22045F052` FOREIGN KEY (`ivrId`) REFERENCES `IVRs` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2510,28 +2519,28 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `IVRs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `IVRs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `timeout` smallint(5) unsigned NOT NULL,
-  `maxDigits` smallint(5) unsigned NOT NULL,
-  `welcomeLocutionId` int(10) unsigned DEFAULT NULL,
-  `successLocutionId` int(10) unsigned DEFAULT NULL,
-  `allowExtensions` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `noInputLocutionId` int(10) unsigned DEFAULT NULL,
+  `timeout` smallint unsigned NOT NULL,
+  `maxDigits` smallint unsigned NOT NULL,
+  `welcomeLocutionId` int unsigned DEFAULT NULL,
+  `successLocutionId` int unsigned DEFAULT NULL,
+  `allowExtensions` tinyint unsigned NOT NULL DEFAULT '0',
+  `noInputLocutionId` int unsigned DEFAULT NULL,
   `noInputRouteType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `noInputNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `noInputNumberCountryId` int unsigned DEFAULT NULL,
   `noInputNumberValue` varchar(25) DEFAULT NULL,
-  `noInputExtensionId` int(10) unsigned DEFAULT NULL,
-  `noInputVoiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `errorLocutionId` int(10) unsigned DEFAULT NULL,
+  `noInputExtensionId` int unsigned DEFAULT NULL,
+  `noInputVoiceMailUserId` int unsigned DEFAULT NULL,
+  `errorLocutionId` int unsigned DEFAULT NULL,
   `errorRouteType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `errorNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `errorNumberCountryId` int unsigned DEFAULT NULL,
   `errorNumberValue` varchar(25) DEFAULT NULL,
-  `errorExtensionId` int(10) unsigned DEFAULT NULL,
-  `errorVoiceMailUserId` int(10) unsigned DEFAULT NULL,
+  `errorExtensionId` int unsigned DEFAULT NULL,
+  `errorVoiceMailUserId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ivr_name_company` (`name`,`companyId`),
   KEY `IDX_EEE885F92ECAF600` (`welcomeLocutionId`),
@@ -2556,7 +2565,7 @@ CREATE TABLE `IVRs` (
   CONSTRAINT `FK_EEE885F9D60923A6` FOREIGN KEY (`errorVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_EEE885F9E59A53FA` FOREIGN KEY (`noInputExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_EEE885F9E671BAF3` FOREIGN KEY (`noInputNumberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2574,22 +2583,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `InvoiceNumberSequences`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `InvoiceNumberSequences` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `prefix` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `sequenceLength` smallint(5) unsigned NOT NULL,
-  `increment` smallint(5) unsigned NOT NULL,
-  `latestValue` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `iteration` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `version` int(11) NOT NULL DEFAULT '1',
-  `brandId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `prefix` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `sequenceLength` smallint unsigned NOT NULL,
+  `increment` smallint unsigned NOT NULL,
+  `latestValue` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
+  `iteration` smallint unsigned NOT NULL DEFAULT '0',
+  `version` int NOT NULL DEFAULT '1',
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `invoiceNumberSequence_name_brand` (`name`,`brandId`),
   KEY `IDX_A7624D1E9CBEC244` (`brandId`),
   CONSTRAINT `FK_A7624D1E9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2607,21 +2616,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `InvoiceSchedulers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `InvoiceSchedulers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `unit` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'month' COMMENT '[enum:week|month|year]',
-  `frequency` smallint(5) unsigned NOT NULL,
-  `email` varchar(140) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `unit` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'month' COMMENT '[enum:week|month|year]',
+  `frequency` smallint unsigned NOT NULL,
+  `email` varchar(140) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lastExecution` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
-  `brandId` int(10) unsigned NOT NULL,
-  `invoiceNumberSequenceId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned NOT NULL,
+  `invoiceNumberSequenceId` int unsigned DEFAULT NULL,
   `nextExecution` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
   `taxRate` decimal(10,3) DEFAULT NULL,
-  `invoiceTemplateId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned NOT NULL,
-  `lastExecutionError` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `invoiceTemplateId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned NOT NULL,
+  `lastExecutionError` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `invoiceScheduler_name_brand` (`name`,`brandId`),
   UNIQUE KEY `invoiceScheduler_company` (`companyId`),
@@ -2632,7 +2641,7 @@ CREATE TABLE `InvoiceSchedulers` (
   CONSTRAINT `FK_41E90A1A4539C703` FOREIGN KEY (`invoiceNumberSequenceId`) REFERENCES `InvoiceNumberSequences` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_41E90A1A9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_41E90A1AD07541BE` FOREIGN KEY (`invoiceTemplateId`) REFERENCES `InvoiceTemplates` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2650,20 +2659,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `InvoiceTemplates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `InvoiceTemplates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL,
   `description` varchar(300) DEFAULT NULL,
   `template` text NOT NULL,
   `templateHeader` text,
   `templateFooter` text,
-  `brandId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `invoiceTemplate_name_brand` (`name`,`brandId`),
   KEY `IDX_CB0E9B689CBEC244` (`brandId`),
   CONSTRAINT `InvoiceTemplates_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2682,9 +2691,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Invoices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Invoices` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `number` varchar(30) DEFAULT NULL,
   `inDate` datetime DEFAULT NULL,
   `outDate` datetime DEFAULT NULL,
@@ -2692,15 +2701,15 @@ CREATE TABLE `Invoices` (
   `taxRate` decimal(10,3) DEFAULT NULL,
   `totalWithTax` decimal(10,3) DEFAULT NULL,
   `status` varchar(25) DEFAULT NULL COMMENT '[enum:waiting|processing|created|error]',
-  `companyId` int(10) unsigned NOT NULL,
-  `brandId` int(10) unsigned NOT NULL,
-  `pdfFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
+  `companyId` int unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
+  `pdfFileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO]',
   `pdfFileMimeType` varchar(80) DEFAULT NULL,
   `pdfFileBaseName` varchar(255) DEFAULT NULL,
-  `invoiceTemplateId` int(10) unsigned DEFAULT NULL,
-  `invoiceNumberSequenceId` int(10) unsigned DEFAULT NULL,
+  `invoiceTemplateId` int unsigned DEFAULT NULL,
+  `invoiceNumberSequenceId` int unsigned DEFAULT NULL,
   `statusMsg` varchar(140) DEFAULT NULL,
-  `invoiceSchedulerId` int(10) unsigned DEFAULT NULL,
+  `invoiceSchedulerId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `invoice_number_brand` (`number`,`brandId`),
   KEY `IDX_93594DC39CBEC244` (`brandId`),
@@ -2713,7 +2722,7 @@ CREATE TABLE `Invoices` (
   CONSTRAINT `Invoices_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Invoices_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Invoices_ibfk_4` FOREIGN KEY (`invoiceTemplateId`) REFERENCES `InvoiceTemplates` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2731,9 +2740,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Languages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Languages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name_en` varchar(100) NOT NULL DEFAULT '',
   `name_es` varchar(100) NOT NULL DEFAULT '',
@@ -2741,7 +2750,7 @@ CREATE TABLE `Languages` (
   `name_it` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `languageIden` (`iden`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2760,16 +2769,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Locations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Locations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9517C8192480E723` (`companyId`),
   CONSTRAINT `FK_9517C8192480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2787,15 +2796,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Locutions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Locutions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
-  `originalFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
+  `originalFileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `originalFileMimeType` varchar(80) DEFAULT NULL,
   `originalFileBaseName` varchar(255) DEFAULT NULL,
-  `encodedFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
+  `encodedFileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `encodedFileMimeType` varchar(80) DEFAULT NULL,
   `encodedFileBaseName` varchar(255) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL COMMENT '[enum:pending|encoding|ready|error]',
@@ -2803,7 +2812,7 @@ CREATE TABLE `Locutions` (
   UNIQUE KEY `locution_name_company` (`name`,`companyId`),
   KEY `IDX_D5088942480E723` (`companyId`),
   CONSTRAINT `Locutions_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2821,21 +2830,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `MatchListPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `MatchListPatterns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `matchListId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `matchListId` int unsigned NOT NULL,
   `description` varchar(55) DEFAULT NULL,
   `type` varchar(10) NOT NULL COMMENT '[enum:number|regexp]',
   `regExp` varchar(255) DEFAULT NULL,
-  `numberCountryId` int(10) unsigned DEFAULT NULL,
+  `numberCountryId` int unsigned DEFAULT NULL,
   `numberValue` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1A6AA922283E7346` (`matchListId`),
   KEY `IDX_1A6AA922D7819488` (`numberCountryId`),
   CONSTRAINT `MatchListPatterns_ibfk_1` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE,
   CONSTRAINT `MatchListPatterns_ibfk_2` FOREIGN KEY (`numberCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2853,18 +2862,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `MatchLists`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `MatchLists` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `listName` (`brandId`,`companyId`,`name`),
   KEY `IDX_BAF072182480E723` (`companyId`),
   CONSTRAINT `FK_BAF072189CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `MatchList_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2882,20 +2891,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `MaxUsageNotifications`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `MaxUsageNotifications` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `toAddress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `toAddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `threshold` decimal(10,4) DEFAULT '0.0000' COMMENT '(DC2Type:decimal)',
   `lastSent` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `notificationTemplateId` int(10) unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `notificationTemplateId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_FBA0A3A62480E723` (`companyId`),
   KEY `IDX_FBA0A3A61333F77D` (`notificationTemplateId`),
   CONSTRAINT `FK_FBA0A3A61333F77D` FOREIGN KEY (`notificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_FBA0A3A62480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2913,14 +2922,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `MediaRelaySets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `MediaRelaySets` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL DEFAULT '0',
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mediaRelaySet_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2939,16 +2948,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `MusicOnHold`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `MusicOnHold` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
   `name` varchar(50) NOT NULL,
-  `originalFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
+  `originalFileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `originalFileMimeType` varchar(80) DEFAULT NULL,
   `originalFileBaseName` varchar(255) DEFAULT NULL,
-  `encodedFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension|storeInBaseFolder]',
+  `encodedFileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO:keepExtension|storeInBaseFolder]',
   `encodedFileMimeType` varchar(80) DEFAULT NULL,
   `encodedFileBaseName` varchar(255) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL COMMENT '[enum:pending|encoding|ready|error]',
@@ -2959,7 +2968,7 @@ CREATE TABLE `MusicOnHold` (
   KEY `IDX_9C5FB5909CBEC244` (`brandId`),
   CONSTRAINT `FK_9C5FB5909CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `MusicOnHold_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2977,17 +2986,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `NotificationTemplates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `NotificationTemplates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(25) COLLATE utf8_unicode_ci NOT NULL COMMENT '[enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage]',
-  `brandId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(55) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '[enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage]',
+  `brandId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `notificationTemplate_name_brand` (`name`,`brandId`),
   KEY `IDX_1C1A7309CBEC244` (`brandId`),
   CONSTRAINT `FK_1C1A7309CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3006,22 +3015,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `NotificationTemplatesContents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `NotificationTemplatesContents` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fromName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fromAddress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `body` text COLLATE utf8_unicode_ci NOT NULL,
-  `notificationTemplateId` int(10) unsigned NOT NULL,
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `bodyType` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'text/plain' COMMENT '[enum:text/plain|text/html]',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `fromName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fromAddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `body` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `notificationTemplateId` int unsigned NOT NULL,
+  `languageId` int unsigned DEFAULT NULL,
+  `bodyType` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'text/plain' COMMENT '[enum:text/plain|text/html]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `notificationTemplateContent_language_unique` (`notificationTemplateId`,`languageId`),
   KEY `IDX_AD99291D940D8C7E` (`languageId`),
   CONSTRAINT `FK_AD99291D1333F77D` FOREIGN KEY (`notificationTemplateId`) REFERENCES `NotificationTemplates` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_AD99291D940D8C7E` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3040,19 +3049,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `OutgoingDDIRules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `OutgoingDDIRules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `defaultAction` varchar(10) NOT NULL COMMENT '[enum:keep|force]',
-  `forcedDDIId` int(10) unsigned DEFAULT NULL,
+  `forcedDDIId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `outgoingDdiRule_company_name` (`companyId`,`name`),
   KEY `IDX_C4795A7CC85EF10` (`forcedDDIId`),
   CONSTRAINT `OutgoingDDIRules_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingDDIRules_ibfk_2` FOREIGN KEY (`forcedDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3070,14 +3079,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `OutgoingDDIRulesPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `OutgoingDDIRulesPatterns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `outgoingDDIRuleId` int(10) unsigned NOT NULL,
-  `matchListId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `outgoingDDIRuleId` int unsigned NOT NULL,
+  `matchListId` int unsigned DEFAULT NULL,
   `action` varchar(10) NOT NULL COMMENT '[enum:keep|force]',
-  `forcedDDIId` int(10) unsigned DEFAULT NULL,
-  `priority` smallint(6) NOT NULL DEFAULT '1',
+  `forcedDDIId` int unsigned DEFAULT NULL,
+  `priority` smallint NOT NULL DEFAULT '1',
   `type` varchar(20) NOT NULL COMMENT '[enum:prefix|destination]',
   `prefix` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -3087,7 +3096,7 @@ CREATE TABLE `OutgoingDDIRulesPatterns` (
   CONSTRAINT `OutgoingDDIRulesPatterns_ibfk_1` FOREIGN KEY (`outgoingDDIRuleId`) REFERENCES `OutgoingDDIRules` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingDDIRulesPatterns_ibfk_2` FOREIGN KEY (`matchListId`) REFERENCES `MatchLists` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingDDIRulesPatterns_ibfk_3` FOREIGN KEY (`forcedDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3105,24 +3114,24 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `OutgoingRouting`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `OutgoingRouting` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `type` enum('pattern','group','fax') DEFAULT 'group',
-  `routingPatternId` int(10) unsigned DEFAULT NULL,
-  `routingPatternGroupId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
-  `priority` smallint(5) unsigned NOT NULL,
-  `weight` int(10) unsigned NOT NULL DEFAULT '1',
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `brandId` int(10) unsigned NOT NULL,
-  `routingTagId` int(10) unsigned DEFAULT NULL,
+  `routingPatternId` int unsigned DEFAULT NULL,
+  `routingPatternGroupId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
+  `priority` smallint unsigned NOT NULL,
+  `weight` int unsigned NOT NULL DEFAULT '1',
+  `companyId` int unsigned DEFAULT NULL,
+  `brandId` int unsigned NOT NULL,
+  `routingTagId` int unsigned DEFAULT NULL,
   `routingMode` varchar(25) DEFAULT 'static' COMMENT '[enum:static|lcr|block]',
   `prefix` varchar(25) DEFAULT NULL,
-  `forceClid` tinyint(1) unsigned DEFAULT '0',
+  `forceClid` tinyint unsigned DEFAULT '0',
   `clid` varchar(25) DEFAULT NULL,
-  `clidCountryId` int(10) unsigned DEFAULT NULL,
-  `stopper` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `clidCountryId` int unsigned DEFAULT NULL,
+  `stopper` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_569314722480E723` (`companyId`),
   KEY `IDX_569314729CBEC244` (`brandId`),
@@ -3138,7 +3147,7 @@ CREATE TABLE `OutgoingRouting` (
   CONSTRAINT `OutgoingRouting_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingRouting_ibfk_6` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE,
   CONSTRAINT `OutgoingRouting_ibfk_7` FOREIGN KEY (`routingPatternGroupId`) REFERENCES `RoutingPatternGroups` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3156,17 +3165,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `OutgoingRoutingRelCarriers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `OutgoingRoutingRelCarriers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `outgoingRoutingId` int(10) unsigned NOT NULL,
-  `carrierId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `outgoingRoutingId` int unsigned NOT NULL,
+  `carrierId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `outgoingRoutingRelCarrier_carrier` (`outgoingRoutingId`,`carrierId`),
   KEY `IDX_BD8A311D6709B1C` (`carrierId`),
   CONSTRAINT `FK_BD8A311D3CDE892` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_BD8A311D6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3184,16 +3193,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `PickUpGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `PickUpGroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pickUpGroup_name_company` (`name`,`companyId`),
   KEY `IDX_3F7C24B82480E723` (`companyId`),
   CONSTRAINT `PickUpGroups_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3211,17 +3220,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `PickUpRelUsers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `PickUpRelUsers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pickUpGroupId` int(10) unsigned NOT NULL,
-  `userId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `pickUpGroupId` int unsigned NOT NULL,
+  `userId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_5EAA6699CB8F98DA` (`pickUpGroupId`),
   KEY `IDX_5EAA669964B64DCC` (`userId`),
   CONSTRAINT `PickUpRelUsers_ibfk_1` FOREIGN KEY (`pickUpGroupId`) REFERENCES `PickUpGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `PickUpRelUsers_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3239,14 +3248,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ProxyTrunks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ProxyTrunks` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `ip` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `proxyTrunk_ip` (`ip`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3265,17 +3274,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ProxyTrunksRelBrands`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ProxyTrunksRelBrands` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
-  `proxyTrunkId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
+  `proxyTrunkId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `proxyTrunkRelBrand_proxyTrunk_brand` (`proxyTrunkId`,`brandId`),
   KEY `IDX_3ECFAB9CBEC244` (`brandId`),
   CONSTRAINT `FK_3ECFAB7504E30F` FOREIGN KEY (`proxyTrunkId`) REFERENCES `ProxyTrunks` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_3ECFAB9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3294,14 +3303,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ProxyUsers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ProxyUsers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `ip` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `proxy_users_ip` (`ip`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3320,22 +3329,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `PublicEntities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `PublicEntities` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `iden` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `fqdn` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `iden` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `fqdn` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `platform` tinyint(1) NOT NULL DEFAULT '0',
   `brand` tinyint(1) NOT NULL DEFAULT '0',
   `client` tinyint(1) NOT NULL DEFAULT '0',
-  `name_en` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name_es` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name_ca` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name_it` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_es` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_ca` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name_it` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `iden` (`iden`),
   UNIQUE KEY `fqdn` (`fqdn`)
-) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3354,18 +3363,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `QueueMembers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `QueueMembers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `queueId` int(10) unsigned NOT NULL,
-  `userId` int(10) unsigned NOT NULL,
-  `penalty` int(11) DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `queueId` int unsigned NOT NULL,
+  `userId` int unsigned NOT NULL,
+  `penalty` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_51FEFDD1A4D768C6` (`queueId`),
   KEY `IDX_51FEFDD164B64DCC` (`userId`),
   CONSTRAINT `QueueMembers_ibfk_1` FOREIGN KEY (`queueId`) REFERENCES `Queues` (`id`) ON DELETE CASCADE,
   CONSTRAINT `QueueMembers_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3383,32 +3392,32 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Queues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Queues` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
-  `maxWaitTime` int(11) DEFAULT NULL,
-  `timeoutLocutionId` int(10) unsigned DEFAULT NULL,
+  `maxWaitTime` int DEFAULT NULL,
+  `timeoutLocutionId` int unsigned DEFAULT NULL,
   `timeoutTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `timeoutNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `timeoutNumberCountryId` int unsigned DEFAULT NULL,
   `timeoutNumberValue` varchar(25) DEFAULT NULL,
-  `timeoutExtensionId` int(10) unsigned DEFAULT NULL,
-  `timeoutVoiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `maxlen` int(11) DEFAULT NULL,
-  `fullLocutionId` int(10) unsigned DEFAULT NULL,
+  `timeoutExtensionId` int unsigned DEFAULT NULL,
+  `timeoutVoiceMailUserId` int unsigned DEFAULT NULL,
+  `maxlen` int DEFAULT NULL,
+  `fullLocutionId` int unsigned DEFAULT NULL,
   `fullTargetType` varchar(25) DEFAULT NULL COMMENT '[enum:number|extension|voicemail]',
-  `fullNumberCountryId` int(10) unsigned DEFAULT NULL,
+  `fullNumberCountryId` int unsigned DEFAULT NULL,
   `fullNumberValue` varchar(25) DEFAULT NULL,
-  `fullExtensionId` int(10) unsigned DEFAULT NULL,
-  `fullVoiceMailUserId` int(10) unsigned DEFAULT NULL,
-  `periodicAnnounceLocutionId` int(10) unsigned DEFAULT NULL,
-  `periodicAnnounceFrequency` int(11) DEFAULT NULL,
-  `memberCallRest` int(11) DEFAULT NULL,
-  `memberCallTimeout` int(11) DEFAULT NULL,
+  `fullExtensionId` int unsigned DEFAULT NULL,
+  `fullVoiceMailUserId` int unsigned DEFAULT NULL,
+  `periodicAnnounceLocutionId` int unsigned DEFAULT NULL,
+  `periodicAnnounceFrequency` int DEFAULT NULL,
+  `memberCallRest` int DEFAULT NULL,
+  `memberCallTimeout` int DEFAULT NULL,
   `strategy` enum('ringall','leastrecent','fewestcalls','random','rrmemory','linear','wrandom','rrordered') DEFAULT NULL,
-  `weight` int(11) DEFAULT NULL,
-  `preventMissedCalls` int(10) unsigned NOT NULL DEFAULT '1',
+  `weight` int DEFAULT NULL,
+  `preventMissedCalls` int unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `company_queuename` (`companyId`,`name`),
   KEY `IDX_C86607A02CAE121C` (`periodicAnnounceLocutionId`),
@@ -3430,7 +3439,7 @@ CREATE TABLE `Queues` (
   CONSTRAINT `Queues_ibfk_6` FOREIGN KEY (`fullLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Queues_ibfk_7` FOREIGN KEY (`fullExtensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Queues_ibfk_8` FOREIGN KEY (`fullVoiceMailUserId`) REFERENCES `Users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3448,9 +3457,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RatingPlanGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RatingPlanGroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name_en` varchar(55) NOT NULL,
   `name_es` varchar(55) NOT NULL,
   `name_ca` varchar(55) NOT NULL,
@@ -3459,14 +3468,14 @@ CREATE TABLE `RatingPlanGroups` (
   `description_es` varchar(255) NOT NULL,
   `description_ca` varchar(255) NOT NULL,
   `description_it` varchar(255) NOT NULL,
-  `brandId` int(10) unsigned NOT NULL,
-  `currencyId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned NOT NULL,
+  `currencyId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1826169C9CBEC244` (`brandId`),
   KEY `IDX_1826169C91000B8A` (`currencyId`),
   CONSTRAINT `FK_1826169C91000B8A` FOREIGN KEY (`currencyId`) REFERENCES `Currencies` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_EB67DB9C9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3484,12 +3493,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RatingPlans`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RatingPlans` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `weight` decimal(8,2) NOT NULL DEFAULT '10.00',
-  `ratingPlanGroupId` int(10) unsigned NOT NULL,
-  `destinationRateGroupId` int(10) unsigned NOT NULL,
+  `ratingPlanGroupId` int unsigned NOT NULL,
+  `destinationRateGroupId` int unsigned NOT NULL,
   `timing_type` varchar(10) DEFAULT 'always' COMMENT '[enum:always|custom]',
   `time_in` time NOT NULL,
   `monday` tinyint(1) DEFAULT '1',
@@ -3504,7 +3513,7 @@ CREATE TABLE `RatingPlans` (
   KEY `IDX_EB67DB9CC11683D9` (`destinationRateGroupId`),
   CONSTRAINT `FK_4CC2BCABC11683D9` FOREIGN KEY (`destinationRateGroupId`) REFERENCES `DestinationRateGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_EB67DB9C6A765F36` FOREIGN KEY (`ratingPlanGroupId`) REFERENCES `RatingPlanGroups` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3522,14 +3531,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RatingProfiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RatingProfiles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `activationTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `ratingPlanGroupId` int(10) unsigned NOT NULL,
-  `routingTagId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `ratingPlanGroupId` int unsigned NOT NULL,
+  `routingTagId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ratingProfile_company_plan_tag` (`companyId`,`ratingPlanGroupId`,`routingTagId`,`activationTime`),
   KEY `IDX_282687BBA48EA1F0` (`routingTagId`),
@@ -3539,7 +3548,7 @@ CREATE TABLE `RatingProfiles` (
   CONSTRAINT `FK_282687BB6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_282687BB6A765F36` FOREIGN KEY (`ratingPlanGroupId`) REFERENCES `RatingPlanGroups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_282687BBA48EA1F0` FOREIGN KEY (`routingTagId`) REFERENCES `RoutingTags` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3557,10 +3566,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Recordings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Recordings` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `callid` varchar(255) DEFAULT NULL,
   `calldate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `type` enum('ondemand','ddi') NOT NULL DEFAULT 'ddi' COMMENT '[enum:ondemand|ddi]',
@@ -3568,13 +3577,13 @@ CREATE TABLE `Recordings` (
   `caller` varchar(128) DEFAULT NULL,
   `callee` varchar(128) DEFAULT NULL,
   `recorder` varchar(128) DEFAULT NULL,
-  `recordedFileFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
+  `recordedFileFileSize` int unsigned DEFAULT NULL COMMENT '[FSO:keepExtension]',
   `recordedFileMimeType` varchar(80) DEFAULT NULL,
   `recordedFileBaseName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A68A9FBE2480E723` (`companyId`),
   CONSTRAINT `Recordings_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3592,20 +3601,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ResidentialDevices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ResidentialDevices` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned NOT NULL,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(65) NOT NULL,
-  `domainId` int(10) unsigned DEFAULT NULL,
+  `domainId` int unsigned DEFAULT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
   `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
-  `port` smallint(5) unsigned DEFAULT NULL,
+  `port` smallint unsigned DEFAULT NULL,
   `auth_needed` varchar(255) NOT NULL DEFAULT 'yes',
   `password` varchar(64) DEFAULT NULL,
-  `outgoingDdiId` int(10) unsigned DEFAULT NULL,
+  `outgoingDdiId` int unsigned DEFAULT NULL,
   `disallow` varchar(200) NOT NULL DEFAULT 'all',
   `allow` varchar(200) NOT NULL DEFAULT 'alaw',
   `direct_media_method` varchar(255) NOT NULL DEFAULT 'update' COMMENT '[enum:invite|update]',
@@ -3613,13 +3622,13 @@ CREATE TABLE `ResidentialDevices` (
   `update_callerid` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   `from_domain` varchar(190) DEFAULT NULL,
   `directConnectivity` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `languageId` int unsigned DEFAULT NULL,
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
   `ddiIn` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
-  `maxCalls` int(10) unsigned NOT NULL DEFAULT '1',
+  `maxCalls` int unsigned NOT NULL DEFAULT '1',
   `t38Passthrough` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
   `rtpEncryption` tinyint(1) NOT NULL DEFAULT '0',
-  `multiContact` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `multiContact` tinyint unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `residentialDevice_name_brand` (`name`,`brandId`),
   KEY `IDX_1805369A9CBEC244` (`brandId`),
@@ -3634,7 +3643,7 @@ CREATE TABLE `ResidentialDevices` (
   CONSTRAINT `FK_1805369A508D43B5` FOREIGN KEY (`outgoingDdiId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_1805369A940D8C7E` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_1805369A9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3652,26 +3661,26 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RetailAccounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RetailAccounts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(65) NOT NULL,
   `description` varchar(500) NOT NULL DEFAULT '',
   `transport` varchar(25) DEFAULT NULL COMMENT '[enum:udp|tcp|tls]',
   `ip` varchar(50) DEFAULT NULL,
-  `port` smallint(5) unsigned DEFAULT NULL,
+  `port` smallint unsigned DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   `fromDomain` varchar(190) DEFAULT NULL,
   `directConnectivity` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
-  `brandId` int(10) unsigned NOT NULL,
-  `domainId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned NOT NULL,
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
-  `outgoingDdiId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned NOT NULL,
+  `domainId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned NOT NULL,
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
+  `outgoingDdiId` int unsigned DEFAULT NULL,
   `ddiIn` varchar(255) NOT NULL DEFAULT 'yes' COMMENT '[enum:yes|no]',
   `t38Passthrough` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
   `rtpEncryption` tinyint(1) NOT NULL DEFAULT '0',
-  `multiContact` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `multiContact` tinyint unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `retailAccount_name_brand` (`name`,`brandId`),
   KEY `IDX_732D92509CBEC244` (`brandId`),
@@ -3684,7 +3693,7 @@ CREATE TABLE `RetailAccounts` (
   CONSTRAINT `FK_732D9250334600F3` FOREIGN KEY (`domainId`) REFERENCES `Domains` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_732D9250508D43B5` FOREIGN KEY (`outgoingDdiId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_732D92509CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3702,17 +3711,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RouteLocks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RouteLocks` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL DEFAULT '',
-  `open` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `open` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_82CD30DD2480E723` (`companyId`),
   CONSTRAINT `FK_82CD30DD2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3730,17 +3739,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RoutingPatternGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RoutingPatternGroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(55) NOT NULL,
   `description` varchar(55) DEFAULT NULL,
-  `brandId` int(10) unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `routingPatternGroup_name_brand` (`name`,`brandId`),
   KEY `IDX_CE50E62B9CBEC244` (`brandId`),
   CONSTRAINT `RoutingPatternGroups_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3759,17 +3768,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RoutingPatternGroupsRelPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RoutingPatternGroupsRelPatterns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `routingPatternId` int(10) unsigned NOT NULL,
-  `routingPatternGroupId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `routingPatternId` int unsigned NOT NULL,
+  `routingPatternGroupId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rel` (`routingPatternId`,`routingPatternGroupId`),
   KEY `IDX_C90A69B486CE18CB` (`routingPatternGroupId`),
   CONSTRAINT `RoutingPatternGroupsRelPatterns_ibfk_1` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE,
   CONSTRAINT `RoutingPatternGroupsRelPatterns_ibfk_2` FOREIGN KEY (`routingPatternGroupId`) REFERENCES `RoutingPatternGroups` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6559 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=6559 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3788,9 +3797,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RoutingPatterns`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RoutingPatterns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name_en` varchar(55) NOT NULL,
   `name_es` varchar(55) NOT NULL,
   `name_ca` varchar(55) NOT NULL,
@@ -3800,11 +3809,11 @@ CREATE TABLE `RoutingPatterns` (
   `description_ca` varchar(55) DEFAULT NULL,
   `description_it` varchar(55) DEFAULT NULL,
   `prefix` varchar(80) NOT NULL,
-  `brandId` int(10) unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_FA5E087B9CBEC244` (`brandId`),
   CONSTRAINT `RoutingPatterns_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3823,16 +3832,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `RoutingTags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `RoutingTags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `tag` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `brandId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `tag` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_109FBB419CBEC244` (`brandId`),
   CONSTRAINT `FK_109FBB419CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3850,25 +3859,25 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Schedules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Schedules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
   `timeIn` time NOT NULL,
   `timeout` time NOT NULL,
-  `monday` tinyint(1) unsigned DEFAULT '0',
-  `tuesday` tinyint(1) unsigned DEFAULT '0',
-  `wednesday` tinyint(1) unsigned DEFAULT '0',
-  `thursday` tinyint(1) unsigned DEFAULT '0',
-  `friday` tinyint(1) unsigned DEFAULT '0',
-  `saturday` tinyint(1) unsigned DEFAULT '0',
-  `sunday` tinyint(1) unsigned DEFAULT '0',
+  `monday` tinyint unsigned DEFAULT '0',
+  `tuesday` tinyint unsigned DEFAULT '0',
+  `wednesday` tinyint unsigned DEFAULT '0',
+  `thursday` tinyint unsigned DEFAULT '0',
+  `friday` tinyint unsigned DEFAULT '0',
+  `saturday` tinyint unsigned DEFAULT '0',
+  `sunday` tinyint unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `schedule_name_company` (`name`,`companyId`),
   KEY `IDX_B3CA5E2D2480E723` (`companyId`),
   CONSTRAINT `Schedules_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3886,9 +3895,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Services`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Services` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(50) NOT NULL DEFAULT '',
   `name_en` varchar(50) NOT NULL DEFAULT '',
   `name_es` varchar(50) NOT NULL DEFAULT '',
@@ -3899,9 +3908,9 @@ CREATE TABLE `Services` (
   `description_ca` varchar(255) NOT NULL DEFAULT '',
   `description_it` varchar(255) NOT NULL DEFAULT '',
   `defaultCode` varchar(3) NOT NULL,
-  `extraArgs` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `extraArgs` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3920,20 +3929,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `SpecialNumbers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `SpecialNumbers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `number` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `numberE164` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `disableCDR` int(10) unsigned NOT NULL DEFAULT '1',
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `countryId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `number` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `numberE164` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `disableCDR` int unsigned NOT NULL DEFAULT '1',
+  `brandId` int unsigned DEFAULT NULL,
+  `countryId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_8D0323969CBEC244` (`brandId`),
   KEY `IDX_8D032396FBA2A6B4` (`countryId`),
   CONSTRAINT `FK_8D0323969CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_8D032396FBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3951,15 +3960,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `TerminalManufacturers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `TerminalManufacturers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(500) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `terminalManufacturer_iden` (`iden`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3978,13 +3987,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `TerminalModels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `TerminalModels` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `iden` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(500) NOT NULL DEFAULT '',
-  `TerminalManufacturerId` int(10) unsigned NOT NULL,
+  `TerminalManufacturerId` int unsigned NOT NULL,
   `genericTemplate` text,
   `specificTemplate` text,
   `genericUrlPattern` varchar(225) DEFAULT NULL,
@@ -3994,7 +4003,7 @@ CREATE TABLE `TerminalModels` (
   UNIQUE KEY `terminalModel_genericUrlPattern` (`genericUrlPattern`),
   KEY `IDX_144DF7FCCFFDBE50` (`TerminalManufacturerId`),
   CONSTRAINT `TerminalModels_ibfk_1` FOREIGN KEY (`TerminalManufacturerId`) REFERENCES `TerminalManufacturers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4013,18 +4022,18 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Terminals`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Terminals` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `TerminalModelId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `TerminalModelId` int unsigned DEFAULT NULL,
   `name` varchar(100) NOT NULL,
-  `domainId` int(10) unsigned DEFAULT NULL,
+  `domainId` int unsigned DEFAULT NULL,
   `disallow` varchar(200) NOT NULL DEFAULT 'all',
   `allow_audio` varchar(200) NOT NULL DEFAULT 'alaw',
   `allow_video` varchar(200) DEFAULT NULL,
   `direct_media_method` enum('invite','reinvite','update') NOT NULL DEFAULT 'update' COMMENT '[enum:update|invite|reinvite]',
   `password` varchar(25) NOT NULL DEFAULT '' COMMENT '[password]',
-  `companyId` int(10) unsigned NOT NULL,
+  `companyId` int unsigned NOT NULL,
   `mac` varchar(12) DEFAULT NULL,
   `lastProvisionDate` timestamp NULL DEFAULT NULL,
   `t38Passthrough` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
@@ -4038,7 +4047,7 @@ CREATE TABLE `Terminals` (
   CONSTRAINT `FK_98AB47BB334600F3` FOREIGN KEY (`domainId`) REFERENCES `Domains` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Terminals_CompanyId_ibfk_2` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Terminals_ibfk_1` FOREIGN KEY (`TerminalModelId`) REFERENCES `TerminalModels` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4057,10 +4066,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Timezones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Timezones` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `countryId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `countryId` int unsigned DEFAULT NULL,
   `tz` varchar(255) NOT NULL,
   `comment` varchar(150) DEFAULT '',
   `timeZoneLabel_en` varchar(20) NOT NULL DEFAULT '',
@@ -4070,7 +4079,7 @@ CREATE TABLE `Timezones` (
   PRIMARY KEY (`id`),
   KEY `IDX_F7A34AFDFBA2A6B4` (`countryId`),
   CONSTRAINT `FK_F7A34AFDFBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=417 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=417 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4089,9 +4098,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `TransformationRuleSets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `TransformationRuleSets` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name_en` varchar(100) NOT NULL,
   `name_es` varchar(100) NOT NULL,
   `name_ca` varchar(100) NOT NULL,
@@ -4100,16 +4109,16 @@ CREATE TABLE `TransformationRuleSets` (
   `internationalCode` varchar(10) DEFAULT '00',
   `trunkPrefix` varchar(5) DEFAULT '',
   `areaCode` varchar(5) DEFAULT '',
-  `nationalLen` int(10) unsigned DEFAULT '9',
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `countryId` int(10) unsigned DEFAULT NULL,
+  `nationalLen` int unsigned DEFAULT '9',
+  `brandId` int unsigned DEFAULT NULL,
+  `countryId` int unsigned DEFAULT NULL,
   `generateRules` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_C272BD0FFBA2A6B4` (`countryId`),
   KEY `IDX_C272BD0F9CBEC244` (`brandId`),
   CONSTRAINT `FK_C272BD0F9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_C272BD0FFBA2A6B4` FOREIGN KEY (`countryId`) REFERENCES `Countries` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=254 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4128,19 +4137,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `TransformationRules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `TransformationRules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(10) NOT NULL COMMENT '[enum:callerin|calleein|callerout|calleeout]',
   `description` varchar(64) NOT NULL DEFAULT '',
-  `priority` int(10) unsigned DEFAULT NULL,
+  `priority` int unsigned DEFAULT NULL,
   `matchExpr` varchar(128) DEFAULT NULL,
   `replaceExpr` varchar(128) DEFAULT NULL,
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_C82DE1742FECF701` (`transformationRuleSetId`),
   CONSTRAINT `FK_C82DE1742FECF701` FOREIGN KEY (`transformationRuleSetId`) REFERENCES `TransformationRuleSets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3063 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3063 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4159,37 +4168,37 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `pass` varchar(80) DEFAULT NULL COMMENT '[password]',
-  `timezoneId` int(10) unsigned DEFAULT NULL,
-  `terminalId` int(10) unsigned DEFAULT NULL,
-  `extensionId` int(10) unsigned DEFAULT NULL,
-  `outgoingDDIId` int(10) unsigned DEFAULT NULL,
-  `outgoingDDIRuleId` int(10) unsigned DEFAULT NULL,
-  `callACLId` int(10) unsigned DEFAULT NULL,
-  `doNotDisturb` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `isBoss` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `bossAssistantId` int(10) unsigned DEFAULT NULL,
-  `bossAssistantWhiteListId` int(10) unsigned DEFAULT NULL,
-  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `maxCalls` int(10) unsigned NOT NULL DEFAULT '0',
+  `timezoneId` int unsigned DEFAULT NULL,
+  `terminalId` int unsigned DEFAULT NULL,
+  `extensionId` int unsigned DEFAULT NULL,
+  `outgoingDDIId` int unsigned DEFAULT NULL,
+  `outgoingDDIRuleId` int unsigned DEFAULT NULL,
+  `callACLId` int unsigned DEFAULT NULL,
+  `doNotDisturb` tinyint unsigned NOT NULL DEFAULT '0',
+  `isBoss` tinyint unsigned NOT NULL DEFAULT '0',
+  `bossAssistantId` int unsigned DEFAULT NULL,
+  `bossAssistantWhiteListId` int unsigned DEFAULT NULL,
+  `active` tinyint unsigned NOT NULL DEFAULT '0',
+  `maxCalls` int unsigned NOT NULL DEFAULT '0',
   `externalIpCalls` varchar(1) NOT NULL DEFAULT '0' COMMENT '[enum:0|1|2|3]',
-  `voicemailEnabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `voicemailLocutionId` int(10) unsigned DEFAULT NULL,
-  `voicemailSendMail` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `voicemailAttachSound` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `languageId` int(10) unsigned DEFAULT NULL,
-  `gsQRCode` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `transformationRuleSetId` int(10) unsigned DEFAULT NULL,
+  `voicemailEnabled` tinyint unsigned NOT NULL DEFAULT '1',
+  `voicemailLocutionId` int unsigned DEFAULT NULL,
+  `voicemailSendMail` tinyint unsigned NOT NULL DEFAULT '0',
+  `voicemailAttachSound` tinyint unsigned NOT NULL DEFAULT '1',
+  `languageId` int unsigned DEFAULT NULL,
+  `gsQRCode` tinyint unsigned NOT NULL DEFAULT '0',
+  `transformationRuleSetId` int unsigned DEFAULT NULL,
   `rejectCallMethod` varchar(3) NOT NULL DEFAULT 'rfc' COMMENT '[enum:rfc|486|600]',
-  `multiContact` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `locationId` int(10) unsigned DEFAULT NULL,
+  `multiContact` tinyint unsigned NOT NULL DEFAULT '1',
+  `locationId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniqueTerminalId` (`terminalId`),
   UNIQUE KEY `uniqueExtensionId` (`extensionId`),
@@ -4218,7 +4227,7 @@ CREATE TABLE `Users` (
   CONSTRAINT `Users_ibfk_7` FOREIGN KEY (`extensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_8` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_9` FOREIGN KEY (`outgoingDDIId`) REFERENCES `DDIs` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4237,15 +4246,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `WebPortals`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `WebPortals` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `brandId` int(10) unsigned DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `brandId` int unsigned DEFAULT NULL,
   `url` varchar(255) NOT NULL,
   `klearTheme` varchar(200) DEFAULT '',
   `urlType` varchar(25) NOT NULL COMMENT '[enum:god|brand|admin|user]',
   `name` varchar(200) DEFAULT '',
-  `logoFileSize` int(11) unsigned DEFAULT NULL COMMENT '[FSO]',
+  `logoFileSize` int unsigned DEFAULT NULL COMMENT '[FSO]',
   `logoMimeType` varchar(80) DEFAULT NULL,
   `logoBaseName` varchar(255) DEFAULT NULL,
   `userTheme` varchar(200) DEFAULT '',
@@ -4253,7 +4262,7 @@ CREATE TABLE `WebPortals` (
   UNIQUE KEY `webportal_url` (`url`),
   KEY `IDX_C811E30C9CBEC244` (`brandId`),
   CONSTRAINT `FK_C811E30C9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4267,13 +4276,13 @@ INSERT INTO `WebPortals` VALUES (1,NULL,'https://example.com','redmond','god','P
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `ast_hints`
+-- Temporary view structure for view `ast_hints`
 --
 
 DROP TABLE IF EXISTS `ast_hints`;
 /*!50001 DROP VIEW IF EXISTS `ast_hints`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `ast_hints` AS SELECT 
  1 AS `exten`,
  1 AS `context`,
@@ -4281,13 +4290,13 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `ast_musiconhold`
+-- Temporary view structure for view `ast_musiconhold`
 --
 
 DROP TABLE IF EXISTS `ast_musiconhold`;
 /*!50001 DROP VIEW IF EXISTS `ast_musiconhold`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `ast_musiconhold` AS SELECT 
  1 AS `name`,
  1 AS `mode`,
@@ -4296,13 +4305,13 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `ast_ps_aors`
+-- Temporary view structure for view `ast_ps_aors`
 --
 
 DROP TABLE IF EXISTS `ast_ps_aors`;
 /*!50001 DROP VIEW IF EXISTS `ast_ps_aors`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `ast_ps_aors` AS SELECT 
  1 AS `sorcery_id`,
  1 AS `contact`,
@@ -4315,15 +4324,15 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `ast_ps_endpoints`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ast_ps_endpoints` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `sorcery_id` varchar(40) NOT NULL,
   `from_domain` varchar(190) DEFAULT NULL,
-  `terminalId` int(10) unsigned DEFAULT NULL,
-  `friendId` int(10) unsigned DEFAULT NULL,
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
-  `retailAccountId` int(10) unsigned DEFAULT NULL,
+  `terminalId` int unsigned DEFAULT NULL,
+  `friendId` int unsigned DEFAULT NULL,
+  `residentialDeviceId` int unsigned DEFAULT NULL,
+  `retailAccountId` int unsigned DEFAULT NULL,
   `aors` varchar(200) DEFAULT NULL,
   `callerid` varchar(100) DEFAULT NULL,
   `context` varchar(40) NOT NULL DEFAULT 'users',
@@ -4340,7 +4349,7 @@ CREATE TABLE `ast_ps_endpoints` (
   `trust_id_inbound` enum('yes','no') DEFAULT NULL,
   `t38_udptl` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
   `t38_udptl_ec` varchar(255) NOT NULL DEFAULT 'redundancy' COMMENT '[enum:none|fec|redundancy]',
-  `t38_udptl_maxdatagram` int(10) unsigned NOT NULL DEFAULT '1440',
+  `t38_udptl_maxdatagram` int unsigned NOT NULL DEFAULT '1440',
   `t38_udptl_nat` varchar(255) NOT NULL DEFAULT 'no' COMMENT '[enum:yes|no]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `psEndpoint_terminal` (`terminalId`),
@@ -4348,11 +4357,11 @@ CREATE TABLE `ast_ps_endpoints` (
   UNIQUE KEY `psEndpoint_residential_device` (`residentialDeviceId`),
   UNIQUE KEY `psEndpoint_retail_account` (`retailAccountId`),
   KEY `psEndpoint_sorcery_idx` (`sorcery_id`),
-  CONSTRAINT `FK_800B60515EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_800B60518B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ast_ps_endpoints_ibfk_1` FOREIGN KEY (`terminalId`) REFERENCES `Terminals` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `ast_ps_endpoints_ibfk_2` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+  CONSTRAINT `ast_ps_endpoints_ibfk_2` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_800B60515EA9D64D` FOREIGN KEY (`retailAccountId`) REFERENCES `RetailAccounts` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_800B60518B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4366,13 +4375,13 @@ INSERT INTO `ast_ps_endpoints` VALUES (1,'b1c1t1_alice',NULL,1,NULL,NULL,NULL,'b
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `ast_queue_members`
+-- Temporary view structure for view `ast_queue_members`
 --
 
 DROP TABLE IF EXISTS `ast_queue_members`;
 /*!50001 DROP VIEW IF EXISTS `ast_queue_members`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `ast_queue_members` AS SELECT 
  1 AS `uniqueid`,
  1 AS `queue_name`,
@@ -4389,24 +4398,24 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `ast_queues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ast_queues` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   `periodic_announce` varchar(128) DEFAULT NULL,
-  `periodic_announce_frequency` int(11) DEFAULT NULL,
-  `timeout` int(11) DEFAULT NULL,
+  `periodic_announce_frequency` int DEFAULT NULL,
+  `timeout` int DEFAULT NULL,
   `autopause` enum('yes','no','all') NOT NULL DEFAULT 'no',
   `ringinuse` enum('yes','no') NOT NULL DEFAULT 'no',
-  `wrapuptime` int(11) DEFAULT NULL,
-  `maxlen` int(11) DEFAULT NULL,
+  `wrapuptime` int DEFAULT NULL,
+  `maxlen` int DEFAULT NULL,
   `strategy` enum('ringall','leastrecent','fewestcalls','random','rrmemory','linear','wrandom','rrordered') DEFAULT NULL,
-  `weight` int(11) DEFAULT NULL,
-  `queueId` int(10) unsigned NOT NULL,
+  `weight` int DEFAULT NULL,
+  `queueId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `queue_queueId` (`queueId`),
   CONSTRAINT `ast_queues_ibfk_1` FOREIGN KEY (`queueId`) REFERENCES `Queues` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4424,9 +4433,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `ast_voicemail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ast_voicemail` (
-  `uniqueid` int(11) NOT NULL AUTO_INCREMENT,
+  `uniqueid` int NOT NULL AUTO_INCREMENT,
   `context` varchar(80) NOT NULL,
   `mailbox` varchar(80) NOT NULL,
   `password` varchar(80) DEFAULT NULL,
@@ -4446,13 +4455,13 @@ CREATE TABLE `ast_voicemail` (
   `tempgreetwarn` enum('yes','no') DEFAULT NULL,
   `operator` enum('yes','no') DEFAULT NULL,
   `envelope` enum('yes','no') DEFAULT NULL,
-  `sayduration` int(11) DEFAULT NULL,
+  `sayduration` int DEFAULT NULL,
   `forcename` enum('yes','no') DEFAULT NULL,
   `forcegreetings` enum('yes','no') DEFAULT NULL,
   `callback` varchar(80) DEFAULT NULL,
   `dialout` varchar(80) DEFAULT NULL,
   `exitcontext` varchar(80) DEFAULT NULL,
-  `maxmsg` int(11) DEFAULT NULL,
+  `maxmsg` int DEFAULT NULL,
   `volgain` decimal(5,2) DEFAULT NULL,
   `imapuser` varchar(80) DEFAULT NULL,
   `imappassword` varchar(80) DEFAULT NULL,
@@ -4460,17 +4469,17 @@ CREATE TABLE `ast_voicemail` (
   `imapport` varchar(8) DEFAULT NULL,
   `imapflags` varchar(80) DEFAULT NULL,
   `stamp` datetime DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `residentialDeviceId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`uniqueid`),
   UNIQUE KEY `voicemail_user` (`userId`),
   UNIQUE KEY `voicemail_residential_device` (`residentialDeviceId`),
   KEY `voicemail__context` (`context`),
   KEY `voicemail_mailbox_context` (`mailbox`,`context`),
   KEY `voicemail_imapuser` (`imapuser`),
-  CONSTRAINT `FK_B2AD1D0A8B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `ast_voicemail_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+  CONSTRAINT `ast_voicemail_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_B2AD1D0A8B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4484,13 +4493,13 @@ INSERT INTO `ast_voicemail` VALUES (1,'company1','user1',NULL,'Alice Allison',NU
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `kam_dialplan`
+-- Temporary view structure for view `kam_dialplan`
 --
 
 DROP TABLE IF EXISTS `kam_dialplan`;
 /*!50001 DROP VIEW IF EXISTS `kam_dialplan`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `kam_dialplan` AS SELECT 
  1 AS `id`,
  1 AS `dpid`,
@@ -4509,20 +4518,20 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `kam_dispatcher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_dispatcher` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `setid` int(11) NOT NULL DEFAULT '0',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `setid` int NOT NULL DEFAULT '0',
   `destination` varchar(192) NOT NULL DEFAULT '',
-  `flags` int(11) NOT NULL DEFAULT '0',
-  `priority` int(11) NOT NULL DEFAULT '0',
+  `flags` int NOT NULL DEFAULT '0',
+  `priority` int NOT NULL DEFAULT '0',
   `attrs` varchar(128) NOT NULL DEFAULT '',
   `description` varchar(64) NOT NULL DEFAULT '',
-  `applicationServerId` int(10) unsigned NOT NULL,
+  `applicationServerId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `dispatcher_applicationServerId` (`applicationServerId`),
   CONSTRAINT `kam_dispatcher_ibfk_1` FOREIGN KEY (`applicationServerId`) REFERENCES `ApplicationServers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4541,21 +4550,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_rtpengine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_rtpengine` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `setid` int(11) NOT NULL DEFAULT '0',
-  `url` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `weight` int(10) unsigned NOT NULL DEFAULT '1',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `setid` int NOT NULL DEFAULT '0',
+  `url` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `weight` int unsigned NOT NULL DEFAULT '1',
   `disabled` tinyint(1) NOT NULL DEFAULT '0',
   `stamp` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '(DC2Type:datetime)',
-  `description` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `mediaRelaySetsId` int(10) unsigned DEFAULT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mediaRelaySetsId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rtpengine_nodes` (`setid`,`url`),
   KEY `rtpengine_mediaRelaySetsId` (`mediaRelaySetsId`),
   CONSTRAINT `FK_C5AB1ADEC8555117` FOREIGN KEY (`mediaRelaySetsId`) REFERENCES `MediaRelaySets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4574,19 +4583,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_address` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `grp` int(11) unsigned NOT NULL DEFAULT '1',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `grp` int unsigned NOT NULL DEFAULT '1',
   `ip_addr` varchar(50) DEFAULT NULL,
-  `mask` int(10) NOT NULL DEFAULT '32',
-  `port` int(5) NOT NULL DEFAULT '0',
+  `mask` int NOT NULL DEFAULT '32',
+  `port` int NOT NULL DEFAULT '0',
   `tag` varchar(64) DEFAULT NULL,
-  `ddiProviderAddressId` int(10) unsigned NOT NULL,
+  `ddiProviderAddressId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_873EF06250736B8` (`ddiProviderAddressId`),
   CONSTRAINT `FK_873EF06250736B8` FOREIGN KEY (`ddiProviderAddressId`) REFERENCES `DDIProviderAddresses` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4604,9 +4613,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_cdrs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_cdrs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `start_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '(DC2Type:datetime)',
   `end_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '(DC2Type:datetime)',
   `duration` double NOT NULL DEFAULT '0',
@@ -4619,18 +4628,18 @@ CREATE TABLE `kam_trunks_cdrs` (
   `bounced` tinyint(1) DEFAULT NULL,
   `direction` varchar(255) DEFAULT NULL COMMENT '[enum:inbound|outbound]',
   `cgrid` varchar(40) DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
   `parsed` tinyint(1) DEFAULT '0',
   `parserScheduledAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `retailAccountId` int(10) unsigned DEFAULT NULL,
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `friendId` int(10) unsigned DEFAULT NULL,
-  `faxId` int(10) unsigned DEFAULT NULL,
-  `ddiId` int(10) unsigned DEFAULT NULL,
-  `ddiProviderId` int(10) unsigned DEFAULT NULL,
+  `retailAccountId` int unsigned DEFAULT NULL,
+  `residentialDeviceId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `friendId` int unsigned DEFAULT NULL,
+  `faxId` int unsigned DEFAULT NULL,
+  `ddiId` int unsigned DEFAULT NULL,
+  `ddiProviderId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `trunksCdr_callid_direction` (`callid`,`direction`),
   KEY `IDX_92E58EB69CBEC244` (`brandId`),
@@ -4655,7 +4664,7 @@ CREATE TABLE `kam_trunks_cdrs` (
   CONSTRAINT `FK_92E58EB6893BA339` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_92E58EB68B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_92E58EB69CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4668,13 +4677,13 @@ LOCK TABLES `kam_trunks_cdrs` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `kam_trunks_domain`
+-- Temporary view structure for view `kam_trunks_domain`
 --
 
 DROP TABLE IF EXISTS `kam_trunks_domain`;
 /*!50001 DROP VIEW IF EXISTS `kam_trunks_domain`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `kam_trunks_domain` AS SELECT 
  1 AS `domain`,
  1 AS `did`*/;
@@ -4686,17 +4695,17 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `kam_trunks_domain_attrs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_domain_attrs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `did` varchar(190) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `type` int(10) unsigned NOT NULL,
+  `type` int unsigned NOT NULL,
   `value` varchar(255) NOT NULL,
   `last_modified` datetime NOT NULL DEFAULT '1900-01-01 00:00:01',
   PRIMARY KEY (`id`),
   UNIQUE KEY `domain_attrs_idx` (`did`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4714,16 +4723,16 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_htable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_htable` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `key_name` varchar(64) NOT NULL DEFAULT '',
-  `key_type` int(11) NOT NULL DEFAULT '0',
-  `value_type` int(11) NOT NULL DEFAULT '0',
+  `key_type` int NOT NULL DEFAULT '0',
+  `value_type` int NOT NULL DEFAULT '0',
   `key_value` varchar(128) NOT NULL DEFAULT '',
-  `expires` int(11) NOT NULL DEFAULT '0',
+  `expires` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4741,27 +4750,27 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_lcr_gateways`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_lcr_gateways` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `lcr_id` int(10) unsigned NOT NULL DEFAULT '1',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `lcr_id` int unsigned NOT NULL DEFAULT '1',
   `gw_name` varchar(200) NOT NULL,
   `ip` varchar(50) DEFAULT NULL,
   `hostname` varchar(64) DEFAULT NULL,
-  `port` smallint(5) unsigned DEFAULT NULL,
+  `port` smallint unsigned DEFAULT NULL,
   `params` varchar(64) DEFAULT NULL,
-  `uri_scheme` smallint(5) unsigned DEFAULT NULL,
-  `transport` smallint(5) unsigned DEFAULT NULL,
-  `strip` tinyint(3) unsigned DEFAULT NULL,
+  `uri_scheme` smallint unsigned DEFAULT NULL,
+  `transport` smallint unsigned DEFAULT NULL,
+  `strip` tinyint unsigned DEFAULT NULL,
   `prefix` varchar(16) DEFAULT NULL,
   `tag` varchar(64) DEFAULT NULL,
-  `defunct` int(10) unsigned DEFAULT NULL,
-  `carrierServerId` int(10) unsigned DEFAULT NULL,
+  `defunct` int unsigned DEFAULT NULL,
+  `carrierServerId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_C13516F0472FDC9C` (`carrierServerId`),
   KEY `lcrGateway_lcr_id` (`lcr_id`),
   CONSTRAINT `FK_C13516F0472FDC9C` FOREIGN KEY (`carrierServerId`) REFERENCES `CarrierServers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4780,15 +4789,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_lcr_rule_targets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_lcr_rule_targets` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `lcr_id` int(10) unsigned NOT NULL DEFAULT '1',
-  `rule_id` int(10) unsigned NOT NULL,
-  `gw_id` int(10) unsigned NOT NULL,
-  `priority` smallint(5) unsigned NOT NULL,
-  `weight` int(10) unsigned NOT NULL DEFAULT '1',
-  `outgoingRoutingId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `lcr_id` int unsigned NOT NULL DEFAULT '1',
+  `rule_id` int unsigned NOT NULL,
+  `gw_id` int unsigned NOT NULL,
+  `priority` smallint unsigned NOT NULL,
+  `weight` int unsigned NOT NULL DEFAULT '1',
+  `outgoingRoutingId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E814F399744E0351` (`rule_id`),
   KEY `IDX_E814F39982D8D847` (`gw_id`),
@@ -4797,7 +4806,7 @@ CREATE TABLE `kam_trunks_lcr_rule_targets` (
   CONSTRAINT `kam_trunks_lcr_rule_targets_ibfk_2` FOREIGN KEY (`rule_id`) REFERENCES `kam_trunks_lcr_rules` (`id`) ON DELETE CASCADE,
   CONSTRAINT `kam_trunks_lcr_rule_targets_ibfk_3` FOREIGN KEY (`gw_id`) REFERENCES `kam_trunks_lcr_gateways` (`id`) ON DELETE CASCADE,
   CONSTRAINT `kam_trunks_lcr_rule_targets_ibfk_4` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4815,19 +4824,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_lcr_rules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_lcr_rules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `lcr_id` int(10) unsigned NOT NULL DEFAULT '1',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `lcr_id` int unsigned NOT NULL DEFAULT '1',
   `prefix` varchar(100) DEFAULT NULL,
   `from_uri` varchar(255) DEFAULT NULL,
   `request_uri` varchar(100) DEFAULT NULL,
-  `stopper` int(10) unsigned NOT NULL DEFAULT '0',
-  `enabled` int(10) unsigned NOT NULL DEFAULT '1',
-  `routingPatternId` int(10) unsigned DEFAULT NULL,
-  `outgoingRoutingId` int(10) unsigned NOT NULL,
+  `stopper` int unsigned NOT NULL DEFAULT '0',
+  `enabled` int unsigned NOT NULL DEFAULT '1',
+  `routingPatternId` int unsigned DEFAULT NULL,
+  `outgoingRoutingId` int unsigned NOT NULL,
   `mt_tvalue` varchar(128) DEFAULT NULL,
-  `routingPatternGroupsRelPatternId` int(10) unsigned DEFAULT NULL,
+  `routingPatternGroupsRelPatternId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_52D75CD66D661974` (`routingPatternId`),
   KEY `lcrRule_lcr_id` (`lcr_id`),
@@ -4836,7 +4845,7 @@ CREATE TABLE `kam_trunks_lcr_rules` (
   CONSTRAINT `FK_52D75CD64B03349B` FOREIGN KEY (`routingPatternGroupsRelPatternId`) REFERENCES `RoutingPatternGroupsRelPatterns` (`id`) ON DELETE CASCADE,
   CONSTRAINT `kam_trunks_lcr_rules_ibfk_4` FOREIGN KEY (`routingPatternId`) REFERENCES `RoutingPatterns` (`id`) ON DELETE CASCADE,
   CONSTRAINT `kam_trunks_lcr_rules_ibfk_5` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4854,9 +4863,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trunks_uacreg`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trunks_uacreg` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `l_uuid` varchar(64) NOT NULL DEFAULT '',
   `l_username` varchar(64) NOT NULL DEFAULT 'unused',
   `l_domain` varchar(190) NOT NULL DEFAULT 'unused',
@@ -4866,11 +4875,11 @@ CREATE TABLE `kam_trunks_uacreg` (
   `auth_username` varchar(64) NOT NULL DEFAULT '',
   `auth_password` varchar(64) NOT NULL DEFAULT '',
   `auth_proxy` varchar(64) NOT NULL DEFAULT '',
-  `expires` int(11) NOT NULL DEFAULT '0',
-  `flags` int(11) NOT NULL DEFAULT '0',
-  `reg_delay` int(11) NOT NULL DEFAULT '0',
-  `brandId` int(10) unsigned NOT NULL,
-  `ddiProviderRegistrationId` int(10) unsigned NOT NULL,
+  `expires` int NOT NULL DEFAULT '0',
+  `flags` int NOT NULL DEFAULT '0',
+  `reg_delay` int NOT NULL DEFAULT '0',
+  `brandId` int unsigned NOT NULL,
+  `ddiProviderRegistrationId` int unsigned NOT NULL,
   `auth_ha1` varchar(128) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `l_uuid_idx` (`l_uuid`),
@@ -4878,7 +4887,7 @@ CREATE TABLE `kam_trunks_uacreg` (
   KEY `IDX_C61278219CBEC244` (`brandId`),
   CONSTRAINT `FK_C6127821B6A472B7` FOREIGN KEY (`ddiProviderRegistrationId`) REFERENCES `DDIProviderRegistrations` (`id`) ON DELETE CASCADE,
   CONSTRAINT `kam_trunks_uacreg_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4896,22 +4905,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_trusted`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_trusted` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `src_ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `proto` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `from_pattern` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ruri_pattern` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tag` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `priority` int(11) NOT NULL DEFAULT '0',
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `src_ip` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `proto` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `from_pattern` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ruri_pattern` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tag` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `priority` int NOT NULL DEFAULT '0',
+  `companyId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `src_ip` (`src_ip`),
   KEY `trusted_companyId` (`companyId`),
   CONSTRAINT `FK_10A58A572480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4929,9 +4938,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_active_watchers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_active_watchers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `presentity_uri` varchar(128) NOT NULL,
   `watcher_username` varchar(64) NOT NULL,
   `watcher_domain` varchar(64) NOT NULL,
@@ -4942,21 +4951,21 @@ CREATE TABLE `kam_users_active_watchers` (
   `to_tag` varchar(64) NOT NULL,
   `from_tag` varchar(64) NOT NULL,
   `callid` varchar(255) NOT NULL,
-  `local_cseq` int(11) NOT NULL,
-  `remote_cseq` int(11) NOT NULL,
+  `local_cseq` int NOT NULL,
+  `remote_cseq` int NOT NULL,
   `contact` varchar(128) NOT NULL,
   `record_route` text,
-  `expires` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '2',
+  `expires` int NOT NULL,
+  `status` int NOT NULL DEFAULT '2',
   `reason` varchar(64) DEFAULT NULL,
-  `version` int(11) NOT NULL DEFAULT '0',
+  `version` int NOT NULL DEFAULT '0',
   `socket_info` varchar(64) NOT NULL,
   `local_contact` varchar(128) NOT NULL,
   `from_user` varchar(64) NOT NULL,
   `from_domain` varchar(190) NOT NULL,
-  `updated` int(11) NOT NULL,
-  `updated_winfo` int(11) NOT NULL,
-  `flags` int(11) NOT NULL DEFAULT '0',
+  `updated` int NOT NULL,
+  `updated_winfo` int NOT NULL,
+  `flags` int NOT NULL DEFAULT '0',
   `user_agent` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `kam_users_active_watchers_idx` (`callid`,`to_tag`,`from_tag`),
@@ -4964,7 +4973,7 @@ CREATE TABLE `kam_users_active_watchers` (
   KEY `usersActiveWatcher_pres` (`presentity_uri`,`event`),
   KEY `usersActiveWatcher_updated_idx` (`updated`),
   KEY `usersActiveWatcher_updated_winfo_idx` (`updated_winfo`,`presentity_uri`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4982,20 +4991,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_address` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `companyId` int(10) unsigned NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `companyId` int unsigned NOT NULL,
   `source_address` varchar(100) NOT NULL,
   `ip_addr` varchar(50) DEFAULT NULL,
-  `mask` int(10) NOT NULL DEFAULT '32',
-  `port` int(5) NOT NULL DEFAULT '0',
+  `mask` int NOT NULL DEFAULT '32',
+  `port` int NOT NULL DEFAULT '0',
   `tag` varchar(64) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `usersAddress_companyId` (`companyId`),
   CONSTRAINT `FK_A53CBBF22480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5013,9 +5022,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_cdrs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_cdrs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `start_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '(DC2Type:datetime)',
   `end_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '(DC2Type:datetime)',
   `duration` double NOT NULL DEFAULT '0',
@@ -5028,12 +5037,12 @@ CREATE TABLE `kam_users_cdrs` (
   `callid` varchar(255) DEFAULT NULL,
   `callidHash` varchar(128) DEFAULT NULL,
   `xcallid` varchar(255) DEFAULT NULL,
-  `brandId` int(10) unsigned DEFAULT NULL,
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `userId` int(10) unsigned DEFAULT NULL,
-  `friendId` int(10) unsigned DEFAULT NULL,
-  `residentialDeviceId` int(10) unsigned DEFAULT NULL,
-  `retailAccountId` int(10) unsigned DEFAULT NULL,
+  `brandId` int unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `userId` int unsigned DEFAULT NULL,
+  `friendId` int unsigned DEFAULT NULL,
+  `residentialDeviceId` int unsigned DEFAULT NULL,
+  `retailAccountId` int unsigned DEFAULT NULL,
   `hidden` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `usersCdr_callid_direction` (`callid`,`direction`),
@@ -5050,7 +5059,7 @@ CREATE TABLE `kam_users_cdrs` (
   CONSTRAINT `FK_238F735B893BA339` FOREIGN KEY (`friendId`) REFERENCES `Friends` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_238F735B8B329DCD` FOREIGN KEY (`residentialDeviceId`) REFERENCES `ResidentialDevices` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_238F735B9CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5063,26 +5072,26 @@ LOCK TABLES `kam_users_cdrs` WRITE;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `kam_users_domain`
+-- Temporary view structure for view `kam_users_domain`
 --
 
 DROP TABLE IF EXISTS `kam_users_domain`;
 /*!50001 DROP VIEW IF EXISTS `kam_users_domain`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `kam_users_domain` AS SELECT 
  1 AS `domain`,
  1 AS `did`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `kam_users_domain_attrs`
+-- Temporary view structure for view `kam_users_domain_attrs`
 --
 
 DROP TABLE IF EXISTS `kam_users_domain_attrs`;
 /*!50001 DROP VIEW IF EXISTS `kam_users_domain_attrs`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `kam_users_domain_attrs` AS SELECT 
  1 AS `did`,
  1 AS `name`,
@@ -5096,16 +5105,16 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `kam_users_htable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_htable` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `key_name` varchar(64) NOT NULL DEFAULT '',
-  `key_type` int(11) NOT NULL DEFAULT '0',
-  `value_type` int(11) NOT NULL DEFAULT '0',
+  `key_type` int NOT NULL DEFAULT '0',
+  `value_type` int NOT NULL DEFAULT '0',
   `key_value` varchar(128) NOT NULL DEFAULT '',
-  `expires` int(11) NOT NULL DEFAULT '0',
+  `expires` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5123,9 +5132,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_location` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `ruid` varchar(64) NOT NULL DEFAULT '',
   `username` varchar(64) NOT NULL DEFAULT '',
   `domain` varchar(190) DEFAULT NULL,
@@ -5135,24 +5144,24 @@ CREATE TABLE `kam_users_location` (
   `expires` datetime NOT NULL DEFAULT '2030-05-28 21:32:15',
   `q` float(10,2) NOT NULL DEFAULT '1.00',
   `callid` varchar(255) NOT NULL DEFAULT 'Default-Call-ID',
-  `cseq` int(11) NOT NULL DEFAULT '1',
+  `cseq` int NOT NULL DEFAULT '1',
   `last_modified` datetime NOT NULL DEFAULT '1900-01-01 00:00:01',
-  `flags` int(11) NOT NULL DEFAULT '0',
-  `cflags` int(11) NOT NULL DEFAULT '0',
+  `flags` int NOT NULL DEFAULT '0',
+  `cflags` int NOT NULL DEFAULT '0',
   `user_agent` varchar(255) NOT NULL DEFAULT '',
   `socket` varchar(64) DEFAULT NULL,
-  `methods` int(11) DEFAULT NULL,
+  `methods` int DEFAULT NULL,
   `instance` varchar(255) DEFAULT NULL,
-  `reg_id` int(11) NOT NULL DEFAULT '0',
-  `server_id` int(11) NOT NULL DEFAULT '0',
-  `connection_id` int(11) NOT NULL DEFAULT '0',
-  `keepalive` int(11) NOT NULL DEFAULT '0',
-  `partition` int(11) NOT NULL DEFAULT '0',
+  `reg_id` int NOT NULL DEFAULT '0',
+  `server_id` int NOT NULL DEFAULT '0',
+  `connection_id` int NOT NULL DEFAULT '0',
+  `keepalive` int NOT NULL DEFAULT '0',
+  `partition` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ruid_idx` (`ruid`),
   KEY `usersLocation_account_contact_idx` (`username`,`domain`,`contact`),
   KEY `usersLocation_expires_idx` (`expires`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[entity][rest]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[entity][rest]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5170,20 +5179,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_location_attrs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_location_attrs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `ruid` varchar(64) NOT NULL DEFAULT '',
   `username` varchar(64) NOT NULL DEFAULT '',
   `domain` varchar(190) DEFAULT NULL,
   `aname` varchar(64) NOT NULL DEFAULT '',
-  `atype` int(11) NOT NULL DEFAULT '0',
+  `atype` int NOT NULL DEFAULT '0',
   `avalue` varchar(255) NOT NULL DEFAULT '',
   `last_modified` datetime NOT NULL DEFAULT '1900-01-01 00:00:01',
   PRIMARY KEY (`id`),
   KEY `usersLocationAttr_account_record_idx` (`username`,`domain`,`ruid`),
   KEY `usersLocationAttr_last_modified_idx` (`last_modified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5201,22 +5210,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_presentity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_presentity` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(64) NOT NULL,
   `domain` varchar(190) NOT NULL,
   `event` varchar(64) NOT NULL,
   `etag` varchar(64) NOT NULL,
-  `expires` int(11) NOT NULL,
-  `received_time` int(11) NOT NULL,
+  `expires` int NOT NULL,
+  `received_time` int NOT NULL,
   `body` blob NOT NULL,
   `sender` varchar(128) NOT NULL,
-  `priority` int(11) NOT NULL DEFAULT '0',
+  `priority` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `kam_users_presentity_idx` (`username`,`domain`,`event`,`etag`),
   KEY `usersPresentity_expires` (`expires`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5234,33 +5243,33 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_pua`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_pua` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `pres_uri` varchar(128) NOT NULL,
   `pres_id` varchar(255) NOT NULL,
-  `event` int(11) NOT NULL,
-  `expires` int(11) NOT NULL,
-  `desired_expires` int(11) NOT NULL,
-  `flag` int(11) NOT NULL,
+  `event` int NOT NULL,
+  `expires` int NOT NULL,
+  `desired_expires` int NOT NULL,
+  `flag` int NOT NULL,
   `etag` varchar(64) NOT NULL,
   `tuple_id` varchar(64) DEFAULT NULL,
   `watcher_uri` varchar(128) NOT NULL,
   `call_id` varchar(255) NOT NULL,
   `to_tag` varchar(64) NOT NULL,
   `from_tag` varchar(64) NOT NULL,
-  `cseq` int(11) NOT NULL,
+  `cseq` int NOT NULL,
   `record_route` text,
   `contact` varchar(128) NOT NULL,
   `remote_contact` varchar(128) NOT NULL,
-  `version` int(11) NOT NULL,
+  `version` int NOT NULL,
   `extra_headers` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `kam_users_pua_idx` (`etag`,`tuple_id`,`call_id`,`from_tag`),
   KEY `usersPua_expires_idx` (`expires`),
   KEY `usersPua_dialog1_idx` (`pres_id`,`pres_uri`),
   KEY `usersPua_dialog2_idx` (`call_id`,`from_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5278,19 +5287,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_watchers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_watchers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `presentity_uri` varchar(128) NOT NULL,
   `watcher_username` varchar(64) NOT NULL,
   `watcher_domain` varchar(190) NOT NULL,
   `event` varchar(64) NOT NULL DEFAULT 'presence',
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `reason` varchar(64) DEFAULT NULL,
-  `inserted_time` int(11) NOT NULL,
+  `inserted_time` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `kam_users_watchers_idx` (`presentity_uri`,`watcher_username`,`watcher_domain`,`event`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5308,22 +5317,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_users_xcap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_users_xcap` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(64) NOT NULL,
   `domain` varchar(190) NOT NULL,
   `doc` mediumblob NOT NULL,
-  `doc_type` int(11) NOT NULL,
+  `doc_type` int NOT NULL,
   `etag` varchar(64) NOT NULL,
-  `source` int(11) NOT NULL,
+  `source` int NOT NULL,
   `doc_uri` varchar(255) NOT NULL,
-  `port` int(11) NOT NULL,
+  `port` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `doc_uri_idx` (`doc_uri`),
   KEY `UsersXcap_account_doc_type_uri_idx` (`username`,`domain`,`doc_type`,`doc_uri`),
   KEY `UsersXcap_account_doc_uri_idx` (`username`,`domain`,`doc_uri`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5341,12 +5350,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kam_version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kam_version` (
   `table_name` varchar(32) NOT NULL,
-  `table_version` int(10) unsigned NOT NULL DEFAULT '0',
+  `table_version` int unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY `table_name_idx` (`table_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='[ignore]';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='[ignore]';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5365,14 +5374,23 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `migration_versions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migration_versions` (
-  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
-  `execution_time` int(11) DEFAULT NULL,
+  `execution_time` int DEFAULT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migration_versions`
+--
+
+LOCK TABLES `migration_versions` WRITE;
+/*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `refresh_tokens`
@@ -5380,15 +5398,15 @@ CREATE TABLE `migration_versions` (
 
 DROP TABLE IF EXISTS `refresh_tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `refresh_tokens` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `refresh_token` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `refresh_token` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `valid` datetime NOT NULL COMMENT '(DC2Type:datetime)',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_9BACE7E1C74F2195` (`refresh_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5406,15 +5424,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sm_costs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sm_costs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `cgrid` varchar(40) NOT NULL,
   `run_id` varchar(64) NOT NULL,
   `origin_host` varchar(64) NOT NULL,
   `origin_id` varchar(384) NOT NULL,
   `cost_source` varchar(64) NOT NULL,
-  `usage` bigint(20) NOT NULL,
+  `usage` bigint NOT NULL,
   `cost_details` text,
   `created_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
   `deleted_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime)',
@@ -5423,7 +5441,7 @@ CREATE TABLE `sm_costs` (
   KEY `origin_idx` (`origin_host`,`origin_id`),
   KEY `run_origin_idx` (`run_id`,`origin_id`),
   KEY `deleted_at_idx` (`deleted_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5441,9 +5459,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_account_actions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_account_actions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `loadid` varchar(64) NOT NULL DEFAULT 'DATABASE',
   `tenant` varchar(64) NOT NULL,
@@ -5453,15 +5471,15 @@ CREATE TABLE `tp_account_actions` (
   `allow_negative` tinyint(1) NOT NULL DEFAULT '0',
   `disabled` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `companyId` int(10) unsigned DEFAULT NULL,
-  `carrierId` int(10) unsigned DEFAULT NULL,
+  `companyId` int unsigned DEFAULT NULL,
+  `carrierId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_9C6C0B6E2480E723` (`companyId`),
   UNIQUE KEY `unique_tp_account` (`tpid`,`loadid`,`tenant`,`account`,`companyId`),
   UNIQUE KEY `UNIQ_9C6C0B6E6709B1C` (`carrierId`),
   CONSTRAINT `FK_9C6C0B6E2480E723` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_9C6C0B6E6709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5475,13 +5493,13 @@ INSERT INTO `tp_account_actions` VALUES (1,'b1','DATABASE','b1','c1',NULL,'c1',1
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `tp_action_triggers`
+-- Temporary view structure for view `tp_action_triggers`
 --
 
 DROP TABLE IF EXISTS `tp_action_triggers`;
 /*!50001 DROP VIEW IF EXISTS `tp_action_triggers`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `tp_action_triggers` AS SELECT 
  1 AS `tpid`,
  1 AS `tag`,
@@ -5496,13 +5514,13 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `tp_actions`
+-- Temporary view structure for view `tp_actions`
 --
 
 DROP TABLE IF EXISTS `tp_actions`;
 /*!50001 DROP VIEW IF EXISTS `tp_actions`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+/*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `tp_actions` AS SELECT 
  1 AS `tpid`,
  1 AS `tag`,
@@ -5518,12 +5536,12 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `tp_cdr_stats`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_cdr_stats` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `tag` varchar(64) NOT NULL,
-  `queue_length` int(11) NOT NULL DEFAULT '0',
+  `queue_length` int NOT NULL DEFAULT '0',
   `time_window` varchar(8) NOT NULL DEFAULT '',
   `save_interval` varchar(8) NOT NULL DEFAULT '',
   `metrics` varchar(64) NOT NULL,
@@ -5548,12 +5566,12 @@ CREATE TABLE `tp_cdr_stats` (
   `cost_interval` varchar(24) NOT NULL DEFAULT '',
   `action_triggers` varchar(64) NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `carrierId` int(10) unsigned NOT NULL,
+  `carrierId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_CCA10B656709B1C` (`carrierId`),
   KEY `tpCdrStat_tpid` (`tpid`),
   CONSTRAINT `FK_CCA10B656709B1C` FOREIGN KEY (`carrierId`) REFERENCES `Carriers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5571,9 +5589,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_cdrs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_cdrs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `cgrid` varchar(40) NOT NULL,
   `run_id` varchar(64) NOT NULL,
   `origin_host` varchar(64) NOT NULL,
@@ -5588,7 +5606,7 @@ CREATE TABLE `tp_cdrs` (
   `destination` varchar(128) NOT NULL,
   `setup_time` datetime NOT NULL COMMENT '(DC2Type:datetime)',
   `answer_time` datetime NOT NULL COMMENT '(DC2Type:datetime)',
-  `usage` bigint(20) NOT NULL,
+  `usage` bigint NOT NULL,
   `extra_fields` longtext NOT NULL,
   `cost_source` varchar(64) NOT NULL,
   `cost` decimal(20,4) NOT NULL,
@@ -5601,7 +5619,7 @@ CREATE TABLE `tp_cdrs` (
   UNIQUE KEY `tpCdrs_cdrrun` (`cgrid`,`run_id`,`origin_id`),
   KEY `tpCdr_originId_idx` (`origin_id`),
   KEY `tpCdr_answerTime_idx` (`answer_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5619,41 +5637,41 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_derived_chargers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_derived_chargers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tpid` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'ivozprovider',
-  `loadid` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'DATABASE',
-  `direction` varchar(8) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*out',
-  `tenant` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `category` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'call',
-  `account` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*any',
-  `subject` varchar(64) COLLATE utf8_unicode_ci DEFAULT '*any',
-  `destination_ids` varchar(64) COLLATE utf8_unicode_ci DEFAULT '*any',
-  `runid` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'carrier',
-  `run_filters` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `req_type_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '^*postpaid',
-  `direction_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `tenant_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `category_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `account_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'carrierId',
-  `subject_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'carrierId',
-  `destination_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `setup_time_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `pdd_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `answer_time_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `usage_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `supplier_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `disconnect_cause_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `rated_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
-  `cost_field` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `tpid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'ivozprovider',
+  `loadid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'DATABASE',
+  `direction` varchar(8) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*out',
+  `tenant` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'call',
+  `account` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*any',
+  `subject` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '*any',
+  `destination_ids` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '*any',
+  `runid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'carrier',
+  `run_filters` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `req_type_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '^*postpaid',
+  `direction_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `tenant_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `category_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `account_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'carrierId',
+  `subject_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'carrierId',
+  `destination_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `setup_time_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `pdd_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `answer_time_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `usage_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `supplier_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `disconnect_cause_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `rated_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
+  `cost_field` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '*default',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `brandId` int(10) unsigned NOT NULL,
+  `brandId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_1581A0539CBEC244` (`brandId`),
   KEY `tpDerivedCharge_tpid` (`tpid`),
   CONSTRAINT `FK_1581A0539CBEC244` FOREIGN KEY (`brandId`) REFERENCES `Brands` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5672,25 +5690,25 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_destination_rates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_destination_rates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `tag` varchar(64) DEFAULT NULL,
   `destinations_tag` varchar(64) DEFAULT NULL,
   `rates_tag` varchar(64) DEFAULT NULL,
   `rounding_method` varchar(255) NOT NULL DEFAULT '*up' COMMENT '[enum:*up|*upmincost]',
-  `rounding_decimals` int(11) NOT NULL DEFAULT '4',
+  `rounding_decimals` int NOT NULL DEFAULT '4',
   `max_cost` decimal(10,4) NOT NULL DEFAULT '0.0000',
   `max_cost_strategy` varchar(16) NOT NULL DEFAULT '',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `destinationRateId` int(10) unsigned NOT NULL,
+  `destinationRateId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_4823F9F84EB67480` (`destinationRateId`),
   UNIQUE KEY `tpid_drid_dstid` (`tpid`,`tag`,`destinations_tag`),
   KEY `tpDestinationRate_tpid` (`tpid`),
   CONSTRAINT `FK_4823F9F84EB67480` FOREIGN KEY (`destinationRateId`) REFERENCES `DestinationRates` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5708,20 +5726,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_destinations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_destinations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `tag` varchar(64) DEFAULT NULL,
   `prefix` varchar(24) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `destinationId` int(10) unsigned NOT NULL,
+  `destinationId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_C9806885BF3434FC` (`destinationId`),
   UNIQUE KEY `tpid_dest_prefix` (`tpid`,`tag`,`prefix`),
   KEY `tpDestination_tag` (`tag`),
   CONSTRAINT `FK_C9806885BF3434FC` FOREIGN KEY (`destinationId`) REFERENCES `Destinations` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5739,9 +5757,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_lcr_rules`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_lcr_rules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `direction` varchar(8) NOT NULL DEFAULT '*out',
   `tenant` varchar(64) NOT NULL,
@@ -5755,12 +5773,12 @@ CREATE TABLE `tp_lcr_rules` (
   `activation_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
   `weight` decimal(8,2) NOT NULL DEFAULT '10.00',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `outgoingRoutingId` int(10) unsigned DEFAULT NULL,
+  `outgoingRoutingId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_C700333B3CDE892` (`outgoingRoutingId`),
   KEY `tpLcrRule_tpid` (`tpid`),
   CONSTRAINT `FK_C700333B3CDE892` FOREIGN KEY (`outgoingRoutingId`) REFERENCES `OutgoingRouting` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5778,9 +5796,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_rates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_rates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `tag` varchar(64) DEFAULT NULL,
   `connect_fee` decimal(10,4) NOT NULL,
@@ -5789,13 +5807,13 @@ CREATE TABLE `tp_rates` (
   `rate_increment` varchar(16) NOT NULL,
   `group_interval_start` varchar(16) NOT NULL DEFAULT '0s',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `destinationRateId` int(10) unsigned NOT NULL,
+  `destinationRateId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_DE7E762B4EB67480` (`destinationRateId`),
   UNIQUE KEY `unique_tprate` (`tpid`,`tag`,`group_interval_start`),
   KEY `tpRate_tpid` (`tpid`),
   CONSTRAINT `FK_DE7E762B4EB67480` FOREIGN KEY (`destinationRateId`) REFERENCES `DestinationRates` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5813,22 +5831,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_rating_plans`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_rating_plans` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `tag` varchar(64) DEFAULT NULL,
   `destrates_tag` varchar(64) DEFAULT NULL,
   `timing_tag` varchar(64) NOT NULL DEFAULT '*any',
   `weight` decimal(8,2) NOT NULL DEFAULT '10.00' COMMENT '(DC2Type:decimal)',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `ratingPlanId` int(10) unsigned NOT NULL,
+  `ratingPlanId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_4CC2BCAB5C17F7F9` (`ratingPlanId`),
   UNIQUE KEY `tpid_rplid_destrates_timings_weight` (`tpid`,`tag`,`destrates_tag`,`timing_tag`,`weight`),
   KEY `tpRatingPlan_tpid` (`tpid`),
   CONSTRAINT `FK_4CC2BCAB5C17F7F9` FOREIGN KEY (`ratingPlanId`) REFERENCES `RatingPlans` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5846,9 +5864,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_rating_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_rating_profiles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `loadid` varchar(64) NOT NULL DEFAULT 'DATABASE',
   `direction` varchar(8) NOT NULL DEFAULT '*out',
@@ -5860,15 +5878,15 @@ CREATE TABLE `tp_rating_profiles` (
   `fallback_subjects` varchar(64) DEFAULT NULL,
   `cdr_stat_queue_ids` varchar(64) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `ratingProfileId` int(10) unsigned DEFAULT NULL,
-  `outgoingRoutingRelCarrierId` int(10) unsigned DEFAULT NULL,
+  `ratingProfileId` int unsigned DEFAULT NULL,
+  `outgoingRoutingRelCarrierId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tpid_loadid_tenant_category_dir_subj_atime` (`tpid`,`loadid`,`tenant`,`subject`,`category`,`direction`,`activation_time`),
   KEY `IDX_8502DE0E692AE6A8` (`ratingProfileId`),
   KEY `IDX_8502DE0E622624F7` (`outgoingRoutingRelCarrierId`),
   CONSTRAINT `FK_8502DE0E622624F7` FOREIGN KEY (`outgoingRoutingRelCarrierId`) REFERENCES `OutgoingRoutingRelCarriers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_8502DE0E692AE6A8` FOREIGN KEY (`ratingProfileId`) REFERENCES `RatingProfiles` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5886,9 +5904,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_timings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_timings` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `tpid` varchar(64) NOT NULL DEFAULT 'ivozprovider',
   `tag` varchar(64) DEFAULT NULL,
   `years` varchar(255) NOT NULL,
@@ -5897,13 +5915,13 @@ CREATE TABLE `tp_timings` (
   `week_days` varchar(255) NOT NULL,
   `time` varchar(32) NOT NULL DEFAULT '00:00:00',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime)',
-  `ratingPlanId` int(10) unsigned NOT NULL,
+  `ratingPlanId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_D124F5385C17F7F9` (`ratingPlanId`),
   UNIQUE KEY `tpid_tag` (`tpid`,`tag`),
   KEY `tpTiming_tpid` (`tpid`),
   CONSTRAINT `FK_D124F5385C17F7F9` FOREIGN KEY (`ratingPlanId`) REFERENCES `RatingPlans` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5921,14 +5939,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tp_versions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tp_versions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `item` varchar(64) NOT NULL,
-  `version` int(11) NOT NULL,
+  `version` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_item` (`id`,`item`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5990,7 +6008,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `ast_ps_aors` AS select concat('b',`C`.`brandId`,'c',`C`.`id`,`E`.`type`,`E`.`id`,'_',`E`.`name`) AS `sorcery_id`,concat('sip:',`E`.`name`,'@',`D`.`domain`) AS `contact`,0 AS `qualify_frequency` from ((((select 't' AS `type`,`T`.`id` AS `id`,`T`.`name` AS `name`,`T`.`domainId` AS `domainId`,`T`.`companyId` AS `companyId` from `ivozprovider`.`Terminals` `T`) union select 'f' AS `type`,`ivozprovider`.`Friends`.`id` AS `id`,`ivozprovider`.`Friends`.`name` AS `name`,`ivozprovider`.`Friends`.`domainId` AS `domainId`,`ivozprovider`.`Friends`.`companyId` AS `companyId` from `ivozprovider`.`Friends` union select 'r' AS `type`,`ivozprovider`.`ResidentialDevices`.`id` AS `id`,`ivozprovider`.`ResidentialDevices`.`name` AS `name`,`ivozprovider`.`ResidentialDevices`.`domainId` AS `domainId`,`ivozprovider`.`ResidentialDevices`.`companyId` AS `companyId` from `ivozprovider`.`ResidentialDevices` union select 'rt' AS `type`,`ivozprovider`.`RetailAccounts`.`id` AS `id`,`ivozprovider`.`RetailAccounts`.`name` AS `name`,`ivozprovider`.`RetailAccounts`.`domainId` AS `domainId`,`ivozprovider`.`RetailAccounts`.`companyId` AS `companyId` from `ivozprovider`.`RetailAccounts`) `E` join `ivozprovider`.`Companies` `C` on((`C`.`id` = `E`.`companyId`))) join `ivozprovider`.`Domains` `D` on((`D`.`id` = `E`.`domainId`))) */;
+/*!50001 VIEW `ast_ps_aors` AS select concat('b',`C`.`brandId`,'c',`C`.`id`,`E`.`type`,`E`.`id`,'_',`E`.`name`) AS `sorcery_id`,concat('sip:',`E`.`name`,'@',`D`.`domain`) AS `contact`,0 AS `qualify_frequency` from (((select 't' AS `type`,`T`.`id` AS `id`,`T`.`name` AS `name`,`T`.`domainId` AS `domainId`,`T`.`companyId` AS `companyId` from `Terminals` `T` union select 'f' AS `type`,`Friends`.`id` AS `id`,`Friends`.`name` AS `name`,`Friends`.`domainId` AS `domainId`,`Friends`.`companyId` AS `companyId` from `Friends` union select 'r' AS `type`,`ResidentialDevices`.`id` AS `id`,`ResidentialDevices`.`name` AS `name`,`ResidentialDevices`.`domainId` AS `domainId`,`ResidentialDevices`.`companyId` AS `companyId` from `ResidentialDevices` union select 'rt' AS `type`,`RetailAccounts`.`id` AS `id`,`RetailAccounts`.`name` AS `name`,`RetailAccounts`.`domainId` AS `domainId`,`RetailAccounts`.`companyId` AS `companyId` from `RetailAccounts`) `E` join `Companies` `C` on((`C`.`id` = `E`.`companyId`))) join `Domains` `D` on((`D`.`id` = `E`.`domainId`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -6080,7 +6098,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `kam_users_domain_attrs` AS select cast(`D`.`id` as char charset utf8) AS `did`,'brandId' AS `name`,0 AS `type`,cast(`BCD`.`brandId` as char charset utf8) AS `value` from (`ivozprovider`.`Domains` `D` join (select `ivozprovider`.`Brands`.`domainId` AS `domainId`,`ivozprovider`.`Brands`.`id` AS `brandId` from `ivozprovider`.`Brands` union select `ivozprovider`.`Companies`.`domainId` AS `domainId`,`ivozprovider`.`Companies`.`brandId` AS `brandId` from `ivozprovider`.`Companies`) `BCD` on((`D`.`id` = `BCD`.`domainId`))) where (`BCD`.`domainId` is not null) */;
+/*!50001 VIEW `kam_users_domain_attrs` AS select cast(`D`.`id` as char charset utf8) AS `did`,'brandId' AS `name`,0 AS `type`,cast(`BCD`.`brandId` as char charset utf8) AS `value` from (`Domains` `D` join (select `Brands`.`domainId` AS `domainId`,`Brands`.`id` AS `brandId` from `Brands` union select `Companies`.`domainId` AS `domainId`,`Companies`.`brandId` AS `brandId` from `Companies`) `BCD` on((`D`.`id` = `BCD`.`domainId`))) where (`BCD`.`domainId` is not null) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -6120,6 +6138,10 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50112 SET @disable_bulk_load = IF (@is_rocksdb_supported, 'SET SESSION rocksdb_bulk_load = @old_rocksdb_bulk_load', 'SET @dummy_rocksdb_bulk_load = 0') */;
+/*!50112 PREPARE s FROM @disable_bulk_load */;
+/*!50112 EXECUTE s */;
+/*!50112 DEALLOCATE PREPARE s */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -6130,4 +6152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-20 16:09:52
+-- Dump completed on 2022-06-30 13:17:43
