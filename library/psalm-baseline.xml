@@ -1410,17 +1410,13 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrAbstract.php">
-    <MixedArgument occurrences="12">
+    <MixedArgument occurrences="8">
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getBrand())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getCompany())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getFriend())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getFriend())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getResidentialDevice())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
-      <code>$fkTransformer-&gt;transform($dto-&gt;getRetailAccount())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
     </MixedArgument>
@@ -1432,26 +1428,20 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php">
-    <MissingParamType occurrences="7">
-      <code>$id</code>
-      <code>$id</code>
+    <MissingParamType occurrences="5">
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="6">
+    <MissingReturnType occurrences="4">
       <code>getBrandId</code>
       <code>getCompanyId</code>
       <code>getFriendId</code>
-      <code>getResidentialDeviceId</code>
-      <code>getRetailAccountId</code>
       <code>getUserId</code>
     </MissingReturnType>
-    <MixedArgument occurrences="6">
-      <code>$id</code>
-      <code>$id</code>
+    <MixedArgument occurrences="4">
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -7200,10 +7190,11 @@
     <ImplicitToStringCast occurrences="1">
       <code>$this-&gt;getDomain()</code>
     </ImplicitToStringCast>
-    <LessSpecificReturnStatement occurrences="4">
+    <LessSpecificReturnStatement occurrences="5">
       <code>parent::setIp($ip)</code>
       <code>parent::setName($name)</code>
       <code>parent::setPassword($password)</code>
+      <code>parent::setPassword(null)</code>
       <code>parent::setPort($port)</code>
     </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
@@ -7306,10 +7297,11 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccount.php">
-    <LessSpecificReturnStatement occurrences="4">
+    <LessSpecificReturnStatement occurrences="5">
       <code>parent::setIp($ip)</code>
       <code>parent::setName($name)</code>
       <code>parent::setPassword($password)</code>
+      <code>parent::setPassword(null)</code>
       <code>parent::setPort($port)</code>
     </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
