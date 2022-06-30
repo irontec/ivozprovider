@@ -16,8 +16,6 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
       ROLE_COMPANY_USER:
         company:
           eq: "user.getCompany().getId()"
-        hidden:
-          eq: 0
   itemOperations:
     get: ~
   collectionOperations:

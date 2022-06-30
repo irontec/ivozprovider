@@ -14,14 +14,10 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 
 /**
 * UsersCdrAbstract
@@ -94,11 +90,6 @@ abstract class UsersCdrAbstract
     protected $xcallid = null;
 
     /**
-     * @var bool
-     */
-    protected $hidden = false;
-
-    /**
      * @var ?BrandInterface
      */
     protected $brand = null;
@@ -119,28 +110,16 @@ abstract class UsersCdrAbstract
     protected $friend = null;
 
     /**
-     * @var ?ResidentialDeviceInterface
-     */
-    protected $residentialDevice = null;
-
-    /**
-     * @var ?RetailAccountInterface
-     */
-    protected $retailAccount = null;
-
-    /**
      * Constructor
      */
     protected function __construct(
         \DateTimeInterface|string $startTime,
         \DateTimeInterface|string $endTime,
-        float $duration,
-        bool $hidden
+        float $duration
     ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
-        $this->setHidden($hidden);
     }
 
     abstract public function getId(): null|string|int;
@@ -207,14 +186,11 @@ abstract class UsersCdrAbstract
         Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
-        $hidden = $dto->getHidden();
-        Assertion::notNull($hidden, 'getHidden value is null, but non null value was expected.');
 
         $self = new static(
             $startTime,
             $endTime,
-            $duration,
-            $hidden
+            $duration
         );
 
         $self
@@ -230,9 +206,7 @@ abstract class UsersCdrAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setFriend($fkTransformer->transform($dto->getFriend()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setFriend($fkTransformer->transform($dto->getFriend()));
 
         $self->initChangelog();
 
@@ -255,8 +229,6 @@ abstract class UsersCdrAbstract
         Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
         $duration = $dto->getDuration();
         Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
-        $hidden = $dto->getHidden();
-        Assertion::notNull($hidden, 'getHidden value is null, but non null value was expected.');
 
         $this
             ->setStartTime($startTime)
@@ -271,13 +243,10 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setHidden($hidden)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setFriend($fkTransformer->transform($dto->getFriend()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setFriend($fkTransformer->transform($dto->getFriend()));
 
         return $this;
     }
@@ -300,13 +269,10 @@ abstract class UsersCdrAbstract
             ->setCallid(self::getCallid())
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
-            ->setHidden(self::getHidden())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setUser(User::entityToDto(self::getUser(), $depth))
-            ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
-            ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
-            ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
+            ->setFriend(Friend::entityToDto(self::getFriend(), $depth));
     }
 
     /**
@@ -327,13 +293,10 @@ abstract class UsersCdrAbstract
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
-            'hidden' => self::getHidden(),
             'brandId' => self::getBrand()?->getId(),
             'companyId' => self::getCompany()?->getId(),
             'userId' => self::getUser()?->getId(),
-            'friendId' => self::getFriend()?->getId(),
-            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
-            'retailAccountId' => self::getRetailAccount()?->getId()
+            'friendId' => self::getFriend()?->getId()
         ];
     }
 
@@ -535,18 +498,6 @@ abstract class UsersCdrAbstract
         return $this->xcallid;
     }
 
-    protected function setHidden(bool $hidden): static
-    {
-        $this->hidden = $hidden;
-
-        return $this;
-    }
-
-    public function getHidden(): bool
-    {
-        return $this->hidden;
-    }
-
     protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
@@ -593,29 +544,5 @@ abstract class UsersCdrAbstract
     public function getFriend(): ?FriendInterface
     {
         return $this->friend;
-    }
-
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
-    {
-        $this->residentialDevice = $residentialDevice;
-
-        return $this;
-    }
-
-    public function getResidentialDevice(): ?ResidentialDeviceInterface
-    {
-        return $this->residentialDevice;
-    }
-
-    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
-    {
-        $this->retailAccount = $retailAccount;
-
-        return $this;
-    }
-
-    public function getRetailAccount(): ?RetailAccountInterface
-    {
-        return $this->retailAccount;
     }
 }

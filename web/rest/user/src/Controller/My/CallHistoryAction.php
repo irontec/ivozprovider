@@ -52,13 +52,6 @@ class CallHistoryAction
             )
         );
 
-        $qb->andWhere(
-            $qb->expr()->eq(
-                'o.hidden',
-                0
-            )
-        );
-
         $response = $this->applyCollectionExtensions(
             $qb,
             UsersCdr::class,

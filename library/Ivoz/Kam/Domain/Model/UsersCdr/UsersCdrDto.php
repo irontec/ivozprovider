@@ -24,9 +24,7 @@ class UsersCdrDto extends UsersCdrDtoAbstract
             if ($role !== 'ROLE_COMPANY_USER') {
                 $response += [
                     'userId' => 'user',
-                    'friendId' => 'friend',
-                    'residentialDeviceId' => 'residentialDevice',
-                    'retailAccountId' => 'retailAccount'
+                    'friendId' => 'friend'
                 ];
             }
         } else {
@@ -39,7 +37,6 @@ class UsersCdrDto extends UsersCdrDtoAbstract
             unset($response['companyId']);
         }
 
-        unset($response['hidden']);
         return $response;
     }
 

@@ -4,10 +4,9 @@
     <indexes>
       <index name="usersCdr_brandId" columns="brandId"/>
       <index name="usersCdr_startTime" columns="start_time"/>
-      <index name="usersCdr_companyId_hidden_startTime" columns="companyId,hidden,start_time"/>
+      <index name="usersCdr_companyId_startTime" columns="companyId,start_time"/>
       <index name="usersCdr_userId" columns="userId"/>
       <index name="usersCdr_friendId" columns="friendId"/>
-      <index name="usersCdr_residentialDeviceId" columns="residentialDeviceId"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="usersCdr_callid_direction" columns="callid,direction"/>
@@ -72,11 +71,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="hidden" type="boolean" column="hidden" nullable="false">
-      <options>
-        <option name="default">0</option>
-      </options>
-    </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="set null"/>
@@ -95,16 +89,6 @@
     <many-to-one field="friend" target-entity="Ivoz\Provider\Domain\Model\Friend\FriendInterface" fetch="LAZY">
       <join-columns>
         <join-column name="friendId" referenced-column-name="id" on-delete="set null"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="set null"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="retailAccount" target-entity="Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="retailAccountId" referenced-column-name="id" on-delete="set null"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

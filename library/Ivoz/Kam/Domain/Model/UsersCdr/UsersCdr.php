@@ -33,12 +33,6 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
         if (!is_null($this->getFriend())) {
             return $this->getFriend()->getName();
         }
-        if (!is_null($this->getRetailAccount())) {
-            return $this->getRetailAccount()->getName();
-        }
-        if (!is_null($this->getResidentialDevice())) {
-            return $this->getResidentialDevice()->getName();
-        }
 
         if ($this->getDirection() === UsersCdr::DIRECTION_OUTBOUND) {
             return $this->getCaller();

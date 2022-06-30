@@ -9,8 +9,6 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 
 /**
 * UsersCdrInterface
@@ -78,8 +76,6 @@ interface UsersCdrInterface extends EntityInterface
 
     public function getXcallid(): ?string;
 
-    public function getHidden(): bool;
-
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;
@@ -87,10 +83,6 @@ interface UsersCdrInterface extends EntityInterface
     public function getUser(): ?UserInterface;
 
     public function getFriend(): ?FriendInterface;
-
-    public function getResidentialDevice(): ?ResidentialDeviceInterface;
-
-    public function getRetailAccount(): ?RetailAccountInterface;
 
     public function isInitialized(): bool;
 }
