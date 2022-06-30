@@ -153,8 +153,6 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function getPort(): ?int;
 
-    public function getAuthNeeded(): string;
-
     public function getPassword(): ?string;
 
     public function getDisallow(): string;

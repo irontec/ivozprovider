@@ -57,12 +57,6 @@ abstract class ResidentialDeviceAbstract
     protected $port = null;
 
     /**
-     * @var string
-     * column: auth_needed
-     */
-    protected $authNeeded = 'yes';
-
-    /**
      * @var ?string
      */
     protected $password = null;
@@ -175,7 +169,6 @@ abstract class ResidentialDeviceAbstract
     protected function __construct(
         string $name,
         string $description,
-        string $authNeeded,
         string $disallow,
         string $allow,
         string $directMediaMethod,
@@ -190,7 +183,6 @@ abstract class ResidentialDeviceAbstract
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setAuthNeeded($authNeeded);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
         $this->setDirectMediaMethod($directMediaMethod);
@@ -266,8 +258,6 @@ abstract class ResidentialDeviceAbstract
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $description = $dto->getDescription();
         Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
-        $authNeeded = $dto->getAuthNeeded();
-        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
         $disallow = $dto->getDisallow();
         Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
         $allow = $dto->getAllow();
@@ -298,7 +288,6 @@ abstract class ResidentialDeviceAbstract
         $self = new static(
             $name,
             $description,
-            $authNeeded,
             $disallow,
             $allow,
             $directMediaMethod,
@@ -344,8 +333,6 @@ abstract class ResidentialDeviceAbstract
         Assertion::notNull($name, 'getName value is null, but non null value was expected.');
         $description = $dto->getDescription();
         Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
-        $authNeeded = $dto->getAuthNeeded();
-        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
         $disallow = $dto->getDisallow();
         Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
         $allow = $dto->getAllow();
@@ -379,7 +366,6 @@ abstract class ResidentialDeviceAbstract
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
-            ->setAuthNeeded($authNeeded)
             ->setPassword($dto->getPassword())
             ->setDisallow($disallow)
             ->setAllow($allow)
@@ -414,7 +400,6 @@ abstract class ResidentialDeviceAbstract
             ->setTransport(self::getTransport())
             ->setIp(self::getIp())
             ->setPort(self::getPort())
-            ->setAuthNeeded(self::getAuthNeeded())
             ->setPassword(self::getPassword())
             ->setDisallow(self::getDisallow())
             ->setAllow(self::getAllow())
@@ -447,7 +432,6 @@ abstract class ResidentialDeviceAbstract
             'transport' => self::getTransport(),
             'ip' => self::getIp(),
             'port' => self::getPort(),
-            'auth_needed' => self::getAuthNeeded(),
             'password' => self::getPassword(),
             'disallow' => self::getDisallow(),
             'allow' => self::getAllow(),
@@ -553,18 +537,6 @@ abstract class ResidentialDeviceAbstract
     public function getPort(): ?int
     {
         return $this->port;
-    }
-
-    protected function setAuthNeeded(string $authNeeded): static
-    {
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    public function getAuthNeeded(): string
-    {
-        return $this->authNeeded;
     }
 
     protected function setPassword(?string $password = null): static
