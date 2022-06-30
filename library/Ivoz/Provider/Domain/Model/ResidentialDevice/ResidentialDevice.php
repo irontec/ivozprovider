@@ -49,6 +49,18 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
         if ($this->isDirectConnectivity() && !$this->getTransport()) {
             throw new \DomainException('Invalid empty transport');
         }
+
+        if ($this->isDirectConnectivity() && !$this->getIp()) {
+            throw new \DomainException('Invalid empty IP');
+        }
+
+        if ($this->isDirectConnectivity() && !$this->getPort()) {
+            throw new \DomainException('Invalid empty port');
+        }
+
+        if (!$this->isDirectConnectivity() && !$this->getPassword()) {
+            throw new \DomainException('Password cannot be empty for residential devices with no direct connectivity');
+        }
     }
 
     /**
@@ -85,12 +97,16 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     public function setPassword($password = null)
     {
         $password = trim($password);
-        if (!empty($password)) {
-            Assertion::regex(
-                $password,
-                '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
-            );
+
+        if (empty($password)) {
+            return parent::setPassword(null);
         }
+
+        Assertion::regex(
+            $password,
+            '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
+        );
+
         return parent::setPassword($password);
     }
 

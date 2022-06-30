@@ -40,12 +40,6 @@ abstract class ResidentialDeviceAbstract
     protected $port;
 
     /**
-     * column: auth_needed
-     * @var string
-     */
-    protected $authNeeded = 'yes';
-
-    /**
      * @var string | null
      */
     protected $password;
@@ -159,7 +153,6 @@ abstract class ResidentialDeviceAbstract
     protected function __construct(
         $name,
         $description,
-        $authNeeded,
         $disallow,
         $allow,
         $directMediaMethod,
@@ -174,7 +167,6 @@ abstract class ResidentialDeviceAbstract
     ) {
         $this->setName($name);
         $this->setDescription($description);
-        $this->setAuthNeeded($authNeeded);
         $this->setDisallow($disallow);
         $this->setAllow($allow);
         $this->setDirectMediaMethod($directMediaMethod);
@@ -259,7 +251,6 @@ abstract class ResidentialDeviceAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getAuthNeeded(),
             $dto->getDisallow(),
             $dto->getAllow(),
             $dto->getDirectMediaMethod(),
@@ -309,7 +300,6 @@ abstract class ResidentialDeviceAbstract
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
-            ->setAuthNeeded($dto->getAuthNeeded())
             ->setPassword($dto->getPassword())
             ->setDisallow($dto->getDisallow())
             ->setAllow($dto->getAllow())
@@ -348,7 +338,6 @@ abstract class ResidentialDeviceAbstract
             ->setTransport(self::getTransport())
             ->setIp(self::getIp())
             ->setPort(self::getPort())
-            ->setAuthNeeded(self::getAuthNeeded())
             ->setPassword(self::getPassword())
             ->setDisallow(self::getDisallow())
             ->setAllow(self::getAllow())
@@ -381,7 +370,6 @@ abstract class ResidentialDeviceAbstract
             'transport' => self::getTransport(),
             'ip' => self::getIp(),
             'port' => self::getPort(),
-            'auth_needed' => self::getAuthNeeded(),
             'password' => self::getPassword(),
             'disallow' => self::getDisallow(),
             'allow' => self::getAllow(),
@@ -548,32 +536,6 @@ abstract class ResidentialDeviceAbstract
     public function getPort()
     {
         return $this->port;
-    }
-
-    /**
-     * Set authNeeded
-     *
-     * @param string $authNeeded
-     *
-     * @return static
-     */
-    protected function setAuthNeeded($authNeeded)
-    {
-        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
-
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    /**
-     * Get authNeeded
-     *
-     * @return string
-     */
-    public function getAuthNeeded(): string
-    {
-        return $this->authNeeded;
     }
 
     /**
