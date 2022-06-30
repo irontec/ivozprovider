@@ -38,8 +38,6 @@ Client side requests usually traverse 2 different phases:
 
 Antiflood will take into account:
 
-- SIP OPTIONS
-
 - Requests failing during step 0:
 
   - Requests not using SIP domain in KamUsers (except wholesale).
