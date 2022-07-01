@@ -16,6 +16,11 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     private $quantity;
 
     /**
+     * @var string
+     */
+    private $type = 'static';
+
+    /**
      * @var integer
      */
     private $id;
@@ -49,6 +54,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
 
         return [
             'quantity' => 'quantity',
+            'type' => 'type',
             'id' => 'id',
             'fixedCostId' => 'fixedCost',
             'invoiceSchedulerId' => 'invoiceScheduler'
@@ -62,6 +68,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     {
         $response = [
             'quantity' => $this->getQuantity(),
+            'type' => $this->getType(),
             'id' => $this->getId(),
             'fixedCost' => $this->getFixedCost(),
             'invoiceScheduler' => $this->getInvoiceScheduler()
@@ -99,6 +106,26 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType($type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**

@@ -19,6 +19,12 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $quantity;
 
     /**
+     * comment: enum:static|maxcalls
+     * @var string
+     */
+    protected $type = 'static';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
      */
     protected $fixedCost;
@@ -34,8 +40,9 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Constructor
      */
-    protected function __construct()
+    protected function __construct($type)
     {
+        $this->setType($type);
     }
 
     abstract public function getId();
@@ -106,7 +113,9 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     ) {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
-        $self = new static();
+        $self = new static(
+            $dto->getType()
+        );
 
         $self
             ->setQuantity($dto->getQuantity())
@@ -132,6 +141,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $this
             ->setQuantity($dto->getQuantity())
+            ->setType($dto->getType())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
 
@@ -149,6 +159,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
+            ->setType(self::getType())
             ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
             ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
@@ -160,6 +171,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return [
             'quantity' => self::getQuantity(),
+            'type' => self::getType(),
             'fixedCostId' => self::getFixedCost()->getId(),
             'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
         ];
@@ -194,6 +206,37 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return static
+     */
+    protected function setType($type)
+    {
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($type, [
+            FixedCostsRelInvoiceSchedulerInterface::TYPE_STATIC,
+            FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS
+        ], 'typevalue "%s" is not an element of the valid values: %s');
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     /**
