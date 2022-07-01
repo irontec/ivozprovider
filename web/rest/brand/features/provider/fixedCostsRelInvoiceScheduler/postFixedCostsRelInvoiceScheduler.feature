@@ -23,6 +23,7 @@ Feature: Create fixed costs rel invoice schedulers
     """
       {
           "quantity": 1,
+          "type": "static",
           "id": 2,
           "fixedCost": 2,
           "invoiceScheduler": 1

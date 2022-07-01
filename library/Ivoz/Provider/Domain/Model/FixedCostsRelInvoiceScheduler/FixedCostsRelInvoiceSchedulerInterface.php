@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 {
+    const TYPE_STATIC = 'static';
+    const TYPE_MAXCALLS = 'maxcalls';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -18,6 +22,13 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
      * @return integer | null
      */
     public function getQuantity();
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType(): string;
 
     /**
      * Get fixedCost
