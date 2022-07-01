@@ -33,5 +33,8 @@ class FixedCostsRelInvoiceScheduler extends FixedCostsRelInvoiceSchedulerAbstrac
         if ($this->getType() !== self::TYPE_STATIC) {
             $this->setQuantity(null);
         }
+        if ($this->getType() !== self::TYPE_DDIS) {
+            $this->setCountry(null);
+        }
     }
 }
