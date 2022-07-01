@@ -40,10 +40,16 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
         InvoiceInterface $invoice,
         FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
     ) {
+        $quantity = $fixedCostRelScheduler->getQuantity();
+        if ($fixedCostRelScheduler->getType() === FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS) {
+            $quantity = $invoice->getCompany()->getMaxCalls();
+        }
+
         $entity = new static();
+
         $entity
             ->setQuantity(
-                $fixedCostRelScheduler->getQuantity()
+                $quantity
             )
             ->setFixedCost(
                 $fixedCostRelScheduler->getFixedCost()
