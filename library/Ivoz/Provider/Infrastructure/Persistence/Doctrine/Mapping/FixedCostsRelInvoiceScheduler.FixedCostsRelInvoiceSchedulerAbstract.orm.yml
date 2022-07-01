@@ -12,6 +12,14 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSch
       nullable: true
       options:
         unsigned: true
+    type:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:static|maxcalls]'
+        default: 'static'
   manyToOne:
     fixedCost:
       targetEntity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
