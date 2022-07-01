@@ -78,12 +78,23 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Fax,
-          isAccessible: (aboutMe) =>
-            aboutMe.features.includes(ClientFeatures.faxes),
+          isAccessible: (aboutMe) => {
+            return aboutMe.features.includes(ClientFeatures.faxes);
+          },
           children: [
             {
-              entity: entities.FaxesInOut,
+              entity: entities.FaxesOut,
               filterBy: 'fax',
+              filterValues: {
+                'type[exact]': 'Out',
+              },
+            },
+            {
+              entity: entities.FaxesIn,
+              filterBy: 'fax',
+              filterValues: {
+                'type[exact]': 'In',
+              },
             },
           ],
         },

@@ -13,7 +13,6 @@ export interface AppRoutesProps {
 }
 
 export default function AppRoutes(props: AppRoutesProps): JSX.Element {
-
   const { apiSpec } = props;
 
   const loggedIn = useStoreState((state) => state.auth.loggedIn);
