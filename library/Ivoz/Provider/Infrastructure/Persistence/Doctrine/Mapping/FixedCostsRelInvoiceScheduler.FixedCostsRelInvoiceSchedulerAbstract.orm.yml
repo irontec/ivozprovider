@@ -1,10 +1,12 @@
 Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    FixedCostsRelInvoiceScheduler_invoiceScheduler_fixedCost:
+    FixedCostsRelInvoiceScheduler_invoiceScheduler_fixedCost_type_country:
       columns:
       - invoiceSchedulerId
       - fixedCostId
+      - type
+      - countryId
   fields:
     quantity:
       column: quantity
@@ -18,7 +20,7 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSch
       length: 25
       options:
         fixed: false
-        comment: '[enum:static|maxcalls]'
+        comment: '[enum:static|maxcalls|ddis]'
         default: 'static'
   manyToOne:
     fixedCost:
@@ -44,4 +46,16 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSch
           referencedColumnName: id
           nullable: false
           onDelete: cascade
+      orphanRemoval: false
+    country:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        countryId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
