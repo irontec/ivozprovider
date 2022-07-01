@@ -23,6 +23,8 @@ class RetailAccountLifeCycleTest extends KernelTestCase
         $retailAccountDto
             ->setName('someRetailAccount')
             ->setTransport('udp')
+            ->setIp('1.2.3.4')
+            ->setPort(1024)
             ->setDirectConnectivity('yes')
             ->setBrandId(1)
             ->setCompanyId(1);
