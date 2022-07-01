@@ -8,6 +8,13 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 {
     const TYPE_STATIC = 'static';
     const TYPE_MAXCALLS = 'maxcalls';
+    const TYPE_DDIS = 'ddis';
+
+
+    const DDISCOUNTRYMATCH_ALL = 'all';
+    const DDISCOUNTRYMATCH_NATIONAL = 'national';
+    const DDISCOUNTRYMATCH_INTERNATIONAL = 'international';
+    const DDISCOUNTRYMATCH_SPECIFIC = 'specific';
 
 
     /**
@@ -31,6 +38,13 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public function getType(): string;
 
     /**
+     * Get ddisCountryMatch
+     *
+     * @return string | null
+     */
+    public function getDdisCountryMatch();
+
+    /**
      * Get fixedCost
      *
      * @return \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
@@ -52,6 +66,13 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getInvoiceScheduler();
+
+    /**
+     * Get ddisCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    public function getDdisCountry();
 
     /**
      * @return bool
