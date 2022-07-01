@@ -17,7 +17,6 @@ Feature: Retrieve residential devices
           {
               "name": "residentialDevice",
               "transport": "udp",
-              "authNeeded": "yes",
               "id": 1
           }
       ]
@@ -36,9 +35,8 @@ Feature: Retrieve residential devices
           "name": "residentialDevice",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
-          "authNeeded": "yes",
+          "ip": "1.2.3.4",
+          "port": 1024,
           "password": "+rA778LidL",
           "allow": "alaw",
           "fromDomain": null,
