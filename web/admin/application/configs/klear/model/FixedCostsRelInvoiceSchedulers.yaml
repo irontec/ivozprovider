@@ -39,6 +39,22 @@ production:
         control: Spinner
         min: 1
         max: 100
+    type:
+      title: _('Type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'static':
+            title: _("Static")
+            visualFilter:
+              show: ["quantity"]
+          'maxcalls':
+            title: _('Max calls')
+            visualFilter:
+              hide: ["quantity"]
+
 staging:
   _extends: production
 testing:
