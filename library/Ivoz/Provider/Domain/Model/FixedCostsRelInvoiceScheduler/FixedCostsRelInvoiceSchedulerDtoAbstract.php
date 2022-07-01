@@ -35,6 +35,11 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
      */
     private $invoiceScheduler;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     */
+    private $country;
+
 
     use DtoNormalizer;
 
@@ -57,7 +62,8 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
             'type' => 'type',
             'id' => 'id',
             'fixedCostId' => 'fixedCost',
-            'invoiceSchedulerId' => 'invoiceScheduler'
+            'invoiceSchedulerId' => 'invoiceScheduler',
+            'countryId' => 'country'
         ];
     }
 
@@ -71,7 +77,8 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
             'type' => $this->getType(),
             'id' => $this->getId(),
             'fixedCost' => $this->getFixedCost(),
-            'invoiceScheduler' => $this->getInvoiceScheduler()
+            'invoiceScheduler' => $this->getInvoiceScheduler(),
+            'country' => $this->getCountry()
         ];
 
         if (!$hideSensitiveData) {
@@ -234,6 +241,52 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     public function getInvoiceSchedulerId()
     {
         if ($dto = $this->getInvoiceScheduler()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $country
+     *
+     * @return static
+     */
+    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
+
+        return $this->setCountry($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getCountryId()
+    {
+        if ($dto = $this->getCountry()) {
             return $dto->getId();
         }
 

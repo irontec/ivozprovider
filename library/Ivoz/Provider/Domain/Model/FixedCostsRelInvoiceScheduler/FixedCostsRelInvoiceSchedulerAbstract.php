@@ -19,7 +19,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $quantity;
 
     /**
-     * comment: enum:static|maxcalls
+     * comment: enum:static|maxcalls|ddis
      * @var string
      */
     protected $type = 'static';
@@ -33,6 +33,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     protected $invoiceScheduler;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    protected $country;
 
 
     use ChangelogTrait;
@@ -121,6 +126,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()))
         ;
 
         $self->initChangelog();
@@ -143,7 +149,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setQuantity($dto->getQuantity())
             ->setType($dto->getType())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
-            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
+            ->setCountry($fkTransformer->transform($dto->getCountry()));
 
 
 
@@ -161,7 +168,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             ->setQuantity(self::getQuantity())
             ->setType(self::getType())
             ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
-            ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
+            ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth))
+            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**
@@ -173,7 +181,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             'quantity' => self::getQuantity(),
             'type' => self::getType(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
+            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null,
+            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -221,7 +230,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
             FixedCostsRelInvoiceSchedulerInterface::TYPE_STATIC,
-            FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS
+            FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS,
+            FixedCostsRelInvoiceSchedulerInterface::TYPE_DDIS
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -285,6 +295,30 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getInvoiceScheduler()
     {
         return $this->invoiceScheduler;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country | null
+     *
+     * @return static
+     */
+    protected function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     // @codeCoverageIgnoreEnd

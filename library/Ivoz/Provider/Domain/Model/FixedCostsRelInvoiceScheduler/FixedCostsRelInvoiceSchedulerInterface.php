@@ -8,6 +8,7 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 {
     const TYPE_STATIC = 'static';
     const TYPE_MAXCALLS = 'maxcalls';
+    const TYPE_DDIS = 'ddis';
 
 
     /**
@@ -52,6 +53,13 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     public function getInvoiceScheduler();
+
+    /**
+     * Get country
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    public function getCountry();
 
     /**
      * @return bool
