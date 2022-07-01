@@ -16,7 +16,6 @@ Feature: Update residential devices
           "transport": "udp",
           "ip": null,
           "port": null,
-          "authNeeded": "yes",
           "password": "ZGthe7E2+4",
           "disallow": "all",
           "allow": "alaw",
