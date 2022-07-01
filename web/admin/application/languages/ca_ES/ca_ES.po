@@ -144,6 +144,9 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "Tots"
 
+msgid "All Countries"
+msgstr "Todos los paises"
+
 msgid "Allow Call Forwards"
 msgstr "Permet desviament de trucada"
 
@@ -550,6 +553,18 @@ msgstr[1] "Administradors de client"
 msgid "Client filters"
 msgstr "Filtros de cliente"
 
+msgid "Client's DDIs NOT from %s (%s)"
+msgstr "DDIs del Cliente de paises diferentes de %s (%s)"
+
+msgid "Client's DDIs from %s (%s)"
+msgstr "DDIs del Cliente de %s (%s)"
+
+msgid "Client's DDIs from Any Country"
+msgstr "DDIs de Cliente de cualquier País"
+
+msgid "Client's Max Calls setting"
+msgstr "Configuración Limite de llamadas de Cliente"
+
 msgid "Client's default"
 msgstr "Per defecte del client"
 
@@ -666,6 +681,9 @@ msgstr[1] "DDIs"
 
 msgid "DDI In"
 msgstr "DDI entrada"
+
+msgid "DDI Match"
+msgstr "Coincidència DDI"
 
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
@@ -2010,6 +2028,9 @@ msgstr "Sense etiqueta de ruta"
 
 msgid "None"
 msgstr "Cap"
+
+msgid "Not Country"
+msgstr "Sense País"
 
 msgid "Notification Threshold"
 msgstr "Llindar de notificació"

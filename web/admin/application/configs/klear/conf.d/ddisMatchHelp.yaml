@@ -1,0 +1,14 @@
+ddisMatchHelp: &ddisMatchHelp
+    info:
+      type: box
+      position: left
+      icon: help
+      label: _("Need help?")
+      text: "
+            Calculate quantity based on the number of DDIs:
+            <pre>
+               <b>all          </b>  <i>Any country</i><br/>
+               <b>national     </b>  <i>Client's country</i><br/>
+               <b>international</b>  <i>NOT Client's country</i><br/>
+               <b>specific     </b>  <i>Specific country</i><br/>
+            </pre>"

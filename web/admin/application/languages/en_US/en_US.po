@@ -139,6 +139,10 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "All"
 
+#, fuzzy
+msgid "All Countries"
+msgstr "GeoIP allowed countries"
+
 msgid "Allow Call Forwards"
 msgstr "Allow Call Forwards"
 
@@ -545,6 +549,18 @@ msgstr[1] "Clients admins"
 msgid "Client filters"
 msgstr "Client filters"
 
+msgid "Client's DDIs NOT from %s (%s)"
+msgstr "Client's DDIs NOT from %s (%s)"
+
+msgid "Client's DDIs from %s (%s)"
+msgstr "Client's DDIs from %s (%s)"
+
+msgid "Client's DDIs from Any Country"
+msgstr "Client's DDIs from Any Country"
+
+msgid "Client's Max Calls setting"
+msgstr "Client's Max Calls setting"
+
 msgid "Client's default"
 msgstr "Client's default"
 
@@ -661,6 +677,9 @@ msgstr[1] "DDIs"
 
 msgid "DDI In"
 msgstr "DDI In"
+
+msgid "DDI Match"
+msgstr "DDI Match"
 
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
@@ -1991,6 +2010,9 @@ msgstr "No routing tag"
 
 msgid "None"
 msgstr "None"
+
+msgid "Not Country"
+msgstr "Not Country"
 
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
