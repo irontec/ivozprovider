@@ -27,6 +27,7 @@ production:
           fixedCost: true
           type: true
           quantity: true
+          country: true
       options:
         title: _("Options")
         screens:
@@ -42,6 +43,8 @@ production:
       title: _("Add %s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%parent%)]")
       shortcutOption: N
       filterField: invoiceScheduler
+      defaultValues:
+        country: 70
       fixedPositions: &fixedCostsRelInvoiceSchedulers_fixedPositions_Link
         group0:
           colsPerRow: 12
@@ -49,6 +52,7 @@ production:
             fixedCost: 6
             type: 3
             quantity: 3
+            country: 3
     fixedCostsRelInvoiceSchedulersEdit_screen: &fixedCostsRelInvoiceSchedulersEdit_screenLink
       <<: *FixedCostsRelInvoiceSchedulers
       controller: edit

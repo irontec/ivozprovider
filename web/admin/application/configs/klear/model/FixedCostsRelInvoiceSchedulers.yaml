@@ -50,10 +50,31 @@ production:
             title: _("Static")
             visualFilter:
               show: ["quantity"]
+              hide: ["country"]
           'maxcalls':
             title: _('Max calls')
             visualFilter:
+              hide: ["quantity", "country"]
+          'ddis':
+            title: ngettext('DDI', 'DDIs', 1)
+            visualFilter:
               hide: ["quantity"]
+              show: ["country"]
+    country:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
 
 staging:
   _extends: production
