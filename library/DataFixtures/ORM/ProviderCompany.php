@@ -28,7 +28,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setName("DemoCompany");
             $this->setDomainUsers("127.0.0.1");
             $this->setNif("12345678A");
-            $this->setMaxCalls(0);
+            $this->setMaxCalls(1000);
             $this->setPostalAddress("Company Address");
             $this->setPostalCode("54321");
             $this->setTown("Company Town");
@@ -68,7 +68,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setName("Irontec Test Company");
             $this->setDomainUsers("test.irontec.com");
             $this->setNif("12345678-Z");
-            $this->setMaxCalls(0);
+            $this->setMaxCalls(1000);
             $this->setPostalAddress("Postal address");
             $this->setPostalCode("PC");
             $this->setTown("Town");
@@ -97,7 +97,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setType("retail");
             $this->setDomainUsers(null);
             $this->setNif("12345679-Z");
-            $this->setMaxCalls(0);
+            $this->setMaxCalls(1000);
             $this->setPostalAddress("");
             $this->setPostalCode("");
             $this->setTown("");
@@ -127,7 +127,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setType("residential");
             $this->setDomainUsers(null);
             $this->setNif("12345679-Z");
-            $this->setMaxCalls(0);
+            $this->setMaxCalls(1000);
             $this->setPostalAddress("");
             $this->setPostalCode("");
             $this->setTown("");
@@ -156,7 +156,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setType("wholesale");
             $this->setDomainUsers("wholesale.irontec.com");
             $this->setNif("12345689-Z");
-            $this->setMaxCalls(0);
+            $this->setMaxCalls(1000);
             $this->setPostalAddress("");
             $this->setPostalCode("");
             $this->setTown("");
