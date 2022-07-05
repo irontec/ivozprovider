@@ -55,7 +55,7 @@ These are the fields shown when **adding** a new wholesale client:
         Describes the way the client will "talk" and the way the client wants to be "talked".
 
     Max calls
-        Limits outgoing external calls (0 for unlimited).
+        Limits outgoing external calls (must be equal or greater than 1).
 
     Max daily usage
         Limits external outbound calls when this limit is reached within a day. At midnight counters are reset and

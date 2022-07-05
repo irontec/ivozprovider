@@ -31,7 +31,7 @@ that require feature-full call flows.
         remaining money operations of this client.
 
     Max calls
-        Limits both incoming and outgoing external calls (0 for unlimited).
+        Limits both incoming and outgoing external calls (must be equal or greater than 1).
 
     Filter by IP address
         If set, the platform will only allow calls coming from allowed IP/ranges or countries.

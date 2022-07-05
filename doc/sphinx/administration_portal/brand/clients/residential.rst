@@ -54,7 +54,7 @@ These are the fields shown when **adding** a new residential client:
         Describes the way the client will "talk" and the way the client wants to be "talked".
 
     Max calls
-        Limits both incoming and outgoing external calls (0 for unlimited).
+        Limits both incoming and outgoing external calls (must be equal or greater than 1).
 
     Filter by IP address
         If set, the platform will only allow calls coming from allowed IP/ranges or countries.

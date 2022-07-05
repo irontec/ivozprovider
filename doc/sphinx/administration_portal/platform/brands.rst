@@ -38,7 +38,7 @@ This are the fields shown when a new brand is created:
 
     Max calls
         Limits both user generated and **external** received calls to this value
-        (0 for unlimited).
+        (must be equal or greater than 1).
 
     Locales
         Define default Timezone, Language and Currency for clients of this brand.
