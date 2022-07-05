@@ -37,7 +37,7 @@ production:
       defaultValue: 1
       source:
         control: Spinner
-        min: 1
+        min: 0
         max: 100
 staging:
   _extends: production
