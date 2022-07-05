@@ -23,6 +23,22 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     }
 
     /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return static
+     */
+    protected function setMaxCalls($maxCalls)
+    {
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 1, 'maxCalls provided "%s" is not greater or equal than "%s".');
+
+        return parent::setMaxCalls($maxCalls);
+    }
+
+    /**
      * @return array
      */
     public function getFileObjects(int $filter = null)

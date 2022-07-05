@@ -29,6 +29,22 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return static
+     */
+    protected function setMaxCalls($maxCalls)
+    {
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 1, 'maxCalls provided "%s" is not greater or equal than "%s".');
+
+        return parent::setMaxCalls($maxCalls);
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function setName($name)
