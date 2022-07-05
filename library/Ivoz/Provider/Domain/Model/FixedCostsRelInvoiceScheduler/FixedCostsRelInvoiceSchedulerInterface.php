@@ -14,6 +14,10 @@ use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 */
 interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 {
+    public const TYPE_STATIC = 'static';
+
+    public const TYPE_MAXCALLS = 'maxcalls';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -48,6 +52,8 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public function toDto(int $depth = 0): FixedCostsRelInvoiceSchedulerDto;
 
     public function getQuantity(): ?int;
+
+    public function getType(): string;
 
     public function getFixedCost(): FixedCostInterface;
 
