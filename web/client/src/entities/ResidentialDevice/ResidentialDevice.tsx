@@ -38,14 +38,6 @@ const properties: PartialPropertyList = {
     pattern: new RegExp('^[0-9]+$'),
     default: 5060,
   },
-  authNeeded: {
-    label: _('Auth needed'),
-    default: 'no',
-    enum: {
-      yes: _('Yes'),
-      no: _('No'),
-    },
-  },
   password: {
     label: _('Password'),
     pattern: new RegExp(

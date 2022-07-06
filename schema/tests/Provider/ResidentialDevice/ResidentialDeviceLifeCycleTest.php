@@ -24,7 +24,8 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $residentialDeviceDto
             ->setName('testResidentialDevice')
             ->setTransport('udp')
-            ->setAuthNeeded('yes')
+            ->setIp('1.2.3.4')
+            ->setPort(1024)
             ->setDisallow('all')
             ->setAllow('alaw')
             ->setDirectMediaMethod('invite')
