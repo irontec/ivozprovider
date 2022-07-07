@@ -18,6 +18,10 @@ class DdiRepositoryTest extends KernelTestCase
     {
         $this->its_instantiable();
         $this->it_finds_one_by_ddi_e164();
+        $this->it_finds_one_by_ddi_and_country();
+        $this->it_counts_by_company();
+        $this->it_counts_by_company_and_country();
+        $this->it_counts_by_company_and_not_country();
     }
 
     public function its_instantiable()
@@ -45,6 +49,66 @@ class DdiRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             Ddi::class,
             $ddi
+        );
+    }
+
+    public function it_finds_one_by_ddi_and_country()
+    {
+        /** @var DdiRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Ddi::class);
+
+        $ddi = $repository->findOneByDdiAndCountry('123', 68);
+
+        $this->assertInstanceOf(
+            Ddi::class,
+            $ddi
+        );
+    }
+
+    public function it_counts_by_company()
+    {
+        /** @var DdiRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Ddi::class);
+
+        $num = $repository->countByCompany(1);
+
+        $this->assertInternalType(
+            'int',
+            $num
+        );
+    }
+
+    public function it_counts_by_company_and_country()
+    {
+        /** @var DdiRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Ddi::class);
+
+        $num = $repository->countByCompanyAndCountry(1, 68);
+
+        $this->assertInternalType(
+            'int',
+            $num
+        );
+    }
+
+    public function it_counts_by_company_and_not_country()
+    {
+        /** @var DdiRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Ddi::class);
+
+        $num = $repository->countByCompanyAndNotCountry(1, 68);
+
+        $this->assertInternalType(
+            'int',
+            $num
         );
     }
 }
