@@ -19,7 +19,8 @@ import Ddi from './Ddi/Ddi';
 import Extension from './Extension/Extension';
 import ExternalCallFilter from './ExternalCallFilter/ExternalCallFilter';
 import Fax from './Fax/Fax';
-import FaxesInOut from './FaxesInOut/FaxesInOut';
+import FaxesIn from './FaxesIn/FaxesIn';
+import FaxesOut from './FaxesOut/FaxesOut';
 import FeaturesRelCompany from './FeaturesRelCompany/FeaturesRelCompany';
 import Friend from './Friend/Friend';
 import FriendsPattern from './FriendsPattern/FriendsPattern';
@@ -80,7 +81,8 @@ const entities: EntityList = {
   Extension,
   ExternalCallFilter,
   Fax,
-  FaxesInOut,
+  FaxesIn,
+  FaxesOut,
   FeaturesRelCompany,
   Friend,
   FriendsPattern,

@@ -49,6 +49,7 @@ const FaxesInOut: EntityInterface = {
   },
   toStr: (row: any) => row.name,
   properties,
+  columns: ['calldate', 'dst', 'src', 'status'],
 };
 
 export default FaxesInOut;
