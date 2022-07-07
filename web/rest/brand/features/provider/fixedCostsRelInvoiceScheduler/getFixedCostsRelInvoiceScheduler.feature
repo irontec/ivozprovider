@@ -16,6 +16,7 @@ Feature: Retrieve fixed costs rel invoice schedulers
       [
           {
               "quantity": 1,
+              "type": "static",
               "id": 1,
               "fixedCost": {
                   "name": "Monitoring",
@@ -53,6 +54,7 @@ Feature: Retrieve fixed costs rel invoice schedulers
     """
       {
           "quantity": 1,
+          "type": "static",
           "id": 1,
           "fixedCost": {
               "name": "Monitoring",

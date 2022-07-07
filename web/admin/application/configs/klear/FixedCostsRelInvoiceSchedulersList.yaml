@@ -23,6 +23,10 @@ production:
           dialogs:
             fixedCostsRelInvoiceSchedulersDel_dialog: true
           default: fixedCostsRelInvoiceSchedulersEdit_screen
+        order:
+          fixedCost: true
+          type: true
+          quantity: true
       options:
         title: _("Options")
         screens:
@@ -42,7 +46,8 @@ production:
         group0:
           colsPerRow: 12
           fields:
-            fixedCost: 9
+            fixedCost: 6
+            type: 3
             quantity: 3
     fixedCostsRelInvoiceSchedulersEdit_screen: &fixedCostsRelInvoiceSchedulersEdit_screenLink
       <<: *FixedCostsRelInvoiceSchedulers

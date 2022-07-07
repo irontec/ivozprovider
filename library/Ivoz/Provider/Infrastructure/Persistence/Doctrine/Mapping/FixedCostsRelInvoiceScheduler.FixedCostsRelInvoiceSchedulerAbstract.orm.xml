@@ -9,6 +9,12 @@
         <option name="unsigned">1</option>
       </options>
     </field>
+    <field name="type" type="string" column="type" length="25" nullable="false">
+      <options>
+        <option name="comment">[enum:static|maxcalls]</option>
+        <option name="default">static</option>
+      </options>
+    </field>
     <many-to-one field="fixedCost" target-entity="Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface" fetch="LAZY">
       <join-columns>
         <join-column name="fixedCostId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>

@@ -27,4 +27,11 @@ class FixedCostsRelInvoiceScheduler extends FixedCostsRelInvoiceSchedulerAbstrac
     {
         return $this->id;
     }
+
+    protected function sanitizeValues(): void
+    {
+        if ($this->getType() !== self::TYPE_STATIC) {
+            $this->setQuantity(null);
+        }
+    }
 }

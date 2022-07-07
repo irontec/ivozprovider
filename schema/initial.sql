@@ -2179,6 +2179,7 @@ CREATE TABLE `FixedCostsRelInvoiceSchedulers` (
   `quantity` int unsigned DEFAULT NULL,
   `fixedCostId` int unsigned NOT NULL,
   `invoiceSchedulerId` int unsigned NOT NULL,
+  `type` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'static' COMMENT '[enum:static|maxcalls]',
   PRIMARY KEY (`id`),
   UNIQUE KEY `FixedCostsRelInvoiceScheduler_invoiceScheduler_fixedCost` (`invoiceSchedulerId`,`fixedCostId`),
   KEY `IDX_D9D0952B81256364` (`fixedCostId`),
@@ -6151,4 +6152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-30 13:26:01
+-- Dump completed

@@ -28,6 +28,12 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $quantity = null;
 
     /**
+     * @var string
+     * comment: enum:static|maxcalls
+     */
+    protected $type = 'static';
+
+    /**
      * @var FixedCostInterface
      */
     protected $fixedCost;
@@ -41,8 +47,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     /**
      * Constructor
      */
-    protected function __construct()
-    {
+    protected function __construct(
+        string $type
+    ) {
+        $this->setType($type);
     }
 
     abstract public function getId(): null|string|int;
@@ -103,10 +111,14 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         ForeignKeyTransformerInterface $fkTransformer
     ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $fixedCost = $dto->getFixedCost();
         Assertion::notNull($fixedCost, 'getFixedCost value is null, but non null value was expected.');
 
-        $self = new static();
+        $self = new static(
+            $type
+        );
 
         $self
             ->setQuantity($dto->getQuantity())
@@ -128,11 +140,14 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     ): static {
         Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $fixedCost = $dto->getFixedCost();
         Assertion::notNull($fixedCost, 'getFixedCost value is null, but non null value was expected.');
 
         $this
             ->setQuantity($dto->getQuantity())
+            ->setType($type)
             ->setFixedCost($fkTransformer->transform($fixedCost))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
 
@@ -146,6 +161,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
+            ->setType(self::getType())
             ->setFixedCost(FixedCost::entityToDto(self::getFixedCost(), $depth))
             ->setInvoiceScheduler(InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
@@ -157,6 +173,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return [
             'quantity' => self::getQuantity(),
+            'type' => self::getType(),
             'fixedCostId' => self::getFixedCost()->getId(),
             'invoiceSchedulerId' => self::getInvoiceScheduler()?->getId()
         ];
@@ -176,6 +193,28 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getQuantity(): ?int
     {
         return $this->quantity;
+    }
+
+    protected function setType(string $type): static
+    {
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $type,
+            [
+                FixedCostsRelInvoiceSchedulerInterface::TYPE_STATIC,
+                FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS,
+            ],
+            'typevalue "%s" is not an element of the valid values: %s'
+        );
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     protected function setFixedCost(FixedCostInterface $fixedCost): static

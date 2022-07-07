@@ -5185,9 +5185,7 @@
       <code>$fkTransformer-&gt;transform($fixedCost)</code>
       <code>$fkTransformer-&gt;transform($fixedCost)</code>
     </MixedArgument>
-    <UnsafeInstantiation occurrences="1">
-      <code>new static()</code>
-    </UnsafeInstantiation>
+    <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php">
     <MissingParamType occurrences="3">
@@ -5210,9 +5208,9 @@
     </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerTrait.php">
-    <TooManyArguments occurrences="1">
-      <code>parent::__construct(...func_get_args())</code>
-    </TooManyArguments>
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/Friend.php">
     <DocblockTypeContradiction occurrences="1">
