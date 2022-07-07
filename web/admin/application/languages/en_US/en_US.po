@@ -139,9 +139,8 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "All"
 
-#, fuzzy
 msgid "All Countries"
-msgstr "GeoIP allowed countries"
+msgstr "All Countries"
 
 msgid "Allow Call Forwards"
 msgstr "Allow Call Forwards"
@@ -549,15 +548,6 @@ msgstr[1] "Clients admins"
 msgid "Client filters"
 msgstr "Client filters"
 
-msgid "Client's DDIs NOT from %s (%s)"
-msgstr "Client's DDIs NOT from %s (%s)"
-
-msgid "Client's DDIs from %s (%s)"
-msgstr "Client's DDIs from %s (%s)"
-
-msgid "Client's DDIs from Any Country"
-msgstr "Client's DDIs from Any Country"
-
 msgid "Client's Max Calls setting"
 msgstr "Client's Max Calls setting"
 
@@ -678,9 +668,6 @@ msgstr[1] "DDIs"
 msgid "DDI In"
 msgstr "DDI In"
 
-msgid "DDI Match"
-msgstr "DDI Match"
-
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
 msgstr[0] "DDI Provider"
@@ -695,6 +682,22 @@ msgid "DDI Provider Registration"
 msgid_plural "DDI Provider Registrations"
 msgstr[0] "DDI Provider Registration"
 msgstr[1] "DDI Provider Registrations"
+
+msgid "DDIs Match mode"
+msgstr "DDIs Match mode"
+
+msgid "DDIs NOT from client's country"
+msgstr "DDIs NOT from client's country"
+
+#, php-format
+msgid "DDIs from %s (%s)"
+msgstr "DDIs from %s (%s)"
+
+msgid "DDIs from any country"
+msgstr "DDIs from any country"
+
+msgid "DDIs from client's country"
+msgstr "DDIs from client's country"
 
 msgid "Day"
 msgstr "Day"
@@ -1553,6 +1556,9 @@ msgstr "Inter vPBX"
 msgid "Internal"
 msgstr "Internal"
 
+msgid "International"
+msgstr "International"
+
 msgid "International Code"
 msgstr "International Code"
 
@@ -1951,6 +1957,9 @@ msgid ""
 msgstr ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications)"
 
+msgid "National"
+msgstr "National"
+
 msgid "National number length"
 msgstr "National number length"
 
@@ -2010,9 +2019,6 @@ msgstr "No routing tag"
 
 msgid "None"
 msgstr "None"
-
-msgid "Not Country"
-msgstr "Not Country"
 
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
@@ -2705,6 +2711,9 @@ msgstr[1] "Special Numbers"
 
 msgid "Special treatments"
 msgstr "Special treatments"
+
+msgid "Specific"
+msgstr "Specific"
 
 msgid "Specific Template"
 msgstr "Specific Template"

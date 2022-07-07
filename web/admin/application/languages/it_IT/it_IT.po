@@ -558,15 +558,6 @@ msgstr[1] "Amministratori Client"
 msgid "Client filters"
 msgstr "Filtri Cliente"
 
-msgid "Client's DDIs NOT from %s (%s)"
-msgstr "Client's DDIs NOT from %s (%s)"
-
-msgid "Client's DDIs from %s (%s)"
-msgstr "Client's DDIs from %s (%s)"
-
-msgid "Client's DDIs from Any Country"
-msgstr "Client's DDIs from Any Country"
-
 msgid "Client's Max Calls setting"
 msgstr "Client's Max Calls setting"
 
@@ -687,9 +678,6 @@ msgstr[1] "DDIs"
 msgid "DDI In"
 msgstr "DDI In"
 
-msgid "DDI Match"
-msgstr "DDI Match"
-
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
 msgstr[0] "DDI Provider"
@@ -704,6 +692,22 @@ msgid "DDI Provider Registration"
 msgid_plural "DDI Provider Registrations"
 msgstr[0] "Regsitrazione DDI Provider"
 msgstr[1] "Registrazioni DDI Provider"
+
+msgid "DDIs Match mode"
+msgstr "DDIs Match mode"
+
+msgid "DDIs NOT from client's country"
+msgstr "DDIs NOT from client's country"
+
+#, php-format
+msgid "DDIs from %s (%s)"
+msgstr "DDIs from %s (%s)"
+
+msgid "DDIs from any country"
+msgstr "DDIs from any country"
+
+msgid "DDIs from client's country"
+msgstr "DDIs from client's country"
 
 msgid "Day"
 msgstr "Giorno"
@@ -1574,6 +1578,9 @@ msgstr "Tra vPBX"
 msgid "Internal"
 msgstr "Interno"
 
+msgid "International"
+msgstr "Internazionale"
+
 msgid "International Code"
 msgstr "Codice internazionale"
 
@@ -1980,6 +1987,9 @@ msgstr ""
 "Nome visualizzato come origine quando si inviano mail (ad esempio notifiche "
 "IvozProvider)"
 
+msgid "National"
+msgstr "Nazionale"
+
 msgid "National number length"
 msgstr "Lunghezza del numero nazionale"
 
@@ -2039,9 +2049,6 @@ msgstr "No routing tag"
 
 msgid "None"
 msgstr "Nessuno"
-
-msgid "Not Country"
-msgstr "Not Country"
 
 msgid "Notification Threshold"
 msgstr "Soglia per notifica"
@@ -2741,6 +2748,9 @@ msgstr[1] "Numeri Speciali"
 
 msgid "Special treatments"
 msgstr "Trattamento Speciale"
+
+msgid "Specific"
+msgstr "Specifico"
 
 msgid "Specific Template"
 msgstr "Modello specifico"
