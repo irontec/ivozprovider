@@ -51,15 +51,6 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
         return $this->id;
     }
 
-    public function setCalldate(string|\DateTimeInterface $calldate = null): static
-    {
-        if (!$calldate) {
-            $calldate = new \DateTime('now', new \DateTimeZone('UTC'));
-        }
-
-        return parent::setCalldate($calldate);
-    }
-
     /**
      * Get the numberValue in E.164 format when routing to 'number'
      *

@@ -250,7 +250,7 @@ abstract class FaxesInOutAbstract
         /** @var \Datetime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
-            null
+            'CURRENT_TIMESTAMP'
         );
 
         if ($this->isInitialized() && $this->calldate == $calldate) {

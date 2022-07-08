@@ -18,7 +18,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     /**
      * @var \DateTimeInterface|string|null
      */
-    private $calldate = null;
+    private $calldate = 'CURRENT_TIMESTAMP';
 
     /**
      * @var string|null
