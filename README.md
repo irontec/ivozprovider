@@ -1,4 +1,4 @@
-![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](web/admin/public/images/stable-2.18-blue.png) ![release](web/admin/public/images/release-artemis-14b9bc.png)
+![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](https://raster.shields.io/badge/sable-2.20-blue.png) ![release](https://raster.shields.io/badge/release-artemis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 

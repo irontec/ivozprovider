@@ -1,3 +1,26 @@
+Thu, 23 Jun 2022 13:06:47 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 3.0.0 released
+
+    * Software Version Upgrade
+        - Debian base system upgraded from 9 (stretch) to 11 (bullseye)
+        - Kamailio upgraded from 5.1.10 to 5.6.0
+        - rtpengine upgraded from 6.1.2 to 9.5.4
+        - Asterisk upgraded from 13.17.0 to 18.2.2
+        - PHP upgraded from 7.0.33 to 8.0.13
+        - MySQL (Percona Server) upgraded from 5.7.19 to 8.0.25
+
+    * Main features
+        - Added new entity Location to group Users
+        - Added support for generic Voicemails
+        - Voicemail and VoicemailMessages can now be managed through web interface and API
+        - IVR Selected option can now update call display name
+        - Moved presence management from Kamailio to Asterisk
+        - Added custom BLFs for Route Locks status (open/close)
+        - Added local DNS entries for HEP server and Redis sentinel
+        - Replaced gearman server with redis for async job distribution
+
+
 Thu, 07 Jul 2022 12:47:57 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.21.0 released
