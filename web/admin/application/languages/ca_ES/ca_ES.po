@@ -144,6 +144,9 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "Tots"
 
+msgid "All Countries"
+msgstr "Todos los paises"
+
 msgid "Allow Call Forwards"
 msgstr "Permet desviament de trucada"
 
@@ -550,6 +553,9 @@ msgstr[1] "Administradors de client"
 msgid "Client filters"
 msgstr "Filtros de cliente"
 
+msgid "Client's Max Calls setting"
+msgstr "Configuración Limite de llamadas de Cliente"
+
 msgid "Client's default"
 msgstr "Per defecte del client"
 
@@ -681,6 +687,22 @@ msgid "DDI Provider Registration"
 msgid_plural "DDI Provider Registrations"
 msgstr[0] "Registre del proveïdor de DDI"
 msgstr[1] "Registres del proveïdor de DDI"
+
+msgid "DDIs Match mode"
+msgstr "Coincidència DDI"
+
+msgid "DDIs NOT from client's country"
+msgstr "DDIs de paises distintos al cliente"
+
+#, php-format
+msgid "DDIs from %s (%s)"
+msgstr "DDIs de %s (%s)"
+
+msgid "DDIs from any country"
+msgstr "DDIs de cualquier país"
+
+msgid "DDIs from client's country"
+msgstr "DDIs del paises del cliente"
 
 msgid "Day"
 msgstr "Dia"
@@ -1551,6 +1573,9 @@ msgstr "Intra vPBX"
 msgid "Internal"
 msgstr "Interna"
 
+msgid "International"
+msgstr "International"
+
 msgid "International Code"
 msgstr "Codi internacional"
 
@@ -1950,6 +1975,9 @@ msgid ""
 msgstr ""
 "El nom serà mostrat com a orígen quan s0enviin correus (exemple: "
 "Notificacions IvozProvider)"
+
+msgid "National"
+msgstr "National"
 
 msgid "National number length"
 msgstr "Longitud números nacionals"
@@ -2706,6 +2734,9 @@ msgstr[1] "Números especiales"
 
 msgid "Special treatments"
 msgstr "Tratamientos especiales"
+
+msgid "Specific"
+msgstr "Específico"
 
 msgid "Specific Template"
 msgstr "Plantilla específica"

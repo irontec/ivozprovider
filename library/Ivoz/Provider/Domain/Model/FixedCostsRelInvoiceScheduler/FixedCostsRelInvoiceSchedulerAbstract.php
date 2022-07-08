@@ -19,10 +19,16 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $quantity;
 
     /**
-     * comment: enum:static|maxcalls
+     * comment: enum:static|maxcalls|ddis
      * @var string
      */
     protected $type = 'static';
+
+    /**
+     * comment: enum:all|national|international|specific
+     * @var string | null
+     */
+    protected $ddisCountryMatch = 'all';
 
     /**
      * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
@@ -33,6 +39,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface | null
      */
     protected $invoiceScheduler;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    protected $ddisCountry;
 
 
     use ChangelogTrait;
@@ -119,8 +130,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $self
             ->setQuantity($dto->getQuantity())
+            ->setDdisCountryMatch($dto->getDdisCountryMatch())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
             ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
+            ->setDdisCountry($fkTransformer->transform($dto->getDdisCountry()))
         ;
 
         $self->initChangelog();
@@ -142,8 +155,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         $this
             ->setQuantity($dto->getQuantity())
             ->setType($dto->getType())
+            ->setDdisCountryMatch($dto->getDdisCountryMatch())
             ->setFixedCost($fkTransformer->transform($dto->getFixedCost()))
-            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
+            ->setDdisCountry($fkTransformer->transform($dto->getDdisCountry()));
 
 
 
@@ -160,8 +175,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return self::createDto()
             ->setQuantity(self::getQuantity())
             ->setType(self::getType())
+            ->setDdisCountryMatch(self::getDdisCountryMatch())
             ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
-            ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
+            ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth))
+            ->setDdisCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getDdisCountry(), $depth));
     }
 
     /**
@@ -172,8 +189,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return [
             'quantity' => self::getQuantity(),
             'type' => self::getType(),
+            'ddisCountryMatch' => self::getDdisCountryMatch(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
+            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null,
+            'ddisCountryId' => self::getDdisCountry() ? self::getDdisCountry()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -221,7 +240,8 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, [
             FixedCostsRelInvoiceSchedulerInterface::TYPE_STATIC,
-            FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS
+            FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS,
+            FixedCostsRelInvoiceSchedulerInterface::TYPE_DDIS
         ], 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -237,6 +257,40 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getType(): string
     {
         return $this->type;
+    }
+
+    /**
+     * Set ddisCountryMatch
+     *
+     * @param string $ddisCountryMatch | null
+     *
+     * @return static
+     */
+    protected function setDdisCountryMatch($ddisCountryMatch = null)
+    {
+        if (!is_null($ddisCountryMatch)) {
+            Assertion::maxLength($ddisCountryMatch, 25, 'ddisCountryMatch value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($ddisCountryMatch, [
+                FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_ALL,
+                FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_NATIONAL,
+                FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_INTERNATIONAL,
+                FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_SPECIFIC
+            ], 'ddisCountryMatchvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->ddisCountryMatch = $ddisCountryMatch;
+
+        return $this;
+    }
+
+    /**
+     * Get ddisCountryMatch
+     *
+     * @return string | null
+     */
+    public function getDdisCountryMatch()
+    {
+        return $this->ddisCountryMatch;
     }
 
     /**
@@ -285,6 +339,30 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getInvoiceScheduler()
     {
         return $this->invoiceScheduler;
+    }
+
+    /**
+     * Set ddisCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $ddisCountry | null
+     *
+     * @return static
+     */
+    protected function setDdisCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $ddisCountry = null)
+    {
+        $this->ddisCountry = $ddisCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get ddisCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface | null
+     */
+    public function getDdisCountry()
+    {
+        return $this->ddisCountry;
     }
 
     // @codeCoverageIgnoreEnd
