@@ -808,14 +808,31 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
     delete: ~
   collectionOperations:
     get: ~
+    post: ~
   properties:
     calldate:
+      attributes:
+        swagger_context:
+          readOnly: true
+    status:
+      attributes:
+        swagger_context:
+          readOnly: true
+    src:
       attributes:
         swagger_context:
           readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+    write_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+      type:
+        eq: '"Out"'
+    delete_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
     swagger_context:
