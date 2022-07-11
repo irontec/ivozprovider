@@ -258,6 +258,7 @@ const residentialDevice: EntityInterface = {
     ...defaultEntityBehavior.acl,
     iden: 'ResidentialDevices',
   },
+  toStr: (row) => (row?.name as string) || '',
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
   },
