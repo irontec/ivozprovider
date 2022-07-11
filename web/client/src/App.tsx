@@ -11,6 +11,8 @@ export default function App(): JSX.Element {
   const apiSpecInitFn = useStoreActions((actions: any) => {
     return actions.spec.init;
   });
+
+  const token = useStoreState((actions: any) => actions.auth.token);
   const authInit = useStoreActions((actions: any) => actions.auth.init);
   const aboutMeResetProfile = useStoreActions(
     (actions: any) => actions.clientSession.aboutMe.resetProfile
@@ -24,7 +26,7 @@ export default function App(): JSX.Element {
     authInit();
     aboutMeResetProfile();
     aboutMeInit();
-  }, [apiSpecInitFn, authInit, aboutMeInit, aboutMeResetProfile]);
+  }, [apiSpecInitFn, authInit, token, aboutMeInit, aboutMeResetProfile]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
   const basename = process.env.PUBLIC_URL;
