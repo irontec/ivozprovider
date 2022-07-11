@@ -141,19 +141,22 @@ export default function useAclFilteredEntityMap(
   props: AppRoutesProps
 ): ExtendedRouteMap {
   const { entityMap, aboutMe } = props;
-  const [routes, setRoutes] = useState<ExtendedRouteMap>(entityMap);
+
+  const [emptyEntityMap] = useState<ExtendedRouteMap>([]);
+  const [routes, setRoutes] = useState<ExtendedRouteMap>(emptyEntityMap);
 
   useEffect(() => {
     if (!aboutMe) {
+      setRoutes(emptyEntityMap);
       return;
     }
 
     const resp = updateEntityMapByAcls({
-      entityMap: routes,
+      entityMap,
       aboutMe,
     });
     setRoutes(resp);
-  }, [routes, aboutMe]);
+  }, [emptyEntityMap, entityMap, aboutMe]);
 
   return routes;
 }
