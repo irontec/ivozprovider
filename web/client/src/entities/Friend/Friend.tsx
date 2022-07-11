@@ -273,6 +273,7 @@ const friend: EntityInterface = {
   },
   Form,
   foreignKeyGetter,
+  toStr: (row) => (row?.name as string) || '',
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
   },
