@@ -58,6 +58,34 @@ class FaxesInOutTest extends KernelTestCase
             $accessControl,
             [
                 [
+                    'type',
+                    'eq',
+                    '"Out"'
+                ],
+                [
+                    'fax',
+                    'in',
+                    'FaxRepository([["company","eq","user.getCompany().getId()"]])'
+                ],
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
+    function it_has_delete_access_control()
+    {
+        $accessControl = $this
+            ->dataAccessControlParser
+            ->get(
+                DataAccessControlParser::DELETE_ACCESS_CONTROL_ATTRIBUTE
+            );
+
+        $this->assertEquals(
+            $accessControl,
+            [
+                [
                     'fax',
                     'in',
                     'FaxRepository([["company","eq","user.getCompany().getId()"]])'
