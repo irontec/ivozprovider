@@ -31,7 +31,7 @@ const updateEntityMapByAcls = (
     block.children = block.children.filter((item) => item);
   }
 
-  return entityMap;
+  return entityMap.filter((item) => item.children.length > 0);
 };
 
 interface updateRouteMapProps {
