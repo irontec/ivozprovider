@@ -12,6 +12,23 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSch
       nullable: true
       options:
         unsigned: true
+    type:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:static|maxcalls|ddis]'
+        default: 'static'
+    ddisCountryMatch:
+      column: ddisCountryMatch
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:all|national|international|specific]'
+        default: 'all'
   manyToOne:
     fixedCost:
       targetEntity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
@@ -36,4 +53,16 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSch
           referencedColumnName: id
           nullable: false
           onDelete: cascade
+      orphanRemoval: false
+    ddisCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ddisCountryId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
       orphanRemoval: false

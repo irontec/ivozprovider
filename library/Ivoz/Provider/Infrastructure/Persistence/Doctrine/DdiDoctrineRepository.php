@@ -48,4 +48,39 @@ class DdiDoctrineRepository extends ServiceEntityRepository implements DdiReposi
 
         return $response;
     }
+
+    public function countByCompany(int $companyId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('count(self.id)')
+            ->where($qb->expr()->eq('self.company', $companyId))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countByCompanyAndCountry(int $companyId, int $countryId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('count(self.id)')
+            ->where($qb->expr()->eq('self.company', $companyId))
+            ->andWhere($qb->expr()->eq('self.country', $countryId))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countByCompanyAndNotCountry(int $companyId, int $countryId): int
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('count(self.id)')
+            ->where($qb->expr()->eq('self.company', $companyId))
+            ->andWhere($qb->expr()->neq('self.country', $countryId))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

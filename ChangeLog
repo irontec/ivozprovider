@@ -1,3 +1,28 @@
+Thu, 07 Jul 2022 12:47:57 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.21.0 released
+
+    * Proxies
+        - Fixed rtpengine sessions deletion on branch timeout
+        - Fixed a bug with failover handling on bounced calls
+        - OPTION messages are now skipped from anti-flood mechanism
+        - Residential Devices authentication is now optional when Direct Connectivity is enabled
+        - Retail Accounts authentication is now optional when Direct Connectivity is enabled
+        - Improve log messages on no reply event
+
+    * Invoicing
+        - Added dynamic quantity support to Invoice schedulers fixed costs
+        - Added Client max calls as Fixed cost dynamic quantity
+        - Added Client DDI count as Fixed cost dynamic quantity
+
+    * Portals
+        - Fixed a bug that prevented creating vPBX clients depending on emulated company ACLs
+        - Removed Retail Account column from DDI Provider's DDI List section
+
+    * Other
+        - Added support for custom entries in local DNS server
+        - Fixed swagger JSON generation commands in package post install scripts
+
 Wed, 23 Mar 2022 16:40:26 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.20.1 released

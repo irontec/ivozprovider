@@ -38,11 +38,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     /**
      * @var string
      */
-    private $authNeeded = 'yes';
-
-    /**
-     * @var string
-     */
     private $password;
 
     /**
@@ -178,7 +173,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transport' => 'transport',
             'ip' => 'ip',
             'port' => 'port',
-            'authNeeded' => 'authNeeded',
             'password' => 'password',
             'disallow' => 'disallow',
             'allow' => 'allow',
@@ -213,7 +207,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transport' => $this->getTransport(),
             'ip' => $this->getIp(),
             'port' => $this->getPort(),
-            'authNeeded' => $this->getAuthNeeded(),
             'password' => $this->getPassword(),
             'disallow' => $this->getDisallow(),
             'allow' => $this->getAllow(),
@@ -351,26 +344,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getPort()
     {
         return $this->port;
-    }
-
-    /**
-     * @param string $authNeeded
-     *
-     * @return static
-     */
-    public function setAuthNeeded($authNeeded = null)
-    {
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    /**
-     * @return string | null
-     */
-    public function getAuthNeeded()
-    {
-        return $this->authNeeded;
     }
 
     /**

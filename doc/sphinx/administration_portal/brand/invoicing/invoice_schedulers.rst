@@ -30,13 +30,29 @@ When adding a new definition, these fields are shown:
         Taxes to add to the final cost (e.g. VAT)
 
 
-.. tip:: Fixed concepts can be added in the same way as in manual invoice definitions
-
-Invoices generated due to an schedule can be seen in two ways:
+Invoices generated due to a schedule can be seen in two ways:
 
 - In each row of *Invoice schedulers* section, **List of Invoices** option.
 
 - In *Invoices* section, indistinguishable to manually generated invoices.
+
+Fixed costs
+===========
+
+When defining a scheduled invoice, you can add fixed costs in a static or dynamic way:
+
+- Type **'static'** is used for fixed quantities.
+
+- Type **'Max calls'** sets the quantity in the moment of the creation of the invoice to
+  "Max calls" value of the client in that specific moment.
+
+- Type **'DDIs'** sets the quantity in the moment of the creation of the invoice to
+  the number of DDIS matching criteria (all, national, international or belonging to specific country)
+  in the client in that specific moment.
+
+.. tip:: Non-static values are retrieved from client configuration in the date specified in "Next execution".
+         Regenerating the invoice later will not modify assigned value, but you can adapt it manually to
+         the desired value editing the fixed cost in Invoice section and regenerating the invoice.
 
 Frequency definition
 ====================

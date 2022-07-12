@@ -16,6 +16,16 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     private $quantity;
 
     /**
+     * @var string
+     */
+    private $type = 'static';
+
+    /**
+     * @var string
+     */
+    private $ddisCountryMatch = 'all';
+
+    /**
      * @var integer
      */
     private $id;
@@ -29,6 +39,11 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
      * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
      */
     private $invoiceScheduler;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     */
+    private $ddisCountry;
 
 
     use DtoNormalizer;
@@ -49,9 +64,12 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
 
         return [
             'quantity' => 'quantity',
+            'type' => 'type',
+            'ddisCountryMatch' => 'ddisCountryMatch',
             'id' => 'id',
             'fixedCostId' => 'fixedCost',
-            'invoiceSchedulerId' => 'invoiceScheduler'
+            'invoiceSchedulerId' => 'invoiceScheduler',
+            'ddisCountryId' => 'ddisCountry'
         ];
     }
 
@@ -62,9 +80,12 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     {
         $response = [
             'quantity' => $this->getQuantity(),
+            'type' => $this->getType(),
+            'ddisCountryMatch' => $this->getDdisCountryMatch(),
             'id' => $this->getId(),
             'fixedCost' => $this->getFixedCost(),
-            'invoiceScheduler' => $this->getInvoiceScheduler()
+            'invoiceScheduler' => $this->getInvoiceScheduler(),
+            'ddisCountry' => $this->getDdisCountry()
         ];
 
         if (!$hideSensitiveData) {
@@ -99,6 +120,46 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType($type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $ddisCountryMatch
+     *
+     * @return static
+     */
+    public function setDdisCountryMatch($ddisCountryMatch = null)
+    {
+        $this->ddisCountryMatch = $ddisCountryMatch;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getDdisCountryMatch()
+    {
+        return $this->ddisCountryMatch;
     }
 
     /**
@@ -207,6 +268,52 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     public function getInvoiceSchedulerId()
     {
         if ($dto = $this->getInvoiceScheduler()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $ddisCountry
+     *
+     * @return static
+     */
+    public function setDdisCountry(\Ivoz\Provider\Domain\Model\Country\CountryDto $ddisCountry = null)
+    {
+        $this->ddisCountry = $ddisCountry;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryDto | null
+     */
+    public function getDdisCountry()
+    {
+        return $this->ddisCountry;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setDdisCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
+
+        return $this->setDdisCountry($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getDdisCountryId()
+    {
+        if ($dto = $this->getDdisCountry()) {
             return $dto->getId();
         }
 

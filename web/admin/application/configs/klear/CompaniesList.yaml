@@ -92,9 +92,9 @@ production:
       options:
         title: _("Options")
         screens:
-          companiesNew_screen: $[${auth.acls.Companies.create} && ${auth.companyVPBX}]
+          companiesNew_screen: ${auth.acls.Companies.create}
         dialogs:
-          companiesDel_dialog: $[${auth.acls.Companies.delete} && ${auth.companyVPBX}]
+          companiesDel_dialog: ${auth.acls.Companies.delete}
           importCompanies_dialog: false
       csv:
         active: false

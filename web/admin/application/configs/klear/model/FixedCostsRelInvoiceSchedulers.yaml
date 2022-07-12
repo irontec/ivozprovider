@@ -1,3 +1,5 @@
+#include ../conf.d/ddisMatchHelp.yaml
+
 production:
   entity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler
   fields:
@@ -39,6 +41,73 @@ production:
         control: Spinner
         min: 1
         max: 100
+    type:
+      title: _('Type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'static':
+            title: _("Static")
+            visualFilter:
+              show: [ quantity ]
+              hide: [ ddisCountry, ddisCountryMatch ]
+          'maxcalls':
+            title: _('Max calls')
+            visualFilter:
+              hide: [ quantity, ddisCountryMatch, ddisCountry ]
+          'ddis':
+            title: ngettext('DDI', 'DDIs', 2)
+            visualFilter:
+              hide: [ quantity ]
+              show: [ ddisCountryMatch ]
+    ddisCountryMatch:
+      title: _('DDIs Match mode')
+      type: select
+      required: true
+      <<: *ddisMatchHelp
+      source:
+        data: inline
+        values:
+          'all':
+            title: _("All Countries")
+            visualFilter:
+              hide: [ ddisCountry ]
+          'national':
+            title: _("National")
+            visualFilter:
+              hide: [ ddisCountry ]
+          'international':
+            title: _("International")
+            visualFilter:
+              hide: [ ddisCountry ]
+          'specific':
+            title: _("Specific")
+            visualFilter:
+              show: [ ddisCountry ]
+    ddisCountry:
+      title: _('Country')
+      type: select
+      required: true
+      defaultValue: 70
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    quantityGhost:
+      title: _('Quantity')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_FixedCostsRelInvoiceSchedulers
+        method: getQuantity
 staging:
   _extends: production
 testing:

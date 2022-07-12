@@ -23,9 +23,12 @@ Feature: Create fixed costs rel invoice schedulers
     """
       {
           "quantity": 1,
+          "type": "static",
+          "ddisCountryMatch": null,
           "id": 2,
           "fixedCost": 2,
-          "invoiceScheduler": 1
+          "invoiceScheduler": 1,
+          "ddisCountry": null
       }
     """
 
