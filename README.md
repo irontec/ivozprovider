@@ -17,7 +17,7 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
  * Proxy:
    - Provides **SIP communication** with Providers and Users terminals
    - Provides **media relay** between endpoints
-   - Powered by [Kamailo SIP Server 5.4](https://www.kamailio.org/w/)
+   - Powered by [Kamailo SIP Server 5.6](https://www.kamailio.org/w/)
 
  * Portal:
    - Provides **Web interfaces** for all platform roles
