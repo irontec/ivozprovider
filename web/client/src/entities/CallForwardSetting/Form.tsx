@@ -23,7 +23,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   }
 
   if (aboutMe?.residential) {
-    skip.push(...['cfwToRetailAccount', 'extension']);
+    skip.push(...['retailAccount', 'cfwToRetailAccount', 'extension']);
   }
 
   if (aboutMe?.retail) {

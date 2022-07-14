@@ -50,10 +50,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
       ],
     },
     edit && {
-      legend: _('Boss-Assistant'),
-      fields: ['isBoss', 'bossAssistant', 'bossAssistantWhiteList'],
-    },
-    edit && {
       legend: _('Group belonging'),
       fields: [
         'pickupGroupIds',

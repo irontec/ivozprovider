@@ -42,6 +42,16 @@ const getEntityMap = (): ExtendedRouteMap => {
           ],
         },
         {
+          entity: entities.ResidentialDevice,
+          isAccessible: (aboutMe) => aboutMe.residential,
+          children: [
+            {
+              entity: entities.CallForwardSetting,
+              filterBy: 'residentialDevice',
+            },
+          ],
+        },
+        {
           entity: entities.Terminal,
           isAccessible: (aboutMe) => aboutMe.vpbx,
         },
@@ -68,7 +78,8 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Ddi,
-          isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.retail,
+          isAccessible: (aboutMe) =>
+            aboutMe.vpbx || aboutMe.retail || aboutMe.residential,
           children: [
             {
               entity: entities.BillableCall,
@@ -203,7 +214,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.ExternalCallFilter,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
+          isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
         },
         {
           entity: entities.Calendar,
@@ -225,7 +236,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.MatchList,
-          isAccessible: (aboutMe) => aboutMe.vpbx,
+          isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
           children: [
             {
               entity: entities.MatchListPattern,
