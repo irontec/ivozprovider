@@ -8,6 +8,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 
 /**
 * FixedCostsRelInvoiceSchedulerInterface
@@ -17,6 +18,16 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public const TYPE_STATIC = 'static';
 
     public const TYPE_MAXCALLS = 'maxcalls';
+
+    public const TYPE_DDIS = 'ddis';
+
+    public const DDISCOUNTRYMATCH_ALL = 'all';
+
+    public const DDISCOUNTRYMATCH_NATIONAL = 'national';
+
+    public const DDISCOUNTRYMATCH_INTERNATIONAL = 'international';
+
+    public const DDISCOUNTRYMATCH_SPECIFIC = 'specific';
 
     /**
      * @codeCoverageIgnore
@@ -55,11 +66,15 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 
     public function getType(): string;
 
+    public function getDdisCountryMatch(): ?string;
+
     public function getFixedCost(): FixedCostInterface;
 
     public function setInvoiceScheduler(?InvoiceSchedulerInterface $invoiceScheduler = null): static;
 
     public function getInvoiceScheduler(): ?InvoiceSchedulerInterface;
+
+    public function getDdisCountry(): ?CountryInterface;
 
     public function isInitialized(): bool;
 }

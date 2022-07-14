@@ -11,8 +11,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCost;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
+use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
 * FixedCostsRelInvoiceSchedulerAbstract
@@ -29,9 +31,15 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
     /**
      * @var string
-     * comment: enum:static|maxcalls
+     * comment: enum:static|maxcalls|ddis
      */
     protected $type = 'static';
+
+    /**
+     * @var ?string
+     * comment: enum:all|national|international|specific
+     */
+    protected $ddisCountryMatch = 'all';
 
     /**
      * @var FixedCostInterface
@@ -43,6 +51,11 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
      * inversedBy relFixedCosts
      */
     protected $invoiceScheduler = null;
+
+    /**
+     * @var ?CountryInterface
+     */
+    protected $ddisCountry = null;
 
     /**
      * Constructor
@@ -122,8 +135,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $self
             ->setQuantity($dto->getQuantity())
+            ->setDdisCountryMatch($dto->getDdisCountryMatch())
             ->setFixedCost($fkTransformer->transform($fixedCost))
-            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
+            ->setDdisCountry($fkTransformer->transform($dto->getDdisCountry()));
 
         $self->initChangelog();
 
@@ -148,8 +163,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         $this
             ->setQuantity($dto->getQuantity())
             ->setType($type)
+            ->setDdisCountryMatch($dto->getDdisCountryMatch())
             ->setFixedCost($fkTransformer->transform($fixedCost))
-            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()));
+            ->setInvoiceScheduler($fkTransformer->transform($dto->getInvoiceScheduler()))
+            ->setDdisCountry($fkTransformer->transform($dto->getDdisCountry()));
 
         return $this;
     }
@@ -162,8 +179,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return self::createDto()
             ->setQuantity(self::getQuantity())
             ->setType(self::getType())
+            ->setDdisCountryMatch(self::getDdisCountryMatch())
             ->setFixedCost(FixedCost::entityToDto(self::getFixedCost(), $depth))
-            ->setInvoiceScheduler(InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
+            ->setInvoiceScheduler(InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth))
+            ->setDdisCountry(Country::entityToDto(self::getDdisCountry(), $depth));
     }
 
     /**
@@ -174,8 +193,10 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         return [
             'quantity' => self::getQuantity(),
             'type' => self::getType(),
+            'ddisCountryMatch' => self::getDdisCountryMatch(),
             'fixedCostId' => self::getFixedCost()->getId(),
-            'invoiceSchedulerId' => self::getInvoiceScheduler()?->getId()
+            'invoiceSchedulerId' => self::getInvoiceScheduler()?->getId(),
+            'ddisCountryId' => self::getDdisCountry()?->getId()
         ];
     }
 
@@ -203,6 +224,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             [
                 FixedCostsRelInvoiceSchedulerInterface::TYPE_STATIC,
                 FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS,
+                FixedCostsRelInvoiceSchedulerInterface::TYPE_DDIS,
             ],
             'typevalue "%s" is not an element of the valid values: %s'
         );
@@ -215,6 +237,32 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getType(): string
     {
         return $this->type;
+    }
+
+    protected function setDdisCountryMatch(?string $ddisCountryMatch = null): static
+    {
+        if (!is_null($ddisCountryMatch)) {
+            Assertion::maxLength($ddisCountryMatch, 25, 'ddisCountryMatch value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $ddisCountryMatch,
+                [
+                    FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_ALL,
+                    FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_NATIONAL,
+                    FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_INTERNATIONAL,
+                    FixedCostsRelInvoiceSchedulerInterface::DDISCOUNTRYMATCH_SPECIFIC,
+                ],
+                'ddisCountryMatchvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
+        $this->ddisCountryMatch = $ddisCountryMatch;
+
+        return $this;
+    }
+
+    public function getDdisCountryMatch(): ?string
+    {
+        return $this->ddisCountryMatch;
     }
 
     protected function setFixedCost(FixedCostInterface $fixedCost): static
@@ -239,5 +287,17 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getInvoiceScheduler(): ?InvoiceSchedulerInterface
     {
         return $this->invoiceScheduler;
+    }
+
+    protected function setDdisCountry(?CountryInterface $ddisCountry = null): static
+    {
+        $this->ddisCountry = $ddisCountry;
+
+        return $this;
+    }
+
+    public function getDdisCountry(): ?CountryInterface
+    {
+        return $this->ddisCountry;
     }
 }
