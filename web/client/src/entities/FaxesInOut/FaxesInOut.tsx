@@ -12,6 +12,9 @@ const properties: FaxesInOutProperties = {
   src: {
     label: _('Source'),
   },
+  dstCountry: {
+    label: _('Country'),
+  },
   dst: {
     label: _('Destination'),
   },
@@ -34,6 +37,9 @@ const properties: FaxesInOutProperties = {
   file: {
     label: _('PDF File'),
     type: 'file',
+  },
+  fax: {
+    label: _('Fax'),
   },
 };
 

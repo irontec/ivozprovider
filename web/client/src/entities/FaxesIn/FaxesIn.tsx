@@ -15,6 +15,10 @@ const FaxesIn: EntityInterface = {
     );
   },
   localPath: '/faxes_in',
+  acl: {
+    ...FaxesInOut.acl,
+    create: false,
+  },
   title: _('Incoming faxfile', { count: 2 }),
 };
 

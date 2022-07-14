@@ -8,6 +8,7 @@ export type FaxesInOutPropertyList<T> = {
   calldate?: T;
   fax?: T;
   src?: T;
+  dstCountry?: T;
   dst?: T;
   type?: T;
   status?: T;
