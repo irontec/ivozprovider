@@ -94,4 +94,5 @@ php8.0-xdebug
 php8.0-xml
 php8.0-yaml
 php8.0-zip
+python3-mysql.connector
 zendframework
