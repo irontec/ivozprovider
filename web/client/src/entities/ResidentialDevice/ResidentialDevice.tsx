@@ -1,20 +1,21 @@
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import Status from '../RetailAccount/Field/Status';
+import StatusIcon from '../RetailAccount/Field/StatusIcon';
+import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
 import selectOptions from './SelectOptions';
+import Form from './Form';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import Password from '../Terminal/Field/Password';
 
-const properties: PartialPropertyList = {
-  company: {
-    label: _('Client'),
-  },
+const properties: ResidentialDeviceProperties = {
   name: {
     label: _('Name'),
     pattern: new RegExp('^[a-zA-Z0-9_*]+$'),
-    helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'"),
   },
-  domain: {
+  domainName: {
     label: _('Domain'),
   },
   description: {
@@ -46,7 +47,7 @@ const properties: PartialPropertyList = {
     helpText: _(
       "Minimal length 10, including 3 uppercase letters, 3 lowercase letters, 3 digits and one character in '+*_-'"
     ),
-    // @TODO generatePassword_command: true
+    component: Password,
   },
   outgoingDdi: {
     label: _('Fallback Outgoing DDI'),
@@ -196,11 +197,11 @@ const properties: PartialPropertyList = {
   },
   statusIcon: {
     label: _('Status'),
-    // @TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatusIcon
+    component: StatusIcon,
   },
   status: {
     label: _('Status'),
-    // @TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatus
+    component: Status,
   },
   transformationRuleSet: {
     label: _('Numeric transformation'),
@@ -209,8 +210,8 @@ const properties: PartialPropertyList = {
   maxCalls: {
     label: _('Call waiting'),
     default: 1,
-    // @TODO min: 0
-    // @TODO  max: 100
+    minimum: 0,
+    maximum: 100,
     helpText: _(
       'Limits received calls when already handling this number of calls. Set 0 for unlimited.'
     ),
@@ -254,6 +255,7 @@ const residentialDevice: EntityInterface = {
   title: _('Residential device', { count: 2 }),
   path: '/residential_devices',
   properties,
+  columns: ['name', 'domainName', 'description', 'statusIcon'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'ResidentialDevices',
@@ -262,6 +264,8 @@ const residentialDevice: EntityInterface = {
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
   },
+  Form,
+  foreignKeyGetter,
 };
 
 export default residentialDevice;
