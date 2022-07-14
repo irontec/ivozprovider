@@ -22,7 +22,7 @@ final class Version00000000000000 extends AbstractMigration
         // Delete IvozProvider 1.x migrations tracking table
         $this->addSql("DROP TABLE IF EXISTS changelog");
         // Delete IvozProvider 2.x migrations tracking records
-        $this->addSql("DELETE FROM migration_versions");
+        $this->addSql("UPDATE migration_versions SET executed_at = FROM_UNIXTIME(0)");
     }
 
     public function down(Schema $schema): void
