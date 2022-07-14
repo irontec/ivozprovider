@@ -3,12 +3,11 @@
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
-use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 /**
 * FixedCostsRelInvoiceInterface
@@ -27,13 +26,6 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getId(): ?int;
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
-     * @return static
-     */
-    public static function fromFixedCostsRelInvoiceScheduler(InvoiceInterface $invoice, FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
 
     public static function createDto(string|int|null $id = null): FixedCostsRelInvoiceDto;
 

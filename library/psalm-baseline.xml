@@ -4922,12 +4922,10 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOut.php">
-    <LessSpecificReturnStatement occurrences="2">
-      <code>parent::setCalldate($calldate)</code>
+    <LessSpecificReturnStatement occurrences="1">
       <code>parent::setDst($dst)</code>
     </LessSpecificReturnStatement>
-    <MoreSpecificReturnType occurrences="2">
-      <code>static</code>
+    <MoreSpecificReturnType occurrences="1">
       <code>static</code>
     </MoreSpecificReturnType>
     <PossiblyNullArgument occurrences="1">
@@ -5128,9 +5126,6 @@
     <MethodSignatureMismatch occurrences="1">
       <code>FixedCostsRelInvoice</code>
     </MethodSignatureMismatch>
-    <UnsafeInstantiation occurrences="1">
-      <code>new static()</code>
-    </UnsafeInstantiation>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceAbstract.php">
     <MixedArgument occurrences="4">
@@ -5162,6 +5157,9 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
+    <PossiblyUnusedReturnValue occurrences="1">
+      <code>static</code>
+    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceInterface.php">
     <PossiblyUnusedReturnValue occurrences="1">
@@ -5179,7 +5177,9 @@
     </MethodSignatureMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerAbstract.php">
-    <MixedArgument occurrences="4">
+    <MixedArgument occurrences="6">
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdisCountry())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getDdisCountry())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getInvoiceScheduler())</code>
       <code>$fkTransformer-&gt;transform($dto-&gt;getInvoiceScheduler())</code>
       <code>$fkTransformer-&gt;transform($fixedCost)</code>
@@ -5188,16 +5188,19 @@
     <UnsafeInstantiation occurrences="1"/>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php">
-    <MissingParamType occurrences="3">
+    <MissingParamType occurrences="4">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="2">
+    <MissingReturnType occurrences="3">
+      <code>getDdisCountryId</code>
       <code>getFixedCostId</code>
       <code>getInvoiceSchedulerId</code>
     </MissingReturnType>
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="3">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
@@ -8877,11 +8880,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/FixedCostsRelInvoice/CreateByScheduler.php">
-    <UnnecessaryVarAnnotation occurrences="1">
-      <code>FixedCostsRelInvoiceSchedulerInterface[]</code>
-    </UnnecessaryVarAnnotation>
   </file>
   <file src="Ivoz/Provider/Domain/Service/FixedCostsRelInvoice/FixedCostsRelInvoiceLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">

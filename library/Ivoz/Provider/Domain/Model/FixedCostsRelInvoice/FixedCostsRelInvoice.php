@@ -30,37 +30,4 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
     {
         return $this->id;
     }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
-     * @return static
-     */
-    public static function fromFixedCostsRelInvoiceScheduler(
-        InvoiceInterface $invoice,
-        FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
-    ) {
-        $quantity = $fixedCostRelScheduler->getQuantity();
-        if ($fixedCostRelScheduler->getType() === FixedCostsRelInvoiceSchedulerInterface::TYPE_MAXCALLS) {
-            $quantity = $invoice->getCompany()->getMaxCalls();
-        }
-
-        $entity = new static();
-
-        $entity
-            ->setQuantity(
-                $quantity
-            )
-            ->setFixedCost(
-                $fixedCostRelScheduler->getFixedCost()
-            )
-            ->setInvoice(
-                $invoice
-            );
-
-        $entity->sanitizeValues();
-        $entity->initChangelog();
-
-        return $entity;
-    }
 }

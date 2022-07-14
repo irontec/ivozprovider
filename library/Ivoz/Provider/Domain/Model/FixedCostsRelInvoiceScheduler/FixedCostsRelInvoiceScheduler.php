@@ -33,5 +33,20 @@ class FixedCostsRelInvoiceScheduler extends FixedCostsRelInvoiceSchedulerAbstrac
         if ($this->getType() !== self::TYPE_STATIC) {
             $this->setQuantity(null);
         }
+        if ($this->getType() !== self::TYPE_DDIS) {
+            $this->setDdisCountryMatch(null);
+            $this->setDdisCountry(null);
+        }
+
+        // Check DDIs Country is set in specific match
+        if (
+            $this->getType() === self::TYPE_DDIS &&
+            $this->getDdisCountryMatch() == self::DDISCOUNTRYMATCH_SPECIFIC &&
+            !$this->getDdisCountry()
+        ) {
+            throw new \DomainException(
+                'DdisCountry is required for specific ddis type fixed costs',
+            );
+        }
     }
 }

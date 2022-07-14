@@ -2179,11 +2179,15 @@ CREATE TABLE `FixedCostsRelInvoiceSchedulers` (
   `quantity` int unsigned DEFAULT NULL,
   `fixedCostId` int unsigned NOT NULL,
   `invoiceSchedulerId` int unsigned NOT NULL,
-  `type` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'static' COMMENT '[enum:static|maxcalls]',
+  `type` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'static' COMMENT '[enum:static|maxcalls|ddis]',
+  `ddisCountryMatch` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'all' COMMENT '[enum:all|national|international|specific]',
+  `ddisCountryId` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `FixedCostsRelInvoiceScheduler_invoiceScheduler_fixedCost` (`invoiceSchedulerId`,`fixedCostId`),
   KEY `IDX_D9D0952B81256364` (`fixedCostId`),
+  KEY `IDX_D9D0952B43D707A2` (`ddisCountryId`),
   CONSTRAINT `FK_D9D0952B1D113CF5` FOREIGN KEY (`invoiceSchedulerId`) REFERENCES `InvoiceSchedulers` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_D9D0952B43D707A2` FOREIGN KEY (`ddisCountryId`) REFERENCES `Countries` (`id`) ON DELETE SET NULL,
   CONSTRAINT `FK_D9D0952B81256364` FOREIGN KEY (`fixedCostId`) REFERENCES `FixedCosts` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

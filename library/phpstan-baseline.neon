@@ -6181,12 +6181,22 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceRepository.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:getDdisCountryId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:getFixedCostId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:getInvoiceSchedulerId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCostsRelInvoiceScheduler\\\\FixedCostsRelInvoiceSchedulerDtoAbstract\\:\\:setDdisCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerDtoAbstract.php
 
