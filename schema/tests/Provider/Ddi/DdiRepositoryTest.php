@@ -76,8 +76,7 @@ class DdiRepositoryTest extends KernelTestCase
 
         $num = $repository->countByCompany(1);
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $num
         );
     }
@@ -91,8 +90,7 @@ class DdiRepositoryTest extends KernelTestCase
 
         $num = $repository->countByCompanyAndCountry(1, 68);
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $num
         );
     }
@@ -106,8 +104,7 @@ class DdiRepositoryTest extends KernelTestCase
 
         $num = $repository->countByCompanyAndNotCountry(1, 68);
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $num
         );
     }
