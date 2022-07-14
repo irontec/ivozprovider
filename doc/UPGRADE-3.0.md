@@ -49,7 +49,11 @@ arises, then migrations will be executed properly.
 
 ## Debian package configuration
 
-### Prepare APT sources for Debian Stretch
+Following section assumes you are upgrading the system from latest artemis to halliday.
+This is not recommended and package conflicts will arise. It's preferable to do a new
+halliday fresh install and migrate database and storage contents.
+
+### Prepare APT sources for Debian Bullseye
 
 Add following contents into /etc/apt/sources.list.d/debian.list
 
@@ -75,6 +79,11 @@ deb http://packages.irontec.com/debian tayler main
 
     apt-get update
     apt-get upgrade
+
+Note: New database configurations assumes percona-server will be used. If you have trouble starting
+your database, install latest percona-server-server from halliday repositories.
+
+    apt-get install percona-server-server
 
 ## Storage updates
 
