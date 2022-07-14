@@ -23,6 +23,26 @@
       - Removed voicemailAttachSound property
       - Removed voicemailEnabled property
       - Removed voicemailSendMail property
+
+## 2.21.0
+* Models:
+    - FixedCostsRelInvoiceScheduler, FixedCostsRelInvoiceScheduler-detailed and FixedCostsRelInvoiceScheduler-detailedCollection:
+        - Added type required property
+        - Added ddisCountryMatch property
+        - Added ddisCountry property
+    - ResidentialDevice:
+        - Removed authNeeded required property
+
+## 2.19.0
+* Endpoints:
+    - /brands:
+        - Removed currency[exists] filter parameter
+
+* Models:
+    - Brand:
+        - Set currency as required
+    - Brand-detailed:
+        - Set currency as required
     
 ## 2.18.1
 * Endpoints:
