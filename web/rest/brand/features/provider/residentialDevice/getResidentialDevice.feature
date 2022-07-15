@@ -16,7 +16,8 @@ Feature: Retrieve residential devices
       [
           {
               "name": "residentialDevice",
-              "transport": "udp",
+              "description": "",
+              "directConnectivity": "no",
               "id": 1
           }
       ]
