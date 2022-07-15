@@ -56,12 +56,8 @@ Feature: Create voicemails
           "residentialDevice": {
               "name": "residentialDevice",
               "description": "",
-              "transport": "udp",
-              "password": "+rA778LidL",
-              "id": 1,
-              "transformationRuleSet": null,
-              "outgoingDdi": null,
-              "language": null
+              "directConnectivity": "no",
+              "id": 1
           },
           "company": {
               "type": "vpbx",
