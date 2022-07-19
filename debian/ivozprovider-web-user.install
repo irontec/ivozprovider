@@ -1,2 +1,3 @@
 web/user/index.phtml /opt/irontec/ivozprovider/web/admin/application/views/scripts/portal/
 web/user/dist/* /opt/irontec/ivozprovider/web/admin/public
+web/portal/user/build /opt/irontec/ivozprovider/web/portal/user/

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Move to webapp dir
+cd /opt/irontec/ivozprovider/web/portal/user
+
+# Increase yarnpkg timeout to avoid ESOCKETTIMEDOUT in jenkins
+# See: https://github.com/yarnpkg/yarn/issues/8242#issuecomment-661881292
+yarnpkg config set network-timeout 300000
+
+# Install required dependencies
+yarnpkg install
+
+# Build portal
+yarnpkg build
+
