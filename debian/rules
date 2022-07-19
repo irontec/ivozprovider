@@ -35,6 +35,10 @@ build_webclient:
 	cd web/client ; yarnpkg install
 	cd web/client ; yarnpkg build
 
+build_webportaluser:
+	cd web/portal/user ; yarnpkg install
+	cd web/portal/user ; yarnpkg build
+
 build_webuser: build_library build_webadmin
 	cd web/user ; gem install --install-dir $(GEM_PATH) compass
 	cd web/user ; npm_config_yes=true npm install
@@ -54,7 +58,7 @@ build_microservices: build_library
 build_schema: build_library
 	cd schema ; composer --no-interaction --no-dev --no-progress --optimize-autoloader install
 
-override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webclient build_webuser
+override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_schema build_webclient build_webportaluser build_webuser
 
 override_dh_install:
 	dh_install
