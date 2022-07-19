@@ -1,3 +1,108 @@
+Thu, 23 Jun 2022 13:06:47 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 3.0.0 released
+
+    * Software Version Upgrade
+        - Debian base system upgraded from 9 (stretch) to 11 (bullseye)
+        - Kamailio upgraded from 5.1.10 to 5.6.0
+        - rtpengine upgraded from 6.1.2 to 9.5.4
+        - Asterisk upgraded from 13.17.0 to 18.2.2
+        - PHP upgraded from 7.0.33 to 8.0.13
+        - MySQL (Percona Server) upgraded from 5.7.19 to 8.0.25
+
+    * Main features
+        - Added new entity Location to group Users
+        - Added support for generic Voicemails
+        - Voicemail and VoicemailMessages can now be managed through web interface and API
+        - IVR Selected option can now update call display name
+        - Moved presence management from Kamailio to Asterisk
+        - Added custom BLFs for Route Locks status (open/close)
+        - Added local DNS entries for HEP server and Redis sentinel
+        - Replaced gearman server with redis for async job distribution
+
+
+Thu, 07 Jul 2022 12:47:57 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.21.0 released
+
+    * Proxies
+        - Fixed rtpengine sessions deletion on branch timeout
+        - Fixed a bug with failover handling on bounced calls
+        - OPTION messages are now skipped from anti-flood mechanism
+        - Residential Devices authentication is now optional when Direct Connectivity is enabled
+        - Retail Accounts authentication is now optional when Direct Connectivity is enabled
+        - Improve log messages on no reply event
+
+    * Invoicing
+        - Added dynamic quantity support to Invoice schedulers fixed costs
+        - Added Client max calls as Fixed cost dynamic quantity
+        - Added Client DDI count as Fixed cost dynamic quantity
+
+    * Portals
+        - Fixed a bug that prevented creating vPBX clients depending on emulated company ACLs
+        - Removed Retail Account column from DDI Provider's DDI List section
+
+    * Other
+        - Added support for custom entries in local DNS server
+        - Fixed swagger JSON generation commands in package post install scripts
+
+
+Wed, 23 Mar 2022 16:40:26 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.20.1 released
+
+    * API: Residential admins can now edit Device data through client API
+    * Billing: Improved rerating process to handle unbilled corner cases
+    * Portals: Removed friend field displayed in all CallForwardSettings screens
+    * Packages: Removed mysql ivozprovider-profile-data postinstall errors
+
+Tue, 15 Feb 2022 10:49:17 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.20.0 released
+
+    * Portals
+        - Retail client administrators can now edit retail account data (except name)
+        - Passwords are now trimed in: Carrier servers, ddi providers, friends, residential devices, retail accounts and terminals
+        - Added Location section to group users by working place
+
+    * API
+        - device/status endpoint now returns multiple devices status properly
+        - /users/mass_import API endpoint assigns just created ddis to it's user now
+
+    * Proxies
+        - Upgraded Kamailio version to 5.1.10
+        - Added P-Preferred-Identity support
+        - Improved gateway deactivation logic
+
+    * Provisioning
+        - Terminal Provisioning Generic URL is now unique
+
+    * Application Server
+        - Custom Music on Hold is now randomly sorted
+        - Set max call duration to 3 hours
+        - Set 20 sec timeout to service enabled noanswer cfws
+        - Set max voicemail duration to 20 minutes
+
+    * Other
+        - Apache2 logs are now redirected to journald
+
+
+Tue, 09 Nov 2021 13:26:18 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.19.0 released
+
+    * API
+        - Active Calls information is now retrieved from redis
+
+    * User Portal
+        - Ignore non-ascii characters while generating GSWave QR code
+
+    * Proxies
+        - Added maintenance mode for graceful restarts
+        - Improve realtime message handling after proxy restart
+        - Properly close XMLRpc connections after replying
+        - Fixed SDP mangling in multisocket setups during parallel-forking
+
 Tue, 28 Sep 2021 11:47:06 +0200  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.18.1 released
