@@ -32,18 +32,57 @@ class RegistrationChannelResolver
         $this->ddiProviderRepository = $ddiProviderRepository;
     }
 
+    /**
+     * @param array{username?: string, roles: array<int, string>} $tokenPayload
+     * @return array[array-key, array['b'|'c', int]]
+     */
+    public function getDefaultCriteria(array $tokenPayload): array
+    {
+        $this->testDbConnnection();
+        $username = $tokenPayload['username'] ?? null;
+        if (!$username) {
+            throw new \DomainException(
+                'User not found'
+            );
+        }
+
+        $admin = $this->administratorRepository->findClientAdminByUsername(
+            $username
+        );
+
+        if (!$admin) {
+            throw new \DomainException(
+                'User not found'
+            );
+        }
+
+        $brandId = $admin->getBrand()?->getId();
+        $clientId = $admin->getCompany()?->getId();
+
+        $criteria = [];
+        if ($brandId) {
+            $criteria['b'] = $brandId;
+        }
+
+        if ($clientId) {
+            $criteria['c'] = $clientId;
+        }
+
+        $role = $tokenPayload['roles'][0] ?? '';
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            return [
+                'users' => $criteria,
+            ];
+        }
+
+        return ['trunks' => $criteria];
+    }
+
     public function criteriaToString(
         array $tokenPayload,
         array $registerCriteria
-    ) {
-        $connection = $this->em->getConnection();
-        try {
-            $this->administratorRepository->find(0);
-        } catch (ConnectionLost $e) {
-            $connection->close();
-            $connection->connect();
-        }
-
+    ): string {
+        $this->testDbConnnection();
         $this->assertAccessGranted(
             $tokenPayload,
             $registerCriteria
@@ -52,6 +91,17 @@ class RegistrationChannelResolver
         return $this->toString(
             $registerCriteria
         );
+    }
+
+    private function testDbConnnection()
+    {
+        $connection = $this->em->getConnection();
+        try {
+            $this->administratorRepository->find(0);
+        } catch (ConnectionLost $e) {
+            $connection->close();
+            $connection->connect();
+        }
     }
 
     private function assertAccessGranted(
@@ -232,12 +282,12 @@ class RegistrationChannelResolver
         AdministratorInterface $admin,
         int $brand
     ) {
-        $brandMatch =
-            $brand == $admin->getBrand()->getId();
+        $adminBrand = $admin->getBrand()->getId();
+        $brandMatch = $brand === $adminBrand;
 
         if (!$brandMatch) {
             throw new \Exception(
-                'Brand id ' . $brand . ' is not valid'
+                'Brand id ' . $brand . ' is not valid. ' . $adminBrand . ' expected'
             );
         }
     }

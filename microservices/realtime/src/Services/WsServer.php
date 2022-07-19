@@ -115,9 +115,18 @@ class WsServer extends AbstractWsServer
 
             $isAuthValid = true;
         } catch (\Exception $e) {
-            $this->logger->info(
+            $this->logger->error(
                 $e->getMessage()
             );
+        }
+
+        if (!$isAuthValid) {
+            $server->push(
+                $frame->fd,
+                'Challenge'
+            );
+
+            return;
         }
 
         $registerChannel = null;
@@ -126,10 +135,22 @@ class WsServer extends AbstractWsServer
                 $data
                 && isset($data['register']);
 
+            $defaultCriteria = $this
+                ->registrationChannelResolver
+                ->getDefaultCriteria($tokenPayload);
+
             if (!$isRegisterValid) {
-                throw new \Exception(
-                    'Register channel not found in payload'
-                );
+                $data['register'] = $defaultCriteria;
+            } else {
+                foreach ($defaultCriteria as $target => $criteria) {
+                    foreach ($criteria as $key => $value) {
+                        if (isset($data['register'][$target][$key])) {
+                            continue;
+                        }
+
+                        $data['register'][$target][$key] = $value;
+                    }
+                }
             }
 
             $registerChannel = $this
@@ -144,18 +165,20 @@ class WsServer extends AbstractWsServer
             );
         }
 
-        if ($isAuthValid && $registerChannel) {
+        if ($registerChannel) {
             $this->sendCurrentStateAndUpdates(
                 $server,
                 $fd,
                 $registerChannel
             );
-        } else {
-            $server->push(
-                $frame->fd,
-                'Challenge'
-            );
+
+            return;
         }
+
+        $server->push(
+            $frame->fd,
+            'Challenge'
+        );
     }
 
     protected function onClose(Server $server, int $fd)
