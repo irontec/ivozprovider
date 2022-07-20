@@ -1,19 +1,22 @@
 #!/bin/bash
 set -e
 
-pushd /opt/irontec/ivozprovider/web/client
-    # Install required dependencies
-    yarnpkg install
+# Move to webapp dir
+SCRIPT_DIR=$(dirname $(realpath $0))
+[ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
+cd ${SCRIPT_DIR}/../
 
-    # Run linter
-    yarnpkg lint
+# Install required dependencies
+$YARN install
 
-    CHANGED_FILES=$(git diff --name-only .)
+# Run linter
+$YARN lint
 
-    if [ -z "$CHANGED_FILES" ]; then
-        echo "No files were changed in these commits."
-        exit 0
-    fi
+CHANGED_FILES=$(git diff --name-only .)
 
-    exit 1
-popd
+if [ -z "$CHANGED_FILES" ]; then
+    echo "No files were changed in these commits."
+    exit 0
+fi
+
+exit 1
