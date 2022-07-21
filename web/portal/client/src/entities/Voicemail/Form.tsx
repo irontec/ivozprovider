@@ -5,6 +5,7 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from '../Queue/foreignKeyGetter';
+import { useStoreState } from '../../store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
@@ -17,6 +18,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   const readOnlyProperties = {
     name: userVoicemail,
@@ -34,7 +37,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Customization'),
-      fields: ['locution'],
+      fields: [!aboutMe?.residential && 'locution'],
     },
   ];
 
