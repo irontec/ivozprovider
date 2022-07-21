@@ -27,7 +27,7 @@ const Status: TargetGhostType = (props): JSX.Element => {
   }
 
   return (
-    <Tooltip title={folder}>
+    <Tooltip title={folder as string}>
       <DraftsIcon />
     </Tooltip>
   );

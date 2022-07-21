@@ -17,7 +17,9 @@ const Type: TypeGhostType = (props): JSX.Element => {
 
   const response = recorder ? (
     <span>
-      {type} ({recorder})
+      <>
+        {type} ({recorder})
+      </>
     </span>
   ) : (
     type

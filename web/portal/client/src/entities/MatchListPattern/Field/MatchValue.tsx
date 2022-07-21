@@ -16,14 +16,10 @@ const Target: TargetGhostType = (props): JSX.Element => {
   const { type, numbervalue, numberCountry, regexp } = values;
 
   if (type === 'number') {
-    return (
-      <span>
-        {numberCountry} {numbervalue}
-      </span>
-    );
+    return <span>{numberCountry + ' ' + numbervalue}</span>;
   }
 
-  return <span>{regexp}</span>;
+  return <span>{regexp as React.ReactNode}</span>;
 };
 
 export default withCustomComponentWrapper<MatchListPatternValues>(Target);

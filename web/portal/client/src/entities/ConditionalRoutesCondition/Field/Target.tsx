@@ -14,7 +14,7 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 const Type: TargetGhostType = (props): JSX.Element => {
   const { values } = props;
 
-  return <span>{values.target}</span>;
+  return <span>{values.target as React.ReactNode}</span>;
 };
 
 export default withCustomComponentWrapper<ConditionalRoutesConditionValues>(
