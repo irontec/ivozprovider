@@ -7,16 +7,15 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@irontec/ivoz-ui": "^0.8.7",
+    "@irontec/ivoz-ui": "^0.8.9",
     "@mui/icons-material": "^5.0.1",
     "@mui/lab": "^5.0.0-alpha.48",
     "@mui/material": "^5.0.1",
     "@mui/styles": "^5.0.1",
     "axios": "^0.21.1",
     "easy-peasy": "^5.0.3",
-    "eslint": "^7.11.0",
-    "react": "^18.0",
-    "react-dom": "^18.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
@@ -32,9 +31,9 @@
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/query-string": "^6.3.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-router-dom": "^5.1.7",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-router-dom": "^5.2.0",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "eslint": "^7.11.0",
@@ -44,6 +43,9 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "hygen": "^6.2.0",
     "prettier": "^2.6.2"
+  },
+  "resolutions": {
+    "@types/react": "^18.0.0"
   },
   "scripts": {
     "start": "bin/start",
