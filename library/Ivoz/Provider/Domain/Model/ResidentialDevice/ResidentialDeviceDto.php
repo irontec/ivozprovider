@@ -7,6 +7,9 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 {
+    /**
+     * @deprecated as status it's already being served in collection responses
+     */
     public const CONTEXT_STATUS = 'status';
 
     /**
@@ -65,6 +68,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
+                'directConnectivity' => 'directConnectivity',
                 'status' => [[
                     'contact',
                     'received',
@@ -85,7 +89,16 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
-                'transport' => 'transport'
+                'description' => 'description',
+                'domainName' => 'domainName',
+                'directConnectivity' => 'directConnectivity',
+                'status' => [[
+                    'contact',
+                    'received',
+                    'publicReceived',
+                    'expires',
+                    'userAgent'
+                ]]
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -163,16 +176,26 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
     private static function filterFieldsForCompanyAdmin(array $response): array
     {
         $allowedFields = [
+            'id',
             'name',
             'description',
-            'id',
-            'transformationRuleSetId',
-            'outgoingDdiId',
-            'languageId',
+            'password',
+            'directConnectivity',
             'transport',
             'ip',
             'port',
-            'password',
+            'multiContact',
+            'languageId',
+            'transformationRuleSetId',
+            'outgoingDdiId',
+            'allow',
+            'fromDomain',
+            'ddiIn',
+            't38Passthrough',
+            'maxCalls',
+            'rtpEncryption',
+            'domainName',
+            'status',
         ];
 
         return array_filter(
