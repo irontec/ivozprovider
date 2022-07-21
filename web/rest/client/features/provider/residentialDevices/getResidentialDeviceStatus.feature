@@ -16,6 +16,7 @@ Feature: Retrieve residential devices status
       [
           {
               "name": "residentialDevice",
+              "directConnectivity": "no",
               "id": 1,
               "domainName": "retail.irontec.com",
               "status": [
@@ -49,6 +50,7 @@ Feature: Retrieve residential devices status
     """
       {
           "name": "residentialDevice",
+          "directConnectivity": "no",
           "id": 1,
           "domainName": "retail.irontec.com",
           "status": [

@@ -14,8 +14,7 @@ Feature: Update residential devices
           "name": "readOnlyResidentialDevice",
           "description": "",
           "transport": "udp",
-          "ip": null,
-          "port": null,
+          "ip": "127.10.10.10",
           "password": "ZGthe7E2+4",
           "disallow": "all",
           "allow": "alaw",
@@ -31,14 +30,25 @@ Feature: Update residential devices
     Then the response status code should be 200
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "name": "residentialDevice",
           "description": "",
           "transport": "udp",
+          "ip": "127.10.10.10",
+          "port": 1024,
           "password": "ZGthe7E2+4",
+          "allow": "alaw",
+          "fromDomain": null,
+          "directConnectivity": "yes",
+          "ddiIn": "yes",
+          "maxCalls": 1,
+          "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 1,
+          "transformationRuleSet": null,
           "outgoingDdi": 2,
           "language": 1
       }
