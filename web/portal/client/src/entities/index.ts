@@ -1,3 +1,4 @@
+import ActiveCalls from './ActiveCalls/ActiveCalls';
 import BillableCall from './BillableCall/BillableCall';
 import Calendar from './Calendar/Calendar';
 import CalendarPeriod from './CalendarPeriod/CalendarPeriod';
@@ -60,6 +61,7 @@ import VoicemailMessage from './VoicemailMessage/VoicemailMessage';
 import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
 
 const entities: EntityList = {
+  ActiveCalls,
   BillableCall,
   Calendar,
   CalendarPeriod,

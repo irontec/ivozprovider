@@ -6,6 +6,7 @@ import Login from 'components/Login';
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useStoreState } from 'store';
+import addCustomRoutes from './addCustomRoutes';
 import AppRouteContentWrapper from './AppRouteContentWrapper';
 import getEntityMap, { ExtendedRouteMap } from './EntityMap';
 import useAclFilteredEntityMap from './useAclFilteredEntityMap';
@@ -33,7 +34,7 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
     return <Login />;
   }
 
-  const routes = parseRoutes(apiSpec, aclFilteredEntityMap);
+  const routes = addCustomRoutes(parseRoutes(apiSpec, aclFilteredEntityMap));
 
   return (
     <Switch>
