@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+# Move to webapp dir
+SCRIPT_DIR=$(dirname $(realpath $0))
+[ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
+cd ${SCRIPT_DIR}/../
+
+# Install required dependencies
+$YARN install
+
+# Run linter
+$YARN lint
+
+CHANGED_FILES=$(git diff --name-only .)
+
+if [ -z "$CHANGED_FILES" ]; then
+    echo "No files were changed in these commits."
+    exit 0
+fi
+
+exit 1

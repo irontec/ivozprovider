@@ -32,8 +32,8 @@ build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/it_IT/it_IT.mo application/languages/it_IT/it_IT.po
 
 build_webclient:
-	cd web/client ; yarnpkg install
-	cd web/client ; yarnpkg build
+	cd web/portal/client ; yarnpkg install
+	cd web/portal/client ; yarnpkg build
 
 build_webportaluser:
 	cd web/portal/user ; yarnpkg install
