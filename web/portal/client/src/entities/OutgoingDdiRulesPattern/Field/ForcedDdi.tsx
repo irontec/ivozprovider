@@ -25,7 +25,7 @@ const Target: TargetGhostType = (props): JSX.Element => {
     return <span>{_("Company's default")}</span>;
   }
 
-  return <span>{forcedDdi}</span>;
+  return <span>{forcedDdi as React.ReactNode}</span>;
 };
 
 export default withCustomComponentWrapper<OutgoingDdiRulesPatternValues>(

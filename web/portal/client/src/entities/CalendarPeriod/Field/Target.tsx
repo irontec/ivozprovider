@@ -15,7 +15,7 @@ const Target: TargetGhostType = (props): JSX.Element => {
   const { values } = props;
   const { target } = values;
 
-  return <span>{target}</span>;
+  return <span>{target as React.ReactNode}</span>;
 };
 
 export default withCustomComponentWrapper<CalendarPeriodValues>(Target);

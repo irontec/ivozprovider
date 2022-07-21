@@ -14,7 +14,7 @@ type TargetGhostType = PropertyCustomFunctionComponent<
 const TargetTypeValue: TargetGhostType = (props): JSX.Element => {
   const { values } = props;
 
-  return <span>{values.targetTypeValue}</span>;
+  return <span>{values.targetTypeValue as React.ReactNode}</span>;
 };
 
 export default withCustomComponentWrapper<CallForwardSettingValues>(

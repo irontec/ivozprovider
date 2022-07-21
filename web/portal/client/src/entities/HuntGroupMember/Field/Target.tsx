@@ -39,7 +39,7 @@ const Type: TargetGhostType = (props): JSX.Element | null => {
 
   return (
     <span>
-      {(numberCountry as CountryProperty).countryCode} {numberValue}
+      {(numberCountry as CountryProperty).countryCode + ' ' + numberValue}
     </span>
   );
 };
