@@ -7,7 +7,7 @@ cd ${SCRIPT_DIR}/../
 
 # Increase yarnpkg timeout to avoid ESOCKETTIMEDOUT in jenkins
 # See: https://github.com/yarnpkg/yarn/issues/8242#issuecomment-661881292
-$YARN config set network-timeout 300000
+$YARN config set network-timeout 1000000
 
 # Install required dependencies
 $YARN install
