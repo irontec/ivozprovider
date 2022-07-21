@@ -98,6 +98,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
     }
 
     console.log('Ignore update for unknown call', data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const wsServerUrl = `wss://${document.location.hostname}/wss`;
@@ -142,6 +143,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
     }, 1000);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [ready, calls];
