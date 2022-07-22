@@ -2,6 +2,7 @@ import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { OutgoingDdiRulesPatternPropertyList } from '../OutgoingDdiRulesPatternProperties';
@@ -18,7 +19,7 @@ const Rule: RuleGhostType = (props): JSX.Element | null => {
   const { type, prefix, matchList, matchListLink } = values;
 
   if (type === 'prefix') {
-    return <span>{prefix}</span>;
+    return <span>{prefix as React.ReactNode}</span>;
   }
 
   if (type === 'destination') {
@@ -26,10 +27,12 @@ const Rule: RuleGhostType = (props): JSX.Element | null => {
       return null;
     }
 
-    return <Link to={matchListLink as string}>{matchList}</Link>;
+    return (
+      <Link to={matchListLink as string}>{matchList as React.ReactNode}</Link>
+    );
   }
 
-  return <span>{matchList}</span>;
+  return <span>{matchList as React.ReactNode}</span>;
 };
 
 export default withCustomComponentWrapper<OutgoingDdiRulesPatternValues>(Rule);

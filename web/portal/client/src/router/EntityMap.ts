@@ -298,6 +298,9 @@ const getEntityMap = (): ExtendedRouteMap => {
           isAccessible: (aboutMe) => aboutMe.vpbx,
         },
         {
+          entity: entities.ActiveCalls,
+        },
+        {
           entity: entities.BillableCall,
         },
         {

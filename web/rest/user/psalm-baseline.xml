@@ -62,8 +62,7 @@
     <MixedInferredReturnType occurrences="1">
       <code>Paginator | array | iterable</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="10">
-      <code>andWhere</code>
+    <MixedMethodCall occurrences="7">
       <code>eq</code>
       <code>eq</code>
       <code>expr</code>
