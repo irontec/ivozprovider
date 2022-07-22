@@ -1321,21 +1321,12 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@irontec/ivoz-ui@0.8.8":
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.8.8.tgz#5e541af27379b9cbcf1c93e3b09759a2ef9ab8c6"
-  integrity sha512-HGiEsoCkkdBvrv8dhFEJF/+CkAXyGrWj6YjGVJlNVAqv1KMcZ8TRLw2J7SqnuVOEJYnRhOd0ElJzc6ZYGTZnfQ==
+"@irontec/ivoz-ui@0.8.10":
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.8.10.tgz#a07e13f99483a08ef5930e61eb46c9f9abe169ad"
+  integrity sha512-NqY7Sr99AVZTQ2lDVIIwjSZa4n4DGzjrBgAUvtBkqkSytyGWFGBpzxZt/rzMK1RE/hME1rBAjeJJEzQnSAy0aQ==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
-    "@types/axios" "^0.14.0"
-    "@types/file-saver" "^2.0.3"
-    "@types/hoist-non-react-statics" "^3.3.1"
-    "@types/jest" "^26.0.15"
-    "@types/node" "^12.0.0"
-    "@types/query-string" "^6.3.0"
-    "@types/react" "^17.0.0"
-    "@types/react-dom" "^17.0.0"
-    "@types/react-router-dom" "^5.1.7"
     axios "^0.21.1"
     date-fns "^2.21.1"
     file-saver "^2.0.5"
