@@ -35,15 +35,6 @@ const properties: UserProperties = {
   timezone: {
     label: _('TimeZone'),
   },
-  pass: {
-    label: _('Password'),
-  },
-  oldPass: {
-    label: _('Old password'),
-  },
-  repeatPass: {
-    label: _('Repeat password'),
-  },
 };
 
 const columns = ['startTime', 'caller', 'duration', 'direction'];

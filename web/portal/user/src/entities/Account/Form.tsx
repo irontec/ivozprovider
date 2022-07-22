@@ -16,7 +16,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const changePassword = props.formik.values?.changePassword;
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Main'),
@@ -25,9 +24,9 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'lastname',
         'email',
         'changePassword',
-        changePassword && 'oldPass',
-        changePassword && 'pass',
-        changePassword && 'repeatPass',
+        'oldPass',
+        'pass',
+        'repeatPass',
       ],
     },
   ];
