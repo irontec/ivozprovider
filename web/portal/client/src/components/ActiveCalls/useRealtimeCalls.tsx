@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Calls,
   InputStruct,
@@ -12,14 +12,15 @@ import useWsClient from './useWsClient';
 
 const useRealtimeCalls = (): [boolean, Calls] => {
   const [calls, setCalls] = useState<Calls>({});
-  let syncCallsCopy = { ...calls };
+  const syncCallsRef = useRef<Calls>({});
+  syncCallsRef.current = { ...calls };
 
   const updateCall = (data: UpdateStuct) => {
     const callId = data['Call-ID'];
     const event = data.Event;
 
     const newValue = {
-      ...syncCallsCopy,
+      ...syncCallsRef.current,
     };
 
     if (event === 'UpdateCLID') {
@@ -30,7 +31,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
           party: data.Party,
         };
 
-        syncCallsCopy = newValue;
+        syncCallsRef.current = newValue;
         return newValue;
       });
     } else {
@@ -46,7 +47,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
             time: data.Time,
           };
 
-          syncCallsCopy = newValue;
+          syncCallsRef.current = newValue;
           return newValue;
         });
       } else if (event === 'Terminated') {
@@ -54,7 +55,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
         setCalls(() => {
           delete newValue[callId];
 
-          syncCallsCopy = newValue;
+          syncCallsRef.current = newValue;
           return newValue;
         });
       }
@@ -77,11 +78,11 @@ const useRealtimeCalls = (): [boolean, Calls] => {
 
     setCalls(() => {
       const newValue = {
-        ...syncCallsCopy,
+        ...syncCallsRef.current,
         [callId]: newRow,
       };
 
-      syncCallsCopy = newValue;
+      syncCallsRef.current = newValue;
       return newValue;
     });
   };
@@ -89,7 +90,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
   const onMessage = useCallback((data: InputStruct) => {
     const callId = data['Call-ID'];
 
-    if (isUpdateStruct(data) && syncCallsCopy[callId]) {
+    if (isUpdateStruct(data) && syncCallsRef.current[callId]) {
       return updateCall(data);
     }
 
@@ -98,7 +99,6 @@ const useRealtimeCalls = (): [boolean, Calls] => {
     }
 
     console.log('Ignore update for unknown call', data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const wsServerUrl = `wss://${document.location.hostname}/wss`;
@@ -109,12 +109,12 @@ const useRealtimeCalls = (): [boolean, Calls] => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (Object.keys(syncCallsCopy).length === 0) {
+      if (Object.keys(syncCallsRef).length === 0) {
         return;
       }
 
       const newValue = {
-        ...syncCallsCopy,
+        ...syncCallsRef.current,
       };
 
       const now = Math.round(new Date().getTime() / 1000);
@@ -143,7 +143,6 @@ const useRealtimeCalls = (): [boolean, Calls] => {
     }, 1000);
 
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [ready, calls];
