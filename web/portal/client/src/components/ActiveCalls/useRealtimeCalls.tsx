@@ -109,7 +109,7 @@ const useRealtimeCalls = (): [boolean, Calls] => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (Object.keys(syncCallsRef).length === 0) {
+      if (Object.keys(syncCallsRef.current).length === 0) {
         return;
       }
 
