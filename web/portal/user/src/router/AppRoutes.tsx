@@ -33,7 +33,7 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
   return (
     <Switch>
-      <Route exact key="login" path="/">
+      <Route exact key='login' path='/'>
         <AppRouteContentWrapper loggedIn={loggedIn} routeMap={entityMap}>
           <Dashboard routeMap={entityMap} />
         </AppRouteContentWrapper>
