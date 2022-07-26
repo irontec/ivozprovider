@@ -20,7 +20,13 @@
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/explicit-module-boundary-types": ["error"],
-      "prettier/prettier": "warn"
+      "prettier/prettier": [
+        "warn",
+        {
+          "singleQuote": true,
+          "jsxSingleQuote": true
+        }
+      ]
     },
     "settings": {
       "react": {
