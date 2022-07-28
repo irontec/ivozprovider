@@ -20,7 +20,16 @@ Feature: Retrieve users
               "id": 1,
               "company": 1,
               "terminal": 1,
-              "outgoingDdi": null
+              "outgoingDdi": null,
+              "status": [
+                  {
+                      "contact": "sip:yealinktest@10.10.1.106:5060",
+                      "received": "sip:212.64.172.23:5060",
+                      "publicReceived": true,
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  }
+              ]
           },
           {
               "name": "Bob",
@@ -28,7 +37,8 @@ Feature: Retrieve users
               "id": 2,
               "company": 1,
               "terminal": 2,
-              "outgoingDdi": null
+              "outgoingDdi": null,
+              "status": []
           }
       ]
     """
