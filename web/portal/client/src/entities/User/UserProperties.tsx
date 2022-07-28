@@ -29,6 +29,7 @@ export type UserPropertyList<T> = {
   rejectCallMethod?: T;
   gsQRCode?: T;
   multiContact?: T;
+  statusIcon?: T;
 };
 
 export type UserProperties = UserPropertyList<Partial<PropertySpec>>;
