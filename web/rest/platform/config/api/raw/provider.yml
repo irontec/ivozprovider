@@ -69,19 +69,21 @@ Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
 Ivoz\Provider\Domain\Model\Brand\Brand:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withFeatures'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_WITH_FEATURES
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withFeatures'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_WITH_FEATURES
       depth: 1
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
-      groups: ['withFeatures']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\Brand\BrandDto::CONTEXT_WITH_FEATURES
+      ]
 
 Ivoz\Provider\Domain\Model\Brand\Invoice:
 Ivoz\Provider\Domain\Model\Brand\Logo:

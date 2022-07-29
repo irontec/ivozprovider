@@ -71,9 +71,11 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
       depth: 1
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleDto::CONTEXT_DETAILED_COLLECTION
+        ]
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -92,7 +94,7 @@ Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelSchedule
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   itemOperations:
     get:
-      operation_normalization_context: 'withMatchListIds'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\CallAcl\CallAclDto::CONTEXT_WITH_MATCHLIST
     put: ~
     delete: ~
   collectionOperations: ~
@@ -114,9 +116,11 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
     post: ~
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListDto::CONTEXT_DETAILED_COLLECTION
+        ]
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -338,19 +342,21 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withInverseRelationships'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withInverseRelationships'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
       depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
-      groups: ['withInverseRelationships']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
+      ]
     read_access_control:
       inherited:
         conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
@@ -387,9 +393,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -413,9 +421,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRou
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -439,9 +449,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -465,9 +477,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -660,14 +674,14 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withInverseRelationships'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withInverseRelationships'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
       depth: 1
   attributes:
     access_control: >-
@@ -675,7 +689,9 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
       && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
-      groups: ['withInverseRelationships']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto::CONTEXT_WITH_INVERSE_RELATIONSHIPS
+      ]
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -713,9 +729,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
   collectionOperations:
     get:
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListDto::CONTEXT_DETAILED_COLLECTION
+        ]
       depth: 1
     post:
       depth: 1
@@ -737,9 +755,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCa
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -760,9 +780,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSc
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -783,9 +805,11 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteLi
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -872,9 +896,11 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto::CONTEXT_DETAILED_COLLECTION
+        ]
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -923,9 +949,11 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     get_status_item:
       method: 'GET'
       path: 'friends/{id}/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
+        ]
     put: ~
     delete: ~
   collectionOperations:
@@ -933,9 +961,11 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     get_status_collection:
       method: 'GET'
       path: 'friends/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
+        ]
     post: ~
 
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
@@ -1003,9 +1033,11 @@ Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -1077,14 +1109,14 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Ivr\IvrDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withExcludedExtensions'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Ivr\IvrDto::CONTEXT_WITH_EXCLUDED_EXTENSIONS
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withExcludedExtensions'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Ivr\IvrDto::CONTEXT_WITH_EXCLUDED_EXTENSIONS
       depth: 1
   attributes:
     access_control: >-
@@ -1092,7 +1124,9 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
-      groups: ['withExcludedExtensions']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\Ivr\IvrDto::CONTEXT_WITH_EXCLUDED_EXTENSIONS
+      ]
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1134,9 +1168,11 @@ Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -1280,9 +1316,11 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -1307,15 +1345,15 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withUsers'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto::CONTEXT_WITH_USERS
     delete: ~
   collectionOperations:
     get:
-      operation_normalization_context: 'collection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto::CONTEXT_COLLECTION
     post:
-      operation_normalization_context: 'withUsers'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto::CONTEXT_WITH_USERS
       depth: 1
   attributes:
     access_control: >-
@@ -1323,7 +1361,9 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       && user.isVpbxAdmin()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     normalization_context:
-      groups: ['withUsers']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto::CONTEXT_WITH_USERS
+      ]
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1336,9 +1376,11 @@ Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -1359,9 +1401,11 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\QueueMember\QueueMemberDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -1515,18 +1559,22 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
     get_status_item:
       method: 'GET'
       path: 'residential_devices/{id}/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto::CONTEXT_STATUS
+        ]
     put: ~
   collectionOperations:
     get: ~
     get_status_collection:
       method: 'GET'
       path: 'residential_devices/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto::CONTEXT_STATUS
+        ]
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   properties:
@@ -1558,18 +1606,22 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
     get_status_item:
       method: 'GET'
       path: 'retail_accounts/{id}/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
+        ]
     put: ~
   collectionOperations:
     get: ~
     get_status_collection:
       method: 'GET'
       path: 'retail_accounts/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
+        ]
 
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
@@ -1667,18 +1719,22 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     get_status_item:
       method: 'GET'
       path: 'terminals/{id}/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
+        ]
     put: ~
     delete: ~
   collectionOperations:
     get_status_collection:
       method: 'GET'
       path: 'terminals/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
+        ]
     get_terminals_unassigned:
       method: 'GET'
       path: 'terminals/unassigned'
@@ -1770,9 +1826,9 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\Name: ~
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withPickupGroups'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_WITH_PICKUP_GROUPS
     delete: ~
   collectionOperations:
     get: ~
@@ -1808,7 +1864,7 @@ Ivoz\Provider\Domain\Model\User\User:
             collectionFormat: 'multi'
             description: "Allows you to reduce the response to contain only the properties you need"
     post:
-      operation_normalization_context: 'withPickupGroups'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_WITH_PICKUP_GROUPS
       depth: 1
   attributes:
     access_control: >-
