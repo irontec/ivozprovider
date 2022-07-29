@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
   }, [apiSpecInitFn, authInit, token, aboutMeInit, aboutMeResetProfile]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
-  const basename = process.env.PUBLIC_URL;
+  const baseUrl = process.env.BASE_URL;
 
   if (!apiSpec || Object.keys(apiSpec).length === 0) {
     return (
@@ -45,7 +45,7 @@ export default function App(): JSX.Element {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <CssBaseline />
       <StyledAppFlexDiv>
-        <BrowserRouter basename={basename}>
+        <BrowserRouter basename={baseUrl}>
           <AppRoutes apiSpec={apiSpec} />
         </BrowserRouter>
       </StyledAppFlexDiv>
