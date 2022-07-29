@@ -241,14 +241,14 @@ Ivoz\Provider\Domain\Model\WebPortal\Logo: ~
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withFeatures'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_WITH_FEATURES
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withFeatures'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_WITH_FEATURES
       depth: 1
   properties:
     balance:
@@ -258,7 +258,9 @@ Ivoz\Provider\Domain\Model\Company\Company:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
-      groups: ['withFeatures']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\Company\CompanyDto::CONTEXT_WITH_FEATURES
+      ]
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -357,9 +359,11 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
   collectionOperations:
     get:
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -498,9 +502,11 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -535,9 +541,11 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     get_status_collection:
       method: 'GET'
       path: 'friends/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Friend\FriendDto::CONTEXT_STATUS
+        ]
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   attributes:
@@ -604,9 +612,11 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSch
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -710,19 +720,21 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withCarriers'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_WITH_CARRIERS
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withCarriers'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_WITH_CARRIERS
       depth: 1
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
-      groups: ['withCarriers']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_WITH_CARRIERS
+      ]
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -841,9 +853,11 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
     get_status_collection:
       method: 'GET'
       path: 'retail_accounts/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto::CONTEXT_STATUS
+        ]
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
@@ -869,26 +883,30 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
     get_status_collection:
       method: 'GET'
       path: 'residential_devices/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto::CONTEXT_STATUS
+        ]
 
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
   itemOperations:
     get:
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto::CONTEXT_DETAILED
     put:
-      operation_normalization_context: 'withPatterns'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto::CONTEXT_WITH_PATTERNS
     delete: ~
   collectionOperations:
     get: ~
     post:
-      operation_normalization_context: 'withPatterns'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto::CONTEXT_WITH_PATTERNS
       depth: 1
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     normalization_context:
-      groups: ['withPatterns']
+      groups: [
+        !php/const Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto::CONTEXT_WITH_PATTERNS
+      ]
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
@@ -901,9 +919,11 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRe
   collectionOperations:
     get:
       depth: 1
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto::CONTEXT_DETAILED_COLLECTION
+        ]
     post:
       depth: 1
   attributes:
@@ -991,9 +1011,11 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     get_status_collection:
       method: 'GET'
       path: 'terminals/status'
-      operation_normalization_context: 'status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
       normalization_context:
-        groups: ['status']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Terminal\TerminalDto::CONTEXT_STATUS
+        ]
 
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
