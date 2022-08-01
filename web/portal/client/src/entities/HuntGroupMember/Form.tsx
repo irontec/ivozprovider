@@ -1,13 +1,18 @@
+import { EntityValue } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import useParentRow from '@irontec/ivoz-ui/hooks/useParentRow';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { HuntGroupPropertyList } from '../HuntGroup/HuntGroupProperties';
+import huntGroup from '../HuntGroup/HuntGroup';
 import { foreignKeyGetter } from './foreignKeyGetter';
 
-const Form = (props: EntityFormProps): JSX.Element => {
+const Form = (props: EntityFormProps): JSX.Element | null => {
   const { entityService, row, match } = props;
+  const values = props.formik.values;
   const edit = props.edit || false;
   const create = props.create || false;
 
@@ -23,6 +28,19 @@ const Form = (props: EntityFormProps): JSX.Element => {
     routeType: edit,
   };
 
+  const parentRow = useParentRow<HuntGroupPropertyList<EntityValue>>({
+    parentEntity: huntGroup,
+    match,
+    parentId: values.client,
+  });
+
+  if (!parentRow) {
+    return null;
+  }
+
+  const strategy = parentRow.strategy as string;
+  const showPriority = ['linear', 'roundRobin'].includes(strategy);
+
   const groups: Array<FieldsetGroups> = [
     {
       legend: _('Routing configuration'),
@@ -36,7 +54,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Entry information'),
-      fields: ['timeoutTime'],
+      fields: ['timeoutTime', showPriority && 'priority'],
     },
   ];
 
