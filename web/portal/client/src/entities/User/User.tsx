@@ -10,6 +10,7 @@ import { UserProperties } from './UserProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 import { PartialPropertyList } from '@irontec/ivoz-ui';
+import StatusIcon from '../RetailAccount/Field/StatusIcon';
 
 const properties: UserProperties = {
   name: {
@@ -171,6 +172,10 @@ const properties: UserProperties = {
       },
     },
   },
+  statusIcon: {
+    label: _('Status'),
+    component: StatusIcon,
+  },
 };
 
 const columns = [
@@ -179,7 +184,7 @@ const columns = [
   'extension',
   'terminal',
   'outgoingDdi',
-  // @TODO status
+  'statusIcon',
 ];
 
 const marshaller = (

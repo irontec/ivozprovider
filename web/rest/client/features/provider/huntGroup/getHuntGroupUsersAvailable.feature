@@ -20,7 +20,8 @@ Feature: Retrieve hunt groups available users
               "id": 2,
               "terminal": 2,
               "extension": null,
-              "outgoingDdi": null
+              "outgoingDdi": null,
+              "status": []
           }
       ]
     """
