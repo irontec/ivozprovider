@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class UserDto extends UserDtoAbstract
@@ -28,6 +29,17 @@ class UserDto extends UserDtoAbstract
         self::CONTEXT_WITH_PICKUP_GROUPS,
         self::CONTEXT_DETAILED
     ];
+
+    /**
+     * @var array<array-key, RegistrationStatus>
+     * @AttributeDefinition(
+     *     type="array",
+     *     class="Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus",
+     *     description="Registration status"
+     * )
+     */
+    private $status = [];
+
 
     /**
      * @var int[]
@@ -77,6 +89,13 @@ class UserDto extends UserDtoAbstract
                 'terminalId' => 'terminal',
                 'extensionId' => 'extension',
                 'outgoingDdiId' => 'outgoingDdi',
+                'status' => [[
+                    'contact',
+                    'received',
+                    'publicReceived',
+                    'expires',
+                    'userAgent',
+                ]]
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {
@@ -161,11 +180,29 @@ class UserDto extends UserDtoAbstract
         parent::denormalize($data, $context);
     }
 
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['status'] = array_map(
+            function (RegistrationStatus $registrationStatus): array {
+                return $registrationStatus->toArray();
+            },
+            $this->status
+        );
+
+        return $response;
+    }
+
+    public function addStatus(RegistrationStatus $status): static
+    {
+        $this->status[] = $status;
+
+        return $this;
+    }
+
     /**
      * @param int[] $pickupGroupIds
-     *
-     * @return void
-     */
+s     */
     public function setPickupGroupIds(array $pickupGroupIds): void
     {
         $this->pickupGroupIds = $pickupGroupIds;
