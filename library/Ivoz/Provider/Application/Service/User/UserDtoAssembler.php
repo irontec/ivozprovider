@@ -6,12 +6,22 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Infrastructure\Symfony\HttpFoundation\RequestDateTimeResolver;
+use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class UserDtoAssembler implements CustomDtoAssemblerInterface
 {
+    public function __construct(
+        private UsersLocationRepository $usersLocationRepository,
+        private RequestDateTimeResolver $requestDateTimeResolver
+    ) {
+    }
+
+
     /**
      * @param UserInterface $entity
      * @throws \Exception
@@ -22,7 +32,33 @@ class UserDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto = $entity->toDto($depth);
 
-        if (in_array($context, UserDto::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
+        if ($context === DataTransferObjectInterface::CONTEXT_COLLECTION) {
+            $terminal = $entity->getTerminal();
+            if (!$terminal) {
+                return $dto;
+            }
+
+            $domain = $terminal->getDomain();
+            if (!$domain) {
+                return $dto;
+            }
+
+            $userLocations = $this
+                ->usersLocationRepository
+                ->findByUsernameAndDomain(
+                    $terminal->getName(),
+                    $domain->getDomain()
+                );
+
+            foreach ($userLocations as $userLocation) {
+                $dto->addStatus(
+                    new RegistrationStatus(
+                        $userLocation,
+                        $this->requestDateTimeResolver->getTimezone()
+                    )
+                );
+            }
+        } elseif (in_array($context, UserDto::CONTEXTS_WITH_PICKUP_GROUPS, true)) {
             $pickupGroupIds = array_map(
                 function (PickUpRelUser $relFeature) {
                     return (int) $relFeature
