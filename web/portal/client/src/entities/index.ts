@@ -59,6 +59,7 @@ import UsersCdr from './UsersCdr/UsersCdr';
 import Voicemail from './Voicemail/Voicemail';
 import VoicemailMessage from './VoicemailMessage/VoicemailMessage';
 import { EntityList } from '@irontec/ivoz-ui/router/parseRoutes';
+import store from 'store';
 
 const entities: EntityList = {
   ActiveCalls,
@@ -122,5 +123,8 @@ const entities: EntityList = {
   Voicemail,
   VoicemailMessage,
 };
+
+const storeActions = store.getActions();
+storeActions.entities.setEntities(entities);
 
 export default entities;

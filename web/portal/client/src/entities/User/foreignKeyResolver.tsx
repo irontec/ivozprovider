@@ -1,6 +1,6 @@
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import entities from '../index';
+import store from 'store';
 import { UserPropertiesList } from './UserProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -8,6 +8,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   cancelToken,
   entityService,
 }): Promise<UserPropertiesList> {
+  const entities = store.getState().entities.entities;
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
