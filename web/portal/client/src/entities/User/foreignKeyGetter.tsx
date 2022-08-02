@@ -1,15 +1,15 @@
-import { UserPropertyList } from './UserProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
-import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
-import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import {
   UnassignedExtensionSelectOptions,
   UserExtensionSelectOptions,
 } from 'entities/Extension/SelectOptions';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
+import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
+import store from 'store';
 import { BossAssistantSelectOptions } from './SelectOptions';
+import { UserPropertyList } from './UserProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -25,6 +25,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     skip.push(...['terminal']);
   }
 
+  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
     entities,
     entityService,

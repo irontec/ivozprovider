@@ -1,7 +1,7 @@
-import { FaxesInOutPropertyList } from '../FaxesInOut/FaxesInOutProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from 'store';
+import { FaxesInOutPropertyList } from '../FaxesInOut/FaxesInOutProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -9,6 +9,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
 }): Promise<any> => {
   const response: FaxesInOutPropertyList<Array<string | number>> = {};
 
+  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
     entities,
     entityService,

@@ -1,7 +1,7 @@
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { remapFk } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
+import store from 'store';
 import { ExternalCallFilterPropertiesList } from './ExternalCallFilterProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -9,6 +9,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   cancelToken,
   entityService,
 }): Promise<ExternalCallFilterPropertiesList> {
+  const entities = store.getState().entities.entities;
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,

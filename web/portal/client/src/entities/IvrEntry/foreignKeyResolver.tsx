@@ -1,19 +1,18 @@
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver, {
   remapFk,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
-import { IvrEntryPropertiesList } from './IvrEntryProperties';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import store from 'store';
+import { IvrEntryPropertiesList } from './IvrEntryProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
   cancelToken,
   entityService,
 }): Promise<IvrEntryPropertiesList> {
-  const { Country } = entities;
-
+  const entities = store.getState().entities.entities;
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
@@ -22,6 +21,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     skip: ['numberCountry', 'ivr'],
   });
 
+  const { Country } = entities;
   promises.push(
     genericForeignKeyResolver({
       data,

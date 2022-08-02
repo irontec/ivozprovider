@@ -1,9 +1,9 @@
-import { HuntGroupMemberPropertyList } from './HuntGroupMemberProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
-import HuntGroupAvailableSelectOptions from 'entities/User/SelectOptions/HuntGroupAvailableSelectOptions';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import HuntGroupAvailableSelectOptions from 'entities/User/SelectOptions/HuntGroupAvailableSelectOptions';
+import store from 'store';
+import { HuntGroupMemberPropertyList } from './HuntGroupMemberProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async (
   props
@@ -21,6 +21,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
     skip.push(...['user']);
   }
 
+  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
     entities,
     entityService,

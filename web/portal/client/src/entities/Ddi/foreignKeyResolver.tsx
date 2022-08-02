@@ -1,16 +1,17 @@
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver, {
   remapFk,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
+import store from 'store';
 import { DdiPropertiesList } from './DdiProperties';
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
   cancelToken,
   entityService,
 }): Promise<DdiPropertiesList> {
+  const entities = store.getState().entities.entities;
   const { Country } = entities;
 
   const promises = autoForeignKeyResolver({
