@@ -1,6 +1,5 @@
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
-import Terminal from '../Terminal';
 
 type CustomPropsType = {
   _includeId: number;
@@ -19,6 +18,10 @@ const UnassignedTerminalSelectOptions: SelectOptionsType<CustomPropsType> = (
   }
 
   const getAction = store.getActions().api.get;
+
+  const entities = store.getState().entities.entities;
+  const Terminal = entities.Terminal;
+
   return getAction({
     path: Terminal.path + '/unassigned',
     params,

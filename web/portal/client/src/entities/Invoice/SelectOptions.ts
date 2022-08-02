@@ -1,11 +1,14 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Invoice from './Invoice';
+import store from 'store';
 
 const InvoiceSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const Invoice = entities.Invoice;
+
   return defaultEntityBehavior.fetchFks(
     Invoice.path,
     ['id', 'number'],

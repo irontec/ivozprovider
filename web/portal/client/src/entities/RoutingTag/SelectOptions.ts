@@ -1,11 +1,14 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import RoutingTag from './RoutingTag';
+import store from 'store';
 
 const RoutingTagSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const RoutingTag = entities.RoutingTag;
+
   return defaultEntityBehavior.fetchFks(
     RoutingTag.path,
     ['id', 'name'],
