@@ -1,7 +1,7 @@
-import { OutgoingDdiRulesPatternPropertyList } from './OutgoingDdiRulesPatternProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import entities from '../index';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from 'store';
+import { OutgoingDdiRulesPatternPropertyList } from './OutgoingDdiRulesPatternProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -10,6 +10,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   const response: OutgoingDdiRulesPatternPropertyList<Array<string | number>> =
     {};
 
+  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
     entities,
     entityService,
