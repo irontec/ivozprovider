@@ -5,7 +5,6 @@ import defaultEntityBehavior, {
   MarshallerValues,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import LastExecution from './Field/LastExecution';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
@@ -160,7 +159,6 @@ const CallCsvScheduler: EntityInterface = {
     iden: 'CallCsvSchedulers',
   },
   Form,
-  foreignKeyGetter,
   marshaller,
   unmarshaller,
 };

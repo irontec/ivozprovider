@@ -3,7 +3,6 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import { ExtensionProperties } from './ExtensionProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions/SelectOptions';
@@ -148,7 +147,6 @@ const extension: EntityInterface = {
     iden: 'Extensions',
   },
   Form,
-  foreignKeyGetter,
   foreignKeyResolver,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);

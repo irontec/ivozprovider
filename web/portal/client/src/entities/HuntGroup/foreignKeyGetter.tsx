@@ -1,7 +1,6 @@
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
-import store from 'store';
 import { HuntGroupPropertyList } from './HuntGroupProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
@@ -10,9 +9,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
 }): Promise<any> => {
   const response: HuntGroupPropertyList<Array<string | number>> = {};
 
-  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,
