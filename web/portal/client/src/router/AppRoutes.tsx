@@ -3,13 +3,11 @@ import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
 import RouteContent from '@irontec/ivoz-ui/router/RouteContent';
 import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import Login from 'components/Login';
-import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useStoreState } from 'store';
 import addCustomRoutes from './addCustomRoutes';
 import AppRouteContentWrapper from './AppRouteContentWrapper';
-import getEntityMap, { ExtendedRouteMap } from './EntityMap';
-import useAclFilteredEntityMap from './useAclFilteredEntityMap';
+import useEntityMap from './useEntityMap';
 export interface AppRoutesProps {
   apiSpec: ParsedApiSpecInterface;
 }
@@ -19,16 +17,8 @@ export default function AppRoutes(props: AppRoutesProps): JSX.Element {
 
   const loggedIn = useStoreState((state) => state.auth.loggedIn);
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
-  const [entityMap, setEntityMap] = useState<ExtendedRouteMap>(getEntityMap());
 
-  useEffect(() => {
-    setEntityMap(getEntityMap());
-  }, [aboutMe]);
-
-  const aclFilteredEntityMap = useAclFilteredEntityMap({
-    entityMap,
-    aboutMe,
-  });
+  const aclFilteredEntityMap = useEntityMap();
 
   if (!loggedIn || !aboutMe) {
     return <Login />;
