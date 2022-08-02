@@ -3,7 +3,6 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
 import selectOptions from './SelectOptions';
 
@@ -50,7 +49,6 @@ const outgoingDdiRule: EntityInterface = {
     iden: 'OutgoingDDIRules',
   },
   Form,
-  foreignKeyGetter,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
   },

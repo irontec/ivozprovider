@@ -1,7 +1,6 @@
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import LanguageSelectOptions from 'entities/Language/SelectOptions';
-import store from 'store';
 import { DdiPropertyList } from './DdiProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async (
@@ -13,9 +12,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async (
 
   const response: DdiPropertyList<unknown> = {};
 
-  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,
