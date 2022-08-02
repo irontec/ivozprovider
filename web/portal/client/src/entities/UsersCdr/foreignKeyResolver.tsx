@@ -57,7 +57,6 @@ export const foreignKeyResolver: foreignKeyResolverType = async function ({
     data,
     cancelToken,
     entityService,
-    entities,
     skip: ['user'],
   });
 
