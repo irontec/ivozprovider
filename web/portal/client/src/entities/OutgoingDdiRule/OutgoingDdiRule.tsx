@@ -5,7 +5,6 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 
 const properties: PartialPropertyList = {
@@ -52,7 +51,6 @@ const outgoingDdiRule: EntityInterface = {
   },
   Form,
   foreignKeyGetter,
-  foreignKeyResolver,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
   },
