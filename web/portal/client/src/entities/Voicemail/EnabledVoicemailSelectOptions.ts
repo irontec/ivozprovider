@@ -1,5 +1,4 @@
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Voicemail from './Voicemail';
 import store from 'store';
 
 const EnabledVoicemailSelectOptions: SelectOptionsType = ({
@@ -10,6 +9,9 @@ const EnabledVoicemailSelectOptions: SelectOptionsType = ({
     _properties: ['id', 'name'],
     enabled: 1,
   };
+
+  const entities = store.getState().entities.entities;
+  const Voicemail = entities.Voicemail;
 
   const getAction = store.getActions().api.get;
   return getAction({

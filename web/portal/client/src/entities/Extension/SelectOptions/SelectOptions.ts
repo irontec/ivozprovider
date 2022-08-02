@@ -1,11 +1,14 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Extension from '../Extension';
+import store from 'store';
 
 const ExtensionSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const Extension = entities.Extension;
+
   return defaultEntityBehavior.fetchFks(
     Extension.path,
     ['id', 'number'],
