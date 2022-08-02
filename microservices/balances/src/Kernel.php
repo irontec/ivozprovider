@@ -48,13 +48,13 @@ class Kernel extends BaseKernel
         $loader->load($confDir . '/{services}_' . $this->environment . self::CONFIG_EXTS, 'glob');
     }
 
-    protected function configureRoutes( RoutingConfigurator $routes): void
+    protected function configureRoutes(RoutingConfigurator $routes): void
     {
         $confDir = $this->getProjectDir() . '/config';
 
         // resource/prefix/type
-        $routes->import($confDir . '/{routes}/' . $this->environment . '/*' . self::CONFIG_EXTS, 'glob' ,false );
-        $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS,  'glob', false );
-        $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS,  'glob', false );
+        $routes->import($confDir . '/{routes}/' . $this->environment . '/*' . self::CONFIG_EXTS, 'glob', false);
+        $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS, 'glob', false);
+        $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS, 'glob', false);
     }
 }
