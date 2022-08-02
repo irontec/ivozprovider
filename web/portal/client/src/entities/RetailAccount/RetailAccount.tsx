@@ -8,7 +8,6 @@ import Status from './Field/Status';
 import StatusIcon from './Field/StatusIcon';
 import Password from '../Terminal/Field/Password';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 
 const properties: RetailAccountProperties = {
   company: {
@@ -159,7 +158,6 @@ const retailAccount: EntityInterface = {
     return selectOptions(props, customProps);
   },
   Form,
-  foreignKeyGetter,
 };
 
 export default retailAccount;

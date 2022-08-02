@@ -7,7 +7,6 @@ import {
 } from 'entities/Extension/SelectOptions';
 import PickUpGroupSelectOptions from 'entities/PickUpGroup/SelectOptions';
 import { UnassignedTerminalSelectOptions } from 'entities/Terminal/SelectOptions';
-import store from 'store';
 import { BossAssistantSelectOptions } from './SelectOptions';
 import { UserPropertyList } from './UserProperties';
 
@@ -25,9 +24,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     skip.push(...['terminal']);
   }
 
-  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,

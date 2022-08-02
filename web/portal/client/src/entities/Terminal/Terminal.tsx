@@ -3,7 +3,6 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import { TerminalProperties } from './TerminalProperties';
 import Password from './Field/Password';
 import foreignKeyResolver from './foreignKeyResolver';
@@ -116,7 +115,6 @@ const terminal: EntityInterface = {
     iden: 'Terminals',
   },
   Form,
-  foreignKeyGetter,
   foreignKeyResolver,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);

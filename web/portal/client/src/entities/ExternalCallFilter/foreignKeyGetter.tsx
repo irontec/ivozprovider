@@ -4,7 +4,6 @@ import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
-import store from 'store';
 import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
@@ -13,9 +12,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
 }): Promise<any> => {
   const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
 
-  const entities = store.getState().entities.entities;
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,
