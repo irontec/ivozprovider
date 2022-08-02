@@ -1,6 +1,6 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Service from '../Service';
+import store from 'store';
 
 type ServiceSelectOptionsArgs = {
   includeId?: number;
@@ -11,6 +11,9 @@ const UnassignedServiceSelectOptions: SelectOptionsType<
 > = (props, customProps = {}): Promise<unknown> => {
   const { callback, cancelToken } = props;
   const { includeId } = customProps;
+
+  const entities = store.getState().entities.entities;
+  const Service = entities.Service;
 
   let path = `${Service.path}/unassigned`;
   if (includeId) {

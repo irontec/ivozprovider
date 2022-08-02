@@ -1,6 +1,5 @@
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
-import HuntGroup from '../../HuntGroup/HuntGroup';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { match } from 'react-router-dom';
 
@@ -28,6 +27,9 @@ const HuntGroupAvailableSelectOptions: SelectOptionsType<CustomArgs> = (
   }
 
   const getAction = store.getActions().api.get;
+  const entities = store.getState().entities.entities;
+  const HuntGroup = entities.HuntGroup;
+
   return getAction({
     path: HuntGroup.path + `/${id}/users_available`,
     params,

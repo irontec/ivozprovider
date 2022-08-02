@@ -1,12 +1,15 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { getI18n } from 'react-i18next';
-import RatingPlanGroup from './RatingPlanGroup';
+import store from 'store';
 
 const RatingPlanGroupSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const RatingPlanGroup = entities.RatingPlanGroup;
+
   return defaultEntityBehavior.fetchFks(
     RatingPlanGroup.path,
     ['id', 'name'],

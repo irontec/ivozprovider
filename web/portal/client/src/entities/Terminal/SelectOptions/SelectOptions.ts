@@ -1,11 +1,14 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import Terminal from '../Terminal';
+import store from 'store';
 
 const TerminalSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const Terminal = entities.Terminal;
+
   return defaultEntityBehavior.fetchFks(
     Terminal.path,
     ['id', 'name'],
