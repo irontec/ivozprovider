@@ -1,24 +1,24 @@
+import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver, {
   remapFk,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
-import { ConditionalRoutePropertiesList } from './ConditionalRouteProperties';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import store from 'store';
+import { ConditionalRoutePropertiesList } from './ConditionalRouteProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
   cancelToken,
   entityService,
 }): Promise<ConditionalRoutePropertiesList> {
+  const entities = store.getState().entities.entities;
   const { Country } = entities;
 
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
     entityService,
-    entities,
     skip: ['numberCountry'],
   });
 

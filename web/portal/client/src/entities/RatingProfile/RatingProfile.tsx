@@ -3,7 +3,6 @@ import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import { RatingProfileProperties } from './RatingProfileProperties';
 import foreignKeyResolver from './foreignKeyResolver';
 
@@ -32,7 +31,6 @@ const ratingProfile: EntityInterface = {
     iden: 'RatingProfiles',
   },
   Form,
-  foreignKeyGetter,
   foreignKeyResolver,
 };
 

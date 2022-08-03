@@ -1,10 +1,11 @@
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import store from 'store';
 import { QueueMemberPropertiesList } from './QueueMemberProperties';
-import entities from '../index';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
 }): Promise<QueueMemberPropertiesList> {
+  const entities = store.getState().entities.entities;
   const { User } = entities;
 
   for (const row of data) {

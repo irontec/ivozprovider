@@ -1,22 +1,22 @@
-import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { HolidayDatePropertiesList } from './HolidayDateProperties';
-import entities from '../index';
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver, {
   remapFk,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import store from 'store';
+import { HolidayDatePropertiesList } from './HolidayDateProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
   cancelToken,
   entityService,
 }): Promise<HolidayDatePropertiesList> {
+  const entities = store.getState().entities.entities;
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
     entityService,
-    entities,
     skip: ['numberCountry', 'calendar'],
   });
 

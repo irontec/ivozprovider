@@ -4,7 +4,6 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import StatusIcon from './Field/StatusIcon';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import { FriendProperties } from './FriendProperties';
 import Password from 'entities/Terminal/Field/Password';
 import selectOptions from './SelectOptions';
@@ -272,7 +271,6 @@ const friend: EntityInterface = {
     iden: 'Friends',
   },
   Form,
-  foreignKeyGetter,
   toStr: (row) => (row?.name as string) || '',
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);

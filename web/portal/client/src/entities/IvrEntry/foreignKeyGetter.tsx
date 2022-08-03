@@ -1,8 +1,7 @@
-import { IvrEntryPropertyList } from './IvrEntryProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
+import { IvrEntryPropertyList } from './IvrEntryProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -11,7 +10,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   const response: IvrEntryPropertyList<Array<string | number>> = {};
 
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,

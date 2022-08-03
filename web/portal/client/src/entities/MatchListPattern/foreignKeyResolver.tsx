@@ -1,8 +1,8 @@
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import entities from '../index';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
 import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import store from 'store';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
@@ -10,6 +10,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 }): Promise<EntityValues> {
   const promises: Array<Promise<unknown>> = [];
 
+  const entities = store.getState().entities.entities;
   promises.push(
     genericForeignKeyResolver({
       data,

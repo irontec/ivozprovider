@@ -1,8 +1,7 @@
-import { CallForwardSettingPropertyList } from './CallForwardSettingProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
+import { CallForwardSettingPropertyList } from './CallForwardSettingProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -15,7 +14,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   const skipEntities = [...skip, 'skipEntities'];
 
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,
