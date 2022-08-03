@@ -32,9 +32,11 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       method: 'GET'
       path: '/my/call_forward_settings'
       route_name: 'get_my_call_forward_settings'
-      operation_normalization_context: 'detailedCollection'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto::CONTEXT_DETAILED_COLLECTION
       normalization_context:
-        groups: ['detailedCollection']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto::CONTEXT_DETAILED_COLLECTION
+        ]
       swagger_context:
         parameters: []
         produces:
@@ -54,9 +56,11 @@ Ivoz\Provider\Domain\Model\Country\Country:
       method: 'GET'
       path: '/my/company_country'
       route_name: 'get_my_company_country'
-      operation_normalization_context: 'detailed'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\Country\CountryDto::CONTEXT_DETAILED
       normalization_context:
-        groups: ['detailed']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\Country\CountryDto::CONTEXT_DETAILED
+        ]
       swagger_context:
         produces:
         - 'application/json'
@@ -129,9 +133,11 @@ Ivoz\Provider\Domain\Model\User\User:
       method: 'GET'
       path: '/my/profile'
       route_name: 'get_my_profile'
-      operation_normalization_context: 'myProfile'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_MY_PROFILE
       normalization_context:
-        groups: ['myProfile']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_MY_PROFILE
+        ]
       swagger_context:
         produces:
         - 'application/json'
@@ -145,11 +151,15 @@ Ivoz\Provider\Domain\Model\User\User:
       method: 'PUT'
       path: '/my/profile'
       route_name: 'put_my_profile'
-      operation_normalization_context: 'updateMyProfile'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_PUT_MY_PROFILE
       denormalization_context:
-        groups: ['updateMyProfile']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_PUT_MY_PROFILE
+        ]
       normalization_context:
-        groups: ['myProfile']
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\User\UserDto::CONTEXT_MY_PROFILE
+        ]
       swagger_context:
         tags:
         - My
