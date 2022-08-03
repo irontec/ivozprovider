@@ -217,7 +217,7 @@ production:
         company: *forcedCompany
         <<: *forcedBrand
 
-  commands:
+  commands: &exportDDIs_commandsLink
     importDDIsFreeUpload_command:
       <<: *Ddis
       controller: File
