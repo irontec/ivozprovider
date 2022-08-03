@@ -52,7 +52,6 @@ class Kernel extends BaseKernel
     {
         $confDir = $this->getProjectDir() . '/config';
 
-        // resource/prefix/type
         $routes->import($confDir . '/{routes}/' . $this->environment . '/*' . self::CONFIG_EXTS, 'glob', false);
         $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS, 'glob', false);
         $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS, 'glob', false);
