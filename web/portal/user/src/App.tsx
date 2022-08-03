@@ -2,12 +2,16 @@ import { LinearProgress, CssBaseline } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from 'react-router-dom';
+import { StoreContainer } from '@irontec/ivoz-ui';
 import { StyledAppApiLoading, StyledAppFlexDiv } from './App.styles';
-import { useStoreActions, useStoreState } from 'store';
+import store, { useStoreActions, useStoreState } from 'store';
 import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
 
 export default function App(): JSX.Element {
+
+  StoreContainer.store = store;
+
   const apiSpecInitFn = useStoreActions((actions: any) => {
     return actions.spec.init;
   });
