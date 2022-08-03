@@ -1,11 +1,14 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import OutgoingDdiRule from './OutgoingDdiRule';
+import store from 'store';
 
 const OutgoingDdiRuleSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const OutgoingDdiRule = entities.OutgoingDdiRule;
+
   return defaultEntityBehavior.fetchFks(
     OutgoingDdiRule.path,
     ['id', 'name'],

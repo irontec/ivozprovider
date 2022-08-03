@@ -2,9 +2,9 @@ import withCustomComponentWrapper, {
   PropertyCustomFunctionComponent,
   PropertyCustomFunctionComponentProps,
 } from '@irontec/ivoz-ui/services/form/Field/CustomComponentWrapper';
-import { HolidayDatePropertyList } from '../HolidayDateProperties';
-import entities from '../../index';
 import { Link } from 'react-router-dom';
+import store from 'store';
+import { HolidayDatePropertyList } from '../HolidayDateProperties';
 
 type HolidayDateValues = HolidayDatePropertyList<string | number>;
 type TargetGhostType = PropertyCustomFunctionComponent<
@@ -15,7 +15,8 @@ const Type: TargetGhostType = (props): JSX.Element => {
   const { values } = props;
 
   if (values && values.calendar) {
-    const Calendar = entities?.Calendar;
+    const entities = store.getState().entities.entities;
+    const Calendar = entities.Calendar;
     const calendarVal = values.calendar as Record<string, string>;
 
     const calendarLink = `${Calendar.path}/${calendarVal.id}/update`;

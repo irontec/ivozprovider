@@ -1,7 +1,7 @@
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
-import entities from '../index';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import store from 'store';
+import RatingPlanGroup from '../RatingPlanGroup/RatingPlanGroup';
 import { RatingProfilePropertiesList } from './RatingProfileProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -10,6 +10,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 }): Promise<RatingProfilePropertiesList> {
   const promises = [];
 
+  const entities = store.getState().entities.entities;
   const { RoutingTag } = entities;
 
   promises.push(

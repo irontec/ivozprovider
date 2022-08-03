@@ -1,7 +1,7 @@
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
+import store from 'store';
 import { UsersCdrRow, UsersCdrRows } from './UsersCdrProperties';
 
 function ownerAndPartyResolver(row: UsersCdrRow, addLinks = true): UsersCdrRow {
@@ -50,13 +50,13 @@ export const foreignKeyResolver: foreignKeyResolverType = async function ({
   cancelToken,
   entityService,
 }): Promise<UsersCdrRows> {
+  const entities = store.getState().entities.entities;
   const { User, Extension } = entities;
 
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
     entityService,
-    entities,
     skip: ['user'],
   });
 
