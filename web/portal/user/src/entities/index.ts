@@ -8,6 +8,7 @@ import Voicemail from './Voicemail/Voicemail';
 import { EntityList } from '@irontec/ivoz-ui';
 import CallForwardSetting from './CallForwardSetting/CallForwardSetting';
 import Timezone from './Timezone/Timezone';
+import store from 'store';
 
 const entities: EntityList = {
   Voicemail,
@@ -20,5 +21,8 @@ const entities: EntityList = {
   Timezone,
   CallForwardSetting,
 };
+
+const storeActions = store.getActions();
+storeActions.entities.setEntities(entities);
 
 export default entities;
