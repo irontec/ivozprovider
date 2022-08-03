@@ -1,9 +1,8 @@
-import { CalendarPeriodPropertyList } from './CalendarPeriodProperties';
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import entities from '../index';
+import { CalendarPeriodPropertyList } from './CalendarPeriodProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -12,7 +11,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   const response: CalendarPeriodPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,

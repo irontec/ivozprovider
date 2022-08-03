@@ -7,7 +7,6 @@ import StatusIcon from '../RetailAccount/Field/StatusIcon';
 import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
 import selectOptions from './SelectOptions';
 import Form from './Form';
-import { foreignKeyGetter } from './foreignKeyGetter';
 import Password from '../Terminal/Field/Password';
 
 const properties: ResidentialDeviceProperties = {
@@ -265,7 +264,6 @@ const residentialDevice: EntityInterface = {
     return selectOptions(props, customProps);
   },
   Form,
-  foreignKeyGetter,
 };
 
 export default residentialDevice;

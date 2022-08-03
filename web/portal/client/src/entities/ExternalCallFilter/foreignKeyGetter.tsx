@@ -1,11 +1,10 @@
+import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
 import MatchListSelectOptions from 'entities/MatchList/SelectOptions';
 import ScheduleSelectOptions from 'entities/Schedule/SelectOptions';
-import CalendarSelectOptions from 'entities/Calendar/SelectOptions';
-import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import entities from '../index';
-import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EnabledVoicemailSelectOptions from 'entities/Voicemail/EnabledVoicemailSelectOptions';
+import { ExternalCallFilterPropertyList } from './ExternalCallFilterProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -14,7 +13,6 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   const response: ExternalCallFilterPropertyList<Array<string | number>> = {};
 
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,

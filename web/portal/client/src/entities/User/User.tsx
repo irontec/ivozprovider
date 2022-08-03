@@ -7,7 +7,6 @@ import defaultEntityBehavior, {
 import Form from './Form';
 import { foreignKeyGetter } from './foreignKeyGetter';
 import { UserProperties } from './UserProperties';
-import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 import { PartialPropertyList } from '@irontec/ivoz-ui';
 import StatusIcon from '../RetailAccount/Field/StatusIcon';
@@ -213,7 +212,6 @@ const user: EntityInterface = {
   columns,
   Form,
   marshaller,
-  foreignKeyResolver,
   foreignKeyGetter,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);

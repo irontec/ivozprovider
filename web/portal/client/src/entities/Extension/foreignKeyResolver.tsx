@@ -3,7 +3,7 @@ import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterfac
 import genericForeignKeyResolver, {
   remapFk,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
-import entities from '../index';
+import store from 'store';
 import { ExtensionPropertiesList } from './ExtensionProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -11,13 +11,13 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   cancelToken,
   entityService,
 }): Promise<ExtensionPropertiesList> {
+  const entities = store.getState().entities.entities;
   const { Country } = entities;
 
   const promises = autoForeignKeyResolver({
     data,
     cancelToken,
     entityService,
-    entities,
     skip: ['numberCountry'],
   });
 
