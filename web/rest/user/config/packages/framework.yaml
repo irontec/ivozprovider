@@ -1,5 +1,7 @@
 framework:
     secret: '%env(APP_SECRET)%'
+    router:
+        utf8: true
     #csrf_protection: true
     #http_method_override: true
 
