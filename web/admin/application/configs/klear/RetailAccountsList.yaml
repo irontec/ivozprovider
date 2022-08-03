@@ -218,6 +218,7 @@ production:
     <<: *callForwardSettings_dialogsLink
 
   commands:
+    <<: *exportDDIs_commandsLink
     generatePassword_command:
       <<: *RetailAccounts
       title: "Generate new secure password"
