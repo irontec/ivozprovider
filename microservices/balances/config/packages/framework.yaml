@@ -1,11 +1,14 @@
 framework:
     secret: '%env(APP_SECRET)%'
+    router:
+        utf8: true
     #csrf_protection: true
     #http_method_override: true
 
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
     # Remove or comment this section to explicitly disable session support.
     session:
+        storage_factory_id: session.storage.factory.native
         handler_id: null
         cookie_samesite: lax
 
