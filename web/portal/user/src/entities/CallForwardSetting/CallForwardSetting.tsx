@@ -4,7 +4,6 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import { CallForwardSettingProperties } from './CallForwardSettingProperties';
 import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
 import Form from './Form';
 
 const properties: CallForwardSettingProperties = {
@@ -77,7 +76,6 @@ const CallForwardSetting: EntityInterface = {
   toStr: (row: any) => row.id,
   properties,
   columns,
-  foreignKeyResolver,
   foreignKeyGetter,
   Form,
 };

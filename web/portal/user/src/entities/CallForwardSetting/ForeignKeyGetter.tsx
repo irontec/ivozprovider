@@ -1,8 +1,7 @@
-import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { CallForwardSettingPropertyList } from './CallForwardSettingProperties';
-import entities from '../index';
+import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import VoicemailSelectOptions from 'entities/Voicemail/SelectOptions';
+import { CallForwardSettingPropertyList } from './CallForwardSettingProperties';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
   cancelToken,
@@ -12,11 +11,10 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
   const response: CallForwardSettingPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({
-    entities,
     entityService,
     cancelToken,
     response,
-    skip: [],
+    skip: ['voicemail'],
   });
 
   const voiceMailId = Object.values(match.params).shift() as string;
