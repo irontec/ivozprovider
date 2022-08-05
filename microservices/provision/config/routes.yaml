@@ -1,0 +1,3 @@
+index:
+    path: /
+    controller: IndexController:indexAction
