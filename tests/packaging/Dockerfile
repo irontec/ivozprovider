@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y \
     dpkg-dev \
     debhelper \
     nodejs \
-    npm \
     ruby-dev \
     git \
     openssh-client \
