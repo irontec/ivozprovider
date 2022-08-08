@@ -9,5 +9,5 @@ pushd ${SCRIPT_DIR}/../
     date=$(date '+%Y%m%d%H%M%S')
     version_info="$date-$commit"
 
-    REACT_APP_VERSION_INFO=$version_info $YARN react-scripts start
+    VITE_BUILD_VERSION=$version_info $YARN vite --host
 popd
