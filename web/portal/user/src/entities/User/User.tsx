@@ -2,8 +2,6 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
 import Form from './Form';
 import { UserProperties } from './UserProperties';
 
@@ -49,8 +47,6 @@ const User: EntityInterface = {
   toStr: (row: any) => row.id,
   properties,
   columns,
-  foreignKeyResolver,
-  foreignKeyGetter,
   Form,
 };
 

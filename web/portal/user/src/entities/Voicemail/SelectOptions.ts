@@ -1,13 +1,16 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import VoiceMail from './Voicemail';
+import store from 'store';
 
 const selectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const Voicemail = entities.Voicemail;
+
   return defaultEntityBehavior.fetchFks(
-    VoiceMail.path,
+    Voicemail.path,
     ['id', 'name'],
     (data: any) => {
       const options: any = {};

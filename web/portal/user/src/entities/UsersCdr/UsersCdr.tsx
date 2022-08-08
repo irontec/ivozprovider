@@ -2,8 +2,6 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import { foreignKeyGetter } from './ForeignKeyGetter';
-import foreignKeyResolver from './ForeignKeyResolver';
 import Form from './Form';
 import { UsersCdrProperties } from './UsersCdrProperties';
 
@@ -63,8 +61,6 @@ const UsersCdr: EntityInterface = {
   toStr: (row: any) => row.id,
   properties,
   columns,
-  foreignKeyResolver,
-  foreignKeyGetter,
   Form,
 };
 

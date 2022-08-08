@@ -7,7 +7,7 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@irontec/ivoz-ui": "0.8.11",
+    "@irontec/ivoz-ui": "0.9.0",
     "@mui/icons-material": "^5.0.1",
     "@mui/lab": "^5.0.0-alpha.48",
     "@mui/material": "^5.0.1",
@@ -18,7 +18,6 @@
     "react": "^18.0",
     "react-dom": "^18.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -32,18 +31,21 @@
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/query-string": "^6.3.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
+    "@vitejs/plugin-react": "^2.0.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "hygen": "^6.2.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "vite": "^3.0.3",
+    "vite-plugin-html": "^3.2.0"
   },
   "scripts": {
     "start": "bin/start",
