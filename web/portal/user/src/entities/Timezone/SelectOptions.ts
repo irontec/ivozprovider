@@ -1,13 +1,16 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
-import timezone from './Timezone';
+import store from 'store';
 
 const selectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
+  const entities = store.getState().entities.entities;
+  const Timezone = entities.Timezone;
+
   return defaultEntityBehavior.fetchFks(
-    timezone.path,
+    Timezone.path,
     ['id', 'tz'],
     (data: any) => {
       const options: any = {};
