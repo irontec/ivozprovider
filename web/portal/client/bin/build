@@ -2,6 +2,8 @@
 
 set -e
 
+export NODE_OPTIONS=--openssl-legacy-provider
+
 SCRIPT_DIR=$(dirname $(realpath $0))
 [ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
 
