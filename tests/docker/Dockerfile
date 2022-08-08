@@ -17,7 +17,6 @@ RUN apt-get install --assume-yes --force-yes \
         sqlite3 \
         sphinx-intl \
         nodejs \
-        npm \
         mysql-client \
         php8.0 \
         php8.0-cli \
