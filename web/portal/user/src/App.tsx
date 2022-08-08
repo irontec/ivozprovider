@@ -9,7 +9,6 @@ import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
 
 export default function App(): JSX.Element {
-
   StoreContainer.store = store;
 
   const apiSpecInitFn = useStoreActions((actions: any) => {

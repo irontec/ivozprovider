@@ -6,7 +6,6 @@ const selectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
-
   const entities = store.getState().entities.entities;
   const Voicemail = entities.Voicemail;
 

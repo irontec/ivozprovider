@@ -17,10 +17,9 @@ const entities: EntityList = {};
 const pathToEntityName = (path: string): string => {
   const fileName = path.split('/').pop() as string;
   return fileName.replace('.tsx', '');
-}
+};
 
 for (const relativePath in modules) {
-
   const entityName = pathToEntityName(relativePath);
   try {
     entities[entityName] = modules[relativePath].default;

@@ -6,7 +6,6 @@ const UsersCdrSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
-
   const entities = store.getState().entities.entities;
   const UsersCdr = entities.UsersCdr;
 
