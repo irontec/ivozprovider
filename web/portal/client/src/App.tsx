@@ -3,11 +3,14 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { StyledAppApiLoading, StyledAppFlexDiv } from './App.styles';
-import { useStoreActions, useStoreState } from 'store';
+import store, { useStoreActions, useStoreState } from 'store';
 import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
+import { StoreContainer } from '@irontec/ivoz-ui';
 
 export default function App(): JSX.Element {
+  StoreContainer.store = store;
+
   const apiSpecInitFn = useStoreActions((actions: any) => {
     return actions.spec.init;
   });
@@ -29,7 +32,7 @@ export default function App(): JSX.Element {
   }, [apiSpecInitFn, authInit, token, aboutMeInit, aboutMeResetProfile]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
-  const basename = process.env.PUBLIC_URL;
+  const baseUrl = process.env.BASE_URL;
 
   if (!apiSpec || Object.keys(apiSpec).length === 0) {
     return (
@@ -45,7 +48,7 @@ export default function App(): JSX.Element {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <CssBaseline />
       <StyledAppFlexDiv>
-        <BrowserRouter basename={basename}>
+        <BrowserRouter basename={baseUrl}>
           <AppRoutes apiSpec={apiSpec} />
         </BrowserRouter>
       </StyledAppFlexDiv>
