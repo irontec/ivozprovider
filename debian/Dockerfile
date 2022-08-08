@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y \
     libjs-jquery \
     make \
     nodejs \
-    npm \
     openssh-client \
     php8.0 \
     php8.0-cli \
