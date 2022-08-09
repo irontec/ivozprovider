@@ -4,7 +4,6 @@ export APP_ENV=prod
 export GEM_PATH = $(PWD)/web/user/gems/
 export PATH := $(GEM_PATH)/bin/:$(PATH)
 export TEMP=/tmp
-export NODE_OPTIONS=--openssl-legacy-provider
 
 build_doc:
 	# Build doc using sphinx
