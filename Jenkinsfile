@@ -232,6 +232,23 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
+                stage ('web-brand') {
+                    agent {
+                        docker {
+                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-lint'
+                        sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-build'
+                    }
+                    post {
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
+                    }
+                }
                 stage ('web-user') {
                     agent {
                         docker {

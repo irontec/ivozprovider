@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_DIR=$(dirname $(realpath $0))
+[ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
+
+pushd ${SCRIPT_DIR}/../
+
+    commit=$(git rev-parse --short HEAD)
+    date=$(date '+%Y%m%d%H%M%S')
+    version_info="$date-$commit"
+
+    VITE_VERSION_INFO=$version_info $YARN vite build
+popd
