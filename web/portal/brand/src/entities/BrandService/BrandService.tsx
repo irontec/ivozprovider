@@ -9,13 +9,16 @@ import { BrandServiceProperties } from './BrandServiceProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: BrandServiceProperties = {
-  'code': {
+  code: {
     label: _('Code'),
+    prefix: '<span class="asterisc">*</span>',
+    pattern: new RegExp('[#0-9*]+'),
+    helpText: _('Allowed characters are 0-9, * and #'),
   },
-  'id': {
+  id: {
     label: _('Id'),
   },
-  'service': {
+  service: {
     label: _('Service'),
   },
 };
@@ -28,7 +31,7 @@ const BrandService: EntityInterface = {
   path: '/BrandServices',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

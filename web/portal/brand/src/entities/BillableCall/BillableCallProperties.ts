@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type BillableCallPropertyList<T> = {
   callid?: T;
@@ -26,5 +29,9 @@ export type BillableCallPropertyList<T> = {
   ddiProvider?: T;
 };
 
-export type BillableCallProperties = BillableCallPropertyList<Partial<PropertySpec>>;
-export type BillableCallPropertiesList = Array<BillableCallPropertyList<EntityValue | EntityValues>>;
+export type BillableCallProperties = BillableCallPropertyList<
+  Partial<PropertySpec>
+>;
+export type BillableCallPropertiesList = Array<
+  BillableCallPropertyList<EntityValue | EntityValues>
+>;

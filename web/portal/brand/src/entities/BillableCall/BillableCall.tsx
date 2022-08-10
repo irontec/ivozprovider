@@ -9,82 +9,88 @@ import { BillableCallProperties } from './BillableCallProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: BillableCallProperties = {
-  'callid': {
-    label: _('Callid'),
+  callid: {
+    label: _('Call ID'),
+    maxLength: 128,
   },
-  'startTime': {
-    label: _('Start Time'),
+  startTime: {
+    label: _('Start time'),
+    format: 'date-time',
   },
-  'duration': {
+  duration: {
     label: _('Duration'),
   },
-  'caller': {
+  caller: {
     label: _('Caller'),
   },
-  'callee': {
+  callee: {
     label: _('Callee'),
+    maxLength: 128,
   },
-  'cost': {
+  cost: {
     label: _('Cost'),
   },
-  'price': {
+  price: {
     label: _('Price'),
   },
-  'carrierName': {
-    label: _('Carrier Name'),
-  },
-  'destinationName': {
-    label: _('Destination Name'),
-  },
-  'ratingPlanName': {
-    label: _('Rating PlanName'),
-  },
-  'endpointType': {
-    label: _('Endpoint Type'),
-    enum: {
-      'RetailAccount' : _('Retail Account'),
-      'ResidentialDevice' : _('Residential Device'),
-      'User' : _('User'),
-      'Friend' : _('Friend'),
-      'Fax' : _('Fax'),
-    },
-  },
-  'endpointId': {
-    label: _('Endpoint Id'),
-  },
-  'endpointName': {
-    label: _('Endpoint Name'),
-  },
-  'direction': {
-    label: _('Direction'),
-    enum: {
-      'inbound' : _('Inbound'),
-      'outbound' : _('Outbound'),
-    },
-  },
-  'id': {
-    label: _('Id'),
-  },
-  'company': {
-    label: _('Company'),
-  },
-  'carrier': {
+  carrierName: {
     label: _('Carrier'),
   },
-  'destination': {
+  destinationName: {
+    label: _('Destination'),
+    maxLength: 100,
+  },
+  ratingPlanName: {
+    label: _('Rating plan'),
+  },
+  endpointType: {
+    label: _('Endpoint type'),
+    enum: {
+      RetailAccount: _('Retail Account'),
+      ResidentialDevice: _('Residential Device'),
+      User: _('User'),
+      Friend: _('Friend'),
+      Fax: _('Fax'),
+    },
+  },
+  endpointId: {
+    label: _('Endpoint id'),
+  },
+  endpointName: {
+    label: _('Endpoint name'),
+  },
+  direction: {
+    label: _('Direction'),
+    enum: {
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
+    },
+  },
+  id: {
+    label: _('Id'),
+  },
+  company: {
+    label: _('Client'),
+  },
+  carrier: {
+    label: _('Carrier'),
+  },
+  destination: {
     label: _('Destination'),
   },
-  'ratingPlanGroup': {
+  ratingPlanGroup: {
     label: _('Rating PlanGroup'),
   },
-  'invoice': {
+  invoice: {
     label: _('Invoice'),
+    null: _('Unassigned'),
   },
-  'ddi': {
-    label: _('Ddi'),
+  ddi: {
+    label: _('DDI'),
   },
-  'ddiProvider': {
-    label: _('Ddi Provider'),
+  ddiProvider: {
+    label: _('DDI Provider'),
+    null: _('Unassigned'),
   },
 };
 
@@ -96,7 +102,7 @@ const BillableCall: EntityInterface = {
   path: '/BillableCalls',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

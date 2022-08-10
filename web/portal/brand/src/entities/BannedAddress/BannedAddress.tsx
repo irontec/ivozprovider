@@ -9,30 +9,28 @@ import { BannedAddressProperties } from './BannedAddressProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: BannedAddressProperties = {
-  'ip': {
-    label: _('Ip'),
+  ip: {
+    label: _('IP address'),
   },
-  'lastTimeBanned': {
-    label: _('Last TimeBanned'),
+  lastTimeBanned: {
+    label: _('Last time banned'),
+    format: 'date-time',
   },
-  'id': {
-    label: _('Id'),
+  company: {
+    label: _('Client'),
   },
-  'company': {
-    label: _('Company'),
-  },
-  'blocker': {
+  blocker: {
     label: _('Blocker'),
     enum: {
-      'antiflood' : _('Antiflood'),
-      'ipfilter' : _('Ipfilter'),
-      'antibruteforce' : _('Antibruteforce'),
+      antiflood: _('Antiflood'),
+      ipfilter: _('IP filter'),
+      antibruteforce: _('Anti bruteforce'),
     },
   },
-  'aor': {
-    label: _('Aor'),
+  aor: {
+    label: _('SIP address'),
   },
-  'description': {
+  description: {
     label: _('Description'),
   },
 };
@@ -45,7 +43,7 @@ const BannedAddress: EntityInterface = {
   path: '/BannedAddresses',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

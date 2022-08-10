@@ -9,71 +9,101 @@ import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: CallCsvSchedulerProperties = {
-  'name': {
+  //@TODO visualToggles
+  name: {
     label: _('Name'),
+    maxLength: 40,
   },
-  'unit': {
+  unit: {
     label: _('Unit'),
     enum: {
-      'day' : _('Day'),
-      'week' : _('Week'),
-      'month' : _('Month'),
+      day: _('Day'),
+      week: _('Week'),
+      month: _('Month'),
     },
   },
-  'frequency': {
+  frequency: {
     label: _('Frequency'),
+    default: 1,
   },
-  'callDirection': {
-    label: _('Call Direction'),
+  callDirection: {
+    label: _('Direction'),
+    default: '__null__',
     enum: {
-      'inbound' : _('Inbound'),
-      'outbound' : _('Outbound'),
+      __null__: _('Both'),
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
+    },
+    visualToggle: {
+      __null__: {
+        show: [],
+        hide: ['carrier', 'ddiProvider'],
+      },
+      inbound: {
+        show: ['ddiProvider'],
+        hide: ['carrier'],
+      },
+      outbound: {
+        show: ['carrier'],
+        hide: ['ddiProvider'],
+      },
     },
   },
-  'email': {
+  email: {
     label: _('Email'),
+    maxLength: 140,
+    helpText: _('Leave empty if no mail is needed (just generate CSV).'),
   },
-  'lastExecution': {
+  lastExecution: {
     label: _('Last Execution'),
+    //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess::getCallCsvSchedulerLastExecutionReport
   },
-  'lastExecutionError': {
+  lastExecutionError: {
     label: _('Last ExecutionError'),
   },
-  'nextExecution': {
-    label: _('Next Execution'),
+  nextExecution: {
+    label: _('Next execution'),
+    format: 'date-time',
   },
-  'id': {
-    label: _('Id'),
-  },
-  'company': {
+  company: {
     label: _('Company'),
   },
-  'callCsvNotificationTemplate': {
-    label: _('Call CsvNotificationTemplate'),
+  //@TODO companyType
+  callCsvNotificationTemplate: {
+    label: _('Notification template'),
+    null: _('Use generic template'),
   },
-  'ddi': {
-    label: _('Ddi'),
+  ddi: {
+    label: _('DDI'),
+    null: _('All'),
   },
-  'carrier': {
+  carrier: {
     label: _('Carrier'),
+    null: _('All'),
   },
-  'retailAccount': {
+  retailAccount: {
     label: _('Retail Account'),
+    null: _('All'),
   },
-  'residentialDevice': {
+  residentialDevice: {
     label: _('Residential Device'),
+    null: _('All'),
   },
-  'user': {
+  user: {
     label: _('User'),
+    null: _('All'),
   },
-  'fax': {
+  fax: {
     label: _('Fax'),
+    null: _('All'),
   },
-  'friend': {
+  friend: {
     label: _('Friend'),
+    null: _('All'),
   },
-  'ddiProvider': {
+  ddiProvider: {
     label: _('Ddi Provider'),
+    null: _('All'),
   },
 };
 
@@ -85,7 +115,7 @@ const CallCsvScheduler: EntityInterface = {
   path: '/CallCsvSchedulers',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

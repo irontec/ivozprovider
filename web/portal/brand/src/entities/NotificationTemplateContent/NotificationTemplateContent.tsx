@@ -9,32 +9,71 @@ import { NotificationTemplateContentProperties } from './NotificationTemplateCon
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: NotificationTemplateContentProperties = {
-  'fromName': {
-    label: _('From Name'),
+  fromName: {
+    label: _('From name'),
+    maxLength: 255,
+    helpText: _(
+      'Name shown as source when sending mails (e.g. IvozProvider Notifications)'
+    ),
   },
-  'fromAddress': {
-    label: _('From Address'),
+  fromAddress: {
+    label: _('From address'),
+    maxLength: 255,
+    helpText: _(
+      'Mail address shown as source when sending mails. MTA must allow this value.'
+    ),
   },
-  'subject': {
+  voicemailVariables: {
+    label: _('Substitution variables'),
+    maxLength: 255,
+    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
+    //@TODO massive helpText
+  },
+  faxVariables: {
+    label: _('Substitution variables'),
+    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
+    //@TODO massive helpText
+  },
+  invoiceVariables: {
+    label: _('Substitution variables'),
+    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
+    //@TODO massive helpText
+  },
+  lowBalanceVariables: {
+    label: _('Substitution variables'),
+    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
+    //@TODO massive helpText
+  },
+  callCsvVariables: {
+    label: _('Substitution variables'),
+    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
+    //@TODO massive helpText
+  },
+  maxDailyUsageVariables: {
+    label: _('Substitution variables'),
+    //@TODO IvozProvider_Klear_Ghost_NotificationTemplate::getVariables
+    //@TODO massive helpText
+  },
+  subject: {
     label: _('Subject'),
+    maxLength: 255,
   },
-  'body': {
+  body: {
     label: _('Body'),
+    format: 'textarea',
+    //@TODO codemirror
   },
-  'bodyType': {
+  bodyType: {
     label: _('Body Type'),
     enum: {
-      'text/plain' : _('Text /plain'),
-      'text/html' : _('Text /html'),
+      'text/plain': 'text/plain',
+      'text/html': 'text/html',
     },
   },
-  'id': {
-    label: _('Id'),
-  },
-  'notificationTemplate': {
+  notificationTemplate: {
     label: _('Notification Template'),
   },
-  'language': {
+  language: {
     label: _('Language'),
   },
 };
@@ -47,7 +86,7 @@ const NotificationTemplateContent: EntityInterface = {
   path: '/NotificationTemplateContents',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

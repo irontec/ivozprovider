@@ -9,23 +9,23 @@ import { RatingProfileProperties } from './RatingProfileProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: RatingProfileProperties = {
-  'activationTime': {
-    label: _('Activation Time'),
+  activationTime: {
+    label: _('Activation time'),
+    format: 'date-time',
   },
-  'id': {
-    label: _('Id'),
+  company: {
+    label: _('Client'),
+    null: _('Unassigned'),
   },
-  'company': {
-    label: _('Company'),
-  },
-  'carrier': {
+  carrier: {
     label: _('Carrier'),
   },
-  'ratingPlanGroup': {
-    label: _('Rating PlanGroup'),
+  ratingPlanGroup: {
+    label: _('Rating plan'),
   },
-  'routingTag': {
+  routingTag: {
     label: _('Routing Tag'),
+    null: _('No routing tag'),
   },
 };
 
@@ -37,7 +37,7 @@ const RatingProfile: EntityInterface = {
   path: '/RatingProfiles',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

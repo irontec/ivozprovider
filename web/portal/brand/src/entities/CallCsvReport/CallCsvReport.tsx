@@ -9,28 +9,36 @@ import { CallCsvReportProperties } from './CallCsvReportProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: CallCsvReportProperties = {
-  'id': {
-    label: _('Id'),
+  inDate: {
+    label: _('In date'),
+    format: 'date-time',
   },
-  'inDate': {
-    label: _('In Date'),
-  },
-  'outDate': {
+  outDate: {
     label: _('Out Date'),
+    format: 'date-time',
   },
-  'csv': {
+  csv: {
     label: _('Csv'),
   },
-  'createdOn': {
-    label: _('Created On'),
+  createdOn: {
+    label: _('Created on'),
+    format: 'date-time',
   },
-  'sentTo': {
-    label: _('Sent To'),
+  csv: {
+    label: 'CSV',
+    //@TODO callCsvReportsCsvDownload_command::${auth.acls.CallCsvReports.read}
   },
-  'callCsvScheduler': {
+  sentTo: {
+    label: _('Sent to'),
+    readOnly: true,
+  },
+  callCsvScheduler: {
     label: _('Call CsvScheduler'),
   },
-  'brand': {
+  company: {
+    label: _('Client'),
+  },
+  brand: {
     label: _('Brand'),
   },
 };
@@ -43,7 +51,7 @@ const CallCsvReport: EntityInterface = {
   path: '/CallCsvReports',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

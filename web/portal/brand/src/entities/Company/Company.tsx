@@ -9,109 +9,310 @@ import { CompanyProperties } from './CompanyProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: CompanyProperties = {
-  'type': {
+  type: {
     label: _('Type'),
     enum: {
-      'vpbx' : _('Vpbx'),
-      'retail' : _('Retail'),
-      'wholesale' : _('Wholesale'),
-      'residential' : _('Residential'),
+      vpbx: _('Vpbx'),
+      retail: _('Retail'),
+      wholesale: _('Wholesale'),
+      residential: _('Residential'),
     },
   },
-  'name': {
+  name: {
     label: _('Name'),
   },
-  'domainUsers': {
-    label: _('Domain Users'),
+  domainUsers: {
+    label: _('SIP domain'),
+    maxLength: 190,
   },
-  'nif': {
+  nif: {
     label: _('Nif'),
   },
-  'maxCalls': {
-    label: _('Max Calls'),
+  maxCalls: {
+    label: _('Max calls'),
+    default: 10,
+    helpText: _(
+      'Limits external incoming and outgoing calls to this value (0 for unlimited).'
+    ),
   },
-  'maxDailyUsage': {
-    label: _('Max DailyUsage'),
+  maxDailyUsage: {
+    label: _('Max daily usage'),
+    default: 1000000,
+    helpText: _('Limit max daily usage.'),
   },
-  'maxDailyUsageEmail': {
-    label: _('Max DailyUsageEmail'),
+  maxDailyUsageEmail: {
+    label: _('Email'),
+    maxLength: 100,
+    helpText: _(
+      'Used to notify if max daily usage has been reached. Leave empty to avoid notification.'
+    ),
   },
-  'postalAddress': {
-    label: _('Postal Address'),
+  postalAddress: {
+    label: _('Postal address'),
+    maxLength: 255,
   },
-  'postalCode': {
-    label: _('Postal Code'),
+  postalCode: {
+    label: _('Postal code'),
+    maxLength: 10,
   },
-  'town': {
+  town: {
     label: _('Town'),
+    maxLength: 255,
   },
-  'province': {
+  province: {
     label: _('Province'),
+    maxLength: 255,
   },
-  'countryName': {
-    label: _('Country Name'),
+  countryName: {
+    label: _('Country'),
+    maxLength: 255,
   },
-  'ipfilter': {
-    label: _('Ipfilter'),
-  },
-  'onDemandRecord': {
-    label: _('On DemandRecord'),
-  },
-  'onDemandRecordCode': {
-    label: _('On DemandRecordCode'),
-  },
-  'externallyextraopts': {
-    label: _('Externallyextraopts'),
-  },
-  'billingMethod': {
-    label: _('Billing Method'),
+  ipfilter: {
+    label: _('Filter by IP address'),
+    default: 0,
     enum: {
-      'postpaid' : _('Postpaid'),
-      'prepaid' : _('Prepaid'),
-      'pseudoprepaid' : _('Pseudoprepaid'),
+      '0': _('No'),
+      '1': _('yes'),
+    },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['relCountries'],
+      },
+      '1': {
+        show: ['relCountries'],
+        hide: [],
+      },
+    },
+    helpText: _(
+      'Add IPs or network if enabled. Otherwise all calls will be rejected.'
+    ),
+  },
+  onDemandRecord: {
+    label: _('On-demand call recording'),
+    enum: {
+      '0': _('Disabled'),
+      '1': _('Enabled (SIP INFO)'),
+      '2': _('Enabled (SIP INFO + DTMFs)'),
+    },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['onDemandRecordCode'],
+      },
+      '1': {
+        show: [],
+        hide: ['onDemandRecordCode'],
+      },
+      '2': {
+        show: ['onDemandRecordCode'],
+        hide: [],
+      },
     },
   },
-  'balance': {
+  onDemandRecordCode: {
+    label: _('Code'),
+    maxLength: 3,
+    prefix: '<span class="asterisc">*</span>',
+    pattern: new RegExp('[0-9*]+'),
+  },
+  allowRecordingRemoval: {
+    label: _('Allow Client to remove recordings'),
+    default: 1,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      "Enable this option to display delete button in Client's portal call recordings section."
+    ),
+  },
+  recordingsLimitMb: {
+    label: _('Max disk usage (in MB)'),
+    //@TODO nullIfEmpty: true
+    minimum: 0,
+    helpText: _(
+      'Max disk usage in megabytes this company can use. When limit has been reached, oldest recordings will be removed. Leave empty to allow unlimited disk usage.'
+    ),
+  },
+  recordingsLimitEmail: {
+    label: _('Disk usage notification email'),
+    maxLength: 250,
+    helpText: _(
+      'Email address that will be notified when 80% of the configured limit has been reached.'
+    ),
+  },
+  relFeatures: {
+    label: _('Features'),
+    //@TODO multiselect
+    visualToggle: {
+      recordings: {
+        show: [
+          'recordingsLimitMb',
+          'recordingsDiskUsage',
+          'recordingsLimitEmail',
+          'onDemandRecord',
+          'allowRecordingRemoval',
+        ],
+        hide: ['faxNotificationTemplate'],
+      },
+      faxes: {
+        show: ['faxNotificationTemplate'],
+        hide: [
+          'recordingsLimitMb',
+          'recordingsDiskUsage',
+          'recordingsLimitEmail',
+          'onDemandRecord',
+          'allowRecordingRemoval',
+        ],
+      },
+    },
+  },
+  recordingsDiskUsage: {
+    label: _('Disk usage'),
+    //@TODO IvozProvider_Klear_Ghost_Recordings::getCompanyDiskUsage
+  },
+  externallyextraopts: {
+    label: _('Externally rater custom options'),
+    format: 'textarea',
+  },
+  billingMethod: {
+    label: _('Billing method'),
+    enum: {
+      postpaid: _('Postpaid'),
+      prepaid: _('Prepaid'),
+      pseudoprepaid: _('Pseudoprepaid'),
+    },
+  },
+  balance: {
     label: _('Balance'),
+    //@TODO IvozProvider_Klear_Ghost_Companies::getBalance
   },
-  'showInvoices': {
-    label: _('Show Invoices'),
+  currentDayUsage: {
+    label: _('Today usage'),
+    //@TODO IvozProvider_Klear_Ghost_Companies::getCurrentDayUsage
   },
-  'id': {
-    label: _('Id'),
+  accountStatus: {
+    label: _('Status'),
+    //@TODO IvozProvider_Klear_Ghost_Companies::getAccountStatus
   },
-  'language': {
+  currentDayMaxUsage: {
+    label: _('Max daily usage'),
+    //@TODO: IvozProvider_Klear_Ghost_Companies::getCurrentDayMaxUsage
+  },
+  typeIcon: {
+    label: _('Type'),
+    //@TODO IvozProvider_Klear_Ghost_Companies::getTypeIcon
+  },
+  showInvoices: {
+    label: _('Display billing details to client'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      "Enable this option to display billing details in Client's portal (e.g. invoices, prices, etc.)."
+    ),
+  },
+  language: {
     label: _('Language'),
+    default: 1,
   },
-  'defaultTimezone': {
-    label: _('Default Timezone'),
+  defaultTimezone: {
+    label: _('Default timezone'),
+    default: 145,
   },
-  'country': {
-    label: _('Country'),
+  country: {
+    label: _('Country code'),
+    default: 70,
   },
-  'currency': {
+  currency: {
     label: _('Currency'),
+    null: _('Default currency'),
+    default: '__null__',
   },
-  'transformationRuleSet': {
-    label: _('Transformation RuleSet'),
+  distributeMethod: {
+    label: _('Distribute method'),
+    default: 'hash',
+    enum: {
+      static: _('Static'),
+      rr: _('Round Robin'),
+      hash: _('Hash based'),
+    },
+    visualToggle: {
+      static: {
+        show: ['applicationServer'],
+        hide: [],
+      },
+      rr: {
+        show: [],
+        hide: ['applicationServer'],
+      },
+      hash: {
+        show: [],
+        hide: ['applicationServer'],
+      },
+    },
   },
-  'outgoingDdi': {
-    label: _('Outgoing Ddi'),
+  applicationServer: {
+    label: _('Application Server'),
+    default: '__null__',
+    null: _('Unassigned'),
   },
-  'voicemailNotificationTemplate': {
-    label: _('Voicemail NotificationTemplate'),
+  transformationRuleSet: {
+    label: _('Numeric transformation'),
   },
-  'faxNotificationTemplate': {
-    label: _('Fax NotificationTemplate'),
+  outgoingDdi: {
+    label: _('Outgoing DDI'),
+    null: _('Unassigned'),
+    default: '__null__',
   },
-  'invoiceNotificationTemplate': {
-    label: _('Invoice NotificationTemplate'),
+  outgoingDdiE164: {
+    //TODO IvozProvider_Klear_Ghost_Companies::getDdiE164
   },
-  'callCsvNotificationTemplate': {
-    label: _('Call CsvNotificationTemplate'),
+  outgoingDdiRule: {
+    null: _('Unassigned'),
+    default: '__null__',
+    helpText: _(
+      "Default outgoing DDI. This can be overriden in caller's edit screen."
+    ),
   },
-  'featureIds': {
-    label: _('Feature Ids'),
+  voicemailNotificationTemplate: {
+    label: _('Voicemail Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  faxNotificationTemplate: {
+    label: _('Fax Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  invoiceNotificationTemplate: {
+    label: _('Invoice Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  callCsvNotificationTemplate: {
+    label: _('Call CSV Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  maxDailyUsageNotificationTemplate: {
+    label: _('Max daily Notification'),
+    null: _('Use generic template'),
+    default: '__null__',
+  },
+  featureIds: {
+    //@TODO
+    label: _('Features'),
+  },
+  relCountries: {
+    //@TODO multiselect
+    label: _('GeoIP allowed countries'),
+    helpText: _(
+      'Select a country to allow all IPs. Leave it blank if you want to allow just specific IP/ranges.'
+    ),
   },
 };
 
@@ -120,10 +321,10 @@ const Company: EntityInterface = {
   icon: AccountTreeIcon,
   iden: 'Company',
   title: _('Company', { count: 2 }),
-  path: '/Companies',
+  path: '/companies',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

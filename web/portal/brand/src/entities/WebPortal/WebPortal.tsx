@@ -9,32 +9,43 @@ import { WebPortalProperties } from './WebPortalProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: WebPortalProperties = {
-  'url': {
-    label: _('Url'),
+  url: {
+    label: _('URL'),
+    pattern: new RegExp(`^https://[^/]*$`),
+    maxLength: 255,
+    helpText: _(`'https://' URLs valid only (without trailing '/')`),
   },
-  'klearTheme': {
-    label: _('Klear Theme'),
+  klearTheme: {
+    label: _('Theme'),
   },
-  'urlType': {
-    label: _('Url Type'),
+  urlType: {
+    label: _('URL Type'),
     enum: {
-      'god' : _('God'),
-      'brand' : _('Brand'),
-      'admin' : _('Admin'),
-      'user' : _('User'),
+      god: _('God'),
+      brand: _('Brand'),
+    },
+    visualToggle: {
+      god: {
+        show: ['klearTheme'],
+        hide: ['userTheme'],
+      },
+      brand: {
+        show: ['klearTheme'],
+        hide: ['userTheme'],
+      },
     },
   },
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 200,
+    helpText: _(`Will be shown on page footer`),
   },
-  'userTheme': {
+  userTheme: {
     label: _('User Theme'),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'logo': {
+  logo: {
     label: _('Logo'),
+    //@TODO
   },
 };
 
@@ -46,7 +57,7 @@ const WebPortal: EntityInterface = {
   path: '/WebPortals',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

@@ -9,63 +9,154 @@ import { OutgoingRoutingProperties } from './OutgoingRoutingProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: OutgoingRoutingProperties = {
-  'type': {
+  type: {
     label: _('Type'),
     enum: {
-      'pattern' : _('Pattern'),
-      'group' : _('Group'),
-      'fax' : _('Fax'),
+      pattern: _('Pattern'),
+      group: _('Group'),
+      fax: _('Fax'),
+    },
+    visualToggle: {
+      pattern: {
+        show: ['routingPattern'],
+        hide: ['routingPatternGroup'],
+      },
+      group: {
+        show: ['routingPatternGroup'],
+        hide: ['routingPattern'],
+      },
+      fax: {
+        show: [],
+        hide: ['routingPattern', 'routingPatternGroup'],
+      },
     },
   },
-  'priority': {
+  priority: {
     label: _('Priority'),
+    default: 1,
+    minimum: 0,
+    maximum: 254,
   },
-  'weight': {
+  weight: {
     label: _('Weight'),
+    default: 1,
+    minimum: 1,
+    maximum: 20,
   },
-  'routingMode': {
-    label: _('Routing Mode'),
+  routingMode: {
+    label: _('Route type'),
     enum: {
-      'static' : _('Static'),
-      'lcr' : _('Lcr'),
-      'block' : _('Block'),
+      static: _('Static'),
+      lcr: _('LCR'),
+      block: _('Block'),
+    },
+    visualToggle: {
+      static: {
+        show: [
+          'carrier',
+          'prefix',
+          'forceClid',
+          'clidCountry',
+          'clid',
+          'weight',
+          'priority',
+        ],
+        hide: ['relCarriers'],
+      },
+      lcr: {
+        show: ['relCarriers', 'weight', 'priority'],
+        hide: ['carrier', 'prefix', 'forceClid', 'clidCountry', 'clid'],
+      },
+      block: {
+        show: ['priority'],
+        hide: [
+          'carrier',
+          'prefix',
+          'forceClid',
+          'clidCountry',
+          'clid',
+          'relCarriers',
+          'weight',
+          'stopper',
+        ],
+      },
     },
   },
-  'prefix': {
-    label: _('Prefix'),
+  prefix: {
+    label: _('Destination prefix'),
+    maxLength: 25,
+    helpText: _(
+      `This prefix will be added to the callee after carrier's numeric transformations.`
+    ),
   },
-  'stopper': {
+  stopper: {
     label: _('Stopper'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      `Routes with higher priority won't be evaluated. Those with same priority will be evaluated.`
+    ),
   },
-  'forceClid': {
+  forceClid: {
     label: _('Force Clid'),
+    helpText: _(
+      `Instead of getting the caller from PAI/RPID headers, this clid will be used (and will be adapted using carrier's numeric transformations).`
+    ),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['clid', 'clidCountry'],
+      },
+      '1': {
+        show: ['clid', 'clidCountry'],
+        hide: [],
+      },
+    },
   },
-  'clid': {
+  clid: {
     label: _('Clid'),
+    maxLength: 25,
   },
-  'id': {
-    label: _('Id'),
+  company: {
+    label: _('Client'),
+    null: _('Apply to all clients'),
   },
-  'company': {
-    label: _('Company'),
+  target: {
+    label: _('Destination'),
+    //@TODO IvozProvider_Klear_Ghost_OutgoingRouteType::getData
   },
-  'carrier': {
+  carrier: {
     label: _('Carrier'),
   },
-  'routingPattern': {
-    label: _('Routing Pattern'),
+  routingPattern: {
+    label: _('Select destination pattern'),
   },
-  'routingPatternGroup': {
-    label: _('Routing PatternGroup'),
+  routingPatternGroup: {
+    label: _('Select destination group'),
   },
-  'routingTag': {
+  routingTag: {
     label: _('Routing Tag'),
+    null: _('Unassigned'),
   },
-  'clidCountry': {
-    label: _('Clid Country'),
+  clidCountry: {
+    label: _('Country'),
   },
-  'carrierIds': {
-    label: _('Carrier Ids'),
+  carrierIds: {
+    label: _('Carrier'),
+    //@TODO
+  },
+  //@TODO relCarriers
+  carriers: {
+    label: _('Carrier'),
+    //@TODO IvozProvider_Klear_Ghost_OutgoingRouting::getCarriers
   },
 };
 
@@ -77,7 +168,7 @@ const OutgoingRouting: EntityInterface = {
   path: '/OutgoingRoutings',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

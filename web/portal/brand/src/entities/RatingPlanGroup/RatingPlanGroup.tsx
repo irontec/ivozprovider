@@ -9,17 +9,17 @@ import { RatingPlanGroupProperties } from './RatingPlanGroupProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: RatingPlanGroupProperties = {
-  'id': {
-    label: _('Id'),
-  },
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 255,
   },
-  'currency': {
+  currency: {
     label: _('Currency'),
+    null: _('Default currency'),
   },
 };
 
@@ -31,7 +31,7 @@ const RatingPlanGroup: EntityInterface = {
   path: '/RatingPlanGroups',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

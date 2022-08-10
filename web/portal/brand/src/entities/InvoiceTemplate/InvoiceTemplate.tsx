@@ -9,25 +9,33 @@ import { InvoiceTemplateProperties } from './InvoiceTemplateProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: InvoiceTemplateProperties = {
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 300,
   },
-  'template': {
+  template: {
     label: _('Template'),
+    format: 'textarea',
+    //@TODO massive helpText
+    //@TODO codemirror
   },
-  'templateHeader': {
+  templateHeader: {
     label: _('Template Header'),
+    format: 'textarea',
+    //@TODO massive helpText
+    //@TODO codemirror
   },
-  'templateFooter': {
+  templateFooter: {
     label: _('Template Footer'),
+    format: 'textarea',
+    //@TODO massive helpText
+    //@TODO codemirror
   },
-  'id': {
-    label: _('Id'),
-  },
-  'global': {
+  global: {
     label: _('Global'),
   },
 };
@@ -40,7 +48,7 @@ const InvoiceTemplate: EntityInterface = {
   path: '/InvoiceTemplates',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type CompanyPropertyList<T> = {
   type?: T;
@@ -17,23 +20,40 @@ export type CompanyPropertyList<T> = {
   ipfilter?: T;
   onDemandRecord?: T;
   onDemandRecordCode?: T;
+  allowRecordingRemoval?: T;
+  recordingsLimitMb?: T;
+  recordingsDiskUsage?: T;
+  recordingsLimitEmail?: T;
+  relFeatures?: T;
   externallyextraopts?: T;
   billingMethod?: T;
   balance?: T;
+  currentDayUsage?: T;
+  currentDayMaxUsage?: T;
+  typeIcon?: T;
+  accountStatus?: T;
   showInvoices?: T;
   id?: T;
   language?: T;
   defaultTimezone?: T;
   country?: T;
   currency?: T;
+  distributeMethod?: T;
+  applicationServer?: T;
   transformationRuleSet?: T;
   outgoingDdi?: T;
+  outgoingDdiE164?: T;
+  outgoingDdiRule?: T;
   voicemailNotificationTemplate?: T;
   faxNotificationTemplate?: T;
   invoiceNotificationTemplate?: T;
   callCsvNotificationTemplate?: T;
+  maxDailyUsageNotificationTemplate?: T;
   featureIds?: T;
+  relCountries?: T;
 };
 
 export type CompanyProperties = CompanyPropertyList<Partial<PropertySpec>>;
-export type CompanyPropertiesList = Array<CompanyPropertyList<EntityValue | EntityValues>>;
+export type CompanyPropertiesList = Array<
+  CompanyPropertyList<EntityValue | EntityValues>
+>;

@@ -9,49 +9,57 @@ import { InvoiceSchedulerProperties } from './InvoiceSchedulerProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: InvoiceSchedulerProperties = {
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 40,
   },
-  'unit': {
+  unit: {
     label: _('Unit'),
+    default: 'month',
     enum: {
-      'week' : _('Week'),
-      'month' : _('Month'),
-      'year' : _('Year'),
+      week: _('Week'),
+      month: _('Month'),
+      year: _('Year'),
     },
   },
-  'frequency': {
+  frequency: {
     label: _('Frequency'),
+    default: 1,
+    minimum: 1,
   },
-  'email': {
+  email: {
     label: _('Email'),
+    maxLength: 140,
   },
-  'lastExecution': {
-    label: _('Last Execution'),
+  lastExecution: {
+    label: _('Last execution'),
+    //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess::getInvoiceSchedulerLastExecutionReport
   },
-  'lastExecutionError': {
+  lastExecutionError: {
     label: _('Last ExecutionError'),
   },
-  'nextExecution': {
-    label: _('Next Execution'),
+  nextExecution: {
+    label: _('Next execution'),
   },
-  'taxRate': {
-    label: _('Tax Rate'),
+  taxRate: {
+    label: _('Tax rate'),
+    //@TODO sufix: "%"
   },
-  'id': {
+  id: {
     label: _('Id'),
   },
-  'invoiceTemplate': {
-    label: _('Invoice Template'),
+  invoiceTemplate: {
+    label: _('Template'),
   },
-  'brand': {
+  brand: {
     label: _('Brand'),
   },
-  'company': {
-    label: _('Company'),
+  company: {
+    label: _('Client'),
   },
-  'numberSequence': {
-    label: _('Number Sequence'),
+  numberSequence: {
+    label: _('Invoice number sequence'),
+    //@TODO visualToggle
   },
 };
 
@@ -63,7 +71,7 @@ const InvoiceScheduler: EntityInterface = {
   path: '/InvoiceSchedulers',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

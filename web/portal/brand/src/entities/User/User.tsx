@@ -9,79 +9,167 @@ import { UserProperties } from './UserProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: UserProperties = {
-  'name': {
+  name: {
     label: _('Name'),
   },
-  'lastname': {
+  lastname: {
     label: _('Lastname'),
   },
-  'email': {
+  email: {
     label: _('Email'),
+    helpText: _('Used as voicemail reception and user portal credential'),
   },
-  'pass': {
-    label: _('Pass'),
+  pass: {
+    label: _('Password'),
   },
-  'doNotDisturb': {
-    label: _('Do NotDisturb'),
-  },
-  'isBoss': {
-    label: _('Is Boss'),
-  },
-  'active': {
+  active: {
     label: _('Active'),
-  },
-  'maxCalls': {
-    label: _('Max Calls'),
-  },
-  'externalIpCalls': {
-    label: _('External IpCalls'),
     enum: {
-      '0' : _('0'),
-      '1' : _('1'),
-      '2' : _('2'),
-      '3' : _('3'),
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: '0',
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['pass'],
+      },
+      '1': {
+        show: ['pass'],
+        hide: [],
+      },
     },
   },
-  'rejectCallMethod': {
-    label: _('Reject CallMethod'),
-    enum: {
-      'rfc' : _('Rfc'),
-      '486' : _('4 86'),
-      '600' : _('6 00'),
-    },
-  },
-  'multiContact': {
-    label: _('Multi Contact'),
-  },
-  'gsQRCode': {
-    label: _('Gs QRCode'),
-  },
-  'id': {
-    label: _('Id'),
-  },
-  'company': {
-    label: _('Company'),
-  },
-  'bossAssistant': {
-    label: _('Boss Assistant'),
-  },
-  'transformationRuleSet': {
-    label: _('Transformation RuleSet'),
-  },
-  'language': {
-    label: _('Language'),
-  },
-  'terminal': {
-    label: _('Terminal'),
-  },
-  'timezone': {
+  timezone: {
     label: _('Timezone'),
+    default: 145,
   },
-  'outgoingDdi': {
-    label: _('Outgoing Ddi'),
+  transformationRuleSet: {
+    label: _('Numeric transformation'),
+    default: '__null__',
+    null: _("Client's default"),
   },
-  'oldPass': {
-    label: _('Old Pass'),
+  location: {
+    label: _('Location'),
+    null: _('Unassigned'),
+    default: '__null__',
+  },
+  terminal: {
+    label: _('Terminal'),
+    null: _('Unassigned'),
+    default: '__null__',
+  },
+  extension: {
+    label: _('Screen Extension'),
+    null: _('Unassigned'),
+    default: '__null__',
+  },
+  outgoingDdi: {
+    label: _('Outgoing DDI'),
+    null: _("Client's default"),
+    default: '__null__',
+  },
+  outgoingDdiRule: {
+    label: _('Outgoing DDI Rule'),
+    null: _("Client's default"),
+    default: '__null__',
+    helpText: _(
+      'Rules to manipulate outgoingDDI when user directly calls to external numbers.'
+    ),
+  },
+  callAcl: {
+    label: _('Call ACL'),
+  },
+  doNotDisturb: {
+    label: _('Do not disturb'),
+    default: '0',
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+  },
+  isBoss: {
+    label: _('Is boss'),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    default: 0,
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['bossAssistant', 'bossAssistantWhiteList'],
+      },
+      '1': {
+        show: ['bossAssistant', 'bossAssistantWhiteList'],
+        hide: [],
+      },
+    },
+  },
+  bossAssistant: {
+    label: _('Assistant'),
+  },
+  bossAssistantWhiteList: {
+    label: _('Boss Whitelist'),
+    helpText: _('Origins matching this list will call directly to the user.'),
+  },
+  maxCalls: {
+    label: _('Call waiting'),
+    default: 0,
+    minimum: 0,
+    maximum: 100,
+    helpText: _(
+      'Limits received calls when already handling this number of calls. Set 0 for unlimited.'
+    ),
+  },
+  pickupGroupIds: {
+    label: _('Pick Up Groups'),
+  },
+  language: {
+    label: _('Language'),
+    default: '__null__',
+    null: _("Client's default"),
+  },
+  externalIpCalls: {
+    label: _('Calls from non-granted IPs'),
+    default: 0,
+    helpText: _(
+      "Enable calling from non-granted IP addresses for this user. It limits the number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing calls unlimited as long as company IP policy is fulfilled."
+    ),
+  },
+  rejectCallMethod: {
+    label: _('Call rejection method'),
+    default: 'rfc',
+  },
+  gsQRCode: {
+    label: _('QR Code'),
+    helpText: _(
+      'Add QR Code to user portal to provision GS Wave mobile softphone'
+    ),
+  },
+  multiContact: {
+    label: _('Multi contact'),
+    helpText: _(
+      "Set to 'No' to call only to latest registered SIP device instead of making all registered devices ring."
+    ),
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['rejectCallMethod'],
+      },
+      '1': {
+        show: ['rejectCallMethod'],
+        hide: [],
+      },
+    },
+  },
+  statusIcon: {
+    label: _('Status'),
+    //@TODO
   },
 };
 
@@ -93,7 +181,7 @@ const User: EntityInterface = {
   path: '/Users',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

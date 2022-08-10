@@ -9,14 +9,16 @@ import { DestinationProperties } from './DestinationProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: DestinationProperties = {
-  'prefix': {
+  prefix: {
     label: _('Prefix'),
+    pattern: new RegExp('^\\+[0-9]+$'),
+    default: '+',
+    maxLength: 80,
+    helpText: _(`Prefix must be '+' and numeric-only`),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
 };
 
@@ -28,7 +30,7 @@ const Destination: EntityInterface = {
   path: '/Destinations',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

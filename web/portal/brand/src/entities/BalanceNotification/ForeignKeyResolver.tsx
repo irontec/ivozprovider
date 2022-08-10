@@ -3,12 +3,15 @@ import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterfac
 import { BalanceNotificationPropertiesList } from './BalanceNotificationProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
-const foreignKeyResolver: foreignKeyResolverType = async function (
-  { data, cancelToken, entityService },
-): Promise<BalanceNotificationPropertiesList> {
-
+const foreignKeyResolver: foreignKeyResolverType = async function ({
+  data,
+  cancelToken,
+  entityService,
+}): Promise<BalanceNotificationPropertiesList> {
   const promises = autoForeignKeyResolver({
-    data, cancelToken, entityService,
+    data,
+    cancelToken,
+    entityService,
   });
 
   await Promise.all(promises);

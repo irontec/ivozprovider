@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type InvoiceTemplatePropertyList<T> = {
   name?: T;
@@ -11,5 +14,9 @@ export type InvoiceTemplatePropertyList<T> = {
   global?: T;
 };
 
-export type InvoiceTemplateProperties = InvoiceTemplatePropertyList<Partial<PropertySpec>>;
-export type InvoiceTemplatePropertiesList = Array<InvoiceTemplatePropertyList<EntityValue | EntityValues>>;
+export type InvoiceTemplateProperties = InvoiceTemplatePropertyList<
+  Partial<PropertySpec>
+>;
+export type InvoiceTemplatePropertiesList = Array<
+  InvoiceTemplatePropertyList<EntityValue | EntityValues>
+>;

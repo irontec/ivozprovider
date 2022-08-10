@@ -9,14 +9,15 @@ import { RoutingTagProperties } from './RoutingTagProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: RoutingTagProperties = {
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 80,
   },
-  'tag': {
+  tag: {
     label: _('Tag'),
-  },
-  'id': {
-    label: _('Id'),
+    pattern: new RegExp(`^[0-9]{1,3}#$`),
+    maxLength: 15,
+    helpText: _(`From 1 to 3 digits ended by # symbol`),
   },
 };
 
@@ -28,7 +29,7 @@ const RoutingTag: EntityInterface = {
   path: '/RoutingTags',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

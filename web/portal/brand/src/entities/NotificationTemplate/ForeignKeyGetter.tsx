@@ -3,8 +3,10 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { NotificationTemplatePropertyList } from './NotificationTemplateProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+}): Promise<any> => {
   const response: NotificationTemplatePropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

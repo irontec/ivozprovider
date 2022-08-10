@@ -9,35 +9,51 @@ import { AdministratorProperties } from './AdministratorProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: AdministratorProperties = {
-  'username': {
+  username: {
     label: _('Username'),
+    maxLength: 65,
   },
-  'pass': {
-    label: _('Pass'),
+  pass: {
+    label: _('Password'),
+    format: 'password',
   },
-  'email': {
+  email: {
     label: _('Email'),
+    maxLength: 100,
   },
-  'active': {
+  active: {
     label: _('Active'),
+    default: 1,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
   },
-  'restricted': {
+  restricted: {
     label: _('Restricted'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      'Restricted administrators have read-only permissions by default. This privileges can be fine-tuned in <i>List of Administrator access privileges</i> subsection. <br><br><b>Global/Brand</b> restricted administrators have no web access and can only be used for API integrations. <br><br><b>Client</b> restricted administrators can be used both for API integrations and limited web access.'
+    ),
   },
-  'name': {
+  name: {
     label: _('Name'),
   },
-  'lastname': {
+  lastname: {
     label: _('Lastname'),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'company': {
+  company: {
     label: _('Company'),
+    null: _('Unassigned'),
+    default: '__null__',
   },
-  'timezone': {
+  timezone: {
     label: _('Timezone'),
+    default: 145,
   },
 };
 
@@ -49,7 +65,7 @@ const Administrator: EntityInterface = {
   path: '/Administrators',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

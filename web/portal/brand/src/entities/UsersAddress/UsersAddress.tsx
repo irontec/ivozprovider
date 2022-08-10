@@ -9,17 +9,35 @@ import { UsersAddressProperties } from './UsersAddressProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: UsersAddressProperties = {
-  'sourceAddress': {
-    label: _('Source Address'),
+  sourceAddress: {
+    label: _('Authorized source'),
+    maxLength: 100,
+    helpText: _(
+      `CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)`
+    ),
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 200,
   },
-  'id': {
-    label: _('Id'),
+  company: {
+    label: _('Client'),
   },
-  'company': {
-    label: _('Company'),
+  ipAddr: {
+    label: _('Ip addr'),
+    maxLength: 50,
+  },
+  mask: {
+    label: _('Mask'),
+    default: 32,
+  },
+  port: {
+    label: _('Port'),
+    default: 0,
+  },
+  tag: {
+    label: _('Tag'),
+    maxLength: 64,
   },
 };
 
@@ -31,7 +49,7 @@ const UsersAddress: EntityInterface = {
   path: '/UsersAddresses',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

@@ -9,16 +9,16 @@ import { FixedCostsRelInvoiceProperties } from './FixedCostsRelInvoiceProperties
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: FixedCostsRelInvoiceProperties = {
-  'quantity': {
+  quantity: {
     label: _('Quantity'),
+    default: 1,
+    minimum: 1,
+    maximum: 100,
   },
-  'id': {
-    label: _('Id'),
+  fixedCost: {
+    label: _('Fixed cost'),
   },
-  'fixedCost': {
-    label: _('Fixed Cost'),
-  },
-  'invoice': {
+  invoice: {
     label: _('Invoice'),
   },
 };
@@ -31,7 +31,7 @@ const FixedCostsRelInvoice: EntityInterface = {
   path: '/FixedCostsRelInvoices',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

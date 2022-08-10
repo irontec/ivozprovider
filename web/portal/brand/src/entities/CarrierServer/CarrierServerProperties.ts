@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type CarrierServerPropertyList<T> = {
   ip?: T;
@@ -20,5 +23,9 @@ export type CarrierServerPropertyList<T> = {
   carrier?: T;
 };
 
-export type CarrierServerProperties = CarrierServerPropertyList<Partial<PropertySpec>>;
-export type CarrierServerPropertiesList = Array<CarrierServerPropertyList<EntityValue | EntityValues>>;
+export type CarrierServerProperties = CarrierServerPropertyList<
+  Partial<PropertySpec>
+>;
+export type CarrierServerPropertiesList = Array<
+  CarrierServerPropertyList<EntityValue | EntityValues>
+>;

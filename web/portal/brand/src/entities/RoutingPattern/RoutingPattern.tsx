@@ -9,17 +9,19 @@ import { RoutingPatternProperties } from './RoutingPatternProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: RoutingPatternProperties = {
-  'prefix': {
+  prefix: {
     label: _('Prefix'),
+    pattern: new RegExp('+[0-9]*'),
+    maxLength: 80,
+    helpText: _(`Must start with '+' followed by zero or more digits.`),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 55,
   },
 };
 
@@ -31,7 +33,7 @@ const RoutingPattern: EntityInterface = {
   path: '/RoutingPatterns',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

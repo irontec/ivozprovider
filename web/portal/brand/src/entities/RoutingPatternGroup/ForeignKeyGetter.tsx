@@ -3,8 +3,10 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { RoutingPatternGroupPropertyList } from './RoutingPatternGroupProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+}): Promise<any> => {
   const response: RoutingPatternGroupPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

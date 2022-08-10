@@ -9,32 +9,32 @@ import { TransformationRuleProperties } from './TransformationRuleProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: TransformationRuleProperties = {
-  'type': {
+  type: {
     label: _('Type'),
     enum: {
-      'callerin' : _('Callerin'),
-      'calleein' : _('Calleein'),
-      'callerout' : _('Callerout'),
-      'calleeout' : _('Calleeout'),
+      callerin: _('Callerin'),
+      calleein: _('Calleein'),
+      callerout: _('Callerout'),
+      calleeout: _('Calleeout'),
     },
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 64,
   },
-  'priority': {
+  priority: {
     label: _('Priority'),
   },
-  'matchExpr': {
+  matchExpr: {
     label: _('Match Expr'),
+    maxLength: 64,
   },
-  'replaceExpr': {
-    label: _('Replace Expr'),
+  replaceExpr: {
+    label: _('Replace expr'),
+    maxLength: 64,
   },
-  'id': {
-    label: _('Id'),
-  },
-  'transformationRuleSet': {
-    label: _('Transformation RuleSet'),
+  transformationRuleSet: {
+    label: _('Numeric transformation'),
   },
 };
 
@@ -46,7 +46,7 @@ const TransformationRule: EntityInterface = {
   path: '/TransformationRules',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

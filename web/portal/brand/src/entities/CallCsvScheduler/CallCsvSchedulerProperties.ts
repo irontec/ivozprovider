@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type CallCsvSchedulerPropertyList<T> = {
   name?: T;
@@ -23,5 +26,9 @@ export type CallCsvSchedulerPropertyList<T> = {
   ddiProvider?: T;
 };
 
-export type CallCsvSchedulerProperties = CallCsvSchedulerPropertyList<Partial<PropertySpec>>;
-export type CallCsvSchedulerPropertiesList = Array<CallCsvSchedulerPropertyList<EntityValue | EntityValues>>;
+export type CallCsvSchedulerProperties = CallCsvSchedulerPropertyList<
+  Partial<PropertySpec>
+>;
+export type CallCsvSchedulerPropertiesList = Array<
+  CallCsvSchedulerPropertyList<EntityValue | EntityValues>
+>;
