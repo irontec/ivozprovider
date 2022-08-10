@@ -9,35 +9,44 @@ import { DestinationRateGroupProperties } from './DestinationRateGroupProperties
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: DestinationRateGroupProperties = {
-  'status': {
+  status: {
     label: _('Status'),
     enum: {
-      'waiting' : _('Waiting'),
-      'inProgress' : _('In Progress'),
-      'imported' : _('Imported'),
-      'error' : _('Error'),
+      waiting: _('Waiting'),
+      inProgress: _('In Progress'),
+      imported: _('Imported'),
+      error: _('Error'),
     },
+    //@TODO IvozProvider_Klear_Ghost_DestinationRateGroups::getStatus
   },
-  'lastExecutionError': {
+  lastExecutionError: {
     label: _('Last ExecutionError'),
   },
-  'deductibleConnectionFee': {
+  deductibleConnectionFee: {
     label: _('Deductible ConnectionFee'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(
+      `Apply connect fee only if call cost does not reach connect fee (minimal cost, read documentation for further information).`
+    ),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 255,
   },
-  'file': {
-    label: _('File'),
+  file: {
+    label: _('Imported file'),
   },
-  'currency': {
+  currency: {
     label: _('Currency'),
+    null: _('Default currency'),
   },
 };
 
@@ -49,7 +58,7 @@ const DestinationRateGroup: EntityInterface = {
   path: '/DestinationRateGroups',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

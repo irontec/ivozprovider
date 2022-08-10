@@ -9,17 +9,17 @@ import { FixedCostProperties } from './FixedCostProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: FixedCostProperties = {
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 255,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    format: 'textarea',
   },
-  'cost': {
+  cost: {
     label: _('Cost'),
-  },
-  'id': {
-    label: _('Id'),
+    pattern: new RegExp('^[0-9]{1,6}([.][0-9]{1,4})?$'),
   },
 };
 
@@ -31,7 +31,7 @@ const FixedCost: EntityInterface = {
   path: '/FixedCosts',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

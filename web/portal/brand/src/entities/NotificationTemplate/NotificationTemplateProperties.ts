@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type NotificationTemplatePropertyList<T> = {
   name?: T;
@@ -7,5 +10,9 @@ export type NotificationTemplatePropertyList<T> = {
   id?: T;
 };
 
-export type NotificationTemplateProperties = NotificationTemplatePropertyList<Partial<PropertySpec>>;
-export type NotificationTemplatePropertiesList = Array<NotificationTemplatePropertyList<EntityValue | EntityValues>>;
+export type NotificationTemplateProperties = NotificationTemplatePropertyList<
+  Partial<PropertySpec>
+>;
+export type NotificationTemplatePropertiesList = Array<
+  NotificationTemplatePropertyList<EntityValue | EntityValues>
+>;

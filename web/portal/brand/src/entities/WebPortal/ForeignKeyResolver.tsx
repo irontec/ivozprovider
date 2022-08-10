@@ -3,12 +3,15 @@ import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterfac
 import { WebPortalPropertiesList } from './WebPortalProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
-const foreignKeyResolver: foreignKeyResolverType = async function (
-  { data, cancelToken, entityService },
-): Promise<WebPortalPropertiesList> {
-
+const foreignKeyResolver: foreignKeyResolverType = async function ({
+  data,
+  cancelToken,
+  entityService,
+}): Promise<WebPortalPropertiesList> {
   const promises = autoForeignKeyResolver({
-    data, cancelToken, entityService,
+    data,
+    cancelToken,
+    entityService,
   });
 
   await Promise.all(promises);

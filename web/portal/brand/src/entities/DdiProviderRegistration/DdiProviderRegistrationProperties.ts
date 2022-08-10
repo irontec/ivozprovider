@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type DdiProviderRegistrationPropertyList<T> = {
   username?: T;
@@ -14,7 +17,11 @@ export type DdiProviderRegistrationPropertyList<T> = {
   id?: T;
   ddiProvider?: T;
   status?: T;
+  statusIcon?: T;
 };
 
-export type DdiProviderRegistrationProperties = DdiProviderRegistrationPropertyList<Partial<PropertySpec>>;
-export type DdiProviderRegistrationPropertiesList = Array<DdiProviderRegistrationPropertyList<EntityValue | EntityValues>>;
+export type DdiProviderRegistrationProperties =
+  DdiProviderRegistrationPropertyList<Partial<PropertySpec>>;
+export type DdiProviderRegistrationPropertiesList = Array<
+  DdiProviderRegistrationPropertyList<EntityValue | EntityValues>
+>;

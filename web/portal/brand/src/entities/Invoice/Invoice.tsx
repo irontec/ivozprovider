@@ -9,53 +9,63 @@ import { InvoiceProperties } from './InvoiceProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: InvoiceProperties = {
-  'number': {
+  number: {
     label: _('Number'),
+    maxLength: 30,
   },
-  'inDate': {
-    label: _('In Date'),
+  inDate: {
+    label: _('In date'),
+    format: 'date',
   },
-  'outDate': {
-    label: _('Out Date'),
+  outDate: {
+    label: _('Out date'),
+    format: 'date',
   },
-  'total': {
+  total: {
     label: _('Total'),
+    //@TODO IvozProvider_Klear_Ghost_Invoice::getTotal
   },
-  'taxRate': {
-    label: _('Tax Rate'),
+  taxRate: {
+    label: _('Tax rate'),
+    //@TODO sufix: "%"
   },
-  'totalWithTax': {
-    label: _('Total WithTax'),
+  totalWithTax: {
+    label: _('Total with tax'),
+    //@TODO IvozProvider_Klear_Ghost_Invoice::getTotalWithTax
   },
-  'status': {
+  status: {
     label: _('Status'),
+    //@TODO IvozProvider_Klear_Ghost_Invoice::getStatus
     enum: {
-      'waiting' : _('Waiting'),
-      'processing' : _('Processing'),
-      'created' : _('Created'),
-      'error' : _('Error'),
+      waiting: _('Waiting'),
+      processing: _('Processing'),
+      created: _('Created'),
+      error: _('Error'),
     },
   },
-  'statusMsg': {
+  statusMsg: {
     label: _('Status Msg'),
   },
-  'id': {
-    label: _('Id'),
+  pdf: {
+    label: _('Pdf file'),
+    //@TODO file preview
   },
-  'pdf': {
-    label: _('Pdf'),
+  invoiceTemplate: {
+    label: _('Template'),
+    null: _('Unassigned'),
   },
-  'invoiceTemplate': {
-    label: _('Invoice Template'),
+  company: {
+    label: _('Client'),
+    null: _('Unassigned'),
   },
-  'company': {
-    label: _('Company'),
+  numberSequence: {
+    label: _('Invoice number sequence'),
+    null: _('Unassigned'),
+    //@TODO visualToggle
   },
-  'numberSequence': {
-    label: _('Number Sequence'),
-  },
-  'scheduler': {
-    label: _('Scheduler'),
+  scheduler: {
+    label: _('Invoice scheduler'),
+    null: _('Unassigned'),
   },
 };
 
@@ -67,7 +77,7 @@ const Invoice: EntityInterface = {
   path: '/Invoices',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

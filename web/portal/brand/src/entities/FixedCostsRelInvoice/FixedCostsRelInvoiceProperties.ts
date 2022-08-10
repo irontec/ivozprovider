@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type FixedCostsRelInvoicePropertyList<T> = {
   quantity?: T;
@@ -8,5 +11,9 @@ export type FixedCostsRelInvoicePropertyList<T> = {
   invoice?: T;
 };
 
-export type FixedCostsRelInvoiceProperties = FixedCostsRelInvoicePropertyList<Partial<PropertySpec>>;
-export type FixedCostsRelInvoicePropertiesList = Array<FixedCostsRelInvoicePropertyList<EntityValue | EntityValues>>;
+export type FixedCostsRelInvoiceProperties = FixedCostsRelInvoicePropertyList<
+  Partial<PropertySpec>
+>;
+export type FixedCostsRelInvoicePropertiesList = Array<
+  FixedCostsRelInvoicePropertyList<EntityValue | EntityValues>
+>;

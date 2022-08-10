@@ -9,17 +9,16 @@ import { DdiProviderAddressProperties } from './DdiProviderAddressProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: DdiProviderAddressProperties = {
-  'ip': {
-    label: _('Ip'),
+  ip: {
+    label: _('IP Address'),
+    maxLength: 50,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 200,
   },
-  'id': {
-    label: _('Id'),
-  },
-  'ddiProvider': {
-    label: _('Ddi Provider'),
+  ddiProvider: {
+    label: _('DDI Provider'),
   },
 };
 
@@ -31,7 +30,7 @@ const DdiProviderAddress: EntityInterface = {
   path: '/DdiProviderAddresses',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

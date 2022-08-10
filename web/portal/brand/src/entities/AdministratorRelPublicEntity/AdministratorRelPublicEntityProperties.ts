@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type AdministratorRelPublicEntityPropertyList<T> = {
   create?: T;
@@ -11,5 +14,8 @@ export type AdministratorRelPublicEntityPropertyList<T> = {
   publicEntity?: T;
 };
 
-export type AdministratorRelPublicEntityProperties = AdministratorRelPublicEntityPropertyList<Partial<PropertySpec>>;
-export type AdministratorRelPublicEntityPropertiesList = Array<AdministratorRelPublicEntityPropertyList<EntityValue | EntityValues>>;
+export type AdministratorRelPublicEntityProperties =
+  AdministratorRelPublicEntityPropertyList<Partial<PropertySpec>>;
+export type AdministratorRelPublicEntityPropertiesList = Array<
+  AdministratorRelPublicEntityPropertyList<EntityValue | EntityValues>
+>;

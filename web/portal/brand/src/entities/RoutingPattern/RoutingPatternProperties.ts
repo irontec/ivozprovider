@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type RoutingPatternPropertyList<T> = {
   prefix?: T;
@@ -8,5 +11,9 @@ export type RoutingPatternPropertyList<T> = {
   description?: T;
 };
 
-export type RoutingPatternProperties = RoutingPatternPropertyList<Partial<PropertySpec>>;
-export type RoutingPatternPropertiesList = Array<RoutingPatternPropertyList<EntityValue | EntityValues>>;
+export type RoutingPatternProperties = RoutingPatternPropertyList<
+  Partial<PropertySpec>
+>;
+export type RoutingPatternPropertiesList = Array<
+  RoutingPatternPropertyList<EntityValue | EntityValues>
+>;

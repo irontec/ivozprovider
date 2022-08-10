@@ -9,19 +9,23 @@ import { SpecialNumberProperties } from './SpecialNumberProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: SpecialNumberProperties = {
-  'number': {
+  number: {
     label: _('Number'),
+    pattern: new RegExp(`^[0-9]+$`),
   },
-  'disableCDR': {
+  disableCDR: {
     label: _('Disable CDR'),
+    default: '1',
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    helpText: _(`Mark yes to hide this destination calls in all lists`),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'country': {
+  country: {
     label: _('Country'),
   },
-  'global': {
+  global: {
     label: _('Global'),
   },
 };
@@ -34,7 +38,7 @@ const SpecialNumber: EntityInterface = {
   path: '/SpecialNumbers',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

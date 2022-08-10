@@ -9,23 +9,27 @@ import { DdiProviderProperties } from './DdiProviderProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: DdiProviderProperties = {
-  'description': {
+  description: {
     label: _('Description'),
   },
-  'name': {
+  name: {
     label: _('Name'),
   },
-  'externallyRated': {
+  externallyRated: {
     label: _('Externally Rated'),
   },
-  'id': {
-    label: _('Id'),
+  transformationRuleSet: {
+    label: _('Numeric transformation'),
+    default: 252,
   },
-  'transformationRuleSet': {
-    label: _('Transformation RuleSet'),
+  proxyTrunk: {
+    label: _('Local socket'),
+    helpText: _('Local address used in SIP signalling with this DDI Provider.'),
   },
-  'proxyTrunk': {
-    label: _('Proxy Trunk'),
+  mediaRelaySets: {
+    label: _('Media relay Set'),
+    default: '__null__',
+    null: _("Client's default"),
   },
 };
 
@@ -37,7 +41,7 @@ const DdiProvider: EntityInterface = {
   path: '/DdiProviders',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

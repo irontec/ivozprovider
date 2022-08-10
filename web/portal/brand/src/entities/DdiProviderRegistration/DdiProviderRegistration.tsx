@@ -9,41 +9,65 @@ import { DdiProviderRegistrationProperties } from './DdiProviderRegistrationProp
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: DdiProviderRegistrationProperties = {
-  'username': {
+  username: {
     label: _('Username'),
   },
-  'domain': {
+  domain: {
     label: _('Domain'),
   },
-  'realm': {
+  realm: {
     label: _('Realm'),
+    helpText: _('Leave empty to use the suggested default'),
   },
-  'authUsername': {
-    label: _('Auth Username'),
+  authUsername: {
+    label: _('Auth username'),
+    helpText: _("Only if it's different from the Username"),
   },
-  'authPassword': {
-    label: _('Auth Password'),
+  authPassword: {
+    label: _('Password'),
+    pattern: new RegExp('^sip:.*$|^sips:.*$'),
+    helpText: _('Must start with sip or sips followed by colon'),
   },
-  'authProxy': {
-    label: _('Auth Proxy'),
+  authProxy: {
+    label: _('Registrar Server URI'),
   },
-  'expires': {
-    label: _('Expires'),
+  expires: {
+    label: _('Expire'),
+    default: 3600,
   },
-  'multiDdi': {
-    label: _('Multi Ddi'),
+  multiDdi: {
+    label: _('Random Contact Username'),
+    default: 1,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    visualToggle: {
+      '0': {
+        show: ['contactUsername'],
+        hide: [],
+      },
+      '1': {
+        show: [],
+        hide: ['contactUsername'],
+      },
+    },
   },
-  'contactUsername': {
+  contactUsername: {
     label: _('Contact Username'),
+    helpText: _(
+      'Is sent in the username of Contact header in generated REGISTER.'
+    ),
   },
-  'id': {
-    label: _('Id'),
-  },
-  'ddiProvider': {
+  ddiProvider: {
     label: _('Ddi Provider'),
   },
-  'status': {
+  status: {
     label: _('Status'),
+  },
+  statusIcon: {
+    label: _('Status'),
+    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getDdiProviderStatusIcon
   },
 };
 
@@ -55,7 +79,7 @@ const DdiProviderRegistration: EntityInterface = {
   path: '/DdiProviderRegistrations',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

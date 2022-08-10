@@ -2,8 +2,10 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const CompanySelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const CompanySelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const Company = entities.Company;
 
@@ -11,7 +13,6 @@ const CompanySelectOptions: SelectOptionsType = ({ callback, cancelToken }): Pro
     Company.path,
     ['id'],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.id;
@@ -19,7 +20,7 @@ const CompanySelectOptions: SelectOptionsType = ({ callback, cancelToken }): Pro
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

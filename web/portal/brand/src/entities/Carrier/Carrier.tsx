@@ -9,32 +9,87 @@ import { CarrierProperties } from './CarrierProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: CarrierProperties = {
-  'description': {
+  description: {
     label: _('Description'),
   },
-  'name': {
+  name: {
     label: _('Name'),
   },
-  'externallyRated': {
-    label: _('Externally Rated'),
+  externallyRated: {
+    label: _('Externally rated'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    visualToggle: {
+      '0': {
+        show: ['balance', 'calculateCost'],
+        hide: [],
+      },
+      '1': {
+        show: [],
+        hide: ['balance', 'calculateCost', 'currency'],
+      },
+    },
   },
-  'balance': {
+  calculateCost: {
+    label: _('Calculate cost?'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
+    visualToggle: {
+      '0': {
+        show: [],
+        hide: ['balance', 'currency'],
+      },
+      '1': {
+        show: ['balance', 'currency'],
+        hide: [],
+      },
+    },
+  },
+  balance: {
     label: _('Balance'),
+    //@TODO IvozProvider_Klear_Ghost_Carriers::getBalance
   },
-  'calculateCost': {
-    label: _('Calculate Cost'),
+  acd: {
+    label: _('ACD'),
+    helpText: _(
+      "<a href='https://en.wikipedia.org/wiki/Average_call_duration' target='_blank'>Average Call Duration</a>"
+    ),
+    //@TODO IvozProvider_Klear_Ghost_Carriers::getAcd
   },
-  'id': {
-    label: _('Id'),
+  asr: {
+    label: _('ASR'),
+    helpText: _(
+      "<a href='https://en.wikipedia.org/wiki/Answer-seizure_ratio' target='_blank'>Answer-Seizure Ratio</a>"
+    ),
+    //@TODO IvozProvider_Klear_Ghost_Carriers::getAsr
   },
-  'transformationRuleSet': {
-    label: _('Transformation RuleSet'),
+  statusIcon: {
+    label: _('Status'),
+    //@TODO IvozProvider_Klear_Ghost_CarrierServerStatus::getCarrierStatusIcon
   },
-  'currency': {
+  mediaRelaySet: {
+    label: _('Media relay Set'),
+    default: '__null__',
+    null: _(`Client's default`),
+  },
+  transformationRuleSet: {
+    label: _('Numeric transformation'),
+    default: 252,
+  },
+  currency: {
     label: _('Currency'),
+    null: _('Default currency'),
+    default: '__null__',
   },
-  'proxyTrunk': {
-    label: _('Proxy Trunk'),
+  proxyTrunk: {
+    label: _('Local socket'),
+    helpText: _('Local address used in SIP signalling with this carrier.'),
   },
 };
 
@@ -46,7 +101,7 @@ const Carrier: EntityInterface = {
   path: '/Carriers',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

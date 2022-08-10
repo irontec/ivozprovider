@@ -9,26 +9,45 @@ import { AdministratorRelPublicEntityProperties } from './AdministratorRelPublic
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: AdministratorRelPublicEntityProperties = {
-  'create': {
+  create: {
     label: _('Create'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
   },
-  'read': {
+  read: {
     label: _('Read'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
   },
-  'update': {
+  update: {
     label: _('Update'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
   },
-  'delete': {
+  delete: {
     label: _('Delete'),
+    default: 0,
+    enum: {
+      '0': _('No'),
+      '1': _('Yes'),
+    },
   },
-  'id': {
-    label: _('Id'),
-  },
-  'administrator': {
+  administrator: {
     label: _('Administrator'),
+    readOnly: true,
   },
-  'publicEntity': {
-    label: _('Public Entity'),
+  publicEntity: {
+    label: _('Entity'),
+    readOnly: true,
   },
 };
 
@@ -40,7 +59,7 @@ const AdministratorRelPublicEntity: EntityInterface = {
   path: '/AdministratorRelPublicEntities',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

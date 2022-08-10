@@ -9,17 +9,17 @@ import { RoutingPatternGroupProperties } from './RoutingPatternGroupProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: RoutingPatternGroupProperties = {
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
-  'description': {
+  description: {
     label: _('Description'),
+    maxLength: 55,
   },
-  'id': {
-    label: _('Id'),
-  },
-  'patternIds': {
-    label: _('Pattern Ids'),
+  patternIds: {
+    label: _('Routing pattern'),
+    //@TODO multiselect
   },
 };
 
@@ -31,7 +31,7 @@ const RoutingPatternGroup: EntityInterface = {
   path: '/RoutingPatternGroups',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

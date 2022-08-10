@@ -3,8 +3,10 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { DdiProviderAddressPropertyList } from './DdiProviderAddressProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
-export const foreignKeyGetter: ForeignKeyGetterType = async ({ cancelToken, entityService }): Promise<any> => {
-
+export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  cancelToken,
+  entityService,
+}): Promise<any> => {
   const response: DdiProviderAddressPropertyList<unknown> = {};
 
   const promises = autoSelectOptions({

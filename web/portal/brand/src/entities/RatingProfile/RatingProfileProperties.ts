@@ -1,5 +1,8 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type RatingProfilePropertyList<T> = {
   activationTime?: T;
@@ -10,5 +13,9 @@ export type RatingProfilePropertyList<T> = {
   routingTag?: T;
 };
 
-export type RatingProfileProperties = RatingProfilePropertyList<Partial<PropertySpec>>;
-export type RatingProfilePropertiesList = Array<RatingProfilePropertyList<EntityValue | EntityValues>>;
+export type RatingProfileProperties = RatingProfilePropertyList<
+  Partial<PropertySpec>
+>;
+export type RatingProfilePropertiesList = Array<
+  RatingProfilePropertyList<EntityValue | EntityValues>
+>;

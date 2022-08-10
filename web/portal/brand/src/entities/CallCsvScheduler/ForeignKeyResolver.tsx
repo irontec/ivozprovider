@@ -3,12 +3,15 @@ import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterfac
 import { CallCsvSchedulerPropertiesList } from './CallCsvSchedulerProperties';
 
 /** TODO remove this file unless you need to change default behaviour **/
-const foreignKeyResolver: foreignKeyResolverType = async function (
-  { data, cancelToken, entityService },
-): Promise<CallCsvSchedulerPropertiesList> {
-
+const foreignKeyResolver: foreignKeyResolverType = async function ({
+  data,
+  cancelToken,
+  entityService,
+}): Promise<CallCsvSchedulerPropertiesList> {
   const promises = autoForeignKeyResolver({
-    data, cancelToken, entityService,
+    data,
+    cancelToken,
+    entityService,
   });
 
   await Promise.all(promises);

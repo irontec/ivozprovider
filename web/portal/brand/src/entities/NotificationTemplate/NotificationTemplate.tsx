@@ -9,23 +9,21 @@ import { NotificationTemplateProperties } from './NotificationTemplateProperties
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: NotificationTemplateProperties = {
-  'name': {
+  name: {
     label: _('Name'),
+    maxLength: 55,
   },
-  'type': {
+  type: {
     label: _('Type'),
     enum: {
-      'voicemail' : _('Voicemail'),
-      'fax' : _('Fax'),
-      'limit' : _('Limit'),
-      'lowbalance' : _('Lowbalance'),
-      'invoice' : _('Invoice'),
-      'callCsv' : _('Call Csv'),
-      'maxDailyUsage' : _('Max DailyUsage'),
+      voicemail: _('Voicemail'),
+      fax: _('Fax'),
+      limit: _('Limit'),
+      lowbalance: _('Low balance'),
+      invoice: _('Invoice'),
+      callCsv: _('Call CSV'),
+      maxDailyUsage: _('Max daily usage'),
     },
-  },
-  'id': {
-    label: _('Id'),
   },
 };
 
@@ -37,7 +35,7 @@ const NotificationTemplate: EntityInterface = {
   path: '/NotificationTemplates',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,

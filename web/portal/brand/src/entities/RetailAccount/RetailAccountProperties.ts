@@ -1,8 +1,12 @@
 import { PropertySpec } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import { EntityValue, EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
+import {
+  EntityValue,
+  EntityValues,
+} from '@irontec/ivoz-ui/services/entity/EntityService';
 
 export type RetailAccountPropertyList<T> = {
   name?: T;
+  domain?: T;
   description?: T;
   transport?: T;
   ip?: T;
@@ -12,13 +16,20 @@ export type RetailAccountPropertyList<T> = {
   directConnectivity?: T;
   ddiIn?: T;
   t38Passthrough?: T;
+  rtpEncryption?: T;
+  multiContact?: T;
   id?: T;
   company?: T;
   transformationRuleSet?: T;
   outgoingDdi?: T;
   domainName?: T;
   status?: T;
+  statusIcon?: T;
 };
 
-export type RetailAccountProperties = RetailAccountPropertyList<Partial<PropertySpec>>;
-export type RetailAccountPropertiesList = Array<RetailAccountPropertyList<EntityValue | EntityValues>>;
+export type RetailAccountProperties = RetailAccountPropertyList<
+  Partial<PropertySpec>
+>;
+export type RetailAccountPropertiesList = Array<
+  RetailAccountPropertyList<EntityValue | EntityValues>
+>;

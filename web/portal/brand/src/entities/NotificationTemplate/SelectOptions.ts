@@ -2,8 +2,10 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const NotificationTemplateSelectOptions: SelectOptionsType = ({ callback, cancelToken }): Promise<unknown> => {
-
+const NotificationTemplateSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
   const entities = store.getState().entities.entities;
   const NotificationTemplate = entities.NotificationTemplate;
 
@@ -11,7 +13,6 @@ const NotificationTemplateSelectOptions: SelectOptionsType = ({ callback, cancel
     NotificationTemplate.path,
     ['id'],
     (data: any) => {
-
       const options: any = {};
       for (const item of data) {
         options[item.id] = item.id;
@@ -19,7 +20,7 @@ const NotificationTemplateSelectOptions: SelectOptionsType = ({ callback, cancel
 
       callback(options);
     },
-    cancelToken,
+    cancelToken
   );
 };
 

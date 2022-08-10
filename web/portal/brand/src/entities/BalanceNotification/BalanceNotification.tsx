@@ -9,23 +9,33 @@ import { BalanceNotificationProperties } from './BalanceNotificationProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: BalanceNotificationProperties = {
-  'toAddress': {
-    label: _('To Address'),
+  toAddress: {
+    label: _('To address'),
+    maxLength: 255,
+    helpText: _('Mail address where this notification will be sent'),
   },
-  'threshold': {
-    label: _('Threshold'),
+  threshold: {
+    label: _('Notification Threshold'),
+    default: '0.0000',
+    pattern: new RegExp('^[0-9]{1,6}[.]{0,1}[0-9]*$'),
+    helpText: _(
+      'Notification will be sent when the current balance is less that this value.'
+    ),
   },
-  'lastSent': {
-    label: _('Last Sent'),
+  lastSent: {
+    label: _('Last notification sent on'),
+    readOnly: true,
+    format: 'date-time',
   },
-  'id': {
-    label: _('Id'),
+  company: {
+    label: _('Client'),
   },
-  'company': {
-    label: _('Company'),
+  carrier: {
+    label: _('Carrier'),
   },
-  'notificationTemplate': {
-    label: _('Notification Template'),
+  notificationTemplate: {
+    label: _('Notification template'),
+    null: _('Use generic template'),
   },
 };
 
@@ -37,7 +47,7 @@ const BalanceNotification: EntityInterface = {
   path: '/BalanceNotifications',
   toStr: (row: any) => row.id,
   properties,
-  selectOptions: (props, customProps) => { return selectOptions(props, customProps); },
+  selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,
