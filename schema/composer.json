@@ -58,7 +58,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "gesdinet/jwt-refresh-token-bundle": "^0.12.0",
         "graze/guzzle-jsonrpc": "3.2.*",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.5.8",
         "irontec/ivoz-dev-tools": "^5.0",
         "irontec/ivoz-provider-bundle": "^2.5.11",
         "irontec/replacements": "^1.0",
