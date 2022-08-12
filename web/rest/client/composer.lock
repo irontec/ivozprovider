@@ -1636,11 +1636,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.5.2",
+            "version": "3.5.4",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core",
-                "reference": "9f7417f523ebf1af7929fe9d04ac3661ec18a936"
+                "reference": "c4d37a26edf585ea83af98dbf8c9ea556df46568"
             },
             "require": {
                 "beberlei/assert": "2.9.*",
@@ -6149,7 +6149,8 @@
                 "zf2"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -6225,7 +6226,8 @@
                 "zf2"
             ],
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         }
     ],

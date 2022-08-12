@@ -1757,16 +1757,16 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "3.5.2",
+            "version": "3.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irontec/ivoz-core.git",
-                "reference": "9f7417f523ebf1af7929fe9d04ac3661ec18a936"
+                "reference": "c4d37a26edf585ea83af98dbf8c9ea556df46568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/9f7417f523ebf1af7929fe9d04ac3661ec18a936",
-                "reference": "9f7417f523ebf1af7929fe9d04ac3661ec18a936",
+                "url": "https://api.github.com/repos/irontec/ivoz-core/zipball/c4d37a26edf585ea83af98dbf8c9ea556df46568",
+                "reference": "c4d37a26edf585ea83af98dbf8c9ea556df46568",
                 "shasum": ""
             },
             "require": {
@@ -1807,7 +1807,7 @@
                 }
             ],
             "description": "Core library for ivozprovider",
-            "time": "2022-01-03T11:12:47+00:00"
+            "time": "2022-08-11T06:57:36+00:00"
         },
         {
             "name": "irontec/ivoz-core-bundle",
@@ -1913,7 +1913,7 @@
             "dist": {
                 "type": "path",
                 "url": "./composer-packages/irontec/ivoz-provider-bundle",
-                "reference": "b4a52c8c3f26be98845661b7b58a332bebd0024d"
+                "reference": "c591ec88e26d05c17baae27016dfa6dae5bd2ae4"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.1",
@@ -1962,7 +1962,8 @@
             ],
             "description": "Symfony bridge for IvozProvider",
             "transport-options": {
-                "symlink": false
+                "symlink": false,
+                "relative": true
             }
         },
         {
@@ -3848,6 +3849,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "symfony/error-handler",
             "time": "2020-10-24T10:57:07+00:00"
         },
         {
@@ -7596,6 +7598,12 @@
                 "future",
                 "non-blocking",
                 "promise"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/amphp",
+                    "type": "github"
+                }
             ],
             "time": "2020-07-14T21:47:18+00:00"
         },
