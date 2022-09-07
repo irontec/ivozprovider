@@ -15,6 +15,16 @@ class CompanyDto extends CompanyDtoAbstract
     ];
 
     /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     writable=false,
+     *     description="Registration domain"
+     * )
+     */
+    protected $domainName;
+
+    /**
      * @var int[]
      * @AttributeDefinition(
      *     type="array",
@@ -53,10 +63,18 @@ class CompanyDto extends CompanyDtoAbstract
             $contextProperties['brandId'] = 'brand';
         }
 
+        unset($contextProperties['domainName']);
         $this->setByContext(
             $contextProperties,
             $data
         );
+    }
+
+    public function setDomainName(string $name): self
+    {
+        $this->domainName = $name;
+
+        return $this;
     }
 
     /**
@@ -134,6 +152,20 @@ class CompanyDto extends CompanyDtoAbstract
         }
 
         unset($response['domainId']);
+
+        $showDomainNameContext = in_array(
+            $context,
+            [
+                    self::CONTEXT_COLLECTION,
+                    self::CONTEXT_DETAILED,
+                    self::CONTEXT_DETAILED_COLLECTION,
+            ]
+        );
+
+        if ($showDomainNameContext) {
+            $response['domainName'] = 'domainName';
+        }
+
         if ($role === 'ROLE_BRAND_ADMIN') {
             return self::filterFieldsForBrandAdmin($response);
         }
@@ -141,6 +173,14 @@ class CompanyDto extends CompanyDtoAbstract
         if ($role === 'ROLE_COMPANY_ADMIN') {
             return self::filterFieldsForCompanyAdmin($response);
         }
+
+        return $response;
+    }
+
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['domainName'] = $this->domainName;
 
         return $response;
     }
@@ -184,6 +224,7 @@ class CompanyDto extends CompanyDtoAbstract
             'featureIds',
             'maxDailyUsage',
             'maxDailyUsageEmail',
+            'domainName',
         ];
 
         return array_filter(
@@ -215,6 +256,7 @@ class CompanyDto extends CompanyDtoAbstract
             'transformationRuleSetId',
             'outgoingDdiId',
             'outgoingDdiRuleId',
+            'domainName',
         ];
 
         return array_filter(
