@@ -33,6 +33,13 @@ class CompanyDtoAssembler implements CustomDtoAssemblerInterface
             $entity->getRelFeatures()
         );
 
+        $domain = $entity->getDomain();
+        if ($domain) {
+            $dto->setDomainName(
+                $domain->getDomain()
+            );
+        }
+
         $geoIpAllowedCountryIds = array_map(
             function (CompanyRelGeoIPCountryInterface $relCountry) {
                 return (int)$relCountry
