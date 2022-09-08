@@ -31,7 +31,7 @@
     "cucumber": "3.0.*",
     "cucumber-junit": "1.7.*",
     "cucumber-pretty": "git+https://github.com/mmadariaga/cucumber-pretty.git",
-    "nightwatch": "0.9.*",
+    "nightwatch": "2.3.*",
     "nightwatch-cucumber": "8.2.*"
   }
 }
