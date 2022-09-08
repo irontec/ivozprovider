@@ -34,6 +34,18 @@ class ProviderMatchListPattern extends Fixture implements DependentFixtureInterf
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
+        $item2 = $this->createEntityInstance(MatchListPattern::class);
+        (function () use ($fixture) {
+            $this->setDescription("brand test desc");
+            $this->setType("number");
+            $this->setNumbervalue("946002055");
+            $this->setMatchList($fixture->getReference('_reference_ProviderMatchList3'));
+            $this->setNumberCountry($fixture->getReference('_reference_ProviderCountry70'));
+        })->call($item2);
+
+        $this->addReference('_reference_ProviderMatchListPatternMatchListPattern2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }

@@ -46,6 +46,7 @@ Feature: Update transformation rule sets
               "ca": "nombre actualizado",
               "it": "nome aggiornato"
           },
-          "country": 68
+          "country": 68,
+          "editable": true
       }
     """

@@ -3,16 +3,16 @@
 namespace Tests\DataAccessControl\Provider;
 
 use Ivoz\Api\Core\Security\DataAccessControlParser;
-use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
+use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class WebPortalTest extends KernelTestCase
+class MatchListPatternTest extends KernelTestCase
 {
     use \Ivoz\Tests\AccessControlTestHelperTrait;
 
     protected function getResourceClass(): string
     {
-        return WebPortal::class;
+        return MatchListPattern::class;
     }
 
     protected function getAdminCriteria(): array
@@ -34,8 +34,11 @@ class WebPortalTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', 'user.getBrand().getId()'],
-                ['urlType', 'notIn', ['"god"', '"brand"']],
+                [
+                    'matchList',
+                    'in',
+                    'MatchListRepository([["brand","eq","user.getBrand().getId()"],["company","eq",null]])',
+                ]
             ]
         );
     }
@@ -54,8 +57,11 @@ class WebPortalTest extends KernelTestCase
         $this->assertEquals(
             $accessControl,
             [
-                ['brand', 'eq', 'user.getBrand().getId()'],
-                ['urlType', 'notIn', ['"god"', '"brand"']],
+                [
+                    'matchList',
+                    'in',
+                    'MatchListRepository([["brand","eq","user.getBrand().getId()"],["company","eq",null]])',
+                ]
             ]
         );
     }
