@@ -21,6 +21,10 @@ Feature: Retrieve match lists
           {
               "name": "testMatchlist2",
               "id": 2
+          },
+          {
+              "name": "testBrandMatchlist",
+              "id": 3
           }
       ]
     """

@@ -70,7 +70,13 @@ class MatchListTest extends KernelTestCase
                     'company',
                     'eq',
                     'user.getCompany().getId()'
-                ]
+                ],
+                [
+                    'brand',
+                    'isNull',
+                    null
+                ],
+                'this.getInitialValue("brandId") == null'
             ]
         );
     }
