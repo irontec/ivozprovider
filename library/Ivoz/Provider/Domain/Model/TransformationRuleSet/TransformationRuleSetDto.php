@@ -2,8 +2,19 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
 {
+    /**
+     * @var bool
+     * @AttributeDefinition(
+     *     type="bool",
+     * )
+     * @psalm-suppress UnusedProperty
+     */
+    private $editable = false;
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -26,6 +37,7 @@ class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
 
         if ($role === 'ROLE_BRAND_ADMIN') {
             unset($response['brandId']);
+            $response['editable'] = 'editable';
         }
 
         return $response;
@@ -34,6 +46,8 @@ class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
     public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
+        unset($contextProperties['editable']);
+
         if ($role === 'ROLE_BRAND_ADMIN') {
             $contextProperties['brandId'] = 'brand';
         }
@@ -42,5 +56,13 @@ class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['editable'] = (bool) $response['brand'];
+
+        return $response;
     }
 }

@@ -12,19 +12,15 @@ class BalanceMovementDto extends BalanceMovementDtoAbstract
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
+                'amount' => 'amount',
+                'balance' => 'balance',
+                'createdOn' => 'createdOn',
                 'id' => 'id',
-                'toAddress' => 'toAddress',
-                'threshold' => 'threshold',
+                'companyId' => 'company',
+                'carrierId' => 'carrier'
             ];
         }
 
-        return [
-            'toAddress' => 'toAddress',
-            'threshold' => 'threshold',
-            'lastSent' => 'lastSent',
-            'id' => 'id',
-            'companyId' => 'company',
-            'notificationTemplateId' => 'notificationTemplate'
-        ];
+        return parent::getPropertyMap($context, $role);
     }
 }
