@@ -65,7 +65,8 @@ Feature: Create transformation rules
                   "ca": "ca",
                   "it": "it"
               },
-              "country": 68
+              "country": 68,
+              "editable": true
           }
       }
     """

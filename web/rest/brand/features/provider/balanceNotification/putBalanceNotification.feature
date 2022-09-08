@@ -28,6 +28,7 @@ Feature: Update balance notifications
           "lastSent": null,
           "id": 1,
           "company": 1,
+          "carrier": null,
           "notificationTemplate": 1
       }
     """
