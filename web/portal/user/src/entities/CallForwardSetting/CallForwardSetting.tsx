@@ -71,7 +71,7 @@ const CallForwardSetting: EntityInterface = {
   ...defaultEntityBehavior,
   icon: PhoneForwardedIcon,
   iden: 'CallForwardSetting',
-  title: _('Call forward setting', { count: 2 }),
+  title: _('Call Forward Settings', { count: 2 }),
   path: '/my/call_forward_settings',
   toStr: (row: any) => row.id,
   properties,
