@@ -2,6 +2,7 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import Duration from './Field/Duration';
 import Form from './Form';
 import { UsersCdrProperties } from './UsersCdrProperties';
 
@@ -14,6 +15,7 @@ const properties: UsersCdrProperties = {
   },
   duration: {
     label: _('Duration'),
+    component: Duration,
   },
   direction: {
     label: _('Direction'),
