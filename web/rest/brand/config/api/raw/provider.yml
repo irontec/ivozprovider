@@ -46,6 +46,22 @@ Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEn
       - administrator
       - publicEntity
 
+Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+    post: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        or:
+          - inherited:
+              carrier: 'Ivoz\Provider\Domain\Model\Carrier\Carrier'
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+
 Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress:
   itemOperations:
     get: ~
@@ -231,7 +247,7 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
         brand:
           eq: "user.getBrand().getId()"
         urlType:
-          neq: '"god"'
+          notIn: ['"god"', '"brand"']
     swagger_context:
       required:
       - brand
@@ -288,6 +304,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
       required:
       - brand
       - transformationRuleSet
+      -
 
 Ivoz\Provider\Domain\Model\Currency\Currency:
   itemOperations:
@@ -295,7 +312,7 @@ Ivoz\Provider\Domain\Model\Currency\Currency:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_USER" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     write_access_control:
       raw: 'FALSE'
 Ivoz\Provider\Domain\Model\Currency\Name: ~
@@ -658,6 +675,33 @@ Ivoz\Provider\Domain\Model\Language\Language:
     get: ~
   attributes:
     access_control: '"ROLE_USER" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
+Ivoz\Provider\Domain\Model\MatchList\MatchList:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+        company:
+          isNull: ~
+
+Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+
+Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+        company:
+          isNull: ~
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   attributes:
@@ -1030,6 +1074,9 @@ Ivoz\Provider\Domain\Model\Timezone\Label: ~
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    order:
+      brand: DESC
+      name.en: ASC
     read_access_control:
       ROLE_BRAND_ADMIN:
       - or:

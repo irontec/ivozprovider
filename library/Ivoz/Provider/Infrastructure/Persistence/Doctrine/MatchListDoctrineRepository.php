@@ -31,6 +31,9 @@ class MatchListDoctrineRepository extends ServiceEntityRepository implements Mat
             ->select('self.id')
             ->where(
                 $expression->eq('self.company', $companyId)
+            )
+            ->andWhere(
+                $expression->isNull('self.brand')
             );
 
         $result = $qb->getQuery()->getScalarResult();
