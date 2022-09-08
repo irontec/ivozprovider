@@ -1,5 +1,7 @@
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import Form from './Form';
@@ -60,6 +62,8 @@ const UsersCdr: EntityInterface = {
   path: '/my/call_history',
   toStr: (row: any) => row.id,
   properties,
+  defaultOrderBy: 'startTime',
+  defaultOrderDirection: OrderDirection.desc,
   columns,
   Form,
 };
