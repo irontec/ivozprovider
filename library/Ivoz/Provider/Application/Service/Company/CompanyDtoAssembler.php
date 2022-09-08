@@ -23,6 +23,13 @@ class CompanyDtoAssembler implements CustomDtoAssemblerInterface
         /** @var CompanyDto $dto */
         $dto = $entity->toDto($depth);
 
+        $domain = $entity->getDomain();
+        if ($domain) {
+            $dto->setDomainName(
+                (string) $domain->getDomain()
+            );
+        }
+
         if (in_array($context, CompanyDto::CONTEXTS_WITH_FEATURES, true)) {
             $featureIds = array_map(
                 function (FeaturesRelCompany $relFeature) {
