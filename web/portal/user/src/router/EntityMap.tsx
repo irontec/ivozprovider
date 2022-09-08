@@ -14,9 +14,6 @@ const getEntityMap = (): RouteMap => {
         {
           entity: entities.UsersCdr,
         },
-        {
-          entity: entities.CallForwardSetting,
-        },
       ],
     },
     {
@@ -27,6 +24,9 @@ const getEntityMap = (): RouteMap => {
         },
         {
           entity: entities.Preferences,
+        },
+        {
+          entity: entities.CallForwardSetting,
         },
       ],
     },
