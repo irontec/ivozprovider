@@ -22,6 +22,15 @@ Feature: Retrieve match list patterns
               "id": 1,
               "matchList": 1,
               "numberCountry": 68
+          },
+          {
+              "description": "brand test desc",
+              "type": "number",
+              "regexp": null,
+              "numbervalue": "946002055",
+              "id": 2,
+              "matchList": 3,
+              "numberCountry": 68
           }
       ]
     """

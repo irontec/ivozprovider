@@ -24,3 +24,15 @@ Feature: Update match lists
           "id": 1
       }
     """
+
+  Scenario: Cannot update brand match list
+    Given I add Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/match_lists/3" with body:
+    """
+      {
+          "name": "updatedMatchlist"
+      }
+    """
+    Then the response status code should be 403

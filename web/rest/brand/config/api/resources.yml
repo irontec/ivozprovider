@@ -98,3 +98,19 @@ Model\RegistrationSummary:
           required: false
           description: 'Company Id'
   collectionOperations: []
+
+Model\Profile:
+  itemOperations:
+    get_my_profile:
+      access_control: '"ROLE_BRAND_ADMIN" in roles'
+      depth: 2
+      method: 'GET'
+      path: '/my/profile'
+      route_name: 'get_my_profile'
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
+        parameters: []
+  collectionOperations: []

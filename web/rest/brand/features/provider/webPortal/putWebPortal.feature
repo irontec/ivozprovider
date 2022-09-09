@@ -8,7 +8,7 @@ Feature: Update web portals
     Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/web_portals/2" with body:
+      And I send a "PUT" request to "/web_portals/3" with body:
     """
       {
           "url": "https://updated-example.com",
@@ -16,7 +16,6 @@ Feature: Update web portals
           "urlType": "user",
           "name": "Updated Portal",
           "userTheme": "default",
-          "id": 1,
           "logo": {
               "fileSize": null,
               "mimeType": null,
@@ -35,7 +34,7 @@ Feature: Update web portals
           "urlType": "user",
           "name": "Updated Portal",
           "userTheme": "default",
-          "id": 2,
+          "id": 3,
           "logo": {
               "fileSize": null,
               "mimeType": null,

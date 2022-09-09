@@ -30,6 +30,9 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
 
         if ($role === 'ROLE_COMPANY_ADMIN') {
             unset($response['companyId']);
+        } elseif ($role === 'ROLE_BRAND_ADMIN') {
+            unset($response['brandId']);
+            unset($response['companyId']);
         }
 
         return $response;
@@ -40,6 +43,10 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
             $contextProperties['companyId'] = 'company';
+        }
+
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
         }
 
         if ($context === self::CONTEXT_SIMPLE) {

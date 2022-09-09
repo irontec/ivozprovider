@@ -23,6 +23,11 @@ class MatchListDto extends MatchListDtoAbstract
             unset($response['companyId']);
         }
 
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            unset($response['companyId']);
+            unset($response['brandId']);
+        }
+
         return $response;
     }
 
@@ -31,6 +36,10 @@ class MatchListDto extends MatchListDtoAbstract
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
             $contextProperties['companyId'] = 'company';
+        }
+
+        if ($role === 'ROLE_BRAND_ADMIN') {
+            $contextProperties['brandId'] = 'brand';
         }
 
         $this->setByContext(

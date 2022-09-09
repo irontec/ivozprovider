@@ -82,7 +82,7 @@ Feature: Retrieve companies
               }
           },
           "defaultTimezone": {
-              "tz": "Europe\/Madrid",
+              "tz": "Europe/Madrid",
               "comment": "mainland",
               "id": 145,
               "label": {
@@ -99,7 +99,7 @@ Feature: Retrieve companies
               "id": 68,
               "name": {
                   "en": "Spain",
-                  "es": "Espa\u00f1a",
+                  "es": "España",
                   "ca": "España",
                   "it": "Spagna"
               },
@@ -125,7 +125,8 @@ Feature: Retrieve companies
                   "ca": "ca",
                   "it": "it"
               },
-              "country": 68
+              "country": 68,
+              "editable": true
           },
           "outgoingDdi": null,
           "voicemailNotificationTemplate": {

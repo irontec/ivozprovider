@@ -26,7 +26,8 @@ Feature: Retrieve transformation rule sets
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
-              }
+              },
+              "editable": true
           }
       ]
     """
