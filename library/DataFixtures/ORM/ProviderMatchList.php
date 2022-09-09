@@ -41,13 +41,25 @@ class ProviderMatchList extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
+
+        $item3 = $this->createEntityInstance(MatchList::class);
+        (function () use ($fixture) {
+            $this->setName("testBrandMatchlist");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderMatchList3', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
+
         $manager->flush();
     }
 
     public function getDependencies()
     {
         return array(
-            ProviderCompany::class
+            ProviderCompany::class,
+            ProviderBrand::class,
         );
     }
 }

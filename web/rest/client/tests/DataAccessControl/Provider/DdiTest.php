@@ -63,7 +63,9 @@ class DdiTest extends KernelTestCase
                             'company',
                             'eq',
                             'user.getCompany().getId()'
-                        ]
+                        ],
+                        'this.hasChanged("Ddi") == false',
+                        'this.hasChanged("countryId") == false',
                     ]
                 ],
                 [

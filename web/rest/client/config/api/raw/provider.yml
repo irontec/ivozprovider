@@ -556,6 +556,8 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       - and:
         - company:
             eq: "user.getCompany().getId()"
+        - raw: 'this.hasChanged("Ddi") == false'
+        - raw: 'this.hasChanged("countryId") == false'
       - or:
         - inheritedOrNull:
             user: 'Ivoz\Provider\Domain\Model\User\User'
@@ -1257,9 +1259,11 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
             eq: "user.getCompany().getId()"
     write_access_control:
       ROLE_COMPANY_ADMIN:
-        company:
-          eq: "user.getCompany().getId()"
-
+         company:
+            eq: "user.getCompany().getId()"
+         brand:
+            isNull: ~
+         raw: 'this.getInitialValue("brandId") == null'
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -1545,6 +1549,7 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
     - and:
       - company:
           eq: "user.getCompany().getId()"
+      - raw: 'this.hasChanged("name") == false'
     - or:
       - inheritedOrNull:
           outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
@@ -1595,6 +1600,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
     - and:
       - company:
           eq: "user.getCompany().getId()"
+      - raw: 'this.hasChanged("name") == false'
     - or:
       - inheritedOrNull:
           outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'

@@ -10,3 +10,10 @@ Feature: Manage match lists
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/match_lists/1"
      Then the response status code should be 204
+
+  Scenario: Cannot remove a brand match list
+    Given I add Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/match_lists/3"
+     Then the response status code should be 403
