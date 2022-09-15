@@ -1,7 +1,12 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { isEntityItem } from '@irontec/ivoz-ui';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
@@ -30,14 +35,31 @@ const properties: SpecialNumberProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === SpecialNumber.iden
+  ) {
+    if (row.global) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const SpecialNumber: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: MilitaryTechIcon,
   iden: 'SpecialNumber',
-  title: _('SpecialNumber', { count: 2 }),
-  path: '/SpecialNumbers',
+  title: _('Special Number', { count: 2 }),
+  path: '/special_numbers',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['country', 'number', 'disableCDR'],
+  ChildDecorator,
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

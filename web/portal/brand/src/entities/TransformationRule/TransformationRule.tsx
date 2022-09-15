@@ -1,12 +1,18 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import MoveDownIcon from '@mui/icons-material/MoveDown';
+import { TransformationRuleSetPropertyList } from '../TransformationRuleSet/TransformationRuleSetProperties';
+import { useStoreState } from 'store';
 import { foreignKeyGetter } from './ForeignKeyGetter';
-import { TransformationRuleProperties } from './TransformationRuleProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import Form from './Form';
+import selectOptions from './SelectOptions';
+import { TransformationRuleProperties } from './TransformationRuleProperties';
 
 const properties: TransformationRuleProperties = {
   type: {
@@ -38,18 +44,35 @@ const properties: TransformationRuleProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const parent = useStoreState(
+    (state) =>
+      state.list.parentRow as TransformationRuleSetPropertyList<
+        string | number | boolean
+      >
+  );
+
+  if (parent?.editable !== true) {
+    return null;
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const TransformationRule: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: MoveDownIcon,
   iden: 'TransformationRule',
   title: _('TransformationRule', { count: 2 }),
-  path: '/TransformationRules',
+  path: '/transformation_rules',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['description', 'priority', 'matchExpr', 'replaceExpr'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
   Form,
+  ChildDecorator,
 };
 
 export default TransformationRule;

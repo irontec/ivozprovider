@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -23,10 +23,10 @@ const properties: RoutingTagProperties = {
 
 const RoutingTag: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: BookmarkIcon,
   iden: 'RoutingTag',
-  title: _('RoutingTag', { count: 2 }),
-  path: '/RoutingTags',
+  title: _('Routing Tag', { count: 2 }),
+  path: '/routing_tags',
   toStr: (row: any) => row.id,
   properties,
   selectOptions,

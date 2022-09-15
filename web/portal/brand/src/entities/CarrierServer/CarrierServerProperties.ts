@@ -21,6 +21,7 @@ export type CarrierServerPropertyList<T> = {
   fromDomain?: T;
   id?: T;
   carrier?: T;
+  statusIcon?: T;
 };
 
 export type CarrierServerProperties = CarrierServerPropertyList<

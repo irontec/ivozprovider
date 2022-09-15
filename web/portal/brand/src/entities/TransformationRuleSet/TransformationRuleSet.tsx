@@ -1,12 +1,17 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import TransformIcon from '@mui/icons-material/Transform';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { TransformationRuleSetProperties } from './TransformationRuleSetProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import { isEntityItem } from '@irontec/ivoz-ui';
 
 const properties: TransformationRuleSetProperties = {
   description: {
@@ -52,17 +57,36 @@ const properties: TransformationRuleSetProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === TransformationRuleSet.iden
+  ) {
+    const allowEdit = row.editable === true;
+    if (!allowEdit) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const TransformationRuleSet: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: TransformIcon,
   iden: 'TransformationRuleSet',
-  title: _('TransformationRuleSet', { count: 2 }),
-  path: '/TransformationRuleSets',
-  toStr: (row: any) => row.id,
+  title: _('Numeric transformation', { count: 2 }),
+  path: '/transformation_rule_sets',
+  toStr: (row: any) => row.name.en,
+  defaultOrderBy: '',
   properties,
+  columns: ['name', 'description'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
+  ChildDecorator,
   Form,
 };
 

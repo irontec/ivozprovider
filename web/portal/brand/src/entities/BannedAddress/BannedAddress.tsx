@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -37,12 +37,20 @@ const properties: BannedAddressProperties = {
 
 const BannedAddress: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: DoDisturbOnIcon,
   iden: 'BannedAddress',
-  title: _('BannedAddress', { count: 2 }),
-  path: '/BannedAddresses',
+  title: _('Banned IP address', { count: 2 }),
+  path: '/banned_addresses',
   toStr: (row: any) => row.id,
+  acl: {
+    create: false,
+    read: true,
+    detail: false,
+    update: false,
+    delete: false,
+  },
   properties,
+  columns: ['company', 'ip', 'lastTimeBanned'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -21,8 +21,8 @@ const properties: WebPortalProperties = {
   urlType: {
     label: _('URL Type'),
     enum: {
-      god: _('God'),
-      brand: _('Brand'),
+      admin: _('Client'),
+      user: _('User'),
     },
     visualToggle: {
       god: {
@@ -45,18 +45,19 @@ const properties: WebPortalProperties = {
   },
   logo: {
     label: _('Logo'),
-    //@TODO
+    type: 'file',
   },
 };
 
 const WebPortal: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: InsertLinkIcon,
   iden: 'WebPortal',
-  title: _('WebPortal', { count: 2 }),
-  path: '/WebPortals',
+  title: _('Company Portal', { count: 2 }),
+  path: '/web_portals',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['name', 'urlType', 'url', 'logo'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

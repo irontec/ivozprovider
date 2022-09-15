@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -73,12 +73,13 @@ const properties: DdiProviderRegistrationProperties = {
 
 const DdiProviderRegistration: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: InsertLinkIcon,
   iden: 'DdiProviderRegistration',
-  title: _('DdiProviderRegistration', { count: 2 }),
-  path: '/DdiProviderRegistrations',
+  title: _('DDI Provider Registration', { count: 2 }),
+  path: '/ddi_provider_registrations',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['username', 'domain', 'statusIcon'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

@@ -6,6 +6,7 @@ import {
 
 export type DdiPropertyList<T> = {
   ddi?: T;
+  description?: T;
   externalCallFilter?: T;
   routeType?: T;
   recordCalls?: T;
@@ -23,6 +24,8 @@ export type DdiPropertyList<T> = {
   conditionalRoute?: T;
   retailAccount?: T;
   target?: T;
+  ddiProvider?: T;
+  company?: T;
 };
 
 export type DdiProperties = DdiPropertyList<Partial<PropertySpec>>;

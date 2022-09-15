@@ -24,7 +24,6 @@ export type CompanyPropertyList<T> = {
   recordingsLimitMb?: T;
   recordingsDiskUsage?: T;
   recordingsLimitEmail?: T;
-  relFeatures?: T;
   externallyextraopts?: T;
   billingMethod?: T;
   balance?: T;
@@ -50,7 +49,9 @@ export type CompanyPropertyList<T> = {
   callCsvNotificationTemplate?: T;
   maxDailyUsageNotificationTemplate?: T;
   featureIds?: T;
-  relCountries?: T;
+  geoIpAllowedCountries?: T;
+  routingTagIds?: T;
+  codecIds?: T;
 };
 
 export type CompanyProperties = CompanyPropertyList<Partial<PropertySpec>>;

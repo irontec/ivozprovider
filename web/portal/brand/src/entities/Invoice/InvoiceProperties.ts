@@ -19,6 +19,7 @@ export type InvoicePropertyList<T> = {
   company?: T;
   numberSequence?: T;
   scheduler?: T;
+  currency?: T;
 };
 
 export type InvoiceProperties = InvoicePropertyList<Partial<PropertySpec>>;

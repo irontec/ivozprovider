@@ -1,5 +1,5 @@
 const defaults = {
-  API_URL: `//${window.location.host}/api/client`,
+  API_URL: `//${window.location.host}/api/brand`,
 };
 
 const dev = {

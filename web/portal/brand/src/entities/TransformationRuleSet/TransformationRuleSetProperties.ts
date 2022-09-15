@@ -14,6 +14,7 @@ export type TransformationRuleSetPropertyList<T> = {
   id?: T;
   name?: T;
   country?: T;
+  editable?: T;
 };
 
 export type TransformationRuleSetProperties = TransformationRuleSetPropertyList<

@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -41,12 +41,13 @@ const properties: BalanceNotificationProperties = {
 
 const BalanceNotification: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: MoneyOffIcon,
   iden: 'BalanceNotification',
-  title: _('BalanceNotification', { count: 2 }),
-  path: '/BalanceNotifications',
+  title: _('Balance Notification', { count: 2 }),
+  path: '/balance_notifications',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['notificationTemplate', 'toAddress', 'threshold', 'lastSent'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

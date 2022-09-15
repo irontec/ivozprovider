@@ -72,8 +72,10 @@ const useRealtimeCalls = (): [boolean, Calls] => {
       event: data.Event,
       time: data.Time,
       duration: '',
-      owner: data.Owner,
-      party: data.Party,
+      company: data.Company,
+      caller: data.Caller,
+      callee: data.Callee,
+      operator: data.Carrier ?? data.DdiProvider ?? '',
     };
 
     setCalls(() => {

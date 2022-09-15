@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -51,9 +51,6 @@ const properties: InvoiceSchedulerProperties = {
   invoiceTemplate: {
     label: _('Template'),
   },
-  brand: {
-    label: _('Brand'),
-  },
   company: {
     label: _('Client'),
   },
@@ -65,12 +62,20 @@ const properties: InvoiceSchedulerProperties = {
 
 const InvoiceScheduler: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: ManageHistoryIcon,
   iden: 'InvoiceScheduler',
-  title: _('InvoiceScheduler', { count: 2 }),
-  path: '/InvoiceSchedulers',
-  toStr: (row: any) => row.id,
+  title: _('Invoice Scheduler', { count: 2 }),
+  path: '/invoice_schedulers',
+  toStr: (row: any) => row.name,
   properties,
+  columns: [
+    'name',
+    'company',
+    'frequency',
+    'unit',
+    'lastExecution',
+    'nextExecution',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
