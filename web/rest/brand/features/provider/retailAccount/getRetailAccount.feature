@@ -18,6 +18,8 @@ Feature: Retrieve retail accounts
               "name": "testRetailAccount",
               "description": "",
               "directConnectivity": "no",
+              "rtpEncryption": false,
+              "multiContact": true,
               "id": 1,
               "company": 3,
               "domainName": "retail.irontec.com",

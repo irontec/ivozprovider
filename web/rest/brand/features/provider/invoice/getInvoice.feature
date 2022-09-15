@@ -19,6 +19,7 @@ Feature: Retrieve invoice
               "inDate": "2018-01-01 01:00:00",
               "outDate": "2018-01-31 23:59:59",
               "total": 0.272,
+              "taxRate": 21,
               "totalWithTax": 0.33,
               "status": "processing",
               "id": 1,
@@ -28,7 +29,8 @@ Feature: Retrieve invoice
                   "baseName": null
               },
               "invoiceTemplate": 1,
-              "company": 1
+              "company": 1,
+              "scheduler": null
           }
       ]
     """

@@ -35,7 +35,7 @@ Feature: Update residential device
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-            {
+      {
           "name": "updatedResidentialDevice",
           "description": "",
           "transport": "udp",
@@ -48,6 +48,8 @@ Feature: Update residential device
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 1,
           "company": 1,
           "transformationRuleSet": null,

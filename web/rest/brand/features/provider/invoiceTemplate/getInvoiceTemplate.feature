@@ -16,11 +16,13 @@ Feature: Retrieve invoice templates
       [
           {
               "name": "Default",
+              "description": "Something",
               "id": 1,
               "global": false
           },
           {
               "name": "Generic",
+              "description": "Generic invoice template",
               "id": 2,
               "global": true
           }

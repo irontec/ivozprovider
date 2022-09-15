@@ -21,7 +21,8 @@ Feature: Retrieve destination rate
               "groupIntervalStart": "0s",
               "id": 1,
               "destinationRateGroup": 1,
-              "destination": 1
+              "destination": 1,
+              "currencySymbol": "€"
           }
       ]
     """
