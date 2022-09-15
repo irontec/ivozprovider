@@ -18,6 +18,7 @@ Feature: Retrieve ddis
               "ddi": "123",
               "ddie164": "+34123",
               "id": 1,
+              "company": 1,
               "ddiProvider": 1,
               "country": 68
           },
@@ -25,6 +26,7 @@ Feature: Retrieve ddis
               "ddi": "124",
               "ddie164": "+34124",
               "id": 2,
+              "company": 4,
               "ddiProvider": 1,
               "country": 68
           },
@@ -32,6 +34,7 @@ Feature: Retrieve ddis
               "ddi": "121",
               "ddie164": "+34121",
               "id": 3,
+              "company": 3,
               "ddiProvider": 1,
               "country": 68
           }

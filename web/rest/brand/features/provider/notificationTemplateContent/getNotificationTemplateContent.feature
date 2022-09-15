@@ -17,7 +17,8 @@ Feature: Retrieve notification template contents
           {
               "fromName": "IvozProvider Notification",
               "fromAddress": "no-reply@ivozprovider.com",
-              "id": 1
+              "id": 1,
+              "language": 1
           }
       ]
     """

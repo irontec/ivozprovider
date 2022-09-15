@@ -42,6 +42,8 @@ Feature: Update ddi
           "directConnectivity": "no",
           "ddiIn": "yes",
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 1,
           "company": 1,
           "transformationRuleSet": null,

@@ -17,10 +17,13 @@ Feature: Retrieve users
           {
               "name": "Alice",
               "lastname": "Allison",
+              "email": "alice@democompany.com",
               "id": 1,
               "company": 1,
               "terminal": 1,
+              "extension": null,
               "outgoingDdi": null,
+              "location": null,
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.106:5060",
@@ -34,10 +37,13 @@ Feature: Retrieve users
           {
               "name": "Bob",
               "lastname": "Bobson",
+              "email": "bob@democompany.com",
               "id": 2,
               "company": 1,
               "terminal": 2,
+              "extension": null,
               "outgoingDdi": null,
+              "location": 1,
               "status": []
           }
       ]

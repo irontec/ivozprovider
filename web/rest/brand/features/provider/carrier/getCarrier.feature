@@ -18,15 +18,21 @@ Feature: Retrieve carriers
               "description": "CarrierDescription",
               "name": "CarrierName",
               "externallyRated": false,
+              "balance": 0,
               "calculateCost": true,
-              "id": 1
+              "id": 1,
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1
           },
           {
               "description": "Externally rated",
               "name": "ExternallyRatedCarrier",
               "externallyRated": true,
+              "balance": 0,
               "calculateCost": false,
-              "id": 2
+              "id": 2,
+              "transformationRuleSet": 1,
+              "proxyTrunk": 2
           }
       ]
     """

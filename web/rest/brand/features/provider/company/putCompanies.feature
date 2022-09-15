@@ -61,6 +61,7 @@ Feature: Update company
           "nif": "12345678B",
           "maxCalls": 0,
           "maxDailyUsage": 100,
+          "currentDayUsage": 1,
           "maxDailyUsageEmail": "no-replay-updated@domain.net",
           "postalAddress": "Company Address",
           "postalCode": "54321",
