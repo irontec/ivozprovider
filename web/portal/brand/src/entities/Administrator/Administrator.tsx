@@ -1,12 +1,18 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { isEntityItem } from '@irontec/ivoz-ui';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { AdministratorProperties } from './AdministratorProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import AdministratorRelPublicEntity from '../AdministratorRelPublicEntity/AdministratorRelPublicEntity';
 
 const properties: AdministratorProperties = {
   username: {
@@ -57,14 +63,31 @@ const properties: AdministratorProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === AdministratorRelPublicEntity.iden
+  ) {
+    if (!row.restricted) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const Administrator: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: AdminPanelSettingsIcon,
   iden: 'Administrator',
   title: _('Administrator', { count: 2 }),
-  path: '/Administrators',
-  toStr: (row: any) => row.id,
+  path: '/administrators',
+  toStr: (row: any) => row.username,
   properties,
+  columns: ['username', 'active', 'restricted'],
+  ChildDecorator,
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

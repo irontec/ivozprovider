@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import LanguageIcon from '@mui/icons-material/Language';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -24,12 +24,13 @@ const properties: DestinationProperties = {
 
 const Destination: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: LanguageIcon,
   iden: 'Destination',
   title: _('Destination', { count: 2 }),
-  path: '/Destinations',
-  toStr: (row: any) => row.id,
+  path: '/destinations',
+  toStr: (row: any) => row.name.en,
   properties,
+  columns: ['name', 'prefix'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

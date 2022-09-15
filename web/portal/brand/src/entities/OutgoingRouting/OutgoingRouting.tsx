@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { OutgoingRoutingProperties } from './OutgoingRoutingProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import Operator from './Field/Operator';
 
 const properties: OutgoingRoutingProperties = {
   type: {
@@ -129,12 +130,13 @@ const properties: OutgoingRoutingProperties = {
     label: _('Client'),
     null: _('Apply to all clients'),
   },
-  target: {
+  destination: {
     label: _('Destination'),
-    //@TODO IvozProvider_Klear_Ghost_OutgoingRouteType::getData
+    memoize: false,
   },
   carrier: {
     label: _('Carrier'),
+    component: Operator,
   },
   routingPattern: {
     label: _('Select destination pattern'),
@@ -162,12 +164,23 @@ const properties: OutgoingRoutingProperties = {
 
 const OutgoingRouting: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: CallSplitIcon,
   iden: 'OutgoingRouting',
-  title: _('OutgoingRouting', { count: 2 }),
-  path: '/OutgoingRoutings',
+  title: _('Outgoing Routing', { count: 2 }),
+  path: '/outgoing_routings',
   toStr: (row: any) => row.id,
   properties,
+  columns: [
+    'company',
+    'routingTag',
+    'type',
+    'destination',
+    'routingMode',
+    'carrier',
+    'priority',
+    'weight',
+    'stopper',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

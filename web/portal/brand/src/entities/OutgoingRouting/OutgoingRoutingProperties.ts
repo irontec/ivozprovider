@@ -15,7 +15,7 @@ export type OutgoingRoutingPropertyList<T> = {
   clid?: T;
   id?: T;
   company?: T;
-  target?: T;
+  destination?: T;
   carrier?: T;
   routingPattern?: T;
   routingPatternGroup?: T;

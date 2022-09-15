@@ -1,12 +1,13 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import RoofingIcon from '@mui/icons-material/Roofing';
 import { foreignKeyGetter } from './ForeignKeyGetter';
-import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import Form from './Form';
+import { ResidentialDeviceProperties } from './ResidentialDeviceProperties';
+import selectOptions from './SelectOptions';
+import StatusIcon from '../RetailAccount/Field/StatusIcon';
 
 const properties: ResidentialDeviceProperties = {
   name: {
@@ -144,7 +145,7 @@ const properties: ResidentialDeviceProperties = {
   },
   statusIcon: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatusIcon
+    component: StatusIcon,
   },
   disallow: {
     label: _('Disallowed audio codecs'),
@@ -205,12 +206,21 @@ const properties: ResidentialDeviceProperties = {
 
 const ResidentialDevice: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: RoofingIcon,
   iden: 'ResidentialDevice',
-  title: _('ResidentialDevice', { count: 2 }),
-  path: '/ResidentialDevices',
+  title: _('Residential Device', { count: 2 }),
+  path: '/residential_devices',
   toStr: (row: any) => row.id,
   properties,
+  columns: [
+    'company',
+    'name',
+    'domainName',
+    'description',
+    'statusIcon',
+    'rtpEncryption',
+    'multiContact',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

@@ -12,6 +12,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     data,
     cancelToken,
     entityService,
+    allowLinks: false,
   });
 
   await Promise.all(promises);

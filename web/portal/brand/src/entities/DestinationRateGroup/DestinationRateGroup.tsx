@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -43,6 +43,7 @@ const properties: DestinationRateGroupProperties = {
   },
   file: {
     label: _('Imported file'),
+    type: 'file',
   },
   currency: {
     label: _('Currency'),
@@ -52,12 +53,13 @@ const properties: DestinationRateGroupProperties = {
 
 const DestinationRateGroup: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: PointOfSaleIcon,
   iden: 'DestinationRateGroup',
-  title: _('DestinationRateGroup', { count: 2 }),
-  path: '/DestinationRateGroups',
-  toStr: (row: any) => row.id,
+  title: _('Destination rate', { count: 2 }),
+  path: '/destination_rate_groups',
+  toStr: (row: any) => row.name.en,
   properties,
+  columns: ['name', 'description', 'currency', 'file', 'status'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

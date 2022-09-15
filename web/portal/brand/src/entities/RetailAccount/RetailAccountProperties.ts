@@ -27,6 +27,15 @@ export type RetailAccountPropertyList<T> = {
   statusIcon?: T;
 };
 
+export type RetailAccountStatus = {
+  contact: string;
+  publicContact: boolean;
+  expires: string;
+  publicReceived: boolean;
+  received: string;
+  userAgent: string;
+};
+
 export type RetailAccountProperties = RetailAccountPropertyList<
   Partial<PropertySpec>
 >;

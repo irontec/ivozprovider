@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import PersonIcon from '@mui/icons-material/Person';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { UserProperties } from './UserProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import StatusIcon from './Field/StatusIcon';
 
 const properties: UserProperties = {
   name: {
@@ -53,16 +54,19 @@ const properties: UserProperties = {
     label: _('Location'),
     null: _('Unassigned'),
     default: '__null__',
+    $ref: '#/definitions/Location',
   },
   terminal: {
     label: _('Terminal'),
     null: _('Unassigned'),
     default: '__null__',
+    $ref: '#/definitions/Terminal',
   },
   extension: {
     label: _('Screen Extension'),
     null: _('Unassigned'),
     default: '__null__',
+    $ref: '#/definitions/Extension',
   },
   outgoingDdi: {
     label: _('Outgoing DDI'),
@@ -167,20 +171,33 @@ const properties: UserProperties = {
       },
     },
   },
+  company: {
+    label: _('Client'),
+  },
   statusIcon: {
     label: _('Status'),
-    //@TODO
+    component: StatusIcon,
   },
 };
 
 const User: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: PersonIcon,
   iden: 'User',
   title: _('User', { count: 2 }),
-  path: '/Users',
+  path: '/users',
   toStr: (row: any) => row.id,
   properties,
+  columns: [
+    'company',
+    'name',
+    'lastname',
+    'email',
+    'extension',
+    'terminal',
+    'statusIcon',
+    'location',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

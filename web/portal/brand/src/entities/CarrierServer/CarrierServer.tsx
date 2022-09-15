@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import StorageIcon from '@mui/icons-material/Storage';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -69,7 +69,6 @@ const properties: CarrierServerProperties = {
   },
   authPassword: {
     label: _('Auth Password'),
-    f,
   },
   sipProxy: {
     label: _('SIP Proxy'),
@@ -102,12 +101,13 @@ const properties: CarrierServerProperties = {
 
 const CarrierServer: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: StorageIcon,
   iden: 'CarrierServer',
-  title: _('CarrierServer', { count: 2 }),
-  path: '/CarrierServers',
+  title: _('Carrier server', { count: 2 }),
+  path: '/carrier_servers',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['sipProxy', 'outboundProxy', 'statusIcon'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

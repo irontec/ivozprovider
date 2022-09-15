@@ -11,11 +11,11 @@ const DdiSelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     Ddi.path,
-    ['id'],
+    ['id', 'ddie164'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
-        options[item.id] = item.id;
+        options[item.id] = Ddi.toStr(item);
       }
 
       callback(options);

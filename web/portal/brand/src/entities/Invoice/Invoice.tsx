@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import ReceiptIcon from '@mui/icons-material/Receipt';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -7,6 +7,9 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { InvoiceProperties } from './InvoiceProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import TaxRate from './Field/TaxRate';
+import Total from './Field/Total';
+import TotalWithTax from './Field/TotalWithTax';
 
 const properties: InvoiceProperties = {
   number: {
@@ -23,15 +26,15 @@ const properties: InvoiceProperties = {
   },
   total: {
     label: _('Total'),
-    //@TODO IvozProvider_Klear_Ghost_Invoice::getTotal
+    component: Total,
   },
   taxRate: {
     label: _('Tax rate'),
-    //@TODO sufix: "%"
+    component: TaxRate,
   },
   totalWithTax: {
     label: _('Total with tax'),
-    //@TODO IvozProvider_Klear_Ghost_Invoice::getTotalWithTax
+    component: TotalWithTax,
   },
   status: {
     label: _('Status'),
@@ -48,6 +51,7 @@ const properties: InvoiceProperties = {
   },
   pdf: {
     label: _('Pdf file'),
+    type: 'file',
     //@TODO file preview
   },
   invoiceTemplate: {
@@ -71,12 +75,24 @@ const properties: InvoiceProperties = {
 
 const Invoice: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: ReceiptIcon,
   iden: 'Invoice',
   title: _('Invoice', { count: 2 }),
-  path: '/Invoices',
-  toStr: (row: any) => row.id,
+  path: '/invoices',
+  toStr: (row: any) => row.number,
   properties,
+  columns: [
+    'company',
+    'number',
+    'inDate',
+    'outDate',
+    'total',
+    'taxRate',
+    'totalWithTax',
+    'status',
+    'invoiceTemplate',
+    'pdf',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

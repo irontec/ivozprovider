@@ -4,11 +4,11 @@ import defaultEntityBehavior, {
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, foreignKeyGetter } = props;
   const DefaultEntityForm = defaultEntityBehavior.Form;
+
   const fkChoices = useFkChoices({
     foreignKeyGetter,
     entityService,
@@ -16,42 +16,83 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const type = row?.type ?? '';
+  const isVpbx = type === 'vpbx';
+  const isRetail = type === 'retail';
+  const isResidential = type === 'residential';
+
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
+      legend: _('Basic Configuration'),
       fields: [
-        'type',
         'name',
-        'domainUsers',
-        'nif',
+        isVpbx && 'domainUsers',
+        'featureIds',
+        'billingMethod',
+        (isResidential || isRetail) && 'outgoingDdi',
+      ],
+    },
+    {
+      legend: _('Security'),
+      fields: [
         'maxCalls',
         'maxDailyUsage',
         'maxDailyUsageEmail',
+        'ipfilter',
+        'geoIpAllowedCountries',
+      ],
+    },
+    {
+      legend: _('Geographic Configuration'),
+      fields: [
+        'language',
+        'country',
+        'defaultTimezone',
+        'transformationRuleSet',
+        'currency',
+      ],
+    },
+    isRetail && {
+      legend: _('Retail specific'),
+      fields: ['routingTagIds', 'codecIds'],
+    },
+    !isResidential && {
+      legend: _('Platform data'),
+      fields: ['outgoingDdi', 'outgoingDdiRule'],
+    },
+    {
+      legend: _('Invoice data'),
+      fields: [
+        'showInvoices',
+        'nif',
         'postalAddress',
         'postalCode',
         'town',
         'province',
         'countryName',
-        'ipfilter',
+      ],
+    },
+    {
+      legend: _('Recordings'),
+      fields: [
         'onDemandRecord',
-        'onDemandRecordCode',
-        'externallyextraopts',
-        'billingMethod',
-        'balance',
-        'showInvoices',
-        'id',
-        'language',
-        'defaultTimezone',
-        'country',
-        'currency',
-        'transformationRuleSet',
-        'outgoingDdi',
+        'allowRecordingRemoval',
+        !isRetail && 'onDemandRecordCode',
+      ],
+    },
+    {
+      legend: _('Notification options'),
+      fields: [
         'voicemailNotificationTemplate',
         'faxNotificationTemplate',
         'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
-        'featureIds',
+        'maxDailyUsageNotificationTemplate',
       ],
+    },
+    {
+      legend: _('Externally rater options'),
+      fields: ['externallyextraopts'],
     },
   ];
 
