@@ -100,6 +100,11 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'
 
   ##########################################
+  ## DestinationRate
+  ##########################################
+  Ivoz\Provider\Application\Service\DestinationRate\DestinationRateDtoAssembler: ~
+
+  ##########################################
   ## DestinationRateGroup
   ##########################################
   Ivoz\Provider\Application\Service\DestinationRateGroup\DestinationRateGroupAssembler:
