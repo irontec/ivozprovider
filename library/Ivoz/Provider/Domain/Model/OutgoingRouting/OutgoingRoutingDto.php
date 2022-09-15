@@ -35,6 +35,10 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
                 'routingMode' => 'routingMode',
                 'companyId' => 'company',
                 'routingTagId' => 'routingTag',
+                'carrierId' => 'carrier',
+                'stopper' => 'stopper',
+                'routingPatternId' => 'routingPattern',
+                'routingPatternGroupId' => 'routingPatternGroup',
             ];
         } else {
             $response = parent::getPropertyMap($context);

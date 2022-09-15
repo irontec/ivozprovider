@@ -10,11 +10,13 @@ use Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
+use Psr\Log\LoggerInterface;
 
 class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
 {
     public function __construct(
-        private TrunksClientInterface $trunksClient
+        private TrunksClientInterface $trunksClient,
+        private LoggerInterface $logger
     ) {
     }
 
@@ -34,19 +36,25 @@ class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
 
         $trunksUacreg = $ddiProviderRegistration->getTrunksUacreg();
 
-        $uacRegistrationInfo = $this->trunksClient->getUacRegistrationInfo(
-            $trunksUacreg->getLUuid()
-        );
+        try {
+            $uacRegistrationInfo = $this->trunksClient->getUacRegistrationInfo(
+                $trunksUacreg->getLUuid()
+            );
 
-        $statusCode = $uacRegistrationInfo['flags'] ?? -1;
-        $expires = $uacRegistrationInfo['diff_expires'] ?? null;
+            $statusCode = $uacRegistrationInfo['flags'] ?? -1;
+            $expires = $uacRegistrationInfo['diff_expires'] ?? null;
 
-        $dto->setStatus(
-            new DdiProviderRegistrationStatus(
-                $statusCode,
-                $expires
-            )
-        );
+            $dto->setStatus(
+                new DdiProviderRegistrationStatus(
+                    $statusCode,
+                    $expires
+                )
+            );
+        } catch (\Exception $e) {
+            $this->logger->error(
+                $e->getMessage()
+            );
+        }
 
         return $dto;
     }

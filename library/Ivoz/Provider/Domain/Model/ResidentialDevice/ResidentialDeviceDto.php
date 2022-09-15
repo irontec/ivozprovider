@@ -100,6 +100,12 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
                     'userAgent'
                 ]]
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $response['companyId'] = 'company';
+                $response['rtpEncryption'] = 'rtpEncryption';
+                $response['multiContact'] = 'multiContact';
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
         }
@@ -157,7 +163,12 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'companyId',
             'transformationRuleSetId',
             'outgoingDdiId',
-            'languageId'
+            'languageId',
+            'companyId',
+            'rtpEncryption',
+            'multiContact',
+            'domainName',
+            'status',
         ];
 
         return array_filter(

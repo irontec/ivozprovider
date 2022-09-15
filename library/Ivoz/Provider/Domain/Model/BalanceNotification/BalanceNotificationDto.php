@@ -15,6 +15,8 @@ class BalanceNotificationDto extends BalanceNotificationDtoAbstract
                 'id' => 'id',
                 'toAddress' => 'toAddress',
                 'threshold' => 'threshold',
+                'notificationTemplateId' => 'notificationTemplate',
+                'lastSent' => 'lastSent',
             ];
         }
 
