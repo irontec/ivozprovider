@@ -16,6 +16,7 @@ class InvoiceDto extends InvoiceDtoAbstract
                 'inDate' => 'inDate',
                 'outDate' => 'outDate',
                 'total' => 'total',
+                'taxRate' => 'taxRate',
                 'totalWithTax' => 'totalWithTax',
                 'status' => 'status',
                 'pdf' => [
@@ -24,7 +25,8 @@ class InvoiceDto extends InvoiceDtoAbstract
                     'baseName',
                 ],
                 'invoiceTemplateId' => 'invoiceTemplate',
-                'companyId' => 'company'
+                'companyId' => 'company',
+                'schedulerId' => 'scheduler',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -35,6 +37,7 @@ class InvoiceDto extends InvoiceDtoAbstract
             unset($response['status']);
             unset($response['invoiceTemplateId']);
             unset($response['companyId']);
+            unset($response['schedulerId']);
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {

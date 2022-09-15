@@ -10,6 +10,7 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
     public const CONTEXT_WITH_PATTERNS = 'withPatterns';
 
     public const CONTEXTS_WITH_PATTERNS = [
+        self::CONTEXT_COLLECTION,
         self::CONTEXT_WITH_PATTERNS,
         self::CONTEXT_DETAILED
     ];
@@ -38,10 +39,10 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+        }
 
-            if (in_array($context, self::CONTEXTS_WITH_PATTERNS, true)) {
-                $response['patternIds'] = 'patternIds';
-            }
+        if (in_array($context, self::CONTEXTS_WITH_PATTERNS, true)) {
+            $response['patternIds'] = 'patternIds';
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {

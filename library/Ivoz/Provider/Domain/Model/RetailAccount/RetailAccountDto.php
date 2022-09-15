@@ -87,6 +87,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
 
             if ($role === 'ROLE_BRAND_ADMIN') {
                 $baseAttributes['companyId'] = 'company';
+                $baseAttributes['rtpEncryption'] = 'rtpEncryption';
+                $baseAttributes['multiContact'] = 'multiContact';
             }
 
             return $baseAttributes;
@@ -160,6 +162,8 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'transformationRuleSetId',
             'outgoingDdiId',
             'status',
+            'rtpEncryption',
+            'multiContact',
         ];
 
         return array_filter(

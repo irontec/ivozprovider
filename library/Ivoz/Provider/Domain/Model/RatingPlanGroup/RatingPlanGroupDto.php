@@ -16,6 +16,10 @@ class RatingPlanGroupDto extends RatingPlanGroupDtoAbstract
                 'brandId' => 'brand',
                 'currencyId' => 'currency'
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $response['description'] = ['en','es','ca','it'];
+            }
         } else {
             $response = parent::getPropertyMap(...func_get_args());
         }

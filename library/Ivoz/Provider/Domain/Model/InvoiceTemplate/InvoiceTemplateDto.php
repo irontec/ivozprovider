@@ -26,7 +26,8 @@ class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'description' => 'description',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
