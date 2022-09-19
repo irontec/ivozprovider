@@ -26,7 +26,11 @@ class ProvisionController
     {
         try {
             $this->registerCommand('Provision', 'indexAction');
-            $configFile = $request->attributes->get('_route_params')['configFile'];
+
+            /** @var array<string, mixed> $routeParams */
+            $routeParams = $request->attributes->get('_route_params');
+            /** @var string $configFile */
+            $configFile = $routeParams['configFile'];
 
             $content = $this->provision->execute($configFile);
         } catch (\Exception $e) {
@@ -36,6 +40,6 @@ class ProvisionController
             );
         }
 
-        return new Response( (string) $content, 200);
+        return new Response((string) $content, 200);
     }
 }
