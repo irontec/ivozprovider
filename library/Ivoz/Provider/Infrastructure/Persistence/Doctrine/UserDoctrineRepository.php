@@ -183,6 +183,16 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
         return $user;
     }
 
+
+    public function findOneByTerminalId(int $terminalId): ?UserInterface
+    {
+        $user = $this->findOneBy([
+            'terminal' => $terminalId
+        ]);
+
+        return $user;
+    }
+
     private function getBrandUsersIdsOrderByTerminalExpireDateQuery(
         int $brandId,
         string $order,

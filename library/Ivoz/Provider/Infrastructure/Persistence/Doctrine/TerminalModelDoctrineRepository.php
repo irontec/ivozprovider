@@ -35,4 +35,14 @@ class TerminalModelDoctrineRepository extends ServiceEntityRepository implements
 
         return $response;
     }
+
+    public function findOneByGenericUrlPattern(string $genericUrlPattern): ?TerminalModelInterface
+    {
+        /** @var TerminalModelInterface $response */
+        $response = $this->findOneBy([
+            'genericUrlPattern' => $genericUrlPattern
+        ]);
+
+        return $response;
+    }
 }
