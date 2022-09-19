@@ -30,5 +30,8 @@ rm -fr /opt/irontec/ivozprovider/microservices/workers/var/cache/prod/*
 rm -fr /opt/irontec/ivozprovider/microservices/balances/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/balances/var/cache/prod/*
 
+rm -fr /opt/irontec/ivozprovider/microservices/provision/var/cache/dev/*
+rm -fr /opt/irontec/ivozprovider/microservices/provision/var/cache/prod/*
+
 rm -fr /opt/irontec/ivozprovider/microservices/realtime/var/cache/dev/*
 rm -fr /opt/irontec/ivozprovider/microservices/realtime/var/cache/prod/*

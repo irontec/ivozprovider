@@ -37,6 +37,11 @@ pushd /opt/irontec/ivozprovider/microservices/balances
     ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
 popd
 
+pushd /opt/irontec/ivozprovider/microservices/provision
+    echo "=========== microservices/provision ==========="
+    ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
+popd
+
 pushd /opt/irontec/ivozprovider/microservices/scheduler
     echo "=========== microservices/scheduler ==========="
     ./vendor/bin/psalm --threads=2 --config=psalm.xml $*
