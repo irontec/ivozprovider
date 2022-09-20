@@ -13,7 +13,13 @@ class FeatureDto extends FeatureDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'iden' => 'iden'
+                'iden' => 'iden',
+                'name' => [
+                    'en',
+                    'es',
+                    'ca',
+                    'it',
+                ],
             ];
         }
 

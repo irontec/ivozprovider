@@ -21,6 +21,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
                 'hostname' => 'hostname',
                 'sipProxy' => 'sipProxy',
                 'authNeeded' => 'authNeeded',
+                'outboundProxy' => 'outboundProxy',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
