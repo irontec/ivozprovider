@@ -18,4 +18,6 @@ rm -fr /opt/irontec/ivozprovider/microservices/workers/vendor/*
 
 rm -fr /opt/irontec/ivozprovider/microservices/balances/vendor/*
 
+rm -fr /opt/irontec/ivozprovider/microservices/provision/vendor/*
+
 rm -fr /opt/irontec/ivozprovider/microservices/realtime/vendor/*

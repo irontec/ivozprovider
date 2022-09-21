@@ -17,8 +17,12 @@ services:
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
 
-    IndexController:
-        class: "IndexController"
-        public: true
+    Controller\:
+        resource: '../src/Controller/*'
+        tags: ['controller.service_arguments']
+
+
+    Services\:
+        resource: '../src/Services/*'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
