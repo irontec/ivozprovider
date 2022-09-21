@@ -23,6 +23,10 @@ pushd /opt/irontec/ivozprovider/microservices/balances
     composer install $*
 popd
 
+pushd /opt/irontec/ivozprovider/microservices/provision
+    composer install $*
+popd
+
 pushd /opt/irontec/ivozprovider/microservices/scheduler
     composer install $*
 popd

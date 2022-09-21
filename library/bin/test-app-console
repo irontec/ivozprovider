@@ -11,6 +11,9 @@ pushd /opt/irontec/ivozprovider
     echo "testing microservices/balances"
     ./microservices/balances/bin/console > /dev/null
 
+    echo "testing microservices/provision"
+    ./microservices/provision/bin/console > /dev/null
+
     echo "testing microservices/realtime"
     ./microservices/realtime/bin/console > /dev/null
 
