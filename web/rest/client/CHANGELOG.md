@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.21.1
+* Models:
+    - Company:
+        - Added domainName property
+
 ## 2.20.1
 * Models:
     - ResidentialDevice:
