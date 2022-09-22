@@ -18,25 +18,29 @@ Feature: Retrieve companies
               "type": "vpbx",
               "name": "DemoCompany",
               "nif": "12345678A",
-              "id": 1
+              "id": 1,
+              "domainName": "127.0.0.1"
           },
           {
               "type": "vpbx",
               "name": "Irontec Test Company",
               "nif": "12345678-Z",
-              "id": 2
+              "id": 2,
+              "domainName": "test.irontec.com"
           },
           {
               "type": "retail",
               "name": "Retail Company",
               "nif": "12345679-Z",
-              "id": 3
+              "id": 3,
+              "domainName": "retail.irontec.com"
           },
           {
               "type": "residential",
               "name": "Residential Company",
               "nif": "12345679-Z",
-              "id": 4
+              "id": 4,
+              "domainName": "retail.irontec.com"
           }
       ]
     """
@@ -136,6 +140,7 @@ Feature: Retrieve companies
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
+          "domainName": "127.0.0.1",
           "featureIds": [
               1,
               2,
