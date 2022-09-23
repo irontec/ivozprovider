@@ -51,7 +51,7 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/ar
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |oldstable (oasis 1.7) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-1.7.1-oasis-i386.iso)|
-|stable (artemis 2.21.0) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.21~2.21.0-artemis-amd64.iso)| |
+|stable (artemis 2.21.1) | [![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-2.21~2.21.1-artemis-amd64.iso)| |
 |testing (halliday 3.0.0) |[![iso http](web/admin/public/images/iso-http-green.png)](https://packages.irontec.com/isos/ivozprovider-3.0~3.0.0-halliday-amd64.iso)| |
 
 
