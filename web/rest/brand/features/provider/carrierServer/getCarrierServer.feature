@@ -19,6 +19,7 @@ Feature: Retrieve carrier servers
               "hostname": "127.0.0.1",
               "authNeeded": "no",
               "sipProxy": "127.0.0.1",
+              "outboundProxy": null,
               "id": 1
           },
           {
@@ -26,6 +27,7 @@ Feature: Retrieve carrier servers
               "hostname": "127.0.0.2",
               "authNeeded": "no",
               "sipProxy": "127.0.0.2",
+              "outboundProxy": null,
               "id": 2
           }
       ]
