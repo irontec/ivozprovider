@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDt
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Psr\Log\LoggerInterface;
 use spec\HelperTrait;
 
 class DdiProviderRegistrationDtoAssemblerSpec extends ObjectBehavior
@@ -29,11 +30,15 @@ class DdiProviderRegistrationDtoAssemblerSpec extends ObjectBehavior
     protected $trunksUacreg;
 
     public function let(
-        TrunksClientInterface $trunksClient
+        TrunksClientInterface $trunksClient,
+        LoggerInterface $logger
     ) {
         $this->trunksClient = $trunksClient;
 
-        $this->beConstructedWith($trunksClient);
+        $this->beConstructedWith(
+            $trunksClient,
+            $logger
+        );
     }
 
     function it_is_initializable()

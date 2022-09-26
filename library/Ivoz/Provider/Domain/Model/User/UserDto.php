@@ -100,6 +100,9 @@ class UserDto extends UserDtoAbstract
 
             if ($role === 'ROLE_BRAND_ADMIN') {
                 $response['companyId'] = 'company';
+                $response['email'] = 'email';
+                $response['extensionId'] = 'extension';
+                $response['locationId'] = 'location';
             }
 
             return $response;

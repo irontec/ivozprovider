@@ -11,7 +11,8 @@ class CompanyDto extends CompanyDtoAbstract
 
     public const CONTEXTS_WITH_FEATURES = [
         self::CONTEXT_WITH_FEATURES,
-        self::CONTEXT_DETAILED
+        self::CONTEXT_DETAILED,
+        self::CONTEXT_COLLECTION,
     ];
 
     /**
@@ -125,8 +126,17 @@ class CompanyDto extends CompanyDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'type' => 'type',
-                'nif' => 'nif'
+                'nif' => 'nif',
+                'billingMethod' => 'billingMethod',
+                'currentDayUsage' => 'currentDayUsage',
+                'maxDailyUsage' => 'maxDailyUsage',
             ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $response['domainUsers'] = 'domainUsers';
+                $response['balance'] = 'balance';
+                $response['outgoingDdiId'] = 'outgoingDdi';
+            }
         } else {
             $response = parent::getPropertyMap($context);
         }
@@ -186,6 +196,7 @@ class CompanyDto extends CompanyDtoAbstract
             'featureIds',
             'maxDailyUsage',
             'maxDailyUsageEmail',
+            'currentDayUsage' => 'currentDayUsage',
         ];
 
         return array_filter(

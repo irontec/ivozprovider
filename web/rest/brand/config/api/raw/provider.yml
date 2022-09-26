@@ -442,6 +442,21 @@ Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
       required:
       - brand
 
+Ivoz\Provider\Domain\Model\Extension\Extension:
+  itemOperations:
+    get: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: 'FALSE'
+
 Ivoz\Provider\Domain\Model\Feature\Feature:
   itemOperations:
     get: ~
@@ -675,6 +690,17 @@ Ivoz\Provider\Domain\Model\Language\Language:
     get: ~
   attributes:
     access_control: '"ROLE_USER" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+
+Ivoz\Provider\Domain\Model\Location\Location:
+  itemOperations: []
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
@@ -1052,6 +1078,7 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
       - company
   itemOperations: []
   collectionOperations:
+    get: ~
     get_status_collection:
       method: 'GET'
       path: 'terminals/status'

@@ -44,9 +44,10 @@ class DdiDto extends DdiDtoAbstract
                 'huntGroupId' => 'huntGroup',
                 'faxId' => 'fax',
                 'ddiProviderId' => 'ddiProvider',
+                'companyId' => 'company',
                 'residentialDeviceId' => 'residentialDevice',
                 'conditionalRouteId' => 'conditionalRoute',
-                'retailAccountId' => 'retailAccount'
+                'retailAccountId' => 'retailAccount',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

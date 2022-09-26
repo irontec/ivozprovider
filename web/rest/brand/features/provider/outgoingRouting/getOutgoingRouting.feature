@@ -19,8 +19,12 @@ Feature: Retrieve outgoing routings
               "priority": 1,
               "weight": 1,
               "routingMode": "static",
+              "stopper": false,
               "id": 1,
               "company": 1,
+              "carrier": 1,
+              "routingPattern": 1,
+              "routingPatternGroup": null,
               "routingTag": 1
           },
           {
@@ -28,8 +32,12 @@ Feature: Retrieve outgoing routings
               "priority": 11,
               "weight": 6,
               "routingMode": "static",
+              "stopper": false,
               "id": 2,
               "company": null,
+              "carrier": 1,
+              "routingPattern": 1,
+              "routingPatternGroup": null,
               "routingTag": 1
           }
       ]
