@@ -22,15 +22,27 @@ Feature: Retrieve rating plan group
                   "ca": "Algo mes",
                   "it": "Più"
               },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
               "currency": null
           },
           {
               "id": 2,
               "name": {
                   "en": "Something more",
-                  "es": "Algo m\u00e1s",
+                  "es": "Algo más",
                   "ca": "Algo mes",
                   "it": "Più"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "currency": null
           }

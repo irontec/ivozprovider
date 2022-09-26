@@ -18,7 +18,27 @@ Feature: Retrieve residential devices
               "name": "residentialDevice",
               "description": "",
               "directConnectivity": "no",
-              "id": 1
+              "rtpEncryption": false,
+              "multiContact": true,
+              "id": 1,
+              "company": 4,
+              "domainName": "retail.irontec.com",
+              "status": [
+                  {
+                      "contact": "sip:yealinktest@10.10.1.108:5060",
+                      "received": "sip:212.64.172.25:5060",
+                      "publicReceived": true,
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  },
+                  {
+                      "contact": "sip:yealinktest@10.10.1.110:5060",
+                      "received": "",
+                      "publicReceived": false,
+                      "expires": "2031-01-01 00:59:59",
+                      "userAgent": "Yealink SIP-T23G 44.80.0.130"
+                  }
+              ]
           }
       ]
     """

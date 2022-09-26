@@ -17,6 +17,9 @@ class CarrierDto extends CarrierDtoAbstract
                 'name' => 'name',
                 'externallyRated' => 'externallyRated',
                 'calculateCost' => 'calculateCost',
+                'transformationRuleSetId' => 'transformationRuleSet',
+                'balance' => 'balance',
+                'proxyTrunkId' => 'proxyTrunk',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

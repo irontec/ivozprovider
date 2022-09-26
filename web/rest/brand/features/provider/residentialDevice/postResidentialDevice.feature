@@ -47,6 +47,8 @@ Feature: Create residential devices
           "ddiIn": "yes",
           "maxCalls": 1,
           "t38Passthrough": "no",
+          "rtpEncryption": false,
+          "multiContact": true,
           "id": 2,
           "company": 1,
           "transformationRuleSet": null,

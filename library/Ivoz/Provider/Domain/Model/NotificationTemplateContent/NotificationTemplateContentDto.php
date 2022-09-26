@@ -14,7 +14,8 @@ class NotificationTemplateContentDto extends NotificationTemplateContentDtoAbstr
             return [
                 'id' => 'id',
                 'fromName' => 'fromName',
-                'fromAddress' => 'fromAddress'
+                'fromAddress' => 'fromAddress',
+                'languageId' => 'language',
             ];
         }
 

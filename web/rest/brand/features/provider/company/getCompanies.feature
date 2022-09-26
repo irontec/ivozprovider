@@ -17,26 +17,60 @@ Feature: Retrieve companies
           {
               "type": "vpbx",
               "name": "DemoCompany",
+              "domainUsers": "127.0.0.1",
               "nif": "12345678A",
-              "id": 1
+              "maxDailyUsage": 2,
+              "currentDayUsage": 1,
+              "billingMethod": "prepaid",
+              "balance": 1.2,
+              "id": 1,
+              "outgoingDdi": null,
+              "featureIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+              ]
           },
           {
               "type": "vpbx",
               "name": "Irontec Test Company",
+              "domainUsers": "test.irontec.com",
               "nif": "12345678-Z",
-              "id": 2
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 2,
+              "outgoingDdi": null,
+              "featureIds": []
           },
           {
               "type": "retail",
               "name": "Retail Company",
+              "domainUsers": null,
               "nif": "12345679-Z",
-              "id": 3
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 3,
+              "outgoingDdi": null,
+              "featureIds": []
           },
           {
               "type": "residential",
               "name": "Residential Company",
+              "domainUsers": null,
               "nif": "12345679-Z",
-              "id": 4
+              "maxDailyUsage": 1000000,
+              "currentDayUsage": 0,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 4,
+              "outgoingDdi": null,
+              "featureIds": []
           }
       ]
     """
@@ -57,6 +91,7 @@ Feature: Retrieve companies
           "nif": "12345678A",
           "maxCalls": 0,
           "maxDailyUsage": 2,
+          "currentDayUsage": 1,
           "maxDailyUsageEmail": "no-replay@domain.net",
           "postalAddress": "Company Address",
           "postalCode": "54321",

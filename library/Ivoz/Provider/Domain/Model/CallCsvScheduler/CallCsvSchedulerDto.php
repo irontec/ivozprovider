@@ -54,7 +54,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
-                'company' => 'companyId',
+                'companyId' => 'company',
                 'frequency' => 'frequency',
                 'unit' => 'unit',
                 'callDirection' => 'callDirection',
