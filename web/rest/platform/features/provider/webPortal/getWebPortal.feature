@@ -15,28 +15,48 @@ Feature: Retrieve web portals
     """
       [
           {
-              "url": "https:\/\/example.com",
+              "url": "https://example.com",
               "urlType": "god",
               "name": "Platform Administration Portal",
-              "id": 1
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
           },
           {
-              "url": "https:\/\/brand-ivozprovider.irontec.com",
+              "url": "https://brand-ivozprovider.irontec.com",
               "urlType": "brand",
               "name": "Irontec Ivozprovider Brand Admin Portal",
-              "id": 2
+              "id": 2,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
           },
           {
-              "url": "https:\/\/client-ivozprovider.irontec.com",
+              "url": "https://client-ivozprovider.irontec.com",
               "urlType": "admin",
               "name": "Irontec Ivozprovider Client Admin Portal",
-              "id": 3
+              "id": 3,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
           },
           {
-              "url": "https:\/\/users-ivozprovider.irontec.com",
+              "url": "https://users-ivozprovider.irontec.com",
               "urlType": "user",
               "name": "Irontec Ivozprovider User Admin Portal",
-              "id": 4
+              "id": 4,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              }
           }
       ]
     """
