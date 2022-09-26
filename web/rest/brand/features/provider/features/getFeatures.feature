@@ -16,39 +16,93 @@ Feature: Retrieve features
       [
           {
               "iden": "queues",
-              "id": 1
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "recordings",
-              "id": 2
+              "id": 2,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "faxes",
-              "id": 3
+              "id": 3,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "friends",
-              "id": 4
+              "id": 4,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "conferences",
-              "id": 5
+              "id": 5,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "billing",
-              "id": 6
+              "id": 6,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "invoices",
-              "id": 7
+              "id": 7,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "progress",
-              "id": 8
+              "id": 8,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           },
           {
               "iden": "retail",
-              "id": 9
+              "id": 9,
+              "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              }
           }
       ]
     """

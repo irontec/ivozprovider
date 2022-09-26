@@ -46,6 +46,9 @@ Feature: Update company
           "faxNotificationTemplate": null,
           "featureIds": [
               3
+          ],
+          "geoIpAllowedCountries": [
+            1
           ]
       }
     """
@@ -70,6 +73,7 @@ Feature: Update company
           "countryName": "Company Country",
           "ipfilter": false,
           "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
           "billingMethod": "postpaid",
@@ -82,12 +86,19 @@ Feature: Update company
           "currency": null,
           "transformationRuleSet": 1,
           "outgoingDdi": null,
+          "outgoingDdiRule": null,
           "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": 2,
           "featureIds": [
               3
-          ]
+          ],
+          "geoIpAllowedCountries": [
+              1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
       }
     """

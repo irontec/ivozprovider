@@ -47,8 +47,9 @@
           "invoiceTemplate": 1,
           "company": 1,
           "numberSequence": null,
-          "scheduler": null
-      } 
+          "scheduler": null,
+          "currency": "€"
+      }
     """
 
   Scenario: Retrieve created invoice
@@ -85,6 +86,7 @@
           },
           "company": "~",
           "numberSequence": null,
-          "scheduler": null
+          "scheduler": null,
+          "currency": "€"
       }
     """

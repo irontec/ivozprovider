@@ -44,6 +44,7 @@ Feature: Update invoice
           "invoiceTemplate": 1,
           "company": 1,
           "numberSequence": null,
-          "scheduler": null
+          "scheduler": null,
+          "currency": "€"
       }
     """

@@ -39,7 +39,10 @@ Feature: Create companies
         "outgoingDdiRule": 1,
         "voicemailNotificationTemplate": 1,
         "faxNotificationTemplate": null,
-        "featureIds": [1]
+        "featureIds": [1],
+        "geoIpAllowedCountries": [
+          1
+        ]
       }
     """
     Then the response status code should be 201
@@ -54,6 +57,8 @@ Feature: Create companies
           "nif": "",
           "maxCalls": 0,
           "maxDailyUsage": 100,
+          "currentDayUsage": 0,
+          "maxDailyUsageEmail": null,
           "postalAddress": "",
           "postalCode": "",
           "town": "",
@@ -61,52 +66,33 @@ Feature: Create companies
           "countryName": "",
           "ipfilter": true,
           "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
           "billingMethod": "postpaid",
           "balance": 0,
           "showInvoices": false,
           "id": 6,
-          "language": "~",
-          "defaultTimezone": {
-              "tz": "Europe/Andorra",
-              "comment": "",
-              "id": 1,
-              "label": {
-                  "en": "",
-                  "es": "",
-                  "ca": "",
-                  "it": ""
-              },
-              "country": 1
-          },
-          "country": {
-              "code": "AD",
-              "countryCode": "+376",
-              "id": 1,
-              "name": {
-                  "en": "Andorra",
-                  "es": "Andorra",
-                  "ca": "Andorra",
-                  "it": "Andorra"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa",
-                  "ca": "Europa",
-                  "it": "Europe"
-              }
-          },
+          "language": 1,
+          "defaultTimezone": 1,
+          "country": 1,
           "currency": null,
-          "transformationRuleSet": "~",
-          "outgoingDdi": "~",
-          "voicemailNotificationTemplate": "~",
+          "transformationRuleSet": 1,
+          "outgoingDdi": 1,
+          "outgoingDdiRule": 1,
+          "voicemailNotificationTemplate": 1,
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "featureIds": [
               1
-          ]
+          ],
+          "geoIpAllowedCountries": [
+              1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
       }
     """
 
@@ -184,6 +170,11 @@ Feature: Create companies
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
-          "featureIds": [1]
+          "featureIds": [1],
+          "geoIpAllowedCountries": [
+            1
+          ],
+          "routingTagIds": [],
+          "codecIds": []
       }
     """
