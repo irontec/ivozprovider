@@ -6,7 +6,7 @@
     table="kam_users_location_attrs"
     change-tracking-policy="DEFERRED_EXPLICIT"
   >
-    <id name="id" type="integer" column="id">
+    <id name="id" type="bigint" column="id">
       <generator strategy="IDENTITY"/>
       <options>
         <option name="unsigned">1</option>
