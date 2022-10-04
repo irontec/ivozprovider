@@ -4171,11 +4171,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryRepository.php
 
 		-
-			message: "#^Cannot call method getType\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTag.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyRelRoutingTag\\\\CompanyRelRoutingTagDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagDtoAbstract.php
