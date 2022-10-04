@@ -13,31 +13,6 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
     use CompanyRelRoutingTagTrait;
 
     /**
-     * @param CompanyInterface|null $company
-     * @return static
-     */
-    public function setCompany(CompanyInterface $company = null): static
-    {
-        $companyType = $company->getType();
-        $validCompanyTypes = [
-            CompanyInterface::TYPE_RETAIL,
-            CompanyInterface::TYPE_WHOLESALE,
-        ];
-
-        if (!in_array($companyType, $validCompanyTypes)) {
-            $erroMsg = sprintf(
-                'Company type must be either %s or %s',
-                CompanyInterface::TYPE_RETAIL,
-                CompanyInterface::TYPE_WHOLESALE
-            );
-
-            throw new \DomainException($erroMsg);
-        }
-
-        return parent::setCompany($company);
-    }
-
-    /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
      */
