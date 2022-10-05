@@ -11,11 +11,13 @@ const properties: InvoiceProperties = {
   },
   inDate: {
     label: _('In date'),
-    format: 'date-time',
+    type: 'string',
+    format: 'date',
   },
   outDate: {
     label: _('Out date'),
-    format: 'date-time',
+    type: 'string',
+    format: 'date',
   },
   totalWithTax: {
     label: _('Total with tax'),
