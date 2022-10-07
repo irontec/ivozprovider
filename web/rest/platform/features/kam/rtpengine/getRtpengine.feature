@@ -15,7 +15,7 @@ Feature: Retrieve rtpengines
     """
       [
           {
-              "url": "udp:127.0.0.1:22223",
+              "url": "udp:127.0.0.1:2223",
               "weight": 1,
               "disabled": false,
               "description": "rtpengine01",
@@ -35,7 +35,7 @@ Feature: Retrieve rtpengines
     """
       {
           "setid": 1,
-          "url": "udp:127.0.0.1:22223",
+          "url": "udp:127.0.0.1:2223",
           "weight": 1,
           "disabled": false,
           "stamp": "2000-01-01 01:00:00",
