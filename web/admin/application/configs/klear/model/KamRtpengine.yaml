@@ -7,7 +7,7 @@ production:
       trim: both
       required: true
       maxLength: 128
-      defaultValue: "udp:127.0.0.1:22223"
+      defaultValue: "udp:127.0.0.1:2223"
     weight:
       title: _('Weight')
       type: number
