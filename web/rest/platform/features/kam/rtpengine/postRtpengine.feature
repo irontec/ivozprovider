@@ -12,7 +12,7 @@ Feature: Create rtpengines
     """
       {
           "setid": 99999999,
-          "url": "udp:127.0.0.2:22223",
+          "url": "udp:127.0.0.2:2223",
           "weight": 2,
           "disabled": false,
           "stamp": "2000-01-01 01:00:00",
@@ -27,7 +27,7 @@ Feature: Create rtpengines
     """
       {
           "setid": 1,
-          "url": "udp:127.0.0.2:22223",
+          "url": "udp:127.0.0.2:2223",
           "weight": 2,
           "disabled": false,
           "stamp": "2000-01-01 01:00:00",
@@ -48,7 +48,7 @@ Feature: Create rtpengines
     """
       {
           "setid": 1,
-          "url": "udp:127.0.0.2:22223",
+          "url": "udp:127.0.0.2:2223",
           "weight": 2,
           "disabled": false,
           "stamp": "2000-01-01 01:00:00",
