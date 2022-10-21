@@ -18,3 +18,9 @@ Description-es.UTF-8:
  .
  Por favor, introduzca los minimos datos requereidos para configurar los servicios de este perfil:
  .
+
+Template: ivozprovider/fastagi_server_address
+Type: string
+Default: 127.0.0.1:4573
+Description: Fastagi Server address.
+Description-es.UTF-8: Direccion IP del servidor fastagi.
