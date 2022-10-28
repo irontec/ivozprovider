@@ -68,7 +68,7 @@ class ChannelInfo
             return;
         }
 
-        $this->agi->setVariable("_ORIGIN", $agent);
+        $this->agi->setVariable("__ORIGIN", $agent);
     }
 
     /**
@@ -80,7 +80,7 @@ class ChannelInfo
             return;
         }
 
-        $this->agi->setVariable("_CALLER", $agent);
+        $this->agi->setVariable("__CALLER", $agent);
     }
 
     /**
