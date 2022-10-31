@@ -113,6 +113,7 @@ class TrunksClient implements TrunksClientInterface
             return [];
         }
 
+
         /**
          * Expected response format
          * {
