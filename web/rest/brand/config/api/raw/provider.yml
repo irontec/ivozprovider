@@ -782,6 +782,18 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
       - transformationRuleSet
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    get_status_item:
+      method: 'GET'
+      path: '/carrier_servers/{id}/status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto::CONTEXT_STATUS
+      normalization_context:
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto::CONTEXT_STATUS
+        ]
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:

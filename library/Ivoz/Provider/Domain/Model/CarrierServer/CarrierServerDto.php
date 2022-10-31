@@ -4,6 +4,11 @@ namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 class CarrierServerDto extends CarrierServerDtoAbstract
 {
+    public const CONTEXT_STATUS = 'status';
+
+    /** @var CarrierServerRegistrationStatus[]  */
+    private array $status = [];
+
     protected $sensitiveFields = [
         'authPassword',
     ];
@@ -14,6 +19,25 @@ class CarrierServerDto extends CarrierServerDtoAbstract
      */
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
+        if ($context === self::CONTEXT_STATUS) {
+            $baseAttributes = [
+                'id' => 'id',
+                'ip' => 'ip',
+                'hostname' => 'hostname',
+                'sipProxy' => 'sipProxy',
+                'authNeeded' => 'authNeeded',
+                'status' => [[
+                    'registered'
+                ]]
+            ];
+
+            if ($role === 'ROLE_BRAND_ADMIN') {
+                $baseAttributes['companyId'] = 'company';
+            }
+
+            return $baseAttributes;
+        }
+
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
@@ -48,5 +72,25 @@ class CarrierServerDto extends CarrierServerDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    public function addStatus(CarrierServerRegistrationStatus $status): static
+    {
+        $this->status[] = $status;
+
+        return $this;
+    }
+
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['status'] = array_map(
+            function (CarrierServerRegistrationStatus $registrationStatus): array {
+                return $registrationStatus->toArray();
+            },
+            $this->status
+        );
+
+        return $response;
     }
 }
