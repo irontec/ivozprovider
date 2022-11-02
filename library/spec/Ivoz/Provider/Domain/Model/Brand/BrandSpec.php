@@ -4,10 +4,13 @@ namespace spec\Ivoz\Provider\Domain\Model\Brand;
 
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyDto;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
@@ -167,7 +170,6 @@ class BrandSpec extends ObjectBehavior
         $this->getterProphecy(
             $company,
             [
-                'getId' => 1,
                 'getRecordingsDiskUsage' => 5
             ]
         );
@@ -186,7 +188,6 @@ class BrandSpec extends ObjectBehavior
         $this->getterProphecy(
             $company2,
             [
-                'getId' => 2,
                 'getRecordingsDiskUsage' => 12
             ]
         );
@@ -244,16 +245,18 @@ class BrandSpec extends ObjectBehavior
     {
         $updateDto = clone $this->dto;
 
-        $feature = $this->getTestDouble(
-            FeaturesRelBrandInterface::class
+        $feature = $this->getInstance(
+            FeaturesRelBrand::class,
+            [
+                'id' => 1,
+                'feature' => $this->getTestDouble(FeatureInterface::class)->reveal(),
+                'brand' => $this->getTestDouble(BrandInterface::class)->reveal(),
+            ]
         );
-        $feature
-            ->getId()
-            ->willreturn(1);
 
         $this
             ->dto
-            ->setRelFeatures([$feature->reveal()]);
+            ->setRelFeatures([$feature]);
 
         $updateDto
             ->setRelFeatures([]);
