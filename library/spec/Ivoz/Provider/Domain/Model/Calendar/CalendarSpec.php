@@ -38,9 +38,7 @@ class CalendarSpec extends ObjectBehavior
         $holidayDateDto = new HolidayDateDto();
         $this->holidayDate = $this->getterProphecy(
             $this->getTestDouble(HolidayDate::class),
-            [
-                'getId' => 1
-            ]
+            []
         );
         $this->fluentSetterProphecy(
             $this->holidayDate,
@@ -53,9 +51,7 @@ class CalendarSpec extends ObjectBehavior
         $holidayDate2Dto = new HolidayDateDto();
         $this->holidayDate2 = $this->getterProphecy(
             $this->getTestDouble(HolidayDate::class),
-            [
-                'getId' => 2
-            ]
+            []
         );
         $this->fluentSetterProphecy(
             $this->holidayDate2,
