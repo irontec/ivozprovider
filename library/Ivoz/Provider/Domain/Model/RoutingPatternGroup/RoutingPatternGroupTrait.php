@@ -160,31 +160,53 @@ trait RoutingPatternGroupTrait
      */
     public function replaceRelPatterns(Collection $relPatterns): RoutingPatternGroupInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relPatterns as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setRoutingPatternGroup($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relPatterns as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relPatterns->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relPatterns as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relPatterns[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relPatterns->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relPatterns->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relPatterns as $entity) {
             $this->addRelPattern($entity);
         }
 
@@ -222,31 +244,53 @@ trait RoutingPatternGroupTrait
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingPatternGroupInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($outgoingRoutings as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setRoutingPatternGroup($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->outgoingRoutings as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->outgoingRoutings->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($outgoingRoutings as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($outgoingRoutings[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->outgoingRoutings->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->outgoingRoutings->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($outgoingRoutings as $entity) {
             $this->addOutgoingRouting($entity);
         }
 

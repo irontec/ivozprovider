@@ -223,31 +223,53 @@ trait UserTrait
      */
     public function replacePickUpRelUsers(Collection $pickUpRelUsers): UserInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($pickUpRelUsers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->pickUpRelUsers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->pickUpRelUsers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($pickUpRelUsers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($pickUpRelUsers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->pickUpRelUsers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->pickUpRelUsers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($pickUpRelUsers as $entity) {
             $this->addPickUpRelUser($entity);
         }
 
@@ -285,31 +307,53 @@ trait UserTrait
      */
     public function replaceQueueMembers(Collection $queueMembers): UserInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($queueMembers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->queueMembers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->queueMembers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($queueMembers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($queueMembers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->queueMembers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->queueMembers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($queueMembers as $entity) {
             $this->addQueueMember($entity);
         }
 
@@ -347,31 +391,53 @@ trait UserTrait
      */
     public function replaceCallForwardSettings(Collection $callForwardSettings): UserInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($callForwardSettings as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setUser($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->callForwardSettings as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->callForwardSettings->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($callForwardSettings as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($callForwardSettings[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->callForwardSettings->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->callForwardSettings->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($callForwardSettings as $entity) {
             $this->addCallForwardSetting($entity);
         }
 

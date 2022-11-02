@@ -639,7 +639,7 @@ abstract class TpCdrAbstract
     protected function setSetupTime(string|\DateTimeInterface $setupTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $setupTime = DateTimeHelper::createOrFix(
             $setupTime,
             null
@@ -662,7 +662,7 @@ abstract class TpCdrAbstract
     protected function setAnswerTime(string|\DateTimeInterface $answerTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $answerTime = DateTimeHelper::createOrFix(
             $answerTime,
             null
@@ -760,7 +760,7 @@ abstract class TpCdrAbstract
     {
         if (!is_null($createdAt)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $createdAt = DateTimeHelper::createOrFix(
                 $createdAt,
                 null
@@ -785,7 +785,7 @@ abstract class TpCdrAbstract
     {
         if (!is_null($updatedAt)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $updatedAt = DateTimeHelper::createOrFix(
                 $updatedAt,
                 null
@@ -810,7 +810,7 @@ abstract class TpCdrAbstract
     {
         if (!is_null($deletedAt)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $deletedAt = DateTimeHelper::createOrFix(
                 $deletedAt,
                 null

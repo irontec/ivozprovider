@@ -315,7 +315,7 @@ abstract class UsersLocationAttrAbstract
     protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'

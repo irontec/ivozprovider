@@ -196,7 +196,7 @@ abstract class RatingProfileAbstract
     protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'

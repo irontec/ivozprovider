@@ -247,7 +247,7 @@ abstract class FaxesInOutAbstract
     protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             'CURRENT_TIMESTAMP'

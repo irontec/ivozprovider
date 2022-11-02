@@ -266,7 +266,7 @@ abstract class CallCsvReportAbstract
     protected function setInDate(string|\DateTimeInterface $inDate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $inDate = DateTimeHelper::createOrFix(
             $inDate,
             null
@@ -289,7 +289,7 @@ abstract class CallCsvReportAbstract
     protected function setOutDate(string|\DateTimeInterface $outDate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $outDate = DateTimeHelper::createOrFix(
             $outDate,
             null
@@ -312,7 +312,7 @@ abstract class CallCsvReportAbstract
     protected function setCreatedOn(string|\DateTimeInterface $createdOn): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $createdOn = DateTimeHelper::createOrFix(
             $createdOn,
             null

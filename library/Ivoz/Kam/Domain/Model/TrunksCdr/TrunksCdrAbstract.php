@@ -394,7 +394,7 @@ abstract class TrunksCdrAbstract
     protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
@@ -417,7 +417,7 @@ abstract class TrunksCdrAbstract
     protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
@@ -572,7 +572,7 @@ abstract class TrunksCdrAbstract
     protected function setParserScheduledAt(string|\DateTimeInterface $parserScheduledAt): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $parserScheduledAt = DateTimeHelper::createOrFix(
             $parserScheduledAt,
             'CURRENT_TIMESTAMP'

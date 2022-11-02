@@ -211,7 +211,7 @@ abstract class BalanceMovementAbstract
     {
         if (!is_null($createdOn)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $createdOn = DateTimeHelper::createOrFix(
                 $createdOn,
                 'CURRENT_TIMESTAMP'

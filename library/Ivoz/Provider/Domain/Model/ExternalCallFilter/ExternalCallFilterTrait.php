@@ -219,31 +219,53 @@ trait ExternalCallFilterTrait
      */
     public function replaceCalendars(Collection $calendars): ExternalCallFilterInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($calendars as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->calendars as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->calendars->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($calendars as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($calendars[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->calendars->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->calendars->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($calendars as $entity) {
             $this->addCalendar($entity);
         }
 
@@ -281,31 +303,53 @@ trait ExternalCallFilterTrait
      */
     public function replaceBlackLists(Collection $blackLists): ExternalCallFilterInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($blackLists as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->blackLists as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->blackLists->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($blackLists as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($blackLists[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->blackLists->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->blackLists->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($blackLists as $entity) {
             $this->addBlackList($entity);
         }
 
@@ -343,31 +387,53 @@ trait ExternalCallFilterTrait
      */
     public function replaceWhiteLists(Collection $whiteLists): ExternalCallFilterInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($whiteLists as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->whiteLists as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->whiteLists->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($whiteLists as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($whiteLists[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->whiteLists->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->whiteLists->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($whiteLists as $entity) {
             $this->addWhiteList($entity);
         }
 
@@ -405,31 +471,53 @@ trait ExternalCallFilterTrait
      */
     public function replaceSchedules(Collection $schedules): ExternalCallFilterInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($schedules as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setFilter($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->schedules as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->schedules->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($schedules as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($schedules[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->schedules->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->schedules->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($schedules as $entity) {
             $this->addSchedule($entity);
         }
 

@@ -1031,7 +1031,7 @@ abstract class VoicemailAbstract
     {
         if (!is_null($stamp)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $stamp = DateTimeHelper::createOrFix(
                 $stamp,
                 null

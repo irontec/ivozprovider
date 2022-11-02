@@ -278,7 +278,7 @@ abstract class RtpengineAbstract
     protected function setStamp(string|\DateTimeInterface $stamp): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $stamp = DateTimeHelper::createOrFix(
             $stamp,
             '2000-01-01 00:00:00'

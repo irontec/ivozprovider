@@ -390,7 +390,7 @@ abstract class BillableCallHistoricAbstract
     {
         if (!is_null($startTime)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $startTime = DateTimeHelper::createOrFix(
                 $startTime,
                 null

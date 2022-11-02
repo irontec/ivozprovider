@@ -160,31 +160,53 @@ trait IvrTrait
      */
     public function replaceEntries(Collection $entries): IvrInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($entries as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setIvr($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->entries as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->entries->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($entries as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($entries[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->entries->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->entries->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($entries as $entity) {
             $this->addEntry($entity);
         }
 
@@ -222,31 +244,53 @@ trait IvrTrait
      */
     public function replaceExcludedExtensions(Collection $excludedExtensions): IvrInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($excludedExtensions as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setIvr($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->excludedExtensions as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->excludedExtensions->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($excludedExtensions as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($excludedExtensions[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->excludedExtensions->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->excludedExtensions->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($excludedExtensions as $entity) {
             $this->addExcludedExtension($entity);
         }
 

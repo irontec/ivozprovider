@@ -131,31 +131,53 @@ trait TransformationRuleSetTrait
      */
     public function replaceRules(Collection $rules): TransformationRuleSetInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($rules as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setTransformationRuleSet($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->rules as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->rules->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($rules as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($rules[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->rules->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->rules->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($rules as $entity) {
             $this->addRule($entity);
         }
 
