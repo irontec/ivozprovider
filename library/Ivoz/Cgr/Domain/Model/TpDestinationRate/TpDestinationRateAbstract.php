@@ -394,7 +394,7 @@ abstract class TpDestinationRateAbstract
     protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'

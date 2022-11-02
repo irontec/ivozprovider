@@ -211,7 +211,7 @@ abstract class MaxUsageNotificationAbstract
     {
         if (!is_null($lastSent)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null

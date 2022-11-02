@@ -240,11 +240,10 @@ abstract class CalendarPeriodAbstract
     protected function setStartDate(string|\DateTimeInterface $startDate): static
     {
 
-        /** @var \Datetime */
-        $startDate = DateTimeHelper::createOrFix(
-            $startDate,
-            null
-        );
+        /** @var \DateTime */
+        $startDate = !($startDate instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($startDate, 'Y-m-d', new \DateTimeZone('UTC'))
+            : $startDate;
 
         if ($this->isInitialized() && $this->startDate == $startDate) {
             return $this;
@@ -263,11 +262,10 @@ abstract class CalendarPeriodAbstract
     protected function setEndDate(string|\DateTimeInterface $endDate): static
     {
 
-        /** @var \Datetime */
-        $endDate = DateTimeHelper::createOrFix(
-            $endDate,
-            null
-        );
+        /** @var \DateTime */
+        $endDate = !($endDate instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($endDate, 'Y-m-d', new \DateTimeZone('UTC'))
+            : $endDate;
 
         if ($this->isInitialized() && $this->endDate == $endDate) {
             return $this;

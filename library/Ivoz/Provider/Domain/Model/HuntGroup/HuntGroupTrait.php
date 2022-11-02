@@ -132,31 +132,53 @@ trait HuntGroupTrait
      */
     public function replaceHuntGroupMembers(Collection $huntGroupMembers): HuntGroupInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($huntGroupMembers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setHuntGroup($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->huntGroupMembers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->huntGroupMembers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($huntGroupMembers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($huntGroupMembers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->huntGroupMembers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->huntGroupMembers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($huntGroupMembers as $entity) {
             $this->addHuntGroupMember($entity);
         }
 

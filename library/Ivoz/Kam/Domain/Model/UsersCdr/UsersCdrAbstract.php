@@ -303,7 +303,7 @@ abstract class UsersCdrAbstract
     protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
@@ -326,7 +326,7 @@ abstract class UsersCdrAbstract
     protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'

@@ -219,31 +219,53 @@ trait ConditionalRoutesConditionTrait
      */
     public function replaceRelMatchlists(Collection $relMatchlists): ConditionalRoutesConditionInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relMatchlists as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relMatchlists as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relMatchlists->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relMatchlists as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relMatchlists[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relMatchlists->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relMatchlists->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relMatchlists as $entity) {
             $this->addRelMatchlist($entity);
         }
 
@@ -281,31 +303,53 @@ trait ConditionalRoutesConditionTrait
      */
     public function replaceRelSchedules(Collection $relSchedules): ConditionalRoutesConditionInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relSchedules as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relSchedules as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relSchedules->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relSchedules as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relSchedules[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relSchedules->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relSchedules->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relSchedules as $entity) {
             $this->addRelSchedule($entity);
         }
 
@@ -343,31 +387,53 @@ trait ConditionalRoutesConditionTrait
      */
     public function replaceRelCalendars(Collection $relCalendars): ConditionalRoutesConditionInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relCalendars as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relCalendars as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relCalendars->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relCalendars as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relCalendars[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relCalendars->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relCalendars->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relCalendars as $entity) {
             $this->addRelCalendar($entity);
         }
 
@@ -405,31 +471,53 @@ trait ConditionalRoutesConditionTrait
      */
     public function replaceRelRouteLocks(Collection $relRouteLocks): ConditionalRoutesConditionInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relRouteLocks as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relRouteLocks as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relRouteLocks->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relRouteLocks as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relRouteLocks[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relRouteLocks->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relRouteLocks->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relRouteLocks as $entity) {
             $this->addRelRouteLock($entity);
         }
 

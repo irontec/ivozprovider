@@ -420,7 +420,7 @@ abstract class TerminalAbstract
     {
         if (!is_null($lastProvisionDate)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastProvisionDate = DateTimeHelper::createOrFix(
                 $lastProvisionDate,
                 null
