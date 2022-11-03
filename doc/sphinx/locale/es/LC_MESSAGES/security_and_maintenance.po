@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 12:36+0100\n"
+"POT-Creation-Date: 2022-11-03 16:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,17 +224,70 @@ msgstr ""
 "ejemplo `tcpdump <http://www.tcpdump.org>`_ y `ngrep "
 "<http://ngrep.sourceforge.net>`_."
 
+#: ../../security_and_maintenance/security/antibruteforce.rst:3
+msgid "Anti brute-force attacks"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:5
+msgid ""
+"IvozProvider ships a simple anti brute-force attack in KamUsers that bans"
+" sources after continuous SIP auth failures from same IP address."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:8
+msgid "It works like this:"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:10
+msgid ""
+"On SIP failures (invalid user or invalid password cases only), a counter "
+"is increased:"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:13
+msgid "Key: fromUsername@fromDomain::source_ip"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:13
+msgid "e.g. terminal@vpbx.domain.net::1.2.3.4"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:15
+msgid "Counter is increased on every failure."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:17
+msgid ""
+"When counter reaches 100, that specific source (user + domain + ip) is "
+"banned for 12 hours."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:20
+msgid "After 12 hours, source is accepted again and:"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:22
+msgid "Counter starts counting again from 80."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:24
+msgid "If it reaches 100 again, it is banned for another 12 hours."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antibruteforce.rst:26
+msgid "See :ref:`Brute-force attacks` for currently blocked sources."
+msgstr ""
+
 #: ../../security_and_maintenance/security/antiflooding.rst:3
 msgid "SIP Antiflooding"
 msgstr "SIP Antiflooding"
 
 #: ../../security_and_maintenance/security/antiflooding.rst:5
+#, fuzzy
 msgid ""
-"Both SIP Proxies included in IvozProvider installation, KamUsers for SIP "
-"signalling with clients and KamTrunks for SIP signalling with providers, "
-"use `PIKE module "
-"<http://kamailio.org/docs/modules/5.1.x/modules/pike.html>`_ to avoid DoS"
-" attacks."
+"SIP Proxies included in IvozProvider installation for SIP signalling use "
+"`PIKE module <http://kamailio.org/docs/modules/5.1.x/modules/pike.html>`_"
+" to avoid DoS attacks."
 msgstr ""
 "Ambos SIP proxies incluidos en la instalación de IvozProvider, KamUsers "
 "para la señalización con los clientes y Kamtrunks para la señalización "
@@ -242,113 +295,126 @@ msgstr ""
 "<http://kamailio.org/docs/modules/5.1.x/modules/pike.html>`_ para evitar "
 "ataques de denegación de servicio."
 
-#: ../../security_and_maintenance/security/antiflooding.rst:9
+#: ../../security_and_maintenance/security/antiflooding.rst:8
+#, fuzzy
 msgid ""
-"This module keeps trace of all incoming request's IP source and blocks "
-"the ones that exceed the limit on a given time interval."
+"This module keeps trace of incoming request's IP address and blocks the "
+"ones that exceed the limit on a given time interval."
 msgstr ""
 "Este módulo controla todas los mensajes SIP recibidos de cada origen IP y"
 " bloquea aquellos orígenes que superen cierto límite en un intervalo de "
 "muestreo concreto."
 
-#: ../../security_and_maintenance/security/antiflooding.rst:12
+#: ../../security_and_maintenance/security/antiflooding.rst:11
+#, fuzzy
 msgid ""
-"**IPs are not blocked permanently**, they are allowed again as soon as "
-"their incoming request don't exceed the limit on upcoming time interval."
+"**IPs are not blocked permanently**, they are blocked for 5 minutes. "
+"After this time, they are allowed again as long as their incoming request"
+" rate don't exceed the limit."
 msgstr ""
 "**Las IPs no se bloquean permanentemente**, se volverán a permitir "
 "mensajes de dichos orígenes tan pronto como transcurra un período de "
 "muestreo en el que no superen el umbral."
 
-#: ../../security_and_maintenance/security/antiflooding.rst:15
+#: ../../security_and_maintenance/security/antiflooding.rst:14
+msgid ""
+":ref:`Antiflood banned IPs` shows a list of addresses that have been "
+"banned at some point."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:16
 msgid "Current configuration parameters are:"
 msgstr "Los parámetros actuales son:"
 
-#: ../../security_and_maintenance/security/antiflooding.rst:17
+#: ../../security_and_maintenance/security/antiflooding.rst:18
 msgid "**Sampling time interval**: 2 seconds."
 msgstr "**Período de muestreo**: 2 segundos."
 
-#: ../../security_and_maintenance/security/antiflooding.rst:19
-msgid "**Threshold per time unit**: 30 requests."
+#: ../../security_and_maintenance/security/antiflooding.rst:20
+#, fuzzy
+msgid "**Threshold per time unit**: 100 requests."
 msgstr "**Número máximo de peticiones**: 30."
 
-#: ../../security_and_maintenance/security/antiflooding.rst:22
+#: ../../security_and_maintenance/security/antiflooding.rst:23
 msgid ""
-"This means that *any IP address that sends more than 30 requests in a 2"
-"-second-time-interval will be blocked (ignored) until next 2-second-time-"
-"interval in which this origin tries less than 30 requests*."
+"This means that *any IP address that sends more than 100 requests in a 2"
+"-second-time-interval will be blocked (ignored) for 5 minutes. After this"
+" time, it will be unblocked and its request rate will be evaluated "
+"again*."
 msgstr ""
-"Esto significa que *cualquier dirección IP que envíe más de 30 peticiones"
-" en un tramo de 2 segundos se bloqueará (ignorando sus mensajes) hasta "
-"que transcurran 2 segundos en los que el origen envíe menos de 30 "
-"peticiones*."
 
 #: ../../security_and_maintenance/security/antiflooding.rst:26
-msgid "Antiflooding excluded sources"
-msgstr "Orígenes excluídos del mecanismo antiflooding:"
+msgid ""
+"Be aware that some requests are not taken into account by antiflood, "
+"continue reading please."
+msgstr ""
 
-#: ../../security_and_maintenance/security/antiflooding.rst:28
-msgid "These sources are not evaluated against antiflood:"
-msgstr "Estos orígenes no se evalúan contra el antiflood:"
-
-#: ../../security_and_maintenance/security/antiflooding.rst:32
-msgid "Both KamUsers and KamTrunks:"
-msgstr "Tanto en KamUsers como en Kamtrunks:"
+#: ../../security_and_maintenance/security/antiflooding.rst:29
+msgid "Which requests are taken into account in KamUsers?"
+msgstr ""
 
 #: ../../security_and_maintenance/security/antiflooding.rst:31
-msgid "IvozProvider components"
-msgstr "Componentes internos de IvozProvider"
+msgid "Client side requests usually traverse 2 different phases:"
+msgstr ""
 
-#: ../../security_and_maintenance/security/antiflooding.rst:32
-msgid "IPs in :ref:`Antiflood trusted IPs`"
-msgstr "IP en la sección :ref:`Antiflood trusted IPs`"
-
-#: ../../security_and_maintenance/security/antiflooding.rst:36
-msgid "KamUsers:"
-msgstr "KamUsers:"
+#: ../../security_and_maintenance/security/antiflooding.rst:33
+msgid "Step 0: initial checks, endpoint identification and authentication."
+msgstr ""
 
 #: ../../security_and_maintenance/security/antiflooding.rst:35
-msgid ""
-"IPs in :ref:`Clients authorized IPs <client_authorized_ip_ranges>` (vPBX,"
-" retail, residential)"
+msgid "Step 1: remaining logic."
 msgstr ""
-"IPs en :ref:`IPs autorizadas por cliente <client_authorized_ip_ranges>` "
-"(vPBX, retail, residencial)"
 
-#: ../../security_and_maintenance/security/antiflooding.rst:36
-msgid "Wholesale clients' IP addresses"
-msgstr "Direcciones IPs de los clientes wholesale"
-
-#: ../../security_and_maintenance/security/antiflooding.rst:38
-msgid ""
-"IPs and ranges added in :ref:`Clients authorized IPs "
-"<client_authorized_ip_ranges>` will be excluded from antiflood, even if "
-"**Filter by IP address** is disabled."
+#: ../../security_and_maintenance/security/antiflooding.rst:37
+#: ../../security_and_maintenance/security/antiflooding.rst:55
+msgid "Antiflood will take into account:"
 msgstr ""
-"Las direcciones IP y los rangos añadidos en :ref:`IPs autorizadas por "
-"cliente <client_authorized_ip_ranges>` se excluirán del antiflood, aunque"
-" el **Filtrado por IP** esté desactivado."
 
-#: ../../security_and_maintenance/security/antiflooding.rst:42
-msgid "KamTrunks:"
-msgstr "KamTrunks:"
-
-#: ../../security_and_maintenance/security/antiflooding.rst:42
-msgid "DDI Providers' IP addresses"
-msgstr "Direcciones IP de los Proveedores de DDIs"
-
-#: ../../security_and_maintenance/security/antiflooding.rst:44
-msgid ""
-"On a typical NAT scenario with hundreds of UACs sharing the same public "
-"IP address, this IP should be static and should be added to :ref:`Clients"
-" authorized IPs <client_authorized_ip_ranges>` list to avoid been blocked"
-" by antiflooding (e.g. after lights out, etc.)"
+#: ../../security_and_maintenance/security/antiflooding.rst:39
+msgid "Requests failing during step 0:"
 msgstr ""
-"En el escenario clásico tras NAT en el que cientos de terminales SIP "
-"presentan la misma dirección IP pública, esta IP debe ser estática y debe"
-" ser añadida a :ref:`IPs autorizadas por cliente "
-"<client_authorized_ip_ranges>` para evitar que sea bloqueada por el "
-"mecanismo de antiflooding (tras un apagón eléctrico o similar)."
+
+#: ../../security_and_maintenance/security/antiflooding.rst:41
+msgid "Requests not using SIP domain in KamUsers (except wholesale)."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:43
+msgid "Requests from non-existing AoRs in KamUsers."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:45
+msgid "Requests failing SIP authentication with wrong passwords in KamUsers."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:47
+msgid ""
+"Initial INVITE requests reaching step 1 (aka: new call establishments of "
+"legitimate clients)."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:50
+msgid ""
+"Note that antiflood will not take into account successful "
+"REGISTER/SUBSCRIBE cycles."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:53
+msgid "Which requests are taken into account in KamTrunks?"
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:57
+msgid "SIP OPTIONS from non-DDIproviders."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:59
+msgid "Non-DDIproviders talking to KamTrunks."
+msgstr ""
+
+#: ../../security_and_maintenance/security/antiflooding.rst:61
+msgid ""
+"Note that antiflood will not take into account DDI Provider requests to "
+"KamTrunks."
+msgstr ""
 
 #: ../../security_and_maintenance/security/authorized_ip_ranges.rst:5
 msgid "Authorized IP ranges"
@@ -386,18 +452,24 @@ msgstr ""
 "válidas."
 
 #: ../../security_and_maintenance/security/authorized_ip_ranges.rst:16
+#: ../../security_and_maintenance/security/geoip_filter.rst:15
 msgid ""
-"Once the filter has been activated you **MUST** add networks or valid IP "
-"addresses, otherwise, all the calls will be rejected."
+"Enabling **Filter by IP address** and leaving blank both **GeoIP "
+"countries** and **List of authorized sources** will prevent all calls."
 msgstr ""
-"Una vez que el filtrado se ha activado **SE DEBEN** añadir redes o IPs "
-"válidas. En caso contrario, todas las llamadas se rechazarán."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:22
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:19
+msgid ""
+"Addresses listed in :ref:`IP filter blocked addresses` gives a clue of "
+"legitimate sources that should be added in **List of authorized sources**"
+" subsection."
+msgstr ""
+
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:25
 msgid "Roadwarrior users"
 msgstr "Usuarios remotos"
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:24
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:27
 msgid ""
 "Some vPBX clients have roadwarrior users that travel often and connect "
 "from external networks, forcing Clients to disable the IP filter security"
@@ -407,7 +479,7 @@ msgstr ""
 "frecuencia y se conectan desde redes externas, forzando a los clientes a "
 "deshabilitar el **Filtrado por IP**."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:27
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:30
 msgid ""
 "To solve this issue, there is a user option called **Calls from non-"
 "granted IPs** that enables these users to call from non-granted IPs while"
@@ -420,7 +492,7 @@ msgstr ""
 " las credenciales del resto de usuarios solo se puedan utilizar desde las"
 " redes autorizadas."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:31
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:34
 msgid ""
 "When users like these call from non-granted IPs, their amount of "
 "concurrent outgoing calls are limited to 1, 2 or 3 to avoid being a "
@@ -430,7 +502,7 @@ msgstr ""
 "llamadas salientes concurrentes se limitará a 1, 2 o 3, evitando que "
 "supongan una brecha de seguridad."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:34
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:37
 msgid ""
 "Only **generated calls** (both internals and externals) are limited, "
 "received calls are not affected by this setting."
@@ -438,11 +510,11 @@ msgstr ""
 "Solo se limitarán las **llamadas generadas** (internas y externas), la "
 "recepción de llamadas no se verán afectadas por este parámetro."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:37
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:40
 msgid "To sum up, with this feature:"
 msgstr "En resumen, con esta funcionalidad:"
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:39
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:42
 msgid ""
 "There are users that are allowed to make a fixed amount of calls from "
 "non-granted IPs."
@@ -450,15 +522,15 @@ msgstr ""
 "Existen usuarios que pueden realizar un número limitado de llamadas desde"
 " IPs no autorizadas."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:42
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:45
 msgid "These calls from non-granted IPs are counted and limited."
 msgstr "Estas llamadas desde redes no autorizadas se cuentan y se limitan."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:45
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:48
 msgid "Example 1 - Client without IP check"
 msgstr "Ejemplo 1 - Cliente sin Filtrado de IP"
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:46
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:49
 msgid ""
 "It doesn't matter if the user is allowed to make calls from non-granted "
 "IPs, as there are no non-granted IPs."
@@ -466,11 +538,11 @@ msgstr ""
 "No importa si el usuario puede realizar llamadas desde redes no "
 "autorizadas, al no existir redes autorizadas."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:50
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:53
 msgid "Example 2 - Client with IP check"
 msgstr "Ejemplo 2- Cliente con Filtrado de IP"
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:51
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:54
 msgid ""
 "If the user is calling from one of the allowed IPs, it doesn't matter if "
 "the user is allowed to make calls from non-granted IPs: this calls are "
@@ -480,7 +552,7 @@ msgstr ""
 "o no desde redes no autorizadas: las llamadas desde IPs permitidas no se "
 "limitan."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:55
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:58
 msgid ""
 "If the user is NOT calling from one of the allowed IPs, it is verified "
 "the amount of calls that this user is allowed to make. If the user is "
@@ -492,7 +564,7 @@ msgstr ""
 "puede realizar llamadas desde IPs no autorizadas y no ha llegado a su "
 "límite, la llamada se permite y se cuenta."
 
-#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:60
+#: ../../security_and_maintenance/security/authorized_ip_ranges.rst:63
 msgid ""
 "To sum up, if **Calls from non-granted IPs** is set to *None* the user "
 "must fulfill the IP policy of the client."
@@ -572,11 +644,35 @@ msgstr ""
 
 #: ../../security_and_maintenance/security/current_day_max_usage.rst:10
 msgid ""
+"Take into account that **depending on BillingMethod current day max usage"
+" will be updated during a call or only on call hang up**:"
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:12
+msgid ""
+"**Postpaid**: when a call is hung up, counter is updated. If threshold is"
+" exceeded, all calls of that client will be hung up."
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:14
+msgid ""
+"**Pseudo-prepaid**: equal to postpaid, as credit is not updated during a "
+"call."
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:16
+msgid ""
+"**Prepaid**: credit is updated during a call, so as soon as max daily "
+"usage is reached, all calls of the client will be hung up."
+msgstr ""
+
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:18
+msgid ""
 "Set a reasonable limit for every client so that abnormal money usage is "
 "automatically blocked."
 msgstr ""
 
-#: ../../security_and_maintenance/security/current_day_max_usage.rst:12
+#: ../../security_and_maintenance/security/current_day_max_usage.rst:20
 msgid "More information at :ref:`current day usages`."
 msgstr ""
 
@@ -667,7 +763,8 @@ msgid "**Web portal and provisioning**:"
 msgstr "**Acceso a portales web y provisión de terminales**:"
 
 #: ../../security_and_maintenance/security/firewall.rst:47
-msgid "Ports TCP 443, 1443 y 2443"
+#, fuzzy
+msgid "Ports TCP 80, 443, 1443, 2443 and 3443"
 msgstr "Puertos TCP 443, 1443 y 2443"
 
 #: ../../security_and_maintenance/security/firewall.rst:49
@@ -677,6 +774,35 @@ msgid ""
 msgstr ""
 "Recomendamos utilizar algún mecanismo de **bloqueo geoIP** para rechazar "
 "conexiones de países en los que no tengamos clientes."
+
+#: ../../security_and_maintenance/security/geoip_filter.rst:5
+msgid "GeoIP filter"
+msgstr ""
+
+#: ../../security_and_maintenance/security/geoip_filter.rst:7
+msgid ""
+":ref:`Virtual PBX clients <vPBX clients>`, :ref:`retail clients` and "
+":ref:`residential clients` can allow traffic from IPs addresses belonging"
+" to chosen countries with the combination of **Filter by IP address** "
+"field and **GeoIP countries** selector."
+msgstr ""
+
+#: ../../security_and_maintenance/security/geoip_filter.rst:10
+#, fuzzy
+msgid ""
+"On :ref:`wholesale clients` there is no **Filter by IP address** field as"
+" this type of clients are authenticated by IP."
+msgstr ""
+"Los :ref:`clientes wholesale` no disponen de la opción **Filtrado IP** ya"
+" que este tipo de clientes se autentica por IP y hace que sea obligatorio"
+" completar la lista de direcciones IP."
+
+#: ../../security_and_maintenance/security/geoip_filter.rst:12
+msgid ""
+"Selecting a country will allow traffic from all addresses of that "
+"country. If you want to allow specific IPs, use "
+":ref:`client_authorized_ip_ranges` instead."
+msgstr ""
 
 #: ../../security_and_maintenance/security/index.rst:3
 msgid "Security"
@@ -700,4 +826,101 @@ msgstr ""
 "Esta sección habla sobre mecanismos de seguridad incluidos y no incluidos"
 " (pero recomendados he incluidos en todas las instalaciones de "
 "IvozProvider mantenidas por `Irontec <https://www.irontec.com>`_):"
+
+#~ msgid ""
+#~ "This means that *any IP address "
+#~ "that sends more than 30 requests "
+#~ "in a 2-second-time-interval will "
+#~ "be blocked (ignored) until next 2"
+#~ "-second-time-interval in which this "
+#~ "origin tries less than 30 requests*."
+#~ msgstr ""
+#~ "Esto significa que *cualquier dirección "
+#~ "IP que envíe más de 30 peticiones"
+#~ " en un tramo de 2 segundos se"
+#~ " bloqueará (ignorando sus mensajes) hasta"
+#~ " que transcurran 2 segundos en los"
+#~ " que el origen envíe menos de "
+#~ "30 peticiones*."
+
+#~ msgid "Antiflooding excluded sources"
+#~ msgstr "Orígenes excluídos del mecanismo antiflooding:"
+
+#~ msgid "These sources are not evaluated against antiflood:"
+#~ msgstr "Estos orígenes no se evalúan contra el antiflood:"
+
+#~ msgid "Both KamUsers and KamTrunks:"
+#~ msgstr "Tanto en KamUsers como en Kamtrunks:"
+
+#~ msgid "IvozProvider components"
+#~ msgstr "Componentes internos de IvozProvider"
+
+#~ msgid "IPs in :ref:`Antiflood trusted IPs`"
+#~ msgstr "IP en la sección :ref:`Antiflood trusted IPs`"
+
+#~ msgid "KamUsers:"
+#~ msgstr "KamUsers:"
+
+#~ msgid ""
+#~ "IPs in :ref:`Clients authorized IPs "
+#~ "<client_authorized_ip_ranges>` (vPBX, retail, "
+#~ "residential)"
+#~ msgstr ""
+#~ "IPs en :ref:`IPs autorizadas por cliente"
+#~ " <client_authorized_ip_ranges>` (vPBX, retail, "
+#~ "residencial)"
+
+#~ msgid "Wholesale clients' IP addresses"
+#~ msgstr "Direcciones IPs de los clientes wholesale"
+
+#~ msgid ""
+#~ "IPs and ranges added in :ref:`Clients"
+#~ " authorized IPs <client_authorized_ip_ranges>` "
+#~ "will be excluded from antiflood, even"
+#~ " if **Filter by IP address** is "
+#~ "disabled."
+#~ msgstr ""
+#~ "Las direcciones IP y los rangos "
+#~ "añadidos en :ref:`IPs autorizadas por "
+#~ "cliente <client_authorized_ip_ranges>` se excluirán"
+#~ " del antiflood, aunque el **Filtrado "
+#~ "por IP** esté desactivado."
+
+#~ msgid "KamTrunks:"
+#~ msgstr "KamTrunks:"
+
+#~ msgid "DDI Providers' IP addresses"
+#~ msgstr "Direcciones IP de los Proveedores de DDIs"
+
+#~ msgid ""
+#~ "On a typical NAT scenario with "
+#~ "hundreds of UACs sharing the same "
+#~ "public IP address, this IP should "
+#~ "be static and should be added to"
+#~ " :ref:`Clients authorized IPs "
+#~ "<client_authorized_ip_ranges>` list to avoid "
+#~ "been blocked by antiflooding (e.g. after"
+#~ " lights out, etc.)"
+#~ msgstr ""
+#~ "En el escenario clásico tras NAT "
+#~ "en el que cientos de terminales "
+#~ "SIP presentan la misma dirección IP "
+#~ "pública, esta IP debe ser estática "
+#~ "y debe ser añadida a :ref:`IPs "
+#~ "autorizadas por cliente "
+#~ "<client_authorized_ip_ranges>` para evitar que "
+#~ "sea bloqueada por el mecanismo de "
+#~ "antiflooding (tras un apagón eléctrico o"
+#~ " similar)."
+
+#~ msgid ""
+#~ "Once the filter has been activated "
+#~ "you **MUST** add networks or valid "
+#~ "IP addresses, otherwise, all the calls"
+#~ " will be rejected."
+#~ msgstr ""
+#~ "Una vez que el filtrado se ha "
+#~ "activado **SE DEBEN** añadir redes o "
+#~ "IPs válidas. En caso contrario, todas"
+#~ " las llamadas se rechazarán."
 
