@@ -66,6 +66,13 @@ interface DdiInterface extends LoggableEntityInterface
     public function getDdi(): string;
 
     /**
+     * Get description
+     *
+     * @return string | null
+     */
+    public function getDescription();
+
+    /**
      * Get recordCalls
      *
      * @return string
