@@ -44,7 +44,7 @@ These are the **ports IvozProvider needs to expose** to work properly:
 
 **Web portal and provisioning**:
 
-- Ports TCP 443, 1443 y 2443
+- Ports TCP 80, 443, 1443, 2443 and 3443
 
 .. hint:: We recommend using any **geoIP blocking** mechanism to drop connections from
           countries without clients.
