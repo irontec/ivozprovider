@@ -34,6 +34,8 @@ production:
           externalCallFilter: true
           routeType: true
           target: true
+          ddiProvider: true
+          description: true
         options:
           title: _("Options")
           screens:
@@ -69,6 +71,7 @@ production:
             ddiProvider: 1
             displayName: 2
             language: 1
+            description: 2
         group1:
           label: _("Filters data")
           colsPerRow: 2

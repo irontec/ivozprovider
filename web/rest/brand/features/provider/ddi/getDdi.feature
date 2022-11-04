@@ -17,6 +17,7 @@ Feature: Retrieve ddis
           {
               "ddi": "123",
               "ddie164": "+34123",
+              "description": "Description for DDI 123",
               "id": 1,
               "ddiProvider": 1,
               "country": 68
@@ -24,6 +25,7 @@ Feature: Retrieve ddis
           {
               "ddi": "124",
               "ddie164": "+34124",
+              "description": null,
               "id": 2,
               "ddiProvider": 1,
               "country": 68
@@ -31,6 +33,7 @@ Feature: Retrieve ddis
           {
               "ddi": "121",
               "ddie164": "+34121",
+              "description": null,
               "id": 3,
               "ddiProvider": 1,
               "country": 68
@@ -50,6 +53,7 @@ Feature: Retrieve ddis
       {
           "ddi": "123",
           "ddie164": "+34123",
+          "description": "Description for DDI 123",
           "id": 1,
           "company": "~",
           "ddiProvider": {

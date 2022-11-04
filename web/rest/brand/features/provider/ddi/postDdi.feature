@@ -12,6 +12,7 @@ Feature: Create ddis
     """
       {
           "ddi": "321",
+          "description": "Description for 321",
           "company": 1,
           "ddiProvider": 1,
           "country": 68
@@ -25,6 +26,7 @@ Feature: Create ddis
       {
           "ddi": "321",
           "ddie164": "+34321",
+          "description": "Description for 321",
           "id": 4,
           "company": 1,
           "ddiProvider": 1,
@@ -44,6 +46,7 @@ Feature: Create ddis
       {
           "ddi": "321",
           "ddie164": "+34321",
+          "description": "Description for 321",
           "id": 4,
           "company": "~",
           "ddiProvider": {

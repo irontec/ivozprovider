@@ -25,6 +25,10 @@ production:
       pattern: "^[0-9]+$"
       required: true
       default: true
+    description:
+      title: _('Description')
+      type: text
+      maxLength: 100
     externalCallFilter:
       title: ngettext('External call filter', 'External call filters', 1)
       type: select
