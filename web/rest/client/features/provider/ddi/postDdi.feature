@@ -13,6 +13,7 @@ Feature: Create Ddis
       {
           "ddi": "1234",
           "ddie164": "+341234",
+          "description": "Description for DDI 1234",
           "recordCalls": "none",
           "displayName": "",
           "routeType": "user",
