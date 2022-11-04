@@ -107,6 +107,8 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getDdi(): string;
 
+    public function getDescription(): ?string;
+
     public function getRecordCalls(): string;
 
     public function getDisplayName(): ?string;
