@@ -61,6 +61,11 @@ abstract class DdiAbstract
     protected $ddie164 = null;
 
     /**
+     * @var ?string
+     */
+    protected $description = null;
+
+    /**
      * @var string
      * comment: enum:none|all|inbound|outbound
      */
@@ -255,6 +260,7 @@ abstract class DdiAbstract
 
         $self
             ->setDdie164($dto->getDdie164())
+            ->setDescription($dto->getDescription())
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
@@ -303,6 +309,7 @@ abstract class DdiAbstract
         $this
             ->setDdi($ddi)
             ->setDdie164($dto->getDdie164())
+            ->setDescription($dto->getDescription())
             ->setRecordCalls($recordCalls)
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
@@ -335,6 +342,7 @@ abstract class DdiAbstract
         return self::createDto()
             ->setDdi(self::getDdi())
             ->setDdie164(self::getDdie164())
+            ->setDescription(self::getDescription())
             ->setRecordCalls(self::getRecordCalls())
             ->setDisplayName(self::getDisplayName())
             ->setRouteType(self::getRouteType())
@@ -365,6 +373,7 @@ abstract class DdiAbstract
         return [
             'Ddi' => self::getDdi(),
             'DdiE164' => self::getDdie164(),
+            'description' => self::getDescription(),
             'recordCalls' => self::getRecordCalls(),
             'displayName' => self::getDisplayName(),
             'routeType' => self::getRouteType(),
@@ -416,6 +425,22 @@ abstract class DdiAbstract
     public function getDdie164(): ?string
     {
         return $this->ddie164;
+    }
+
+    protected function setDescription(?string $description = null): static
+    {
+        if (!is_null($description)) {
+            Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 
     protected function setRecordCalls(string $recordCalls): static
