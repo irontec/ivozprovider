@@ -31,7 +31,10 @@ Feature: Retrieve companies
                   3,
                   4,
                   5
-              ]
+              ],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "vpbx",
@@ -44,7 +47,10 @@ Feature: Retrieve companies
               "balance": 0,
               "id": 2,
               "outgoingDdi": null,
-              "featureIds": []
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "retail",
@@ -57,7 +63,10 @@ Feature: Retrieve companies
               "balance": 0,
               "id": 3,
               "outgoingDdi": null,
-              "featureIds": []
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           {
               "type": "residential",
@@ -70,7 +79,10 @@ Feature: Retrieve companies
               "balance": 0,
               "id": 4,
               "outgoingDdi": null,
-              "featureIds": []
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           }
       ]
     """
@@ -100,6 +112,7 @@ Feature: Retrieve companies
           "countryName": "Company Country",
           "ipfilter": false,
           "onDemandRecord": 0,
+          "allowRecordingRemoval": true,
           "onDemandRecordCode": "",
           "externallyextraopts": "",
           "billingMethod": "prepaid",
@@ -164,6 +177,7 @@ Feature: Retrieve companies
               "editable": true
           },
           "outgoingDdi": null,
+          "outgoingDdiRule": null,
           "voicemailNotificationTemplate": {
               "name": "Voicemail notification",
               "type": "voicemail",
@@ -172,12 +186,20 @@ Feature: Retrieve companies
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null,
           "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": {
+              "name": "CallCsv notification",
+              "type": "callCsv",
+              "id": 2
+          },
           "featureIds": [
               1,
               2,
               3,
               4,
               5
-          ]
+          ],
+          "geoIpAllowedCountries": [],
+          "routingTagIds": [],
+          "codecIds": []
       }
     """

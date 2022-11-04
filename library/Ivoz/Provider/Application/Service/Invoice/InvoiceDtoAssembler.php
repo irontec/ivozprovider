@@ -32,6 +32,14 @@ class InvoiceDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
+        $currency = $invoice
+                ->getCompany()
+                ->getCurrencySymbol();
+
+        $dto->setCurrency(
+            $currency
+        );
+
         if ($invoice->getPdf()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver

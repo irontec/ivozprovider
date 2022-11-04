@@ -30,7 +30,8 @@ Feature: Retrieve invoice
               },
               "invoiceTemplate": 1,
               "company": 1,
-              "scheduler": null
+              "scheduler": null,
+              "currency": "€"
           }
       ]
     """
@@ -61,6 +62,7 @@ Feature: Retrieve invoice
           },
           "invoiceTemplate": "~",
           "company": "~",
-          "numberSequence": null
+          "numberSequence": null,
+          "currency": "€"
       }
     """

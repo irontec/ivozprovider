@@ -45,7 +45,8 @@ Feature: Input timezone convertion
           "invoiceTemplate": 1,
           "company": 1,
           "numberSequence": null,
-          "scheduler": null
+          "scheduler": null,
+          "currency": "€"
       }
     """
 

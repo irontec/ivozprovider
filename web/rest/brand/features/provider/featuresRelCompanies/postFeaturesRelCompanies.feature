@@ -39,6 +39,7 @@
               "countryName": "Company Country",
               "ipfilter": false,
               "onDemandRecord": 0,
+              "allowRecordingRemoval": true,
               "onDemandRecordCode": "",
               "externallyextraopts": "",
               "billingMethod": "prepaid",
@@ -51,10 +52,16 @@
               "currency": null,
               "transformationRuleSet": 1,
               "outgoingDdi": null,
+              "outgoingDdiRule": null,
               "voicemailNotificationTemplate": 1,
               "faxNotificationTemplate": null,
               "invoiceNotificationTemplate": null,
-              "callCsvNotificationTemplate": null
+              "callCsvNotificationTemplate": null,
+              "maxDailyUsageNotificationTemplate": 2,
+              "featureIds": [],
+              "geoIpAllowedCountries": [],
+              "routingTagIds": [],
+              "codecIds": []
           },
           "feature": {
               "iden": "progress",

@@ -17,7 +17,9 @@ Feature: Retrieve ddi providers
           {
               "description": "DDIProviderDescription",
               "name": "DDIProviderName",
-              "id": 1
+              "id": 1,
+              "transformationRuleSet": 1,
+              "proxyTrunk": 1
           }
       ]
     """
