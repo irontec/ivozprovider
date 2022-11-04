@@ -17,6 +17,7 @@ Feature: Retrieve Ddis
           {
               "ddi": "123",
               "ddie164": "+34123",
+              "description": "Description for DDI 123",
               "routeType": null,
               "friendValue": "",
               "id": 1,
@@ -48,6 +49,7 @@ Feature: Retrieve Ddis
       {
           "ddi": "123",
           "ddie164": "+34123",
+          "description": "Description for DDI 123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
