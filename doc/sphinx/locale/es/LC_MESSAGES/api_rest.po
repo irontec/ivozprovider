@@ -8,57 +8,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-03-09 10:57+0100\n"
+"POT-Creation-Date: 2022-11-03 17:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.8.0\n"
 
-#: ../../api_rest/acls.rst:3
+#: ../../api_rest/acls.rst:5
 msgid "ACLs"
 msgstr ""
 
-#: ../../api_rest/acls.rst:5
+#: ../../api_rest/acls.rst:7
 msgid ""
 "Credentials used for web access can be used with their API corresponding "
 "level. These administrators (global, brand, client) have full access to "
 "all endpoints of their level."
 msgstr ""
 
-#: ../../api_rest/acls.rst:8
+#: ../../api_rest/acls.rst:10
 msgid "Since 2.15, it is possible to create **restricted administrators** too."
 msgstr ""
 
-#: ../../api_rest/acls.rst:11
+#: ../../api_rest/acls.rst:13
 msgid "Restricted global/brand administrators"
 msgstr ""
 
-#: ../../api_rest/acls.rst:13
+#: ../../api_rest/acls.rst:15
 msgid ""
 "Enabling global/brand administrator **Restricted** option makes this "
 "administrator special:"
 msgstr ""
 
-#: ../../api_rest/acls.rst:15
+#: ../../api_rest/acls.rst:17
 msgid "Cannot be used anymore to access web portal."
 msgstr ""
 
-#: ../../api_rest/acls.rst:17
+#: ../../api_rest/acls.rst:19
 msgid ""
 "Full API endpoint access is restricted to read-only access to those "
 "endpoints."
 msgstr ""
 
-#: ../../api_rest/acls.rst:19
+#: ../../api_rest/acls.rst:21
 msgid ""
 "Privileges can be fine-tuned in *List of Administrator access privileges*"
 " subsection, where you can enable/disable for each endpoint:"
 msgstr ""
 
-#: ../../api_rest/acls.rst:23
+#: ../../api_rest/acls.rst:25
 msgid "Create privilege"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Administrator with this privilege can create new items of given endpoint."
 msgstr ""
 
-#: ../../api_rest/acls.rst:26
+#: ../../api_rest/acls.rst:29
 msgid "Read privilege"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgid ""
 "endpoint. Just watch existing items, no modification is allowed."
 msgstr ""
 
-#: ../../api_rest/acls.rst:30
+#: ../../api_rest/acls.rst:32
 msgid "Update privilege"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgid ""
 "endpoint."
 msgstr ""
 
-#: ../../api_rest/acls.rst:33
+#: ../../api_rest/acls.rst:35
 msgid "Delete privilege"
 msgstr ""
 
@@ -344,15 +344,18 @@ msgid "You'll find API specs in the URLs below:"
 msgstr "La definición de la APIs se encuentra en las siguientes URLs:"
 
 #: ../../api_rest/integrations.rst:45
-msgid "`Platform API spec </api/platform/swagger.json>`_"
+#, fuzzy
+msgid "`Platform API spec </api/platform/docs.json>`_"
 msgstr "`Definición de API de plataforma </api/platform/swagger.json>`_"
 
 #: ../../api_rest/integrations.rst:46
-msgid "`Brand API spec </api/brand/swagger.json>`_"
+#, fuzzy
+msgid "`Brand API spec </api/brand/docs.json>`_"
 msgstr "`Definición de la API de marca </api/brand/swagger.json>`_"
 
 #: ../../api_rest/integrations.rst:47
-msgid "`Client API spec </api/client/swagger.json>`_"
+#, fuzzy
+msgid "`Client API spec </api/client/docs.json>`_"
 msgstr "`Definición de la API de cliente </api/client/swagger.json>`_"
 
 #: ../../api_rest/introduction.rst:3
@@ -423,7 +426,7 @@ msgstr ""
 #: ../../api_rest/multilevel.rst:5
 msgid ""
 "IvozProvider API is divided in same three levels as the web "
-"administration portal:"
+"administration portal plus user API:"
 msgstr ""
 
 #: ../../api_rest/multilevel.rst:7
@@ -439,13 +442,17 @@ msgid "Client"
 msgstr ""
 
 #: ../../api_rest/multilevel.rst:13
+msgid "User"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:15
 msgid ""
 "This split allows different roles with different responsibilities to be "
 "integrated against it without compromising security (read, edit, update "
 "or delete the data they should not)."
 msgstr ""
 
-#: ../../api_rest/multilevel.rst:16
+#: ../../api_rest/multilevel.rst:18
 msgid ""
 "If you check out `security policies "
 "<https://github.com/irontec/ivozprovider/blob/bleeding/web/rest/brand/config/api/raw/provider.yml>`_"
@@ -456,25 +463,21 @@ msgid ""
 "queries that would impact the performance."
 msgstr ""
 
-#: ../../api_rest/multilevel.rst:21
+#: ../../api_rest/multilevel.rst:23
 msgid ""
 "That is why we split it into three APIs with **impersonate mechanism** to"
 " move between them. This mechanism is explained in :ref:`Use Case` "
 "section."
 msgstr ""
 
-#: ../../api_rest/multilevel.rst:24
+#: ../../api_rest/multilevel.rst:26
 msgid ""
 "In order to access to each level, **you will need a corresponding level "
 "URL and credentials**:"
 msgstr ""
 
-#: ../../api_rest/multilevel.rst:27
+#: ../../api_rest/multilevel.rst:29
 msgid "God API access"
-msgstr ""
-
-#: ../../api_rest/multilevel.rst:28
-msgid "URL: God URL defined in :ref:`Platform Portals` + /api/platform"
 msgstr ""
 
 #: ../../api_rest/multilevel.rst:30
@@ -486,25 +489,23 @@ msgid "Brand API access"
 msgstr ""
 
 #: ../../api_rest/multilevel.rst:34
-msgid "URL: Brand URL defined in :ref:`Brand Portals` + /api/brand"
-msgstr ""
-
-#: ../../api_rest/multilevel.rst:36
 msgid "Credentials: Brand credentials defined in :ref:`Brand operators`."
 msgstr ""
 
-#: ../../api_rest/multilevel.rst:39
+#: ../../api_rest/multilevel.rst:37
 msgid "Client API access"
 msgstr ""
 
-#: ../../api_rest/multilevel.rst:40
-msgid "URL: Client URL defined in :ref:`Client Portals` + /api/client"
+#: ../../api_rest/multilevel.rst:38
+msgid "Credentials: Client credentials defined in :ref:`Client operators`."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:41
+msgid "User API access"
 msgstr ""
 
 #: ../../api_rest/multilevel.rst:42
-msgid ""
-"Credentials: Client credentials defined in :ref:`Additional subsections` "
-"*Client admins*."
+msgid "Credentials: User credentials defined in :ref:`users`."
 msgstr ""
 
 #: ../../api_rest/multilevel.rst:44
@@ -521,48 +522,41 @@ msgid ""
 "using a brand URL + /api/client."
 msgstr ""
 
-#: ../../api_rest/use_case.rst:3
+#: ../../api_rest/use_case.rst:5
 msgid "Use Case"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:5
+#: ../../api_rest/use_case.rst:7
 msgid ""
 "Let's put a little use case as an example: A platform admin wants to "
 "obtain the companies of one specific brand (companies are exposed on "
 "Brand API only). The operation would be:"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:8
+#: ../../api_rest/use_case.rst:10
 msgid "On platform API (https://your-domain/api/platform)"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:9
+#: ../../api_rest/use_case.rst:11
 msgid "Login (request a token) as god admin on /admin_login"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:11
+#: ../../api_rest/use_case.rst:13
 msgid "Search target brand on /brands"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:13
-msgid "Get it's domain on /web_portals"
-msgstr ""
-
-#: ../../api_rest/use_case.rst:15
-msgid "Get a valid brand administrator on /administrators"
-msgstr ""
-
-#: ../../api_rest/use_case.rst:18
+#: ../../api_rest/use_case.rst:16
 msgid "On Brand API (https://brand-domain/api/brand)"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:19
+#: ../../api_rest/use_case.rst:17
 msgid ""
 "Impersonate as a brand admin on Auth> /token/exchange (requires a god "
-"token and a brand administrator user name obtained in 1-d)"
+"token and the brand Id. You can impersonate by the username of a brand "
+"administrator instead of a brand id as well)"
 msgstr ""
 
-#: ../../api_rest/use_case.rst:21
+#: ../../api_rest/use_case.rst:19
 msgid "Request brand companies using the endpoint /companies"
 msgstr ""
 
@@ -636,4 +630,37 @@ msgid "You can check out request and response models from the web client itself.
 msgstr ""
 "El cliente web contiene la definición de los modelos de entrada y salida "
 "de la API."
+
+#~ msgid ""
+#~ "IvozProvider API is divided in same "
+#~ "three levels as the web administration"
+#~ " portal:"
+#~ msgstr ""
+
+#~ msgid "URL: God URL defined in :ref:`Platform Portals` + /api/platform"
+#~ msgstr ""
+
+#~ msgid "URL: Brand URL defined in :ref:`Brand Portals` + /api/brand"
+#~ msgstr ""
+
+#~ msgid "URL: Client URL defined in :ref:`Client Portals` + /api/client"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Credentials: Client credentials defined in "
+#~ ":ref:`Additional subsections` *Client admins*."
+#~ msgstr ""
+
+#~ msgid "Get it's domain on /web_portals"
+#~ msgstr ""
+
+#~ msgid "Get a valid brand administrator on /administrators"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Impersonate as a brand admin on "
+#~ "Auth> /token/exchange (requires a god "
+#~ "token and a brand administrator user "
+#~ "name obtained in 1-d)"
+#~ msgstr ""
 
