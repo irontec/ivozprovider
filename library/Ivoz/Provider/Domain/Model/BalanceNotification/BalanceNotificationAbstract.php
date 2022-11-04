@@ -222,7 +222,7 @@ abstract class BalanceNotificationAbstract
     {
         if (!is_null($lastSent)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null

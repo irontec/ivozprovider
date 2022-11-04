@@ -256,7 +256,7 @@ abstract class VoicemailMessageAbstract
     protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             null

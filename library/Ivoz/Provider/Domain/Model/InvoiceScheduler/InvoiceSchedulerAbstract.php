@@ -346,7 +346,7 @@ abstract class InvoiceSchedulerAbstract
     {
         if (!is_null($lastExecution)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
@@ -387,7 +387,7 @@ abstract class InvoiceSchedulerAbstract
     {
         if (!is_null($nextExecution)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null

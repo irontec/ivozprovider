@@ -223,31 +223,53 @@ trait OutgoingRoutingTrait
      */
     public function replaceLcrRules(Collection $lcrRules): OutgoingRoutingInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($lcrRules as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setOutgoingRouting($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->lcrRules as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->lcrRules->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($lcrRules as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($lcrRules[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->lcrRules->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->lcrRules->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($lcrRules as $entity) {
             $this->addLcrRule($entity);
         }
 
@@ -285,31 +307,53 @@ trait OutgoingRoutingTrait
      */
     public function replaceLcrRuleTargets(Collection $lcrRuleTargets): OutgoingRoutingInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($lcrRuleTargets as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setOutgoingRouting($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->lcrRuleTargets as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->lcrRuleTargets->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($lcrRuleTargets as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($lcrRuleTargets[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->lcrRuleTargets->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->lcrRuleTargets->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($lcrRuleTargets as $entity) {
             $this->addLcrRuleTarget($entity);
         }
 
@@ -347,31 +391,53 @@ trait OutgoingRoutingTrait
      */
     public function replaceRelCarriers(Collection $relCarriers): OutgoingRoutingInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relCarriers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setOutgoingRouting($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relCarriers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relCarriers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relCarriers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relCarriers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relCarriers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relCarriers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relCarriers as $entity) {
             $this->addRelCarrier($entity);
         }
 

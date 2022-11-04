@@ -271,7 +271,7 @@ abstract class BannedAddressAbstract
     {
         if (!is_null($lastTimeBanned)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $lastTimeBanned = DateTimeHelper::createOrFix(
                 $lastTimeBanned,
                 null

@@ -312,7 +312,7 @@ abstract class InvoiceAbstract
     {
         if (!is_null($inDate)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $inDate = DateTimeHelper::createOrFix(
                 $inDate,
                 null
@@ -337,7 +337,7 @@ abstract class InvoiceAbstract
     {
         if (!is_null($outDate)) {
 
-            /** @var ?\Datetime */
+            /** @var ?\DateTime */
             $outDate = DateTimeHelper::createOrFix(
                 $outDate,
                 null

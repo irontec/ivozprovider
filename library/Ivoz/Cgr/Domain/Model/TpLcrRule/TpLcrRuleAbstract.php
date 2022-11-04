@@ -471,7 +471,7 @@ abstract class TpLcrRuleAbstract
     protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
@@ -506,7 +506,7 @@ abstract class TpLcrRuleAbstract
     protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
-        /** @var \Datetime */
+        /** @var \DateTime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'

@@ -243,31 +243,53 @@ trait CarrierTrait
      */
     public function replaceOutgoingRoutings(Collection $outgoingRoutings): CarrierInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($outgoingRoutings as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->outgoingRoutings as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->outgoingRoutings->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($outgoingRoutings as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($outgoingRoutings[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->outgoingRoutings->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->outgoingRoutings->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($outgoingRoutings as $entity) {
             $this->addOutgoingRouting($entity);
         }
 
@@ -305,31 +327,53 @@ trait CarrierTrait
      */
     public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers): CarrierInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($outgoingRoutingsRelCarriers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->outgoingRoutingsRelCarriers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->outgoingRoutingsRelCarriers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($outgoingRoutingsRelCarriers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($outgoingRoutingsRelCarriers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->outgoingRoutingsRelCarriers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->outgoingRoutingsRelCarriers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($outgoingRoutingsRelCarriers as $entity) {
             $this->addOutgoingRoutingsRelCarrier($entity);
         }
 
@@ -367,31 +411,53 @@ trait CarrierTrait
      */
     public function replaceServers(Collection $servers): CarrierInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($servers as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->servers as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->servers->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($servers as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($servers[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->servers->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->servers->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($servers as $entity) {
             $this->addServer($entity);
         }
 
@@ -429,31 +495,53 @@ trait CarrierTrait
      */
     public function replaceRatingProfiles(Collection $ratingProfiles): CarrierInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($ratingProfiles as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->ratingProfiles as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->ratingProfiles->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($ratingProfiles as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($ratingProfiles[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->ratingProfiles->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->ratingProfiles->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($ratingProfiles as $entity) {
             $this->addRatingProfile($entity);
         }
 
@@ -491,31 +579,53 @@ trait CarrierTrait
      */
     public function replaceTpCdrStats(Collection $tpCdrStats): CarrierInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($tpCdrStats as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->tpCdrStats as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->tpCdrStats->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($tpCdrStats as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($tpCdrStats[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->tpCdrStats->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->tpCdrStats->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($tpCdrStats as $entity) {
             $this->addTpCdrStat($entity);
         }
 
