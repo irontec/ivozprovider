@@ -303,11 +303,10 @@ abstract class RatingPlanAbstract
     protected function setTimeIn(string|\DateTimeInterface $timeIn): static
     {
 
-        /** @var \Datetime */
-        $timeIn = DateTimeHelper::createOrFix(
-            $timeIn,
-            null
-        );
+        /** @var \DateTime */
+        $timeIn = !($timeIn instanceof \DateTimeInterface)
+            ? \DateTime::createFromFormat($timeIn, 'H:i:s', new \DateTimeZone('UTC'))
+            : $timeIn;
 
         if ($this->isInitialized() && $this->timeIn == $timeIn) {
             return $this;

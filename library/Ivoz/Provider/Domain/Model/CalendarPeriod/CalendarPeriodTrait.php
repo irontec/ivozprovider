@@ -132,31 +132,53 @@ trait CalendarPeriodTrait
      */
     public function replaceRelSchedules(Collection $relSchedules): CalendarPeriodInterface
     {
-        $updatedEntities = [];
-        $fallBackId = -1;
         foreach ($relSchedules as $entity) {
-            /** @var string|int $index */
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
             $entity->setCalendarPeriod($this);
         }
 
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
         foreach ($this->relSchedules as $key => $entity) {
-            $identity = $entity->getId();
-            if (!$identity) {
-                $this->relSchedules->remove($key);
-                continue;
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($relSchedules as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($relSchedules[$newKey]);
+                    $match = true;
+                    break;
+                }
             }
 
-            if (array_key_exists($identity, $updatedEntities)) {
-                $this->relSchedules->set($key, $updatedEntities[$identity]);
-                unset($updatedEntities[$identity]);
-            } else {
+            if (!$match) {
                 $this->relSchedules->remove($key);
             }
         }
 
-        foreach ($updatedEntities as $entity) {
+        foreach ($relSchedules as $entity) {
             $this->addRelSchedule($entity);
         }
 
