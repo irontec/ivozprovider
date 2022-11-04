@@ -48,7 +48,8 @@ Feature: Create fixed costs rel invoices
               "invoiceTemplate": 1,
               "company": 1,
               "numberSequence": null,
-              "scheduler": null
+              "scheduler": null,
+              "currency": null
           }
       }
     """

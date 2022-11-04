@@ -3,18 +3,13 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
+use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecDto;
+use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto;
+use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 
 class CompanyDto extends CompanyDtoAbstract
 {
-    public const CONTEXT_WITH_FEATURES = 'withFeatures';
-
-    public const CONTEXTS_WITH_FEATURES = [
-        self::CONTEXT_WITH_FEATURES,
-        self::CONTEXT_DETAILED,
-        self::CONTEXT_COLLECTION,
-    ];
-
     /**
      * @var int[]
      * @AttributeDefinition(
@@ -25,6 +20,36 @@ class CompanyDto extends CompanyDtoAbstract
      */
     private $featureIds = [];
 
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Country ids"
+     * )
+     */
+    private $geoIpAllowedCountries = [];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Routing tag ids"
+     * )
+     */
+    private $routingTagIds = [];
+
+    /**
+     * @var int[]
+     * @AttributeDefinition(
+     *     type="array",
+     *     collectionValueType="int",
+     *     description="Codec ids"
+     * )
+     */
+    private $codecIds = [];
+
     public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
@@ -32,8 +57,11 @@ class CompanyDto extends CompanyDtoAbstract
             $role
         );
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
+        if ($role === 'ROLE_BRAND_ADMIN') {
             $response['featureIds'] = $this->featureIds;
+            $response['geoIpAllowedCountries'] = $this->geoIpAllowedCountries;
+            $response['routingTagIds'] = $this->routingTagIds;
+            $response['codecIds'] = $this->codecIds;
         }
 
         return $response;
@@ -62,10 +90,8 @@ class CompanyDto extends CompanyDtoAbstract
 
     /**
      * @param int[] $featureIds
-     *
-     * @return void
      */
-    public function setFeatureIds(array $featureIds): void
+    public function setFeatureIds(array $featureIds): self
     {
         $this->featureIds = $featureIds;
         $relFeatures = [];
@@ -75,6 +101,59 @@ class CompanyDto extends CompanyDtoAbstract
             $relFeatures[] = $dto;
         }
         $this->setRelFeatures($relFeatures);
+
+        return $this;
+    }
+
+    /**
+     * @param int[] $geoIpAllowedCountries
+     */
+    public function setGeoIpAllowedCountries(array $geoIpAllowedCountries): self
+    {
+        $this->geoIpAllowedCountries = $geoIpAllowedCountries;
+        $relCountries = [];
+        foreach ($geoIpAllowedCountries as $id) {
+            $dto = new CompanyRelGeoIPCountryDto();
+            $dto->setCountryId($id);
+            $relCountries[] = $dto;
+        }
+        $this->setRelCountries($relCountries);
+
+        return $this;
+    }
+
+    /**
+     * @param int[] $routingTagIds
+     */
+    public function setRoutingTagIds(array $routingTagIds): self
+    {
+        $this->routingTagIds = $routingTagIds;
+        $relRoutingTags = [];
+        foreach ($routingTagIds as $id) {
+            $dto = new CompanyRelRoutingTagDto();
+            $dto->setRoutingTagId($id);
+            $relRoutingTags[] = $dto;
+        }
+        $this->setRelRoutingTags($relRoutingTags);
+
+        return $this;
+    }
+
+    /**
+     * @param int[] $codecIds
+     */
+    public function setCodecIds(array $codecIds): self
+    {
+        $this->routingTagIds = $codecIds;
+        $relCodecs = [];
+        foreach ($codecIds as $id) {
+            $dto = new CompanyRelCodecDto();
+            $dto->setCodecId($id);
+            $relCodecs[] = $dto;
+        }
+        $this->setRelCodecs($relCodecs);
+
+        return $this;
     }
 
     private function filterCompanyReadOnlyFields(array $data): array
@@ -141,12 +220,13 @@ class CompanyDto extends CompanyDtoAbstract
             $response = parent::getPropertyMap($context);
         }
 
-        if (in_array($context, self::CONTEXTS_WITH_FEATURES, true)) {
-            $response['featureIds'] = 'featureIds';
-        }
-
         unset($response['domainId']);
         if ($role === 'ROLE_BRAND_ADMIN') {
+            $response['featureIds'] = 'featureIds';
+            $response['geoIpAllowedCountries'] = 'geoIpAllowedCountries';
+            $response['routingTagIds'] = 'routingTagIds';
+            $response['codecIds'] = 'codecIds';
+
             return self::filterFieldsForBrandAdmin($response);
         }
 
@@ -157,10 +237,6 @@ class CompanyDto extends CompanyDtoAbstract
         return $response;
     }
 
-    /**
-     * @param array $response
-     * @return array
-     */
     private static function filterFieldsForBrandAdmin(array $response): array
     {
         $allowedFields = [
@@ -177,6 +253,7 @@ class CompanyDto extends CompanyDtoAbstract
             'ipfilter',
             'onDemandRecord',
             'onDemandRecordCode',
+            'allowRecordingRemoval',
             'externallyextraopts',
             'billingMethod',
             'balance',
@@ -194,8 +271,12 @@ class CompanyDto extends CompanyDtoAbstract
             'invoiceNotificationTemplateId',
             'callCsvNotificationTemplateId',
             'featureIds',
+            'geoIpAllowedCountries',
+            'routingTagIds',
+            'codecIds',
             'maxDailyUsage',
             'maxDailyUsageEmail',
+            'maxDailyUsageNotificationTemplateId',
             'currentDayUsage' => 'currentDayUsage',
         ];
 
@@ -208,10 +289,6 @@ class CompanyDto extends CompanyDtoAbstract
         );
     }
 
-    /**
-     * @param array $response
-     * @return array
-     */
     private static function filterFieldsForCompanyAdmin(array $response): array
     {
         $allowedFields = [
