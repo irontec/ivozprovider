@@ -41,6 +41,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
+    private $description = null;
+
+    /**
+     * @var string|null
+     */
     private $recordCalls = 'none';
 
     /**
@@ -163,6 +168,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return [
             'ddi' => 'ddi',
             'ddie164' => 'ddie164',
+            'description' => 'description',
             'recordCalls' => 'recordCalls',
             'displayName' => 'displayName',
             'routeType' => 'routeType',
@@ -195,6 +201,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         $response = [
             'ddi' => $this->getDdi(),
             'ddie164' => $this->getDdie164(),
+            'description' => $this->getDescription(),
             'recordCalls' => $this->getRecordCalls(),
             'displayName' => $this->getDisplayName(),
             'routeType' => $this->getRouteType(),
@@ -254,6 +261,18 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getDdie164(): ?string
     {
         return $this->ddie164;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 
     public function setRecordCalls(string $recordCalls): static
