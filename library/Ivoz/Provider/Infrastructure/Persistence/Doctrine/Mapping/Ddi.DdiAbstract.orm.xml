@@ -17,6 +17,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="description" type="string" column="description" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="recordCalls" type="string" column="recordCalls" length="25" nullable="false">
       <options>
         <option name="fixed"/>

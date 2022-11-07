@@ -26,6 +26,7 @@ Feature: Update ddi
       {
           "ddi": "128",
           "ddie164": "+34128",
+          "description": "Description for DDI 123",
           "id": 1,
           "company": 1,
           "ddiProvider": 1,

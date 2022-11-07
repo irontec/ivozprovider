@@ -13,6 +13,7 @@ Feature: Update Ddis
       {
           "ddi": "0",
           "ddie164": "0",
+          "description": "New description for DDI 123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
@@ -40,6 +41,7 @@ Feature: Update Ddis
       {
           "ddi": "123",
           "ddie164": "+34123",
+          "description": "New description for DDI 123",
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,

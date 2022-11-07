@@ -26,6 +26,9 @@ const properties: DdiProperties = {
   ddi: {
     label: _('DDI'),
   },
+  description: {
+    label: _('Description'),
+  },
   externalCallFilter: {
     label: _('External call filter'),
   },
@@ -152,7 +155,14 @@ const properties: DdiProperties = {
   },
 };
 
-const columns = ['country', 'ddi', 'externalCallFilter', 'routeType', 'target'];
+const columns = [
+  'country',
+  'ddi',
+  'externalCallFilter',
+  'routeType',
+  'target',
+  'description',
+];
 
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
