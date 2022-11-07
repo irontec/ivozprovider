@@ -2,7 +2,7 @@ FROM debian:stretch
 
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 
-RUN echo deb http://packages.irontec.com/debian bleeding main extra >> /etc/apt/sources.list
+RUN echo deb http://packages.irontec.com/debian artemis main extra >> /etc/apt/sources.list
 RUN echo deb http://repo.percona.com/apt stretch main >> /etc/apt/sources.list
 
 RUN apt-get update
@@ -51,7 +51,7 @@ RUN npm install -g swagger-cli
 # Base project
 USER $UNAME
 RUN mkdir -p /opt/irontec
-RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b artemis --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Install phpunit 6.5.14
 RUN mkdir -p /opt/phpunit/
