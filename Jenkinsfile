@@ -25,6 +25,7 @@ pipeline {
     environment {
         SYMFONY_PHPUNIT_DIR = "/opt/phpunit/"
         SYMFONY_PHPUNIT_VERSION = "9.5.3"
+        DOCKER_IMAGE_TAG = getDockerImageTag()
     }
 
     stages {
@@ -42,7 +43,7 @@ pipeline {
             }
             agent {
                 docker {
-                    image 'ironartemis/ivozprovider-testing-base:halliday'
+                    image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                     args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                     reuseNode true
                 }
@@ -69,7 +70,7 @@ pipeline {
                 stage ('app-console') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -85,7 +86,7 @@ pipeline {
                 stage ('static analysis') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -102,7 +103,7 @@ pipeline {
                 stage ('codestyle') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -118,7 +119,7 @@ pipeline {
                 stage ('i18n') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -134,7 +135,7 @@ pipeline {
                 stage ('phpspec') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -150,7 +151,7 @@ pipeline {
                 stage ('api-platform') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -167,7 +168,7 @@ pipeline {
                 stage ('api-brand') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -184,7 +185,7 @@ pipeline {
                 stage ('api-client') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -201,7 +202,7 @@ pipeline {
                 stage ('api-user') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -218,7 +219,7 @@ pipeline {
                 stage ('web-client') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -235,7 +236,7 @@ pipeline {
                 stage ('web-brand') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -252,7 +253,7 @@ pipeline {
                 stage ('web-user') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -269,7 +270,7 @@ pipeline {
                 stage ('orm') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                             reuseNode true
                         }
@@ -285,7 +286,7 @@ pipeline {
                 stage ('generators') {
                     agent {
                         docker {
-                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
                             args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
                         }
                     }
@@ -307,7 +308,7 @@ pipeline {
                                     /* Wait until mysql service is up */
                                     sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
                                 }
-                                docker.image('ironartemis/ivozprovider-testing-base:halliday')
+                                docker.image("ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}")
                                       .inside("--env MYSQL_PWD=changeme --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-duplicate-keys'
@@ -338,6 +339,10 @@ pipeline {
 // Helper Functions
 // -----------------------------------------------------------------------------
 
+void getDockerImageTag() {
+    return env.CHANGE_TARGET ?: env.GIT_BRANCH
+}
+
 void notifySuccessGithub() {
     githubNotify([
         context: "ivozprovider-testing-${STAGE_NAME}",
@@ -355,7 +360,7 @@ void notifyFailureGithub() {
 }
 
 void notifyFailureMattermost() {
-    if (env.GIT_BRANCH == 'artemis' || env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
+    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
         mattermostSend([
             channel: "#ivozprovider",
             color: "#FF0000",
@@ -365,7 +370,7 @@ void notifyFailureMattermost() {
 }
 
 void notifyFixedMattermost() {
-    if (env.GIT_BRANCH == 'artemis' || env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
+    if (env.GIT_BRANCH == 'bleeding' || env.GIT_BRANCH == 'halliday') {
         mattermostSend([
             channel: "#ivozprovider",
             color: "#008000",
