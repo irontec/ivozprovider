@@ -35,6 +35,8 @@ production:
           ddi: true
           company: true
           carrier: true
+          ddiProvider: true
+          description: true
         blacklist:
           externalCallFilter: true
           routeType: true

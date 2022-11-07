@@ -52,7 +52,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Number data'),
-      fields: ['country', 'ddi', 'displayName', 'language'],
+      fields: ['country', 'ddi', 'displayName', 'language', 'description'],
     },
     !aboutMe?.retail && {
       legend: _('Filters data'),
