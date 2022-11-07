@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
-use Ivoz\Api\Core\Annotation\AttributeDefinition;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus;
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
 {
+    public const CONTEXT_STATUS = 'status';
+
     /**
      * @var ?DdiProviderRegistrationStatus
      * @AttributeDefinition(
@@ -24,6 +26,19 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
         $response =  parent::getPropertyMap(...func_get_args());
+
+        if ($context === self::CONTEXT_STATUS) {
+            return [
+                'username' => 'username',
+                'domain' => 'domain',
+                'id' => 'id',
+                'status' => [
+                    'registered',
+                    'inProgress',
+                    'expires'
+                ]
+            ];
+        }
 
         if ($context === self::CONTEXT_DETAILED_COLLECTION) {
             return [
