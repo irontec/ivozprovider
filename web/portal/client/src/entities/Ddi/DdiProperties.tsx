@@ -6,6 +6,7 @@ import {
 
 export type DdiPropertyList<T> = {
   ddi?: T;
+  description?: T;
   externalCallFilter?: T;
   routeType?: T;
   recordCalls?: T;
