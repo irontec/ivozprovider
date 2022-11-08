@@ -41,6 +41,7 @@ production:
           maxWaitTime: true
           maxlen: true
         blacklist:
+          displayName: true
           timeoutLocution: true
           timeoutTargetType: true
           timeoutVoiceMailUser: true
@@ -87,6 +88,7 @@ production:
             name: 7
             weight: 5
             strategy: 12
+            displayName: 8
         group2:
           label: _('Announce')
           colsPerRow: 12
