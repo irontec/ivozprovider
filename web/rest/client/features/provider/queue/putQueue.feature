@@ -12,6 +12,7 @@ Feature: Update queues
     """
       {
           "name": "updatedQueue",
+          "displayName": "Display Name for updatedQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002222",
@@ -41,6 +42,7 @@ Feature: Update queues
     """
       {
           "name": "updatedQueue",
+          "displayName": "Display Name for updatedQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002222",
