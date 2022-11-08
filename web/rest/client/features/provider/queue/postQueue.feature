@@ -12,6 +12,7 @@ Feature: Create queues
     """
       {
           "name": "newQueue",
+          "displayName": "Display Name for newQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002121",
@@ -42,6 +43,7 @@ Feature: Create queues
     """
       {
           "name": "newQueue",
+          "displayName": "Display Name for newQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002121",

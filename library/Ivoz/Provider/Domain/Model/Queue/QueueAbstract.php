@@ -19,6 +19,11 @@ abstract class QueueAbstract
     protected $name;
 
     /**
+     * @var string | null
+     */
+    protected $displayName;
+
+    /**
      * @var integer | null
      */
     protected $maxWaitTime;
@@ -215,6 +220,7 @@ abstract class QueueAbstract
 
         $self
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -256,6 +262,7 @@ abstract class QueueAbstract
 
         $this
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -293,6 +300,7 @@ abstract class QueueAbstract
     {
         return self::createDto()
             ->setName(self::getName())
+            ->setDisplayName(self::getDisplayName())
             ->setMaxWaitTime(self::getMaxWaitTime())
             ->setTimeoutTargetType(self::getTimeoutTargetType())
             ->setTimeoutNumberValue(self::getTimeoutNumberValue())
@@ -324,6 +332,7 @@ abstract class QueueAbstract
     {
         return [
             'name' => self::getName(),
+            'displayName' => self::getDisplayName(),
             'maxWaitTime' => self::getMaxWaitTime(),
             'timeoutTargetType' => self::getTimeoutTargetType(),
             'timeoutNumberValue' => self::getTimeoutNumberValue(),
@@ -376,6 +385,34 @@ abstract class QueueAbstract
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set displayName
+     *
+     * @param string $displayName | null
+     *
+     * @return static
+     */
+    protected function setDisplayName($displayName = null)
+    {
+        if (!is_null($displayName)) {
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * Get displayName
+     *
+     * @return string | null
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
     }
 
     /**

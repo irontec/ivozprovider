@@ -65,6 +65,13 @@ interface QueueInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * Get displayName
+     *
+     * @return string | null
+     */
+    public function getDisplayName();
+
+    /**
      * Get maxWaitTime
      *
      * @return integer | null

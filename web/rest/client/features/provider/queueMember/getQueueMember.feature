@@ -19,6 +19,7 @@ Feature: Retrieve queue members
               "id": 1,
               "queue": {
                   "name": "testQueue",
+                  "displayName": "testQueue DisplayName",
                   "maxWaitTime": 20,
                   "timeoutTargetType": "number",
                   "timeoutNumberValue": "946002020",
@@ -90,6 +91,7 @@ Feature: Retrieve queue members
           "id": 1,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",

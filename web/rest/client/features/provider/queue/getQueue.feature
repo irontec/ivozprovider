@@ -38,6 +38,7 @@ Feature: Retrieve queues
     """
        {
           "name": "testQueue",
+          "displayName": "testQueue DisplayName",
           "maxWaitTime": 20,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002020",

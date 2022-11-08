@@ -16,6 +16,11 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
+     * @var string
+     */
+    private $displayName;
+
+    /**
      * @var integer
      */
     private $maxWaitTime;
@@ -149,6 +154,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
 
         return [
             'name' => 'name',
+            'displayName' => 'displayName',
             'maxWaitTime' => 'maxWaitTime',
             'timeoutTargetType' => 'timeoutTargetType',
             'timeoutNumberValue' => 'timeoutNumberValue',
@@ -182,6 +188,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     {
         $response = [
             'name' => $this->getName(),
+            'displayName' => $this->getDisplayName(),
             'maxWaitTime' => $this->getMaxWaitTime(),
             'timeoutTargetType' => $this->getTimeoutTargetType(),
             'timeoutNumberValue' => $this->getTimeoutNumberValue(),
@@ -239,6 +246,26 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $displayName
+     *
+     * @return static
+     */
+    public function setDisplayName($displayName = null)
+    {
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
     }
 
     /**
