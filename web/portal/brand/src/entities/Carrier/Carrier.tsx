@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import SwapCallsIcon from '@mui/icons-material/SwapCalls';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CarrierProperties } from './CarrierProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import Balance from './Field/Balance';
 
 const properties: CarrierProperties = {
   description: {
@@ -53,7 +54,7 @@ const properties: CarrierProperties = {
   },
   balance: {
     label: _('Balance'),
-    //@TODO IvozProvider_Klear_Ghost_Carriers::getBalance
+    component: Balance,
   },
   acd: {
     label: _('ACD'),
@@ -95,12 +96,20 @@ const properties: CarrierProperties = {
 
 const Carrier: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: SwapCallsIcon,
   iden: 'Carrier',
   title: _('Carrier', { count: 2 }),
-  path: '/Carriers',
-  toStr: (row: any) => row.id,
+  path: '/carriers',
+  toStr: (row: any) => row.name,
   properties,
+  columns: [
+    'name',
+    'description',
+    'transformationRuleSet',
+    'balance',
+    'proxyTrunk',
+    'statusIcon',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

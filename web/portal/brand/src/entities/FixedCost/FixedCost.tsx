@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import AddCardIcon from '@mui/icons-material/AddCard';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -25,12 +25,13 @@ const properties: FixedCostProperties = {
 
 const FixedCost: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: AddCardIcon,
   iden: 'FixedCost',
-  title: _('FixedCost', { count: 2 }),
-  path: '/FixedCosts',
-  toStr: (row: any) => row.id,
+  title: _('Fixed cost', { count: 2 }),
+  path: '/fixed_costs',
+  toStr: (row: any) => `${row.name} - ${row.cost}`,
   properties,
+  columns: ['name', 'cost', 'description'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

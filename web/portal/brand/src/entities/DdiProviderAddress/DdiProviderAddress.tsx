@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import DnsIcon from '@mui/icons-material/Dns';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -24,10 +24,10 @@ const properties: DdiProviderAddressProperties = {
 
 const DdiProviderAddress: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: DnsIcon,
   iden: 'DdiProviderAddress',
-  title: _('DdiProviderAddress', { count: 2 }),
-  path: '/DdiProviderAddresses',
+  title: _('DDI Provider Address', { count: 2 }),
+  path: '/ddi_provider_addresses',
   toStr: (row: any) => row.id,
   properties,
   selectOptions,

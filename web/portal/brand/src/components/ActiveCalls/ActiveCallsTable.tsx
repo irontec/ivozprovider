@@ -57,10 +57,16 @@ export default function ActiveCallsTable(
             {_('Duration')}
           </TableCell>
           <TableCell align="left" padding="normal">
-            {_('Owner')}
+            {_('Client')}
           </TableCell>
           <TableCell align="left" padding="normal">
-            {_('Party')}
+            {_('Caller')}
+          </TableCell>
+          <TableCell align="left" padding="normal">
+            {_('Callee')}
+          </TableCell>
+          <TableCell align="left" padding="normal">
+            {_('Carrier')}
           </TableCell>
           <TableCell align="left" padding="normal">
             {_('Options')}
@@ -97,8 +103,10 @@ export default function ActiveCallsTable(
                 &nbsp;
                 <span>{call.duration}</span>
               </TableCell>
-              <TableCell>{call.owner}</TableCell>
-              <TableCell>{call.party}</TableCell>
+              <TableCell>{call.company}</TableCell>
+              <TableCell>{call.caller}</TableCell>
+              <TableCell>{call.callee}</TableCell>
+              <TableCell>{call.operator}</TableCell>
               <TableCell>
                 <ContentCopyIcon
                   titleAccess="Copy call id into the clipboard"

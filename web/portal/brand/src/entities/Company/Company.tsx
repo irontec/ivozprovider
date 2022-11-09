@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CompanyProperties } from './CompanyProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import TypeIcon from './Field/TypeIcon';
 
 const properties: CompanyProperties = {
   type: {
@@ -77,10 +78,10 @@ const properties: CompanyProperties = {
     visualToggle: {
       '0': {
         show: [],
-        hide: ['relCountries'],
+        hide: ['geoIpAllowedCountries'],
       },
       '1': {
-        show: ['relCountries'],
+        show: ['geoIpAllowedCountries'],
         hide: [],
       },
     },
@@ -113,7 +114,7 @@ const properties: CompanyProperties = {
   onDemandRecordCode: {
     label: _('Code'),
     maxLength: 3,
-    prefix: '<span class="asterisc">*</span>',
+    prefix: <span className="asterisc">*</span>,
     pattern: new RegExp('[0-9*]+'),
   },
   allowRecordingRemoval: {
@@ -142,10 +143,20 @@ const properties: CompanyProperties = {
       'Email address that will be notified when 80% of the configured limit has been reached.'
     ),
   },
-  relFeatures: {
+  featureIds: {
     label: _('Features'),
-    //@TODO multiselect
+    type: 'array',
+    null: _('There are not associated elements'),
+    $ref: '#/definitions/Feature',
     visualToggle: {
+      retail: {
+        show: ['domainUsers'],
+        hide: ['domainUsers'],
+      },
+      residential: {
+        show: ['domainUsers'],
+        hide: ['domainUsers'],
+      },
       recordings: {
         show: [
           'recordingsLimitMb',
@@ -158,12 +169,26 @@ const properties: CompanyProperties = {
       },
       faxes: {
         show: ['faxNotificationTemplate'],
+        hide: ['faxNotificationTemplate'],
+      },
+      invoices: {
+        show: [
+          'invoiceNotificationTemplate',
+          'postalAddress',
+          'postalCode',
+          'town',
+          'province',
+          'countryName',
+          'registryData',
+        ],
         hide: [
-          'recordingsLimitMb',
-          'recordingsDiskUsage',
-          'recordingsLimitEmail',
-          'onDemandRecord',
-          'allowRecordingRemoval',
+          'invoiceNotificationTemplate',
+          'postalAddress',
+          'postalCode',
+          'town',
+          'province',
+          'countryName',
+          'registryData',
         ],
       },
     },
@@ -181,7 +206,7 @@ const properties: CompanyProperties = {
     enum: {
       postpaid: _('Postpaid'),
       prepaid: _('Prepaid'),
-      pseudoprepaid: _('Pseudoprepaid'),
+      pseudoprepaid: _('Pseudo-prepaid'),
     },
   },
   balance: {
@@ -202,7 +227,7 @@ const properties: CompanyProperties = {
   },
   typeIcon: {
     label: _('Type'),
-    //@TODO IvozProvider_Klear_Ghost_Companies::getTypeIcon
+    component: TypeIcon,
   },
   showInvoices: {
     label: _('Display billing details to client'),
@@ -272,6 +297,7 @@ const properties: CompanyProperties = {
     //TODO IvozProvider_Klear_Ghost_Companies::getDdiE164
   },
   outgoingDdiRule: {
+    label: _('Outgoing DDI Rule'),
     null: _('Unassigned'),
     default: '__null__',
     helpText: _(
@@ -303,16 +329,23 @@ const properties: CompanyProperties = {
     null: _('Use generic template'),
     default: '__null__',
   },
-  featureIds: {
-    //@TODO
-    label: _('Features'),
-  },
-  relCountries: {
-    //@TODO multiselect
+  geoIpAllowedCountries: {
     label: _('GeoIP allowed countries'),
     helpText: _(
       'Select a country to allow all IPs. Leave it blank if you want to allow just specific IP/ranges.'
     ),
+    type: 'array',
+    $ref: '#/definitions/Country',
+  },
+  routingTagIds: {
+    label: _('Routing Tags'),
+    type: 'array',
+    $ref: '#/definitions/RoutingTag',
+  },
+  codecIds: {
+    label: _('Audio Transcoding'),
+    type: 'array',
+    $ref: '#/definitions/',
   },
 };
 
@@ -322,8 +355,16 @@ const Company: EntityInterface = {
   iden: 'Company',
   title: _('Company', { count: 2 }),
   path: '/companies',
-  toStr: (row: any) => row.id,
+  toStr: (row: any) => row.name,
   properties,
+  columns: [
+    'name',
+    'nif',
+    'billingMethod',
+    'outgoingDdi',
+    'domainUsers',
+    'featureIds',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

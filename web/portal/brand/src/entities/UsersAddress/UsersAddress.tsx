@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -43,10 +43,10 @@ const properties: UsersAddressProperties = {
 
 const UsersAddress: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: MeetingRoomIcon,
   iden: 'UsersAddress',
-  title: _('UsersAddress', { count: 2 }),
-  path: '/UsersAddresses',
+  title: _('Authorized source', { count: 2 }),
+  path: '/users_addresses',
   toStr: (row: any) => row.id,
   properties,
   selectOptions,

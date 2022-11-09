@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -96,12 +96,30 @@ const properties: BillableCallProperties = {
 
 const BillableCall: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: ChatBubbleIcon,
   iden: 'BillableCall',
-  title: _('BillableCall', { count: 2 }),
-  path: '/BillableCalls',
+  title: _('External call', { count: 2 }),
+  path: '/billable_calls',
   toStr: (row: any) => row.id,
   properties,
+  columns: [
+    'startTime',
+    'company',
+    'duration',
+    'caller',
+    'callee',
+    'duration',
+    'price',
+    'cost',
+    'invoice',
+  ],
+  acl: {
+    read: true,
+    detail: true,
+    create: false,
+    update: false,
+    delete: false,
+  },
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

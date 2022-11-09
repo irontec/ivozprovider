@@ -16,6 +16,10 @@ export interface TryingStuct {
   Event: Events;
   Owner: string;
   Party: string;
+  Caller: string;
+  Callee: string;
+  Carrier?: string;
+  DdiProvider?: string;
   Time: number;
 }
 
@@ -48,8 +52,10 @@ export interface OutputStuct {
   event: Events;
   time: number;
   duration: string;
-  owner: string;
-  party: string;
+  company: string;
+  caller: string;
+  callee: string;
+  operator: string;
 }
 
 export type Calls = { [key: string]: OutputStuct };

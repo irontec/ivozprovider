@@ -1,12 +1,12 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import selectOptions from './SelectOptions';
-import Form from './Form';
+import ArticleIcon from '@mui/icons-material/Article';
 import { foreignKeyGetter } from './ForeignKeyGetter';
-import { NotificationTemplateContentProperties } from './NotificationTemplateContentProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import Form from './Form';
+import { NotificationTemplateContentProperties } from './NotificationTemplateContentProperties';
+import selectOptions from './SelectOptions';
 
 const properties: NotificationTemplateContentProperties = {
   fromName: {
@@ -80,12 +80,13 @@ const properties: NotificationTemplateContentProperties = {
 
 const NotificationTemplateContent: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: ArticleIcon,
   iden: 'NotificationTemplateContent',
-  title: _('NotificationTemplateContent', { count: 2 }),
-  path: '/NotificationTemplateContents',
+  title: _('Notification template content', { count: 2 }),
+  path: '/notification_template_contents',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['language', 'fromName', 'fromAddress'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

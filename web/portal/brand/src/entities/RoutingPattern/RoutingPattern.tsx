@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import FlagIcon from '@mui/icons-material/Flag';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -11,7 +11,7 @@ import foreignKeyResolver from './ForeignKeyResolver';
 const properties: RoutingPatternProperties = {
   prefix: {
     label: _('Prefix'),
-    pattern: new RegExp('+[0-9]*'),
+    pattern: new RegExp('/+[0-9]*/'),
     maxLength: 80,
     helpText: _(`Must start with '+' followed by zero or more digits.`),
   },
@@ -27,12 +27,13 @@ const properties: RoutingPatternProperties = {
 
 const RoutingPattern: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: FlagIcon,
   iden: 'RoutingPattern',
-  title: _('RoutingPattern', { count: 2 }),
-  path: '/RoutingPatterns',
-  toStr: (row: any) => row.id,
+  title: _('Routing Pattern', { count: 2 }),
+  path: '/routing_patterns',
+  toStr: (row: any) => row.name.en,
   properties,
+  columns: ['name', 'description', 'prefix'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

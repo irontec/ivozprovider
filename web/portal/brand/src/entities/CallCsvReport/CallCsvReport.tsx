@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import SummarizeIcon from '@mui/icons-material/Summarize';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -17,15 +17,13 @@ const properties: CallCsvReportProperties = {
     label: _('Out Date'),
     format: 'date-time',
   },
-  csv: {
-    label: _('Csv'),
-  },
   createdOn: {
     label: _('Created on'),
     format: 'date-time',
   },
   csv: {
     label: 'CSV',
+    type: 'file',
     //@TODO callCsvReportsCsvDownload_command::${auth.acls.CallCsvReports.read}
   },
   sentTo: {
@@ -45,12 +43,13 @@ const properties: CallCsvReportProperties = {
 
 const CallCsvReport: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: SummarizeIcon,
   iden: 'CallCsvReport',
-  title: _('CallCsvReport', { count: 2 }),
-  path: '/CallCsvReports',
+  title: _('Call Csv Report', { count: 2 }),
+  path: '/call_csv_reports',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['csv', 'inDate', 'outDate', 'createdOn', 'sentTo'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

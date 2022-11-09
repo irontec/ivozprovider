@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -31,12 +31,13 @@ const properties: RatingProfileProperties = {
 
 const RatingProfile: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: PriceChangeIcon,
   iden: 'RatingProfile',
-  title: _('RatingProfile', { count: 2 }),
-  path: '/RatingProfiles',
+  title: _('Rating Profile', { count: 2 }),
+  path: '/rating_profiles',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['activationTime', 'ratingPlanGroup'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

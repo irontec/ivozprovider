@@ -13,6 +13,7 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
   const [ready, setReady] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log('init socket', wsServerUrl);
     const socket = new WebSocket(wsServerUrl);
 
     let retries = 0;
@@ -76,6 +77,7 @@ const useWsClient = <T>(props: UseWsClientProps<T>): boolean => {
     };
 
     return () => {
+      console.log('socket down');
       if (timeout) {
         clearTimeout(timeout);
       }

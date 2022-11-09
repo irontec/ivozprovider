@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import DynamicFormIcon from '@mui/icons-material/DynamicForm';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -35,12 +35,20 @@ const properties: DdiProviderProperties = {
 
 const DdiProvider: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: DynamicFormIcon,
   iden: 'DdiProvider',
-  title: _('DdiProvider', { count: 2 }),
-  path: '/DdiProviders',
-  toStr: (row: any) => row.id,
+  title: _('DDI Provider', { count: 2 }),
+  path: '/ddi_providers',
+  toStr: (row: any) => row.name,
   properties,
+  columns: [
+    'name',
+    'description',
+    'transformationRuleSet',
+    //@TODO 'balance',
+    'proxyTrunk',
+    //@TODO status
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
