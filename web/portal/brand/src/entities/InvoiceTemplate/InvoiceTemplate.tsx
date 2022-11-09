@@ -1,7 +1,12 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { isEntityItem } from '@irontec/ivoz-ui';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
@@ -40,14 +45,31 @@ const properties: InvoiceTemplateProperties = {
   },
 };
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const { routeMapItem, row } = props;
+
+  if (
+    isEntityItem(routeMapItem) &&
+    routeMapItem.entity.iden === InvoiceTemplate.iden
+  ) {
+    if (row.global) {
+      return null;
+    }
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const InvoiceTemplate: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: ReceiptLongIcon,
   iden: 'InvoiceTemplate',
-  title: _('InvoiceTemplate', { count: 2 }),
-  path: '/InvoiceTemplates',
-  toStr: (row: any) => row.id,
+  title: _('Invoice template', { count: 2 }),
+  path: '/invoice_templates',
+  toStr: (row: any) => row.name,
   properties,
+  columns: ['name', 'description'],
+  ChildDecorator,
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

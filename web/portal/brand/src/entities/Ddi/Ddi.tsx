@@ -26,6 +26,9 @@ const properties: DdiProperties = {
   ddi: {
     label: _('DDI'),
   },
+  description: {
+    label: _('Description'),
+  },
   externalCallFilter: {
     label: _('External call filter'),
   },
@@ -150,9 +153,14 @@ const properties: DdiProperties = {
     label: _('Target'),
     memoize: false,
   },
+  ddiProvider: {
+    label: _('DDI Provider'),
+    null: _('Unassigned'),
+  },
+  company: {
+    label: _('Client'),
+  },
 };
-
-const columns = ['country', 'ddi', 'externalCallFilter', 'routeType', 'target'];
 
 const ddi: EntityInterface = {
   ...defaultEntityBehavior,
@@ -161,8 +169,8 @@ const ddi: EntityInterface = {
   title: _('DDI', { count: 2 }),
   path: '/ddis',
   toStr: (row: any) => row.ddie164,
-  columns,
   properties,
+  columns: ['country', 'ddi', 'company', 'ddiProvider', 'description'],
   acl: {
     ...defaultEntityBehavior.acl,
     iden: 'DDIs',

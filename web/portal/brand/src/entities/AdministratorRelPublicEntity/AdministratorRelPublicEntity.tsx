@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import KeyIcon from '@mui/icons-material/Key';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -53,12 +53,13 @@ const properties: AdministratorRelPublicEntityProperties = {
 
 const AdministratorRelPublicEntity: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: KeyIcon,
   iden: 'AdministratorRelPublicEntity',
-  title: _('AdministratorRelPublicEntity', { count: 2 }),
-  path: '/AdministratorRelPublicEntities',
+  title: _('Administrator access privilege', { count: 2 }),
+  path: '/administrator_rel_public_entities',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['publicEntity', 'create', 'read', 'update', 'delete'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

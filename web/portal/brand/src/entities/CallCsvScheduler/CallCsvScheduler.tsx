@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import LastExecution from './Field/LastExecution';
 
 const properties: CallCsvSchedulerProperties = {
   //@TODO visualToggles
@@ -56,7 +57,7 @@ const properties: CallCsvSchedulerProperties = {
   },
   lastExecution: {
     label: _('Last Execution'),
-    //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess::getCallCsvSchedulerLastExecutionReport
+    component: LastExecution,
   },
   lastExecutionError: {
     label: _('Last ExecutionError'),
@@ -66,7 +67,7 @@ const properties: CallCsvSchedulerProperties = {
     format: 'date-time',
   },
   company: {
-    label: _('Company'),
+    label: _('Client'),
   },
   //@TODO companyType
   callCsvNotificationTemplate: {
@@ -109,12 +110,22 @@ const properties: CallCsvSchedulerProperties = {
 
 const CallCsvScheduler: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: CalendarMonthIcon,
   iden: 'CallCsvScheduler',
-  title: _('CallCsvScheduler', { count: 2 }),
-  path: '/CallCsvSchedulers',
-  toStr: (row: any) => row.id,
+  title: _('Call CSV scheduler', { count: 2 }),
+  path: '/call_csv_schedulers',
+  toStr: (row: any) => row.name,
   properties,
+  columns: [
+    'name',
+    'company',
+    'callDirection',
+    'email',
+    'frequency',
+    'unit',
+    'lastExecution',
+    'nextExecution',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

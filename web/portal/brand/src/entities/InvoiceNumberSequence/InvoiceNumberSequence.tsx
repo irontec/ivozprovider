@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -42,10 +42,10 @@ const properties: InvoiceNumberSequenceProperties = {
 
 const InvoiceNumberSequence: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: FormatListNumberedIcon,
   iden: 'InvoiceNumberSequence',
-  title: _('InvoiceNumberSequence', { count: 2 }),
-  path: '/InvoiceNumberSequences',
+  title: _('Invoice number sequence', { count: 2 }),
+  path: '/invoice_number_sequences',
   toStr: (row: any) => row.id,
   properties,
   selectOptions,

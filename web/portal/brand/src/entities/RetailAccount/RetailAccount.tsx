@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import KeyIcon from '@mui/icons-material/Key';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { RetailAccountProperties } from './RetailAccountProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import StatusIcon from './Field/StatusIcon';
 
 const properties: RetailAccountProperties = {
   company: {
@@ -99,11 +100,7 @@ const properties: RetailAccountProperties = {
   },
   statusIcon: {
     label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatusIcon
-  },
-  status: {
-    label: _('Status'),
-    //@TODO IvozProvider_Klear_Ghost_RegisterStatus::getResidentialDeviceStatus
+    component: StatusIcon,
   },
   transformationRuleSet: {
     label: _('Numeric transformation'),
@@ -143,12 +140,21 @@ const properties: RetailAccountProperties = {
 
 const RetailAccount: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: KeyIcon,
   iden: 'RetailAccount',
-  title: _('RetailAccount', { count: 2 }),
-  path: '/RetailAccounts',
+  title: _('Retail Account', { count: 2 }),
+  path: '/retail_accounts',
   toStr: (row: any) => row.id,
   properties,
+  columns: [
+    'company',
+    'name',
+    'domainName',
+    'description',
+    'statusIcon',
+    'rtpEncryption',
+    'multiContact',
+  ],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

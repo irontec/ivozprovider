@@ -1,4 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import BuildIcon from '@mui/icons-material/Build';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -11,7 +11,7 @@ import foreignKeyResolver from './ForeignKeyResolver';
 const properties: BrandServiceProperties = {
   code: {
     label: _('Code'),
-    prefix: '<span class="asterisc">*</span>',
+    prefix: <span className="asterisc">*</span>,
     pattern: new RegExp('[#0-9*]+'),
     helpText: _('Allowed characters are 0-9, * and #'),
   },
@@ -25,12 +25,13 @@ const properties: BrandServiceProperties = {
 
 const BrandService: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: AccountTreeIcon,
+  icon: BuildIcon,
   iden: 'BrandService',
-  title: _('BrandService', { count: 2 }),
-  path: '/BrandServices',
+  title: _('Brand service', { count: 2 }),
+  path: '/brand_services',
   toStr: (row: any) => row.id,
   properties,
+  columns: ['service', 'code'],
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,

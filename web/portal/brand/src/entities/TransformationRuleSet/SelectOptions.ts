@@ -1,5 +1,5 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { getI18n } from 'react-i18next';
 import store from 'store';
 
 const TransformationRuleSetSelectOptions: SelectOptionsType = ({
@@ -9,19 +9,25 @@ const TransformationRuleSetSelectOptions: SelectOptionsType = ({
   const entities = store.getState().entities.entities;
   const TransformationRuleSet = entities.TransformationRuleSet;
 
-  return defaultEntityBehavior.fetchFks(
-    TransformationRuleSet.path,
-    ['id'],
-    (data: any) => {
+  const getAction = store.getActions().api.get;
+  return getAction({
+    path: TransformationRuleSet.path,
+    params: {
+      _pagination: false,
+      _itemsPerPage: 1000,
+      _properties: ['id', 'name'],
+    },
+    successCallback: async (data: any) => {
       const options: any = {};
+      const language = getI18n().language.substring(0, 2);
       for (const item of data) {
-        options[item.id] = item.id;
+        options[item.id] = item.name[language];
       }
 
       callback(options);
     },
-    cancelToken
-  );
+    cancelToken,
+  });
 };
 
 export default TransformationRuleSetSelectOptions;

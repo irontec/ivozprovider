@@ -40,19 +40,40 @@ class RegistrationChannelResolver
     {
         $this->testDbConnnection();
         $username = $tokenPayload['username'] ?? null;
+
         if (!$username) {
             throw new \DomainException(
-                'User not found'
+                'Username not found in token payload'
             );
         }
 
-        $admin = $this->administratorRepository->findClientAdminByUsername(
-            $username
-        );
+        $role = $tokenPayload['roles'][0] ?? '';
+        switch ($role) {
+            case 'ROLE_COMPANY_ADMIN':
+                $admin = $this->administratorRepository->findClientAdminByUsername(
+                    $username
+                );
+                break;
+            case 'ROLE_BRAND_ADMIN':
+                $admin = $this->administratorRepository->findBrandAdminByUsername(
+                    $username
+                );
+                break;
+            case 'ROLE_SUPER_ADMIN':
+                $admin = $this->administratorRepository->findPlatformAdminByUsername(
+                    $username
+                );
+                break;
+            default:
+                throw new \DomainException('Unknown admin type ' . $role);
+        }
 
         if (!$admin) {
             throw new \DomainException(
-                'User not found'
+                sprintf(
+                    'User %s not found',
+                    $username
+                )
             );
         }
 
