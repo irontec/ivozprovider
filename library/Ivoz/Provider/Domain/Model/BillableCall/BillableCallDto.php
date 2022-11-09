@@ -52,7 +52,10 @@ class BillableCallDto extends BillableCallDtoAbstract
                 'endpointType' => 'endpointType',
                 'endpointId' => 'endpointId',
                 'endpointName' => 'endpointName',
-                'ddiId' => 'ddi'
+                'ddiId' => 'ddi',
+                'carrierName' => 'carrierName',
+                'destinationName' => 'destinationName',
+                'ratingPlanName' => 'ratingPlanName'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());

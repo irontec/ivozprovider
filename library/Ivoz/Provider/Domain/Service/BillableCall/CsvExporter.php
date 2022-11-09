@@ -27,6 +27,8 @@ class CsvExporter
         'userId',
         'faxId',
         'friendId',
+        'destinationName',
+        'ratingPlanName'
     ];
 
     const BRAND_PROPERTIES = [
@@ -51,6 +53,9 @@ class CsvExporter
         'userId',
         'faxId',
         'friendId',
+        'carrierName',
+        'destinationName',
+        'ratingPlanName'
     ];
 
     protected $apiClient;
@@ -139,9 +144,11 @@ class CsvExporter
         $response = $this->apiClient->get(
             $endpoint,
             $options
-        );
+        )->getBody()->__toString();
 
-        return $response->getBody()->__toString();
+        return $this->sortCsvColumns(
+            $response
+        );
     }
 
     private function addEndpointType(CallCsvSchedulerInterface $scheduler, array $criteria): array
@@ -187,5 +194,66 @@ class CsvExporter
         }
 
         return $criteria;
+    }
+
+    private function sortCsvColumns(string $response): string
+    {
+        if (empty($response)) {
+            return '';
+        }
+
+        $content =
+            array_map(
+                'str_getcsv',
+                array_filter(
+                    explode("\n", $response),
+                    function ($row) {
+                        return !empty($row);
+                    }
+                )
+            );
+
+        if (empty($content)) {
+            return '';
+        }
+
+        $carrierNamePos = array_search(
+            'carrierName',
+            $content[0]
+        );
+
+        $destinationNamePos = array_search(
+            'destinationName',
+            $content[0]
+        );
+
+        $ratingPlanNamePos = array_search(
+            'ratingPlanName',
+            $content[0]
+        );
+
+        foreach ($content as $k => $row) {
+            $carrierName = $row[$carrierNamePos];
+            $destinationName = $row[$destinationNamePos];
+            $ratingPlanName = $row[$ratingPlanNamePos];
+
+            unset($row[$carrierNamePos]);
+            unset($row[$destinationNamePos]);
+            unset($row[$ratingPlanNamePos]);
+
+            $row[] = $carrierName;
+            $row[] = $destinationName;
+            $row[] = $ratingPlanName;
+
+            $content[$k] = $row;
+        }
+
+        $f = fopen('php://memory', 'r+');
+        foreach ($content as $row) {
+            fputcsv($f, $row, ',', '"', "\\");
+        }
+        rewind($f);
+
+        return stream_get_contents($f);
     }
 }
