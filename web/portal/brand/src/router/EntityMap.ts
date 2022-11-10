@@ -89,31 +89,8 @@ const getEntityMap = (): ExtendedRouteMap => {
           filterValues: {
             type: 'retail',
           },
-          children: [
-            {
-              entity: entities.UsersAddress,
-              filterBy: 'company',
-            },
-            {
-              entity: entities.Administrator,
-              filterBy: 'company',
-              children: [
-                {
-                  entity: entities.AdministratorRelPublicEntity,
-                  filterBy: 'administrator',
-                },
-              ],
-            },
-            {
-              entity: entities.RatingProfile,
-              filterBy: 'company',
-            },
-          ],
-        },
-        {
-          entity: entities.Wholesale,
-          filterValues: {
-            type: 'wholesale',
+          fixedValues: {
+            domainUsers: '__null__',
           },
           children: [
             {
@@ -131,7 +108,42 @@ const getEntityMap = (): ExtendedRouteMap => {
               ],
             },
             {
-              entity: entities.RatingProfile,
+              entity: {
+                ...entities.RatingProfile,
+                columns: ['activationTime', 'routingTag', 'ratingPlanGroup'],
+              },
+              filterBy: 'company',
+            },
+          ],
+        },
+        {
+          entity: entities.Wholesale,
+          filterValues: {
+            type: 'wholesale',
+          },
+          fixedValues: {
+            domainUsers: '__null__',
+          },
+          children: [
+            {
+              entity: entities.Trusted,
+              filterBy: 'company',
+            },
+            {
+              entity: entities.Administrator,
+              filterBy: 'company',
+              children: [
+                {
+                  entity: entities.AdministratorRelPublicEntity,
+                  filterBy: 'administrator',
+                },
+              ],
+            },
+            {
+              entity: {
+                ...entities.RatingProfile,
+                columns: ['activationTime', 'routingTag', 'ratingPlanGroup'],
+              },
               filterBy: 'company',
             },
           ],

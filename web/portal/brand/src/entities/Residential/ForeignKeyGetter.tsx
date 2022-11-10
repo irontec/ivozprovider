@@ -3,6 +3,8 @@ import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { CompanyPropertyList } from '../Company/CompanyProperties';
 import CountryNameSelectOptions from '../Country/CountryNameSelectOptions';
 import ResidentialSelectOptions from '../Feature/SelectOptions/ResidentialSelectOptions';
+import CompanyDdiSelectOptions from '../Ddi/SelectOptions/CompanyDdiSelectOptions';
+
 import {
   CallCsvSelectOptions,
   FaxSelectOptions,
@@ -12,6 +14,7 @@ import {
 } from '../NotificationTemplate/SelectOptions';
 
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
+  row,
   cancelToken,
   entityService,
 }): Promise<any> => {
@@ -22,6 +25,7 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     cancelToken,
     response,
     skip: [
+      'outgoingDdi',
       'geoIpAllowedCountries',
       'featureIds',
       'voicemailNotificationTemplate',
@@ -31,6 +35,18 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
       'maxDailyUsageNotificationTemplate',
     ],
   });
+
+  promises[promises.length] = CompanyDdiSelectOptions(
+    {
+      callback: (options: any) => {
+        response.outgoingDdi = options;
+      },
+      cancelToken,
+    },
+    {
+      companyId: row?.id as number,
+    }
+  );
 
   promises[promises.length] = CountryNameSelectOptions({
     callback: (options: any) => {

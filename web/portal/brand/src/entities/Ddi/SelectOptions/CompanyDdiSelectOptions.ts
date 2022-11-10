@@ -2,20 +2,24 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const RoutingTagSelectOptions: SelectOptionsType = ({
-  callback,
-  cancelToken,
-}): Promise<unknown> => {
+type CompanyDdiSelectOptionsProps = {
+  companyId: number;
+};
+
+const CompanyDdiSelectOptions: SelectOptionsType<
+  CompanyDdiSelectOptionsProps
+> = ({ callback, cancelToken }, customProps): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const RoutingTag = entities.RoutingTag;
+  const Ddi = entities.Ddi;
+  const companyId = customProps?.companyId;
 
   return defaultEntityBehavior.fetchFks(
-    RoutingTag.path,
-    ['id', 'name', 'tag'],
+    Ddi.path + `?company[]=${companyId}`,
+    ['id', 'ddie164'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
-        options[item.id] = `${item.name} (${item.tag})`;
+        options[item.id] = Ddi.toStr(item);
       }
 
       callback(options);
@@ -24,4 +28,4 @@ const RoutingTagSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default RoutingTagSelectOptions;
+export default CompanyDdiSelectOptions;

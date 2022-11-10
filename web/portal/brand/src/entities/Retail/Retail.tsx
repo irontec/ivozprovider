@@ -1,6 +1,8 @@
 import Company from '../Company/Company';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { foreignKeyGetter } from './ForeignKeyGetter';
+import Form from './Form';
 
 const Retail = {
   ...Company,
@@ -20,10 +22,12 @@ const Retail = {
     'nif',
     'billingMethod',
     'outgoingDdi',
-    //@TODO RoutingTags
-    //@TODO Audio Transcoding
+    'routingTagIds',
+    'codecIds',
     'featureIds',
   ],
+  foreignKeyGetter,
+  Form,
 };
 
 export default Retail;

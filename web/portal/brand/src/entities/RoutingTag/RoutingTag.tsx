@@ -27,7 +27,7 @@ const RoutingTag: EntityInterface = {
   iden: 'RoutingTag',
   title: _('Routing Tag', { count: 2 }),
   path: '/routing_tags',
-  toStr: (row: any) => row.id,
+  toStr: (row: any) => `${row.name} (${row.tag})`,
   properties,
   selectOptions,
   foreignKeyResolver,
