@@ -1,8 +1,10 @@
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { CompanyPropertyList } from './CompanyProperties';
+import { CompanyPropertyList } from '../Company/CompanyProperties';
 import CountryNameSelectOptions from '../Country/CountryNameSelectOptions';
+import RetailFeatureSelectOptions from '../Feature/SelectOptions/RetailFeatureSelectOptions';
 import CompanyDdiSelectOptions from '../Ddi/SelectOptions/CompanyDdiSelectOptions';
+
 import {
   CallCsvSelectOptions,
   FaxSelectOptions,
@@ -23,8 +25,9 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     cancelToken,
     response,
     skip: [
-      'geoIpAllowedCountries',
       'outgoingDdi',
+      'geoIpAllowedCountries',
+      'featureIds',
       'voicemailNotificationTemplate',
       'faxNotificationTemplate',
       'invoiceNotificationTemplate',
@@ -33,23 +36,28 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     ],
   });
 
-  if (row?.id) {
-    promises[promises.length] = CompanyDdiSelectOptions(
-      {
-        callback: (options: any) => {
-          response.outgoingDdi = options;
-        },
-        cancelToken,
+  promises[promises.length] = CompanyDdiSelectOptions(
+    {
+      callback: (options: any) => {
+        response.outgoingDdi = options;
       },
-      {
-        companyId: row?.id as number,
-      }
-    );
-  }
+      cancelToken,
+    },
+    {
+      companyId: row?.id as number,
+    }
+  );
 
   promises[promises.length] = CountryNameSelectOptions({
     callback: (options: any) => {
       response.geoIpAllowedCountries = options;
+    },
+    cancelToken,
+  });
+
+  promises[promises.length] = RetailFeatureSelectOptions({
+    callback: (options: any) => {
+      response.featureIds = options;
     },
     cancelToken,
   });

@@ -18,20 +18,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const type = row?.type ?? props.formik.initialValues.type;
-  const isVpbx = type === 'vpbx';
-  const isResidential = type === 'residential';
-
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Basic Configuration'),
-      fields: [
-        'name',
-        isVpbx && 'domainUsers',
-        'featureIds',
-        'billingMethod',
-        isResidential && 'outgoingDdi',
-      ],
+      fields: ['name', 'billingMethod', 'outgoingDdi', 'featureIds'],
     },
     {
       legend: _('Security'),
@@ -57,11 +47,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Retail specific'),
       fields: ['routingTagIds', 'codecIds'],
     },
-    edit &&
-      !isResidential && {
-        legend: _('Platform data'),
-        fields: ['outgoingDdi', 'outgoingDdiRule'],
-      },
     edit && {
       legend: _('Invoice data'),
       fields: [
@@ -75,10 +60,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
       ],
     },
     edit && {
-      legend: _('Recordings'),
-      fields: ['onDemandRecord', 'allowRecordingRemoval', 'onDemandRecordCode'],
-    },
-    edit && {
       legend: _('Notification options'),
       fields: [
         'voicemailNotificationTemplate',
@@ -87,6 +68,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
       ],
+    },
+    edit && {
+      legend: _('Recordings'),
+      fields: ['allowRecordingRemoval'],
     },
     edit && {
       legend: _('Externally rater options'),
