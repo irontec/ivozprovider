@@ -38,7 +38,7 @@ Feature: Update billable calls
           "cost": 1.1,
           "price": 2.2,
           "priceDetails": [],
-          "carrierName": null,
+          "carrierName": "someCarrier",
           "destinationName": "Rate test",
           "ratingPlanName": "RatingPlan Test",
           "endpointType": null,
