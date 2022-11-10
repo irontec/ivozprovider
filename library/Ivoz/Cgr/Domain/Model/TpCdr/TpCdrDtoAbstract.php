@@ -84,7 +84,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $answerTime = null;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     private $usage = null;
 
@@ -392,14 +392,14 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->answerTime;
     }
 
-    public function setUsage(int $usage): static
+    public function setUsage(string $usage): static
     {
         $this->usage = $usage;
 
         return $this;
     }
 
-    public function getUsage(): ?int
+    public function getUsage(): ?string
     {
         return $this->usage;
     }
