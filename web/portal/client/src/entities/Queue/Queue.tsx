@@ -28,6 +28,10 @@ const properties: QueueProperties = {
     required: true,
     helpText: _("Allowed characters: a-z, A-Z, 0-9, underscore and '-'"),
   },
+  displayName: {
+    label: _('Display name'),
+    helpText: _('This value will be displayed in the called terminals'),
+  },
   maxWaitTime: {
     label: _('Max wait time'),
     helpText: _(
