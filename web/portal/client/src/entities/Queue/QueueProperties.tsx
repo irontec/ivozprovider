@@ -6,6 +6,7 @@ import {
 
 export type QueuePropertyList<T> = {
   name?: T;
+  displayName?: T;
   maxWaitTime?: T;
   timeoutLocution?: T;
   timeoutTargetType?: T;
