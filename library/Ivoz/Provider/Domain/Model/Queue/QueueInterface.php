@@ -115,6 +115,8 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getName(): ?string;
 
+    public function getDisplayName(): ?string;
+
     public function getMaxWaitTime(): ?int;
 
     public function getTimeoutTargetType(): ?string;

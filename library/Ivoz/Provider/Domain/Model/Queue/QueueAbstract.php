@@ -34,6 +34,11 @@ abstract class QueueAbstract
     protected $name = null;
 
     /**
+     * @var ?string
+     */
+    protected $displayName = null;
+
+    /**
      * @var ?int
      */
     protected $maxWaitTime = null;
@@ -224,6 +229,7 @@ abstract class QueueAbstract
 
         $self
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -268,6 +274,7 @@ abstract class QueueAbstract
 
         $this
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -301,6 +308,7 @@ abstract class QueueAbstract
     {
         return self::createDto()
             ->setName(self::getName())
+            ->setDisplayName(self::getDisplayName())
             ->setMaxWaitTime(self::getMaxWaitTime())
             ->setTimeoutTargetType(self::getTimeoutTargetType())
             ->setTimeoutNumberValue(self::getTimeoutNumberValue())
@@ -332,6 +340,7 @@ abstract class QueueAbstract
     {
         return [
             'name' => self::getName(),
+            'displayName' => self::getDisplayName(),
             'maxWaitTime' => self::getMaxWaitTime(),
             'timeoutTargetType' => self::getTimeoutTargetType(),
             'timeoutNumberValue' => self::getTimeoutNumberValue(),
@@ -371,6 +380,22 @@ abstract class QueueAbstract
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    protected function setDisplayName(?string $displayName = null): static
+    {
+        if (!is_null($displayName)) {
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
     }
 
     protected function setMaxWaitTime(?int $maxWaitTime = null): static
