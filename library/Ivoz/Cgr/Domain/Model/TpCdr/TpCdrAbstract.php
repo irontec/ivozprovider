@@ -96,7 +96,7 @@ abstract class TpCdrAbstract
     protected $answerTime;
 
     /**
-     * @var int
+     * @var string
      */
     protected $usage;
 
@@ -165,7 +165,7 @@ abstract class TpCdrAbstract
         string $destination,
         \DateTimeInterface|string $setupTime,
         \DateTimeInterface|string $answerTime,
-        int $usage,
+        string $usage,
         string $extraFields,
         string $costSource,
         float $cost,
@@ -682,14 +682,14 @@ abstract class TpCdrAbstract
         return clone $this->answerTime;
     }
 
-    protected function setUsage(int $usage): static
+    protected function setUsage(string $usage): static
     {
         $this->usage = $usage;
 
         return $this;
     }
 
-    public function getUsage(): int
+    public function getUsage(): string
     {
         return $this->usage;
     }
