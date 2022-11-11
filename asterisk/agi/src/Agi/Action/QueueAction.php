@@ -57,6 +57,11 @@ class QueueAction
             $this->agi->setVariable("QUEUE_TIMEOUT", $queue->getMaxWaitTime());
         }
 
+        // Set displayName for calls from this Queue
+        if (!empty($queue->getDisplayName())) {
+            $this->agi->setCallerIdName($queue->getDisplayName());
+        }
+
         // Redirect to the calling dialplan context
         $this->agi->redirect('call-queue');
     }

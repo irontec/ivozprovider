@@ -20,7 +20,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const groups: Array<FieldsetGroups> = [
     {
       legend: _('Basic Configuration'),
-      fields: ['name', 'weight', 'strategy'],
+      fields: ['name', 'weight', 'strategy', 'displayName'],
     },
     {
       legend: _('Members configuration'),

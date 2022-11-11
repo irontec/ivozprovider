@@ -9,6 +9,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="displayName" type="string" column="displayName" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="maxWaitTime" type="integer" column="maxWaitTime" nullable="true">
       <options>
         <option name="unsigned"/>
