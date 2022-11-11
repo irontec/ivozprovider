@@ -38,7 +38,7 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
             return null;
         }
 
-        return $usage / (1000 * 1000 * 1000);
+        return floatval($usage) / 1000_000_000;
     }
 
     /**
