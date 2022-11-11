@@ -13,7 +13,7 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait UsersLocationAttrTrait
 {
     /**
-     * @var ?int
+     * @var ?string
      */
     protected $id = null;
 

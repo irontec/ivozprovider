@@ -88,7 +88,7 @@ interface TpCdrInterface extends EntityInterface
 
     public function getAnswerTime(): \DateTime;
 
-    public function getUsage(): int;
+    public function getUsage(): string;
 
     public function getExtraFields(): string;
 
