@@ -26,6 +26,7 @@ Feature: Create queue members
           "id": 2,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -93,6 +94,7 @@ Feature: Create queue members
           "id": 2,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
