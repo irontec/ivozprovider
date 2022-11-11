@@ -14,9 +14,8 @@ interface UsersLocationAttrInterface extends EntityInterface
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
      */
-    public function getId(): ?int;
+    public function getId(): ?string;
 
     public static function createDto(string|int|null $id = null): UsersLocationAttrDto;
 
