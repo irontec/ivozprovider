@@ -18,21 +18,16 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
-      fields: [
-        'username',
-        'domain',
-        'realm',
-        'authUsername',
-        'authPassword',
-        'authProxy',
-        'expires',
-        'multiDdi',
-        'contactUsername',
-        'id',
-        'ddiProvider',
-        'status',
-      ],
+      legend: _('Main Settings'),
+      fields: ['username', 'domain', 'authPassword'],
+    },
+    {
+      legend: _('Contact Settings'),
+      fields: ['multiDdi', 'contactUsername'],
+    },
+    {
+      legend: _('Optional Settings'),
+      fields: ['authUsername', 'authProxy', 'realm', 'expires'],
     },
   ];
 
