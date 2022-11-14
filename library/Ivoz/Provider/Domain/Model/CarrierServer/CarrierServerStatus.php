@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
-class CarrierServerRegistrationStatus
+class CarrierServerStatus
 {
     /**
      * @var bool

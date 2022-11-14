@@ -10,7 +10,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Kam\Infrastructure\Persistence\Doctrine\TrunksLcrGatewayDoctrineRepository;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
-use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerRegistrationStatus;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerStatus;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 class CarrierServerDtoAssembler implements CustomDtoAssemblerInterface
@@ -65,7 +65,7 @@ class CarrierServerDtoAssembler implements CustomDtoAssemblerInterface
         }
 
          $carrierServerDto->addStatus(
-             new CarrierServerRegistrationStatus(
+             new CarrierServerStatus(
                  (int) $status
              )
          );

@@ -6,7 +6,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
 {
     public const CONTEXT_STATUS = 'status';
 
-    /** @var CarrierServerRegistrationStatus[]  */
+    /** @var CarrierServerStatus[]  */
     private array $status = [];
 
     protected $sensitiveFields = [
@@ -74,7 +74,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
         );
     }
 
-    public function addStatus(CarrierServerRegistrationStatus $status): static
+    public function addStatus(CarrierServerStatus $status): static
     {
         $this->status[] = $status;
 
@@ -85,7 +85,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
         $response['status'] = array_map(
-            function (CarrierServerRegistrationStatus $registrationStatus): array {
+            function (CarrierServerStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status
