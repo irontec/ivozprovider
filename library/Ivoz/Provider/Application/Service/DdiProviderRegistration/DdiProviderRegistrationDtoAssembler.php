@@ -30,7 +30,10 @@ class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto = $ddiProviderRegistration->toDto($depth);
 
-        if (DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION !== $context) {
+        if (
+            DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION !== $context
+            && DdiProviderRegistrationDto::CONTEXT_STATUS !== $context
+        ) {
             return $dto;
         }
 
