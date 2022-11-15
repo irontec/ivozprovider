@@ -65,8 +65,8 @@ const properties: OutgoingRoutingProperties = {
         hide: ['relCarriers'],
       },
       lcr: {
-        show: ['relCarriers', 'weight', 'priority'],
-        hide: ['carrier', 'prefix', 'forceClid', 'clidCountry', 'clid'],
+        show: ['relCarriers', 'carrier', 'weight', 'priority'],
+        hide: ['prefix', 'forceClid', 'clidCountry', 'clid'],
       },
       block: {
         show: ['priority'],

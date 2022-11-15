@@ -1,4 +1,4 @@
-import { ListDecorator } from '@irontec/ivoz-ui';
+import { ListDecorator, ScalarProperty } from '@irontec/ivoz-ui';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import {
   PropertyCustomFunctionComponent,
@@ -12,20 +12,33 @@ type DestinationProps = PropertyCustomFunctionComponent<
 >;
 
 const Operator: DestinationProps = (props): JSX.Element | null => {
-  const { _columnName, property, values } = props;
+  const { _context, _columnName, property, values, formFieldFactory } = props;
   const { routingMode } = values;
 
-  if (routingMode === 'block') {
-    return _('No carriers');
+  if (_context === 'read' || !formFieldFactory) {
+    if (routingMode === 'block') {
+      return _('No carriers');
+    }
+
+    return (
+      <ListDecorator
+        field={_columnName}
+        row={values}
+        property={property}
+        ignoreCustomComponent={true}
+      />
+    );
   }
 
-  return (
-    <ListDecorator
-      field={_columnName}
-      row={values}
-      property={property}
-      ignoreCustomComponent={true}
-    />
+  const { choices, readOnly } = props;
+  const modifiedProperty = { ...property } as ScalarProperty;
+  delete modifiedProperty.component;
+
+  return formFieldFactory.getInputField(
+    _columnName,
+    modifiedProperty,
+    choices,
+    readOnly
   );
 };
 
