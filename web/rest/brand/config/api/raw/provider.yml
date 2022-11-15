@@ -386,6 +386,18 @@ Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
       - transformationRuleSet
 
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    get_status_item:
+      method: 'GET'
+      path: '/ddi_provider_registrations/{id}/status'
+      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto::CONTEXT_STATUS
+      normalization_context:
+        groups: [
+          !php/const Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto::CONTEXT_STATUS
+        ]
   collectionOperations:
     get:
       operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION
