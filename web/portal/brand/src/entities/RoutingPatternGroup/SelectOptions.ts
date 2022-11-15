@@ -1,3 +1,4 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -10,12 +11,12 @@ const RoutingPatternGroupSelectOptions: SelectOptionsType = ({
   const RoutingPatternGroup = entities.RoutingPatternGroup;
 
   return defaultEntityBehavior.fetchFks(
-    RoutingPatternGroup.path,
-    ['id'],
+    RoutingPatternGroup.path + '?_order[name]=ASC',
+    ['id', 'name'],
     (data: any) => {
-      const options: any = {};
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.id;
+        options.push({ id: item.id, label: item.name });
       }
 
       callback(options);
