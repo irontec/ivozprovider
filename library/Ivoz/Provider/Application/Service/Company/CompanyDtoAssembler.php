@@ -70,7 +70,7 @@ class CompanyDtoAssembler implements CustomDtoAssemblerInterface
             ->setRoutingTagIds(
                 $routingTagIds
             )
-            ->setRoutingTagIds(
+            ->setCodecIds(
                 $codecIds
             );
 
