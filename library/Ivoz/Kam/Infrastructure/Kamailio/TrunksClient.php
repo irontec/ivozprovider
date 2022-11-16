@@ -113,6 +113,9 @@ class TrunksClient implements TrunksClientInterface
             return [];
         }
 
+        /** @var  \stdClass $result */
+        $result = $response->result;
+
         /**
          * Expected response format
          * {
@@ -134,7 +137,8 @@ class TrunksClient implements TrunksClientInterface
          *   defunct_until: 0
          * }
          */
-        return (array) $response->result;
+
+        return $result->gw[0];
     }
 
     public function reloadRtpengine(): void
