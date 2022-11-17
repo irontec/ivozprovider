@@ -144,7 +144,7 @@ class CompanyDto extends CompanyDtoAbstract
      */
     public function setCodecIds(array $codecIds): self
     {
-        $this->routingTagIds = $codecIds;
+        $this->codecIds = $codecIds;
         $relCodecs = [];
         foreach ($codecIds as $id) {
             $dto = new CompanyRelCodecDto();

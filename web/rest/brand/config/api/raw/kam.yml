@@ -20,3 +20,11 @@ Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+
+Ivoz\Kam\Domain\Model\Trusted\Trusted:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
