@@ -5,6 +5,7 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
+import store from 'store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
@@ -16,10 +17,20 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const Retail = store.getState().entities.entities.Retail;
+  const Wholesale = store.getState().entities.entities.Wholesale;
+
+  const isRetailPath = match.path.indexOf(Retail.localPath || '_') === 0;
+  const isWholesalePath = match.path.indexOf(Wholesale.localPath || '_') === 0;
+
   const groups: Array<FieldsetGroups | false> = [
     {
       legend: _('Main'),
-      fields: ['activationTime', 'ratingPlanGroup'],
+      fields: [
+        'activationTime',
+        'ratingPlanGroup',
+        (isRetailPath || isWholesalePath) && 'routingTag',
+      ],
     },
   ];
 

@@ -2,20 +2,20 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const RoutingTagSelectOptions: SelectOptionsType = ({
+const CodecSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const RoutingTag = entities.RoutingTag;
+  const Codec = entities.Codec;
 
   return defaultEntityBehavior.fetchFks(
-    RoutingTag.path,
-    ['id', 'name', 'tag'],
+    Codec.path,
+    ['id', 'iden'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
-        options[item.id] = `${item.name} (${item.tag})`;
+        options[item.id] = item.iden;
       }
 
       callback(options);
@@ -24,4 +24,4 @@ const RoutingTagSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default RoutingTagSelectOptions;
+export default CodecSelectOptions;

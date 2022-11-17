@@ -344,8 +344,9 @@ const properties: CompanyProperties = {
   },
   codecIds: {
     label: _('Audio Transcoding'),
+    helpText: _('Do NOT select any codec before reading documentation.'), //@TODO add link
     type: 'array',
-    $ref: '#/definitions/',
+    $ref: '#/definitions/Codec',
   },
 };
 

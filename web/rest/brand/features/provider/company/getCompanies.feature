@@ -65,7 +65,9 @@ Feature: Retrieve companies
               "outgoingDdi": null,
               "featureIds": [],
               "geoIpAllowedCountries": [],
-              "routingTagIds": [],
+              "routingTagIds": [
+                  1
+              ],
               "codecIds": []
           },
           {
