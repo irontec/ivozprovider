@@ -11,6 +11,7 @@
     <issueHandlers>
         <PossiblyNullReference errorLevel="suppress" />
         <UnusedClass errorLevel="suppress" />
+        <UnresolvableInclude errorLevel="suppress" />
         <PossiblyUnusedMethod errorLevel="suppress" />
         <PossiblyUnusedProperty errorLevel="suppress" />
         <PossiblyUnusedParam  errorLevel="suppress" />

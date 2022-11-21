@@ -54,10 +54,7 @@ interface UserRepository extends ObjectRepository, Selectable
         string $email
     );
 
-    /**
-     * @return UserInterface | null
-     */
     public function findOneByTerminalId(
         ?int $terminalId
-    );
+    ): ?UserInterface;
 }

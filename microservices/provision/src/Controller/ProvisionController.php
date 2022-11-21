@@ -2,12 +2,13 @@
 
 namespace Controller;
 
+use Psr\Log\LoggerInterface;
+use Services\Provision;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\RegisterCommandTrait;
-use Services\Provision;
 
 class ProvisionController
 {
@@ -16,7 +17,8 @@ class ProvisionController
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        private Provision $provision
+        private Provision $provision,
+        private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
@@ -24,22 +26,39 @@ class ProvisionController
 
     public function indexAction(Request $request): Response
     {
+        $isHttps = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']);
+        if ($isHttps && $_SERVER['SERVER_PORT'] == 443) {
+            throw new \DomainException('No generic provisioning over 443', 403);
+        }
+
+        /** @var array{params: string} $routeParams */
+        $routeParams = $request->attributes->get('_route_params');
+
         try {
-            $this->registerCommand('Provision', 'indexAction');
+            $content = $this->provision->execute(
+                $isHttps,
+                $routeParams['params']
+            );
+        } catch (\DomainException $e) {
+            $this->logger->error(
+                $e->getMessage()
+            );
 
-            /** @var array<string, mixed> $routeParams */
-            $routeParams = $request->attributes->get('_route_params');
-            /** @var string $configFile */
-            $configFile = $routeParams['configFile'];
-
-            $content = $this->provision->execute($configFile);
-        } catch (\Exception $e) {
             return new Response(
                 $e->getMessage() . "\n",
+                $e->getCode()
+            );
+        } catch (\Exception $e) {
+            $this->logger->error(
+                $e->getMessage()
+            );
+
+            return new Response(
+                'Server error',
                 500
             );
         }
 
-        return new Response((string) $content, 200);
+        return new Response($content, 200);
     }
 }
