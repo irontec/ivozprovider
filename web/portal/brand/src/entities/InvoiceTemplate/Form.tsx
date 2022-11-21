@@ -3,7 +3,6 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
@@ -18,15 +17,36 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
+      legend: '',
+      fields: ['name', 'description'],
+    },
+    {
+      legend: '',
       fields: [
-        'name',
-        'description',
-        'template',
-        'templateHeader',
-        'templateFooter',
-        'id',
-        'global',
+        {
+          name: 'template',
+          size: {
+            md: 12,
+            lg: 12,
+            xl: 12,
+          },
+        },
+        {
+          name: 'templateHeader',
+          size: {
+            md: 12,
+            lg: 12,
+            xl: 12,
+          },
+        },
+        {
+          name: 'templateFooter',
+          size: {
+            md: 12,
+            lg: 12,
+            xl: 12,
+          },
+        },
       ],
     },
   ];
