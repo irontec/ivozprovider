@@ -7,7 +7,6 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { InvoiceProperties } from './InvoiceProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
-import TaxRate from './Field/TaxRate';
 import Total from './Field/Total';
 import TotalWithTax from './Field/TotalWithTax';
 
@@ -30,7 +29,7 @@ const properties: InvoiceProperties = {
   },
   taxRate: {
     label: _('Tax rate'),
-    component: TaxRate,
+    subfix: '%',
   },
   totalWithTax: {
     label: _('Total with tax'),
@@ -45,6 +44,7 @@ const properties: InvoiceProperties = {
       created: _('Created'),
       error: _('Error'),
     },
+    readOnly: true,
   },
   statusMsg: {
     label: _('Status Msg'),
@@ -52,6 +52,7 @@ const properties: InvoiceProperties = {
   pdf: {
     label: _('Pdf file'),
     type: 'file',
+    readOnly: true,
     //@TODO file preview
   },
   invoiceTemplate: {

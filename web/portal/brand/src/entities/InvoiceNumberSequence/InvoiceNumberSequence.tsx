@@ -31,9 +31,11 @@ const properties: InvoiceNumberSequenceProperties = {
   },
   latestValue: {
     label: _('Latest value'),
+    readOnly: true,
   },
   iteration: {
     label: _('Iteration'),
+    readOnly: true,
   },
   version: {
     label: _('Version'),

@@ -36,8 +36,8 @@ const properties: FixedCostsRelInvoiceSchedulerProperties = {
         hide: ['quantity', 'ddisCountryMatch', 'ddisCountry'],
       },
       ddis: {
-        show: ['quantity'],
-        hide: ['ddisCountryMatch'],
+        show: ['ddisCountryMatch'],
+        hide: ['quantity'],
       },
     },
   },

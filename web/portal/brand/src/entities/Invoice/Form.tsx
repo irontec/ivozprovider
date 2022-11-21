@@ -3,11 +3,11 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
+  const edit = props.edit || false;
   const DefaultEntityForm = defaultEntityBehavior.Form;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -18,23 +18,25 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
+      legend: '',
       fields: [
+        !edit && 'numberSequence',
         'number',
-        'inDate',
-        'outDate',
-        'total',
-        'taxRate',
-        'totalWithTax',
-        'status',
-        'statusMsg',
-        'id',
-        'pdf',
-        'invoiceTemplate',
         'company',
-        'numberSequence',
-        'scheduler',
+        'invoiceTemplate',
       ],
+    },
+    {
+      legend: '',
+      fields: ['inDate', 'outDate'],
+    },
+    {
+      legend: '',
+      fields: [edit && 'total', 'taxRate', edit && 'totalWithTax'],
+    },
+    edit && {
+      legend: '',
+      fields: ['status', 'pdf'],
     },
   ];
 
