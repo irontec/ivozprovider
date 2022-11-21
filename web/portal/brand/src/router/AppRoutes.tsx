@@ -2,7 +2,7 @@ import Dashboard from '@irontec/ivoz-ui/components/Dashboard';
 import parseRoutes, { RouteSpec } from '@irontec/ivoz-ui/router/parseRoutes';
 import RouteContent from '@irontec/ivoz-ui/router/RouteContent';
 import ParsedApiSpecInterface from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
-import Login from 'components/Login';
+import Login from '../components/Login';
 import { Routes, Route } from 'react-router-dom';
 import { useStoreState } from 'store';
 import addCustomRoutes from './addCustomRoutes';

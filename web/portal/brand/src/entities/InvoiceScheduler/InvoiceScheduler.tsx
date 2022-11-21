@@ -33,6 +33,7 @@ const properties: InvoiceSchedulerProperties = {
   },
   lastExecution: {
     label: _('Last execution'),
+    readOnly: true,
     //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess::getInvoiceSchedulerLastExecutionReport
   },
   lastExecutionError: {
@@ -43,7 +44,7 @@ const properties: InvoiceSchedulerProperties = {
   },
   taxRate: {
     label: _('Tax rate'),
-    //@TODO sufix: "%"
+    subfix: '%',
   },
   id: {
     label: _('Id'),
