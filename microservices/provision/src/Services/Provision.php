@@ -2,70 +2,47 @@
 
 namespace Services;
 
-use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/** @psalm-suppress PropertyNotSetInConstructor */
-class Provision extends AbstractController
+class Provision
 {
-    private string $storagePath;
-
     public function __construct(
         private TerminalModelRepository $terminalModelRepository,
+        private ProvisionGeneric $provisionGeneric,
+        private ProvisionSpecific $provisionSpecific,
     ) {
-        $this->storagePath = (string) $_ENV['STORAGE_PATH'];
     }
 
-    public function execute(string $genericUrlPattern): bool|string
-    {
+    public function execute(
+        bool $isHttps,
+        string $route
+    ): string {
+
         $terminalModel = $this
             ->terminalModelRepository
-            ->findOneByGenericUrlPattern($genericUrlPattern);
+            ->findOneByGenericUrlPattern($route);
 
         if ($terminalModel) {
-            $args = [
-                'terminalModel' => $terminalModel
-            ];
+            // Generic Template requests must be served over HTTP
+            if ($isHttps) {
+                throw new \DomainException('No generic provisioning over https', 403);
+            }
 
-            return $this->renderTemplate('generic', $args);
+            return $this
+                ->provisionGeneric
+                ->execute($terminalModel);
         }
 
-        return '';
-    }
-
-
-    /**
-     * @param string $template
-     * @param array<string, mixed> $args
-     * @return false|string
-     */
-    private function renderTemplate(string $template, array $args)
-    {
-        extract($args);
-
-        if (!isset($terminalModel) || !($terminalModel instanceof TerminalModelInterface)) {
-            throw  new \DomainException('Terminal Model is required');
+        if (! $isHttps) {
+            // Specific Template requests must be served over HTTPS
+            throw new \DomainException('Terminal model not found', 404);
         }
 
-        $route =
-            $this->storagePath
-            . DIRECTORY_SEPARATOR
-            . "Provision_template"
-            . DIRECTORY_SEPARATOR
-            . (int) $terminalModel->getId()
-            . DIRECTORY_SEPARATOR;
+        $routeSegments = explode('/', $route);
+        $mac = array_pop($routeSegments);
 
-        $path = $route . (string) $template . '.phtml';
-        $content = '';
-
-        if (file_exists($path)) {
-            ob_start();
-            include($path);
-            $content = ob_get_contents();
-            ob_end_clean();
-        }
-
-        return $content;
+        return $this
+            ->provisionSpecific
+            ->execute($mac);
     }
 }
