@@ -184,7 +184,7 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
 
-    public function findOneByTerminalId(int $terminalId): ?UserInterface
+    public function findOneByTerminalId(?int $terminalId): ?UserInterface
     {
         $user = $this->findOneBy([
             'terminal' => $terminalId
