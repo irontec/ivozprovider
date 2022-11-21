@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
-use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * BrandDoctrineRepository
