@@ -1,3 +1,5 @@
 provisionGeneric:
-    path: /{configFile}
+    path: /{params}
     controller: Controller\ProvisionController::indexAction
+    requirements:
+        params: '.+'

@@ -305,11 +305,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Cgr/Domain/Model/TpCdrStat/TpCdrStatTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -333,9 +328,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpDerivedCharger/TpDerivedChargerTrait.php">
     <MixedArgument occurrences="1">
@@ -428,9 +420,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpLcrRule/TpLcrRuleTrait.php">
     <MixedArgument occurrences="1">
@@ -497,9 +486,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRatingPlan/TpRatingPlanTrait.php">
     <MixedArgument occurrences="1">
@@ -581,15 +567,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Cgr/Domain/Model/TpRatingProfile/TpRatingProfileTrait.php">
     <MixedArgument occurrences="1">
@@ -1014,9 +991,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksAddress/TrunksAddressTrait.php">
     <MixedArgument occurrences="1">
@@ -1087,11 +1061,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrRepository.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>mixed</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksCdr/TrunksCdrTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -1151,9 +1120,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrGateway/TrunksLcrGatewayRepository.php">
     <MissingReturnType occurrences="1">
@@ -1203,17 +1169,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrRule/TrunksLcrRuleTrait.php">
     <MixedArgument occurrences="1">
@@ -1258,14 +1213,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksLcrRuleTarget/TrunksLcrRuleTargetRepository.php">
     <MissingReturnType occurrences="1">
@@ -1289,9 +1236,6 @@
       <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregAbstract.php">
     <MixedArgument occurrences="4">
@@ -1316,11 +1260,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/TrunksUacreg/TrunksUacregTrait.php">
     <MixedArgument occurrences="1">
@@ -1374,10 +1313,6 @@
       <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressAbstract.php">
     <MixedArgument occurrences="2">
@@ -1397,12 +1332,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressTrait.php">
     <MixedArgument occurrences="1">
@@ -1716,9 +1645,6 @@
       <code>$callCsvReport</code>
     </ParamNameMismatch>
   </file>
-  <file src="Ivoz/Provider/Application/Service/Company/CompanyDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
   <file src="Ivoz/Provider/Application/Service/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAssembler.php">
     <ArgumentTypeCoercion occurrences="4"/>
   </file>
@@ -1984,10 +1910,6 @@
     <MissingReturnType occurrences="1">
       <code>unserialize</code>
     </MissingReturnType>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>AdministratorInterface</code>
-      <code>AdministratorInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Administrator/AdministratorSecurityTrait.php">
     <LessSpecificImplementedReturnType occurrences="1">
@@ -2027,16 +1949,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityRepository.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>int</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/AdministratorRelPublicEntity/AdministratorRelPublicEntityTrait.php">
     <MixedArgument occurrences="1">
@@ -2233,15 +2145,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/BillableCall/BillableCallRepository.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>int</code>
-      <code>int</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BillableCall/BillableCallTrait.php">
     <MixedArgument occurrences="1">
@@ -2415,26 +2318,6 @@
     <PossiblyInvalidDocblockTag occurrences="1">
       <code>@var string $fldName</code>
     </PossiblyInvalidDocblockTag>
-    <PossiblyUnusedReturnValue occurrences="18">
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-      <code>BrandInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandTrait.php">
     <MixedArgument occurrences="1">
@@ -2480,14 +2363,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/BrandService/BrandServiceInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/BrandService/BrandServiceTrait.php">
     <MixedArgument occurrences="1">
@@ -2521,14 +2396,6 @@
       <code>$calendarPeriods</code>
       <code>$holidayDates</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Calendar/CalendarInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>CalendarInterface</code>
-      <code>CalendarInterface</code>
-      <code>CalendarInterface</code>
-      <code>CalendarInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Calendar/CalendarTrait.php">
     <MixedArgument occurrences="1">
@@ -2586,13 +2453,6 @@
       <code>$relSchedules</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>CalendarPeriodInterface</code>
-      <code>CalendarPeriodInterface</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CalendarPeriod/CalendarPeriodTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -2633,14 +2493,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleTrait.php">
     <TooManyArguments occurrences="1">
@@ -2678,12 +2530,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relMatchLists</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CallAcl/CallAclInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>CallAclInterface</code>
-      <code>CallAclInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallAcl/CallAclTrait.php">
     <MixedArgument occurrences="1">
@@ -2723,11 +2569,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallAclRelMatchList/CallAclRelMatchListTrait.php">
     <MixedArgument occurrences="1">
@@ -2872,9 +2713,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerRepository.php">
     <MissingParamType occurrences="1">
@@ -2956,14 +2794,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CallForwardSetting/CallForwardSettingTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3039,20 +2869,6 @@
       <code>$tpCdrStats</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Carrier/CarrierInterface.php">
-    <PossiblyUnusedReturnValue occurrences="10">
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-      <code>CarrierInterface</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Carrier/CarrierTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3077,10 +2893,6 @@
       <code>$this-&gt;getOutboundProxy()</code>
       <code>$this-&gt;getSipProxy()</code>
     </PossiblyNullArgument>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerAbstract.php">
     <MixedArgument occurrences="4">
@@ -3113,13 +2925,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerTrait.php">
     <MixedArgument occurrences="1">
@@ -3164,9 +2969,6 @@
     <PossiblyNullArgument occurrences="1">
       <code>$balance</code>
     </PossiblyNullArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
     <UnnecessaryVarAnnotation occurrences="3">
       <code>FriendInterface[]</code>
       <code>\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]</code>
@@ -3285,44 +3087,11 @@
       <code>$terminals</code>
       <code>$voicemails</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyInterface.php">
     <MissingParamType occurrences="1">
       <code>$exten</code>
     </MissingParamType>
-    <PossiblyUnusedReturnValue occurrences="28">
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>CompanyInterface</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Company/CompanyRepository.php">
     <MissingReturnType occurrences="1">
@@ -3365,11 +3134,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodecTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -3406,26 +3170,15 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelGeoIPCountry/CompanyRelGeoIPCountryTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
     </TooManyArguments>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTag.php">
-    <LessSpecificReturnStatement occurrences="1">
-      <code>parent::setCompany($company)</code>
-    </LessSpecificReturnStatement>
     <MethodSignatureMismatch occurrences="1">
       <code>CompanyRelRoutingTag</code>
     </MethodSignatureMismatch>
-    <MoreSpecificReturnType occurrences="1">
-      <code>static</code>
-    </MoreSpecificReturnType>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagAbstract.php">
     <MixedArgument occurrences="4">
@@ -3452,12 +3205,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagTrait.php">
     <TooManyArguments occurrences="1">
@@ -3503,14 +3250,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceTrait.php">
     <MixedArgument occurrences="1">
@@ -3588,12 +3327,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$conditions</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>ConditionalRouteInterface</code>
-      <code>ConditionalRouteInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteTrait.php">
     <MixedArgument occurrences="1">
@@ -3692,19 +3425,6 @@
       <code>$relSchedules</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionInterface.php">
-    <PossiblyUnusedReturnValue occurrences="9">
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>ConditionalRoutesConditionInterface</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesCondition/ConditionalRoutesConditionTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -3745,14 +3465,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelCalendar/ConditionalRoutesConditionsRelCalendarTrait.php">
     <TooManyArguments occurrences="1">
@@ -3794,14 +3506,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelMatchlist/ConditionalRoutesConditionsRelMatchlistTrait.php">
     <TooManyArguments occurrences="1">
@@ -3838,14 +3542,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelRouteLock/ConditionalRoutesConditionsRelRouteLockTrait.php">
     <TooManyArguments occurrences="1">
@@ -3887,14 +3583,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleTrait.php">
     <TooManyArguments occurrences="1">
@@ -4070,17 +3758,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Ddi/DdiInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ddi/DdiTrait.php">
     <MixedArgument occurrences="1">
@@ -4141,14 +3818,6 @@
       <code>$ddiProviderRegistrations</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>DdiProviderInterface</code>
-      <code>DdiProviderInterface</code>
-      <code>DdiProviderInterface</code>
-      <code>DdiProviderInterface</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4197,12 +3866,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddressInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderAddress/DdiProviderAddressTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -4247,12 +3910,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4295,13 +3952,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$destinationRates</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Destination/DestinationInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>DestinationInterface</code>
-      <code>DestinationInterface</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Destination/DestinationRepository.php">
     <UndefinedDocblockClass occurrences="1">
@@ -4365,14 +4015,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRate/DestinationRateRepository.php">
     <UndefinedDocblockClass occurrences="1">
       <code>\Doctrine\DBAL\DBALException</code>
@@ -4433,10 +4075,6 @@
     <PossiblyInvalidDocblockTag occurrences="1">
       <code>@var string $fldName</code>
     </PossiblyInvalidDocblockTag>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>DestinationRateGroupInterface</code>
-      <code>DestinationRateGroupInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupTrait.php">
     <MixedArgument occurrences="1">
@@ -4460,16 +4098,6 @@
       <code>$residentialDevices</code>
       <code>$terminals</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Domain/DomainInterface.php">
-    <PossiblyUnusedReturnValue occurrences="6">
-      <code>DomainInterface</code>
-      <code>DomainInterface</code>
-      <code>DomainInterface</code>
-      <code>DomainInterface</code>
-      <code>DomainInterface</code>
-      <code>DomainInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Domain/DomainTrait.php">
     <MixedArgument occurrences="1">
@@ -4560,17 +4188,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$users</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>ExtensionInterface</code>
-      <code>ExtensionInterface</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Extension/ExtensionTrait.php">
     <MixedArgument occurrences="1">
@@ -4667,16 +4284,6 @@
     <MissingReturnType occurrences="1">
       <code>getCalendarPeriodForToday</code>
     </MissingReturnType>
-    <PossiblyUnusedReturnValue occurrences="8">
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-      <code>ExternalCallFilterInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterTrait.php">
     <MixedArgument occurrences="1">
@@ -4718,14 +4325,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterBlackList/ExternalCallFilterBlackListTrait.php">
     <TooManyArguments occurrences="1">
@@ -4767,14 +4366,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelCalendar/ExternalCallFilterRelCalendarTrait.php">
     <TooManyArguments occurrences="1">
@@ -4816,14 +4407,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterRelSchedule/ExternalCallFilterRelScheduleTrait.php">
     <TooManyArguments occurrences="1">
@@ -4865,14 +4448,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListTrait.php">
     <TooManyArguments occurrences="1">
@@ -5027,14 +4602,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandTrait.php">
     <TooManyArguments occurrences="1">
@@ -5076,14 +4643,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyTrait.php">
     <TooManyArguments occurrences="1">
@@ -5157,14 +4716,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoice/FixedCostsRelInvoiceTrait.php">
     <TooManyArguments occurrences="1">
@@ -5205,11 +4756,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/FixedCostsRelInvoiceScheduler/FixedCostsRelInvoiceSchedulerTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5240,9 +4786,6 @@
     <PossiblyNullArgument occurrences="1">
       <code>$this-&gt;getDomain()</code>
     </PossiblyNullArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/FriendAbstract.php">
     <MixedArgument occurrences="14">
@@ -5308,18 +4851,6 @@
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Friend/FriendInterface.php">
-    <PossiblyUnusedReturnValue occurrences="8">
-      <code>FriendInterface</code>
-      <code>FriendInterface</code>
-      <code>FriendInterface</code>
-      <code>FriendInterface</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Friend/FriendTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5353,11 +4884,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FriendsPattern/FriendsPatternTrait.php">
     <MixedArgument occurrences="1">
@@ -5416,11 +4942,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/HolidayDate/HolidayDateRepository.php">
     <MissingReturnType occurrences="1">
       <code>findMatchingDateSiblings</code>
@@ -5478,12 +4999,6 @@
       <code>$huntGroupMembers</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>HuntGroupInterface</code>
-      <code>HuntGroupInterface</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5527,11 +5042,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/HuntGroupMember/HuntGroupMemberTrait.php">
     <MixedArgument occurrences="1">
@@ -5599,9 +5109,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relFixedCosts</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceInterface.php">
     <MissingParamType occurrences="1">
@@ -5610,10 +5117,6 @@
     <PossiblyInvalidDocblockTag occurrences="1">
       <code>@var string $fldName</code>
     </PossiblyInvalidDocblockTag>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>InvoiceInterface</code>
-      <code>InvoiceInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceTrait.php">
     <MixedArgument occurrences="1">
@@ -5715,12 +5218,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relFixedCosts</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>InvoiceSchedulerInterface</code>
-      <code>InvoiceSchedulerInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerRepository.php">
     <MissingParamType occurrences="1">
@@ -5850,18 +5347,6 @@
       <code>$entries</code>
       <code>$excludedExtensions</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Ivr/IvrInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>IvrInterface</code>
-      <code>IvrInterface</code>
-      <code>IvrInterface</code>
-      <code>IvrInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Ivr/IvrRepository.php">
     <MissingReturnType occurrences="2">
@@ -5928,11 +5413,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/IvrEntry/IvrEntryTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5973,14 +5453,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/IvrExcludedExtension/IvrExcludedExtensionTrait.php">
     <TooManyArguments occurrences="1">
@@ -6031,12 +5503,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$users</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Location/LocationInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>LocationInterface</code>
-      <code>LocationInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Location/LocationTrait.php">
     <MixedArgument occurrences="1">
@@ -6123,13 +5589,6 @@
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/MatchList/MatchListInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>MatchListInterface</code>
-      <code>MatchListInterface</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/MatchList/MatchListTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6168,11 +5627,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/MatchListPattern/MatchListPatternTrait.php">
     <MixedArgument occurrences="1">
@@ -6275,10 +5729,6 @@
     <PossiblyInvalidDocblockTag occurrences="1">
       <code>@var string $fldName</code>
     </PossiblyInvalidDocblockTag>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldTrait.php">
     <MixedArgument occurrences="1">
@@ -6311,12 +5761,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$contents</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>NotificationTemplateInterface</code>
-      <code>NotificationTemplateInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateTrait.php">
     <MixedArgument occurrences="1">
@@ -6357,11 +5801,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/NotificationTemplateContent/NotificationTemplateContentTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6399,12 +5838,6 @@
       <code>$patterns</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>OutgoingDdiRuleInterface</code>
-      <code>OutgoingDdiRuleInterface</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6420,9 +5853,6 @@
     <MoreSpecificReturnType occurrences="1">
       <code>static</code>
     </MoreSpecificReturnType>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternAbstract.php">
     <MixedArgument occurrences="6">
@@ -6457,11 +5887,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingDdiRulesPattern/OutgoingDdiRulesPatternTrait.php">
     <MixedArgument occurrences="1">
@@ -6539,22 +5964,6 @@
       <code>$relCarriers</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingInterface.php">
-    <PossiblyUnusedReturnValue occurrences="12">
-      <code>OutgoingRoutingInterface</code>
-      <code>OutgoingRoutingInterface</code>
-      <code>OutgoingRoutingInterface</code>
-      <code>OutgoingRoutingInterface</code>
-      <code>OutgoingRoutingInterface</code>
-      <code>OutgoingRoutingInterface</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -6593,17 +6002,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$tpRatingProfiles</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>OutgoingRoutingRelCarrierInterface</code>
-      <code>OutgoingRoutingRelCarrierInterface</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierTrait.php">
     <TooManyArguments occurrences="1">
@@ -6636,12 +6034,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$relUsers</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>PickUpGroupInterface</code>
-      <code>PickUpGroupInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupTrait.php">
     <MixedArgument occurrences="1">
@@ -6683,16 +6075,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/PickUpRelUser/PickUpRelUserInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/PickUpRelUser/PickUpRelUserTrait.php">
     <TooManyArguments occurrences="1">
@@ -6760,11 +6142,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/ProxyTrunksRelBrand/ProxyTrunksRelBrandInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ProxyTrunksRelBrand/ProxyTrunksRelBrandTrait.php">
     <TooManyArguments occurrences="1">
@@ -6929,11 +6306,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/QueueMember/QueueMemberInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/QueueMember/QueueMemberTrait.php">
     <TooManyArguments occurrences="1">
       <code>parent::__construct(...func_get_args())</code>
@@ -7022,13 +6394,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -7065,12 +6430,6 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$ratingPlan</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>RatingPlanGroupInterface</code>
-      <code>RatingPlanGroupInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupRepository.php">
     <MissingParamType occurrences="1">
@@ -7129,14 +6488,6 @@
       <code>$tpRatingProfiles</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>RatingProfileInterface</code>
-      <code>RatingProfileInterface</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -7178,9 +6529,6 @@
     <PossiblyInvalidDocblockTag occurrences="1">
       <code>@var string $fldName</code>
     </PossiblyInvalidDocblockTag>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingTrait.php">
     <MixedArgument occurrences="1">
@@ -7280,17 +6628,6 @@
     <MissingParamType occurrences="1">
       <code>$ddieE164</code>
     </MissingParamType>
-    <PossiblyUnusedReturnValue occurrences="9">
-      <code>ResidentialDeviceInterface</code>
-      <code>ResidentialDeviceInterface</code>
-      <code>ResidentialDeviceInterface</code>
-      <code>ResidentialDeviceInterface</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceTrait.php">
     <MixedArgument occurrences="1">
@@ -7363,17 +6700,6 @@
       <code>$callForwardSettings</code>
       <code>$ddis</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountInterface.php">
-    <PossiblyUnusedReturnValue occurrences="7">
-      <code>RetailAccountInterface</code>
-      <code>RetailAccountInterface</code>
-      <code>RetailAccountInterface</code>
-      <code>RetailAccountInterface</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountTrait.php">
     <MixedArgument occurrences="1">
@@ -7448,19 +6774,6 @@
       <code>$outgoingRoutings</code>
       <code>$relPatternGroups</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternInterface.php">
-    <PossiblyUnusedReturnValue occurrences="6">
-      <code>RoutingPatternInterface</code>
-      <code>RoutingPatternInterface</code>
-      <code>RoutingPatternInterface</code>
-      <code>RoutingPatternInterface</code>
-      <code>RoutingPatternInterface</code>
-      <code>RoutingPatternInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternTrait.php">
     <MixedArgument occurrences="1">
@@ -7499,17 +6812,6 @@
       <code>$outgoingRoutings</code>
       <code>$relPatterns</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>RoutingPatternGroupInterface</code>
-      <code>RoutingPatternGroupInterface</code>
-      <code>RoutingPatternGroupInterface</code>
-      <code>RoutingPatternGroupInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupTrait.php">
     <MixedArgument occurrences="1">
@@ -7551,15 +6853,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternTrait.php">
     <TooManyArguments occurrences="1">
@@ -7601,14 +6894,6 @@
       <code>$outgoingRoutings</code>
       <code>$relCompanies</code>
     </MixedPropertyTypeCoercion>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagInterface.php">
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>RoutingTagInterface</code>
-      <code>RoutingTagInterface</code>
-      <code>RoutingTagInterface</code>
-      <code>RoutingTagInterface</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagTrait.php">
     <MixedArgument occurrences="1">
@@ -7781,22 +7066,11 @@
     <MixedPropertyTypeCoercion occurrences="1">
       <code>$users</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Terminal/TerminalInterface.php">
     <MissingReturnType occurrences="1">
       <code>getUser</code>
     </MissingReturnType>
-    <PossiblyUnusedReturnValue occurrences="6">
-      <code>TerminalInterface</code>
-      <code>TerminalInterface</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Terminal/TerminalTrait.php">
     <MixedArgument occurrences="1">
@@ -7928,11 +7202,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -7980,13 +7249,6 @@
       <code>$rules</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetInterface.php">
-    <PossiblyUnusedReturnValue occurrences="3">
-      <code>TransformationRuleSetInterface</code>
-      <code>TransformationRuleSetInterface</code>
-      <code>TransformationRuleSetInterface</code>
-    </PossiblyUnusedReturnValue>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -8007,9 +7269,6 @@
       <code>static</code>
       <code>static</code>
     </MoreSpecificReturnType>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
     <UnnecessaryVarAnnotation occurrences="2">
       <code>PickUpRelUserInterface[]</code>
       <code>PickUpRelUserInterface[]</code>
@@ -8102,9 +7361,6 @@
       <code>$pickUpRelUsers</code>
       <code>$queueMembers</code>
     </MixedPropertyTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserInterface.php">
     <MissingParamType occurrences="1">
@@ -8114,17 +7370,6 @@
       <code>eraseCredentials</code>
       <code>unserialize</code>
     </MissingReturnType>
-    <PossiblyUnusedReturnValue occurrences="9">
-      <code>UserInterface</code>
-      <code>UserInterface</code>
-      <code>UserInterface</code>
-      <code>UserInterface</code>
-      <code>UserInterface</code>
-      <code>UserInterface</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserSecurityTrait.php">
     <InvalidNullableReturnType occurrences="2">
@@ -8192,12 +7437,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailInterface.php">
-    <PossiblyUnusedReturnValue occurrences="2">
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Voicemail/VoicemailTrait.php">
     <MixedArgument occurrences="1">
@@ -8291,9 +7530,6 @@
     <PossiblyInvalidDocblockTag occurrences="1">
       <code>@var string $fldName</code>
     </PossiblyInvalidDocblockTag>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalTrait.php">
     <MixedArgument occurrences="1">
@@ -8576,9 +7812,6 @@
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$brandId</code>
     </MixedArgumentTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>bool</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Service/CarrierServer/CarrierServerLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -8641,9 +7874,6 @@
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$brandId</code>
     </MixedArgumentTypeCoercion>
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>bool</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Company/SyncDailyUsage.php">
     <InvalidScalarArgument occurrences="1">
@@ -9487,11 +8717,6 @@
     <ParamNameMismatch occurrences="1">
       <code>$preAuthToken</code>
     </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Infrastructure/Api/Security/User/MutableUserProviderInterface.php">
-    <PossiblyUnusedReturnValue occurrences="1">
-      <code>self</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Provider/Infrastructure/Api/Timezone/UserTimezoneInjector.php">
     <DocblockTypeContradiction occurrences="1">
