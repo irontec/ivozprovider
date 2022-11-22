@@ -8,6 +8,8 @@ import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match } = props;
+  const edit = props.edit || false;
+
   const DefaultEntityForm = defaultEntityBehavior.Form;
   const fkChoices = useFkChoices({
     foreignKeyGetter,
@@ -18,27 +20,39 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
+      legend: _('Basic Information'),
       fields: [
         'name',
-        'unit',
-        'frequency',
-        'callDirection',
+        'companyType',
         'email',
-        'lastExecution',
-        'lastExecutionError',
-        'nextExecution',
-        'id',
+        !edit && 'callCsvNotificationTemplate',
+      ],
+    },
+    {
+      legend: _('Time Information'),
+      fields: [
+        'frequency',
+        'unit',
+        edit && 'nextExecution',
+        edit && 'lastExecution',
+      ],
+    },
+    {
+      legend: _('Providers filters'),
+      fields: ['callDirection', 'ddiProvider', 'carrier'],
+    },
+    edit && {
+      legend: _('Client filters'),
+      fields: [
         'company',
-        'callCsvNotificationTemplate',
-        'ddi',
-        'carrier',
-        'retailAccount',
-        'residentialDevice',
-        'user',
-        'fax',
-        'friend',
-        'ddiProvider',
+        //TODO según filtro:
+        // 'ddi',
+        // 'endpointType',
+        // 'user',
+        // 'friend',
+        // 'fax',
+        // 'retailAccount',
+        // 'residentialDevice',
       ],
     },
   ];

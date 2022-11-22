@@ -11,11 +11,11 @@ const ResidentialDeviceSelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     ResidentialDevice.path,
-    ['id'],
+    ['id', 'name'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
-        options[item.id] = item.id;
+        options[item.id] = item.name;
       }
 
       callback(options);

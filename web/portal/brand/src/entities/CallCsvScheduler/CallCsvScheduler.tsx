@@ -7,7 +7,6 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
-import LastExecution from './Field/LastExecution';
 
 const properties: CallCsvSchedulerProperties = {
   //@TODO visualToggles
@@ -57,7 +56,6 @@ const properties: CallCsvSchedulerProperties = {
   },
   lastExecution: {
     label: _('Last Execution'),
-    component: LastExecution,
   },
   lastExecutionError: {
     label: _('Last ExecutionError'),
@@ -69,10 +67,20 @@ const properties: CallCsvSchedulerProperties = {
   company: {
     label: _('Client'),
   },
-  //@TODO companyType
+  // TODO
+  companyType: {
+    label: _('Client Type'),
+    // debería tener estos valores:
+    //   all: _('All'),
+    //   vpbx: _('vPBX'),
+    //   retail: _('Retail'),
+    //   residential: _('Residential'),
+    //   wholesale: _('Wholesale'),
+  },
   callCsvNotificationTemplate: {
     label: _('Notification template'),
     null: _('Use generic template'),
+    default: '__null__',
   },
   ddi: {
     label: _('DDI'),
@@ -105,6 +113,15 @@ const properties: CallCsvSchedulerProperties = {
   ddiProvider: {
     label: _('Ddi Provider'),
     null: _('All'),
+  },
+  // TODO
+  endpointType: {
+    label: _('Endpoint Type'),
+    // debería tener estos valores:
+    //   all: _('All'),
+    //   user: _('User'),
+    //   fax: _('Fax'),
+    //   friend: _('Friend'),
   },
 };
 
