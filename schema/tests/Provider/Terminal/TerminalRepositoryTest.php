@@ -22,6 +22,7 @@ class TerminalRepositoryTest extends KernelTestCase
         $this->its_instantiable();
         $this->it_finds_one_by_name_and_domain();
         $this->it_finds_one_by_mac();
+        $this->it_finds_by_macs();
         $this->it_finds_by_companyId();
         $this->it_counts_registrable_devices_by_brand();
     }
@@ -97,6 +98,23 @@ class TerminalRepositoryTest extends KernelTestCase
         $this->assertInstanceOf(
             Terminal::class,
             $terminal
+        );
+    }
+
+    public function it_finds_by_macs()
+    {
+        /** @var TerminalRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Terminal::class);
+
+        $terminals = $repository->findByMacs(
+            ['0011223344aa']
+        );
+
+        $this->assertInstanceOf(
+            Terminal::class,
+            $terminals[0]
         );
     }
 
