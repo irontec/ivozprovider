@@ -18,18 +18,22 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
+      legend: _('Basic Configuration'),
+      fields: ['name', 'description'],
+    },
+    {
+      legend: _('Geographic Configuration'),
       fields: [
-        'description',
         'internationalCode',
+        'country',
         'trunkPrefix',
         'areaCode',
         'nationalLen',
-        'generateRules',
-        'id',
-        'name',
-        'country',
       ],
+    },
+    {
+      legend: _('Automatic creation of rules'),
+      fields: ['generateRules'],
     },
   ];
 

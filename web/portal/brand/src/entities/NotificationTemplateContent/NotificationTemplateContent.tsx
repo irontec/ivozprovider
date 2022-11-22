@@ -15,6 +15,7 @@ const properties: NotificationTemplateContentProperties = {
     helpText: _(
       'Name shown as source when sending mails (e.g. IvozProvider Notifications)'
     ),
+    required: true,
   },
   fromAddress: {
     label: _('From address'),
@@ -22,6 +23,7 @@ const properties: NotificationTemplateContentProperties = {
     helpText: _(
       'Mail address shown as source when sending mails. MTA must allow this value.'
     ),
+    required: true,
   },
   voicemailVariables: {
     label: _('Substitution variables'),
@@ -75,6 +77,7 @@ const properties: NotificationTemplateContentProperties = {
   },
   language: {
     label: _('Language'),
+    required: true,
   },
 };
 
