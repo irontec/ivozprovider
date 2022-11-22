@@ -15,6 +15,7 @@ export type CallCsvSchedulerPropertyList<T> = {
   nextExecution?: T;
   id?: T;
   company?: T;
+  companyType?: T;
   callCsvNotificationTemplate?: T;
   ddi?: T;
   carrier?: T;
@@ -24,6 +25,7 @@ export type CallCsvSchedulerPropertyList<T> = {
   fax?: T;
   friend?: T;
   ddiProvider?: T;
+  endpointType?: T;
 };
 
 export type CallCsvSchedulerProperties = CallCsvSchedulerPropertyList<
