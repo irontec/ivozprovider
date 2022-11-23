@@ -66,6 +66,20 @@ Ivoz\Provider\Domain\Model\Queue\QueueAbstract:
       options:
         unsigned: false
       column: periodicAnnounceFrequency
+    announcePosition:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+      column: announcePosition
+    announceFrequency:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+      column: announceFrequency
     memberCallRest:
       type: integer
       nullable: true

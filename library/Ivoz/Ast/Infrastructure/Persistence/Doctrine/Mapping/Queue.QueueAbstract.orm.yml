@@ -25,6 +25,20 @@ Ivoz\Ast\Domain\Model\Queue\QueueAbstract:
       options:
         unsigned: false
       column: periodic_announce_frequency
+    announcePosition:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+        default: 'no'
+      column: announce_position
+    announceFrequency:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+      column: announce_frequency
     timeout:
       type: integer
       nullable: true
