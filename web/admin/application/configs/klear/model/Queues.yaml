@@ -292,6 +292,33 @@ production:
       source:
         control: Spinner
         min: 0
+    announcePosition:
+      title: _('Announce Queue position')
+      type: select
+      defaultValue: no
+      source:
+        data: inline
+        values:
+          'no':
+            title: _("No")
+            visualFilter:
+              hide: [announceFrequency]
+          'yes':
+            title: _("Yes")
+            visualFilter:
+              show: [announceFrequency]
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("Announce queue position to waiting users when they enter the queue and after defined frequency")
+    announceFrequency:
+      title: _('Announce Queue position frequency')
+      type: number
+      source:
+        control: Spinner
+        min: 0
     memberCallRest:
       title: _('Member rest seconds')
       type: number

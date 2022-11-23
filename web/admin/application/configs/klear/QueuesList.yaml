@@ -56,6 +56,8 @@ production:
           fullVoiceMailUser: true
           periodicAnnounceLocution: true
           periodicAnnounceFrequency: true
+          announcePosition: 6
+          announceFrequency: 6
           preventMissedCalls: true
       options:
         title: _("Options")
@@ -95,6 +97,8 @@ production:
           fields:
             periodicAnnounceLocution: 6
             periodicAnnounceFrequency: 6
+            announcePosition: 6
+            announceFrequency: 6
         group3:
           label: _('Members configuration')
           colsPerRow: 12
