@@ -1,3 +1,4 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -10,12 +11,12 @@ const ProxyTrunkSelectOptions: SelectOptionsType = ({
   const ProxyTrunk = entities.ProxyTrunk;
 
   return defaultEntityBehavior.fetchFks(
-    ProxyTrunk.path,
-    ['id'],
+    ProxyTrunk.path + '?_order[ip]=ASC',
+    ['id', 'ip'],
     (data: any) => {
-      const options: any = {};
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.id;
+        options.push({ id: item.id, label: item.ip });
       }
 
       callback(options);

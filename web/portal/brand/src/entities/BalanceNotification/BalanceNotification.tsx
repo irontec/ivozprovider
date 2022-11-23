@@ -21,6 +21,7 @@ const properties: BalanceNotificationProperties = {
     helpText: _(
       'Notification will be sent when the current balance is less that this value.'
     ),
+    type: 'integer',
   },
   lastSent: {
     label: _('Last notification sent on'),
