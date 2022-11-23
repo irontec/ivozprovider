@@ -193,7 +193,15 @@ const getEntityMap = (): ExtendedRouteMap => {
               filterBy: 'ddiProvider',
             },
             {
-              entity: entities.Ddi,
+              entity: {
+                ...entities.Ddi,
+                acl: {
+                  read: true,
+                  detail: false,
+                  create: false,
+                  update: false,
+                },
+              },
               filterBy: 'ddiProvider',
             },
             {
