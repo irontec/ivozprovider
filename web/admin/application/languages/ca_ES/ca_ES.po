@@ -192,6 +192,19 @@ msgstr "Hi ha hagut un error: comprova el format i contingut dels fitxers."
 msgid "Announce"
 msgstr "Anuncia"
 
+msgid "Announce Queue position"
+msgstr "Anuncio posición de cola"
+
+msgid "Announce Queue position frequency"
+msgstr "Frecuencia de anuncio posición"
+
+msgid ""
+"Announce queue position to waiting users when they enter the queue and after "
+"defined frequency"
+msgstr ""
+"Anunciar posición cuando los usuarios entran en cola o tras la frecuencia "
+"definida"
+
 msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "IP bloqueada antiflood"
