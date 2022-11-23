@@ -69,6 +69,8 @@ const properties: CarrierServerProperties = {
   },
   authPassword: {
     label: _('Auth Password'),
+    type: 'string',
+    format: 'password',
   },
   sipProxy: {
     label: _('SIP Proxy'),
