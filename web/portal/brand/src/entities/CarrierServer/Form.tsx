@@ -18,25 +18,20 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
-      fields: [
-        'ip',
-        'hostname',
-        'port',
-        'uriScheme',
-        'transport',
-        'sendPAI',
-        'sendRPID',
-        'authNeeded',
-        'authUser',
-        'authPassword',
-        'sipProxy',
-        'outboundProxy',
-        'fromUser',
-        'fromDomain',
-        'id',
-        'carrier',
-      ],
+      legend: _('Basic Configuration'),
+      fields: ['sipProxy', 'outboundProxy', 'uriScheme', 'transport'],
+    },
+    {
+      legend: _('Authentication Settings'),
+      fields: ['authNeeded', 'authUser', 'authPassword'],
+    },
+    {
+      legend: _('Source number header'),
+      fields: ['sendPAI', 'sendRPID'],
+    },
+    {
+      legend: _('From optional customization'),
+      fields: ['fromUser', 'fromDomain'],
     },
   ];
 

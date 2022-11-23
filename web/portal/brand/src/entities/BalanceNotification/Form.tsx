@@ -18,15 +18,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
-      fields: [
-        'toAddress',
-        'threshold',
-        'lastSent',
-        'id',
-        'company',
-        'notificationTemplate',
-      ],
+      legend: _('Notification options'),
+      fields: ['notificationTemplate', 'toAddress', 'threshold', 'lastSent'],
     },
   ];
 
