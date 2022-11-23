@@ -187,6 +187,19 @@ msgstr "An error occurred: check files format and content."
 msgid "Announce"
 msgstr "Announce"
 
+msgid "Announce Queue position"
+msgstr "Announce Queue position"
+
+msgid "Announce Queue position frequency"
+msgstr "Announce Queue position frequency"
+
+msgid ""
+"Announce queue position to waiting users when they enter the queue and after "
+"defined frequency"
+msgstr ""
+"Announce queue position to waiting users when they enter the queue and after "
+"defined frequency"
+
 msgid "Antiflood banned IP"
 msgid_plural "Antiflood banned IPs"
 msgstr[0] "Antiflood banned IP"
