@@ -49,6 +49,9 @@ This are the settings related to a queue:
     Select a locution and its frequency. Caller waiting in the call will listen
     to this locution.
 
+  Announce Position
+    Announce position when a caller enters a queue and after a fixed frequency.
+
   Timeout configuration
     Limits the time that a call can wait in a queue and the following behaviour.
 
