@@ -32,6 +32,8 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
             $this->setFullTargetType("number");
             $this->setFullNumberValue("946002021");
             $this->setPeriodicAnnounceFrequency(7);
+            $this->setAnnouncePosition('yes');
+            $this->setAnnounceFrequency(10);
             $this->setMemberCallRest(0);
             $this->setMemberCallTimeout(1);
             $this->setStrategy("rrmemory");
