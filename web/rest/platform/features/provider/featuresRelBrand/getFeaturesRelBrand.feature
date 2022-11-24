@@ -84,7 +84,12 @@ Feature: Retrieve features rel brand
               },
               "language": 1,
               "defaultTimezone": 145,
-              "currency": 1
+              "currency": 1,
+              "voicemailNotificationTemplate": null,
+              "faxNotificationTemplate": null,
+              "invoiceNotificationTemplate": null,
+              "callCsvNotificationTemplate": null,
+              "maxDailyUsageNotificationTemplate": null
           },
           "feature": {
               "iden": "queues",

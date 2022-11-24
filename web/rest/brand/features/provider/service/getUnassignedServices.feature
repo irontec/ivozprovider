@@ -24,6 +24,12 @@ Feature: Retrieve unassigned services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           }
       ]
@@ -50,6 +56,12 @@ Feature: Retrieve unassigned services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -58,6 +70,12 @@ Feature: Retrieve unassigned services
               "extraArgs": true,
               "id": 4,
               "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",

@@ -17,11 +17,17 @@ Feature: Retrieve terminal models
           {
               "iden": "Generic",
               "name": "Generic SIP Model",
+              "description": "Generic SIP Model",
+              "genericTemplate": "",
+              "specificTemplate": "",
               "id": 1
           },
           {
               "iden": "YealinkT21P_E2",
               "name": "YealinkT21P_E2",
+              "description": "",
+              "genericTemplate": "#!version:1.0.0.1\naccount.1.enable = 1 \naccount.1.label = Line \n\nauto_provision.mode = 6 \nauto_provision.schedule.periodic_minute = 1 \nauto_provision.server.url = https://domain:1443/provision/t21E2\nauto_provision.dhcp_option.enable = 0\nauto_provision.pnp_enable = 0\n\nsecurity.trust_certificates = 0",
+              "specificTemplate": null,
               "id": 2
           }
       ]

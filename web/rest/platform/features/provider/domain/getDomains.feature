@@ -17,34 +17,46 @@ Feature: Retrieve domains
           {
               "domain": "users.ivozprovider.local",
               "pointsTo": "proxyusers",
-              "id": 1
+              "id": 1,
+              "brandName": "",
+              "companyName": ""
           },
           {
               "domain": "trunks.ivozprovider.local",
               "pointsTo": "proxytrunks",
-              "id": 2
+              "id": 2,
+              "brandName": "",
+              "companyName": ""
           },
           {
               "domain": "127.0.0.1",
               "pointsTo": "proxyusers",
-              "id": 3
+              "id": 3,
+              "brandName": "",
+              "companyName": "DemoCompany"
           },
           {
               "domain": "sip.irontec.com",
               "pointsTo": "proxyusers",
-              "id": 4
+              "id": 4,
+              "brandName": "Irontec_e2e",
+              "companyName": ""
           },
           {
               "domain": "test.irontec.com",
               "pointsTo": "proxyusers",
-              "id": 5
+              "id": 5,
+              "brandName": "",
+              "companyName": "Irontec Test Company"
           },
           {
               "domain": "retail.irontec.com",
               "pointsTo": "proxyusers",
-              "id": 6
+              "id": 6,
+              "brandName": "",
+              "companyName": ""
           }
-        ]
+      ]
     """
 
   Scenario: Retrieve certain domain json
