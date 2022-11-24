@@ -17,21 +17,25 @@ Feature: Retrieve terminal manufacturers
           {
               "iden": "Generic",
               "name": "Generic SIP Manufacturer",
+              "description": "Generic SIP Manufacturer",
               "id": 1
           },
           {
               "iden": "Yealink",
               "name": "Yealink",
+              "description": "",
               "id": 2
           },
           {
               "iden": "Cisco",
               "name": "Cisco",
+              "description": "",
               "id": 3
           },
           {
               "iden": "Test",
               "name": "Test SIP Manufacturer",
+              "description": "Test SIP Manufacturer",
               "id": 4
           }
       ]

@@ -59,7 +59,12 @@ Feature: Create proxy trunks rel brands
               },
               "language": 1,
               "defaultTimezone": 145,
-              "currency": 2
+              "currency": 2,
+              "voicemailNotificationTemplate": null,
+              "faxNotificationTemplate": null,
+              "invoiceNotificationTemplate": null,
+              "callCsvNotificationTemplate": null,
+              "maxDailyUsageNotificationTemplate": null
           },
           "proxyTrunk": {
               "name": "ExtraIP",
