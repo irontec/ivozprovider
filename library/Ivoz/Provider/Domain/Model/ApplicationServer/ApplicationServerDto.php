@@ -13,7 +13,8 @@ class ApplicationServerDto extends ApplicationServerDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'ip' => 'ip'
             ];
         }
 
