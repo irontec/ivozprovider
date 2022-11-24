@@ -84,6 +84,11 @@ Feature: Manage brands
                   "it": "Euro"
               }
           },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "features": []
       }
     """
@@ -149,6 +154,11 @@ Feature: Manage brands
                   "it": "Euro"
               }
           },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "features": []
       }
     """
@@ -247,6 +257,11 @@ This is file content
                   "it": "Euro"
               }
           },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "features": [
               1
           ]

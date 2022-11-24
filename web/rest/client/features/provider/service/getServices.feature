@@ -24,6 +24,12 @@ Feature: Retrieve services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -32,6 +38,12 @@ Feature: Retrieve services
               "extraArgs": false,
               "id": 2,
               "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",
@@ -48,6 +60,12 @@ Feature: Retrieve services
                   "es": "es",
                   "ca": "ca",
                   "it": "it"
+              },
+              "description": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               }
           },
           {
@@ -56,6 +74,12 @@ Feature: Retrieve services
               "extraArgs": true,
               "id": 5,
               "name": {
+                  "en": "en",
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
+              },
+              "description": {
                   "en": "en",
                   "es": "es",
                   "ca": "ca",

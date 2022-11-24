@@ -15,10 +15,12 @@ Feature: Retrieve applicationServers
     """
       [
           {
+              "ip": "127.0.0.1",
               "name": "as001",
               "id": 1
           },
           {
+              "ip": "127.1.1.1",
               "name": "test001",
               "id": 2
           }

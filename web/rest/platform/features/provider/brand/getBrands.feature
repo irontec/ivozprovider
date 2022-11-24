@@ -26,7 +26,19 @@ Feature: Manage brands
               "invoice": {
                   "nif": "",
                   "postalCode": ""
-              }
+              },
+              "features": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+              ],
+              "proxyTrunks": [
+                  1
+              ]
           },
           {
               "name": "Irontec_e2e",
@@ -40,7 +52,9 @@ Feature: Manage brands
               "invoice": {
                   "nif": "",
                   "postalCode": ""
-              }
+              },
+              "features": [],
+              "proxyTrunks": []
           }
       ]
     """
@@ -106,6 +120,11 @@ Feature: Manage brands
                   "it": "Euro"
               }
           },
+          "voicemailNotificationTemplate": null,
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null,
+          "maxDailyUsageNotificationTemplate": null,
           "features": [
               1,
               2,
