@@ -16,6 +16,7 @@ class ServiceDto extends ServiceDtoAbstract
                 'defaultCode' => 'defaultCode',
                 'extraArgs' => 'extraArgs',
                 'name' => ['en','es','ca','it'],
+                'description' => ['en','es','ca','it'],
                 'id' => 'id'
             ];
         }
