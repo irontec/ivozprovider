@@ -14,7 +14,10 @@ class TerminalModelDto extends TerminalModelDtoAbstract
             return [
                 'id' => 'id',
                 'iden' => 'iden',
-                'name' => 'name'
+                'name' => 'name',
+                'description' => 'description',
+                'genericTemplate' => 'genericTemplate',
+                'specificTemplate' => 'specificTemplate'
             ];
         }
 

@@ -14,7 +14,8 @@ class TerminalManufacturerDto extends TerminalManufacturerDtoAbstract
             return [
                 'id' => 'id',
                 'iden' => 'iden',
-                'name' => 'name'
+                'name' => 'name',
+                'description' => 'description'
             ];
         }
 

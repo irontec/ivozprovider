@@ -10,6 +10,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
 
 class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
@@ -57,6 +58,22 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
                 $featureIds
             );
         }
+
+        if (in_array($context, BrandDto::CONTEXTS_WITH_PROXY_TRUNKS, true)) {
+            $proxyTrunksIds = array_map(
+                function (EntityInterface $trunksRelBrand) {
+                    return (int) $trunksRelBrand
+                        ->getProxyTrunk()
+                        ->getId();
+                },
+                $entity->getRelProxyTrunks()
+            );
+
+            $dto->setProxyTrunks(
+                $proxyTrunksIds
+            );
+        }
+
 
         return $dto;
     }
