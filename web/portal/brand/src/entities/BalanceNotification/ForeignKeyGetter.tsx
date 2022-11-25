@@ -1,6 +1,7 @@
 import { ForeignKeyGetterType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import { autoSelectOptions } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { BalanceNotificationPropertyList } from './BalanceNotificationProperties';
+import { LowBalanceSelectOptions } from '../NotificationTemplate/SelectOptions';
 
 /** TODO remove this file unless you need to change default behaviour **/
 export const foreignKeyGetter: ForeignKeyGetterType = async ({
@@ -13,7 +14,14 @@ export const foreignKeyGetter: ForeignKeyGetterType = async ({
     entityService,
     cancelToken,
     response,
-    skip: [],
+    skip: ['notificationTemplate'],
+  });
+
+  promises[promises.length] = LowBalanceSelectOptions({
+    callback: (options: any) => {
+      response.notificationTemplate = options;
+    },
+    cancelToken,
   });
 
   await Promise.all(promises);
