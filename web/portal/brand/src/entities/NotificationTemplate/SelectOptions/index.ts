@@ -5,6 +5,7 @@ import FaxSelectOptions from './FaxSelectOptions';
 import InvoiceSelectOptions from './InvoiceSelectOptions';
 import VoicemailSelectOptions from './VoicemailSelectOptions';
 import MaxDailyUsageSelectOptions from './MaxDailyUsageSelectOptions';
+import LowBalanceSelectOptions from './LowBalanceSelectOptions';
 
 export default SelectOptions;
 
@@ -14,4 +15,5 @@ export {
   InvoiceSelectOptions,
   VoicemailSelectOptions,
   MaxDailyUsageSelectOptions,
+  LowBalanceSelectOptions,
 };
