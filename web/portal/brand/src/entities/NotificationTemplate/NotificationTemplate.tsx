@@ -18,7 +18,6 @@ const properties: NotificationTemplateProperties = {
     enum: {
       voicemail: _('Voicemail'),
       fax: _('Fax'),
-      limit: _('Limit'),
       lowbalance: _('Low balance'),
       invoice: _('Invoice'),
       callCsv: _('Call CSV'),

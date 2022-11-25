@@ -37,6 +37,7 @@ const properties: BalanceNotificationProperties = {
   notificationTemplate: {
     label: _('Notification template'),
     null: _('Use generic template'),
+    default: '__null__',
   },
 };
 
