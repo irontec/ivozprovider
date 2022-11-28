@@ -21,7 +21,12 @@ class DestinationRateDto extends DestinationRateDtoAbstract
      */
     public static function getPropertyMap(string $context = '', string $role = null): array
     {
-        if ($context === self::CONTEXT_COLLECTION) {
+        $contextsWithCurrencySymbol = [
+            self::CONTEXT_COLLECTION,
+            self::CONTEXT_DETAILED,
+        ];
+
+        if (in_array($context, $contextsWithCurrencySymbol)) {
             return [
                 'cost' => 'cost',
                 'connectFee' => 'connectFee',
