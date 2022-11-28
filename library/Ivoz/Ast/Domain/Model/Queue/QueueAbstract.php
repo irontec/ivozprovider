@@ -37,6 +37,18 @@ abstract class QueueAbstract
     protected $periodicAnnounceFrequency = null;
 
     /**
+     * @var ?string
+     * column: announce_position
+     */
+    protected $announcePosition = 'no';
+
+    /**
+     * @var ?int
+     * column: announce_frequency
+     */
+    protected $announceFrequency = null;
+
+    /**
      * @var ?int
      */
     protected $timeout = null;
@@ -168,6 +180,8 @@ abstract class QueueAbstract
         $self
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
             ->setWrapuptime($dto->getWrapuptime())
             ->setMaxlen($dto->getMaxlen())
@@ -203,6 +217,8 @@ abstract class QueueAbstract
             ->setName($name)
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
             ->setAutopause($autopause)
             ->setRinginuse($ringinuse)
@@ -224,6 +240,8 @@ abstract class QueueAbstract
             ->setName(self::getName())
             ->setPeriodicAnnounce(self::getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency(self::getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition(self::getAnnouncePosition())
+            ->setAnnounceFrequency(self::getAnnounceFrequency())
             ->setTimeout(self::getTimeout())
             ->setAutopause(self::getAutopause())
             ->setRinginuse(self::getRinginuse())
@@ -243,6 +261,8 @@ abstract class QueueAbstract
             'name' => self::getName(),
             'periodic_announce' => self::getPeriodicAnnounce(),
             'periodic_announce_frequency' => self::getPeriodicAnnounceFrequency(),
+            'announce_position' => self::getAnnouncePosition(),
+            'announce_frequency' => self::getAnnounceFrequency(),
             'timeout' => self::getTimeout(),
             'autopause' => self::getAutopause(),
             'ringinuse' => self::getRinginuse(),
@@ -294,6 +314,34 @@ abstract class QueueAbstract
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    protected function setAnnouncePosition(?string $announcePosition = null): static
+    {
+        if (!is_null($announcePosition)) {
+            Assertion::maxLength($announcePosition, 128, 'announcePosition value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    public function getAnnouncePosition(): ?string
+    {
+        return $this->announcePosition;
+    }
+
+    protected function setAnnounceFrequency(?int $announceFrequency = null): static
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    public function getAnnounceFrequency(): ?int
+    {
+        return $this->announceFrequency;
     }
 
     protected function setTimeout(?int $timeout = null): static
