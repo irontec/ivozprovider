@@ -299,3 +299,11 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
       ROLE_SUPER_ADMIN:
         brand:
           isNull: ~
+
+Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      ROLE_SUPER_ADMIN:
+        brand:
+          isNull: ~
