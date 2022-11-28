@@ -16,6 +16,10 @@ interface QueueInterface extends LoggableEntityInterface
     const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
 
 
+    const ANNOUNCEPOSITION_YES = 'yes';
+    const ANNOUNCEPOSITION_NO = 'no';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -119,6 +123,20 @@ interface QueueInterface extends LoggableEntityInterface
      * @return integer | null
      */
     public function getPeriodicAnnounceFrequency();
+
+    /**
+     * Get announcePosition
+     *
+     * @return string | null
+     */
+    public function getAnnouncePosition();
+
+    /**
+     * Get announceFrequency
+     *
+     * @return integer | null
+     */
+    public function getAnnounceFrequency();
 
     /**
      * Get memberCallRest

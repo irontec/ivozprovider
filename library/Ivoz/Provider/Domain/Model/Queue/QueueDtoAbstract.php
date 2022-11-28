@@ -56,6 +56,16 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     private $periodicAnnounceFrequency;
 
     /**
+     * @var string
+     */
+    private $announcePosition;
+
+    /**
+     * @var integer
+     */
+    private $announceFrequency;
+
+    /**
      * @var integer
      */
     private $memberCallRest;
@@ -162,6 +172,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => 'fullTargetType',
             'fullNumberValue' => 'fullNumberValue',
             'periodicAnnounceFrequency' => 'periodicAnnounceFrequency',
+            'announcePosition' => 'announcePosition',
+            'announceFrequency' => 'announceFrequency',
             'memberCallRest' => 'memberCallRest',
             'memberCallTimeout' => 'memberCallTimeout',
             'strategy' => 'strategy',
@@ -196,6 +208,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => $this->getFullTargetType(),
             'fullNumberValue' => $this->getFullNumberValue(),
             'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
+            'announcePosition' => $this->getAnnouncePosition(),
+            'announceFrequency' => $this->getAnnounceFrequency(),
             'memberCallRest' => $this->getMemberCallRest(),
             'memberCallTimeout' => $this->getMemberCallTimeout(),
             'strategy' => $this->getStrategy(),
@@ -406,6 +420,46 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getPeriodicAnnounceFrequency()
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    /**
+     * @param string $announcePosition
+     *
+     * @return static
+     */
+    public function setAnnouncePosition($announcePosition = null)
+    {
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getAnnouncePosition()
+    {
+        return $this->announcePosition;
+    }
+
+    /**
+     * @param integer $announceFrequency
+     *
+     * @return static
+     */
+    public function setAnnounceFrequency($announceFrequency = null)
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getAnnounceFrequency()
+    {
+        return $this->announceFrequency;
     }
 
     /**
