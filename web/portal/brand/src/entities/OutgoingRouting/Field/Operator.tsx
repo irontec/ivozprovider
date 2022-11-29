@@ -20,6 +20,21 @@ const Operator: DestinationProps = (props): JSX.Element | null => {
       return _('No carriers');
     }
 
+    if (values.routingMode === 'lcr') {
+      //debugger;
+      return (
+        <ListDecorator
+          field={'carrierIds'}
+          row={values}
+          property={{
+            ...property,
+            type: 'array',
+          }}
+          ignoreCustomComponent={true}
+        />
+      );
+    }
+
     return (
       <ListDecorator
         field={_columnName}
