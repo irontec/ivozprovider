@@ -28,7 +28,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Announce'),
-      fields: ['periodicAnnounceLocution', 'periodicAnnounceFrequency'],
+      fields: [
+        'periodicAnnounceLocution',
+        'periodicAnnounceFrequency',
+        'announcePosition',
+        'announceFrequency',
+      ],
     },
     {
       legend: _('Timeout configuration'),

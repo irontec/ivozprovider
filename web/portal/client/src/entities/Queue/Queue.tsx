@@ -147,6 +147,30 @@ const properties: QueueProperties = {
   periodicAnnounceFrequency: {
     label: _('Periodic Announce Frequency'),
   },
+  announcePosition: {
+    label: _('Announce Queue position'),
+    default: 'no',
+    helpText: _(
+      'Announce queue position to waiting users when they enter the queue and after defined frequency'
+    ),
+    enum: {
+      yes: _('Yes'),
+      no: _('No'),
+    },
+    visualToggle: {
+      yes: {
+        show: ['announceFrequency'],
+        hide: [],
+      },
+      no: {
+        show: [],
+        hide: ['announceFrequency'],
+      },
+    },
+  },
+  announceFrequency: {
+    label: _('Announce Queue position frequency'),
+  },
   memberCallRest: {
     label: _('Member rest seconds'),
     default: 0,
