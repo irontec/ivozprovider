@@ -77,6 +77,10 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getPeriodicAnnounceFrequency(): ?int;
 
+    public function getAnnouncePosition(): ?string;
+
+    public function getAnnounceFrequency(): ?int;
+
     public function getTimeout(): ?int;
 
     public function getAutopause(): string;

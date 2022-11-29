@@ -29,6 +29,10 @@ interface QueueInterface extends LoggableEntityInterface
 
     public const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
 
+    public const ANNOUNCEPOSITION_YES = 'yes';
+
+    public const ANNOUNCEPOSITION_NO = 'no';
+
     public const STRATEGY_RINGALL = 'ringall';
 
     public const STRATEGY_LEASTRECENT = 'leastrecent';
@@ -130,6 +134,10 @@ interface QueueInterface extends LoggableEntityInterface
     public function getFullNumberValue(): ?string;
 
     public function getPeriodicAnnounceFrequency(): ?int;
+
+    public function getAnnouncePosition(): ?string;
+
+    public function getAnnounceFrequency(): ?int;
 
     public function getMemberCallRest(): ?int;
 

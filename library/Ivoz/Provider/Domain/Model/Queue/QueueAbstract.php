@@ -76,6 +76,19 @@ abstract class QueueAbstract
     protected $periodicAnnounceFrequency = null;
 
     /**
+     * @var ?string
+     * column: announce_position
+     * comment: enum:yes|no
+     */
+    protected $announcePosition = 'no';
+
+    /**
+     * @var ?int
+     * column: announce_frequency
+     */
+    protected $announceFrequency = null;
+
+    /**
      * @var ?int
      */
     protected $memberCallRest = null;
@@ -237,6 +250,8 @@ abstract class QueueAbstract
             ->setFullTargetType($dto->getFullTargetType())
             ->setFullNumberValue($dto->getFullNumberValue())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setMemberCallRest($dto->getMemberCallRest())
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
@@ -282,6 +297,8 @@ abstract class QueueAbstract
             ->setFullTargetType($dto->getFullTargetType())
             ->setFullNumberValue($dto->getFullNumberValue())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setMemberCallRest($dto->getMemberCallRest())
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
@@ -316,6 +333,8 @@ abstract class QueueAbstract
             ->setFullTargetType(self::getFullTargetType())
             ->setFullNumberValue(self::getFullNumberValue())
             ->setPeriodicAnnounceFrequency(self::getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition(self::getAnnouncePosition())
+            ->setAnnounceFrequency(self::getAnnounceFrequency())
             ->setMemberCallRest(self::getMemberCallRest())
             ->setMemberCallTimeout(self::getMemberCallTimeout())
             ->setStrategy(self::getStrategy())
@@ -348,6 +367,8 @@ abstract class QueueAbstract
             'fullTargetType' => self::getFullTargetType(),
             'fullNumberValue' => self::getFullNumberValue(),
             'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
+            'announce_position' => self::getAnnouncePosition(),
+            'announce_frequency' => self::getAnnounceFrequency(),
             'memberCallRest' => self::getMemberCallRest(),
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
@@ -514,6 +535,42 @@ abstract class QueueAbstract
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    protected function setAnnouncePosition(?string $announcePosition = null): static
+    {
+        if (!is_null($announcePosition)) {
+            Assertion::maxLength($announcePosition, 10, 'announcePosition value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $announcePosition,
+                [
+                    QueueInterface::ANNOUNCEPOSITION_YES,
+                    QueueInterface::ANNOUNCEPOSITION_NO,
+                ],
+                'announcePositionvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    public function getAnnouncePosition(): ?string
+    {
+        return $this->announcePosition;
+    }
+
+    protected function setAnnounceFrequency(?int $announceFrequency = null): static
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    public function getAnnounceFrequency(): ?int
+    {
+        return $this->announceFrequency;
     }
 
     protected function setMemberCallRest(?int $memberCallRest = null): static
