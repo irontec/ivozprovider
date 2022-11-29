@@ -64,6 +64,16 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     private $periodicAnnounceFrequency = null;
 
     /**
+     * @var string|null
+     */
+    private $announcePosition = 'no';
+
+    /**
+     * @var int|null
+     */
+    private $announceFrequency = null;
+
+    /**
      * @var int|null
      */
     private $memberCallRest = null;
@@ -170,6 +180,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => 'fullTargetType',
             'fullNumberValue' => 'fullNumberValue',
             'periodicAnnounceFrequency' => 'periodicAnnounceFrequency',
+            'announcePosition' => 'announcePosition',
+            'announceFrequency' => 'announceFrequency',
             'memberCallRest' => 'memberCallRest',
             'memberCallTimeout' => 'memberCallTimeout',
             'strategy' => 'strategy',
@@ -204,6 +216,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => $this->getFullTargetType(),
             'fullNumberValue' => $this->getFullNumberValue(),
             'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
+            'announcePosition' => $this->getAnnouncePosition(),
+            'announceFrequency' => $this->getAnnounceFrequency(),
             'memberCallRest' => $this->getMemberCallRest(),
             'memberCallTimeout' => $this->getMemberCallTimeout(),
             'strategy' => $this->getStrategy(),
@@ -342,6 +356,30 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getPeriodicAnnounceFrequency(): ?int
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    public function setAnnouncePosition(?string $announcePosition): static
+    {
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    public function getAnnouncePosition(): ?string
+    {
+        return $this->announcePosition;
+    }
+
+    public function setAnnounceFrequency(?int $announceFrequency): static
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    public function getAnnounceFrequency(): ?int
+    {
+        return $this->announceFrequency;
     }
 
     public function setMemberCallRest(?int $memberCallRest): static

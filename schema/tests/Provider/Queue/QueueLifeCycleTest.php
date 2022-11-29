@@ -27,6 +27,8 @@ class QueueLifeCycleTest extends KernelTestCase
             ->setFullTargetType("number")
             ->setFullNumberValue("946002021")
             ->setPeriodicAnnounceFrequency(7)
+            ->setAnnouncePosition('yes')
+            ->setAnnounceFrequency(60)
             ->setMemberCallRest(0)
             ->setMemberCallTimeout(1)
             ->setStrategy("rrmemory")
@@ -132,6 +134,8 @@ class QueueLifeCycleTest extends KernelTestCase
                 'name' => 'b1c1q2_aQueue',
                 'periodic_announce' => '/opt/irontec/ivozprovider/storage/ivozprovider_model_locutions.encodedfile/0/1',
                 'periodic_announce_frequency' => 7,
+                'announce_position' => 'yes',
+                'announce_frequency' => 60,
                 'timeout' => 1,
                 'autopause' => 'no',
                 'ringinuse' => 'no',
