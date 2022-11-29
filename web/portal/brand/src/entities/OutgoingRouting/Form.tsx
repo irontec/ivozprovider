@@ -38,7 +38,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Outgoing route'),
-      fields: ['routingMode', 'carrier', edit && 'stopper'],
+      fields: ['routingMode', 'carrier', 'carrierIds', edit && 'stopper'],
     },
     {
       legend: _('Failover and load-balancing'),
