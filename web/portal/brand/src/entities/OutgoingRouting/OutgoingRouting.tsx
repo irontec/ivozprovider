@@ -62,11 +62,11 @@ const properties: OutgoingRoutingProperties = {
           'weight',
           'priority',
         ],
-        hide: ['relCarriers'],
+        hide: ['carrierIds'],
       },
       lcr: {
-        show: ['relCarriers', 'carrier', 'weight', 'priority'],
-        hide: ['prefix', 'forceClid', 'clidCountry', 'clid'],
+        show: ['carrierIds', 'weight', 'priority'],
+        hide: ['carrier', 'prefix', 'forceClid', 'clidCountry', 'clid'],
       },
       block: {
         show: ['priority'],
@@ -76,7 +76,7 @@ const properties: OutgoingRoutingProperties = {
           'forceClid',
           'clidCountry',
           'clid',
-          'relCarriers',
+          'carrierIds',
           'weight',
           'stopper',
         ],
@@ -138,6 +138,11 @@ const properties: OutgoingRoutingProperties = {
     label: _('Carrier'),
     component: Operator,
   },
+  carrierIds: {
+    label: _('Carrier', { count: 2 }),
+    type: 'array',
+    $ref: '#/definitions/Carrier',
+  },
   routingPattern: {
     label: _('Select destination pattern'),
   },
@@ -151,11 +156,6 @@ const properties: OutgoingRoutingProperties = {
   clidCountry: {
     label: _('Country'),
   },
-  carrierIds: {
-    label: _('Carrier'),
-    //@TODO
-  },
-  //@TODO relCarriers
   carriers: {
     label: _('Carrier'),
     //@TODO IvozProvider_Klear_Ghost_OutgoingRouting::getCarriers
