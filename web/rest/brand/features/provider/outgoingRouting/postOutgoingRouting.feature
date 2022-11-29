@@ -29,7 +29,7 @@ Feature: Create outgoing routings
     Then the response status code should be 201
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
+     And the JSON should be equal to:
     """
       {
           "type": "pattern",
@@ -41,24 +41,9 @@ Feature: Create outgoing routings
           "forceClid": false,
           "clid": null,
           "id": 3,
-          "company": "~",
+          "company": 2,
           "carrier": null,
-          "routingPattern": {
-              "prefix": "+34",
-              "id": 1,
-              "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              },
-              "description": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
-              }
-          },
+          "routingPattern": 1,
           "routingPatternGroup": null,
           "routingTag": null,
           "clidCountry": null,
