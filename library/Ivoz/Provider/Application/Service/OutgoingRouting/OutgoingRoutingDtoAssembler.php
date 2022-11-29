@@ -22,20 +22,18 @@ class OutgoingRoutingDtoAssembler implements CustomDtoAssemblerInterface
 
         $dto = $entity->toDto($depth);
 
-        if (in_array($context, OutgoingRoutingDto::CONTEXTS_WITH_CARRIERS, true)) {
-            $carrierIds = array_map(
-                function (OutgoingRoutingRelCarrier $relFeature) {
-                    return (int) $relFeature
-                        ->getCarrier()
-                        ->getId();
-                },
-                $entity->getRelCarriers()
-            );
+        $carrierIds = array_map(
+            function (OutgoingRoutingRelCarrier $relFeature) {
+                return (int) $relFeature
+                    ->getCarrier()
+                    ->getId();
+            },
+            $entity->getRelCarriers()
+        );
 
-            $dto->setCarrierIds(
-                $carrierIds
-            );
-        }
+        $dto->setCarrierIds(
+            $carrierIds
+        );
 
         return $dto;
     }
