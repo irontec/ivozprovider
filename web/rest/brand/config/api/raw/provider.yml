@@ -839,23 +839,10 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
         raw: 'FALSE'
 
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
-  itemOperations:
-    get:
-      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_DETAILED
-    put:
-      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_WITH_CARRIERS
-    delete: ~
-  collectionOperations:
-    get: ~
-    post:
-      operation_normalization_context: !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_WITH_CARRIERS
-      depth: 1
+  itemOperations: ~
+  collectionOperations: ~
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
-    normalization_context:
-      groups: [
-        !php/const Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto::CONTEXT_WITH_CARRIERS
-      ]
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
