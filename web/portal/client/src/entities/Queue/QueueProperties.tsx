@@ -23,6 +23,8 @@ export type QueuePropertyList<T> = {
   fullVoicemail?: T;
   periodicAnnounceLocution?: T;
   periodicAnnounceFrequency?: T;
+  announcePosition?: T;
+  announceFrequency?: T;
   memberCallRest?: T;
   memberCallTimeout?: T;
   strategy?: T;
