@@ -25,7 +25,8 @@ Feature: Retrieve outgoing routings
               "carrier": 1,
               "routingPattern": 1,
               "routingPatternGroup": null,
-              "routingTag": 1
+              "routingTag": 1,
+              "carrierIds": []
           },
           {
               "type": "pattern",
@@ -38,7 +39,8 @@ Feature: Retrieve outgoing routings
               "carrier": 1,
               "routingPattern": 1,
               "routingPatternGroup": null,
-              "routingTag": 1
+              "routingTag": 1,
+              "carrierIds": []
           }
       ]
     """
