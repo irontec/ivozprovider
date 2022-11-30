@@ -18,13 +18,32 @@ services:
         public: false       # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
+    DataFixtures\:
+        resource: '../../../library/DataFixtures/*'
 
     Controller\:
         resource: '../src/Controller/*'
         tags: ['controller.service_arguments']
 
-
     Services\:
         resource: '../src/Services/*'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+###############################################
+## TEST
+###############################################
+when@test:
+    parameters:
+        storagePath: '/tmp/storage_path'
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: false
+        Services\ProvisionGeneric:
+            arguments:
+                $storagePath: '%storagePath%'
+        Services\ProvisionSpecific:
+            arguments:
+                $storagePath: '%storagePath%'
