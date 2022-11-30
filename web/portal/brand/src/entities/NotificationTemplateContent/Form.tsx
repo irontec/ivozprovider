@@ -18,17 +18,16 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
-      fields: [
-        'fromName',
-        'fromAddress',
-        'subject',
-        'body',
-        'bodyType',
-        'id',
-        'notificationTemplate',
-        'language',
-      ],
+      legend: '',
+      fields: ['language'],
+    },
+    {
+      legend: _('From configuration'),
+      fields: ['fromName', 'fromAddress'],
+    },
+    {
+      legend: _('Contents configuration'),
+      fields: ['bodyType', 'subject', 'body'],
     },
   ];
 

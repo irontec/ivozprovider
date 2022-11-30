@@ -33,6 +33,7 @@ const properties: MusicOnHoldProperties = {
   encodedFile: {
     label: _('File for play'),
     type: 'file',
+    readOnly: true,
   },
 };
 

@@ -79,7 +79,7 @@ const TransformationRuleSet: EntityInterface = {
   iden: 'TransformationRuleSet',
   title: _('Numeric transformation', { count: 2 }),
   path: '/transformation_rule_sets',
-  toStr: (row: any) => row.name.en,
+  toStr: (row: any) => row?.name?.en,
   defaultOrderBy: '',
   properties,
   columns: ['name', 'description'],
