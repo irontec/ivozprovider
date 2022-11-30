@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.22.0
+* Endpoints:
+    - /billable_calls:
+        - Added destinationName[start|end|exact|exists|partial] filter parameters
+        - Added _order[destinationName] querystring argument
+        - Added ratingPlanName[start|end|exact|exists|partial] filter parameters
+        - Added _order[ratingPlanName] querystring argument
+    - /ddis:
+        - Added description[start|end|exact|exists|partial] filter parameters
+        - Added _order[description] querystring argument
+* Models:
+    - DDI:
+        - Added description property
+    - Queue:
+        - Added announceFrequency property
+        - Added announcePosition property
+        - Added displayName property
+
 ## 2.21.1
 * Models:
     - Company:
