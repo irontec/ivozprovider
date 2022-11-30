@@ -3,10 +3,11 @@ import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterfac
 import genericForeignKeyResolver from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
 import { getI18n } from 'react-i18next';
 import { DdiPropertiesList } from './DdiProperties';
-import { CountryPropertyList } from 'entities/Country/CountryProperties';
+import { CountryPropertyList } from '../Country/CountryProperties';
 import store from 'store';
+import genericCompanyForeignKeyResolver from '../Company/genericCompanyForeignKeyResolver';
+import { EntityValues } from '@irontec/ivoz-ui';
 
-/** TODO remove this file unless you need to change default behaviour **/
 const foreignKeyResolver: foreignKeyResolverType = async function ({
   data,
   cancelToken,
@@ -18,20 +19,29 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     data,
     cancelToken,
     entityService,
-    skip: ['country'],
+    skip: ['country', 'company'],
   });
 
   promises.push(
     genericForeignKeyResolver({
       data,
       fkFld: 'country',
+      addLink: false,
       entity: {
         ...entities.Country,
-        toStr: (row: CountryPropertyList) => {
+        toStr: (row: CountryPropertyList<EntityValues>) => {
           const language = getI18n().language.substring(0, 2);
-          return `${row.name[language]} (${row.countryCode})`;
+          return `${(row.name as EntityValues)[language]} (${row.countryCode})`;
         },
       },
+      cancelToken,
+    })
+  );
+
+  promises.push(
+    genericCompanyForeignKeyResolver({
+      data,
+      fkFld: 'company',
       cancelToken,
     })
   );
