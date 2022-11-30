@@ -46,4 +46,6 @@ interface CompanyRepository extends ObjectRepository, Selectable
      * @return int[]
      */
     public function getRetailIdsByBrand(int $brandId);
+
+    public function findOneByDomain(string $domainUsers): ?CompanyInterface;
 }
