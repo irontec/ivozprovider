@@ -1,6 +1,6 @@
 {
-    "name": "ivozprovider/scheduler",
-    "description": "Multitenant solution for VoIP telephony providers (scheduled task runner module)",
+    "name": "ivozprovider/provision",
+    "description": "Multitenant solution for VoIP telephony providers (terminal provision)",
     "authors": [
         {
             "name": "Carlos Cruz",
@@ -35,7 +35,8 @@
         },
         "psr-4": {
             "": "src/",
-            "Ivoz\\": "../../library/Ivoz"
+            "Ivoz\\": "../../library/Ivoz",
+            "DataFixtures\\": "../../library/DataFixtures"
         }
     },
     "autoload-dev": {
@@ -56,7 +57,15 @@
         "symfony/flex": "^1.9"
     },
     "require-dev": {
-        "vimeo/psalm": "^4.0"
+        "ext-pcntl": "*",
+        "vimeo/psalm": "^4.0",
+        "behat/behat": "^3.1",
+        "behat/mink": "^1.7",
+        "behat/mink-browserkit-driver": "^2.0",
+        "friends-of-behat/mink-extension": "v2.6.1",
+        "friends-of-behat/symfony-extension": "^2.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "behatch/contexts": "^3.3"
     },
     "extra": {
         "symfony-assets-install": "relative",
