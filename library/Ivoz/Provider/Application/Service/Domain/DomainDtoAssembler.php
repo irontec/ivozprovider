@@ -6,9 +6,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
@@ -32,7 +30,7 @@ class DomainDtoAssembler implements CustomDtoAssemblerInterface
         $brand = $this
             ->brandRepository
             ->findOneByDomain(
-               (string) $dto->getDomain()
+                (string) $dto->getDomain()
             );
 
         if (!is_null($brand)) {

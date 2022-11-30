@@ -5,7 +5,9 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 /**
  * BrandDoctrineRepository
@@ -38,6 +40,16 @@ class BrandDoctrineRepository extends ServiceEntityRepository implements BrandRe
         foreach ($result as $row) {
             $response[$row['id']] = $row['name'];
         }
+
+        return $response;
+    }
+
+    public function findOneByDomain(string $domainUsers): ?BrandInterface
+    {
+        /** @var ?BrandInterface $response */
+        $response = $this->findOneBy([
+            'domainUsers' => $domainUsers
+        ]);
 
         return $response;
     }
