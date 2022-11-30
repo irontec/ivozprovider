@@ -89,3 +89,12 @@ get_my_profile_acl:
   defaults:
     _api_resource_class: 'Model\ProfileAcl'
     _api_item_operation_name: 'get_my_profile_acl'
+
+get_services_unassigned:
+  path: '/services/unassigned'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\Provider\ServicesUnassignedAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Service\Service'
+    _api_collection_operation_name: 'get_services_unassigned'
+    _api_receive: false

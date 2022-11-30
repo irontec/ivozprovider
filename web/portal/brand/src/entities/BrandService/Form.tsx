@@ -1,25 +1,42 @@
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import { PropertyList } from '@irontec/ivoz-ui';
+import useFkChoices from './ForeignKeyGetter';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import _ from '@irontec/ivoz-ui/services/translations/translate';
-import { foreignKeyGetter } from './ForeignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
+  const { entityService, row, match, properties } = props;
+  const edit = props.edit || false;
   const DefaultEntityForm = defaultEntityBehavior.Form;
+
+  const service = props?.row?.service as Record<string, any> | undefined;
+  const currentServiceId: number | undefined = service?.id;
+
   const fkChoices = useFkChoices({
-    foreignKeyGetter,
     entityService,
-    row,
     match,
+    currentServiceId,
   });
+
+  if (edit) {
+    const newProperties = { ...properties };
+    newProperties.service = {
+      ...newProperties.service,
+      readOnly: true,
+    };
+
+    entityService.replaceProperties(newProperties as PropertyList);
+  }
 
   const groups: Array<FieldsetGroups | false> = [
     {
-      legend: _('Main'),
-      fields: ['code', 'id', 'service'],
+      legend: '',
+      fields: ['service'],
+    },
+    {
+      legend: '',
+      fields: ['code'],
     },
   ];
 

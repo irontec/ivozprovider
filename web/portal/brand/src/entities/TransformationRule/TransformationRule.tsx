@@ -30,17 +30,21 @@ const properties: TransformationRuleProperties = {
   },
   priority: {
     label: _('Priority'),
+    required: true,
   },
   matchExpr: {
     label: _('Match Expr'),
     maxLength: 64,
+    required: true,
   },
   replaceExpr: {
     label: _('Replace expr'),
     maxLength: 64,
+    required: true,
   },
   transformationRuleSet: {
     label: _('Numeric transformation'),
+    required: true,
   },
 };
 
