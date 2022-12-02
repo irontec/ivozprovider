@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Behat\Context\FeatureContext:
+    public: true
+    arguments:
+      $kernel: "@kernel"

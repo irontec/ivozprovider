@@ -11,6 +11,24 @@
     "beberlei/doctrineextensions": {
         "version": "v1.2.7"
     },
+    "behat/behat": {
+        "version": "v3.10.0"
+    },
+    "behat/gherkin": {
+        "version": "v4.9.0"
+    },
+    "behat/mink": {
+        "version": "v1.9.0"
+    },
+    "behat/mink-browserkit-driver": {
+        "version": "v2.0.0"
+    },
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
+    "behatch/contexts": {
+        "version": "3.3.0"
+    },
     "brick/math": {
         "version": "0.9.3"
     },
@@ -50,6 +68,9 @@
     "doctrine/common": {
         "version": "2.13.3"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.2"
+    },
     "doctrine/dbal": {
         "version": "2.10.2"
     },
@@ -69,6 +90,18 @@
             "config/packages/prod/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -117,6 +150,18 @@
     "felixfbecker/language-server-protocol": {
         "version": "v1.5.0"
     },
+    "friends-of-behat/mink-extension": {
+        "version": "v2.6.1"
+    },
+    "friends-of-behat/symfony-extension": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.0",
+            "ref": "1e012e04f573524ca83795cd19df9ea690adb604"
+        }
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
@@ -146,6 +191,9 @@
     },
     "irontec/replacements": {
         "version": "1.0.0.0"
+    },
+    "justinrainbow/json-schema": {
+        "version": "5.2.11"
     },
     "laminas/laminas-code": {
         "version": "3.4.1"
@@ -222,6 +270,9 @@
     "symfony/asset": {
         "version": "v3.4.43"
     },
+    "symfony/browser-kit": {
+        "version": "v5.4.3"
+    },
     "symfony/cache": {
         "version": "v4.3.11"
     },
@@ -244,6 +295,9 @@
             "config/bootstrap.php"
         ]
     },
+    "symfony/css-selector": {
+        "version": "v5.4.3"
+    },
     "symfony/debug-bundle": {
         "version": "3.3",
         "recipe": {
@@ -261,6 +315,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v3.4.44"
+    },
+    "symfony/dom-crawler": {
+        "version": "v5.4.6"
     },
     "symfony/dotenv": {
         "version": "v4.4.11"

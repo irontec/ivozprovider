@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+export APP_ENV=test
+
+pushd /opt/irontec/ivozprovider/microservices/provision
+
+    if [ "$1" != "--skip-db" ]; then
+        # Prepare dataset
+        bin/prepare-test-db
+    fi
+
+    # Run tests
+    vendor/bin/behat -f progress -o std -f junit -o results
+popd
