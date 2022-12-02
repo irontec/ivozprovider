@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+export APP_ENV=test
+
+pushd /opt/irontec/ivozprovider/microservices/provision
+    # Prepare dataset
+    bin/console core:prepare:database -e test
+    # Load fixtures
+    bin/console doctrine:fixtures:load --no-interaction -v
+popd
