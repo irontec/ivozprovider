@@ -3949,16 +3949,16 @@
         },
         {
             "name": "phpxmlrpc/phpxmlrpc",
-            "version": "4.6.1",
+            "version": "4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gggeek/phpxmlrpc.git",
-                "reference": "5f47934cdf3c7d989ab4c5a11d9c08d1d55a8380"
+                "reference": "cf6e605e09d001ce520bfa8e7b168cfa514e663b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/5f47934cdf3c7d989ab4c5a11d9c08d1d55a8380",
-                "reference": "5f47934cdf3c7d989ab4c5a11d9c08d1d55a8380",
+                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/cf6e605e09d001ce520bfa8e7b168cfa514e663b",
+                "reference": "cf6e605e09d001ce520bfa8e7b168cfa514e663b",
                 "shasum": ""
             },
             "require": {
@@ -3972,7 +3972,7 @@
                 "ext-curl": "*",
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "phpunit/phpunit": "^5.0 || ^8.5.14",
+                "phpunit/phpunit": "^4.8 || ^5.0 || ^8.5.14",
                 "phpunit/phpunit-selenium": "*",
                 "yoast/phpunit-polyfills": "*"
             },
@@ -4002,9 +4002,9 @@
             ],
             "support": {
                 "issues": "https://github.com/gggeek/phpxmlrpc/issues",
-                "source": "https://github.com/gggeek/phpxmlrpc/tree/4.6.1"
+                "source": "https://github.com/gggeek/phpxmlrpc/tree/4.9.0"
             },
-            "time": "2022-02-15T17:51:11+00:00"
+            "time": "2022-11-28T10:04:37+00:00"
         },
         {
             "name": "psr/cache",
@@ -14651,5 +14651,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
