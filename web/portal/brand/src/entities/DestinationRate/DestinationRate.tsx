@@ -51,6 +51,9 @@ const properties: DestinationRateProperties = {
   destination: {
     label: _('Destination'),
   },
+  currencySymbol: {
+    label: _('Currency'),
+  },
 };
 
 const DestinationRate: EntityInterface = {
@@ -67,6 +70,7 @@ const DestinationRate: EntityInterface = {
     'groupIntervalStart',
     'cost',
     'rateIncrement',
+    'currencySymbol',
   ],
   selectOptions,
   foreignKeyResolver,
