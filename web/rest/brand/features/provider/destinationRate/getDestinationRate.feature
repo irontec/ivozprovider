@@ -42,6 +42,7 @@ Feature: Retrieve destination rate
           "rateIncrement": "1s",
           "groupIntervalStart": "0s",
           "id": 1,
+          "currencySymbol": "€",
           "destinationRateGroup": "~",
           "destination": "~"
       }
