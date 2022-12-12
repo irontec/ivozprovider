@@ -138,7 +138,7 @@ class TrunksClient implements TrunksClientInterface
          * }
          */
 
-        return $result->gw[0];
+        return $result->gw[0] ?? [];
     }
 
     public function reloadRtpengine(): void

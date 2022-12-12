@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Carrier;
 
 class CarrierDto extends CarrierDtoAbstract
 {
+    private ?CarrierStatus $status = null;
+
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -20,6 +22,7 @@ class CarrierDto extends CarrierDtoAbstract
                 'transformationRuleSetId' => 'transformationRuleSet',
                 'balance' => 'balance',
                 'proxyTrunkId' => 'proxyTrunk',
+                'status' => ['registered']
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -43,5 +46,29 @@ class CarrierDto extends CarrierDtoAbstract
             $contextProperties,
             $data
         );
+    }
+
+    public function addStatus(CarrierStatus $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+
+        if (is_null($this->status)) {
+            return $response;
+        }
+
+        $response['status'] = array_map(
+            function (bool $registrationStatus): bool {
+                return $registrationStatus;
+            },
+            $this->status->toArray()
+        );
+        return $response;
     }
 }

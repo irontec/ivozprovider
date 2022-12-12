@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,5 +21,15 @@ class CarrierServerDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CarrierServer::class);
+    }
+
+    public function findByCarrierId(int $carrierId): array
+    {
+        /** @var CarrierServer[] $response */
+        $response = $this->findBy([
+            "carrier" => $carrierId
+        ]);
+
+        return $response;
     }
 }
