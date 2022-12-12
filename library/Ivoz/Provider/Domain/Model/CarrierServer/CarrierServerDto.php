@@ -6,7 +6,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
 {
     public const CONTEXT_STATUS = 'status';
 
-    /** @var CarrierServerStatus[]  */
+    /** @var CarrierServerStatus[] $status */
     private array $status = [];
 
     protected $sensitiveFields = [
@@ -26,9 +26,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
                 'hostname' => 'hostname',
                 'sipProxy' => 'sipProxy',
                 'authNeeded' => 'authNeeded',
-                'status' => [[
-                    'registered'
-                ]]
+                'status' => [['registered']]
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {
@@ -46,6 +44,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
                 'sipProxy' => 'sipProxy',
                 'authNeeded' => 'authNeeded',
                 'outboundProxy' => 'outboundProxy',
+                'status' => [['registered']]
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -84,6 +83,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
     public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
+
         $response['status'] = array_map(
             function (CarrierServerStatus $registrationStatus): array {
                 return $registrationStatus->toArray();

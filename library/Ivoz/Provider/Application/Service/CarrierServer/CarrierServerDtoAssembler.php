@@ -6,18 +6,14 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
-use Ivoz\Kam\Domain\Service\TrunksClientInterface;
-use Ivoz\Kam\Infrastructure\Persistence\Doctrine\TrunksLcrGatewayDoctrineRepository;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerStatus;
-use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 class CarrierServerDtoAssembler implements CustomDtoAssemblerInterface
 {
     public function __construct(
-        private TrunksLcrGatewayDoctrineRepository $trunksLcrGatewayDoctrineRepository,
-        private TrunksClientInterface $trunksClient
+        private GetStatusFromLcrGatewayInfo $statusFromLcrGatewayInfo
     ) {
     }
 
@@ -33,40 +29,31 @@ class CarrierServerDtoAssembler implements CustomDtoAssemblerInterface
 
         $carrierServerDto = $entity->toDto($depth);
 
-        if (is_null($carrierServerDto->getId())) {
-            return $carrierServerDto;
-        }
-
-        /** @var ?TrunksLcrGatewayInterface $kamTrunksLcrGateway */
-        $kamTrunksLcrGateway = $this
-            ->trunksLcrGatewayDoctrineRepository
-            ->find(
-                $carrierServerDto
-                    ->getId()
-            );
-
-        if (is_null($kamTrunksLcrGateway)) {
-            return $carrierServerDto;
-        }
-
-        try {
-            $lcrGatewayInfo = $this->trunksClient->getLcrGatewayInfo(
-                $kamTrunksLcrGateway->getId()
-            );
-        } catch (\Exception $e) {
-            return $carrierServerDto;
-        }
-
-        $showStatus = $context == TerminalDto::CONTEXT_STATUS;
-        $status = $lcrGatewayInfo['state'] ?? '';
+        $showStatus =
+            $context === CarrierServerDto::CONTEXT_STATUS ||
+            $context === CarrierServerDto::CONTEXT_COLLECTION;
 
         if (!$showStatus) {
             return $carrierServerDto;
         }
 
+        $status = $this
+            ->statusFromLcrGatewayInfo
+            ->execute($carrierServerDto);
+
+        if (is_null($status)) {
+            $carrierServerDto->addStatus(
+                new CarrierServerStatus(
+                    false
+                )
+            );
+
+            return $carrierServerDto;
+        }
+
          $carrierServerDto->addStatus(
              new CarrierServerStatus(
-                 (int) $status
+                 $status === 0
              )
          );
 
