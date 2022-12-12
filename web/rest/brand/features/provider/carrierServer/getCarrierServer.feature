@@ -20,7 +20,12 @@ Feature: Retrieve carrier servers
               "authNeeded": "no",
               "sipProxy": "127.0.0.1",
               "outboundProxy": null,
-              "id": 1
+              "id": 1,
+              "status": [
+                  {
+                      "registered": false
+                  }
+              ]
           },
           {
               "ip": null,
@@ -28,7 +33,12 @@ Feature: Retrieve carrier servers
               "authNeeded": "no",
               "sipProxy": "127.0.0.2",
               "outboundProxy": null,
-              "id": 2
+              "id": 2,
+              "status": [
+                  {
+                      "registered": false
+                  }
+              ]
           }
       ]
     """

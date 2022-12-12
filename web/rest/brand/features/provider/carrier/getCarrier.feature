@@ -22,7 +22,10 @@ Feature: Retrieve carriers
               "calculateCost": true,
               "id": 1,
               "transformationRuleSet": 1,
-              "proxyTrunk": 1
+              "proxyTrunk": 1,
+              "status": {
+                  "registered": false
+              }
           },
           {
               "description": "Externally rated",
@@ -32,7 +35,10 @@ Feature: Retrieve carriers
               "calculateCost": false,
               "id": 2,
               "transformationRuleSet": 1,
-              "proxyTrunk": 2
+              "proxyTrunk": 2,
+              "status": {
+                  "registered": false
+              }
           }
       ]
     """
