@@ -7,4 +7,8 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface CarrierServerRepository extends ObjectRepository, Selectable
 {
+    /**
+     * @return CarrierServer[]
+     */
+    public function findByCarrierId(int $carrierId): array;
 }

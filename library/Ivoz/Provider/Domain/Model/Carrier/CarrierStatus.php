@@ -1,14 +1,10 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CarrierServer;
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
-class CarrierServerStatus
+class CarrierStatus
 {
-    /**
-     * @var bool
-     * @AttributeDefinition(type="bool")
-     */
-    private $registered = false;
+    private bool $registered;
 
     public function __construct(
         bool $registered
