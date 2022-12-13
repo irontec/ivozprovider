@@ -1,4 +1,4 @@
-# ... FIXME ...
 profiles/data/*         /
 scripts/FSObase2index.sh /opt/irontec/ivozprovider/scripts/
 scripts/FSOBrandMusicOnHold.sh /opt/irontec/ivozprovider/scripts/
+scripts/FSOVoicemailMessages.py /opt/irontec/ivozprovider/scripts/
