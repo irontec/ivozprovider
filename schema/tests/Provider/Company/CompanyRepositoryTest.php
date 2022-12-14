@@ -21,6 +21,22 @@ class CompanyRepositoryTest extends KernelTestCase
         $this->it_finds_by_brandId();
         $this->it_finds_prepaid_companies();
         $this->it_finds_vpbx_company_ids_by_brand();
+        $this->it_finds_one_by_domain();
+    }
+
+    public function it_finds_one_by_domain()
+    {
+        /** @var CompanyRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(Company::class);
+
+        $company = $repository->findOneByDomain('test.irontec.com');
+
+        $this->assertInstanceOf(
+            Company::class,
+            $company
+        );
     }
 
     public function its_instantiable()
