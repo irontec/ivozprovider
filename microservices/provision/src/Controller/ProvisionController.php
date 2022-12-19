@@ -26,8 +26,8 @@ class ProvisionController
 
     public function indexAction(Request $request): Response
     {
-        $isHttps = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']);
-        if ($isHttps && $_SERVER['SERVER_PORT'] == 443) {
+        $isHttps = $request->getScheme() === 'https';
+        if ($isHttps && $request->getPort() == 443) {
             throw new \DomainException('No generic provisioning over 443', 403);
         }
 
