@@ -29,3 +29,15 @@ Feature: Authorization checking
     And  I send a "GET" request to "companies"
     Then the response status code should be 200
     And  the response should be in JSON
+
+  Scenario: An authenticated brand user retrieve a secured resource
+    Given I add Brand Authorization header
+    And  I add "Accept" header equal to "application/json"
+    And  I send a "GET" request to "/services/unassigned"
+    Then the response status code should be 200
+    And  the response should be in JSON
+
+  Scenario: Unauthenticated brand users cannot retrieve a secured resource
+    And  I add "Accept" header equal to "application/json"
+    And  I send a "GET" request to "/services/unassigned"
+    Then the response status code should be 401
