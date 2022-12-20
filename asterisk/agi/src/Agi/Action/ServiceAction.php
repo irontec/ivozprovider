@@ -177,11 +177,16 @@ class ServiceAction
 
             // Check voicemail for exten user
             $this->agi->verbose("Checking user %s voicemail", $extension->getUser()->getName());
-            $this->agi->checkVoicemail($extension->getUser()->getVoiceMail());
+            $this->agi->setVariable("VOICEMAIL_MAILBOX", $extension->getUser()->getVoiceMail());
+            $this->agi->setVariable("VOICEMAIL_OPTS", "");
         } else {
             // Check voicemail for caller user (without requesting password)
-            $this->agi->checkVoicemail($caller->getVoiceMail(), "s");
+            $this->agi->setVariable("VOICEMAIL_MAILBOX", $caller->getVoiceMail());
+            $this->agi->setVariable("VOICEMAIL_OPTS", "s");
         }
+
+        // Redirect to service check context
+        $this->agi->redirect('check-voicemail');
     }
 
     protected function processDirectPickUp()
