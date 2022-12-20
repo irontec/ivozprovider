@@ -193,7 +193,11 @@ class ServiceAction
             return;
         }
 
-        $this->agi->checkVoicemail($voicemail->getVoicemailName(), $voicemailOpts);
+        $this->agi->setVariable("VOICEMAIL_MAILBOX", $voicemail->getVoicemailName());
+        $this->agi->setVariable("VOICEMAIL_OPTS", $voicemailOpts);
+
+        // Redirect to service check context
+        $this->agi->redirect('check-voicemail');
     }
 
     protected function processDirectPickUp()
