@@ -84,8 +84,10 @@ class VoicemailAction
                 $vmopts .= "s";         // Skip welcome message
             }
 
-
-            $this->agi->voicemail($voicemail->getVoicemailName(), $vmopts);
+            // Call to voicemail context
+            $this->agi->setVariable("VOICEMAIL_MAILBOX", $voicemail->getVoicemailName());
+            $this->agi->setVariable("VOICEMAIL_OPTS", $vmopts);
+            $this->agi->redirect('call-voicemail');
         } else {
             $this->agi->error("%s is disabled.", $voicemail);
             $this->agi->busy();
