@@ -7,6 +7,7 @@ import store, { useStoreActions, useStoreState } from 'store';
 import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
 import { StoreContainer } from '@irontec/ivoz-ui';
+import { useTranslation } from 'react-i18next';
 
 export default function App(): JSX.Element {
   StoreContainer.store = store;
@@ -23,6 +24,8 @@ export default function App(): JSX.Element {
   const aboutMeInit = useStoreActions(
     (actions: any) => actions.clientSession.aboutMe.init
   );
+
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     apiSpecInitFn();
