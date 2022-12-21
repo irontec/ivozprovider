@@ -12,9 +12,17 @@ import i18n from './i18n';
 import './index.css';
 import App from './App';
 
-const currentLanguage =
-  i18n.language.substring(0, 2) === 'es' ? 'esES' : 'enUS';
+const currentLanguage = i18n.language.replace('-', '');
+const currentLocale = (locales as Record<string, locales.Localization>)[
+  currentLanguage
+];
 
+if (!currentLocale || !currentLocale.components) {
+  console.log(
+    `${currentLanguage} locale was not found in`,
+    Object.keys(locales)
+  );
+}
 const theme = createTheme(
   {
     palette: {
@@ -26,7 +34,7 @@ const theme = createTheme(
       },
     },
   },
-  locales[currentLanguage]
+  currentLocale
 );
 
 const container = document.getElementById('root');
