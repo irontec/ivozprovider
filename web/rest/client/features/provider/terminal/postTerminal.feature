@@ -38,7 +38,7 @@ Feature: Create terminals
           "lastProvisionDate": null,
           "t38Passthrough": "no",
           "rtpEncryption": false,
-          "id": 4,
+          "id": 5,
           "terminalModel": 1
       }
     """
@@ -46,7 +46,7 @@ Feature: Create terminals
   Scenario: Retrieve created terminal
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/terminals/4"
+      And I send a "GET" request to "/terminals/5"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -63,7 +63,7 @@ Feature: Create terminals
           "lastProvisionDate": null,
           "t38Passthrough": "no",
           "rtpEncryption": false,
-          "id": 4,
+          "id": 5,
           "terminalModel": {
               "iden": "Generic",
               "name": "Generic SIP Model",

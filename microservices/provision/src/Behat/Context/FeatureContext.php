@@ -51,18 +51,25 @@ class FeatureContext implements Context
         /** @var TerminalModelInterface[] $terminalModels */
         $terminalModels = $this->terminalModelRepository->findAll();
         foreach ($terminalModels as $terminalModel) {
-            $path =
-                $this->storagePath
+            $subpath = $this->storagePath
                 . DIRECTORY_SEPARATOR
                 . "Provision_template"
                 . DIRECTORY_SEPARATOR
                 . (int) $terminalModel->getId()
-                . DIRECTORY_SEPARATOR
-                . 'generic.phtml';
+                . DIRECTORY_SEPARATOR;
+
+            $path = $subpath . 'generic.phtml';
 
             $this->fs->dumpFile(
                 $path,
                 (string) $terminalModel->getGenericTemplate()
+            );
+
+            $path = $subpath .  'specific.phtml';
+
+            $this->fs->dumpFile(
+                $path,
+                (string) $terminalModel->getSpecificTemplate()
             );
         }
     }

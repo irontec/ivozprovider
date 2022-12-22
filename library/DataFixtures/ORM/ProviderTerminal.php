@@ -68,6 +68,21 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderTerminal3', $item3);
         $manager->persist($item3);
 
+        $item4 = $this->createEntityInstance(Terminal::class);
+        (function () use ($fixture) {
+            $this->setName("testTerminal4");
+            $this->setDirectMediaMethod("invite");
+            $this->setPassword("fLgQYa6-57");
+            $this->setMac("0011223344bb");
+            $this->setRtpEncryption(false);
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setDomain($fixture->getReference('_reference_ProviderDomain3'));
+            $this->setTerminalModel($fixture->getReference('_reference_ProviderTerminalModel2'));
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderTerminal4', $item4);
+        $manager->persist($item4);
+
         $manager->flush();
     }
 
