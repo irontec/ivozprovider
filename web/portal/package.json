@@ -1,6 +1,6 @@
 {
   "private": true,
-  "workspaces": ["brand", "client"],
+  "workspaces": ["brand", "client", "user"],
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
