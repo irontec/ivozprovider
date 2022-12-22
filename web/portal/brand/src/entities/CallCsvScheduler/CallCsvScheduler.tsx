@@ -1,7 +1,10 @@
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  marshaller as defaultMarshaller,
+  unmarshaller as defaultUnmarshaller,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
@@ -9,7 +12,6 @@ import { CallCsvSchedulerProperties } from './CallCsvSchedulerProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: CallCsvSchedulerProperties = {
-  //@TODO visualToggles
   name: {
     label: _('Name'),
     maxLength: 40,
@@ -52,6 +54,8 @@ const properties: CallCsvSchedulerProperties = {
   email: {
     label: _('Email'),
     maxLength: 140,
+    required: false,
+    default: '',
     helpText: _('Leave empty if no mail is needed (just generate CSV).'),
   },
   lastExecution: {
@@ -64,18 +68,159 @@ const properties: CallCsvSchedulerProperties = {
     label: _('Next execution'),
     format: 'date-time',
   },
+  companyType: {
+    label: _('Client Type'),
+    type: 'string',
+    required: false,
+    null: _('All'),
+    default: '__null__',
+    enum: {
+      vpbx: _('vPBX'),
+      retail: _('Retail'),
+      residential: _('Residential'),
+      wholesale: _('Wholesale'),
+    },
+    visualToggle: {
+      __null__: {
+        show: ['callCsvNotificationTemplate'],
+        hide: [
+          'wholesale',
+          'retail',
+          'residential',
+          'vpbx',
+          'residentialDevice',
+          'retailAccount',
+          'ddi',
+          'user',
+          'fax',
+          'friend',
+          'endpointType',
+          'residentialEndpointType',
+        ],
+      },
+      vpbx: {
+        show: ['vpbx'],
+        hide: [
+          'retail',
+          'residential',
+          'wholesale',
+          'residentialDevice',
+          'retailAccount',
+          'callCsvNotificationTemplate',
+          'residentialEndpointType',
+        ],
+      },
+      retail: {
+        show: ['retail'],
+        hide: [
+          'wholesale',
+          'vpbx',
+          'residential',
+          'residentialDevice',
+          'callCsvNotificationTemplate',
+          'user',
+          'fax',
+          'friend',
+          'endpointType',
+          'residentialEndpointType',
+          'retailAccount',
+        ],
+      },
+      residential: {
+        show: ['residential'],
+        hide: [
+          'wholesale',
+          'vpbx',
+          'retail',
+          'retailAccount',
+          'callCsvNotificationTemplate',
+          'user',
+          'fax',
+          'friend',
+          'endpointType',
+          'residentialEndpointType',
+          'residentialDevice',
+        ],
+      },
+      wholesale: {
+        show: ['wholesale'],
+        hide: [
+          'vpbx',
+          'retail',
+          'residential',
+          'retailAccount',
+          'residentialDevice',
+          'callCsvNotificationTemplate',
+          'user',
+          'fax',
+          'friend',
+          'endpointType',
+          'residentialEndpointType',
+          'ddi',
+        ],
+      },
+    },
+  },
   company: {
     label: _('Client'),
   },
-  // TODO
-  companyType: {
-    label: _('Client Type'),
-    // debería tener estos valores:
-    //   all: _('All'),
-    //   vpbx: _('vPBX'),
-    //   retail: _('Retail'),
-    //   residential: _('Residential'),
-    //   wholesale: _('Wholesale'),
+  wholesale: {
+    label: _('Client wholesale'),
+    $ref: '#/definitions/Company',
+    type: 'integer',
+    null: ' ',
+    default: '__null__',
+  },
+  vpbx: {
+    label: _('Client vpbx'),
+    $ref: '#/definitions/Company',
+    type: 'integer',
+    null: ' ',
+    default: '__null__',
+    visualToggle: {
+      __default__: {
+        show: ['ddi', 'endpointType'],
+        hide: [],
+      },
+      __null__: {
+        show: [],
+        hide: ['ddi', 'endpointType', 'user', 'friend', 'fax'],
+      },
+    },
+  },
+  retail: {
+    label: _('Client retail'),
+    $ref: '#/definitions/Company',
+    type: 'integer',
+    null: ' ',
+    default: '__null__',
+    visualToggle: {
+      __default__: {
+        show: ['ddi', 'retailAccount'],
+        hide: [],
+      },
+      __null__: {
+        show: [],
+        hide: ['ddi', 'retailAccount'],
+      },
+    },
+  },
+  residential: {
+    label: _('Client residential'),
+    $ref: '#/definitions/Company',
+    type: 'integer',
+    null: ' ',
+    default: '__null__',
+    visualToggle: {
+      __default__: {
+        show: ['ddi', 'residentialEndpointType'],
+        hide: [],
+      },
+      __null__: {
+        show: [],
+        hide: ['ddi', 'residentialEndpointType'],
+      },
+    },
   },
   callCsvNotificationTemplate: {
     label: _('Notification template'),
@@ -85,44 +230,129 @@ const properties: CallCsvSchedulerProperties = {
   ddi: {
     label: _('DDI'),
     null: _('All'),
+    default: '__null__',
   },
   carrier: {
     label: _('Carrier'),
     null: _('All'),
+    default: '__null__',
   },
   retailAccount: {
     label: _('Retail Account'),
+    $ref: '#/definitions/RetailAccount',
     null: _('All'),
+    default: '__null__',
   },
   residentialDevice: {
     label: _('Residential Device'),
+    $ref: '#/definitions/ResidentialDevice',
     null: _('All'),
+    default: '__null__',
   },
   user: {
     label: _('User'),
+    $ref: '#/definitions/User',
     null: _('All'),
+    default: '__null__',
   },
   fax: {
     label: _('Fax'),
+    $ref: '#/definitions/Fax',
     null: _('All'),
+    default: '__null__',
   },
   friend: {
     label: _('Friend'),
+    $ref: '#/definitions/Friend',
     null: _('All'),
+    default: '__null__',
   },
   ddiProvider: {
     label: _('Ddi Provider'),
+    $ref: '#/definitions/DdiProvider',
     null: _('All'),
+    default: '__null__',
   },
-  // TODO
   endpointType: {
     label: _('Endpoint Type'),
-    // debería tener estos valores:
-    //   all: _('All'),
-    //   user: _('User'),
-    //   fax: _('Fax'),
-    //   friend: _('Friend'),
+    type: 'string',
+    null: _('All'),
+    default: '__null__',
+    enum: {
+      user: _('User'),
+      fax: _('Fax'),
+      friend: _('Friend'),
+    },
+    visualToggle: {
+      __null__: {
+        show: [],
+        hide: ['user', 'fax', 'friend'],
+      },
+      user: {
+        show: ['user'],
+        hide: ['fax', 'friend'],
+      },
+      fax: {
+        show: ['fax'],
+        hide: ['user', 'friend'],
+      },
+      friend: {
+        show: ['friend'],
+        hide: ['user', 'fax'],
+      },
+    },
   },
+  residentialEndpointType: {
+    label: _('Endpoint Type'),
+    type: 'string',
+    null: _('All'),
+    default: '__null__',
+    enum: {
+      residentialDevice: _('Residential Device'),
+      fax: _('Fax'),
+    },
+    visualToggle: {
+      __null__: {
+        show: [],
+        hide: ['residentialDevice', 'fax'],
+      },
+      residentialDevice: {
+        show: ['residentialDevice'],
+        hide: ['fax'],
+      },
+      fax: {
+        show: ['fax'],
+        hide: ['residentialDevice'],
+      },
+    },
+  },
+};
+
+type MarshallerType = typeof defaultMarshaller;
+const marshaller: MarshallerType = (values, properties) => {
+  values.company = values[values.companyType];
+  return defaultMarshaller(values, properties);
+};
+
+type UnmarshallerType = typeof defaultUnmarshaller;
+const unmarshaller: UnmarshallerType = (row, properties) => {
+  row.companyType = row.company?.type;
+  row[row.companyType] = row.company?.id;
+  if (row.user) {
+    row.endpointType = 'user';
+  }
+  if (row.fax) {
+    row.endpointType = 'fax';
+    row.residentialEndpointType = 'fax';
+  }
+  if (row.friend) {
+    row.endpointType = 'friend';
+  }
+  if (row.residentialDevice) {
+    row.residentialEndpointType = 'residentialDevice';
+  }
+
+  return defaultUnmarshaller(row, properties);
 };
 
 const CallCsvScheduler: EntityInterface = {
@@ -147,6 +377,8 @@ const CallCsvScheduler: EntityInterface = {
   foreignKeyResolver,
   foreignKeyGetter,
   Form,
+  marshaller,
+  unmarshaller,
 };
 
 export default CallCsvScheduler;

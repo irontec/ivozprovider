@@ -6,11 +6,11 @@ import defaultEntityBehavior, {
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, properties } = props;
+  const { entityService, match, properties } = props;
   const edit = props.edit || false;
   const DefaultEntityForm = defaultEntityBehavior.Form;
 
-  const service = props?.row?.service as Record<string, any> | undefined;
+  const service = props.row?.service as Record<string, any> | undefined;
   const currentServiceId: number | undefined = service?.id;
 
   const fkChoices = useFkChoices({
