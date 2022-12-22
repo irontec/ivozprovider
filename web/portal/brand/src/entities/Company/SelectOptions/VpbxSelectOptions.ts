@@ -1,21 +1,25 @@
+import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const ResidentialDeviceSelectOptions: SelectOptionsType = ({
+const VpbxSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const ResidentialDevice = entities.ResidentialDevice;
+  const Company = entities.Company;
 
   return defaultEntityBehavior.fetchFks(
-    ResidentialDevice.path,
-    ['id'],
+    Company.path + '?type=vpbx&_order[name]=ASC',
+    ['id', 'name', 'company'],
     (data: any) => {
-      const options: any = {};
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.id;
+        options.push({
+          id: item.id,
+          label: item.name,
+        });
       }
 
       callback(options);
@@ -24,4 +28,4 @@ const ResidentialDeviceSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default ResidentialDeviceSelectOptions;
+export default VpbxSelectOptions;

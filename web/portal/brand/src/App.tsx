@@ -25,7 +25,7 @@ export default function App(): JSX.Element {
     (actions: any) => actions.clientSession.aboutMe.init
   );
 
-  const { i18n } = useTranslation();
+  useTranslation();
 
   useEffect(() => {
     apiSpecInitFn();

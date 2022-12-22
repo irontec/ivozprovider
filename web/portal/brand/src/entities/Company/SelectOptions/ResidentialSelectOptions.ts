@@ -3,20 +3,23 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const DdiProviderSelectOptions: SelectOptionsType = ({
+const ResidentialSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const DdiProvider = entities.DdiProvider;
+  const Company = entities.Company;
 
   return defaultEntityBehavior.fetchFks(
-    DdiProvider.path + '?_order[name]=ASC',
-    ['id', 'name'],
+    Company.path + '?type=residential&_order[name]=ASC',
+    ['id', 'name', 'company'],
     (data: any) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id, label: item.name });
+        options.push({
+          id: item.id,
+          label: item.name,
+        });
       }
 
       callback(options);
@@ -25,4 +28,4 @@ const DdiProviderSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default DdiProviderSelectOptions;
+export default ResidentialSelectOptions;
