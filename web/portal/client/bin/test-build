@@ -3,7 +3,7 @@
 # Move to webapp dir
 SCRIPT_DIR=$(dirname $(realpath $0))
 [ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
-cd ${SCRIPT_DIR}/../
+cd ${SCRIPT_DIR}/../../
 
 # Increase yarnpkg timeout to avoid ESOCKETTIMEDOUT in jenkins
 # See: https://github.com/yarnpkg/yarn/issues/8242#issuecomment-661881292
@@ -13,5 +13,6 @@ $YARN config set network-timeout 1000000
 $YARN install
 
 # Build portal
+cd ${SCRIPT_DIR}/../
 $YARN build
 
