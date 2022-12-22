@@ -21,7 +21,7 @@ fi
 
 cd /opt/irontec/ivozprovider/
 library/vendor/bin/phpcbf -p --standard=PSR12 --extensions=php \
-    --ignore='vendor,coverage,var,DoctrineMigrations,config.php' \
+    --ignore='vendor,node_modules,coverage,var,DoctrineMigrations,config.php' \
     $CHANGED_FILES
 
 # Only return 1 is considered an error
