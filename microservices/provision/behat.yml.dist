@@ -6,6 +6,7 @@ default:
       contexts:
         - Behat\MinkExtension\Context\MinkContext
         - Behat\Context\FeatureContext
+        - Behatch\Context\RestContext
   extensions:
     FriendsOfBehat\SymfonyExtension:
       bootstrap: features/bootstrap/bootstrap.php
@@ -15,7 +16,7 @@ default:
         path: "src/Kernel.php"
         class: "Kernel"
     Behat\MinkExtension:
-      base_url: "https://ivozprovider/"
+      base_url: "http://ivozprovider/"
       sessions:
         default:
           symfony: ~

@@ -51,6 +51,16 @@ Feature: Retrieve terminals
               "terminalModel": 1,
               "domainName": "127.0.0.1",
               "status": []
+          },
+          {
+              "name": "testTerminal4",
+              "mac": "0011223344bb",
+              "lastProvisionDate": null,
+              "id": 4,
+              "domain": 3,
+              "terminalModel": 2,
+              "domainName": "127.0.0.1",
+              "status": []
           }
       ]
     """

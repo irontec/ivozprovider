@@ -187,7 +187,7 @@ class DomainLifeCycleTest extends KernelTestCase
 
         $terminals = $domain->getTerminals();
         $this->assertCount(
-            3,
+            4,
             $terminals
         );
 

@@ -45,6 +45,18 @@ Feature: Retrieve users
               "outgoingDdi": null,
               "location": 1,
               "status": []
+          },
+          {
+              "name": "Joe",
+              "lastname": "Doe",
+              "email": "joe@democompany.com",
+              "id": 3,
+              "company": 1,
+              "terminal": 4,
+              "extension": null,
+              "outgoingDdi": null,
+              "location": 1,
+              "status": []
           }
       ]
     """
