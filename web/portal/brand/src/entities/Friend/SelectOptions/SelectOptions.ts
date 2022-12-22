@@ -1,22 +1,21 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const DdiProviderSelectOptions: SelectOptionsType = ({
+const FriendSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const DdiProvider = entities.DdiProvider;
+  const Friend = entities.Friend;
 
   return defaultEntityBehavior.fetchFks(
-    DdiProvider.path + '?_order[name]=ASC',
+    Friend.path,
     ['id', 'name'],
     (data: any) => {
-      const options: DropdownChoices = [];
+      const options: any = {};
       for (const item of data) {
-        options.push({ id: item.id, label: item.name });
+        options[item.id] = item.name;
       }
 
       callback(options);
@@ -25,4 +24,4 @@ const DdiProviderSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default DdiProviderSelectOptions;
+export default FriendSelectOptions;

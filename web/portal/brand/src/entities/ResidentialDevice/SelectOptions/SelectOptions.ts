@@ -2,20 +2,20 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const RetailAccountSelectOptions: SelectOptionsType = ({
+const ResidentialDeviceSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const RetailAccount = entities.RetailAccount;
+  const ResidentialDevice = entities.ResidentialDevice;
 
   return defaultEntityBehavior.fetchFks(
-    RetailAccount.path,
-    ['id'],
+    ResidentialDevice.path,
+    ['id', 'name'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
-        options[item.id] = item.id;
+        options[item.id] = item.name;
       }
 
       callback(options);
@@ -24,4 +24,4 @@ const RetailAccountSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default RetailAccountSelectOptions;
+export default ResidentialDeviceSelectOptions;

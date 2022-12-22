@@ -2,20 +2,20 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const UserSelectOptions: SelectOptionsType = ({
+const FaxSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const User = entities.User;
+  const Fax = entities.Fax;
 
   return defaultEntityBehavior.fetchFks(
-    User.path,
-    ['id'],
+    Fax.path,
+    ['id', 'name'],
     (data: any) => {
       const options: any = {};
       for (const item of data) {
-        options[item.id] = item.id;
+        options[item.id] = item.name;
       }
 
       callback(options);
@@ -24,4 +24,4 @@ const UserSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default UserSelectOptions;
+export default FaxSelectOptions;
