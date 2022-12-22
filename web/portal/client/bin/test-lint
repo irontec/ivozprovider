@@ -4,10 +4,6 @@ set -e
 # Move to webapp dir
 SCRIPT_DIR=$(dirname $(realpath $0))
 [ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
-cd ${SCRIPT_DIR}/../../
-
-# Install required dependencies
-$YARN install
 
 # Run linter
 cd ${SCRIPT_DIR}/../
