@@ -6,7 +6,7 @@ import defaultEntityBehavior, {
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, foreignKeyGetter } = props;
+  const { entityService, row, match, foreignKeyGetter, formik } = props;
   const edit = props.edit || false;
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -17,6 +17,17 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  const recordingFeatureId = fkChoices.featureIds?.find(
+    (row) => row.extraData.iden === 'recordings'
+  ).id;
+  const recordingEnabled =
+    formik.values.featureIds.includes(recordingFeatureId);
+
+  const faxFeatureId = fkChoices.featureIds?.find(
+    (row) => row.extraData.iden === 'faxes'
+  ).id;
+  const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
   const type = row?.type ?? props.formik.initialValues.type;
   const isVpbx = type === 'vpbx';
@@ -74,15 +85,20 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'countryName',
       ],
     },
-    edit && {
-      legend: _('Recordings'),
-      fields: ['onDemandRecord', 'allowRecordingRemoval', 'onDemandRecordCode'],
-    },
+    edit &&
+      recordingEnabled && {
+        legend: _('Recordings'),
+        fields: [
+          'onDemandRecord',
+          'allowRecordingRemoval',
+          'onDemandRecordCode',
+        ],
+      },
     edit && {
       legend: _('Notification options'),
       fields: [
         'voicemailNotificationTemplate',
-        'faxNotificationTemplate',
+        faxEnabled && 'faxNotificationTemplate',
         'invoiceNotificationTemplate',
         'callCsvNotificationTemplate',
         'maxDailyUsageNotificationTemplate',
