@@ -1,4 +1,6 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  PropertyFkChoices,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
@@ -13,7 +15,7 @@ const FeatureSelectOptions: SelectOptionsType = ({
     Feature.path,
     ['id', 'iden', 'name'],
     (data: any) => {
-      const options: any = {};
+      const options: PropertyFkChoices = [];
 
       const featuresToIgnore = [
         'billing',
@@ -29,7 +31,13 @@ const FeatureSelectOptions: SelectOptionsType = ({
           continue;
         }
 
-        options[item.id] = Feature.toStr(item);
+        options.push({
+          id: item.id,
+          label: Feature.toStr(item),
+          extraData: {
+            iden: item.iden,
+          },
+        });
       }
 
       callback(options);
