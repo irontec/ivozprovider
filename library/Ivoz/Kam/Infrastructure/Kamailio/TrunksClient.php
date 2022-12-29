@@ -101,6 +101,9 @@ class TrunksClient implements TrunksClientInterface
         return (array) $response->result;
     }
 
+    /**
+     * @param int $gw_id
+     */
     public function getLcrGatewayInfo($gw_id): array
     {
         $response = $this->sendRequest(
@@ -116,29 +119,36 @@ class TrunksClient implements TrunksClientInterface
         /** @var  \stdClass $result */
         $result = $response->result;
 
+        if (
+            !isset($result->gw)
+            || !is_array($result->gw)
+        ) {
+            return [];
+        }
+
         /**
-         * Expected response format
-         * {
-         *   lcr_id: 1
-         *   gw_id: 21
-         *   gw_index: 2
-         *   gw_name: b1c1s14
-         *   scheme: sip:
-         *   ip_addr: 0.0.0.0
-         *   hostname: example.com
-         *   port: 5060
-         *   params:
-         *   transport: ;transport=udp
-         *   strip: 0
-         *   prefix:
-         *   tag:
-         *   flags: 14
-         *   state: 0
-         *   defunct_until: 0
+         * @var array{
+         *   lcr_id: int,
+         *   gw_id: int,
+         *   gw_index: int,
+         *   gw_name: string,
+         *   scheme: string,
+         *   ip_addr: string,
+         *   hostname: string,
+         *   port: int,
+         *   params: string,
+         *   transport: string,
+         *   strip: int,
+         *   prefix: string,
+         *   tag: string,
+         *   flags: int,
+         *   state: int,
+         *   defunct_until: int,
          * }
          */
+        $response = (array) $result->gw[0];
 
-        return $result->gw[0] ?? [];
+        return $response;
     }
 
     public function reloadRtpengine(): void
