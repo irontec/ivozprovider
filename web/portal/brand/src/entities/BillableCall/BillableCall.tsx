@@ -105,7 +105,7 @@ const BillableCall: EntityInterface = {
   columns: [
     'startTime',
     'company',
-    'duration',
+    'direction',
     'caller',
     'callee',
     'duration',
