@@ -7,8 +7,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\FileImporterArguments;
 
 class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
 {
@@ -44,6 +44,18 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
 
             $dto->setFilePath(
                 $pathResolver->getFilePath($destinationRateGroup)
+            );
+
+            $importerArguments = new FileImporterArguments([
+                "destinationName",
+                "destinationPrefix",
+                "rateCost",
+                "connectionCharge",
+                "rateIncrement"
+            ]);
+
+            $dto->setFileImporterArguments(
+                $importerArguments->toArray()
             );
         }
 
