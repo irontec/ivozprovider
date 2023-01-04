@@ -64,7 +64,19 @@ Content-Type: text/csv
               "fileSize": 84,
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "prices.csv",
-              "importerArguments": null
+              "importerArguments": {
+                    "scape": null,
+                    "columns": [
+                        "destinationName",
+                        "destinationPrefix",
+                        "rateCost",
+                        "connectionCharge",
+                        "rateIncrement"
+                    ],
+                    "delimiter": ",",
+                    "enclosure": "\"",
+                    "ignoreFirst": true
+                }
           },
           "currency": 1
       }
@@ -100,7 +112,19 @@ Content-Type: text/csv
               "fileSize": 84,
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "prices.csv",
-              "importerArguments": null
+              "importerArguments": {
+                    "scape": null,
+                    "columns": [
+                        "destinationName",
+                        "destinationPrefix",
+                        "rateCost",
+                        "connectionCharge",
+                        "rateIncrement"
+                    ],
+                    "delimiter": ",",
+                    "enclosure": "\"",
+                    "ignoreFirst": true
+                }
           },
           "currency": "~"
       }

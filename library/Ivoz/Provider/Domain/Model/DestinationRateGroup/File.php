@@ -7,9 +7,9 @@ namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 use Assert\Assertion;
 
 /**
- * File
- * @codeCoverageIgnore
- */
+* File
+* @codeCoverageIgnore
+*/
 final class File
 {
     /**
@@ -35,7 +35,7 @@ final class File
      * @var ?array
      * column: fileImporterArguments
      */
-    private $importerArguments;
+    private $importerArguments = [];
 
     /**
      * Constructor
