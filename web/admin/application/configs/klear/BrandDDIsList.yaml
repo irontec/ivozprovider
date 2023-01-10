@@ -35,6 +35,7 @@ production:
           ddi: true
           company: true
           carrier: true
+          type: true
           ddiProvider: true
           description: true
         blacklist:
