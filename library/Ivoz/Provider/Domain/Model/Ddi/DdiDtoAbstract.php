@@ -51,6 +51,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $friendValue;
 
     /**
+     * @var string
+     */
+    private $type = 'inout';
+
+    /**
      * @var integer
      */
     private $id;
@@ -156,6 +161,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'routeType' => 'routeType',
             'billInboundCalls' => 'billInboundCalls',
             'friendValue' => 'friendValue',
+            'type' => 'type',
             'id' => 'id',
             'companyId' => 'company',
             'brandId' => 'brand',
@@ -189,6 +195,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'routeType' => $this->getRouteType(),
             'billInboundCalls' => $this->getBillInboundCalls(),
             'friendValue' => $this->getFriendValue(),
+            'type' => $this->getType(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'brand' => $this->getBrand(),
@@ -379,6 +386,26 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getFriendValue()
     {
         return $this->friendValue;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType($type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**

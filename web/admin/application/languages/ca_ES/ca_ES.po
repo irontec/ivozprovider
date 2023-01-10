@@ -1539,6 +1539,9 @@ msgstr "En procés"
 msgid "Inbound"
 msgstr "Entrada"
 
+msgid "Inbound & outbound"
+msgstr "Inbound & outbound"
+
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Trucades entrants no poden ser facturats ja que el proveïdor de DDI no està "
@@ -2144,6 +2147,9 @@ msgstr "Ip del  intermediari de sortida no és vàlida."
 
 msgid "Outbound configuration"
 msgstr "Configuració de sortida"
+
+msgid "Outbound only"
+msgstr "Outbound only"
 
 msgid "Outgoing Configuration"
 msgstr "Configuració de sortida"
