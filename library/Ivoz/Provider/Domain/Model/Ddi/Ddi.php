@@ -6,6 +6,7 @@ use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
  * Ddi
@@ -60,6 +61,10 @@ class Ddi extends DdiAbstract implements DdiInterface
             $country->getCountryCode()
             . $this->getDdi()
         );
+
+        if ($this->getType() === DdiInterface::TYPE_OUT) {
+            $this->setDdiProvider(null);
+        }
 
         // If billInboundCalls is set, carrier must have externallyRated to 1
         if (
