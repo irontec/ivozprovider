@@ -7,7 +7,7 @@ import { CompanyServicePropertyList } from './CompanyServiceProperties';
 import axios from 'axios';
 import { ForeignKeyGetterTypeArgs } from '@irontec/ivoz-ui/entities/EntityInterface';
 import EntityService from '@irontec/ivoz-ui/services/entity/EntityService';
-import { match } from 'react-router-dom';
+import { PathMatch } from 'react-router-dom';
 
 type CompanyServiceForeignKeyGetterType = (
   props: ForeignKeyGetterTypeArgs,
@@ -50,7 +50,7 @@ export const foreignKeyGetter: CompanyServiceForeignKeyGetterType = async (
 interface useFkChoicesArgs {
   entityService: EntityService;
   currentServiceId?: number;
-  match: match;
+  match: PathMatch;
 }
 
 const useFkChoices = (props: useFkChoicesArgs): FkChoices => {
