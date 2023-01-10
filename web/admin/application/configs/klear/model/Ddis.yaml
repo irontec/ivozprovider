@@ -143,6 +143,23 @@ production:
         icon: error
         text: _("Local legislation may enforce to announce the call recording to both parties, act responsibly")
         label: _("Need help?")
+    type:
+      title: _('Type')
+      type: select
+      defaultValue: inout
+      source:
+        data: inline
+        values:
+          'inout':
+            title: _('Inbound & outbound')
+            visualFilter:
+              hide: [ ]
+              show: [ ddiProvider ]
+          'out':
+            title: _('Outbound only')
+            visualFilter:
+              hide: [ ddiProvider ]
+              show: [ ]
     displayName:
       title: _('Display name')
       type: text
