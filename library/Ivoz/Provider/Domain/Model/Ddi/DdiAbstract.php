@@ -56,6 +56,12 @@ abstract class DdiAbstract
     protected $friendValue;
 
     /**
+     * comment: enum:inout|out
+     * @var string
+     */
+    protected $type = 'inout';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -136,11 +142,16 @@ abstract class DdiAbstract
     /**
      * Constructor
      */
-    protected function __construct($ddi, $recordCalls, $billInboundCalls)
-    {
+    protected function __construct(
+        $ddi,
+        $recordCalls,
+        $billInboundCalls,
+        $type
+    ) {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
         $this->setBillInboundCalls($billInboundCalls);
+        $this->setType($type);
     }
 
     abstract public function getId();
@@ -214,7 +225,8 @@ abstract class DdiAbstract
         $self = new static(
             $dto->getDdi(),
             $dto->getRecordCalls(),
-            $dto->getBillInboundCalls()
+            $dto->getBillInboundCalls(),
+            $dto->getType()
         );
 
         $self
@@ -265,6 +277,7 @@ abstract class DdiAbstract
             ->setRouteType($dto->getRouteType())
             ->setBillInboundCalls($dto->getBillInboundCalls())
             ->setFriendValue($dto->getFriendValue())
+            ->setType($dto->getType())
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
@@ -302,6 +315,7 @@ abstract class DdiAbstract
             ->setRouteType(self::getRouteType())
             ->setBillInboundCalls(self::getBillInboundCalls())
             ->setFriendValue(self::getFriendValue())
+            ->setType(self::getType())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom::entityToDto(self::getConferenceRoom(), $depth))
@@ -333,6 +347,7 @@ abstract class DdiAbstract
             'routeType' => self::getRouteType(),
             'billInboundCalls' => self::getBillInboundCalls(),
             'friendValue' => self::getFriendValue(),
+            'type' => self::getType(),
             'companyId' => self::getCompany()->getId(),
             'brandId' => self::getBrand()->getId(),
             'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
@@ -590,6 +605,37 @@ abstract class DdiAbstract
     public function getFriendValue()
     {
         return $this->friendValue;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return static
+     */
+    protected function setType($type)
+    {
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($type, [
+            DdiInterface::TYPE_INOUT,
+            DdiInterface::TYPE_OUT
+        ], 'typevalue "%s" is not an element of the valid values: %s');
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     /**

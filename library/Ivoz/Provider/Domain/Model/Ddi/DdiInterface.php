@@ -24,6 +24,10 @@ interface DdiInterface extends LoggableEntityInterface
     const ROUTETYPE_RETAIL = 'retail';
 
 
+    const TYPE_INOUT = 'inout';
+    const TYPE_OUT = 'out';
+
+
     /**
      * @codeCoverageIgnore
      * @return array
@@ -106,6 +110,13 @@ interface DdiInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getFriendValue();
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType(): string;
 
     /**
      * Set company
