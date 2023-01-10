@@ -223,11 +223,11 @@ Description: IVOZ Provider - Admin Web - Klear based web interface
  Portals using klear and zendframework 1
  .
 
-Package: ivozprovider-web-client
+Package: ivozprovider-web-portals
 Architecture: all
 Section: php
 Priority: optional
-Conflicts: ivozprovider-userweb
+Conflicts: ivozprovider-web-client
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Client Web - React based client web interface
  Client webapp using React and Bootstrap
