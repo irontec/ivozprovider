@@ -881,21 +881,6 @@ parameters:
 			path: src/Agi/Wrapper.php
 
 		-
-			message: "#^Method Agi\\\\Wrapper\\:\\:checkVoicemail\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Agi/Wrapper.php
-
-		-
-			message: "#^Method Agi\\\\Wrapper\\:\\:checkVoicemail\\(\\) has parameter \\$mailbox with no typehint specified\\.$#"
-			count: 1
-			path: src/Agi/Wrapper.php
-
-		-
-			message: "#^Method Agi\\\\Wrapper\\:\\:checkVoicemail\\(\\) has parameter \\$options with no typehint specified\\.$#"
-			count: 1
-			path: src/Agi/Wrapper.php
-
-		-
 			message: "#^Method Agi\\\\Wrapper\\:\\:decline\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Agi/Wrapper.php
@@ -1322,21 +1307,6 @@ parameters:
 
 		-
 			message: "#^Method Agi\\\\Wrapper\\:\\:verbose\\(\\) has parameter \\$fmt with no typehint specified\\.$#"
-			count: 1
-			path: src/Agi/Wrapper.php
-
-		-
-			message: "#^Method Agi\\\\Wrapper\\:\\:voicemail\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Agi/Wrapper.php
-
-		-
-			message: "#^Method Agi\\\\Wrapper\\:\\:voicemail\\(\\) has parameter \\$mailbox with no typehint specified\\.$#"
-			count: 1
-			path: src/Agi/Wrapper.php
-
-		-
-			message: "#^Method Agi\\\\Wrapper\\:\\:voicemail\\(\\) has parameter \\$opts with no typehint specified\\.$#"
 			count: 1
 			path: src/Agi/Wrapper.php
 
