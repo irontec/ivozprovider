@@ -1543,6 +1543,9 @@ msgstr "En curso"
 msgid "Inbound"
 msgstr "Entrante"
 
+msgid "Inbound & outbound"
+msgstr "Entrante & saliente"
+
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
@@ -2155,6 +2158,9 @@ msgstr "El valor de Proxy saliente no es válido."
 
 msgid "Outbound configuration"
 msgstr "Configuración Saliente"
+
+msgid "Outbound only"
+msgstr "Solo saliente"
 
 msgid "Outgoing Configuration"
 msgstr "Configuración Saliente"

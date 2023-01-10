@@ -1523,6 +1523,9 @@ msgstr "In progress"
 msgid "Inbound"
 msgstr "Inbound"
 
+msgid "Inbound & outbound"
+msgstr "Inbound & outbound"
+
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Inbound Calls cannot be billed as DDI Provider is not externally rated."
@@ -2124,6 +2127,9 @@ msgstr "Outbound Proxy IP value is not valid."
 
 msgid "Outbound configuration"
 msgstr "Outbound configuration"
+
+msgid "Outbound only"
+msgstr "Outbound only"
 
 msgid "Outgoing Configuration"
 msgstr "Outgoing Configuration"
