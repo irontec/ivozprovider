@@ -1,18 +1,18 @@
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 import { EntityValues } from '@irontec/ivoz-ui/services/entity/EntityService';
-import { match } from 'react-router-dom';
+import { PathMatch } from 'react-router-dom';
 
 interface CustomArgs {
   row?: EntityValues;
-  match: match;
+  match: PathMatch;
 }
 
 const HuntGroupAvailableSelectOptions: SelectOptionsType<CustomArgs> = (
   { callback, cancelToken },
   customArgs
 ): Promise<unknown> => {
-  const match = customArgs?.match as match;
+  const match = customArgs?.match as PathMatch;
   const id = (match?.params as Record<string, string>)?.parent_id_1;
 
   const params: any = {
