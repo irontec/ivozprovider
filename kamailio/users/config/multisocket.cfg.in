@@ -24,7 +24,7 @@
 #   * W.X.Y.Z is the RTP address when A.B.C.D is the signalling adddress
 #   * S.T.U.V is the RTP address when E.F.G.H is the signalling adddress
 #
-# - To get that, edit /etc/default/rtpengine (and restart rtpengine):
+# - To get that, edit /etc/rtpengine/rtpengine.conf (and restart rtpengine):
 #
 #   * AUDIO_SOCK=A.B.C.D/W.X.Y.Z
 #   * Add "--interface=E.F.G.H/S.T.U.V" to EXTRA_OPTS string
