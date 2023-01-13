@@ -10,7 +10,8 @@
 #!define WITH_PUSHSERVERS
 
 modparam("htable", "htable", "pushservers=>size=8")
-modparam("timer", "declare_timer", "PUSHSERVERS_TIMER=PUSHSERVERS_TIMER,3600000,slow,enable");
+modparam("rtimer", "timer", "name=PUSHSERVERS_TIMER;interval=3600;mode=0;")
+modparam("rtimer", "exec", "timer=PUSHSERVERS_TIMER;route=PUSHSERVERS_TIMER")
 
 route[PUSHSERVERS_TIMER] {
     # Concatenate as many desired push servers adding blocks like this:
