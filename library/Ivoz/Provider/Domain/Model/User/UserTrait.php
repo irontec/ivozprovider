@@ -18,6 +18,11 @@ trait UserTrait
     protected $id;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Contact\ContactInterface
+     */
+    protected $contact;
+
+    /**
      * @var ArrayCollection
      */
     protected $pickUpRelUsers;
@@ -149,6 +154,30 @@ trait UserTrait
             'id' => self::getId()
         ];
     }
+    /**
+     * Set contact
+     *
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact
+     *
+     * @return static
+     */
+    public function setContact(\Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \Ivoz\Provider\Domain\Model\Contact\ContactInterface | null
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
     /**
      * Add pickUpRelUser
      *
