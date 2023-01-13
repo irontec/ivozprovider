@@ -15,6 +15,7 @@ class UserLifecycleServiceCollection implements LifecycleServiceCollectionInterf
     public static $bindedBaseServices = [
         "post_persist" =>
         [
+            \Ivoz\Provider\Domain\Service\Contact\UpdateByUser::class => 10,
             \Ivoz\Ast\Domain\Service\Voicemail\UpdateByUser::class => 10,
             \Ivoz\Provider\Domain\Service\Extension\UpdateByUser::class => 20,
             \Ivoz\Provider\Domain\Service\User\UnsetBossAssistant::class => 30,

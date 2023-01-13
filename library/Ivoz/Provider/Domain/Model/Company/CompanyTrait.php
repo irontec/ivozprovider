@@ -35,6 +35,11 @@ trait CompanyTrait
     /**
      * @var ArrayCollection
      */
+    protected $contacts;
+
+    /**
+     * @var ArrayCollection
+     */
     protected $companyServices;
 
     /**
@@ -87,6 +92,7 @@ trait CompanyTrait
         $this->extensions = new ArrayCollection();
         $this->ddis = new ArrayCollection();
         $this->friends = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
         $this->companyServices = new ArrayCollection();
         $this->terminals = new ArrayCollection();
         $this->ratingProfiles = new ArrayCollection();
@@ -133,6 +139,14 @@ trait CompanyTrait
             $self->replaceFriends(
                 $fkTransformer->transformCollection(
                     $dto->getFriends()
+                )
+            );
+        }
+
+        if (!is_null($dto->getContacts())) {
+            $self->replaceContacts(
+                $fkTransformer->transformCollection(
+                    $dto->getContacts()
                 )
             );
         }
@@ -246,6 +260,13 @@ trait CompanyTrait
             $this->replaceFriends(
                 $fkTransformer->transformCollection(
                     $dto->getFriends()
+                )
+            );
+        }
+        if (!is_null($dto->getContacts())) {
+            $this->replaceContacts(
+                $fkTransformer->transformCollection(
+                    $dto->getContacts()
                 )
             );
         }
@@ -552,6 +573,78 @@ trait CompanyTrait
         }
 
         return $this->friends->toArray();
+    }
+
+    /**
+     * Add contact
+     *
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact
+     *
+     * @return static
+     */
+    public function addContact(\Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact)
+    {
+        $this->contacts->add($contact);
+
+        return $this;
+    }
+
+    /**
+     * Remove contact
+     *
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact
+     */
+    public function removeContact(\Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact)
+    {
+        $this->contacts->removeElement($contact);
+    }
+
+    /**
+     * Replace contacts
+     *
+     * @param ArrayCollection $contacts of Ivoz\Provider\Domain\Model\Contact\ContactInterface
+     * @return static
+     */
+    public function replaceContacts(ArrayCollection $contacts)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($contacts as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->contacts as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->contacts->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->contacts->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addContact($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get contacts
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\Contact\ContactInterface[]
+     */
+    public function getContacts(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->contacts->matching($criteria)->toArray();
+        }
+
+        return $this->contacts->toArray();
     }
 
     /**
