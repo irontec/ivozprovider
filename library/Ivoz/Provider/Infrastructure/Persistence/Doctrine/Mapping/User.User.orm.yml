@@ -12,6 +12,11 @@ Ivoz\Provider\Domain\Model\User\User:
       id: true
       generator:
         strategy: IDENTITY
+  oneToOne:
+    contact:
+      targetEntity: Ivoz\Provider\Domain\Model\Contact\ContactInterface
+      mappedBy: user
+      fetch: LAZY
   oneToMany:
     pickUpRelUsers:
       targetEntity: Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface

@@ -51,6 +51,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer
       Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
         Ivoz\Provider\Domain\Model\Commandlog\Commandlog
+      Ivoz\Provider\Domain\Model\Contact\ContactInterface:
+        Ivoz\Provider\Domain\Model\Contact\Contact
       Ivoz\Provider\Domain\Model\Codec\CodecInterface:
         Ivoz\Provider\Domain\Model\Codec\Codec
       Ivoz\Provider\Domain\Model\Changelog\ChangelogInterface:
