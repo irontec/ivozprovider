@@ -1,0 +1,102 @@
+Ivoz\Provider\Domain\Model\Contact\ContactAbstract:
+  type: mappedSuperclass
+  fields:
+    name:
+      type: string
+      nullable: false
+      length: 100
+      options:
+        fixed: false
+    lastname:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+    email:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+    workPhone:
+      type: string
+      nullable: true
+      length: 20
+      options:
+        fixed: false
+      column: workPhone
+    workPhoneE164:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: workPhoneE164
+    mobilePhone:
+      type: string
+      nullable: true
+      length: 20
+      options:
+        fixed: false
+      column: mobilePhone
+    mobilePhoneE164:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: mobilePhoneE164
+    otherPhone:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+      column: otherPhone
+  oneToOne:
+    user:
+      targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface
+      cascade: { }
+      fetch: LAZY
+      inversedBy: contact
+      joinColumns:
+        userId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      inversedBy: contacts
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    workPhoneCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        workPhoneCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    mobilePhoneCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        mobilePhoneCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
