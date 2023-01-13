@@ -1,0 +1,41 @@
+# Adding a file like this (without .in) and restarting kamusers
+# enables a logic that avoids source IP checking for addresses
+# matching given domains.
+#
+# This could be useful to skip source IP filter for PUSH servers of certain
+# softphones.
+#
+# Edit to include desired push server domains before restarting kamusers.
+
+#!define WITH_PUSHSERVERS
+
+modparam("htable", "htable", "pushservers=>size=8")
+modparam("rtimer", "timer", "name=PUSHSERVERS_TIMER;interval=3600;mode=0;")
+modparam("rtimer", "exec", "timer=PUSHSERVERS_TIMER;route=PUSHSERVERS_TIMER")
+
+route[PUSHSERVERS_TIMER] {
+    # Concatenate as many desired push servers adding blocks like this:
+    #
+    # $var(pushserverdom) = 'first-pushserver.example.org';
+    # route(PUSHSERVERS_DNS);
+    #
+    # $var(pushserverdom) = 'second-pushserver.example.org';
+    # route(PUSHSERVERS_DNS);
+
+    return;
+}
+
+route[PUSHSERVERS_DNS] {
+    xnotice("PUSHSERVERS-DNS: update $var(pushserverdom) IPv4 addresses\n");
+
+    if(dns_query($var(pushserverdom), "pushserver")) {
+        $var(i) = 0;
+        while($var(i)<$dns(pushserver=>count)) {
+            if ($dns(pushserver=>type[$var(i)]) == "4") {
+                xnotice("PUSHSERVERS-DNS: saving $dns(pushserver=>addr[$var(i)]) <-> $var(pushserverdom)\n");
+                $sht(pushservers=>$dns(pushserver=>addr[$var(i)])) = $var(pushserverdom);
+            }
+            $var(i) = $var(i) + 1;
+        }
+    }
+}
