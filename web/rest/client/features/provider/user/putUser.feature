@@ -37,6 +37,7 @@ Feature: Update users
           "outgoingDdiRule": null,
           "voicemailLocution": null,
           "location": null,
+          "contact": null,
           "pickupGroupIds": [
             1
           ]
@@ -76,6 +77,7 @@ Feature: Update users
           "outgoingDdiRule": null,
           "voicemailLocution": null,
           "location": null,
+          "contact": null,
           "pickupGroupIds": [
             1
           ]
