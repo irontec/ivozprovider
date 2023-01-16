@@ -4,6 +4,7 @@ namespace Tests\Provider\User;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Contact\Contact;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
@@ -121,6 +122,7 @@ class UserLifeCycleTest extends KernelTestCase
             Voicemail::class,
             PsEndpoint::class,
             Extension::class,
+            Contact::class,
         ]);
     }
 
@@ -135,6 +137,7 @@ class UserLifeCycleTest extends KernelTestCase
             Voicemail::class,
             PsEndpoint::class,
             Extension::class,
+            Contact::class,
         ]);
     }
 
