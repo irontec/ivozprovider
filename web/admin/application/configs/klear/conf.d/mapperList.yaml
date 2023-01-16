@@ -103,6 +103,10 @@ mappers:
         modelFile: ConferenceRooms,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
     }
+  - &Contacts {
+    modelFile: Contacts,
+    entity: 'Ivoz\\Provider\\Domain\\Model\\Contact\\Contact'
+  }
   - &Countries {
         modelFile: Countries,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Country\\Country'
