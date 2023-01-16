@@ -4,6 +4,7 @@ namespace Tests\Provider\Extension;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Contact\Contact;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
@@ -90,7 +91,8 @@ class ExtensionLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Extension::class,
             PsEndpoint::class,
-            User::class
+            User::class,
+            Contact::class,
         ]);
     }
 
@@ -155,6 +157,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
             PsEndpoint::class,
             User::class,
             Voicemail::class,
+            Contact::class,
         ]);
     }
 
