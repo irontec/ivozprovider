@@ -116,6 +116,11 @@ msgstr "Afegeix a %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Afegeix patró a %2s"
 
+msgid "Address Book"
+msgid_plural "Address Books"
+msgstr[0] "Agenda"
+msgstr[1] "Agendas"
+
 msgid "Address successfully unbanned"
 msgstr "Dirección desbloqueada con éxito"
 
@@ -629,6 +634,11 @@ msgstr "Cost de connexió"
 
 msgid "Connectivity mode"
 msgstr "Mode de connectivitat"
+
+msgid "Contact"
+msgid_plural "Contacts"
+msgstr[0] "Contacto"
+msgstr[1] "Contactos"
 
 msgid "Contact Settings"
 msgstr "Configuracions del contacte"
@@ -1969,6 +1979,11 @@ msgstr ""
 msgid "Minimal length: 2"
 msgstr "Longitud mínima: 2"
 
+msgid "Mobile Phone"
+msgid_plural "Mobile Phones"
+msgstr[0] "Teléfono Móvil"
+msgstr[1] "Teléfonos Móviles"
+
 msgid "Monday"
 msgstr "Dilluns"
 
@@ -2133,6 +2148,11 @@ msgstr "Origen"
 msgid "Origins matching this list will call directly to the user."
 msgstr "Els origen que figurin a la llista trucaran directe a l'usuari."
 
+msgid "Other Phone"
+msgid_plural "Other Phones"
+msgstr[0] "Otro Teléfono"
+msgstr[1] "Otros Teléfonos"
+
 msgid "Out"
 msgstr "Sortida"
 
@@ -2247,6 +2267,9 @@ msgstr "Número de telèfon"
 
 msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
 msgstr "El número de telèfon ha de ser en format E.164 (amb prefix \"+\")"
+
+msgid "Phones"
+msgstr "Teléfonos"
 
 msgid "Pick Up Groups"
 msgstr "Grups de captura"
@@ -3293,6 +3316,11 @@ msgstr "Específic a l'engròs"
 
 msgid "Will be shown on page footer"
 msgstr "Es mostrarà al peu de pàgina"
+
+msgid "Work Phone"
+msgid_plural "Work Phones"
+msgstr[0] "Teléfono Trabajo"
+msgstr[1] "Teléfonos Trabajo"
 
 msgid "Write Access"
 msgstr "Acceso de escritura"

@@ -115,6 +115,11 @@ msgstr "Añadir %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Añadir patrón a %2s"
 
+msgid "Address Book"
+msgid_plural "Address Books"
+msgstr[0] "Agenda"
+msgstr[1] "Agendas"
+
 msgid "Address successfully unbanned"
 msgstr "Dirección desbloqueada con éxito"
 
@@ -631,6 +636,11 @@ msgstr "Coste de conexión"
 
 msgid "Connectivity mode"
 msgstr "Modo de conexión"
+
+msgid "Contact"
+msgid_plural "Contacts"
+msgstr[0] "Contacto"
+msgstr[1] "Contactos"
 
 msgid "Contact Settings"
 msgstr "Configuraciones de Contacto"
@@ -1980,6 +1990,11 @@ msgstr ""
 msgid "Minimal length: 2"
 msgstr "Longitud mínima: 2"
 
+msgid "Mobile Phone"
+msgid_plural "Mobile Phones"
+msgstr[0] "Teléfono Móvil"
+msgstr[1] "Teléfonos Móviles"
+
 msgid "Monday"
 msgstr "Lunes"
 
@@ -2144,6 +2159,11 @@ msgid "Origins matching this list will call directly to the user."
 msgstr ""
 "Los origenes que coincidan con la lista llamarán directamente al usuario. "
 
+msgid "Other Phone"
+msgid_plural "Other Phones"
+msgstr[0] "Otro Teléfono"
+msgstr[1] "Otros Teléfonos"
+
 msgid "Out"
 msgstr "Salida"
 
@@ -2260,6 +2280,9 @@ msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
 msgstr ""
 "El número de teléfono debe estar en formato E.164 (precedido por el simbolo "
 "\"+\")"
+
+msgid "Phones"
+msgstr "Teléfonos"
 
 msgid "Pick Up Groups"
 msgstr "Grupos de captura"
@@ -3304,6 +3327,11 @@ msgstr "Específico de Wholesale"
 
 msgid "Will be shown on page footer"
 msgstr "Se mostrará en el pie de página"
+
+msgid "Work Phone"
+msgid_plural "Work Phones"
+msgstr[0] "Teléfono Trabajo"
+msgstr[1] "Teléfonos Trabajo"
 
 msgid "Write Access"
 msgstr "Acceso de escritura"
