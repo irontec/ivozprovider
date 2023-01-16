@@ -513,6 +513,41 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
       required:
       - company
 
+Ivoz\Provider\Domain\Model\Contact\Contact:
+  properties:
+    workPhoneE164:
+      attributes:
+        swagger_context:
+          readOnly: true
+    mobilePhoneE164:
+      attributes:
+        swagger_context:
+          readOnly: true
+    user:
+      attributes:
+        swagger_context:
+          readOnly: true
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    delete_access_control:
+      ROLE_COMPANY_ADMIN:
+        user:
+          isNull: ~
+    swagger_context:
+      required:
+        - company
+
 Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
 Ivoz\Provider\Domain\Model\Country\Country:
