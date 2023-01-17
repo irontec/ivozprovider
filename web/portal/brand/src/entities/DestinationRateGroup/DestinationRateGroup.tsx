@@ -36,10 +36,12 @@ const properties: DestinationRateGroupProperties = {
   name: {
     label: _('Name'),
     maxLength: 55,
+    multilang: true,
   },
   description: {
     label: _('Description'),
     maxLength: 255,
+    multilang: true,
   },
   file: {
     label: _('Imported file'),

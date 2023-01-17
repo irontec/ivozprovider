@@ -15,7 +15,6 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
   });
 
   await Promise.all(promises);
-
   return data;
 };
 
