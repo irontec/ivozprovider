@@ -19,6 +19,7 @@ const properties: DestinationProperties = {
   name: {
     label: _('Name'),
     maxLength: 55,
+    multilang: true,
   },
 };
 

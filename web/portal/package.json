@@ -1,10 +1,14 @@
 {
   "private": true,
-  "workspaces": ["brand", "client", "user"],
+  "workspaces": [
+    "brand",
+    "client",
+    "user"
+  ],
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@irontec/ivoz-ui": "^0.11.1",
+    "@irontec/ivoz-ui": "^0.11.2",
     "@mui/icons-material": "^5.0.1",
     "@mui/lab": "^5.0.0-alpha.48",
     "@mui/material": "^5.0.1",

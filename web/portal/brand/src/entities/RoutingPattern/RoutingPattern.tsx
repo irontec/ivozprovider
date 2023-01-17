@@ -18,10 +18,12 @@ const properties: RoutingPatternProperties = {
   name: {
     label: _('Name'),
     maxLength: 55,
+    multilang: true,
   },
   description: {
     label: _('Description'),
     maxLength: 55,
+    multilang: true,
   },
 };
 

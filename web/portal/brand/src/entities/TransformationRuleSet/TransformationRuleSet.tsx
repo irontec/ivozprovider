@@ -50,6 +50,7 @@ const properties: TransformationRuleSetProperties = {
   name: {
     label: _('Name'),
     maxLength: 100,
+    multilang: true,
   },
   country: {
     label: _('Country code'),
