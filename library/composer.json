@@ -52,6 +52,10 @@
         {
             "url": "https://github.com/irontec/prophecy.git",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/irontec/handlebars.php",
+            "type": "git"
         }
     ],
     "autoload-dev": {
@@ -88,7 +92,7 @@
         "phpxmlrpc/phpxmlrpc": "^4.0",
         "snc/redis-bundle": "^3.2",
         "symfony/polyfill-util": "^1.22",
-        "xamin/handlebars.php": "^0.10.4"
+        "xamin/handlebars.php": "v0.10.5"
     },
     "require-dev": {
         "ext-pcntl": "*",
