@@ -26,8 +26,8 @@
 #
 # - To get that, edit /etc/rtpengine/rtpengine.conf (and restart rtpengine):
 #
-#   * AUDIO_SOCK=A.B.C.D/W.X.Y.Z
-#   * Add "--interface=E.F.G.H/S.T.U.V" to EXTRA_OPTS string
+#   * Set interface to:
+#     interface = A.B.C.D/W.X.Y.Z;E.F.G.H/S.T.U.V
 #
 # e.g. you must end up with 2 --interface in running proccess
 #      (--interface=A.B.C.D/W.X.Y.Z --interface=E.F.G.H/S.T.U.V)
