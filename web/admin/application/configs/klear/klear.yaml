@@ -499,6 +499,11 @@ production:
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
           showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.CompanyServices.read}]
+        ContactsList:
+          title: ngettext('Address Book', 'Address Books', 1)
+          class: ui-silk-book
+          description: _("List of %s", ngettext('Contact', 'Contacts', 0))
+          showOnlyIf: $[${auth.companyVPBX} && ${auth.acls.Contacts.read}]
         RatingProfilesCompanyList:
           title: ngettext('Rating Profile', 'Rating Profiles', 0)
           class: ui-silk-money

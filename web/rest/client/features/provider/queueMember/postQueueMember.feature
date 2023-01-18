@@ -80,7 +80,8 @@ Feature: Create queue members
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null,
-              "location": 1
+              "location": 1,
+              "contact": null
           }
       }
     """
@@ -153,7 +154,8 @@ Feature: Create queue members
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null,
-              "location": 1
+              "location": 1,
+              "contact": null
           }
       }
     """
