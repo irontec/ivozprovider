@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b2edbda11f5de504db1d4a58f3da0d9",
+    "content-hash": "666f1527f151c3020e7761e9e0be40c1",
     "packages": [
         {
             "name": "api-platform/core",
@@ -10348,17 +10348,11 @@
         },
         {
             "name": "xamin/handlebars.php",
-            "version": "v0.10.4",
+            "version": "v0.10.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/XaminProject/handlebars.php.git",
-                "reference": "b85cee07eae96db0e1eec224ca90f5ce1e4d857a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/XaminProject/handlebars.php/zipball/b85cee07eae96db0e1eec224ca90f5ce1e4d857a",
-                "reference": "b85cee07eae96db0e1eec224ca90f5ce1e4d857a",
-                "shasum": ""
+                "url": "https://github.com/irontec/handlebars.php",
+                "reference": "5b8b8f425ba715d9ece5eb9eb037bd8d2bb3ba36"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.4",
@@ -10370,7 +10364,6 @@
                     "Handlebars": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10386,12 +10379,7 @@
             ],
             "description": "Handlebars processor for php",
             "homepage": "https://github.com/XaminProject/handlebars.php",
-            "support": {
-                "issues": "https://github.com/XaminProject/handlebars.php/issues",
-                "source": "https://github.com/XaminProject/handlebars.php/tree/master"
-            },
-            "abandoned": true,
-            "time": "2016-12-12T13:51:02+00:00"
+            "time": "2023-01-17T15:18:42+00:00"
         }
     ],
     "packages-dev": [
@@ -14651,5 +14639,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }
