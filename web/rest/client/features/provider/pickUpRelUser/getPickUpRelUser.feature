@@ -48,7 +48,8 @@ Feature: Retrieve pick up rel users
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
                   "voicemailLocution": null,
-                  "location": null
+                  "location": null,
+                  "contact": null
               }
           }
       ]
@@ -97,7 +98,8 @@ Feature: Retrieve pick up rel users
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailLocution": null,
-              "location": null
+              "location": null,
+              "contact": null
           }
       }
     """

@@ -18,5 +18,6 @@ This section will explain all these topics related to the most feature-full type
     multimedia/index
     faxes
     services
+    addressbook
     rating_profiles
     calls/index

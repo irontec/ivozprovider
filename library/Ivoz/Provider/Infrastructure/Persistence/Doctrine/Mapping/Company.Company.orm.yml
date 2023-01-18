@@ -22,6 +22,9 @@ Ivoz\Provider\Domain\Model\Company\Company:
     friends:
       targetEntity: Ivoz\Provider\Domain\Model\Friend\FriendInterface
       mappedBy: company
+    contacts:
+      targetEntity: Ivoz\Provider\Domain\Model\Contact\ContactInterface
+      mappedBy: company
     companyServices:
       targetEntity: Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface
       mappedBy: company

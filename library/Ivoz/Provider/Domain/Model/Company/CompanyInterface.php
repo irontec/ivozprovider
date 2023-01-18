@@ -541,6 +541,37 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * Add contact
+     *
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact
+     *
+     * @return static
+     */
+    public function addContact(\Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact);
+
+    /**
+     * Remove contact
+     *
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact
+     */
+    public function removeContact(\Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact);
+
+    /**
+     * Replace contacts
+     *
+     * @param ArrayCollection $contacts of Ivoz\Provider\Domain\Model\Contact\ContactInterface
+     * @return static
+     */
+    public function replaceContacts(ArrayCollection $contacts);
+
+    /**
+     * Get contacts
+     * @param Criteria | null $criteria
+     * @return \Ivoz\Provider\Domain\Model\Contact\ContactInterface[]
+     */
+    public function getContacts(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
      * Add companyService
      *
      * @param \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface $companyService
