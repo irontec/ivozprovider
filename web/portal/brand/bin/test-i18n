@@ -19,7 +19,17 @@ CHANGED_FILES=$(git diff --name-only .)
 
 if [ -z "$CHANGED_FILES" ]; then
     echo "No files were changed in these commits."
-    exit 0
+else
+    exit 1
 fi
 
-exit 1
+echo "Verifying no empty strings"
+PENDING_TRANSLATIONS=$(egrep '": ""' src/translations/*.json | wc -l)
+
+if [ $PENDING_TRANSLATIONS -gt 0 ]; then
+    echo "$PENDING_TRANSLATIONS pending translations in:"
+    egrep '": ""' src/translations/*.json
+    exit 1
+fi
+
+exit 0
