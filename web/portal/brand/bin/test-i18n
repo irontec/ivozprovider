@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+
+# Move to webapp dir
+SCRIPT_DIR=$(dirname $(realpath $0))
+[ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
+
+# Run linter
+cd ${SCRIPT_DIR}/../
+$YARN i18n
+
+for LANG in en es it ca
+do
+    cat src/translations/$LANG.json | jq --sort-keys > src/translations/$LANG.json_sorted
+    mv src/translations/$LANG.json_sorted src/translations/$LANG.json
+done
+
+CHANGED_FILES=$(git diff --name-only .)
+
+if [ -z "$CHANGED_FILES" ]; then
+    echo "No files were changed in these commits."
+    exit 0
+fi
+
+exit 1
