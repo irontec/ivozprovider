@@ -7,6 +7,7 @@
     "start": "bin/start",
     "lint:check": "prettier --check src/**/*.tsx src/**/*.ts src/**/*.js",
     "lint": "eslint --fix src --ext .js,.ts,.tsx",
-    "build": "bin/build"
+    "build": "bin/build",
+    "i18n": "i18next src/**/*.{jsx,tsx} -c i18next-parser.config.mjs"
   }
 }
