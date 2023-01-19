@@ -16,10 +16,10 @@ const properties: FixedCostsRelInvoiceProperties = {
     maximum: 100,
   },
   fixedCost: {
-    label: _('Fixed cost'),
+    label: _('Fixed cost', { count: 1 }),
   },
   invoice: {
-    label: _('Invoice'),
+    label: _('Invoice', { count: 1 }),
   },
 };
 

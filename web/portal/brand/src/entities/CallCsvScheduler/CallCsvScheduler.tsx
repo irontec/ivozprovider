@@ -59,10 +59,10 @@ const properties: CallCsvSchedulerProperties = {
     helpText: _('Leave empty if no mail is needed (just generate CSV).'),
   },
   lastExecution: {
-    label: _('Last Execution'),
+    label: _('Last execution'),
   },
   lastExecutionError: {
-    label: _('Last ExecutionError'),
+    label: _('Last execution error'),
   },
   nextExecution: {
     label: _('Next execution'),
@@ -77,8 +77,8 @@ const properties: CallCsvSchedulerProperties = {
     enum: {
       vpbx: _('vPBX'),
       retail: _('Retail'),
-      residential: _('Residential'),
-      wholesale: _('Wholesale'),
+      residential: _('Residential', { count: 1 }),
+      wholesale: _('Wholesale', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -223,52 +223,52 @@ const properties: CallCsvSchedulerProperties = {
     },
   },
   callCsvNotificationTemplate: {
-    label: _('Notification template'),
+    label: _('Notification template', { count: 1 }),
     null: _('Use generic template'),
     default: '__null__',
   },
   ddi: {
-    label: _('DDI'),
+    label: _('DDI', { count: 1 }),
     null: _('All'),
     default: '__null__',
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
     null: _('All'),
     default: '__null__',
   },
   retailAccount: {
-    label: _('Retail Account'),
+    label: _('Retail Account', { count: 1 }),
     $ref: '#/definitions/RetailAccount',
     null: _('All'),
     default: '__null__',
   },
   residentialDevice: {
-    label: _('Residential Device'),
+    label: _('Residential Device', { count: 1 }),
     $ref: '#/definitions/ResidentialDevice',
     null: _('All'),
     default: '__null__',
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
     $ref: '#/definitions/User',
     null: _('All'),
     default: '__null__',
   },
   fax: {
-    label: _('Fax'),
+    label: _('Fax', { count: 1 }),
     $ref: '#/definitions/Fax',
     null: _('All'),
     default: '__null__',
   },
   friend: {
-    label: _('Friend'),
+    label: _('Friend', { count: 1 }),
     $ref: '#/definitions/Friend',
     null: _('All'),
     default: '__null__',
   },
   ddiProvider: {
-    label: _('Ddi Provider'),
+    label: _('DDI Provider', { count: 1 }),
     $ref: '#/definitions/DdiProvider',
     null: _('All'),
     default: '__null__',
@@ -279,9 +279,9 @@ const properties: CallCsvSchedulerProperties = {
     null: _('All'),
     default: '__null__',
     enum: {
-      user: _('User'),
-      fax: _('Fax'),
-      friend: _('Friend'),
+      user: _('User', { count: 1 }),
+      fax: _('Fax', { count: 1 }),
+      friend: _('Friend', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -308,8 +308,8 @@ const properties: CallCsvSchedulerProperties = {
     null: _('All'),
     default: '__null__',
     enum: {
-      residentialDevice: _('Residential Device'),
-      fax: _('Fax'),
+      residentialDevice: _('Residential Device', { count: 1 }),
+      fax: _('Fax', { count: 1 }),
     },
     visualToggle: {
       __null__: {
@@ -359,7 +359,7 @@ const CallCsvScheduler: EntityInterface = {
   ...defaultEntityBehavior,
   icon: CalendarMonthIcon,
   iden: 'CallCsvScheduler',
-  title: _('Call CSV scheduler', { count: 2 }),
+  title: _('Call CSV Scheduler', { count: 2 }),
   path: '/call_csv_schedulers',
   toStr: (row: any) => row.name,
   properties,

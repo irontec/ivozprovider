@@ -14,7 +14,7 @@ const properties: CallCsvReportProperties = {
     format: 'date-time',
   },
   outDate: {
-    label: _('Out Date'),
+    label: _('Out date'),
     format: 'date-time',
   },
   createdOn: {
@@ -31,7 +31,7 @@ const properties: CallCsvReportProperties = {
     readOnly: true,
   },
   callCsvScheduler: {
-    label: _('Call CsvScheduler'),
+    label: _('Call CSV Scheduler', { count: 1 }),
   },
   company: {
     label: _('Client'),

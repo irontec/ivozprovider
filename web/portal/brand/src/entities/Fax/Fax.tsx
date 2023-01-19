@@ -16,16 +16,16 @@ const properties: FaxProperties = {
     label: _('Email'),
   },
   sendByEmail: {
-    label: _('Send ByEmail'),
+    label: _('Send By Email'),
   },
   id: {
     label: _('Id'),
   },
   company: {
-    label: _('Company'),
+    label: _('Company', { count: 1 }),
   },
   outgoingDdi: {
-    label: _('Outgoing Ddi'),
+    label: _('Outgoing DDI'),
   },
 };
 

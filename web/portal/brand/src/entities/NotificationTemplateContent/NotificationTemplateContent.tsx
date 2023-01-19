@@ -73,10 +73,10 @@ const properties: NotificationTemplateContentProperties = {
     },
   },
   notificationTemplate: {
-    label: _('Notification Template'),
+    label: _('Notification template', { count: 1 }),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     required: true,
   },
 };

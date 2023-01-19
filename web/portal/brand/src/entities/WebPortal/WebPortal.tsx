@@ -67,7 +67,7 @@ const properties: WebPortalProperties = {
     label: _('URL Type'),
     enum: {
       admin: _('Client'),
-      user: _('User'),
+      user: _('User', { count: 1 }),
     },
     visualToggle: {
       god: {

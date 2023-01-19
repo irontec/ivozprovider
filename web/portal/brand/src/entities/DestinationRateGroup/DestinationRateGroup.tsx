@@ -20,10 +20,10 @@ const properties: DestinationRateGroupProperties = {
     //@TODO IvozProvider_Klear_Ghost_DestinationRateGroups::getStatus
   },
   lastExecutionError: {
-    label: _('Last ExecutionError'),
+    label: _('Last execution error'),
   },
   deductibleConnectionFee: {
-    label: _('Deductible ConnectionFee'),
+    label: _('Deductible Connection Fee'),
     default: 0,
     enum: {
       '0': _('No'),
@@ -48,7 +48,7 @@ const properties: DestinationRateGroupProperties = {
     type: 'file',
   },
   currency: {
-    label: _('Currency'),
+    label: _('Currency', { count: 1 }),
     null: _('Default currency'),
   },
 };

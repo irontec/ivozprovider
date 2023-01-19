@@ -17,7 +17,7 @@ const properties: TrustedProperties = {
     label: _('From Pattern'),
   },
   ruriPattern: {
-    label: _('Ruri Pattern'),
+    label: _('R-URI pattern'),
   },
   tag: {
     label: _('Tag'),
@@ -32,7 +32,7 @@ const properties: TrustedProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Company'),
+    label: _('Company', { count: 1 }),
   },
 };
 
@@ -40,7 +40,7 @@ const Trusted: EntityInterface = {
   ...defaultEntityBehavior,
   icon: MeetingRoomIcon,
   iden: 'Trusted',
-  title: _('Trusted', { count: 2 }),
+  title: _('Trusted'),
   path: '/trusteds',
   toStr: (row: any) => row.id,
   properties,

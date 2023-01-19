@@ -15,8 +15,8 @@ const properties: CompanyProperties = {
     enum: {
       vpbx: _('Vpbx'),
       retail: _('Retail'),
-      wholesale: _('Wholesale'),
-      residential: _('Residential'),
+      wholesale: _('Wholesale', { count: 1 }),
+      residential: _('Residential', { count: 1 }),
     },
   },
   name: {
@@ -65,7 +65,7 @@ const properties: CompanyProperties = {
     maxLength: 255,
   },
   countryName: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     maxLength: 255,
   },
   ipfilter: {
@@ -144,7 +144,7 @@ const properties: CompanyProperties = {
     ),
   },
   featureIds: {
-    label: _('Features'),
+    label: _('Feature', { count: 20 }),
     type: 'array',
     null: _('There are not associated elements'),
     $ref: '#/definitions/Feature',
@@ -241,7 +241,7 @@ const properties: CompanyProperties = {
     ),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     default: 1,
   },
   defaultTimezone: {
@@ -253,7 +253,7 @@ const properties: CompanyProperties = {
     default: 70,
   },
   currency: {
-    label: _('Currency'),
+    label: _('Currency', { count: 1 }),
     null: _('Default currency'),
     default: '__null__',
   },
@@ -286,7 +286,7 @@ const properties: CompanyProperties = {
     null: _('Unassigned'),
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
   },
   outgoingDdi: {
     label: _('Outgoing DDI'),
@@ -297,7 +297,7 @@ const properties: CompanyProperties = {
     //TODO IvozProvider_Klear_Ghost_Companies::getDdiE164
   },
   outgoingDdiRule: {
-    label: _('Outgoing DDI Rule'),
+    label: _('Outgoing DDI Rule', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
     helpText: _(
@@ -338,7 +338,7 @@ const properties: CompanyProperties = {
     $ref: '#/definitions/Country',
   },
   routingTagIds: {
-    label: _('Routing Tags'),
+    label: _('Routing Tag', { count: 2 }),
     type: 'array',
     $ref: '#/definitions/RoutingTag',
   },

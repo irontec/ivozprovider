@@ -20,7 +20,7 @@ const properties: RatingPlanGroupProperties = {
     multilang: true,
   },
   currency: {
-    label: _('Currency'),
+    label: _('Currency', { count: 1 }),
     null: _('Default currency'),
   },
 };

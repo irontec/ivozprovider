@@ -10,7 +10,7 @@ const activeCalls: EntityInterface = {
   ...DefaultEntityBehavior,
   icon: CellTowerIcon,
   iden: 'ActiveCalls',
-  title: _('Active calls', { count: 2 }),
+  title: _('Active call', { count: 2 }),
   path: '/active_calls',
   properties,
   acl: {
