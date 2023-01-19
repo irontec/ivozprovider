@@ -27,7 +27,7 @@ const properties: BalanceMovementProperties = {
     label: _('Client'),
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
   },
 };
 

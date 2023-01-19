@@ -58,16 +58,14 @@ const properties: CarrierProperties = {
   },
   acd: {
     label: _('ACD'),
-    helpText: _(
-      "<a href='https://en.wikipedia.org/wiki/Average_call_duration' target='_blank'>Average Call Duration</a>"
-    ),
+    helpText:
+      "<a href='https://en.wikipedia.org/wiki/Average_call_duration' target='_blank'>Average Call Duration</a>",
     //@TODO IvozProvider_Klear_Ghost_Carriers::getAcd
   },
   asr: {
     label: _('ASR'),
-    helpText: _(
-      "<a href='https://en.wikipedia.org/wiki/Answer-seizure_ratio' target='_blank'>Answer-Seizure Ratio</a>"
-    ),
+    helpText:
+      "<a href='https://en.wikipedia.org/wiki/Answer-seizure_ratio' target='_blank'>Answer-Seizure Ratio</a>",
     //@TODO IvozProvider_Klear_Ghost_Carriers::getAsr
   },
   statusIcon: {
@@ -80,11 +78,11 @@ const properties: CarrierProperties = {
     null: _(`Client's default`),
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
     default: 252,
   },
   currency: {
-    label: _('Currency'),
+    label: _('Currency', { count: 1 }),
     null: _('Default currency'),
     default: '__null__',
   },

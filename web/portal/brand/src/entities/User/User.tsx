@@ -42,22 +42,22 @@ const properties: UserProperties = {
     },
   },
   timezone: {
-    label: _('Timezone'),
+    label: _('Timezone', { count: 1 }),
     default: 145,
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
   },
   location: {
-    label: _('Location'),
+    label: _('Location', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
     $ref: '#/definitions/Location',
   },
   terminal: {
-    label: _('Terminal'),
+    label: _('Terminal', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
     $ref: '#/definitions/Terminal',
@@ -74,7 +74,7 @@ const properties: UserProperties = {
     default: '__null__',
   },
   outgoingDdiRule: {
-    label: _('Outgoing DDI Rule'),
+    label: _('Outgoing DDI Rule', { count: 1 }),
     null: _("Client's default"),
     default: '__null__',
     helpText: _(
@@ -130,7 +130,7 @@ const properties: UserProperties = {
     label: _('Pick Up Groups'),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     default: '__null__',
     null: _("Client's default"),
   },

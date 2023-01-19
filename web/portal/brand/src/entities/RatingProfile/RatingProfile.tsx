@@ -18,13 +18,13 @@ const properties: RatingProfileProperties = {
     null: _('Unassigned'),
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
   },
   ratingPlanGroup: {
     label: _('Rating plan'),
   },
   routingTag: {
-    label: _('Routing Tag'),
+    label: _('Routing Tag', { count: 1 }),
     null: _('No routing tag'),
   },
 };

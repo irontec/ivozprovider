@@ -15,7 +15,7 @@ const properties: OutgoingRoutingProperties = {
     enum: {
       pattern: _('Pattern'),
       group: _('Group'),
-      fax: _('Fax'),
+      fax: _('Fax', { count: 1 }),
     },
     visualToggle: {
       pattern: {
@@ -131,11 +131,11 @@ const properties: OutgoingRoutingProperties = {
     null: _('Apply to all clients'),
   },
   destination: {
-    label: _('Destination'),
+    label: _('Destination', { count: 1 }),
     memoize: false,
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
     component: Operator,
   },
   carrierIds: {
@@ -150,14 +150,14 @@ const properties: OutgoingRoutingProperties = {
     label: _('Select destination group'),
   },
   routingTag: {
-    label: _('Routing Tag'),
+    label: _('Routing Tag', { count: 1 }),
     null: _('Unassigned'),
   },
   clidCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   carriers: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
     //@TODO IvozProvider_Klear_Ghost_OutgoingRouting::getCarriers
   },
 };

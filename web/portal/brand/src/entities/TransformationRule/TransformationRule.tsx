@@ -43,7 +43,7 @@ const properties: TransformationRuleProperties = {
     required: true,
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
     required: true,
   },
 };

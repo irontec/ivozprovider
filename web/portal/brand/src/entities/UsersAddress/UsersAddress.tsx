@@ -10,7 +10,7 @@ import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: UsersAddressProperties = {
   sourceAddress: {
-    label: _('Authorized source'),
+    label: _('Authorized source', { count: 1 }),
     maxLength: 100,
     helpText: _(
       `CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)`

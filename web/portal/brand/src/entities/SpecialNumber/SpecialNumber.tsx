@@ -28,7 +28,7 @@ const properties: SpecialNumberProperties = {
     helpText: _(`Mark yes to hide this destination calls in all lists`),
   },
   country: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   global: {
     label: _('Global'),
