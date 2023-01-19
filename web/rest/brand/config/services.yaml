@@ -44,6 +44,9 @@ services:
         tags:
             - { name: serializer.normalizer, priority: 100 }
 
+    Service\AdministratorRelPublicEntity\SwitchAcl:
+        class: Service\AdministratorRelPublicEntity\SwitchAcl
+
     Ivoz\Api\Operation\ExchangeToken:
         arguments:
             $userProvider: '@Service\TokenExchangeUserProvider'

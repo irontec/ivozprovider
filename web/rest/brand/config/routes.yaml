@@ -105,3 +105,30 @@ get_invoice_preview:
   defaults:
     _controller: Controller\Provider\InvoiceTemplatePreviewAction
     _api_item_operation_name: 'get_invoice_preview'
+
+post_provider_administrator_revoke_all:
+  path: '/administrators/{id}/revoke_all'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Administrator\MassUpdateAclsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    _api_item_operation_name: 'post_provider_administrator_revoke_all'
+    _api_receive: false
+
+post_provider_administrator_grant_all:
+  path: '/administrators/{id}/grant_all'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Administrator\MassUpdateAclsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    _api_item_operation_name: 'post_provider_administrator_grant_all'
+    _api_receive: false
+
+post_provider_administrator_grant_read_only:
+  path: '/administrators/{id}/grant_read_only'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Administrator\MassUpdateAclsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+    _api_item_operation_name: 'post_provider_administrator_grant_read_only'
+    _api_receive: false

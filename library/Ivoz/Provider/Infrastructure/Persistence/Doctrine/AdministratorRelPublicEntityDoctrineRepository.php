@@ -106,6 +106,93 @@ class AdministratorRelPublicEntityDoctrineRepository extends ServiceEntityReposi
         );
     }
 
+    /**
+     * @param int[] $publicEntitiesRelUserIds
+     * @throws \Exception
+     */
+    public function grantReadOnlyPermissionsByAdministratorAndIds(
+        int $adminId,
+        array $publicEntitiesRelUserIds
+    ): int {
+
+        if (empty($publicEntitiesRelUserIds)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->prepareUpdateQuery(
+                true,
+                false
+            )
+            ->where('self.publicEntity in (:publicEntities)')
+            ->andWhere('self.administrator = :adminId')
+            ->setParameter(':publicEntities', $publicEntitiesRelUserIds)
+            ->setParameter(':adminId', $adminId);
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    /**
+     * @param int[] $publicEntitiesRelUserIds
+     * @throws \Exception
+     */
+    public function grantAllPermissionsByAdministratorAndIds(
+        int $adminId,
+        array $publicEntitiesRelUserIds
+    ): int {
+        if (empty($publicEntitiesRelUserIds)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->prepareUpdateQuery(
+                true,
+                true
+            )
+            ->where('self.publicEntity in (:publicEntities)')
+            ->andWhere('self.administrator = :adminId')
+            ->setParameter(':publicEntities', $publicEntitiesRelUserIds)
+            ->setParameter(':adminId', $adminId);
+        ;
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
+
+    /**
+     * @param int[] $publicEntitiesRelUserIds
+     * @throws \Exception
+     */
+    public function revokeAllPermissionsByAdministratorAndIds(
+        int $adminId,
+        array $publicEntitiesRelUserIds
+    ): int {
+
+        if (empty($publicEntitiesRelUserIds)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->prepareUpdateQuery(
+                false,
+                false
+            )
+            ->where('self.publicEntity in (:publicEntities)')
+            ->andWhere('self.administrator = :adminId')
+            ->setParameter(':publicEntities', $publicEntitiesRelUserIds)
+            ->setParameter(':adminId', $adminId);
+        ;
+
+        return $this->queryRunner->execute(
+            $this->getEntityName(),
+            $qb->getQuery()
+        );
+    }
 
     /**
      * @param int[] $ids
