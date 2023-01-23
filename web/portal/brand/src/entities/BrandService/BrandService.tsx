@@ -19,7 +19,7 @@ const properties: BrandServiceProperties = {
     label: _('Id'),
   },
   service: {
-    label: _('Service'),
+    label: _('Service', { count: 1 }),
   },
 };
 

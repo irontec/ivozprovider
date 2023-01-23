@@ -33,7 +33,8 @@ RUN apt-get install --assume-yes --force-yes \
         php8.0-imagick \
         php8.0-xdebug \
         php8.0-zip \
-        yarn
+        yarn \
+        jq
 RUN apt-get clean
 
 # Create jenkins user (configurable)

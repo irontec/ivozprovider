@@ -82,7 +82,7 @@ const properties: RatingPlanProperties = {
     label: _('Rating plan'),
   },
   destinationRateGroup: {
-    label: _('Destination rate'),
+    label: _('Destination rate', { count: 1 }),
   },
 };
 

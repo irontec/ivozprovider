@@ -24,7 +24,7 @@ const properties: FixedCostsRelInvoiceSchedulerProperties = {
     enum: {
       static: _('Static'),
       maxcalls: _('Max calls'),
-      ddis: _('DDIs'),
+      ddis: _('DDI', { count: 2 }),
     },
     visualToggle: {
       static: {
@@ -69,14 +69,14 @@ const properties: FixedCostsRelInvoiceSchedulerProperties = {
     },
   },
   ddisCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
     default: 70,
   },
   fixedCost: {
-    label: _('Fixed cost'),
+    label: _('Fixed cost', { count: 1 }),
   },
   invoiceScheduler: {
-    label: _('Invoice scheduler'),
+    label: _('Invoice Scheduler', { count: 1 }),
   },
 };
 

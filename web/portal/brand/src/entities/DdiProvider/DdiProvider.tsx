@@ -16,10 +16,10 @@ const properties: DdiProviderProperties = {
     label: _('Name'),
   },
   externallyRated: {
-    label: _('Externally Rated'),
+    label: _('Externally rated'),
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
     default: 252,
   },
   proxyTrunk: {

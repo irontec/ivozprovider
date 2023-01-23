@@ -122,7 +122,7 @@ const properties: ResidentialDeviceProperties = {
     label: _('Client'),
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
     null: _(`Client's default`),
   },
   outgoingDdi: {
@@ -133,7 +133,7 @@ const properties: ResidentialDeviceProperties = {
     ),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     null: _(`Client's default`),
   },
   domainName: {

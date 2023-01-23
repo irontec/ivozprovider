@@ -49,10 +49,10 @@ const properties: DestinationRateProperties = {
     label: _('Destination rate group'),
   },
   destination: {
-    label: _('Destination'),
+    label: _('Destination', { count: 1 }),
   },
   currencySymbol: {
-    label: _('Currency'),
+    label: _('Currency', { count: 1 }),
   },
 };
 

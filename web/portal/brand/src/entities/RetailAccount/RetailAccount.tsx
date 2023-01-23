@@ -66,7 +66,7 @@ const properties: RetailAccountProperties = {
     ),
   },
   fromDomain: {
-    label: _('From domain'),
+    label: _('From Domain'),
     maxLength: 190,
   },
   directConnectivity: {
@@ -103,7 +103,7 @@ const properties: RetailAccountProperties = {
     component: StatusIcon,
   },
   transformationRuleSet: {
-    label: _('Numeric transformation'),
+    label: _('Numeric transformation', { count: 1 }),
     null: _("Client's default"),
   },
   t38Passthrough: {

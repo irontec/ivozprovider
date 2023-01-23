@@ -34,23 +34,23 @@ const properties: BillableCallProperties = {
     label: _('Price'),
   },
   carrierName: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
   },
   destinationName: {
-    label: _('Destination'),
+    label: _('Destination', { count: 1 }),
     maxLength: 100,
   },
   ratingPlanName: {
     label: _('Rating plan'),
   },
   endpointType: {
-    label: _('Endpoint type'),
+    label: _('Endpoint Type'),
     enum: {
-      RetailAccount: _('Retail Account'),
-      ResidentialDevice: _('Residential Device'),
-      User: _('User'),
-      Friend: _('Friend'),
-      Fax: _('Fax'),
+      RetailAccount: _('Retail Account', { count: 1 }),
+      ResidentialDevice: _('Residential Device', { count: 1 }),
+      User: _('User', { count: 1 }),
+      Friend: _('Friend', { count: 1 }),
+      Fax: _('Fax', { count: 1 }),
     },
   },
   endpointId: {
@@ -73,23 +73,23 @@ const properties: BillableCallProperties = {
     label: _('Client'),
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
   },
   destination: {
-    label: _('Destination'),
+    label: _('Destination', { count: 1 }),
   },
   ratingPlanGroup: {
-    label: _('Rating PlanGroup'),
+    label: _('Rating Plan Group', { count: 1 }),
   },
   invoice: {
-    label: _('Invoice'),
+    label: _('Invoice', { count: 1 }),
     null: _('Unassigned'),
   },
   ddi: {
-    label: _('DDI'),
+    label: _('DDI', { count: 1 }),
   },
   ddiProvider: {
-    label: _('DDI Provider'),
+    label: _('DDI Provider', { count: 1 }),
     null: _('Unassigned'),
   },
 };

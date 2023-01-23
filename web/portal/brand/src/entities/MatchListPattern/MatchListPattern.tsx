@@ -46,7 +46,7 @@ const properties: MatchListPatternProperties = {
     label: _('Match List'),
   },
   numberCountry: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   matchValue: {
     label: _('Match value'),

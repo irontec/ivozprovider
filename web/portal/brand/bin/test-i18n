@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+
+# Move to webapp dir
+SCRIPT_DIR=$(dirname $(realpath $0))
+[ -x $(which yarn) ] && YARN=$(which yarn) || YARN=$(which yarnpkg)
+
+# Run linter
+cd ${SCRIPT_DIR}/../
+$YARN i18n
+
+for LANG in en es it ca
+do
+    cat src/translations/$LANG.json | jq --sort-keys > src/translations/$LANG.json_sorted
+    mv src/translations/$LANG.json_sorted src/translations/$LANG.json
+done
+
+CHANGED_FILES=$(git diff --name-only .)
+
+if [ -z "$CHANGED_FILES" ]; then
+    echo "No files were changed in these commits."
+else
+    exit 1
+fi
+
+echo "Verifying no empty strings"
+PENDING_TRANSLATIONS=$(egrep '": ""' src/translations/*.json | wc -l)
+
+if [ $PENDING_TRANSLATIONS -gt 0 ]; then
+    echo "$PENDING_TRANSLATIONS pending translations in:"
+    egrep '": ""' src/translations/*.json
+    exit 1
+fi
+
+exit 0

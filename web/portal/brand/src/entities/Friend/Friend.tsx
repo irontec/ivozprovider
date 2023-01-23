@@ -18,8 +18,8 @@ const properties: FriendProperties = {
   transport: {
     label: _('Transport'),
     enum: {
-      udp: _('Udp'),
-      tcp: _('Tcp'),
+      udp: _('UDP'),
+      tcp: _('TCP'),
       tls: _('Tls'),
     },
   },
@@ -45,7 +45,7 @@ const properties: FriendProperties = {
     label: _('From Domain'),
   },
   directConnectivity: {
-    label: _('Direct Connectivity'),
+    label: _('Direct connectivity'),
     enum: {
       yes: _('Yes'),
       no: _('No'),
@@ -53,14 +53,14 @@ const properties: FriendProperties = {
     },
   },
   ddiIn: {
-    label: _('Ddi In'),
+    label: _('DDI In'),
     enum: {
       yes: _('Yes'),
       no: _('No'),
     },
   },
   t38Passthrough: {
-    label: _('T 38Passthrough'),
+    label: _('T38 Passthrough'),
     enum: {
       yes: _('Yes'),
       no: _('No'),
@@ -70,19 +70,19 @@ const properties: FriendProperties = {
     label: _('Id'),
   },
   company: {
-    label: _('Company'),
+    label: _('Company', { count: 1 }),
   },
   transformationRuleSet: {
-    label: _('Transformation RuleSet'),
+    label: _('Numeric transformation', { count: 1 }),
   },
   outgoingDdi: {
-    label: _('Outgoing Ddi'),
+    label: _('Outgoing DDI'),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
   },
   interCompany: {
-    label: _('Inter Company'),
+    label: _('Target client'),
   },
   domain: {
     label: _('Domain'),

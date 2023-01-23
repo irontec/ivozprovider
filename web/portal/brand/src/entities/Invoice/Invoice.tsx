@@ -64,12 +64,12 @@ const properties: InvoiceProperties = {
     null: _('Unassigned'),
   },
   numberSequence: {
-    label: _('Invoice number sequence'),
+    label: _('Invoice number sequence', { count: 1 }),
     null: _('Unassigned'),
     //@TODO visualToggle
   },
   scheduler: {
-    label: _('Invoice scheduler'),
+    label: _('Invoice Scheduler', { count: 1 }),
     null: _('Unassigned'),
   },
 };
