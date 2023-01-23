@@ -17,14 +17,14 @@ final class Version20221123120153 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE Queues ADD announce_position VARCHAR(10) DEFAULT \'no\' COMMENT \'[enum:yes|no]\', ADD announce_frequency INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE Queues ADD announcePosition VARCHAR(10) DEFAULT \'no\' COMMENT \'[enum:yes|no]\', ADD announceFrequency INT DEFAULT NULL');
         $this->addSql('ALTER TABLE ast_queues ADD announce_position VARCHAR(128) DEFAULT \'no\', ADD announce_frequency INT DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE Queues DROP announce_position, DROP announce_frequency');
+        $this->addSql('ALTER TABLE Queues DROP announcePosition, DROP announceFrequency');
         $this->addSql('ALTER TABLE ast_queues DROP announce_position, DROP announce_frequency');
     }
 }
