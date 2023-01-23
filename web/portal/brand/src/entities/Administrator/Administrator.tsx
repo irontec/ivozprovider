@@ -53,12 +53,12 @@ const properties: AdministratorProperties = {
     label: _('Lastname'),
   },
   company: {
-    label: _('Company'),
+    label: _('Company', { count: 1 }),
     null: _('Unassigned'),
     default: '__null__',
   },
   timezone: {
-    label: _('Timezone'),
+    label: _('Timezone', { count: 1 }),
     default: 145,
   },
 };

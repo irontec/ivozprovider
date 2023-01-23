@@ -32,10 +32,10 @@ const properties: BalanceNotificationProperties = {
     label: _('Client'),
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
   },
   notificationTemplate: {
-    label: _('Notification template'),
+    label: _('Notification template', { count: 1 }),
     null: _('Use generic template'),
     default: '__null__',
   },

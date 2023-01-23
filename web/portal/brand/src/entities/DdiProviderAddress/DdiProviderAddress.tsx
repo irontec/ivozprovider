@@ -10,7 +10,7 @@ import foreignKeyResolver from './ForeignKeyResolver';
 
 const properties: DdiProviderAddressProperties = {
   ip: {
-    label: _('IP Address'),
+    label: _('IP address'),
     maxLength: 50,
   },
   description: {
@@ -18,7 +18,7 @@ const properties: DdiProviderAddressProperties = {
     maxLength: 200,
   },
   ddiProvider: {
-    label: _('DDI Provider'),
+    label: _('DDI Provider', { count: 1 }),
   },
 };
 

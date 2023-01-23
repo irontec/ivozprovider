@@ -45,7 +45,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
       fields: ['priority', 'weight'],
     },
     edit && {
-      legend: _('Numeric transformation'),
+      legend: _('Numeric transformation', { count: 1 }),
       fields: ['prefix', 'forceClid', 'clidCountry', 'clid'],
     },
   ];

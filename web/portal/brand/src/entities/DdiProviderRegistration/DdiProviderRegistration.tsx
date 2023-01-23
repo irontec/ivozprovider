@@ -61,7 +61,7 @@ const properties: DdiProviderRegistrationProperties = {
     ),
   },
   ddiProvider: {
-    label: _('Ddi Provider'),
+    label: _('DDI Provider', { count: 1 }),
   },
   status: {
     label: _('Status'),

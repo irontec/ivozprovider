@@ -37,7 +37,7 @@ const properties: InvoiceSchedulerProperties = {
     //@TODO IvozProvider_Klear_Ghost_SchedulerSuccess::getInvoiceSchedulerLastExecutionReport
   },
   lastExecutionError: {
-    label: _('Last ExecutionError'),
+    label: _('Last execution error'),
   },
   nextExecution: {
     label: _('Next execution'),
@@ -56,7 +56,7 @@ const properties: InvoiceSchedulerProperties = {
     label: _('Client'),
   },
   numberSequence: {
-    label: _('Invoice number sequence'),
+    label: _('Invoice number sequence', { count: 1 }),
     //@TODO visualToggle
   },
 };

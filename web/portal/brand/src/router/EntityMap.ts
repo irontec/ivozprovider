@@ -279,7 +279,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
-      label: _('Invoice'),
+      label: _('Invoice', { count: 1 }),
       children: [
         {
           entity: entities.Invoice,

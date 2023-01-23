@@ -24,7 +24,7 @@ const allRoutableFields = [
 
 const properties: DdiProperties = {
   ddi: {
-    label: _('DDI'),
+    label: _('DDI', { count: 1 }),
   },
   description: {
     label: _('Description'),
@@ -36,16 +36,16 @@ const properties: DdiProperties = {
     label: _('Route type'),
     component: RouteType,
     enum: {
-      user: _('User'),
+      user: _('User', { count: 1 }),
       ivr: _('IVR'),
       huntGroup: _('Hunt Group'),
-      fax: _('Fax'),
+      fax: _('Fax', { count: 1 }),
       conferenceRoom: _('Conference room'),
-      friend: _('Friend'),
+      friend: _('Friend', { count: 1 }),
       queue: _('Queue'),
-      residential: _('Residential Device'),
+      residential: _('Residential Device', { count: 1 }),
       conditional: _('Conditional Route'),
-      retail: _('Retail Account'),
+      retail: _('Retail Account', { count: 1 }),
     },
     null: _('Unassigned'),
     visualToggle: {
@@ -113,7 +113,7 @@ const properties: DdiProperties = {
     helpText: _('This value will be displayed in the called terminals'),
   },
   user: {
-    label: _('User'),
+    label: _('User', { count: 1 }),
   },
   ivr: {
     label: _('IVR'),
@@ -122,22 +122,22 @@ const properties: DdiProperties = {
     label: _('Hunt Group'),
   },
   fax: {
-    label: _('Fax'),
+    label: _('Fax', { count: 1 }),
   },
   conferenceRoom: {
     label: _('Conference room'),
   },
   residentialDevice: {
-    label: _('Residential Device'),
+    label: _('Residential Device', { count: 1 }),
   },
   friendValue: {
     label: _('Friend value'),
   },
   country: {
-    label: _('Country'),
+    label: _('Country', { count: 1 }),
   },
   language: {
-    label: _('Language'),
+    label: _('Language', { count: 1 }),
     null: _("Client's default"),
   },
   queue: {
@@ -147,14 +147,14 @@ const properties: DdiProperties = {
     label: _('Conditional Route'),
   },
   retailAccount: {
-    label: _('Retail Account'),
+    label: _('Retail Account', { count: 1 }),
   },
   target: {
     label: _('Target'),
     memoize: false,
   },
   ddiProvider: {
-    label: _('DDI Provider'),
+    label: _('DDI Provider', { count: 1 }),
     null: _('Unassigned'),
   },
   company: {

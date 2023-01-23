@@ -66,7 +66,7 @@ export default function ActiveCallsTable(
             {_('Callee')}
           </TableCell>
           <TableCell align="left" padding="normal">
-            {_('Carrier')}
+            {_('Carrier', { count: 1 })}
           </TableCell>
           <TableCell align="left" padding="normal">
             {_('Options')}

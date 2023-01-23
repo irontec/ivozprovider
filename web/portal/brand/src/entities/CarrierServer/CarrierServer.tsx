@@ -83,12 +83,12 @@ const properties: CarrierServerProperties = {
     helpText: _('Send to IP[:PORT] instead of SIP Proxy address'),
   },
   fromUser: {
-    label: _('From user'),
+    label: _('From User'),
     maxLength: 64,
     helpText: _('Use this instead in From header username'),
   },
   fromDomain: {
-    label: _('From domain'),
+    label: _('From Domain'),
     maxLength: 190,
     helpText: _('Use this instead in From header domain'),
   },
@@ -97,7 +97,7 @@ const properties: CarrierServerProperties = {
     //@TODO IvozProvider_Klear_Ghost_CarrierServerStatus::getCarrierServerStatusIcon
   },
   carrier: {
-    label: _('Carrier'),
+    label: _('Carrier', { count: 1 }),
   },
 };
 

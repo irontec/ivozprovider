@@ -37,7 +37,7 @@ const properties: TransformationRuleSetProperties = {
     helpText: _('Calling a number within the same Area can omit Area Code'),
   },
   nationalLen: {
-    label: _('National Len'),
+    label: _('National number length'),
     default: 9,
     helpText: _(
       `How long are the normal phone numbers called inside this country?`

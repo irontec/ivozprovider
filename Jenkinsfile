@@ -243,6 +243,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-lint'
+                        sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-i18n'
                         sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-build'
                     }
                     post {
