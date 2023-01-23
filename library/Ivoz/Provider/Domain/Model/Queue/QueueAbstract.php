@@ -77,14 +77,12 @@ abstract class QueueAbstract
 
     /**
      * @var ?string
-     * column: announce_position
      * comment: enum:yes|no
      */
     protected $announcePosition = 'no';
 
     /**
      * @var ?int
-     * column: announce_frequency
      */
     protected $announceFrequency = null;
 
@@ -367,8 +365,8 @@ abstract class QueueAbstract
             'fullTargetType' => self::getFullTargetType(),
             'fullNumberValue' => self::getFullNumberValue(),
             'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
-            'announce_position' => self::getAnnouncePosition(),
-            'announce_frequency' => self::getAnnounceFrequency(),
+            'announcePosition' => self::getAnnouncePosition(),
+            'announceFrequency' => self::getAnnounceFrequency(),
             'memberCallRest' => self::getMemberCallRest(),
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
