@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity
           repository-class="Ivoz\Provider\Infrastructure\Persistence\Doctrine\UserDoctrineRepository"
@@ -20,6 +21,7 @@
     </one-to-many>
     <one-to-many field="queueMembers" target-entity="Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface" mapped-by="user" fetch="LAZY"/>
     <one-to-many field="callForwardSettings" target-entity="Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface" mapped-by="user" fetch="LAZY"/>
+    <one-to-one field="contact" target-entity="Ivoz\Provider\Domain\Model\Contact\ContactInterface" mapped-by="user" fetch="LAZY"/>
     <one-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\Voicemail" mapped-by="user" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>
