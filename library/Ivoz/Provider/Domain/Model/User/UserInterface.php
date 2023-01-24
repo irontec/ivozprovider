@@ -18,6 +18,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -226,6 +227,10 @@ interface UserInterface extends LoggableEntityInterface
     public function setVoicemail(VoicemailInterface $voicemail): static;
 
     public function getVoicemail(): ?VoicemailInterface;
+
+    public function setContact(ContactInterface $contact): static;
+
+    public function getContact(): ?ContactInterface;
 
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 

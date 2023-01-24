@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
@@ -51,6 +52,12 @@ trait CompanyTrait
      * FriendInterface mappedBy company
      */
     protected $friends;
+
+    /**
+     * @var Collection<array-key, ContactInterface> & Selectable<array-key, ContactInterface>
+     * ContactInterface mappedBy company
+     */
+    protected $contacts;
 
     /**
      * @var Collection<array-key, CompanyServiceInterface> & Selectable<array-key, CompanyServiceInterface>
@@ -125,6 +132,7 @@ trait CompanyTrait
         $this->extensions = new ArrayCollection();
         $this->ddis = new ArrayCollection();
         $this->friends = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
         $this->companyServices = new ArrayCollection();
         $this->terminals = new ArrayCollection();
         $this->ratingProfiles = new ArrayCollection();
@@ -178,6 +186,16 @@ trait CompanyTrait
                 $friends
             );
             $self->replaceFriends($replacement);
+        }
+
+        $contacts = $dto->getContacts();
+        if (!is_null($contacts)) {
+
+            /** @var Collection<array-key, ContactInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $contacts
+            );
+            $self->replaceContacts($replacement);
         }
 
         $companyServices = $dto->getCompanyServices();
@@ -326,6 +344,16 @@ trait CompanyTrait
                 $friends
             );
             $this->replaceFriends($replacement);
+        }
+
+        $contacts = $dto->getContacts();
+        if (!is_null($contacts)) {
+
+            /** @var Collection<array-key, ContactInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $contacts
+            );
+            $this->replaceContacts($replacement);
         }
 
         $companyServices = $dto->getCompanyServices();
@@ -702,6 +730,90 @@ trait CompanyTrait
         }
 
         return $this->friends->toArray();
+    }
+
+    public function addContact(ContactInterface $contact): CompanyInterface
+    {
+        $this->contacts->add($contact);
+
+        return $this;
+    }
+
+    public function removeContact(ContactInterface $contact): CompanyInterface
+    {
+        $this->contacts->removeElement($contact);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, ContactInterface> $contacts
+     */
+    public function replaceContacts(Collection $contacts): CompanyInterface
+    {
+        foreach ($contacts as $entity) {
+            $entity->setCompany($this);
+        }
+
+        $toStringCallable = fn(mixed $val): \Stringable|string => $val instanceof \Stringable ? $val : serialize($val);
+        foreach ($this->contacts as $key => $entity) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
+            $currentValue = array_map(
+                $toStringCallable,
+                (function (): array {
+                    return $this->__toArray(); /** @phpstan-ignore-line */
+                })->call($entity)
+            );
+
+            $match = false;
+            foreach ($contacts as $newKey => $newEntity) {
+                /**
+                 * @psalm-suppress MixedArgument
+                 */
+                $newValue = array_map(
+                    $toStringCallable,
+                    (function (): array {
+                        return $this->__toArray(); /** @phpstan-ignore-line */
+                    })->call($newEntity)
+                );
+
+                $diff = array_diff_assoc(
+                    $currentValue,
+                    $newValue
+                );
+                unset($diff['id']);
+
+                if (empty($diff)) {
+                    unset($contacts[$newKey]);
+                    $match = true;
+                    break;
+                }
+            }
+
+            if (!$match) {
+                $this->contacts->remove($key);
+            }
+        }
+
+        foreach ($contacts as $entity) {
+            $this->addContact($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, ContactInterface>
+     */
+    public function getContacts(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->contacts->matching($criteria)->toArray();
+        }
+
+        return $this->contacts->toArray();
     }
 
     public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface

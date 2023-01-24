@@ -7,6 +7,7 @@ namespace Ivoz\Provider\Domain\Model\User;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -30,6 +31,12 @@ trait UserTrait
      * mappedBy user
      */
     protected $voicemail;
+
+    /**
+     * @var ContactInterface
+     * mappedBy user
+     */
+    protected $contact;
 
     /**
      * @var Collection<array-key, PickUpRelUserInterface> & Selectable<array-key, PickUpRelUserInterface>
@@ -80,6 +87,14 @@ trait UserTrait
                 $dto->getVoicemail()
             );
             $self->setVoicemail($entity);
+        }
+
+        if (!is_null($dto->getContact())) {
+            /** @var ContactInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getContact()
+            );
+            $self->setContact($entity);
         }
 
         $pickUpRelUsers = $dto->getPickUpRelUsers();
@@ -136,6 +151,14 @@ trait UserTrait
                 $dto->getVoicemail()
             );
             $this->setVoicemail($entity);
+        }
+
+        if (!is_null($dto->getContact())) {
+            /** @var ContactInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getContact()
+            );
+            $this->setContact($entity);
         }
 
         $pickUpRelUsers = $dto->getPickUpRelUsers();
@@ -202,6 +225,18 @@ trait UserTrait
     public function getVoicemail(): ?VoicemailInterface
     {
         return $this->voicemail;
+    }
+
+    public function setContact(ContactInterface $contact): static
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    public function getContact(): ?ContactInterface
+    {
+        return $this->contact;
     }
 
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface
