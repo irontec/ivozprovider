@@ -158,6 +158,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $showInvoices = false;
 
     /**
+     * @var bool|null
+     */
+    private $rateCalls = true;
+
+    /**
      * @var int|null
      */
     private $id = null;
@@ -349,6 +354,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'billingMethod' => 'billingMethod',
             'balance' => 'balance',
             'showInvoices' => 'showInvoices',
+            'rateCalls' => 'rateCalls',
             'id' => 'id',
             'languageId' => 'language',
             'mediaRelaySetsId' => 'mediaRelaySets',
@@ -399,6 +405,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'billingMethod' => $this->getBillingMethod(),
             'balance' => $this->getBalance(),
             'showInvoices' => $this->getShowInvoices(),
+            'rateCalls' => $this->getRateCalls(),
             'id' => $this->getId(),
             'language' => $this->getLanguage(),
             'mediaRelaySets' => $this->getMediaRelaySets(),
@@ -731,6 +738,18 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getShowInvoices(): ?bool
     {
         return $this->showInvoices;
+    }
+
+    public function setRateCalls(bool $rateCalls): static
+    {
+        $this->rateCalls = $rateCalls;
+
+        return $this;
+    }
+
+    public function getRateCalls(): ?bool
+    {
+        return $this->rateCalls;
     }
 
     public function setId($id): static

@@ -266,6 +266,8 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getShowInvoices(): ?bool;
 
+    public function getRateCalls(): bool;
+
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
     public function getDefaultTimezone(): ?TimezoneInterface;

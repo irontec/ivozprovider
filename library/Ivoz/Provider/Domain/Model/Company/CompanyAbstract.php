@@ -170,6 +170,11 @@ abstract class CompanyAbstract
     protected $showInvoices = false;
 
     /**
+     * @var bool
+     */
+    protected $rateCalls = true;
+
+    /**
      * @var ?LanguageInterface
      */
     protected $language = null;
@@ -266,7 +271,8 @@ abstract class CompanyAbstract
         string $province,
         string $countryName,
         bool $allowRecordingRemoval,
-        string $billingMethod
+        string $billingMethod,
+        bool $rateCalls
     ) {
         $this->setType($type);
         $this->setName($name);
@@ -281,6 +287,7 @@ abstract class CompanyAbstract
         $this->setCountryName($countryName);
         $this->setAllowRecordingRemoval($allowRecordingRemoval);
         $this->setBillingMethod($billingMethod);
+        $this->setRateCalls($rateCalls);
     }
 
     abstract public function getId(): null|string|int;
@@ -367,6 +374,8 @@ abstract class CompanyAbstract
         Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
         $billingMethod = $dto->getBillingMethod();
         Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
+        $rateCalls = $dto->getRateCalls();
+        Assertion::notNull($rateCalls, 'getRateCalls value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $country = $dto->getCountry();
@@ -385,7 +394,8 @@ abstract class CompanyAbstract
             $province,
             $countryName,
             $allowRecordingRemoval,
-            $billingMethod
+            $billingMethod,
+            $rateCalls
         );
 
         $self
@@ -458,6 +468,8 @@ abstract class CompanyAbstract
         Assertion::notNull($allowRecordingRemoval, 'getAllowRecordingRemoval value is null, but non null value was expected.');
         $billingMethod = $dto->getBillingMethod();
         Assertion::notNull($billingMethod, 'getBillingMethod value is null, but non null value was expected.');
+        $rateCalls = $dto->getRateCalls();
+        Assertion::notNull($rateCalls, 'getRateCalls value is null, but non null value was expected.');
         $brand = $dto->getBrand();
         Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
         $country = $dto->getCountry();
@@ -488,6 +500,7 @@ abstract class CompanyAbstract
             ->setBillingMethod($billingMethod)
             ->setBalance($dto->getBalance())
             ->setShowInvoices($dto->getShowInvoices())
+            ->setRateCalls($rateCalls)
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()))
             ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
@@ -538,6 +551,7 @@ abstract class CompanyAbstract
             ->setBillingMethod(self::getBillingMethod())
             ->setBalance(self::getBalance())
             ->setShowInvoices(self::getShowInvoices())
+            ->setRateCalls(self::getRateCalls())
             ->setLanguage(Language::entityToDto(self::getLanguage(), $depth))
             ->setMediaRelaySets(MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(Timezone::entityToDto(self::getDefaultTimezone(), $depth))
@@ -586,6 +600,7 @@ abstract class CompanyAbstract
             'billingMethod' => self::getBillingMethod(),
             'balance' => self::getBalance(),
             'showInvoices' => self::getShowInvoices(),
+            'rateCalls' => self::getRateCalls(),
             'languageId' => self::getLanguage()?->getId(),
             'mediaRelaySetsId' => self::getMediaRelaySets()?->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()?->getId(),
@@ -971,6 +986,18 @@ abstract class CompanyAbstract
     public function getShowInvoices(): ?bool
     {
         return $this->showInvoices;
+    }
+
+    protected function setRateCalls(bool $rateCalls): static
+    {
+        $this->rateCalls = $rateCalls;
+
+        return $this;
+    }
+
+    public function getRateCalls(): bool
+    {
+        return $this->rateCalls;
     }
 
     protected function setLanguage(?LanguageInterface $language = null): static
