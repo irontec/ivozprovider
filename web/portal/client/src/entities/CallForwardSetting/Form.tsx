@@ -40,10 +40,10 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const newProperties = { ...properties };
 
-  const userPath = match.path.includes(User.path);
-  const friendPath = match.path.includes(Friend.path);
-  const retailAccountPath = match.path.includes(RetailAccount.path);
-  const residentialDevicePath = match.path.includes(ResidentialDevice.path);
+  const userPath = match.pathname.includes(User.path);
+  const friendPath = match.pathname.includes(Friend.path);
+  const retailAccountPath = match.pathname.includes(RetailAccount.path);
+  const residentialDevicePath = match.pathname.includes(ResidentialDevice.path);
 
   if (!retailAccountPath) {
     delete newProperties.cfwToRetailAccount;
