@@ -133,6 +133,11 @@
         <option name="default">0</option>
       </options>
     </field>
+    <field name="rateCalls" type="boolean" column="rateCalls" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
     <many-to-one field="language" target-entity="Ivoz\Provider\Domain\Model\Language\LanguageInterface" fetch="LAZY">
       <join-columns>
         <join-column name="languageId" referenced-column-name="id" on-delete="SET NULL"/>
