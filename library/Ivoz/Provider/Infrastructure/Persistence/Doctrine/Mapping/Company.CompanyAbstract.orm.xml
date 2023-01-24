@@ -119,7 +119,7 @@
     <field name="billingMethod" type="string" column="billingMethod" length="25" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:postpaid|prepaid|pseudoprepaid]</option>
+        <option name="comment">[enum:postpaid|prepaid|pseudoprepaid|none]</option>
         <option name="default">postpaid</option>
       </options>
     </field>
