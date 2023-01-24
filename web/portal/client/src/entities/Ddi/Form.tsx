@@ -14,7 +14,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
-  const retailAccountPath = match.path.includes(RetailAccount.path);
+  const retailAccountPath = match.pathname.includes(RetailAccount.path);
 
   const skip: Array<string> = [];
   if (!aboutMe?.vpbx) {
