@@ -8,6 +8,7 @@ import { useStoreState } from 'store';
 import addCustomRoutes from './addCustomRoutes';
 import AppRouteContentWrapper from './AppRouteContentWrapper';
 import useEntityMap from './useEntityMap';
+
 export interface AppRoutesProps {
   apiSpec: ParsedApiSpecInterface;
 }
