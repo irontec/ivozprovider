@@ -13,6 +13,7 @@ Feature: Create ddis
       {
           "ddi": "321",
           "description": "Description for 321",
+          "type": "inout",
           "company": 1,
           "ddiProvider": 1,
           "country": 68
@@ -27,6 +28,7 @@ Feature: Create ddis
           "ddi": "321",
           "ddie164": "+34321",
           "description": "Description for 321",
+          "type": "inout",
           "id": 4,
           "company": 1,
           "ddiProvider": 1,
