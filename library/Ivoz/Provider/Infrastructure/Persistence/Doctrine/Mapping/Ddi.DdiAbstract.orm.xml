@@ -51,6 +51,13 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="type" type="string" column="type" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">[enum:inout|out]</option>
+        <option name="default">inout</option>
+      </options>
+    </field>
     <many-to-one field="company" target-entity="Ivoz\Provider\Domain\Model\Company\CompanyInterface" inversed-by="ddis" fetch="LAZY">
       <join-columns>
         <join-column name="companyId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
