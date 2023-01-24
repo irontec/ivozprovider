@@ -58,6 +58,8 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
 
+    public const BILLINGMETHOD_NONE = 'none';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
