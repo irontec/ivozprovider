@@ -8,9 +8,14 @@ import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
 import { StoreContainer } from '@irontec/ivoz-ui';
 import { useTranslation } from 'react-i18next';
+import { languagesList } from './translations/languages';
 
 export default function App(): JSX.Element {
   StoreContainer.store = store;
+  const setLanguages = useStoreActions(
+    (actions: any) => actions.i18n.setLanguages
+  );
+  const languages = setLanguages(languagesList);
 
   const apiSpecInitFn = useStoreActions((actions: any) => {
     return actions.spec.init;
@@ -52,7 +57,7 @@ export default function App(): JSX.Element {
       <CssBaseline />
       <StyledAppFlexDiv>
         <BrowserRouter basename={baseUrl}>
-          <AppRoutes apiSpec={apiSpec} />
+          <AppRoutes apiSpec={apiSpec} languages={languages.payload} />
         </BrowserRouter>
       </StyledAppFlexDiv>
     </LocalizationProvider>

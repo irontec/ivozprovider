@@ -1,7 +1,6 @@
 import { Box, Toolbar } from '@mui/material';
 import { Header, Menu, Footer } from '@irontec/ivoz-ui/components/layout';
 import { RouteMap } from '@irontec/ivoz-ui/router/routeMapParser';
-import { languages } from '../../translations/languages';
 
 interface AppRouteContentProps {
   routeMap: RouteMap;
@@ -17,7 +16,7 @@ export default function AppRouteContentWrapper(
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <Header loggedIn={loggedIn} routeMap={routeMap} languages={languages} />
+        <Header loggedIn={loggedIn} routeMap={routeMap} />
         <Box sx={{ display: 'flex' }}>
           <Menu routeMap={routeMap} />
         </Box>
