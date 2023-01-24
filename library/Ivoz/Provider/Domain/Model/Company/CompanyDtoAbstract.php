@@ -18,6 +18,7 @@ use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\Contact\ContactDto;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto;
@@ -258,6 +259,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $friends = null;
 
     /**
+     * @var ContactDto[] | null
+     */
+    private $contacts = null;
+
+    /**
      * @var CompanyServiceDto[] | null
      */
     private $companyServices = null;
@@ -419,6 +425,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
+            'contacts' => $this->getContacts(),
             'companyServices' => $this->getCompanyServices(),
             'terminals' => $this->getTerminals(),
             'ratingProfiles' => $this->getRatingProfiles(),
@@ -1259,6 +1266,18 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getFriends(): ?array
     {
         return $this->friends;
+    }
+
+    public function setContacts(?array $contacts): static
+    {
+        $this->contacts = $contacts;
+
+        return $this;
+    }
+
+    public function getContacts(): ?array
+    {
+        return $this->contacts;
     }
 
     public function setCompanyServices(?array $companyServices): static

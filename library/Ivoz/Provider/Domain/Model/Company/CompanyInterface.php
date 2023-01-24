@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
@@ -341,6 +342,20 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return array<array-key, FriendInterface>
      */
     public function getFriends(?Criteria $criteria = null): array;
+
+    public function addContact(ContactInterface $contact): CompanyInterface;
+
+    public function removeContact(ContactInterface $contact): CompanyInterface;
+
+    /**
+     * @param Collection<array-key, ContactInterface> $contacts
+     */
+    public function replaceContacts(Collection $contacts): CompanyInterface;
+
+    /**
+     * @return array<array-key, ContactInterface>
+     */
+    public function getContacts(?Criteria $criteria = null): array;
 
     public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 
