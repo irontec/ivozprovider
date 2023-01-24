@@ -160,6 +160,24 @@ const properties: DdiProperties = {
   company: {
     label: _('Client'),
   },
+  type: {
+    label: _('Type'),
+    enum: {
+      inout: _('Inbound & outbound'),
+      out: _('Outbound only'),
+    },
+    default: 'inout',
+    visualToggle: {
+      inout: {
+        show: ['ddiProvider'],
+        hide: [],
+      },
+      out: {
+        show: [],
+        hide: ['ddiProvider'],
+      },
+    },
+  },
 };
 
 const ddi: EntityInterface = {
