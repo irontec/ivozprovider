@@ -431,6 +431,8 @@ production:
             title: _("Prepaid")
           'pseudoprepaid':
             title: _("Pseudo-prepaid")
+          'none':
+            title: _("None")
     showInvoices:
       title: _('Display billing details to client')
       type: select
