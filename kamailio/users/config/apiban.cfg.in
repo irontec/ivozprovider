@@ -1,0 +1,49 @@
+# Copy your APIBAN key in line below and rename this file to apiban.cfg
+
+#!define WITH_APIBAN
+
+modparam("htable", "htable", "apiban=>size=11;")
+modparam("htable", "htable", "apibanctl=>size=1;initval=0;")
+modparam("rtimer", "timer", "name=apiban;interval=300;mode=1;")
+modparam("rtimer", "exec", "timer=apiban;route=APIBAN")
+
+route[APIBAN] {
+    # replace MYAPIKEY with your apiban.org API key.
+    $var(apikey) = "MYAPIKEY";
+
+    if($sht(apibanctl=>ID) == 0) {
+        # First run, we will get the full IP list
+        $var(apiget) = "https://apiban.org/api/" + $var(apikey) + "/banned";
+    } else {
+        # ID exists, we pull incremental list
+        $var(apiget) = "https://apiban.org/api/" + $var(apikey) + "/banned/" + $sht(apibanctl=>ID);
+    }
+
+    xnotice("APIBAN: Sending API request to $var(apiget)\n");
+    http_client_query("$var(apiget)", "$var(banned)");
+
+    # if we dont get a 200 OK from the webserver we will log and exit
+    if ($rc != 200) {
+        xerr("APIBAN: Non 200 response. $var(banned)\n");
+        xerr("APIBAN: $sht(apibanctl=>blocks) attacks blocked since $(Tb{s.ftime,%Y-%m-%d %H:%M:%S})\n");
+        exit;
+    }
+
+    # lets loop through the ipaddresses we received from our API request
+    $var(count) = 0;
+    jansson_array_size("ipaddress", $var(banned), "$var(size)");
+    while($var(count) < $var(size)) {
+        jansson_get("ipaddress[$var(count)]", $var(banned), "$var(blockaddr)");
+
+        # add the blocked ipaddress to the apiban htable and log
+        $sht(apiban=>$var(blockaddr)) = 1;
+        xnotice("APIBAN: Adding block ipaddress[$var(count)] == $var(blockaddr)\n");
+
+        $var(count) = $var(count) + 1;
+    }
+
+    # lets get our control ID and use it for incremental downloads
+    jansson_get("ID", $var(banned), "$var(apiid)");
+    xinfo("APIBAN: New ID is $var(apiid)\n");
+    $sht(apibanctl=>ID) = $var(apiid);
+}
