@@ -126,7 +126,7 @@ class RatingPlanLifeCycleTest extends KernelTestCase
                 'timing_tag' => 'b1tm2',
                 'weight' => 9.0,
                 'ratingPlanId' => 2,
-                'id' => 1,
+                'id' => 2,
             ],
             [
                 'created_at'
@@ -182,6 +182,7 @@ class RatingPlanLifeCycleTest extends KernelTestCase
         $this->removeRatingPlan();
         $this->assetChangedEntities([
             RatingPlan::class,
+            TpRatingPlan::class
         ]);
     }
 }
