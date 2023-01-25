@@ -93,6 +93,12 @@ abstract class DdiAbstract
     protected $friendValue = null;
 
     /**
+     * @var string
+     * comment: enum:inout|out
+     */
+    protected $type = 'inout';
+
+    /**
      * @var CompanyInterface
      * inversedBy ddis
      */
@@ -176,11 +182,13 @@ abstract class DdiAbstract
     protected function __construct(
         string $ddi,
         string $recordCalls,
-        bool $billInboundCalls
+        bool $billInboundCalls,
+        string $type
     ) {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
         $this->setBillInboundCalls($billInboundCalls);
+        $this->setType($type);
     }
 
     abstract public function getId(): null|string|int;
@@ -247,6 +255,8 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
         $billInboundCalls = $dto->getBillInboundCalls();
         Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -255,7 +265,8 @@ abstract class DdiAbstract
         $self = new static(
             $ddi,
             $recordCalls,
-            $billInboundCalls
+            $billInboundCalls,
+            $type
         );
 
         $self
@@ -301,6 +312,8 @@ abstract class DdiAbstract
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
         $billInboundCalls = $dto->getBillInboundCalls();
         Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $company = $dto->getCompany();
         Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
         $brand = $dto->getBrand();
@@ -315,6 +328,7 @@ abstract class DdiAbstract
             ->setRouteType($dto->getRouteType())
             ->setBillInboundCalls($billInboundCalls)
             ->setFriendValue($dto->getFriendValue())
+            ->setType($type)
             ->setCompany($fkTransformer->transform($company))
             ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
@@ -348,6 +362,7 @@ abstract class DdiAbstract
             ->setRouteType(self::getRouteType())
             ->setBillInboundCalls(self::getBillInboundCalls())
             ->setFriendValue(self::getFriendValue())
+            ->setType(self::getType())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setConferenceRoom(ConferenceRoom::entityToDto(self::getConferenceRoom(), $depth))
@@ -379,6 +394,7 @@ abstract class DdiAbstract
             'routeType' => self::getRouteType(),
             'billInboundCalls' => self::getBillInboundCalls(),
             'friendValue' => self::getFriendValue(),
+            'type' => self::getType(),
             'companyId' => self::getCompany()->getId(),
             'brandId' => self::getBrand()->getId(),
             'conferenceRoomId' => self::getConferenceRoom()?->getId(),
@@ -541,6 +557,28 @@ abstract class DdiAbstract
     public function getFriendValue(): ?string
     {
         return $this->friendValue;
+    }
+
+    protected function setType(string $type): static
+    {
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $type,
+            [
+                DdiInterface::TYPE_INOUT,
+                DdiInterface::TYPE_OUT,
+            ],
+            'typevalue "%s" is not an element of the valid values: %s'
+        );
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     public function setCompany(CompanyInterface $company): static

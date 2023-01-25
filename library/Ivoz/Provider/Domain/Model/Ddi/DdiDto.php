@@ -96,6 +96,7 @@ class DdiDto extends DdiDtoAbstract
             'id',
             'companyId',
             'ddiProviderId',
+            'type',
             'countryId'
         ];
 

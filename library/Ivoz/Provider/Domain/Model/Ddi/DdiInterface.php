@@ -56,6 +56,10 @@ interface DdiInterface extends LoggableEntityInterface
 
     public const ROUTETYPE_RETAIL = 'retail';
 
+    public const TYPE_INOUT = 'inout';
+
+    public const TYPE_OUT = 'out';
+
     /**
      * @codeCoverageIgnore
      * @return array<string, mixed>
@@ -118,6 +122,8 @@ interface DdiInterface extends LoggableEntityInterface
     public function getBillInboundCalls(): bool;
 
     public function getFriendValue(): ?string;
+
+    public function getType(): string;
 
     public function setCompany(CompanyInterface $company): static;
 

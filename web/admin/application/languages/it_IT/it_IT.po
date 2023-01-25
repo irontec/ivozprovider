@@ -1555,6 +1555,9 @@ msgstr "In corso"
 msgid "Inbound"
 msgstr "In entrata"
 
+msgid "Inbound & outbound"
+msgstr "Inbound & outbound"
+
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Le chiate in entrata non possono essere contabilizzate poichè il Provider "
@@ -2175,6 +2178,9 @@ msgstr "Il valore IP del proxy in uscita non è valido."
 
 msgid "Outbound configuration"
 msgstr "Configurazione in uscita"
+
+msgid "Outbound only"
+msgstr "Outbound only"
 
 msgid "Outgoing Configuration"
 msgstr "Configurazione in uscita"
