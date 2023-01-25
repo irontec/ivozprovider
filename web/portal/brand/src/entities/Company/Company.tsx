@@ -207,6 +207,7 @@ const properties: CompanyProperties = {
       postpaid: _('Postpaid'),
       prepaid: _('Prepaid'),
       pseudoprepaid: _('Pseudo-prepaid'),
+      none: _('None'),
     },
   },
   balance: {

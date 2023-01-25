@@ -186,6 +186,8 @@ production:
             title: _("Prepaid")
           'pseudoprepaid':
             title: _("Pseudo-prepaid")
+          'none':
+            title: _("None")
     transformationRuleSet:
       title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select

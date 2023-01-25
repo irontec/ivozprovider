@@ -155,7 +155,7 @@ abstract class CompanyAbstract
 
     /**
      * @var string
-     * comment: enum:postpaid|prepaid|pseudoprepaid
+     * comment: enum:postpaid|prepaid|pseudoprepaid|none
      */
     protected $billingMethod = 'postpaid';
 
@@ -931,6 +931,7 @@ abstract class CompanyAbstract
                 CompanyInterface::BILLINGMETHOD_POSTPAID,
                 CompanyInterface::BILLINGMETHOD_PREPAID,
                 CompanyInterface::BILLINGMETHOD_PSEUDOPREPAID,
+                CompanyInterface::BILLINGMETHOD_NONE,
             ],
             'billingMethodvalue "%s" is not an element of the valid values: %s'
         );
