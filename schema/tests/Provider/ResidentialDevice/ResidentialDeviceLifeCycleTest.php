@@ -147,6 +147,8 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
                 't38_udptl_ec' => 'redundancy',
                 't38_udptl_maxdatagram' => 1440,
                 't38_udptl_nat' => 'no',
+                'rtp_timeout' => 60,
+                'rtp_timeout_hold' => 600,
                 'residentialDeviceId' => 2,
                 'id' => 6
             ]
