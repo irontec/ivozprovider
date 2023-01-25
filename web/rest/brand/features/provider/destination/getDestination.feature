@@ -33,6 +33,16 @@ Feature: Retrieve destination
                   "ca": "Usansolocity",
                   "it": "Usansolocity"
               }
+          },
+          {
+              "prefix": "+94602",
+              "id": 3,
+              "name": {
+                  "en": "Dest3",
+                  "es": "Dest3",
+                  "ca": "Dest3",
+                  "it": "Dest3"
+              }
           }
       ]
     """
