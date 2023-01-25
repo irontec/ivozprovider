@@ -26,7 +26,25 @@ Content-Disposition: form-data; name="destinationRateGroup"
         "ca": "",
         "it": ""
     },
-    "currency": "1"
+    "currency": "1",
+    "file": {
+        "fileSize": null,
+        "mimeType": null,
+        "baseName": null,
+        "importerArguments": {
+              "scape": null,
+              "columns": [
+                  "destinationPrefix",
+                  "destinationName",
+                  "connectionCharge",
+                  "rateCost",
+                  "rateIncrement"
+              ],
+              "delimiter": ",",
+              "enclosure": "\"",
+              "ignoreFirst": false
+          }
+    }
 }
 ------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="file"; filename="prices.csv"
@@ -67,15 +85,15 @@ Content-Type: text/csv
               "importerArguments": {
                     "scape": null,
                     "columns": [
-                        "destinationName",
-                        "destinationPrefix",
-                        "rateCost",
-                        "connectionCharge",
-                        "rateIncrement"
+                      "destinationPrefix",
+                      "destinationName",
+                      "connectionCharge",
+                      "rateCost",
+                      "rateIncrement"
                     ],
                     "delimiter": ",",
                     "enclosure": "\"",
-                    "ignoreFirst": true
+                    "ignoreFirst": false
                 }
           },
           "currency": 1
