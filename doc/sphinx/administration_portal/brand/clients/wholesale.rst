@@ -36,7 +36,7 @@ These are the fields shown when **adding** a new wholesale client:
         Used to reference this particular client.
 
     Billing method
-        To choose among postpaid, prepaid and pseudo-prepaid.
+        To choose among postpaid, prepaid and pseudo-prepaid. 'none' disables billing.
 
     Language
         Used to choose the language of played locutions.

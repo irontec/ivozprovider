@@ -481,6 +481,8 @@ production:
             title: _("Prepaid")
           'pseudoprepaid':
             title: _("Pseudo-prepaid")
+          'none':
+            title: _("None")
     balance:
       title: _('Balance')
       type: ghost
