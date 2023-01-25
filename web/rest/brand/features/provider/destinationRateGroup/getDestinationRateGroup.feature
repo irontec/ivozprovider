@@ -26,8 +26,7 @@ Feature: Retrieve destination rate group
               "file": {
                   "fileSize": null,
                   "mimeType": null,
-                  "baseName": null,
-                  "importerArguments": []
+                  "baseName": null
               },
               "currency": null
           },
@@ -43,8 +42,7 @@ Feature: Retrieve destination rate group
               "file": {
                   "fileSize": null,
                   "mimeType": null,
-                  "baseName": null,
-                  "importerArguments": []
+                  "baseName": null
               },
               "currency": null
           }

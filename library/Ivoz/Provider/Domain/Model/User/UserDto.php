@@ -124,6 +124,7 @@ class UserDto extends UserDtoAbstract
 
         if ($context === self::CONTEXT_PUT_MY_PROFILE) {
             return [
+                'id' => 'id',
                 'name' => 'name',
                 'pass' => 'pass',
                 'oldPass' => 'oldPass',
