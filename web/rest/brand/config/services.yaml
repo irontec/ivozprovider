@@ -72,3 +72,14 @@ services:
     Controller\Provider\:
         resource: '../src/Controller/Provider/*'
         tags: ['controller.service_arguments']
+
+when@test:
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: false
+
+        Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FakeCgrRpcClient:
+            arguments:
+                $fixedResponse: '{"id":1,"result":{"CGRID":"","RunID":"","StartTime":"2023-01-24T10:51:44Z","Usage":60000000000,"Cost":0.15,"Charges":[{"RatingID":"c2cb1b0","Increments":[{"Usage":1000000000,"Cost":0.0025,"AccountingID":"","CompressFactor":60}],"CompressFactor":1}],"AccountSummary":null,"Rating":{"c2cb1b0":{"ConnectFee":0,"RoundingMethod":"*up","RoundingDecimals":4,"MaxCost":0,"MaxCostStrategy":"","TimingID":"3e49c81","RatesID":"72f1620","RatingFiltersID":"12ab351"}},"Accounting":[],"RatingFilters":{"12ab351":{"DestinationID":"b2dst140","DestinationPrefix":"+346","RatingPlanID":"b2rp1","Subject":"*out:b2:call:simulator"}},"Rates":{"72f1620":[{"GroupIntervalStart":0,"Value":0.15,"RateIncrement":1000000000,"RateUnit":60000000000}]},"Timings":{"3e49c81":{"Years":[],"Months":[],"MonthDays":[],"WeekDays":[],"StartTime":"00:00:00"}}},"error":null}'
