@@ -2,6 +2,73 @@
 ## Raw
 ########################################
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    post_provider_administrator_grant_read_only:
+      method: 'POST'
+      path: '/administrators/{id}/grant_read_only'
+      route_name: 'post_provider_administrator_grant_read_only'
+      requirements:
+        id: '\d+'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: publicEntitiesRelUsers
+            in: body
+            required: true
+            schema:
+              type: array
+              items:
+                type: integer
+            description: The relation values.
+    post_provider_administrator_grant_all:
+      method: 'POST'
+      path: '/administrators/{id}/grant_all'
+      route_name: 'post_provider_administrator_grant_all'
+      requirements:
+        id: '\d+'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: publicEntitiesRelUsers
+            in: body
+            required: true
+            schema:
+              type: array
+              items:
+                type: integer
+            description: The relation values.
+    post_provider_administrator_revoke_all:
+      method: 'POST'
+      path: '/administrators/{id}/revoke_all'
+      route_name: 'post_provider_administrator_revoke_all'
+      requirements:
+        id: '\d+'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: publicEntitiesRelUsers
+            in: body
+            required: true
+            schema:
+              type: array
+              items:
+                type: integer
+            description: The relation values.
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
