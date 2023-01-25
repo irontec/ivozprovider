@@ -130,6 +130,16 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var int|null
      */
+    private $rtpTimeout = 60;
+
+    /**
+     * @var int|null
+     */
+    private $rtpTimeoutHold = 600;
+
+    /**
+     * @var int|null
+     */
     private $id = null;
 
     /**
@@ -192,6 +202,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             't38UdptlEc' => 't38UdptlEc',
             't38UdptlMaxdatagram' => 't38UdptlMaxdatagram',
             't38UdptlNat' => 't38UdptlNat',
+            'rtpTimeout' => 'rtpTimeout',
+            'rtpTimeoutHold' => 'rtpTimeoutHold',
             'id' => 'id',
             'terminalId' => 'terminal',
             'friendId' => 'friend',
@@ -228,6 +240,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             't38UdptlEc' => $this->getT38UdptlEc(),
             't38UdptlMaxdatagram' => $this->getT38UdptlMaxdatagram(),
             't38UdptlNat' => $this->getT38UdptlNat(),
+            'rtpTimeout' => $this->getRtpTimeout(),
+            'rtpTimeoutHold' => $this->getRtpTimeoutHold(),
             'id' => $this->getId(),
             'terminal' => $this->getTerminal(),
             'friend' => $this->getFriend(),
@@ -511,6 +525,30 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     public function getT38UdptlNat(): ?string
     {
         return $this->t38UdptlNat;
+    }
+
+    public function setRtpTimeout(int $rtpTimeout): static
+    {
+        $this->rtpTimeout = $rtpTimeout;
+
+        return $this;
+    }
+
+    public function getRtpTimeout(): ?int
+    {
+        return $this->rtpTimeout;
+    }
+
+    public function setRtpTimeoutHold(int $rtpTimeoutHold): static
+    {
+        $this->rtpTimeoutHold = $rtpTimeoutHold;
+
+        return $this;
+    }
+
+    public function getRtpTimeoutHold(): ?int
+    {
+        return $this->rtpTimeoutHold;
     }
 
     public function setId($id): static
