@@ -6,11 +6,11 @@
   @createSchema
   Scenario: Create a destination rate group
     Given I add Brand Authorization header
-     When I add "Content-Type" header equal to "multipart/form-data; boundary=------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
+     When I add "Content-Type" header equal to "multipart/form-data; boundary=----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" multipart request to "/destination_rate_groups" with body:
     """
-------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="destinationRateGroup"
 
 {
@@ -30,30 +30,30 @@ Content-Disposition: form-data; name="destinationRateGroup"
     "file": {
         "fileSize": null,
         "mimeType": null,
-        "baseName": null,
-        "importerArguments": {
-              "scape": null,
-              "columns": [
-                  "destinationPrefix",
-                  "destinationName",
-                  "connectionCharge",
-                  "rateCost",
-                  "rateIncrement"
-              ],
-              "delimiter": ",",
-              "enclosure": "\"",
-              "ignoreFirst": false
-          }
+        "baseName": null
+    },
+    "importerArguments": {
+        "scape": null,
+        "columns": [
+            "destinationPrefix",
+            "destinationName",
+            "connectionCharge",
+            "rateCost",
+            "rateIncrement"
+        ],
+        "delimiter": ",",
+        "enclosure": "\"",
+        "ignoreFirst": false
     }
 }
-------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="file"; filename="prices.csv"
 Content-Type: text/csv
 
 "Spain",+34,0.012,0.012,1
 "Portugal",+351,0.008,0.008,1
 "France",+33,0.012,0.012,1
-------IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
+----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8--
 
     """
     Then the response status code should be 201
@@ -83,18 +83,18 @@ Content-Type: text/csv
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "prices.csv",
               "importerArguments": {
-                    "scape": null,
-                    "columns": [
+                  "scape": null,
+                  "columns": [
                       "destinationPrefix",
                       "destinationName",
                       "connectionCharge",
                       "rateCost",
                       "rateIncrement"
-                    ],
-                    "delimiter": ",",
-                    "enclosure": "\"",
-                    "ignoreFirst": false
-                }
+                  ],
+                  "delimiter": ",",
+                  "enclosure": "\"",
+                  "ignoreFirst": false
+              }
           },
           "currency": 1
       }
@@ -131,18 +131,18 @@ Content-Type: text/csv
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "prices.csv",
               "importerArguments": {
-                    "scape": null,
-                    "columns": [
-                        "destinationName",
-                        "destinationPrefix",
-                        "rateCost",
-                        "connectionCharge",
-                        "rateIncrement"
-                    ],
-                    "delimiter": ",",
-                    "enclosure": "\"",
-                    "ignoreFirst": true
-                }
+                  "scape": null,
+                  "columns": [
+                      "destinationPrefix",
+                      "destinationName",
+                      "connectionCharge",
+                      "rateCost",
+                      "rateIncrement"
+                  ],
+                  "delimiter": ",",
+                  "enclosure": "\"",
+                  "ignoreFirst": false
+              }
           },
           "currency": "~"
       }
