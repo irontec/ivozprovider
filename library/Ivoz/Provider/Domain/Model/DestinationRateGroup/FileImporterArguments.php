@@ -10,36 +10,36 @@ class FileImporterArguments
      * @var string | null
      * @AttributeDefinition(type="string")
      */
-    private ?string $scape;
+    private $scape;
 
     /**
      * @var string
      * @AttributeDefinition(type="string")
      */
-    private string $delimiter;
+    private $delimiter;
 
     /**
      * @var string
      * @AttributeDefinition(type="string")
      */
-    private string $enclosure;
+    private $enclosure;
 
     /**
      * @var bool
      * @AttributeDefinition(type="bool")
      */
-    private bool $ignoreFirst;
+    private $ignoreFirst;
 
-    /** @var String[] $columns */
-    private ?array $columns;
+    /** @var null|String[] $columns */
+    private $columns;
 
     /**
      * @param String[] $columns
      */
     public function __construct(
         ?array $columns = null,
-        string $delimiter = ",",
-        string $enclosure = "\"",
+        string $delimiter = ',',
+        string $enclosure = '"',
         bool $ignoreFirst = true,
         ?string $scape = null
     ) {
@@ -51,7 +51,7 @@ class FileImporterArguments
     }
 
     /**
-     * @return array<string, string[]|string|bool|null>
+     * @return array{scape: ?string, columns: null|array<array-key, string>, delimiter: string, enclosure: string, ignoreFirst: boolean}
      */
     public function toArray(): array
     {

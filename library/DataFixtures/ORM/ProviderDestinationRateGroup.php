@@ -7,7 +7,6 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
-use Ivoz\Provider\Domain\Model\DestinationRateGroup\FileImporterArguments;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\Name;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\Description;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
