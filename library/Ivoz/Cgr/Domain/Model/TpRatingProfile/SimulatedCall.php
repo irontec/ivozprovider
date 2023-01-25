@@ -87,17 +87,11 @@ class SimulatedCall
      */
     private $cost;
 
-    /**
-     * @param string $response
-     * @param int $duration
-     * @param EntityTools $entityTools
-     * @return SimulatedCall
-     */
     public static function fromCgRatesResponse(
         string $response,
         int $duration,
         EntityTools $entityTools
-    ) {
+    ): SimulatedCall {
         $response = json_decode($response, null, 512, JSON_THROW_ON_ERROR);
 
         /** @var TpRatingPlanRepository $tpRatingPlanRepository */
