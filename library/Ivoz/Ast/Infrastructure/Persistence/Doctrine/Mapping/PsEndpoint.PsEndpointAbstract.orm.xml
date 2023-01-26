@@ -144,6 +144,18 @@
         <option name="default">no</option>
       </options>
     </field>
+    <field name="rtpTimeout" type="integer" column="rtp_timeout" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">60</option>
+      </options>
+    </field>
+    <field name="rtpTimeoutHold" type="integer" column="rtp_timeout_hold" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">600</option>
+      </options>
+    </field>
     <one-to-one field="terminal" target-entity="Ivoz\Provider\Domain\Model\Terminal\TerminalInterface" inversed-by="psEndpoint" fetch="LAZY">
       <join-columns>
         <join-column name="terminalId" referenced-column-name="id" on-delete="CASCADE"/>
