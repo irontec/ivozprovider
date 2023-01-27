@@ -2,9 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class CarrierStatus
 {
-    private bool $registered;
+    /**
+     * @var bool
+     * @AttributeDefinition(type="bool")
+     */
+    private $registered;
 
     public function __construct(
         bool $registered
