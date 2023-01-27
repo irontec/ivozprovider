@@ -17,6 +17,7 @@ class ExtensionLifecycleServiceCollection implements LifecycleServiceCollectionI
         [
             \Ivoz\Provider\Domain\Service\User\UpdateByExtension::class => 10,
             \Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByExtension::class => 20,
+            \Ivoz\Provider\Domain\Service\Contact\UpdateByExtension::class => 200,
         ],
         "pre_remove" =>
         [
