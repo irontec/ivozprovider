@@ -21,7 +21,8 @@ Feature: Retrieve contacts
               "workPhoneE164": "+34456123",
               "mobilePhoneE164": "+34111222",
               "otherPhone": "4001",
-              "id": 1
+              "id": 1,
+              "user": null
           },
           {
               "name": "Alice",
@@ -30,7 +31,8 @@ Feature: Retrieve contacts
               "workPhoneE164": null,
               "mobilePhoneE164": null,
               "otherPhone": "101",
-              "id": 2
+              "id": 2,
+              "user": 1
           },
           {
               "name": "Bob",
@@ -39,7 +41,8 @@ Feature: Retrieve contacts
               "workPhoneE164": null,
               "mobilePhoneE164": null,
               "otherPhone": "102",
-              "id": 3
+              "id": 3,
+              "user": 2
           }
       ]
     """
