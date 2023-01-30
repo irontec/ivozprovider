@@ -28,7 +28,7 @@ Feature: Create voicemails
           "email": "generic@voicemail.com",
           "sendMail": true,
           "attachSound": true,
-          "id": 5,
+          "id": 6,
           "user": null,
           "residentialDevice": null,
           "company": 1,
@@ -39,7 +39,7 @@ Feature: Create voicemails
   Scenario: Retrieve created voicemail
     Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/voicemails/2"
+    And I send a "GET" request to "/voicemails/6"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -47,18 +47,13 @@ Feature: Create voicemails
     """
       {
           "enabled": true,
-          "name": "Voicemail For Residential 1",
-          "email": "",
-          "sendMail": false,
-          "attachSound": false,
-          "id": 2,
+          "name": "newGenericVoicemail",
+          "email": "generic@voicemail.com",
+          "sendMail": true,
+          "attachSound": true,
+          "id": 6,
           "user": null,
-          "residentialDevice": {
-              "name": "residentialDevice",
-              "description": "",
-              "directConnectivity": "no",
-              "id": 1
-          },
+          "residentialDevice": null,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
