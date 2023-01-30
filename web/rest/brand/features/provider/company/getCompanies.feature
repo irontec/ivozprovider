@@ -25,6 +25,7 @@ Feature: Retrieve companies
               "balance": 1.2,
               "id": 1,
               "outgoingDdi": null,
+              "domainName": "127.0.0.1",
               "featureIds": [
                   1,
                   2,
@@ -47,6 +48,7 @@ Feature: Retrieve companies
               "balance": 0,
               "id": 2,
               "outgoingDdi": null,
+              "domainName": "test.irontec.com",
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],
@@ -63,6 +65,7 @@ Feature: Retrieve companies
               "balance": 0,
               "id": 3,
               "outgoingDdi": null,
+              "domainName": "retail.irontec.com",
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [
@@ -81,6 +84,7 @@ Feature: Retrieve companies
               "balance": 0,
               "id": 4,
               "outgoingDdi": null,
+              "domainName": "retail.irontec.com",
               "featureIds": [],
               "geoIpAllowedCountries": [],
               "routingTagIds": [],
@@ -193,6 +197,7 @@ Feature: Retrieve companies
               "type": "callCsv",
               "id": 2
           },
+          "domainName": "127.0.0.1",
           "featureIds": [
               1,
               2,

@@ -11,6 +11,16 @@ use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 class CompanyDto extends CompanyDtoAbstract
 {
     /**
+     * @var string
+     * @AttributeDefinition(
+     *     type="string",
+     *     writable=false,
+     *     description="Registration domain"
+     * )
+     */
+    protected $domainName;
+
+    /**
      * @var int[]
      * @AttributeDefinition(
      *     type="array",
@@ -82,10 +92,18 @@ class CompanyDto extends CompanyDtoAbstract
             $contextProperties['brandId'] = 'brand';
         }
 
+        unset($contextProperties['domainName']);
         $this->setByContext(
             $contextProperties,
             $data
         );
+    }
+
+    public function setDomainName(string $name): self
+    {
+        $this->domainName = $name;
+
+        return $this;
     }
 
     /**
@@ -221,6 +239,20 @@ class CompanyDto extends CompanyDtoAbstract
         }
 
         unset($response['domainId']);
+
+        $showDomainNameContext = in_array(
+            $context,
+            [
+                    self::CONTEXT_COLLECTION,
+                    self::CONTEXT_DETAILED,
+                    self::CONTEXT_DETAILED_COLLECTION,
+            ]
+        );
+
+        if ($showDomainNameContext) {
+            $response['domainName'] = 'domainName';
+        }
+
         if ($role === 'ROLE_BRAND_ADMIN') {
             $response['featureIds'] = 'featureIds';
             $response['geoIpAllowedCountries'] = 'geoIpAllowedCountries';
@@ -237,6 +269,18 @@ class CompanyDto extends CompanyDtoAbstract
         return $response;
     }
 
+    public function toArray(bool $hideSensitiveData = false): array
+    {
+        $response = parent::toArray($hideSensitiveData);
+        $response['domainName'] = $this->domainName;
+
+        return $response;
+    }
+
+    /**
+     * @param array $response
+     * @return array
+     */
     private static function filterFieldsForBrandAdmin(array $response): array
     {
         $allowedFields = [
@@ -278,6 +322,7 @@ class CompanyDto extends CompanyDtoAbstract
             'maxDailyUsageEmail',
             'maxDailyUsageNotificationTemplateId',
             'currentDayUsage' => 'currentDayUsage',
+            'domainName',
         ];
 
         return array_filter(
@@ -305,6 +350,7 @@ class CompanyDto extends CompanyDtoAbstract
             'transformationRuleSetId',
             'outgoingDdiId',
             'outgoingDdiRuleId',
+            'domainName',
         ];
 
         return array_filter(
