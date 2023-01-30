@@ -3096,9 +3096,6 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>setCompany</code>
-    </UndefinedInterfaceMethod>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodec.php">
     <MethodSignatureMismatch occurrences="1">
@@ -8144,6 +8141,11 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/FeaturesRelBrand/AvoidBillingRemoval.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$featuresRelBrand</code>
+    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/FeaturesRelBrand/FeaturesRelBrandLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
