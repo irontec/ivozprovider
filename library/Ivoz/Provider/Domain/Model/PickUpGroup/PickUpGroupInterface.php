@@ -53,8 +53,6 @@ interface PickUpGroupInterface extends LoggableEntityInterface
 
     public function getCompany(): CompanyInterface;
 
-    public function isInitialized(): bool;
-
     public function addRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface;
 
     public function removeRelUser(PickUpRelUserInterface $relUser): PickUpGroupInterface;

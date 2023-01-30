@@ -53,6 +53,4 @@ interface FixedCostInterface extends LoggableEntityInterface
     public function getCost(): ?float;
 
     public function getBrand(): BrandInterface;
-
-    public function isInitialized(): bool;
 }

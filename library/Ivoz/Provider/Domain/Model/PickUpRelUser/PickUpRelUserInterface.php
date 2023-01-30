@@ -54,6 +54,4 @@ interface PickUpRelUserInterface extends LoggableEntityInterface
     public function setUser(?UserInterface $user = null): static;
 
     public function getUser(): ?UserInterface;
-
-    public function isInitialized(): bool;
 }

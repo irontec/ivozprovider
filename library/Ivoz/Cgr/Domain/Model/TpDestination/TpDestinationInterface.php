@@ -57,6 +57,4 @@ interface TpDestinationInterface extends LoggableEntityInterface
     public function setDestination(DestinationInterface $destination): static;
 
     public function getDestination(): DestinationInterface;
-
-    public function isInitialized(): bool;
 }

@@ -65,8 +65,6 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
 
     public function getBrand(): BrandInterface;
 
-    public function isInitialized(): bool;
-
     public function addRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface;
 
     public function removeRelPattern(RoutingPatternGroupsRelPatternInterface $relPattern): RoutingPatternGroupInterface;

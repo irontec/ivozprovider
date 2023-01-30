@@ -52,6 +52,4 @@ interface CalendarPeriodsRelScheduleInterface extends LoggableEntityInterface
     public function getCalendarPeriod(): ?CalendarPeriodInterface;
 
     public function getSchedule(): ScheduleInterface;
-
-    public function isInitialized(): bool;
 }

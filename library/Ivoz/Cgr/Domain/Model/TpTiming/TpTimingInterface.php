@@ -58,6 +58,4 @@ interface TpTimingInterface extends EntityInterface
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 
     public function getRatingPlan(): RatingPlanInterface;
-
-    public function isInitialized(): bool;
 }

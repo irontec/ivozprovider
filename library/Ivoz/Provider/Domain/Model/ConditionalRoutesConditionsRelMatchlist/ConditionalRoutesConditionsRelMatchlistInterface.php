@@ -52,6 +52,4 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
     public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     public function getMatchlist(): MatchListInterface;
-
-    public function isInitialized(): bool;
 }

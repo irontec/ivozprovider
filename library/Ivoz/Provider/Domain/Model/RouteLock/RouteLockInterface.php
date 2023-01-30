@@ -65,6 +65,4 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function getOpen(): bool;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

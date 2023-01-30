@@ -67,6 +67,4 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getCarrier(): ?CarrierInterface;
 
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
-
-    public function isInitialized(): bool;
 }

@@ -83,6 +83,4 @@ interface UsersCdrInterface extends EntityInterface
     public function getUser(): ?UserInterface;
 
     public function getFriend(): ?FriendInterface;
-
-    public function isInitialized(): bool;
 }

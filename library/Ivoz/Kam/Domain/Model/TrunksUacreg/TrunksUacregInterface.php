@@ -92,6 +92,4 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getDdiProviderRegistration(): DdiProviderRegistrationInterface;
 
     public function getBrand(): BrandInterface;
-
-    public function isInitialized(): bool;
 }

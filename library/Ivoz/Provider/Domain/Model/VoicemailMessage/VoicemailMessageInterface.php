@@ -67,8 +67,6 @@ interface VoicemailMessageInterface extends LoggableEntityInterface, FileContain
 
     public function getAstVoicemailMessage(): ?\Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @return void
      */

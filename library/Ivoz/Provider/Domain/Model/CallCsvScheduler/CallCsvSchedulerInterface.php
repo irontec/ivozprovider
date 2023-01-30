@@ -115,6 +115,4 @@ interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityIn
     public function getFriend(): ?FriendInterface;
 
     public function getDdiProvider(): ?DdiProviderInterface;
-
-    public function isInitialized(): bool;
 }

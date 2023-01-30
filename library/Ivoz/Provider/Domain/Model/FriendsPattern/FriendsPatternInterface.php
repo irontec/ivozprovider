@@ -53,6 +53,4 @@ interface FriendsPatternInterface extends LoggableEntityInterface
     public function setFriend(FriendInterface $friend): static;
 
     public function getFriend(): FriendInterface;
-
-    public function isInitialized(): bool;
 }

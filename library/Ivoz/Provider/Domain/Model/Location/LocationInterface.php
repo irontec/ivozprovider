@@ -55,8 +55,6 @@ interface LocationInterface extends LoggableEntityInterface
 
     public function getCompany(): CompanyInterface;
 
-    public function isInitialized(): bool;
-
     public function addUser(UserInterface $user): LocationInterface;
 
     public function removeUser(UserInterface $user): LocationInterface;

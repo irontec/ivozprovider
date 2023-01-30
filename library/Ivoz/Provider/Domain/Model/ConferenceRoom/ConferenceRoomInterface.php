@@ -55,6 +55,4 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getMaxMembers(): int;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

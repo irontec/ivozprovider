@@ -169,8 +169,6 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getFullNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @param string $prefix
      * @return null|string

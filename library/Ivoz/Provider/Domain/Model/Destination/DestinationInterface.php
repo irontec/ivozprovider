@@ -68,8 +68,6 @@ interface DestinationInterface extends LoggableEntityInterface
 
     public function getBrand(): BrandInterface;
 
-    public function isInitialized(): bool;
-
     public function setTpDestination(TpDestinationInterface $tpDestination): static;
 
     public function getTpDestination(): ?TpDestinationInterface;

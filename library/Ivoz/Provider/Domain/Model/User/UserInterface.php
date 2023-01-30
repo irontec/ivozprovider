@@ -223,8 +223,6 @@ interface UserInterface extends LoggableEntityInterface
 
     public function getLocation(): ?LocationInterface;
 
-    public function isInitialized(): bool;
-
     public function setVoicemail(VoicemailInterface $voicemail): static;
 
     public function getVoicemail(): ?VoicemailInterface;

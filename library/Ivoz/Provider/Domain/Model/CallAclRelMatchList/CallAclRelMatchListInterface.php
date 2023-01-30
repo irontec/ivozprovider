@@ -60,6 +60,4 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     public function getCallAcl(): ?CallAclInterface;
 
     public function getMatchList(): MatchListInterface;
-
-    public function isInitialized(): bool;
 }

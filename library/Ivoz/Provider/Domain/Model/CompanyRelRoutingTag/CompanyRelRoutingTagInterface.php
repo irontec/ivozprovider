@@ -54,6 +54,4 @@ interface CompanyRelRoutingTagInterface extends LoggableEntityInterface
     public function setRoutingTag(RoutingTagInterface $routingTag): static;
 
     public function getRoutingTag(): RoutingTagInterface;
-
-    public function isInitialized(): bool;
 }

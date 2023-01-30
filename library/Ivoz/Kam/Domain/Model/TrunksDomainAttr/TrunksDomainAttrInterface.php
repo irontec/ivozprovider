@@ -47,6 +47,4 @@ interface TrunksDomainAttrInterface extends EntityInterface
     public function getValue(): string;
 
     public function getLastModified(): \DateTime;
-
-    public function isInitialized(): bool;
 }

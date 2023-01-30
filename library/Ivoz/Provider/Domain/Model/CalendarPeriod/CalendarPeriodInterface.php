@@ -88,8 +88,6 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     public function addRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface;
 
     public function removeRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface;
