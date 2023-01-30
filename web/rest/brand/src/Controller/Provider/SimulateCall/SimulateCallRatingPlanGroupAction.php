@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller\Provider;
+namespace Controller\Provider\SimulateCall;
 
 use Ivoz\Provider\Application\Service\RatingPlanGroup\SimulateCallByRatingPlanGroup;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class SimulateCallAction
+class SimulateCallRatingPlanGroupAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private SimulateCallByRatingPlanGroup $simulateCall
+        private SimulateCallByRatingPlanGroup $simulateCallByRatingPlanGroup
     ) {
     }
 
@@ -40,8 +40,8 @@ class SimulateCallAction
             throw new \DomainException('Admin must belong to a specific brand', 403);
         }
 
-        $tarificationsInfo = $this
-            ->simulateCall
+        $tarificationInfo = $this
+            ->simulateCallByRatingPlanGroup
             ->execute(
                 $brand,
                 $duration,
@@ -52,8 +52,9 @@ class SimulateCallAction
         $headers = [
             'content-type' => 'application/json; charset=UTF-8'
         ];
+
         $response = json_encode(
-            $tarificationsInfo->toArray()
+            $tarificationInfo->toArray()
         );
 
         if (!$response) {
