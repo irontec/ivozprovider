@@ -52,6 +52,4 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
     public function getFilter(): ?ExternalCallFilterInterface;
 
     public function getCalendar(): CalendarInterface;
-
-    public function isInitialized(): bool;
 }

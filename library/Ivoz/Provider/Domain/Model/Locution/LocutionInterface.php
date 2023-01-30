@@ -80,8 +80,6 @@ interface LocutionInterface extends LoggableEntityInterface, FileContainerInterf
 
     public function getCompany(): CompanyInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @throws \Exception
      * @return void

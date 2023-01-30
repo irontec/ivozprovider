@@ -52,6 +52,4 @@ interface CompanyRelGeoIPCountryInterface extends LoggableEntityInterface
     public function getCompany(): ?CompanyInterface;
 
     public function getCountry(): CountryInterface;
-
-    public function isInitialized(): bool;
 }

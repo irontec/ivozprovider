@@ -76,6 +76,4 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function setOutgoingRoutingRelCarrier(?OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null): static;
 
     public function getOutgoingRoutingRelCarrier(): ?OutgoingRoutingRelCarrierInterface;
-
-    public function isInitialized(): bool;
 }

@@ -82,6 +82,4 @@ interface VoicemailMessageInterface extends LoggableEntityInterface
     public function getMsgId(): ?string;
 
     public function getParsed(): bool;
-
-    public function isInitialized(): bool;
 }

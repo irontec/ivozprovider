@@ -150,6 +150,4 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function setVoicemail(?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface $voicemail = null): static;
 
     public function getVoicemail(): ?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
-
-    public function isInitialized(): bool;
 }

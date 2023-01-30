@@ -2268,11 +2268,11 @@
         },
         {
             "name": "irontec/ivoz-core",
-            "version": "4.15.6",
+            "version": "4.15.7",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-core",
-                "reference": "0fdf6036b3767e943c8d8c0d014740ce3a8939cf"
+                "reference": "9c2296ef541424e810f876de90467a62d4bc2de8"
             },
             "require": {
                 "beberlei/assert": "^3.0",
@@ -2288,6 +2288,7 @@
                 "symfony/finder": "^5.1",
                 "symfony/http-foundation": "^5.1",
                 "symfony/mailer": "^5.4",
+                "symfony/mime": "^5.4",
                 "symfony/serializer": "^5.1"
             },
             "conflict": {
@@ -2387,11 +2388,11 @@
         },
         {
             "name": "irontec/ivoz-provider-bundle",
-            "version": "2.5.35",
+            "version": "2.5.36",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/irontec/ivoz-provider-bundle",
-                "reference": "634bfd069feb15740b7e59a797f178b9543c8ef2"
+                "reference": "8a22c43928c491a2f50a8e9acefcdabc7e1c1ec1"
             },
             "require": {
                 "beberlei/doctrineextensions": "^1.2",
@@ -2409,6 +2410,7 @@
                 "symfony/framework-bundle": "^5.1",
                 "symfony/http-foundation": "^5.1",
                 "symfony/http-kernel": "^5.1",
+                "symfony/mime": "^5.4",
                 "symfony/property-access": "^5.1",
                 "symfony/property-info": "^5.1",
                 "symfony/serializer": "^5.1",
@@ -5028,30 +5030,32 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v6.0.8",
+            "version": "v5.4.13",
             "dist": {
                 "type": "path",
                 "url": "../../../library/vendor/symfony/mime",
-                "reference": "c1701e88ad0ca49fc6ad6cdf360bc0e1209fb5e1"
+                "reference": "bb2ccf759e2b967dcd11bdee5bdf30dddd2290bd"
             },
             "require": {
-                "php": ">=8.0.2",
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-intl-idn": "^1.10",
-                "symfony/polyfill-mbstring": "^1.0"
+                "symfony/polyfill-mbstring": "^1.0",
+                "symfony/polyfill-php80": "^1.16"
             },
             "conflict": {
                 "egulias/email-validator": "~3.0.0",
                 "phpdocumentor/reflection-docblock": "<3.2.2",
                 "phpdocumentor/type-resolver": "<1.4.0",
-                "symfony/mailer": "<5.4"
+                "symfony/mailer": "<4.4"
             },
             "require-dev": {
                 "egulias/email-validator": "^2.1.10|^3.1",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/property-access": "^5.4|^6.0",
-                "symfony/property-info": "^5.4|^6.0",
-                "symfony/serializer": "^5.4|^6.0"
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+                "symfony/property-access": "^4.4|^5.1|^6.0",
+                "symfony/property-info": "^4.4|^5.1|^6.0",
+                "symfony/serializer": "^5.2|^6.0"
             },
             "type": "library",
             "autoload": {

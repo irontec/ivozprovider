@@ -50,6 +50,4 @@ interface CurrencyInterface extends LoggableEntityInterface
     public function getSymbol(): string;
 
     public function getName(): Name;
-
-    public function isInitialized(): bool;
 }

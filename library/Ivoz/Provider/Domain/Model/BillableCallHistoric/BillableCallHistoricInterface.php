@@ -115,6 +115,4 @@ interface BillableCallHistoricInterface extends LoggableEntityInterface
     public function getDdi(): ?DdiInterface;
 
     public function getDdiProvider(): ?DdiProviderInterface;
-
-    public function isInitialized(): bool;
 }

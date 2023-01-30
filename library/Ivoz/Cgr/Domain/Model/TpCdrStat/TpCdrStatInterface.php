@@ -103,6 +103,4 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function setCarrier(CarrierInterface $carrier): static;
 
     public function getCarrier(): CarrierInterface;
-
-    public function isInitialized(): bool;
 }

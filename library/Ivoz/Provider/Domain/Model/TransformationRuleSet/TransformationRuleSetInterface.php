@@ -78,8 +78,6 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
 
     public function getCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     public function addRule(TransformationRuleInterface $rule): TransformationRuleSetInterface;
 
     public function removeRule(TransformationRuleInterface $rule): TransformationRuleSetInterface;

@@ -91,8 +91,6 @@ interface FaxesInOutInterface extends LoggableEntityInterface, FileContainerInte
 
     public function getDstCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @return void
      */

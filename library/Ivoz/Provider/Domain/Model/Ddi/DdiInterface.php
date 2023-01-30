@@ -161,8 +161,6 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getRetailAccount(): ?RetailAccountInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @param string $prefix
      * @return null|string

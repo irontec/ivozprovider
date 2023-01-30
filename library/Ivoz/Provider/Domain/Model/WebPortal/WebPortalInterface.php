@@ -82,8 +82,6 @@ interface WebPortalInterface extends LoggableEntityInterface, FileContainerInter
 
     public function getBrand(): ?BrandInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @return void
      */

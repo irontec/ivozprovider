@@ -54,6 +54,4 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
     public function setInvoice(?InvoiceInterface $invoice = null): static;
 
     public function getInvoice(): ?InvoiceInterface;
-
-    public function isInitialized(): bool;
 }

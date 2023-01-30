@@ -66,6 +66,4 @@ interface BannedAddressInterface extends LoggableEntityInterface
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;
-
-    public function isInitialized(): bool;
 }

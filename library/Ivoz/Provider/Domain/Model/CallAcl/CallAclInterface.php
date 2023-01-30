@@ -65,8 +65,6 @@ interface CallAclInterface extends LoggableEntityInterface
 
     public function getCompany(): CompanyInterface;
 
-    public function isInitialized(): bool;
-
     public function addRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;
 
     public function removeRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;

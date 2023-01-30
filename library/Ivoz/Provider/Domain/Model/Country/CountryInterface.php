@@ -52,6 +52,4 @@ interface CountryInterface extends LoggableEntityInterface
     public function getName(): Name;
 
     public function getZone(): Zone;
-
-    public function isInitialized(): bool;
 }

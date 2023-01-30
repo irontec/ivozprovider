@@ -56,6 +56,4 @@ interface SpecialNumberInterface extends LoggableEntityInterface
     public function getBrand(): ?BrandInterface;
 
     public function getCountry(): CountryInterface;
-
-    public function isInitialized(): bool;
 }
