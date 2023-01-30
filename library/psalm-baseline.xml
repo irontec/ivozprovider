@@ -88,12 +88,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <PossiblyUnusedReturnValue occurrences="4">
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-      <code>static</code>
-    </PossiblyUnusedReturnValue>
   </file>
   <file src="Ivoz/Ast/Domain/Model/PsIdentify/PsIdentifyTrait.php">
     <MixedArgument occurrences="1">
@@ -1603,8 +1597,7 @@
     </UndefinedThisPropertyFetch>
   </file>
   <file src="Ivoz/Kam/Infrastructure/Kamailio/TrunksClient.php">
-    <MissingParamType occurrences="2">
-      <code>$gw_id</code>
+    <MissingParamType occurrences="1">
       <code>$luuid</code>
     </MissingParamType>
   </file>
@@ -3072,8 +3065,9 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-    <MixedPropertyTypeCoercion occurrences="13">
+    <MixedPropertyTypeCoercion occurrences="14">
       <code>$companyServices</code>
+      <code>$contacts</code>
       <code>$ddis</code>
       <code>$extensions</code>
       <code>$friends</code>
@@ -3102,6 +3096,9 @@
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>setCompany</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CompanyRelCodec/CompanyRelCodec.php">
     <MethodSignatureMismatch occurrences="1">
@@ -3614,6 +3611,55 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomTrait.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Contact/Contact.php">
+    <MethodSignatureMismatch occurrences="1">
+      <code>Contact</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Contact/ContactAbstract.php">
+    <MixedArgument occurrences="8">
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($company)</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getMobilePhoneCountry())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getMobilePhoneCountry())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getUser())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getWorkPhoneCountry())</code>
+      <code>$fkTransformer-&gt;transform($dto-&gt;getWorkPhoneCountry())</code>
+    </MixedArgument>
+    <UnsafeInstantiation occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Contact/ContactDto.php">
+    <MixedArgument occurrences="1">
+      <code>func_get_args()</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php">
+    <MissingParamType occurrences="5">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="4">
+      <code>getCompanyId</code>
+      <code>getMobilePhoneCountryId</code>
+      <code>getUserId</code>
+      <code>getWorkPhoneCountryId</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="4">
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MixedArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Model/Contact/ContactTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
     </MixedArgument>
@@ -7310,7 +7356,8 @@
     </MixedArgument>
   </file>
   <file src="Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php">
-    <MissingParamType occurrences="14">
+    <MissingParamType occurrences="15">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -7326,11 +7373,12 @@
       <code>$id</code>
       <code>$id</code>
     </MissingParamType>
-    <MissingReturnType occurrences="13">
+    <MissingReturnType occurrences="14">
       <code>getBossAssistantId</code>
       <code>getBossAssistantWhiteListId</code>
       <code>getCallAclId</code>
       <code>getCompanyId</code>
+      <code>getContactId</code>
       <code>getExtensionId</code>
       <code>getLanguageId</code>
       <code>getLocationId</code>
@@ -7341,7 +7389,8 @@
       <code>getTransformationRuleSetId</code>
       <code>getVoicemailId</code>
     </MissingReturnType>
-    <MixedArgument occurrences="13">
+    <MixedArgument occurrences="14">
+      <code>$id</code>
       <code>$id</code>
       <code>$id</code>
       <code>$id</code>
@@ -7949,6 +7998,11 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
+  </file>
+  <file src="Ivoz/Provider/Domain/Service/Contact/UpdateByExtension.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$extension</code>
+    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/DdiProvider/DdiProviderLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">

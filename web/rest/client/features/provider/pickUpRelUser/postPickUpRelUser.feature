@@ -51,7 +51,8 @@ Feature: Create pick up rel users
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "location": 1,
-              "voicemail": null
+              "voicemail": null,
+              "contact": null
           }
       }
     """
@@ -96,7 +97,8 @@ Feature: Create pick up rel users
                 "outgoingDdi": null,
                 "outgoingDdiRule": null,
                 "location": 1,
-                "voicemail": null
+                "voicemail": null,
+                "contact": null
             }
       }
     """
