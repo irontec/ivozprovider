@@ -135,8 +135,6 @@ interface ExtensionInterface extends LoggableEntityInterface
 
     public function getVoicemail(): ?VoicemailInterface;
 
-    public function isInitialized(): bool;
-
     public function addUser(UserInterface $user): ExtensionInterface;
 
     public function removeUser(UserInterface $user): ExtensionInterface;

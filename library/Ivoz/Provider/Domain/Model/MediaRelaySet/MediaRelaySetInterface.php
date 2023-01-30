@@ -48,6 +48,4 @@ interface MediaRelaySetInterface extends LoggableEntityInterface
     public function getName(): string;
 
     public function getDescription(): ?string;
-
-    public function isInitialized(): bool;
 }

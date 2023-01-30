@@ -48,6 +48,4 @@ interface ProxyUserInterface extends LoggableEntityInterface
     public function getName(): ?string;
 
     public function getIp(): ?string;
-
-    public function isInitialized(): bool;
 }

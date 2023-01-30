@@ -59,6 +59,4 @@ interface ServiceInterface extends LoggableEntityInterface
     public function getName(): Name;
 
     public function getDescription(): Description;
-
-    public function isInitialized(): bool;
 }

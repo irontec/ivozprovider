@@ -135,8 +135,6 @@ interface IvrInterface extends LoggableEntityInterface
 
     public function getErrorNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     public function addEntry(IvrEntryInterface $entry): IvrInterface;
 
     public function removeEntry(IvrEntryInterface $entry): IvrInterface;

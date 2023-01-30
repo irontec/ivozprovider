@@ -71,8 +71,6 @@ interface CalendarInterface extends LoggableEntityInterface
 
     public function getCompany(): CompanyInterface;
 
-    public function isInitialized(): bool;
-
     public function addHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface;
 
     public function removeHolidayDate(HolidayDateInterface $holidayDate): CalendarInterface;

@@ -56,6 +56,4 @@ interface MaxUsageNotificationInterface extends LoggableEntityInterface
     public function getNotificationTemplate(): ?NotificationTemplateInterface;
 
     public function getCompany(): ?CompanyInterface;
-
-    public function isInitialized(): bool;
 }

@@ -111,8 +111,6 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     public function addCondition(ConditionalRoutesConditionInterface $condition): ConditionalRouteInterface;
 
     public function removeCondition(ConditionalRoutesConditionInterface $condition): ConditionalRouteInterface;

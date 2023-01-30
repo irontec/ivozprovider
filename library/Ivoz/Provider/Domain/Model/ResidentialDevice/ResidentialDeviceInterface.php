@@ -193,8 +193,6 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function getLanguage(): ?LanguageInterface;
 
-    public function isInitialized(): bool;
-
     public function setVoicemail(VoicemailInterface $voicemail): static;
 
     public function getVoicemail(): ?VoicemailInterface;

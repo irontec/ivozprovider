@@ -156,8 +156,6 @@ interface BrandInterface extends LoggableEntityInterface, FileContainerInterface
 
     public function getMaxDailyUsageNotificationTemplate(): ?NotificationTemplateInterface;
 
-    public function isInitialized(): bool;
-
     public function addCompany(CompanyInterface $company): BrandInterface;
 
     public function removeCompany(CompanyInterface $company): BrandInterface;

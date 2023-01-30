@@ -100,8 +100,6 @@ interface RatingPlanInterface extends LoggableEntityInterface
 
     public function getDestinationRateGroup(): DestinationRateGroupInterface;
 
-    public function isInitialized(): bool;
-
     public function setTpTiming(TpTimingInterface $tpTiming): static;
 
     public function getTpTiming(): ?TpTimingInterface;

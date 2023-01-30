@@ -52,6 +52,4 @@ interface ExternalCallFilterBlackListInterface extends LoggableEntityInterface
     public function getFilter(): ?ExternalCallFilterInterface;
 
     public function getMatchlist(): MatchListInterface;
-
-    public function isInitialized(): bool;
 }

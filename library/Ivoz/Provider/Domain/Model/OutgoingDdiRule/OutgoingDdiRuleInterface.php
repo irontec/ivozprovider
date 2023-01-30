@@ -75,8 +75,6 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 
     public function getCompany(): CompanyInterface;
 
-    public function isInitialized(): bool;
-
     public function addPattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;
 
     public function removePattern(OutgoingDdiRulesPatternInterface $pattern): OutgoingDdiRuleInterface;

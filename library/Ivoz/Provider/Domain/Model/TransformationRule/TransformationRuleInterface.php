@@ -72,6 +72,4 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     public function setTransformationRuleSet(?TransformationRuleSetInterface $transformationRuleSet = null): static;
 
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;
-
-    public function isInitialized(): bool;
 }

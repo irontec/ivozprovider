@@ -56,6 +56,4 @@ interface PublicEntityInterface extends LoggableEntityInterface
     public function getClient(): bool;
 
     public function getName(): Name;
-
-    public function isInitialized(): bool;
 }

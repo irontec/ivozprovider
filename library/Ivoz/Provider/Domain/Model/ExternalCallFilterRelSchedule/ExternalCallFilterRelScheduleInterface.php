@@ -52,6 +52,4 @@ interface ExternalCallFilterRelScheduleInterface extends LoggableEntityInterface
     public function getFilter(): ?ExternalCallFilterInterface;
 
     public function getSchedule(): ScheduleInterface;
-
-    public function isInitialized(): bool;
 }

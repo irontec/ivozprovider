@@ -63,6 +63,4 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getPriority(): int;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

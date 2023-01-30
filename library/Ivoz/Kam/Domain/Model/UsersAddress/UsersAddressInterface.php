@@ -63,6 +63,4 @@ interface UsersAddressInterface extends LoggableEntityInterface
     public function getDescription(): ?string;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

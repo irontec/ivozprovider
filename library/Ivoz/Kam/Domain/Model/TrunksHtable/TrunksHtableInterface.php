@@ -47,6 +47,4 @@ interface TrunksHtableInterface extends EntityInterface
     public function getKeyValue(): string;
 
     public function getExpires(): int;
-
-    public function isInitialized(): bool;
 }

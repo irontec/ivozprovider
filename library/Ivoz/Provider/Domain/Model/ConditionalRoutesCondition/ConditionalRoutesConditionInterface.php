@@ -180,8 +180,6 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     public function addRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;
 
     public function removeRelMatchlist(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist): ConditionalRoutesConditionInterface;

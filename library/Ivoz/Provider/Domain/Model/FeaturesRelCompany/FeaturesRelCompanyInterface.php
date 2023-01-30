@@ -52,6 +52,4 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
     public function getCompany(): ?CompanyInterface;
 
     public function getFeature(): FeatureInterface;
-
-    public function isInitialized(): bool;
 }

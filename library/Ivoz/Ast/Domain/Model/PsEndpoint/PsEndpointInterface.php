@@ -154,6 +154,4 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function setRetailAccount(?RetailAccountInterface $retailAccount = null): static;
 
     public function getRetailAccount(): ?RetailAccountInterface;
-
-    public function isInitialized(): bool;
 }
