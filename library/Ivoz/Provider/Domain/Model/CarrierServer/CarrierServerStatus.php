@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class CarrierServerStatus
 {
     /**
