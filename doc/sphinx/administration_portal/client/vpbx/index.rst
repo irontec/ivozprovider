@@ -22,5 +22,6 @@ This section will explain all these topics related to the most feature-full type
     faxes
     services
     voicemails
+    addressbook
     rating_profiles
     calls/index

@@ -70,7 +70,8 @@ Feature: Retrieve queue members
                   "outgoingDdi": null,
                   "outgoingDdiRule": null,
                   "location": null,
-                  "voicemail": null
+                  "voicemail": null,
+                  "contact": null
               }
           }
       ]
@@ -141,7 +142,8 @@ Feature: Retrieve queue members
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "location": null,
-              "voicemail": null
+              "voicemail": null,
+              "contact": null
           }
       }
     """

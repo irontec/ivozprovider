@@ -114,6 +114,10 @@ const getEntityMap = (): ExtendedRouteMap => {
           isAccessible: (aboutMe) => aboutMe.vpbx,
         },
         {
+          entity: entities.Contact,
+          isAccessible: (aboutMe) => aboutMe.vpbx,
+        },
+        {
           entity: {
             ...entities.RatingProfile,
             acl: {

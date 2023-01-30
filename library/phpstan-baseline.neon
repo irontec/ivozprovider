@@ -3796,6 +3796,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getContacts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:getCountryId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
@@ -3937,6 +3942,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setCompanyServices\\(\\) has parameter \\$companyServices with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDtoAbstract\\:\\:setContacts\\(\\) has parameter \\$contacts with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/CompanyDtoAbstract.php
 
@@ -4739,6 +4749,76 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomRepository.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDto.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDto\\:\\:filterUserContactReadOnlyFields\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDto.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDto\\:\\:filterUserContactReadOnlyFields\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDto.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getMobilePhoneCountryId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getUserId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:getWorkPhoneCountryId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:setMobilePhoneCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:setUserId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDtoAbstract\\:\\:setWorkPhoneCountryId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactDtoAbstract.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactRepository.php
+
+		-
+			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/Contact/ContactRepository.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryDtoAbstract\\:\\:setId\\(\\) has parameter \\$id with no typehint specified\\.$#"
@@ -9381,6 +9461,11 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
 		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getContactId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
+
+		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:getExtensionId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
@@ -9457,6 +9542,11 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:setCompanyId\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDtoAbstract\\:\\:setContactId\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/UserDtoAbstract.php
 
@@ -10249,6 +10339,16 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\ConditionalRoutesConditionsRelSchedule\\\\ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Contact\\\\UpdateByExtension\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Contact/UpdateByExtension.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Contact\\\\UpdateByUser\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/Contact/UpdateByUser.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\DdiProvider\\\\SendTrunksAddressPermissionsReloadRequest\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
