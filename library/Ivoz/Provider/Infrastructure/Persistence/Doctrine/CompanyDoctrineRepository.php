@@ -192,4 +192,30 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
 
         return $response;
     }
+
+    public function getBillingEnabledCompanyIdsByBrand(int $brandId): array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $criteria = CriteriaHelper::fromArray([
+            ['brand', 'eq', $brandId],
+            ['billingMethod', 'neq', CompanyInterface::BILLINGMETHOD_NONE]
+        ]);
+
+        $qb
+            ->select('self.id')
+            ->addCriteria($criteria);
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        return
+            array_map(
+                'intval',
+                array_column(
+                    $result,
+                    'id'
+                )
+            );
+    }
 }
