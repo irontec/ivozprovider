@@ -19,6 +19,7 @@ class ContactDto extends ContactDtoAbstract
                 'workPhoneE164' => 'workPhoneE164',
                 'mobilePhoneE164' => 'mobilePhoneE164',
                 'otherPhone' => 'otherPhone',
+                'userId' => 'user',
             ];
         }
 
