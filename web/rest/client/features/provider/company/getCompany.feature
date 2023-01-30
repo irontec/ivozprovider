@@ -18,7 +18,8 @@ Feature: Retrieve companies
               "type": "vpbx",
               "name": "DemoCompany",
               "nif": "12345678A",
-              "id": 1
+              "id": 1,
+              "domainName": "127.0.0.1"
           }
       ]
     """
@@ -46,7 +47,8 @@ Feature: Retrieve companies
               "name": {
                   "en": "es",
                   "es": "es",
-                  "ca": "es"
+                  "ca": "es",
+                  "it": "es"
               }
           },
           "defaultTimezone": {
@@ -56,7 +58,8 @@ Feature: Retrieve companies
               "label": {
                   "en": "en",
                   "es": "es",
-                  "ca": "ca"
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           },
@@ -67,12 +70,14 @@ Feature: Retrieve companies
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           },
           "transformationRuleSet": {
@@ -85,7 +90,9 @@ Feature: Retrieve companies
               "id": 1,
               "name": {
                   "en": "en",
-                  "es": "es"
+                  "es": "es",
+                  "ca": "ca",
+                  "it": "it"
               },
               "country": 68
           },
