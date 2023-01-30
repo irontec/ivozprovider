@@ -61,6 +61,4 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): static;
 
     public function getOutgoingRouting(): OutgoingRoutingInterface;
-
-    public function isInitialized(): bool;
 }

@@ -59,6 +59,4 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getDescription(): string;
 
     public function getApplicationServer(): ApplicationServerInterface;
-
-    public function isInitialized(): bool;
 }

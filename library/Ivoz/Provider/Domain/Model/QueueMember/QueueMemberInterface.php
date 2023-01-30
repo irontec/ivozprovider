@@ -54,6 +54,4 @@ interface QueueMemberInterface extends LoggableEntityInterface
     public function setUser(UserInterface $user): static;
 
     public function getUser(): UserInterface;
-
-    public function isInitialized(): bool;
 }

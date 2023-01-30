@@ -54,6 +54,4 @@ interface CodecInterface extends LoggableEntityInterface
     public function getIden(): string;
 
     public function getName(): string;
-
-    public function isInitialized(): bool;
 }

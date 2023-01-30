@@ -59,6 +59,4 @@ interface CompanyServiceInterface extends LoggableEntityInterface
     public function getCompany(): CompanyInterface;
 
     public function getService(): ServiceInterface;
-
-    public function isInitialized(): bool;
 }

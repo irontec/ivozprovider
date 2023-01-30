@@ -60,8 +60,6 @@ interface DomainInterface extends LoggableEntityInterface
 
     public function getDescription(): ?string;
 
-    public function isInitialized(): bool;
-
     public function addFriend(FriendInterface $friend): DomainInterface;
 
     public function removeFriend(FriendInterface $friend): DomainInterface;

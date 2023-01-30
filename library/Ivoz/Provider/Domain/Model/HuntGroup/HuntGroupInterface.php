@@ -105,8 +105,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     public function getNoAnswerNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     public function addHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;
 
     public function removeHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;

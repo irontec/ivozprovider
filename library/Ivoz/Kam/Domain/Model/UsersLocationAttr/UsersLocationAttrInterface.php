@@ -50,6 +50,4 @@ interface UsersLocationAttrInterface extends EntityInterface
     public function getAvalue(): string;
 
     public function getLastModified(): \DateTime;
-
-    public function isInitialized(): bool;
 }

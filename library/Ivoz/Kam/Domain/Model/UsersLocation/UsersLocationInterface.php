@@ -81,6 +81,4 @@ interface UsersLocationInterface extends EntityInterface
     public function getKeepalive(): int;
 
     public function getPartition(): int;
-
-    public function isInitialized(): bool;
 }

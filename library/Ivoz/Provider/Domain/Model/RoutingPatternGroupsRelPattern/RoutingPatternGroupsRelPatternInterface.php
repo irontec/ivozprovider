@@ -54,6 +54,4 @@ interface RoutingPatternGroupsRelPatternInterface extends LoggableEntityInterfac
     public function setRoutingPatternGroup(?RoutingPatternGroupInterface $routingPatternGroup = null): static;
 
     public function getRoutingPatternGroup(): ?RoutingPatternGroupInterface;
-
-    public function isInitialized(): bool;
 }

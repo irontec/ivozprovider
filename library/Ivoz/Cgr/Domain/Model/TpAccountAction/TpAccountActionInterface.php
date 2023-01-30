@@ -68,6 +68,4 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getCompany(): ?CompanyInterface;
 
     public function getCarrier(): ?CarrierInterface;
-
-    public function isInitialized(): bool;
 }

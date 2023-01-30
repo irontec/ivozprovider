@@ -61,6 +61,4 @@ interface FaxInterface extends LoggableEntityInterface
     public function getSendByEmail(): bool;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

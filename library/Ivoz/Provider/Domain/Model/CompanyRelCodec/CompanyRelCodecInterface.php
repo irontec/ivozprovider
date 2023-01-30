@@ -52,6 +52,4 @@ interface CompanyRelCodecInterface extends LoggableEntityInterface
     public function getCompany(): ?CompanyInterface;
 
     public function getCodec(): CodecInterface;
-
-    public function isInitialized(): bool;
 }

@@ -69,8 +69,6 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
 
     public function getDdiProvider(): DdiProviderInterface;
 
-    public function isInitialized(): bool;
-
     public function setTrunksUacreg(TrunksUacregInterface $trunksUacreg): static;
 
     public function getTrunksUacreg(): ?TrunksUacregInterface;

@@ -68,6 +68,4 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getVersion(): int;
 
     public function getBrand(): BrandInterface;
-
-    public function isInitialized(): bool;
 }

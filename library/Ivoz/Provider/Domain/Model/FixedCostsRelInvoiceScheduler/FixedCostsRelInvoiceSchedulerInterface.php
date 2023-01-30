@@ -75,6 +75,4 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public function getInvoiceScheduler(): ?InvoiceSchedulerInterface;
 
     public function getDdisCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 }

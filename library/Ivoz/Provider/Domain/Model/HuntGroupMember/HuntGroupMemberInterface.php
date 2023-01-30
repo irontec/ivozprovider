@@ -75,8 +75,6 @@ interface HuntGroupMemberInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @param string $prefix
      * @return null|string

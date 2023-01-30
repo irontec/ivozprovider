@@ -76,6 +76,4 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getSpecificUrlPattern(): ?string;
 
     public function getTerminalManufacturer(): TerminalManufacturerInterface;
-
-    public function isInitialized(): bool;
 }

@@ -70,6 +70,4 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     public function getMatchList(): MatchListInterface;
 
     public function getNumberCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 }

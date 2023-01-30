@@ -99,8 +99,6 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getLocution(): ?LocutionInterface;
 
-    public function isInitialized(): bool;
-
     public function setAstVoicemail(\Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $astVoicemail): static;
 
     public function getAstVoicemail(): ?\Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;

@@ -52,6 +52,4 @@ interface ConditionalRoutesConditionsRelRouteLockInterface extends LoggableEntit
     public function getCondition(): ?ConditionalRoutesConditionInterface;
 
     public function getRouteLock(): RouteLockInterface;
-
-    public function isInitialized(): bool;
 }

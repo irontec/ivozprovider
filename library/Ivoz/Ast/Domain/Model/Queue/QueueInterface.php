@@ -96,6 +96,4 @@ interface QueueInterface extends LoggableEntityInterface
     public function getWeight(): ?int;
 
     public function getQueue(): \Ivoz\Provider\Domain\Model\Queue\QueueInterface;
-
-    public function isInitialized(): bool;
 }

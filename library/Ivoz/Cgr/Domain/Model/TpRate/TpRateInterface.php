@@ -75,6 +75,4 @@ interface TpRateInterface extends LoggableEntityInterface
     public function setDestinationRate(DestinationRateInterface $destinationRate): static;
 
     public function getDestinationRate(): DestinationRateInterface;
-
-    public function isInitialized(): bool;
 }

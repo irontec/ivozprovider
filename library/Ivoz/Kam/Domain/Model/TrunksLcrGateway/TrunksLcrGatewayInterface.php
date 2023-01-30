@@ -73,6 +73,4 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function setCarrierServer(?CarrierServerInterface $carrierServer = null): static;
 
     public function getCarrierServer(): ?CarrierServerInterface;
-
-    public function isInitialized(): bool;
 }

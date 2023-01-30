@@ -76,6 +76,4 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getSunday(): ?bool;
 
     public function getCompany(): CompanyInterface;
-
-    public function isInitialized(): bool;
 }

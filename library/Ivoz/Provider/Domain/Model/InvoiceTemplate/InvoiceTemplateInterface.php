@@ -62,6 +62,4 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function getTemplateFooter(): ?string;
 
     public function getBrand(): ?BrandInterface;
-
-    public function isInitialized(): bool;
 }

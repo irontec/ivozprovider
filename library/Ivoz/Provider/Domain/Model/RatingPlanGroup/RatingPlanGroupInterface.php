@@ -81,8 +81,6 @@ interface RatingPlanGroupInterface extends LoggableEntityInterface
 
     public function getCurrency(): ?CurrencyInterface;
 
-    public function isInitialized(): bool;
-
     public function addRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface;
 
     public function removeRatingPlan(RatingPlanInterface $ratingPlan): RatingPlanGroupInterface;

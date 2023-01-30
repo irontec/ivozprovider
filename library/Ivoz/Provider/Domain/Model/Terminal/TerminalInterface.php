@@ -126,8 +126,6 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function getTerminalModel(): ?TerminalModelInterface;
 
-    public function isInitialized(): bool;
-
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 
     public function getPsEndpoint(): ?PsEndpointInterface;

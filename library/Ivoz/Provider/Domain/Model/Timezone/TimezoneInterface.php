@@ -53,6 +53,4 @@ interface TimezoneInterface extends LoggableEntityInterface
     public function getLabel(): Label;
 
     public function getCountry(): ?CountryInterface;
-
-    public function isInitialized(): bool;
 }

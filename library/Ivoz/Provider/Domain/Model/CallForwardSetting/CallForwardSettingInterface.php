@@ -143,8 +143,6 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
 
     public function getDdi(): ?DdiInterface;
 
-    public function isInitialized(): bool;
-
     /**
      * @param string $prefix
      * @return null|string

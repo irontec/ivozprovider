@@ -99,6 +99,4 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getCreatedAt(): \DateTime;
 
     public function getBrand(): BrandInterface;
-
-    public function isInitialized(): bool;
 }

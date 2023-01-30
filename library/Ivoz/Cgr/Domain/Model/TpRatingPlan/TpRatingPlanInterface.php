@@ -61,6 +61,4 @@ interface TpRatingPlanInterface extends LoggableEntityInterface
     public function setRatingPlan(RatingPlanInterface $ratingPlan): static;
 
     public function getRatingPlan(): RatingPlanInterface;
-
-    public function isInitialized(): bool;
 }
