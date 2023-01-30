@@ -841,6 +841,10 @@ Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateConte
       required:
       - notificationTemplate
 
+Ivoz\Provider\Domain\Model\Carrier\CarrierStatus:
+  itemOperations: []
+  collectionOperations: []
+
 Ivoz\Provider\Domain\Model\Carrier\Carrier:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -859,6 +863,10 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
       required:
       - brand
       - transformationRuleSet
+
+Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerStatus:
+  itemOperations: []
+  collectionOperations: []
 
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
   itemOperations:

@@ -67,10 +67,8 @@ Feature: Create carrier servers
           "authNeeded": "no",
           "sipProxy": "127.0.0.3",
           "id": 3,
-          "status": [
-              {
-                  "registered": false
-              }
-          ]
+          "status": {
+              "registered": false
+          }
       }
     """

@@ -2,12 +2,21 @@
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class CarrierServerDto extends CarrierServerDtoAbstract
 {
     public const CONTEXT_STATUS = 'status';
 
-    /** @var CarrierServerStatus[] $status */
-    private array $status = [];
+    /**
+     * @var ?CarrierServerStatus
+     * @AttributeDefinition(
+     *     type="object",
+     *     class="Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerStatus",
+     *     description="Registration status"
+     * )
+     */
+    private $status;
 
     protected $sensitiveFields = [
         'authPassword',
@@ -26,7 +35,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
                 'hostname' => 'hostname',
                 'sipProxy' => 'sipProxy',
                 'authNeeded' => 'authNeeded',
-                'status' => [['registered']]
+                'status' => ['registered']
             ];
 
             if ($role === 'ROLE_BRAND_ADMIN') {
@@ -44,7 +53,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
                 'sipProxy' => 'sipProxy',
                 'authNeeded' => 'authNeeded',
                 'outboundProxy' => 'outboundProxy',
-                'status' => [['registered']]
+                'status' => ['registered']
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -75,7 +84,7 @@ class CarrierServerDto extends CarrierServerDtoAbstract
 
     public function addStatus(CarrierServerStatus $status): static
     {
-        $this->status[] = $status;
+        $this->status = $status;
 
         return $this;
     }
@@ -84,12 +93,9 @@ class CarrierServerDto extends CarrierServerDtoAbstract
     {
         $response = parent::toArray($hideSensitiveData);
 
-        $response['status'] = array_map(
-            function (CarrierServerStatus $registrationStatus): array {
-                return $registrationStatus->toArray();
-            },
-            $this->status
-        );
+        if (!is_null($this->status)) {
+            $response['status'] = $this->status->toArray();
+        }
 
         return $response;
     }

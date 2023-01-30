@@ -2,9 +2,19 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 class CarrierDto extends CarrierDtoAbstract
 {
-    private ?CarrierStatus $status = null;
+    /**
+     * @var ?CarrierStatus
+     * @AttributeDefinition(
+     *     type="object",
+     *     class="Ivoz\Provider\Domain\Model\Carrier\CarrierStatus",
+     *     description="Registration status"
+     * )
+     */
+    private $status = null;
 
     /**
      * @inheritdoc
