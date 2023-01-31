@@ -70,7 +70,6 @@
               "es": "es",
               "es": "es",
               "it": "it"
-          },
-          "currency": null
+          }
       }
     """

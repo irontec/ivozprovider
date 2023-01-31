@@ -120,10 +120,10 @@ class DestinationLifeCycleTest extends KernelTestCase
             $changelog,
             [
                 'tpid' => 'b1',
-                'tag' => 'b1dst3',
+                'tag' => 'b1dst4',
                 'prefix' => '+34',
-                'destinationId' => 3,
-                'id' => 1,
+                'destinationId' => 4,
+                'id' => 2,
             ],
             [
                 'created_at'

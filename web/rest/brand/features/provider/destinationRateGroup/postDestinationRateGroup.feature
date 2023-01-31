@@ -44,7 +44,8 @@ Content-Disposition: form-data; name="destinationRateGroup"
         "delimiter": ",",
         "enclosure": "\"",
         "ignoreFirst": false
-    }
+    },
+    "currency": 1
 }
 ----IvozProviderFormBoundaryFUBrG71LG0e8DuZ8
 Content-Disposition: form-data; name="file"; filename="prices.csv"
@@ -144,6 +145,16 @@ Content-Type: text/csv
                   "ignoreFirst": false
               }
           },
-          "currency": "~"
+          "currency": {
+              "iden": "EUR",
+              "symbol": "€",
+              "id": 1,
+              "name": {
+                  "en": "Euro",
+                  "es": "Euro",
+                  "ca": "Euro",
+                  "it": "Euro"
+              }
+          }
       }
     """
