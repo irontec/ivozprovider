@@ -1972,6 +1972,13 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
       - or:
         - inheritedOrNull:
             locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    delete_access_control:
+      ROLE_COMPANY_ADMIN:
+        - and:
+          - user:
+              isNull: ~
+          - residentialDevice:
+              isNull: ~
     swagger_context:
       required:
       - company
