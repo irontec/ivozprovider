@@ -16,7 +16,7 @@ const InvoiceTemplateSelectOptions: SelectOptionsType = ({
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as string, label: item.name as string });
+        options.push({ id: item.id as number, label: item.name as string });
       }
 
       callback(options);

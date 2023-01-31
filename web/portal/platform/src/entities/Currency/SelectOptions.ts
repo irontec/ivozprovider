@@ -3,20 +3,25 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const TerminalModelSelectOptions: SelectOptionsType = ({
+const CurrencySelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const TerminalModel = entities.TerminalModel;
+  const Currency = entities.Currency;
 
   return defaultEntityBehavior.fetchFks(
-    TerminalModel.path,
-    ['id', 'name'],
+    Currency.path,
+    ['id', 'name', 'symbol'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as number, label: item.name as string });
+        options.push({
+          id: item.id as number,
+          label: `${(item.name as Record<string, string>).en}  (${
+            item.symbol
+          })`,
+        });
       }
 
       callback(options);
@@ -25,4 +30,4 @@ const TerminalModelSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default TerminalModelSelectOptions;
+export default CurrencySelectOptions;

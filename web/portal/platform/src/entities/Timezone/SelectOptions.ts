@@ -1,3 +1,4 @@
+import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -12,10 +13,10 @@ const TimezoneSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     Timezone.path,
     ['id', 'tz'],
-    (data: any) => {
-      const options: any = {};
+    (data: Array<EntityValues>) => {
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.tz;
+        options.push({ id: item.id as number, label: item.tz as string });
       }
 
       callback(options);

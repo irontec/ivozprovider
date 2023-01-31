@@ -29,6 +29,14 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.Currency,
         },
+        {
+          entity: entities.Brand,
+          children: [
+            {
+              entity: entities.Administrator,
+            },
+          ],
+        },
       ],
     },
     {

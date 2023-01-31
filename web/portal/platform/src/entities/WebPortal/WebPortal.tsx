@@ -4,7 +4,11 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import Form from './Form';
 import selectOptions from './SelectOptions';
-import { WebPortalProperties } from './WebPortalProperties';
+import {
+  WebPortalProperties,
+  WebPortalPropertyList,
+} from './WebPortalProperties';
+import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: WebPortalProperties = {
   url: {
@@ -78,7 +82,7 @@ const WebPortal: EntityInterface = {
   iden: 'WebPortal',
   title: _('Platform Portal', { count: 2 }),
   path: '/web_portals',
-  toStr: (row: any) => row.name,
+  toStr: (row: WebPortalPropertyList<EntityValue>) => row.name as string,
   properties,
   columns: ['name', 'url', 'logo'],
   selectOptions,
