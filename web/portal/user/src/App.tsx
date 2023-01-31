@@ -11,20 +11,23 @@ import { useEffect } from 'react';
 export default function App(): JSX.Element {
   StoreContainer.store = store;
 
-  const apiSpecInitFn = useStoreActions((actions: any) => {
-    return actions.spec.init;
+  const apiSpecStore = useStoreActions((actions: any) => {
+    return actions.spec;
   });
-  const authInit = useStoreActions((actions: any) => actions.auth.init);
+  const authStore = useStoreActions((actions: any) => actions.auth);
   const setLoginProps = useStoreActions(
     (actions: any) => actions.auth.setLoginProps
   );
+
   useEffect(() => {
-    apiSpecInitFn();
     setLoginProps({
       path: '/user_login',
     });
-    authInit();
-  }, [apiSpecInitFn, authInit, setLoginProps]);
+    apiSpecStore.setSessionStoragePrefix('IP-user-');
+    apiSpecStore.init();
+    authStore.setSessionStoragePrefix('IP-user-');
+    authStore.init();
+  }, [apiSpecStore, authStore, setLoginProps]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
   const baseUrl = process.env.BASE_URL;

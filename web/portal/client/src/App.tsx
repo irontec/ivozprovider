@@ -11,12 +11,12 @@ import { StoreContainer } from '@irontec/ivoz-ui';
 export default function App(): JSX.Element {
   StoreContainer.store = store;
 
-  const apiSpecInitFn = useStoreActions((actions: any) => {
-    return actions.spec.init;
+  const apiSpecStore = useStoreActions((actions: any) => {
+    return actions.spec;
   });
+  const authStore = useStoreActions((actions: any) => actions.auth);
 
   const token = useStoreState((actions: any) => actions.auth.token);
-  const authInit = useStoreActions((actions: any) => actions.auth.init);
   const aboutMeResetProfile = useStoreActions(
     (actions: any) => actions.clientSession.aboutMe.resetProfile
   );
@@ -25,11 +25,13 @@ export default function App(): JSX.Element {
   );
 
   useEffect(() => {
-    apiSpecInitFn();
-    authInit();
+    apiSpecStore.setSessionStoragePrefix('IP-client-');
+    apiSpecStore.init();
+    authStore.setSessionStoragePrefix('IP-client-');
+    authStore.init();
     aboutMeResetProfile();
     aboutMeInit();
-  }, [apiSpecInitFn, authInit, token, aboutMeInit, aboutMeResetProfile]);
+  }, [apiSpecStore, authStore, token, aboutMeInit, aboutMeResetProfile]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
   const baseUrl = process.env.BASE_URL;
