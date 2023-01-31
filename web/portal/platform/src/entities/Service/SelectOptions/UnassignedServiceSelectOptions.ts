@@ -31,7 +31,7 @@ const UnassignedServiceSelectOptions: SelectOptionsType<
       const options: DropdownChoices = [];
       for (const item of data) {
         options.push({
-          id: item.id as string,
+          id: item.id as number,
           label: (item.name as string)[language as any],
         });
       }

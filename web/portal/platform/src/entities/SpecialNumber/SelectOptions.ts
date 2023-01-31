@@ -16,7 +16,7 @@ const GlobalSpecialNumberSelectOptions: SelectOptionsType = ({
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as string, label: item.number as string });
+        options.push({ id: item.id as number, label: item.number as string });
       }
 
       callback(options);

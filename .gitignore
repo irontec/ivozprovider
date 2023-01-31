@@ -13,7 +13,7 @@ storage/*
 mount-storage.sh
 **.phplint-cache
 **.phpunit.result.cache
-
+**/.nvmrc
 web/admin/storage
 web/admin/application/cache/*
 web/admin/public/img/

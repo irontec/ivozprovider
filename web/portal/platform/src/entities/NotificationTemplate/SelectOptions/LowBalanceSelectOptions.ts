@@ -3,20 +3,23 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const TerminalModelSelectOptions: SelectOptionsType = ({
+const LowBalanceSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const TerminalModel = entities.TerminalModel;
+  const NotificationTemplate = entities.NotificationTemplate;
 
   return defaultEntityBehavior.fetchFks(
-    TerminalModel.path,
+    `${NotificationTemplate.path}?type=lowbalance`,
     ['id', 'name'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as number, label: item.name as string });
+        options.push({
+          id: item.id as number,
+          label: NotificationTemplate.toStr(item),
+        });
       }
 
       callback(options);
@@ -25,4 +28,4 @@ const TerminalModelSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default TerminalModelSelectOptions;
+export default LowBalanceSelectOptions;

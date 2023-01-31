@@ -1,3 +1,4 @@
+import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -11,11 +12,14 @@ const AdministratorRelPublicEntitySelectOptions: SelectOptionsType = ({
 
   return defaultEntityBehavior.fetchFks(
     AdministratorRelPublicEntity.path,
-    ['id'],
-    (data: any) => {
-      const options: any = {};
+    ['id', 'administrator'],
+    (data: Array<EntityValues>) => {
+      const options: DropdownChoices = [];
       for (const item of data) {
-        options[item.id] = item.id;
+        options.push({
+          id: item.id as number,
+          label: (item.administrator as Record<string, string>).name,
+        });
       }
 
       callback(options);

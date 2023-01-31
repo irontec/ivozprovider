@@ -3,15 +3,15 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const TerminalModelSelectOptions: SelectOptionsType = ({
+const CallCsvSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const TerminalModel = entities.TerminalModel;
+  const NotificationTemplate = entities.NotificationTemplate;
 
   return defaultEntityBehavior.fetchFks(
-    TerminalModel.path,
+    `${NotificationTemplate.path}?type=callCsv`,
     ['id', 'name'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
@@ -25,4 +25,4 @@ const TerminalModelSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default TerminalModelSelectOptions;
+export default CallCsvSelectOptions;
