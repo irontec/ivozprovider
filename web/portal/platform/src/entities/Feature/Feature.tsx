@@ -3,20 +3,30 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { FeatureProperties, FeaturePropertyList } from './FeatureProperties';
 import selectOptions from './SelectOptions';
 
-const timezone: EntityInterface = {
+const properties: FeatureProperties = {
+  iden: {
+    label: _('Iden'),
+  },
+  id: {
+    label: _('Id'),
+  },
+  name: {
+    label: _('Name'),
+  },
+};
+
+const Feature: EntityInterface = {
   ...defaultEntityBehavior,
   icon: AccountTreeIcon,
-  iden: 'Timezone',
-  title: _('Timezone', { count: 2 }),
-  path: '/timezones',
-  acl: {
-    ...defaultEntityBehavior.acl,
-    iden: 'Timezones',
-  },
-  toStr: (row: EntityValues) => row.name as string,
+  iden: 'Feature',
+  title: _('Feature', { count: 2 }),
+  path: '/features',
+  toStr: (row: FeaturePropertyList<EntityValues>) => row.name?.en as string,
+  properties,
   selectOptions,
 };
 
-export default timezone;
+export default Feature;

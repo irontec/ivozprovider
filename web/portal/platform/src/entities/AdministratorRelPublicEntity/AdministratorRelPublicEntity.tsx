@@ -7,6 +7,7 @@ import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { AdministratorRelPublicEntityProperties } from './AdministratorRelPublicEntityProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
+import { EntityValues } from '@irontec/ivoz-ui';
 
 const properties: AdministratorRelPublicEntityProperties = {
   create: {
@@ -57,7 +58,7 @@ const AdministratorRelPublicEntity: EntityInterface = {
   iden: 'AdministratorRelPublicEntity',
   title: _('Administrator access privilege', { count: 2 }),
   path: '/administrator_rel_public_entities',
-  toStr: (row: any) => row.id,
+  toStr: (row: EntityValues): string => row.id as string,
   properties,
   columns: ['publicEntity', 'create', 'read', 'update', 'delete'],
   selectOptions,

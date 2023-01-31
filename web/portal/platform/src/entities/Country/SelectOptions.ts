@@ -21,7 +21,7 @@ const CountrySelectOptions: SelectOptionsType = ({
         const name = item.name as Record<string, string>;
 
         options.push({
-          id: item.id as string,
+          id: item.id as number,
           label: `${name[language]} (${item.countryCode})`,
         });
       }
