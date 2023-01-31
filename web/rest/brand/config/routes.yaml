@@ -131,4 +131,11 @@ post_provider_administrator_grant_read_only:
     _controller: Controller\Provider\Administrator\MassUpdateAclsAction
     _api_resource_class: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
     _api_item_operation_name: 'post_provider_administrator_grant_read_only'
+
+post_rating_plan_groups_simulate_call:
+  path: '/rating_plan_groups/{id}/simulate_call'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\SimulateCallAction
+    _api_item_operation_name: 'post_rating_plan_groups_simulate_call'
     _api_receive: false

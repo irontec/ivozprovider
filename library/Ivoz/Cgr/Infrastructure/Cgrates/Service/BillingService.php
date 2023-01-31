@@ -47,15 +47,8 @@ class BillingService implements BillingServiceInterface
 
     /**
      * Simulate call and get billing details
-     *
-     * @param string $tenant
-     * @param string $ratingPlanTag
-     * @param string $destination
-     * @param int $durationSeconds
-     *
-     * @return SimulatedCall
      */
-    public function simulateCallByRatingPlan(string $tenant, string $ratingPlanTag, string $destination, int $durationSeconds)
+    public function simulateCallByRatingPlan(string $tenant, string $ratingPlanTag, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());

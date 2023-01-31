@@ -28,7 +28,7 @@ Feature: Retrieve rating plan group
                   "ca": "ca",
                   "it": "it"
               },
-              "currency": null
+              "currency": 1
           },
           {
               "id": 2,
@@ -44,7 +44,7 @@ Feature: Retrieve rating plan group
                   "ca": "ca",
                   "it": "it"
               },
-              "currency": null
+              "currency": 1
           }
       ]
     """
@@ -71,7 +71,6 @@ Feature: Retrieve rating plan group
               "es": "es",
               "ca": "ca",
               "it": "it"
-          },
-          "currency": null
+          }
       }
     """

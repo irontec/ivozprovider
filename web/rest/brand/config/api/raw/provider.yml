@@ -961,7 +961,46 @@ Ivoz\Provider\Domain\Model\PublicEntity\Name: ~
 
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Name:
 Ivoz\Provider\Domain\Model\RatingPlanGroup\Description:
+Ivoz\Provider\Domain\Model\RatingPlanGroup\TarificationInfo:
+  itemOperations: []
+  collectionOperations: []
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+  itemOperations:
+    get: ~
+    put: ~
+    delete: ~
+    post_rating_plan_groups_simulate_call:
+      method: 'POST'
+      path: '/rating_plan_groups/{id}/simulate_call'
+      route_name: 'post_rating_plan_groups_simulate_call'
+      pagination_enabled: false
+      swagger_context:
+        consumes:
+        - 'application/x-www-form-urlencoded'
+        produces:
+        - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: number
+            in: formData
+            type: string
+            required: true
+            description: 'Phone number'
+          - name: duration
+            in: formData
+            type: integer
+            required: true
+            description: 'Call duration'
+        responses:
+          201:
+            description: "Simulated Call"
+            schema:
+              $ref: "#/definitions/TarificationInfo"
+          404:
+            description: "Resource not found"
+          400:
+            description: "Invalid input"
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
