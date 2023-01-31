@@ -216,7 +216,7 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
-                stage ('web-client') {
+                stage ('web-platform') {
                     agent {
                         docker {
                             image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
@@ -225,8 +225,8 @@ pipeline {
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
-                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
+                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-lint'
+                        sh '/opt/irontec/ivozprovider/web/portal/platform/bin/test-build'
                     }
                     post {
                         success { notifySuccessGithub() }
@@ -245,6 +245,23 @@ pipeline {
                         sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-lint'
                         sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-i18n'
                         sh '/opt/irontec/ivozprovider/web/portal/brand/bin/test-build'
+                    }
+                    post {
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
+                    }
+                }
+                stage ('web-client') {
+                    agent {
+                        docker {
+                            image "ironartemis/ivozprovider-testing-base:${env.DOCKER_IMAGE_TAG}"
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-lint'
+                        sh '/opt/irontec/ivozprovider/web/portal/client/bin/test-build'
                     }
                     post {
                         success { notifySuccessGithub() }
