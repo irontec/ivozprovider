@@ -1,6 +1,7 @@
 {
   "private": true,
   "workspaces": [
+    "platform",
     "brand",
     "client",
     "user"
