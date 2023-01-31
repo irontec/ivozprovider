@@ -21,6 +21,15 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
+if ($request->headers->has('cookie')) {
+    /** @var string $cookie */
+    $cookie = $request->headers->get('cookie');
+    if (str_contains($cookie, 'PHPSESSID')) {
+        //Ignore in order to avoid conflicts with klear php session
+        session_start();
+    }
+}
+
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
