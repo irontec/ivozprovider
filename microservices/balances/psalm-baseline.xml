@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
   <file src="src/Kernel.php">
-    <DeprecatedClass occurrences="4">
-      <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>
-      <code>$routes-&gt;import($confDir . '/{routes}/' . $this-&gt;environment . '/*' . self::CONFIG_EXTS, '/', 'glob')</code>
-      <code>$routes-&gt;import($confDir . '/{routes}/*' . self::CONFIG_EXTS, '/', 'glob')</code>
-      <code>RouteCollectionBuilder</code>
-    </DeprecatedClass>
     <MixedArrayAccess occurrences="2">
       <code>$envs[$this-&gt;environment]</code>
       <code>$envs['all']</code>
