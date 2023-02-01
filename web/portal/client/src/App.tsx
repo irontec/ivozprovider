@@ -7,9 +7,14 @@ import store, { useStoreActions, useStoreState } from 'store';
 import AppRoutes from './router/AppRoutes';
 import { useEffect } from 'react';
 import { StoreContainer } from '@irontec/ivoz-ui';
+import { languagesList } from './translations/languages';
 
 export default function App(): JSX.Element {
   StoreContainer.store = store;
+  const setLanguages = useStoreActions(
+    (actions: any) => actions.i18n.setLanguages
+  );
+  const languages = setLanguages(languagesList);
 
   const apiSpecStore = useStoreActions((actions: any) => {
     return actions.spec;
