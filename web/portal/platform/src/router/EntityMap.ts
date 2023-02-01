@@ -20,6 +20,14 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.BannedAddress,
         },
+        {
+          entity: entities.TerminalManufacturer,
+          children: [
+            {
+              entity: entities.TerminalModel,
+            },
+          ],
+        },
       ],
     },
     {
