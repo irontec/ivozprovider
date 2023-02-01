@@ -15,6 +15,14 @@ export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
+      label: _('Global'),
+      children: [
+        {
+          entity: entities.BannedAddress,
+        },
+      ],
+    },
+    {
       label: _('Clients'),
       children: [
         {

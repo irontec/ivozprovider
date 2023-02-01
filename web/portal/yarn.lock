@@ -605,7 +605,7 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@irontec/ivoz-ui@^0.11.5":
+"@irontec/ivoz-ui@^0.11.6":
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.11.6.tgz#6773b94f7a0d3de413627ee85a2c35af710ce2e0"
   integrity sha512-UpBObimU7/O2pBXBIoux12h4e5oBMybsWa6YoSU9/EefIzyHdFzC7vkr1RQhWrgQssuK9E4gowgaNJ9Iqf5JEg==
