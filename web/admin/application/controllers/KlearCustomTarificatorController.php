@@ -710,7 +710,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         /** @var CompanyBillingService $billingService */
         $billingService = $container->get(BillingService::class);
 
-        return $billingService->simulateCall(
+        return $billingService->simulateCallByRatingProfile(
             $tenant,
             $subject,
             $this->getParam('number'),

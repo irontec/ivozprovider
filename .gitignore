@@ -5,6 +5,8 @@
 .idea/*
 .vscode
 
+**/.unison.**
+
 vendor
 **/coverage/
 storage/*
