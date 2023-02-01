@@ -27,6 +27,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
+        {
+          entity: entities.WebPortal,
+        },
       ],
     },
   ];
