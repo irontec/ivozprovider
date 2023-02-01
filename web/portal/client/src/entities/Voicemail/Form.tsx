@@ -8,8 +8,7 @@ import { foreignKeyGetter } from '../Queue/foreignKeyGetter';
 import { useStoreState } from '../../store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match } = props;
-  const userVoicemail = row?.user != undefined;
+  const { entityService, row, match, edit } = props;
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
   const fkChoices = useFkChoices({
@@ -22,8 +21,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
   const readOnlyProperties = {
-    name: userVoicemail,
-    email: userVoicemail,
+    name: edit || false,
+    email: edit || false,
   };
 
   const groups: Array<FieldsetGroups> = [
@@ -33,11 +32,15 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
     {
       legend: _('Notification configuration'),
-      fields: ['sendMail', 'email', 'attachSound'],
+      fields: [
+        'sendMail',
+        aboutMe?.vpbx && 'email',
+        aboutMe?.vpbx && 'attachSound',
+      ],
     },
     {
       legend: _('Customization'),
-      fields: [!aboutMe?.residential && 'locution'],
+      fields: [aboutMe?.vpbx && 'locution'],
     },
   ];
 
