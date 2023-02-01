@@ -5,10 +5,13 @@ import routeMapParser, {
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
 import { AboutMe, ClientFeatures } from 'store/clientSession/aboutMe';
+import { EntityAclType } from '@irontec/ivoz-ui';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
+type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;
 export type ExtendedRouteMapItem = RouteMapItem & {
   isAccessible?: isAccessibleType;
+  aclOverride?: aclOverrideType;
 };
 export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 
@@ -204,6 +207,16 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.Voicemail,
           isAccessible: (aboutMe) => aboutMe.vpbx || aboutMe.residential,
+          aclOverride: (aboutMe) => {
+            return {
+              iden: entities.Voicemail.acl.iden,
+              read: true,
+              detail: false,
+              create: aboutMe.vpbx,
+              update: true,
+              delete: aboutMe.vpbx,
+            };
+          },
           children: [
             {
               entity: entities.VoicemailMessage,

@@ -49,6 +49,11 @@ const updateRouteMapItemByAcls = (
     return null;
   }
 
+  const aclOverride = routeMapItem.aclOverride;
+  if (aclOverride && isEntityItem(routeMapItem)) {
+    routeMapItem.entity.acl = aclOverride(aboutMe);
+  }
+
   if (!aboutMe.restricted) {
     return routeMapItem;
   }
