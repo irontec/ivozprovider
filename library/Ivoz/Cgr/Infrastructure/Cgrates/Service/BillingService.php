@@ -48,12 +48,7 @@ class BillingService implements BillingServiceInterface
     /**
      * Simulate call and get billing details
      *
-     * @param string $tenant
-     * @param string $subject
-     * @param int $durationSeconds
-     *
      * @throws \DomainException
-     * @return SimulatedCall
      */
     public function simulateCallByRatingProfile(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
     {
