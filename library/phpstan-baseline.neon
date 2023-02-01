@@ -10911,11 +10911,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/RatingPlan/RatingPlanLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\RatingProfile\\\\BillingServiceInterface\\:\\:simulateCall\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/RatingProfile/BillingServiceInterface.php
-
-		-
 			message: "#^Cannot call method getCurrencyIden\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/RatingProfile/CheckValidCurrency.php

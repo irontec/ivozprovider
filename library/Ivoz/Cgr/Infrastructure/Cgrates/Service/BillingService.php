@@ -25,7 +25,7 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
+    public function simulateCallByRatingProfile(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());

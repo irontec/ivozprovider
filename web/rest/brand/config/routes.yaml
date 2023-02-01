@@ -136,6 +136,14 @@ post_rating_plan_groups_simulate_call:
   path: '/rating_plan_groups/{id}/simulate_call'
   methods: ['POST']
   defaults:
-    _controller: Controller\Provider\SimulateCallAction
+    _controller: Controller\Provider\SimulateCall\SimulateCallRatingPlanGroupAction
     _api_item_operation_name: 'post_rating_plan_groups_simulate_call'
+    _api_receive: false
+
+post_rating_profiles_simulate_call:
+  path: '/rating_profiles/{id}/simulate_call'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\SimulateCall\SimulateCallRatingProfileAction
+    _api_item_operation_name: 'post_rating_profiles_simulate_call'
     _api_receive: false
