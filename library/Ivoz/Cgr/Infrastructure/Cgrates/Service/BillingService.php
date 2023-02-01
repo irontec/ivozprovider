@@ -25,31 +25,6 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
-    {
-        $answerDateTime = new \DateTime();
-        $answerDateTime->setTimestamp(time());
-        $answerDateTime->setTimezone(new \DateTimeZone('UTC'));
-
-        $payload = [
-            'Tenant' => $tenant,
-            'Subject' => $subject,
-            'Category' => 'call',
-            'AnswerTime' => $answerDateTime->format('Y-m-d\TH:i:s\Z'),
-            'Destination' => $destination,
-            'Usage' => "${durationSeconds}s"
-        ];
-
-        return $this->sendRequest(
-            $payload
-        );
-    }
-
-    /**
-     * Simulate call and get billing details
-     *
-     * @throws \DomainException
-     */
     public function simulateCallByRatingProfile(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
