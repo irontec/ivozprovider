@@ -33,6 +33,7 @@ build_webadmin: build_library
 
 build_webportals:
 	cd web/portal ; yarnpkg install
+	cd web/portal/platform; yarnpkg build
 	cd web/portal/brand; yarnpkg build
 	cd web/portal/client ; yarnpkg build
 	cd web/portal/user; yarnpkg build
