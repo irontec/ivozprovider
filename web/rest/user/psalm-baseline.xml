@@ -64,8 +64,6 @@
     </MixedInferredReturnType>
     <MixedMethodCall occurrences="7">
       <code>eq</code>
-      <code>eq</code>
-      <code>expr</code>
       <code>expr</code>
       <code>getEndTime</code>
       <code>getStartTime</code>
