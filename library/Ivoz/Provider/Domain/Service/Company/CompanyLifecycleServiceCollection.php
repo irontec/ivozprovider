@@ -20,6 +20,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
         "pre_persist" =>
         [
             \Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues::class => 10,
+            \Ivoz\Provider\Domain\Service\Company\SanitizeBillingMethod::class => 200,
         ],
         "post_persist" =>
         [
