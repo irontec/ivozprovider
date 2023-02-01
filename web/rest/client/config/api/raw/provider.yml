@@ -1950,6 +1950,15 @@ Ivoz\Provider\Domain\Model\User\User:
       - company
 
 Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
+  properties:
+    user:
+      attributes:
+        swagger_context:
+          readOnly: true
+    residentialDevice:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
@@ -1961,6 +1970,7 @@ Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
           eq: "user.getCompany().getId()"
     write_access_control:
     - and:
+      - raw: '!this.isNew() || this.getCompany().isVpbx()' #only vpbx admins can create voicemails
       - company:
           eq: "user.getCompany().getId()"
       - or:
