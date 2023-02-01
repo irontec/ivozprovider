@@ -2,14 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Service\RatingProfile;
 
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
+
 interface BillingServiceInterface
 {
-    /**
-     * Simulate call and get price
-     *
-     * @param string $tenant
-     * @param string $subject
-     * @param int $durationSeconds
-     */
-    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds);
+    public function simulateCallByRatingProfile(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall;
+
+    public function simulateCallByRatingPlan(string $tenant, string $ratingPlanTag, string $destination, int $durationSeconds): SimulatedCall;
 }
