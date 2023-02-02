@@ -28,6 +28,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
+        { entity: entities.Service },
       ],
     },
     {
