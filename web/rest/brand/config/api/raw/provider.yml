@@ -819,6 +819,8 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
           eq: "user.getBrand().getId()"
         company:
           isNull: ~
+Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile: ~
+Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile: ~
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   attributes:
