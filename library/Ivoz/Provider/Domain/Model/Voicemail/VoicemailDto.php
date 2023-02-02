@@ -22,4 +22,21 @@ class VoicemailDto extends VoicemailDtoAbstract
 
         return parent::getPropertyMap(...func_get_args());
     }
+
+    /**
+     * @param array<array-key, mixed> $data
+     */
+    public function denormalize(array $data, string $context, string $role = ''): void
+    {
+        $contextProperties = self::getPropertyMap($context, $role);
+        if ($role === 'ROLE_COMPANY_ADMIN') {
+            unset($contextProperties['userId']);
+            unset($contextProperties['residentialDeviceId']);
+        }
+
+        $this->setByContext(
+            $contextProperties,
+            $data
+        );
+    }
 }

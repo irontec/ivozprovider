@@ -72,3 +72,5 @@ Feature: Create voicemails
           "locution": null
       }
     """
+
+## Only vpbx clients can create generic voicemails

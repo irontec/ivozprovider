@@ -42,7 +42,7 @@ class ProviderVoicemail extends Fixture implements DependentFixtureInterface
             $this->setEmail("");
             $this->setSendMail(false);
             $this->setAttachSound(false);
-            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany4'));
             $this->setResidentialDevice($fixture->getReference('_reference_ProviderResidentialDevice1'));
         })->call($item2);
 
