@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
+  <file src="src/Behat/Context/FeatureContext.php">
+    <PossiblyInvalidCast occurrences="1">
+      <code>$container-&gt;getParameter('storagePath')</code>
+    </PossiblyInvalidCast>
+    <PropertyTypeCoercion occurrences="1"/>
+  </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">
       <code>$routes-&gt;import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob')</code>
@@ -31,8 +37,5 @@
     <MoreSpecificReturnType occurrences="1">
       <code>registerBundles</code>
     </MoreSpecificReturnType>
-    <UnresolvableInclude occurrences="1">
-      <code>require $this-&gt;getProjectDir() . '/config/bundles.php'</code>
-    </UnresolvableInclude>
   </file>
 </files>
