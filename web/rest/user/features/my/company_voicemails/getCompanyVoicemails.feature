@@ -23,13 +23,6 @@ Feature: Retrieve company voicemails
           },
           {
               "enabled": true,
-              "name": "Voicemail For Residential 1",
-              "email": "",
-              "id": 2,
-              "user": null
-          },
-          {
-              "enabled": true,
               "name": "Voicemail Generic 1",
               "email": "generic@voicemail.com",
               "id": 3,

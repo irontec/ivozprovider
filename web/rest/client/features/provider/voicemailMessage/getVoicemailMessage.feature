@@ -6,12 +6,12 @@ Feature: Retrieve voicemail messages
   @createSchema
   Scenario: Retrieve the voicemail messages json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "voicemail_messages"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemail_messages"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
     """
       [
           {
@@ -20,32 +20,18 @@ Feature: Retrieve voicemail messages
               "caller": "Alice <101>",
               "duration": 4,
               "id": 1
-          },
-          {
-              "calldate": "2022-03-31 16:27:27",
-              "folder": "INBOX",
-              "caller": "Alice <101>",
-              "duration": 9,
-              "id": 2
-          },
-          {
-              "calldate": "2022-03-31 16:41:22",
-              "folder": "Old",
-              "caller": "Alice <101>",
-              "duration": 11,
-              "id": 3
           }
       ]
     """
 
   Scenario: Retrieve certain voicemail message json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "voicemail_messages/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "voicemail_messages/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
     """
       {
           "calldate": "2022-03-31 14:08:43",

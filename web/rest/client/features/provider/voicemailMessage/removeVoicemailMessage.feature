@@ -8,5 +8,5 @@ Feature: Manage voicemail messages
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "DELETE" request to "/voicemail_messages/3"
+      And I send a "DELETE" request to "/voicemail_messages/1"
      Then the response status code should be 204
