@@ -8472,11 +8472,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/RatingProfile/BillingServiceInterface.php">
-    <MissingReturnType occurrences="1">
-      <code>simulateCall</code>
-    </MissingReturnType>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/RatingProfile/CheckValidCurrency.php">
     <ParamNameMismatch occurrences="1">
       <code>$ratingProfile</code>

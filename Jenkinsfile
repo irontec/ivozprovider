@@ -94,6 +94,7 @@ pipeline {
                     steps {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpstan'
                         sh '/opt/irontec/ivozprovider/library/bin/test-psalm'
+                        sh '/opt/irontec/ivozprovider/library/bin/test-psalm-update-baseline'
                     }
                     post {
                         success { notifySuccessGithub() }
