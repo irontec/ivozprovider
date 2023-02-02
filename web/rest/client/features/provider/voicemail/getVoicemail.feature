@@ -23,13 +23,6 @@ Feature: Retrieve voicemails
           },
           {
               "enabled": true,
-              "name": "Voicemail For Residential 1",
-              "email": "",
-              "id": 2,
-              "user": null
-          },
-          {
-              "enabled": true,
               "name": "Voicemail Generic 1",
               "email": "generic@voicemail.com",
               "id": 3,
@@ -50,11 +43,18 @@ Feature: Retrieve voicemails
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "voicemails"
      Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
     """
       [
+          {
+              "enabled": true,
+              "name": "Voicemail For Residential 1",
+              "email": "",
+              "id": 2,
+              "user": null
+          }
       ]
     """
 

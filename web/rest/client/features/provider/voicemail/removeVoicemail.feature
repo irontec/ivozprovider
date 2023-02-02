@@ -13,21 +13,21 @@ Feature: Manage voicemails
 
   Scenario: Remove a voicemail from a user
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/voicemails/1"
-    Then the response status code should be 403
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/voicemails/1"
+     Then the response status code should be 403
 
   Scenario: Remove a voicemail from a residential device
-    Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/voicemails/2"
-    Then the response status code should be 403
+    Given I add Residential Company Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/voicemails/2"
+     Then the response status code should be 403
 
   Scenario: Remove a voicemail from another company
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/voicemails/5"
-    Then the response status code should be 404
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/voicemails/5"
+     Then the response status code should be 404
