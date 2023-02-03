@@ -59,11 +59,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $routeType = null;
 
     /**
-     * @var bool|null
-     */
-    private $billInboundCalls = false;
-
-    /**
      * @var string|null
      */
     private $friendValue = null;
@@ -177,7 +172,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'recordCalls' => 'recordCalls',
             'displayName' => 'displayName',
             'routeType' => 'routeType',
-            'billInboundCalls' => 'billInboundCalls',
             'friendValue' => 'friendValue',
             'type' => 'type',
             'id' => 'id',
@@ -211,7 +205,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'recordCalls' => $this->getRecordCalls(),
             'displayName' => $this->getDisplayName(),
             'routeType' => $this->getRouteType(),
-            'billInboundCalls' => $this->getBillInboundCalls(),
             'friendValue' => $this->getFriendValue(),
             'type' => $this->getType(),
             'id' => $this->getId(),
@@ -316,18 +309,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getRouteType(): ?string
     {
         return $this->routeType;
-    }
-
-    public function setBillInboundCalls(bool $billInboundCalls): static
-    {
-        $this->billInboundCalls = $billInboundCalls;
-
-        return $this;
-    }
-
-    public function getBillInboundCalls(): ?bool
-    {
-        return $this->billInboundCalls;
     }
 
     public function setFriendValue(?string $friendValue): static
