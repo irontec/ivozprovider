@@ -17,7 +17,6 @@ Feature: Create Ddis
           "recordCalls": "none",
           "displayName": "",
           "routeType": "user",
-          "billInboundCalls": false,
           "friendValue": "",
           "conferenceRoom": null,
           "language": null,
