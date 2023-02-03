@@ -100,8 +100,7 @@
     <MissingPropertyType occurrences="1">
       <code>$retryInterval</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="11">
-      <code>$data</code>
+    <MixedArgument occurrences="10">
       <code>$job['rpcEntity']</code>
       <code>$job['rpcEntity']</code>
       <code>$job['rpcMethod']</code>
@@ -113,17 +112,13 @@
       <code>$this-&gt;retryInterval</code>
       <code>$this-&gt;retryInterval</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$data</code>
-    </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>array</code>
     </MixedInferredReturnType>
     <MixedReturnStatement occurrences="1">
       <code>\json_decode($data, true)</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="4">
-      <code>$response</code>
+    <PossiblyNullArgument occurrences="3">
       <code>$server-&gt;getIp()</code>
       <code>$server-&gt;getIp()</code>
       <code>$server-&gt;getName()</code>
