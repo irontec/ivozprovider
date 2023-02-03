@@ -1283,7 +1283,7 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
-      && user.isVpbxAdmin()
+      && (user.isVpbxAdmin() || user.isResidentialAdmin())
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
