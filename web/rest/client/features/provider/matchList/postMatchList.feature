@@ -21,7 +21,8 @@ Feature: Create match lists
       """
       {
           "name": "newMatchlist",
-          "id": 4
+          "id": 4,
+          "generic": false
       }
       """
 
@@ -36,6 +37,7 @@ Feature: Create match lists
       """
       {
           "name": "newMatchlist",
-          "id": 4
+          "id": 4,
+          "generic": false
       }
       """

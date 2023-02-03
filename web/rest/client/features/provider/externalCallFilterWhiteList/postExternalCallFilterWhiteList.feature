@@ -43,7 +43,8 @@ Feature: Create external call filter white lists
           },
           "matchlist": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
       """
@@ -80,7 +81,8 @@ Feature: Create external call filter white lists
           },
           "matchlist": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
       """
