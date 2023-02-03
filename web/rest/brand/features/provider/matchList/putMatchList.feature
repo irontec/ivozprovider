@@ -24,3 +24,25 @@ Feature: Update match lists
            "id": 3
        }
       """
+
+  Scenario: Match list updates ignores company values
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/match_lists/3" with body:
+      """
+      {
+          "name": "updatedMatchlist",
+          "company": 1
+      }
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
+      {
+           "name": "updatedMatchlist",
+           "id": 3
+       }
+      """

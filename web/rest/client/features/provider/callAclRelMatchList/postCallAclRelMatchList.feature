@@ -51,7 +51,8 @@ Feature: Create call acl rel match lists
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
       """

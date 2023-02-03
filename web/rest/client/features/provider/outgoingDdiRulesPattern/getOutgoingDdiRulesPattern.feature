@@ -28,7 +28,8 @@ Feature: Retrieve outgoing ddi rules patterns
               },
               "matchList": {
                   "name": "testMatchlist",
-                  "id": 1
+                  "id": 1,
+                  "generic": false
               },
               "forcedDdi": null
           }
@@ -58,7 +59,8 @@ Feature: Retrieve outgoing ddi rules patterns
           },
           "matchList": {
               "name": "testMatchlist",
-              "id": 1
+              "id": 1,
+              "generic": false
           },
           "forcedDdi": null
       }
