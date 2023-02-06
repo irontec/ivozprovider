@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\Condition
 
 interface ConditionalRoutesConditionsRelMatchlistLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ConditionalRoutesConditionsRelMatchlistInterface $entity);
+    public function execute(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist);
 }

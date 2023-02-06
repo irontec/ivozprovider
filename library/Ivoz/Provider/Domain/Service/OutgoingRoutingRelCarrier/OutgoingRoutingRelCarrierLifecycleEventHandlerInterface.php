@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 
 interface OutgoingRoutingRelCarrierLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(OutgoingRoutingRelCarrierInterface $entity);
+    public function execute(OutgoingRoutingRelCarrierInterface $relCarrier);
 }

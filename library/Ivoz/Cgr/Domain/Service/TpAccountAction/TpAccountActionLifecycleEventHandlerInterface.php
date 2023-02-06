@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface TpAccountActionLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TpAccountActionInterface $entity);
+    public function execute(TpAccountActionInterface $tpAccountAction);
 }

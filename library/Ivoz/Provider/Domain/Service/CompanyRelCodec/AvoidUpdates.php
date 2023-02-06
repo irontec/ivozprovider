@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CompanyRelCodec
         ];
     }
     /**
-     * @param CompanyRelCodecInterface $entity
-     *
-     * @throws \DomainException
+     * @param CompanyRelCodecInterface $relCodec
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(CompanyRelCodecInterface $entity)
+    public function execute(CompanyRelCodecInterface $relCodec)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relCodec);
     }
 }

@@ -23,22 +23,22 @@ class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInte
     }
 
     /**
-     * @param DestinationRateGroupInterface $entity
+     * @param DestinationRateGroupInterface $destinationRateGroup
      *
      * @return void
      */
-    public function execute(DestinationRateGroupInterface $entity)
+    public function execute(DestinationRateGroupInterface $destinationRateGroup)
     {
-        if ($entity->hasBeenDeleted()) {
+        if ($destinationRateGroup->hasBeenDeleted()) {
             return;
         }
 
-        $pendingStatus = $entity->getStatus() === 'waiting';
-        $statusHasChanged = $entity->hasChanged('status');
+        $pendingStatus = $destinationRateGroup->getStatus() === 'waiting';
+        $statusHasChanged = $destinationRateGroup->hasChanged('status');
 
         if ($pendingStatus && $statusHasChanged) {
             $this->importer
-                ->setParams(['id' => $entity->getId()])
+                ->setParams(['id' => $destinationRateGroup->getId()])
                 ->send();
         }
     }

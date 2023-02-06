@@ -24,7 +24,7 @@ class SendUsersPermissionsReloadRequest implements UsersAddressLifecycleEventHan
     /**
      * @return void
      */
-    public function execute(UsersAddressInterface $entity)
+    public function execute(UsersAddressInterface $usersAddress)
     {
         $this->usersClient->reloadAddressPermissions();
     }

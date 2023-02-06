@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 interface LocutionLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(LocutionInterface $entity);
+    public function execute(LocutionInterface $locution);
 }

@@ -31,25 +31,25 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
     /**
      * @return void
      */
-    public function execute(ApplicationServerInterface $entity)
+    public function execute(ApplicationServerInterface $applicationServer)
     {
         /**
          * Replicate ApplicationServer IP into kam_dispatcher
          * @var KamDispatcher $kamDispatcher
          */
         $kamDispatcher = $this->dispatcherRepository->findOneByApplicationServerId(
-            (int) $entity->getId()
+            (int) $applicationServer->getId()
         );
 
-        $kamDispatcherDto = $entity->isNew()
+        $kamDispatcherDto = $applicationServer->isNew()
             ? KamDispatcher::createDto()
             : $kamDispatcher->toDto();
 
         $kamDispatcherDto
-            ->setApplicationServerId($entity->getId())
+            ->setApplicationServerId($applicationServer->getId())
             ->setSetid(1)
-            ->setDestination('sip:' . $entity->getIp() . ":6060")
-            ->setDescription($entity->getName());
+            ->setDestination('sip:' . $applicationServer->getIp() . ":6060")
+            ->setDescription($applicationServer->getName());
 
         $this->entityPersister->persistDto($kamDispatcherDto, $kamDispatcher);
     }

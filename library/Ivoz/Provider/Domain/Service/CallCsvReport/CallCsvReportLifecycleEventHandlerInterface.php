@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 
 interface CallCsvReportLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CallCsvReportInterface $entity);
+    public function execute(CallCsvReportInterface $report);
 }

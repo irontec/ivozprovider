@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 interface OutgoingRoutingLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(OutgoingRoutingInterface $entity);
+    public function execute(OutgoingRoutingInterface $outgoingRouting);
 }

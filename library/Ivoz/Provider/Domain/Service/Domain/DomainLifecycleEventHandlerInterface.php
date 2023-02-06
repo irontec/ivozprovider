@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 interface DomainLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(DomainInterface $entity);
+    public function execute(DomainInterface $domain);
 }

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoic
 
 interface FixedCostsRelInvoiceSchedulerLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(FixedCostsRelInvoiceSchedulerInterface $entity);
+    public function execute(FixedCostsRelInvoiceSchedulerInterface $relInvoiceScheduler);
 }

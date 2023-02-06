@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterfac
 
 interface CompanyRelRoutingTagLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CompanyRelRoutingTagInterface $entity);
+    public function execute(CompanyRelRoutingTagInterface $relRoutingTag);
 }
