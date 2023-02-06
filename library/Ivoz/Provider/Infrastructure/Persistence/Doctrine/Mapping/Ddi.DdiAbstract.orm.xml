@@ -40,12 +40,6 @@
         <option name="comment">[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail]</option>
       </options>
     </field>
-    <field name="billInboundCalls" type="boolean" column="billInboundCalls" nullable="false">
-      <options>
-        <option name="default">0</option>
-        <option name="unsigned">1</option>
-      </options>
-    </field>
     <field name="friendValue" type="string" column="friendValue" length="25" nullable="true">
       <options>
         <option name="fixed"/>

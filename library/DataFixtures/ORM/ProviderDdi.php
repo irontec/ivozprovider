@@ -29,7 +29,6 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
             $this->setDdie164("+34123");
             $this->setDescription("Description for DDI 123");
             $this->setDisplayName("");
-            $this->setBillInboundCalls(false);
             $this->setFriendValue("");
             $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
@@ -47,7 +46,6 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
             $this->setDdi("124");
             $this->setDdie164("+34124");
             $this->setDisplayName("");
-            $this->setBillInboundCalls(false);
             $this->setFriendValue("");
             $this->setCompany($fixture->getReference('_reference_ProviderCompany4'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
@@ -65,7 +63,6 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
             $this->setDdi("121");
             $this->setDdie164("+34121");
             $this->setDisplayName("");
-            $this->setBillInboundCalls(false);
             $this->setFriendValue("");
             $this->setCompany($fixture->getReference('_reference_ProviderCompany3'));
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));

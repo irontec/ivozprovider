@@ -83,11 +83,6 @@ abstract class DdiAbstract
     protected $routeType = null;
 
     /**
-     * @var bool
-     */
-    protected $billInboundCalls = false;
-
-    /**
      * @var ?string
      */
     protected $friendValue = null;
@@ -182,12 +177,10 @@ abstract class DdiAbstract
     protected function __construct(
         string $ddi,
         string $recordCalls,
-        bool $billInboundCalls,
         string $type
     ) {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
-        $this->setBillInboundCalls($billInboundCalls);
         $this->setType($type);
     }
 
@@ -253,8 +246,6 @@ abstract class DdiAbstract
         Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
         $recordCalls = $dto->getRecordCalls();
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
-        $billInboundCalls = $dto->getBillInboundCalls();
-        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -265,7 +256,6 @@ abstract class DdiAbstract
         $self = new static(
             $ddi,
             $recordCalls,
-            $billInboundCalls,
             $type
         );
 
@@ -310,8 +300,6 @@ abstract class DdiAbstract
         Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
         $recordCalls = $dto->getRecordCalls();
         Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
-        $billInboundCalls = $dto->getBillInboundCalls();
-        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
         $type = $dto->getType();
         Assertion::notNull($type, 'getType value is null, but non null value was expected.');
         $company = $dto->getCompany();
@@ -326,7 +314,6 @@ abstract class DdiAbstract
             ->setRecordCalls($recordCalls)
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
-            ->setBillInboundCalls($billInboundCalls)
             ->setFriendValue($dto->getFriendValue())
             ->setType($type)
             ->setCompany($fkTransformer->transform($company))
@@ -360,7 +347,6 @@ abstract class DdiAbstract
             ->setRecordCalls(self::getRecordCalls())
             ->setDisplayName(self::getDisplayName())
             ->setRouteType(self::getRouteType())
-            ->setBillInboundCalls(self::getBillInboundCalls())
             ->setFriendValue(self::getFriendValue())
             ->setType(self::getType())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -392,7 +378,6 @@ abstract class DdiAbstract
             'recordCalls' => self::getRecordCalls(),
             'displayName' => self::getDisplayName(),
             'routeType' => self::getRouteType(),
-            'billInboundCalls' => self::getBillInboundCalls(),
             'friendValue' => self::getFriendValue(),
             'type' => self::getType(),
             'companyId' => self::getCompany()->getId(),
@@ -529,18 +514,6 @@ abstract class DdiAbstract
     public function getRouteType(): ?string
     {
         return $this->routeType;
-    }
-
-    protected function setBillInboundCalls(bool $billInboundCalls): static
-    {
-        $this->billInboundCalls = $billInboundCalls;
-
-        return $this;
-    }
-
-    public function getBillInboundCalls(): bool
-    {
-        return $this->billInboundCalls;
     }
 
     protected function setFriendValue(?string $friendValue = null): static

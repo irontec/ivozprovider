@@ -119,8 +119,6 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function getRouteType(): ?string;
 
-    public function getBillInboundCalls(): bool;
-
     public function getFriendValue(): ?string;
 
     public function getType(): string;
