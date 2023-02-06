@@ -44,6 +44,20 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
+      ],
+    },
+    {
+      label: _('Invoicing'),
+      children: [
+        {
+          entity: entities.InvoiceTemplate,
+        },
+      ],
+    },
+    {
+      label: _('Settings'),
+      children: [
+        { entity: entities.SpecialNumber },
         {
           entity: entities.WebPortal,
         },
@@ -57,14 +71,6 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.BannedAddress,
-        },
-      ],
-    },
-    {
-      label: _('Invoicing'),
-      children: [
-        {
-          entity: entities.InvoiceTemplate,
         },
       ],
     },
