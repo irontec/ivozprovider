@@ -38,7 +38,8 @@ Feature: Create outgoing ddi rules patterns
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           },
           "forcedDdi": "~"
       }
@@ -67,7 +68,8 @@ Feature: Create outgoing ddi rules patterns
           },
           "matchList": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           },
           "forcedDdi": "~"
       }

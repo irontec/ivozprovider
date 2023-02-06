@@ -16,15 +16,18 @@ Feature: Retrieve match lists
       [
           {
               "name": "testMatchlist",
-              "id": 1
+              "id": 1,
+              "generic": false
           },
           {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           },
           {
               "name": "testBrandMatchlist",
-              "id": 3
+              "id": 3,
+              "generic": true
           }
       ]
       """
@@ -40,6 +43,7 @@ Feature: Retrieve match lists
       """
       {
           "name": "testMatchlist",
-          "id": 1
+          "id": 1,
+          "generic": false
       }
       """
