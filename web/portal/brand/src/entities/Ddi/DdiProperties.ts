@@ -9,6 +9,7 @@ export type DdiPropertyList<T> = {
   description?: T;
   externalCallFilter?: T;
   routeType?: T;
+  type?: T;
   recordCalls?: T;
   displayName?: T;
   user?: T;
