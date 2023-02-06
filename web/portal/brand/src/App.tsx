@@ -40,7 +40,7 @@ export default function App(): JSX.Element {
 
     aboutMeResetProfile();
     aboutMeInit();
-  }, [apiSpecStore, apiSpecStore, token, aboutMeInit, aboutMeResetProfile]);
+  }, [apiSpecStore, authStore, token, aboutMeInit, aboutMeResetProfile]);
 
   const apiSpec = useStoreState((state) => state.spec.spec);
   const baseUrl = process.env.BASE_URL;
