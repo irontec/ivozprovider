@@ -10,3 +10,10 @@ Feature: Manage invoice templates
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/invoice_templates/1"
      Then the response status code should be 204
+
+  Scenario: Cannot remove a global invoice template
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/invoice_templates/2"
+     Then the response status code should be 403
