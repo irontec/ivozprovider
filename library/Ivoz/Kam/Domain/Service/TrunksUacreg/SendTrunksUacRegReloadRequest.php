@@ -24,7 +24,7 @@ class SendTrunksUacRegReloadRequest implements TrunksUacregLifecycleEventHandler
     /**
      * @return void
      */
-    public function execute(TrunksUacregInterface $entity)
+    public function execute(TrunksUacregInterface $trunksUacreg)
     {
         $this->trunksClient->reloadUacReg();
     }

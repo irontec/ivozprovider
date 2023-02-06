@@ -7,5 +7,5 @@ use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressInterface;
 
 interface UsersAddressLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(UsersAddressInterface $entity);
+    public function execute(UsersAddressInterface $usersAddress);
 }

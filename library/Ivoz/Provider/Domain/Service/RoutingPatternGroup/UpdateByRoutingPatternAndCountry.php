@@ -26,9 +26,9 @@ class UpdateByRoutingPatternAndCountry
     /**
      * @return void
      */
-    public function execute(RoutingPatternInterface $entity, CountryInterface $country)
+    public function execute(RoutingPatternInterface $routingPattern, CountryInterface $country)
     {
-        $brandId = (int) $entity
+        $brandId = (int) $routingPattern
             ->getbrand()
             ->getId();
 
@@ -54,7 +54,7 @@ class UpdateByRoutingPatternAndCountry
         }
 
         $this->createAndPersistRoutingPatternGroupsRelPattern->execute(
-            $entity,
+            $routingPattern,
             $routingPatternGroup
         );
     }

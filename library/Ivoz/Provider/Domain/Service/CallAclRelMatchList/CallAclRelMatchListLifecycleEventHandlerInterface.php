@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 
 interface CallAclRelMatchListLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CallAclRelMatchListInterface $entity);
+    public function execute(CallAclRelMatchListInterface $relMatchList);
 }

@@ -25,14 +25,14 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
     }
 
     /**
-     * @param RetailAccountInterface $entity
+     * @param RetailAccountInterface $retailAccount
      *
      * @return void
      */
-    public function execute(RetailAccountInterface $entity)
+    public function execute(RetailAccountInterface $retailAccount)
     {
         $endpoint = $this->psEndpointRepository->findOneByRetailAccountId(
-            (int) $entity->getId()
+            (int) $retailAccount->getId()
         );
 
         // If not found create a new one
@@ -48,22 +48,22 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
         }
 
         // Use company domain if retail account from-domain not set
-        $fromDomain = $entity->getFromDomain()
-            ? $entity->getFromDomain()
-            : $entity->getDomain()->getDomain();
+        $fromDomain = $retailAccount->getFromDomain()
+            ? $retailAccount->getFromDomain()
+            : $retailAccount->getDomain()->getDomain();
 
         // Update/Insert endpoint data
         $endpointDto
-            ->setRetailAccountId($entity->getId())
-            ->setSorceryId($entity->getSorcery())
+            ->setRetailAccountId($retailAccount->getId())
+            ->setSorceryId($retailAccount->getSorcery())
             ->setFromDomain($fromDomain)
-            ->setAors($entity->getSorcery())
+            ->setAors($retailAccount->getSorcery())
             ->setDisallow("all")
             ->setAllow("alaw,g729,ulaw")
             ->setDirectmediaMethod('invite')
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
-            ->setT38Udptl($entity->getT38Passthrough())
+            ->setT38Udptl($retailAccount->getT38Passthrough())
             ->setDirectMedia('no');
 
         $this->entityTools->persistDto($endpointDto, $endpoint);

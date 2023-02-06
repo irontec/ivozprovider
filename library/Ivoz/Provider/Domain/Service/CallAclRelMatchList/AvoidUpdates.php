@@ -14,16 +14,16 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CallAclRelMatch
         ];
     }
     /**
-     * @param CallAclRelMatchListInterface $entity
-     *
-     * @throws \DomainException
+     * @param CallAclRelMatchListInterface $relMatchList
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(CallAclRelMatchListInterface $entity)
+    public function execute(CallAclRelMatchListInterface $relMatchList)
     {
         $this->assertUnchanged(
-            $entity,
+            $relMatchList,
             [
                 'priority',
                 'policy'

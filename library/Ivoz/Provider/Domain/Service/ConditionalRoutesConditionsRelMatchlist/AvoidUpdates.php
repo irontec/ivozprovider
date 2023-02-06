@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ConditionalRout
         ];
     }
     /**
-     * @param ConditionalRoutesConditionsRelMatchlistInterface $entity
-     *
-     * @throws \DomainException
+     * @param ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(ConditionalRoutesConditionsRelMatchlistInterface $entity)
+    public function execute(ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relMatchlist);
     }
 }

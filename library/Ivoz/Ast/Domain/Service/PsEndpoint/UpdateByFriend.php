@@ -29,11 +29,11 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(FriendInterface $entity)
+    public function execute(FriendInterface $friend)
     {
         // Replicate Terminal into ast_ps_endpoint
         $endpoint = $this->psEndpointRepository->findOneByFriendId(
-            (int) $entity->getId()
+            (int) $friend->getId()
         );
 
         if (is_null($endpoint)) {
@@ -47,26 +47,26 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
         }
 
         // Use company domain if friend from-domain not set
-        $fromDomain = $entity->getFromDomain()
-            ? $entity->getFromDomain()
-            : $entity->getDomain()->getDomain();
+        $fromDomain = $friend->getFromDomain()
+            ? $friend->getFromDomain()
+            : $friend->getDomain()->getDomain();
 
         // Disable directMedia for intervpbx friends
-        if ($entity->isInterPbxConnectivity()) {
+        if ($friend->isInterPbxConnectivity()) {
             $endPointDto->setDirectMedia('no');
         }
 
         // Update/Insert endpoint data
         $endPointDto
-            ->setFriendId($entity->getId())
-            ->setSorceryId($entity->getSorcery())
+            ->setFriendId($friend->getId())
+            ->setSorceryId($friend->getSorcery())
             ->setFromDomain($fromDomain)
-            ->setAors($entity->getSorcery())
-            ->setDisallow($entity->getDisallow())
-            ->setAllow($entity->getAllow())
+            ->setAors($friend->getSorcery())
+            ->setDisallow($friend->getDisallow())
+            ->setAllow($friend->getAllow())
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
-            ->setT38Udptl($entity->getT38Passthrough())
+            ->setT38Udptl($friend->getT38Passthrough())
             ->setDirectMedia('no')
             ->setDirectMediaMethod(PsEndpointInterface::DIRECTMEDIAMETHOD_INVITE);
 

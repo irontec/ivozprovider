@@ -13,10 +13,10 @@ class CallCsvNotificationTemplateByCallCsvReport
     ) {
     }
 
-    public function execute(CallCsvReportInterface $callCsvReport): ?NotificationTemplateContentInterface
+    public function execute(CallCsvReportInterface $csvReport): ?NotificationTemplateContentInterface
     {
-        $company = $callCsvReport->getCompany();
-        $brand = $callCsvReport->getBrand();
+        $company = $csvReport->getCompany();
+        $brand = $csvReport->getBrand();
 
         $language = $company
             ? $company->getLanguage()
@@ -24,7 +24,7 @@ class CallCsvNotificationTemplateByCallCsvReport
 
         $callCsvNotificationTemplate = $this
             ->notificationTemplateRepository
-            ->findCallCsvTemplateByCallCsvReport($callCsvReport);
+            ->findCallCsvTemplateByCallCsvReport($csvReport);
 
         // Get Notification contents for required language
         return $callCsvNotificationTemplate->getContentsByLanguage(

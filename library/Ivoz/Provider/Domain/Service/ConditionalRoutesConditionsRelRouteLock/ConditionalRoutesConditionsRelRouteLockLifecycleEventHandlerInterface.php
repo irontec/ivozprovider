@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\Condition
 
 interface ConditionalRoutesConditionsRelRouteLockLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ConditionalRoutesConditionsRelRouteLockInterface $entity);
+    public function execute(ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock);
 }

@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ExternalCallFil
         ];
     }
     /**
-     * @param ExternalCallFilterRelScheduleInterface $entity
-     *
-     * @throws \DomainException
+     * @param ExternalCallFilterRelScheduleInterface $relSchedule
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(ExternalCallFilterRelScheduleInterface $entity)
+    public function execute(ExternalCallFilterRelScheduleInterface $relSchedule)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relSchedule);
     }
 }

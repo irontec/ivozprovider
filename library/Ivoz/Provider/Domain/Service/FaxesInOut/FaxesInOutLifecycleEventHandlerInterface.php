@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 
 interface FaxesInOutLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(FaxesInOutInterface $entity);
+    public function execute(FaxesInOutInterface $faxFile);
 }

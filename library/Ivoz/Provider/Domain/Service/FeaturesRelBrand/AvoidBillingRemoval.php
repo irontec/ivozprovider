@@ -26,10 +26,10 @@ class AvoidBillingRemoval implements FeaturesRelBrandLifecycleEventHandlerInterf
     /**
      * @throws \DomainException
      */
-    public function execute(FeaturesRelBrandInterface $featuresRelBrand): void
+    public function execute(FeaturesRelBrandInterface $relBrand): void
     {
-        $brand = $featuresRelBrand->getBrand();
-        $feature = $featuresRelBrand->getFeature();
+        $brand = $relBrand->getBrand();
+        $feature = $relBrand->getFeature();
         if (!$brand) {
             return;
         }

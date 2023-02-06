@@ -24,7 +24,7 @@ class SendUsersDialplanReloadRequest implements TransformationRuleLifecycleEvent
     /**
      * @return void
      */
-    public function execute(TransformationRuleInterface $entity)
+    public function execute(TransformationRuleInterface $transformationRule)
     {
         $this->usersClient->reloadDialplan();
     }
