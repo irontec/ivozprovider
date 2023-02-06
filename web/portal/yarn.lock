@@ -606,9 +606,9 @@
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
 "@irontec/ivoz-ui@^0.11.7":
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.11.7.tgz#db7220875487131ce16a1d1f2269e10dafc61e8f"
-  integrity sha512-hKum+8m+oSq2pPktkbiH4af0gzq5nuLCEyf3OIqVU/rdf66KTsgpozpLmDgN6wlOVBbsIfUBSi6TulH06PUhBQ==
+  version "0.11.8"
+  resolved "https://registry.yarnpkg.com/@irontec/ivoz-ui/-/ivoz-ui-0.11.8.tgz#527b69516b7248e2756dca175996cccd1d55c398"
+  integrity sha512-P5NGWLFwUo6iDj5o02jK8w1CxUsL32Qgq0vOY9aMq8w2gf7bo7kuFERXgPmPpIm831G7j5pWVJ5iSzM3WneRbw==
   dependencies:
     "@date-io/date-fns" "^2.10.8"
     axios "^0.21.1"
@@ -986,9 +986,9 @@
   integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
 
 "@types/node@*":
-  version "18.11.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
-  integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
+  version "18.11.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.19.tgz#35e26df9ec441ab99d73e99e9aca82935eea216d"
+  integrity sha512-YUgMWAQBWLObABqrvx8qKO1enAvBUdjZOAWQ5grBAkp5LQv45jBvYKZ3oFS9iKRCQyFjqw6iuEa1vmFqtxYLZw==
 
 "@types/node@^10.0.3":
   version "10.17.60"
