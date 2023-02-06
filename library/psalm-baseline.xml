@@ -175,29 +175,9 @@
       <code>TerminalInterface[]</code>
     </UnnecessaryVarAnnotation>
   </file>
-  <file src="Ivoz/Ast/Domain/Service/PsEndpoint/UpdateByExtension.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$extension</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Ast/Domain/Service/PsEndpoint/UpdateByPickUpRelUser.php">
     <ParamNameMismatch occurrences="1">
       <code>$pickUpRelUser</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Ast/Domain/Service/PsIdentify/UpdateByFriend.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$friend</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Ast/Domain/Service/PsIdentify/UpdateByResidentialDevice.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$residentialDevice</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Ast/Domain/Service/PsIdentify/UpdateByRetailAccount.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$retailAccount</code>
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Ast/Domain/Service/Queue/UpdateByIvozQueue.php">
@@ -596,11 +576,6 @@
       <code>func_get_args()</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpAccountAction/CreateByCarrier.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$carrier</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Cgr/Domain/Service/TpAccountAction/CreateByCompany.php">
     <MixedArgument occurrences="1">
       <code>$accountAction</code>
@@ -615,11 +590,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpCdrStat/CreateByCarrier.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$carrier</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Domain/Service/TpDestination/CreatedByDestination.php">
     <ArgumentTypeCoercion occurrences="1">
@@ -636,11 +606,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpDestination/UpdatedTpDestinationNotificator.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$tpDestination</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Cgr/Domain/Service/TpDestinationRate/TpDestinationRateLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
       <code>execute</code>
@@ -655,19 +620,6 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$tpDestinationRateDto</code>
     </ArgumentTypeCoercion>
-    <ParamNameMismatch occurrences="1">
-      <code>$destinationRate</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpDestinationRate/UpdatedTpDestinationRateNotificator.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$tpDestinationRate</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpLcrRule/CreatedByOutgoingRouting.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$outgoingRouting</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Domain/Service/TpLcrRule/TpLcrRuleLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -678,11 +630,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpLcrRule/UpdatedTpLcrRuleNotificator.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$tpLcrRule</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Domain/Service/TpRate/TpRateLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -698,14 +645,6 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$tpRateDto</code>
     </ArgumentTypeCoercion>
-    <ParamNameMismatch occurrences="1">
-      <code>$destinationRate</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpRate/UpdatedTpRateNotificator.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$tpRate</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Domain/Service/TpRatingPlan/TpRatingPlanLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -716,11 +655,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpRatingProfile/CreatedByCarrierRatingProfile.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$ratingProfile</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Domain/Service/TpRatingProfile/CreatedByOutgoingRoutingRelCarrierBinding.php">
     <ParamNameMismatch occurrences="1">
@@ -741,9 +675,6 @@
     <MixedArgument occurrences="1">
       <code>$tpRatingProfile</code>
     </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$ratingProfile</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Domain/Service/TpTiming/TpTimingLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -754,11 +685,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Cgr/Domain/Service/TpTiming/UpdatedTpTimingNotificator.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$tpTiming</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Infrastructure/Cgrates/Service/BillingService.php">
     <InvalidArgument occurrences="1">
@@ -1439,9 +1365,6 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$trunksAddressDto</code>
     </ArgumentTypeCoercion>
-    <ParamNameMismatch occurrences="1">
-      <code>$ddiProviderAddress</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksCdr/TrunksCdrLifecycleServiceCollection.php">
     <MissingParamType occurrences="1">
@@ -1462,11 +1385,6 @@
       <code>$lcrGatewayDto</code>
     </ArgumentTypeCoercion>
   </file>
-  <file src="Ivoz/Kam/Domain/Service/TrunksLcrRule/RemoveByOutgoingRouting.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$outgoingRouting</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksLcrRule/TrunksLcrRuleFactory.php">
     <UnnecessaryVarAnnotation occurrences="1">
       <code>RoutingPatternGroupsRelPatternInterface|null</code>
@@ -1476,17 +1394,11 @@
     <MixedArgument occurrences="1">
       <code>$routingPattern</code>
     </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$outgoingRouting</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksLcrRule/UpdateByRoutingPattern.php">
     <MixedArgument occurrences="1">
       <code>$outgoingRouting</code>
     </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$routingPattern</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksLcrRule/UpdateByRoutingPatternGroupsRelPattern.php">
     <ParamNameMismatch occurrences="1">
@@ -1497,17 +1409,11 @@
     <MixedArgument occurrences="1">
       <code>$routingPattern</code>
     </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$routingTag</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksLcrRuleTarget/RemoveByOutgoingRouting.php">
     <MixedArgument occurrences="1">
       <code>$orphanLcrRuleTarget</code>
     </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$outgoingRouting</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksLcrRuleTarget/TrunksLcrRuleTargetFactory.php">
     <MixedArgument occurrences="1">
@@ -1522,19 +1428,9 @@
       <code>OutgoingRoutingInterface[]</code>
     </UnnecessaryVarAnnotation>
   </file>
-  <file src="Ivoz/Kam/Domain/Service/TrunksLcrRuleTarget/UpdateByOutgoingRouting.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$outgoingRouting</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksLcrRuleTarget/UpdateByRoutingPatternGroupsRelPattern.php">
     <ParamNameMismatch occurrences="1">
       <code>$routingPatternGroupsRelPattern</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Kam/Domain/Service/TrunksUacreg/CreatedByDdiProviderRegistration.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$ddiProviderRegistration</code>
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Kam/Domain/Service/TrunksUacreg/TrunksUacregLifecycleEventHandlerInterface.php">
@@ -7645,9 +7541,6 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/BannedAddress/Unban.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$bannedAddress</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="2">
       <code>$bannedAddress-&gt;getAor()</code>
       <code>$bannedAddress-&gt;getIp()</code>
@@ -7734,17 +7627,11 @@
     <MixedArrayAssignment occurrences="1">
       <code>$rows[$key]['price']</code>
     </MixedArrayAssignment>
-    <ParamNameMismatch occurrences="1">
-      <code>$callCsvReport</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/CallCsvReport/EmailSender.php">
     <InvalidScalarArgument occurrences="1">
       <code>$e-&gt;getCode()</code>
     </InvalidScalarArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$callCsvReport</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="2">
       <code>$fromAddress</code>
       <code>$fromName</code>
@@ -7760,15 +7647,7 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/CallCsvScheduler/CheckUniqueness.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$callCsvScheduler</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/CallCsvScheduler/NextExecutionResolver.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$scheduler</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="1">
       <code>$timeZone</code>
     </PossiblyNullArgument>
@@ -7814,11 +7693,6 @@
       <code>$carrier</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/Carrier/ForceExternallyRated.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$carrier</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/Carrier/IncrementBalance.php">
     <MixedArgument occurrences="1">
       <code>$carrier</code>
@@ -7829,9 +7703,6 @@
       <code>$prevBalance</code>
       <code>$prevBalance</code>
     </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$carrier</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="2">
       <code>$currentBalance</code>
       <code>$currentBalance</code>
@@ -7844,9 +7715,6 @@
     <MixedMethodCall occurrences="1">
       <code>getTpid</code>
     </MixedMethodCall>
-    <ParamNameMismatch occurrences="1">
-      <code>$carrier</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Carrier/SyncBalances.php">
     <MixedArgument occurrences="4">
@@ -7996,11 +7864,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/Contact/UpdateByExtension.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$extension</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/DdiProvider/DdiProviderLifecycleServiceCollection.php">
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
@@ -8065,11 +7928,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/DestinationRateGroup/UpdatedDestinationRateGroupNotificator.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$destinationRateGroup</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Domain/DomainLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
@@ -8142,11 +8000,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/FeaturesRelBrand/AvoidBillingRemoval.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$featuresRelBrand</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/FeaturesRelBrand/FeaturesRelBrandLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
       <code>execute</code>
@@ -8188,9 +8041,6 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Friend/CheckUniqueness.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$friend</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="1">
       <code>$friend-&gt;getDomain()</code>
     </PossiblyNullArgument>
@@ -8315,11 +8165,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/InvoiceScheduler/NextExecutionResolver.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$scheduler</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/InvoiceScheduler/UpdateLastExecutionDate.php">
     <MissingParamType occurrences="1">
       <code>$dispatchImmediately</code>
@@ -8332,9 +8177,6 @@
     <MixedMethodCall occurrences="1">
       <code>setErrorExtensionId</code>
     </MixedMethodCall>
-    <ParamNameMismatch occurrences="1">
-      <code>$extension</code>
-    </ParamNameMismatch>
     <UndefinedInterfaceMethod occurrences="1">
       <code>setErrorRouteType</code>
     </UndefinedInterfaceMethod>
@@ -8343,9 +8185,6 @@
     <MixedMethodCall occurrences="1">
       <code>setErrorVoicemailId</code>
     </MixedMethodCall>
-    <ParamNameMismatch occurrences="1">
-      <code>$voicemail</code>
-    </ParamNameMismatch>
     <UndefinedInterfaceMethod occurrences="1">
       <code>setErrorRouteType</code>
     </UndefinedInterfaceMethod>
@@ -8407,11 +8246,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/ProxyTrunk/DeleteProtection.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$proxyTrunk</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/ProxyTrunk/ProxyTrunkLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
       <code>execute</code>
@@ -8472,11 +8306,6 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
-  <file src="Ivoz/Provider/Domain/Service/RatingProfile/CheckValidCurrency.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$ratingProfile</code>
-    </ParamNameMismatch>
-  </file>
   <file src="Ivoz/Provider/Domain/Service/RatingProfile/RatingProfileLifecycleEventHandlerInterface.php">
     <MissingReturnType occurrences="1">
       <code>execute</code>
@@ -8488,9 +8317,6 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/ResidentialDevice/CheckUniqueness.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$residentialDevice</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="1">
       <code>$residentialDevice-&gt;getDomain()</code>
     </PossiblyNullArgument>
@@ -8506,9 +8332,6 @@
     </MixedArrayAssignment>
   </file>
   <file src="Ivoz/Provider/Domain/Service/RetailAccount/CheckUniqueness.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$retailAccount</code>
-    </ParamNameMismatch>
     <PossiblyNullArgument occurrences="1">
       <code>$retailAccount-&gt;getDomain()</code>
     </PossiblyNullArgument>
@@ -8572,11 +8395,6 @@
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/RoutingTag/SendTrunksLcrReloadRequest.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$routingTag</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Terminal/CheckUniqueness.php">
     <PossiblyNullArgument occurrences="1">
@@ -8654,9 +8472,6 @@
     </UndefinedClass>
   </file>
   <file src="Ivoz/Provider/Domain/Service/User/UpdateByExtension.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$extension</code>
-    </ParamNameMismatch>
     <RedundantCondition occurrences="2">
       <code>$user</code>
       <code>$user</code>
@@ -8675,11 +8490,6 @@
   <file src="Ivoz/Provider/Domain/Service/User/UserLoginChecker.php">
     <ParamNameMismatch occurrences="1">
       <code>$admin</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Domain/Service/Voicemail/UpdateByResidentialDevice.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$residentialDevice</code>
     </ParamNameMismatch>
   </file>
   <file src="Ivoz/Provider/Domain/Service/Voicemail/VoicemailLifecycleEventHandlerInterface.php">
