@@ -195,18 +195,23 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: {
                 ...entities.Ddi,
-                acl: {
-                  read: true,
-                  detail: false,
-                  create: false,
-                  update: false,
-                },
               },
               filterBy: 'ddiProvider',
             },
             {
               entity: entities.BillableCall,
               filterBy: 'ddiProvider',
+            },
+          ],
+        },
+        {
+          entity: {
+            ...entities.Ddi,
+          },
+          children: [
+            {
+              entity: entities.BillableCall,
+              filterBy: 'carrier',
             },
           ],
         },
@@ -427,21 +432,6 @@ const getEntityMap = (): ExtendedRouteMap => {
     {
       label: _('Views'),
       children: [
-        {
-          entity: {
-            ...entities.Ddi,
-            acl: {
-              ...denyAllAcl,
-              read: true,
-            },
-          },
-          children: [
-            {
-              entity: entities.BillableCall,
-              filterBy: 'carrier',
-            },
-          ],
-        },
         {
           entity: {
             ...entities.RetailAccount,
