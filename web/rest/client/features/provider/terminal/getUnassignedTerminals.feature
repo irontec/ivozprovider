@@ -12,7 +12,7 @@ Feature: Retrieve terminals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testTerminal",
@@ -25,7 +25,7 @@ Feature: Retrieve terminals
               "status": []
           }
       ]
-    """
+      """
 
   Scenario: Retrieve unassigned and whitelisted terminals json list
     Given I add Company Authorization header
@@ -35,7 +35,7 @@ Feature: Retrieve terminals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "alice",
@@ -66,4 +66,4 @@ Feature: Retrieve terminals
               "status": []
           }
       ]
-    """
+      """

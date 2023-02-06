@@ -12,7 +12,7 @@ Feature: Retrieve company country
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "code": "ES",
           "countryCode": "+34",
@@ -30,4 +30,4 @@ Feature: Retrieve company country
               "it": "Europe"
           }
       }
-    """
+      """

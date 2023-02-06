@@ -12,7 +12,7 @@ Feature: Retrieve features
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "iden": "queues",
@@ -105,7 +105,7 @@ Feature: Retrieve features
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain feature json
     Given I add Brand Authorization header
@@ -115,7 +115,7 @@ Feature: Retrieve features
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "iden": "queues",
           "id": 1,
@@ -126,4 +126,4 @@ Feature: Retrieve features
               "it": "it"
           }
       }
-    """
+      """

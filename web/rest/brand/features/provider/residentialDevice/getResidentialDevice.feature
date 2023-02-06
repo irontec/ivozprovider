@@ -12,7 +12,7 @@ Feature: Retrieve residential devices
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "residentialDevice",
@@ -41,7 +41,7 @@ Feature: Retrieve residential devices
               ]
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain residential device json
     Given I add Brand Authorization header
@@ -51,7 +51,7 @@ Feature: Retrieve residential devices
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "residentialDevice",
           "description": "",
@@ -71,4 +71,4 @@ Feature: Retrieve residential devices
           "outgoingDdi": null,
           "language": null
       }
-    """
+      """

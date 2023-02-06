@@ -6,13 +6,13 @@ Feature: Retrieve routing pattern groups
   @createSchema
   Scenario: Retrieve the routing pattern groups json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "routing_pattern_groups"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "routing_pattern_groups"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "Europe",
@@ -31,17 +31,17 @@ Feature: Retrieve routing pattern groups
               ]
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain routing pattern group json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "routing_pattern_groups/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "routing_pattern_groups/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "Europe",
           "description": "",
@@ -50,4 +50,4 @@ Feature: Retrieve routing pattern groups
               1
           ]
       }
-    """
+      """

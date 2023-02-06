@@ -9,19 +9,19 @@ Feature: Create ddi providers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/ddi_providers" with body:
-    """
+      """
       {
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
           "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
             "description": "NewDDIProviderDescription",
             "name": "NewDDIProviderName",
@@ -30,7 +30,7 @@ Feature: Create ddi providers
             "transformationRuleSet": 1,
             "proxyTrunk": 1
         }
-    """
+      """
 
   Scenario: Retrieve created ddi provider
     Given I add Brand Authorization header
@@ -40,7 +40,7 @@ Feature: Create ddi providers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "description": "NewDDIProviderDescription",
           "name": "NewDDIProviderName",
@@ -61,4 +61,4 @@ Feature: Create ddi providers
               "country": 68
           }
       }
-    """
+      """

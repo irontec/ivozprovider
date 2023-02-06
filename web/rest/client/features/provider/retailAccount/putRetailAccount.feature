@@ -9,19 +9,19 @@ Feature: Update retail accounts
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/retail_accounts/1" with body:
-    """
+      """
       {
           "name": "readOnlyRetailAccount",
           "description": "updated desc",
           "transformationRuleSet": 1,
           "outgoingDdi": 3
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "testRetailAccount",
           "description": "updated desc",
@@ -31,4 +31,4 @@ Feature: Update retail accounts
           "transformationRuleSet": 1,
           "outgoingDdi": 3
       }
-    """
+      """

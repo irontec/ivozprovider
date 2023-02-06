@@ -9,7 +9,7 @@ Feature: Manage currencies
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/currencies/2" with body:
-    """
+      """
       {
         "name": "api_currency_modified",
         "domainUsers": "sip-api.irontec.com",
@@ -28,5 +28,5 @@ Feature: Manage currencies
         "defaultTimezone": 145,
         "features": [1]
       }
-    """
-    Then the response status code should be 404
+      """
+     Then the response status code should be 404

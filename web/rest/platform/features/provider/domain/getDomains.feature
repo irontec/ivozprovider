@@ -12,7 +12,7 @@ Feature: Retrieve domains
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "domain": "users.ivozprovider.local",
@@ -57,7 +57,7 @@ Feature: Retrieve domains
               "companyName": ""
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain domain json
     Given I add Authorization header
@@ -67,11 +67,11 @@ Feature: Retrieve domains
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "domain": "users.ivozprovider.local",
           "pointsTo": "proxyusers",
           "description": "Minimal proxyusers global domain",
           "id": 1
       }
-    """
+      """

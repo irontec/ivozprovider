@@ -12,7 +12,7 @@ Feature: Retrieve external call filters
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testFilter",
@@ -31,7 +31,7 @@ Feature: Retrieve external call filters
               "outOfScheduleNumberCountry": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain external call filter json
     Given I add Company Authorization header
@@ -41,7 +41,7 @@ Feature: Retrieve external call filters
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "testFilter",
           "holidayTargetType": null,
@@ -71,4 +71,4 @@ Feature: Retrieve external call filters
             1
           ]
       }
-    """
+      """

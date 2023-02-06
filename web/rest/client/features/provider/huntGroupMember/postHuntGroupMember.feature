@@ -9,7 +9,7 @@ Feature: Create hunt groups rel users
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/hunt_group_members" with body:
-    """
+      """
       {
           "timeoutTime": 1,
           "priority": 3,
@@ -18,12 +18,12 @@ Feature: Create hunt groups rel users
           "routeType" : "user",
           "user": 2
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "timeoutTime": 1,
           "priority": 3,
@@ -34,7 +34,7 @@ Feature: Create hunt groups rel users
           "user": "~",
           "numberCountry": null
       }
-    """
+      """
 
   Scenario: Retrieve created hunt group rel user
     Given I add Company Authorization header
@@ -44,7 +44,7 @@ Feature: Create hunt groups rel users
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "timeoutTime": 1,
           "priority": 3,
@@ -67,4 +67,4 @@ Feature: Create hunt groups rel users
           "user": "~",
           "numberCountry": null
       }
-    """
+      """

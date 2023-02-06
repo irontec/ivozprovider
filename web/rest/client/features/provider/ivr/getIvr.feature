@@ -6,13 +6,13 @@ Feature: Retrieve IVRs
   @createSchema
   Scenario: Retrieve the IVRs json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ivrs"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ivrs"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "testIvrCustom",
@@ -53,17 +53,17 @@ Feature: Retrieve IVRs
               "errorNumberCountry": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain IVR json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ivrs/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ivrs/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "testIvrCustom",
           "timeout": 6,
@@ -143,4 +143,4 @@ Feature: Retrieve IVRs
               1
           ]
       }
-    """
+      """

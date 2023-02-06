@@ -12,7 +12,7 @@ Feature: Retrieve web portals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "url": "https://example.com",
@@ -59,7 +59,7 @@ Feature: Retrieve web portals
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain web portal json
     Given I add Authorization header
@@ -69,7 +69,7 @@ Feature: Retrieve web portals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "url": "https://example.com",
           "klearTheme": "redmond",
@@ -84,4 +84,4 @@ Feature: Retrieve web portals
           },
           "brand": null
       }
-    """
+      """

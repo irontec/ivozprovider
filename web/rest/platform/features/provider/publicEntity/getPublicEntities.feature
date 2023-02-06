@@ -12,7 +12,7 @@ Feature: Retrieve public entities
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "iden": "BillableCalls",
@@ -65,7 +65,7 @@ Feature: Retrieve public entities
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain feature json
     Given I add Authorization header
@@ -75,7 +75,7 @@ Feature: Retrieve public entities
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "iden": "Destinations",
           "fqdn": "Ivoz\\Provider\\Domain\\Model\\Destination\\Destination",
@@ -90,4 +90,4 @@ Feature: Retrieve public entities
               "it": "Destinations"
           }
       }
-    """
+      """

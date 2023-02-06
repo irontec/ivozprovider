@@ -12,7 +12,7 @@ Feature: Retrieve notification templates
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "Voicemail notification",
@@ -20,7 +20,7 @@ Feature: Retrieve notification templates
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain notification templates json
     Given I add Brand Authorization header
@@ -30,10 +30,10 @@ Feature: Retrieve notification templates
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "Voicemail notification",
           "type": "voicemail",
           "id": 1
       }
-    """
+      """

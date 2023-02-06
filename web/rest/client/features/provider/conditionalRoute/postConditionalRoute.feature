@@ -6,10 +6,10 @@ Feature: Create conditional routes
   @createSchema
   Scenario: Create an conditional routes
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/conditional_routes" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/conditional_routes" with body:
+      """
       {
           "name": "testPost",
           "routetype": "user",
@@ -26,12 +26,12 @@ Feature: Create conditional routes
           "extension": null,
           "numberCountry": null
       }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "testPost",
           "routetype": "user",
@@ -48,17 +48,17 @@ Feature: Create conditional routes
           "extension": null,
           "numberCountry": null
       }
-    """
+      """
 
   Scenario: Retrieve created conditional routes
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "conditional_routes/3"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "conditional_routes/3"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
        {
           "name": "testPost",
           "routetype": "user",
@@ -75,4 +75,4 @@ Feature: Create conditional routes
           "extension": null,
           "numberCountry": null
       }
-    """
+      """

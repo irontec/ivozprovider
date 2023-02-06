@@ -6,13 +6,13 @@ Feature: Retrieve residential devices
   @createSchema
   Scenario: Retrieve the residential devices json list
     Given I add Residential Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "residential_devices"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "residential_devices"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "residentialDevice",
@@ -38,17 +38,17 @@ Feature: Retrieve residential devices
               ]
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain residential device json
     Given I add Residential Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "residential_devices/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "residential_devices/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "residentialDevice",
           "description": "",
@@ -69,4 +69,4 @@ Feature: Retrieve residential devices
           "outgoingDdi": null,
           "language": null
       }
-    """
+      """

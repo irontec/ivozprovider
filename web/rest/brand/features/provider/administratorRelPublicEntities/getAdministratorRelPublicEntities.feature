@@ -12,7 +12,7 @@ Feature: Manage administrator rel public entities
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "create": false,
@@ -114,7 +114,7 @@ Feature: Manage administrator rel public entities
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain administrator rel public entities json
     Given I add Authorization header for "restrictedBrandAdmin"
@@ -124,7 +124,7 @@ Feature: Manage administrator rel public entities
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "create": false,
           "read": true,
@@ -158,4 +158,4 @@ Feature: Manage administrator rel public entities
               }
           }
       }
-    """
+      """

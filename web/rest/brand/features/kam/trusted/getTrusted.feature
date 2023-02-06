@@ -12,7 +12,7 @@ Feature: Retrieve Trusted addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "srcIp": "194.30.6.32",
@@ -20,7 +20,7 @@ Feature: Retrieve Trusted addresses
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain Trusted addresses json
     Given I add Brand Authorization header
@@ -30,7 +30,7 @@ Feature: Retrieve Trusted addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "srcIp": "194.30.6.32",
           "proto": "any",
@@ -42,4 +42,4 @@ Feature: Retrieve Trusted addresses
           "id": 1,
           "company": "~"
       }
-    """
+      """

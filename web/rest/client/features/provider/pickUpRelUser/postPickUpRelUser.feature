@@ -9,17 +9,17 @@ Feature: Create pick up rel users
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/pick_up_rel_users" with body:
-    """
+      """
       {
           "pickUpGroup": 1,
           "user": 2
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 2,
           "pickUpGroup": {
@@ -55,7 +55,7 @@ Feature: Create pick up rel users
               "contact": null
           }
       }
-    """
+      """
 
   Scenario: Retrieve created pick up rel user
     Given I add Company Authorization header
@@ -65,7 +65,7 @@ Feature: Create pick up rel users
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
             "id": 2,
             "pickUpGroup": {
@@ -101,4 +101,4 @@ Feature: Create pick up rel users
                 "contact": null
             }
       }
-    """
+      """

@@ -9,7 +9,7 @@ Feature: Manage brands
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/brands/1" with body:
-    """
+      """
       {
           "name": "UpdatedDemoBrand",
           "domainUsers": "",
@@ -35,12 +35,12 @@ Feature: Manage brands
           "language": 1,
           "defaultTimezone": 145
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
        {
           "name": "UpdatedDemoBrand",
           "id": 1,
@@ -67,15 +67,15 @@ Feature: Manage brands
           "callCsvNotificationTemplate": null,
           "maxDailyUsageNotificationTemplate": null
       }
-    """
+      """
 
   @createSchema
   Scenario: Cannot update unmamaged brands
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "PUT" request to "/brands/2" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/brands/2" with body:
+      """
       {}
-    """
-    Then the response status code should be 404
+      """
+     Then the response status code should be 404

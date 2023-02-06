@@ -9,7 +9,7 @@ Feature: Create route locks
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/route_locks" with body:
-    """
+      """
       {
           "name": "New Lock",
           "open": false,
@@ -17,12 +17,12 @@ Feature: Create route locks
           "openExtension": "readOnly",
           "toggleExtension": "readOnly"
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "New Lock",
           "description": "",
@@ -32,7 +32,7 @@ Feature: Create route locks
           "openExtension": "",
           "toggleExtension": ""
       }
-    """
+      """
 
   Scenario: Retrieve created route lock
     Given I add Company Authorization header
@@ -42,7 +42,7 @@ Feature: Create route locks
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "New Lock",
           "description": "",
@@ -52,4 +52,4 @@ Feature: Create route locks
           "openExtension": "",
           "toggleExtension": ""
       }
-    """
+      """

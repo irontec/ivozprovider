@@ -9,7 +9,7 @@ Feature: Create terminal models
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/terminal_models" with body:
-    """
+      """
       {
           "iden": "New",
           "name": "New SIP Model",
@@ -20,12 +20,12 @@ Feature: Create terminal models
           "specificUrlPattern": "specificUrlPattern",
           "terminalManufacturer": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "iden": "New",
           "name": "New SIP Model",
@@ -37,7 +37,7 @@ Feature: Create terminal models
           "id": 3,
           "terminalManufacturer": 1
       }
-    """
+      """
 
   Scenario: Retrieve created terminal model
     Given I add Authorization header
@@ -47,7 +47,7 @@ Feature: Create terminal models
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "iden": "New",
           "name": "New SIP Model",
@@ -64,4 +64,4 @@ Feature: Create terminal models
               "id": 1
           }
       }
-    """
+      """

@@ -9,7 +9,7 @@ Feature: Create transformation rules
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/transformation_rules" with body:
-    """
+      """
       {
           "type": "callerout",
           "description": "From e164 to usansolocity",
@@ -18,12 +18,12 @@ Feature: Create transformation rules
           "replaceExpr": "\u0001",
           "transformationRuleSet": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "type": "callerout",
           "description": "From e164 to usansolocity",
@@ -33,7 +33,7 @@ Feature: Create transformation rules
           "id": 9,
           "transformationRuleSet": 1
       }
-    """
+      """
 
   Scenario: Retrieve created transformation rule
     Given I add Brand Authorization header
@@ -43,7 +43,7 @@ Feature: Create transformation rules
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "type": "callerout",
           "description": "From e164 to usansolocity",
@@ -69,15 +69,15 @@ Feature: Create transformation rules
               "editable": true
           }
       }
-    """
+      """
 
   @createSchema
   Scenario: Cannot set unmanaged relationship
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/transformation_rules" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/transformation_rules" with body:
+      """
       {
           "type": "callerout",
           "description": "From e164 to usansolocity",
@@ -86,5 +86,5 @@ Feature: Create transformation rules
           "replaceExpr": "\u0001",
           "transformationRuleSet": 2
       }
-    """
-    Then the response status code should be 403
+      """
+     Then the response status code should be 403

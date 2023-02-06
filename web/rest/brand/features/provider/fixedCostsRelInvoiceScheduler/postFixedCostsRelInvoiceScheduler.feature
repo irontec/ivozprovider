@@ -9,18 +9,18 @@ Feature: Create fixed costs rel invoice schedulers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/fixed_costs_rel_invoice_schedulers" with body:
-    """
+      """
       {
           "quantity": 1,
           "fixedCost": 2,
           "invoiceScheduler": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "quantity": 1,
           "type": "static",
@@ -30,7 +30,7 @@ Feature: Create fixed costs rel invoice schedulers
           "invoiceScheduler": 1,
           "ddisCountry": null
       }
-    """
+      """
 
   Scenario: Retrieve created fixed cost rel invoice scheduler
     Given I add Brand Authorization header
@@ -40,7 +40,7 @@ Feature: Create fixed costs rel invoice schedulers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "quantity": 1,
           "id": 2,
@@ -66,4 +66,4 @@ Feature: Create fixed costs rel invoice schedulers
               "numberSequence": null
           }
       }
-    """
+      """

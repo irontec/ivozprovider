@@ -12,7 +12,7 @@ Feature: Retrieve call CSV report
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "sentTo": "",
@@ -28,7 +28,7 @@ Feature: Retrieve call CSV report
               "callCsvScheduler": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain call CSV report json
     Given I add Brand Authorization header
@@ -38,7 +38,7 @@ Feature: Retrieve call CSV report
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
        {
           "sentTo": "",
           "inDate": "2019-05-31 02:00:00",
@@ -64,4 +64,4 @@ Feature: Retrieve call CSV report
               "callCsvNotificationTemplate": null
           }
       }
-    """
+      """

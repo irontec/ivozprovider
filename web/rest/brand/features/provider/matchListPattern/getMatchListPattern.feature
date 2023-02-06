@@ -12,7 +12,7 @@ Feature: Retrieve match list patterns
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "description": "brand test desc",
@@ -24,7 +24,7 @@ Feature: Retrieve match list patterns
               "numberCountry": 68
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain match list json
     Given I add Brand Authorization header
@@ -34,7 +34,7 @@ Feature: Retrieve match list patterns
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "description": "brand test desc",
           "type": "number",
@@ -47,4 +47,4 @@ Feature: Retrieve match list patterns
           },
           "numberCountry": "~"
       }
-    """
+      """

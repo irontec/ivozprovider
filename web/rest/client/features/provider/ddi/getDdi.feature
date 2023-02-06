@@ -12,7 +12,7 @@ Feature: Retrieve Ddis
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "ddi": "123",
@@ -35,7 +35,7 @@ Feature: Retrieve Ddis
               "retailAccount": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain Ddi json
     Given I add Company Authorization header
@@ -45,7 +45,7 @@ Feature: Retrieve Ddis
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "ddi": "123",
           "ddie164": "+34123",
@@ -82,4 +82,4 @@ Feature: Retrieve Ddis
           "conditionalRoute": null,
           "retailAccount": null
       }
-    """
+      """
