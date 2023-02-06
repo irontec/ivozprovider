@@ -15,7 +15,7 @@ export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
-      label: _('Global'),
+      label: _('Global Configuration'),
       children: [
         {
           entity: entities.BannedAddress,
@@ -28,6 +28,9 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
+        {
+          entity: entities.Currency
+        }
       ],
     },
     {
