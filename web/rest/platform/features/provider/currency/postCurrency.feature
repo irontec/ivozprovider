@@ -4,26 +4,37 @@ Feature: Manage currencies
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Can't create a currency
+  Scenario: Create a currency object
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/currencies" with body:
       """
       {
-        "name": "api_currency",
-        "domainUsers": "sip-api.irontec.com",
-        "invoice": {
-          "nif": "123",
-          "postalAddress": "",
-          "postalCode": "48971",
-          "town": "Bilbo",
-          "province": "Bizkaia",
-          "country": "Spain",
-          "registryData": "registryData"
-        },
-        "defaultTimezone": 145,
-        "currency": 1
+          "iden": "RMB",
+          "symbol": "¥",
+          "name": {
+              "en": "Rénmínbì",
+              "es": "Rénmínbì",
+              "ca": "Rénmínbì",
+              "it": "Rénmínbì"
+          }
       }
       """
-     Then the response status code should be 405
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "iden": "RMB",
+          "symbol": "¥",
+          "id": 4,
+          "name": {
+              "en": "Rénmínbì",
+              "es": "Rénmínbì",
+              "ca": "Rénmínbì",
+              "it": "Rénmínbì"
+          }
+      }
+      """
