@@ -38,7 +38,7 @@ class InvoiceTemplate extends InvoiceTemplateAbstract implements InvoiceTemplate
                 ? 'Unable to convert a global invoice template into a brand invoice template'
                 : 'Unable to convert a brand invoice template into a global invoice template';
 
-            throw new \DomainException($errorMsg);
+            throw new \DomainException($errorMsg, 403);
         }
     }
 
