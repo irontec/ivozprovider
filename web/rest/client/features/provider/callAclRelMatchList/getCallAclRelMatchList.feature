@@ -25,7 +25,8 @@ Feature: Retrieve call acl rel match lists
               },
               "matchList": {
                   "name": "testMatchlist",
-                  "id": 1
+                  "id": 1,
+                  "generic": false
               }
           }
       ]
@@ -51,7 +52,8 @@ Feature: Retrieve call acl rel match lists
           },
           "matchList": {
               "name": "testMatchlist",
-              "id": 1
+              "id": 1,
+              "generic": false
           }
       }
       """

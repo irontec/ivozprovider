@@ -42,7 +42,8 @@ Feature: Create conditional routes conditions rel matchlists
           },
           "matchlist": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
       """
@@ -77,7 +78,8 @@ Feature: Create conditional routes conditions rel matchlists
           },
           "matchlist": {
               "name": "testMatchlist2",
-              "id": 2
+              "id": 2,
+              "generic": false
           }
       }
       """

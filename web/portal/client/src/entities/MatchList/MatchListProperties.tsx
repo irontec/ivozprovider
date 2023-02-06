@@ -6,6 +6,7 @@ import {
 
 export type MatchListPropertyList<T> = {
   name?: T;
+  generic?: T;
 };
 
 export type MatchListProperties = MatchListPropertyList<Partial<PropertySpec>>;

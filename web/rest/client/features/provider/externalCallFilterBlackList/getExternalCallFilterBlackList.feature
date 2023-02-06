@@ -37,7 +37,8 @@ Feature: Retrieve external call filter black lists
               },
               "matchlist": {
                   "name": "testMatchlist",
-                  "id": 1
+                  "id": 1,
+                  "generic": false
               }
           }
       ]
@@ -75,7 +76,8 @@ Feature: Retrieve external call filter black lists
           },
           "matchlist": {
               "name": "testMatchlist",
-              "id": 1
+              "id": 1,
+              "generic": false
           }
       }
       """
