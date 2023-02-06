@@ -56,6 +56,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.RatingProfile,
               filterBy: 'company',
             },
+            ...Object.values(entities.VirtualPbx.customActions),
           ],
         },
         {
@@ -82,6 +83,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               entity: entities.RatingProfile,
               filterBy: 'company',
             },
+            ...Object.values(entities.Residential.customActions),
           ],
         },
         {
@@ -114,6 +116,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
+            ...Object.values(entities.Retail.customActions),
           ],
         },
         {
@@ -146,6 +149,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               },
               filterBy: 'company',
             },
+            ...Object.values(entities.Wholesale.customActions),
           ],
         },
       ],
