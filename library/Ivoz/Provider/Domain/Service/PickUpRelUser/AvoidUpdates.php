@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements PickUpRelUserLi
         ];
     }
     /**
-     * @param PickUpRelUserInterface $entity
-     *
-     * @throws \DomainException
+     * @param PickUpRelUserInterface $relUser
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(PickUpRelUserInterface $entity)
+    public function execute(PickUpRelUserInterface $relUser)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relUser);
     }
 }

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 
 interface DestinationRateLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(DestinationRateInterface $entity);
+    public function execute(DestinationRateInterface $destinationRate);
 }

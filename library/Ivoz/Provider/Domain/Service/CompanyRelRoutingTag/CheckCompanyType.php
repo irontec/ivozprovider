@@ -19,9 +19,9 @@ class CheckCompanyType implements CompanyRelRoutingTagLifecycleEventHandlerInter
         ];
     }
 
-    public function execute(CompanyRelRoutingTagInterface $entity): void
+    public function execute(CompanyRelRoutingTagInterface $relRoutingTag): void
     {
-        $company = $entity->getCompany();
+        $company = $relRoutingTag->getCompany();
         if (!$company) {
             throw new \DomainException('CompanyRelRoutingTag without assigned company');
         }

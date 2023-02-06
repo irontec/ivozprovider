@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements OutgoingRouting
         ];
     }
     /**
-     * @param OutgoingRoutingRelCarrierInterface $entity
-     *
-     * @throws \DomainException
+     * @param OutgoingRoutingRelCarrierInterface $relCarrier
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(OutgoingRoutingRelCarrierInterface $entity)
+    public function execute(OutgoingRoutingRelCarrierInterface $relCarrier)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relCarrier);
     }
 }

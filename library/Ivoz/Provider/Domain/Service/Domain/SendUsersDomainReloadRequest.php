@@ -24,7 +24,7 @@ class SendUsersDomainReloadRequest implements DomainLifecycleEventHandlerInterfa
     /**
      * @return void
      */
-    public function execute(DomainInterface $entity)
+    public function execute(DomainInterface $domain)
     {
         $this->usersClient->reloadDomain();
     }

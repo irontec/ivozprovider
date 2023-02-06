@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CompanyRelRouti
         ];
     }
     /**
-     * @param CompanyRelRoutingTagInterface $entity
-     *
-     * @throws \DomainException
+     * @param CompanyRelRoutingTagInterface $relRoutingTag
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(CompanyRelRoutingTagInterface $entity)
+    public function execute(CompanyRelRoutingTagInterface $relRoutingTag)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relRoutingTag);
     }
 }

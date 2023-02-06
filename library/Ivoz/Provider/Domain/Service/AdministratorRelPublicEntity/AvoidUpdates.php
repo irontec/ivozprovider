@@ -19,10 +19,10 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements AdministratorRe
      *
      * @return void
      */
-    public function execute(AdministratorRelPublicEntityInterface $entity)
+    public function execute(AdministratorRelPublicEntityInterface $relPublicEntity)
     {
         $this->assertUnchanged(
-            $entity,
+            $relPublicEntity,
             [
                 'create',
                 'read',

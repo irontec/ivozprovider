@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPubl
 
 interface AdministratorRelPublicEntityLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(AdministratorRelPublicEntityInterface $entity);
+    public function execute(AdministratorRelPublicEntityInterface $relPublicEntity);
 }

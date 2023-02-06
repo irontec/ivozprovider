@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements FeaturesRelComp
         ];
     }
     /**
-     * @param FeaturesRelCompanyInterface $entity
-     *
-     * @throws \DomainException
+     * @param FeaturesRelCompanyInterface $relCompany
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(FeaturesRelCompanyInterface $entity)
+    public function execute(FeaturesRelCompanyInterface $relCompany)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relCompany);
     }
 }

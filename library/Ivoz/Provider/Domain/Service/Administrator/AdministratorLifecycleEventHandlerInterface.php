@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
 interface AdministratorLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(AdministratorInterface $entity);
+    public function execute(AdministratorInterface $administrator);
 }

@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface TpLcrRuleLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TpLcrRuleInterface $entity);
+    public function execute(TpLcrRuleInterface $tpLcrRule);
 }

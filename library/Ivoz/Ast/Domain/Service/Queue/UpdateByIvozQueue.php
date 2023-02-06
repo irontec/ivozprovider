@@ -29,9 +29,9 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(IvozQueueInterface $entity)
+    public function execute(IvozQueueInterface $queue)
     {
-        $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();
+        $periodicAnnounceLocution = $queue->getPeriodicAnnounceLocution();
         if (!is_null($periodicAnnounceLocution)) {
 
             /** @var LocutionDto $periodicAnnounceLocutionDto */
@@ -46,10 +46,10 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
                 . pathinfo($periodicAnnounceLocution, PATHINFO_FILENAME);
         }
 
-        $astQueueName = $entity->getAstQueueName();
+        $astQueueName = $queue->getAstQueueName();
 
         $astQueue = $this->astQueueRepository->findOneByProviderQueueId(
-            (int) $entity->getId()
+            (int) $queue->getId()
         );
 
         /** @var QueueDto $astQueueDto */
@@ -58,17 +58,17 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
             : $this->entityTools->entityToDto($astQueue);
 
         $astQueueDto
-            ->setQueueId($entity->getId())
+            ->setQueueId($queue->getId())
             ->setName($astQueueName)
             ->setPeriodicAnnounce($periodicAnnounceLocution)
-            ->setPeriodicAnnounceFrequency($entity->getPeriodicAnnounceFrequency())
-            ->setAnnouncePosition($entity->getAnnouncePosition())
-            ->setAnnounceFrequency($entity->getAnnounceFrequency())
-            ->setStrategy($entity->getStrategy())
-            ->setTimeout($entity->getMemberCallTimeout())
-            ->setWrapuptime($entity->getMemberCallRest())
-            ->setWeight($entity->getWeight())
-            ->setMaxlen($entity->getMaxlen());
+            ->setPeriodicAnnounceFrequency($queue->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($queue->getAnnouncePosition())
+            ->setAnnounceFrequency($queue->getAnnounceFrequency())
+            ->setStrategy($queue->getStrategy())
+            ->setTimeout($queue->getMemberCallTimeout())
+            ->setWrapuptime($queue->getMemberCallRest())
+            ->setWeight($queue->getWeight())
+            ->setMaxlen($queue->getMaxlen());
 
         $this->entityTools->persistDto($astQueueDto, $astQueue);
     }

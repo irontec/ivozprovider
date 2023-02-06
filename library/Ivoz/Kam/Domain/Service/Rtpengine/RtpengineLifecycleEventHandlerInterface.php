@@ -7,5 +7,5 @@ use Ivoz\Kam\Domain\Model\Rtpengine\RtpengineInterface;
 
 interface RtpengineLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(RtpengineInterface $entity);
+    public function execute(RtpengineInterface $rtpengine);
 }

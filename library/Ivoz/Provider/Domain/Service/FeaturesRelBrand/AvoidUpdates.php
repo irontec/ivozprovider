@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements FeaturesRelBran
         ];
     }
     /**
-     * @param FeaturesRelBrandInterface $entity
-     *
-     * @throws \DomainException
+     * @param FeaturesRelBrandInterface $relBrand
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(FeaturesRelBrandInterface $entity)
+    public function execute(FeaturesRelBrandInterface $relBrand)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relBrand);
     }
 }

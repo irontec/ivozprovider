@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\Conditiona
 
 interface ConditionalRoutesConditionsRelScheduleLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ConditionalRoutesConditionsRelScheduleInterface $entity);
+    public function execute(ConditionalRoutesConditionsRelScheduleInterface $relSchedule);
 }

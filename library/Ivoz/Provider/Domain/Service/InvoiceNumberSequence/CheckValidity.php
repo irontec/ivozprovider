@@ -21,22 +21,22 @@ class CheckValidity implements InvoiceNumberSequenceLifecycleEventHandlerInterfa
      *
      * @return void
      */
-    public function execute(InvoiceNumberSequenceInterface $entity)
+    public function execute(InvoiceNumberSequenceInterface $sequence)
     {
-        $isNew = $entity->isNew();
+        $isNew = $sequence->isNew();
         if ($isNew) {
             return;
         }
 
-        if ($entity->hasChanged('prefix')) {
+        if ($sequence->hasChanged('prefix')) {
             throw new \DomainException('Prefix modification is not allowed');
         }
 
-        if ($entity->hasChanged('sequenceLength')) {
+        if ($sequence->hasChanged('sequenceLength')) {
             throw new \DomainException('SequenceLength modification is not allowed');
         }
 
-        if ($entity->hasChanged('increment')) {
+        if ($sequence->hasChanged('increment')) {
             throw new \DomainException('Increment modification is not allowed');
         }
     }

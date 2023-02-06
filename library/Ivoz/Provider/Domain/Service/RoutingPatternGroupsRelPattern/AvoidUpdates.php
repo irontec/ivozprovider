@@ -14,14 +14,14 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements RoutingPatternG
         ];
     }
     /**
-     * @param RoutingPatternGroupsRelPatternInterface $entity
-     *
-     * @throws \DomainException
+     * @param RoutingPatternGroupsRelPatternInterface $relPattern
      *
      * @return void
+     *@throws \DomainException
+     *
      */
-    public function execute(RoutingPatternGroupsRelPatternInterface $entity)
+    public function execute(RoutingPatternGroupsRelPatternInterface $relPattern)
     {
-        $this->assertUnchanged($entity);
+        $this->assertUnchanged($relPattern);
     }
 }

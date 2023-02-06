@@ -47,17 +47,17 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    public function execute(BrandServiceInterface $entity)
+    public function execute(BrandServiceInterface $brandService)
     {
         /** @var int[] $companyIds */
         $companyIds = $this->companyRepository->findIdsByBrandId(
-            (int) $entity->getBrand()->getId()
+            (int) $brandService->getBrand()->getId()
         );
 
         foreach ($companyIds as $companyId) {
             $companyService = $this->companyServiceRepository->findCompanyService(
                 $companyId,
-                (int) $entity->getService()->getId()
+                (int) $brandService->getService()->getId()
             );
 
             // Delete custom company service code
