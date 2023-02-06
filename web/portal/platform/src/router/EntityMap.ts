@@ -28,9 +28,8 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
-        {
-          entity: entities.Currency
-        }
+        { entity: entities.Currency },
+        { entity: entities.Service },
       ],
     },
     {

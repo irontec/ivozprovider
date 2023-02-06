@@ -4856,11 +4856,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ddi/Ddi.php
 
 		-
-			message: "#^Cannot call method getExternallyRated\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/Ddi.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiDto.php

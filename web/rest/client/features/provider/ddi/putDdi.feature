@@ -17,7 +17,6 @@ Feature: Update Ddis
           "recordCalls": "none",
           "displayName": "",
           "routeType": null,
-          "billInboundCalls": false,
           "friendValue": "",
           "conferenceRoom": null,
           "language": null,
