@@ -20,20 +20,20 @@ class GenerateOutRules
     /**
      * @return void
      */
-    public function execute(TransformationRuleSetInterface $entity, string $type)
+    public function execute(TransformationRuleSetInterface $transformationRuleSet, string $type)
     {
         // Get RuleSet data
-        $internationalCode = $entity->getInternationalCode();
-        $countryCode = $entity->getCountry()->getCountryCode();
-        $trunkPrefix = $entity->getTrunkPrefix();
-        $areaCode = $entity->getAreaCode();
-        $nationalLen = $entity->getNationalLen();
+        $internationalCode = $transformationRuleSet->getInternationalCode();
+        $countryCode = $transformationRuleSet->getCountry()->getCountryCode();
+        $trunkPrefix = $transformationRuleSet->getTrunkPrefix();
+        $areaCode = $transformationRuleSet->getAreaCode();
+        $nationalLen = $transformationRuleSet->getNationalLen();
         $nationalSubscriberLen = $nationalLen - strlen($areaCode);
 
         if (!empty($areaCode)) {
             $ruleDto = new TransformationRuleDto();
             $ruleDto
-                ->setTransformationRuleSetId($entity->getId())
+                ->setTransformationRuleSetId($transformationRuleSet->getId())
                 ->setType($type)
                 ->setDescription("From e164 to within area national")
                 ->setPriority(1)
@@ -46,7 +46,7 @@ class GenerateOutRules
         if (!empty($trunkPrefix)) {
             $ruleDto = new TransformationRuleDto();
             $ruleDto
-                ->setTransformationRuleSetId($entity->getId())
+                ->setTransformationRuleSetId($transformationRuleSet->getId())
                 ->setType($type)
                 ->setDescription("From e164 to out of area national")
                 ->setPriority(2)
@@ -58,7 +58,7 @@ class GenerateOutRules
 
         $ruleDto = new TransformationRuleDto();
         $ruleDto
-            ->setTransformationRuleSetId($entity->getId())
+            ->setTransformationRuleSetId($transformationRuleSet->getId())
             ->setType($type)
             ->setDescription("From e164 to special national")
             ->setPriority(3)
@@ -69,7 +69,7 @@ class GenerateOutRules
 
         $ruleDto = new TransformationRuleDto();
         $ruleDto
-            ->setTransformationRuleSetId($entity->getId())
+            ->setTransformationRuleSetId($transformationRuleSet->getId())
             ->setType($type)
             ->setDescription("From e164 to international")
             ->setPriority(4)

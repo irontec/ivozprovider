@@ -31,11 +31,11 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
      *
      * @return void
      */
-    public function execute(FaxesInOutInterface $entity)
+    public function execute(FaxesInOutInterface $faxFile)
     {
-        $isOutgoingFax = $entity->getType() == "Out";
-        $isPending = $entity->getStatus() == "pending";
-        $statusHaschanged = $entity->hasChanged("status");
+        $isOutgoingFax = $faxFile->getType() == "Out";
+        $isPending = $faxFile->getStatus() == "pending";
+        $statusHaschanged = $faxFile->hasChanged("status");
 
         $mustSendFaxFile = $isOutgoingFax && $statusHaschanged && $isPending;
         if (!$mustSendFaxFile) {
@@ -43,13 +43,13 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
         }
 
         try {
-            $this->ariConnector->sendFaxfileRequest($entity);
+            $this->ariConnector->sendFaxfileRequest($faxFile);
         } catch (\Exception $e) {
 
             /** @var FaxesInOutDto $dto */
-            $dto = $this->entityTools->entityToDto($entity);
+            $dto = $this->entityTools->entityToDto($faxFile);
             $dto->setStatus('error');
-            $this->entityTools->persistDto($dto, $entity, true);
+            $this->entityTools->persistDto($dto, $faxFile, true);
 
             throw $e;
         }

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 
 interface ProxyTrunkLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ProxyTrunkInterface $entity);
+    public function execute(ProxyTrunkInterface $proxyTrunk);
 }

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface;
 
 interface ProxyTrunksRelBrandLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(ProxyTrunksRelBrandInterface $entity);
+    public function execute(ProxyTrunksRelBrandInterface $relBrand);
 }

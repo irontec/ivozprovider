@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationIn
 
 interface DdiProviderRegistrationLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(DdiProviderRegistrationInterface $entity);
+    public function execute(DdiProviderRegistrationInterface $ddiProviderRegistration);
 }

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 
 interface DdiProviderAddressLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(DdiProviderAddressInterface $entity);
+    public function execute(DdiProviderAddressInterface $ddiProviderAddress);
 }

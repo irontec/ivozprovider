@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface TpDestinationRateLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TpDestinationRateInterface $entity);
+    public function execute(TpDestinationRateInterface $tpDestinationRate);
 }

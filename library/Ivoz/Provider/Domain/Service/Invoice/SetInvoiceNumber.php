@@ -58,12 +58,12 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        $invoiceNumberGenerator = $invoice->getNumberSequence();
-        if (!$invoiceNumberGenerator) {
+        $sequence = $invoice->getNumberSequence();
+        if (!$sequence) {
             return;
         }
 
-        $invoiceNumber = $this->nextValGenerator->execute($invoiceNumberGenerator);
+        $invoiceNumber = $this->nextValGenerator->execute($sequence);
 
         /** @var InvoiceDto $invoiceDto */
         $invoiceDto = $this->entityTools->entityToDto($invoice);

@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface;
 
 interface CompanyRelCodecLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CompanyRelCodecInterface $entity);
+    public function execute(CompanyRelCodecInterface $relCodec);
 }

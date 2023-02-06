@@ -16,19 +16,19 @@ class GenerateInRules
     /**
      * @return void
      */
-    public function execute(TransformationRuleSetInterface $entity, string $type)
+    public function execute(TransformationRuleSetInterface $transformationRuleSet, string $type)
     {
         // Get RuleSet data
-        $internationalCode = $entity->getInternationalCode();
-        $countryCode = $entity->getCountry()->getCountryCode();
-        $trunkPrefix = $entity->getTrunkPrefix();
-        $areaCode = $entity->getAreaCode();
-        $nationalLen = $entity->getNationalLen();
+        $internationalCode = $transformationRuleSet->getInternationalCode();
+        $countryCode = $transformationRuleSet->getCountry()->getCountryCode();
+        $trunkPrefix = $transformationRuleSet->getTrunkPrefix();
+        $areaCode = $transformationRuleSet->getAreaCode();
+        $nationalLen = $transformationRuleSet->getNationalLen();
         $nationalSubscriberLen = $nationalLen - strlen($areaCode);
 
         $ruleDto = new TransformationRuleDto();
         $ruleDto
-            ->setTransformationRuleSetId($entity->getId())
+            ->setTransformationRuleSetId($transformationRuleSet->getId())
             ->setType($type)
             ->setDescription("From international to e164")
             ->setPriority(1)
@@ -40,7 +40,7 @@ class GenerateInRules
         if (strlen($trunkPrefix) > 0) {
             $ruleDto = new TransformationRuleDto();
             $ruleDto
-                ->setTransformationRuleSetId($entity->getId())
+                ->setTransformationRuleSetId($transformationRuleSet->getId())
                 ->setType($type)
                 ->setDescription("From out of area national to e164")
                 ->setPriority(2)
@@ -53,7 +53,7 @@ class GenerateInRules
         if (strlen($areaCode) > 0) {
             $ruleDto = new TransformationRuleDto();
             $ruleDto
-                ->setTransformationRuleSetId($entity->getId())
+                ->setTransformationRuleSetId($transformationRuleSet->getId())
                 ->setType($type)
                 ->setDescription("From within area national to e164")
                 ->setPriority(3)
@@ -65,7 +65,7 @@ class GenerateInRules
 
         $ruleDto = new TransformationRuleDto();
         $ruleDto
-            ->setTransformationRuleSetId($entity->getId())
+            ->setTransformationRuleSetId($transformationRuleSet->getId())
             ->setType($type)
             ->setDescription("From national to e164")
             ->setPriority(5)

@@ -26,14 +26,14 @@ class CheckUniqueness implements CallCsvSchedulerLifecycleEventHandlerInterface
      *
      * @return void
      */
-    public function execute(CallCsvSchedulerInterface $callCsvScheduler)
+    public function execute(CallCsvSchedulerInterface $scheduler)
     {
-        if ($callCsvScheduler->getBrand()) {
+        if ($scheduler->getBrand()) {
             //Checked through mysql unique key
             return;
         }
 
-        $unique = $this->callCsvSchedulerRepository->hasUniqueName($callCsvScheduler);
+        $unique = $this->callCsvSchedulerRepository->hasUniqueName($scheduler);
 
         if (!$unique) {
             throw new \DomainException('Name already in use');
