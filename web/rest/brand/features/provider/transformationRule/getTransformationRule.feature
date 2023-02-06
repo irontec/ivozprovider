@@ -6,13 +6,13 @@ Feature: Retrieve transformation rules
   @createSchema
   Scenario: Retrieve the transformation rules json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "transformation_rules"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "transformation_rules"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "type": "callerout",
@@ -47,17 +47,17 @@ Feature: Retrieve transformation rules
               "id": 4
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain transformation rule json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "transformation_rules/4"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "transformation_rules/4"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "type": "calleein",
           "description": "From special national to e164",
@@ -83,4 +83,4 @@ Feature: Retrieve transformation rules
               "editable": true
           }
       }
-    """
+      """

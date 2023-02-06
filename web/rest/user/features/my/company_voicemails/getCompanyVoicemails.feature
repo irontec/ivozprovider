@@ -12,7 +12,7 @@ Feature: Retrieve company voicemails
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "enabled": true,
@@ -36,4 +36,4 @@ Feature: Retrieve company voicemails
               "user": 2
           }
       ]
-    """
+      """

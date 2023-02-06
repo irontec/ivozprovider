@@ -6,13 +6,13 @@ Feature: Retrieve ddi providers
   @createSchema
   Scenario: Retrieve the ddi providers json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ddi_providers"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ddi_providers"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "description": "DDIProviderDescription",
@@ -22,17 +22,17 @@ Feature: Retrieve ddi providers
               "proxyTrunk": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain ddi provider json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ddi_providers/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ddi_providers/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "description": "DDIProviderDescription",
           "name": "DDIProviderName",
@@ -54,4 +54,4 @@ Feature: Retrieve ddi providers
               "country": 68
           }
       }
-    """
+      """

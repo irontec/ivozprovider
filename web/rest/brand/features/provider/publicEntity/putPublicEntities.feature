@@ -9,7 +9,7 @@ Feature: Update public entities
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/public_entities/80" with body:
-    """
+      """
       {
           "iden": "Destinations",
           "fqdn": "Ivoz\\Provider\\Domain\\Model\\Destination\\Destination",
@@ -23,5 +23,5 @@ Feature: Update public entities
               "it": "Destinations"
           }
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

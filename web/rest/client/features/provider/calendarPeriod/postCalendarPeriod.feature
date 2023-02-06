@@ -9,7 +9,7 @@ Feature: Create calendar periods
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "calendar_periods" with body:
-    """
+      """
       {
           "startDate": "2019-05-01",
           "endDate": "2019-06-01",
@@ -21,12 +21,12 @@ Feature: Create calendar periods
           "voicemail": null,
           "numberCountry": null
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "startDate": "2019-05-01",
           "endDate": "2019-06-01",
@@ -39,7 +39,7 @@ Feature: Create calendar periods
           "voicemail": null,
           "numberCountry": null
       }
-    """
+      """
 
   Scenario: Retrieve created calendar periods
     Given I add Company Authorization header
@@ -49,7 +49,7 @@ Feature: Create calendar periods
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "startDate": "2019-05-01",
           "endDate": "2019-06-01",
@@ -78,4 +78,4 @@ Feature: Create calendar periods
           "voicemail": null,
           "numberCountry": null
       }
-    """
+      """

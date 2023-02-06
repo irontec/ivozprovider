@@ -9,7 +9,7 @@ Feature: Update transformation rule sets
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/transformation_rule_sets/1" with body:
-    """
+      """
       {
           "description": "Desc",
           "internationalCode": "00",
@@ -26,12 +26,12 @@ Feature: Update transformation rule sets
           },
           "country": 68
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "description": "Desc",
           "internationalCode": "00",
@@ -49,4 +49,4 @@ Feature: Update transformation rule sets
           "country": 68,
           "editable": true
       }
-    """
+      """

@@ -6,13 +6,13 @@ Feature: Retrieve destination rate group
   @createSchema
   Scenario: Retrieve the destination rate group json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "destination_rate_groups"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "destination_rate_groups"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "status": "inProgress",
@@ -47,17 +47,17 @@ Feature: Retrieve destination rate group
               "currency": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain destination rate group json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "destination_rate_groups/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "destination_rate_groups/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "status": "inProgress",
           "lastExecutionError": null,
@@ -81,4 +81,4 @@ Feature: Retrieve destination rate group
           },
           "currency": null
       }
-    """
+      """

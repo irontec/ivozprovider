@@ -9,7 +9,7 @@ Feature: Create contacts
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/contacts" with body:
-    """
+      """
       {
           "name": "New",
           "lastname": "Contact",
@@ -20,12 +20,12 @@ Feature: Create contacts
           "mobilePhone": "333222111",
           "otherPhone": "+34123456789"
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "New",
           "lastname": "Contact",
@@ -40,7 +40,7 @@ Feature: Create contacts
           "workPhoneCountry": 68,
           "mobilePhoneCountry": 68
       }
-    """
+      """
 
   Scenario: Retrieve created contact
     Given I add Company Authorization header
@@ -50,7 +50,7 @@ Feature: Create contacts
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "New",
           "lastname": "Contact",
@@ -97,4 +97,4 @@ Feature: Create contacts
               }
           }
       }
-    """
+      """

@@ -6,13 +6,13 @@ Feature: Retrieve services
   @createSchema
   Scenario: Retrieve the services json list
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "services"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "services"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "iden": "DirectPickUp",
@@ -105,17 +105,17 @@ Feature: Retrieve services
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain service json
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "services/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "services/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "iden": "DirectPickUp",
           "defaultCode": "94",
@@ -134,4 +134,4 @@ Feature: Retrieve services
               "it": "it"
           }
       }
-    """
+      """

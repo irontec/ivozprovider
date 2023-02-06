@@ -6,10 +6,10 @@ Feature: Create invoice templates
   @createSchema
   Scenario: Create an invoice template
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/invoice_templates" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/invoice_templates" with body:
+      """
       {
           "name": "New",
           "description": "Description",
@@ -17,12 +17,12 @@ Feature: Create invoice templates
           "templateHeader": "header",
           "templateFooter": "footer"
       }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "New",
           "description": "Description",
@@ -32,17 +32,17 @@ Feature: Create invoice templates
           "id": 3,
           "global": false
       }
-    """
+      """
 
   Scenario: Retrieve created invoice templates
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "invoice_templates/3"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "invoice_templates/3"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "New",
           "description": "Description",
@@ -52,4 +52,4 @@ Feature: Create invoice templates
           "id": 3,
           "global": false
       }
-    """
+      """

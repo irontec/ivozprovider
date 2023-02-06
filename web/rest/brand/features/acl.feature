@@ -6,26 +6,26 @@ Feature: Authorization checking
   @createSchema
   Scenario: A read only admin cannot create a resource
     Given I add Authorization header for "restrictedBrandAdmin"
-    When I add "Accept" header equal to "application/ld+json"
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/administrators" with body:
-    """
+     When I add "Accept" header equal to "application/ld+json"
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/administrators" with body:
+      """
       {
           "username": "someUser"
       }
-    """
-    Then the response status code should be 403
+      """
+     Then the response status code should be 403
 
   Scenario: A read only admin can read a resource
     Given I add Authorization header for "restrictedBrandAdmin"
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "administrators/4"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "administrators/4"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "username": "test_company_admin",
           "pass": "*****",
@@ -47,14 +47,14 @@ Feature: Authorization checking
               "country": 68
           }
       }
-    """
+      """
 
   Scenario: A read only admin cannot update a resource
     Given I add Authorization header for "restrictedBrandAdmin"
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "PUT" request to "/administrators/4" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/administrators/4" with body:
+      """
       {
           "username": "newUserName",
           "pass": "1234",
@@ -66,12 +66,12 @@ Feature: Authorization checking
           "company": 1,
           "timezone": 158
       }
-    """
-    Then the response status code should be 403
+      """
+     Then the response status code should be 403
 
   Scenario: A read only admin cannot delete a resource
     Given I add Authorization header for "restrictedBrandAdmin"
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/administrators/4"
-    Then the response status code should be 403
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/administrators/4"
+     Then the response status code should be 403

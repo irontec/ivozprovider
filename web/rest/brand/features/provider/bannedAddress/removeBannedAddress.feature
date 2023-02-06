@@ -6,10 +6,10 @@ Feature: Manage banned addresses
   @createSchema
   Scenario: Remove banned address
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/banned_addresses/3"
-    Then the response status code should be 405
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/banned_addresses/3"
+     Then the response status code should be 405
 
   Scenario: Cannot remove non antibruteforce banned address
     Given I add Brand Authorization header

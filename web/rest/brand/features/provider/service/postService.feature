@@ -9,7 +9,7 @@ Feature: Create services
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/service" with body:
-    """
+      """
       {
           "iden": "testService",
           "defaultCode": "91",
@@ -27,6 +27,5 @@ Feature: Create services
               "it": "it"
           }
       }
-    """
-    Then the response status code should be 404
-     
+      """
+     Then the response status code should be 404

@@ -9,7 +9,7 @@ Feature: Create call CSV scheduler
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/call_csv_schedulers" with body:
-    """
+      """
       {
           "name": "some name",
           "unit": "day",
@@ -28,12 +28,12 @@ Feature: Create call CSV scheduler
           "friend": null,
           "ddiProvider": null
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "some name",
           "unit": "day",
@@ -55,7 +55,7 @@ Feature: Create call CSV scheduler
           "friend": null,
           "ddiProvider": null
       }
-    """
+      """
 
   Scenario: Retrieve created call CSV scheduler
     Given I add Brand Authorization header
@@ -65,7 +65,7 @@ Feature: Create call CSV scheduler
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "some name",
           "unit": "day",
@@ -88,4 +88,4 @@ Feature: Create call CSV scheduler
           "friend": null,
           "ddiProvider": null
       }
-    """
+      """

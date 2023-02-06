@@ -9,7 +9,7 @@ Feature: Create transformation rule sets
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/transformation_rule_sets" with body:
-    """
+      """
       {
           "description": "New transformation for Usansolocity",
           "internationalCode": "00",
@@ -25,12 +25,12 @@ Feature: Create transformation rule sets
           },
           "country": 77
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "description": "New transformation for Usansolocity",
           "internationalCode": "00",
@@ -48,7 +48,7 @@ Feature: Create transformation rule sets
           "country": 77,
           "editable": true
       }
-    """
+      """
 
   Scenario: Retrieve created transformation rule set
     Given I add Brand Authorization header
@@ -58,7 +58,7 @@ Feature: Create transformation rule sets
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "description": "New transformation for Usansolocity",
           "internationalCode": "00",
@@ -76,4 +76,4 @@ Feature: Create transformation rule sets
           "country": "~",
           "editable": true
       }
-    """
+      """

@@ -9,7 +9,7 @@ Feature: Update users
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/users/1" with body:
-    """
+      """
       {
           "name": "Updated",
           "lastname": "User",
@@ -39,12 +39,12 @@ Feature: Update users
             1
           ]
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "Updated",
           "lastname": "User",
@@ -76,31 +76,30 @@ Feature: Update users
             1
           ]
       }
-    """
+      """
 
   Scenario: Update a password
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "PUT" request to "/users/1" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/users/1" with body:
+      """
       {
           "pass": "newPass",
           "oldPass": "changeme"
       }
-    """
-    Then the response status code should be 200
-
+      """
+     Then the response status code should be 200
 
   Scenario: Active user requires a password
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "PUT" request to "/users/1" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/users/1" with body:
+      """
       {
           "pass": null,
           "oldPass": "changeme"
       }
-    """
-    Then the response status code should be 400
+      """
+     Then the response status code should be 400

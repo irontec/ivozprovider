@@ -9,7 +9,7 @@ Feature: Update call forward settings
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/call_forward_settings/1" with body:
-    """
+      """
       {
         "callTypeFilter": "internal",
         "callForwardType": "inconditional",
@@ -23,12 +23,12 @@ Feature: Update call forward settings
         "voicemail": null,
         "numberCountry": 1
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "callTypeFilter": "internal",
           "callForwardType": "inconditional",
@@ -47,4 +47,4 @@ Feature: Update call forward settings
           "cfwToRetailAccount": null,
           "ddi": null
       }
-    """
+      """

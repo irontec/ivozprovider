@@ -12,7 +12,7 @@ Feature: Retrieve ddis
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "ddi": "123",
@@ -42,7 +42,7 @@ Feature: Retrieve ddis
               "country": 68
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain ddi json
     Given I add Brand Authorization header
@@ -52,7 +52,7 @@ Feature: Retrieve ddis
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "ddi": "123",
           "ddie164": "+34123",
@@ -82,4 +82,4 @@ Feature: Retrieve ddis
               }
           }
       }
-    """
+      """

@@ -12,7 +12,7 @@ Feature: Retrieve countries
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "code": "AD",
@@ -345,7 +345,7 @@ Feature: Retrieve countries
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain country json
     Given I add Authorization header
@@ -355,7 +355,7 @@ Feature: Retrieve countries
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
        {
           "code": "AD",
           "countryCode": "+376",
@@ -374,14 +374,14 @@ Feature: Retrieve countries
               "it": "Europe"
           }
       }
-    """
+      """
 
   Scenario: Retrieve the full country json list
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "countries?_pagination=false"
-    Then the response status code should be 200
-    And the streamed response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the streamed JSON node "root" should have 249 elements
-    And the streamed JSON node "root[0].code" should be equal to "AD"
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "countries?_pagination=false"
+     Then the response status code should be 200
+      And the streamed response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the streamed JSON node "root" should have 249 elements
+      And the streamed JSON node "root[0].code" should be equal to "AD"

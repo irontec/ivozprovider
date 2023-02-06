@@ -12,7 +12,7 @@ Feature: Retrieve call history
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "startTime": "2018-11-22 17:54:49",
@@ -33,18 +33,17 @@ Feature: Retrieve call history
               "id": 2
           }
       ]
-    """
-
+      """
 
   Scenario: I can filter the call history by partial dates
     Given I add User Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "my/call_history?startTime=2018-11-22"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "my/call_history?startTime=2018-11-22"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "startTime": "2018-11-22 17:54:49",
@@ -56,4 +55,4 @@ Feature: Retrieve call history
               "id": 1
           }
       ]
-    """
+      """

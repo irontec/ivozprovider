@@ -9,7 +9,7 @@ Feature: Update service
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/services/1" with body:
-    """
+      """
       {
           "iden": "UpdatedService",
           "defaultCode": "91",
@@ -28,5 +28,5 @@ Feature: Update service
               "it": "it"
           }
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

@@ -6,13 +6,13 @@ Feature: Retrieve schedules
   @createSchema
   Scenario: Retrieve the schedules json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "schedules"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "schedules"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "aSchedule",
@@ -41,7 +41,7 @@ Feature: Retrieve schedules
               "id": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain schedule json
     Given I add Company Authorization header
@@ -51,7 +51,7 @@ Feature: Retrieve schedules
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "aSchedule",
           "timeIn": "08:00:00",
@@ -65,4 +65,4 @@ Feature: Retrieve schedules
           "sunday": false,
           "id": 1
       }
-    """
+      """

@@ -12,7 +12,7 @@ Feature: Retrieve unassigned services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "iden": "CloseLock",
@@ -33,7 +33,7 @@ Feature: Retrieve unassigned services
               }
           }
       ]
-    """
+      """
 
   @createSchema
   Scenario: Retrieve the unassigned services including requested id json list
@@ -44,7 +44,7 @@ Feature: Retrieve unassigned services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "iden": "DirectPickUp",
@@ -83,4 +83,4 @@ Feature: Retrieve unassigned services
               }
           }
       ]
-    """
+      """

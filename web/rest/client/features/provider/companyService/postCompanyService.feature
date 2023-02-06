@@ -9,23 +9,23 @@ Feature: Create company services
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "company_services" with body:
-    """
+      """
       {
           "code": "92",
           "service": 4
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "code": "92",
           "id": 7,
           "service": 4
       }
-    """
+      """
 
   Scenario: Retrieve created company service
     Given I add Company Authorization header
@@ -35,7 +35,7 @@ Feature: Create company services
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "code": "92",
           "id": 7,
@@ -56,4 +56,4 @@ Feature: Create company services
               }
           }
       }
-    """
+      """

@@ -124,6 +124,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/library/bin/test-codestyle --full'
+                        sh '/opt/irontec/ivozprovider/library/bin/test-codestyle-gherkin'
                     }
                     post {
                         success { notifySuccessGithub() }

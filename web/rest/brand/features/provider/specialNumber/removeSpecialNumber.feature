@@ -13,7 +13,7 @@ Feature: Manage special numbers
 
   Scenario: Cannot remove a global special numbers
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/special_numbers/1"
-    Then the response status code should be 403
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/special_numbers/1"
+     Then the response status code should be 403

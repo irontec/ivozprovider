@@ -6,13 +6,13 @@ Feature: Retrieve users
   @createSchema
   Scenario: Retrieve the users json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "users"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "users"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "Alice",
@@ -50,7 +50,7 @@ Feature: Retrieve users
               "status": []
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain user json
     Given I add Company Authorization header
@@ -60,7 +60,7 @@ Feature: Retrieve users
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "Alice",
           "lastname": "Allison",
@@ -121,4 +121,4 @@ Feature: Retrieve users
           "voicemail": null,
           "pickupGroupIds": []
       }
-    """
+      """

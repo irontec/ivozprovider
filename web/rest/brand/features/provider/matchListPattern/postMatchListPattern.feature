@@ -9,7 +9,7 @@ Feature: Create match list patterns
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/match_list_patterns" with body:
-    """
+      """
       {
           "description": "new brand test",
           "type": "number",
@@ -18,12 +18,12 @@ Feature: Create match list patterns
           "matchList": 3,
           "numberCountry": 68
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "description": "new brand test",
           "type": "number",
@@ -33,7 +33,7 @@ Feature: Create match list patterns
           "matchList": 3,
           "numberCountry": 68
       }
-    """
+      """
 
   Scenario: Retrieve created match list pattern
     Given I add Brand Authorization header
@@ -43,7 +43,7 @@ Feature: Create match list patterns
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "description": "new brand test",
           "type": "number",
@@ -53,4 +53,4 @@ Feature: Create match list patterns
           "matchList": "~",
           "numberCountry": "~"
       }
-    """
+      """

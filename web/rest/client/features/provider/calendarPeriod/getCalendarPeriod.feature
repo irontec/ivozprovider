@@ -12,7 +12,7 @@ Feature: Retrieve calendar periods
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "startDate": "2019-01-01",
@@ -30,7 +30,7 @@ Feature: Retrieve calendar periods
               ]
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain calendar json
     Given I add Company Authorization header
@@ -40,7 +40,7 @@ Feature: Retrieve calendar periods
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "startDate": "2019-01-01",
           "endDate": "2019-10-01",
@@ -72,4 +72,4 @@ Feature: Retrieve calendar periods
               }
           }
       }
-    """
+      """

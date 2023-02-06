@@ -12,7 +12,7 @@ Feature: Retrieve voicemail messages
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "calldate": "2022-03-31 14:08:43",
@@ -22,7 +22,7 @@ Feature: Retrieve voicemail messages
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain voicemail message json
     Given I add Company Authorization header
@@ -32,7 +32,7 @@ Feature: Retrieve voicemail messages
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "calldate": "2022-03-31 14:08:43",
           "caller": "Alice <101>",
@@ -56,4 +56,4 @@ Feature: Retrieve voicemail messages
               "locution": 1
           }
       }
-    """
+      """

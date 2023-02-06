@@ -9,7 +9,7 @@ Feature: Create Trusted addresses
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/trusteds" with body:
-    """
+      """
       {
           "srcIp": "127.0.1.2",
           "proto": "any",
@@ -20,12 +20,12 @@ Feature: Create Trusted addresses
           "priority": 0,
           "company": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "srcIp": "127.0.1.2",
           "proto": "any",
@@ -37,7 +37,7 @@ Feature: Create Trusted addresses
           "id": 2,
           "company": 1
       }
-    """
+      """
 
   Scenario: Retrieve created trusted addresses
     Given I add Brand Authorization header
@@ -47,7 +47,7 @@ Feature: Create Trusted addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "srcIp": "127.0.1.2",
           "proto": "any",
@@ -59,4 +59,4 @@ Feature: Create Trusted addresses
           "id": 2,
           "company": "~"
       }
-    """
+      """

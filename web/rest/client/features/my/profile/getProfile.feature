@@ -9,7 +9,7 @@ Feature: Retrieve active calls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "restricted": false,
           "vpbx": true,
@@ -27,7 +27,7 @@ Feature: Retrieve active calls
               "conferences"
           ]
       }
-    """
+      """
 
   Scenario: Retrieve company admin profile json
     Given I add Residential Company Authorization header
@@ -37,7 +37,7 @@ Feature: Retrieve active calls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "restricted": false,
           "vpbx": false,
@@ -48,7 +48,7 @@ Feature: Retrieve active calls
           "acls": [],
           "features": []
       }
-    """
+      """
 
   Scenario: Retrieve company admin profile json
     Given I add Retail Company Authorization header
@@ -58,7 +58,7 @@ Feature: Retrieve active calls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "restricted": false,
           "vpbx": false,
@@ -69,7 +69,7 @@ Feature: Retrieve active calls
           "acls": [],
           "features": []
       }
-    """
+      """
 
   Scenario: Retrieve company admin profile json
     Given I add restricted Company Authorization header
@@ -79,7 +79,7 @@ Feature: Retrieve active calls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "restricted": true,
           "vpbx": true,
@@ -559,4 +559,4 @@ Feature: Retrieve active calls
               "conferences"
           ]
       }
-    """
+      """

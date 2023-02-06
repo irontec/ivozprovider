@@ -6,13 +6,13 @@ Feature: Retrieve music on holds
   @createSchema
   Scenario: Retrieve the music on holds json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "music_on_holds"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "music_on_holds"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "Something good",
@@ -23,17 +23,17 @@ Feature: Retrieve music on holds
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain music on hold json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "music_on_holds/2"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "music_on_holds/2"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "Something good",
           "status": null,
@@ -49,4 +49,4 @@ Feature: Retrieve music on holds
               "baseName": null
           }
       }
-    """
+      """
