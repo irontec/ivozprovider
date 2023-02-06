@@ -9,7 +9,7 @@ Feature: Create web portals
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/web_portals" with body:
-    """
+      """
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
@@ -23,12 +23,12 @@ Feature: Create web portals
               "baseName": null
           }
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
@@ -42,7 +42,7 @@ Feature: Create web portals
               "baseName": null
           }
       }
-    """
+      """
 
   Scenario: Retrieve created web portals
     Given I add Brand Authorization header
@@ -52,7 +52,7 @@ Feature: Create web portals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "url": "https://post-example.com",
           "klearTheme": "redmond",
@@ -66,14 +66,14 @@ Feature: Create web portals
               "baseName": null
           }
       }
-    """
+      """
 
   Scenario: Can not create god web portal
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/web_portals" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/web_portals" with body:
+      """
       {
           "url": "https://post-god-example.com",
           "klearTheme": "redmond",
@@ -87,5 +87,5 @@ Feature: Create web portals
               "baseName": null
           }
       }
-    """
-    Then the response status code should be 403
+      """
+     Then the response status code should be 403

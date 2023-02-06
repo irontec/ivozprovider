@@ -9,12 +9,12 @@ Feature: Create outgoing ddi rules
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/outgoing_ddi_rules" with body:
-    """
-          {
-              "name": "testRule",
-              "defaultAction": "keep",
-              "id": 1,
-              "forcedDdi": null
-          }
-    """
-    Then the response status code should be 405
+      """
+      {
+          "name": "testRule",
+          "defaultAction": "keep",
+          "id": 1,
+          "forcedDdi": null
+      }
+      """
+     Then the response status code should be 405

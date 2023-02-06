@@ -9,18 +9,18 @@ Feature: Create conditional routes conditions rel matchlists
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/conditional_routes_conditions_rel_matchlists" with body:
-    """
+      """
       {
           "id": 1,
           "condition": 1,
           "matchlist": 2
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 2,
           "condition": {
@@ -45,7 +45,7 @@ Feature: Create conditional routes conditions rel matchlists
               "id": 2
           }
       }
-    """
+      """
 
   Scenario: Retrieve created conditional routes conditions rel matchlists
     Given I add Company Authorization header
@@ -55,7 +55,7 @@ Feature: Create conditional routes conditions rel matchlists
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 2,
           "condition": {
@@ -80,4 +80,4 @@ Feature: Create conditional routes conditions rel matchlists
               "id": 2
           }
       }
-    """
+      """

@@ -12,7 +12,7 @@ Feature: Retrieve external call filter rel schedules
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "id": 1,
@@ -50,7 +50,7 @@ Feature: Retrieve external call filter rel schedules
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain external call filter rel schedule json
     Given I add Company Authorization header
@@ -60,7 +60,7 @@ Feature: Retrieve external call filter rel schedules
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 1,
           "filter": {
@@ -96,4 +96,4 @@ Feature: Retrieve external call filter rel schedules
               "id": 1
           }
       }
-    """
+      """

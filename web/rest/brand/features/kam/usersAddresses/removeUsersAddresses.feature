@@ -10,4 +10,3 @@ Feature: Manage Users addresses
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/users_addresses/1"
      Then the response status code should be 204
-

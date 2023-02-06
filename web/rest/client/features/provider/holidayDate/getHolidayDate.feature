@@ -6,13 +6,13 @@ Feature: Retrieve holiday dates
   @createSchema
   Scenario: Retrieve the holiday dates json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "holiday_dates"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "holiday_dates"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "Name",
@@ -45,17 +45,17 @@ Feature: Retrieve holiday dates
               "numberCountry": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain holiday date json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "holiday_dates/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "holiday_dates/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "Name",
           "eventDate": "2021-12-21",
@@ -74,4 +74,4 @@ Feature: Retrieve holiday dates
           "voicemail": null,
           "numberCountry": null
       }
-    """
+      """

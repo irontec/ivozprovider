@@ -6,13 +6,13 @@ Feature: Retrieve hunt groups rel users
   @createSchema
   Scenario: Retrieve the hunt groups rel users json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "hunt_group_members"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "hunt_group_members"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       [
           {
               "timeoutTime": 1,
@@ -35,17 +35,17 @@ Feature: Retrieve hunt groups rel users
               "routeType": "user"
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain hunt groups rel user json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "hunt_group_members/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "hunt_group_members/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "timeoutTime": 1,
           "priority": 1,
@@ -69,4 +69,4 @@ Feature: Retrieve hunt groups rel users
           "user": "~",
           "numberCountry": null
       }
-    """
+      """

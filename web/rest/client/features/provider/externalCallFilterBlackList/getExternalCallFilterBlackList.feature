@@ -12,7 +12,7 @@ Feature: Retrieve external call filter black lists
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "id": 1,
@@ -41,7 +41,7 @@ Feature: Retrieve external call filter black lists
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain external call filter black list json
     Given I add Company Authorization header
@@ -51,7 +51,7 @@ Feature: Retrieve external call filter black lists
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 1,
           "filter": {
@@ -78,4 +78,4 @@ Feature: Retrieve external call filter black lists
               "id": 1
           }
       }
-    """
+      """

@@ -9,26 +9,26 @@ Feature: Create fixed costs
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/fixed_costs" with body:
-    """
+      """
       {
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
           "id": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
           "id": 3
       }
-    """
+      """
 
   Scenario: Retrieve created fixed cost
     Given I add Brand Authorization header
@@ -38,11 +38,11 @@ Feature: Create fixed costs
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "24x7 support",
           "description": "Something",
           "cost": 10,
           "id": 3
       }
-    """
+      """

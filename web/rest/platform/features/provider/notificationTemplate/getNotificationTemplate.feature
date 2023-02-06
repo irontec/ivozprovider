@@ -12,7 +12,7 @@ Feature: Retrieve notification templates
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "CallCsv notification",
@@ -30,7 +30,7 @@ Feature: Retrieve notification templates
               "id": 4
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain notification templates json
     Given I add Authorization header
@@ -40,11 +40,11 @@ Feature: Retrieve notification templates
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "CallCsv notification",
           "type": "callCsv",
           "id": 2,
           "brand": null
       }
-    """
+      """

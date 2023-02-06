@@ -9,7 +9,7 @@ Feature: Retrieve billable calls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
@@ -50,7 +50,7 @@ Feature: Retrieve billable calls
               "ddiProvider": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain billable call json
     Given I add Brand Authorization header
@@ -60,7 +60,7 @@ Feature: Retrieve billable calls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "callid": "017cc7c8-eb38-4bbd-9318-524a274f7000",
           "startTime": "2019-01-01 09:00:00",
@@ -85,4 +85,4 @@ Feature: Retrieve billable calls
           "ddi": "~",
           "ddiProvider": "~"
       }
-    """
+      """

@@ -9,18 +9,18 @@ Feature: Create fixed costs rel invoices
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/fixed_costs_rel_invoices" with body:
-    """
+      """
       {
           "quantity": 1,
           "fixedCost": 1,
           "invoice": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "quantity": 1,
           "id": 2,
@@ -52,7 +52,7 @@ Feature: Create fixed costs rel invoices
               "currency": null
           }
       }
-    """
+      """
 
   Scenario: Retrieve created fixed cost rel invoice
     Given I add Brand Authorization header
@@ -62,7 +62,7 @@ Feature: Create fixed costs rel invoices
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "quantity": 1,
           "id": 2,
@@ -92,4 +92,4 @@ Feature: Create fixed costs rel invoices
               "numberSequence": null
           }
       }
-    """
+      """

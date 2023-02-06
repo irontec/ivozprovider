@@ -9,7 +9,7 @@ Feature: Create extensions
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/extensions" with body:
-    """
+      """
       {
           "number": "111",
           "routeType": "user",
@@ -24,12 +24,12 @@ Feature: Create extensions
           "numberCountry": null,
           "voicemail": null
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "number": "111",
           "routeType": "user",
@@ -45,7 +45,7 @@ Feature: Create extensions
           "numberCountry": null,
           "voicemail": null
       }
-    """
+      """
 
   Scenario: Retrieve created extension
     Given I add Company Authorization header
@@ -55,7 +55,7 @@ Feature: Create extensions
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "number": "111",
           "routeType": "user",
@@ -95,4 +95,4 @@ Feature: Create extensions
           "numberCountry": null,
           "voicemail": null
       }
-    """
+      """

@@ -12,7 +12,7 @@ Feature: Retrieve web portals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "url": "https://client-ivozprovider.irontec.com",
@@ -37,7 +37,7 @@ Feature: Retrieve web portals
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain web portal json
     Given I add Brand Authorization header
@@ -47,7 +47,7 @@ Feature: Retrieve web portals
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "url": "https://client-ivozprovider.irontec.com",
           "klearTheme": "irontec-red",
@@ -61,4 +61,4 @@ Feature: Retrieve web portals
               "baseName": null
           }
       }
-    """
+      """

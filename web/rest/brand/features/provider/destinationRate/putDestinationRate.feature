@@ -9,7 +9,7 @@ Feature: Update destination rate
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/destination_rates/1" with body:
-    """
+      """
       {
           "cost": 3.1,
           "connectFee": 0.50,
@@ -17,12 +17,12 @@ Feature: Update destination rate
           "groupIntervalStart": "1s",
           "id": 1
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "cost": 3.1,
           "connectFee": 0.5,
@@ -32,4 +32,4 @@ Feature: Update destination rate
           "destinationRateGroup": 1,
           "destination": 1
       }
-    """
+      """

@@ -9,7 +9,7 @@ Feature: Create companies
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/companies" with body:
-    """
+      """
       {
         "type": "vpbx",
         "name": "API company",
@@ -44,12 +44,12 @@ Feature: Create companies
           1
         ]
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "type": "vpbx",
           "name": "API company",
@@ -94,7 +94,7 @@ Feature: Create companies
           "routingTagIds": [],
           "codecIds": []
       }
-    """
+      """
 
   Scenario: Retrieve created company
     Given I add Brand Authorization header
@@ -104,7 +104,7 @@ Feature: Create companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "type": "vpbx",
           "name": "API company",
@@ -177,15 +177,15 @@ Feature: Create companies
           "routingTagIds": [],
           "codecIds": []
       }
-    """
+      """
 
   @createSchema
   Scenario: Create a retail company
     Given I add Brand Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/companies" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/companies" with body:
+      """
       {
         "type": "retail",
         "name": "API retail",
@@ -226,12 +226,12 @@ Feature: Create companies
           1
         ]
       }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "type": "retail",
           "name": "API retail",
@@ -280,4 +280,4 @@ Feature: Create companies
               1
           ]
       }
-    """
+      """

@@ -6,10 +6,10 @@ Feature: Create queues
   @createSchema
   Scenario: Create a queue
     Given I add Company Authorization header
-    When I add "Content-Type" header equal to "application/json"
-    And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/queues" with body:
-    """
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "POST" request to "/queues" with body:
+      """
       {
           "name": "newQueue",
           "displayName": "Display Name for newQueue",
@@ -37,12 +37,12 @@ Feature: Create queues
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "newQueue",
           "displayName": "Display Name for newQueue",
@@ -71,17 +71,17 @@ Feature: Create queues
           "timeoutNumberCountry": 68,
           "fullNumberCountry": 68
       }
-    """
+      """
 
   Scenario: Retrieve created queue
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/queues/2"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "/queues/2"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "newQueue",
           "maxWaitTime": 10,
@@ -176,4 +176,4 @@ Feature: Create queues
               }
           }
       }
-    """
+      """

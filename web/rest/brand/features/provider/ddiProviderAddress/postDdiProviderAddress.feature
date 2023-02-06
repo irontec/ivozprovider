@@ -9,25 +9,25 @@ Feature: Create ddi provider addresses
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/ddi_provider_addresses" with body:
-    """
+      """
       {
           "ip": "1.1.1.1",
           "description": "NewDDIProviderAddress",
           "ddiProvider": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "ip": "1.1.1.1",
           "description": "NewDDIProviderAddress",
           "id": 2,
           "ddiProvider": 1
       }
-    """
+      """
 
   Scenario: Retrieve created ddi provider address
     Given I add Brand Authorization header
@@ -37,7 +37,7 @@ Feature: Create ddi provider addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "ip": "1.1.1.1",
           "description": "NewDDIProviderAddress",
@@ -50,4 +50,4 @@ Feature: Create ddi provider addresses
               "proxyTrunk": 1
           }
       }
-    """
+      """

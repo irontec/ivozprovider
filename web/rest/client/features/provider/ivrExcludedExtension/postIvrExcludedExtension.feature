@@ -9,18 +9,18 @@ Feature: Create IVR excluded extensions
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/ivr_excluded_extensions" with body:
-    """
+      """
       {
           "id": 1,
           "ivr": 1,
           "extension": 2
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 2,
           "ivr": {
@@ -60,7 +60,7 @@ Feature: Create IVR excluded extensions
               "voicemail": null
           }
       }
-    """
+      """
 
   Scenario: Retrieve created IVR excluded extensions
     Given I add Company Authorization header
@@ -70,7 +70,7 @@ Feature: Create IVR excluded extensions
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 2,
           "ivr": {
@@ -110,4 +110,4 @@ Feature: Create IVR excluded extensions
               "voicemail": null
           }
       }
-    """
+      """

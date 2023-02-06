@@ -9,10 +9,10 @@ Feature: Create conditional routes conditions route lock
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/conditional_routes_conditions_rel_route_locks/1" with body:
-    """
+      """
       {
           "condition": 1,
           "routeLock": 2
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

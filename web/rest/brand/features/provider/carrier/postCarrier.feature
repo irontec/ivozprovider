@@ -9,7 +9,7 @@ Feature: Create carriers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/carriers" with body:
-    """
+      """
       {
           "description": "Artemis-New",
           "name": "Artemis-New",
@@ -17,12 +17,12 @@ Feature: Create carriers
           "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
             "description": "Artemis-New",
             "name": "Artemis-New",
@@ -34,7 +34,7 @@ Feature: Create carriers
             "currency": null,
             "proxyTrunk": 1
         }
-    """
+      """
 
   Scenario: Retrieve created carrier
     Given I add Brand Authorization header
@@ -44,7 +44,7 @@ Feature: Create carriers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "description": "Artemis-New",
           "name": "Artemis-New",
@@ -67,4 +67,4 @@ Feature: Create carriers
               "country": 68
           }
       }
-    """
+      """

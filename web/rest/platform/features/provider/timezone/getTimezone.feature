@@ -6,13 +6,13 @@ Feature: Retrieve timezones
   @createSchema
   Scenario: Retrieve the timezones json list
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "timezones"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "timezones"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "tz": "Europe/Andorra",
@@ -135,7 +135,7 @@ Feature: Retrieve timezones
               "id": 30
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain timezones json
     Given I add Authorization header
@@ -145,7 +145,7 @@ Feature: Retrieve timezones
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-"""
+      """
       {
           "tz": "Europe/Madrid",
           "comment": "mainland",
@@ -174,14 +174,14 @@ Feature: Retrieve timezones
               }
           }
       }
-    """
+      """
 
   Scenario: Retrieve the full timezone json list
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "timezones?_pagination=false"
-    Then the response status code should be 200
-    And the streamed response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the streamed JSON node "root" should have 416 elements
-    And the streamed JSON node "root[0].tz" should be equal to "Europe/Andorra"
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "timezones?_pagination=false"
+     Then the response status code should be 200
+      And the streamed response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the streamed JSON node "root" should have 416 elements
+      And the streamed JSON node "root[0].tz" should be equal to "Europe/Andorra"

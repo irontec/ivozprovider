@@ -12,7 +12,7 @@ Feature: Retrieve voicemails
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "enabled": true,
@@ -36,7 +36,7 @@ Feature: Retrieve voicemails
               "user": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve the voicemails json list
     Given I add Residential Company Authorization header
@@ -46,7 +46,7 @@ Feature: Retrieve voicemails
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "enabled": true,
@@ -56,7 +56,7 @@ Feature: Retrieve voicemails
               "user": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve voicemails as retail admin
     Given I add Retail Company Authorization header
@@ -78,7 +78,7 @@ Feature: Retrieve voicemails
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "enabled": true,
           "name": "Voicemail For User1",
@@ -144,4 +144,4 @@ Feature: Retrieve voicemails
               }
           }
       }
-    """
+      """

@@ -9,23 +9,23 @@ Feature: Create application servers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/application_servers" with body:
-    """
+      """
       {
         "ip": "127.2.2.2",
         "name": "test002"
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "ip": "127.2.2.2",
           "name": "test002",
           "id": 3
       }
-    """
+      """
 
   Scenario: Retrieve created application server
     Given I add Authorization header
@@ -35,10 +35,10 @@ Feature: Create application servers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "ip": "127.2.2.2",
           "name": "test002",
           "id": 3
       }
-    """
+      """

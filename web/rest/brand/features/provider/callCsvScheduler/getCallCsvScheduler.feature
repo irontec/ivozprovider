@@ -12,7 +12,7 @@ Feature: Retrieve call CSV scheduler
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "SchedulerName",
@@ -27,7 +27,7 @@ Feature: Retrieve call CSV scheduler
               "company": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain call CSV scheduler json
     Given I add Brand Authorization header
@@ -37,7 +37,7 @@ Feature: Retrieve call CSV scheduler
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
        {
           "name": "SchedulerName",
           "unit": "day",
@@ -59,4 +59,4 @@ Feature: Retrieve call CSV scheduler
           "friend": null,
           "ddiProvider": null
       }
-    """
+      """

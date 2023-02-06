@@ -6,13 +6,13 @@ Feature: Manage administrator rel public entities
   @createSchema
   Scenario: Retrieve the administrator rel public entities json list
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "administrator_rel_public_entities?_itemsPerPage=3"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "administrator_rel_public_entities?_itemsPerPage=3"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
        [
           {
               "create": false,
@@ -117,17 +117,17 @@ Feature: Manage administrator rel public entities
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain administrator rel public entities json
     Given I add Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "administrator_rel_public_entities/71"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "administrator_rel_public_entities/71"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
         "create": false,
         "read": true,
@@ -162,4 +162,4 @@ Feature: Manage administrator rel public entities
             }
         }
       }
-    """
+      """

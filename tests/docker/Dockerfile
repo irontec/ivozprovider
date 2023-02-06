@@ -18,6 +18,7 @@ RUN apt-get install --assume-yes --force-yes \
         sphinx-intl \
         nodejs \
         mysql-client \
+        python3-pip \
         php8.0 \
         php8.0-cli \
         php8.0-mysql \
@@ -47,6 +48,9 @@ RUN chown jenkins.jenkins /opt/
 
 # Install node tools for testing
 RUN npm install -g swagger-cli
+
+# Install gherking fromatter
+RUN pip install reformat-gherkin
 
 # Base project
 USER $UNAME

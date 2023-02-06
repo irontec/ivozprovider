@@ -6,13 +6,13 @@ Feature: Retrieve ivr entries
   @createSchema
   Scenario: Retrieve the ivr entries json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ivr_entries"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ivr_entries"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "entry": "test",
@@ -28,17 +28,17 @@ Feature: Retrieve ivr entries
               "numberCountry": 68
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain ivr entry json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "ivr_entries/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "ivr_entries/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "entry": "test",
           "displayName": "Entry display name",
@@ -86,4 +86,4 @@ Feature: Retrieve ivr entries
           "conditionalRoute": null,
           "numberCountry": "~"
       }
-    """
+      """

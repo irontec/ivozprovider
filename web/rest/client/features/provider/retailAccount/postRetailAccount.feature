@@ -9,7 +9,7 @@ Feature: Create retail accounts
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/retail_accounts" with body:
-    """
+      """
       {
           "name": "testPostResidential",
           "description": "",
@@ -18,5 +18,5 @@ Feature: Create retail accounts
           "transport": "udp",
           "password": "ky7rVWX99_"
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

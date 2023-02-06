@@ -6,13 +6,13 @@ Feature: Retrieve pick up rel users
   @createSchema
   Scenario: Retrieve the pick up rel users json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "pick_up_rel_users"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "pick_up_rel_users"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "id": 1,
@@ -50,17 +50,17 @@ Feature: Retrieve pick up rel users
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain pick up rel user json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "pick_up_rel_users/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "pick_up_rel_users/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "id": 1,
           "pickUpGroup": {
@@ -96,4 +96,4 @@ Feature: Retrieve pick up rel users
               "contact": null
           }
       }
-    """
+      """

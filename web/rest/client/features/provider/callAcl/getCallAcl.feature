@@ -12,7 +12,7 @@ Feature: Retrieve call acls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testACL",
@@ -25,7 +25,7 @@ Feature: Retrieve call acls
               "id": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain call acl json
     Given I add Company Authorization header
@@ -35,7 +35,7 @@ Feature: Retrieve call acls
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "name": "testACL",
           "defaultPolicy": "allow",
@@ -44,4 +44,4 @@ Feature: Retrieve call acls
               1
           ]
       }
-    """
+      """

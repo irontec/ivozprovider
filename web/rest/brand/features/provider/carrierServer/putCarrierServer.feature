@@ -9,7 +9,7 @@ Feature: Update carrier servers
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/carrier_servers/1" with body:
-    """
+      """
       {
           "ip": "127.1.0.1",
           "hostname": "hostname.net",
@@ -27,28 +27,28 @@ Feature: Update carrier servers
           "fromDomain": "",
           "carrier": 1
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
-        {
-            "ip": null,
-            "hostname": "127.0.0.1",
-            "port": 5060,
-            "uriScheme": 2,
-            "transport": 2,
-            "sendPAI": false,
-            "sendRPID": false,
-            "authNeeded": "no",
-            "authUser": null,
-            "authPassword": "*****",
-            "sipProxy": "127.0.0.1",
-            "outboundProxy": null,
-            "fromUser": "",
-            "fromDomain": "",
-            "id": 1,
-            "carrier": 1
-        }
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+          "ip": null,
+          "hostname": "127.0.0.1",
+          "port": 5060,
+          "uriScheme": 2,
+          "transport": 2,
+          "sendPAI": false,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "authUser": null,
+          "authPassword": "*****",
+          "sipProxy": "127.0.0.1",
+          "outboundProxy": null,
+          "fromUser": "",
+          "fromDomain": "",
+          "id": 1,
+          "carrier": 1
+      }
+      """

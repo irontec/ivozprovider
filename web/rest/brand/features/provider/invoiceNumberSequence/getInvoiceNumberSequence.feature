@@ -6,13 +6,13 @@ Feature: Retrieve invoice number sequences
   @createSchema
   Scenario: Retrieve the invoice number sequences json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "invoice_number_sequences"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "invoice_number_sequences"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "name": "GeneratorName",
@@ -20,17 +20,17 @@ Feature: Retrieve invoice number sequences
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain invoice number sequences json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "invoice_number_sequences/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "invoice_number_sequences/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "GeneratorName",
           "prefix": "auto",
@@ -41,4 +41,4 @@ Feature: Retrieve invoice number sequences
           "version": 1,
           "id": 1
       }
-    """
+      """

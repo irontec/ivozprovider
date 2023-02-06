@@ -12,7 +12,7 @@ Feature: Retrieve callForwardSetting
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "callTypeFilter": "internal",
@@ -79,7 +79,7 @@ Feature: Retrieve callForwardSetting
               "ddi": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain call forward setting json
     Given I add Company Authorization header
@@ -89,7 +89,7 @@ Feature: Retrieve callForwardSetting
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "callTypeFilter": "internal",
           "callForwardType": "inconditional",
@@ -117,4 +117,4 @@ Feature: Retrieve callForwardSetting
               }
           }
       }
-    """
+      """

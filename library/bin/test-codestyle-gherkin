@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/
+    # Regenerate all gherkin files
+    reformat-gherkin -a right web/rest/platform/features
+    reformat-gherkin -a right web/rest/brand/features
+    reformat-gherkin -a right web/rest/client/features
+    reformat-gherkin -a right web/rest/user/features
+
+    # Check there is no pending files to be committed
+    if [ -n "$(git status -s | grep .feature)" ]; then
+        echo "Some gherkin files have incorrect format."
+        git status -s
+        exit 1
+    fi
+popd

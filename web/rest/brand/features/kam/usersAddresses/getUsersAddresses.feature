@@ -12,7 +12,7 @@ Feature: Retrieve Users addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "sourceAddress": "127.0.0.1",
@@ -21,7 +21,7 @@ Feature: Retrieve Users addresses
               "company": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain users addresses json
     Given I add Brand Authorization header
@@ -31,11 +31,11 @@ Feature: Retrieve Users addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "sourceAddress": "127.0.0.1",
           "description": "Irontec HQ",
           "id": 1,
           "company": "~"
       }
-    """
+      """
