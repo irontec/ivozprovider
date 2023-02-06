@@ -15,7 +15,7 @@ export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 const getEntityMap = (): ExtendedRouteMap => {
   const map: ExtendedRouteMap = [
     {
-      label: _('Global'),
+      label: _('Global Configuration'),
       children: [
         {
           entity: entities.TerminalManufacturer,
@@ -26,6 +26,9 @@ const getEntityMap = (): ExtendedRouteMap => {
           ],
         },
         { entity: entities.Service },
+        {
+          entity: entities.Currency,
+        },
       ],
     },
     {
