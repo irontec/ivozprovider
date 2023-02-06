@@ -18,9 +18,6 @@ const getEntityMap = (): ExtendedRouteMap => {
       label: _('Global'),
       children: [
         {
-          entity: entities.BannedAddress,
-        },
-        {
           entity: entities.TerminalManufacturer,
           children: [
             {
@@ -54,6 +51,17 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.Domain,
+        },
+        {
+          entity: entities.BannedAddress,
+        },
+      ],
+    },
+    {
+      label: _('Invoicing'),
+      children: [
+        {
+          entity: entities.InvoiceTemplate,
         },
       ],
     },
