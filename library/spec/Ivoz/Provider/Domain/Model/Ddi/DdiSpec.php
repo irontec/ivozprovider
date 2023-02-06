@@ -67,7 +67,6 @@ class DdiSpec extends ObjectBehavior
         $dto
             ->setDdi('123')
             ->setRecordCalls('none')
-            ->setBillInboundCalls(0)
             ->setCountry($countryDto)
             ->setDdiProvider($ddiProviderDto)
             ->setBrand($brandDto)

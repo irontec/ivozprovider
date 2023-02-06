@@ -65,17 +65,6 @@ class Ddi extends DdiAbstract implements DdiInterface
         if ($this->getType() === DdiInterface::TYPE_OUT) {
             $this->setDdiProvider(null);
         }
-
-        // If billInboundCalls is set, carrier must have externallyRated to 1
-        if (
-            $this->getBillInboundCalls()
-            && !$this->getDdiProvider()->getExternallyRated()
-        ) {
-            throw new \DomainException(
-                'Inbound Calls cannot be billed as PeeringContract is not externally rated',
-                90000
-            );
-        }
     }
 
     /**
