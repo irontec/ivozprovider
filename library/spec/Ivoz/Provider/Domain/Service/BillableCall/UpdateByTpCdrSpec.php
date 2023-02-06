@@ -13,6 +13,8 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\BillableCall\UpdateByTpCdr;
 use Ivoz\Provider\Domain\Service\BillableCall\UpdateDtoByDefaultRunTpCdr;
 use PhpSpec\ObjectBehavior;
@@ -35,6 +37,7 @@ class UpdateByTpCdrSpec extends ObjectBehavior
 
     protected $trunksCdr;
     protected $billableCall;
+    protected $company;
     protected $carrier;
     protected $defaultRunTpCdr;
     protected $processExternalCdr;
@@ -148,19 +151,19 @@ class UpdateByTpCdrSpec extends ObjectBehavior
         );
     }
 
-    function it_returns_on_externally_rated_carriers()
+    function it_returns_on_companies_with_billing_method_equal_to_none()
     {
         $this->prepareExecution();
         $this->updateInstance(
-            $this->carrier,
+            $this->company,
             [
-                'externallyRated' => true
+                'billingMethod' => CompanyInterface::BILLINGMETHOD_NONE
             ]
         );
 
         $infoMsg = sprintf(
-            'Carrier#%s has external rater. Skipping',
-            $this->carrier->getId()
+            'Company#%s has no billing method. Skipping',
+            $this->company->getId()
         );
 
         $this
@@ -264,8 +267,14 @@ class UpdateByTpCdrSpec extends ObjectBehavior
         $this->carrier = $this->getInstance(
             Carrier::class,
             [
-                'id' => 1,
-                'externallyRated' => false
+                'id' => 1
+            ]
+        );
+
+        $this->company = $this->getInstance(
+            Company::class,
+            [
+                'id' => 1
             ]
         );
 
@@ -275,7 +284,8 @@ class UpdateByTpCdrSpec extends ObjectBehavior
                 'id' => 1,
                 'trunksCdr' => $this->trunksCdr,
                 'carrier' => $this->carrier,
-                'direction' => BillableCallInterface::DIRECTION_OUTBOUND
+                'direction' => BillableCallInterface::DIRECTION_OUTBOUND,
+                'company' => $this->company,
             ]
         );
 
