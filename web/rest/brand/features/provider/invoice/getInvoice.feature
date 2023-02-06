@@ -6,13 +6,13 @@ Feature: Retrieve invoice
   @createSchema
   Scenario: Retrieve the invoice  json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "invoices"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "invoices"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "number": "1",
@@ -34,17 +34,17 @@ Feature: Retrieve invoice
               "currency": "€"
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain invoice  json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "invoices/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "invoices/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "number": "1",
           "inDate": "2018-01-01 01:00:00",
@@ -65,4 +65,4 @@ Feature: Retrieve invoice
           "numberSequence": null,
           "currency": "€"
       }
-    """
+      """

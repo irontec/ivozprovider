@@ -12,7 +12,7 @@ Feature: Retrieve conditional routes conditions rel calendars
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "id": 1,
@@ -39,7 +39,7 @@ Feature: Retrieve conditional routes conditions rel calendars
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain conditional routes conditions rel calendar json
     Given I add Company Authorization header
@@ -49,7 +49,7 @@ Feature: Retrieve conditional routes conditions rel calendars
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "id": 1,
           "condition": {
@@ -74,4 +74,4 @@ Feature: Retrieve conditional routes conditions rel calendars
               "id": 1
           }
       }
-    """
+      """

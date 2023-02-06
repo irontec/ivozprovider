@@ -9,7 +9,7 @@ Feature: Manage balance movements
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/balance_movements/1" with body:
-    """
+      """
       {
           "amount": 500,
           "balance": 567.23,
@@ -17,5 +17,5 @@ Feature: Manage balance movements
           "company": null,
           "carrier": 1
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

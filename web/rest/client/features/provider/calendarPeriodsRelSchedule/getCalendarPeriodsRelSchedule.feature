@@ -12,7 +12,7 @@ Feature: Retrieve calendar periods rel schedules
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "id": 1,
@@ -44,7 +44,7 @@ Feature: Retrieve calendar periods rel schedules
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain calendar rel schedule json
     Given I add Company Authorization header
@@ -54,7 +54,7 @@ Feature: Retrieve calendar periods rel schedules
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "id": 1,
           "calendarPeriod": {
@@ -83,4 +83,4 @@ Feature: Retrieve calendar periods rel schedules
               "id": 1
           }
       }
-    """
+      """

@@ -6,13 +6,13 @@ Feature: Retrieve fixed costs rel invoice schedulers
   @createSchema
   Scenario: Retrieve the fixed costs rel invoice schedulers json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "fixed_costs_rel_invoice_schedulers"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "fixed_costs_rel_invoice_schedulers"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "quantity": 1,
@@ -43,17 +43,17 @@ Feature: Retrieve fixed costs rel invoice schedulers
               "ddisCountry": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain fixed costs rel invoice scheduler json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "fixed_costs_rel_invoice_schedulers/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "fixed_costs_rel_invoice_schedulers/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "quantity": 1,
           "type": "static",
@@ -82,4 +82,4 @@ Feature: Retrieve fixed costs rel invoice schedulers
           },
           "ddisCountry": null
       }
-    """
+      """

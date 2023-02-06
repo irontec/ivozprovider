@@ -6,13 +6,13 @@ Feature: Retrieve carriers
   @createSchema
   Scenario: Retrieve the carriers json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "carriers"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "carriers"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "description": "CarrierDescription",
@@ -41,17 +41,17 @@ Feature: Retrieve carriers
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain carrier json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "carriers/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "carriers/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "description": "CarrierDescription",
           "name": "CarrierName",
@@ -74,4 +74,4 @@ Feature: Retrieve carriers
               "country": 68
           }
       }
-    """
+      """

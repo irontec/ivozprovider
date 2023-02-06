@@ -12,7 +12,7 @@ Feature: Retrieve companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "type": "vpbx",
@@ -91,7 +91,7 @@ Feature: Retrieve companies
               "codecIds": []
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain company json
     Given I add Brand Authorization header
@@ -101,7 +101,7 @@ Feature: Retrieve companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "type": "vpbx",
           "name": "DemoCompany",
@@ -209,4 +209,4 @@ Feature: Retrieve companies
           "routingTagIds": [],
           "codecIds": []
       }
-    """
+      """

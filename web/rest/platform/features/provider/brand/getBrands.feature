@@ -12,7 +12,7 @@ Feature: Manage brands
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "DemoBrand",
@@ -57,7 +57,7 @@ Feature: Manage brands
               "proxyTrunks": []
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain brand json
     Given I add Authorization header
@@ -67,7 +67,7 @@ Feature: Manage brands
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "name": "DemoBrand",
           "domainUsers": "",
@@ -135,4 +135,4 @@ Feature: Manage brands
               7
           ]
       }
-    """
+      """

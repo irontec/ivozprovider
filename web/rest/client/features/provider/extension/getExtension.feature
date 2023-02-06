@@ -12,7 +12,7 @@ Feature: Retrieve extensions
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "number": "101",
@@ -75,7 +75,7 @@ Feature: Retrieve extensions
               "voicemail": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain extension json
     Given I add Company Authorization header
@@ -85,7 +85,7 @@ Feature: Retrieve extensions
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "number": "101",
           "routeType": "user",
@@ -101,4 +101,4 @@ Feature: Retrieve extensions
           "numberCountry": null,
           "voicemail": null
       }
-    """
+      """

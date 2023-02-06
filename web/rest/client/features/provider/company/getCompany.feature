@@ -12,7 +12,7 @@ Feature: Retrieve companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "type": "vpbx",
@@ -22,7 +22,7 @@ Feature: Retrieve companies
               "domainName": "127.0.0.1"
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain company service json
     Given I add Company Authorization header
@@ -32,7 +32,7 @@ Feature: Retrieve companies
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "type": "vpbx",
           "name": "DemoCompany",
@@ -99,4 +99,4 @@ Feature: Retrieve companies
           "outgoingDdi": null,
           "outgoingDdiRule": null
       }
-    """
+      """

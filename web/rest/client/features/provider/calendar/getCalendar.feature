@@ -12,7 +12,7 @@ Feature: Retrieve calendars
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "name": "testCalendar",
@@ -23,7 +23,7 @@ Feature: Retrieve calendars
               "id": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain calendar json
     Given I add Company Authorization header
@@ -33,9 +33,9 @@ Feature: Retrieve calendars
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "testCalendar",
           "id": 1
       }
-    """
+      """

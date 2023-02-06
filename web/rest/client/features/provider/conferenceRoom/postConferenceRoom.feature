@@ -9,19 +9,19 @@ Feature: Create conference rooms
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/conference_rooms" with body:
-    """
+      """
       {
           "name": "newConferenceRoom",
           "pinProtected": true,
           "pinCode": "1234",
           "maxMembers": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "newConferenceRoom",
           "pinProtected": true,
@@ -29,7 +29,7 @@ Feature: Create conference rooms
           "maxMembers": 1,
           "id": 2
       }
-    """
+      """
 
   Scenario: Retrieve created conference room
     Given I add Company Authorization header
@@ -39,7 +39,7 @@ Feature: Create conference rooms
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "newConferenceRoom",
           "pinProtected": true,
@@ -47,4 +47,4 @@ Feature: Create conference rooms
           "maxMembers": 1,
           "id": 2
       }
-    """
+      """

@@ -7,8 +7,8 @@ Feature: Retrieve call forward settings
   Scenario: Retrieve the call forward settings json list
     Given I add User Authorization header
      When I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "my/call_forward_settings" with body:
-    """
+      And I send a "POST" request to "my/call_forward_settings" with body:
+      """
       {
               "callTypeFilter": "external",
               "callForwardType": "inconditional",
@@ -21,12 +21,12 @@ Feature: Retrieve call forward settings
               "voiceMailUser": null,
               "numberCountry": 68
           }
-    """
-    Then the response status code should be 201
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "callTypeFilter": "external",
           "callForwardType": "inconditional",
@@ -40,4 +40,4 @@ Feature: Retrieve call forward settings
           "voicemail": null,
           "numberCountry": "~"
       }
-    """
+      """

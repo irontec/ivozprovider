@@ -12,7 +12,7 @@ Feature: Retrieve rtpengines
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "url": "udp:127.0.0.1:2223",
@@ -22,7 +22,7 @@ Feature: Retrieve rtpengines
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain rtpengine json
     Given I add Authorization header
@@ -32,7 +32,7 @@ Feature: Retrieve rtpengines
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "setid": 1,
           "url": "udp:127.0.0.1:2223",
@@ -47,4 +47,4 @@ Feature: Retrieve rtpengines
               "id": 1
           }
       }
-    """
+      """

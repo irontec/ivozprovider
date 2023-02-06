@@ -9,6 +9,6 @@ Feature: Retrieve my rating plan information by group id
       And the header "Content-Type" should be equal to "text/csv; charset=utf-8"
       And the streamed response should be equal to:
       """
-"rating plan", name, prefix, "connection fee", cost, "rate increment", "group interval start", "time in", days
-Something,Bilbao,+94600,0.01,3.3,1s,0s,00:00:00,1111111
+      "rating plan", name, prefix, "connection fee", cost, "rate increment", "group interval start", "time in", days
+      Something,Bilbao,+94600,0.01,3.3,1s,0s,00:00:00,1111111
       """

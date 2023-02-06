@@ -6,13 +6,13 @@ Feature: Retrieve destination
   @createSchema
   Scenario: Retrieve the destination json list
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "destinations"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "destinations"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "prefix": "+94600",
@@ -45,17 +45,17 @@ Feature: Retrieve destination
               }
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain destination json
     Given I add Brand Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "destinations/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be like:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "destinations/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "prefix": "+94600",
           "id": 1,
@@ -66,4 +66,4 @@ Feature: Retrieve destination
               "it": "Bilbao"
           }
       }
-    """
+      """

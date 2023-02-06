@@ -6,13 +6,13 @@ Feature: Retrieve outgoing ddi rules patterns
   @createSchema
   Scenario: Retrieve the outgoing ddi rules patterns json list
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "outgoing_ddi_rules_patterns"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "outgoing_ddi_rules_patterns"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       [
           {
               "type": "destination",
@@ -33,17 +33,17 @@ Feature: Retrieve outgoing ddi rules patterns
               "forcedDdi": null
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain outgoing ddi rules pattern json
     Given I add Company Authorization header
-    When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "outgoing_ddi_rules_patterns/1"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
-    """
+     When I add "Accept" header equal to "application/json"
+      And I send a "GET" request to "outgoing_ddi_rules_patterns/1"
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
        {
           "type": "destination",
           "prefix": null,
@@ -62,4 +62,4 @@ Feature: Retrieve outgoing ddi rules patterns
           },
           "forcedDdi": null
       }
-    """
+      """

@@ -12,7 +12,7 @@ Feature: Manage balance movements
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "amount": 10,
@@ -39,7 +39,7 @@ Feature: Manage balance movements
               "carrier": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain balance movement json
     Given I add Brand Authorization header
@@ -49,7 +49,7 @@ Feature: Manage balance movements
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
        {
           "amount": 10,
           "balance": 10,
@@ -58,4 +58,4 @@ Feature: Manage balance movements
           "company": "~",
           "carrier": null
       }
-    """
+      """

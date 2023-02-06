@@ -9,7 +9,7 @@ Feature: Update web portals
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/web_portals/3" with body:
-    """
+      """
       {
           "url": "https://updated-example.com",
           "klearTheme": "redmond",
@@ -22,12 +22,12 @@ Feature: Update web portals
               "baseName": null
           }
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "url": "https://updated-example.com",
           "klearTheme": "redmond",
@@ -41,4 +41,4 @@ Feature: Update web portals
               "baseName": null
           }
       }
-    """
+      """

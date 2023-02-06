@@ -9,7 +9,7 @@ Feature: Update hunt groups rel users
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/hunt_group_members/1" with body:
-    """
+      """
       {
           "timeoutTime": 2,
           "priority": 10,
@@ -18,20 +18,20 @@ Feature: Update hunt groups rel users
           "huntGroup": 1,
           "user": 1
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
-     {
-          "timeoutTime": 2,
-          "priority": 10,
-          "routeType": "user",
-          "numberValue": null,
-          "id": 1,
-          "huntGroup": 1,
-          "user": 1,
-          "numberCountry": null
-      }
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
+      {
+           "timeoutTime": 2,
+           "priority": 10,
+           "routeType": "user",
+           "numberValue": null,
+           "id": 1,
+           "huntGroup": 1,
+           "user": 1,
+           "numberCountry": null
+       }
+      """

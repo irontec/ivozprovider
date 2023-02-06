@@ -9,7 +9,7 @@ Feature: Manage administrator rel public entities
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/administrator_rel_public_entities" with body:
-    """
+      """
       {
           "create": true,
           "read": true,
@@ -19,5 +19,5 @@ Feature: Manage administrator rel public entities
           "administrator": 3,
           "publicEntity": 20
       }
-    """
-    Then the response status code should be 405
+      """
+     Then the response status code should be 405

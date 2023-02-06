@@ -9,7 +9,7 @@ Feature: Update friends
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/friends/1" with body:
-    """
+      """
       {
           "name": "updatedTestFriend",
           "description": "",
@@ -30,12 +30,12 @@ Feature: Update friends
           "outgoingDdi": null,
           "language": null
       }
-    """
-    Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be like:
-    """
+      """
+     Then the response status code should be 200
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be like:
+      """
       {
           "name": "updatedTestFriend",
           "description": "",
@@ -55,4 +55,4 @@ Feature: Update friends
           "outgoingDdi": null,
           "language": null
       }
-    """
+      """

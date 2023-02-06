@@ -9,25 +9,25 @@ Feature: Create Users addresses
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/users_addresses" with body:
-    """
+      """
       {
         "sourceAddress": "127.0.0.8",
         "description": "Test",
         "company": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
        {
           "sourceAddress": "127.0.0.8",
           "description": "Test",
           "id": 2,
           "company": 1
       }
-    """
+      """
 
   Scenario: Retrieve created administrator
     Given I add Brand Authorization header
@@ -37,12 +37,11 @@ Feature: Create Users addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "sourceAddress": "127.0.0.8",
           "description": "Test",
           "id": 2,
           "company": "~"
       }
-    """
-
+      """

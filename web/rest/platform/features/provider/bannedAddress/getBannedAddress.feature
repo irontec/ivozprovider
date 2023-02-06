@@ -12,7 +12,7 @@ Feature: Manage banned addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "ip": "8.8.8.8",
@@ -22,7 +22,7 @@ Feature: Manage banned addresses
               "id": 1
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain banned address json
     Given I add Authorization header
@@ -32,7 +32,7 @@ Feature: Manage banned addresses
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "ip": "8.8.8.8",
           "blocker": "antiflood",
@@ -41,4 +41,4 @@ Feature: Manage banned addresses
           "lastTimeBanned": "2020-03-10 11:00:00",
           "id": 1
       }
-    """
+      """

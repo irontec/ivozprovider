@@ -12,7 +12,7 @@ Feature: Retrieve applicationServers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       [
           {
               "ip": "127.0.0.1",
@@ -25,7 +25,7 @@ Feature: Retrieve applicationServers
               "id": 2
           }
       ]
-    """
+      """
 
   Scenario: Retrieve certain application server json
     Given I add Authorization header
@@ -35,10 +35,10 @@ Feature: Retrieve applicationServers
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
-    """
+      """
       {
           "ip": "127.0.0.1",
           "name": "as001",
           "id": 1
       }
-    """
+      """

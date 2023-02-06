@@ -9,25 +9,25 @@ Feature: Create friends patterns
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/friends_patterns" with body:
-    """
+      """
       {
           "name": "Baske Country",
           "regExp": "+3494",
           "friend": 1
       }
-    """
-    Then the response status code should be 201
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+      """
+     Then the response status code should be 201
+      And the response should be in JSON
+      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+      And the JSON should be equal to:
+      """
       {
           "name": "Baske Country",
           "regExp": "+3494",
           "id": 2,
           "friend": 1
       }
-    """
+      """
 
   Scenario: Retrieve created friend pattern
     Given I add Company Authorization header
@@ -37,7 +37,7 @@ Feature: Create friends patterns
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be like:
-    """
+      """
       {
           "name": "Baske Country",
           "regExp": "+3494",
@@ -62,4 +62,4 @@ Feature: Create friends patterns
               "language": null
           }
       }
-    """
+      """
