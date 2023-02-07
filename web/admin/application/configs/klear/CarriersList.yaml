@@ -49,7 +49,6 @@ production:
           mediaRelaySets: true
           statusIcon: true
         blacklist:
-          externallyRated: true
           calculateCost: true
           currency: true
           billingMethod: true
@@ -83,7 +82,6 @@ production:
           transformationRuleSet: true
           balance: true
         blacklist:
-          externallyRated: ${auth.brandFeatures.billing.disabled}
           calculateCost: ${auth.brandFeatures.billing.disabled}
           currency: ${auth.brandFeatures.billing.disabled}
           balance: true
@@ -105,7 +103,6 @@ production:
           colsPerRow: 6
           fields:
             transformationRuleSet: 3
-            externallyRated: 3
             calculateCost: 3
             currency: 3
         group2:
@@ -127,7 +124,6 @@ production:
         order:
           <<: *carrierOrder_Link
         blacklist:
-          externallyRated: ${auth.brandFeatures.billing.disabled}
           calculateCost: ${auth.brandFeatures.billing.disabled}
           currency: ${auth.brandFeatures.billing.disabled}
           balance: true
