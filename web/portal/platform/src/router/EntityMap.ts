@@ -55,6 +55,14 @@ const getEntityMap = (): ExtendedRouteMap => {
       ],
     },
     {
+      label: _('Calls'),
+      children: [
+        {
+          entity: entities.ActiveCalls,
+        },
+      ],
+    },
+    {
       label: _('Settings'),
       children: [
         { entity: entities.SpecialNumber },
