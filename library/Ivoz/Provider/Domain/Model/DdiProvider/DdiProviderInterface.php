@@ -57,8 +57,6 @@ interface DdiProviderInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public function getExternallyRated(): ?bool;
-
     public function getBrand(): BrandInterface;
 
     public function getTransformationRuleSet(): ?TransformationRuleSetInterface;

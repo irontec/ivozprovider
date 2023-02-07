@@ -30,11 +30,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $name = null;
 
     /**
-     * @var bool|null
-     */
-    private $externallyRated = false;
-
-    /**
      * @var int|null
      */
     private $id = null;
@@ -89,7 +84,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return [
             'description' => 'description',
             'name' => 'name',
-            'externallyRated' => 'externallyRated',
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet',
@@ -106,7 +100,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         $response = [
             'description' => $this->getDescription(),
             'name' => $this->getName(),
-            'externallyRated' => $this->getExternallyRated(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
@@ -152,18 +145,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setExternallyRated(?bool $externallyRated): static
-    {
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    public function getExternallyRated(): ?bool
-    {
-        return $this->externallyRated;
     }
 
     public function setId($id): static

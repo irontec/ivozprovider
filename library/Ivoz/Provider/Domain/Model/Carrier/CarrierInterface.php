@@ -76,8 +76,6 @@ interface CarrierInterface extends LoggableEntityInterface
 
     public function getName(): string;
 
-    public function getExternallyRated(): ?bool;
-
     public function getBalance(): ?float;
 
     public function getCalculateCost(): ?bool;
