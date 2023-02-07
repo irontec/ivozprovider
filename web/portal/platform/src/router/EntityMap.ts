@@ -49,6 +49,14 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
       ],
     },
+    {
+      label: _('Views'),
+      children: [
+        {
+          entity: entities.Domain,
+        },
+      ],
+    },
   ];
 
   return routeMapParser<ExtendedRouteMapItem>(map);
