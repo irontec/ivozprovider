@@ -8,6 +8,7 @@ import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CompanyProperties } from './CompanyProperties';
 import foreignKeyResolver from './ForeignKeyResolver';
 import TypeIcon from './Field/TypeIcon';
+import Actions from './Action';
 
 const properties: CompanyProperties = {
   type: {
@@ -367,6 +368,7 @@ const Company: EntityInterface = {
     'domainUsers',
     'featureIds',
   ],
+  customActions: Actions,
   selectOptions,
   foreignKeyResolver,
   foreignKeyGetter,
