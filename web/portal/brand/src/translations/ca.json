@@ -249,6 +249,7 @@
   "Iden": "Iden",
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this residential device.": "Si activado, se utilizará el DDI llamado como destino de las llamadas a este dispositivo residencial (cabeceras R-URI y To).",
   "If set to 'Yes', set destination (R-URI and To) to called DDI when calling to this retail account.": "Si activado, se utilizará el DDI llamado como destino de las llamadas a esta cuenta retail (cabeceras R-URI y To).",
+  "Impersonate as brand admin": "Impersonarse como admin de marca",
   "Imported": "Importat",
   "Imported file": "Fitxer importat",
   "In Progress": "En curs",
