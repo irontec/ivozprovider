@@ -17,7 +17,6 @@ Feature: Update transformation rule sets
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 2,
           "name": {
               "en": "updated name",
               "es": "nombre actualizado",
@@ -50,3 +49,15 @@ Feature: Update transformation rule sets
           "editable": true
       }
       """
+
+  Scenario: Can not update a generic transformation rule set
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/transformation_rule_sets/3" with body:
+      """
+      {
+          "description": "Updated Generic Transformation"
+      }
+      """
+     Then the response status code should be 403

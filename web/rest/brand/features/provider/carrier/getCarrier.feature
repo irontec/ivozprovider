@@ -59,7 +59,7 @@ Feature: Retrieve carriers
           "calculateCost": true,
           "id": 1,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -67,11 +67,13 @@ Feature: Retrieve carriers
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
-              "country": 68
+              "country": 68,
+              "editable": true
           }
       }
       """

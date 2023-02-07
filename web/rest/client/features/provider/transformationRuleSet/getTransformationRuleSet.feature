@@ -15,17 +15,31 @@ Feature: Retrieve transformation rule sets
       """
       [
           {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca",
-                  "it": "it"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
+              }
+          },
+          {
+              "description": "Generic transformation for Spain",
+              "internationalCode": "00",
+              "trunkPrefix": "",
+              "areaCode": "",
+              "nationalLen": 9,
+              "id": 3,
+              "name": {
+                  "en": "Generic transformation for Spain",
+                  "es": "Generic tansformacion para España",
+                  "ca": "Generic tansformacion para España",
+                  "it": "Generic transformation for Spain"
               }
           }
       ]
@@ -41,7 +55,7 @@ Feature: Retrieve transformation rule sets
       And the JSON should be like:
       """
       {
-          "description": "Generic transformation for Spain",
+          "description": "Brand 1 transformation for Spain",
           "internationalCode": "00",
           "trunkPrefix": "",
           "areaCode": "",
@@ -49,9 +63,10 @@ Feature: Retrieve transformation rule sets
           "generateRules": false,
           "id": 1,
           "name": {
-              "en": "en",
-              "es": "es",
-              "ca": "ca"
+              "en": "Brand 1 transformation for Spain",
+              "es": "Marca 1 tansformacion para España",
+              "ca": "Marca 1 tansformacion para España",
+              "it": "Brand 1 transformation for Spain"
           },
           "country": {
               "code": "ES",
@@ -60,12 +75,14 @@ Feature: Retrieve transformation rule sets
               "name": {
                   "en": "Spain",
                   "es": "España",
-                  "ca": "España"
+                  "ca": "España",
+                  "it": "Spagna"
               },
               "zone": {
                   "en": "Europe",
                   "es": "Europa",
-                  "ca": "Europa"
+                  "ca": "Europa",
+                  "it": "Europe"
               }
           }
       }
