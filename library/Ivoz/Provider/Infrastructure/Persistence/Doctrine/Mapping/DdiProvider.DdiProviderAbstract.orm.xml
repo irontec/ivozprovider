@@ -15,12 +15,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="externallyRated" type="boolean" column="externallyRated" nullable="true">
-      <options>
-        <option name="default">0</option>
-        <option name="unsigned">1</option>
-      </options>
-    </field>
     <many-to-one field="brand" target-entity="Ivoz\Provider\Domain\Model\Brand\BrandInterface" fetch="LAZY">
       <join-columns>
         <join-column name="brandId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
