@@ -30,6 +30,21 @@ class TransformationRuleSet extends TransformationRuleSetAbstract implements Tra
         return $this->id;
     }
 
+
+    protected function sanitizeValues(): void
+    {
+        $notNew = !$this->isNew();
+        $brandHasChanged = $this->hasChanged('brandId');
+
+        if ($notNew && $brandHasChanged) {
+            $errorMsg = $this->getBrand()
+                ? 'Unable to convert a generic numeric transformation into a brand numeric transformation'
+                : 'Unable to convert a brand numeric transformation into a generic numeric transformation';
+
+            throw new \DomainException($errorMsg, 403);
+        }
+    }
+
     /**
      * {@inheritDoc}
      */

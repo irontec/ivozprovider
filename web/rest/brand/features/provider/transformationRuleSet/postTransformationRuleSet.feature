@@ -38,7 +38,7 @@ Feature: Create transformation rule sets
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 3,
+          "id": 4,
           "name": {
               "en": "usansolocity",
               "es": "usansolo",
@@ -53,7 +53,7 @@ Feature: Create transformation rule sets
   Scenario: Retrieve created transformation rule set
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "transformation_rule_sets/3"
+      And I send a "GET" request to "transformation_rule_sets/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -66,7 +66,7 @@ Feature: Create transformation rule sets
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 3,
+          "id": 4,
           "name": {
               "en": "usansolocity",
               "es": "usansolo",

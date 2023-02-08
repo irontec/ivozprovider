@@ -77,7 +77,7 @@ Feature: Retrieve users
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -85,9 +85,10 @@ Feature: Retrieve users
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
               "country": 68
           },

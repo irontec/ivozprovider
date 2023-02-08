@@ -61,14 +61,19 @@ Feature: Create users
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
               "nationalLen": 9,
               "generateRules": false,
               "id": 1,
-              "name": "~",
+              "name": {
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
+              },
               "country": 68
           },
           "language": null,
@@ -124,7 +129,7 @@ Feature: Create users
           "bossAssistant": null,
           "bossAssistantWhiteList": null,
           "transformationRuleSet": {
-              "description": "Generic transformation for Spain",
+              "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
               "trunkPrefix": "",
               "areaCode": "",
@@ -132,9 +137,10 @@ Feature: Create users
               "generateRules": false,
               "id": 1,
               "name": {
-                  "en": "en",
-                  "es": "es",
-                  "ca": "ca"
+                  "en": "Brand 1 transformation for Spain",
+                  "es": "Marca 1 tansformacion para España",
+                  "ca": "Marca 1 tansformacion para España",
+                  "it": "Brand 1 transformation for Spain"
               },
               "country": 68
           },
