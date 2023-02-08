@@ -93,6 +93,14 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
       ],
     },
+    {
+      label: _('Infrastructure'),
+      children: [
+        {
+          entity: entities.ProxyUser,
+        },
+      ],
+    },
   ];
 
   return routeMapParser<ExtendedRouteMapItem>(map);
