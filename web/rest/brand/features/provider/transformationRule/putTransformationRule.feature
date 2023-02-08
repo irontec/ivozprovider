@@ -34,3 +34,15 @@ Feature: Update transformation rules
           "transformationRuleSet": 1
       }
       """
+
+  Scenario: Cannot update generic tranformation rule set value
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "PUT" request to "/transformation_rules/4" with body:
+      """
+      {
+          "transformationRuleSet": 2
+      }
+      """
+     Then the response status code should be 403
