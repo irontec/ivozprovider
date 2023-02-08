@@ -45,19 +45,34 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
 
     protected function sanitizeValues(): void
     {
-        {
-            $nullableFields = [
-                'number' => 'numberValue',
-                'regexp' => 'regExp',
-            ];
-            $patternType = $this->getType();
-            foreach ($nullableFields as $type => $fieldName) {
-                if ($patternType == $type) {
-                    continue;
-                }
-                $setter = 'set' . ucfirst($fieldName);
-                $this->{$setter}(null);
+        $this->sanitizeNullableFields();
+        $this->sanitizeMatchListValue();
+    }
+
+    protected function sanitizeMatchListValue(): void
+    {
+        $notNew = !$this->isNew();
+        $matchListHasChanged = $this->hasChanged('matchListId');
+
+        if ($notNew && $matchListHasChanged) {
+            $errorMsg = 'Unable to update match list value in a match list pattern';
+            throw new \DomainException($errorMsg, 403);
+        }
+    }
+
+    protected function sanitizeNullableFields(): void
+    {
+        $nullableFields = [
+            'number' => 'numberValue',
+            'regexp' => 'regExp',
+        ];
+        $patternType = $this->getType();
+        foreach ($nullableFields as $type => $fieldName) {
+            if ($patternType == $type) {
+                continue;
             }
-            }
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
     }
 }

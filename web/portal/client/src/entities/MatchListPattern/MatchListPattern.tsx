@@ -1,12 +1,18 @@
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
-import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import EntityInterface, {
+  ChildDecoratorType,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import defaultEntityBehavior, {
+  ChildDecorator as DefaultChildDecorator,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import Form from './Form';
 import { PartialPropertyList } from '@irontec/ivoz-ui/services/api/ParsedApiSpecInterface';
+import { useStoreState } from 'store';
 import foreignKeyResolver from './foreignKeyResolver';
 import selectOptions from './SelectOptions';
 import matchValue from './Field/MatchValue';
+import { MatchListPropertyList } from '../MatchList/MatchListProperties';
 
 const properties: PartialPropertyList = {
   matchList: {
@@ -49,6 +55,19 @@ const properties: PartialPropertyList = {
 
 const columns = ['type', 'matchValue', 'description'];
 
+export const ChildDecorator: ChildDecoratorType = (props) => {
+  const parent = useStoreState(
+    (state) =>
+      state.list.parentRow as MatchListPropertyList<string | number | boolean>
+  );
+
+  if (parent?.generic === true) {
+    return null;
+  }
+
+  return DefaultChildDecorator(props);
+};
+
 const matchListPattern: EntityInterface = {
   ...defaultEntityBehavior,
   icon: FormatListNumberedIcon,
@@ -62,6 +81,7 @@ const matchListPattern: EntityInterface = {
     iden: 'MatchListPatterns',
   },
   Form,
+  ChildDecorator,
   foreignKeyResolver,
   selectOptions: (props, customProps) => {
     return selectOptions(props, customProps);
