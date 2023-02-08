@@ -10,7 +10,7 @@ pushd /opt/irontec/ivozprovider/
     # Check there is no pending files to be committed
     if [ -n "$(git status -s | grep .feature)" ]; then
         echo "Some gherkin files have incorrect format."
-        git status -s
+        git status -s | grep .feature
         exit 1
     fi
 popd
