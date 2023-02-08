@@ -24,12 +24,17 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
 
         $item70 = $this->createEntityInstance(TransformationRuleSet::class);
         (function () use ($fixture) {
-            $this->setDescription("Generic transformation for Spain");
+            $this->setDescription("Brand 1 transformation for Spain");
             $this->setGenerateRules(false);
             $this->setInternationalCode('00');
-            $this->name = new Name('en', 'es', 'ca', 'it');
-            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+            $this->name = new Name(
+                'Brand 1 transformation for Spain',
+                'Marca 1 tansformacion para España',
+                'Marca 1 tansformacion para España',
+                'Brand 1 transformation for Spain',
+            );
             $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item70);
 
         $this->addReference('_reference_ProviderTransformationRuleSet70', $item70);
@@ -38,10 +43,15 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
 
         $item253 = $this->createEntityInstance(TransformationRuleSet::class);
         (function () use ($fixture) {
-            $this->setDescription("");
+            $this->setDescription("Brand 2 transformation for Spain");
             $this->setGenerateRules(false);
             $this->setInternationalCode('00');
-            $this->name = new Name('en', 'es', 'ca', 'it');
+            $this->name = new Name(
+                'Brand 2 transformation for Spain',
+                'Marca 2 tansformacion para España',
+                'Marca 2 tansformacion para España',
+                'Brand 2 transformation for Spain',
+            );
             $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
             $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
         })->call($item253);
@@ -49,6 +59,24 @@ class ProviderTransformationRuleSet extends Fixture implements DependentFixtureI
         $this->addReference('_reference_ProviderTransformationRuleSet253', $item253);
         $this->sanitizeEntityValues($item253);
         $manager->persist($item253);
+
+        $item3 = $this->createEntityInstance(TransformationRuleSet::class);
+        (function () use ($fixture) {
+            $this->setDescription("Generic transformation for Spain");
+            $this->setGenerateRules(false);
+            $this->setInternationalCode('00');
+            $this->name = new Name(
+                'Generic transformation for Spain',
+                'Generic tansformacion para España',
+                'Generic tansformacion para España',
+                'Generic transformation for Spain',
+            );
+            $this->setCountry($fixture->getReference('_reference_ProviderCountry70'));
+        })->call($item3);
+
+        $this->addReference('_reference_ProviderTransformationRuleSet120', $item3);
+        $this->sanitizeEntityValues($item3);
+        $manager->persist($item3);
 
         $manager->flush();
     }
