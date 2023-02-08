@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\LoggableMigration;
 
-final class Version20221123120153 extends AbstractMigration
+final class Version20221123120153 extends LoggableMigration
 {
     public function getDescription(): string
     {
