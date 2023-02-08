@@ -18,3 +18,10 @@ Feature: Manage transformation rules
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/transformation_rules/5"
      Then the response status code should be 404
+
+  Scenario: Cannot remove a generic transformation rule
+    Given I add Brand Authorization header
+     When I add "Content-Type" header equal to "application/json"
+      And I add "Accept" header equal to "application/json"
+      And I send a "DELETE" request to "/transformation_rules/9"
+     Then the response status code should be 403
