@@ -99,8 +99,7 @@ const BillableCall: EntityInterface = {
   iden: 'BillableCall',
   title: _('External call', { count: 2 }),
   path: '/billable_calls',
-  toStr: (row: BillableCallPropertyList<EntityValue>) =>
-    row.id?.toString() as string,
+  toStr: (row: BillableCallPropertyList<EntityValue>) => row.callid as string,
   properties,
   columns: [
     'startTime',
