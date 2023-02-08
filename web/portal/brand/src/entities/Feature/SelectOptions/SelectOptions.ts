@@ -1,3 +1,4 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior, {
   PropertyFkChoices,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
@@ -14,7 +15,7 @@ const FeatureSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     Feature.path,
     ['id', 'iden', 'name'],
-    (data: any) => {
+    (data: Array<EntityValues>) => {
       const options: PropertyFkChoices = [];
 
       const featuresToIgnore = [
@@ -27,12 +28,12 @@ const FeatureSelectOptions: SelectOptionsType = ({
       ];
 
       for (const item of data) {
-        if (featuresToIgnore.includes(item.iden)) {
+        if (featuresToIgnore.includes(item.iden as string)) {
           continue;
         }
 
         options.push({
-          id: item.id,
+          id: item.id as number,
           label: Feature.toStr(item),
           extraData: {
             iden: item.iden,

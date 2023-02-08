@@ -6,7 +6,6 @@ import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { CompanyProperties } from './CompanyProperties';
-import foreignKeyResolver from './ForeignKeyResolver';
 import TypeIcon from './Field/TypeIcon';
 import Actions from './Action';
 
@@ -370,7 +369,6 @@ const Company: EntityInterface = {
   ],
   customActions: Actions,
   selectOptions,
-  foreignKeyResolver,
   foreignKeyGetter,
   Form,
 };
