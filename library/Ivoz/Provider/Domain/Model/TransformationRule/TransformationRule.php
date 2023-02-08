@@ -41,4 +41,15 @@ class TransformationRule extends TransformationRuleAbstract implements Transform
 
         return parent::setMatchExpr($matchExpr);
     }
+
+    protected function sanitizeValues(): void
+    {
+        $notNew = !$this->isNew();
+        $transformationRuleSetHasChanged = $this->hasChanged('transformationRuleSetId');
+
+        if ($notNew && $transformationRuleSetHasChanged) {
+            $errorMsg = 'Unable to update transformation rule set value in a transformation rule';
+            throw new \DomainException($errorMsg, 403);
+        }
+    }
 }
