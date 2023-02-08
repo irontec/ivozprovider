@@ -102,6 +102,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.MediaRelaySet,
         },
+        {
+          entity: entities.ApplicationServer,
+        },
       ],
     },
   ];
