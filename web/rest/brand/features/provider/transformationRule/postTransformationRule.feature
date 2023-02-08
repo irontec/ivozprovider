@@ -30,7 +30,7 @@ Feature: Create transformation rules
           "priority": 10,
           "matchExpr": "^\\+34([0-9]+)$",
           "replaceExpr": "\u0001",
-          "id": 9,
+          "id": 11,
           "transformationRuleSet": 1
       }
       """
@@ -38,7 +38,7 @@ Feature: Create transformation rules
   Scenario: Retrieve created transformation rule
     Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/transformation_rules/9"
+      And I send a "GET" request to "/transformation_rules/11"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -50,7 +50,7 @@ Feature: Create transformation rules
           "priority": 10,
           "matchExpr": "^\\+34([0-9]+)$",
           "replaceExpr": "\u0001",
-          "id": 9,
+          "id": 11,
           "transformationRuleSet": {
               "description": "Brand 1 transformation for Spain",
               "internationalCode": "00",
