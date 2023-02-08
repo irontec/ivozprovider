@@ -7,7 +7,6 @@ import {
 export type CarrierPropertyList<T> = {
   description?: T;
   name?: T;
-  externallyRated?: T;
   balance?: T;
   calculateCost?: T;
   id?: T;

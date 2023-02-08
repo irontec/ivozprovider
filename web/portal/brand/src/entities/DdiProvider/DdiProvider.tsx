@@ -16,9 +16,6 @@ const properties: DdiProviderProperties = {
   name: {
     label: _('Name'),
   },
-  externallyRated: {
-    label: _('Externally rated'),
-  },
   transformationRuleSet: {
     label: _('Numeric transformation', { count: 1 }),
     default: 252,
