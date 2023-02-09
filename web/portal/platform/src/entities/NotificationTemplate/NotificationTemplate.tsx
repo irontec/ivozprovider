@@ -1,13 +1,17 @@
-import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { EntityValue } from '@irontec/ivoz-ui';
+import defaultEntityBehavior, {
+  foreignKeyGetter,
+  foreignKeyResolver,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import Form from './Form';
 import {
   NotificationTemplateProperties,
   NotificationTemplatePropertyList,
 } from './NotificationTemplateProperties';
 import selectOptions from './SelectOptions';
-import { EntityValue } from '@irontec/ivoz-ui';
 
 const properties: NotificationTemplateProperties = {
   name: {
@@ -17,25 +21,36 @@ const properties: NotificationTemplateProperties = {
     label: _('Type'),
     enum: {
       voicemail: _('Voicemail'),
-      fax: _('Fax', { count: 1 }),
-      lowbalance: _('Low balance'),
-      invoice: _('Invoice', { count: 1 }),
-      callCsv: _('Call CSV'),
-      maxDailyUsage: _('Max daily usage'),
+      fax: _('Fax'),
+      limit: _('Limit'),
+      lowbalance: _('Lowbalance'),
+      invoice: _('Invoice'),
+      callCsv: _('Call Csv'),
+      maxDailyUsage: _('Max DailyUsage'),
     },
+  },
+  id: {
+    label: _('Id'),
+  },
+  brand: {
+    label: _('Brand'),
   },
 };
 
 const NotificationTemplate: EntityInterface = {
   ...defaultEntityBehavior,
-  icon: DraftsIcon,
+  icon: MailOutlineIcon,
   iden: 'NotificationTemplate',
   title: _('Notification template', { count: 2 }),
   path: '/notification_templates',
+  columns: ['name', 'type'],
   toStr: (row: NotificationTemplatePropertyList<EntityValue>) =>
     row.name as string,
-  properties,
+  foreignKeyGetter,
+  foreignKeyResolver,
   selectOptions,
+  properties,
+  Form,
 };
 
 export default NotificationTemplate;

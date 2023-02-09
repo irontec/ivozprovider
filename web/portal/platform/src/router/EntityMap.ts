@@ -37,6 +37,15 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
+        {
+          entity: entities.NotificationTemplate,
+          children: [
+            {
+              entity: entities.NotificationTemplateContent,
+              filterBy: 'notificationTemplate',
+            },
+          ],
+        },
       ],
     },
     {

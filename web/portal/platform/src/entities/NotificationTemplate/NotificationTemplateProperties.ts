@@ -8,6 +8,7 @@ export type NotificationTemplatePropertyList<T> = {
   name?: T;
   type?: T;
   id?: T;
+  brand?: T;
 };
 
 export type NotificationTemplateProperties = NotificationTemplatePropertyList<
