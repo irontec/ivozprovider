@@ -32,6 +32,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
   const type = row?.type ?? props.formik.initialValues.type;
   const isVpbx = type === 'vpbx';
   const isResidential = type === 'residential';
+  const isWholesale = type === 'wholesale';
+  const isRetail = type === 'retail';
 
   const groups: Array<FieldsetGroups | false> = [
     {
@@ -64,9 +66,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'currency',
       ],
     },
-    edit && {
+    isRetail && {
       legend: _('Retail specific'),
-      fields: ['routingTagIds', 'codecIds'],
+      fields: ['routingTagIds', edit && 'codecIds'],
+    },
+
+    isWholesale && {
+      legend: _('Wholesale specific'),
+      fields: ['routingTagIds', edit && 'codecIds'],
     },
     edit &&
       !isResidential && {
