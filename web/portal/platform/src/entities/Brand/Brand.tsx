@@ -12,6 +12,7 @@ import PostalCode from './Field/PostalCode';
 import Province from './Field/Province';
 import RegisterInfo from './Field/RegisterInfo';
 import Form from './Form';
+import Actions from './Action';
 
 const properties: BrandProperties = {
   currency: {
@@ -93,6 +94,7 @@ const Brand: EntityInterface = {
     'proxyTrunks',
     'features',
   ],
+  customActions: Actions,
   Form,
 };
 
