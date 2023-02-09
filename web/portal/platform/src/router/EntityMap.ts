@@ -60,6 +60,9 @@ const getEntityMap = (): ExtendedRouteMap => {
         {
           entity: entities.ActiveCalls,
         },
+        {
+          entity: entities.BillableCall,
+        },
       ],
     },
     {
