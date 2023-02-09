@@ -100,6 +100,9 @@ const getEntityMap = (): ExtendedRouteMap => {
           entity: entities.ProxyUser,
         },
         {
+          entity: entities.ProxyTrunk,
+        },
+        {
           entity: entities.MediaRelaySet,
         },
         {
