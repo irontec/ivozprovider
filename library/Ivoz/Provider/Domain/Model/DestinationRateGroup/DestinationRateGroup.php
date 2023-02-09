@@ -12,18 +12,19 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
  */
 class DestinationRateGroup extends DestinationRateGroupAbstract implements FileContainerInterface, DestinationRateGroupInterface
 {
-    const READONLY_DEDUCTIBLECONNECTIONFEE_EXCEPTION = 2301;
+    public const READONLY_DEDUCTIBLECONNECTIONFEE_EXCEPTION = 2301;
 
     use DestinationRateGroupTrait;
 
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    use TempFileContainnerTrait {
+        addTmpFile as protected _addTmpFile;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -33,7 +34,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -41,7 +42,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'file' => [
@@ -61,6 +62,8 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
      *
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file)
     {
@@ -73,19 +76,19 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return sprintf(
             "b%ddr%d",
-            $this->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 
     /**
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getCurrencySymbol(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -97,7 +100,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
     /**
      * @return string
      */
-    public function getCurrencyIden()
+    public function getCurrencyIden(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -116,7 +119,7 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements FileC
             TpDestinationRateInterface::ROUNDINGMETHOD_UP;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->isNew() && $this->hasChanged('deductibleConnectionFee')) {
             throw new \DomainException(

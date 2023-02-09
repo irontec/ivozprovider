@@ -11,22 +11,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TokenExchangeAction
 {
-    private $requestStack;
-    private $exchangeToken;
-
     public function __construct(
-        RequestStack $requestStack,
-        ExchangeToken $exchangeToken
+        private RequestStack $requestStack,
+        private ExchangeToken $exchangeToken
     ) {
-        $this->requestStack = $requestStack;
-        $this->exchangeToken = $exchangeToken;
     }
 
     /**
-     * @return Response
+     * @return Response|Token
+     *
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke()
+    public function __invoke(): Response|Token
     {
         try {
             return $this->run();
@@ -49,19 +45,39 @@ class TokenExchangeAction
         }
     }
 
-    private function run()
+    private function run(): Token
     {
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
 
-        /** @var string  $inputToken */
-        $inputToken =  $request->get('token');
-        /** @var int $username */
-        $username = $request->get('username');
+        /** @var ?string  $inputToken */
+        $inputToken =  $request->request->get('token', null);
+        if (is_null($inputToken)) {
+            throw new \DomainException(
+                'Token not found'
+            );
+        }
+
+        /** @var ?string $username */
+        $username = $request->request->get('username', null);
+
+        /** @var ?int  $clientId */
+        $clientId = $request->request->get('clientId', null);
+
+        if (!$username && !$clientId) {
+            throw new \DomainException(
+                'Either username or clientId must be set'
+            );
+        }
+
+        /** @var string $identity */
+        $identity = $clientId
+            ? '__c' . $clientId . '_internal'
+            : $username;
 
         $tokenStr = $this->exchangeToken->execute(
             $inputToken,
-            $username
+            $identity
         );
 
         return new Token($tokenStr);

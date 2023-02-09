@@ -39,8 +39,6 @@ Retail Accounts Configuration
 
 These are the configurable settings of *Retail accounts*:
 
-.. glossary::
-
     Name
         Name of the **retail account**. This name must be unique in the whole brand so 
         it's recommended to use some kind of sequential identifier. This will also be used
@@ -51,7 +49,8 @@ These are the configurable settings of *Retail accounts*:
 
     Password
         When the *retail account* send requests, IvozProvider will authenticate it using
-        this password. Like remaining SIP entities in IvozProvider (except Wholesale) **using password IS MANDATORY**.
+        this password. **Using password IS A MUST in "Register" mode**. In "Direct" mode,
+        leaving it blank disables SIP authentication and enables IP source check.
 
     Direct connectivity
         If you choose 'Yes' here, you'll have to fill the protocol, address and
@@ -169,5 +168,6 @@ Account peer
 .. warning:: *Retail accounts* MUST NOT challenge IvozProvider. That's
              why the *insecure* setting is used here.
 
-.. note:: As from username is used to identify the retail account, P-Asserted-Identity must be used to specify caller number.
+.. note:: As From username is used to identify the retail account, P-Asserted-Identity (or P-Preferred-Identity or Remote-Party-Id) must be used to specify caller number.
+          Prevalence among these source headers is: PAI > PPI > RPID.
 

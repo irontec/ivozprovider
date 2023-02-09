@@ -19,6 +19,7 @@ class BrandServiceRepositoryTest extends KernelTestCase
     {
         $this->its_instantiable();
         $this->its_finds_by_brandId();
+        $this->its_finds_services_by_brandId();
     }
 
     public function its_instantiable()
@@ -63,13 +64,11 @@ class BrandServiceRepositoryTest extends KernelTestCase
 
         $results = $repository->getServiceIdsByBrand(1);
 
-        $this->assertInternalType(
-            'array',
+        $this->assertIsArray(
             $results
         );
 
-        $this->assertInternalType(
-            'int',
+        $this->assertIsInt(
             $results[0]
         );
     }

@@ -31,12 +31,6 @@
         <option name="unsigned">1</option>
       </options>
     </field>
-    <field name="authNeeded" type="string" column="auth_needed" nullable="false">
-      <options>
-        <option name="fixed"/>
-        <option name="default">yes</option>
-      </options>
-    </field>
     <field name="password" type="string" column="password" length="64" nullable="true"/>
     <field name="disallow" type="string" column="disallow" length="200" nullable="false">
       <options>

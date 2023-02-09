@@ -24,54 +24,54 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $endTime = '2000-01-01 00:00:00';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $duration = 0;
 
     /**
      * @var string|null
      */
-    private $caller;
+    private $caller = null;
 
     /**
      * @var string|null
      */
-    private $callee;
+    private $callee = null;
 
     /**
      * @var string|null
      */
-    private $callid;
+    private $callid = null;
 
     /**
      * @var string|null
      */
-    private $callidHash;
+    private $callidHash = null;
 
     /**
      * @var string|null
      */
-    private $xcallid;
+    private $xcallid = null;
 
     /**
      * @var string|null
      */
-    private $diversion;
+    private $diversion = null;
 
     /**
      * @var bool|null
      */
-    private $bounced;
+    private $bounced = null;
 
     /**
      * @var bool|null
@@ -79,75 +79,78 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $parsed = false;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $parserScheduledAt = 'CURRENT_TIMESTAMP';
 
     /**
      * @var string|null
      */
-    private $direction;
+    private $direction = null;
 
     /**
      * @var string|null
      */
-    private $cgrid;
+    private $cgrid = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -156,7 +159,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -192,9 +195,9 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'startTime' => $this->getStartTime(),
@@ -238,31 +241,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartTime(null|\DateTime|string $startTime): static
+    public function setStartTime(\DateTimeInterface|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    public function getStartTime(): \DateTime|string|null
+    public function getStartTime(): \DateTimeInterface|string|null
     {
         return $this->startTime;
     }
 
-    public function setEndTime(null|\DateTime|string $endTime): static
+    public function setEndTime(\DateTimeInterface|string $endTime): static
     {
         $this->endTime = $endTime;
 
         return $this;
     }
 
-    public function getEndTime(): \DateTime|string|null
+    public function getEndTime(): \DateTimeInterface|string|null
     {
         return $this->endTime;
     }
 
-    public function setDuration(?float $duration): static
+    public function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
@@ -370,14 +373,14 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->parsed;
     }
 
-    public function setParserScheduledAt(null|\DateTime|string $parserScheduledAt): static
+    public function setParserScheduledAt(\DateTimeInterface|string $parserScheduledAt): static
     {
         $this->parserScheduledAt = $parserScheduledAt;
 
         return $this;
     }
 
-    public function getParserScheduledAt(): \DateTime|string|null
+    public function getParserScheduledAt(): \DateTimeInterface|string|null
     {
         return $this->parserScheduledAt;
     }
@@ -413,7 +416,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
 /**
@@ -10,9 +11,9 @@ class NotificationTemplateContent extends NotificationTemplateContentAbstract im
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -22,7 +23,7 @@ class NotificationTemplateContent extends NotificationTemplateContentAbstract im
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

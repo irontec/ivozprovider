@@ -14,9 +14,9 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,16 +26,19 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
      * @param Criteria|null $criteria
-     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
+     *
+     * @return (\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface|null)[]
+     *
+     * @psalm-return list<\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface|null>
      */
-    public function getRoutingPatterns(Criteria $criteria = null)
+    public function getRoutingPatterns(Criteria $criteria = null): array
     {
         $patterns = array();
         $rels = $this->getRelPatterns($criteria);

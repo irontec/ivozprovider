@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\UsersLocation;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
@@ -29,9 +30,9 @@ abstract class UsersLocationAbstract
     protected $username = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var string
@@ -39,14 +40,14 @@ abstract class UsersLocationAbstract
     protected $contact = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $received;
+    protected $received = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $path;
+    protected $path = null;
 
     /**
      * @var \DateTime
@@ -69,8 +70,8 @@ abstract class UsersLocationAbstract
     protected $cseq = 1;
 
     /**
-     * column: last_modified
      * @var \DateTime
+     * column: last_modified
      */
     protected $lastModified;
 
@@ -85,41 +86,41 @@ abstract class UsersLocationAbstract
     protected $cflags = 0;
 
     /**
-     * column: user_agent
      * @var string
+     * column: user_agent
      */
     protected $userAgent = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $socket;
+    protected $socket = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $methods;
+    protected $methods = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $instance;
+    protected $instance = null;
 
     /**
-     * column: reg_id
      * @var int
+     * column: reg_id
      */
     protected $regId = 0;
 
     /**
-     * column: server_id
      * @var int
+     * column: server_id
      */
     protected $serverId = 0;
 
     /**
-     * column: connection_id
      * @var int
+     * column: connection_id
      */
     protected $connectionId = 0;
 
@@ -137,22 +138,22 @@ abstract class UsersLocationAbstract
      * Constructor
      */
     protected function __construct(
-        $ruid,
-        $username,
-        $contact,
-        $expires,
-        $q,
-        $callid,
-        $cseq,
-        $lastModified,
-        $flags,
-        $cflags,
-        $userAgent,
-        $regId,
-        $serverId,
-        $connectionId,
-        $keepalive,
-        $partition
+        string $ruid,
+        string $username,
+        string $contact,
+        \DateTimeInterface|string $expires,
+        float $q,
+        string $callid,
+        int $cseq,
+        \DateTimeInterface|string $lastModified,
+        int $flags,
+        int $cflags,
+        string $userAgent,
+        int $regId,
+        int $serverId,
+        int $connectionId,
+        int $keepalive,
+        int $partition
     ) {
         $this->setRuid($ruid);
         $this->setUsername($username);
@@ -172,41 +173,34 @@ abstract class UsersLocationAbstract
         $this->setPartition($partition);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersLocation",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return UsersLocationDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): UsersLocationDto
     {
         return new UsersLocationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersLocationInterface|null $entity
-     * @param int $depth
-     * @return UsersLocationDto|null
+     * @param null|UsersLocationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersLocationDto
     {
         if (!$entity) {
             return null;
@@ -222,8 +216,7 @@ abstract class UsersLocationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersLocationDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -232,31 +225,62 @@ abstract class UsersLocationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersLocationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $q = $dto->getQ();
+        Assertion::notNull($q, 'getQ value is null, but non null value was expected.');
+        $callid = $dto->getCallid();
+        Assertion::notNull($callid, 'getCallid value is null, but non null value was expected.');
+        $cseq = $dto->getCseq();
+        Assertion::notNull($cseq, 'getCseq value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $cflags = $dto->getCflags();
+        Assertion::notNull($cflags, 'getCflags value is null, but non null value was expected.');
+        $userAgent = $dto->getUserAgent();
+        Assertion::notNull($userAgent, 'getUserAgent value is null, but non null value was expected.');
+        $regId = $dto->getRegId();
+        Assertion::notNull($regId, 'getRegId value is null, but non null value was expected.');
+        $serverId = $dto->getServerId();
+        Assertion::notNull($serverId, 'getServerId value is null, but non null value was expected.');
+        $connectionId = $dto->getConnectionId();
+        Assertion::notNull($connectionId, 'getConnectionId value is null, but non null value was expected.');
+        $keepalive = $dto->getKeepalive();
+        Assertion::notNull($keepalive, 'getKeepalive value is null, but non null value was expected.');
+        $partition = $dto->getPartition();
+        Assertion::notNull($partition, 'getPartition value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRuid(),
-            $dto->getUsername(),
-            $dto->getContact(),
-            $dto->getExpires(),
-            $dto->getQ(),
-            $dto->getCallid(),
-            $dto->getCseq(),
-            $dto->getLastModified(),
-            $dto->getFlags(),
-            $dto->getCflags(),
-            $dto->getUserAgent(),
-            $dto->getRegId(),
-            $dto->getServerId(),
-            $dto->getConnectionId(),
-            $dto->getKeepalive(),
-            $dto->getPartition()
+            $ruid,
+            $username,
+            $contact,
+            $expires,
+            $q,
+            $callid,
+            $cseq,
+            $lastModified,
+            $flags,
+            $cflags,
+            $userAgent,
+            $regId,
+            $serverId,
+            $connectionId,
+            $keepalive,
+            $partition
         );
 
         $self
@@ -275,47 +299,77 @@ abstract class UsersLocationAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersLocationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersLocationDto::class);
 
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $contact = $dto->getContact();
+        Assertion::notNull($contact, 'getContact value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $q = $dto->getQ();
+        Assertion::notNull($q, 'getQ value is null, but non null value was expected.');
+        $callid = $dto->getCallid();
+        Assertion::notNull($callid, 'getCallid value is null, but non null value was expected.');
+        $cseq = $dto->getCseq();
+        Assertion::notNull($cseq, 'getCseq value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $cflags = $dto->getCflags();
+        Assertion::notNull($cflags, 'getCflags value is null, but non null value was expected.');
+        $userAgent = $dto->getUserAgent();
+        Assertion::notNull($userAgent, 'getUserAgent value is null, but non null value was expected.');
+        $regId = $dto->getRegId();
+        Assertion::notNull($regId, 'getRegId value is null, but non null value was expected.');
+        $serverId = $dto->getServerId();
+        Assertion::notNull($serverId, 'getServerId value is null, but non null value was expected.');
+        $connectionId = $dto->getConnectionId();
+        Assertion::notNull($connectionId, 'getConnectionId value is null, but non null value was expected.');
+        $keepalive = $dto->getKeepalive();
+        Assertion::notNull($keepalive, 'getKeepalive value is null, but non null value was expected.');
+        $partition = $dto->getPartition();
+        Assertion::notNull($partition, 'getPartition value is null, but non null value was expected.');
+
         $this
-            ->setRuid($dto->getRuid())
-            ->setUsername($dto->getUsername())
+            ->setRuid($ruid)
+            ->setUsername($username)
             ->setDomain($dto->getDomain())
-            ->setContact($dto->getContact())
+            ->setContact($contact)
             ->setReceived($dto->getReceived())
             ->setPath($dto->getPath())
-            ->setExpires($dto->getExpires())
-            ->setQ($dto->getQ())
-            ->setCallid($dto->getCallid())
-            ->setCseq($dto->getCseq())
-            ->setLastModified($dto->getLastModified())
-            ->setFlags($dto->getFlags())
-            ->setCflags($dto->getCflags())
-            ->setUserAgent($dto->getUserAgent())
+            ->setExpires($expires)
+            ->setQ($q)
+            ->setCallid($callid)
+            ->setCseq($cseq)
+            ->setLastModified($lastModified)
+            ->setFlags($flags)
+            ->setCflags($cflags)
+            ->setUserAgent($userAgent)
             ->setSocket($dto->getSocket())
             ->setMethods($dto->getMethods())
             ->setInstance($dto->getInstance())
-            ->setRegId($dto->getRegId())
-            ->setServerId($dto->getServerId())
-            ->setConnectionId($dto->getConnectionId())
-            ->setKeepalive($dto->getKeepalive())
-            ->setPartition($dto->getPartition());
+            ->setRegId($regId)
+            ->setServerId($serverId)
+            ->setConnectionId($connectionId)
+            ->setKeepalive($keepalive)
+            ->setPartition($partition);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return UsersLocationDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): UsersLocationDto
     {
         return self::createDto()
             ->setRuid(self::getRuid())
@@ -343,9 +397,9 @@ abstract class UsersLocationAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ruid' => self::getRuid(),
@@ -463,15 +517,16 @@ abstract class UsersLocationAbstract
         return $this->path;
     }
 
-    protected function setExpires($expires): static
+    protected function setExpires(string|\DateTimeInterface $expires): static
     {
 
+        /** @var \Datetime */
         $expires = DateTimeHelper::createOrFix(
             $expires,
             '2030-05-28 21:32:15'
         );
 
-        if ($this->expires == $expires) {
+        if ($this->isInitialized() && $this->expires == $expires) {
             return $this;
         }
 
@@ -523,15 +578,16 @@ abstract class UsersLocationAbstract
         return $this->cseq;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 

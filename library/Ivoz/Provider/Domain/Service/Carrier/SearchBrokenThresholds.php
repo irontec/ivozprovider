@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\Events\CarrierBalanceThresholdWasBroken;
@@ -15,24 +14,12 @@ use Ivoz\Provider\Domain\Model\Carrier\Events\CarrierBalanceThresholdWasBroken;
  */
 class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = 10;
-
-    /**
-     * @var BalanceNotificationRepository
-     */
-    protected $balanceNotificationRepository;
-
-    /**
-     * @var DomainEventPublisher
-     */
-    protected $domainEventPublisher;
+    public const ON_COMMIT_PRIORITY = 10;
 
     public function __construct(
-        BalanceNotificationRepository $balanceNotificationRepository,
-        DomainEventPublisher $domainEventPublisher
+        private BalanceNotificationRepository $balanceNotificationRepository,
+        private DomainEventPublisher $domainEventPublisher
     ) {
-        $this->balanceNotificationRepository = $balanceNotificationRepository;
-        $this->domainEventPublisher = $domainEventPublisher;
     }
 
     public static function getSubscribedEvents()
@@ -70,7 +57,6 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
             return;
         }
 
-        /** @var BalanceNotificationInterface[] $brokenThresholds */
         $brokenThresholds = $this->balanceNotificationRepository->findBrokenThresholdsByCarrier(
             $carrier,
             $prevBalance,

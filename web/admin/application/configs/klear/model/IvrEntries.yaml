@@ -27,6 +27,16 @@ production:
         icon: help
         text: _("You can use regular expressions to define values this entry will match.")
         label: _("Need help?")
+    displayName:
+      title: _('Display name')
+      type: text
+      maxLength: 50
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("This value will be displayed in the called terminals")
+        label: _("Need help?")
     welcomeLocution:
       title: _('Success locution')
       type: select
@@ -56,7 +66,7 @@ production:
                 - numberCountry
                 - numberValue
                 - extension
-                - voiceMailUser
+                - voicemail
                 - conditionalRoute
           'number':
             title: _('Number')
@@ -73,7 +83,7 @@ production:
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ voiceMailUser ]
+              show: [ voicemail ]
               hide:
                 <<: *routableFields
           'conditional':
@@ -118,22 +128,21 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    voiceMailUser:
+    voicemail:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\User\User
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
           filterClass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
-              - lastname
-            template: '%name% %lastname%'
+            template: '%name%'
           order:
-            User.name: asc
+            Voicemail.name: asc
         'null': _("Unassigned")
     conditionalRoute:
       title: ngettext('Conditional Route', 'Conditional Routes', 1)

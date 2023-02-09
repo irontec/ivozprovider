@@ -4,13 +4,16 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Domain\Service\TempFile;
 
@@ -19,24 +22,31 @@ use Ivoz\Core\Domain\Service\TempFile;
 */
 interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const STATUS_WAITING = 'waiting';
+    public const STATUS_WAITING = 'waiting';
 
-    const STATUS_PROCESSING = 'processing';
+    public const STATUS_PROCESSING = 'processing';
 
-    const STATUS_CREATED = 'created';
+    public const STATUS_CREATED = 'created';
 
-    const STATUS_ERROR = 'error';
+    public const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return bool
@@ -48,6 +58,26 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
     public function mustRunInvoicer(): bool;
 
     public function mustCheckValidity(): bool;
+
+    public static function createDto(string|int|null $id = null): InvoiceDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|InvoiceInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param InvoiceDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): InvoiceDto;
 
     public function getNumber(): ?string;
 
@@ -83,8 +113,14 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
 
     public function removeRelFixedCost(FixedCostsRelInvoiceInterface $relFixedCost): InvoiceInterface;
 
-    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceInterface;
+    /**
+     * @param Collection<array-key, FixedCostsRelInvoiceInterface> $relFixedCosts
+     */
+    public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceInterface;
 
+    /**
+     * @return array<array-key, FixedCostsRelInvoiceInterface>
+     */
     public function getRelFixedCosts(?Criteria $criteria = null): array;
 
     /**

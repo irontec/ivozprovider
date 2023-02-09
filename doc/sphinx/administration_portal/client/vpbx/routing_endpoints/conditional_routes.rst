@@ -1,4 +1,5 @@
 .. _conditional_routes:
+.. _conditional routes:
 
 ##################
 Conditional routes
@@ -66,8 +67,6 @@ Evaluating conditional routes
 - If all used criterias in a rule are fulfilled, its logic is applied.
 
 This is how each criteria is evaluated:
-
-.. glossary::
 
     Matchlist criteria
         If caller number matches any of selected matchlist(s), this criteria is considered fulfilled.

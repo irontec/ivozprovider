@@ -56,7 +56,7 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
         }
 
         if (count($featureIds)) {
-            $this->_condition[] = "self::id IN (" . implode(',', $featureIds) .")";
+            $this->_condition[] = "self::id IN (" . implode(',', $featureIds) . ")";
         } else {
             $this->_condition[] = "self::id IS NULL";
         }

@@ -13,24 +13,13 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class ServicesUnassignedAction
 {
-    private $tokenStorage;
-    private $companyServiceRepository;
-    private $brandServiceRepository;
-    private $serviceRepository;
-    private $requestStack;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        CompanyServiceRepository $companyServiceRepository,
-        BrandServiceRepository $brandServiceRepository,
-        ServiceRepository $ratingPlanGroupRepository,
-        RequestStack $requestStack
+        private TokenStorageInterface $tokenStorage,
+        private CompanyServiceRepository $companyServiceRepository,
+        private BrandServiceRepository $brandServiceRepository,
+        private ServiceRepository $serviceRepository,
+        private RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->companyServiceRepository = $companyServiceRepository;
-        $this->brandServiceRepository = $brandServiceRepository;
-        $this->serviceRepository = $ratingPlanGroupRepository;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke()
@@ -47,12 +36,12 @@ class ServicesUnassignedAction
         $admin = $token->getUser();
         $company = $admin->getCompany();
         $serviceIds = $this->brandServiceRepository->getServiceIdsByBrand(
-            $company->getBrand()->getId()
+            (int) $company->getBrand()->getId()
         );
         $services = $this->serviceRepository->getServicesInGroup($serviceIds);
 
         $serviceIdsAlreadyInUse = $this->companyServiceRepository->findServiceIdsByCompany(
-            $company->getId()
+            (int) $company->getId()
         );
 
         $includeId = $request->query->get('_includeId');

@@ -16,14 +16,14 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $isGodUrlType = $this->getUrlType() === self::URLTYPE_GOD;
 
@@ -41,7 +41,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Logo' => [
@@ -61,7 +61,7 @@ class WebPortal extends WebPortalAbstract implements FileContainerInterface, Web
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

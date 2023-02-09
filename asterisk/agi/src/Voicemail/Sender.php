@@ -3,13 +3,17 @@
 namespace Voicemail;
 
 use Assert\Assertion;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
+use Ivoz\Core\Domain\Model\Mailer\Attachment;
+use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use PhpMimeMailParser\Parser;
+use Psr\Log\LoggerInterface;
 use RouteHandlerAbstract;
+use Symfony\Component\Mailer\MailerInterface;
 
 class Sender extends RouteHandlerAbstract
 {
@@ -25,41 +29,28 @@ class Sender extends RouteHandlerAbstract
     const VM_DATE        = 9;
     const VM_MESSAGEFILE = 10;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
-
-    /**
-     * @var \Swift_Mailer
-     */
-    protected $mailer;
-
-    /**
-     * @var Parser
-     */
-    protected $parser;
-
-    /**
-     * Sender constructor.
-     * @param EntityManagerInterface $em
-     * @param Parser $parser
-     * @param \Swift_Mailer $mailer
-     */
     public function __construct(
-        EntityManagerInterface $em,
-        Parser $parser,
-        \Swift_Mailer $mailer
+        private EntityManagerInterface $em,
+        private Parser $parser,
+        private MailerInterface $mailer,
+        private LoggerInterface $logger,
+        private string $localStoragePath,
     ) {
-        $this->em = $em;
-        $this->parser = $parser;
-        $this->mailer = $mailer;
+    }
+
+    public function process(): void
+    {
+        try {
+            $this->processSendMail();
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
     }
 
     /**
      * @throws \InvalidArgumentException
      */
-    public function process()
+    public function processSendMail(): void
     {
         // Load Email data
         $this->parser->setStream(fopen("php://stdin", "r"));
@@ -67,18 +58,31 @@ class Sender extends RouteHandlerAbstract
         // Get Voicemail data from body content
         $vmdata = explode(PHP_EOL, $this->parser->getMessageBody());
 
-        /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository $vmRepository */
-        $vmRepository = $this->em->getRepository(Voicemail::class);
+        /** @var VoicemailRepository $astVoicemailRepository */
+        $astVoicemailRepository = $this->em->getRepository(Voicemail::class);
 
-        /** @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface $vm */
-        $vm = $vmRepository->findByMailboxAndContext(
+        // Find associated asterisk voicemail
+        $astVoicemail = $astVoicemailRepository->findByMailboxAndContext(
             $vmdata[self::VM_MAILBOX],
             $vmdata[self::VM_CONTEXT]
         );
 
         // No voicemail, this should not happen
         Assertion::notNull(
-            $vm,
+            $astVoicemail,
+            sprintf(
+                "Unable to find astVoicemail for %s@%s",
+                $vmdata[self::VM_MAILBOX],
+                $vmdata[self::VM_CONTEXT]
+            )
+        );
+
+        // Get provider voicemail
+        $voicemail = $astVoicemail->getVoicemail();
+
+        // No voicemail, this should not happen
+        Assertion::notNull(
+            $voicemail,
             sprintf(
                 "Unable to find voicemail for %s@%s",
                 $vmdata[self::VM_MAILBOX],
@@ -86,20 +90,8 @@ class Sender extends RouteHandlerAbstract
             )
         );
 
-        /** @var \Ivoz\Provider\Domain\Model\User\UserInterface $user */
-        $user = $vm->getUser();
-        Assertion::notNull(
-            $user,
-            sprintf(
-                "Unable to find user for voicemail %s@%s",
-                $vmdata[self::VM_MAILBOX],
-                $vmdata[self::VM_CONTEXT]
-            )
-        );
-
-        // Assume user has company and brand
-        $company = $user->getCompany();
-        $brand = $company->getBrand();
+        // Get voicemail company
+        $company = $voicemail->getCompany();
 
         $substitution = array(
             '${VM_CATEGORY}' => $vmdata[self::VM_CATEGORY],
@@ -114,31 +106,18 @@ class Sender extends RouteHandlerAbstract
             '${VM_DATE}' => $vmdata[self::VM_DATE],
         );
 
-
-        // Get Company Notification Template for voicemails
-        $vmNotificationTemplate = $company->getVoicemailNotificationTemplate();
-
-        // If company has no template associated, fallback to brand notification template for voicemails
-        if (!$vmNotificationTemplate) {
-            $vmNotificationTemplate = $brand->getVoicemailNotificationTemplate();
-        }
-
         // Get Generic Notification Template for voicemails
         /** @var NotificationTemplateRepository $notificationTemplateRepository */
         $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
-        $genericVoicemailNotificationTemplate = $notificationTemplateRepository->findGenericVoicemailTemplate();
-
-        // If no template is associated, fallback to generic notification template for voicemails
-        if (!$vmNotificationTemplate) {
-            $vmNotificationTemplate = $genericVoicemailNotificationTemplate;
-        }
+        $vmNotificationTemplate = $notificationTemplateRepository->findVoicemailTemplateByCompany(
+            $company,
+            $voicemail->getLanguage()
+        );
 
         // Get Notification contents for required language
-        $notificationTemplateContent = $vmNotificationTemplate->getContentsByLanguage($user->getLanguage());
-        if (!$notificationTemplateContent) {
-            // Fallback to generic template language content
-            $notificationTemplateContent = $genericVoicemailNotificationTemplate->getContentsByLanguage($user->getLanguage());
-        }
+        $notificationTemplateContent = $vmNotificationTemplate->getContentsByLanguage(
+            $voicemail->getLanguage()
+        );
 
         // Get data from template
         $fromName = $notificationTemplateContent->getFromName();
@@ -146,29 +125,50 @@ class Sender extends RouteHandlerAbstract
         $bodyType = $notificationTemplateContent->getBodyType();
         $body = $notificationTemplateContent->getBody();
         $subject = $notificationTemplateContent->getSubject();
+        $toAddress = $voicemail->getEmail();
 
         foreach ($substitution as $search => $replace) {
             $body = str_replace($search, $replace, $body);
             $subject = str_replace($search, $replace, $subject);
         }
 
-        // Create a new mail and attach the PDF file
-        $mail = new \Swift_Message();
-        $mail->setBody($body, $bodyType)
-            ->setSubject($subject)
-            ->setFrom($fromAddress, $fromName)
-            ->setTo($vm->getEmail());
+        $this->logger->info(
+            "Preparing email to " . $toAddress
+        );
 
-        /** @var \PhpMimeMailParser\Attachment[] $attachments */
+        // Create a new mail and attach the PDF file
+        $message = new Message();
+        $message->setBody($body, $bodyType)
+            ->setSubject($subject)
+            ->setFromAddress((string) $fromAddress)
+            ->setFromName((string) $fromName)
+            ->setToAddress((string) $toAddress);
+
         $attachments = $this->parser->getAttachments();
         foreach ($attachments as $attachment) {
-            $wavContent = $attachment->getContent();
-            $wavName = sprintf("msg%04d.wav", $vmdata[self::VM_MSGNUM]);
-            $att = new \Swift_Attachment($wavContent, $wavName, "audio/x-wav");
-            $att->setEncoder(new \Swift_Mime_ContentEncoder_Base64ContentEncoder());
-            $mail->attach($att);
+            $wavName = sprintf("msg%04d.wav", (int) $vmdata[self::VM_MSGNUM] - 1);
+            $wavFilePath = sprintf(
+                "%s/%s/%s/INBOX/%s",
+                $this->localStoragePath,
+                $vmdata[self::VM_CONTEXT],
+                $vmdata[self::VM_MAILBOX],
+                $wavName,
+            );
+
+            $message->addAttachment(
+                $wavFilePath,
+                $wavName,
+                "audio/x-wav"
+            );
         }
+
         // Send the email
-        $this->mailer->send($mail);
+        $this->mailer->send(
+            $message->toEmail()
+        );
+
+        $this->logger->info(
+            "Voicemail sent to " . $toAddress
+        );
     }
 }

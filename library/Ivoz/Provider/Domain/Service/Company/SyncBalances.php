@@ -13,22 +13,22 @@ class SyncBalances
     /**
      * @var EntityTools
      */
-    protected $entityTools;
+    private $entityTools;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    private $logger;
 
     /**
      * @var CompanyBalanceServiceInterface
      */
-    protected $client;
+    private $client;
 
     /**
      * @var CompanyRepository
      */
-    protected $companyRepository;
+    private $companyRepository;
 
     public function __construct(
         EntityTools $entityTools,
@@ -91,7 +91,7 @@ class SyncBalances
         $response = [];
 
         foreach ($companies as $company) {
-            $brandId = $company->getBrand()->getId();
+            $brandId = (int) $company->getBrand()->getId();
             if (!array_key_exists($brandId, $response)) {
                 $response[$brandId] = [];
             }

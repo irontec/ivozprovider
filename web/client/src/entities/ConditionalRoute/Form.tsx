@@ -1,111 +1,48 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import IvrSelectOptions from 'entities/Ivr/SelectOptions';
-import HuntGroupSelectOptions from 'entities/HuntGroup/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import QueueSelectOptions from 'entities/Queue/SelectOptions';
-import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { ConditionalRoutePropertyList } from './ConditionalRouteProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const { entityService, row, match } = props;
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices: ConditionalRoutePropertyList<any> = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('Basic Configuration'),
+      fields: ['name'],
+    },
+    {
+      legend: _('No matching condition handler'),
+      fields: [
+        'locution',
+        'routetype',
+        'ivr',
+        'huntGroup',
+        'voicemail',
+        'user',
+        'numberCountry',
+        'numbervalue',
+        'friendvalue',
+        'queue',
+        'conferenceRoom',
+        'extension',
+      ],
+    },
+  ];
 
-    useEffect(
-        () => {
-
-            if (loadingFks) {
-
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            locution: options
-                        }
-                    });
-                });
-
-                IvrSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            ivr: options
-                        }
-                    });
-                });
-
-                HuntGroupSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            huntGroup: options
-                        }
-                    });
-                });
-
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            voiceMailUser: options,
-                            user: options,
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            numberCountry: options,
-                        }
-                    });
-                });
-
-                QueueSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            queue: options,
-                        }
-                    });
-                });
-
-                ConferenceRoomSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            conferenceRoom: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            extension: options,
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+};
 
 export default Form;

@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class FriendDto extends FriendDtoAbstract
 {
-    const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS = 'status';
 
     /**
      * @var RegistrationStatus[]
@@ -17,7 +17,7 @@ class FriendDto extends FriendDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,27 +26,27 @@ class FriendDto extends FriendDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
-    public function addStatus(RegistrationStatus $status)
+    public function addStatus(RegistrationStatus $status): static
     {
         $this->status[] = $status;
 
         return $this;
     }
 
-    public function setDomainName(string $name)
+    public function setDomainName(string $name): void
     {
         $this->domainName = $name;
     }
 
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
         $response['status'] = array_map(
-            function (RegistrationStatus $registrationStatus) {
+            function (RegistrationStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status
@@ -59,7 +59,7 @@ class FriendDto extends FriendDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_STATUS) {
             $baseAttributes = [
@@ -68,6 +68,8 @@ class FriendDto extends FriendDtoAbstract
                 'domainName' => 'domainName',
                 'status' => [[
                     'contact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
@@ -104,7 +106,7 @@ class FriendDto extends FriendDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -144,7 +146,7 @@ class FriendDto extends FriendDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -179,7 +181,7 @@ class FriendDto extends FriendDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

@@ -16,95 +16,98 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lUuid = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lUsername = 'unused';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $lDomain = 'unused';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $rUsername = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $rDomain = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $realm = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authUsername = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authPassword = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authProxy = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expires = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $flags = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $regDelay = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authHa1 = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $socket = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contactAddr = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderRegistrationDto | null
      */
-    private $ddiProviderRegistration;
+    private $ddiProviderRegistration = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -113,7 +116,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -142,9 +145,9 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'lUuid' => $this->getLUuid(),
@@ -181,7 +184,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setLUuid(?string $lUuid): static
+    public function setLUuid(string $lUuid): static
     {
         $this->lUuid = $lUuid;
 
@@ -193,7 +196,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->lUuid;
     }
 
-    public function setLUsername(?string $lUsername): static
+    public function setLUsername(string $lUsername): static
     {
         $this->lUsername = $lUsername;
 
@@ -205,7 +208,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->lUsername;
     }
 
-    public function setLDomain(?string $lDomain): static
+    public function setLDomain(string $lDomain): static
     {
         $this->lDomain = $lDomain;
 
@@ -217,7 +220,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->lDomain;
     }
 
-    public function setRUsername(?string $rUsername): static
+    public function setRUsername(string $rUsername): static
     {
         $this->rUsername = $rUsername;
 
@@ -229,7 +232,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->rUsername;
     }
 
-    public function setRDomain(?string $rDomain): static
+    public function setRDomain(string $rDomain): static
     {
         $this->rDomain = $rDomain;
 
@@ -241,7 +244,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->rDomain;
     }
 
-    public function setRealm(?string $realm): static
+    public function setRealm(string $realm): static
     {
         $this->realm = $realm;
 
@@ -253,7 +256,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->realm;
     }
 
-    public function setAuthUsername(?string $authUsername): static
+    public function setAuthUsername(string $authUsername): static
     {
         $this->authUsername = $authUsername;
 
@@ -265,7 +268,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->authUsername;
     }
 
-    public function setAuthPassword(?string $authPassword): static
+    public function setAuthPassword(string $authPassword): static
     {
         $this->authPassword = $authPassword;
 
@@ -277,7 +280,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->authPassword;
     }
 
-    public function setAuthProxy(?string $authProxy): static
+    public function setAuthProxy(string $authProxy): static
     {
         $this->authProxy = $authProxy;
 
@@ -289,7 +292,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->authProxy;
     }
 
-    public function setExpires(?int $expires): static
+    public function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
@@ -301,7 +304,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->expires;
     }
 
-    public function setFlags(?int $flags): static
+    public function setFlags(int $flags): static
     {
         $this->flags = $flags;
 
@@ -313,7 +316,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->flags;
     }
 
-    public function setRegDelay(?int $regDelay): static
+    public function setRegDelay(int $regDelay): static
     {
         $this->regDelay = $regDelay;
 
@@ -325,7 +328,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->regDelay;
     }
 
-    public function setAuthHa1(?string $authHa1): static
+    public function setAuthHa1(string $authHa1): static
     {
         $this->authHa1 = $authHa1;
 
@@ -337,7 +340,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->authHa1;
     }
 
-    public function setSocket(?string $socket): static
+    public function setSocket(string $socket): static
     {
         $this->socket = $socket;
 
@@ -349,7 +352,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->socket;
     }
 
-    public function setContactAddr(?string $contactAddr): static
+    public function setContactAddr(string $contactAddr): static
     {
         $this->contactAddr = $contactAddr;
 
@@ -368,7 +371,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

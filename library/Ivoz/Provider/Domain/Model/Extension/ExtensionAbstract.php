@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Extension;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
@@ -16,6 +17,7 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
@@ -24,6 +26,7 @@ use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\Country\Country;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 
 /**
 * ExtensionAbstract
@@ -39,20 +42,20 @@ abstract class ExtensionAbstract
     protected $number;
 
     /**
-     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional
-     * @var string | null
+     * @var ?string
+     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional|voicemail
      */
-    protected $routeType;
+    protected $routeType = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $numberValue;
+    protected $numberValue = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $friendValue;
+    protected $friendValue = null;
 
     /**
      * @var CompanyInterface
@@ -61,84 +64,82 @@ abstract class ExtensionAbstract
     protected $company;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
+
+    /**
+     * @var ?VoicemailInterface
+     */
+    protected $voicemail = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $number
+        string $number
     ) {
         $this->setNumber($number);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Extension",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ExtensionDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ExtensionDto
     {
         return new ExtensionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExtensionInterface|null $entity
-     * @param int $depth
-     * @return ExtensionDto|null
+     * @param null|ExtensionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExtensionDto
     {
         if (!$entity) {
             return null;
@@ -154,8 +155,7 @@ abstract class ExtensionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExtensionDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -164,30 +164,34 @@ abstract class ExtensionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExtensionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExtensionDto::class);
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getNumber()
+            $number
         );
 
         $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
 
         $self->initChangelog();
 
@@ -197,37 +201,40 @@ abstract class ExtensionAbstract
     /**
      * @internal use EntityTools instead
      * @param ExtensionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setNumber($dto->getNumber())
+            ->setNumber($number)
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setIvr($fkTransformer->transform($dto->getIvr()))
             ->setHuntGroup($fkTransformer->transform($dto->getHuntGroup()))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setUser($fkTransformer->transform($dto->getUser()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
-            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
+            ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ExtensionDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ExtensionDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -241,13 +248,14 @@ abstract class ExtensionAbstract
             ->setUser(User::entityToDto(self::getUser(), $depth))
             ->setQueue(Queue::entityToDto(self::getQueue(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
-            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth));
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'number' => self::getNumber(),
@@ -255,13 +263,14 @@ abstract class ExtensionAbstract
             'numberValue' => self::getNumberValue(),
             'friendValue' => self::getFriendValue(),
             'companyId' => self::getCompany()->getId(),
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId()
         ];
     }
 
@@ -294,6 +303,7 @@ abstract class ExtensionAbstract
                     ExtensionInterface::ROUTETYPE_FRIEND,
                     ExtensionInterface::ROUTETYPE_QUEUE,
                     ExtensionInterface::ROUTETYPE_CONDITIONAL,
+                    ExtensionInterface::ROUTETYPE_VOICEMAIL,
                 ],
                 'routeTypevalue "%s" is not an element of the valid values: %s'
             );
@@ -345,7 +355,6 @@ abstract class ExtensionAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -436,5 +445,17 @@ abstract class ExtensionAbstract
     public function getNumberCountry(): ?CountryInterface
     {
         return $this->numberCountry;
+    }
+
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailInterface
+    {
+        return $this->voicemail;
     }
 }

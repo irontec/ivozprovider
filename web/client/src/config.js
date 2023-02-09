@@ -1,14 +1,17 @@
+const defaults = {
+  API_URL: `//${window.location.host}/api/client`,
+};
+
 const dev = {
-    API_URL: 'http://10.10.3.31:3000/api/client' /*/dev.php*/
+  ...defaults,
+  API_URL: `//${window.location.host}/api/client/dev.php`,
 };
 
 const prod = {
-    API_URL: 'http://10.10.3.31:3000/api/client'
+  ...defaults,
 };
 
 // Default to dev if not set
-const config = process.env.APP_ENV === 'prod'
-    ? prod
-    : dev;
+const config = process.env.APP_ENV === 'dev' ? dev : prod;
 
 export default config;

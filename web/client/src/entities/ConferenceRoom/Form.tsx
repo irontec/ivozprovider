@@ -1,71 +1,24 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
-import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import LanguageSelectOptions from 'entities/Language/SelectOptions';
-const Form = (props:any) => {
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+const Form = (props: EntityFormProps): JSX.Element => {
+  const DefaultEntityForm = defaultEntityBehavior.Form;
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('Basic Configuration'),
+      fields: ['name', 'maxMembers'],
+    },
+    {
+      legend: _('Authentication Settings'),
+      fields: ['pinProtected', 'pinCode'],
+    },
+  ];
 
-    useEffect(
-        () => {
-            if (loadingFks) {
-
-                //@TODO domain
-                //@TODO interCompany
-
-                CallAclSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            callACL: options,
-                        }
-                    });
-                });
-
-                TransformationRuleSetSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            transformationRuleSet: options,
-                        }
-                    });
-                });
-
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            outgoingDdi: options,
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            language: options,
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} groups={groups} />;
+};
 
 export default Form;

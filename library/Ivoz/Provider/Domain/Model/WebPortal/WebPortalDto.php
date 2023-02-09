@@ -4,13 +4,14 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 class WebPortalDto extends WebPortalDtoAbstract
 {
+    /** @var ?string */
     private $logoPath;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -30,7 +31,7 @@ class WebPortalDto extends WebPortalDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -47,7 +48,12 @@ class WebPortalDto extends WebPortalDtoAbstract
         );
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'logo'
@@ -64,7 +70,7 @@ class WebPortalDto extends WebPortalDtoAbstract
         return $this;
     }
     /**
-     * @return string
+     * @return ?string
      */
     public function getLogoPath()
     {

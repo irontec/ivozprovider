@@ -1,3 +1,5 @@
+.. _ip filter blocked addresses:
+
 ***************************
 IP filter blocked addresses
 ***************************

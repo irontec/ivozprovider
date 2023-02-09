@@ -1,4 +1,5 @@
 .. _client_services:
+.. _services:
 
 ########
 Services

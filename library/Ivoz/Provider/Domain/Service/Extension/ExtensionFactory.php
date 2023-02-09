@@ -10,15 +10,10 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class ExtensionFactory
 {
-    protected $extensionRepository;
-    protected $entityTools;
-
     public function __construct(
-        ExtensionRepository $extensionRepository,
-        EntityTools $entityTools
+        private ExtensionRepository $extensionRepository,
+        private EntityTools $entityTools
     ) {
-        $this->extensionRepository = $extensionRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -35,6 +30,7 @@ class ExtensionFactory
             $extensionNumber
         );
 
+        /** @var ExtensionDto $extensionDto */
         $extensionDto = $extension instanceof ExtensionInterface
             ? $this->entityTools->entityToDto($extension)
             : new ExtensionDto();

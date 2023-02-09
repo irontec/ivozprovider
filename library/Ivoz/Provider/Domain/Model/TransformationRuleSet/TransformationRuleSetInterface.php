@@ -3,10 +3,13 @@
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,9 +19,16 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
@@ -29,6 +39,26 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
      * {@inheritDoc}
      */
     public function setTrunkPrefix(?string $trunkPrefix = null): static;
+
+    public static function createDto(string|int|null $id = null): TransformationRuleSetDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TransformationRuleSetInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TransformationRuleSetDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param TransformationRuleSetDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TransformationRuleSetDto;
 
     public function getDescription(): ?string;
 
@@ -54,7 +84,13 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
 
     public function removeRule(TransformationRuleInterface $rule): TransformationRuleSetInterface;
 
-    public function replaceRules(ArrayCollection $rules): TransformationRuleSetInterface;
+    /**
+     * @param Collection<array-key, TransformationRuleInterface> $rules
+     */
+    public function replaceRules(Collection $rules): TransformationRuleSetInterface;
 
+    /**
+     * @return array<array-key, TransformationRuleInterface>
+     */
     public function getRules(?Criteria $criteria = null): array;
 }

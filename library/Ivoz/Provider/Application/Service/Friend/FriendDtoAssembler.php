@@ -14,15 +14,10 @@ use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 
 class FriendDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $usersLocationRepository;
-    protected $requestDateTimeResolver;
-
     public function __construct(
-        UsersLocationRepository $usersLocationRepository,
-        RequestDateTimeResolver $requestDateTimeResolver
+        private UsersLocationRepository $usersLocationRepository,
+        private RequestDateTimeResolver $requestDateTimeResolver
     ) {
-        $this->usersLocationRepository = $usersLocationRepository;
-        $this->requestDateTimeResolver = $requestDateTimeResolver;
     }
 
     /**
@@ -33,7 +28,6 @@ class FriendDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($friend, FriendInterface::class);
 
-        /** @var FriendDto $dto */
         $dto = $friend->toDto($depth);
 
         if (FriendDto::CONTEXT_STATUS !== $context) {

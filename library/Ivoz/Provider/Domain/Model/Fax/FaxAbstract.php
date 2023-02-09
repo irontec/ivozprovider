@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -27,9 +28,9 @@ abstract class FaxAbstract
     protected $name;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $email;
+    protected $email = null;
 
     /**
      * @var bool
@@ -42,56 +43,49 @@ abstract class FaxAbstract
     protected $company;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $sendByEmail
+        string $name,
+        bool $sendByEmail
     ) {
         $this->setName($name);
         $this->setSendByEmail($sendByEmail);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Fax",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return FaxDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): FaxDto
     {
         return new FaxDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FaxInterface|null $entity
-     * @param int $depth
-     * @return FaxDto|null
+     * @param null|FaxInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FaxDto
     {
         if (!$entity) {
             return null;
@@ -107,8 +101,7 @@ abstract class FaxAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FaxDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -117,22 +110,27 @@ abstract class FaxAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FaxDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $sendByEmail = $dto->getSendByEmail();
+        Assertion::notNull($sendByEmail, 'getSendByEmail value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getSendByEmail()
+            $name,
+            $sendByEmail
         );
 
         $self
             ->setEmail($dto->getEmail())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         $self->initChangelog();
@@ -143,19 +141,25 @@ abstract class FaxAbstract
     /**
      * @internal use EntityTools instead
      * @param FaxDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $sendByEmail = $dto->getSendByEmail();
+        Assertion::notNull($sendByEmail, 'getSendByEmail value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setEmail($dto->getEmail())
-            ->setSendByEmail($dto->getSendByEmail())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setSendByEmail($sendByEmail)
+            ->setCompany($fkTransformer->transform($company))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()));
 
         return $this;
@@ -163,10 +167,8 @@ abstract class FaxAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FaxDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FaxDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -177,16 +179,16 @@ abstract class FaxAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
             'email' => self::getEmail(),
             'sendByEmail' => self::getSendByEmail(),
             'companyId' => self::getCompany()->getId(),
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId()
         ];
     }
 
@@ -222,9 +224,6 @@ abstract class FaxAbstract
 
     protected function setSendByEmail(bool $sendByEmail): static
     {
-        Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
-        $sendByEmail = (bool) $sendByEmail;
-
         $this->sendByEmail = $sendByEmail;
 
         return $this;

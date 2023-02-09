@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
@@ -25,9 +26,9 @@ abstract class RoutingPatternGroupAbstract
     protected $name;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
      * @var BrandInterface
@@ -38,46 +39,39 @@ abstract class RoutingPatternGroupAbstract
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingPatternGroup",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RoutingPatternGroupDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RoutingPatternGroupDto
     {
         return new RoutingPatternGroupDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingPatternGroupInterface|null $entity
-     * @param int $depth
-     * @return RoutingPatternGroupDto|null
+     * @param null|RoutingPatternGroupInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingPatternGroupDto
     {
         if (!$entity) {
             return null;
@@ -93,8 +87,7 @@ abstract class RoutingPatternGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingPatternGroupDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -103,21 +96,24 @@ abstract class RoutingPatternGroupAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternGroupDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternGroupDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
             ->setDescription($dto->getDescription())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -127,28 +123,30 @@ abstract class RoutingPatternGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternGroupDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternGroupDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RoutingPatternGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RoutingPatternGroupDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -157,9 +155,9 @@ abstract class RoutingPatternGroupAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

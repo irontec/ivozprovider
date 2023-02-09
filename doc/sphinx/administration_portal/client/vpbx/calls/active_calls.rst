@@ -9,8 +9,6 @@ This section allows client administrator view **current active calls**.
 
 These are columns shown:
 
-.. glossary::
-
     Duration
         Show call establishment duration during establishment and call duration during ongoing call. It also shows
         direction (inbound/outbound) and call state information, as explained :ref:`here <Call state>`.

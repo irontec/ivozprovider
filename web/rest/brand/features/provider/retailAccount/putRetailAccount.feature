@@ -18,7 +18,7 @@ Feature: Update ddi
           "port": null,
           "password": "8rv6G3TVc-",
           "fromDomain": null,
-          "directConnectivity": "yes",
+          "directConnectivity": "no",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "company": 1,
@@ -39,12 +39,13 @@ Feature: Update ddi
           "port": null,
           "password": "8rv6G3TVc-",
           "fromDomain": null,
-          "directConnectivity": "yes",
+          "directConnectivity": "no",
           "ddiIn": "yes",
           "t38Passthrough": "no",
           "id": 1,
           "company": 1,
           "transformationRuleSet": null,
-          "outgoingDdi": null
+          "outgoingDdi": null,
+          "status": []
       }
     """

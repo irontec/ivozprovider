@@ -5,21 +5,14 @@ namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
-
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 
 class BillingService implements BillingServiceInterface
 {
-    protected $client;
-    protected $entityTools;
-
     public function __construct(
-        ClientInterface $client,
-        EntityTools $entityTools
+        private ClientInterface $client,
+        private EntityTools $entityTools
     ) {
-        $this->client = $client;
-
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -32,7 +25,7 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds)
+    public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds): SimulatedCall
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());
@@ -95,7 +88,7 @@ class BillingService implements BillingServiceInterface
      * @throws \DomainException
      * @return SimulatedCall
      */
-    private function sendRequest(array $payload)
+    private function sendRequest(array $payload): SimulatedCall
     {
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
         $request = $this->client
@@ -110,7 +103,7 @@ class BillingService implements BillingServiceInterface
 
         return SimulatedCall::fromCgRatesResponse(
             $stringResponse,
-            substr($payload['Usage'], 0, -1),
+            (int) substr($payload['Usage'], 0, -1),
             $this->entityTools
         );
     }

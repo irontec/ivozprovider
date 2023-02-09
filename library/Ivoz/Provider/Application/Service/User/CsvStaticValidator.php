@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Application\Service\User;
 
@@ -16,7 +18,7 @@ class CsvStaticValidator
                 $errorMsg = sprintf(
                     '11 column were expected but %d found at line %d',
                     count($fields),
-                    $k+1
+                    $k + 1
                 );
 
                 throw new \DomainException($errorMsg);
@@ -24,7 +26,7 @@ class CsvStaticValidator
         }
 
         $fullNames = array_map(
-            function ($row) {
+            function ($row): string {
                 return $row[0] . ' ' . $row[1];
             },
             $rows

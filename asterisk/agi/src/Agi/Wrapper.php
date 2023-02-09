@@ -139,7 +139,7 @@ class Wrapper
 
     public function decline()
     {
-        $this->fastagi->hangup(21);
+        $this->fastagi->hangup('21');
     }
 
     public function progress($file = "")

@@ -4,11 +4,12 @@ namespace Tests\Provider\ResidentialDevice;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentify;
-use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\Voicemail as AstVoicemail;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 
 class ResidentialDeviceLifeCycleTest extends KernelTestCase
 {
@@ -23,7 +24,8 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $residentialDeviceDto
             ->setName('testResidentialDevice')
             ->setTransport('udp')
-            ->setAuthNeeded('yes')
+            ->setIp('1.2.3.4')
+            ->setPort(1024)
             ->setDisallow('all')
             ->setAllow('alaw')
             ->setDirectMediaMethod('invite')
@@ -109,7 +111,8 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
             ResidentialDevice::class,
             PsEndpoint::class,
             PsIdentify::class,
-            Voicemail::class
+            Voicemail::class,
+            AstVoicemail::class,
         ]);
     }
 
@@ -159,7 +162,8 @@ class ResidentialDeviceLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             ResidentialDevice::class,
             Voicemail::class,
-            PsEndpoint::class
+            PsEndpoint::class,
+            AstVoicemail::class,
         ]);
     }
 

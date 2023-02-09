@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
@@ -12,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait CallAclRelMatchListTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -24,19 +25,17 @@ trait CallAclRelMatchListTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param CallAclRelMatchListDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
@@ -52,13 +51,11 @@ trait CallAclRelMatchListTrait
     /**
      * @internal use EntityTools instead
      * @param CallAclRelMatchListDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();
@@ -68,10 +65,8 @@ trait CallAclRelMatchListTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CallAclRelMatchListDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CallAclRelMatchListDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -79,9 +74,9 @@ trait CallAclRelMatchListTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

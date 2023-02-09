@@ -7,6 +7,8 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
@@ -16,18 +18,11 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
  */
 class TrunksLcrRuleTargetFactory
 {
-    protected $trunksLcrRuleTargetRepository;
-    protected $trunksLcrGatewayRepository;
-    protected $entityTools;
-
     public function __construct(
-        TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
-        TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
-        EntityTools $entityTools
+        private TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
+        private TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
+        private EntityTools $entityTools
     ) {
-        $this->trunksLcrRuleTargetRepository = $trunksLcrRuleTargetRepository;
-        $this->trunksLcrGatewayRepository = $trunksLcrGatewayRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -91,6 +86,7 @@ class TrunksLcrRuleTargetFactory
                     $lcrGateway
                 );
 
+                /** @var TrunksLcrRuleTargetDto $lcrRuleTargetDto */
                 $lcrRuleTargetDto = $lcrRuleTarget
                     ? $this->entityTools->entityToDto($lcrRuleTarget)
                     : TrunksLcrRuleTarget::createDto();
@@ -99,15 +95,18 @@ class TrunksLcrRuleTargetFactory
                     ->setRuleId($lcrRule->getId())
                     ->setGwId($lcrGateway->getId())
                     ->setPriority($outgoingRouting->getPriority())
-                    ->setWeight($ponderatedWeight)
+                    ->setWeight((int) $ponderatedWeight)
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time
-                $lcrRuleTargets[] = $this->entityTools->persistDto(
+                /** @var TrunksLcrRuleTargetInterface $lcrRuleTarget */
+                $lcrRuleTarget = $this->entityTools->persistDto(
                     $lcrRuleTargetDto,
                     $lcrRuleTarget,
                     true
                 );
+
+                $lcrRuleTargets[] = $lcrRuleTarget;
             }
         }
 

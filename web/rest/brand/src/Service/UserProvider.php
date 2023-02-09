@@ -2,6 +2,7 @@
 
 namespace Service;
 
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Infrastructure\Api\Security\User\UserProviderTrait;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
@@ -11,15 +12,14 @@ class UserProvider implements UserProviderInterface
 {
     use UserProviderTrait;
 
-    /**
-     * @param array $criteria
-     * @return null | AdministratorInterface
-     */
-    protected function findUser(array $criteria)
+    protected function findUser(string $identity): ?AdministratorInterface
     {
-        return $this
-            ->getRepository()
-            ->findOneBy($criteria);
+        /** @var AdministratorRepository $repository */
+        $repository = $this->getRepository();
+
+        $user = $repository->findBrandAdminByUsername($identity);
+
+        return $user;
     }
 
     /**

@@ -14,9 +14,9 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,12 +26,12 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->getWholeDayEvent()) {
             $timeIn = $this->getTimeIn();

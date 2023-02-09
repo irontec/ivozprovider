@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 
 class CheckDestinationRateGroupDuplicates implements RatingPlanLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public static function getSubscribedEvents()
     {

@@ -11,17 +11,11 @@ use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandle
 
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 10;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -38,7 +32,6 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     {
         $lcrGateway = $carrierServer->getLcrGateway();
 
-        /** @var TrunksLcrGatewayDto $lcrGatewayDto */
         $lcrGatewayDto = is_null($lcrGateway)
             ? TrunksLcrGateway::createDto()
             : $lcrGateway->toDto();

@@ -1,0 +1,57 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Controller\\\\My\\\\ActiveCallsAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/My/ActiveCallsAction.php
+
+		-
+			message: "#^Cannot access property \\$attributes on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 1
+			path: src/Controller/Provider/PutBillableCallRatingAction.php
+
+		-
+			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 1
+			path: src/Controller/Provider/PutBillableCallRatingAction.php
+
+		-
+			message: "#^Cannot call method getRequestFormat\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\Request\\|null\\.$#"
+			count: 2
+			path: src/Controller/Provider/PutBillableCallRatingAction.php
+
+		-
+			message: "#^Method Controller\\\\Provider\\\\PutBillableCallRatingAction\\:\\:__invoke\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Provider/PutBillableCallRatingAction.php
+
+		-
+			message: "#^Cannot access offset 'paths' on array\\|ArrayObject\\|bool\\|float\\|int\\|string\\|null\\.$#"
+			count: 2
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\AuthEndpointDecorator\\:\\:normalize\\(\\) return type with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Property Service\\\\AuthEndpointDecorator\\:\\:\\$definitions with generic class ArrayObject does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Service/AuthEndpointDecorator.php
+
+		-
+			message: "#^Method Service\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
+			count: 1
+			path: src/Service/UserProvider.php
+

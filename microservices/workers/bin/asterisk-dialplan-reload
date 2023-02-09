@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\HttpFoundation\Request;
+
+require __DIR__.'/../config/bootstrap.php';
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], getenv('APP_ENV') ?: 'dev');
+
+$kernel = new Kernel($env, false);
+$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/asterisk-dialplan-reload']);
+
+$response = $kernel->handle($request);
+$response->send();
+$kernel->terminate($request, $response);

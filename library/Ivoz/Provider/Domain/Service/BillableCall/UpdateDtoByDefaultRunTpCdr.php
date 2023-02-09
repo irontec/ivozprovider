@@ -11,29 +11,11 @@ use Psr\Log\LoggerInterface;
 
 class UpdateDtoByDefaultRunTpCdr
 {
-    /**
-     * @var TpRatingPlanRepository
-     */
-    protected $tpRatingPlanRepository;
-
-    /**
-     * @var TpDestinationRepository
-     */
-    protected $tpDestinationRepository;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
     public function __construct(
-        TpRatingPlanRepository $tpRatingPlanRepository,
-        TpDestinationRepository $tpDestinationRepository,
-        LoggerInterface $logger
+        private TpRatingPlanRepository $tpRatingPlanRepository,
+        private TpDestinationRepository $tpDestinationRepository,
+        private LoggerInterface $logger
     ) {
-        $this->tpRatingPlanRepository = $tpRatingPlanRepository;
-        $this->tpDestinationRepository = $tpDestinationRepository;
-        $this->logger = $logger;
     }
 
     /**
@@ -46,7 +28,7 @@ class UpdateDtoByDefaultRunTpCdr
         BillableCallDto $billableCallDto,
         TrunksCdrInterface $trunksCdr,
         TpCdrInterface $defaultRunTpCdr
-    ) :BillableCallDto {
+    ): BillableCallDto {
         if (!$defaultRunTpCdr->getCostDetailsFirstTimespan()) {
             $errorMsg = sprintf(
                 'Empty cost details. Skipping'
@@ -74,7 +56,7 @@ class UpdateDtoByDefaultRunTpCdr
                 $startTime
             )
             ->setDuration(
-                $duration
+                $duration ?? 0
             )
             ->setCallee(
                 $callee

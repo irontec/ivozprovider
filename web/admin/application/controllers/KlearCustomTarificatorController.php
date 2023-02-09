@@ -24,9 +24,11 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         /**
          * Initialize action controller here
          */
-        if ((! $this->_mainRouter = $this->getRequest()->getUserParam(
-            "mainRouter"
-        )) || (! is_object($this->_mainRouter))) {
+        if (
+            (! $this->_mainRouter = $this->getRequest()->getUserParam(
+                "mainRouter"
+            )) || (! is_object($this->_mainRouter))
+        ) {
             throw new Zend_Exception(
                 "",
                 Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
@@ -66,7 +68,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
 
         $title = $this->_helper->translate("Tarificate Calls?");
-        $message = "<p>".$this->_helper->translate("Do you want to rerate selected calls?")."</p>";
+        $message = "<p>" . $this->_helper->translate("Do you want to rerate selected calls?") . "</p>";
         $this->_showDialog($title, $message, "Ok", "Cancel", false, "300", "100");
     }
 
@@ -379,14 +381,14 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $message .=     "<td class='ui-widget-content' style='overflow: visible; min-width: 225px;'>";
             $message .=         '<style> .selectboxit-container .selectboxit { width: 220px!important; }</style>';
             $message .=         '<select id="routingTag" name="routingTag" class="ui-widget ui-state-default ui-corner-all">';
-            $message .=             '<option value="">'. $this->_helper->translate('No routing tag') .'</option>';
+            $message .=             '<option value="">' . $this->_helper->translate('No routing tag') . '</option>';
 
             foreach ($routingTags as $routingTag) {
                 $id = $routingTag->getId();
                 $routingTagName = $routingTag->getName();
                 $tag = $routingTag->getTag();
 
-                $message .=         '<option value="'. $id .'">'. "$routingTagName ($tag)" .'</option>';
+                $message .=         '<option value="' . $id . '">' . "$routingTagName ($tag)" . '</option>';
             }
 
             $message .=         '</select>';
@@ -395,11 +397,11 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $message .=         "<td class='ui-widget-content'>";
         $message .=             '<input type="text" id="number" name="number" placeholder="+34123456789" class="ui-widget ui-state-default ui-corner-all" pattern="\\+[0-9]+"';
-        $message .=                 'required value="'.$this->getParam("number").'">';
+        $message .=                 'required value="' . $this->getParam("number") . '">';
         $message .=         "</td>";
         $message .=         "<td class='ui-widget-content'>";
         $message .=             '<input type="number" name="duration" value="60" min="1" placeholder="value in seconds" class="ui-widget ui-state-default ui-corner-all"';
-        $message .=                 ' value="'.$this->getParam("duration").'">';
+        $message .=                 ' value="' . $this->getParam("duration") . '">';
         $message .=         "</td>";
         $message .=     "</tr>";
         $message .= "</table>";
@@ -434,8 +436,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         if (! is_numeric($this->getParam("duration"))) {
             $errors = true;
-            $errorMessage .= "<p><font color='red'>" .$this->_helper->translate("Please, type a duration in seconds")
-                .".</font></p>";
+            $errorMessage .= "<p><font color='red'>" . $this->_helper->translate("Please, type a duration in seconds")
+                . ".</font></p>";
         }
 
         if ($errors) {
@@ -541,9 +543,9 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         $table = '<table class="kMatrix" style="min-width: 850px;">';
         if (!is_null($dest)) {
-            $table .= '<caption class="ui-state-active ui-priority-primary">'.$dest;
+            $table .= '<caption class="ui-state-active ui-priority-primary">' . $dest;
             if (!is_null($duration)) {
-                $table .= '<span class="extraCaptionInfo">'.$duration." ".$this->_helper->translate("seconds")."</span>";
+                $table .= '<span class="extraCaptionInfo">' . $duration . " " . $this->_helper->translate("seconds") . "</span>";
             }
         }
         $table .= '<tbody>';
@@ -663,7 +665,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
                 $data = array(
                     'error' => true,
-                    'message'=> $this->_helper->translate($message),
+                    'message' => $this->_helper->translate($message),
                     'buttons' => array(
                         $close => array(
                             "recall" => false,
@@ -678,8 +680,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $message = "<p>" . $this->_helper->translate("Tarificator Job started") . "</p>";
             $title = $this->_helper->translate("Ok");
         } else {
-            $message = "<p>".$this->_helper->translate("Invoiced calls can't be metered again")."</p>";
-            $message .= "<p>".$this->_helper->translate("Please select only uninvoiced calls")."</p>";
+            $message = "<p>" . $this->_helper->translate("Invoiced calls can't be metered again") . "</p>";
+            $message .= "<p>" . $this->_helper->translate("Please select only uninvoiced calls") . "</p>";
 
             $title = $this->_helper->translate("Error");
         }

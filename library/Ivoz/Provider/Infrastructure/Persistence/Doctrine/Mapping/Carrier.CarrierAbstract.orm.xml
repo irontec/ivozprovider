@@ -23,7 +23,7 @@
     </field>
     <field name="balance" type="decimal" column="balance" precision="10" scale="4" nullable="true">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="calculateCost" type="boolean" column="calculateCost" nullable="true">

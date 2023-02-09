@@ -8,12 +8,9 @@ use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 
 class UpdateLastExecutionDate
 {
-    private $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -32,7 +29,7 @@ class UpdateLastExecutionDate
         $invoiceSchedulerDto
             ->setLastExecution(
                 new \DateTime(
-                    null,
+                    'now',
                     new \DateTimeZone('UTC')
                 )
             );

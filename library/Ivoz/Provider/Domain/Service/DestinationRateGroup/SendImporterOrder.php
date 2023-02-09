@@ -7,15 +7,9 @@ use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterfac
 
 class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInterface
 {
-    /**
-     * @var RatesImporterJobInterface
-     */
-    protected $importer;
-
     public function __construct(
-        RatesImporterJobInterface $importer
+        private RatesImporterJobInterface $importer
     ) {
-        $this->importer = $importer;
     }
 
     /**

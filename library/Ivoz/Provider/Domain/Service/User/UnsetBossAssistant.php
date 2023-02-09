@@ -15,22 +15,10 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
  */
 class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        UserRepository $userRepository
+        private EntityTools $entityTools,
+        private UserRepository $userRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->userRepository = $userRepository;
     }
 
     public static function getSubscribedEvents()
@@ -50,11 +38,10 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         $hasChangedIsBoss = $user->hasChanged('isBoss');
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
-
-            /** @var UserInterface[] $bosses */
+            $userId = (int) $user->getId();
             $bosses = $this
                 ->userRepository
-                ->findByBossAssistantId($user->getId());
+                ->findByBossAssistantId($userId);
 
             foreach ($bosses as $boss) {
                 /**

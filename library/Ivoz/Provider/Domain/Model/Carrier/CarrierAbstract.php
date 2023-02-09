@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Currency\CurrencyInterface;
@@ -38,17 +39,17 @@ abstract class CarrierAbstract
     protected $name;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $externallyRated = false;
 
     /**
-     * @var float | null
+     * @var ?float
      */
     protected $balance = 0;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $calculateCost = false;
 
@@ -58,71 +59,64 @@ abstract class CarrierAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
-     * @var ProxyTrunkInterface | null
+     * @var ?ProxyTrunkInterface
      */
-    protected $proxyTrunk;
+    protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $description,
-        $name
+        string $description,
+        string $name
     ) {
         $this->setDescription($description);
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Carrier",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CarrierDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CarrierDto
     {
         return new CarrierDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CarrierInterface|null $entity
-     * @param int $depth
-     * @return CarrierDto|null
+     * @param null|CarrierInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CarrierDto
     {
         if (!$entity) {
             return null;
@@ -138,8 +132,7 @@ abstract class CarrierAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CarrierDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -148,24 +141,29 @@ abstract class CarrierAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CarrierDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CarrierDto::class);
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDescription(),
-            $dto->getName()
+            $description,
+            $name
         );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
@@ -179,21 +177,27 @@ abstract class CarrierAbstract
     /**
      * @internal use EntityTools instead
      * @param CarrierDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CarrierDto::class);
 
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDescription($dto->getDescription())
-            ->setName($dto->getName())
+            ->setDescription($description)
+            ->setName($name)
             ->setExternallyRated($dto->getExternallyRated())
             ->setBalance($dto->getBalance())
             ->setCalculateCost($dto->getCalculateCost())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
@@ -204,10 +208,8 @@ abstract class CarrierAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CarrierDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CarrierDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -223,9 +225,9 @@ abstract class CarrierAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),
@@ -234,10 +236,10 @@ abstract class CarrierAbstract
             'balance' => self::getBalance(),
             'calculateCost' => self::getCalculateCost(),
             'brandId' => self::getBrand()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'currencyId' => self::getCurrency()?->getId(),
+            'proxyTrunkId' => self::getProxyTrunk()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
         ];
     }
 
@@ -271,11 +273,6 @@ abstract class CarrierAbstract
 
     protected function setExternallyRated(?bool $externallyRated = null): static
     {
-        if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
-            $externallyRated = (bool) $externallyRated;
-        }
-
         $this->externallyRated = $externallyRated;
 
         return $this;
@@ -304,11 +301,6 @@ abstract class CarrierAbstract
 
     protected function setCalculateCost(?bool $calculateCost = null): static
     {
-        if (!is_null($calculateCost)) {
-            Assertion::between(intval($calculateCost), 0, 1, 'calculateCost provided "%s" is not a valid boolean value.');
-            $calculateCost = (bool) $calculateCost;
-        }
-
         $this->calculateCost = $calculateCost;
 
         return $this;

@@ -13,8 +13,10 @@ class KlearCustomRtController extends Zend_Controller_Action
             ->initContext('json');
 
 
-        if ((!$this->_mainRouter = $this->getRequest()->getParam("mainRouter")) ||
-            (!is_object($this->_mainRouter))) {
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getParam("mainRouter")) ||
+            (!is_object($this->_mainRouter))
+        ) {
             throw new Zend_Exception(
                 'Restricted access',
                 \Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION

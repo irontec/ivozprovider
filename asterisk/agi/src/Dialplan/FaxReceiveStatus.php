@@ -12,7 +12,6 @@ use RouteHandlerAbstract;
 
 class FaxReceiveStatus extends RouteHandlerAbstract
 {
-
     /**
      * @var Wrapper
      */

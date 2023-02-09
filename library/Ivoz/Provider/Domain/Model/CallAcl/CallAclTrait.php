@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -15,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait CallAclTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CallAclRelMatchListInterface> & Selectable<array-key, CallAclRelMatchListInterface>
      * CallAclRelMatchListInterface mappedBy callAcl
      * orphanRemoval
      */
@@ -35,27 +38,27 @@ trait CallAclTrait
         $this->relMatchLists = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param CallAclDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelMatchLists())) {
-            $self->replaceRelMatchLists(
-                $fkTransformer->transformCollection(
-                    $dto->getRelMatchLists()
-                )
+        $relMatchLists = $dto->getRelMatchLists();
+        if (!is_null($relMatchLists)) {
+
+            /** @var Collection<array-key, CallAclRelMatchListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMatchLists
             );
+            $self->replaceRelMatchLists($replacement);
         }
 
         $self->sanitizeValues();
@@ -70,20 +73,20 @@ trait CallAclTrait
     /**
      * @internal use EntityTools instead
      * @param CallAclDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelMatchLists())) {
-            $this->replaceRelMatchLists(
-                $fkTransformer->transformCollection(
-                    $dto->getRelMatchLists()
-                )
+        $relMatchLists = $dto->getRelMatchLists();
+        if (!is_null($relMatchLists)) {
+
+            /** @var Collection<array-key, CallAclRelMatchListInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMatchLists
             );
+            $this->replaceRelMatchLists($replacement);
         }
         $this->sanitizeValues();
 
@@ -92,10 +95,8 @@ trait CallAclTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CallAclDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CallAclDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -103,9 +104,9 @@ trait CallAclTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -126,25 +127,33 @@ trait CallAclTrait
         return $this;
     }
 
-    public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface
+    /**
+     * @param Collection<array-key, CallAclRelMatchListInterface> $relMatchLists
+     */
+    public function replaceRelMatchLists(Collection $relMatchLists): CallAclInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relMatchLists as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCallAcl($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relMatchLists as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relMatchLists->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relMatchLists->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relMatchLists->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -154,6 +163,9 @@ trait CallAclTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CallAclRelMatchListInterface>
+     */
     public function getRelMatchLists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

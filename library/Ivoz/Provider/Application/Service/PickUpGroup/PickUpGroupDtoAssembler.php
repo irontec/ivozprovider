@@ -20,13 +20,12 @@ class PickUpGroupDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, PickUpGroupInterface::class);
 
-        /** @var PickUpGroupDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, PickUpGroupDto::CONTEXTS_WITH_USERS, true)) {
             $userIds = array_map(
                 function (PickUpRelUser $relUser) {
-                    return $relUser
+                    return (int) $relUser
                         ->getUser()
                         ->getId();
                 },

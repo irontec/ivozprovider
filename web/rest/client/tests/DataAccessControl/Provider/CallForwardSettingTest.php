@@ -47,6 +47,11 @@ class CallForwardSettingTest extends KernelTestCase
                             'ResidentialDeviceRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
+                            'friend',
+                            'in',
+                            'FriendRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
                             'retailAccount',
                             'in',
                             'RetailAccountRepository([["company","eq","user.getCompany().getId()"]])'
@@ -102,6 +107,20 @@ class CallForwardSettingTest extends KernelTestCase
                 [
                     'or' => [
                         [
+                            'friend',
+                            'in',
+                            'FriendRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'friend',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
+                [
+                    'or' => [
+                        [
                             'retailAccount',
                             'in',
                             'RetailAccountRepository([["company","eq","user.getCompany().getId()"]])'
@@ -130,12 +149,12 @@ class CallForwardSettingTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'voiceMailUser',
+                            'voicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'voiceMailUser',
+                            'voicemail',
                             'isNull',
                             null
                         ]

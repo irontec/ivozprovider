@@ -49,26 +49,28 @@
         "sort-packages": true,
         "preferred-install": {
             "*": "git"
+        },
+        "platform": {
+            "php": "8.0.9"
         }
     },
     "require": {
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "gesdinet/jwt-refresh-token-bundle": "^0.11.1",
+        "gesdinet/jwt-refresh-token-bundle": "^0.12.0",
         "graze/guzzle-jsonrpc": "3.2.*",
         "guzzlehttp/guzzle": "^6.3",
         "irontec/ivoz-dev-tools": "^5.0",
         "irontec/ivoz-provider-bundle": "^2.5.11",
         "irontec/replacements": "^1.0",
-        "symfony/flex": "^1.9",
-        "symfony/maker-bundle": "^1.2"
+        "symfony/maker-bundle": "^1.2",
+        "symfony/flex": "^1.9"
     },
     "require-dev": {
-        "docteurklein/test-double-bundle": "^1.2",
         "irontec/prophecy": "^1.13",
         "doctrine/doctrine-fixtures-bundle": "^3.0",
         "phpunit/phpunit": "^9.4.4",
         "dms/phpunit-arraysubset-asserts": "^0.2.1",
-        "squizlabs/php_codesniffer": "^4.0",
+        "squizlabs/php_codesniffer": "^3.0",
         "symfony/phpunit-bridge": "^5.1.6"
     },
     "extra": {
@@ -81,8 +83,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         }
     }
 }

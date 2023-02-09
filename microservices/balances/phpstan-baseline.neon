@@ -1,0 +1,17 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property Controller\\\\ResetCounter\\:\\:\\$resetDailyUsageCounters has no typehint specified\\.$#"
+			count: 1
+			path: src/Controller/ResetCounter.php
+
+		-
+			message: "#^Property Controller\\\\Sync\\:\\:\\$syncBalances has no typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Sync.php
+
+		-
+			message: "#^Property Controller\\\\Sync\\:\\:\\$syncCarrierBalances has no typehint specified\\.$#"
+			count: 1
+			path: src/Controller/Sync.php
+

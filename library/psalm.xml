@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="1"
+    findUnusedCode="true"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorBaseline="psalm-baseline.xml"
+>
+    <issueHandlers>
+        <PossiblyNullReference errorLevel="suppress" />
+        <UnusedClass errorLevel="suppress" />
+        <PossiblyUnusedMethod errorLevel="suppress" />
+        <PossiblyUnusedProperty errorLevel="suppress" />
+        <PossiblyUnusedParam errorLevel="suppress" />
+        <PossiblyNullOperand errorLevel="suppress" />
+        <MoreSpecificImplementedParamType errorLevel="suppress" />
+        <RedundantConditionGivenDocblockType errorLevel="suppress" />
+        <PropertyNotSetInConstructor errorLevel="suppress" />
+        <MixedReturnTypeCoercion errorLevel="suppress" />
+        <MixedReturnStatement errorLevel="suppress" />
+        <MixedInferredReturnType errorLevel="suppress" />
+        <MixedArrayAccess errorLevel="suppress" />
+        <MixedAssignment errorLevel="suppress" />
+    </issueHandlers>
+    <projectFiles>
+        <directory name="Ivoz" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>

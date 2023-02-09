@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 class LocutionDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -28,7 +25,6 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($locution, LocutionInterface::class);
 
-        /** @var LocutionDTO $dto */
         $dto = $locution->toDto($depth);
         $id = $locution->getId();
 

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
@@ -8,6 +9,8 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
@@ -18,9 +21,9 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 trait OutgoingRoutingTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TpLcrRuleInterface
@@ -29,19 +32,19 @@ trait OutgoingRoutingTrait
     protected $tpLcrRule;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TrunksLcrRuleInterface> & Selectable<array-key, TrunksLcrRuleInterface>
      * TrunksLcrRuleInterface mappedBy outgoingRouting
      */
     protected $lcrRules;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TrunksLcrRuleTargetInterface> & Selectable<array-key, TrunksLcrRuleTargetInterface>
      * TrunksLcrRuleTargetInterface mappedBy outgoingRouting
      */
     protected $lcrRuleTargets;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingRoutingRelCarrierInterface> & Selectable<array-key, OutgoingRoutingRelCarrierInterface>
      * OutgoingRoutingRelCarrierInterface mappedBy outgoingRouting
      * orphanRemoval
      */
@@ -58,51 +61,55 @@ trait OutgoingRoutingTrait
         $this->relCarriers = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingRoutingDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpLcrRule())) {
-            $self->setTpLcrRule(
-                $fkTransformer->transform(
-                    $dto->getTpLcrRule()
-                )
+            /** @var TpLcrRuleInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpLcrRule()
             );
+            $self->setTpLcrRule($entity);
         }
 
-        if (!is_null($dto->getLcrRules())) {
-            $self->replaceLcrRules(
-                $fkTransformer->transformCollection(
-                    $dto->getLcrRules()
-                )
+        $lcrRules = $dto->getLcrRules();
+        if (!is_null($lcrRules)) {
+
+            /** @var Collection<array-key, TrunksLcrRuleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $lcrRules
             );
+            $self->replaceLcrRules($replacement);
         }
 
-        if (!is_null($dto->getLcrRuleTargets())) {
-            $self->replaceLcrRuleTargets(
-                $fkTransformer->transformCollection(
-                    $dto->getLcrRuleTargets()
-                )
+        $lcrRuleTargets = $dto->getLcrRuleTargets();
+        if (!is_null($lcrRuleTargets)) {
+
+            /** @var Collection<array-key, TrunksLcrRuleTargetInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $lcrRuleTargets
             );
+            $self->replaceLcrRuleTargets($replacement);
         }
 
-        if (!is_null($dto->getRelCarriers())) {
-            $self->replaceRelCarriers(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCarriers()
-                )
+        $relCarriers = $dto->getRelCarriers();
+        if (!is_null($relCarriers)) {
+
+            /** @var Collection<array-key, OutgoingRoutingRelCarrierInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCarriers
             );
+            $self->replaceRelCarriers($replacement);
         }
 
         $self->sanitizeValues();
@@ -117,44 +124,48 @@ trait OutgoingRoutingTrait
     /**
      * @internal use EntityTools instead
      * @param OutgoingRoutingDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpLcrRule())) {
-            $this->setTpLcrRule(
-                $fkTransformer->transform(
-                    $dto->getTpLcrRule()
-                )
+            /** @var TpLcrRuleInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpLcrRule()
             );
+            $this->setTpLcrRule($entity);
         }
 
-        if (!is_null($dto->getLcrRules())) {
-            $this->replaceLcrRules(
-                $fkTransformer->transformCollection(
-                    $dto->getLcrRules()
-                )
+        $lcrRules = $dto->getLcrRules();
+        if (!is_null($lcrRules)) {
+
+            /** @var Collection<array-key, TrunksLcrRuleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $lcrRules
             );
+            $this->replaceLcrRules($replacement);
         }
 
-        if (!is_null($dto->getLcrRuleTargets())) {
-            $this->replaceLcrRuleTargets(
-                $fkTransformer->transformCollection(
-                    $dto->getLcrRuleTargets()
-                )
+        $lcrRuleTargets = $dto->getLcrRuleTargets();
+        if (!is_null($lcrRuleTargets)) {
+
+            /** @var Collection<array-key, TrunksLcrRuleTargetInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $lcrRuleTargets
             );
+            $this->replaceLcrRuleTargets($replacement);
         }
 
-        if (!is_null($dto->getRelCarriers())) {
-            $this->replaceRelCarriers(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCarriers()
-                )
+        $relCarriers = $dto->getRelCarriers();
+        if (!is_null($relCarriers)) {
+
+            /** @var Collection<array-key, OutgoingRoutingRelCarrierInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCarriers
             );
+            $this->replaceRelCarriers($replacement);
         }
         $this->sanitizeValues();
 
@@ -163,10 +174,8 @@ trait OutgoingRoutingTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return OutgoingRoutingDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): OutgoingRoutingDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -174,9 +183,9 @@ trait OutgoingRoutingTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -187,7 +196,6 @@ trait OutgoingRoutingTrait
     {
         $this->tpLcrRule = $tpLcrRule;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -210,25 +218,33 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    public function replaceLcrRules(ArrayCollection $lcrRules): OutgoingRoutingInterface
+    /**
+     * @param Collection<array-key, TrunksLcrRuleInterface> $lcrRules
+     */
+    public function replaceLcrRules(Collection $lcrRules): OutgoingRoutingInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($lcrRules as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setOutgoingRouting($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->lcrRules as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->lcrRules->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->lcrRules->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->lcrRules->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -238,6 +254,9 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TrunksLcrRuleInterface>
+     */
     public function getLcrRules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -261,25 +280,33 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets): OutgoingRoutingInterface
+    /**
+     * @param Collection<array-key, TrunksLcrRuleTargetInterface> $lcrRuleTargets
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets): OutgoingRoutingInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($lcrRuleTargets as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setOutgoingRouting($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->lcrRuleTargets as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->lcrRuleTargets->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->lcrRuleTargets->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->lcrRuleTargets->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -289,6 +316,9 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TrunksLcrRuleTargetInterface>
+     */
     public function getLcrRuleTargets(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -312,25 +342,33 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
-    public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface
+    /**
+     * @param Collection<array-key, OutgoingRoutingRelCarrierInterface> $relCarriers
+     */
+    public function replaceRelCarriers(Collection $relCarriers): OutgoingRoutingInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relCarriers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setOutgoingRouting($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relCarriers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relCarriers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relCarriers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relCarriers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -340,6 +378,9 @@ trait OutgoingRoutingTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getRelCarriers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

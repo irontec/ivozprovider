@@ -1,8 +1,10 @@
 <?php
+
 namespace Agi\Action;
 
 use Agi\Agents\ResidentialAgent;
 use Agi\Agents\UserAgent;
+use Agi\Agents\FriendAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -80,15 +82,20 @@ class CallForwardAction
             $this->agi->setVariable("_USERID", $forwarder->getId());
         } else {
             $forwarder = $this->cfw->getResidentialDevice();
+            if ($forwarder) {
+                $caller = new ResidentialAgent($this->agi, $forwarder);
+                $this->agi->setVariable("_RESIDENTIALDEVICEID", $forwarder->getId());
+            } else {
+                $forwarder = $this->cfw->getFriend();
+                if (!$forwarder) {
+                    // Cfw without owner. This should not happen.
+                    $this->agi->error("Call forward without owner. Check configuration.");
+                    return;
+                }
 
-            if (!$forwarder) {
-                // Cfw without owner. This should not happen.
-                $this->agi->error("Call forward without owner. Check configuration.");
-                return;
+                $caller = new FriendAgent($this->agi, $forwarder);
+                $this->agi->setVariable("_FRIENDID", $forwarder->getId());
             }
-
-            $caller = new ResidentialAgent($this->agi, $forwarder);
-            $this->agi->setVariable("_RESIDENTIALDEVICEID", $forwarder->getId());
         }
 
         // Set the new caller
@@ -127,21 +134,12 @@ class CallForwardAction
         // Set as diversion number the user extension
         $this->agi->setRedirecting('from-num', $caller->getExtensionNumber());
 
-        // Set voicemail destination
-        $isUserCallForward = $this->cfw->getUser() !== null;
-        if ($isUserCallForward) {
-            $this->routerAction
-                ->setRouteVoicemailUser($this->cfw->getVoiceMailUser(), true);
-        } else {
-            $this->routerAction
-                ->setRouteVoicemailResidential($this->cfw->getResidentialDevice(), true);
-        }
-
         // Route based on configured type
         $this->routerAction
             ->setRouteType($this->cfw->getTargetType())
             ->setRouteExtension($this->cfw->getExtension())
             ->setRouteExternal($this->cfw->getNumberValueE164())
+            ->setRouteVoicemail($this->cfw->getVoicemail(), true)
             ->route();
     }
 }

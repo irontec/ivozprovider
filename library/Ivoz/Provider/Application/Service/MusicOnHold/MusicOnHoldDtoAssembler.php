@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -28,7 +25,6 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($musicOnHold, MusicOnHoldInterface::class);
 
-        /** @var MusicOnHoldDto $dto */
         $dto = $musicOnHold->toDto($depth);
         $id = $musicOnHold->getId();
 

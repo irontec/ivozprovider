@@ -1,3 +1,6 @@
+.. _residential clients:
+.. _clientes residenciales:
+
 ###################
 Residential Clients
 ###################
@@ -21,6 +24,7 @@ associated with Residential clients included in IvozProvider:
     residential_devices
     ddis
     external_call_filters
+    residential_voicemails
     faxes
     rating_profiles
     calls/index

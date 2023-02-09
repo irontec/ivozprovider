@@ -11,9 +11,9 @@ class FeaturesRelCompany extends FeaturesRelCompanyAbstract implements FeaturesR
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -23,7 +23,7 @@ class FeaturesRelCompany extends FeaturesRelCompanyAbstract implements FeaturesR
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -16,19 +16,19 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $calldate;
+    private $calldate = 'CURRENT_TIMESTAMP';
 
     /**
      * @var string|null
      */
-    private $src;
+    private $src = null;
 
     /**
      * @var string|null
      */
-    private $dst;
+    private $dst = null;
 
     /**
      * @var string|null
@@ -38,43 +38,46 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $pages;
+    private $pages = null;
 
     /**
      * @var string|null
      */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $status = null;
 
     /**
      * @var int|null
      */
-    private $fileFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $fileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $fileMimeType;
+    private $fileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $fileBaseName;
+    private $fileBaseName = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var CountryDto | null
      */
-    private $dstCountry;
+    private $dstCountry = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -83,7 +86,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -108,9 +111,9 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'calldate' => $this->getCalldate(),
@@ -143,14 +146,14 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCalldate(null|\DateTime|string $calldate): static
+    public function setCalldate(\DateTimeInterface|string $calldate): static
     {
         $this->calldate = $calldate;
 
         return $this;
     }
 
-    public function getCalldate(): \DateTime|string|null
+    public function getCalldate(): \DateTimeInterface|string|null
     {
         return $this->calldate;
     }
@@ -222,7 +225,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

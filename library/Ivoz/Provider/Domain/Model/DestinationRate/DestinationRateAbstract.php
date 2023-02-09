@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
@@ -22,8 +23,8 @@ abstract class DestinationRateAbstract
     use ChangelogTrait;
 
     /**
-     * column: rate
      * @var float
+     * column: rate
      */
     protected $cost;
 
@@ -58,10 +59,10 @@ abstract class DestinationRateAbstract
      * Constructor
      */
     protected function __construct(
-        $cost,
-        $connectFee,
-        $rateIncrement,
-        $groupIntervalStart
+        float $cost,
+        float $connectFee,
+        string $rateIncrement,
+        string $groupIntervalStart
     ) {
         $this->setCost($cost);
         $this->setConnectFee($connectFee);
@@ -69,41 +70,34 @@ abstract class DestinationRateAbstract
         $this->setGroupIntervalStart($groupIntervalStart);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "DestinationRate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DestinationRateDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DestinationRateDto
     {
         return new DestinationRateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DestinationRateInterface|null $entity
-     * @param int $depth
-     * @return DestinationRateDto|null
+     * @param null|DestinationRateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DestinationRateDto
     {
         if (!$entity) {
             return null;
@@ -119,8 +113,7 @@ abstract class DestinationRateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DestinationRateDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -129,24 +122,35 @@ abstract class DestinationRateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DestinationRateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCost(),
-            $dto->getConnectFee(),
-            $dto->getRateIncrement(),
-            $dto->getGroupIntervalStart()
+            $cost,
+            $connectFee,
+            $rateIncrement,
+            $groupIntervalStart
         );
 
         $self
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup))
+            ->setDestination($fkTransformer->transform($destination));
 
         $self->initChangelog();
 
@@ -156,31 +160,41 @@ abstract class DestinationRateAbstract
     /**
      * @internal use EntityTools instead
      * @param DestinationRateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
+        $cost = $dto->getCost();
+        Assertion::notNull($cost, 'getCost value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $destinationRateGroup = $dto->getDestinationRateGroup();
+        Assertion::notNull($destinationRateGroup, 'getDestinationRateGroup value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+
         $this
-            ->setCost($dto->getCost())
-            ->setConnectFee($dto->getConnectFee())
-            ->setRateIncrement($dto->getRateIncrement())
-            ->setGroupIntervalStart($dto->getGroupIntervalStart())
-            ->setDestinationRateGroup($fkTransformer->transform($dto->getDestinationRateGroup()))
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setCost($cost)
+            ->setConnectFee($connectFee)
+            ->setRateIncrement($rateIncrement)
+            ->setGroupIntervalStart($groupIntervalStart)
+            ->setDestinationRateGroup($fkTransformer->transform($destinationRateGroup))
+            ->setDestination($fkTransformer->transform($destination));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DestinationRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DestinationRateDto
     {
         return self::createDto()
             ->setCost(self::getCost())
@@ -192,9 +206,9 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'rate' => self::getCost(),
@@ -262,7 +276,6 @@ abstract class DestinationRateAbstract
     {
         $this->destinationRateGroup = $destinationRateGroup;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -275,7 +288,6 @@ abstract class DestinationRateAbstract
     {
         $this->destination = $destination;
 
-        /** @var  $this */
         return $this;
     }
 

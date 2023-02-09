@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingPlan;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
@@ -26,19 +27,19 @@ abstract class TpRatingPlanAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
+     * @var ?string
      * column: destrates_tag
-     * @var string | null
      */
-    protected $destratesTag;
+    protected $destratesTag = null;
 
     /**
-     * column: timing_tag
      * @var string
+     * column: timing_tag
      */
     protected $timingTag = '*any';
 
@@ -48,8 +49,8 @@ abstract class TpRatingPlanAbstract
     protected $weight = 10;
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
@@ -63,10 +64,10 @@ abstract class TpRatingPlanAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $timingTag,
-        $weight,
-        $createdAt
+        string $tpid,
+        string $timingTag,
+        float $weight,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setTimingTag($timingTag);
@@ -74,41 +75,34 @@ abstract class TpRatingPlanAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpRatingPlan",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpRatingPlanDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpRatingPlanDto
     {
         return new TpRatingPlanDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpRatingPlanInterface|null $entity
-     * @param int $depth
-     * @return TpRatingPlanDto|null
+     * @param null|TpRatingPlanInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpRatingPlanDto
     {
         if (!$entity) {
             return null;
@@ -124,8 +118,7 @@ abstract class TpRatingPlanAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpRatingPlanDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -134,25 +127,34 @@ abstract class TpRatingPlanAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpRatingPlanDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpRatingPlanDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $timingTag = $dto->getTimingTag();
+        Assertion::notNull($timingTag, 'getTimingTag value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getTimingTag(),
-            $dto->getWeight(),
-            $dto->getCreatedAt()
+            $tpid,
+            $timingTag,
+            $weight,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
             ->setDestratesTag($dto->getDestratesTag())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         $self->initChangelog();
 
@@ -162,32 +164,40 @@ abstract class TpRatingPlanAbstract
     /**
      * @internal use EntityTools instead
      * @param TpRatingPlanDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpRatingPlanDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $timingTag = $dto->getTimingTag();
+        Assertion::notNull($timingTag, 'getTimingTag value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
             ->setDestratesTag($dto->getDestratesTag())
-            ->setTimingTag($dto->getTimingTag())
-            ->setWeight($dto->getWeight())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setTimingTag($timingTag)
+            ->setWeight($weight)
+            ->setCreatedAt($createdAt)
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpRatingPlanDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpRatingPlanDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -200,9 +210,9 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -287,15 +297,16 @@ abstract class TpRatingPlanAbstract
         return $this->weight;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -313,7 +324,6 @@ abstract class TpRatingPlanAbstract
     {
         $this->ratingPlan = $ratingPlan;
 
-        /** @var  $this */
         return $this;
     }
 

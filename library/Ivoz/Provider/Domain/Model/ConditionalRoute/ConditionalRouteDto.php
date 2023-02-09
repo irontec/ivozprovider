@@ -8,7 +8,7 @@ class ConditionalRouteDto extends ConditionalRouteDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -20,7 +20,7 @@ class ConditionalRouteDto extends ConditionalRouteDtoAbstract
                 'friendvalue' => 'friendvalue',
                 'ivrId' => 'ivr',
                 'huntGroupId' => 'huntGroup',
-                'voicemailUserId' => 'voicemailUser',
+                'voicemailId' => 'voicemail',
                 'userId' => 'user',
                 'queueId' => 'queue',
                 'conferenceRoomId' => 'conferenceRoom',
@@ -38,7 +38,7 @@ class ConditionalRouteDto extends ConditionalRouteDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {

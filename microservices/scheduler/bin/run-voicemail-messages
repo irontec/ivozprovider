@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\HttpFoundation\Request;
+
+// require Composer's autoloader
+require __DIR__.'/../config/bootstrap.php';
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], getenv('APP_ENV') ?: 'dev');
+
+$kernel = new Kernel($env, false);
+$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/voicemail-messages']);
+
+$response = $kernel->handle($request);
+$response->send();
+$kernel->terminate($request, $response);

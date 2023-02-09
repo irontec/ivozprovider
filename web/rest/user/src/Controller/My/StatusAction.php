@@ -14,22 +14,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class StatusAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var UsersLocationRepository
-     */
-    protected $usersLocationRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UsersLocationRepository $usersLocationRepository
+        private TokenStorageInterface $tokenStorage,
+        private UsersLocationRepository $usersLocationRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->usersLocationRepository = $usersLocationRepository;
     }
 
     public function __invoke()
@@ -84,7 +72,7 @@ class StatusAction
         return $userStatus;
     }
 
-    private function setTerminalData(UserStatus $userStatus, TerminalInterface $terminal)
+    private function setTerminalData(UserStatus $userStatus, TerminalInterface $terminal): void
     {
         $userStatus
             ->setTerminalName(
@@ -94,7 +82,7 @@ class StatusAction
             );
     }
 
-    private function setUserLocationData(UsersLocationInterface $userLocation, UserStatus $userStatus)
+    private function setUserLocationData(UsersLocationInterface $userLocation, UserStatus $userStatus): void
     {
         $contact = $userLocation->getContact();
         $ip = explode(';', $contact);
@@ -105,7 +93,7 @@ class StatusAction
             ->setUserAgent($userLocation->getUserAgent());
     }
 
-    private function setExtensionData(UserStatus $userStatus, ExtensionInterface $extension)
+    private function setExtensionData(UserStatus $userStatus, ExtensionInterface $extension): void
     {
         $userStatus
             ->setExtensionNumber(
@@ -113,7 +101,7 @@ class StatusAction
             );
     }
 
-    private function setCompanyData(UserStatus $userStatus, CompanyInterface $company)
+    private function setCompanyData(UserStatus $userStatus, CompanyInterface $company): void
     {
         $userStatus->setCompanyName(
             $company->getName()

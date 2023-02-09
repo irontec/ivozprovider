@@ -171,6 +171,49 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item9);
         $manager->persist($item9);
 
+        $item10 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("__b1_internal");
+            $this->setPass("[internal]");
+            $this->setActive(false);
+            $this->setRestricted(false);
+            $this->setInternal(true);
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+        })->call($item10);
+        $this->addReference('_reference_ProviderAdministrator10', $item10);
+        $this->sanitizeEntityValues($item10);
+        $manager->persist($item10);
+
+        $item11 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("__c1_internal");
+            $this->setPass("[internal]");
+            $this->setActive(false);
+            $this->setRestricted(false);
+            $this->setInternal(true);
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand1'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany1'));
+        })->call($item11);
+        $this->addReference('_reference_ProviderAdministrator11', $item11);
+        $this->sanitizeEntityValues($item11);
+        $manager->persist($item11);
+
+        $item12 = $this->createEntityInstance(Administrator::class);
+        (function () use ($fixture) {
+            $this->setUsername("test_wholesale_admin");
+            $this->setPass("changeme");
+            $this->setEmail("test@irontec.com");
+            $this->setActive(true);
+            $this->setName("Admin Name");
+            $this->setLastname("Admin Lastname");
+            $this->setBrand($fixture->getReference('_reference_ProviderBrand2'));
+            $this->setCompany($fixture->getReference('_reference_ProviderCompany5'));
+            $this->setTimezone($fixture->getReference('_reference_ProviderTimezone145'));
+        })->call($item12);
+        $this->addReference('_reference_ProviderAdministrator12', $item12);
+        $this->sanitizeEntityValues($item12);
+        $manager->persist($item12);
+
         $manager->flush();
     }
 

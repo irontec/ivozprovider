@@ -1,12 +1,15 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -15,16 +18,16 @@ use Doctrine\Common\Collections\Criteria;
 trait HuntGroupTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
-     * HuntGroupsRelUserInterface mappedBy huntGroup
+     * @var Collection<array-key, HuntGroupMemberInterface> & Selectable<array-key, HuntGroupMemberInterface>
+     * HuntGroupMemberInterface mappedBy huntGroup
      * orphanRemoval
      */
-    protected $huntGroupsRelUsers;
+    protected $huntGroupMembers;
 
     /**
      * Constructor
@@ -32,30 +35,30 @@ trait HuntGroupTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-        $this->huntGroupsRelUsers = new ArrayCollection();
+        $this->huntGroupMembers = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param HuntGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getHuntGroupsRelUsers())) {
-            $self->replaceHuntGroupsRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getHuntGroupsRelUsers()
-                )
+        $huntGroupMembers = $dto->getHuntGroupMembers();
+        if (!is_null($huntGroupMembers)) {
+
+            /** @var Collection<array-key, HuntGroupMemberInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $huntGroupMembers
             );
+            $self->replaceHuntGroupMembers($replacement);
         }
 
         $self->sanitizeValues();
@@ -70,20 +73,20 @@ trait HuntGroupTrait
     /**
      * @internal use EntityTools instead
      * @param HuntGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getHuntGroupsRelUsers())) {
-            $this->replaceHuntGroupsRelUsers(
-                $fkTransformer->transformCollection(
-                    $dto->getHuntGroupsRelUsers()
-                )
+        $huntGroupMembers = $dto->getHuntGroupMembers();
+        if (!is_null($huntGroupMembers)) {
+
+            /** @var Collection<array-key, HuntGroupMemberInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $huntGroupMembers
             );
+            $this->replaceHuntGroupMembers($replacement);
         }
         $this->sanitizeValues();
 
@@ -92,10 +95,8 @@ trait HuntGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return HuntGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): HuntGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -103,63 +104,74 @@ trait HuntGroupTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
         ];
     }
 
-    public function addHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface
+    public function addHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface
     {
-        $this->huntGroupsRelUsers->add($huntGroupsRelUser);
+        $this->huntGroupMembers->add($huntGroupMember);
 
         return $this;
     }
 
-    public function removeHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface
+    public function removeHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface
     {
-        $this->huntGroupsRelUsers->removeElement($huntGroupsRelUser);
+        $this->huntGroupMembers->removeElement($huntGroupMember);
 
         return $this;
     }
 
-    public function replaceHuntGroupsRelUsers(ArrayCollection $huntGroupsRelUsers): HuntGroupInterface
+    /**
+     * @param Collection<array-key, HuntGroupMemberInterface> $huntGroupMembers
+     */
+    public function replaceHuntGroupMembers(Collection $huntGroupMembers): HuntGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($huntGroupsRelUsers as $entity) {
+        foreach ($huntGroupMembers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setHuntGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->huntGroupsRelUsers as $key => $entity) {
+        foreach ($this->huntGroupMembers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->huntGroupsRelUsers->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->huntGroupsRelUsers->remove($key);
+            if (!$identity) {
+                $this->huntGroupMembers->remove($key);
+                continue;
             }
-            unset($updatedEntities[$identity]);
+
+            if (array_key_exists($identity, $updatedEntities)) {
+                $this->huntGroupMembers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
+            } else {
+                $this->huntGroupMembers->remove($key);
+            }
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addHuntGroupsRelUser($entity);
+            $this->addHuntGroupMember($entity);
         }
 
         return $this;
     }
 
-    public function getHuntGroupsRelUsers(Criteria $criteria = null): array
+    /**
+     * @return array<array-key, HuntGroupMemberInterface>
+     */
+    public function getHuntGroupMembers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
-            return $this->huntGroupsRelUsers->matching($criteria)->toArray();
+            return $this->huntGroupMembers->matching($criteria)->toArray();
         }
 
-        return $this->huntGroupsRelUsers->toArray();
+        return $this->huntGroupMembers->toArray();
     }
 }

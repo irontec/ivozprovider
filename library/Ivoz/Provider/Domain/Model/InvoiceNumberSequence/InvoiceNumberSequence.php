@@ -11,9 +11,9 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -23,7 +23,7 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -45,11 +45,11 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
      *
      * @return string
      */
-    public function nextval()
+    public function nextval(): ?string
     {
         $iteration = $this->getIteration() + 1;
         $sequence = str_pad(
-            $this->getIncrement() * $iteration,
+            (string) ($this->getIncrement() * $iteration),
             $this->getSequenceLength(),
             '0',
             STR_PAD_LEFT

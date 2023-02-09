@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\BillableCallHistoric;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -37,14 +38,14 @@ abstract class BillableCallHistoricAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callid;
+    protected $callid = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $startTime;
+    protected $startTime = null;
 
     /**
      * @var float
@@ -52,156 +53,149 @@ abstract class BillableCallHistoricAbstract
     protected $duration = 0;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $caller;
+    protected $caller = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callee;
+    protected $callee = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
-    protected $cost;
+    protected $cost = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
-    protected $price;
+    protected $price = null;
 
     /**
-     * @var array | null
+     * @var ?array
      */
     protected $priceDetails = [];
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $carrierName;
+    protected $carrierName = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $destinationName;
+    protected $destinationName = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $ratingPlanName;
+    protected $ratingPlanName = null;
 
     /**
+     * @var ?string
      * comment: enum:RetailAccount|ResidentialDevice|User|Friend|Fax
-     * @var string | null
      */
-    protected $endpointType;
+    protected $endpointType = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $endpointId;
+    protected $endpointId = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $endpointName;
+    protected $endpointName = null;
 
     /**
+     * @var ?string
      * comment: enum:inbound|outbound
-     * @var string | null
      */
     protected $direction = 'outbound';
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var DestinationInterface | null
+     * @var ?DestinationInterface
      */
-    protected $destination;
+    protected $destination = null;
 
     /**
-     * @var RatingPlanGroupInterface | null
+     * @var ?RatingPlanGroupInterface
      */
-    protected $ratingPlanGroup;
+    protected $ratingPlanGroup = null;
 
     /**
-     * @var InvoiceInterface | null
+     * @var ?InvoiceInterface
      */
-    protected $invoice;
+    protected $invoice = null;
 
     /**
-     * @var TrunksCdrInterface | null
+     * @var ?TrunksCdrInterface
      */
-    protected $trunksCdr;
+    protected $trunksCdr = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $ddi;
+    protected $ddi = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $duration
+        float $duration
     ) {
         $this->setDuration($duration);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BillableCallHistoric",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return BillableCallHistoricDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): BillableCallHistoricDto
     {
         return new BillableCallHistoricDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BillableCallHistoricInterface|null $entity
-     * @param int $depth
-     * @return BillableCallHistoricDto|null
+     * @param null|BillableCallHistoricInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BillableCallHistoricDto
     {
         if (!$entity) {
             return null;
@@ -217,8 +211,7 @@ abstract class BillableCallHistoricAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BillableCallHistoricDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -227,16 +220,17 @@ abstract class BillableCallHistoricAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BillableCallHistoricDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDuration()
+            $duration
         );
 
         $self
@@ -272,18 +266,20 @@ abstract class BillableCallHistoricAbstract
     /**
      * @internal use EntityTools instead
      * @param BillableCallHistoricDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BillableCallHistoricDto::class);
+
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
 
         $this
             ->setCallid($dto->getCallid())
             ->setStartTime($dto->getStartTime())
-            ->setDuration($dto->getDuration())
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setCost($dto->getCost())
@@ -311,10 +307,8 @@ abstract class BillableCallHistoricAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return BillableCallHistoricDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): BillableCallHistoricDto
     {
         return self::createDto()
             ->setCallid(self::getCallid())
@@ -344,9 +338,9 @@ abstract class BillableCallHistoricAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'callid' => self::getCallid(),
@@ -364,15 +358,15 @@ abstract class BillableCallHistoricAbstract
             'endpointId' => self::getEndpointId(),
             'endpointName' => self::getEndpointName(),
             'direction' => self::getDirection(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
-            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
-            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
-            'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'destinationId' => self::getDestination()?->getId(),
+            'ratingPlanGroupId' => self::getRatingPlanGroup()?->getId(),
+            'invoiceId' => self::getInvoice()?->getId(),
+            'trunksCdrId' => self::getTrunksCdr()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 
@@ -392,19 +386,17 @@ abstract class BillableCallHistoricAbstract
         return $this->callid;
     }
 
-    protected function setStartTime($startTime = null): static
+    protected function setStartTime(string|\DateTimeInterface|null $startTime = null): static
     {
         if (!is_null($startTime)) {
-            Assertion::notNull(
-                $startTime,
-                'startTime value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $startTime = DateTimeHelper::createOrFix(
                 $startTime,
                 null
             );
 
-            if ($this->startTime == $startTime) {
+            if ($this->isInitialized() && $this->startTime == $startTime) {
                 return $this;
             }
         }

@@ -18,37 +18,37 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $sorceryId;
+    private $sorceryId = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
      * @var string|null
      */
-    private $aors;
+    private $aors = null;
 
     /**
      * @var string|null
      */
-    private $callerid;
+    private $callerid = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $context = 'users';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disallow = 'all';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $allow = 'all';
 
@@ -65,12 +65,22 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $mailboxes;
+    private $mailboxes = null;
 
     /**
      * @var string|null
      */
-    private $namedPickupGroup;
+    private $namedPickupGroup = null;
+
+    /**
+     * @var string|null
+     */
+    private $subscribeContext = null;
+
+    /**
+     * @var string|null
+     */
+    private $hintExtension = null;
 
     /**
      * @var string|null
@@ -83,65 +93,68 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     private $sendPai = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $oneHundredRel = 'no';
 
     /**
      * @var string|null
      */
-    private $outboundProxy;
+    private $outboundProxy = null;
 
     /**
      * @var string|null
      */
-    private $trustIdInbound;
+    private $trustIdInbound = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Udptl = 'no';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38UdptlEc = 'redundancy';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $t38UdptlMaxdatagram = 1440;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38UdptlNat = 'no';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TerminalDto | null
      */
-    private $terminal;
+    private $terminal = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -150,7 +163,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -168,6 +181,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'directMediaMethod' => 'directMediaMethod',
             'mailboxes' => 'mailboxes',
             'namedPickupGroup' => 'namedPickupGroup',
+            'subscribeContext' => 'subscribeContext',
+            'hintExtension' => 'hintExtension',
             'sendDiversion' => 'sendDiversion',
             'sendPai' => 'sendPai',
             'oneHundredRel' => 'oneHundredRel',
@@ -186,9 +201,9 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'sorceryId' => $this->getSorceryId(),
@@ -202,6 +217,8 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'directMediaMethod' => $this->getDirectMediaMethod(),
             'mailboxes' => $this->getMailboxes(),
             'namedPickupGroup' => $this->getNamedPickupGroup(),
+            'subscribeContext' => $this->getSubscribeContext(),
+            'hintExtension' => $this->getHintExtension(),
             'sendDiversion' => $this->getSendDiversion(),
             'sendPai' => $this->getSendPai(),
             'oneHundredRel' => $this->getOneHundredRel(),
@@ -232,7 +249,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSorceryId(?string $sorceryId): static
+    public function setSorceryId(string $sorceryId): static
     {
         $this->sorceryId = $sorceryId;
 
@@ -280,7 +297,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->callerid;
     }
 
-    public function setContext(?string $context): static
+    public function setContext(string $context): static
     {
         $this->context = $context;
 
@@ -292,7 +309,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->context;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -304,7 +321,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->disallow;
     }
 
-    public function setAllow(?string $allow): static
+    public function setAllow(string $allow): static
     {
         $this->allow = $allow;
 
@@ -364,6 +381,30 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->namedPickupGroup;
     }
 
+    public function setSubscribeContext(?string $subscribeContext): static
+    {
+        $this->subscribeContext = $subscribeContext;
+
+        return $this;
+    }
+
+    public function getSubscribeContext(): ?string
+    {
+        return $this->subscribeContext;
+    }
+
+    public function setHintExtension(?string $hintExtension): static
+    {
+        $this->hintExtension = $hintExtension;
+
+        return $this;
+    }
+
+    public function getHintExtension(): ?string
+    {
+        return $this->hintExtension;
+    }
+
     public function setSendDiversion(?string $sendDiversion): static
     {
         $this->sendDiversion = $sendDiversion;
@@ -388,7 +429,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->sendPai;
     }
 
-    public function setOneHundredRel(?string $oneHundredRel): static
+    public function setOneHundredRel(string $oneHundredRel): static
     {
         $this->oneHundredRel = $oneHundredRel;
 
@@ -424,7 +465,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->trustIdInbound;
     }
 
-    public function setT38Udptl(?string $t38Udptl): static
+    public function setT38Udptl(string $t38Udptl): static
     {
         $this->t38Udptl = $t38Udptl;
 
@@ -436,7 +477,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->t38Udptl;
     }
 
-    public function setT38UdptlEc(?string $t38UdptlEc): static
+    public function setT38UdptlEc(string $t38UdptlEc): static
     {
         $this->t38UdptlEc = $t38UdptlEc;
 
@@ -448,7 +489,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->t38UdptlEc;
     }
 
-    public function setT38UdptlMaxdatagram(?int $t38UdptlMaxdatagram): static
+    public function setT38UdptlMaxdatagram(int $t38UdptlMaxdatagram): static
     {
         $this->t38UdptlMaxdatagram = $t38UdptlMaxdatagram;
 
@@ -460,7 +501,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this->t38UdptlMaxdatagram;
     }
 
-    public function setT38UdptlNat(?string $t38UdptlNat): static
+    public function setT38UdptlNat(string $t38UdptlNat): static
     {
         $this->t38UdptlNat = $t38UdptlNat;
 
@@ -479,7 +520,7 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

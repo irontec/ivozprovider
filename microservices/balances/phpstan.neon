@@ -1,1 +1,2 @@
-
+includes:
+    - phpstan-baseline.neon

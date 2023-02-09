@@ -19,98 +19,101 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
      * @var string|null
      */
-    private $status;
+    private $status = null;
 
     /**
      * @var string|null
      */
-    private $lastExecutionError;
+    private $lastExecutionError = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $deductibleConnectionFee = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEn;
+    private $descriptionEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEs;
+    private $descriptionEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionCa;
+    private $descriptionCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionIt;
+    private $descriptionIt = null;
 
     /**
      * @var int|null
      */
-    private $fileFileSize;
+    private $fileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $fileMimeType;
+    private $fileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $fileBaseName;
+    private $fileBaseName = null;
 
     /**
      * @var array|null
      */
-    private $fileImporterArguments;
+    private $fileImporterArguments = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var DestinationRateDto[] | null
      */
-    private $destinationRates;
+    private $destinationRates = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -119,7 +122,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -154,9 +157,9 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'status' => $this->getStatus(),
@@ -224,7 +227,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->lastExecutionError;
     }
 
-    public function setDeductibleConnectionFee(?bool $deductibleConnectionFee): static
+    public function setDeductibleConnectionFee(bool $deductibleConnectionFee): static
     {
         $this->deductibleConnectionFee = $deductibleConnectionFee;
 
@@ -243,12 +246,12 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -260,7 +263,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -272,7 +275,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -284,7 +287,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
@@ -296,7 +299,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->nameIt;
     }
 
-    public function setDescriptionEn(?string $descriptionEn): static
+    public function setDescriptionEn(string $descriptionEn): static
     {
         $this->descriptionEn = $descriptionEn;
 
@@ -308,7 +311,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->descriptionEn;
     }
 
-    public function setDescriptionEs(?string $descriptionEs): static
+    public function setDescriptionEs(string $descriptionEs): static
     {
         $this->descriptionEs = $descriptionEs;
 
@@ -320,7 +323,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->descriptionEs;
     }
 
-    public function setDescriptionCa(?string $descriptionCa): static
+    public function setDescriptionCa(string $descriptionCa): static
     {
         $this->descriptionCa = $descriptionCa;
 
@@ -332,7 +335,7 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->descriptionCa;
     }
 
-    public function setDescriptionIt(?string $descriptionIt): static
+    public function setDescriptionIt(string $descriptionIt): static
     {
         $this->descriptionIt = $descriptionIt;
 

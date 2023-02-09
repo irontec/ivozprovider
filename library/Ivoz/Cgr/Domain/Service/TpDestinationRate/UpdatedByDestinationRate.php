@@ -13,21 +13,15 @@ use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHa
 
 class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = TpRateUpdatedByDestinationRate::POST_PERSIST_PRIORITY + 1;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const POST_PERSIST_PRIORITY = TpRateUpdatedByDestinationRate::POST_PERSIST_PRIORITY + 1;
 
     /**
      * CreatedByTpDestinationRate constructor.
      * @param EntityTools $entityTools
      */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -68,7 +62,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             ->setRoundingMethod($roundingMethod)
             ->setRatesTag($destinationRate->getCgrRatesTag());
 
-        $tpDestinationRate = $this->entityTools->persistDto(
+        $this->entityTools->persistDto(
             $tpDestinationRateDto,
             $tpDestinationRate,
             true

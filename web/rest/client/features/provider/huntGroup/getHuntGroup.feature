@@ -43,7 +43,7 @@ Feature: Retrieve hunt groups
           "id": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": null,
-          "noAnswerVoiceMailUser": null,
+          "noAnswerVoicemail": null,
           "noAnswerNumberCountry": null
       }
     """

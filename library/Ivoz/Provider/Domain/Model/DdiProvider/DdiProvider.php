@@ -13,9 +13,9 @@ class DdiProvider extends DdiProviderAbstract implements DdiProviderInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,12 +25,12 @@ class DdiProvider extends DdiProviderAbstract implements DdiProviderInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function setProxyTrunk(?ProxyTrunkInterface  $proxyTrunks = null): static
+    protected function setProxyTrunk(?ProxyTrunkInterface $proxyTrunks = null): static
     {
         if (is_null($proxyTrunks)) {
             throw new \DomainException('Local socket cannot be empty.', 70005);

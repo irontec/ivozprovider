@@ -23,6 +23,14 @@ production:
           dialogs:
             fixedCostsRelInvoiceSchedulersDel_dialog: true
           default: fixedCostsRelInvoiceSchedulersEdit_screen
+        order:
+          fixedCost: true
+          type: true
+          quantityGhost: true
+        blacklist:
+          quantity: true
+          ddisCountryMatch: true
+          ddisCountry: true
       options:
         title: _("Options")
         screens:
@@ -38,12 +46,20 @@ production:
       title: _("Add %s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%parent%)]")
       shortcutOption: N
       filterField: invoiceScheduler
+      defaultValues:
+        country: 70
+      fields:
+        blacklist:
+          quantityGhost: true
       fixedPositions: &fixedCostsRelInvoiceSchedulers_fixedPositions_Link
         group0:
           colsPerRow: 12
           fields:
-            fixedCost: 9
+            fixedCost: 6
+            type: 3
             quantity: 3
+            ddisCountryMatch: 7
+            ddisCountry: 5
     fixedCostsRelInvoiceSchedulersEdit_screen: &fixedCostsRelInvoiceSchedulersEdit_screenLink
       <<: *FixedCostsRelInvoiceSchedulers
       controller: edit
@@ -52,6 +68,9 @@ production:
       labelOnPostAction: _("Edit %s %2s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%item%)]")
       filterField: invoiceScheduler
+      fields:
+        blacklist:
+          quantityGhost: true
       fixedPositions:
         <<: *fixedCostsRelInvoiceSchedulers_fixedPositions_Link
   dialogs: &fixedCostsRelInvoiceSchedulers_dialogsLink

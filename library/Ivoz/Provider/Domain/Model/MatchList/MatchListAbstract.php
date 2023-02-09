@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -27,60 +28,53 @@ abstract class MatchListAbstract
     protected $name;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy matchLists
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MatchList",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return MatchListDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): MatchListDto
     {
         return new MatchListDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MatchListInterface|null $entity
-     * @param int $depth
-     * @return MatchListDto|null
+     * @param null|MatchListInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MatchListDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class MatchListAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MatchListDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,16 +99,17 @@ abstract class MatchListAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MatchListDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
@@ -130,16 +124,18 @@ abstract class MatchListAbstract
     /**
      * @internal use EntityTools instead
      * @param MatchListDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()));
 
@@ -148,10 +144,8 @@ abstract class MatchListAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return MatchListDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): MatchListDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -160,14 +154,14 @@ abstract class MatchListAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -189,7 +183,6 @@ abstract class MatchListAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -17,21 +17,18 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TpRateDoctrineRepository extends ServiceEntityRepository implements TpRateRepository
 {
-    protected $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TpRate::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**
      * @param int $destinationRateGroupId
      * @return int affected rows
      */
-    public function syncWithBusiness($destinationRateGroupId)
+    public function syncWithBusiness($destinationRateGroupId): int
     {
         $tpRatesInsert =
             "INSERT INTO tp_rates"

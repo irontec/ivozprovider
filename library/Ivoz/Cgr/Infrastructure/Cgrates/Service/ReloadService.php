@@ -8,19 +8,15 @@ use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 
 class ReloadService extends AbstractApiBasedService
 {
-    const MUTEX_LOCK_NAME = 'cgr.reload';
-
-    private $mutex;
+    public const MUTEX_LOCK_NAME = 'cgr.reload';
 
     public function __construct(
         ClientInterface $jsonRpcClient,
-        MutexInterface $mutex
+        private MutexInterface $mutex
     ) {
         parent::__construct(
             $jsonRpcClient
         );
-
-        $this->mutex = $mutex;
     }
 
     /**

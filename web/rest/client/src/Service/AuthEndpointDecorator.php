@@ -10,19 +10,13 @@ class AuthEndpointDecorator implements NormalizerInterface
     use AuthEndpointTrait;
 
     /**
-     * @var NormalizerInterface
-     */
-    protected $decoratedNormalizer;
-
-    /**
      * @var \ArrayObject
      */
     protected $definitions;
 
     public function __construct(
-        NormalizerInterface $decoratedNormalizer
+        private NormalizerInterface $decoratedNormalizer
     ) {
-        $this->decoratedNormalizer = $decoratedNormalizer;
     }
 
     /**
@@ -43,7 +37,6 @@ class AuthEndpointDecorator implements NormalizerInterface
 
         $auth = [
             '/admin_login' => $this->getAdminLoginSpec(),
-            '/user_login' => $this->getUserLoginSpec(),
             '/token/refresh' => $this->getTokenRefreshSpec()
         ];
 

@@ -7,22 +7,10 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
 {
-    /**
-     * @var string
-     */
-    protected $localStoragePath;
-
-    /**
-     * @var Filesystem
-     */
-    protected $fs;
-
     public function __construct(
-        string $localStoragePath,
-        Filesystem $fs
+        private string $localStoragePath,
+        private Filesystem $fs
     ) {
-        $this->localStoragePath = $localStoragePath;
-        $this->fs = $fs;
     }
 
     public static function getSubscribedEvents()
@@ -69,7 +57,7 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    protected function createFolder($route)
+    protected function createFolder(string $route)
     {
         $folderExists = $this->fs->exists($route);
         if ($folderExists) {
@@ -83,10 +71,12 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
 
     /**
      * @return void
+     *
+     * @param null|string $template
      */
-    protected function saveFiles($file, $route, $template)
+    protected function saveFiles(string $file, string $route, ?string $template)
     {
-        $fileRoute = $route . DIRECTORY_SEPARATOR .$file;
+        $fileRoute = $route . DIRECTORY_SEPARATOR . $file;
         $fileExists = $this->fs->exists($fileRoute);
 
         if ($fileExists) {
@@ -102,6 +92,9 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
             );
         }
 
-        $this->fs->dumpFile($fileRoute, $template);
+        $this->fs->dumpFile(
+            $fileRoute,
+            $template ?? ''
+        );
     }
 }

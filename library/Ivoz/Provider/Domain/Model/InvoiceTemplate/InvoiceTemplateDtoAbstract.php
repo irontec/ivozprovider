@@ -15,40 +15,43 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $template;
+    private $description = null;
 
     /**
      * @var string|null
      */
-    private $templateHeader;
+    private $template = null;
 
     /**
      * @var string|null
      */
-    private $templateFooter;
+    private $templateHeader = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $templateFooter = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -57,7 +60,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -75,9 +78,9 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -103,7 +106,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -127,7 +130,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setTemplate(?string $template): static
+    public function setTemplate(string $template): static
     {
         $this->template = $template;
 
@@ -170,7 +173,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

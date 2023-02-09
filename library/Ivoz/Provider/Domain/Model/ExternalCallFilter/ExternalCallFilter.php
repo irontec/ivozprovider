@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList;
@@ -20,9 +21,9 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -32,7 +33,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -41,7 +42,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -50,10 +51,32 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('Holiday');
         $this->sanitizeRouteValues('OutOfSchedule');
+
+        // Clear holiday filtering related fields
+        if (!$this->getHolidayEnabled()) {
+            $this->replaceCalendars(new ArrayCollection());
+            $this->setHolidayLocution(null);
+            $this->setHolidayTargetType(null);
+            $this->setHolidayNumberCountry(null);
+            $this->setHolidayNumberValue(null);
+            $this->setHolidayExtension(null);
+            $this->setHolidayVoicemail(null);
+        }
+
+        // Clear outOfSchedule filtering related fields
+        if (!$this->getOutOfScheduleEnabled()) {
+            $this->replaceSchedules(new ArrayCollection());
+            $this->setOutOfScheduleLocution(null);
+            $this->setOutOfScheduleTargetType(null);
+            $this->setOutOfScheduleNumberCountry(null);
+            $this->setOutOfScheduleNumberValue(null);
+            $this->setOutOfScheduleExtension(null);
+            $this->setOutOfScheduleVoicemail(null);
+        }
     }
 
     /**
@@ -107,6 +130,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function getHolidayDateForToday()
     {
+        if (!$this->getHolidayEnabled()) {
+            return null;
+        }
+
         $externalCallFilterRelCalendars = $this->getCalendars();
         if (empty($externalCallFilterRelCalendars)) {
             return null;
@@ -130,6 +157,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
     public function getCalendarPeriodForToday()
     {
+        if (!$this->getHolidayEnabled()) {
+            return null;
+        }
+
         $externalCallFilterRelCalendars = $this->getCalendars();
         if (empty($externalCallFilterRelCalendars)) {
             return null;
@@ -165,6 +196,11 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function isOutOfSchedule()
     {
+        // Always on schedule if filtering is disabled
+        if (!$this->getOutOfScheduleEnabled()) {
+            return false;
+        }
+
         $externalCallFilterRelSchedules = $this->getSchedules();
 
         $outOfScheduleLocution = $this->getOutOfScheduleLocution();
@@ -239,7 +275,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @return null|string
      */
-    public function getHolidayTarget()
+    public function getHolidayTarget(): ?string
     {
         return $this->getTarget("Holiday");
     }
@@ -249,7 +285,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @todo rename holidayTagetType field to holidayRouteType
      */
-    public function getHolidayRouteType()
+    public function getHolidayRouteType(): ?string
     {
         return $this->getHolidayTargetType();
     }
@@ -259,7 +295,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @return null|string
      */
-    public function getOutOfScheduleTarget()
+    public function getOutOfScheduleTarget(): ?string
     {
         return $this->getTarget("OutOfSchedule");
     }
@@ -269,7 +305,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      *
      * @todo rename outOfScheduleTargetType field to outOfScheduleRouteType
      */
-    public function getOutOfScheduleRouteType()
+    public function getOutOfScheduleRouteType(): ?string
     {
         return $this->getOutOfScheduleTargetType();
     }

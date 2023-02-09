@@ -11,27 +11,10 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     use OutgoingRoutingTrait;
 
     /**
-     * Available OutgoingRoutings Types
-     * @todo restrict values on the setter
-     */
-    const TYPE_PATTERN   = 'pattern';
-    const TYPE_GROUP     = 'group';
-    const TYPE_FAX       = 'fax';
-
-    /**
-     * Available OugoingRoutings Route Mode
-     */
-    /** @deprecated */
-    const MODE_STATIC = self::ROUTINGMODE_STATIC;
-
-    /** @deprecated */
-    const MODE_LCR    = self::ROUTINGMODE_LCR;
-
-    /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -41,7 +24,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -52,7 +35,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
         return parent::setWeight($weight);
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         switch ($this->getType()) {
             case self::TYPE_GROUP:
@@ -70,10 +53,10 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
         }
 
         switch ($this->getRoutingMode()) {
-            case self::MODE_STATIC:
+            case self::ROUTINGMODE_STATIC:
                 $this->replaceRelCarriers(new ArrayCollection());
                 break;
-            case self::MODE_LCR:
+            case self::ROUTINGMODE_LCR:
                 $this->setCarrier(null);
                 break;
             case self::ROUTINGMODE_BLOCK:
@@ -113,11 +96,11 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      *
      * @return string
      */
-    public function getCgrCategory()
+    public function getCgrCategory(): string
     {
         return sprintf(
             "or%d",
-            $this->getId()
+            (int) $this->getId()
         );
     }
 
@@ -126,11 +109,11 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
      *
      * @return string
      */
-    public function getCgrRpCategory()
+    public function getCgrRpCategory(): string
     {
         return sprintf(
             "lcr_profile%d",
-            $this->getId()
+            (int) $this->getId()
         );
     }
 

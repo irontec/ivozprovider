@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
@@ -24,85 +25,88 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $routetype;
+    private $routetype = null;
 
     /**
      * @var string|null
      */
-    private $numbervalue;
+    private $numbervalue = null;
 
     /**
      * @var string|null
      */
-    private $friendvalue;
+    private $friendvalue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
+
+    /**
+     * @var VoicemailDto | null
+     */
+    private $voicemail = null;
 
     /**
      * @var UserDto | null
      */
-    private $voicemailUser;
-
-    /**
-     * @var UserDto | null
-     */
-    private $user;
+    private $user = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var ConditionalRoutesConditionDto[] | null
      */
-    private $conditions;
+    private $conditions = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -111,7 +115,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -126,7 +130,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
             'companyId' => 'company',
             'ivrId' => 'ivr',
             'huntGroupId' => 'huntGroup',
-            'voicemailUserId' => 'voicemailUser',
+            'voicemailId' => 'voicemail',
             'userId' => 'user',
             'queueId' => 'queue',
             'locutionId' => 'locution',
@@ -137,9 +141,9 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -150,7 +154,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
             'company' => $this->getCompany(),
             'ivr' => $this->getIvr(),
             'huntGroup' => $this->getHuntGroup(),
-            'voicemailUser' => $this->getVoicemailUser(),
+            'voicemail' => $this->getVoicemail(),
             'user' => $this->getUser(),
             'queue' => $this->getQueue(),
             'locution' => $this->getLocution(),
@@ -174,7 +178,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -229,7 +233,7 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -324,30 +328,30 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 
-    public function setVoicemailUser(?UserDto $voicemailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voicemailUser = $voicemailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoicemailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voicemailUser;
+        return $this->voicemail;
     }
 
-    public function setVoicemailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoicemailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoicemailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoicemailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

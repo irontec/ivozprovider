@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
@@ -22,10 +23,10 @@ abstract class OutgoingRoutingRelCarrierAbstract
     use ChangelogTrait;
 
     /**
-     * @var OutgoingRoutingInterface | null
+     * @var ?OutgoingRoutingInterface
      * inversedBy relCarriers
      */
-    protected $outgoingRouting;
+    protected $outgoingRouting = null;
 
     /**
      * @var CarrierInterface
@@ -40,41 +41,34 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "OutgoingRoutingRelCarrier",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return OutgoingRoutingRelCarrierDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): OutgoingRoutingRelCarrierDto
     {
         return new OutgoingRoutingRelCarrierDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param OutgoingRoutingRelCarrierInterface|null $entity
-     * @param int $depth
-     * @return OutgoingRoutingRelCarrierDto|null
+     * @param null|OutgoingRoutingRelCarrierInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingRoutingRelCarrierDto
     {
         if (!$entity) {
             return null;
@@ -90,8 +84,7 @@ abstract class OutgoingRoutingRelCarrierAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var OutgoingRoutingRelCarrierDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -100,19 +93,20 @@ abstract class OutgoingRoutingRelCarrierAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingRoutingRelCarrierDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
+            ->setCarrier($fkTransformer->transform($carrier));
 
         $self->initChangelog();
 
@@ -122,27 +116,27 @@ abstract class OutgoingRoutingRelCarrierAbstract
     /**
      * @internal use EntityTools instead
      * @param OutgoingRoutingRelCarrierDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingRelCarrierDto::class);
+
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
 
         $this
             ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()))
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()));
+            ->setCarrier($fkTransformer->transform($carrier));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return OutgoingRoutingRelCarrierDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): OutgoingRoutingRelCarrierDto
     {
         return self::createDto()
             ->setOutgoingRouting(OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth))
@@ -150,12 +144,12 @@ abstract class OutgoingRoutingRelCarrierAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null,
+            'outgoingRoutingId' => self::getOutgoingRouting()?->getId(),
             'carrierId' => self::getCarrier()->getId()
         ];
     }
@@ -164,7 +158,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -177,7 +170,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\IvrEntry;
 
@@ -7,17 +8,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
@@ -35,15 +36,20 @@ abstract class IvrEntryAbstract
     protected $entry;
 
     /**
-     * comment: enum:number|extension|voicemail|conditional
+     * @var ?string
+     */
+    protected $displayName = null;
+
+    /**
      * @var string
+     * comment: enum:number|extension|voicemail|conditional
      */
     protected $routeType;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $numberValue;
+    protected $numberValue = null;
 
     /**
      * @var IvrInterface
@@ -52,76 +58,69 @@ abstract class IvrEntryAbstract
     protected $ivr;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $welcomeLocution;
+    protected $welcomeLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?VoicemailInterface
      */
-    protected $voiceMailUser;
+    protected $voicemail = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $entry,
-        $routeType
+        string $entry,
+        string $routeType
     ) {
         $this->setEntry($entry);
         $this->setRouteType($routeType);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "IvrEntry",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return IvrEntryDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): IvrEntryDto
     {
         return new IvrEntryDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param IvrEntryInterface|null $entity
-     * @param int $depth
-     * @return IvrEntryDto|null
+     * @param null|IvrEntryInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?IvrEntryDto
     {
         if (!$entity) {
             return null;
@@ -137,8 +136,7 @@ abstract class IvrEntryAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var IvrEntryDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -147,25 +145,31 @@ abstract class IvrEntryAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param IvrEntryDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, IvrEntryDto::class);
+        $entry = $dto->getEntry();
+        Assertion::notNull($entry, 'getEntry value is null, but non null value was expected.');
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+        $ivr = $dto->getIvr();
+        Assertion::notNull($ivr, 'getIvr value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getEntry(),
-            $dto->getRouteType()
+            $entry,
+            $routeType
         );
 
         $self
+            ->setDisplayName($dto->getDisplayName())
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
@@ -177,22 +181,29 @@ abstract class IvrEntryAbstract
     /**
      * @internal use EntityTools instead
      * @param IvrEntryDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, IvrEntryDto::class);
 
+        $entry = $dto->getEntry();
+        Assertion::notNull($entry, 'getEntry value is null, but non null value was expected.');
+        $routeType = $dto->getRouteType();
+        Assertion::notNull($routeType, 'getRouteType value is null, but non null value was expected.');
+        $ivr = $dto->getIvr();
+        Assertion::notNull($ivr, 'getIvr value is null, but non null value was expected.');
+
         $this
-            ->setEntry($dto->getEntry())
-            ->setRouteType($dto->getRouteType())
+            ->setEntry($entry)
+            ->setDisplayName($dto->getDisplayName())
+            ->setRouteType($routeType)
             ->setNumberValue($dto->getNumberValue())
-            ->setIvr($fkTransformer->transform($dto->getIvr()))
+            ->setIvr($fkTransformer->transform($ivr))
             ->setWelcomeLocution($fkTransformer->transform($dto->getWelcomeLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setConditionalRoute($fkTransformer->transform($dto->getConditionalRoute()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
@@ -201,38 +212,38 @@ abstract class IvrEntryAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return IvrEntryDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): IvrEntryDto
     {
         return self::createDto()
             ->setEntry(self::getEntry())
+            ->setDisplayName(self::getDisplayName())
             ->setRouteType(self::getRouteType())
             ->setNumberValue(self::getNumberValue())
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
             ->setWelcomeLocution(Locution::entityToDto(self::getWelcomeLocution(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
             ->setConditionalRoute(ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'entry' => self::getEntry(),
+            'displayName' => self::getDisplayName(),
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'ivrId' => self::getIvr()->getId(),
-            'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'welcomeLocutionId' => self::getWelcomeLocution()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 
@@ -248,6 +259,22 @@ abstract class IvrEntryAbstract
     public function getEntry(): string
     {
         return $this->entry;
+    }
+
+    protected function setDisplayName(?string $displayName = null): static
+    {
+        if (!is_null($displayName)) {
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
     }
 
     protected function setRouteType(string $routeType): static
@@ -294,7 +321,6 @@ abstract class IvrEntryAbstract
     {
         $this->ivr = $ivr;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -327,16 +353,16 @@ abstract class IvrEntryAbstract
         return $this->extension;
     }
 
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserInterface
+    public function getVoicemail(): ?VoicemailInterface
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
     protected function setConditionalRoute(?ConditionalRouteInterface $conditionalRoute = null): static

@@ -1,3 +1,5 @@
+.. _brands:
+
 ######
 Brands
 ######
@@ -5,8 +7,6 @@ Brands
 *God operator* is responsible for creating and managing platform brands through this section.
 
 This are the fields shown when a new brand is created:
-
-.. glossary::
 
     Name
         Sets the name for this brand.
@@ -68,6 +68,8 @@ This are the fields shown when a new brand is created:
 .. note:: SIP domain is only visible for Brands with Retail or Residential features
     enabled.
 
+.. _brand operators:
+
 Brand operators
 ---------------
 
@@ -75,6 +77,8 @@ Brand operators
 
 Read :ref:`acls` for further explanation about restricted brand administrators.
 
+
+.. _brand portals:
 
 Brand Portals
 -------------

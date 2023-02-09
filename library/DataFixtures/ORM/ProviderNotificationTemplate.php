@@ -59,6 +59,19 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
+        /** @var NotificationTemplateInterface $item4 */
+        $item4 = $this->createEntityInstance(NotificationTemplate::class);
+        (function () use ($fixture) {
+            $this->setName("Invoice notification");
+            $this->setType(
+                NotificationTemplateInterface::TYPE_INVOICE
+            );
+        })->call($item4);
+
+        $this->addReference('_reference_ProviderNotificationTemplate4', $item4);
+        $this->sanitizeEntityValues($item4);
+        $manager->persist($item4);
+
         $manager->flush();
     }
 

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpTiming;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
@@ -26,9 +27,9 @@ abstract class TpTimingAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
      * @var string
@@ -41,14 +42,14 @@ abstract class TpTimingAbstract
     protected $months;
 
     /**
-     * column: month_days
      * @var string
+     * column: month_days
      */
     protected $monthDays;
 
     /**
-     * column: week_days
      * @var string
+     * column: week_days
      */
     protected $weekDays;
 
@@ -58,8 +59,8 @@ abstract class TpTimingAbstract
     protected $time = '00:00:00';
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
@@ -73,13 +74,13 @@ abstract class TpTimingAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $years,
-        $months,
-        $monthDays,
-        $weekDays,
-        $time,
-        $createdAt
+        string $tpid,
+        string $years,
+        string $months,
+        string $monthDays,
+        string $weekDays,
+        string $time,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setYears($years);
@@ -90,41 +91,34 @@ abstract class TpTimingAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpTiming",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpTimingDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpTimingDto
     {
         return new TpTimingDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpTimingInterface|null $entity
-     * @param int $depth
-     * @return TpTimingDto|null
+     * @param null|TpTimingInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpTimingDto
     {
         if (!$entity) {
             return null;
@@ -140,8 +134,7 @@ abstract class TpTimingAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpTimingDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -150,27 +143,42 @@ abstract class TpTimingAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpTimingDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpTimingDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $years = $dto->getYears();
+        Assertion::notNull($years, 'getYears value is null, but non null value was expected.');
+        $months = $dto->getMonths();
+        Assertion::notNull($months, 'getMonths value is null, but non null value was expected.');
+        $monthDays = $dto->getMonthDays();
+        Assertion::notNull($monthDays, 'getMonthDays value is null, but non null value was expected.');
+        $weekDays = $dto->getWeekDays();
+        Assertion::notNull($weekDays, 'getWeekDays value is null, but non null value was expected.');
+        $time = $dto->getTime();
+        Assertion::notNull($time, 'getTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getYears(),
-            $dto->getMonths(),
-            $dto->getMonthDays(),
-            $dto->getWeekDays(),
-            $dto->getTime(),
-            $dto->getCreatedAt()
+            $tpid,
+            $years,
+            $months,
+            $monthDays,
+            $weekDays,
+            $time,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         $self->initChangelog();
 
@@ -180,34 +188,48 @@ abstract class TpTimingAbstract
     /**
      * @internal use EntityTools instead
      * @param TpTimingDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpTimingDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $years = $dto->getYears();
+        Assertion::notNull($years, 'getYears value is null, but non null value was expected.');
+        $months = $dto->getMonths();
+        Assertion::notNull($months, 'getMonths value is null, but non null value was expected.');
+        $monthDays = $dto->getMonthDays();
+        Assertion::notNull($monthDays, 'getMonthDays value is null, but non null value was expected.');
+        $weekDays = $dto->getWeekDays();
+        Assertion::notNull($weekDays, 'getWeekDays value is null, but non null value was expected.');
+        $time = $dto->getTime();
+        Assertion::notNull($time, 'getTime value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $ratingPlan = $dto->getRatingPlan();
+        Assertion::notNull($ratingPlan, 'getRatingPlan value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
-            ->setYears($dto->getYears())
-            ->setMonths($dto->getMonths())
-            ->setMonthDays($dto->getMonthDays())
-            ->setWeekDays($dto->getWeekDays())
-            ->setTime($dto->getTime())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingPlan($fkTransformer->transform($dto->getRatingPlan()));
+            ->setYears($years)
+            ->setMonths($months)
+            ->setMonthDays($monthDays)
+            ->setWeekDays($weekDays)
+            ->setTime($time)
+            ->setCreatedAt($createdAt)
+            ->setRatingPlan($fkTransformer->transform($ratingPlan));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpTimingDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpTimingDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -222,9 +244,9 @@ abstract class TpTimingAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -339,15 +361,16 @@ abstract class TpTimingAbstract
         return $this->time;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -365,7 +388,6 @@ abstract class TpTimingAbstract
     {
         $this->ratingPlan = $ratingPlan;
 
-        /** @var  $this */
         return $this;
     }
 

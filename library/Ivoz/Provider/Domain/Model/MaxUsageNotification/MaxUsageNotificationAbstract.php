@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\MaxUsageNotification;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -23,29 +24,29 @@ abstract class MaxUsageNotificationAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $toAddress;
+    protected $toAddress = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
     protected $threshold = 0;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $lastSent;
+    protected $lastSent = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $notificationTemplate;
+    protected $notificationTemplate = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor
@@ -54,41 +55,34 @@ abstract class MaxUsageNotificationAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MaxUsageNotification",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return MaxUsageNotificationDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): MaxUsageNotificationDto
     {
         return new MaxUsageNotificationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MaxUsageNotificationInterface|null $entity
-     * @param int $depth
-     * @return MaxUsageNotificationDto|null
+     * @param null|MaxUsageNotificationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MaxUsageNotificationDto
     {
         if (!$entity) {
             return null;
@@ -104,8 +98,7 @@ abstract class MaxUsageNotificationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MaxUsageNotificationDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -114,12 +107,11 @@ abstract class MaxUsageNotificationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MaxUsageNotificationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MaxUsageNotificationDto::class);
 
         $self = new static();
@@ -139,12 +131,11 @@ abstract class MaxUsageNotificationAbstract
     /**
      * @internal use EntityTools instead
      * @param MaxUsageNotificationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MaxUsageNotificationDto::class);
 
         $this
@@ -159,10 +150,8 @@ abstract class MaxUsageNotificationAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return MaxUsageNotificationDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): MaxUsageNotificationDto
     {
         return self::createDto()
             ->setToAddress(self::getToAddress())
@@ -173,16 +162,16 @@ abstract class MaxUsageNotificationAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'toAddress' => self::getToAddress(),
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
-            'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'notificationTemplateId' => self::getNotificationTemplate()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -218,19 +207,17 @@ abstract class MaxUsageNotificationAbstract
         return $this->threshold;
     }
 
-    protected function setLastSent($lastSent = null): static
+    protected function setLastSent(string|\DateTimeInterface|null $lastSent = null): static
     {
         if (!is_null($lastSent)) {
-            Assertion::notNull(
-                $lastSent,
-                'lastSent value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastSent = DateTimeHelper::createOrFix(
                 $lastSent,
                 null
             );
 
-            if ($this->lastSent == $lastSent) {
+            if ($this->isInitialized() && $this->lastSent == $lastSent) {
                 return $this;
             }
         }

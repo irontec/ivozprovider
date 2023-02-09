@@ -16,40 +16,43 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     use DtoNormalizer;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $create = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $read = true;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $update = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $delete = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var AdministratorDto | null
      */
-    private $administrator;
+    private $administrator = null;
 
     /**
      * @var PublicEntityDto | null
      */
-    private $publicEntity;
+    private $publicEntity = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -58,7 +61,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -76,9 +79,9 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'create' => $this->getCreate(),
@@ -104,7 +107,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $response;
     }
 
-    public function setCreate(?bool $create): static
+    public function setCreate(bool $create): static
     {
         $this->create = $create;
 
@@ -116,7 +119,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->create;
     }
 
-    public function setRead(?bool $read): static
+    public function setRead(bool $read): static
     {
         $this->read = $read;
 
@@ -128,7 +131,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->read;
     }
 
-    public function setUpdate(?bool $update): static
+    public function setUpdate(bool $update): static
     {
         $this->update = $update;
 
@@ -140,7 +143,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this->update;
     }
 
-    public function setDelete(?bool $delete): static
+    public function setDelete(bool $delete): static
     {
         $this->delete = $delete;
 
@@ -159,7 +162,7 @@ abstract class AdministratorRelPublicEntityDtoAbstract implements DataTransferOb
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
@@ -9,49 +10,49 @@ use Assert\Assertion;
 * Csv
 * @codeCoverageIgnore
 */
-class Csv
+final class Csv
 {
     /**
+     * @var ?int
      * column: csvFileSize
      * comment: FSO
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: csvMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: csvBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName = null;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $csv)
+    public function equals(self $csv): bool
     {
-        return
-            $this->getFileSize() === $csv->getFileSize() &&
-            $this->getMimeType() === $csv->getMimeType() &&
-            $this->getBaseName() === $csv->getBaseName();
+        if ($this->getFileSize() !== $csv->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $csv->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $csv->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * CallCsvScheduler
@@ -16,14 +17,14 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $company = $this->getCompany();
         $brand = $this->getBrand();
@@ -113,15 +114,12 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone()
+    public function getTimezone(): ?TimezoneInterface
     {
         $timeZone = $this->getCompany()
             ? $this->getCompany()->getDefaultTimezone()
@@ -142,7 +140,7 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
     /**
      * @return \DateInterval
      */
-    public function getInterval()
+    public function getInterval(): \DateInterval
     {
         $frecuency = $this->getFrequency();
 
@@ -160,10 +158,9 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
      * @return CallCsvSchedulerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CallCsvSchedulerDto
     {
         $dto = $this->traitToDto($depth);
         $companyDto = \Ivoz\Provider\Domain\Model\Company\Company::entityToDto(

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\PublicEntity;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\PublicEntity\Name;
 
 /**
@@ -24,9 +25,9 @@ abstract class PublicEntityAbstract
     protected $iden;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $fqdn;
+    protected $fqdn = null;
 
     /**
      * @var bool
@@ -44,7 +45,7 @@ abstract class PublicEntityAbstract
     protected $client = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -52,54 +53,47 @@ abstract class PublicEntityAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $platform,
-        $brand,
-        $client,
+        string $iden,
+        bool $platform,
+        bool $brand,
+        bool $client,
         Name $name
     ) {
         $this->setIden($iden);
         $this->setPlatform($platform);
         $this->setBrand($brand);
         $this->setClient($client);
-        $this->setName($name);
+        $this->name = $name;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PublicEntity",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return PublicEntityDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): PublicEntityDto
     {
         return new PublicEntityDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PublicEntityInterface|null $entity
-     * @param int $depth
-     * @return PublicEntityDto|null
+     * @param null|PublicEntityInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PublicEntityDto
     {
         if (!$entity) {
             return null;
@@ -115,8 +109,7 @@ abstract class PublicEntityAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PublicEntityDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -125,13 +118,20 @@ abstract class PublicEntityAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PublicEntityDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $platform = $dto->getPlatform();
+        Assertion::notNull($platform, 'getPlatform value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $client = $dto->getClient();
+        Assertion::notNull($client, 'getClient value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -141,10 +141,10 @@ abstract class PublicEntityAbstract
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getPlatform(),
-            $dto->getBrand(),
-            $dto->getClient(),
+            $iden,
+            $platform,
+            $brand,
+            $client,
             $name
         );
 
@@ -159,13 +159,21 @@ abstract class PublicEntityAbstract
     /**
      * @internal use EntityTools instead
      * @param PublicEntityDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PublicEntityDto::class);
+
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $platform = $dto->getPlatform();
+        Assertion::notNull($platform, 'getPlatform value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $client = $dto->getClient();
+        Assertion::notNull($client, 'getClient value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -175,11 +183,11 @@ abstract class PublicEntityAbstract
         );
 
         $this
-            ->setIden($dto->getIden())
+            ->setIden($iden)
             ->setFqdn($dto->getFqdn())
-            ->setPlatform($dto->getPlatform())
-            ->setBrand($dto->getBrand())
-            ->setClient($dto->getClient())
+            ->setPlatform($platform)
+            ->setBrand($brand)
+            ->setClient($client)
             ->setName($name);
 
         return $this;
@@ -187,10 +195,8 @@ abstract class PublicEntityAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return PublicEntityDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): PublicEntityDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -205,9 +211,9 @@ abstract class PublicEntityAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),
@@ -254,9 +260,6 @@ abstract class PublicEntityAbstract
 
     protected function setPlatform(bool $platform): static
     {
-        Assertion::between(intval($platform), 0, 1, 'platform provided "%s" is not a valid boolean value.');
-        $platform = (bool) $platform;
-
         $this->platform = $platform;
 
         return $this;
@@ -269,9 +272,6 @@ abstract class PublicEntityAbstract
 
     protected function setBrand(bool $brand): static
     {
-        Assertion::between(intval($brand), 0, 1, 'brand provided "%s" is not a valid boolean value.');
-        $brand = (bool) $brand;
-
         $this->brand = $brand;
 
         return $this;
@@ -284,9 +284,6 @@ abstract class PublicEntityAbstract
 
     protected function setClient(bool $client): static
     {
-        Assertion::between(intval($client), 0, 1, 'client provided "%s" is not a valid boolean value.');
-        $client = (bool) $client;
-
         $this->client = $client;
 
         return $this;
@@ -304,7 +301,7 @@ abstract class PublicEntityAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

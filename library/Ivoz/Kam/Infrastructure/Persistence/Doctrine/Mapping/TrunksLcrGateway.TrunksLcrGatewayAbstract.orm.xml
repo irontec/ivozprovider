@@ -66,6 +66,10 @@
       </options>
     </field>
     <one-to-one field="carrierServer" target-entity="Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface" inversed-by="lcrGateway" fetch="LAZY">
+<!--      <cascade>-->
+<!--        <cascade-remove/>-->
+<!--        <cascade-persist/>-->
+<!--      </cascade>-->
       <join-columns>
         <join-column name="carrierServerId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>

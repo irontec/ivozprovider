@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto;
 
 class PickUpGroupDto extends PickUpGroupDtoAbstract
 {
-    const CONTEXT_WITH_USERS = 'withUsers';
+    public const CONTEXT_WITH_USERS = 'withUsers';
 
-    const CONTEXTS_WITH_USERS = [
+    public const CONTEXTS_WITH_USERS = [
         self::CONTEXT_WITH_USERS,
         self::CONTEXT_DETAILED,
         self::CONTEXT_COLLECTION,
@@ -23,13 +23,13 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
      *     description="User ids"
      * )
      */
-    protected $userIds = [];
+    private $userIds = [];
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -41,6 +41,7 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
 
         $response = parent::getPropertyMap(...func_get_args());
 
+        /** @psalm-suppress ParadoxicalCondition */
         if (in_array($context, self::CONTEXTS_WITH_USERS, true)) {
             $response['userIds'] = 'userIds';
         }
@@ -52,7 +53,7 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -66,7 +67,7 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -81,8 +82,10 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
 
     /**
      * @param int[] $userIds
+     *
+     * @return void
      */
-    public function setUserIds(array $userIds)
+    public function setUserIds(array $userIds): void
     {
         $this->userIds = $userIds;
 

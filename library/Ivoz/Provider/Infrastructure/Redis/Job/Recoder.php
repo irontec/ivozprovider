@@ -8,36 +8,37 @@ use Psr\Log\LoggerInterface;
 
 class Recoder implements RecoderJobInterface
 {
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
+    /** @var int */
     private $id;
+    /** @var string */
     private $entityName;
 
     public function __construct(
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private LoggerInterface $logger
     ) {
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
     }
 
+    /**
+     * @param int $id
+     */
     public function setId($id): self
     {
         $this->id = $id;
         return $this;
     }
 
+    /**
+     * @param string $entityName
+     */
     public function setEntityName($entityName): self
     {
         $this->entityName = $entityName;
         return $this;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -61,7 +62,7 @@ class Recoder implements RecoderJobInterface
 
             $redisClient->rPush(
                 self::CHANNEL,
-                \json_encode($data)
+                \json_encode($data, JSON_THROW_ON_ERROR)
             );
 
             $redisClient->close();

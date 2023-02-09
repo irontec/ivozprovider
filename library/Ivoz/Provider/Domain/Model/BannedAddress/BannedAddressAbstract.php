@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\BannedAddress;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -23,40 +24,40 @@ abstract class BannedAddressAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $ip;
+    protected $ip = null;
 
     /**
+     * @var ?string
      * comment: enum:antiflood|ipfilter|antibruteforce
-     * @var string | null
      */
-    protected $blocker;
+    protected $blocker = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $aor;
+    protected $aor = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $lastTimeBanned;
+    protected $lastTimeBanned = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * Constructor
@@ -65,41 +66,34 @@ abstract class BannedAddressAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BannedAddress",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return BannedAddressDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): BannedAddressDto
     {
         return new BannedAddressDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BannedAddressInterface|null $entity
-     * @param int $depth
-     * @return BannedAddressDto|null
+     * @param null|BannedAddressInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BannedAddressDto
     {
         if (!$entity) {
             return null;
@@ -115,8 +109,7 @@ abstract class BannedAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BannedAddressDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -125,12 +118,11 @@ abstract class BannedAddressAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BannedAddressDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
         $self = new static();
@@ -152,12 +144,11 @@ abstract class BannedAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param BannedAddressDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BannedAddressDto::class);
 
         $this
@@ -174,10 +165,8 @@ abstract class BannedAddressAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return BannedAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): BannedAddressDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -190,9 +179,9 @@ abstract class BannedAddressAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),
@@ -200,8 +189,8 @@ abstract class BannedAddressAbstract
             'aor' => self::getAor(),
             'description' => self::getDescription(),
             'lastTimeBanned' => self::getLastTimeBanned(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId()
         ];
     }
 
@@ -278,19 +267,17 @@ abstract class BannedAddressAbstract
         return $this->description;
     }
 
-    protected function setLastTimeBanned($lastTimeBanned = null): static
+    protected function setLastTimeBanned(string|\DateTimeInterface|null $lastTimeBanned = null): static
     {
         if (!is_null($lastTimeBanned)) {
-            Assertion::notNull(
-                $lastTimeBanned,
-                'lastTimeBanned value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastTimeBanned = DateTimeHelper::createOrFix(
                 $lastTimeBanned,
                 null
             );
 
-            if ($this->lastTimeBanned == $lastTimeBanned) {
+            if ($this->isInitialized() && $this->lastTimeBanned == $lastTimeBanned) {
                 return $this;
             }
         }

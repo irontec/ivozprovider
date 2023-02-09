@@ -18,7 +18,16 @@ Feature: Retrieve calendar periods
               "startDate": "2019-01-01",
               "endDate": "2019-10-01",
               "routeType": "number",
-              "id": 1
+              "numberValue": "911",
+              "id": 1,
+              "calendar": 1,
+              "locution": null,
+              "extension": null,
+              "voicemail": null,
+              "numberCountry": 1,
+              "scheduleIds": [
+                  1
+              ]
           }
       ]
     """
@@ -44,7 +53,7 @@ Feature: Retrieve calendar periods
           },
           "locution": null,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": {
               "code": "AD",
               "countryCode": "+376",

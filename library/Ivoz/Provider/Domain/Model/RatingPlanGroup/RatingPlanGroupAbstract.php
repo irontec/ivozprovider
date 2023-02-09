@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\Name;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\Description;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -24,12 +25,12 @@ abstract class RatingPlanGroupAbstract
     use ChangelogTrait;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -39,9 +40,9 @@ abstract class RatingPlanGroupAbstract
     protected $brand;
 
     /**
-     * @var CurrencyInterface | null
+     * @var ?CurrencyInterface
      */
-    protected $currency;
+    protected $currency = null;
 
     /**
      * Constructor
@@ -50,45 +51,38 @@ abstract class RatingPlanGroupAbstract
         Name $name,
         Description $description
     ) {
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RatingPlanGroup",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RatingPlanGroupDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RatingPlanGroupDto
     {
         return new RatingPlanGroupDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RatingPlanGroupInterface|null $entity
-     * @param int $depth
-     * @return RatingPlanGroupDto|null
+     * @param null|RatingPlanGroupInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RatingPlanGroupDto
     {
         if (!$entity) {
             return null;
@@ -104,8 +98,7 @@ abstract class RatingPlanGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RatingPlanGroupDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -114,26 +107,43 @@ abstract class RatingPlanGroupAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RatingPlanGroupDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $descriptionEn = $dto->getDescriptionEn();
+        Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
+        $descriptionEs = $dto->getDescriptionEs();
+        Assertion::notNull($descriptionEs, 'descriptionEs value is null, but non null value was expected.');
+        $descriptionCa = $dto->getDescriptionCa();
+        Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
+        $descriptionIt = $dto->getDescriptionIt();
+        Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs(),
-            $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $descriptionEn,
+            $descriptionEs,
+            $descriptionCa,
+            $descriptionIt
         );
 
         $self = new static(
@@ -142,7 +152,7 @@ abstract class RatingPlanGroupAbstract
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         $self->initChangelog();
@@ -153,32 +163,50 @@ abstract class RatingPlanGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param RatingPlanGroupDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingPlanGroupDto::class);
 
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $descriptionEn = $dto->getDescriptionEn();
+        Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
+        $descriptionEs = $dto->getDescriptionEs();
+        Assertion::notNull($descriptionEs, 'descriptionEs value is null, but non null value was expected.');
+        $descriptionCa = $dto->getDescriptionCa();
+        Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
+        $descriptionIt = $dto->getDescriptionIt();
+        Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs(),
-            $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $descriptionEn,
+            $descriptionEs,
+            $descriptionCa,
+            $descriptionIt
         );
 
         $this
             ->setName($name)
             ->setDescription($description)
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCurrency($fkTransformer->transform($dto->getCurrency()));
 
         return $this;
@@ -186,10 +214,8 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RatingPlanGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RatingPlanGroupDto
     {
         return self::createDto()
             ->setNameEn(self::getName()->getEn())
@@ -205,9 +231,9 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'nameEn' => self::getName()->getEn(),
@@ -219,7 +245,7 @@ abstract class RatingPlanGroupAbstract
             'descriptionCa' => self::getDescription()->getCa(),
             'descriptionIt' => self::getDescription()->getIt(),
             'brandId' => self::getBrand()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null
+            'currencyId' => self::getCurrency()?->getId()
         ];
     }
 
@@ -230,7 +256,7 @@ abstract class RatingPlanGroupAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -246,7 +272,7 @@ abstract class RatingPlanGroupAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

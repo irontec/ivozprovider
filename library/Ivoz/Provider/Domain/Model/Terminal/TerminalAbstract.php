@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -35,43 +36,43 @@ abstract class TerminalAbstract
     protected $disallow = 'all';
 
     /**
-     * column: allow_audio
      * @var string
+     * column: allow_audio
      */
     protected $allowAudio = 'alaw';
 
     /**
+     * @var ?string
      * column: allow_video
-     * @var string | null
      */
-    protected $allowVideo;
+    protected $allowVideo = null;
 
     /**
+     * @var string
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
-     * @var string
      */
     protected $directMediaMethod = 'update';
 
     /**
-     * comment: password
      * @var string
+     * comment: password
      */
     protected $password = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $mac;
+    protected $mac = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $lastProvisionDate;
+    protected $lastProvisionDate = null;
 
     /**
-     * comment: enum:yes|no
      * @var string
+     * comment: enum:yes|no
      */
     protected $t38Passthrough = 'no';
 
@@ -87,27 +88,27 @@ abstract class TerminalAbstract
     protected $company;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      * inversedBy terminals
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var TerminalModelInterface | null
+     * @var ?TerminalModelInterface
      */
-    protected $terminalModel;
+    protected $terminalModel = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $disallow,
-        $allowAudio,
-        $directMediaMethod,
-        $password,
-        $t38Passthrough,
-        $rtpEncryption
+        string $name,
+        string $disallow,
+        string $allowAudio,
+        string $directMediaMethod,
+        string $password,
+        string $t38Passthrough,
+        bool $rtpEncryption
     ) {
         $this->setName($name);
         $this->setDisallow($disallow);
@@ -118,41 +119,34 @@ abstract class TerminalAbstract
         $this->setRtpEncryption($rtpEncryption);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Terminal",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TerminalDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TerminalDto
     {
         return new TerminalDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TerminalInterface|null $entity
-     * @param int $depth
-     * @return TerminalDto|null
+     * @param null|TerminalInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TerminalDto
     {
         if (!$entity) {
             return null;
@@ -168,8 +162,7 @@ abstract class TerminalAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TerminalDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -178,29 +171,44 @@ abstract class TerminalAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TerminalDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TerminalDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allowAudio = $dto->getAllowAudio();
+        Assertion::notNull($allowAudio, 'getAllowAudio value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $password = $dto->getPassword();
+        Assertion::notNull($password, 'getPassword value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDisallow(),
-            $dto->getAllowAudio(),
-            $dto->getDirectMediaMethod(),
-            $dto->getPassword(),
-            $dto->getT38Passthrough(),
-            $dto->getRtpEncryption()
+            $name,
+            $disallow,
+            $allowAudio,
+            $directMediaMethod,
+            $password,
+            $t38Passthrough,
+            $rtpEncryption
         );
 
         $self
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
@@ -212,26 +220,42 @@ abstract class TerminalAbstract
     /**
      * @internal use EntityTools instead
      * @param TerminalDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TerminalDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allowAudio = $dto->getAllowAudio();
+        Assertion::notNull($allowAudio, 'getAllowAudio value is null, but non null value was expected.');
+        $directMediaMethod = $dto->getDirectMediaMethod();
+        Assertion::notNull($directMediaMethod, 'getDirectMediaMethod value is null, but non null value was expected.');
+        $password = $dto->getPassword();
+        Assertion::notNull($password, 'getPassword value is null, but non null value was expected.');
+        $t38Passthrough = $dto->getT38Passthrough();
+        Assertion::notNull($t38Passthrough, 'getT38Passthrough value is null, but non null value was expected.');
+        $rtpEncryption = $dto->getRtpEncryption();
+        Assertion::notNull($rtpEncryption, 'getRtpEncryption value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDisallow($dto->getDisallow())
-            ->setAllowAudio($dto->getAllowAudio())
+            ->setName($name)
+            ->setDisallow($disallow)
+            ->setAllowAudio($allowAudio)
             ->setAllowVideo($dto->getAllowVideo())
-            ->setDirectMediaMethod($dto->getDirectMediaMethod())
-            ->setPassword($dto->getPassword())
+            ->setDirectMediaMethod($directMediaMethod)
+            ->setPassword($password)
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
-            ->setT38Passthrough($dto->getT38Passthrough())
-            ->setRtpEncryption($dto->getRtpEncryption())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setT38Passthrough($t38Passthrough)
+            ->setRtpEncryption($rtpEncryption)
+            ->setCompany($fkTransformer->transform($company))
             ->setDomain($fkTransformer->transform($dto->getDomain()))
             ->setTerminalModel($fkTransformer->transform($dto->getTerminalModel()));
 
@@ -240,10 +264,8 @@ abstract class TerminalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TerminalDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TerminalDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -262,9 +284,9 @@ abstract class TerminalAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -278,8 +300,8 @@ abstract class TerminalAbstract
             't38Passthrough' => self::getT38Passthrough(),
             'rtpEncryption' => self::getRtpEncryption(),
             'companyId' => self::getCompany()->getId(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
+            'domainId' => self::getDomain()?->getId(),
+            'terminalModelId' => self::getTerminalModel()?->getId()
         ];
     }
 
@@ -343,6 +365,7 @@ abstract class TerminalAbstract
 
     protected function setDirectMediaMethod(string $directMediaMethod): static
     {
+        Assertion::maxLength($directMediaMethod, 25, 'directMediaMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $directMediaMethod,
             [
@@ -393,19 +416,17 @@ abstract class TerminalAbstract
         return $this->mac;
     }
 
-    protected function setLastProvisionDate($lastProvisionDate = null): static
+    protected function setLastProvisionDate(string|\DateTimeInterface|null $lastProvisionDate = null): static
     {
         if (!is_null($lastProvisionDate)) {
-            Assertion::notNull(
-                $lastProvisionDate,
-                'lastProvisionDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastProvisionDate = DateTimeHelper::createOrFix(
                 $lastProvisionDate,
                 null
             );
 
-            if ($this->lastProvisionDate == $lastProvisionDate) {
+            if ($this->isInitialized() && $this->lastProvisionDate == $lastProvisionDate) {
                 return $this;
             }
         }
@@ -443,9 +464,6 @@ abstract class TerminalAbstract
 
     protected function setRtpEncryption(bool $rtpEncryption): static
     {
-        Assertion::between(intval($rtpEncryption), 0, 1, 'rtpEncryption provided "%s" is not a valid boolean value.');
-        $rtpEncryption = (bool) $rtpEncryption;
-
         $this->rtpEncryption = $rtpEncryption;
 
         return $this;
@@ -460,7 +478,6 @@ abstract class TerminalAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -473,7 +490,6 @@ abstract class TerminalAbstract
     {
         $this->domain = $domain;
 
-        /** @var  $this */
         return $this;
     }
 

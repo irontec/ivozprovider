@@ -13,21 +13,12 @@ use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {
-    private $entityTools;
-    protected $logger;
-    protected $updateLastExecutionDate;
-    protected $setExecutionError;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        UpdateLastExecutionDate $updateLastExecutionDate,
-        SetExecutionError $setExecutionError
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private UpdateLastExecutionDate $updateLastExecutionDate,
+        private SetExecutionError $setExecutionError
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->updateLastExecutionDate = $updateLastExecutionDate;
-        $this->setExecutionError = $setExecutionError;
     }
 
     /**
@@ -68,13 +59,15 @@ class CreateByScheduler
     private function createCallCsvReport(CallCsvSchedulerInterface $scheduler)
     {
         $outDate = $scheduler->getNextExecution();
-        $outDate->setTimezone(
+        $outDate = $outDate->setTimezone(
             new \DateTimeZone(
                 $scheduler->getTimezone()->getTz()
             )
         );
-        $outDate->setTime(0, 0, 0);
-        $outDate->modify('1 second ago');
+
+        $outDate = $outDate
+            ->setTime(0, 0, 0)
+            ->modify('1 second ago');
 
         $inDate = DateTimeHelper::sub(
             $outDate,
@@ -84,8 +77,8 @@ class CreateByScheduler
 
         // Back to UTC
         $utc = new \DateTimeZone('UTC');
-        $outDate->setTimezone($utc);
-        $inDate->setTimezone($utc);
+        $outDate = $outDate->setTimezone($utc);
+        $inDate = $inDate->setTimezone($utc);
 
         $company = $scheduler->getCompany();
         $companyId = $company
@@ -101,7 +94,7 @@ class CreateByScheduler
         $reportDto
             ->setInDate($inDate)
             ->setOutDate($outDate)
-            ->setCreatedOn(new \DateTime(null, $utc))
+            ->setCreatedOn(new \DateTime('now', $utc))
             ->setBrandId($brandId)
             ->setCompanyId($companyId)
             ->setCallCsvSchedulerId(

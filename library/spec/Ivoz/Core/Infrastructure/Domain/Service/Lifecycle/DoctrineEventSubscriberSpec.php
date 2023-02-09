@@ -10,11 +10,13 @@ use Prophecy\Argument;
 use spec\HelperTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection;
-use \Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
-use \Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
-use \Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 
 class DoctrineEventSubscriberSpec extends ObjectBehavior
@@ -34,6 +36,17 @@ class DoctrineEventSubscriberSpec extends ObjectBehavior
         $this->eventPublisher = $this->getTestDouble(DomainEventPublisher::class);
         $this->commandPersister = $this->getTestDouble(CommandPersister::class);
         $this->forcedEntityChangeLog = false;
+
+        $connection = $this->getTestDouble(Connection::class);
+        $schemaManager = $this->getTestDouble(AbstractSchemaManager::class);
+
+        $this->em
+            ->getConnection()
+            ->willReturn($connection);
+
+        $connection
+            ->createSchemaManager()
+            ->willReturn($schemaManager);
 
         $this->beConstructedWith(
             $this->serviceContainer,

@@ -9,7 +9,7 @@ class IncrementBalance extends AbstractBalanceOperation
      * @param float $amount
      * @return boolean
      */
-    public function execute($carrierId, float $amount)
+    public function execute($carrierId, float $amount): bool
     {
         $this->logger->info('Carrier#%s\'s balance will be incremented by ' . $amount);
         $carrier = $this->carrierRepository->find($carrierId);

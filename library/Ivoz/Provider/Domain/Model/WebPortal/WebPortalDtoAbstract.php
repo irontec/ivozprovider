@@ -15,9 +15,9 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $url;
+    private $url = null;
 
     /**
      * @var string|null
@@ -25,9 +25,9 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $klearTheme = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $urlType;
+    private $urlType = null;
 
     /**
      * @var string|null
@@ -40,30 +40,33 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     private $userTheme = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $logoFileSize;
+    private $logoFileSize = null;
 
     /**
      * @var string|null
      */
-    private $logoMimeType;
+    private $logoMimeType = null;
 
     /**
      * @var string|null
      */
-    private $logoBaseName;
+    private $logoBaseName = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -72,7 +75,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -95,9 +98,9 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'url' => $this->getUrl(),
@@ -128,7 +131,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setUrl(?string $url): static
+    public function setUrl(string $url): static
     {
         $this->url = $url;
 
@@ -152,7 +155,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this->klearTheme;
     }
 
-    public function setUrlType(?string $urlType): static
+    public function setUrlType(string $urlType): static
     {
         $this->urlType = $urlType;
 
@@ -195,7 +198,7 @@ abstract class WebPortalDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

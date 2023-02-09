@@ -13,13 +13,13 @@ Feature: Create conditional routes conditions
       {
           "priority": 2,
           "routeType": "extension",
-          "numberValue": "",
+          "numberValue": null,
           "friendValue": "",
           "id": 1,
           "conditionalRoute": 1,
           "ivr": null,
           "huntGroup": null,
-          "voicemailUser": null,
+          "voicemail": null,
           "user": null,
           "queue": null,
           "locution": null,
@@ -54,7 +54,7 @@ Feature: Create conditional routes conditions
           "conditionalRoute": "~",
           "ivr": null,
           "huntGroup": null,
-          "voicemailUser": null,
+          "voicemail": null,
           "user": null,
           "queue": null,
           "locution": null,
@@ -71,7 +71,8 @@ Feature: Create conditional routes conditions
               "user": 1,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           },
           "numberCountry": null,
           "matchListIds": [
@@ -112,7 +113,7 @@ Feature: Create conditional routes conditions
               "id": 1,
               "ivr": null,
               "huntGroup": null,
-              "voicemailUser": null,
+              "voicemail": null,
               "user": 1,
               "queue": null,
               "locution": null,
@@ -122,7 +123,7 @@ Feature: Create conditional routes conditions
           },
           "ivr": null,
           "huntGroup": null,
-          "voicemailUser": null,
+          "voicemail": null,
           "user": null,
           "queue": null,
           "locution": null,
@@ -139,20 +140,21 @@ Feature: Create conditional routes conditions
               "user": 1,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           },
           "numberCountry": null,
           "matchListIds": [
-            2
+              2
           ],
           "scheduleIds": [
-            1
+              1
           ],
           "calendarIds": [
-            2
+              2
           ],
           "routeLockIds": [
-            1
+              1
           ]
       }
     """

@@ -18,8 +18,9 @@ Feature: Update call forward settings
         "noAnswerTimeout": 0,
         "enabled": true,
         "user": 1,
+        "friend": null,
         "extension": null,
-        "voiceMailUser": null,
+        "voicemail": null,
         "numberCountry": 1
       }
     """
@@ -37,8 +38,9 @@ Feature: Update call forward settings
           "enabled": true,
           "id": 1,
           "user": 1,
+          "friend": null,
           "extension": null,
-          "voiceMailUser": null,
+          "voicemail": null,
           "numberCountry": 1,
           "residentialDevice": null,
           "retailAccount": null,

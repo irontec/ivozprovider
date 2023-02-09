@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
@@ -13,11 +16,22 @@ use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 */
 interface RatingPlanInterface extends LoggableEntityInterface
 {
-    const TIMINGTYPE_ALWAYS = 'always';
+    public const TIMINGTYPE_ALWAYS = 'always';
 
-    const TIMINGTYPE_CUSTOM = 'custom';
+    public const TIMINGTYPE_CUSTOM = 'custom';
 
-    public function getChangeSet();
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array;
 
     /**
      * Transform Weekdays booleans to a string for TpTimings
@@ -31,7 +45,7 @@ interface RatingPlanInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     /**
      * CGrates tag for Timing associated to this Rating Plan
@@ -40,11 +54,31 @@ interface RatingPlanInterface extends LoggableEntityInterface
      */
     public function getCgrTimingTag();
 
+    public static function createDto(string|int|null $id = null): RatingPlanDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|RatingPlanInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RatingPlanDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param RatingPlanDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): RatingPlanDto;
+
     public function getWeight(): float;
 
     public function getTimingType(): ?string;
 
-    public function getTimeIn(): \DateTime;
+    public function getTimeIn(): \DateTimeInterface;
 
     public function getMonday(): ?bool;
 

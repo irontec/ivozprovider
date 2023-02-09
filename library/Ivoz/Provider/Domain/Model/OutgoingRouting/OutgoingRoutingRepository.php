@@ -9,7 +9,5 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 
 interface OutgoingRoutingRepository extends ObjectRepository, Selectable
 {
-
-
-    public function findByRoutingPattern(RoutingPatternInterface $routingPattern) :array;
+    public function findByRoutingPattern(RoutingPatternInterface $routingPattern): array;
 }

@@ -11,17 +11,11 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
  */
 class CheckUniqueness implements FriendLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var TerminalRepository
-     */
-    protected $terminalRepository;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        TerminalRepository $terminalRepository
+        private TerminalRepository $terminalRepository
     ) {
-        $this->terminalRepository = $terminalRepository;
     }
 
     public static function getSubscribedEvents()

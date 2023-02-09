@@ -12,9 +12,10 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     use TrunksUacregTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -24,12 +25,12 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (empty($this->getAuthUsername())) {
             $this->setAuthUsername($this->getRUsername());
@@ -43,7 +44,7 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     /**
      * {@inheritDoc}
      */
-    public function setAuthProxy(string $authProxy):  static
+    public function setAuthProxy(string $authProxy): static
     {
         if (!empty($authProxy)) {
             Assertion::regex($authProxy, '/^sip:.+$|^sips:.+$/');
@@ -55,7 +56,7 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
     /**
      * @inheritdoc
      */
-    public function setLUuid(string $lUuid):  static
+    public function setLUuid(string $lUuid): static
     {
         if (empty($lUuid)) {
             $lUuid = (string)round(microtime(true) * 1000);

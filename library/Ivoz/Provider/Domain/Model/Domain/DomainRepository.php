@@ -7,7 +7,6 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface DomainRepository extends ObjectRepository, Selectable
 {
-
     /**
      * @param string $endpointDomain
      * @return DomainInterface | null

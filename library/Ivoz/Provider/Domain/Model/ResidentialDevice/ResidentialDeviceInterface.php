@@ -4,14 +4,18 @@ namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -20,41 +24,48 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 */
 interface ResidentialDeviceInterface extends LoggableEntityInterface
 {
-    const TRANSPORT_UDP = 'udp';
+    public const TRANSPORT_UDP = 'udp';
 
-    const TRANSPORT_TCP = 'tcp';
+    public const TRANSPORT_TCP = 'tcp';
 
-    const TRANSPORT_TLS = 'tls';
+    public const TRANSPORT_TLS = 'tls';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const CALLERIDUPDATEHEADER_PAI = 'pai';
+    public const CALLERIDUPDATEHEADER_PAI = 'pai';
 
-    const CALLERIDUPDATEHEADER_RPID = 'rpid';
+    public const CALLERIDUPDATEHEADER_RPID = 'rpid';
 
-    const UPDATECALLERID_YES = 'yes';
+    public const UPDATECALLERID_YES = 'yes';
 
-    const UPDATECALLERID_NO = 'no';
+    public const UPDATECALLERID_NO = 'no';
 
-    const DIRECTCONNECTIVITY_YES = 'yes';
+    public const DIRECTCONNECTIVITY_YES = 'yes';
 
-    const DIRECTCONNECTIVITY_NO = 'no';
+    public const DIRECTCONNECTIVITY_NO = 'no';
 
-    const DDIIN_YES = 'yes';
+    public const DDIIN_YES = 'yes';
 
-    const DDIIN_NO = 'no';
+    public const DDIIN_NO = 'no';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return bool
@@ -81,17 +92,17 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * @return string
      */
-    public function getLanguageCode();
+    public function getLanguageCode(): string;
 
     /**
      * @return string | null
@@ -112,20 +123,25 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail();
+    public static function createDto(string|int|null $id = null): ResidentialDeviceDto;
 
     /**
-     * @return string with the voicemail user
+     * @internal use EntityTools instead
+     * @param null|ResidentialDeviceInterface $entity
      */
-    public function getVoiceMailUser();
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ResidentialDeviceDto;
 
     /**
-     * @return string with the voicemail context
+     * Factory method
+     * @internal use EntityTools instead
+     * @param ResidentialDeviceDto $dto
      */
-    public function getVoiceMailContext();
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): ResidentialDeviceDto;
 
     public function getName(): string;
 
@@ -136,8 +152,6 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getIp(): ?string;
 
     public function getPort(): ?int;
-
-    public function getAuthNeeded(): string;
 
     public function getPassword(): ?string;
 
@@ -181,6 +195,10 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function isInitialized(): bool;
 
+    public function setVoicemail(VoicemailInterface $voicemail): static;
+
+    public function getVoicemail(): ?VoicemailInterface;
+
     public function setPsEndpoint(PsEndpointInterface $psEndpoint): static;
 
     public function getPsEndpoint(): ?PsEndpointInterface;
@@ -193,15 +211,27 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
 
     public function removeDdi(DdiInterface $ddi): ResidentialDeviceInterface;
 
-    public function replaceDdis(ArrayCollection $ddis): ResidentialDeviceInterface;
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): ResidentialDeviceInterface;
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface;
 
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): ResidentialDeviceInterface;
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): ResidentialDeviceInterface;
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): ResidentialDeviceInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

@@ -173,6 +173,7 @@ class UpdateDtoByDefaultRunTpCdrSpec extends ObjectBehavior
             [
                 'getCostDetailsFirstTimespan' => ['SomeValue'],
                 'getCost' => 1,
+                'getDuration' => 1,
                 'getRatingPlanTag' => 'tag',
                 'getMatchedDestinationTag' => 'destTag',
                 'getDestination' => 'Lisbon'

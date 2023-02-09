@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpDestinationRate;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
@@ -26,50 +27,50 @@ abstract class TpDestinationRateAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
+     * @var ?string
      * column: destinations_tag
-     * @var string | null
      */
-    protected $destinationsTag;
+    protected $destinationsTag = null;
 
     /**
+     * @var ?string
      * column: rates_tag
-     * @var string | null
      */
-    protected $ratesTag;
+    protected $ratesTag = null;
 
     /**
+     * @var string
      * column: rounding_method
      * comment: enum:*up|*upmincost
-     * @var string
      */
     protected $roundingMethod = '*up';
 
     /**
-     * column: rounding_decimals
      * @var int
+     * column: rounding_decimals
      */
     protected $roundingDecimals = 4;
 
     /**
-     * column: max_cost
      * @var float
+     * column: max_cost
      */
     protected $maxCost = 0;
 
     /**
-     * column: max_cost_strategy
      * @var string
+     * column: max_cost_strategy
      */
     protected $maxCostStrategy = '';
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
@@ -83,12 +84,12 @@ abstract class TpDestinationRateAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $roundingMethod,
-        $roundingDecimals,
-        $maxCost,
-        $maxCostStrategy,
-        $createdAt
+        string $tpid,
+        string $roundingMethod,
+        int $roundingDecimals,
+        float $maxCost,
+        string $maxCostStrategy,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setRoundingMethod($roundingMethod);
@@ -98,41 +99,34 @@ abstract class TpDestinationRateAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpDestinationRate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpDestinationRateDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpDestinationRateDto
     {
         return new TpDestinationRateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpDestinationRateInterface|null $entity
-     * @param int $depth
-     * @return TpDestinationRateDto|null
+     * @param null|TpDestinationRateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpDestinationRateDto
     {
         if (!$entity) {
             return null;
@@ -148,8 +142,7 @@ abstract class TpDestinationRateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpDestinationRateDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -158,28 +151,41 @@ abstract class TpDestinationRateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpDestinationRateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $roundingMethod = $dto->getRoundingMethod();
+        Assertion::notNull($roundingMethod, 'getRoundingMethod value is null, but non null value was expected.');
+        $roundingDecimals = $dto->getRoundingDecimals();
+        Assertion::notNull($roundingDecimals, 'getRoundingDecimals value is null, but non null value was expected.');
+        $maxCost = $dto->getMaxCost();
+        Assertion::notNull($maxCost, 'getMaxCost value is null, but non null value was expected.');
+        $maxCostStrategy = $dto->getMaxCostStrategy();
+        Assertion::notNull($maxCostStrategy, 'getMaxCostStrategy value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getRoundingMethod(),
-            $dto->getRoundingDecimals(),
-            $dto->getMaxCost(),
-            $dto->getMaxCostStrategy(),
-            $dto->getCreatedAt()
+            $tpid,
+            $roundingMethod,
+            $roundingDecimals,
+            $maxCost,
+            $maxCostStrategy,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         $self->initChangelog();
 
@@ -189,35 +195,47 @@ abstract class TpDestinationRateAbstract
     /**
      * @internal use EntityTools instead
      * @param TpDestinationRateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $roundingMethod = $dto->getRoundingMethod();
+        Assertion::notNull($roundingMethod, 'getRoundingMethod value is null, but non null value was expected.');
+        $roundingDecimals = $dto->getRoundingDecimals();
+        Assertion::notNull($roundingDecimals, 'getRoundingDecimals value is null, but non null value was expected.');
+        $maxCost = $dto->getMaxCost();
+        Assertion::notNull($maxCost, 'getMaxCost value is null, but non null value was expected.');
+        $maxCostStrategy = $dto->getMaxCostStrategy();
+        Assertion::notNull($maxCostStrategy, 'getMaxCostStrategy value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
             ->setDestinationsTag($dto->getDestinationsTag())
             ->setRatesTag($dto->getRatesTag())
-            ->setRoundingMethod($dto->getRoundingMethod())
-            ->setRoundingDecimals($dto->getRoundingDecimals())
-            ->setMaxCost($dto->getMaxCost())
-            ->setMaxCostStrategy($dto->getMaxCostStrategy())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setRoundingMethod($roundingMethod)
+            ->setRoundingDecimals($roundingDecimals)
+            ->setMaxCost($maxCost)
+            ->setMaxCostStrategy($maxCostStrategy)
+            ->setCreatedAt($createdAt)
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpDestinationRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpDestinationRateDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -233,9 +251,9 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -373,15 +391,16 @@ abstract class TpDestinationRateAbstract
         return $this->maxCostStrategy;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -399,7 +418,6 @@ abstract class TpDestinationRateAbstract
     {
         $this->destinationRate = $destinationRate;
 
-        /** @var  $this */
         return $this;
     }
 

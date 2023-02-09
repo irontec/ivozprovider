@@ -15,9 +15,9 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -27,12 +27,12 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->setBrand(
             $this
@@ -50,12 +50,24 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
         if ($this->isDirectConnectivity() && !$this->getTransport()) {
             throw new \DomainException('Invalid empty transport');
         }
+
+        if ($this->isDirectConnectivity() && !$this->getIp()) {
+            throw new \DomainException('Invalid empty IP');
+        }
+
+        if ($this->isDirectConnectivity() && !$this->getPort()) {
+            throw new \DomainException('Invalid empty port');
+        }
+
+        if (!$this->isDirectConnectivity() && !$this->getPassword()) {
+            throw new \DomainException('Password cannot be empty for residential devices with no direct connectivity');
+        }
     }
 
     /**
      * @return bool
      */
-    public function isDirectConnectivity() : bool
+    public function isDirectConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }
@@ -85,12 +97,19 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      */
     public function setPassword(?string $password = null): static
     {
-        if (!empty($password)) {
-            Assertion::regex(
-                $password,
-                '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
-            );
+        if ($password) {
+            $password = trim($password);
         }
+
+        if (empty($password)) {
+            return parent::setPassword(null);
+        }
+
+        Assertion::regex(
+            $password,
+            '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
+        );
+
         return parent::setPassword($password);
     }
 
@@ -106,7 +125,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return sprintf(
             "sip:%s@%s",
@@ -118,13 +137,13 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             "b%dc%dr%d_%s",
-            $this->getCompany()->getBrand()->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getBrand()->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }
@@ -132,7 +151,7 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
     /**
      * @return string
      */
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
         if ($language) {
@@ -194,31 +213,5 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
 
         return array_shift($ddis);
-    }
-
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail()
-    {
-        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
-    }
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser()
-    {
-        return "residential" . $this->getId();
-    }
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext()
-    {
-        return
-            'company'
-            . $this->getCompany()->getId();
     }
 }

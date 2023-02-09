@@ -13,12 +13,9 @@ use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 
 class BrandDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -29,7 +26,6 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, BrandInterface::class);
 
-        /** @var BrandDto $dto */
         $dto = $entity->toDto($depth);
         $id = $entity->getId();
 
@@ -50,7 +46,7 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
         if (in_array($context, BrandDto::CONTEXTS_WITH_FEATURES, true)) {
             $featureIds = array_map(
                 function (FeaturesRelBrand $relFeature) {
-                    return $relFeature
+                    return (int) $relFeature
                         ->getFeature()
                         ->getId();
                 },

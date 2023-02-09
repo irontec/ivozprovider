@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface;
 
@@ -16,18 +19,18 @@ use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterfac
 trait RoutingTagTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingRoutingInterface> & Selectable<array-key, OutgoingRoutingInterface>
      * OutgoingRoutingInterface mappedBy routingTag
      */
     protected $outgoingRoutings;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CompanyRelRoutingTagInterface> & Selectable<array-key, CompanyRelRoutingTagInterface>
      * CompanyRelRoutingTagInterface mappedBy routingTag
      */
     protected $relCompanies;
@@ -42,35 +45,37 @@ trait RoutingTagTrait
         $this->relCompanies = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $self->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $self->replaceOutgoingRoutings($replacement);
         }
 
-        if (!is_null($dto->getRelCompanies())) {
-            $self->replaceRelCompanies(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCompanies()
-                )
+        $relCompanies = $dto->getRelCompanies();
+        if (!is_null($relCompanies)) {
+
+            /** @var Collection<array-key, CompanyRelRoutingTagInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCompanies
             );
+            $self->replaceRelCompanies($replacement);
         }
 
         $self->sanitizeValues();
@@ -85,28 +90,30 @@ trait RoutingTagTrait
     /**
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $this->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $this->replaceOutgoingRoutings($replacement);
         }
 
-        if (!is_null($dto->getRelCompanies())) {
-            $this->replaceRelCompanies(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCompanies()
-                )
+        $relCompanies = $dto->getRelCompanies();
+        if (!is_null($relCompanies)) {
+
+            /** @var Collection<array-key, CompanyRelRoutingTagInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCompanies
             );
+            $this->replaceRelCompanies($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,10 +122,8 @@ trait RoutingTagTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RoutingTagDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RoutingTagDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -126,9 +131,9 @@ trait RoutingTagTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -149,25 +154,33 @@ trait RoutingTagTrait
         return $this;
     }
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingTagInterface
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingTagInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($outgoingRoutings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRoutingTag($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->outgoingRoutings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->outgoingRoutings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->outgoingRoutings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->outgoingRoutings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -177,6 +190,9 @@ trait RoutingTagTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -200,25 +216,33 @@ trait RoutingTagTrait
         return $this;
     }
 
-    public function replaceRelCompanies(ArrayCollection $relCompanies): RoutingTagInterface
+    /**
+     * @param Collection<array-key, CompanyRelRoutingTagInterface> $relCompanies
+     */
+    public function replaceRelCompanies(Collection $relCompanies): RoutingTagInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relCompanies as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRoutingTag($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relCompanies as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relCompanies->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relCompanies->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relCompanies->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -228,6 +252,9 @@ trait RoutingTagTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CompanyRelRoutingTagInterface>
+     */
     public function getRelCompanies(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -15,75 +15,78 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $lcrId = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $gwName;
+    private $gwName = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var string|null
      */
-    private $hostname;
+    private $hostname = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $params;
+    private $params = null;
 
     /**
      * @var int|null
      */
-    private $uriScheme;
+    private $uriScheme = null;
 
     /**
      * @var int|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var bool|null
      */
-    private $strip;
+    private $strip = null;
 
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
      * @var int|null
      */
-    private $defunct;
+    private $defunct = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CarrierServerDto | null
      */
-    private $carrierServer;
+    private $carrierServer = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -92,7 +95,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -117,9 +120,9 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'lcrId' => $this->getLcrId(),
@@ -152,7 +155,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    public function setLcrId(?int $lcrId): static
+    public function setLcrId(int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
@@ -164,7 +167,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this->lcrId;
     }
 
-    public function setGwName(?string $gwName): static
+    public function setGwName(string $gwName): static
     {
         $this->gwName = $gwName;
 
@@ -303,7 +306,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

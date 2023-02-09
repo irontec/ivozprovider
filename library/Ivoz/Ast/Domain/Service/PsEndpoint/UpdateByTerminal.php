@@ -6,27 +6,16 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleEventHandlerInterface;
 
 class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        PsEndpointRepository $psEndpointRepository
+        private EntityTools $entityTools,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
 
     public static function getSubscribedEvents()
@@ -45,7 +34,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     {
         // Replicate Terminal into ast_ps_endpoint
         $endpoint = $this->psEndpointRepository->findOneByTerminalId(
-            $terminal->getId()
+            (int) $terminal->getId()
         );
 
         if (is_null($endpoint)) {
@@ -59,6 +48,9 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             $endpointDto = $this->entityTools->entityToDto($endpoint);
         }
 
+        /** @var Company $company */
+        $company = $terminal->getCompany();
+
         // Update/Insert endpoint data
         $endpointDto
             ->setTerminalId($terminal->getId())
@@ -67,6 +59,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
             ->setAors($terminal->getSorcery())
             ->setDisallow($terminal->getDisallow())
             ->setAllow($terminal->getAllow())
+            ->setSubscribeContext($company->getSubcribeContext())
             ->setDirectmediaMethod($terminal->getDirectmediaMethod())
             ->setT38Udptl($terminal->getT38Passthrough())
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr');

@@ -4,13 +4,14 @@ namespace Ivoz\Provider\Domain\Model\Recording;
 
 class RecordingDto extends RecordingDtoAbstract
 {
+    /** @var ?string */
     private $recordedFile;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -34,7 +35,7 @@ class RecordingDto extends RecordingDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -47,7 +48,12 @@ class RecordingDto extends RecordingDtoAbstract
         );
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'recordedFile'
@@ -65,7 +71,7 @@ class RecordingDto extends RecordingDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getRecordedFilePath()
     {

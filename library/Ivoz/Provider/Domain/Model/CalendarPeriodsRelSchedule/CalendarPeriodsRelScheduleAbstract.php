@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod;
@@ -22,10 +23,10 @@ abstract class CalendarPeriodsRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var CalendarPeriodInterface | null
+     * @var ?CalendarPeriodInterface
      * inversedBy relSchedules
      */
-    protected $calendarPeriod;
+    protected $calendarPeriod = null;
 
     /**
      * @var ScheduleInterface
@@ -39,41 +40,34 @@ abstract class CalendarPeriodsRelScheduleAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CalendarPeriodsRelSchedule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CalendarPeriodsRelScheduleDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CalendarPeriodsRelScheduleDto
     {
         return new CalendarPeriodsRelScheduleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CalendarPeriodsRelScheduleInterface|null $entity
-     * @param int $depth
-     * @return CalendarPeriodsRelScheduleDto|null
+     * @param null|CalendarPeriodsRelScheduleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CalendarPeriodsRelScheduleDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class CalendarPeriodsRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CalendarPeriodsRelScheduleDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class CalendarPeriodsRelScheduleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CalendarPeriodsRelScheduleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class CalendarPeriodsRelScheduleAbstract
     /**
      * @internal use EntityTools instead
      * @param CalendarPeriodsRelScheduleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CalendarPeriodsRelScheduleDto::class);
+
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $this
             ->setCalendarPeriod($fkTransformer->transform($dto->getCalendarPeriod()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CalendarPeriodsRelScheduleDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CalendarPeriodsRelScheduleDto
     {
         return self::createDto()
             ->setCalendarPeriod(CalendarPeriod::entityToDto(self::getCalendarPeriod(), $depth))
@@ -149,12 +143,12 @@ abstract class CalendarPeriodsRelScheduleAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'calendarPeriodId' => self::getCalendarPeriod() ? self::getCalendarPeriod()->getId() : null,
+            'calendarPeriodId' => self::getCalendarPeriod()?->getId(),
             'scheduleId' => self::getSchedule()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class CalendarPeriodsRelScheduleAbstract
     {
         $this->calendarPeriod = $calendarPeriod;
 
-        /** @var  $this */
         return $this;
     }
 

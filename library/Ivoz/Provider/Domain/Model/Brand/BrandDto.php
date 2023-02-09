@@ -7,13 +7,14 @@ use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
 class BrandDto extends BrandDtoAbstract
 {
-    const CONTEXT_WITH_FEATURES = 'withFeatures';
+    public const CONTEXT_WITH_FEATURES = 'withFeatures';
 
-    const CONTEXTS_WITH_FEATURES = [
+    public const CONTEXTS_WITH_FEATURES = [
         self::CONTEXT_WITH_FEATURES,
         self::CONTEXT_DETAILED
     ];
 
+    /** @var ?string */
     private $logoPath;
 
     /**
@@ -24,9 +25,14 @@ class BrandDto extends BrandDtoAbstract
      *     description="Active feature ids"
      * )
      */
-    protected $features = [];
+    private $features = [];
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'logo'
@@ -44,7 +50,7 @@ class BrandDto extends BrandDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getLogoPath()
     {
@@ -52,10 +58,9 @@ class BrandDto extends BrandDtoAbstract
     }
 
     /**
-     * @return array
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = self::CONTEXT_COLLECTION, string $role = null)
+    public static function getPropertyMap(string $context = self::CONTEXT_COLLECTION, string $role = null): array
     {
         if ($role === 'ROLE_COMPANY_ADMIN') {
             return [];
@@ -89,7 +94,7 @@ class BrandDto extends BrandDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
 
@@ -103,7 +108,7 @@ class BrandDto extends BrandDtoAbstract
         );
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -140,7 +145,7 @@ class BrandDto extends BrandDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -149,8 +154,10 @@ class BrandDto extends BrandDtoAbstract
 
     /**
      * @param int[] $featureIds
+     *
+     * @return void
      */
-    public function setFeatures(array $featureIds)
+    public function setFeatures(array $featureIds): void
     {
         $this->features = $featureIds;
 

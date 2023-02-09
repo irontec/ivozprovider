@@ -1,10 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Application\Service\User;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
@@ -12,30 +13,14 @@ use Ivoz\Provider\Domain\Service\User\UserFactory;
 
 class SyncFromCsv
 {
-    private $companyRepository;
-    private $userFactory;
-    private $terminalFactory;
-    private $extensionFactory;
-    private $ddiFactory;
-    private $entityTools;
-    private $csvStaticValidator;
-
     public function __construct(
-        CompanyRepository $companyRepository,
-        UserFactory $userFactory,
-        TerminalFactory $terminalFactory,
-        ExtensionFactory $extensionFactory,
-        DdiFactory $ddiFactory,
-        EntityTools $entityTools,
-        CsvStaticValidator $csvStaticValidator
+        private UserFactory $userFactory,
+        private TerminalFactory $terminalFactory,
+        private ExtensionFactory $extensionFactory,
+        private DdiFactory $ddiFactory,
+        private EntityTools $entityTools,
+        private CsvStaticValidator $csvStaticValidator
     ) {
-        $this->companyRepository = $companyRepository;
-        $this->userFactory = $userFactory;
-        $this->terminalFactory = $terminalFactory;
-        $this->extensionFactory = $extensionFactory;
-        $this->ddiFactory = $ddiFactory;
-        $this->entityTools = $entityTools;
-        $this->csvStaticValidator = $csvStaticValidator;
     }
 
     /**
@@ -66,7 +51,8 @@ class SyncFromCsv
         } catch (\Exception $e) {
             throw new \DomainException(
                 $e->getMessage(),
-                count($rows)
+                count($rows),
+                $e
             );
         }
 
@@ -79,7 +65,7 @@ class SyncFromCsv
 
             try {
                 $user = $this->userFactory->fromMassProvisioningCsv(
-                    $company->getId(),
+                    (int) $company->getId(),
                     ...$userArgs
                 );
                 $entities = [$user];
@@ -87,7 +73,7 @@ class SyncFromCsv
                 $notEmptyTerminalArgs = count(array_filter($terminalArgs)) > 0;
                 if ($notEmptyTerminalArgs) {
                     $terminal = $this->terminalFactory->fromMassProvisioningCsv(
-                        $company->getId(),
+                        (int) $company->getId(),
                         ...$terminalArgs
                     );
 
@@ -96,7 +82,7 @@ class SyncFromCsv
 
                 if ($extensionArg) {
                     $extension = $this->extensionFactory->fromMassProvisioningCsv(
-                        $company->getId(),
+                        (int) $company->getId(),
                         $extensionArg,
                         $user
                     );
@@ -110,6 +96,11 @@ class SyncFromCsv
                         $company,
                         ...$outboundDdiArgs
                     );
+
+                    if ($ddi->isNew()) {
+                        $user->setOutgoingDdi($ddi);
+                    }
+
                     $entities[] = $ddi;
                 }
 
@@ -122,7 +113,7 @@ class SyncFromCsv
                     $entities
                 );
             } catch (\Exception $e) {
-                $errors[$k+1] = $e->getMessage();
+                $errors[$k + 1] = $e->getMessage();
                 continue;
             }
         }

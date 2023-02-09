@@ -48,7 +48,7 @@
     </field>
     <field name="currentDayUsage" type="decimal" column="currentDayUsage" precision="10" scale="4" nullable="true">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="maxDailyUsageEmail" type="string" column="maxDailyUsageEmail" length="100" nullable="true">
@@ -125,7 +125,7 @@
     </field>
     <field name="balance" type="decimal" column="balance" precision="10" scale="4" nullable="true">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="showInvoices" type="boolean" column="showInvoices" nullable="true">

@@ -36,10 +36,10 @@ production:
           holidayTargetType: false
           holidayNumberValue: true
           holidayExtension: true
-          holidayVoiceMailUser: true
+          holidayVoicemail: true
           outOfScheduleTargetType: false
           outOfScheduleExtension: true
-          outOfScheduleVoiceMailUser: true
+          outOfScheduleVoicemail: true
           holidayTargetType: true
           holidayTarget: true
           outOfScheduleTarget: true

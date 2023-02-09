@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\InvoiceTemplate;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
+/** @psalm-suppress UnusedProperty */
 class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
 {
     /**
@@ -14,13 +15,13 @@ class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
      *     description="Global Special Number"
      * )
      */
-    protected $global;
+    private $global;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -39,7 +40,7 @@ class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(...func_get_args());
 
@@ -54,7 +55,7 @@ class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {

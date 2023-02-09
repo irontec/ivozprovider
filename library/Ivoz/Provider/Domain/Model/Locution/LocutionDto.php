@@ -4,15 +4,16 @@ namespace Ivoz\Provider\Domain\Model\Locution;
 
 class LocutionDto extends LocutionDtoAbstract
 {
-
+    /** @var ?string */
     private $originalFilePath;
+    /** @var ?string */
     private $encodedFilePath;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -32,7 +33,7 @@ class LocutionDto extends LocutionDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -70,8 +71,10 @@ class LocutionDto extends LocutionDtoAbstract
 
     /**
      * @param string $originalFilePath
+     *
+     * @return static
      */
-    public function setOriginalFilePath(string $originalFilePath = null)
+    public function setOriginalFilePath(string $originalFilePath = null): static
     {
         $this->originalFilePath = $originalFilePath;
         return $this;
@@ -87,8 +90,10 @@ class LocutionDto extends LocutionDtoAbstract
 
     /**
      * @param string $encodedFilePath
+     *
+     * @return static
      */
-    public function setEncodedFilePath(string $encodedFilePath = null)
+    public function setEncodedFilePath(string $encodedFilePath = null): static
     {
         $this->encodedFilePath = $encodedFilePath;
         return $this;

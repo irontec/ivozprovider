@@ -1,4 +1,5 @@
 .. _musiconhold:
+.. _music on hold:
 
 #############
 Music on Hold

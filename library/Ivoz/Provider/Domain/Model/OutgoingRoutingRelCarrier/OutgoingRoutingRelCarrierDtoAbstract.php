@@ -17,25 +17,28 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var TpRatingProfileDto[] | null
      */
-    private $tpRatingProfiles;
+    private $tpRatingProfiles = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -44,7 +47,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -58,9 +61,9 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'id' => $this->getId(),
@@ -90,7 +93,7 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

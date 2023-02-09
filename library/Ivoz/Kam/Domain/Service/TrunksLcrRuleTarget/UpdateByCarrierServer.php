@@ -13,22 +13,12 @@ use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandle
  */
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = LcrGatewayUpdateByCarrierServer::POST_PERSIST_PRIORITY + 10;
-    const POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = LcrGatewayUpdateByCarrierServer::POST_PERSIST_PRIORITY + 10;
+    public const POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var TrunksLcrRuleTargetFactory
-     */
-    protected $lcrRuleTargetFactory;
-
-    /**
-     * CreateByCarrierServer constructor.
-     * @param TrunksLcrRuleTargetFactory $lcrRuleTargetFactory
-     */
     public function __construct(
-        TrunksLcrRuleTargetFactory $lcrRuleTargetFactory
+        private TrunksLcrRuleTargetFactory $lcrRuleTargetFactory
     ) {
-        $this->lcrRuleTargetFactory = $lcrRuleTargetFactory;
     }
 
     public static function getSubscribedEvents()

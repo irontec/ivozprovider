@@ -1,20 +1,24 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import CallAcl from './CallAcl';
 
-const CallAclSelectOptions = (callback: Function) => {
+const CallAclSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
+  return defaultEntityBehavior.fetchFks(
+    CallAcl.path,
+    ['id', 'name'],
+    (data: any) => {
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = item.name;
+      }
 
-    defaultEntityBehavior.fetchFks(
-        '/call_acls',
-        ['id', 'name'],
-        (data:any) => {
-
-            const options:any = {};
-            for (const item of data) {
-                options[item.id] = item.name;
-            }
-
-            callback(options);
-        }
-    );
-}
+      callback(options);
+    },
+    cancelToken
+  );
+};
 
 export default CallAclSelectOptions;

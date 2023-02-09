@@ -1,0 +1,58 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage
+  fields:
+    voicemail:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+    calldate:
+      title: _('Calldate')
+      type: picker
+      defaultValue: 0000-00-00 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    folder:
+      title: _('Folder')
+      type: text
+      maxLength: 64
+    caller:
+      title: _('Caller')
+      type: text
+      maxLength: 128
+    duration:
+      title: _('Duration')
+      type: text
+      search:
+        as: numeric
+    recordingFile:
+      title: _('Recording file')
+      type: file
+      source:
+        data: fso
+        options:
+          download:
+            external: true
+            type: command
+            target: voicemailMessagesRecordingFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -3,6 +3,9 @@
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 
 /**
@@ -10,8 +13,18 @@ use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 */
 interface TpRateInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array;
 
-    public function getChangeSet();
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Validate RateIncrement has valid unit
@@ -22,6 +35,26 @@ interface TpRateInterface extends LoggableEntityInterface
      * Validate GroupIntervalStart has valid unit
      */
     public function setGroupIntervalStart(string $groupIntervalStart): static;
+
+    public static function createDto(string|int|null $id = null): TpRateDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TpRateInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpRateDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param TpRateDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TpRateDto;
 
     public function getTpid(): string;
 

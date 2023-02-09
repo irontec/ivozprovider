@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
 use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
+/** @psalm-suppress UnusedProperty */
 class SpecialNumberDto extends SpecialNumberDtoAbstract
 {
     /**
@@ -14,9 +15,9 @@ class SpecialNumberDto extends SpecialNumberDtoAbstract
      *     description="Global Special Number"
      * )
      */
-    protected $global;
+    private $global;
 
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -39,7 +40,7 @@ class SpecialNumberDto extends SpecialNumberDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(...func_get_args());
 
@@ -54,7 +55,7 @@ class SpecialNumberDto extends SpecialNumberDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
 

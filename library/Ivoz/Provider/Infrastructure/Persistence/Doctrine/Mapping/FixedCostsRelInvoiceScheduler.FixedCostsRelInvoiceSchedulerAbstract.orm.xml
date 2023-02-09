@@ -9,6 +9,18 @@
         <option name="unsigned">1</option>
       </options>
     </field>
+    <field name="type" type="string" column="type" length="25" nullable="false">
+      <options>
+        <option name="comment">[enum:static|maxcalls|ddis]</option>
+        <option name="default">static</option>
+      </options>
+    </field>
+    <field name="ddisCountryMatch" type="string" column="ddisCountryMatch" length="25" nullable="true">
+      <options>
+        <option name="comment">[enum:all|national|international|specific]</option>
+        <option name="default">all</option>
+      </options>
+    </field>
     <many-to-one field="fixedCost" target-entity="Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface" fetch="LAZY">
       <join-columns>
         <join-column name="fixedCostId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
@@ -17,6 +29,11 @@
     <many-to-one field="invoiceScheduler" target-entity="Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface" inversed-by="relFixedCosts" fetch="LAZY">
       <join-columns>
         <join-column name="invoiceSchedulerId" referenced-column-name="id" on-delete="CASCADE" nullable=""/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="ddisCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="ddisCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="true"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

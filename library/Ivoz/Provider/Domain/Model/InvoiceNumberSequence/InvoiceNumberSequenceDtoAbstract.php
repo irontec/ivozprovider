@@ -15,24 +15,24 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $prefix = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $sequenceLength;
+    private $sequenceLength = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $increment;
+    private $increment = null;
 
     /**
      * @var string|null
@@ -40,25 +40,28 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     private $latestValue = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $iteration = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $version = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -67,7 +70,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -87,9 +90,9 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -117,7 +120,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -129,7 +132,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->name;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 
@@ -141,7 +144,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->prefix;
     }
 
-    public function setSequenceLength(?int $sequenceLength): static
+    public function setSequenceLength(int $sequenceLength): static
     {
         $this->sequenceLength = $sequenceLength;
 
@@ -153,7 +156,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->sequenceLength;
     }
 
-    public function setIncrement(?int $increment): static
+    public function setIncrement(int $increment): static
     {
         $this->increment = $increment;
 
@@ -177,7 +180,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->latestValue;
     }
 
-    public function setIteration(?int $iteration): static
+    public function setIteration(int $iteration): static
     {
         $this->iteration = $iteration;
 
@@ -189,7 +192,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this->iteration;
     }
 
-    public function setVersion(?int $version): static
+    public function setVersion(int $version): static
     {
         $this->version = $version;
 
@@ -208,7 +211,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

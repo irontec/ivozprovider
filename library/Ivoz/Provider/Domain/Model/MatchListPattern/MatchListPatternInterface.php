@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 
@@ -11,21 +14,48 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface MatchListPatternInterface extends LoggableEntityInterface
 {
-    const TYPE_NUMBER = 'number';
+    public const TYPE_NUMBER = 'number';
 
-    const TYPE_REGEXP = 'regexp';
+    public const TYPE_REGEXP = 'regexp';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Get Number value in E.164 format
      * @return string
      */
     public function getNumberE164();
+
+    public static function createDto(string|int|null $id = null): MatchListPatternDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|MatchListPatternInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MatchListPatternDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param MatchListPatternDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): MatchListPatternDto;
 
     public function getDescription(): ?string;
 

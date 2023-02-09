@@ -6,10 +6,11 @@ use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddress;
 class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
 {
     protected $_mainRouter;
-    
+
     public function init()
     {
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter"))
             || (!is_object($this->_mainRouter))
         ) {
             throw new Zend_Exception(
@@ -22,7 +23,7 @@ class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
             ->ContextSwitch()
             ->addActionContext('index', 'json')
             ->initContext('json');
-  
+
         $this->_helper->layout->disableLayout();
     }
 
@@ -53,7 +54,7 @@ class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Unbanned address"
                 ),
-                'message'=> $msg,
+                'message' => $msg,
                 'buttons' => [
                     $this->_helper->translate('Accept') => [
                         'reloadParent' => true,
@@ -66,7 +67,7 @@ class KlearCustomBruteForceUnbanController extends Zend_Controller_Action
                 'title' => $this->_helper->translate(
                     "Unban address"
                 ),
-                'message'=> $this->_helper->translate(
+                'message' => $this->_helper->translate(
                     'Do you really want to unban selected item?'
                 ),
                 'buttons' => [

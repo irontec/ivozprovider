@@ -16,60 +16,63 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $status = null;
 
     /**
      * @var int|null
      */
-    private $originalFileFileSize;
-
-    /**
-     * @var string|null
-     */
-    private $originalFileMimeType;
-
-    /**
-     * @var string|null
-     */
-    private $originalFileBaseName;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $encodedFileFileSize;
+    private $originalFileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $encodedFileMimeType;
+    private $originalFileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $encodedFileBaseName;
+    private $originalFileBaseName = null;
+
+    /**
+     * @var int|null
+     */
+    private $encodedFileFileSize = null;
+
+    /**
+     * @var string|null
+     */
+    private $encodedFileMimeType = null;
+
+    /**
+     * @var string|null
+     */
+    private $encodedFileBaseName = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -78,7 +81,7 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -104,9 +107,9 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -140,7 +143,7 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -171,7 +174,7 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

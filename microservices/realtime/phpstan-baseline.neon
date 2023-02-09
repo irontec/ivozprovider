@@ -1,0 +1,482 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#2 \\$redisPoolSize of method Services\\\\AbstractWsServer\\:\\:start\\(\\) expects int, array\\|bool\\|float\\|int\\|string\\|UnitEnum\\|null given\\.$#"
+			count: 1
+			path: src/App.php
+
+		-
+			message: "#^Parameter \\#3 \\$redisDb of method Services\\\\AbstractWsServer\\:\\:start\\(\\) expects int, array\\|bool\\|float\\|int\\|string\\|UnitEnum\\|null given\\.$#"
+			count: 1
+			path: src/App.php
+
+		-
+			message: "#^Method Feeder\\\\AbstractCall\\:\\:callSetup\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/AbstractCall.php
+
+		-
+			message: "#^Method Feeder\\\\AbstractCall\\:\\:hangUp\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/AbstractCall.php
+
+		-
+			message: "#^Method Feeder\\\\AbstractCall\\:\\:inCall\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/AbstractCall.php
+
+		-
+			message: "#^Method Feeder\\\\AbstractCall\\:\\:progress\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/AbstractCall.php
+
+		-
+			message: "#^Method Feeder\\\\AbstractCall\\:\\:ringing\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/AbstractCall.php
+
+		-
+			message: "#^Method class@anonymous/Feeder/Feeder\\.php\\:10\\:\\:progress\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/Feeder.php
+
+		-
+			message: "#^Method class@anonymous/Feeder/Feeder\\.php\\:10\\:\\:redisPush\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/Feeder.php
+
+		-
+			message: "#^Method class@anonymous/Feeder/Feeder\\.php\\:10\\:\\:redisPush\\(\\) has parameter \\$payload with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/Feeder.php
+
+		-
+			message: "#^Offset 'Event' does not exist on array\\|null\\.$#"
+			count: 3
+			path: src/Feeder/Feeder.php
+
+		-
+			message: "#^Parameter \\#2 \\$channel of method class@anonymous/Feeder/Feeder\\.php\\:10\\:\\:redisPush\\(\\) expects string, int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Feeder/Feeder.php
+
+		-
+			message: "#^Method Feeder\\\\RandomStringGenerator\\:\\:alphaNum\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/RandomStringGenerator.php
+
+		-
+			message: "#^Method Feeder\\\\RandomStringGenerator\\:\\:alphaNum\\(\\) has parameter \\$length with no typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/RandomStringGenerator.php
+
+		-
+			message: "#^Method Feeder\\\\RandomStringGenerator\\:\\:numberic\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/RandomStringGenerator.php
+
+		-
+			message: "#^Method Feeder\\\\RandomStringGenerator\\:\\:numberic\\(\\) has parameter \\$length with no typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/RandomStringGenerator.php
+
+		-
+			message: "#^Method Feeder\\\\TrunksCall\\:\\:callSetup\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/TrunksCall.php
+
+		-
+			message: "#^Method Feeder\\\\UsersCall\\:\\:callSetup\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/UsersCall.php
+
+		-
+			message: "#^Method Feeder\\\\UsersCall\\:\\:progress\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/UsersCall.php
+
+		-
+			message: "#^Method Feeder\\\\UsersCall\\:\\:updateClid\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Feeder/UsersCall.php
+
+		-
+			message: "#^Property Feeder\\\\UsersCall\\:\\:\\$party has no typehint specified\\.$#"
+			count: 1
+			path: src/Feeder/UsersCall.php
+
+		-
+			message: "#^Method Model\\\\Message\\:\\:__construct\\(\\) has parameter \\$payload with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/Message.php
+
+		-
+			message: "#^Property Model\\\\Message\\:\\:\\$event has no typehint specified\\.$#"
+			count: 1
+			path: src/Model/Message.php
+
+		-
+			message: "#^Method Model\\\\Subscriber\\:\\:__construct\\(\\) has parameter \\$fd with no typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Method Model\\\\Subscriber\\:\\:getFd\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Method Model\\\\Subscriber\\:\\:subscribe\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Method Model\\\\Subscriber\\:\\:unSubscribe\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Property Model\\\\Subscriber\\:\\:\\$chanel has no typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Property Model\\\\Subscriber\\:\\:\\$fd has no typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Property Model\\\\Subscriber\\:\\:\\$redisClient has no typehint specified\\.$#"
+			count: 1
+			path: src/Model/Subscriber.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:__construct\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:bindClientEvents\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:bindWorkerEvents\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:onClose\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:onMessage\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:onOpen\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:onWorkerError\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:onWorkerStart\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:onWorkerStop\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:reload\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:shutdown\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\AbstractWsServer\\:\\:start\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/AbstractWsServer.php
+
+		-
+			message: "#^Method Services\\\\JwtToken\\:\\:getPayload\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/JwtToken.php
+
+		-
+			message: "#^Property Services\\\\JwtToken\\:\\:\\$jwtManager has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/JwtToken.php
+
+		-
+			message: "#^Method Services\\\\RedisClientFactory\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisClientFactory.php
+
+		-
+			message: "#^Method Services\\\\RedisPool\\:\\:canIncreasePool\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Method Services\\\\RedisPool\\:\\:close\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Method Services\\\\RedisPool\\:\\:connect\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Method Services\\\\RedisPool\\:\\:createClient\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Method Services\\\\RedisPool\\:\\:get\\(\\) has parameter \\$force with no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Method Services\\\\RedisPool\\:\\:push\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$connected has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$db has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$host has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$maxPoolSize has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$poolSize has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$port has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Property Services\\\\RedisPool\\:\\:\\$waiting has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RedisPool.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:assertAccessGranted\\(\\) has parameter \\$registerCriteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:assertAccessGranted\\(\\) has parameter \\$tokenPayload with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:assertBrand\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:assertBrandAdminAccessGranted\\(\\) has parameter \\$registerCriteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:assertClientAdminAccessGranted\\(\\) has parameter \\$registerCriteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:criteriaToString\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:criteriaToString\\(\\) has parameter \\$registerCriteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:criteriaToString\\(\\) has parameter \\$tokenPayload with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:toString\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\RegistrationChannelResolver\\:\\:toString\\(\\) has parameter \\$registerCriteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Property Services\\\\RegistrationChannelResolver\\:\\:\\$administratorRepository has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Property Services\\\\RegistrationChannelResolver\\:\\:\\$carrierRepository has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Property Services\\\\RegistrationChannelResolver\\:\\:\\$companyRepository has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Property Services\\\\RegistrationChannelResolver\\:\\:\\$ddiProviderRepository has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Property Services\\\\RegistrationChannelResolver\\:\\:\\$em has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/RegistrationChannelResolver.php
+
+		-
+			message: "#^Method Services\\\\Sentinel\\:\\:subscribe\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/Sentinel.php
+
+		-
+			message: "#^Cannot call method connect\\(\\) on Services\\\\RedisPool\\|null\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Cannot call method forcedGet\\(\\) on Services\\\\RedisPool\\|null\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Cannot call method get\\(\\) on Services\\\\RedisPool\\|null\\.$#"
+			count: 3
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Cannot call method push\\(\\) on Services\\\\RedisPool\\|null\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:__construct\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:forwardStateUpdates\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:forwardStateUpdates\\(\\) has parameter \\$fd with no typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:initRedisControlClients\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:onClose\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:onMessage\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:onOpen\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:onWorkerStart\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:sendCurrentState\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:sendCurrentState\\(\\) has parameter \\$fd with no typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:sendCurrentStateAndUpdates\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:sendCurrentStateAndUpdates\\(\\) has parameter \\$fd with no typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:subscribeToSentinel\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:updateCurrentCallsStatus\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Method Services\\\\WsServer\\:\\:updateCurrentCallsStatus\\(\\) has parameter \\$msg with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Property Services\\\\WsServer\\:\\:\\$jwtToken has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+
+		-
+			message: "#^Property Services\\\\WsServer\\:\\:\\$registrationChannelResolver has no typehint specified\\.$#"
+			count: 1
+			path: src/Services/WsServer.php
+

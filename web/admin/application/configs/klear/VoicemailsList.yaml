@@ -1,0 +1,171 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include VoicemailMessagesList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: voicemailsList_screen
+  screens: &voicemails_screensLink
+    voicemailsList_screen: &voicemailsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      order:
+        field:
+          - Voicemail.name asc
+      <<: *Voicemails
+      class: ui-silk-email
+      title: _("List of %s %2s", ngettext('Voicemail', 'Voicemails', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/client/vpbx/voicemails.html"
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            voicemailsEdit_screen: ${auth.acls.Voicemails.update}
+            voicemailsEditLimited_screen: ${auth.acls.Voicemails.update}
+            voicemailMessagesList_screen: true
+          dialogs:
+            voicemailsDel_dialog: ${auth.acls.Voicemails.delete}
+        order: &voicemails_orderLink
+          enabled: true
+          name: true
+          sendMail: true
+          email: true
+          attachSound: true
+          locution: true
+        blacklist:
+          user: true
+          residentialDevice: true
+          sendMail: true
+          attachSound: true
+          locution: true
+      options:
+        title: _("Options")
+        screens:
+          voicemailsNew_screen: $[${auth.acls.Voicemails.create} && ${auth.companyVPBX}]
+
+    voicemailsNew_screen: &voicemailsNew_screenLink
+      <<: *Voicemails
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Voicemail', 'Voicemails', 1))
+      shortcutOption: N
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        order:
+          <<: *voicemails_orderLink
+        blacklist:
+          company: true
+          user: true
+          residentialDevice: true
+      fixedPositions: &voicemailsFixedPositions_link
+        group0:
+          label: _("Basic Configuration")
+          colsPerRow: 16
+          fields:
+            enabled: 4
+            name: 8
+        group1:
+          label: _("Notification Configuration")
+          colsPerRow: 16
+          fields:
+            sendMail: 4
+            email: 8
+            attachSound: 4
+        group2:
+          label: _("Customization")
+          colsPerRow: 16
+          fields:
+            locution: 8
+
+    voicemailsEdit_screen: &voicemailsEdit_screenLink
+      <<: *Voicemails
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Voicemail', 'Voicemails', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          user: true
+          residentialDevice: true
+        order:
+          <<: *voicemails_orderLink
+      fixedPositions:
+          <<: *voicemailsFixedPositions_link
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForVoicemail
+
+    voicemailsEditLimited_screen: &voicemailsEdit_screenLink
+      <<: *Voicemails
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Voicemail', 'Voicemails', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        blacklist:
+          user: true
+          residentialDevice: true
+        readOnly:
+          name: true
+          email: ${auth.companyVPBX}
+        order:
+          <<: *voicemails_orderLink
+      fixedPositions:
+        <<: *voicemailsFixedPositions_link
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForVoicemail
+
+    # VoicemailMessages
+    <<: *voicemailMessages_screensLink
+    voicemailMessagesList_screen:
+      <<: *voicemailMessagesList_screenLink
+      title: _("List of %s %2s", ngettext('Voicemail Message', 'Voicemail Messages', 0), "[format| (%parent%)]")
+      filterField: Voicemail
+      parentOptionCustomizer:
+        - recordCount
+    voicemailMessagesView_screen:
+      <<: *voicemailMessagesView_screenLink
+      filterField: Voicemail
+
+  dialogs: &voicemails_dialogsLink
+    voicemailsDel_dialog: &voicemailsDel_dialogLink
+      <<: *Voicemails
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Voicemail', 'Voicemails', 1))
+      description: _("Do you want to delete this %s?", ngettext('Voicemail', 'Voicemails', 1))
+      message: _("%s successfully deleted.", ngettext('Voicemail', 'Voicemails', 1))
+      multiItem: 1
+      labelOnList: 1
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForVoicemail
+
+    # VoicemailMessages
+    <<: *voicemailMessages_dialogsLink
+
+  commands: &voicemails_commandsLink
+    # VoicemailMessages
+    <<: *voicemailMessages_commandsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

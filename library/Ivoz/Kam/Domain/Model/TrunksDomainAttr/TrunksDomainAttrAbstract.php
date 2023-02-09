@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksDomainAttr;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
@@ -39,8 +40,8 @@ abstract class TrunksDomainAttrAbstract
     protected $value;
 
     /**
-     * column: last_modified
      * @var \DateTime
+     * column: last_modified
      */
     protected $lastModified;
 
@@ -48,11 +49,11 @@ abstract class TrunksDomainAttrAbstract
      * Constructor
      */
     protected function __construct(
-        $did,
-        $name,
-        $type,
-        $value,
-        $lastModified
+        string $did,
+        string $name,
+        int $type,
+        string $value,
+        \DateTimeInterface|string $lastModified
     ) {
         $this->setDid($did);
         $this->setName($name);
@@ -61,41 +62,34 @@ abstract class TrunksDomainAttrAbstract
         $this->setLastModified($lastModified);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksDomainAttr",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksDomainAttrDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksDomainAttrDto
     {
         return new TrunksDomainAttrDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksDomainAttrInterface|null $entity
-     * @param int $depth
-     * @return TrunksDomainAttrDto|null
+     * @param null|TrunksDomainAttrInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksDomainAttrDto
     {
         if (!$entity) {
             return null;
@@ -111,8 +105,7 @@ abstract class TrunksDomainAttrAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksDomainAttrDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -121,20 +114,29 @@ abstract class TrunksDomainAttrAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksDomainAttrDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
+        $did = $dto->getDid();
+        Assertion::notNull($did, 'getDid value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $value = $dto->getValue();
+        Assertion::notNull($value, 'getValue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDid(),
-            $dto->getName(),
-            $dto->getType(),
-            $dto->getValue(),
-            $dto->getLastModified()
+            $did,
+            $name,
+            $type,
+            $value,
+            $lastModified
         );
 
         ;
@@ -147,30 +149,38 @@ abstract class TrunksDomainAttrAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksDomainAttrDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksDomainAttrDto::class);
 
+        $did = $dto->getDid();
+        Assertion::notNull($did, 'getDid value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $value = $dto->getValue();
+        Assertion::notNull($value, 'getValue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+
         $this
-            ->setDid($dto->getDid())
-            ->setName($dto->getName())
-            ->setType($dto->getType())
-            ->setValue($dto->getValue())
-            ->setLastModified($dto->getLastModified());
+            ->setDid($did)
+            ->setName($name)
+            ->setType($type)
+            ->setValue($value)
+            ->setLastModified($lastModified);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksDomainAttrDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksDomainAttrDto
     {
         return self::createDto()
             ->setDid(self::getDid())
@@ -181,9 +191,9 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'did' => self::getDid(),
@@ -250,15 +260,16 @@ abstract class TrunksDomainAttrAbstract
         return $this->value;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 

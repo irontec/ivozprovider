@@ -1,38 +1,48 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import TerminalModelSelectOptions from '../TerminalModel/SelectOptions';
-import { useEffect, useState } from 'react';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const { entityService, row, match } = props;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const edit = props.edit || false;
+  const groups: Array<FieldsetGroups | false> = [
+    {
+      legend: _('Login Info'),
+      fields: ['name', 'password'],
+    },
+    edit && {
+      legend: _('Connection Info'),
+      fields: [
+        'allowAudio',
+        'allowVideo',
+        'directMediaMethod',
+        't38Passthrough',
+        'rtpEncryption',
+      ],
+    },
+    {
+      legend: _('Provisioning Info'),
+      fields: ['terminalModel', 'mac', edit && 'lastProvisionDate'],
+    },
+    {
+      legend: _('Status'),
+      fields: ['status'],
+    },
+  ];
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
-
-    useEffect(
-        () => {
-            if (loadingFks) {
-                TerminalModelSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            terminalModel: options
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+};
 
 export default Form;

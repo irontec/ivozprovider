@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
 
 class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 {
-    const CONTEXT_WITH_PATTERNS = 'withPatterns';
+    public const CONTEXT_WITH_PATTERNS = 'withPatterns';
 
-    const CONTEXTS_WITH_PATTERNS = [
+    public const CONTEXTS_WITH_PATTERNS = [
         self::CONTEXT_WITH_PATTERNS,
         self::CONTEXT_DETAILED
     ];
@@ -22,13 +22,13 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
      *     description="Binded routing patterns"
      * )
      */
-    protected $patternIds = [];
+    private $patternIds = [];
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -51,7 +51,7 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -64,7 +64,7 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
         );
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -80,8 +80,10 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 
     /**
      * @param int[] $patternIds
+     *
+     * @return void
      */
-    public function setPatternIds(array $patternIds)
+    public function setPatternIds(array $patternIds): void
     {
         $this->patternIds = $patternIds;
 

@@ -47,6 +47,7 @@ class UpdateByCarrierServerSpec extends ObjectBehavior
         $this->getterProphecy(
             $this->carrierServer,
             [
+                'getName' => '',
                 'getLcrGateway' => $lcrGateway
             ],
             true

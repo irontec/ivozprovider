@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
@@ -13,9 +14,9 @@ use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 trait DdiProviderRegistrationTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TrunksUacregInterface
@@ -31,27 +32,25 @@ trait DdiProviderRegistrationTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderRegistrationDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTrunksUacreg())) {
-            $self->setTrunksUacreg(
-                $fkTransformer->transform(
-                    $dto->getTrunksUacreg()
-                )
+            /** @var TrunksUacregInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTrunksUacreg()
             );
+            $self->setTrunksUacreg($entity);
         }
 
         $self->sanitizeValues();
@@ -66,20 +65,18 @@ trait DdiProviderRegistrationTrait
     /**
      * @internal use EntityTools instead
      * @param DdiProviderRegistrationDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTrunksUacreg())) {
-            $this->setTrunksUacreg(
-                $fkTransformer->transform(
-                    $dto->getTrunksUacreg()
-                )
+            /** @var TrunksUacregInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTrunksUacreg()
             );
+            $this->setTrunksUacreg($entity);
         }
         $this->sanitizeValues();
 
@@ -88,10 +85,8 @@ trait DdiProviderRegistrationTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DdiProviderRegistrationDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DdiProviderRegistrationDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -99,9 +94,9 @@ trait DdiProviderRegistrationTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -112,7 +107,6 @@ trait DdiProviderRegistrationTrait
     {
         $this->trunksUacreg = $trunksUacreg;
 
-        /** @var  $this */
         return $this;
     }
 

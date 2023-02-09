@@ -3,7 +3,11 @@
 namespace Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -16,13 +20,13 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryInterface;
@@ -34,36 +38,43 @@ use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterfac
 */
 interface CompanyInterface extends LoggableEntityInterface
 {
-    const TYPE_VPBX = 'vpbx';
+    public const TYPE_VPBX = 'vpbx';
 
-    const TYPE_RETAIL = 'retail';
+    public const TYPE_RETAIL = 'retail';
 
-    const TYPE_WHOLESALE = 'wholesale';
+    public const TYPE_WHOLESALE = 'wholesale';
 
-    const TYPE_RESIDENTIAL = 'residential';
+    public const TYPE_RESIDENTIAL = 'residential';
 
-    const DISTRIBUTEMETHOD_STATIC = 'static';
+    public const DISTRIBUTEMETHOD_STATIC = 'static';
 
-    const DISTRIBUTEMETHOD_RR = 'rr';
+    public const DISTRIBUTEMETHOD_RR = 'rr';
 
-    const DISTRIBUTEMETHOD_HASH = 'hash';
+    public const DISTRIBUTEMETHOD_HASH = 'hash';
 
-    const BILLINGMETHOD_POSTPAID = 'postpaid';
+    public const BILLINGMETHOD_POSTPAID = 'postpaid';
 
-    const BILLINGMETHOD_PREPAID = 'prepaid';
+    public const BILLINGMETHOD_PREPAID = 'prepaid';
 
-    const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
+    public const BILLINGMETHOD_PSEUDOPREPAID = 'pseudoprepaid';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * {@inheritDoc}
      */
     public function setName(string $name): static;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
@@ -82,7 +93,7 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    public function getFriend($exten);
+    public function getFriend($exten): ?FriendInterface;
 
     /**
      * @param string $exten
@@ -96,20 +107,22 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getTerminal($name);
 
-    /**
-     * @return string
-     */
-    public function getLanguageCode();
+    public function getLanguage(): LanguageInterface;
 
     /**
      * @return string
      */
-    public function getCurrencySymbol();
+    public function getLanguageCode(): string;
 
     /**
      * @return string
      */
-    public function getCurrencyIden();
+    public function getCurrencySymbol(): string;
+
+    /**
+     * @return string
+     */
+    public function getCurrencyIden(): string;
 
     /**
      * brief: Get musicclass for given company
@@ -173,7 +186,9 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getCgrSubject();
+    public function getCgrSubject(): string;
+
+    public function getSubcribeContext(): string;
 
     public function isVpbx(): bool;
 
@@ -182,6 +197,26 @@ interface CompanyInterface extends LoggableEntityInterface
     public function isResidential(): bool;
 
     public function isWholesale(): bool;
+
+    public static function createDto(string|int|null $id = null): CompanyDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CompanyInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CompanyDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param CompanyDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CompanyDto;
 
     public function getType(): string;
 
@@ -231,8 +266,6 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getShowInvoices(): ?bool;
 
-    public function getLanguage(): ?LanguageInterface;
-
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
 
     public function getDefaultTimezone(): ?TimezoneInterface;
@@ -271,95 +304,181 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function removeExtension(ExtensionInterface $extension): CompanyInterface;
 
-    public function replaceExtensions(ArrayCollection $extensions): CompanyInterface;
+    /**
+     * @param Collection<array-key, ExtensionInterface> $extensions
+     */
+    public function replaceExtensions(Collection $extensions): CompanyInterface;
 
+    /**
+     * @return array<array-key, ExtensionInterface>
+     */
     public function getExtensions(?Criteria $criteria = null): array;
 
     public function addDdi(DdiInterface $ddi): CompanyInterface;
 
     public function removeDdi(DdiInterface $ddi): CompanyInterface;
 
-    public function replaceDdis(ArrayCollection $ddis): CompanyInterface;
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): CompanyInterface;
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(?Criteria $criteria = null): array;
 
     public function addFriend(FriendInterface $friend): CompanyInterface;
 
     public function removeFriend(FriendInterface $friend): CompanyInterface;
 
-    public function replaceFriends(ArrayCollection $friends): CompanyInterface;
+    /**
+     * @param Collection<array-key, FriendInterface> $friends
+     */
+    public function replaceFriends(Collection $friends): CompanyInterface;
 
+    /**
+     * @return array<array-key, FriendInterface>
+     */
     public function getFriends(?Criteria $criteria = null): array;
 
     public function addCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 
     public function removeCompanyService(CompanyServiceInterface $companyService): CompanyInterface;
 
-    public function replaceCompanyServices(ArrayCollection $companyServices): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyServiceInterface> $companyServices
+     */
+    public function replaceCompanyServices(Collection $companyServices): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyServiceInterface>
+     */
     public function getCompanyServices(?Criteria $criteria = null): array;
 
     public function addTerminal(TerminalInterface $terminal): CompanyInterface;
 
     public function removeTerminal(TerminalInterface $terminal): CompanyInterface;
 
-    public function replaceTerminals(ArrayCollection $terminals): CompanyInterface;
+    /**
+     * @param Collection<array-key, TerminalInterface> $terminals
+     */
+    public function replaceTerminals(Collection $terminals): CompanyInterface;
 
+    /**
+     * @return array<array-key, TerminalInterface>
+     */
     public function getTerminals(?Criteria $criteria = null): array;
 
     public function addRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface;
 
     public function removeRatingProfile(RatingProfileInterface $ratingProfile): CompanyInterface;
 
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CompanyInterface;
+    /**
+     * @param Collection<array-key, RatingProfileInterface> $ratingProfiles
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles): CompanyInterface;
 
+    /**
+     * @return array<array-key, RatingProfileInterface>
+     */
     public function getRatingProfiles(?Criteria $criteria = null): array;
 
     public function addMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface;
 
     public function removeMusicsOnHold(MusicOnHoldInterface $musicsOnHold): CompanyInterface;
 
-    public function replaceMusicsOnHold(ArrayCollection $musicsOnHold): CompanyInterface;
+    /**
+     * @param Collection<array-key, MusicOnHoldInterface> $musicsOnHold
+     */
+    public function replaceMusicsOnHold(Collection $musicsOnHold): CompanyInterface;
 
+    /**
+     * @return array<array-key, MusicOnHoldInterface>
+     */
     public function getMusicsOnHold(?Criteria $criteria = null): array;
+
+    public function addVoicemail(VoicemailInterface $voicemail): CompanyInterface;
+
+    public function removeVoicemail(VoicemailInterface $voicemail): CompanyInterface;
+
+    /**
+     * @param Collection<array-key, VoicemailInterface> $voicemails
+     */
+    public function replaceVoicemails(Collection $voicemails): CompanyInterface;
+
+    /**
+     * @return array<array-key, VoicemailInterface>
+     */
+    public function getVoicemails(?Criteria $criteria = null): array;
 
     public function addRecording(RecordingInterface $recording): CompanyInterface;
 
     public function removeRecording(RecordingInterface $recording): CompanyInterface;
 
-    public function replaceRecordings(ArrayCollection $recordings): CompanyInterface;
+    /**
+     * @param Collection<array-key, RecordingInterface> $recordings
+     */
+    public function replaceRecordings(Collection $recordings): CompanyInterface;
 
+    /**
+     * @return array<array-key, RecordingInterface>
+     */
     public function getRecordings(?Criteria $criteria = null): array;
 
     public function addRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface;
 
     public function removeRelFeature(FeaturesRelCompanyInterface $relFeature): CompanyInterface;
 
-    public function replaceRelFeatures(ArrayCollection $relFeatures): CompanyInterface;
+    /**
+     * @param Collection<array-key, FeaturesRelCompanyInterface> $relFeatures
+     */
+    public function replaceRelFeatures(Collection $relFeatures): CompanyInterface;
 
+    /**
+     * @return array<array-key, FeaturesRelCompanyInterface>
+     */
     public function getRelFeatures(?Criteria $criteria = null): array;
 
     public function addRelCountry(CompanyRelGeoIPCountryInterface $relCountry): CompanyInterface;
 
     public function removeRelCountry(CompanyRelGeoIPCountryInterface $relCountry): CompanyInterface;
 
-    public function replaceRelCountries(ArrayCollection $relCountries): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyRelGeoIPCountryInterface> $relCountries
+     */
+    public function replaceRelCountries(Collection $relCountries): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyRelGeoIPCountryInterface>
+     */
     public function getRelCountries(?Criteria $criteria = null): array;
 
     public function addRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface;
 
     public function removeRelCodec(CompanyRelCodecInterface $relCodec): CompanyInterface;
 
-    public function replaceRelCodecs(ArrayCollection $relCodecs): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyRelCodecInterface> $relCodecs
+     */
+    public function replaceRelCodecs(Collection $relCodecs): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyRelCodecInterface>
+     */
     public function getRelCodecs(?Criteria $criteria = null): array;
 
     public function addRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface;
 
     public function removeRelRoutingTag(CompanyRelRoutingTagInterface $relRoutingTag): CompanyInterface;
 
-    public function replaceRelRoutingTags(ArrayCollection $relRoutingTags): CompanyInterface;
+    /**
+     * @param Collection<array-key, CompanyRelRoutingTagInterface> $relRoutingTags
+     */
+    public function replaceRelRoutingTags(Collection $relRoutingTags): CompanyInterface;
 
+    /**
+     * @return array<array-key, CompanyRelRoutingTagInterface>
+     */
     public function getRelRoutingTags(?Criteria $criteria = null): array;
 }

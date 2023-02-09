@@ -16,9 +16,9 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,7 +26,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'file' => [
@@ -46,18 +46,9 @@ class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, F
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setCalldate($calldate = null): static
-    {
-        if (!$calldate) {
-            $calldate = new \DateTime(null, new \DateTimeZone('UTC'));
-        }
-
-        return parent::setCalldate($calldate);
     }
 
     /**

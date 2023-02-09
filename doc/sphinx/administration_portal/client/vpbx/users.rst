@@ -14,8 +14,6 @@ in this section.
 Personal data
 *************
 
-.. glossary::
-
     Name
         Used to identify this user in most of the screens. This is also the 
         name that will be displayed in internal calls made from this user.
@@ -27,9 +25,12 @@ Personal data
         Email used to send the user's received voicemails. This is also used to 
         identify the user in their portal.
 
-    Country code / Area code
-        Defines the way the user calls and the way the numbers are presented to 
-        this user.
+
+************************
+Geographic Configuration
+************************
+
+.. glossary::
 
     Language
         When a locution is played to this user, this language is used.
@@ -37,12 +38,17 @@ Personal data
     Timezone
         User portal call list times will use this timezone.
 
+    Numeric transformation
+        Defines how numbers are converted from user format to E.164 and
+        the other way around.
+
+    Location
+        User geographical location where the user is working at.
+
 
 **********
 Login Info
 **********
-
-.. glossary::
 
     Active
         Allows administrators to grant or disable user's acces to the 
@@ -59,8 +65,6 @@ Login Info
 Basic Configuration
 *******************
 
-
-.. glossary::
 
     Terminal
         The available terminals created in :ref:`terminals` are listed here 
@@ -109,33 +113,6 @@ Basic Configuration
         current device for 480/486. Choose whether you want to force one behaviour or another no
         matter which response code your SIP device sends on call rejection.
 
-*********
-Voicemail
-*********
-
-
-.. glossary::
-
-    VoiceMail enabled
-        Enables or disables the **existance** of a users voicemail.
-        This only makes the voicemail available to be routed as destination of a call forwarding.
-
-    Voicemail Locution
-        If set, this locution is played as voicemail welcome message when a voicemail
-        for this user is going to be recorded. This only applies for call forwards
-        to voicemail.
-
-    Email notification
-        Send an email to the configured user address when a new voicemail is 
-        received.
-
-    Attach sounds:
-        Attach the audio message to the sent email.
-
-.. note:: If voicemail locution is not assigned, default locution will be used as long as
-          the user has not recorded a custom message through the voicemail menu (calling to
-          voicemail service code).
-
 **************
 Boss-Assistant
 **************
@@ -147,8 +124,6 @@ This feature will turn the user into a boss that can only be directly call by:
 - Any origin that matches the white list.
 
 The rest of the calls to *a boss* will be redirected to the assistant.
-
-.. glossary::
 
     Is boss
         Determines if this user is a boss.
@@ -184,8 +159,6 @@ User Call Forward
 The user's call forward can be configured with the **List of call forward settings**  button.
 
 These are the fields and available values:
-
-.. glossary::
 
     Call Type
         Determines if the forward must be applied to external, internal or any 

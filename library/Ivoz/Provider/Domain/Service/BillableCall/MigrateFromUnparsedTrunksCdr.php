@@ -9,23 +9,14 @@ use Psr\Log\LoggerInterface;
 
 class MigrateFromUnparsedTrunksCdr
 {
-    const BATCH_SIZE = 100;
-
-    protected $trunksCdrRepository;
-    protected $entityTools;
-    protected $migrateFromTrunksCdr;
-    protected $logger;
+    public const BATCH_SIZE = 100;
 
     public function __construct(
-        TrunksCdrRepository  $trunksCdrRepository,
-        EntityTools $entityTools,
-        MigrateFromTrunksCdr $migrateFromTrunksCdr,
-        LoggerInterface $logger
+        private TrunksCdrRepository $trunksCdrRepository,
+        private EntityTools $entityTools,
+        private MigrateFromTrunksCdr $migrateFromTrunksCdr,
+        private LoggerInterface $logger
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
-        $this->entityTools = $entityTools;
-        $this->migrateFromTrunksCdr = $migrateFromTrunksCdr;
-        $this->logger = $logger;
     }
 
     /**
@@ -33,10 +24,9 @@ class MigrateFromUnparsedTrunksCdr
      */
     public function execute()
     {
-        /**
-         * @var \Generator
-         */
-        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(self::BATCH_SIZE);
+        $trunksGenerator = $this->trunksCdrRepository->getUnparsedCallsGeneratorWithoutOffset(
+            self::BATCH_SIZE
+        );
 
         $cdrCount = 0;
         foreach ($trunksGenerator as $trunks) {

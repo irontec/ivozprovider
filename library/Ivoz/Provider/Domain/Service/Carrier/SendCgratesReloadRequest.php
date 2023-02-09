@@ -9,14 +9,10 @@ use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 
 class SendCgratesReloadRequest extends CgratesReloadNotificator implements CarrierLifecycleEventHandlerInterface
 {
-
-    protected $tpAccountActionRepository;
-
     public function __construct(
-        TpAccountActionRepository $tpAccountActionRepository,
+        private TpAccountActionRepository $tpAccountActionRepository,
         RaterReloadInterface $cgratesReloadJob
     ) {
-        $this->tpAccountActionRepository = $tpAccountActionRepository;
         parent::__construct($cgratesReloadJob);
     }
 
@@ -32,7 +28,7 @@ class SendCgratesReloadRequest extends CgratesReloadNotificator implements Carri
         $tpAccountAction = $this
             ->tpAccountActionRepository
             ->findByCarrier(
-                $carrier->getId()
+                (int) $carrier->getId()
             );
 
         if (!$tpAccountAction) {

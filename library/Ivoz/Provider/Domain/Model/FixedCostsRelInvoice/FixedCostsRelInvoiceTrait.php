@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
@@ -12,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait FixedCostsRelInvoiceTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -24,19 +25,17 @@ trait FixedCostsRelInvoiceTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param FixedCostsRelInvoiceDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
@@ -52,13 +51,11 @@ trait FixedCostsRelInvoiceTrait
     /**
      * @internal use EntityTools instead
      * @param FixedCostsRelInvoiceDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();
@@ -68,10 +65,8 @@ trait FixedCostsRelInvoiceTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FixedCostsRelInvoiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FixedCostsRelInvoiceDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -79,9 +74,9 @@ trait FixedCostsRelInvoiceTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

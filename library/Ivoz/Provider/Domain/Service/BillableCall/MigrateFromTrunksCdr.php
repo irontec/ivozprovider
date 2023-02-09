@@ -7,41 +7,23 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Service\TrunksCdr\SetParsed;
-use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 
 class MigrateFromTrunksCdr
 {
-    protected $billableCallRepository;
-    protected $createOrUpdateBillableCallByTrunksCdr;
-    protected $domainEventPublisher;
-    protected $entityTools;
-    protected $setParsed;
-
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
-        EntityTools $entityTools,
-        DomainEventPublisher $domainEventPublisher,
-        SetParsed $setParsed
+        private BillableCallRepository $billableCallRepository,
+        private CreateOrUpdateByTrunksCdr $createOrUpdateBillableCallByTrunksCdr,
+        private EntityTools $entityTools,
+        private DomainEventPublisher $domainEventPublisher,
+        private SetParsed $setParsed
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->createOrUpdateBillableCallByTrunksCdr = $createOrUpdateBillableCallByTrunksCdr;
-        $this->domainEventPublisher = $domainEventPublisher;
-        $this->entityTools = $entityTools;
-        $this->setParsed = $setParsed;
     }
 
-    /**
-     * @return void
-     */
-    public function execute(TrunksCdrInterface $trunksCdr, $dispatchImmediately = false)
+    public function execute(TrunksCdrInterface $trunksCdr, bool $dispatchImmediately = false): void
     {
-        /**
-         * @var BillableCallInterface $billableCall
-         */
         $billableCall = $this->billableCallRepository->findOneByTrunksCdrId(
-            $trunksCdr->getId()
+            (int) $trunksCdr->getId()
         );
 
         $billableCall = $this

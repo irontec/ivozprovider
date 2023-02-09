@@ -3,10 +3,13 @@
 namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 
 /**
@@ -14,35 +17,58 @@ use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 */
 interface QueueInterface extends LoggableEntityInterface
 {
-    const TIMEOUTTARGETTYPE_NUMBER = 'number';
+    public const TIMEOUTTARGETTYPE_NUMBER = 'number';
 
-    const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
+    public const TIMEOUTTARGETTYPE_EXTENSION = 'extension';
 
-    const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const TIMEOUTTARGETTYPE_VOICEMAIL = 'voicemail';
 
-    const FULLTARGETTYPE_NUMBER = 'number';
+    public const FULLTARGETTYPE_NUMBER = 'number';
 
-    const FULLTARGETTYPE_EXTENSION = 'extension';
+    public const FULLTARGETTYPE_EXTENSION = 'extension';
 
-    const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const FULLTARGETTYPE_VOICEMAIL = 'voicemail';
+
+    public const STRATEGY_RINGALL = 'ringall';
+
+    public const STRATEGY_LEASTRECENT = 'leastrecent';
+
+    public const STRATEGY_FEWESTCALLS = 'fewestcalls';
+
+    public const STRATEGY_RANDOM = 'random';
+
+    public const STRATEGY_RRMEMORY = 'rrmemory';
+
+    public const STRATEGY_LINEAR = 'linear';
+
+    public const STRATEGY_WRANDOM = 'wrandom';
+
+    public const STRATEGY_RRORDERED = 'rrordered';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
      */
     public function setName(?string $name = null): static;
 
-    public function getAstQueueName();
+    public function getAstQueueName(): string;
 
     /**
      * @return string
      */
-    public function getTimeoutRouteType();
+    public function getTimeoutRouteType(): ?string;
 
     /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
@@ -54,7 +80,7 @@ interface QueueInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getFullRouteType();
+    public function getFullRouteType(): ?string;
 
     /**
      * Get the full numberValue in E.164 format when routing to 'number'
@@ -66,6 +92,26 @@ interface QueueInterface extends LoggableEntityInterface
     public function setMaxWaitTime(?int $maxWaitTime = null): static;
 
     public function setMaxlen(?int $maxlen = null): static;
+
+    public static function createDto(string|int|null $id = null): QueueDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|QueueInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?QueueDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param QueueDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): QueueDto;
 
     public function getName(): ?string;
 
@@ -101,13 +147,13 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function getTimeoutExtension(): ?ExtensionInterface;
 
-    public function getTimeoutVoiceMailUser(): ?UserInterface;
+    public function getTimeoutVoicemail(): ?VoicemailInterface;
 
     public function getFullLocution(): ?LocutionInterface;
 
     public function getFullExtension(): ?ExtensionInterface;
 
-    public function getFullVoiceMailUser(): ?UserInterface;
+    public function getFullVoicemail(): ?VoicemailInterface;
 
     public function getTimeoutNumberCountry(): ?CountryInterface;
 

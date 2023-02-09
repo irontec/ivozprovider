@@ -4,19 +4,19 @@ namespace Ivoz\Kam\Domain\Service;
 
 interface TrunksClientInterface
 {
-    const DIALPLAN_RELOAD_ACTION = 'dialplan.reload';
-    const DISPATCHER_RELOAD_ACTION = 'dispatcher.reload';
-    const LCR_RELOAD_ACTION = 'lcr.reload';
-    const PERMISSIONS_TRUSTED_RELOAD_ACTION = 'permissions.trustedReload';
-    const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
-    const UAC_REG_RELOAD_ACTION = 'uac.reg_reload';
-    const UAC_REG_INFO_ACTION = 'uac.reg_info';
-    const LCR_DUMP_GWS_ACTION = 'lcr.dump_gws';
-    const DLG_PROFILE_GET_SIZE = 'dlg.profile_get_size';
-    const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
-    const CGRATES_ENABLED_ACTION = 'cfg.get';
+    public const DIALPLAN_RELOAD_ACTION = 'dialplan.reload';
+    public const DISPATCHER_RELOAD_ACTION = 'dispatcher.reload';
+    public const LCR_RELOAD_ACTION = 'lcr.reload';
+    public const PERMISSIONS_TRUSTED_RELOAD_ACTION = 'permissions.trustedReload';
+    public const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
+    public const UAC_REG_RELOAD_ACTION = 'uac.reg_reload';
+    public const UAC_REG_INFO_ACTION = 'uac.reg_info';
+    public const LCR_DUMP_GWS_ACTION = 'lcr.dump_gws';
+    public const DLG_PROFILE_GET_SIZE = 'dlg.profile_get_size';
+    public const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
+    public const CGRATES_ENABLED_ACTION = 'cfg.get';
 
-    const TRUNKS_ACTIONS = [
+    public const TRUNKS_ACTIONS = [
         self::DIALPLAN_RELOAD_ACTION,
         self::DISPATCHER_RELOAD_ACTION,
         self::LCR_RELOAD_ACTION,
@@ -33,7 +33,7 @@ interface TrunksClientInterface
      * @param int $companyId
      * @return int[] inbound/outbound
      */
-    public function getCompanyActiveCalls(int $companyId): array;
+    public function getCompanyActiveCalls(int $brandId, int $companyId): array;
 
     /**
      * @param int $brandId
@@ -46,7 +46,7 @@ interface TrunksClientInterface
      */
     public function getPlatformActiveCalls(): array;
 
-    public function isCgrEnabled();
+    public function isCgrEnabled(): bool;
 
     public function reloadDialplan(): void;
 

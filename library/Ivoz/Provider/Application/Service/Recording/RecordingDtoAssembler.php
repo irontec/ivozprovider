@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 
 class RecordingDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -28,7 +25,6 @@ class RecordingDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($recording, RecordingInterface::class);
 
-        /** @var RecordingDTO $dto */
         $dto = $recording->toDto($depth);
         $id = $recording->getId();
 

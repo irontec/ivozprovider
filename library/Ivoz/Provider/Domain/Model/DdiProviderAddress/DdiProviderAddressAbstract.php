@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 
@@ -20,14 +21,14 @@ abstract class DdiProviderAddressAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $ip;
+    protected $ip = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
      * @var DdiProviderInterface
@@ -42,41 +43,34 @@ abstract class DdiProviderAddressAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "DdiProviderAddress",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DdiProviderAddressDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DdiProviderAddressDto
     {
         return new DdiProviderAddressDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DdiProviderAddressInterface|null $entity
-     * @param int $depth
-     * @return DdiProviderAddressDto|null
+     * @param null|DdiProviderAddressInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiProviderAddressDto
     {
         if (!$entity) {
             return null;
@@ -92,8 +86,7 @@ abstract class DdiProviderAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DdiProviderAddressDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -102,20 +95,21 @@ abstract class DdiProviderAddressAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderAddressDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         $self->initChangelog();
 
@@ -125,28 +119,28 @@ abstract class DdiProviderAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param DdiProviderAddressDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderAddressDto::class);
+
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
 
         $this
             ->setIp($dto->getIp())
             ->setDescription($dto->getDescription())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DdiProviderAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DdiProviderAddressDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -155,9 +149,9 @@ abstract class DdiProviderAddressAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),
@@ -202,7 +196,6 @@ abstract class DdiProviderAddressAbstract
     {
         $this->ddiProvider = $ddiProvider;
 
-        /** @var  $this */
         return $this;
     }
 

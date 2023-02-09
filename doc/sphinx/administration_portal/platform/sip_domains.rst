@@ -1,4 +1,5 @@
 .. _god_sipdomains:
+.. _sip domains:
 
 SIP domains
 -----------
@@ -10,8 +11,6 @@ The section **Domains** will display the SIP domains that point to :ref:`ProxyUs
 
 There are two type of SIP domains:
 
-.. glossary::
-
     vPBX client SIP domain
         Each vPBX client has a unique SIP domain.
 
@@ -20,8 +19,6 @@ There are two type of SIP domains:
 
 All these SIP domains will be displayed in this list so that global administrator can check
 what domains are registered for each client/brand:
-
-.. glossary::
 
     Domain
         DNS pointing to :ref:`ProxyUsers` public address

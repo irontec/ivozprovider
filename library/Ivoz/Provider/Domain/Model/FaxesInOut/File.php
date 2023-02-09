@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
@@ -9,49 +10,49 @@ use Assert\Assertion;
 * File
 * @codeCoverageIgnore
 */
-class File
+final class File
 {
     /**
+     * @var ?int
      * column: fileFileSize
      * comment: FSO
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: fileMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: fileBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName = null;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $file)
+    public function equals(self $file): bool
     {
-        return
-            $this->getFileSize() === $file->getFileSize() &&
-            $this->getMimeType() === $file->getMimeType() &&
-            $this->getBaseName() === $file->getBaseName();
+        if ($this->getFileSize() !== $file->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $file->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $file->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

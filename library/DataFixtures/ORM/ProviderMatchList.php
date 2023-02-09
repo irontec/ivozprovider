@@ -20,7 +20,7 @@ class ProviderMatchList extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(MatchList::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(MatchList::class);
         (function () use ($fixture) {
             $this->setName("testMatchlist");

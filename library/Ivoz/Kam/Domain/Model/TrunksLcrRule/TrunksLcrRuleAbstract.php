@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
@@ -24,33 +25,33 @@ abstract class TrunksLcrRuleAbstract
     use ChangelogTrait;
 
     /**
-     * column: lcr_id
      * @var int
+     * column: lcr_id
      */
     protected $lcrId = 1;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $prefix;
+    protected $prefix = null;
 
     /**
+     * @var ?string
      * column: from_uri
-     * @var string | null
      */
-    protected $fromUri;
+    protected $fromUri = null;
 
     /**
+     * @var ?string
      * column: request_uri
-     * @var string | null
      */
-    protected $requestUri;
+    protected $requestUri = null;
 
     /**
+     * @var ?string
      * column: mt_tvalue
-     * @var string | null
      */
-    protected $mtTvalue;
+    protected $mtTvalue = null;
 
     /**
      * @var int
@@ -63,15 +64,15 @@ abstract class TrunksLcrRuleAbstract
     protected $enabled = 1;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy lcrRules
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupsRelPatternInterface | null
+     * @var ?RoutingPatternGroupsRelPatternInterface
      */
-    protected $routingPatternGroupsRelPattern;
+    protected $routingPatternGroupsRelPattern = null;
 
     /**
      * @var OutgoingRoutingInterface
@@ -83,50 +84,43 @@ abstract class TrunksLcrRuleAbstract
      * Constructor
      */
     protected function __construct(
-        $lcrId,
-        $stopper,
-        $enabled
+        int $lcrId,
+        int $stopper,
+        int $enabled
     ) {
         $this->setLcrId($lcrId);
         $this->setStopper($stopper);
         $this->setEnabled($enabled);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksLcrRule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksLcrRuleDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksLcrRuleDto
     {
         return new TrunksLcrRuleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksLcrRuleInterface|null $entity
-     * @param int $depth
-     * @return TrunksLcrRuleDto|null
+     * @param null|TrunksLcrRuleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksLcrRuleDto
     {
         if (!$entity) {
             return null;
@@ -142,8 +136,7 @@ abstract class TrunksLcrRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksLcrRuleDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -152,18 +145,25 @@ abstract class TrunksLcrRuleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksLcrRuleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $enabled = $dto->getEnabled();
+        Assertion::notNull($enabled, 'getEnabled value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getStopper(),
-            $dto->getEnabled()
+            $lcrId,
+            $stopper,
+            $enabled
         );
 
         $self
@@ -173,7 +173,7 @@ abstract class TrunksLcrRuleAbstract
             ->setMtTvalue($dto->getMtTvalue())
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
             ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         $self->initChangelog();
 
@@ -183,35 +183,41 @@ abstract class TrunksLcrRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksLcrRuleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $enabled = $dto->getEnabled();
+        Assertion::notNull($enabled, 'getEnabled value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
+            ->setLcrId($lcrId)
             ->setPrefix($dto->getPrefix())
             ->setFromUri($dto->getFromUri())
             ->setRequestUri($dto->getRequestUri())
             ->setMtTvalue($dto->getMtTvalue())
-            ->setStopper($dto->getStopper())
-            ->setEnabled($dto->getEnabled())
+            ->setStopper($stopper)
+            ->setEnabled($enabled)
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
             ->setRoutingPatternGroupsRelPattern($fkTransformer->transform($dto->getRoutingPatternGroupsRelPattern()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksLcrRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksLcrRuleDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())
@@ -227,9 +233,9 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'lcr_id' => self::getLcrId(),
@@ -239,8 +245,8 @@ abstract class TrunksLcrRuleAbstract
             'mt_tvalue' => self::getMtTvalue(),
             'stopper' => self::getStopper(),
             'enabled' => self::getEnabled(),
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupsRelPatternId' => self::getRoutingPatternGroupsRelPattern() ? self::getRoutingPatternGroupsRelPattern()->getId() : null,
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupsRelPatternId' => self::getRoutingPatternGroupsRelPattern()?->getId(),
             'outgoingRoutingId' => self::getOutgoingRouting()->getId()
         ];
     }
@@ -355,7 +361,6 @@ abstract class TrunksLcrRuleAbstract
     {
         $this->routingPattern = $routingPattern;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -380,7 +385,6 @@ abstract class TrunksLcrRuleAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 

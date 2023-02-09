@@ -17,14 +17,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TpDestinationRateDoctrineRepository extends ServiceEntityRepository implements TpDestinationRateRepository
 {
-    protected $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TpDestinationRate::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**
@@ -34,7 +31,7 @@ class TpDestinationRateDoctrineRepository extends ServiceEntityRepository implem
      * @throws \Doctrine\DBAL\ConnectionException
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function syncWithBussines($destinationRateGroupId, $roundingMethod)
+    public function syncWithBussines($destinationRateGroupId, $roundingMethod): int
     {
         $tpDestinationRatesInsert =
             "INSERT IGNORE tp_destination_rates (tpid, tag, destinations_tag, rates_tag, destinationRateId, rounding_method)

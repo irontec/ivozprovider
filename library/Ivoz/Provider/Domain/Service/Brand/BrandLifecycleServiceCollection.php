@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\Brand;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -13,6 +15,7 @@ class BrandLifecycleServiceCollection implements LifecycleServiceCollectionInter
 {
     use LifecycleServiceCollectionTrait;
 
+    /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
         "post_persist" =>
         [
@@ -20,6 +23,7 @@ class BrandLifecycleServiceCollection implements LifecycleServiceCollectionInter
             \Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand::class => 20,
             \Ivoz\Provider\Domain\Service\BrandService\UpdateByBrand::class => 30,
             \Ivoz\Cgr\Domain\Service\TpDerivedCharger\CreatedByBrand::class => 200,
+            \Ivoz\Provider\Domain\Service\Administrator\CreatedByBrand::class => 200,
         ],
         "post_remove" =>
         [
@@ -27,7 +31,7 @@ class BrandLifecycleServiceCollection implements LifecycleServiceCollectionInter
         ],
     ];
 
-    protected function addService(string $event, $service): void
+    protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
         Assertion::isInstanceOf($service, BrandLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;

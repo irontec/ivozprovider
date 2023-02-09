@@ -9,7 +9,11 @@ class TpRate extends TpRateAbstract implements TpRateInterface
 {
     use TpRateTrait;
 
-    public function getChangeSet()
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -19,7 +23,7 @@ class TpRate extends TpRateAbstract implements TpRateInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -27,7 +31,7 @@ class TpRate extends TpRateAbstract implements TpRateInterface
     /**
      * Validate RateIncrement has valid unit
      */
-    public function setRateIncrement(string $rateIncrement):  static
+    public function setRateIncrement(string $rateIncrement): static
     {
         if (is_numeric($rateIncrement)) {
             $rateIncrement .= "s";
@@ -39,7 +43,7 @@ class TpRate extends TpRateAbstract implements TpRateInterface
     /**
      * Validate GroupIntervalStart has valid unit
      */
-    public function setGroupIntervalStart(string $groupIntervalStart):  static
+    public function setGroupIntervalStart(string $groupIntervalStart): static
     {
         if (is_numeric($groupIntervalStart)) {
             $groupIntervalStart .= "s";

@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 
 class CompanyDto extends CompanyDtoAbstract
 {
-    const CONTEXT_WITH_FEATURES = 'withFeatures';
+    public const CONTEXT_WITH_FEATURES = 'withFeatures';
 
-    const CONTEXTS_WITH_FEATURES = [
+    public const CONTEXTS_WITH_FEATURES = [
         self::CONTEXT_WITH_FEATURES,
         self::CONTEXT_DETAILED
     ];
@@ -22,9 +22,9 @@ class CompanyDto extends CompanyDtoAbstract
      *     description="Active feature ids"
      * )
      */
-    protected $featureIds = [];
+    private $featureIds = [];
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -38,7 +38,7 @@ class CompanyDto extends CompanyDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         if ($role === 'ROLE_COMPANY_ADMIN') {
             $data = $this->filterCompanyReadOnlyFields($data);
@@ -61,8 +61,10 @@ class CompanyDto extends CompanyDtoAbstract
 
     /**
      * @param int[] $featureIds
+     *
+     * @return void
      */
-    public function setFeatureIds(array $featureIds)
+    public function setFeatureIds(array $featureIds): void
     {
         $this->featureIds = $featureIds;
         $relFeatures = [];
@@ -116,7 +118,7 @@ class CompanyDto extends CompanyDtoAbstract
      * @codeCoverageIgnore
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null)
+    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -188,7 +190,7 @@ class CompanyDto extends CompanyDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -219,7 +221,7 @@ class CompanyDto extends CompanyDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

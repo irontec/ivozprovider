@@ -13,12 +13,9 @@ use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationIn
 
 class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $trunksClient;
-
     public function __construct(
-        TrunksClientInterface $trunksClient
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->trunksClient = $trunksClient;
     }
 
     /**
@@ -29,7 +26,6 @@ class DdiProviderRegistrationDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($ddiProviderRegistration, DdiProviderRegistrationInterface::class);
 
-        /** @var DdiProviderRegistrationDto $dto */
         $dto = $ddiProviderRegistration->toDto($depth);
 
         if (DdiProviderRegistrationDto::CONTEXT_DETAILED_COLLECTION !== $context) {

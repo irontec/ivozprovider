@@ -10,29 +10,16 @@ use Symfony\Bridge\Monolog\Logger;
 
 abstract class AbstractBalanceOperation
 {
-
-    protected $entityTools;
-    protected $logger;
-    protected $client;
-    protected $companyRepository;
-    protected $syncBalanceService;
-    protected $lastError;
-    protected $createBalanceMovementByCompany;
+    private string $lastError;
 
     public function __construct(
-        EntityTools $entityTools,
-        Logger $logger,
-        CompanyBalanceServiceInterface $client,
-        CompanyRepository $companyRepository,
-        SyncBalances $syncBalanceService,
-        CreateByCompany $createByCompany
+        protected EntityTools $entityTools,
+        protected Logger $logger,
+        protected CompanyBalanceServiceInterface $client,
+        protected CompanyRepository $companyRepository,
+        protected SyncBalances $syncBalanceService,
+        protected CreateByCompany $createBalanceMovementByCompany
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->client = $client;
-        $this->companyRepository = $companyRepository;
-        $this->syncBalanceService = $syncBalanceService;
-        $this->createBalanceMovementByCompany = $createByCompany;
     }
 
     /**
@@ -42,13 +29,7 @@ abstract class AbstractBalanceOperation
      */
     abstract public function execute($companyId, float $amount);
 
-    /**
-     * @param string $amount
-     * @param array $response
-     * @param CompanyInterface $company
-     * @return bool|mixed
-     */
-    protected function handleResponse($amount, array $response, CompanyInterface $company)
+    protected function handleResponse(?float $amount, array $response, CompanyInterface $company): bool
     {
         $success = false;
         if (isset($response['error']) && $response['error']) {
@@ -59,13 +40,16 @@ abstract class AbstractBalanceOperation
         if (isset($response['success']) && $response['success']) {
             $success = $response['success'];
 
-            $brandId = $company->getBrand()->getId();
-            $companyIds = [$company->getId()];
+            $brandId = (int) $company->getBrand()->getId();
+            $companyIds = [(int) $company->getId()];
 
             $this->syncBalanceService->updateCompanies($brandId, $companyIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance($brandId, $company->getId());
+            $balance = $this->client->getBalance(
+                $brandId,
+                (int) $company->getId()
+            );
 
             $this->createBalanceMovementByCompany->execute(
                 $company,
@@ -80,7 +64,7 @@ abstract class AbstractBalanceOperation
     /**
      * @return string
      */
-    public function getLastError()
+    public function getLastError(): string
     {
         return $this->lastError;
     }

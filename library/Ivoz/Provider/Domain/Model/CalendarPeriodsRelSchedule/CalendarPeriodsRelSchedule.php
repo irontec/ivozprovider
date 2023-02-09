@@ -11,9 +11,9 @@ class CalendarPeriodsRelSchedule extends CalendarPeriodsRelScheduleAbstract impl
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -23,7 +23,7 @@ class CalendarPeriodsRelSchedule extends CalendarPeriodsRelScheduleAbstract impl
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

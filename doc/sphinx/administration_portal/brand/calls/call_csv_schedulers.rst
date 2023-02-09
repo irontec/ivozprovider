@@ -1,3 +1,5 @@
+.. _call csv schedulers:
+
 *******************
 Call CSV schedulers
 *******************
@@ -8,8 +10,6 @@ This section allows programming automatic periodical CSV reports to brand operat
           fields that do not apply to CSVs (Invoice number sequence, Tax rate...)
 
 When adding a new definition, these fields are shown:
-
-.. glossary::
 
     Name
         Name of the scheduled Call CSV
@@ -62,8 +62,6 @@ When adding a new definition, these fields are shown:
 
 Once created, some new fields and subsections are accesible:
 
-.. glossary::
-
     Next execution
         Shows next execution date
 
@@ -82,8 +80,6 @@ CSV fields
 ==========
 
 These are the fields of the generated CSV files:
-
-.. glossary::
 
     callid
         Call-ID of the SIP dialog

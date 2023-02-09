@@ -3,11 +3,14 @@
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,9 +19,17 @@ use Doctrine\Common\Collections\Criteria;
 interface AdministratorInterface extends LoggableEntityInterface
 {
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @inheritdoc
@@ -47,9 +58,29 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function brandHasFeature(string $iden): bool;
 
-    public function serialize();
+    public function serialize(): string;
 
     public function unserialize($serialized);
+
+    public static function createDto(string|int|null $id = null): AdministratorDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|AdministratorInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?AdministratorDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param AdministratorDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): AdministratorDto;
 
     public function getUsername(): string;
 
@@ -58,6 +89,8 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getEmail(): string;
 
     public function getActive(): bool;
+
+    public function getInternal(): bool;
 
     public function getRestricted(): bool;
 
@@ -77,8 +110,14 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function removeRelPublicEntity(AdministratorRelPublicEntityInterface $relPublicEntity): AdministratorInterface;
 
-    public function replaceRelPublicEntities(ArrayCollection $relPublicEntities): AdministratorInterface;
+    /**
+     * @param Collection<array-key, AdministratorRelPublicEntityInterface> $relPublicEntities
+     */
+    public function replaceRelPublicEntities(Collection $relPublicEntities): AdministratorInterface;
 
+    /**
+     * @return array<array-key, AdministratorRelPublicEntityInterface>
+     */
     public function getRelPublicEntities(?Criteria $criteria = null): array;
 
     /**
@@ -102,6 +141,8 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     /**
      * @see UserInterface::eraseCredentials()
+     *
+     * @return void
      */
     public function eraseCredentials();
 }

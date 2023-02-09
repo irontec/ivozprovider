@@ -3,6 +3,9 @@
 namespace Ivoz\Cgr\Domain\Model\TpLcrRule;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 /**
@@ -12,9 +15,36 @@ interface TpLcrRuleInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): TpLcrRuleDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TpLcrRuleInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpLcrRuleDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param TpLcrRuleDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TpLcrRuleDto;
 
     public function getTpid(): string;
 

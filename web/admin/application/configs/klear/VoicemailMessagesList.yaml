@@ -1,0 +1,91 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: voicemailMessagesList_screen
+  screens: &voicemailMessages_screensLink
+    voicemailMessagesList_screen: &voicemailMessagesList_screenLink
+      controller: list
+      order:
+        field:
+          - VoicemailMessage.calldate
+        type: desc
+      pagination:
+        items: 25
+      <<: *VoicemailMessages
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Voicemail Message', 'Voicemail Messages', 0), "[format| (%parent%)]")
+      fields: &voicemailMessages_fieldsLink
+        blacklist:
+          recordingFile: true
+        order:
+          folder: true
+          calldate: true
+          caller: true
+          duration: true
+        options:
+          title: _("Options")
+          screens:
+            voicemailMessagesView_screen: true
+          dialogs:
+            voicemailMessagesDel_dialog: true
+          default: voicemailMessagesView_screen
+      options:
+        title: _("Options")
+        dialogs:
+          voicemailMessagesDel_dialog: true
+
+    voicemailMessagesView_screen: &voicemailMessagesView_screenLink
+      <<: *VoicemailMessages
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Voicemail Message', 'Voicemail Messages', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Voicemail Message', 'Voicemail Messages', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        order:
+          calldate: true
+          caller: true
+          duration: true
+          recordingFile: true
+        blacklist:
+          folder: true
+        readOnly:
+          recordingFile: true
+          calldate: true
+          caller: true
+          duration: true
+
+  dialogs: &voicemailMessages_dialogsLink
+    voicemailMessagesDel_dialog: &voicemailMessagesDel_dialogLink
+      <<: *VoicemailMessages
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Voicemail Message', 'Voicemail Messages', 1))
+      description: _("Do you want to delete this %s?", ngettext('Voicemail Message', 'Voicemail Messages', 1))
+      message: _("%s successfully deleted.", ngettext('Voicemail Message', 'Voicemail Messages', 1))
+      multiItem: 1
+      labelOnList: 1
+
+  commands: &voicemailMessages_commandsLink
+    voicemailMessagesRecordingFileDownload_command: &voicemailMessagesRecordingFileDownload_commandLink
+      <<: *VoicemailMessages
+      controller: File
+      action: force-download
+      mainColumn: recordingFile
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

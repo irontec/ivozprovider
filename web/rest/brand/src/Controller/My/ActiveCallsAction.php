@@ -16,21 +16,12 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class ActiveCallsAction
 {
-    protected $tokenStorage;
-    protected $requestStack;
-    protected $trunksClient;
-    protected $companyRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        RequestStack $requestStack,
-        TrunksClientInterface $trunksClient,
-        CompanyRepository $companyRepository
+        private TokenStorageInterface $tokenStorage,
+        private RequestStack $requestStack,
+        private TrunksClientInterface $trunksClient,
+        private CompanyRepository $companyRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->requestStack = $requestStack;
-        $this->trunksClient = $trunksClient;
-        $this->companyRepository = $companyRepository;
     }
 
     public function __invoke()
@@ -48,11 +39,13 @@ class ActiveCallsAction
         $user = $token->getUser();
         $brand = $user->getBrand();
 
-        $companyId = $request->get('company');
+        $companyId = $request->query->get('company');
         if (!$companyId) {
             $activeCalls = $this
                 ->trunksClient
-                ->getBrandActiveCalls($brand->getId());
+                ->getBrandActiveCalls(
+                    (int) $brand->getId()
+                );
 
             return new ActiveCalls(
                 $activeCalls[0] ?? 0,
@@ -73,6 +66,7 @@ class ActiveCallsAction
         $activeCalls = $this
             ->trunksClient
             ->getCompanyActiveCalls(
+                intval($brand->getId()),
                 intval($companyId)
             );
 

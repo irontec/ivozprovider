@@ -13,30 +13,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserTokenAuthenticator extends JWTTokenAuthenticator
 {
-    /**
-     * @var JWTTokenManagerInterface
-     */
-    protected $jwtManager;
-
-    protected $tokenStorage;
-
-    /**
-     * @param JWTTokenManagerInterface $jwtManager
-     * @param EventDispatcherInterface $dispatcher
-     * @param TokenExtractorInterface  $tokenExtractor
-     */
     public function __construct(
-        JWTTokenManagerInterface $jwtManager,
+        private JWTTokenManagerInterface $jwtManager,
         EventDispatcherInterface $dispatcher,
         TokenExtractorInterface $tokenExtractor,
-        TokenStorageInterface $tokenStorage
+        private TokenStorageInterface $tokenStorage
     ) {
-        $this->jwtManager = $jwtManager;
-        $this->tokenStorage = $tokenStorage;
-
         parent::__construct($jwtManager, $dispatcher, $tokenExtractor, $tokenStorage);
     }
 
@@ -82,7 +68,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
     /**
      * @inheritdoc
      */
-    protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity)
+    protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity): UserInterface
     {
         $provider = null;
 
@@ -104,8 +90,7 @@ class UserTokenAuthenticator extends JWTTokenAuthenticator
 
         /** @var MutableUserProviderInterface $userProvider */
         $provider
-            ->setEntityClass(User::class)
-            ->setUserIdentityField('email');
+            ->setEntityClass(User::class);
 
         return $provider->loadUserByUsername($identity);
     }

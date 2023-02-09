@@ -4,38 +4,62 @@ namespace Service\Behat;
 
 use Ivoz\Api\Behat\Context\FeatureContext as BaseFeatureContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use \Behat\MinkExtension\Context\RawMinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 
 class FeatureContext extends BaseFeatureContext
 {
     /**
      * @Given I add Company Authorization header
      */
-    public function setCompanyAuthorizationHeader()
+    public function setCompanyAuthorizationHeader(): void
     {
-        return $this->setAuthorizationHeader('test_company_admin');
+        $this->setAuthorizationHeader('test_company_admin');
+    }
+
+    /**
+     * @Given I add restricted Company Authorization header
+     */
+    public function setRestrictedCompanyAuthorizationHeader(): void
+    {
+        $this->setAuthorizationHeader('restrictedCompanyAdmin');
     }
 
     /**
      * @Given I add Residential Company Authorization header
      */
-    public function setResidentialCompanyAuthorizationHeader()
+    public function setResidentialCompanyAuthorizationHeader(): void
     {
-        return $this->setAuthorizationHeader('test_residential_admin');
+        $this->setAuthorizationHeader('test_residential_admin');
+    }
+
+    /**
+     * @Given I add Wholesale Company Authorization header
+     */
+    public function setWholesaleCompanyAuthorizationHeader(): void
+    {
+        $this->setAuthorizationHeader('test_wholesale_admin');
     }
 
     /**
      * @Given I add Retail Company Authorization header
      */
-    public function setRetailCompanyAuthorizationHeader()
+    public function setRetailCompanyAuthorizationHeader(): void
     {
-        return $this->setAuthorizationHeader('test_retail_admin');
+        $this->setAuthorizationHeader('test_retail_admin');
     }
 
     /**
      * @Given I exchange Client Authorization header
      */
-    public function setBrandAuthorizationHeaderByExchange()
+    public function setBrandAuthorizationHeaderByExchange(): void
+    {
+        $this->exchangeAuthorizationHeader('test_brand_admin', 'test_company_admin');
+    }
+
+    /**
+     * @Given I exchange internal Client Authorization header
+     */
+    public function setInternalBrandAuthorizationHeaderByExchange(): void
     {
         $this->exchangeAuthorizationHeader('test_brand_admin', 'test_company_admin');
     }
@@ -50,8 +74,10 @@ class FeatureContext extends BaseFeatureContext
 
     /**
      * @BeforeScenario @userApiContext
+     *
+     * @return void
      */
-    public function setUserApiContext(BeforeScenarioScope $scope)
+    public function setUserApiContext(BeforeScenarioScope $scope): void
     {
         /** @var \FriendsOfBehat\SymfonyExtension\Context\Environment\InitializedSymfonyExtensionEnvironment $environment */
         $environment = $scope->getEnvironment();

@@ -1,20 +1,26 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { getI18n } from 'react-i18next';
+import transformationRuleSet from './TransformationRuleSet';
 
-const TransformationRuleSetSelectOptions = (callback: Function) => {
+const TransformationRuleSetSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
+  return defaultEntityBehavior.fetchFks(
+    transformationRuleSet.path,
+    ['id', 'name'],
+    (data: any) => {
+      const options: any = {};
+      for (const item of data) {
+        const language = getI18n().language.substring(0, 2);
+        options[item.id] = item.name[language];
+      }
 
-    defaultEntityBehavior.fetchFks(
-        '/transformation_rule_sets',
-        ['id', 'areaCode'], //@TODO request name
-        (data:any) => {
-
-            const options:any = {};
-            for (const item of data) {
-                options[item.id] = item.areaCode; //@TODO use name
-            }
-
-            callback(options);
-        }
-    );
-}
+      callback(options);
+    },
+    cancelToken
+  );
+};
 
 export default TransformationRuleSetSelectOptions;

@@ -15,9 +15,9 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tz;
+    private $tz = null;
 
     /**
      * @var string|null
@@ -25,35 +25,38 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     private $comment = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $labelIt = '';
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -62,7 +65,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -83,9 +86,9 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tz' => $this->getTz(),
@@ -114,7 +117,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTz(?string $tz): static
+    public function setTz(string $tz): static
     {
         $this->tz = $tz;
 
@@ -145,12 +148,12 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setLabelEn(?string $labelEn): static
+    public function setLabelEn(string $labelEn): static
     {
         $this->labelEn = $labelEn;
 
@@ -162,7 +165,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->labelEn;
     }
 
-    public function setLabelEs(?string $labelEs): static
+    public function setLabelEs(string $labelEs): static
     {
         $this->labelEs = $labelEs;
 
@@ -174,7 +177,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->labelEs;
     }
 
-    public function setLabelCa(?string $labelCa): static
+    public function setLabelCa(string $labelCa): static
     {
         $this->labelCa = $labelCa;
 
@@ -186,7 +189,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->labelCa;
     }
 
-    public function setLabelIt(?string $labelIt): static
+    public function setLabelIt(string $labelIt): static
     {
         $this->labelIt = $labelIt;
 

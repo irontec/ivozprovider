@@ -69,7 +69,7 @@ class RatingPlanPrices
     {
     }
 
-    public static function fromArray(array $data)
+    public static function fromArray(array $data): self
     {
         $instance = new self();
         $instance

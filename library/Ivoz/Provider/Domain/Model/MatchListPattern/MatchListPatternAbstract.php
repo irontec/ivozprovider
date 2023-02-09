@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchList;
@@ -22,27 +23,27 @@ abstract class MatchListPatternAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
-     * comment: enum:number|regexp
      * @var string
+     * comment: enum:number|regexp
      */
     protected $type;
 
     /**
+     * @var ?string
      * column: regExp
-     * @var string | null
      */
-    protected $regexp;
+    protected $regexp = null;
 
     /**
+     * @var ?string
      * column: numberValue
-     * @var string | null
      */
-    protected $numbervalue;
+    protected $numbervalue = null;
 
     /**
      * @var MatchListInterface
@@ -51,54 +52,47 @@ abstract class MatchListPatternAbstract
     protected $matchList;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $type
+        string $type
     ) {
         $this->setType($type);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MatchListPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return MatchListPatternDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): MatchListPatternDto
     {
         return new MatchListPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MatchListPatternInterface|null $entity
-     * @param int $depth
-     * @return MatchListPatternDto|null
+     * @param null|MatchListPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MatchListPatternDto
     {
         if (!$entity) {
             return null;
@@ -114,8 +108,7 @@ abstract class MatchListPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MatchListPatternDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -124,23 +117,26 @@ abstract class MatchListPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MatchListPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType()
+            $type
         );
 
         $self
             ->setDescription($dto->getDescription())
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setMatchList($fkTransformer->transform($matchList))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
@@ -151,20 +147,24 @@ abstract class MatchListPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param MatchListPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
+
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
 
         $this
             ->setDescription($dto->getDescription())
-            ->setType($dto->getType())
+            ->setType($type)
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()))
+            ->setMatchList($fkTransformer->transform($matchList))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         return $this;
@@ -172,10 +172,8 @@ abstract class MatchListPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return MatchListPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): MatchListPatternDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -187,9 +185,9 @@ abstract class MatchListPatternAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),
@@ -197,7 +195,7 @@ abstract class MatchListPatternAbstract
             'regExp' => self::getRegexp(),
             'numberValue' => self::getNumbervalue(),
             'matchListId' => self::getMatchList()->getId(),
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 
@@ -275,7 +273,6 @@ abstract class MatchListPatternAbstract
     {
         $this->matchList = $matchList;
 
-        /** @var  $this */
         return $this;
     }
 

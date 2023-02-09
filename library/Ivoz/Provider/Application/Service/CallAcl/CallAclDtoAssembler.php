@@ -20,13 +20,12 @@ class CallAclDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, CallAclInterface::class);
 
-        /** @var CallAclDto $dto */
         $dto = $entity->toDto($depth);
 
         if ($context === CallAclDto::CONTEXT_WITH_MATCHLIST) {
             $matchlistIds = array_map(
                 function (CallAclRelMatchList $callAclRelMatchList) {
-                    return $callAclRelMatchList
+                    return (int) $callAclRelMatchList
                         ->getMatchList()
                         ->getId();
                 },

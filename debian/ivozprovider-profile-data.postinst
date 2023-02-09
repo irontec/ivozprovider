@@ -22,12 +22,16 @@ function setup_bind()
     sed -r -i "s/(trunks          IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/data_address            || true
     sed -r -i "s/(data            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/cache_address           || true
+    sed -r -i "s/(cache           IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/storage_address         || true
     sed -r -i "s/(storage         IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/logs_address            || true
     sed -r -i "s/(logs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
     db_get ivozprovider/jobs_address            || true
     sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/hep_address            || true
+    sed -r -i "s/(hep             IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
 
     # Restart Local DNS
     /bin/systemctl start bind9
@@ -38,13 +42,22 @@ function setup_mysql_access()
     # Allow root access from all hosts
     db_get ivozprovider/mysql_password          || true
     export MYSQL_PWD=$RET
-    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$RET'";
-    /usr/bin/mysql --user=root -e "FLUSH PRIVILEGES;"
+    /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "ALTER USER 'root'@'%' IDENTIFIED WITH 'mysql_native_password' BY '$RET'";
+    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'root'@'%'";
+    /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'kamailio'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "ALTER USER 'kamailio'@'%' IDENTIFIED WITH 'mysql_native_password' BY '$RET'";
+    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'kamailio'@'%'";
+    /usr/bin/mysql --user=root -e "CREATE USER IF NOT EXISTS 'asterisk'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root -e "ALTER USER 'asterisk'@'%' IDENTIFIED WITH 'mysql_native_password' BY '$RET'";
+    /usr/bin/mysql --user=root -e "GRANT ALL ON *.* TO 'asterisk'@'%'";
+    /usr/bin/mysql --user=root -e "FLUSH PRIVILEGES"
 }
 
 function setup_mysql_replication()
 {
-    sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"      /etc/mysql/mysql.conf.d/mysqld.cnf
+    # MySQL, MariaDB, Percona XtraDB
+    sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"   /etc/mysql/*.conf.d/mysqld.cnf
 }
 
 #######################################################################################################################

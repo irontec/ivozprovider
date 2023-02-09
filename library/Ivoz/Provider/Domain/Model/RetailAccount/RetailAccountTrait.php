@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
@@ -9,6 +10,8 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -18,9 +21,9 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 trait RetailAccountTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var PsEndpointInterface
@@ -35,13 +38,13 @@ trait RetailAccountTrait
     protected $psIdentify;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DdiInterface> & Selectable<array-key, DdiInterface>
      * DdiInterface mappedBy retailAccount
      */
     protected $ddis;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CallForwardSettingInterface> & Selectable<array-key, CallForwardSettingInterface>
      * CallForwardSettingInterface mappedBy retailAccount
      */
     protected $callForwardSettings;
@@ -56,51 +59,53 @@ trait RetailAccountTrait
         $this->callForwardSettings = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param RetailAccountDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $self->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $self->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $self->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getDdis())) {
-            $self->replaceDdis(
-                $fkTransformer->transformCollection(
-                    $dto->getDdis()
-                )
+        $ddis = $dto->getDdis();
+        if (!is_null($ddis)) {
+
+            /** @var Collection<array-key, DdiInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddis
             );
+            $self->replaceDdis($replacement);
         }
 
-        if (!is_null($dto->getCallForwardSettings())) {
-            $self->replaceCallForwardSettings(
-                $fkTransformer->transformCollection(
-                    $dto->getCallForwardSettings()
-                )
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
             );
+            $self->replaceCallForwardSettings($replacement);
         }
 
         $self->sanitizeValues();
@@ -115,44 +120,46 @@ trait RetailAccountTrait
     /**
      * @internal use EntityTools instead
      * @param RetailAccountDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $this->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $this->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $this->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getDdis())) {
-            $this->replaceDdis(
-                $fkTransformer->transformCollection(
-                    $dto->getDdis()
-                )
+        $ddis = $dto->getDdis();
+        if (!is_null($ddis)) {
+
+            /** @var Collection<array-key, DdiInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddis
             );
+            $this->replaceDdis($replacement);
         }
 
-        if (!is_null($dto->getCallForwardSettings())) {
-            $this->replaceCallForwardSettings(
-                $fkTransformer->transformCollection(
-                    $dto->getCallForwardSettings()
-                )
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
             );
+            $this->replaceCallForwardSettings($replacement);
         }
         $this->sanitizeValues();
 
@@ -161,10 +168,8 @@ trait RetailAccountTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RetailAccountDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RetailAccountDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -172,9 +177,9 @@ trait RetailAccountTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -185,7 +190,6 @@ trait RetailAccountTrait
     {
         $this->psEndpoint = $psEndpoint;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -198,7 +202,6 @@ trait RetailAccountTrait
     {
         $this->psIdentify = $psIdentify;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -221,25 +224,33 @@ trait RetailAccountTrait
         return $this;
     }
 
-    public function replaceDdis(ArrayCollection $ddis): RetailAccountInterface
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): RetailAccountInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ddis as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRetailAccount($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ddis as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ddis->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ddis->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ddis->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -249,6 +260,9 @@ trait RetailAccountTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -272,25 +286,33 @@ trait RetailAccountTrait
         return $this;
     }
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): RetailAccountInterface
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): RetailAccountInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($callForwardSettings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRetailAccount($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->callForwardSettings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->callForwardSettings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->callForwardSettings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->callForwardSettings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -300,6 +322,9 @@ trait RetailAccountTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

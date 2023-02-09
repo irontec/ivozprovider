@@ -143,6 +143,9 @@ msgstr[1] "Aliases"
 msgid "All"
 msgstr "Todos"
 
+msgid "All Countries"
+msgstr "Todos los paises"
+
 msgid "Allow Call Forwards"
 msgstr "Permitir desvíos de llamada"
 
@@ -224,6 +227,9 @@ msgstr "Código de Area"
 
 msgid "Assistant"
 msgstr "Asistente"
+
+msgid "Attach sound"
+msgstr "Adjuntar audio del mensaje"
 
 msgid "Audio Transcoding"
 msgstr "Audio Transcoding"
@@ -552,6 +558,9 @@ msgstr[1] "Administradores de clientes"
 msgid "Client filters"
 msgstr "Filtros de cliente"
 
+msgid "Client's Max Calls setting"
+msgstr "Configuración Limite de llamadas de Cliente"
+
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
@@ -661,6 +670,9 @@ msgstr[1] "Consumos Día En Curso"
 msgid "Custom"
 msgstr "A medida"
 
+msgid "Customization"
+msgstr "Customizaciones"
+
 msgid "DDI"
 msgid_plural "DDIs"
 msgstr[0] "DDI"
@@ -683,6 +695,22 @@ msgid "DDI Provider Registration"
 msgid_plural "DDI Provider Registrations"
 msgstr[0] "Registro Proveedor"
 msgstr[1] "Registros Proveedor"
+
+msgid "DDIs Match mode"
+msgstr "Coincidència DDI"
+
+msgid "DDIs NOT from client's country"
+msgstr "DDIs de paises distintos al cliente"
+
+#, php-format
+msgid "DDIs from %s (%s)"
+msgstr "DDIs de %s (%s)"
+
+msgid "DDIs from any country"
+msgstr "DDIs de cualquier país"
+
+msgid "DDIs from client's country"
+msgstr "DDIs del paises del cliente"
 
 msgid "Day"
 msgstr "Día"
@@ -816,6 +844,22 @@ msgstr "Texto en pantalla"
 
 msgid "Distribute method"
 msgstr "Método de distribución"
+
+msgid ""
+"Do NOT select any codec before reading <a href=/doc/en/administration_portal/"
+"brand/clients/retail.html target=_blank>documentation</a>."
+msgstr ""
+"No seleccionar ningún codec sin leer la <a href=/doc/en/"
+"administration_portal/brand/clients/retail.html target=_blank>documentacion</"
+"a>."
+
+msgid ""
+"Do NOT select any codec before reading <a href=/doc/en/administration_portal/"
+"brand/clients/wholesale.html target=_blank>documentation</a>."
+msgstr ""
+"No seleccionar ningún codec sin leer la <a href=/doc/en/"
+"administration_portal/brand/clients/wholesale.html "
+"target=_blank>documentacion</a>."
 
 msgid "Do not disturb"
 msgstr "No molestar"
@@ -1171,6 +1215,9 @@ msgid_plural "Fixed costs"
 msgstr[0] "Coste fijo"
 msgstr[1] "Costes fijos"
 
+msgid "Folder"
+msgstr "Directorio"
+
 msgid "For instance:"
 msgstr "Por ejemplo:"
 
@@ -1325,6 +1372,9 @@ msgid "Holiday date range"
 msgid_plural "Holiday dates range"
 msgstr[0] "Rango de festivo"
 msgstr[1] "Rango de festivos"
+
+msgid "Holiday enabled"
+msgstr "Habilitar Festivos"
 
 msgid "Holiday importer system"
 msgstr "Importar festivos"
@@ -1540,6 +1590,9 @@ msgstr "Inter vPBX"
 msgid "Internal"
 msgstr "Interna"
 
+msgid "International"
+msgstr "International"
+
 msgid "International Code"
 msgstr "Código de llamada internacional"
 
@@ -1723,6 +1776,11 @@ msgstr "La dirección local no puede estar vacía."
 
 msgid "Locales"
 msgstr "Localización"
+
+msgid "Location"
+msgid_plural "Locations"
+msgstr[0] "Ubicación"
+msgstr[1] "Ubicaciones"
 
 msgid "Locution"
 msgid_plural "Locutions"
@@ -1941,6 +1999,9 @@ msgstr ""
 "Nombre mostrado como origen en los correos enviados (e.g. Notificaciones "
 "IvozProvider). "
 
+msgid "National"
+msgstr "National"
+
 msgid "National number length"
 msgstr "Longitud números nacionales"
 
@@ -2000,6 +2061,9 @@ msgstr "Sin etiqueta de enrutado"
 
 msgid "None"
 msgstr "Ninguna"
+
+msgid "Notification Configuration"
+msgstr "Configuración notificaciones"
 
 msgid "Notification Threshold"
 msgstr "Límite de notificación"
@@ -2072,6 +2136,9 @@ msgstr "Fecha fin"
 
 msgid "Out of schedule configuration"
 msgstr "Configuración fuera horario"
+
+msgid "Out of schedule enabled"
+msgstr "Habilitar fuera horario"
 
 msgid "Out of schedule locution"
 msgstr "Locución fuera horario"
@@ -2382,6 +2449,9 @@ msgstr "Grabaciones"
 
 msgid "Recording extension"
 msgstr "Extensión de grabado"
+
+msgid "Recording file"
+msgstr "Fichero grabado"
 
 msgid "Register"
 msgstr "Registro"
@@ -2699,6 +2769,9 @@ msgstr[1] "Números especiales"
 
 msgid "Special treatments"
 msgstr "Tratamientos especiales"
+
+msgid "Specific"
+msgstr "Específico"
 
 msgid "Specific Template"
 msgstr "Plantilla específica"
@@ -3128,22 +3201,15 @@ msgid_plural "Voicemails"
 msgstr[0] "Buzón de voz"
 msgstr[1] "Buzones de voz"
 
-msgid "Voicemail Locution"
-msgstr "Locución de buzón"
+msgid "Voicemail Message"
+msgid_plural "Voicemail Messages"
+msgstr[0] "Mensaje de Buzón de voz"
+msgstr[1] "Mensajes de Buzón de voz"
 
 msgid "Voicemail Notification"
 msgid_plural "Voicemail Notifications"
 msgstr[0] "Notificación de buzón de voz"
 msgstr[1] "Notificaciones de buzón de voz"
-
-msgid "Voicemail attach sound"
-msgstr "Adjuntar audio del mensaje"
-
-msgid "Voicemail enabled"
-msgstr "Buzón de voz"
-
-msgid "Voicemail send mail"
-msgstr "Notificar por email"
 
 msgid "Waiting"
 msgstr "Esperando"

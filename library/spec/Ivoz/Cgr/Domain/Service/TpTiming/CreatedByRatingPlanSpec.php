@@ -88,6 +88,14 @@ class CreatedByRatingPlanSpec extends ObjectBehavior
             false
         );
 
+        $this->getterProphecy(
+            $this->brand,
+            [
+                'getCgrTenant' => ''
+            ],
+            false
+        );
+
         $this
             ->entityTools
             ->entityToDto($this->tpTiming)

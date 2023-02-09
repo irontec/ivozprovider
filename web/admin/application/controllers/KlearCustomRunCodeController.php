@@ -1,4 +1,5 @@
 <?php
+
 class KlearCustomRunCodeController extends Zend_Controller_Action
 {
     protected $_mainRouter;
@@ -25,7 +26,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
 
         $this->dataGateway = Zend_Registry::get('data_gateway');
 
-        $this->_template = APPLICATION_PATH."/bin/template.php";
+        $this->_template = APPLICATION_PATH . "/bin/template.php";
     }
 
     public function runGenericCodeAction()
@@ -130,7 +131,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
             if (($this->getParam("exec")) && !$error) {
                 $path = $this->_getFilePath();
                 $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $id;
-                $filename = 'temporal-' . $type .'.php';
+                $filename = 'temporal-' . $type . '.php';
                 $this->_createFile($route, $filename);
 
                 $this->view->terminalModel = $terminalModelsModel;
@@ -158,7 +159,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                         $this->_helper->translate('Exec') => array(
                                 'reloadParent' => false,
                                 'recall' => true,
-                                'params' => array('exec'=>true)
+                                'params' => array('exec' => true)
                         )
                 );
             }
@@ -172,14 +173,14 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
     protected function _getFilePath()
     {
         $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-        $conf = (Object) $bootstrap->getOptions();
+        $conf = (object) $bootstrap->getOptions();
         $path = $conf->Iron['fso']['localStoragePath'];
         return $path;
     }
 
     protected function _createFile($route, $file)
     {
-        $filename = $route . DIRECTORY_SEPARATOR .$file;
+        $filename = $route . DIRECTORY_SEPARATOR . $file;
 
         if (!file_exists($route)) {
             $old = umask(0);
@@ -213,7 +214,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $data = array(
             'title' => $this->_helper->translate("Test the code"),
             'message' => $message,
-            'buttons'=>$buttons
+            'buttons' => $buttons
         );
 
         $jsonResponse = new Klear_Model_DispatchResponse();

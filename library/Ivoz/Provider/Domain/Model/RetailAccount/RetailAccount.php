@@ -14,9 +14,9 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,12 +26,12 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->setDomain(
             $this
@@ -43,12 +43,24 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         if ($this->isDirectConnectivity() && !$this->getTransport()) {
             throw new \DomainException('Invalid empty transport');
         }
+
+        if ($this->isDirectConnectivity() && !$this->getIp()) {
+            throw new \DomainException('Invalid empty IP');
+        }
+
+        if ($this->isDirectConnectivity() && !$this->getPort()) {
+            throw new \DomainException('Invalid empty port');
+        }
+
+        if (!$this->isDirectConnectivity() && !$this->getPassword()) {
+            throw new \DomainException('Password cannot be empty for retail accounts with no direct connectivity');
+        }
     }
 
     /**
      * @return bool
      */
-    public function isDirectConnectivity() : bool
+    public function isDirectConnectivity(): bool
     {
         return $this->getDirectConnectivity() === self::DIRECTCONNECTIVITY_YES;
     }
@@ -78,12 +90,19 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      */
     public function setPassword(?string $password = null): static
     {
-        if (!empty($password)) {
-            Assertion::regex(
-                $password,
-                '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
-            );
+        if ($password) {
+            $password = trim($password);
         }
+
+        if (empty($password)) {
+            return parent::setPassword(null);
+        }
+
+        Assertion::regex(
+            $password,
+            '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
+        );
+
         return parent::setPassword($password);
     }
 
@@ -99,13 +118,13 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             "b%dc%drt%d_%s",
-            $this->getCompany()->getBrand()->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getBrand()->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }

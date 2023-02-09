@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\QueueMember;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
@@ -22,9 +23,9 @@ abstract class QueueMemberAbstract
     use ChangelogTrait;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $penalty;
+    protected $penalty = null;
 
     /**
      * @var QueueInterface
@@ -44,41 +45,34 @@ abstract class QueueMemberAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "QueueMember",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return QueueMemberDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): QueueMemberDto
     {
         return new QueueMemberDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param QueueMemberInterface|null $entity
-     * @param int $depth
-     * @return QueueMemberDto|null
+     * @param null|QueueMemberInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?QueueMemberDto
     {
         if (!$entity) {
             return null;
@@ -94,8 +88,7 @@ abstract class QueueMemberAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var QueueMemberDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -104,20 +97,23 @@ abstract class QueueMemberAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param QueueMemberDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+        $user = $dto->getUser();
+        Assertion::notNull($user, 'getUser value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setPenalty($dto->getPenalty())
-            ->setQueue($fkTransformer->transform($dto->getQueue()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setQueue($fkTransformer->transform($queue))
+            ->setUser($fkTransformer->transform($user));
 
         $self->initChangelog();
 
@@ -127,28 +123,30 @@ abstract class QueueMemberAbstract
     /**
      * @internal use EntityTools instead
      * @param QueueMemberDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, QueueMemberDto::class);
+
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+        $user = $dto->getUser();
+        Assertion::notNull($user, 'getUser value is null, but non null value was expected.');
 
         $this
             ->setPenalty($dto->getPenalty())
-            ->setQueue($fkTransformer->transform($dto->getQueue()))
-            ->setUser($fkTransformer->transform($dto->getUser()));
+            ->setQueue($fkTransformer->transform($queue))
+            ->setUser($fkTransformer->transform($user));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return QueueMemberDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): QueueMemberDto
     {
         return self::createDto()
             ->setPenalty(self::getPenalty())
@@ -157,9 +155,9 @@ abstract class QueueMemberAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'penalty' => self::getPenalty(),
@@ -196,7 +194,6 @@ abstract class QueueMemberAbstract
     {
         $this->user = $user;
 
-        /** @var  $this */
         return $this;
     }
 

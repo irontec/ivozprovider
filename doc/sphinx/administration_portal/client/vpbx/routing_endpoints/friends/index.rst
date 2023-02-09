@@ -1,3 +1,5 @@
+.. _friends:
+
 *******
 Friends
 *******
@@ -47,3 +49,33 @@ Following sections explain both kind of friends:
 
     remote_friends
     internal_friends
+
+*******************
+Friend Call Forward
+*******************
+
+The friend's call forward can be configured with the **List of call forward settings**  button.
+
+These are the fields and available values:
+
+.. glossary::
+
+    Call Type
+        Determines if the forward must be applied to external, internal or any
+        type of call.
+
+    Forward type
+        When this forward must be applied:
+            - Unconditional: always
+            - No answer: when the call is not answered in X seconds
+            - Busy: When the friend rejects an incoming call.
+            - Not registered: when the friend is not registered against IvozProvider.
+
+    Target type
+        What route will use the forwarded call.
+            - VoiceMail
+            - Number (external)
+            - Extension (internal)
+
+.. hint:: If we want to forward to other process, we can create an extension
+   routed to that object and use the target type *Extension*.

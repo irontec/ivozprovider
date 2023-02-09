@@ -12,7 +12,7 @@
     <field name="routeType" type="string" column="routeType" length="25" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">[enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional]</option>
+        <option name="comment">[enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional|voicemail]</option>
       </options>
     </field>
     <field name="numberValue" type="string" column="numberValue" length="25" nullable="true">
@@ -63,6 +63,11 @@
     <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">
       <join-columns>
         <join-column name="numberCountryId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
+      <join-columns>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
   </mapped-superclass>

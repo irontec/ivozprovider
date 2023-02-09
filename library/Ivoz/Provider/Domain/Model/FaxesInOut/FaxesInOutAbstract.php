@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\FaxesInOut\File;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
@@ -29,33 +30,34 @@ abstract class FaxesInOutAbstract
     protected $calldate;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $src;
+    protected $src = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $dst;
+    protected $dst = null;
 
     /**
+     * @var ?string
      * comment: enum:In|Out
-     * @var string | null
      */
     protected $type = 'Out';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $pages;
+    protected $pages = null;
 
     /**
-     * @var string | null
+     * @var ?string
+     * comment: enum:error|pending|inprogress|completed
      */
-    protected $status;
+    protected $status = null;
 
     /**
-     * @var File | null
+     * @var File
      */
     protected $file;
 
@@ -65,56 +67,49 @@ abstract class FaxesInOutAbstract
     protected $fax;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $dstCountry;
+    protected $dstCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $calldate,
+        \DateTimeInterface|string $calldate,
         File $file
     ) {
         $this->setCalldate($calldate);
-        $this->setFile($file);
+        $this->file = $file;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FaxesInOut",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return FaxesInOutDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): FaxesInOutDto
     {
         return new FaxesInOutDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FaxesInOutInterface|null $entity
-     * @param int $depth
-     * @return FaxesInOutDto|null
+     * @param null|FaxesInOutInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FaxesInOutDto
     {
         if (!$entity) {
             return null;
@@ -130,8 +125,7 @@ abstract class FaxesInOutAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FaxesInOutDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -140,13 +134,16 @@ abstract class FaxesInOutAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FaxesInOutDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $fax = $dto->getFax();
+        Assertion::notNull($fax, 'getFax value is null, but non null value was expected.');
 
         $file = new File(
             $dto->getFileFileSize(),
@@ -155,7 +152,7 @@ abstract class FaxesInOutAbstract
         );
 
         $self = new static(
-            $dto->getCalldate(),
+            $calldate,
             $file
         );
 
@@ -165,7 +162,7 @@ abstract class FaxesInOutAbstract
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
-            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setFax($fkTransformer->transform($fax))
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
         $self->initChangelog();
@@ -176,13 +173,17 @@ abstract class FaxesInOutAbstract
     /**
      * @internal use EntityTools instead
      * @param FaxesInOutDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FaxesInOutDto::class);
+
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $fax = $dto->getFax();
+        Assertion::notNull($fax, 'getFax value is null, but non null value was expected.');
 
         $file = new File(
             $dto->getFileFileSize(),
@@ -191,14 +192,14 @@ abstract class FaxesInOutAbstract
         );
 
         $this
-            ->setCalldate($dto->getCalldate())
+            ->setCalldate($calldate)
             ->setSrc($dto->getSrc())
             ->setDst($dto->getDst())
             ->setType($dto->getType())
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
             ->setFile($file)
-            ->setFax($fkTransformer->transform($dto->getFax()))
+            ->setFax($fkTransformer->transform($fax))
             ->setDstCountry($fkTransformer->transform($dto->getDstCountry()));
 
         return $this;
@@ -206,10 +207,8 @@ abstract class FaxesInOutAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FaxesInOutDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FaxesInOutDto
     {
         return self::createDto()
             ->setCalldate(self::getCalldate())
@@ -226,9 +225,9 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'calldate' => self::getCalldate(),
@@ -241,19 +240,20 @@ abstract class FaxesInOutAbstract
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
             'faxId' => self::getFax()->getId(),
-            'dstCountryId' => self::getDstCountry() ? self::getDstCountry()->getId() : null
+            'dstCountryId' => self::getDstCountry()?->getId()
         ];
     }
 
-    protected function setCalldate($calldate): static
+    protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
+        /** @var \Datetime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
-            null
+            'CURRENT_TIMESTAMP'
         );
 
-        if ($this->calldate == $calldate) {
+        if ($this->isInitialized() && $this->calldate == $calldate) {
             return $this;
         }
 
@@ -341,6 +341,20 @@ abstract class FaxesInOutAbstract
 
     protected function setStatus(?string $status = null): static
     {
+        if (!is_null($status)) {
+            Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $status,
+                [
+                    FaxesInOutInterface::STATUS_ERROR,
+                    FaxesInOutInterface::STATUS_PENDING,
+                    FaxesInOutInterface::STATUS_INPROGRESS,
+                    FaxesInOutInterface::STATUS_COMPLETED,
+                ],
+                'statusvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->status = $status;
 
         return $this;
@@ -358,7 +372,7 @@ abstract class FaxesInOutAbstract
 
     protected function setFile(File $file): static
     {
-        $isEqual = $this->file && $this->file->equals($file);
+        $isEqual = $this->file->equals($file);
         if ($isEqual) {
             return $this;
         }

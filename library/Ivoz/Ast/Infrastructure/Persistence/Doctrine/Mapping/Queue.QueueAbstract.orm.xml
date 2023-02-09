@@ -24,16 +24,19 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="autopause" type="string" column="autopause" nullable="false">
+    <field name="autopause" type="string" length="25" column="autopause" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">no</option>
+        <option name="comment">[enum:yes|no|all]</option>
       </options>
     </field>
-    <field name="ringinuse" type="string" column="ringinuse" nullable="false">
+    <field name="ringinuse" type="string" length="25" column="ringinuse" nullable="false">
       <options>
         <option name="fixed"/>
         <option name="default">no</option>
+        <option name="comment">[enum:yes|no]</option>
+
       </options>
     </field>
     <field name="wrapuptime" type="integer" column="wrapuptime" nullable="true">
@@ -46,9 +49,10 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="strategy" type="string" column="strategy" nullable="true">
+    <field name="strategy" type="string" length="25" column="strategy" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:ringall|leastrecent|fewestcalls|random|rrmemory|linear|wrandom|rrordered]</option>
       </options>
     </field>
     <field name="weight" type="integer" column="weight" nullable="true">

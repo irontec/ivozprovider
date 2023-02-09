@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Feature;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Feature\Name;
 
 /**
@@ -24,7 +25,7 @@ abstract class FeatureAbstract
     protected $iden;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -32,48 +33,41 @@ abstract class FeatureAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
+        string $iden,
         Name $name
     ) {
         $this->setIden($iden);
-        $this->setName($name);
+        $this->name = $name;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Feature",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return FeatureDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): FeatureDto
     {
         return new FeatureDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FeatureInterface|null $entity
-     * @param int $depth
-     * @return FeatureDto|null
+     * @param null|FeatureInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FeatureDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class FeatureAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FeatureDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,23 +92,32 @@ abstract class FeatureAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FeatureDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeatureDto::class);
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $self = new static(
-            $dto->getIden(),
+            $iden,
             $name
         );
 
@@ -129,23 +131,33 @@ abstract class FeatureAbstract
     /**
      * @internal use EntityTools instead
      * @param FeatureDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeatureDto::class);
 
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $this
-            ->setIden($dto->getIden())
+            ->setIden($iden)
             ->setName($name);
 
         return $this;
@@ -153,10 +165,8 @@ abstract class FeatureAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FeatureDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FeatureDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -167,9 +177,9 @@ abstract class FeatureAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),
@@ -201,7 +211,7 @@ abstract class FeatureAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

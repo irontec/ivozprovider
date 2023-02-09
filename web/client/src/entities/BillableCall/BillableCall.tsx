@@ -1,46 +1,86 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import genericForeignKeyResolver from 'services/genericForeigKeyResolver';
-import EntityService from 'services/Entity/EntityService';
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import _ from 'services/Translations/translate';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import EntityInterface, {
+  OrderDirection,
+} from '@irontec/ivoz-ui/entities/EntityInterface';
+import DefaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import Form from './Form';
+import { BillableCallProperties } from './BillableCallProperties';
+import View from './View';
 
-const properties:PropertiesList = {
-    id:  {
-        label: "id",
+const properties: BillableCallProperties = {
+  startTime: {
+    label: 'Start time',
+  },
+  callid: {
+    label: 'Call ID',
+  },
+  caller: {
+    label: 'Caller',
+  },
+  callee: {
+    label: 'Callee',
+  },
+  destinationName: {
+    label: 'Destination',
+  },
+  direction: {
+    label: 'Direction',
+    enum: {
+      inbound: _('Inbound'),
+      outbound: _('Outbound'),
     },
-    ddi: {
-        label: "ddi",
-    },
-    duration: {
-        label: "duration",
-    },
-    price: {
-        label: "price"
-    },
+  },
+  invoice: {
+    label: 'Invoice',
+  },
+  price: {
+    label: 'Price',
+  },
+  duration: {
+    label: 'Duration',
+  },
+  cost: {
+    label: 'Cost',
+  },
+  carrierName: {
+    label: 'Carrier',
+  },
+  ratingPlanName: {
+    label: 'Rating plan',
+  },
+  endpointType: {
+    label: 'Endpoint type',
+  },
+  endpointId: {
+    label: 'Endpoint id',
+  },
+  endpointName: {
+    label: 'Endpoint name',
+  },
+  ddiProvider: {
+    label: 'DDI Provider',
+  },
 };
 
-async function foreignKeyResolver(data: any, entityService: EntityService) {
+const columns = ['startTime', 'direction', 'caller', 'callee', 'duration'];
 
-    data = await genericForeignKeyResolver(
-        data,
-        'ddi',
-        '/ddis',
-        'ddi'
-    );
-
-    return data;
-}
-
-const calendar:EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
-    iden: 'BillableCall',
-    title: _('Billable calls', {count: 2}),
-    path: '/billable_calls',
-    properties,
-    foreignKeyResolver,
-
+const billableCall: EntityInterface = {
+  ...DefaultEntityBehavior,
+  icon: ChatBubbleIcon,
+  iden: 'BillableCall',
+  title: _('External call', { count: 2 }),
+  path: '/billable_calls',
+  properties,
+  columns,
+  acl: {
+    ...DefaultEntityBehavior.acl,
+    iden: 'BillableCalls',
+  },
+  Form,
+  View,
+  defaultOrderBy: 'startTime',
+  defaultOrderDirection: OrderDirection.desc,
 };
 
-export default calendar;
+export default billableCall;

@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
@@ -15,24 +18,31 @@ interface DestinationRateInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
 
     /**
      * @return string
      */
-    public function getCgrRatesTag();
+    public function getCgrRatesTag(): string;
 
     /**
      * @return string
      */
-    public function getCgrDestinationsTag();
+    public function getCgrDestinationsTag(): string;
 
     /**
      * Ensure Valid connectFee format
@@ -61,6 +71,26 @@ interface DestinationRateInterface extends LoggableEntityInterface
      * @inheritdoc
      */
     public function setRateIncrement(string $rateIncrement): static;
+
+    public static function createDto(string|int|null $id = null): DestinationRateDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|DestinationRateInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DestinationRateDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param DestinationRateDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): DestinationRateDto;
 
     public function getCost(): float;
 

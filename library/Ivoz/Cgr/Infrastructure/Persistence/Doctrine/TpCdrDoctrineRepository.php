@@ -53,7 +53,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-        } catch (NoResultException $error) {
+        } catch (NoResultException) {
         }
 
         return null;
@@ -79,9 +79,55 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-        } catch (NoResultException $error) {
+        } catch (NoResultException) {
         }
 
         return null;
+    }
+
+    /**
+     * @inheritdoc
+     * @see TpCdrRepository::fixCorruptedByCgrids
+     */
+    public function fixCorruptedByCgrids(array $cgrids): int
+    {
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select('self.cgrid,  COUNT(self) as rowNum')
+            ->groupBy(
+                'self.cgrid'
+            )
+            ->having(
+                'rowNum < 2'
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        $cgrIds = array_map(
+            function ($row): string {
+                return $row['cgrid'];
+            },
+            $result
+        );
+
+        if (empty($cgrIds)) {
+            return 0;
+        }
+
+        $qb = $this
+            ->createQueryBuilder('self');
+        $exp = $qb->expr();
+
+        $qb
+            ->delete(
+                $this->getEntityName(),
+                'self'
+            )
+            ->where(
+                $exp->in('self.cgrid', $cgrIds)
+            );
+
+        return $qb->getQuery()->execute();
     }
 }

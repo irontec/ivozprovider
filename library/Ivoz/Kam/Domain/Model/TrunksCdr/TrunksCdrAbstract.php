@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -39,14 +40,14 @@ abstract class TrunksCdrAbstract
     use ChangelogTrait;
 
     /**
-     * column: start_time
      * @var \DateTime
+     * column: start_time
      */
     protected $startTime;
 
     /**
-     * column: end_time
      * @var \DateTime
+     * column: end_time
      */
     protected $endTime;
 
@@ -56,42 +57,42 @@ abstract class TrunksCdrAbstract
     protected $duration = 0;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $caller;
+    protected $caller = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callee;
+    protected $callee = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callid;
+    protected $callid = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callidHash;
+    protected $callidHash = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $xcallid;
+    protected $xcallid = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $diversion;
+    protected $diversion = null;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
-    protected $bounced;
+    protected $bounced = null;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $parsed = false;
 
@@ -101,74 +102,74 @@ abstract class TrunksCdrAbstract
     protected $parserScheduledAt;
 
     /**
+     * @var ?string
      * comment: enum:inbound|outbound
-     * @var string | null
      */
-    protected $direction;
+    protected $direction = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $cgrid;
+    protected $cgrid = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?FaxInterface
      */
-    protected $fax;
+    protected $fax = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $ddi;
+    protected $ddi = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $startTime,
-        $endTime,
-        $duration,
-        $parserScheduledAt
+        \DateTimeInterface|string $startTime,
+        \DateTimeInterface|string $endTime,
+        float $duration,
+        \DateTimeInterface|string $parserScheduledAt
     ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
@@ -176,41 +177,34 @@ abstract class TrunksCdrAbstract
         $this->setParserScheduledAt($parserScheduledAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksCdr",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksCdrDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksCdrDto
     {
         return new TrunksCdrDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksCdrInterface|null $entity
-     * @param int $depth
-     * @return TrunksCdrDto|null
+     * @param null|TrunksCdrInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksCdrDto
     {
         if (!$entity) {
             return null;
@@ -226,8 +220,7 @@ abstract class TrunksCdrAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksCdrDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -236,19 +229,26 @@ abstract class TrunksCdrAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksCdrDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $parserScheduledAt = $dto->getParserScheduledAt();
+        Assertion::notNull($parserScheduledAt, 'getParserScheduledAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartTime(),
-            $dto->getEndTime(),
-            $dto->getDuration(),
-            $dto->getParserScheduledAt()
+            $startTime,
+            $endTime,
+            $duration,
+            $parserScheduledAt
         );
 
         $self
@@ -281,18 +281,26 @@ abstract class TrunksCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksCdrDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $parserScheduledAt = $dto->getParserScheduledAt();
+        Assertion::notNull($parserScheduledAt, 'getParserScheduledAt value is null, but non null value was expected.');
+
         $this
-            ->setStartTime($dto->getStartTime())
-            ->setEndTime($dto->getEndTime())
-            ->setDuration($dto->getDuration())
+            ->setStartTime($startTime)
+            ->setEndTime($endTime)
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setCallid($dto->getCallid())
@@ -301,7 +309,7 @@ abstract class TrunksCdrAbstract
             ->setDiversion($dto->getDiversion())
             ->setBounced($dto->getBounced())
             ->setParsed($dto->getParsed())
-            ->setParserScheduledAt($dto->getParserScheduledAt())
+            ->setParserScheduledAt($parserScheduledAt)
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -320,10 +328,8 @@ abstract class TrunksCdrAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksCdrDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksCdrDto
     {
         return self::createDto()
             ->setStartTime(self::getStartTime())
@@ -353,9 +359,9 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'start_time' => self::getStartTime(),
@@ -372,28 +378,29 @@ abstract class TrunksCdrAbstract
             'parserScheduledAt' => self::getParserScheduledAt(),
             'direction' => self::getDirection(),
             'cgrid' => self::getCgrid(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 
-    protected function setStartTime($startTime): static
+    protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
+        /** @var \Datetime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->startTime == $startTime) {
+        if ($this->isInitialized() && $this->startTime == $startTime) {
             return $this;
         }
 
@@ -407,15 +414,16 @@ abstract class TrunksCdrAbstract
         return clone $this->startTime;
     }
 
-    protected function setEndTime($endTime): static
+    protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
+        /** @var \Datetime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->endTime == $endTime) {
+        if ($this->isInitialized() && $this->endTime == $endTime) {
             return $this;
         }
 
@@ -539,11 +547,6 @@ abstract class TrunksCdrAbstract
 
     protected function setBounced(?bool $bounced = null): static
     {
-        if (!is_null($bounced)) {
-            Assertion::between(intval($bounced), 0, 1, 'bounced provided "%s" is not a valid boolean value.');
-            $bounced = (bool) $bounced;
-        }
-
         $this->bounced = $bounced;
 
         return $this;
@@ -556,11 +559,6 @@ abstract class TrunksCdrAbstract
 
     protected function setParsed(?bool $parsed = null): static
     {
-        if (!is_null($parsed)) {
-            Assertion::between(intval($parsed), 0, 1, 'parsed provided "%s" is not a valid boolean value.');
-            $parsed = (bool) $parsed;
-        }
-
         $this->parsed = $parsed;
 
         return $this;
@@ -571,15 +569,16 @@ abstract class TrunksCdrAbstract
         return $this->parsed;
     }
 
-    protected function setParserScheduledAt($parserScheduledAt): static
+    protected function setParserScheduledAt(string|\DateTimeInterface $parserScheduledAt): static
     {
 
+        /** @var \Datetime */
         $parserScheduledAt = DateTimeHelper::createOrFix(
             $parserScheduledAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->parserScheduledAt == $parserScheduledAt) {
+        if ($this->isInitialized() && $this->parserScheduledAt == $parserScheduledAt) {
             return $this;
         }
 

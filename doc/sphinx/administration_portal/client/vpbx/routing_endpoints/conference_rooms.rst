@@ -18,8 +18,6 @@ assignment or 'hash based' distribution (see **Distribute method** :ref:`here <V
 The following image shows the process of creating a new conference room:
 
 
-.. glossary::
-
     Name
         Name that will used to identify this conference room in other sections
         

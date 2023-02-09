@@ -8,21 +8,15 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 
 class SetParsed
 {
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
-    /**
-     * @return void
-     */
     public function execute(
         TrunksCdrInterface $trunksCdr,
-        $dispatchImmediately = false
-    ) {
+        bool $dispatchImmediately = false
+    ): void {
         /**
          * @var TrunksCdrDto $trunksCdrDto
          */

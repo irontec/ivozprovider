@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 
 class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
-
-    protected $usersGearmanClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
-        UsersClientInterface $usersGearmanClient
+        private UsersClientInterface $usersGearmanClient
     ) {
-        $this->usersGearmanClient = $usersGearmanClient;
     }
 
     public static function getSubscribedEvents()

@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -18,27 +21,54 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 */
 interface BillableCallInterface extends LoggableEntityInterface
 {
-    const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
+    public const ENDPOINTTYPE_RETAILACCOUNT = 'RetailAccount';
 
-    const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
+    public const ENDPOINTTYPE_RESIDENTIALDEVICE = 'ResidentialDevice';
 
-    const ENDPOINTTYPE_USER = 'User';
+    public const ENDPOINTTYPE_USER = 'User';
 
-    const ENDPOINTTYPE_FRIEND = 'Friend';
+    public const ENDPOINTTYPE_FRIEND = 'Friend';
 
-    const ENDPOINTTYPE_FAX = 'Fax';
+    public const ENDPOINTTYPE_FAX = 'Fax';
 
-    const DIRECTION_INBOUND = 'inbound';
+    public const DIRECTION_INBOUND = 'inbound';
 
-    const DIRECTION_OUTBOUND = 'outbound';
+    public const DIRECTION_OUTBOUND = 'outbound';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     public function isOutboundCall(): bool;
+
+    public static function createDto(string|int|null $id = null): BillableCallDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|BillableCallInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BillableCallDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param BillableCallDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): BillableCallDto;
 
     public function getCallid(): ?string;
 
@@ -68,7 +98,7 @@ interface BillableCallInterface extends LoggableEntityInterface
 
     public function getEndpointName(): ?string;
 
-    public function getDirection(): ?string;
+    public function getDirection(): string;
 
     public function getBrand(): ?BrandInterface;
 

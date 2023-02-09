@@ -14,9 +14,9 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,12 +26,12 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $startDate = $this->getStartDate();
         $endDate = $this->getEndDate();
@@ -57,8 +57,7 @@ class CalendarPeriod extends CalendarPeriodAbstract implements CalendarPeriodInt
             $this->getNumberValue();
     }
 
-
-    public function isOutOfSchedule()
+    public function isOutOfSchedule(): bool
     {
         $calendar = $this->getCalendar();
         $company = $calendar->getCompany();

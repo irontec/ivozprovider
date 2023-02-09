@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Carrier\Carrier;
@@ -22,37 +23,37 @@ abstract class CarrierServerAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $ip;
+    protected $ip = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $hostname;
+    protected $hostname = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $port;
+    protected $port = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $uriScheme;
+    protected $uriScheme = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $transport;
+    protected $transport = null;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $sendPAI = false;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $sendRPID = false;
 
@@ -62,34 +63,34 @@ abstract class CarrierServerAbstract
     protected $authNeeded = 'no';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $authUser;
+    protected $authUser = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $authPassword;
+    protected $authPassword = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $sipProxy;
+    protected $sipProxy = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $outboundProxy;
+    protected $outboundProxy = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $fromUser;
+    protected $fromUser = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $fromDomain;
+    protected $fromDomain = null;
 
     /**
      * @var CarrierInterface
@@ -106,46 +107,39 @@ abstract class CarrierServerAbstract
      * Constructor
      */
     protected function __construct(
-        $authNeeded
+        string $authNeeded
     ) {
         $this->setAuthNeeded($authNeeded);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CarrierServer",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CarrierServerDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CarrierServerDto
     {
         return new CarrierServerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CarrierServerInterface|null $entity
-     * @param int $depth
-     * @return CarrierServerDto|null
+     * @param null|CarrierServerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CarrierServerDto
     {
         if (!$entity) {
             return null;
@@ -161,8 +155,7 @@ abstract class CarrierServerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CarrierServerDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -171,16 +164,21 @@ abstract class CarrierServerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CarrierServerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getAuthNeeded()
+            $authNeeded
         );
 
         $self
@@ -197,8 +195,8 @@ abstract class CarrierServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setCarrier($fkTransformer->transform($carrier))
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -208,13 +206,19 @@ abstract class CarrierServerAbstract
     /**
      * @internal use EntityTools instead
      * @param CarrierServerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
+
+        $authNeeded = $dto->getAuthNeeded();
+        Assertion::notNull($authNeeded, 'getAuthNeeded value is null, but non null value was expected.');
+        $carrier = $dto->getCarrier();
+        Assertion::notNull($carrier, 'getCarrier value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $this
             ->setIp($dto->getIp())
@@ -224,25 +228,23 @@ abstract class CarrierServerAbstract
             ->setTransport($dto->getTransport())
             ->setSendPAI($dto->getSendPAI())
             ->setSendRPID($dto->getSendRPID())
-            ->setAuthNeeded($dto->getAuthNeeded())
+            ->setAuthNeeded($authNeeded)
             ->setAuthUser($dto->getAuthUser())
             ->setAuthPassword($dto->getAuthPassword())
             ->setSipProxy($dto->getSipProxy())
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setCarrier($fkTransformer->transform($carrier))
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CarrierServerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CarrierServerDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -264,9 +266,9 @@ abstract class CarrierServerAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),
@@ -370,11 +372,6 @@ abstract class CarrierServerAbstract
 
     protected function setSendPAI(?bool $sendPAI = null): static
     {
-        if (!is_null($sendPAI)) {
-            Assertion::between(intval($sendPAI), 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
-            $sendPAI = (bool) $sendPAI;
-        }
-
         $this->sendPAI = $sendPAI;
 
         return $this;
@@ -387,11 +384,6 @@ abstract class CarrierServerAbstract
 
     protected function setSendRPID(?bool $sendRPID = null): static
     {
-        if (!is_null($sendRPID)) {
-            Assertion::between(intval($sendRPID), 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
-            $sendRPID = (bool) $sendRPID;
-        }
-
         $this->sendRPID = $sendRPID;
 
         return $this;
@@ -514,7 +506,6 @@ abstract class CarrierServerAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

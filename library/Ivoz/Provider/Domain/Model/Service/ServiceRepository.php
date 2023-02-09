@@ -11,4 +11,9 @@ interface ServiceRepository extends ObjectRepository, Selectable
      * @return ServiceInterface[]
      */
     public function getServicesInGroup(array $ids);
+
+    /**
+     * return ServiceInterface
+     */
+    public function findByIden(string $iden): ?ServiceInterface;
 }

@@ -23,7 +23,7 @@ class MigrateFromUnparsedTrunksCdrSpec extends ObjectBehavior
     protected $logger;
 
     public function let(
-        TrunksCdrRepository  $trunksCdrRepository,
+        TrunksCdrRepository $trunksCdrRepository,
         MigrateFromTrunksCdr $migrateFromTrunksCdr,
         LoggerInterface $logger
     ) {

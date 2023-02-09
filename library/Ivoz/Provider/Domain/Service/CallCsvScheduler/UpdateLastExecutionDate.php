@@ -5,19 +5,12 @@ namespace Ivoz\Provider\Domain\Service\CallCsvScheduler;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
-use Psr\Log\LoggerInterface;
 
 class UpdateLastExecutionDate
 {
-    private $entityTools;
-    protected $logger;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
     }
 
     /**
@@ -36,7 +29,7 @@ class UpdateLastExecutionDate
         $callCsvSchedulerDto
             ->setLastExecution(
                 new \DateTime(
-                    null,
+                    'now',
                     new \DateTimeZone('UTC')
                 )
             )

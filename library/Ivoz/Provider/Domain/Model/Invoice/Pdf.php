@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
@@ -9,49 +10,49 @@ use Assert\Assertion;
 * Pdf
 * @codeCoverageIgnore
 */
-class Pdf
+final class Pdf
 {
     /**
+     * @var ?int
      * column: pdfFileFileSize
      * comment: FSO
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: pdfFileMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: pdfFileBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName = null;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $pdf)
+    public function equals(self $pdf): bool
     {
-        return
-            $this->getFileSize() === $pdf->getFileSize() &&
-            $this->getMimeType() === $pdf->getMimeType() &&
-            $this->getBaseName() === $pdf->getBaseName();
+        if ($this->getFileSize() !== $pdf->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $pdf->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $pdf->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

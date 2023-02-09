@@ -19,7 +19,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
      * @var string|null
@@ -47,45 +47,48 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     private $generateRules = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     /**
      * @var TransformationRuleDto[] | null
      */
-    private $rules;
+    private $rules = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -94,7 +97,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -120,9 +123,9 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'description' => $this->getDescription(),
@@ -236,12 +239,12 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -253,7 +256,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -265,7 +268,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -277,7 +280,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 

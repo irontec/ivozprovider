@@ -12,26 +12,15 @@ use Psr\Log\LoggerInterface;
 
 class ProcessExternalCdr
 {
-    const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
-
-    protected $apiClient;
-    protected $entityTools;
-    protected $tpCdrRepository;
-    protected $logger;
-    protected $trunksClient;
+    public const DATE_FORMAT = 'Y-m-d\TH:i:s\Z';
 
     public function __construct(
-        ApiClient $apiClient,
-        EntityTools $entityTools,
-        TpCdrRepository $tpCdrRepository,
-        LoggerInterface $logger,
-        TrunksClientInterface $trunksClient
+        private ApiClient $apiClient,
+        private EntityTools $entityTools,
+        private TpCdrRepository $tpCdrRepository,
+        private LoggerInterface $logger,
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->tpCdrRepository = $tpCdrRepository;
-        $this->apiClient = $apiClient;
-        $this->trunksClient = $trunksClient;
     }
 
     /**
@@ -89,7 +78,7 @@ class ProcessExternalCdr
         }
 
         try {
-            $response = $this->apiClient->sendRequest(
+            $this->apiClient->sendRequest(
                 'CdrsV1.ProcessExternalCDR',
                 $payload
             );
@@ -111,7 +100,7 @@ class ProcessExternalCdr
         } catch (\Exception $e) {
             $errorMsg = sprintf(
                 'Unable to process external cdr for #%s: %s',
-                $trunksCdr->getId(),
+                (int) $trunksCdr->getId(),
                 $e->getMessage()
             );
             $this->logger->error($errorMsg);

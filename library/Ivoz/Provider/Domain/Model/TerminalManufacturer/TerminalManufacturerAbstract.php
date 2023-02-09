@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\TerminalManufacturer;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * TerminalManufacturerAbstract
@@ -36,50 +37,43 @@ abstract class TerminalManufacturerAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $name,
-        $description
+        string $iden,
+        string $name,
+        string $description
     ) {
         $this->setIden($iden);
         $this->setName($name);
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TerminalManufacturer",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TerminalManufacturerDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TerminalManufacturerDto
     {
         return new TerminalManufacturerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TerminalManufacturerInterface|null $entity
-     * @param int $depth
-     * @return TerminalManufacturerDto|null
+     * @param null|TerminalManufacturerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TerminalManufacturerDto
     {
         if (!$entity) {
             return null;
@@ -95,8 +89,7 @@ abstract class TerminalManufacturerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TerminalManufacturerDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -105,18 +98,23 @@ abstract class TerminalManufacturerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TerminalManufacturerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getName(),
-            $dto->getDescription()
+            $iden,
+            $name,
+            $description
         );
 
         ;
@@ -129,28 +127,32 @@ abstract class TerminalManufacturerAbstract
     /**
      * @internal use EntityTools instead
      * @param TerminalManufacturerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TerminalManufacturerDto::class);
 
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+
         $this
-            ->setIden($dto->getIden())
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription());
+            ->setIden($iden)
+            ->setName($name)
+            ->setDescription($description);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TerminalManufacturerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TerminalManufacturerDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -159,9 +161,9 @@ abstract class TerminalManufacturerAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),

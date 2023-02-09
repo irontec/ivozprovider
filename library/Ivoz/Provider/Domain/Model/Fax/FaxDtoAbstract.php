@@ -16,35 +16,38 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $email;
+    private $email = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $sendByEmail = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -53,7 +56,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -70,9 +73,9 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -97,7 +100,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -121,7 +124,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $this->email;
     }
 
-    public function setSendByEmail(?bool $sendByEmail): static
+    public function setSendByEmail(bool $sendByEmail): static
     {
         $this->sendByEmail = $sendByEmail;
 
@@ -140,7 +143,7 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

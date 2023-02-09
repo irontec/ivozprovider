@@ -7,8 +7,6 @@ numbers must be created using a defined sequence number.
 
 This section allows brand operator to create as many sequences as needed filling these fields:
 
-.. glossary::
-
     Name
         Used for referencing this sequence in Invoice generation window.
 

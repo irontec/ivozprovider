@@ -18,8 +18,10 @@ Feature: Retrieve external call filter white lists
               "id": 1,
               "filter": {
                   "name": "testFilter",
+                  "holidayEnabled": true,
                   "holidayTargetType": null,
                   "holidayNumberValue": null,
+                  "outOfScheduleEnabled": true,
                   "outOfScheduleTargetType": null,
                   "outOfScheduleNumberValue": null,
                   "id": 1,
@@ -28,8 +30,8 @@ Feature: Retrieve external call filter white lists
                   "outOfScheduleLocution": null,
                   "holidayExtension": null,
                   "outOfScheduleExtension": null,
-                  "holidayVoiceMailUser": null,
-                  "outOfScheduleVoiceMailUser": null,
+                  "holidayVoicemail": null,
+                  "outOfScheduleVoicemail": null,
                   "holidayNumberCountry": null,
                   "outOfScheduleNumberCountry": null
               },
@@ -54,8 +56,10 @@ Feature: Retrieve external call filter white lists
           "id": 1,
           "filter": {
               "name": "testFilter",
+              "holidayEnabled": true,
               "holidayTargetType": null,
               "holidayNumberValue": null,
+              "outOfScheduleEnabled": true,
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
@@ -64,8 +68,8 @@ Feature: Retrieve external call filter white lists
               "outOfScheduleLocution": null,
               "holidayExtension": null,
               "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
+              "holidayVoicemail": null,
+              "outOfScheduleVoicemail": null,
               "holidayNumberCountry": null,
               "outOfScheduleNumberCountry": null
           },

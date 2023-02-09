@@ -5,10 +5,10 @@ namespace Tests\Provider\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
+use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
 
 class AdministratorRelPublicEntityRepositoryTest extends KernelTestCase
 {
@@ -24,6 +24,7 @@ class AdministratorRelPublicEntityRepositoryTest extends KernelTestCase
         $this->its_instantiable();
         $this->it_sets_write_permissions();
         $this->it_sets_readOnly_permissions();
+        $this->it_finds_by_admin_id();
     }
 
     /**
@@ -109,31 +110,28 @@ class AdministratorRelPublicEntityRepositoryTest extends KernelTestCase
         $this->assertNotEmpty($changes);
     }
 
-
-    public function it_removes_by_admin_id()
+    public function it_finds_by_admin_id()
     {
         /** @var AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository */
         $administratorRelPublicEntityRepository = $this
             ->em
             ->getRepository(AdministratorRelPublicEntity::class);
 
-        $admin = $this->getAdmin(6);
+        $response = $administratorRelPublicEntityRepository->getByAdministratorId(7);
 
-        $affectedRows = $administratorRelPublicEntityRepository
-            ->revokePermissionsByIds(
-                $admin->getId()
-            );
+        $this->assertIsArray(
+            $response
+        );
 
-        $this->assertGreaterThan(
+        $this->assertGreaterThanOrEqual(
             1,
-            $affectedRows
+            count($response)
         );
 
-        $changes = $this->getChangelogByClass(
-            AdministratorRelPublicEntity::class
+        $this->assertInstanceOf(
+            AdministratorRelPublicEntity::class,
+            $response[0]
         );
-
-        $this->assertNotEmpty($changes);
     }
 
     private function getAdmin(int $id = 5): AdministratorInterface

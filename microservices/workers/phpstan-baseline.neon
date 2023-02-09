@@ -1,0 +1,67 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Worker\\\\Cgrates\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Worker/Cgrates.php
+
+		-
+			message: "#^Method Worker\\\\KamRpc\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Worker/KamRpc.php
+
+		-
+			message: "#^Method Worker\\\\KamRpc\\:\\:reEnqueueJob\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Worker/KamRpc.php
+
+		-
+			message: "#^Parameter \\#1 \\$className of method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\) expects class\\-string\\<mixed\\>, string given\\.$#"
+			count: 1
+			path: src/Worker/KamRpc.php
+
+		-
+			message: "#^Parameter \\#2 \\$value1 of method Redis\\:\\:lPush\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/Worker/KamRpc.php
+
+		-
+			message: "#^Property Worker\\\\KamRpc\\:\\:\\$retryInterval has no typehint specified\\.$#"
+			count: 1
+			path: src/Worker/KamRpc.php
+
+		-
+			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\)$#"
+			count: 1
+			path: src/Worker/KamRpc.php
+
+		-
+			message: "#^Method Worker\\\\Multimedia\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Worker/Multimedia.php
+
+		-
+			message: "#^Unable to resolve the template type T in call to method Doctrine\\\\ORM\\\\EntityManagerInterface\\:\\:getRepository\\(\\)$#"
+			count: 1
+			path: src/Worker/Multimedia.php
+
+		-
+			message: "#^Method Worker\\\\Rates\\:\\:getJobPayload\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Worker/Rates.php
+
+		-
+			message: "#^Offset 'columns' does not exist on array\\|null\\.$#"
+			count: 1
+			path: src/Worker/Rates.php
+
+		-
+			message: "#^Offset 'ignoreFirst' does not exist on array\\|null\\.$#"
+			count: 2
+			path: src/Worker/Rates.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
+			count: 1
+			path: src/Worker/Rates.php
+

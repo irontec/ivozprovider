@@ -11,17 +11,11 @@ use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateRepository;
  */
 class CheckEventDateCollision implements HolidayDateLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var HolidayDateRepository
-     */
-    protected $holidayDateRepository;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        HolidayDateRepository $holidayDateRepository
+        private HolidayDateRepository $holidayDateRepository
     ) {
-        $this->holidayDateRepository = $holidayDateRepository;
     }
 
     public static function getSubscribedEvents()

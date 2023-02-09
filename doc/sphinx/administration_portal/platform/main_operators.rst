@@ -1,3 +1,5 @@
+.. _main operators:
+
 ##############
 Main operators
 ##############
@@ -6,8 +8,6 @@ This section lists the credentials to log into the god administration portal. Yo
 and create new ones.
 
 These are the required fields of each entry:
-
-.. glossary::
 
     Username
         User for login process.

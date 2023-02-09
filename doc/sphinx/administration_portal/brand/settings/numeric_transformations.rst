@@ -1,4 +1,6 @@
 .. _transformations:
+.. _numeric transformations:
+.. _transformaciones numéricas:
 
 #######################
 Numeric transformations
@@ -88,8 +90,6 @@ IvozProvider comes with an automatic transformation rules generator that fits
 with most of the countries.
 
 In order to create a new set of transformations use **Add Numeric transformations**:
-
-.. glossary::
 
    Name
       Use to reference this numeric transformation set

@@ -105,7 +105,7 @@ class ServiceAction
         // Process this service
         switch ($service->getService()->getIden()) {
             case Service::VOICEMAIL:
-                $this->processVoiceMail();
+                $this->processVoicemail();
                 break;
             case Service::DIRECT_PICKUP:
                 $this->processDirectPickUp();
@@ -143,7 +143,7 @@ class ServiceAction
     /**
      *
      */
-    private function processVoiceMail()
+    private function processVoicemail()
     {
         /** @var UserInterface $caller */
         $caller = $this->channelInfo->getChannelCaller();
@@ -170,18 +170,30 @@ class ServiceAction
                 return;
             }
 
-            if (empty($extension->getUser())) {
-                $this->agi->error("Extension %s does not route to an user.", $vmExtension);
-                return;
+            $user = $extension->getUser();
+            if ($user) {
+                $voicemail = $user->getVoicemail();
+            } else {
+                $voicemail = $extension->getVoicemail();
             }
 
-            // Check voicemail for exten user
-            $this->agi->verbose("Checking user %s voicemail", $extension->getUser()->getName());
-            $this->agi->checkVoicemail($extension->getUser()->getVoiceMail());
+            $voicemailOpts = "";
         } else {
-            // Check voicemail for caller user (without requesting password)
-            $this->agi->checkVoicemail($caller->getVoiceMail(), "s");
+            $voicemail = $caller->getVoicemail();
+            $voicemailOpts = "s"; // without requesting password
         }
+
+        if (!$voicemail || empty($voicemail)) {
+            $this->agi->error("Routing to non existant voicemail. Check configuration");
+            return;
+        }
+
+        if (!$voicemail->getEnabled()) {
+            $this->agi->error("Voicemail %s [%s] is not enabled", $voicemail->getName(), $voicemail);
+            return;
+        }
+
+        $this->agi->checkVoicemail($voicemail->getVoicemailName(), $voicemailOpts);
     }
 
     protected function processDirectPickUp()
@@ -369,7 +381,7 @@ class ServiceAction
         if ($routeLock) {
             /** @var RouteLockDto $routeLockDto */
             $routeLockDto = $this->entityTools->entityToDto($routeLock);
-            $routeLockDto->setOpen(1);
+            $routeLockDto->setOpen(true);
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
@@ -381,7 +393,7 @@ class ServiceAction
         if ($routeLock) {
             /** @var RouteLockDto $routeLockDto */
             $routeLockDto = $this->entityTools->entityToDto($routeLock);
-            $routeLockDto->setOpen(0);
+            $routeLockDto->setOpen(false);
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
@@ -393,7 +405,9 @@ class ServiceAction
         if ($routeLock) {
             /** @var RouteLockDto $routeLockDto */
             $routeLockDto = $this->entityTools->entityToDto($routeLock);
-            $routeLockDto->setOpen($routeLock->isOpen() ? 0 : 1);
+            $routeLockDto->setOpen(
+                !$routeLock->isOpen()
+            );
             $this->entityTools->persistDto($routeLockDto, $routeLock);
             $this->printRouteLockStatus($routeLock);
         }
@@ -489,7 +503,7 @@ class ServiceAction
             ->setCallTypeFilter(CallForwardSettingInterface::CALLTYPEFILTER_BOTH)
             ->setCallForwardType($callForwardType)
             ->setTargetType($targetType)
-            ->setNoAnswerTimeout(10);
+            ->setNoAnswerTimeout(20);
 
         if ($targetType == CallForwardSettingInterface::TARGETTYPE_NUMBER) {
             $callForwardSettingDto
@@ -518,7 +532,7 @@ class ServiceAction
 
         do {
             $this->agi->playback($sound);
-            $entered.= $digit = $this->agi->read("", 60, 1);
+            $entered .= $digit = $this->agi->read("", 60, 1);
             $sound = "hello/$digit";
         } while (substr($entered, -3) != 777);
 

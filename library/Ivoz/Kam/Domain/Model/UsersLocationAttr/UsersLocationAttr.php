@@ -14,7 +14,7 @@ class UsersLocationAttr extends UsersLocationAttrAbstract implements UsersLocati
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

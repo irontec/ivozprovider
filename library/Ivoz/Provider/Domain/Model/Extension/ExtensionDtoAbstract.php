@@ -12,6 +12,7 @@ use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 
 /**
 * ExtensionDtoAbstract
@@ -22,75 +23,83 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $number;
+    private $number = null;
 
     /**
      * @var string|null
      */
-    private $routeType;
+    private $routeType = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $numberValue = null;
 
     /**
      * @var string|null
      */
-    private $friendValue;
+    private $friendValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
+
+    /**
+     * @var VoicemailDto | null
+     */
+    private $voicemail = null;
 
     /**
      * @var UserDto[] | null
      */
-    private $users;
+    private $users = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -99,7 +108,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -118,14 +127,15 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'userId' => 'user',
             'queueId' => 'queue',
             'conditionalRouteId' => 'conditionalRoute',
-            'numberCountryId' => 'numberCountry'
+            'numberCountryId' => 'numberCountry',
+            'voicemailId' => 'voicemail'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'number' => $this->getNumber(),
@@ -141,6 +151,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'queue' => $this->getQueue(),
             'conditionalRoute' => $this->getConditionalRoute(),
             'numberCountry' => $this->getNumberCountry(),
+            'voicemail' => $this->getVoicemail(),
             'users' => $this->getUsers()
         ];
 
@@ -158,7 +169,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setNumber(?string $number): static
+    public function setNumber(string $number): static
     {
         $this->number = $number;
 
@@ -213,7 +224,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -452,6 +463,36 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setVoicemail(?VoicemailDto $voicemail): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailDto
+    {
+        return $this->voicemail;
+    }
+
+    public function setVoicemailId($id): static
+    {
+        $value = !is_null($id)
+            ? new VoicemailDto($id)
+            : null;
+
+        return $this->setVoicemail($value);
+    }
+
+    public function getVoicemailId()
+    {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

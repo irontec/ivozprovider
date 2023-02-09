@@ -1,0 +1,35 @@
+# 2011-test-ivr-custom-displayname.yaml
+#
+# Simple scenario for testing a call from bob to eve through an IVR
+# that must have the extension 601 assigned and option 5 must have
+# custom display name.
+#
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from bob to alice using IVR custom
+    type: simple
+    timeout: 20
+    sessions:
+      - ivr_uac_bob:
+          - wait: 3
+          - call:
+              dest: 601             # IVR custom extension
+              credentials:
+                <<: *bob_cred
+          - waitfor: CONFIRMED
+          - wait: 3
+          - dtmf: 5
+          - waitfor: DISCONNCTD
+      - ivr_uas_eve:
+          - register:
+              <<: *eve_cred
+          - waitfor: INCOMING
+          - callidname: "Option IVR 5"
+          - ringing
+          - wait
+          - answer
+          - waitfor: CONFIRMED
+          - wait
+          - hangup
+          - waitfor: DISCONNCTD
+

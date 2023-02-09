@@ -2,6 +2,7 @@
 
 namespace Services;
 
+use Doctrine\DBAL\Exception\ConnectionLost;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
@@ -36,8 +37,9 @@ class RegistrationChannelResolver
         array $registerCriteria
     ) {
         $connection = $this->em->getConnection();
-        $pingError = !$connection->ping();
-        if ($pingError) {
+        try {
+            $this->administratorRepository->find(0);
+        } catch (ConnectionLost $e) {
             $connection->close();
             $connection->connect();
         }
@@ -99,7 +101,7 @@ class RegistrationChannelResolver
     private function assertBrandAdminAccessGranted(
         string $username,
         array $registerCriteria
-    ):bool {
+    ): bool {
 
         $admin = $this->administratorRepository->findBrandAdminByUsername(
             $username
@@ -177,7 +179,7 @@ class RegistrationChannelResolver
     private function assertClientAdminAccessGranted(
         string $username,
         array $registerCriteria
-    ):bool {
+    ): bool {
 
         $admin = $this->administratorRepository->findClientAdminByUsername(
             $username

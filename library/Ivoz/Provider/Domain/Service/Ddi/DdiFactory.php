@@ -12,21 +12,12 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 
 class DdiFactory
 {
-    protected $countryRepository;
-    protected $ddiRepository;
-    protected $ddiProviderRepository;
-    protected $entityTools;
-
     public function __construct(
-        CountryRepository $countryRepository,
-        DdiRepository $ddiRepository,
-        DdiProviderRepository $ddiProviderRepository,
-        EntityTools $entityTools
+        private CountryRepository $countryRepository,
+        private DdiRepository $ddiRepository,
+        private DdiProviderRepository $ddiProviderRepository,
+        private EntityTools $entityTools
     ) {
-        $this->ddiRepository = $ddiRepository;
-        $this->countryRepository = $countryRepository;
-        $this->ddiProviderRepository = $ddiProviderRepository;
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -59,7 +50,7 @@ class DdiFactory
             $ddiProvider = $this
                 ->ddiProviderRepository
                 ->findOneByBrandAndName(
-                    $company->getBrand()->getId(),
+                    (int) $company->getBrand()->getId(),
                     $ddiProviderName
                 );
 
@@ -75,7 +66,7 @@ class DdiFactory
             ->ddiRepository
             ->findOneByDdiAndCountry(
                 $ddiNumber,
-                $country->getId()
+                (int) $country->getId()
             );
 
         if ($ddi) {
@@ -86,6 +77,7 @@ class DdiFactory
             }
         }
 
+        /** @var DdiDto $ddiDto */
         $ddiDto = $ddi instanceof DdiInterface
             ? $this->entityTools->entityToDto($ddi)
             : new DdiDto();

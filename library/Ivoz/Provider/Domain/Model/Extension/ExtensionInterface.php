@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
@@ -11,7 +14,8 @@ use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -19,27 +23,36 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface ExtensionInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_USER = 'user';
+    public const ROUTETYPE_USER = 'user';
 
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_IVR = 'ivr';
+    public const ROUTETYPE_IVR = 'ivr';
 
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    public const ROUTETYPE_HUNTGROUP = 'huntGroup';
 
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    public const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
 
-    const ROUTETYPE_FRIEND = 'friend';
+    public const ROUTETYPE_FRIEND = 'friend';
 
-    const ROUTETYPE_QUEUE = 'queue';
+    public const ROUTETYPE_QUEUE = 'queue';
 
-    const ROUTETYPE_CONDITIONAL = 'conditional';
+    public const ROUTETYPE_CONDITIONAL = 'conditional';
+
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     public function setUser(?UserInterface $user = null): static;
 
@@ -53,6 +66,11 @@ interface ExtensionInterface extends LoggableEntityInterface
      */
     public function setNumberValue(?string $numberValue = null): static;
 
+    /**
+     * @return (int|string)[]
+     *
+     * @psalm-return array{id: int|null, number: string}
+     */
     public function toArrayPortal();
 
     /**
@@ -68,6 +86,26 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNumberValueE164();
+
+    public static function createDto(string|int|null $id = null): ExtensionDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|ExtensionInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExtensionDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param ExtensionDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): ExtensionDto;
 
     public function getNumber(): string;
 
@@ -95,14 +133,22 @@ interface ExtensionInterface extends LoggableEntityInterface
 
     public function getNumberCountry(): ?CountryInterface;
 
+    public function getVoicemail(): ?VoicemailInterface;
+
     public function isInitialized(): bool;
 
     public function addUser(UserInterface $user): ExtensionInterface;
 
     public function removeUser(UserInterface $user): ExtensionInterface;
 
-    public function replaceUsers(ArrayCollection $users): ExtensionInterface;
+    /**
+     * @param Collection<array-key, UserInterface> $users
+     */
+    public function replaceUsers(Collection $users): ExtensionInterface;
 
+    /**
+     * @return array<array-key, UserInterface>
+     */
     public function getUsers(?Criteria $criteria = null): array;
 
     /**

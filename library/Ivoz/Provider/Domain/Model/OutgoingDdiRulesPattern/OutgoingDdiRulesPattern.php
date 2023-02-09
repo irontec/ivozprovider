@@ -14,9 +14,9 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,12 +26,12 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
 
         if ($this->getType() === OutgoingDdiRulesPatternInterface::TYPE_PREFIX) {
@@ -72,9 +72,10 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 
     /**
      * Return forced Ddi for this rule pattern
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     *
+     * @return DdiInterface|null
      */
-    public function getForcedDdi(): DdiInterface
+    public function getForcedDdi(): ?DdiInterface
     {
         $ddi = parent::getForcedDdi();
         if ($ddi) {

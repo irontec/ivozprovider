@@ -7,7 +7,7 @@ class FixedCostsRelInvoiceSchedulerDto extends FixedCostsRelInvoiceSchedulerDtoA
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -16,6 +16,9 @@ class FixedCostsRelInvoiceSchedulerDto extends FixedCostsRelInvoiceSchedulerDtoA
         return [
             'quantity' => 'quantity',
             'id' => 'id',
+            'type' => 'type',
+            'ddisCountryMatch' => 'ddisCountryMatch',
+            'ddisCountry' => 'ddisCountry',
             'fixedCostId' => 'fixedCost',
             'invoiceSchedulerId' => 'invoiceScheduler'
         ];

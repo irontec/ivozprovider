@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
@@ -9,49 +10,49 @@ use Assert\Assertion;
 * EncodedFile
 * @codeCoverageIgnore
 */
-class EncodedFile
+final class EncodedFile
 {
     /**
+     * @var ?int
      * column: encodedFileFileSize
      * comment: FSO:keepExtension
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: encodedFileMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: encodedFileBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName = null;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $encodedFile)
+    public function equals(self $encodedFile): bool
     {
-        return
-            $this->getFileSize() === $encodedFile->getFileSize() &&
-            $this->getMimeType() === $encodedFile->getMimeType() &&
-            $this->getBaseName() === $encodedFile->getBaseName();
+        if ($this->getFileSize() !== $encodedFile->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $encodedFile->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $encodedFile->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

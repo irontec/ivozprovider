@@ -14,9 +14,9 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,7 +26,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -63,7 +63,7 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInte
     /**
      * @return \DateInterval
      */
-    public function getInterval()
+    public function getInterval(): \DateInterval
     {
         $frecuency = $this->getFrequency();
 

@@ -11,11 +11,11 @@ class UserDto extends UserDtoAbstract
         'pass',
     ];
 
-    const CONTEXT_MY_PROFILE = 'myProfile';
-    const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
-    const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
+    public const CONTEXT_MY_PROFILE = 'myProfile';
+    public const CONTEXT_PUT_MY_PROFILE = 'updateMyProfile';
+    public const CONTEXT_WITH_PICKUP_GROUPS = 'withPickupGroups';
 
-    const CONTEXT_TYPES = [
+    public const CONTEXT_TYPES = [
         self::CONTEXT_COLLECTION,
         self::CONTEXT_SIMPLE,
         self::CONTEXT_DETAILED,
@@ -24,7 +24,7 @@ class UserDto extends UserDtoAbstract
         self::CONTEXT_WITH_PICKUP_GROUPS
     ];
 
-    const CONTEXTS_WITH_PICKUP_GROUPS = [
+    public const CONTEXTS_WITH_PICKUP_GROUPS = [
         self::CONTEXT_WITH_PICKUP_GROUPS,
         self::CONTEXT_DETAILED
     ];
@@ -37,13 +37,13 @@ class UserDto extends UserDtoAbstract
      *     description="Pickup group ids"
      * )
      */
-    protected $pickupGroupIds = [];
+    private $pickupGroupIds = [];
 
     /**
      * @var string
      * @AttributeDefinition(type="string", description="required in order to update user password")
      */
-    protected $oldPass;
+    private $oldPass;
 
     /**
      * @return string
@@ -67,7 +67,7 @@ class UserDto extends UserDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -96,7 +96,7 @@ class UserDto extends UserDtoAbstract
                 'isBoss' => 'isBoss',
                 'maxCalls' => 'maxCalls',
                 'bossAssistantId' => 'bossAssistant',
-                'timezoneId' => 'timezone'
+                'timezoneId' => 'timezone',
             ];
         }
 
@@ -131,7 +131,7 @@ class UserDto extends UserDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -148,11 +148,9 @@ class UserDto extends UserDtoAbstract
     /**
      * @inheritdoc
      */
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
-        if ($role === 'ROLE_COMPANY_ADMIN') {
-            $contextProperties['companyId'] = 'company';
-        } else {
+        if ($role !== 'ROLE_COMPANY_ADMIN') {
             if (isset($data['oldPass'])) {
                 $this->setOldPass($data['oldPass']);
             } else {
@@ -165,8 +163,10 @@ class UserDto extends UserDtoAbstract
 
     /**
      * @param int[] $pickupGroupIds
+     *
+     * @return void
      */
-    public function setPickupGroupIds(array $pickupGroupIds)
+    public function setPickupGroupIds(array $pickupGroupIds): void
     {
         $this->pickupGroupIds = $pickupGroupIds;
 

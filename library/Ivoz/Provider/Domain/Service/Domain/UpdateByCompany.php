@@ -17,24 +17,11 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
  */
 class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 10;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var DomainRepository
-     */
-    protected $domainRepository;
+    public const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
-        EntityTools $entityTools,
-        DomainRepository $domainRepository
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
-        $this->domainRepository = $domainRepository;
     }
 
     public static function getSubscribedEvents()
@@ -44,10 +31,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $notVpbx = $company->getType() !== CompanyInterface::TYPE_VPBX;
         if ($notVpbx) {
@@ -73,7 +57,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             ->setDomain($name)
             ->setDescription($company->getName() . ' proxyusers domain');
 
-        $domain = $this->entityTools
+        $this->entityTools
             ->persistDto(
                 $domainDto,
                 $domain,

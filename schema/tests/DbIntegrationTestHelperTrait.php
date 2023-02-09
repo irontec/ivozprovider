@@ -7,8 +7,8 @@ use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
-use Ivoz\Provider\Domain\Model\Changelog\Changelog;
-use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
+use Ivoz\Core\Domain\Model\Changelog\Changelog;
+use Ivoz\Core\Domain\Model\Changelog\ChangelogRepository;
 use PHPUnit\Framework\Assert;
 use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -98,7 +98,7 @@ trait DbIntegrationTestHelperTrait
         }
 
         $event = new CommandWasExecuted(
-            (new RequestId)->toString(),
+            (new RequestId())->toString(),
             $commandName,
             'setUp',
             [],

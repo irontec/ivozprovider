@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider;
 
@@ -55,7 +56,7 @@ abstract class DdiProviderRegistrationAbstract
     protected $expires = 0;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $multiDdi = false;
 
@@ -74,14 +75,14 @@ abstract class DdiProviderRegistrationAbstract
      * Constructor
      */
     protected function __construct(
-        $username,
-        $domain,
-        $realm,
-        $authUsername,
-        $authPassword,
-        $authProxy,
-        $expires,
-        $contactUsername
+        string $username,
+        string $domain,
+        string $realm,
+        string $authUsername,
+        string $authPassword,
+        string $authProxy,
+        int $expires,
+        string $contactUsername
     ) {
         $this->setUsername($username);
         $this->setDomain($domain);
@@ -93,41 +94,34 @@ abstract class DdiProviderRegistrationAbstract
         $this->setContactUsername($contactUsername);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "DdiProviderRegistration",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DdiProviderRegistrationDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DdiProviderRegistrationDto
     {
         return new DdiProviderRegistrationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DdiProviderRegistrationInterface|null $entity
-     * @param int $depth
-     * @return DdiProviderRegistrationDto|null
+     * @param null|DdiProviderRegistrationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiProviderRegistrationDto
     {
         if (!$entity) {
             return null;
@@ -143,8 +137,7 @@ abstract class DdiProviderRegistrationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DdiProviderRegistrationDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -153,28 +146,45 @@ abstract class DdiProviderRegistrationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderRegistrationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $realm = $dto->getRealm();
+        Assertion::notNull($realm, 'getRealm value is null, but non null value was expected.');
+        $authUsername = $dto->getAuthUsername();
+        Assertion::notNull($authUsername, 'getAuthUsername value is null, but non null value was expected.');
+        $authPassword = $dto->getAuthPassword();
+        Assertion::notNull($authPassword, 'getAuthPassword value is null, but non null value was expected.');
+        $authProxy = $dto->getAuthProxy();
+        Assertion::notNull($authProxy, 'getAuthProxy value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $contactUsername = $dto->getContactUsername();
+        Assertion::notNull($contactUsername, 'getContactUsername value is null, but non null value was expected.');
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getUsername(),
-            $dto->getDomain(),
-            $dto->getRealm(),
-            $dto->getAuthUsername(),
-            $dto->getAuthPassword(),
-            $dto->getAuthProxy(),
-            $dto->getExpires(),
-            $dto->getContactUsername()
+            $username,
+            $domain,
+            $realm,
+            $authUsername,
+            $authPassword,
+            $authProxy,
+            $expires,
+            $contactUsername
         );
 
         $self
             ->setMultiDdi($dto->getMultiDdi())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         $self->initChangelog();
 
@@ -184,35 +194,51 @@ abstract class DdiProviderRegistrationAbstract
     /**
      * @internal use EntityTools instead
      * @param DdiProviderRegistrationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderRegistrationDto::class);
 
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $realm = $dto->getRealm();
+        Assertion::notNull($realm, 'getRealm value is null, but non null value was expected.');
+        $authUsername = $dto->getAuthUsername();
+        Assertion::notNull($authUsername, 'getAuthUsername value is null, but non null value was expected.');
+        $authPassword = $dto->getAuthPassword();
+        Assertion::notNull($authPassword, 'getAuthPassword value is null, but non null value was expected.');
+        $authProxy = $dto->getAuthProxy();
+        Assertion::notNull($authProxy, 'getAuthProxy value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $contactUsername = $dto->getContactUsername();
+        Assertion::notNull($contactUsername, 'getContactUsername value is null, but non null value was expected.');
+        $ddiProvider = $dto->getDdiProvider();
+        Assertion::notNull($ddiProvider, 'getDdiProvider value is null, but non null value was expected.');
+
         $this
-            ->setUsername($dto->getUsername())
-            ->setDomain($dto->getDomain())
-            ->setRealm($dto->getRealm())
-            ->setAuthUsername($dto->getAuthUsername())
-            ->setAuthPassword($dto->getAuthPassword())
-            ->setAuthProxy($dto->getAuthProxy())
-            ->setExpires($dto->getExpires())
+            ->setUsername($username)
+            ->setDomain($domain)
+            ->setRealm($realm)
+            ->setAuthUsername($authUsername)
+            ->setAuthPassword($authPassword)
+            ->setAuthProxy($authProxy)
+            ->setExpires($expires)
             ->setMultiDdi($dto->getMultiDdi())
-            ->setContactUsername($dto->getContactUsername())
-            ->setDdiProvider($fkTransformer->transform($dto->getDdiProvider()));
+            ->setContactUsername($contactUsername)
+            ->setDdiProvider($fkTransformer->transform($ddiProvider));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DdiProviderRegistrationDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DdiProviderRegistrationDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())
@@ -228,9 +254,9 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'username' => self::getUsername(),
@@ -344,11 +370,6 @@ abstract class DdiProviderRegistrationAbstract
 
     protected function setMultiDdi(?bool $multiDdi = null): static
     {
-        if (!is_null($multiDdi)) {
-            Assertion::between(intval($multiDdi), 0, 1, 'multiDdi provided "%s" is not a valid boolean value.');
-            $multiDdi = (bool) $multiDdi;
-        }
-
         $this->multiDdi = $multiDdi;
 
         return $this;
@@ -377,7 +398,6 @@ abstract class DdiProviderRegistrationAbstract
     {
         $this->ddiProvider = $ddiProvider;
 
-        /** @var  $this */
         return $this;
     }
 

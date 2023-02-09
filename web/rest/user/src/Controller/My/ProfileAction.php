@@ -7,12 +7,9 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class ProfileAction
 {
-    protected $tokenStorage;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage
+        private TokenStorageInterface $tokenStorage
     ) {
-        $this->tokenStorage = $tokenStorage;
     }
 
     public function __invoke()

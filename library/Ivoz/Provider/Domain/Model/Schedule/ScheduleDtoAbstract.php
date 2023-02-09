@@ -15,19 +15,19 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $timeIn;
+    private $timeIn = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $timeout;
+    private $timeout = null;
 
     /**
      * @var bool|null
@@ -65,15 +65,18 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     private $sunday = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -82,7 +85,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -105,9 +108,9 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -138,7 +141,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -150,26 +153,26 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTimeIn(null|\DateTime|string $timeIn): static
+    public function setTimeIn(\DateTimeInterface|string $timeIn): static
     {
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): \DateTime|string|null
+    public function getTimeIn(): \DateTimeInterface|string|null
     {
         return $this->timeIn;
     }
 
-    public function setTimeout(null|\DateTime|string $timeout): static
+    public function setTimeout(\DateTimeInterface|string $timeout): static
     {
         $this->timeout = $timeout;
 
         return $this;
     }
 
-    public function getTimeout(): \DateTime|string|null
+    public function getTimeout(): \DateTimeInterface|string|null
     {
         return $this->timeout;
     }
@@ -265,7 +268,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

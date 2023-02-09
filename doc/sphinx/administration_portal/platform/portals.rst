@@ -1,4 +1,5 @@
 .. _portals:
+.. _platform portals:
 
 ################
 Platform Portals

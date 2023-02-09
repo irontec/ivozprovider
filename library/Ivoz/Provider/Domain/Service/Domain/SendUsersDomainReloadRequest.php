@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 class SendUsersDomainReloadRequest implements DomainLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    protected $usersClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        UsersClientInterface $usersClient
+        private UsersClientInterface $usersClient
     ) {
-        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()

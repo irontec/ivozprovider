@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\Locution;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
@@ -11,14 +12,15 @@ use Ivoz\Core\Domain\Service\TempFile;
 class Locution extends LocutionAbstract implements FileContainerInterface, LocutionInterface
 {
     use LocutionTrait;
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    use TempFileContainnerTrait {
+        addTmpFile as protected _addTmpFile;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,7 +28,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'OriginalFile' => [
@@ -48,7 +50,7 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
      * @codeCoverageIgnore
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -58,6 +60,8 @@ class Locution extends LocutionAbstract implements FileContainerInterface, Locut
      *
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file)
     {

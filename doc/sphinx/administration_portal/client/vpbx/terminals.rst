@@ -11,8 +11,6 @@ calls from IvozProvider.
 The best way to understand this section is creating a new item and see the 
 fields that must be filled.
 
-.. glossary::
-
     Name
         Username that will use the terminal during the SIP authentication phase
         with IvozProvider.

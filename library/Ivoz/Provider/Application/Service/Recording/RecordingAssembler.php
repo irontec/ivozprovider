@@ -21,6 +21,9 @@ class RecordingAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $recordingDto,
         EntityInterface $recording,

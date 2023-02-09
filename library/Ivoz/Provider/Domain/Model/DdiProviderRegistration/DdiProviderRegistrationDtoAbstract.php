@@ -16,37 +16,37 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $username = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $domain = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $realm = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authUsername = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authPassword = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $authProxy = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $expires = 0;
 
@@ -56,25 +56,28 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     private $multiDdi = false;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contactUsername = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
     /**
      * @var TrunksUacregDto | null
      */
-    private $trunksUacreg;
+    private $trunksUacreg = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -83,7 +86,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -106,9 +109,9 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'username' => $this->getUsername(),
@@ -139,7 +142,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $response;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -151,7 +154,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->username;
     }
 
-    public function setDomain(?string $domain): static
+    public function setDomain(string $domain): static
     {
         $this->domain = $domain;
 
@@ -163,7 +166,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->domain;
     }
 
-    public function setRealm(?string $realm): static
+    public function setRealm(string $realm): static
     {
         $this->realm = $realm;
 
@@ -175,7 +178,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->realm;
     }
 
-    public function setAuthUsername(?string $authUsername): static
+    public function setAuthUsername(string $authUsername): static
     {
         $this->authUsername = $authUsername;
 
@@ -187,7 +190,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->authUsername;
     }
 
-    public function setAuthPassword(?string $authPassword): static
+    public function setAuthPassword(string $authPassword): static
     {
         $this->authPassword = $authPassword;
 
@@ -199,7 +202,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->authPassword;
     }
 
-    public function setAuthProxy(?string $authProxy): static
+    public function setAuthProxy(string $authProxy): static
     {
         $this->authProxy = $authProxy;
 
@@ -211,7 +214,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->authProxy;
     }
 
-    public function setExpires(?int $expires): static
+    public function setExpires(int $expires): static
     {
         $this->expires = $expires;
 
@@ -235,7 +238,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this->multiDdi;
     }
 
-    public function setContactUsername(?string $contactUsername): static
+    public function setContactUsername(string $contactUsername): static
     {
         $this->contactUsername = $contactUsername;
 
@@ -254,7 +257,7 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

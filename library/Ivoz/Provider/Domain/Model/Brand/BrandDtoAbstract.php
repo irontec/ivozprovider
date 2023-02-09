@@ -28,175 +28,178 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $domainUsers;
+    private $domainUsers = null;
 
     /**
      * @var int|null
      */
-    private $recordingsLimitMB;
+    private $recordingsLimitMB = null;
 
     /**
      * @var string|null
      */
-    private $recordingsLimitEmail;
+    private $recordingsLimitEmail = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxCalls = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $logoFileSize;
+    private $logoFileSize = null;
 
     /**
      * @var string|null
      */
-    private $logoMimeType;
+    private $logoMimeType = null;
 
     /**
      * @var string|null
      */
-    private $logoBaseName;
-
-    /**
-     * @var string
-     */
-    private $invoiceNif;
-
-    /**
-     * @var string
-     */
-    private $invoicePostalAddress;
-
-    /**
-     * @var string
-     */
-    private $invoicePostalCode;
-
-    /**
-     * @var string
-     */
-    private $invoiceTown;
-
-    /**
-     * @var string
-     */
-    private $invoiceProvince;
-
-    /**
-     * @var string
-     */
-    private $invoiceCountry;
+    private $logoBaseName = null;
 
     /**
      * @var string|null
      */
-    private $invoiceRegistryData;
+    private $invoiceNif = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoicePostalAddress = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoicePostalCode = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceTown = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceProvince = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceCountry = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoiceRegistryData = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $defaultTimezone;
+    private $defaultTimezone = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $voicemailNotificationTemplate;
+    private $voicemailNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $faxNotificationTemplate;
+    private $faxNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $invoiceNotificationTemplate;
+    private $invoiceNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $callCsvNotificationTemplate;
+    private $callCsvNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $maxDailyUsageNotificationTemplate;
+    private $maxDailyUsageNotificationTemplate = null;
 
     /**
      * @var CompanyDto[] | null
      */
-    private $companies;
+    private $companies = null;
 
     /**
      * @var BrandServiceDto[] | null
      */
-    private $services;
+    private $services = null;
 
     /**
      * @var WebPortalDto[] | null
      */
-    private $urls;
+    private $urls = null;
 
     /**
      * @var FeaturesRelBrandDto[] | null
      */
-    private $relFeatures;
+    private $relFeatures = null;
 
     /**
      * @var ProxyTrunksRelBrandDto[] | null
      */
-    private $relProxyTrunks;
+    private $relProxyTrunks = null;
 
     /**
      * @var ResidentialDeviceDto[] | null
      */
-    private $residentialDevices;
+    private $residentialDevices = null;
 
     /**
      * @var MusicOnHoldDto[] | null
      */
-    private $musicsOnHold;
+    private $musicsOnHold = null;
 
     /**
      * @var MatchListDto[] | null
      */
-    private $matchLists;
+    private $matchLists = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -205,7 +208,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -245,9 +248,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -304,7 +307,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -352,7 +355,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->recordingsLimitEmail;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -371,7 +374,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -412,7 +415,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->logoBaseName;
     }
 
-    public function setInvoiceNif(?string $invoiceNif): static
+    public function setInvoiceNif(string $invoiceNif): static
     {
         $this->invoiceNif = $invoiceNif;
 
@@ -424,7 +427,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceNif;
     }
 
-    public function setInvoicePostalAddress(?string $invoicePostalAddress): static
+    public function setInvoicePostalAddress(string $invoicePostalAddress): static
     {
         $this->invoicePostalAddress = $invoicePostalAddress;
 
@@ -436,7 +439,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoicePostalAddress;
     }
 
-    public function setInvoicePostalCode(?string $invoicePostalCode): static
+    public function setInvoicePostalCode(string $invoicePostalCode): static
     {
         $this->invoicePostalCode = $invoicePostalCode;
 
@@ -448,7 +451,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoicePostalCode;
     }
 
-    public function setInvoiceTown(?string $invoiceTown): static
+    public function setInvoiceTown(string $invoiceTown): static
     {
         $this->invoiceTown = $invoiceTown;
 
@@ -460,7 +463,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceTown;
     }
 
-    public function setInvoiceProvince(?string $invoiceProvince): static
+    public function setInvoiceProvince(string $invoiceProvince): static
     {
         $this->invoiceProvince = $invoiceProvince;
 
@@ -472,7 +475,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->invoiceProvince;
     }
 
-    public function setInvoiceCountry(?string $invoiceCountry): static
+    public function setInvoiceCountry(string $invoiceCountry): static
     {
         $this->invoiceCountry = $invoiceCountry;
 

@@ -4,13 +4,14 @@ namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 class FaxesInOutDto extends FaxesInOutDtoAbstract
 {
+    /** @var ?string */
     private $filePath;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -26,7 +27,12 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'file'
@@ -43,7 +49,7 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
         return $this;
     }
     /**
-     * @return string
+     * @return ?string
      */
     public function getFilePath()
     {

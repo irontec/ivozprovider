@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CompanyService;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -41,46 +42,39 @@ abstract class CompanyServiceAbstract
      * Constructor
      */
     protected function __construct(
-        $code
+        string $code
     ) {
         $this->setCode($code);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CompanyService",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CompanyServiceDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CompanyServiceDto
     {
         return new CompanyServiceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CompanyServiceInterface|null $entity
-     * @param int $depth
-     * @return CompanyServiceDto|null
+     * @param null|CompanyServiceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CompanyServiceDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class CompanyServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CompanyServiceDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,21 +99,26 @@ abstract class CompanyServiceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CompanyServiceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCode()
+            $code
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setCompany($fkTransformer->transform($company))
+            ->setService($fkTransformer->transform($service));
 
         $self->initChangelog();
 
@@ -130,28 +128,32 @@ abstract class CompanyServiceAbstract
     /**
      * @internal use EntityTools instead
      * @param CompanyServiceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
+
         $this
-            ->setCode($dto->getCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setCode($code)
+            ->setCompany($fkTransformer->transform($company))
+            ->setService($fkTransformer->transform($service));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CompanyServiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CompanyServiceDto
     {
         return self::createDto()
             ->setCode(self::getCode())
@@ -160,9 +162,9 @@ abstract class CompanyServiceAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'code' => self::getCode(),
@@ -189,7 +191,6 @@ abstract class CompanyServiceAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

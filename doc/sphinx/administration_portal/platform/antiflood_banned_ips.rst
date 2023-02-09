@@ -1,3 +1,5 @@
+.. _antiflood banned ips:
+
 ********************
 Antiflood banned IPs
 ********************

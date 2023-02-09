@@ -1,4 +1,50 @@
 # Changelog
+## 3.0.0
+* Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
+* Endpoints:
+    - Added not equal [neq] filters
+    - Added exits[fldName] filters
+    - Fixed downloadable file spec
+    - Fixed embeddable model spec
+* Models:
+    - Some properties added into response models (not listed below unless they involve a BC)
+    - ApplicationServer:
+      - Set name as required
+    - BillableCall:
+      - Set direction as required
+    - Brand:
+        - Set language as required
+        - Set currency as not required
+    - Country_Name:
+        - Set all properties as required
+    - Domain:
+      - Set pointsTo as enum and required
+    - Feature_Name:
+        - Set all properties as required
+    - MediaRelaySet-collection:
+      - Removed type property
+
+# Changelog
+## 2.19.0
+* Endpoints:
+    - /brands:
+        - Added currency|currency[] filter parameters
+    - /currencies:
+        - Added [GET] endpoint
+
+* Models:
+    - Brand:
+        - Added currency required property
+    - Brand-detailed:
+        - Added currency required property
+    - Brand-withFeatures:
+        - Added currency required property
+    - Carrier:
+        - Added currency property
+    - Company:
+        - Added currency property
+    - Currency:
+        - Added model
 
 ## 2.18.1
 * Endpoints:

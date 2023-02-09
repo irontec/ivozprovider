@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\IvrExcludedExtension;
 
 /**
@@ -8,7 +9,11 @@ class IvrExcludedExtension extends IvrExcludedExtensionAbstract implements IvrEx
 {
     use IvrExcludedExtensionTrait;
 
-    public function getChangeSet()
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -18,7 +23,7 @@ class IvrExcludedExtension extends IvrExcludedExtensionAbstract implements IvrEx
      *
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

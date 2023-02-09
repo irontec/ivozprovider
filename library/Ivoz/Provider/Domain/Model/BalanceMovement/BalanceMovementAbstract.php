@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\BalanceMovement;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -23,29 +24,29 @@ abstract class BalanceMovementAbstract
     use ChangelogTrait;
 
     /**
-     * @var float | null
+     * @var ?float
      */
     protected $amount = 0;
 
     /**
-     * @var float | null
+     * @var ?float
      */
     protected $balance = 0;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $createdOn;
+    protected $createdOn = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * Constructor
@@ -54,41 +55,34 @@ abstract class BalanceMovementAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BalanceMovement",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return BalanceMovementDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): BalanceMovementDto
     {
         return new BalanceMovementDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BalanceMovementInterface|null $entity
-     * @param int $depth
-     * @return BalanceMovementDto|null
+     * @param null|BalanceMovementInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BalanceMovementDto
     {
         if (!$entity) {
             return null;
@@ -104,8 +98,7 @@ abstract class BalanceMovementAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BalanceMovementDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -114,12 +107,11 @@ abstract class BalanceMovementAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BalanceMovementDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
         $self = new static();
@@ -139,12 +131,11 @@ abstract class BalanceMovementAbstract
     /**
      * @internal use EntityTools instead
      * @param BalanceMovementDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BalanceMovementDto::class);
 
         $this
@@ -159,10 +150,8 @@ abstract class BalanceMovementAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return BalanceMovementDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): BalanceMovementDto
     {
         return self::createDto()
             ->setAmount(self::getAmount())
@@ -173,16 +162,16 @@ abstract class BalanceMovementAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'amount' => self::getAmount(),
             'balance' => self::getBalance(),
             'createdOn' => self::getCreatedOn(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId()
         ];
     }
 
@@ -218,19 +207,17 @@ abstract class BalanceMovementAbstract
         return $this->balance;
     }
 
-    protected function setCreatedOn($createdOn = null): static
+    protected function setCreatedOn(string|\DateTimeInterface|null $createdOn = null): static
     {
         if (!is_null($createdOn)) {
-            Assertion::notNull(
-                $createdOn,
-                'createdOn value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $createdOn = DateTimeHelper::createOrFix(
                 $createdOn,
                 'CURRENT_TIMESTAMP'
             );
 
-            if ($this->createdOn == $createdOn) {
+            if ($this->isInitialized() && $this->createdOn == $createdOn) {
                 return $this;
             }
         }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 
 /**
@@ -29,9 +30,9 @@ abstract class UsersLocationAttrAbstract
     protected $username = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
      * @var string
@@ -49,8 +50,8 @@ abstract class UsersLocationAttrAbstract
     protected $avalue = '';
 
     /**
-     * column: last_modified
      * @var \DateTime
+     * column: last_modified
      */
     protected $lastModified;
 
@@ -58,12 +59,12 @@ abstract class UsersLocationAttrAbstract
      * Constructor
      */
     protected function __construct(
-        $ruid,
-        $username,
-        $aname,
-        $atype,
-        $avalue,
-        $lastModified
+        string $ruid,
+        string $username,
+        string $aname,
+        int $atype,
+        string $avalue,
+        \DateTimeInterface|string $lastModified
     ) {
         $this->setRuid($ruid);
         $this->setUsername($username);
@@ -73,41 +74,34 @@ abstract class UsersLocationAttrAbstract
         $this->setLastModified($lastModified);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersLocationAttr",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return UsersLocationAttrDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): UsersLocationAttrDto
     {
         return new UsersLocationAttrDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersLocationAttrInterface|null $entity
-     * @param int $depth
-     * @return UsersLocationAttrDto|null
+     * @param null|UsersLocationAttrInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersLocationAttrDto
     {
         if (!$entity) {
             return null;
@@ -123,8 +117,7 @@ abstract class UsersLocationAttrAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersLocationAttrDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -133,21 +126,32 @@ abstract class UsersLocationAttrAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersLocationAttrDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $aname = $dto->getAname();
+        Assertion::notNull($aname, 'getAname value is null, but non null value was expected.');
+        $atype = $dto->getAtype();
+        Assertion::notNull($atype, 'getAtype value is null, but non null value was expected.');
+        $avalue = $dto->getAvalue();
+        Assertion::notNull($avalue, 'getAvalue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getRuid(),
-            $dto->getUsername(),
-            $dto->getAname(),
-            $dto->getAtype(),
-            $dto->getAvalue(),
-            $dto->getLastModified()
+            $ruid,
+            $username,
+            $aname,
+            $atype,
+            $avalue,
+            $lastModified
         );
 
         $self
@@ -161,32 +165,42 @@ abstract class UsersLocationAttrAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersLocationAttrDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersLocationAttrDto::class);
 
+        $ruid = $dto->getRuid();
+        Assertion::notNull($ruid, 'getRuid value is null, but non null value was expected.');
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $aname = $dto->getAname();
+        Assertion::notNull($aname, 'getAname value is null, but non null value was expected.');
+        $atype = $dto->getAtype();
+        Assertion::notNull($atype, 'getAtype value is null, but non null value was expected.');
+        $avalue = $dto->getAvalue();
+        Assertion::notNull($avalue, 'getAvalue value is null, but non null value was expected.');
+        $lastModified = $dto->getLastModified();
+        Assertion::notNull($lastModified, 'getLastModified value is null, but non null value was expected.');
+
         $this
-            ->setRuid($dto->getRuid())
-            ->setUsername($dto->getUsername())
+            ->setRuid($ruid)
+            ->setUsername($username)
             ->setDomain($dto->getDomain())
-            ->setAname($dto->getAname())
-            ->setAtype($dto->getAtype())
-            ->setAvalue($dto->getAvalue())
-            ->setLastModified($dto->getLastModified());
+            ->setAname($aname)
+            ->setAtype($atype)
+            ->setAvalue($avalue)
+            ->setLastModified($lastModified);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return UsersLocationAttrDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): UsersLocationAttrDto
     {
         return self::createDto()
             ->setRuid(self::getRuid())
@@ -199,9 +213,9 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ruid' => self::getRuid(),
@@ -298,15 +312,16 @@ abstract class UsersLocationAttrAbstract
         return $this->avalue;
     }
 
-    protected function setLastModified($lastModified): static
+    protected function setLastModified(string|\DateTimeInterface $lastModified): static
     {
 
+        /** @var \Datetime */
         $lastModified = DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
         );
 
-        if ($this->lastModified == $lastModified) {
+        if ($this->isInitialized() && $this->lastModified == $lastModified) {
             return $this;
         }
 

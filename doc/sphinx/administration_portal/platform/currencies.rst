@@ -7,8 +7,6 @@ in invoices, balance movements, etc.
 
 These IvozProvider elements have an assigned currency:
 
-.. glossary::
-
     Brand
         Used as default currency for all underlying items that have currency.
 

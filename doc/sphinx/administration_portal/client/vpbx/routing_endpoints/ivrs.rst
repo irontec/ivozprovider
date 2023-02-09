@@ -6,7 +6,7 @@ IVRs are the most common way to make **audio menus** where the caller must
 choose the destination of the call by **pressing codes** based on the locutions
 instructions that will be played.
 
-.. ivrs:
+.. _ivrs:
 
 ***********
 IVRs
@@ -16,8 +16,6 @@ IVRs support specifying actions for dialed digits, but also they can be also be 
 to route any existing client extension.
 
 IVRs have the following fields:
-
-.. glossary::
 
     Name
         Descriptive name of the IVR that will be used in other sections.

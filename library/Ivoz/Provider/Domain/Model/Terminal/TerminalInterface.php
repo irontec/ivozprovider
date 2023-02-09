@@ -3,13 +3,16 @@
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -17,20 +20,28 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface TerminalInterface extends LoggableEntityInterface
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+    public const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
@@ -44,19 +55,19 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function setPassword(string $password): static;
 
-    public static function randomPassword();
+    public static function randomPassword(): string;
 
     public function getUser();
 
     /**
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * @return string
@@ -64,6 +75,26 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllow();
 
     public function setMac(?string $mac = null): static;
+
+    public static function createDto(string|int|null $id = null): TerminalDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|TerminalInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TerminalDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param TerminalDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): TerminalDto;
 
     public function getName(): string;
 
@@ -109,7 +140,13 @@ interface TerminalInterface extends LoggableEntityInterface
 
     public function removeUser(UserInterface $user): TerminalInterface;
 
-    public function replaceUsers(ArrayCollection $users): TerminalInterface;
+    /**
+     * @param Collection<array-key, UserInterface> $users
+     */
+    public function replaceUsers(Collection $users): TerminalInterface;
 
+    /**
+     * @return array<array-key, UserInterface>
+     */
     public function getUsers(?Criteria $criteria = null): array;
 }

@@ -4,9 +4,9 @@ namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 class CallForwardSettingDto extends CallForwardSettingDtoAbstract
 {
-    const CONTEXT_DETAILED_COLLECTION = 'detailedCollection';
+    public const CONTEXT_DETAILED_COLLECTION = 'detailedCollection';
 
-    const CONTEXT_TYPES = [
+    public const CONTEXT_TYPES = [
         self::CONTEXT_COLLECTION,
         self::CONTEXT_SIMPLE,
         self::CONTEXT_DETAILED,
@@ -17,16 +17,24 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
-
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'callTypeFilter' => 'callTypeFilter',
                 'callForwardType' => 'callForwardType',
                 'targetType' => 'targetType',
                 'id' => 'id',
-                'enabled' => 'enabled'
+                'enabled' => 'enabled',
+                'numberValue' => 'numberValue',
+                'numberCountryId' => 'numberCountry',
+                'userId' => 'user',
+                'voicemailId' => 'voicemail',
+                'extensionId' => 'extension',
+                'residentialDeviceId' => 'residentialDevice',
+                'retailAccountId' => 'retailAccount',
+                'cfwToRetailAccountId' => 'cfwToRetailAccount',
+                'ddiId' => 'ddi',
             ];
         }
 
@@ -41,7 +49,7 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'enabled' => 'enabled',
                 'userId' => 'user',
                 'extensionId' => 'extension',
-                'voiceMailUserId' => 'voiceMailUser',
+                'voicemailId' => 'voicemail',
                 'numberCountryId' => 'numberCountry'
             ];
         }

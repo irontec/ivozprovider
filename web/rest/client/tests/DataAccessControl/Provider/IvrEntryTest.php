@@ -112,12 +112,12 @@ class IvrEntryTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'voiceMailUser',
+                            'voicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'voiceMailUser',
+                            'voicemail',
                             'isNull',
                             null
                         ]

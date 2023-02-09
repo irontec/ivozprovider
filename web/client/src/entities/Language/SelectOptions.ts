@@ -1,20 +1,26 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { getI18n } from 'react-i18next';
+import language from './Language';
 
-const LanguageSelectOptions = (callback: Function) => {
+const LanguageSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
+  return defaultEntityBehavior.fetchFks(
+    language.path,
+    ['id', 'name'],
+    (data: any) => {
+      const options: any = {};
+      const language = getI18n().language.substring(0, 2);
+      for (const item of data) {
+        options[item.id] = item.name[language];
+      }
 
-    defaultEntityBehavior.fetchFks(
-        '/languages',
-        ['id', 'iden'], //@TODO replace iden by name
-        (data:any) => {
-
-            const options:any = {};
-            for (const item of data) {
-                options[item.id] = item.iden; //@TODO current langiage
-            }
-
-            callback(options);
-        }
-    );
-}
+      callback(options);
+    },
+    cancelToken
+  );
+};
 
 export default LanguageSelectOptions;

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\SpecialNumber;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -27,9 +28,9 @@ abstract class SpecialNumberAbstract
     protected $number;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $numberE164;
+    protected $numberE164 = null;
 
     /**
      * @var int
@@ -37,9 +38,9 @@ abstract class SpecialNumberAbstract
     protected $disableCDR = 1;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var CountryInterface
@@ -50,48 +51,41 @@ abstract class SpecialNumberAbstract
      * Constructor
      */
     protected function __construct(
-        $number,
-        $disableCDR
+        string $number,
+        int $disableCDR
     ) {
         $this->setNumber($number);
         $this->setDisableCDR($disableCDR);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "SpecialNumber",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return SpecialNumberDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): SpecialNumberDto
     {
         return new SpecialNumberDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param SpecialNumberInterface|null $entity
-     * @param int $depth
-     * @return SpecialNumberDto|null
+     * @param null|SpecialNumberInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?SpecialNumberDto
     {
         if (!$entity) {
             return null;
@@ -107,8 +101,7 @@ abstract class SpecialNumberAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var SpecialNumberDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -117,23 +110,28 @@ abstract class SpecialNumberAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param SpecialNumberDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $disableCDR = $dto->getDisableCDR();
+        Assertion::notNull($disableCDR, 'getDisableCDR value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getNumber(),
-            $dto->getDisableCDR()
+            $number,
+            $disableCDR
         );
 
         $self
             ->setNumberE164($dto->getNumberE164())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         $self->initChangelog();
 
@@ -143,30 +141,34 @@ abstract class SpecialNumberAbstract
     /**
      * @internal use EntityTools instead
      * @param SpecialNumberDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, SpecialNumberDto::class);
 
+        $number = $dto->getNumber();
+        Assertion::notNull($number, 'getNumber value is null, but non null value was expected.');
+        $disableCDR = $dto->getDisableCDR();
+        Assertion::notNull($disableCDR, 'getDisableCDR value is null, but non null value was expected.');
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
+
         $this
-            ->setNumber($dto->getNumber())
+            ->setNumber($number)
             ->setNumberE164($dto->getNumberE164())
-            ->setDisableCDR($dto->getDisableCDR())
+            ->setDisableCDR($disableCDR)
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return SpecialNumberDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): SpecialNumberDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -177,15 +179,15 @@ abstract class SpecialNumberAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'number' => self::getNumber(),
             'numberE164' => self::getNumberE164(),
             'disableCDR' => self::getDisableCDR(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'countryId' => self::getCountry()->getId()
         ];
     }

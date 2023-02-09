@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 
 class SendUsersDialplanReloadRequest implements TransformationRuleLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
-
-    protected $usersClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
-        UsersClientInterface $usersClient
+        private UsersClientInterface $usersClient
     ) {
-        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()

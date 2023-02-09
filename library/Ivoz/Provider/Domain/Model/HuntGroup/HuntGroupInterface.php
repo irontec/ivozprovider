@@ -3,13 +3,16 @@
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -17,36 +20,37 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface HuntGroupInterface extends LoggableEntityInterface
 {
-    const STRATEGY_RINGALL = 'ringAll';
+    public const STRATEGY_RINGALL = 'ringAll';
 
-    const STRATEGY_LINEAR = 'linear';
+    public const STRATEGY_LINEAR = 'linear';
 
-    const STRATEGY_ROUNDROBIN = 'roundRobin';
+    public const STRATEGY_ROUNDROBIN = 'roundRobin';
 
-    const STRATEGY_RANDOM = 'random';
+    public const STRATEGY_RANDOM = 'random';
 
-    const NOANSWERTARGETTYPE_NUMBER = 'number';
+    public const NOANSWERTARGETTYPE_NUMBER = 'number';
 
-    const NOANSWERTARGETTYPE_EXTENSION = 'extension';
+    public const NOANSWERTARGETTYPE_EXTENSION = 'extension';
 
-    const NOANSWERTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const NOANSWERTARGETTYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
-     * Get this Hungroup related users
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
      */
-    public function getHuntGroupUsersArray();
+    public function getId(): ?int;
 
     /**
      * @return string
      */
-    public function getNoAnswerRouteType();
+    public function getNoAnswerRouteType(): ?string;
 
     /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
@@ -54,6 +58,26 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNoAnswerNumberValueE164();
+
+    public static function createDto(string|int|null $id = null): HuntGroupDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|HuntGroupInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?HuntGroupDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param HuntGroupDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): HuntGroupDto;
 
     public function getName(): string;
 
@@ -77,19 +101,25 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     public function getNoAnswerExtension(): ?ExtensionInterface;
 
-    public function getNoAnswerVoiceMailUser(): ?UserInterface;
+    public function getNoAnswerVoicemail(): ?VoicemailInterface;
 
     public function getNoAnswerNumberCountry(): ?CountryInterface;
 
     public function isInitialized(): bool;
 
-    public function addHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface;
+    public function addHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;
 
-    public function removeHuntGroupsRelUser(HuntGroupsRelUserInterface $huntGroupsRelUser): HuntGroupInterface;
+    public function removeHuntGroupMember(HuntGroupMemberInterface $huntGroupMember): HuntGroupInterface;
 
-    public function replaceHuntGroupsRelUsers(ArrayCollection $huntGroupsRelUsers): HuntGroupInterface;
+    /**
+     * @param Collection<array-key, HuntGroupMemberInterface> $huntGroupMembers
+     */
+    public function replaceHuntGroupMembers(Collection $huntGroupMembers): HuntGroupInterface;
 
-    public function getHuntGroupsRelUsers(?Criteria $criteria = null): array;
+    /**
+     * @return array<array-key, HuntGroupMemberInterface>
+     */
+    public function getHuntGroupMembers(?Criteria $criteria = null): array;
 
     /**
      * @param string $prefix

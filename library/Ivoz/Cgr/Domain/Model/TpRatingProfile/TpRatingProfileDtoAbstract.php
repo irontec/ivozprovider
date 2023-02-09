@@ -16,75 +16,78 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $loadid = 'DATABASE';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $direction = '*out';
 
     /**
      * @var string|null
      */
-    private $tenant;
+    private $tenant = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $category = 'call';
 
     /**
      * @var string|null
      */
-    private $subject;
+    private $subject = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $activationTime = '1970-01-01 00:00:00';
 
     /**
      * @var string|null
      */
-    private $ratingPlanTag;
+    private $ratingPlanTag = null;
 
     /**
      * @var string|null
      */
-    private $fallbackSubjects;
+    private $fallbackSubjects = null;
 
     /**
      * @var string|null
      */
-    private $cdrStatQueueIds;
+    private $cdrStatQueueIds = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RatingProfileDto | null
      */
-    private $ratingProfile;
+    private $ratingProfile = null;
 
     /**
      * @var OutgoingRoutingRelCarrierDto | null
      */
-    private $outgoingRoutingRelCarrier;
+    private $outgoingRoutingRelCarrier = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -93,7 +96,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -118,9 +121,9 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tpid' => $this->getTpid(),
@@ -153,7 +156,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -165,7 +168,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->tpid;
     }
 
-    public function setLoadid(?string $loadid): static
+    public function setLoadid(string $loadid): static
     {
         $this->loadid = $loadid;
 
@@ -177,7 +180,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->loadid;
     }
 
-    public function setDirection(?string $direction): static
+    public function setDirection(string $direction): static
     {
         $this->direction = $direction;
 
@@ -201,7 +204,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->tenant;
     }
 
-    public function setCategory(?string $category): static
+    public function setCategory(string $category): static
     {
         $this->category = $category;
 
@@ -225,7 +228,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->subject;
     }
 
-    public function setActivationTime(?string $activationTime): static
+    public function setActivationTime(string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
@@ -273,14 +276,14 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->cdrStatQueueIds;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
@@ -292,7 +295,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

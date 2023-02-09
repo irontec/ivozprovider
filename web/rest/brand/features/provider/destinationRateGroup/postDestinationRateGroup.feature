@@ -64,7 +64,7 @@ Content-Type: text/csv
               "fileSize": 84,
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "prices.csv",
-              "importerArguments": []
+              "importerArguments": null
           },
           "currency": 1
       }
@@ -100,7 +100,7 @@ Content-Type: text/csv
               "fileSize": 84,
               "mimeType": "text/plain; charset=us-ascii",
               "baseName": "prices.csv",
-              "importerArguments": []
+              "importerArguments": null
           },
           "currency": "~"
       }

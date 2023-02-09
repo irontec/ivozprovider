@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
@@ -16,19 +19,19 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 trait RoutingPatternGroupTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, RoutingPatternGroupsRelPatternInterface> & Selectable<array-key, RoutingPatternGroupsRelPatternInterface>
      * RoutingPatternGroupsRelPatternInterface mappedBy routingPatternGroup
      * orphanRemoval
      */
     protected $relPatterns;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingRoutingInterface> & Selectable<array-key, OutgoingRoutingInterface>
      * OutgoingRoutingInterface mappedBy routingPatternGroup
      */
     protected $outgoingRoutings;
@@ -43,35 +46,37 @@ trait RoutingPatternGroupTrait
         $this->outgoingRoutings = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelPatterns())) {
-            $self->replaceRelPatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getRelPatterns()
-                )
+        $relPatterns = $dto->getRelPatterns();
+        if (!is_null($relPatterns)) {
+
+            /** @var Collection<array-key, RoutingPatternGroupsRelPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relPatterns
             );
+            $self->replaceRelPatterns($replacement);
         }
 
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $self->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $self->replaceOutgoingRoutings($replacement);
         }
 
         $self->sanitizeValues();
@@ -86,28 +91,30 @@ trait RoutingPatternGroupTrait
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelPatterns())) {
-            $this->replaceRelPatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getRelPatterns()
-                )
+        $relPatterns = $dto->getRelPatterns();
+        if (!is_null($relPatterns)) {
+
+            /** @var Collection<array-key, RoutingPatternGroupsRelPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relPatterns
             );
+            $this->replaceRelPatterns($replacement);
         }
 
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $this->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $this->replaceOutgoingRoutings($replacement);
         }
         $this->sanitizeValues();
 
@@ -116,10 +123,8 @@ trait RoutingPatternGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RoutingPatternGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RoutingPatternGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -127,9 +132,9 @@ trait RoutingPatternGroupTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -150,25 +155,33 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    public function replaceRelPatterns(ArrayCollection $relPatterns): RoutingPatternGroupInterface
+    /**
+     * @param Collection<array-key, RoutingPatternGroupsRelPatternInterface> $relPatterns
+     */
+    public function replaceRelPatterns(Collection $relPatterns): RoutingPatternGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relPatterns as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRoutingPatternGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relPatterns as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relPatterns->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relPatterns->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relPatterns->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -178,6 +191,9 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RoutingPatternGroupsRelPatternInterface>
+     */
     public function getRelPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -201,25 +217,33 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): RoutingPatternGroupInterface
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): RoutingPatternGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($outgoingRoutings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRoutingPatternGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->outgoingRoutings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->outgoingRoutings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->outgoingRoutings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->outgoingRoutings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -229,6 +253,9 @@ trait RoutingPatternGroupTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

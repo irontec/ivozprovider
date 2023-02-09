@@ -1,3 +1,5 @@
+.. _sip antiflooding:
+
 ################
 SIP Antiflooding
 ################
@@ -35,8 +37,6 @@ Client side requests usually traverse 2 different phases:
 - Step 1: remaining logic.
 
 Antiflood will take into account:
-
-- SIP OPTIONS
 
 - Requests failing during step 0:
 

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\WebPortal;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\Logo;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -26,85 +27,78 @@ abstract class WebPortalAbstract
     protected $url;
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $klearTheme = '';
 
     /**
-     * comment: enum:god|brand|admin|user
      * @var string
+     * comment: enum:god|brand|admin|user
      */
     protected $urlType;
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $name = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $userTheme = '';
 
     /**
-     * @var Logo | null
+     * @var Logo
      */
     protected $logo;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy urls
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $url,
-        $urlType,
+        string $url,
+        string $urlType,
         Logo $logo
     ) {
         $this->setUrl($url);
         $this->setUrlType($urlType);
-        $this->setLogo($logo);
+        $this->logo = $logo;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "WebPortal",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return WebPortalDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): WebPortalDto
     {
         return new WebPortalDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param WebPortalInterface|null $entity
-     * @param int $depth
-     * @return WebPortalDto|null
+     * @param null|WebPortalInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?WebPortalDto
     {
         if (!$entity) {
             return null;
@@ -120,8 +114,7 @@ abstract class WebPortalAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var WebPortalDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -130,13 +123,16 @@ abstract class WebPortalAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param WebPortalDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $urlType = $dto->getUrlType();
+        Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -145,8 +141,8 @@ abstract class WebPortalAbstract
         );
 
         $self = new static(
-            $dto->getUrl(),
-            $dto->getUrlType(),
+            $url,
+            $urlType,
             $logo
         );
 
@@ -164,13 +160,17 @@ abstract class WebPortalAbstract
     /**
      * @internal use EntityTools instead
      * @param WebPortalDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, WebPortalDto::class);
+
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $urlType = $dto->getUrlType();
+        Assertion::notNull($urlType, 'getUrlType value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -179,9 +179,9 @@ abstract class WebPortalAbstract
         );
 
         $this
-            ->setUrl($dto->getUrl())
+            ->setUrl($url)
             ->setKlearTheme($dto->getKlearTheme())
-            ->setUrlType($dto->getUrlType())
+            ->setUrlType($urlType)
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
             ->setLogo($logo)
@@ -192,10 +192,8 @@ abstract class WebPortalAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return WebPortalDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): WebPortalDto
     {
         return self::createDto()
             ->setUrl(self::getUrl())
@@ -210,9 +208,9 @@ abstract class WebPortalAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'url' => self::getUrl(),
@@ -223,7 +221,7 @@ abstract class WebPortalAbstract
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 
@@ -320,7 +318,7 @@ abstract class WebPortalAbstract
 
     protected function setLogo(Logo $logo): static
     {
-        $isEqual = $this->logo && $this->logo->equals($logo);
+        $isEqual = $this->logo->equals($logo);
         if ($isEqual) {
             return $this;
         }
@@ -333,7 +331,6 @@ abstract class WebPortalAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -5,7 +5,7 @@ namespace Feeder;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Redis;
 
-$loader = require __DIR__.'/../../vendor/autoload.php';
+$loader = require __DIR__ . '/../../vendor/autoload.php';
 
 $helpers = new Class
 {

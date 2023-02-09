@@ -9,13 +9,13 @@ class ProxyUser extends ProxyUserAbstract implements ProxyUserInterface
 {
     use ProxyUserTrait;
 
-    const MAIN_ADDRESS_ID = 1;
+    public const MAIN_ADDRESS_ID = 1;
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class ProxyUser extends ProxyUserAbstract implements ProxyUserInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

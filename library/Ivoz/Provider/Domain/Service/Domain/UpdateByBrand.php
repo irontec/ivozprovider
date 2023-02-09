@@ -15,17 +15,11 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
  */
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 10;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const POST_PERSIST_PRIORITY = 10;
 
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -36,10 +30,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(BrandInterface $brand)
+    public function execute(BrandInterface $brand): void
     {
         if (!$brand->hasChanged('domain_users')) {
             return;
@@ -65,10 +56,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         }
 
         $domainDto
-            ->setDomain($domainUsers)
+            ->setDomain($domainUsers ?? '')
             ->setDescription($brand->getName() . " proxyusers domain");
 
-        $domain = $this
+        $this
             ->entityTools
             ->persistDto($domainDto, $domain, true);
 

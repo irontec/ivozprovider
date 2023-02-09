@@ -1,3 +1,5 @@
+.. _proxy trunks:
+
 ############
 Proxy Trunks
 ############

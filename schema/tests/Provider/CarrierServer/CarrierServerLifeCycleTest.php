@@ -2,7 +2,7 @@
 
 namespace Tests\Provider\CarrierServer;
 
-use Ivoz\Provider\Domain\Model\Changelog\Changelog;
+use Ivoz\Core\Domain\Model\Changelog\Changelog;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;

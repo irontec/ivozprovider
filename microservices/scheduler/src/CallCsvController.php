@@ -11,24 +11,17 @@ class CallCsvController
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $callCsvReport;
-    private $callCsvSchedulerRepository;
-
     public function __construct(
+        private CreateByScheduler $callCsvReport,
+        private CallCsvSchedulerRepository $callCsvSchedulerRepository,
         DomainEventPublisher $eventPublisher,
-        RequestId $requestId,
-        CreateByScheduler $callCsvReportCreator,
-        CallCsvSchedulerRepository $callCsvSchedulerRepository
+        RequestId $requestId
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->callCsvReport = $callCsvReportCreator;
-        $this->callCsvSchedulerRepository = $callCsvSchedulerRepository;
     }
 
-    public function indexAction()
+    public function indexAction(): Response
     {
         $errors = [];
         $this->registerCommand('Scheduler', 'callCsv');

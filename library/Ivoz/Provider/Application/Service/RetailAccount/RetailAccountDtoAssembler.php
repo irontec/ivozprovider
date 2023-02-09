@@ -14,15 +14,10 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 
 class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $usersLocationRepository;
-    protected $requestDateTimeResolver;
-
     public function __construct(
-        UsersLocationRepository $usersLocationRepository,
-        RequestDateTimeResolver $requestDateTimeResolver
+        private UsersLocationRepository $usersLocationRepository,
+        private RequestDateTimeResolver $requestDateTimeResolver
     ) {
-        $this->usersLocationRepository = $usersLocationRepository;
-        $this->requestDateTimeResolver = $requestDateTimeResolver;
     }
 
     /**
@@ -33,12 +28,7 @@ class RetailAccountDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($retailAccount, RetailAccountInterface::class);
 
-        /** @var RetailAccountDto $dto */
         $dto = $retailAccount->toDto($depth);
-
-        if (RetailAccountDto::CONTEXT_STATUS !== $context) {
-            return $dto;
-        }
 
         $domain = $retailAccount->getDomain();
         if (!$domain) {

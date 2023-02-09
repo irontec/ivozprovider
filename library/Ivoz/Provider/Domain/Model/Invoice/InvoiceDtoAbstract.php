@@ -22,93 +22,96 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $number;
+    private $number = null;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $inDate;
+    private $inDate = null;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $outDate;
-
-    /**
-     * @var float|null
-     */
-    private $total;
+    private $outDate = null;
 
     /**
      * @var float|null
      */
-    private $taxRate;
+    private $total = null;
 
     /**
      * @var float|null
      */
-    private $totalWithTax;
+    private $taxRate = null;
+
+    /**
+     * @var float|null
+     */
+    private $totalWithTax = null;
 
     /**
      * @var string|null
      */
-    private $status;
+    private $status = null;
 
     /**
      * @var string|null
      */
-    private $statusMsg;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $statusMsg = null;
 
     /**
      * @var int|null
      */
-    private $pdfFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $pdfFileSize = null;
 
     /**
      * @var string|null
      */
-    private $pdfMimeType;
+    private $pdfMimeType = null;
 
     /**
      * @var string|null
      */
-    private $pdfBaseName;
+    private $pdfBaseName = null;
 
     /**
      * @var InvoiceTemplateDto | null
      */
-    private $invoiceTemplate;
+    private $invoiceTemplate = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var InvoiceNumberSequenceDto | null
      */
-    private $numberSequence;
+    private $numberSequence = null;
 
     /**
      * @var InvoiceSchedulerDto | null
      */
-    private $scheduler;
+    private $scheduler = null;
 
     /**
      * @var FixedCostsRelInvoiceDto[] | null
      */
-    private $relFixedCosts;
+    private $relFixedCosts = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -117,7 +120,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -147,9 +150,9 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'number' => $this->getNumber(),
@@ -200,26 +203,26 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         return $this->number;
     }
 
-    public function setInDate(null|\DateTime|string $inDate): static
+    public function setInDate(null|\DateTimeInterface|string $inDate): static
     {
         $this->inDate = $inDate;
 
         return $this;
     }
 
-    public function getInDate(): \DateTime|string|null
+    public function getInDate(): \DateTimeInterface|string|null
     {
         return $this->inDate;
     }
 
-    public function setOutDate(null|\DateTime|string $outDate): static
+    public function setOutDate(null|\DateTimeInterface|string $outDate): static
     {
         $this->outDate = $outDate;
 
         return $this;
     }
 
-    public function getOutDate(): \DateTime|string|null
+    public function getOutDate(): \DateTimeInterface|string|null
     {
         return $this->outDate;
     }
@@ -291,7 +294,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

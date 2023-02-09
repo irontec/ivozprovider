@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -10,7 +13,7 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -19,29 +22,36 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 */
 interface RetailAccountInterface extends LoggableEntityInterface
 {
-    const TRANSPORT_UDP = 'udp';
+    public const TRANSPORT_UDP = 'udp';
 
-    const TRANSPORT_TCP = 'tcp';
+    public const TRANSPORT_TCP = 'tcp';
 
-    const TRANSPORT_TLS = 'tls';
+    public const TRANSPORT_TLS = 'tls';
 
-    const DIRECTCONNECTIVITY_YES = 'yes';
+    public const DIRECTCONNECTIVITY_YES = 'yes';
 
-    const DIRECTCONNECTIVITY_NO = 'no';
+    public const DIRECTCONNECTIVITY_NO = 'no';
 
-    const DDIIN_YES = 'yes';
+    public const DDIIN_YES = 'yes';
 
-    const DDIIN_NO = 'no';
+    public const DDIIN_NO = 'no';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return bool
@@ -68,7 +78,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * Get Ddi associated with this retail Account
@@ -77,6 +87,26 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface | null
      */
     public function getDdi($ddieE164);
+
+    public static function createDto(string|int|null $id = null): RetailAccountDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|RetailAccountInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RetailAccountDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param RetailAccountDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): RetailAccountDto;
 
     public function getName(): string;
 
@@ -130,15 +160,27 @@ interface RetailAccountInterface extends LoggableEntityInterface
 
     public function removeDdi(DdiInterface $ddi): RetailAccountInterface;
 
-    public function replaceDdis(ArrayCollection $ddis): RetailAccountInterface;
+    /**
+     * @param Collection<array-key, DdiInterface> $ddis
+     */
+    public function replaceDdis(Collection $ddis): RetailAccountInterface;
 
+    /**
+     * @return array<array-key, DdiInterface>
+     */
     public function getDdis(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface;
 
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): RetailAccountInterface;
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): RetailAccountInterface;
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): RetailAccountInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

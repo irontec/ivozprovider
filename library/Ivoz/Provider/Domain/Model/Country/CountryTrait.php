@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
@@ -12,9 +13,9 @@ use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 trait CountryTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * Constructor
@@ -24,19 +25,17 @@ trait CountryTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param CountryDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
 
@@ -52,13 +51,11 @@ trait CountryTrait
     /**
      * @internal use EntityTools instead
      * @param CountryDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
 
         $this->sanitizeValues();
@@ -68,10 +65,8 @@ trait CountryTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CountryDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CountryDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -79,9 +74,9 @@ trait CountryTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()

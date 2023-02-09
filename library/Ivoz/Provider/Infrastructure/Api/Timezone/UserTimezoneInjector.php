@@ -12,20 +12,13 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class UserTimezoneInjector
 {
-    const FALLBACK_TZ = 'UTC';
-
-    protected $tokenStorage;
-    protected $logger;
-    protected $tzParamName;
+    public const FALLBACK_TZ = 'UTC';
 
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        LoggerInterface $logger,
-        $tzParamName = '_timezone'
+        private TokenStorageInterface $tokenStorage,
+        private LoggerInterface $logger,
+        private string $tzParamName = '_timezone'
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->logger = $logger;
-        $this->tzParamName = $tzParamName;
     }
 
     /**

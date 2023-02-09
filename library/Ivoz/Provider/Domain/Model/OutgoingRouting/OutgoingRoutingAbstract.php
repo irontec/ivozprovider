@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -32,7 +33,8 @@ abstract class OutgoingRoutingAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
+     * comment: enum:pattern|group|fax
      */
     protected $type = 'group';
 
@@ -47,15 +49,15 @@ abstract class OutgoingRoutingAbstract
     protected $weight = 1;
 
     /**
+     * @var ?string
      * comment: enum:static|lcr|block
-     * @var string | null
      */
     protected $routingMode = 'static';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $prefix;
+    protected $prefix = null;
 
     /**
      * @var bool
@@ -63,14 +65,14 @@ abstract class OutgoingRoutingAbstract
     protected $stopper = false;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $forceClid = false;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $clid;
+    protected $clid = null;
 
     /**
      * @var BrandInterface
@@ -79,87 +81,80 @@ abstract class OutgoingRoutingAbstract
     protected $brand;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      * inversedBy outgoingRoutings
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupInterface | null
+     * @var ?RoutingPatternGroupInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingPatternGroup;
+    protected $routingPatternGroup = null;
 
     /**
-     * @var RoutingTagInterface | null
+     * @var ?RoutingTagInterface
      * inversedBy outgoingRoutings
      */
-    protected $routingTag;
+    protected $routingTag = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $clidCountry;
+    protected $clidCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $priority,
-        $weight,
-        $stopper
+        int $priority,
+        int $weight,
+        bool $stopper
     ) {
         $this->setPriority($priority);
         $this->setWeight($weight);
         $this->setStopper($stopper);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "OutgoingRouting",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return OutgoingRoutingDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): OutgoingRoutingDto
     {
         return new OutgoingRoutingDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param OutgoingRoutingInterface|null $entity
-     * @param int $depth
-     * @return OutgoingRoutingDto|null
+     * @param null|OutgoingRoutingInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingRoutingDto
     {
         if (!$entity) {
             return null;
@@ -175,8 +170,7 @@ abstract class OutgoingRoutingAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var OutgoingRoutingDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -185,18 +179,25 @@ abstract class OutgoingRoutingAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingRoutingDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority(),
-            $dto->getWeight(),
-            $dto->getStopper()
+            $priority,
+            $weight,
+            $stopper
         );
 
         $self
@@ -205,7 +206,7 @@ abstract class OutgoingRoutingAbstract
             ->setPrefix($dto->getPrefix())
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
@@ -221,24 +222,32 @@ abstract class OutgoingRoutingAbstract
     /**
      * @internal use EntityTools instead
      * @param OutgoingRoutingDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingRoutingDto::class);
+
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $stopper = $dto->getStopper();
+        Assertion::notNull($stopper, 'getStopper value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $this
             ->setType($dto->getType())
-            ->setPriority($dto->getPriority())
-            ->setWeight($dto->getWeight())
+            ->setPriority($priority)
+            ->setWeight($weight)
             ->setRoutingMode($dto->getRoutingMode())
             ->setPrefix($dto->getPrefix())
-            ->setStopper($dto->getStopper())
+            ->setStopper($stopper)
             ->setForceClid($dto->getForceClid())
             ->setClid($dto->getClid())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
             ->setRoutingPattern($fkTransformer->transform($dto->getRoutingPattern()))
@@ -251,10 +260,8 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return OutgoingRoutingDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): OutgoingRoutingDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -275,9 +282,9 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'type' => self::getType(),
@@ -289,17 +296,30 @@ abstract class OutgoingRoutingAbstract
             'forceClid' => self::getForceClid(),
             'clid' => self::getClid(),
             'brandId' => self::getBrand()->getId(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null,
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null,
-            'clidCountryId' => self::getClidCountry() ? self::getClidCountry()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupId' => self::getRoutingPatternGroup()?->getId(),
+            'routingTagId' => self::getRoutingTag()?->getId(),
+            'clidCountryId' => self::getClidCountry()?->getId()
         ];
     }
 
     protected function setType(?string $type = null): static
     {
+        if (!is_null($type)) {
+            Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $type,
+                [
+                    OutgoingRoutingInterface::TYPE_PATTERN,
+                    OutgoingRoutingInterface::TYPE_GROUP,
+                    OutgoingRoutingInterface::TYPE_FAX,
+                ],
+                'typevalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->type = $type;
 
         return $this;
@@ -381,9 +401,6 @@ abstract class OutgoingRoutingAbstract
 
     protected function setStopper(bool $stopper): static
     {
-        Assertion::between(intval($stopper), 0, 1, 'stopper provided "%s" is not a valid boolean value.');
-        $stopper = (bool) $stopper;
-
         $this->stopper = $stopper;
 
         return $this;
@@ -396,11 +413,6 @@ abstract class OutgoingRoutingAbstract
 
     protected function setForceClid(?bool $forceClid = null): static
     {
-        if (!is_null($forceClid)) {
-            Assertion::between(intval($forceClid), 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
-            $forceClid = (bool) $forceClid;
-        }
-
         $this->forceClid = $forceClid;
 
         return $this;
@@ -431,7 +443,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -456,7 +467,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -469,7 +479,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->routingPattern = $routingPattern;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -482,7 +491,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -495,7 +503,6 @@ abstract class OutgoingRoutingAbstract
     {
         $this->routingTag = $routingTag;
 
-        /** @var  $this */
         return $this;
     }
 

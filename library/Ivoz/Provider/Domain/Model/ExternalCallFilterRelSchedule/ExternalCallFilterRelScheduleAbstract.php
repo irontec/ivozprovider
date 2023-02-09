@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
@@ -22,10 +23,10 @@ abstract class ExternalCallFilterRelScheduleAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy schedules
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var ScheduleInterface
@@ -39,41 +40,34 @@ abstract class ExternalCallFilterRelScheduleAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ExternalCallFilterRelSchedule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ExternalCallFilterRelScheduleDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ExternalCallFilterRelScheduleDto
     {
         return new ExternalCallFilterRelScheduleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExternalCallFilterRelScheduleInterface|null $entity
-     * @param int $depth
-     * @return ExternalCallFilterRelScheduleDto|null
+     * @param null|ExternalCallFilterRelScheduleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExternalCallFilterRelScheduleDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExternalCallFilterRelScheduleDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class ExternalCallFilterRelScheduleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExternalCallFilterRelScheduleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class ExternalCallFilterRelScheduleAbstract
     /**
      * @internal use EntityTools instead
      * @param ExternalCallFilterRelScheduleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterRelScheduleDto::class);
+
+        $schedule = $dto->getSchedule();
+        Assertion::notNull($schedule, 'getSchedule value is null, but non null value was expected.');
 
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setSchedule($fkTransformer->transform($dto->getSchedule()));
+            ->setSchedule($fkTransformer->transform($schedule));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ExternalCallFilterRelScheduleDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ExternalCallFilterRelScheduleDto
     {
         return self::createDto()
             ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))
@@ -149,12 +143,12 @@ abstract class ExternalCallFilterRelScheduleAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'filterId' => self::getFilter()?->getId(),
             'scheduleId' => self::getSchedule()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
     {
         $this->filter = $filter;
 
-        /** @var  $this */
         return $this;
     }
 

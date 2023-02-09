@@ -36,7 +36,7 @@ class ProviderConditionalRoutesConditionsRelSchedule extends Fixture implements 
         $this->addReference('_reference_ProviderConditionalRoutesConditionsRelSchedule1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
-    
+
         $manager->flush();
     }
 

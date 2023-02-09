@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Destination;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Destination\Name;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -26,7 +27,7 @@ abstract class DestinationAbstract
     protected $prefix;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
@@ -39,48 +40,41 @@ abstract class DestinationAbstract
      * Constructor
      */
     protected function __construct(
-        $prefix,
+        string $prefix,
         Name $name
     ) {
         $this->setPrefix($prefix);
-        $this->setName($name);
+        $this->name = $name;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Destination",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DestinationDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DestinationDto
     {
         return new DestinationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DestinationInterface|null $entity
-     * @param int $depth
-     * @return DestinationDto|null
+     * @param null|DestinationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DestinationDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class DestinationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DestinationDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,13 +99,16 @@ abstract class DestinationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DestinationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DestinationDto::class);
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -122,12 +118,12 @@ abstract class DestinationAbstract
         );
 
         $self = new static(
-            $dto->getPrefix(),
+            $prefix,
             $name
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -137,13 +133,17 @@ abstract class DestinationAbstract
     /**
      * @internal use EntityTools instead
      * @param DestinationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DestinationDto::class);
+
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
             $dto->getNameEn(),
@@ -153,19 +153,17 @@ abstract class DestinationAbstract
         );
 
         $this
-            ->setPrefix($dto->getPrefix())
+            ->setPrefix($prefix)
             ->setName($name)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DestinationDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DestinationDto
     {
         return self::createDto()
             ->setPrefix(self::getPrefix())
@@ -177,9 +175,9 @@ abstract class DestinationAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'prefix' => self::getPrefix(),
@@ -212,7 +210,7 @@ abstract class DestinationAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

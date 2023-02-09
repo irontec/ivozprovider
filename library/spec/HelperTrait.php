@@ -86,7 +86,7 @@ trait HelperTrait
         $allowAnyCall = true
     ) {
         if (!$this->prophet) {
-            $this->prophet = new \Prophecy\Prophet;
+            $this->prophet = new \Prophecy\Prophet();
         }
 
         $collaborator = $this->prophet->prophesize(
@@ -103,6 +103,10 @@ trait HelperTrait
 
         foreach ($publicMethods as $publicMethod) {
             $methodName = $publicMethod->getName();
+            if ($publicMethod->isFinal()) {
+                continue;
+            }
+
             if (strpos($methodName, '__') === 0) {
                 continue;
             }
@@ -114,7 +118,10 @@ trait HelperTrait
                 $arguments[] = Argument::any();
             }
 
-            if (strpos($methodName, 'set') === 0) {
+            $returnType = $publicMethod->getReturnType();
+            $isVoidReturnType = $returnType && $returnType->__toString() === 'void';
+
+            if (strpos($methodName, 'set') === 0 && !$isVoidReturnType) {
                 $collaborator
                     ->{$methodName}(...$arguments)
                     ->willReturn(

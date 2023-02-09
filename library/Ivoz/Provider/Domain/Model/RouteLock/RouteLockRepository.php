@@ -7,5 +7,8 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface RouteLockRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return array<RouteLockInterface>
+     */
+    public function findAllOrderByCompany(): array;
 }

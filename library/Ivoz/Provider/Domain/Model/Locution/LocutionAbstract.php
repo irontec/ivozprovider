@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Locution\EncodedFile;
 use Ivoz\Provider\Domain\Model\Locution\OriginalFile;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -27,18 +28,18 @@ abstract class LocutionAbstract
     protected $name;
 
     /**
+     * @var ?string
      * comment: enum:pending|encoding|ready|error
-     * @var string | null
      */
-    protected $status;
+    protected $status = null;
 
     /**
-     * @var EncodedFile | null
+     * @var EncodedFile
      */
     protected $encodedFile;
 
     /**
-     * @var OriginalFile | null
+     * @var OriginalFile
      */
     protected $originalFile;
 
@@ -51,50 +52,43 @@ abstract class LocutionAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
+        string $name,
         EncodedFile $encodedFile,
         OriginalFile $originalFile
     ) {
         $this->setName($name);
-        $this->setEncodedFile($encodedFile);
-        $this->setOriginalFile($originalFile);
+        $this->encodedFile = $encodedFile;
+        $this->originalFile = $originalFile;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Locution",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return LocutionDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): LocutionDto
     {
         return new LocutionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param LocutionInterface|null $entity
-     * @param int $depth
-     * @return LocutionDto|null
+     * @param null|LocutionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?LocutionDto
     {
         if (!$entity) {
             return null;
@@ -110,8 +104,7 @@ abstract class LocutionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var LocutionDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -120,13 +113,16 @@ abstract class LocutionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param LocutionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, LocutionDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $encodedFile = new EncodedFile(
             $dto->getEncodedFileFileSize(),
@@ -141,14 +137,14 @@ abstract class LocutionAbstract
         );
 
         $self = new static(
-            $dto->getName(),
+            $name,
             $encodedFile,
             $originalFile
         );
 
         $self
             ->setStatus($dto->getStatus())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -158,13 +154,17 @@ abstract class LocutionAbstract
     /**
      * @internal use EntityTools instead
      * @param LocutionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, LocutionDto::class);
+
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $encodedFile = new EncodedFile(
             $dto->getEncodedFileFileSize(),
@@ -179,21 +179,19 @@ abstract class LocutionAbstract
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setStatus($dto->getStatus())
             ->setEncodedFile($encodedFile)
             ->setOriginalFile($originalFile)
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return LocutionDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): LocutionDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -208,9 +206,9 @@ abstract class LocutionAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -272,7 +270,7 @@ abstract class LocutionAbstract
 
     protected function setEncodedFile(EncodedFile $encodedFile): static
     {
-        $isEqual = $this->encodedFile && $this->encodedFile->equals($encodedFile);
+        $isEqual = $this->encodedFile->equals($encodedFile);
         if ($isEqual) {
             return $this;
         }
@@ -288,7 +286,7 @@ abstract class LocutionAbstract
 
     protected function setOriginalFile(OriginalFile $originalFile): static
     {
-        $isEqual = $this->originalFile && $this->originalFile->equals($originalFile);
+        $isEqual = $this->originalFile->equals($originalFile);
         if ($isEqual) {
             return $this;
         }

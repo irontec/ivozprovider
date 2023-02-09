@@ -13,7 +13,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     use InvoiceTrait;
     use TempFileContainnerTrait;
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (empty($this->_initialValues)) {
             $this->initChangelog();
@@ -52,7 +52,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
         }
     }
 
-    private function reset()
+    private function reset(): void
     {
         $this
             ->setTotal(null)
@@ -62,7 +62,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
             ->setPdf(new Pdf(null, null, null));
     }
 
-    private function sanitizeOutDate()
+    private function sanitizeOutDate(): void
     {
         $tz = $this
             ->getCompany()
@@ -72,9 +72,8 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
         $outDate = $this->getOutDate();
 
-        $outDate
-            ->setTimezone($invoiceTz);
-        $outDate
+        $outDate = $outDate
+            ->setTimezone($invoiceTz)
             ->modify('next day')
             ->setTime(0, 0, 0)
             ->modify('- 1 second');
@@ -84,9 +83,9 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -94,7 +93,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Pdf' => [
@@ -113,7 +112,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -121,7 +120,7 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     /**
      * @return bool
      */
-    public function isWaiting():bool
+    public function isWaiting(): bool
     {
         return $this->getStatus() === self::STATUS_WAITING;
     }

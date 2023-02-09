@@ -14,15 +14,10 @@ use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
 class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $usersLocationRepository;
-    protected $requestDateTimeResolver;
-
     public function __construct(
-        UsersLocationRepository $usersLocationRepository,
-        RequestDateTimeResolver $requestDateTimeResolver
+        private UsersLocationRepository $usersLocationRepository,
+        private RequestDateTimeResolver $requestDateTimeResolver
     ) {
-        $this->usersLocationRepository = $usersLocationRepository;
-        $this->requestDateTimeResolver = $requestDateTimeResolver;
     }
 
     /**
@@ -33,7 +28,6 @@ class ResidentialDeviceDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($residentialDevice, ResidentialDeviceInterface::class);
 
-        /** @var ResidentialDeviceDto $dto */
         $dto = $residentialDevice->toDto($depth);
 
         if (ResidentialDeviceDto::CONTEXT_STATUS !== $context) {

@@ -22,6 +22,7 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto;
 use Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry\CompanyRelGeoIPCountryDto;
@@ -37,37 +38,37 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $type = 'vpbx';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $domainUsers;
+    private $domainUsers = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nif;
+    private $nif = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $distributeMethod = 'hash';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxCalls = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxDailyUsage = 1000000;
 
@@ -79,32 +80,32 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $maxDailyUsageEmail;
+    private $maxDailyUsageEmail = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $postalAddress;
+    private $postalAddress = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $postalCode;
+    private $postalCode = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $town;
+    private $town = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $province;
+    private $province = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $countryName;
+    private $countryName = null;
 
     /**
      * @var bool|null
@@ -117,32 +118,32 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $onDemandRecord = 0;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $allowRecordingRemoval = true;
 
     /**
      * @var string|null
      */
-    private $onDemandRecordCode;
+    private $onDemandRecordCode = null;
 
     /**
      * @var string|null
      */
-    private $externallyextraopts;
+    private $externallyextraopts = null;
 
     /**
      * @var int|null
      */
-    private $recordingsLimitMB;
+    private $recordingsLimitMB = null;
 
     /**
      * @var string|null
      */
-    private $recordingsLimitEmail;
+    private $recordingsLimitEmail = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $billingMethod = 'postpaid';
 
@@ -157,150 +158,158 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $showInvoices = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets;
+    private $mediaRelaySets = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $defaultTimezone;
+    private $defaultTimezone = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var ApplicationServerDto | null
      */
-    private $applicationServer;
+    private $applicationServer = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var OutgoingDdiRuleDto | null
      */
-    private $outgoingDdiRule;
+    private $outgoingDdiRule = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $voicemailNotificationTemplate;
+    private $voicemailNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $faxNotificationTemplate;
+    private $faxNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $invoiceNotificationTemplate;
+    private $invoiceNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $callCsvNotificationTemplate;
+    private $callCsvNotificationTemplate = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $maxDailyUsageNotificationTemplate;
+    private $maxDailyUsageNotificationTemplate = null;
 
     /**
      * @var ExtensionDto[] | null
      */
-    private $extensions;
+    private $extensions = null;
 
     /**
      * @var DdiDto[] | null
      */
-    private $ddis;
+    private $ddis = null;
 
     /**
      * @var FriendDto[] | null
      */
-    private $friends;
+    private $friends = null;
 
     /**
      * @var CompanyServiceDto[] | null
      */
-    private $companyServices;
+    private $companyServices = null;
 
     /**
      * @var TerminalDto[] | null
      */
-    private $terminals;
+    private $terminals = null;
 
     /**
      * @var RatingProfileDto[] | null
      */
-    private $ratingProfiles;
+    private $ratingProfiles = null;
 
     /**
      * @var MusicOnHoldDto[] | null
      */
-    private $musicsOnHold;
+    private $musicsOnHold = null;
+
+    /**
+     * @var VoicemailDto[] | null
+     */
+    private $voicemails = null;
 
     /**
      * @var RecordingDto[] | null
      */
-    private $recordings;
+    private $recordings = null;
 
     /**
      * @var FeaturesRelCompanyDto[] | null
      */
-    private $relFeatures;
+    private $relFeatures = null;
 
     /**
      * @var CompanyRelGeoIPCountryDto[] | null
      */
-    private $relCountries;
+    private $relCountries = null;
 
     /**
      * @var CompanyRelCodecDto[] | null
      */
-    private $relCodecs;
+    private $relCodecs = null;
 
     /**
      * @var CompanyRelRoutingTagDto[] | null
      */
-    private $relRoutingTags;
+    private $relRoutingTags = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -309,7 +318,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -361,9 +370,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'type' => $this->getType(),
@@ -414,6 +423,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'terminals' => $this->getTerminals(),
             'ratingProfiles' => $this->getRatingProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
+            'voicemails' => $this->getVoicemails(),
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
             'relCountries' => $this->getRelCountries(),
@@ -435,7 +445,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -447,7 +457,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -471,7 +481,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->domainUsers;
     }
 
-    public function setNif(?string $nif): static
+    public function setNif(string $nif): static
     {
         $this->nif = $nif;
 
@@ -483,7 +493,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->nif;
     }
 
-    public function setDistributeMethod(?string $distributeMethod): static
+    public function setDistributeMethod(string $distributeMethod): static
     {
         $this->distributeMethod = $distributeMethod;
 
@@ -495,7 +505,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->distributeMethod;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -507,7 +517,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->maxCalls;
     }
 
-    public function setMaxDailyUsage(?int $maxDailyUsage): static
+    public function setMaxDailyUsage(int $maxDailyUsage): static
     {
         $this->maxDailyUsage = $maxDailyUsage;
 
@@ -543,7 +553,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->maxDailyUsageEmail;
     }
 
-    public function setPostalAddress(?string $postalAddress): static
+    public function setPostalAddress(string $postalAddress): static
     {
         $this->postalAddress = $postalAddress;
 
@@ -555,7 +565,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->postalAddress;
     }
 
-    public function setPostalCode(?string $postalCode): static
+    public function setPostalCode(string $postalCode): static
     {
         $this->postalCode = $postalCode;
 
@@ -567,7 +577,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->postalCode;
     }
 
-    public function setTown(?string $town): static
+    public function setTown(string $town): static
     {
         $this->town = $town;
 
@@ -579,7 +589,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->town;
     }
 
-    public function setProvince(?string $province): static
+    public function setProvince(string $province): static
     {
         $this->province = $province;
 
@@ -591,7 +601,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->province;
     }
 
-    public function setCountryName(?string $countryName): static
+    public function setCountryName(string $countryName): static
     {
         $this->countryName = $countryName;
 
@@ -627,7 +637,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->onDemandRecord;
     }
 
-    public function setAllowRecordingRemoval(?bool $allowRecordingRemoval): static
+    public function setAllowRecordingRemoval(bool $allowRecordingRemoval): static
     {
         $this->allowRecordingRemoval = $allowRecordingRemoval;
 
@@ -687,7 +697,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->recordingsLimitEmail;
     }
 
-    public function setBillingMethod(?string $billingMethod): static
+    public function setBillingMethod(string $billingMethod): static
     {
         $this->billingMethod = $billingMethod;
 
@@ -730,7 +740,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -1297,6 +1307,18 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMusicsOnHold(): ?array
     {
         return $this->musicsOnHold;
+    }
+
+    public function setVoicemails(?array $voicemails): static
+    {
+        $this->voicemails = $voicemails;
+
+        return $this;
+    }
+
+    public function getVoicemails(): ?array
+    {
+        return $this->voicemails;
     }
 
     public function setRecordings(?array $recordings): static

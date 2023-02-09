@@ -25,13 +25,7 @@ interface UserRepository extends ObjectRepository, Selectable
      * @param UserInterface $user
      * @return UserInterface[]
      */
-    public function getUserAssistantCandidates(UserInterface $user) :array;
-
-    /**
-     * @param UserInterface $user
-     * @return UserInterface[]
-     */
-    public function getAvailableVoicemails(UserInterface $user) :array;
+    public function getUserAssistantCandidates(UserInterface $user): array;
 
     public function getBrandUsersIdsOrderByTerminalExpireDate(int $brandId, string $order = 'DESC'): array;
 
@@ -43,6 +37,15 @@ interface UserRepository extends ObjectRepository, Selectable
         string $name,
         string $lastName
     );
+
+    /**
+     * @param int[] $excludeIds
+     * @return UserInterface[]
+     */
+    public function findCompanyUsersExcludingIds(
+        int $companyId,
+        array $excludeIds
+    ): array;
 
     /**
      * @return UserInterface | null

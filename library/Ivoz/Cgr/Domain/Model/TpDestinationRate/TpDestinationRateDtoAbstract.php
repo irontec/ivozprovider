@@ -15,60 +15,63 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
      * @var string|null
      */
-    private $destinationsTag;
+    private $destinationsTag = null;
 
     /**
      * @var string|null
      */
-    private $ratesTag;
+    private $ratesTag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $roundingMethod = '*up';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $roundingDecimals = 4;
 
     /**
-     * @var float
+     * @var float|null
      */
     private $maxCost = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $maxCostStrategy = '';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DestinationRateDto | null
      */
-    private $destinationRate;
+    private $destinationRate = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -77,7 +80,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -99,9 +102,9 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tpid' => $this->getTpid(),
@@ -131,7 +134,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -179,7 +182,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->ratesTag;
     }
 
-    public function setRoundingMethod(?string $roundingMethod): static
+    public function setRoundingMethod(string $roundingMethod): static
     {
         $this->roundingMethod = $roundingMethod;
 
@@ -191,7 +194,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->roundingMethod;
     }
 
-    public function setRoundingDecimals(?int $roundingDecimals): static
+    public function setRoundingDecimals(int $roundingDecimals): static
     {
         $this->roundingDecimals = $roundingDecimals;
 
@@ -203,7 +206,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->roundingDecimals;
     }
 
-    public function setMaxCost(?float $maxCost): static
+    public function setMaxCost(float $maxCost): static
     {
         $this->maxCost = $maxCost;
 
@@ -215,7 +218,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->maxCost;
     }
 
-    public function setMaxCostStrategy(?string $maxCostStrategy): static
+    public function setMaxCostStrategy(string $maxCostStrategy): static
     {
         $this->maxCostStrategy = $maxCostStrategy;
 
@@ -227,14 +230,14 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->maxCostStrategy;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
@@ -246,7 +249,7 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -20,7 +20,7 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Dispatcher::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Dispatcher::class);
         (function () use ($fixture) {
             $this->setSetid(1);
@@ -51,7 +51,7 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
-    
+
         $manager->flush();
     }
 

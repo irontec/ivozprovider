@@ -17,6 +17,7 @@ production:
       fields:
         order:
           entry: true
+          displayName: true
           welcomeLocution: true
           routeType: true
           target: true
@@ -24,7 +25,7 @@ production:
           numberCountry: true
           numberValue: true
           extension: true
-          voiceMailUser: true
+          voicemail: true
           conditionalRoute: true
         options:
           title: _("Options")
@@ -60,6 +61,7 @@ production:
           fields:
             entry: 4
             welcomeLocution: 4
+            displayName: 4
         group1:
           label: _("Routing configuration")
           colsPerRow: 12
@@ -68,7 +70,7 @@ production:
             numberCountry: 4
             numberValue: 4
             extension: 4
-            voiceMailUser: 5
+            voicemail: 5
             conditionalRoute: 5
 
     ivrEntriesEdit_screen: &ivrEntriesEdit_screenLink

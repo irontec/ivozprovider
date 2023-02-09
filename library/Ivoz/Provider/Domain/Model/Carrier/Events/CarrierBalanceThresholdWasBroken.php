@@ -6,5 +6,4 @@ use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
 
 class CarrierBalanceThresholdWasBroken extends AbstractBalanceThresholdWasBroken
 {
-
 }

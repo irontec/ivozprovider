@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\CallAclRelMatchList;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -13,6 +15,7 @@ class CallAclRelMatchListLifecycleServiceCollection implements LifecycleServiceC
 {
     use LifecycleServiceCollectionTrait;
 
+    /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
@@ -20,7 +23,7 @@ class CallAclRelMatchListLifecycleServiceCollection implements LifecycleServiceC
         ],
     ];
 
-    protected function addService(string $event, $service): void
+    protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
         Assertion::isInstanceOf($service, CallAclRelMatchListLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RouteLock;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -32,7 +33,7 @@ abstract class RouteLockAbstract
     /**
      * @var bool
      */
-    protected $open = false;
+    protected $open = true;
 
     /**
      * @var CompanyInterface
@@ -43,50 +44,43 @@ abstract class RouteLockAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $open
+        string $name,
+        string $description,
+        bool $open
     ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setOpen($open);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RouteLock",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RouteLockDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RouteLockDto
     {
         return new RouteLockDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RouteLockInterface|null $entity
-     * @param int $depth
-     * @return RouteLockDto|null
+     * @param null|RouteLockInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RouteLockDto
     {
         if (!$entity) {
             return null;
@@ -102,8 +96,7 @@ abstract class RouteLockAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RouteLockDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -112,22 +105,29 @@ abstract class RouteLockAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RouteLockDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RouteLockDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $open = $dto->getOpen();
+        Assertion::notNull($open, 'getOpen value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getOpen()
+            $name,
+            $description,
+            $open
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -137,29 +137,35 @@ abstract class RouteLockAbstract
     /**
      * @internal use EntityTools instead
      * @param RouteLockDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RouteLockDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $open = $dto->getOpen();
+        Assertion::notNull($open, 'getOpen value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
-            ->setOpen($dto->getOpen())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setName($name)
+            ->setDescription($description)
+            ->setOpen($open)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RouteLockDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RouteLockDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -169,9 +175,9 @@ abstract class RouteLockAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -211,9 +217,6 @@ abstract class RouteLockAbstract
 
     protected function setOpen(bool $open): static
     {
-        Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
-        $open = (bool) $open;
-
         $this->open = $open;
 
         return $this;

@@ -19,75 +19,78 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $unit = 'month';
-
-    /**
-     * @var int
-     */
-    private $frequency;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var \DateTime|string|null
-     */
-    private $lastExecution;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $lastExecutionError;
+    private $unit = 'month';
 
     /**
-     * @var \DateTime|string|null
+     * @var int|null
      */
-    private $nextExecution;
+    private $frequency = null;
+
+    /**
+     * @var string|null
+     */
+    private $email = null;
+
+    /**
+     * @var \DateTimeInterface|string|null
+     */
+    private $lastExecution = null;
+
+    /**
+     * @var string|null
+     */
+    private $lastExecutionError = null;
+
+    /**
+     * @var \DateTimeInterface|string|null
+     */
+    private $nextExecution = null;
 
     /**
      * @var float|null
      */
-    private $taxRate;
+    private $taxRate = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var InvoiceTemplateDto | null
      */
-    private $invoiceTemplate;
+    private $invoiceTemplate = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var InvoiceNumberSequenceDto | null
      */
-    private $numberSequence;
+    private $numberSequence = null;
 
     /**
      * @var FixedCostsRelInvoiceSchedulerDto[] | null
      */
-    private $relFixedCosts;
+    private $relFixedCosts = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -96,7 +99,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -120,9 +123,9 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -155,7 +158,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -167,7 +170,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->name;
     }
 
-    public function setUnit(?string $unit): static
+    public function setUnit(string $unit): static
     {
         $this->unit = $unit;
 
@@ -179,7 +182,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->unit;
     }
 
-    public function setFrequency(?int $frequency): static
+    public function setFrequency(int $frequency): static
     {
         $this->frequency = $frequency;
 
@@ -191,7 +194,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->frequency;
     }
 
-    public function setEmail(?string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 
@@ -203,14 +206,14 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->email;
     }
 
-    public function setLastExecution(null|\DateTime|string $lastExecution): static
+    public function setLastExecution(null|\DateTimeInterface|string $lastExecution): static
     {
         $this->lastExecution = $lastExecution;
 
         return $this;
     }
 
-    public function getLastExecution(): \DateTime|string|null
+    public function getLastExecution(): \DateTimeInterface|string|null
     {
         return $this->lastExecution;
     }
@@ -227,14 +230,14 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->lastExecutionError;
     }
 
-    public function setNextExecution(null|\DateTime|string $nextExecution): static
+    public function setNextExecution(null|\DateTimeInterface|string $nextExecution): static
     {
         $this->nextExecution = $nextExecution;
 
         return $this;
     }
 
-    public function getNextExecution(): \DateTime|string|null
+    public function getNextExecution(): \DateTimeInterface|string|null
     {
         return $this->nextExecution;
     }
@@ -258,7 +261,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

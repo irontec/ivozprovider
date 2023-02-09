@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 
@@ -16,18 +19,18 @@ use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 trait DdiProviderTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DdiProviderRegistrationInterface> & Selectable<array-key, DdiProviderRegistrationInterface>
      * DdiProviderRegistrationInterface mappedBy ddiProvider
      */
     protected $ddiProviderRegistrations;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, DdiProviderAddressInterface> & Selectable<array-key, DdiProviderAddressInterface>
      * DdiProviderAddressInterface mappedBy ddiProvider
      */
     protected $ddiProviderAddresses;
@@ -42,35 +45,37 @@ trait DdiProviderTrait
         $this->ddiProviderAddresses = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getDdiProviderRegistrations())) {
-            $self->replaceDdiProviderRegistrations(
-                $fkTransformer->transformCollection(
-                    $dto->getDdiProviderRegistrations()
-                )
+        $ddiProviderRegistrations = $dto->getDdiProviderRegistrations();
+        if (!is_null($ddiProviderRegistrations)) {
+
+            /** @var Collection<array-key, DdiProviderRegistrationInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddiProviderRegistrations
             );
+            $self->replaceDdiProviderRegistrations($replacement);
         }
 
-        if (!is_null($dto->getDdiProviderAddresses())) {
-            $self->replaceDdiProviderAddresses(
-                $fkTransformer->transformCollection(
-                    $dto->getDdiProviderAddresses()
-                )
+        $ddiProviderAddresses = $dto->getDdiProviderAddresses();
+        if (!is_null($ddiProviderAddresses)) {
+
+            /** @var Collection<array-key, DdiProviderAddressInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddiProviderAddresses
             );
+            $self->replaceDdiProviderAddresses($replacement);
         }
 
         $self->sanitizeValues();
@@ -85,28 +90,30 @@ trait DdiProviderTrait
     /**
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getDdiProviderRegistrations())) {
-            $this->replaceDdiProviderRegistrations(
-                $fkTransformer->transformCollection(
-                    $dto->getDdiProviderRegistrations()
-                )
+        $ddiProviderRegistrations = $dto->getDdiProviderRegistrations();
+        if (!is_null($ddiProviderRegistrations)) {
+
+            /** @var Collection<array-key, DdiProviderRegistrationInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddiProviderRegistrations
             );
+            $this->replaceDdiProviderRegistrations($replacement);
         }
 
-        if (!is_null($dto->getDdiProviderAddresses())) {
-            $this->replaceDdiProviderAddresses(
-                $fkTransformer->transformCollection(
-                    $dto->getDdiProviderAddresses()
-                )
+        $ddiProviderAddresses = $dto->getDdiProviderAddresses();
+        if (!is_null($ddiProviderAddresses)) {
+
+            /** @var Collection<array-key, DdiProviderAddressInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ddiProviderAddresses
             );
+            $this->replaceDdiProviderAddresses($replacement);
         }
         $this->sanitizeValues();
 
@@ -115,10 +122,8 @@ trait DdiProviderTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DdiProviderDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DdiProviderDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -126,9 +131,9 @@ trait DdiProviderTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -149,25 +154,33 @@ trait DdiProviderTrait
         return $this;
     }
 
-    public function replaceDdiProviderRegistrations(ArrayCollection $ddiProviderRegistrations): DdiProviderInterface
+    /**
+     * @param Collection<array-key, DdiProviderRegistrationInterface> $ddiProviderRegistrations
+     */
+    public function replaceDdiProviderRegistrations(Collection $ddiProviderRegistrations): DdiProviderInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ddiProviderRegistrations as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDdiProvider($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ddiProviderRegistrations as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ddiProviderRegistrations->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ddiProviderRegistrations->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ddiProviderRegistrations->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -177,6 +190,9 @@ trait DdiProviderTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiProviderRegistrationInterface>
+     */
     public function getDdiProviderRegistrations(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -200,25 +216,33 @@ trait DdiProviderTrait
         return $this;
     }
 
-    public function replaceDdiProviderAddresses(ArrayCollection $ddiProviderAddresses): DdiProviderInterface
+    /**
+     * @param Collection<array-key, DdiProviderAddressInterface> $ddiProviderAddresses
+     */
+    public function replaceDdiProviderAddresses(Collection $ddiProviderAddresses): DdiProviderInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ddiProviderAddresses as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setDdiProvider($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ddiProviderAddresses as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ddiProviderAddresses->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ddiProviderAddresses->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ddiProviderAddresses->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -228,6 +252,9 @@ trait DdiProviderTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, DdiProviderAddressInterface>
+     */
     public function getDdiProviderAddresses(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

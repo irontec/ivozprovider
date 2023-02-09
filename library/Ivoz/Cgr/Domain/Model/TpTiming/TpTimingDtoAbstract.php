@@ -15,55 +15,58 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $years;
+    private $years = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $months;
+    private $months = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $monthDays;
+    private $monthDays = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $weekDays;
+    private $weekDays = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $time = '00:00:00';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RatingPlanDto | null
      */
-    private $ratingPlan;
+    private $ratingPlan = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -72,7 +75,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -93,9 +96,9 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tpid' => $this->getTpid(),
@@ -124,7 +127,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -148,7 +151,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setYears(?string $years): static
+    public function setYears(string $years): static
     {
         $this->years = $years;
 
@@ -160,7 +163,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->years;
     }
 
-    public function setMonths(?string $months): static
+    public function setMonths(string $months): static
     {
         $this->months = $months;
 
@@ -172,7 +175,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->months;
     }
 
-    public function setMonthDays(?string $monthDays): static
+    public function setMonthDays(string $monthDays): static
     {
         $this->monthDays = $monthDays;
 
@@ -184,7 +187,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->monthDays;
     }
 
-    public function setWeekDays(?string $weekDays): static
+    public function setWeekDays(string $weekDays): static
     {
         $this->weekDays = $weekDays;
 
@@ -196,7 +199,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->weekDays;
     }
 
-    public function setTime(?string $time): static
+    public function setTime(string $time): static
     {
         $this->time = $time;
 
@@ -208,14 +211,14 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this->time;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
@@ -227,7 +230,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

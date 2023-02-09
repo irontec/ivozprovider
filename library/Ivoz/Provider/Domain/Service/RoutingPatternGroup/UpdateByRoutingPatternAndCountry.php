@@ -1,11 +1,11 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\RoutingPatternGroup;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist as CreateAndPersistRoutingPatternGroupsRelPattern;
@@ -16,29 +16,11 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist
  */
 class UpdateByRoutingPatternAndCountry
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var RoutingPatternGroupRepository
-     */
-    protected $routingPatternGroupRepository;
-
-    /**
-     * @var CreateAndPersistRoutingPatternGroupsRelPattern
-     */
-    protected $createAndPersistRoutingPatternGroupsRelPattern;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        RoutingPatternGroupRepository $routingPatternGroupRepository,
-        CreateAndPersistRoutingPatternGroupsRelPattern $createAndPersistRoutingPatternGroupsRelPattern
+        private EntityPersisterInterface $entityPersister,
+        private RoutingPatternGroupRepository $routingPatternGroupRepository,
+        private CreateAndPersistRoutingPatternGroupsRelPattern $createAndPersistRoutingPatternGroupsRelPattern
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->routingPatternGroupRepository = $routingPatternGroupRepository;
-        $this->createAndPersistRoutingPatternGroupsRelPattern = $createAndPersistRoutingPatternGroupsRelPattern;
     }
 
     /**
@@ -46,7 +28,7 @@ class UpdateByRoutingPatternAndCountry
      */
     public function execute(RoutingPatternInterface $entity, CountryInterface $country)
     {
-        $brandId = $entity
+        $brandId = (int) $entity
             ->getbrand()
             ->getId();
 
@@ -58,10 +40,6 @@ class UpdateByRoutingPatternAndCountry
             );
 
         if (empty($routingPatternGroup)) {
-
-            /**
-             * @var RoutingPatternGroupDto $routingPatternGroupDto
-             */
             $routingPatternGroupDto = RoutingPatternGroup::createDto();
             $routingPatternGroupDto
                 ->setName($country->getZone()->getEn())

@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 
 class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 {
-    const CONTEXT_WITH_CARRIERS = 'withCarriers';
+    public const CONTEXT_WITH_CARRIERS = 'withCarriers';
 
-    const CONTEXTS_WITH_CARRIERS = [
+    public const CONTEXTS_WITH_CARRIERS = [
         self::CONTEXT_WITH_CARRIERS,
         self::CONTEXT_DETAILED
     ];
@@ -22,9 +22,9 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
      *     description="Carriers on LCR route type"
      * )
      */
-    protected $carrierIds = [];
+    private $carrierIds = [];
 
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -51,7 +51,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -64,7 +64,7 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
         );
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -80,8 +80,10 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 
     /**
      * @param int[] $carrierIds
+     *
+     * @return void
      */
-    public function setCarrierIds(array $carrierIds)
+    public function setCarrierIds(array $carrierIds): void
     {
         $this->carrierIds = $carrierIds;
 

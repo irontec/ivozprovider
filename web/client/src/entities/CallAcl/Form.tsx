@@ -1,39 +1,20 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const DefaultEntityForm = defaultEntityBehavior.Form;
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('ACL data'),
+      fields: ['name', 'defaultPolicy'],
+    },
+  ];
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
-
-    useEffect(
-        () => {
-            if (loadingFks) {
-                /*LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            timeoutLocution: options,
-                            fullLocution: options,
-                            periodicAnnounceLocution: options,
-                        }
-                    });
-                });*/
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} groups={groups} />;
+};
 
 export default Form;

@@ -1,1 +1,1 @@
-.. include:: ../../../platform/external_calls.rst
+.. include:: ../../../shared/external_calls.rst.inc

@@ -6,7 +6,7 @@
       <unique-constraint name="name" columns="name"/>
     </unique-constraints>
     <field name="ip" type="string" column="ip" length="50" nullable="false"/>
-    <field name="name" type="string" column="name" length="64" nullable="true">
+    <field name="name" type="string" column="name" length="64" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

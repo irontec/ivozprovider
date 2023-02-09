@@ -6,36 +6,33 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Assert\Assertion;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 
 class AliasImporter
 {
-    protected $entityTools;
-    protected $countryRepository;
-    protected $extensionRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        CountryRepository $countryRepository,
-        ExtensionRepository $extensionRepository
+        private EntityTools $entityTools,
+        private CountryRepository $countryRepository,
+        private ExtensionRepository $extensionRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->countryRepository = $countryRepository;
-        $this->extensionRepository = $extensionRepository;
     }
 
     /**
      * @param int $companyId
      * @param array $data
+     *
      * @throws \Exception
+     *
+     * @return void
      */
-    public function execute(int $companyId, array $data)
+    public function execute(int $companyId, array $data): void
     {
         $this->assertValidData($data);
 
         foreach ($data as $line) {
-            list($extensionNumber, $countryPrefix, $number) = $line;
+            [$extensionNumber, $countryPrefix, $number] = $line;
             $countryIden = $line[3] ?? null;
 
             $this->queueForPersist(
@@ -52,7 +49,7 @@ class AliasImporter
             ->dispatchQueuedOperations();
     }
 
-    private function assertValidData(array $data)
+    private function assertValidData(array $data): void
     {
         Assertion::notEmpty(
             $data,
@@ -73,7 +70,7 @@ class AliasImporter
                 'CSV column number should be equal or lower than 4 at line ' . $lineNum
             );
 
-            list($extensionNumber, $countryPrefix, $number) = $line;
+            [$extensionNumber, $countryPrefix, $number] = $line;
             $countryIden = $line[4] ?? null;
 
             Assertion::integerish(
@@ -108,7 +105,7 @@ class AliasImporter
         string $countryPrefix,
         string $numberValue,
         string $countryIden = null
-    ) {
+    ): void {
         $country = $this->countryRepository->findOneByCountryCode(
             $countryPrefix,
             $countryIden
@@ -126,7 +123,10 @@ class AliasImporter
 
         $extension = $this
             ->extensionRepository
-            ->findCompanyExtension($companyId, $extensionNumber);
+            ->findCompanyExtension(
+                $companyId,
+                $extensionNumber
+            );
 
         if (!is_null($extension)) {
             $this->assertExtensionCanBeUpdated(
@@ -135,6 +135,7 @@ class AliasImporter
             );
         }
 
+        /** @var ExtensionDto $extensionDto */
         $extensionDto = $extension
             ? $this->entityTools->entityToDto($extension)
             : Extension::createDto();
@@ -166,9 +167,9 @@ class AliasImporter
     }
 
     private function assertExtensionCanBeUpdated(
-        int $extensionNumber,
+        string $extensionNumber,
         ExtensionInterface $extension
-    ) {
+    ): void {
         $errorMsg =
             'Unable to update extension '
             . $extensionNumber

@@ -10,22 +10,12 @@ use Psr\Log\LoggerInterface;
 
 class SyncBalances
 {
-    protected $entityTools;
-    protected $logger;
-    protected $client;
-
-    protected $carrierRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        CarrierBalanceServiceInterface $client,
-        CarrierRepository $carrierRepository
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private CarrierBalanceServiceInterface $client,
+        private CarrierRepository $carrierRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->client = $client;
-        $this->carrierRepository = $carrierRepository;
     }
 
     /**

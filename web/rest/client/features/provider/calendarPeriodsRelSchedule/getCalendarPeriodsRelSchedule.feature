@@ -25,8 +25,9 @@ Feature: Retrieve calendar periods rel schedules
                   "calendar": 1,
                   "locution": null,
                   "extension": null,
-                  "voiceMailUser": null,
-                  "numberCountry": 1
+                  "voicemail": null,
+                  "numberCountry": 1,
+                  "scheduleIds": []
               },
               "schedule": {
                   "name": "aSchedule",
@@ -65,7 +66,7 @@ Feature: Retrieve calendar periods rel schedules
               "calendar": 1,
               "locution": null,
               "extension": null,
-              "voiceMailUser": null,
+              "voicemail": null,
               "numberCountry": 1
           },
           "schedule": {

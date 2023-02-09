@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress;
 
@@ -25,10 +26,10 @@ abstract class TrunksAddressAbstract
     protected $grp = 1;
 
     /**
+     * @var ?string
      * column: ip_addr
-     * @var string | null
      */
-    protected $ipAddr;
+    protected $ipAddr = null;
 
     /**
      * @var int
@@ -41,9 +42,9 @@ abstract class TrunksAddressAbstract
     protected $port = 0;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
      * @var DdiProviderAddressInterface
@@ -55,50 +56,43 @@ abstract class TrunksAddressAbstract
      * Constructor
      */
     protected function __construct(
-        $grp,
-        $mask,
-        $port
+        int $grp,
+        int $mask,
+        int $port
     ) {
         $this->setGrp($grp);
         $this->setMask($mask);
         $this->setPort($port);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksAddress",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksAddressDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksAddressDto
     {
         return new TrunksAddressDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksAddressInterface|null $entity
-     * @param int $depth
-     * @return TrunksAddressDto|null
+     * @param null|TrunksAddressInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksAddressDto
     {
         if (!$entity) {
             return null;
@@ -114,8 +108,7 @@ abstract class TrunksAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksAddressDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -124,24 +117,31 @@ abstract class TrunksAddressAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksAddressDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
+        $grp = $dto->getGrp();
+        Assertion::notNull($grp, 'getGrp value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $ddiProviderAddress = $dto->getDdiProviderAddress();
+        Assertion::notNull($ddiProviderAddress, 'getDdiProviderAddress value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getGrp(),
-            $dto->getMask(),
-            $dto->getPort()
+            $grp,
+            $mask,
+            $port
         );
 
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
+            ->setDdiProviderAddress($fkTransformer->transform($ddiProviderAddress));
 
         $self->initChangelog();
 
@@ -151,31 +151,37 @@ abstract class TrunksAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksAddressDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
+        $grp = $dto->getGrp();
+        Assertion::notNull($grp, 'getGrp value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $ddiProviderAddress = $dto->getDdiProviderAddress();
+        Assertion::notNull($ddiProviderAddress, 'getDdiProviderAddress value is null, but non null value was expected.');
+
         $this
-            ->setGrp($dto->getGrp())
+            ->setGrp($grp)
             ->setIpAddr($dto->getIpAddr())
-            ->setMask($dto->getMask())
-            ->setPort($dto->getPort())
+            ->setMask($mask)
+            ->setPort($port)
             ->setTag($dto->getTag())
-            ->setDdiProviderAddress($fkTransformer->transform($dto->getDdiProviderAddress()));
+            ->setDdiProviderAddress($fkTransformer->transform($ddiProviderAddress));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksAddressDto
     {
         return self::createDto()
             ->setGrp(self::getGrp())
@@ -187,9 +193,9 @@ abstract class TrunksAddressAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'grp' => self::getGrp(),
@@ -275,7 +281,6 @@ abstract class TrunksAddressAbstract
     {
         $this->ddiProviderAddress = $ddiProviderAddress;
 
-        /** @var  $this */
         return $this;
     }
 

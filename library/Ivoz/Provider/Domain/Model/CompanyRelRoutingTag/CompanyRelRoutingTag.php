@@ -12,6 +12,10 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
 {
     use CompanyRelRoutingTagTrait;
 
+    /**
+     * @param CompanyInterface|null $company
+     * @return static
+     */
     public function setCompany(CompanyInterface $company = null): static
     {
         $companyType = $company->getType();
@@ -35,9 +39,9 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -47,7 +51,7 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

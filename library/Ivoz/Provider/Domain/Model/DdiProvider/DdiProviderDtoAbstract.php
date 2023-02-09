@@ -20,14 +20,14 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var bool|null
@@ -35,40 +35,43 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     private $externallyRated = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var ProxyTrunkDto | null
      */
-    private $proxyTrunk;
+    private $proxyTrunk = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets;
+    private $mediaRelaySets = null;
 
     /**
      * @var DdiProviderRegistrationDto[] | null
      */
-    private $ddiProviderRegistrations;
+    private $ddiProviderRegistrations = null;
 
     /**
      * @var DdiProviderAddressDto[] | null
      */
-    private $ddiProviderAddresses;
+    private $ddiProviderAddresses = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -77,7 +80,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -96,9 +99,9 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'description' => $this->getDescription(),
@@ -127,7 +130,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -139,7 +142,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -170,7 +173,7 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

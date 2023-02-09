@@ -17,40 +17,43 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $lcrId = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $priority;
+    private $priority = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $weight = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TrunksLcrRuleDto | null
      */
-    private $rule;
+    private $rule = null;
 
     /**
      * @var TrunksLcrGatewayDto | null
      */
-    private $gw;
+    private $gw = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -59,7 +62,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -77,9 +80,9 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'lcrId' => $this->getLcrId(),
@@ -105,7 +108,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $response;
     }
 
-    public function setLcrId(?int $lcrId): static
+    public function setLcrId(int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
@@ -117,7 +120,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->lcrId;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -129,7 +132,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this->priority;
     }
 
-    public function setWeight(?int $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
 
@@ -148,7 +151,7 @@ abstract class TrunksLcrRuleTargetDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

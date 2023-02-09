@@ -8,8 +8,8 @@ use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use PhpSpec\ObjectBehavior;
 use spec\DtoToEntityFakeTransformer;
 use spec\HelperTrait;
@@ -55,9 +55,9 @@ class ExternalCallFilterSpec extends ObjectBehavior
 
     function it_resets_holiday_targets_but_current_value()
     {
-        $holidayVoiceMailUserDto = new UserDto();
-        $holidayVoiceMailUser = $this->getInstance(
-            User::class
+        $holidayVoicemailDto = new VoicemailDto();
+        $holidayVoicemail = $this->getInstance(
+            Voicemail::class
         );
 
         $holidayExtensionDto = new ExtensionDto();
@@ -70,11 +70,11 @@ class ExternalCallFilterSpec extends ObjectBehavior
             ->setHolidayTargetType('number')
             ->setHolidayNumberValue('1234')
             ->setHolidayExtension($holidayExtensionDto)
-            ->setHolidayVoiceMailUser($holidayVoiceMailUserDto);
+            ->setHolidayVoicemail($holidayVoicemailDto);
 
         $this->transformer->appendFixedTransforms([
             [$holidayExtensionDto, $holidayExtension],
-            [$holidayVoiceMailUserDto, $holidayVoiceMailUser],
+            [$holidayVoicemailDto, $holidayVoicemail],
         ]);
 
         $this
@@ -82,15 +82,15 @@ class ExternalCallFilterSpec extends ObjectBehavior
             ->shouldBe(null);
 
         $this
-            ->getHolidayVoiceMailUser()
+            ->getHolidayVoicemail()
             ->shouldBe(null);
     }
 
     function it_resets_outOfSchedule_targets_but_current_value()
     {
-        $outOfScheduleVoiceMailUserDto = new UserDto();
-        $outOfScheduleVoiceMailUser = $this->getInstance(
-            User::class
+        $outOfSchedulevoicemailDto = new voicemailDto();
+        $outOfSchedulevoicemail = $this->getInstance(
+            Voicemail::class
         );
 
         $outOfScheduleExtensionDto = new ExtensionDto();
@@ -103,11 +103,11 @@ class ExternalCallFilterSpec extends ObjectBehavior
             ->setHolidayTargetType('number')
             ->setHolidayNumberValue('1234')
             ->setOutOfScheduleExtension($outOfScheduleExtensionDto)
-            ->setOutOfScheduleVoiceMailUser($outOfScheduleVoiceMailUserDto);
+            ->setOutOfSchedulevoicemail($outOfSchedulevoicemailDto);
 
         $this->transformer->appendFixedTransforms([
             [$outOfScheduleExtensionDto, $outOfScheduleExtension],
-            [$outOfScheduleVoiceMailUserDto, $outOfScheduleVoiceMailUser],
+            [$outOfSchedulevoicemailDto, $outOfSchedulevoicemail],
         ]);
 
         $this
@@ -115,7 +115,7 @@ class ExternalCallFilterSpec extends ObjectBehavior
             ->shouldBe(null);
 
         $this
-            ->getOutOfScheduleVoiceMailUser()
+            ->getOutOfSchedulevoicemail()
             ->shouldBe(null);
     }
 }

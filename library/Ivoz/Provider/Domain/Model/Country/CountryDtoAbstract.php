@@ -14,60 +14,63 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $code = '';
 
     /**
      * @var string|null
      */
-    private $countryCode;
+    private $countryCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $zoneIt = '';
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -76,7 +79,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -102,9 +105,9 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'code' => $this->getCode(),
@@ -138,7 +141,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCode(?string $code): static
+    public function setCode(string $code): static
     {
         $this->code = $code;
 
@@ -169,12 +172,12 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -186,7 +189,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -198,7 +201,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -210,7 +213,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
@@ -222,7 +225,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->nameIt;
     }
 
-    public function setZoneEn(?string $zoneEn): static
+    public function setZoneEn(string $zoneEn): static
     {
         $this->zoneEn = $zoneEn;
 
@@ -234,7 +237,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->zoneEn;
     }
 
-    public function setZoneEs(?string $zoneEs): static
+    public function setZoneEs(string $zoneEs): static
     {
         $this->zoneEs = $zoneEs;
 
@@ -246,7 +249,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->zoneEs;
     }
 
-    public function setZoneCa(?string $zoneCa): static
+    public function setZoneCa(string $zoneCa): static
     {
         $this->zoneCa = $zoneCa;
 
@@ -258,7 +261,7 @@ abstract class CountryDtoAbstract implements DataTransferObjectInterface
         return $this->zoneCa;
     }
 
-    public function setZoneIt(?string $zoneIt): static
+    public function setZoneIt(string $zoneIt): static
     {
         $this->zoneIt = $zoneIt;
 

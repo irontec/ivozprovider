@@ -7,5 +7,4 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface CodecRepository extends ObjectRepository, Selectable
 {
-
 }

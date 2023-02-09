@@ -3,10 +3,13 @@
 namespace Ivoz\Provider\Domain\Model\Destination;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,9 +19,16 @@ interface DestinationInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Validate prefix comes in E.164 format
@@ -30,7 +40,27 @@ interface DestinationInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getCgrTag();
+    public function getCgrTag(): string;
+
+    public static function createDto(string|int|null $id = null): DestinationDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|DestinationInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DestinationDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param DestinationDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): DestinationDto;
 
     public function getPrefix(): string;
 
@@ -48,7 +78,13 @@ interface DestinationInterface extends LoggableEntityInterface
 
     public function removeDestinationRate(DestinationRateInterface $destinationRate): DestinationInterface;
 
-    public function replaceDestinationRates(ArrayCollection $destinationRates): DestinationInterface;
+    /**
+     * @param Collection<array-key, DestinationRateInterface> $destinationRates
+     */
+    public function replaceDestinationRates(Collection $destinationRates): DestinationInterface;
 
+    /**
+     * @return array<array-key, DestinationRateInterface>
+     */
     public function getDestinationRates(?Criteria $criteria = null): array;
 }

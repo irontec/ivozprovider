@@ -15,9 +15,9 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -27,7 +27,7 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -37,7 +37,7 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -49,7 +49,7 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues();
     }

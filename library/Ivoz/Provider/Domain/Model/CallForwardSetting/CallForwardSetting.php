@@ -15,9 +15,9 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -27,7 +27,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -35,7 +35,7 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * {@inheritDoc}
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         // Set Routable options to avoid naming collision
         $this->routeTypes = [
@@ -45,6 +45,19 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         ];
 
         $this->sanitizeRouteValues();
+
+        // Retail target type in Call Forward Settings is an exception in routes naming convention and must
+        // be checked individually instead of using RoutableTrait::sanitizeRouteValues()
+        // @see CallForwardSettings::getCallForwardTarget()
+        if ($this->getRouteType() == CallForwardSettingInterface::TARGETTYPE_RETAIL) {
+            if (!$this->cfwToRetailAccount) {
+                throw new \DomainException(
+                    "Target Retail Account (cfwToRetailAccountId) is required for targetType 'retail'"
+                );
+            }
+        } else {
+            $this->setCfwToRetailAccount(null);
+        }
 
         // Timeout only makes sense in NoAnswer Call Forwards
         if ($this->callForwardType != self::CALLFORWARDTYPE_NOANSWER) {
@@ -57,6 +70,9 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
             $this->setDdi(null);
 
             return;
+        } else {
+            // Force filter type in Retail account Call Forward Settings
+            $this->setCallTypeFilter(self::CALLTYPEFILTER_BOTH);
         }
 
         $isValidRetailCfs = in_array(
@@ -91,6 +107,11 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         return parent::setNumberValue($numberValue);
     }
 
+    /**
+     * @return (int|mixed|null|string)[]
+     *
+     * @psalm-return array{id: int|null, userId: mixed, callTypeFilter: string, callForwardType: string, targetType: null|string, numberValue: mixed, extensionId: mixed|null, extension: string, voicemailId: mixed|null, voicemail: string, noAnswerTimeout: int}
+     */
     public function toArrayPortal()
     {
         $response = [];
@@ -115,12 +136,12 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
             $response['extension'] = $extension->getNumber();
         }
 
-        $voiceMailUser = $this->getVoiceMailUser();
-        $response['voiceMailUserId'] = $voiceMailUser
-            ? $voiceMailUser->getId()
+        $voicemail = $this->getVoicemail();
+        $response['voicemailId'] = $voicemail
+            ? $voicemail->getId()
             : null;
-        $response['voiceMailUser'] = $voiceMailUser
-            ? $this->getVoiceMailUser()->getFullName()
+        $response['voicemail'] = $voicemail
+            ? $voicemail->getName()
             : '';
         $response['noAnswerTimeout'] = $this->getNoAnswerTimeout();
 
@@ -148,12 +169,12 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      *
      * @todo rename tagetType field to routeType
      */
-    public function getRouteType()
+    public function getRouteType(): ?string
     {
         return $this->getTargetType();
     }
 
-    public function getCallForwardTarget()
+    public function getCallForwardTarget(): ?string
     {
         if ($this->getRouteType() == CallForwardSettingInterface::TARGETTYPE_RETAIL) {
             return $this->getCfwToRetailAccount()->getName();

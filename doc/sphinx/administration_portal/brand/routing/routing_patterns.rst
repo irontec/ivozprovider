@@ -1,4 +1,5 @@
 .. _routing_patterns:
+.. _routing patterns:
 
 ****************
 Routing patterns

@@ -7,7 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryDto;
 use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
@@ -21,115 +21,118 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $timeout;
+    private $timeout = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $maxDigits;
+    private $maxDigits = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $allowExtensions = false;
 
     /**
      * @var string|null
      */
-    private $noInputRouteType;
+    private $noInputRouteType = null;
 
     /**
      * @var string|null
      */
-    private $noInputNumberValue;
+    private $noInputNumberValue = null;
 
     /**
      * @var string|null
      */
-    private $errorRouteType;
+    private $errorRouteType = null;
 
     /**
      * @var string|null
      */
-    private $errorNumberValue;
+    private $errorNumberValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $welcomeLocution;
+    private $welcomeLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $noInputLocution;
+    private $noInputLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $errorLocution;
+    private $errorLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $successLocution;
+    private $successLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $noInputExtension;
+    private $noInputExtension = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $errorExtension;
+    private $errorExtension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $noInputVoiceMailUser;
+    private $noInputVoicemail = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $errorVoiceMailUser;
-
-    /**
-     * @var CountryDto | null
-     */
-    private $noInputNumberCountry;
+    private $errorVoicemail = null;
 
     /**
      * @var CountryDto | null
      */
-    private $errorNumberCountry;
+    private $noInputNumberCountry = null;
+
+    /**
+     * @var CountryDto | null
+     */
+    private $errorNumberCountry = null;
 
     /**
      * @var IvrEntryDto[] | null
      */
-    private $entries;
+    private $entries = null;
 
     /**
      * @var IvrExcludedExtensionDto[] | null
      */
-    private $excludedExtensions;
+    private $excludedExtensions = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -138,7 +141,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -161,17 +164,17 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
             'successLocutionId' => 'successLocution',
             'noInputExtensionId' => 'noInputExtension',
             'errorExtensionId' => 'errorExtension',
-            'noInputVoiceMailUserId' => 'noInputVoiceMailUser',
-            'errorVoiceMailUserId' => 'errorVoiceMailUser',
+            'noInputVoicemailId' => 'noInputVoicemail',
+            'errorVoicemailId' => 'errorVoicemail',
             'noInputNumberCountryId' => 'noInputNumberCountry',
             'errorNumberCountryId' => 'errorNumberCountry'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -190,8 +193,8 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
             'successLocution' => $this->getSuccessLocution(),
             'noInputExtension' => $this->getNoInputExtension(),
             'errorExtension' => $this->getErrorExtension(),
-            'noInputVoiceMailUser' => $this->getNoInputVoiceMailUser(),
-            'errorVoiceMailUser' => $this->getErrorVoiceMailUser(),
+            'noInputVoicemail' => $this->getNoInputVoicemail(),
+            'errorVoicemail' => $this->getErrorVoicemail(),
             'noInputNumberCountry' => $this->getNoInputNumberCountry(),
             'errorNumberCountry' => $this->getErrorNumberCountry(),
             'entries' => $this->getEntries(),
@@ -212,7 +215,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -224,7 +227,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setTimeout(?int $timeout): static
+    public function setTimeout(int $timeout): static
     {
         $this->timeout = $timeout;
 
@@ -236,7 +239,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->timeout;
     }
 
-    public function setMaxDigits(?int $maxDigits): static
+    public function setMaxDigits(int $maxDigits): static
     {
         $this->maxDigits = $maxDigits;
 
@@ -248,7 +251,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->maxDigits;
     }
 
-    public function setAllowExtensions(?bool $allowExtensions): static
+    public function setAllowExtensions(bool $allowExtensions): static
     {
         $this->allowExtensions = $allowExtensions;
 
@@ -315,7 +318,7 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -530,60 +533,60 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setNoInputVoiceMailUser(?UserDto $noInputVoiceMailUser): static
+    public function setNoInputVoicemail(?VoicemailDto $noInputVoicemail): static
     {
-        $this->noInputVoiceMailUser = $noInputVoiceMailUser;
+        $this->noInputVoicemail = $noInputVoicemail;
 
         return $this;
     }
 
-    public function getNoInputVoiceMailUser(): ?UserDto
+    public function getNoInputVoicemail(): ?VoicemailDto
     {
-        return $this->noInputVoiceMailUser;
+        return $this->noInputVoicemail;
     }
 
-    public function setNoInputVoiceMailUserId($id): static
+    public function setNoInputVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setNoInputVoiceMailUser($value);
+        return $this->setNoInputVoicemail($value);
     }
 
-    public function getNoInputVoiceMailUserId()
+    public function getNoInputVoicemailId()
     {
-        if ($dto = $this->getNoInputVoiceMailUser()) {
+        if ($dto = $this->getNoInputVoicemail()) {
             return $dto->getId();
         }
 
         return null;
     }
 
-    public function setErrorVoiceMailUser(?UserDto $errorVoiceMailUser): static
+    public function setErrorVoicemail(?VoicemailDto $errorVoicemail): static
     {
-        $this->errorVoiceMailUser = $errorVoiceMailUser;
+        $this->errorVoicemail = $errorVoicemail;
 
         return $this;
     }
 
-    public function getErrorVoiceMailUser(): ?UserDto
+    public function getErrorVoicemail(): ?VoicemailDto
     {
-        return $this->errorVoiceMailUser;
+        return $this->errorVoicemail;
     }
 
-    public function setErrorVoiceMailUserId($id): static
+    public function setErrorVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setErrorVoiceMailUser($value);
+        return $this->setErrorVoicemail($value);
     }
 
-    public function getErrorVoiceMailUserId()
+    public function getErrorVoicemailId()
     {
-        if ($dto = $this->getErrorVoiceMailUser()) {
+        if ($dto = $this->getErrorVoicemail()) {
             return $dto->getId();
         }
 

@@ -2,13 +2,15 @@
 Multi-level API
 ################
 
-IvozProvider API is divided in same three levels as the web administration portal:
+IvozProvider API is divided in same three levels as the web administration portal plus user API:
 
 - God
 
 - Brand
 
 - Client
+
+- User
 
 This split allows different roles with different responsibilities to be integrated against it without compromising
 security (read, edit, update or delete the data they should not).
@@ -25,21 +27,19 @@ In order to access to each level, **you will need a corresponding level URL and 
 
 .. rubric:: God API access
 
-- URL: God URL defined in :ref:`Platform Portals` + /api/platform
-
 - Credentials: God credentials defined in :ref:`Main operators`.
 
 .. rubric:: Brand API access
-
-- URL: Brand URL defined in :ref:`Brand Portals` + /api/brand
 
 - Credentials: Brand credentials defined in :ref:`Brand operators`.
 
 .. rubric:: Client API access
 
-- URL: Client URL defined in :ref:`Client Portals` + /api/client
+- Credentials: Client credentials defined in :ref:`Client operators`.
 
-- Credentials: Client credentials defined in :ref:`Additional subsections` *Client admins*.
+.. rubric:: User API access
+
+- Credentials: User credentials defined in :ref:`users`.
 
 .. warning:: All credentials usernames are unique at brand level. This is why *username + brand URL* duple is needed to
              identify a user (both in API and in web portal).

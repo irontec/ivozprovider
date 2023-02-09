@@ -8,12 +8,9 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 
 class DisableGenerateRules
 {
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**

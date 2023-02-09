@@ -111,20 +111,6 @@ class UserTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'voicemailLocution',
-                            'in',
-                            'LocutionRepository([["company","eq","user.getCompany().getId()"]])'
-                        ],
-                        [
-                            'voicemailLocution',
-                            'isNull',
-                            null
-                        ]
-                    ]
-                ],
-                [
-                    'or' => [
-                        [
                             'bossAssistantWhiteList',
                             'in',
                             'MatchListRepository({"or":[["brand","eq","user.getCompany().getBrand().getId()"],["company","eq","user.getCompany().getId()"]]})'
@@ -177,7 +163,21 @@ class UserTest extends KernelTestCase
                             null
                         ]
                     ]
-                ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'location',
+                            'in',
+                            'LocationRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'location',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
             ]
         );
     }

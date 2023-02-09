@@ -56,7 +56,8 @@ class CreatedByDestinationSpec extends ObjectBehavior
         $this->getterProphecy(
             $this->brand,
             [
-                'getId' => 1
+                'getId' => 1,
+                'getCgrTenant' => '',
             ],
             false
         );

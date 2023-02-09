@@ -60,8 +60,8 @@ class CalendarPeriodTest extends KernelTestCase
                 ],
                 [
                     'or' => [
-                        ['voiceMailUser', 'in', 'UserRepository([["company","eq","user.getCompany().getId()"]])'],
-                        ['voiceMailUser', 'isNull', null]
+                        ['voicemail', 'in', 'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'],
+                        ['voicemail', 'isNull', null]
                     ]
                 ],
                 [

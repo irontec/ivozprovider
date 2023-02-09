@@ -85,6 +85,7 @@ production:
             friendValue: 3
             queue: 3
             conditionalRoute: 3
+            voicemail: 3
 
     extensionsEdit_screen: &extensionsEdit_screenLink
       <<: *Extensions

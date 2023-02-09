@@ -19,7 +19,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     /**
      * @var string|null
      */
-    private $toAddress;
+    private $toAddress = null;
 
     /**
      * @var float|null
@@ -27,30 +27,33 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     private $threshold = 0;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $lastSent;
+    private $lastSent = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $notificationTemplate;
+    private $notificationTemplate = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -59,7 +62,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -77,9 +80,9 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'toAddress' => $this->getToAddress(),
@@ -129,14 +132,14 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this->threshold;
     }
 
-    public function setLastSent(null|\DateTime|string $lastSent): static
+    public function setLastSent(null|\DateTimeInterface|string $lastSent): static
     {
         $this->lastSent = $lastSent;
 
         return $this;
     }
 
-    public function getLastSent(): \DateTime|string|null
+    public function getLastSent(): \DateTimeInterface|string|null
     {
         return $this->lastSent;
     }
@@ -148,7 +151,7 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

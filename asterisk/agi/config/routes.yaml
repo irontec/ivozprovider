@@ -26,6 +26,10 @@ Dialplan/Friends:
   path: '/Dialplan/Friends'
   controller: 'kernel:handleRequestAction'
 
+Dialplan/FriendStatus:
+  path: '/Dialplan/FriendStatus'
+  controller: 'kernel:handleRequestAction'
+
 Dialplan/Headers:
   path: '/Dialplan/Headers'
   controller: 'kernel:handleRequestAction'
@@ -72,4 +76,8 @@ Dialplan/FaxReceiveStatus:
 
 Voicemail/Sender:
   path: '/Voicemail/Sender'
+  controller: 'kernel:handleRequestAction'
+
+Hints/Generator:
+  path: '/Hints/Generator'
   controller: 'kernel:handleRequestAction'

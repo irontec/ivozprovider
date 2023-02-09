@@ -12,22 +12,10 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var ServiceRepository
-     */
-    protected $serviceRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        ServiceRepository $serviceRepository
+        private EntityTools $entityTools,
+        private ServiceRepository $serviceRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->serviceRepository = $serviceRepository;
     }
 
     public static function getSubscribedEvents()
@@ -37,10 +25,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(BrandInterface $brand)
+    public function execute(BrandInterface $brand): void
     {
         $isNew = $brand->isNew();
         if (!$isNew) {

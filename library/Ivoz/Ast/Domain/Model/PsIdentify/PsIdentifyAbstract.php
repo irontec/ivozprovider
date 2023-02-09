@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Ast\Domain\Model\PsIdentify;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -26,103 +27,96 @@ abstract class PsIdentifyAbstract
     use ChangelogTrait;
 
     /**
-     * column: sorcery_id
      * @var string
+     * column: sorcery_id
      */
     protected $sorceryId;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $endpoint;
+    protected $endpoint = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $match;
+    protected $match = null;
 
     /**
+     * @var ?string
      * column: match_header
-     * @var string | null
      */
-    protected $matchHeader;
+    protected $matchHeader = null;
 
     /**
-     * column: srv_lookups
      * @var string
+     * column: srv_lookups
      */
     protected $srvLookups = 'false';
 
     /**
-     * @var TerminalInterface | null
+     * @var ?TerminalInterface
      * inversedBy psIdentify
      */
-    protected $terminal;
+    protected $terminal = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      * inversedBy psIdentify
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy psIdentify
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy psIdentify
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $sorceryId,
-        $srvLookups
+        string $sorceryId,
+        string $srvLookups
     ) {
         $this->setSorceryId($sorceryId);
         $this->setSrvLookups($srvLookups);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PsIdentify",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return PsIdentifyDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): PsIdentifyDto
     {
         return new PsIdentifyDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PsIdentifyInterface|null $entity
-     * @param int $depth
-     * @return PsIdentifyDto|null
+     * @param null|PsIdentifyInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PsIdentifyDto
     {
         if (!$entity) {
             return null;
@@ -138,8 +132,7 @@ abstract class PsIdentifyAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PsIdentifyDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -148,17 +141,20 @@ abstract class PsIdentifyAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PsIdentifyDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsIdentifyDto::class);
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $srvLookups = $dto->getSrvLookups();
+        Assertion::notNull($srvLookups, 'getSrvLookups value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSorceryId(),
-            $dto->getSrvLookups()
+            $sorceryId,
+            $srvLookups
         );
 
         $self
@@ -178,20 +174,24 @@ abstract class PsIdentifyAbstract
     /**
      * @internal use EntityTools instead
      * @param PsIdentifyDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsIdentifyDto::class);
 
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $srvLookups = $dto->getSrvLookups();
+        Assertion::notNull($srvLookups, 'getSrvLookups value is null, but non null value was expected.');
+
         $this
-            ->setSorceryId($dto->getSorceryId())
+            ->setSorceryId($sorceryId)
             ->setEndpoint($dto->getEndpoint())
             ->setMatch($dto->getMatch())
             ->setMatchHeader($dto->getMatchHeader())
-            ->setSrvLookups($dto->getSrvLookups())
+            ->setSrvLookups($srvLookups)
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -202,10 +202,8 @@ abstract class PsIdentifyAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return PsIdentifyDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): PsIdentifyDto
     {
         return self::createDto()
             ->setSorceryId(self::getSorceryId())
@@ -220,9 +218,9 @@ abstract class PsIdentifyAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'sorcery_id' => self::getSorceryId(),
@@ -230,10 +228,10 @@ abstract class PsIdentifyAbstract
             'match' => self::getMatch(),
             'match_header' => self::getMatchHeader(),
             'srv_lookups' => self::getSrvLookups(),
-            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'terminalId' => self::getTerminal()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 
@@ -317,7 +315,6 @@ abstract class PsIdentifyAbstract
     {
         $this->terminal = $terminal;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -330,7 +327,6 @@ abstract class PsIdentifyAbstract
     {
         $this->friend = $friend;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -343,7 +339,6 @@ abstract class PsIdentifyAbstract
     {
         $this->residentialDevice = $residentialDevice;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -356,7 +351,6 @@ abstract class PsIdentifyAbstract
     {
         $this->retailAccount = $retailAccount;
 
-        /** @var  $this */
         return $this;
     }
 

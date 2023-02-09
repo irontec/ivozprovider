@@ -8,15 +8,10 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
 class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
 {
-    protected $notificationTemplateRepository;
-    protected $notifyMaxDailyUsage;
-
     public function __construct(
-        NotificationTemplateRepository $notificationTemplateRepository,
-        NotifyMaxDailyUsage $notifyMaxDailyUsage
+        private NotificationTemplateRepository $notificationTemplateRepository,
+        private NotifyMaxDailyUsage $notifyMaxDailyUsage
     ) {
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
-        $this->notifyMaxDailyUsage = $notifyMaxDailyUsage;
     }
 
     public static function getSubscribedEvents()
@@ -26,10 +21,7 @@ class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $isNew = $company->isNew();
         if ($isNew) {
@@ -56,28 +48,18 @@ class SearchBrokenMaxDailyUsage implements CompanyLifecycleEventHandlerInterface
             return;
         }
 
-        $notificationTemplate = $company->getMaxDailyUsageNotificationTemplate();
-        if (!$notificationTemplate) {
-            $notificationTemplate = $company
-                ->getBrand()
-                ->getMaxDailyUsageNotificationTemplate();
-        }
+        $language = $company->getLanguage();
 
-        if (!$notificationTemplate) {
-            $notificationTemplate = $this
-                ->notificationTemplateRepository
-                ->findGenericMaxDailyUsageTemplate();
-        }
-
-        if (!$notificationTemplate) {
-            return;
-        }
+        $notificationTemplate = $this
+            ->notificationTemplateRepository
+            ->findMaxDailyUsageTemplateByCompany($company);
 
         $this
             ->notifyMaxDailyUsage
             ->send(
                 $company,
-                $notificationTemplate
+                $notificationTemplate,
+                $language
             );
     }
 }

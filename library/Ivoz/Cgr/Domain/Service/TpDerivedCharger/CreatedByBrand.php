@@ -9,22 +9,11 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
 class CreatedByBrand implements BrandLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * CreatedByBrand constructor.
-     *
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -38,12 +27,7 @@ class CreatedByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @param BrandInterface $brand
-     *
-     * @return void
-     */
-    public function execute(BrandInterface $brand)
+    public function execute(BrandInterface $brand): void
     {
         $isNew = $brand->isNew();
         if (!$isNew) {

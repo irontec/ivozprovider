@@ -10,21 +10,12 @@ use Psr\Log\LoggerInterface;
 
 class SyncDailyUsage
 {
-    protected $entityTools;
-    protected $logger;
-    protected $client;
-    protected $companyRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        CompanyBalanceServiceInterface $client,
-        CompanyRepository $companyRepository
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private CompanyBalanceServiceInterface $client,
+        private CompanyRepository $companyRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->client = $client;
-        $this->companyRepository = $companyRepository;
     }
 
     /**
@@ -61,8 +52,8 @@ class SyncDailyUsage
         bool $persistImmediately = false
     ) {
         $amount = $this->client->getCurrentDayUsage(
-            $company->getBrand()->getId(),
-            $company->getId()
+            (int) $company->getBrand()->getId(),
+            (int) $company->getId()
         );
 
         // If numeric amount, round to 4 decimals value

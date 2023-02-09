@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
@@ -12,51 +15,59 @@ use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
 * FriendInterface
 */
 interface FriendInterface extends LoggableEntityInterface
 {
-    const TRANSPORT_UDP = 'udp';
+    public const TRANSPORT_UDP = 'udp';
 
-    const TRANSPORT_TCP = 'tcp';
+    public const TRANSPORT_TCP = 'tcp';
 
-    const TRANSPORT_TLS = 'tls';
+    public const TRANSPORT_TLS = 'tls';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const CALLERIDUPDATEHEADER_PAI = 'pai';
+    public const CALLERIDUPDATEHEADER_PAI = 'pai';
 
-    const CALLERIDUPDATEHEADER_RPID = 'rpid';
+    public const CALLERIDUPDATEHEADER_RPID = 'rpid';
 
-    const UPDATECALLERID_YES = 'yes';
+    public const UPDATECALLERID_YES = 'yes';
 
-    const UPDATECALLERID_NO = 'no';
+    public const UPDATECALLERID_NO = 'no';
 
-    const DIRECTCONNECTIVITY_YES = 'yes';
+    public const DIRECTCONNECTIVITY_YES = 'yes';
 
-    const DIRECTCONNECTIVITY_NO = 'no';
+    public const DIRECTCONNECTIVITY_NO = 'no';
 
-    const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
+    public const DIRECTCONNECTIVITY_INTERVPBX = 'intervpbx';
 
-    const DDIIN_YES = 'yes';
+    public const DDIIN_YES = 'yes';
 
-    const DDIIN_NO = 'no';
+    public const DDIIN_NO = 'no';
 
-    const T38PASSTHROUGH_YES = 'yes';
+    public const T38PASSTHROUGH_YES = 'yes';
 
-    const T38PASSTHROUGH_NO = 'no';
+    public const T38PASSTHROUGH_NO = 'no';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return bool
@@ -103,12 +114,12 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getContact();
+    public function getContact(): string;
 
     /**
      * @return string
      */
-    public function getSorcery();
+    public function getSorcery(): string;
 
     /**
      * @param string $exten
@@ -122,7 +133,7 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isAllowedToCall($exten);
 
-    public function getLanguageCode();
+    public function getLanguageCode(): string;
 
     /**
      * Get Friend outgoingDdi
@@ -131,6 +142,26 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
      */
     public function getOutgoingDdi(): ?DdiInterface;
+
+    public static function createDto(string|int|null $id = null): FriendDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|FriendInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FriendDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param FriendDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): FriendDto;
 
     public function getName(): string;
 
@@ -202,7 +233,27 @@ interface FriendInterface extends LoggableEntityInterface
 
     public function removePattern(FriendsPatternInterface $pattern): FriendInterface;
 
-    public function replacePatterns(ArrayCollection $patterns): FriendInterface;
+    /**
+     * @param Collection<array-key, FriendsPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): FriendInterface;
 
+    /**
+     * @return array<array-key, FriendsPatternInterface>
+     */
     public function getPatterns(?Criteria $criteria = null): array;
+
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface;
+
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface;
+
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): FriendInterface;
+
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
+    public function getCallForwardSettings(?Criteria $criteria = null): array;
 }

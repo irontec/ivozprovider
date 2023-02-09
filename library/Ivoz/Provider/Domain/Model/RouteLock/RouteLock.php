@@ -11,9 +11,9 @@ class RouteLock extends RouteLockAbstract implements RouteLockInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -23,7 +23,7 @@ class RouteLock extends RouteLockAbstract implements RouteLockInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,5 +36,13 @@ class RouteLock extends RouteLockAbstract implements RouteLockInterface
     public function isOpen()
     {
         return $this->getOpen() == '1';
+    }
+
+    /**
+     * Return the DeviceName used to create Hints
+     */
+    public function getHintDeviceName(): string
+    {
+        return "Stasis:RouteLock" . $this->getId();
     }
 }

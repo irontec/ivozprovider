@@ -7,7 +7,6 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface ExtensionRepository extends ObjectRepository, Selectable
 {
-
     /**
      * @param int $id
      * @return ExtensionInterface[]
@@ -15,9 +14,13 @@ interface ExtensionRepository extends ObjectRepository, Selectable
     public function findByCompanyId($id);
 
     /**
-     * @param int $companyId
-     * @param int $extensionNumber
      * @return ExtensionInterface | null
      */
-    public function findCompanyExtension(int $companyId, int $extensionNumber);
+    public function findCompanyExtension(int $companyId, string $extensionNumber);
+
+    /**
+     * @param int[] $includeIds
+     * @return ExtensionInterface[]
+     */
+    public function findUnassignedByCompanyId(int $companyId, array $includeIds = []): array;
 }

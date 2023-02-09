@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Codec;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * CodecAbstract
@@ -18,8 +19,8 @@ abstract class CodecAbstract
     use ChangelogTrait;
 
     /**
-     * comment: enum:audio|video
      * @var string
+     * comment: enum:audio|video
      */
     protected $type = 'audio';
 
@@ -37,50 +38,43 @@ abstract class CodecAbstract
      * Constructor
      */
     protected function __construct(
-        $type,
-        $iden,
-        $name
+        string $type,
+        string $iden,
+        string $name
     ) {
         $this->setType($type);
         $this->setIden($iden);
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Codec",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CodecDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CodecDto
     {
         return new CodecDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CodecInterface|null $entity
-     * @param int $depth
-     * @return CodecDto|null
+     * @param null|CodecInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CodecDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class CodecAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CodecDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,18 +99,23 @@ abstract class CodecAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CodecDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CodecDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getIden(),
-            $dto->getName()
+            $type,
+            $iden,
+            $name
         );
 
         ;
@@ -130,28 +128,32 @@ abstract class CodecAbstract
     /**
      * @internal use EntityTools instead
      * @param CodecDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CodecDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setIden($dto->getIden())
-            ->setName($dto->getName());
+            ->setType($type)
+            ->setIden($iden)
+            ->setName($name);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CodecDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CodecDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -160,9 +162,9 @@ abstract class CodecAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'type' => self::getType(),

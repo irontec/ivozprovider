@@ -231,7 +231,7 @@ class GenerateInRulesSpec extends ObjectBehavior
             ->setType('callerin')
             ->setDescription("From out of area national to e164")
             ->setPriority(2)
-            ->setMatchExpr('^'. $trunkPrefix .'([0-9]{9})$')
+            ->setMatchExpr('^' . $trunkPrefix . '([0-9]{9})$')
             ->setReplaceExpr('34\1');
 
         $this->setExpectedOutcome($nationalToE164, $shouldHappen);

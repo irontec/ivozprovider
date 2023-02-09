@@ -15,9 +15,9 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Logo' => [
@@ -43,9 +43,8 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
     /**
      * Get id
      * @codeCoverageIgnore
-     * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -59,17 +58,11 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
         return parent::setDomainUsers(trim($domainUsers));
     }
 
-    /**
-     * @return string
-     */
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
-        $language = $this->getLanguage();
-        if (!$language) {
-            return 'en';
-        }
-
-        return $language->getIden();
+        return $this
+            ->getLanguage()
+            ->getIden();
     }
 
     /**
@@ -106,6 +99,8 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
 
     /**
      * Get the size in bytes for disk usage limit on this brand
+     *
+     * @return int
      */
     public function getRecordingsLimit()
     {
@@ -155,11 +150,11 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
      *
      * @return string
      */
-    public function getCgrTenant()
+    public function getCgrTenant(): string
     {
         return sprintf(
             "b%d",
-            $this->getId()
+            (int) $this->getId()
         );
     }
 

@@ -13,14 +13,11 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
  */
 class DeleteByBrand implements BrandLifecycleEventHandlerInterface
 {
-    const POST_REMOVE_PRIORITY = 10;
-
-    protected $entityTools;
+    public const POST_REMOVE_PRIORITY = 10;
 
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -30,10 +27,7 @@ class DeleteByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(BrandInterface $brand)
+    public function execute(BrandInterface $brand): void
     {
         $domain = $brand->getDomain();
 

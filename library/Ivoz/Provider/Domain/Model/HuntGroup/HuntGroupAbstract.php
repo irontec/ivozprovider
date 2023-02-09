@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
@@ -7,16 +8,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -38,26 +39,26 @@ abstract class HuntGroupAbstract
     protected $description = '';
 
     /**
-     * comment: enum:ringAll|linear|roundRobin|random
      * @var string
+     * comment: enum:ringAll|linear|roundRobin|random
      */
     protected $strategy;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $ringAllTimeout;
+    protected $ringAllTimeout = null;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
-    protected $noAnswerTargetType;
+    protected $noAnswerTargetType = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $noAnswerNumberValue;
+    protected $noAnswerNumberValue = null;
 
     /**
      * @var int
@@ -75,34 +76,34 @@ abstract class HuntGroupAbstract
     protected $company;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $noAnswerLocution;
+    protected $noAnswerLocution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $noAnswerExtension;
+    protected $noAnswerExtension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?VoicemailInterface
      */
-    protected $noAnswerVoiceMailUser;
+    protected $noAnswerVoicemail = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $noAnswerNumberCountry;
+    protected $noAnswerNumberCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $description,
-        $strategy,
-        $preventMissedCalls,
-        $allowCallForwards
+        string $name,
+        string $description,
+        string $strategy,
+        int $preventMissedCalls,
+        int $allowCallForwards
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -111,41 +112,34 @@ abstract class HuntGroupAbstract
         $this->setAllowCallForwards($allowCallForwards);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "HuntGroup",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return HuntGroupDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): HuntGroupDto
     {
         return new HuntGroupDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param HuntGroupInterface|null $entity
-     * @param int $depth
-     * @return HuntGroupDto|null
+     * @param null|HuntGroupInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?HuntGroupDto
     {
         if (!$entity) {
             return null;
@@ -161,8 +155,7 @@ abstract class HuntGroupAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var HuntGroupDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -171,30 +164,41 @@ abstract class HuntGroupAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param HuntGroupDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $allowCallForwards = $dto->getAllowCallForwards();
+        Assertion::notNull($allowCallForwards, 'getAllowCallForwards value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDescription(),
-            $dto->getStrategy(),
-            $dto->getPreventMissedCalls(),
-            $dto->getAllowCallForwards()
+            $name,
+            $description,
+            $strategy,
+            $preventMissedCalls,
+            $allowCallForwards
         );
 
         $self
             ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
-            ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
+            ->setNoAnswerVoicemail($fkTransformer->transform($dto->getNoAnswerVoicemail()))
             ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
 
         $self->initChangelog();
@@ -205,27 +209,39 @@ abstract class HuntGroupAbstract
     /**
      * @internal use EntityTools instead
      * @param HuntGroupDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, HuntGroupDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $strategy = $dto->getStrategy();
+        Assertion::notNull($strategy, 'getStrategy value is null, but non null value was expected.');
+        $preventMissedCalls = $dto->getPreventMissedCalls();
+        Assertion::notNull($preventMissedCalls, 'getPreventMissedCalls value is null, but non null value was expected.');
+        $allowCallForwards = $dto->getAllowCallForwards();
+        Assertion::notNull($allowCallForwards, 'getAllowCallForwards value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDescription($dto->getDescription())
-            ->setStrategy($dto->getStrategy())
+            ->setName($name)
+            ->setDescription($description)
+            ->setStrategy($strategy)
             ->setRingAllTimeout($dto->getRingAllTimeout())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
-            ->setPreventMissedCalls($dto->getPreventMissedCalls())
-            ->setAllowCallForwards($dto->getAllowCallForwards())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setPreventMissedCalls($preventMissedCalls)
+            ->setAllowCallForwards($allowCallForwards)
+            ->setCompany($fkTransformer->transform($company))
             ->setNoAnswerLocution($fkTransformer->transform($dto->getNoAnswerLocution()))
             ->setNoAnswerExtension($fkTransformer->transform($dto->getNoAnswerExtension()))
-            ->setNoAnswerVoiceMailUser($fkTransformer->transform($dto->getNoAnswerVoiceMailUser()))
+            ->setNoAnswerVoicemail($fkTransformer->transform($dto->getNoAnswerVoicemail()))
             ->setNoAnswerNumberCountry($fkTransformer->transform($dto->getNoAnswerNumberCountry()));
 
         return $this;
@@ -233,10 +249,8 @@ abstract class HuntGroupAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return HuntGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): HuntGroupDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -250,14 +264,14 @@ abstract class HuntGroupAbstract
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setNoAnswerLocution(Locution::entityToDto(self::getNoAnswerLocution(), $depth))
             ->setNoAnswerExtension(Extension::entityToDto(self::getNoAnswerExtension(), $depth))
-            ->setNoAnswerVoiceMailUser(User::entityToDto(self::getNoAnswerVoiceMailUser(), $depth))
+            ->setNoAnswerVoicemail(Voicemail::entityToDto(self::getNoAnswerVoicemail(), $depth))
             ->setNoAnswerNumberCountry(Country::entityToDto(self::getNoAnswerNumberCountry(), $depth));
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -269,10 +283,10 @@ abstract class HuntGroupAbstract
             'preventMissedCalls' => self::getPreventMissedCalls(),
             'allowCallForwards' => self::getAllowCallForwards(),
             'companyId' => self::getCompany()->getId(),
-            'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
-            'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
-            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null,
-            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
+            'noAnswerLocutionId' => self::getNoAnswerLocution()?->getId(),
+            'noAnswerExtensionId' => self::getNoAnswerExtension()?->getId(),
+            'noAnswerVoicemailId' => self::getNoAnswerVoicemail()?->getId(),
+            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry()?->getId()
         ];
     }
 
@@ -445,16 +459,16 @@ abstract class HuntGroupAbstract
         return $this->noAnswerExtension;
     }
 
-    protected function setNoAnswerVoiceMailUser(?UserInterface $noAnswerVoiceMailUser = null): static
+    protected function setNoAnswerVoicemail(?VoicemailInterface $noAnswerVoicemail = null): static
     {
-        $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
+        $this->noAnswerVoicemail = $noAnswerVoicemail;
 
         return $this;
     }
 
-    public function getNoAnswerVoiceMailUser(): ?UserInterface
+    public function getNoAnswerVoicemail(): ?VoicemailInterface
     {
-        return $this->noAnswerVoiceMailUser;
+        return $this->noAnswerVoicemail;
     }
 
     protected function setNoAnswerNumberCountry(?CountryInterface $noAnswerNumberCountry = null): static

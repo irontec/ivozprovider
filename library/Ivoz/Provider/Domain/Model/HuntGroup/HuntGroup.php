@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Doctrine\Common\Collections\Criteria;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -16,9 +15,9 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -28,12 +27,12 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('NoAnswer');
 
@@ -45,33 +44,9 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
     }
 
     /**
-     * Get this Hungroup related users
-     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
-     */
-    public function getHuntGroupUsersArray()
-    {
-        $huntGroupUsersArray = array();
-
-        /** @var HuntGroupsRelUserInterface[] $huntGroupRelUsers */
-        $huntGroupRelUsers = $this->getHuntGroupsRelUsers(
-            Criteria::create()->orderBy(['priority' => Criteria::ASC])
-        );
-
-        foreach ($huntGroupRelUsers as $huntGroupRelUser) {
-            $user = $huntGroupRelUser->getUser();
-            if (empty($user)) {
-                continue;
-            }
-            $huntGroupUsersArray[] = $user;
-        }
-
-        return $huntGroupUsersArray;
-    }
-
-    /**
      * @return string
      */
-    public function getNoAnswerRouteType()
+    public function getNoAnswerRouteType(): ?string
     {
         return $this->getNoAnswerTargetType();
     }

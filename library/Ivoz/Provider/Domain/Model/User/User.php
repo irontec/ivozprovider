@@ -6,20 +6,23 @@ use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
+use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * User
  */
-class User extends UserAbstract implements UserInterface, SymfonyUserInterface, \Serializable
+class User extends UserAbstract implements UserInterface, SymfonyUserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
 {
     use UserTrait;
     use UserSecurityTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -29,7 +32,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -38,7 +41,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s %s [%s]",
@@ -48,7 +51,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         );
     }
 
-    public function serialize()
+    public function serialize(): string
     {
         return serialize(array(
             $this->id,
@@ -68,7 +71,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             ) = unserialize($serialized);
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $isNew = !$this->getId();
         if ($isNew) {
@@ -91,19 +94,10 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             $this->setActive(false);
             $this->setPass(null);
         }
-
-        if (!$this->getEmail()) {
-            // If no mail, no SendMail
-            $this->setVoicemailSendMail(false);
-        }
     }
 
-    protected function sanitizeNew()
+    protected function sanitizeNew(): void
     {
-        if ($this->getEmail()) {
-            $this->setVoicemailSendMail(true);
-        }
-
         if ($this->getEmail() && $this->getPass()) {
             $this->setActive(true);
         }
@@ -122,7 +116,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
             return parent::setPass(null);
         }
 
-        $salt = substr(md5(random_int(0, mt_getrandmax()), false), 0, 22);
+        $salt = substr(md5((string) random_int(0, mt_getrandmax()), false), 0, 22);
         $cryptPass = crypt(
             $pass,
             '$2a$08$' . $salt . '$' . $salt . '$'
@@ -157,32 +151,6 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         }
 
         return $terminal->getName();
-    }
-
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail()
-    {
-        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
-    }
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser()
-    {
-        return "user" . $this->getId();
-    }
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext()
-    {
-        return
-            'company'
-            . $this->getCompany()->getId();
     }
 
     /**
@@ -269,9 +237,11 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface[]
+     * @return (\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null)[]
+     *
+     * @psalm-return array<array-key, \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null>
      */
-    public function getPickUpGroups()
+    public function getPickUpGroups(): array
     {
         $pickUpGroups = array();
 
@@ -291,7 +261,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @return string comma separated pickup group ids
      */
-    public function getPickUpGroupsIds()
+    public function getPickUpGroupsIds(): string
     {
         $pickUpGroupIds = array();
 
@@ -354,11 +324,9 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     }
 
     /**
-     * Get user language
      * returns company language if empty
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
-    public function getLanguage(): ?LanguageInterface
+    public function getLanguage(): LanguageInterface
     {
         $language = parent::getLanguage();
         if ($language) {
@@ -390,10 +358,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
         return parent::setEmail($email);
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    private function getCompanyTimezone()
+    private function getCompanyTimezone(): ?TimezoneInterface
     {
         return $this
             ->getCompany()
@@ -403,7 +368,7 @@ class User extends UserAbstract implements UserInterface, SymfonyUserInterface, 
     /**
      * @return string
      */
-    public function getFullNameExtension()
+    public function getFullNameExtension(): string
     {
         return sprintf(
             "%s %s (%s)",

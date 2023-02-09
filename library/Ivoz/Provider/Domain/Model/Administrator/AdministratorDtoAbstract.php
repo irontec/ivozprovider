@@ -18,65 +18,73 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $username;
+    private $username = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $pass;
+    private $pass = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $email = '';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $active = true;
 
     /**
-     * @var bool
+     * @var bool|null
+     */
+    private $internal = false;
+
+    /**
+     * @var bool|null
      */
     private $restricted = false;
 
     /**
      * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $lastname;
+    private $lastname = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var TimezoneDto | null
      */
-    private $timezone;
+    private $timezone = null;
 
     /**
      * @var AdministratorRelPublicEntityDto[] | null
      */
-    private $relPublicEntities;
+    private $relPublicEntities = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -85,7 +93,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -96,6 +104,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'pass' => 'pass',
             'email' => 'email',
             'active' => 'active',
+            'internal' => 'internal',
             'restricted' => 'restricted',
             'name' => 'name',
             'lastname' => 'lastname',
@@ -107,15 +116,16 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'username' => $this->getUsername(),
             'pass' => $this->getPass(),
             'email' => $this->getEmail(),
             'active' => $this->getActive(),
+            'internal' => $this->getInternal(),
             'restricted' => $this->getRestricted(),
             'name' => $this->getName(),
             'lastname' => $this->getLastname(),
@@ -140,7 +150,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -152,7 +162,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->username;
     }
 
-    public function setPass(?string $pass): static
+    public function setPass(string $pass): static
     {
         $this->pass = $pass;
 
@@ -164,7 +174,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->pass;
     }
 
-    public function setEmail(?string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 
@@ -176,7 +186,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->email;
     }
 
-    public function setActive(?bool $active): static
+    public function setActive(bool $active): static
     {
         $this->active = $active;
 
@@ -188,7 +198,19 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this->active;
     }
 
-    public function setRestricted(?bool $restricted): static
+    public function setInternal(bool $internal): static
+    {
+        $this->internal = $internal;
+
+        return $this;
+    }
+
+    public function getInternal(): ?bool
+    {
+        return $this->internal;
+    }
+
+    public function setRestricted(bool $restricted): static
     {
         $this->restricted = $restricted;
 
@@ -231,7 +253,7 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

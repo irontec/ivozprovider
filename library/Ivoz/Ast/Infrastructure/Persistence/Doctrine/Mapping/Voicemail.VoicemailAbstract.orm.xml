@@ -7,10 +7,9 @@
       <index name="voicemail_imapuser" columns="imapuser"/>
     </indexes>
     <unique-constraints>
-      <unique-constraint name="voicemail_user" columns="userId"/>
-      <unique-constraint name="voicemail_residential_device" columns="residentialDeviceId"/>
+      <unique-constraint name="voicemail_voicemail" columns="voicemailId"/>
     </unique-constraints>
-    <field name="context" type="string" column="context" length="80" nullable="false">
+    <field name="context" type="string" column-definition="" column="context" length="80" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -45,9 +44,10 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="attach" type="string" column="attach" nullable="true">
+    <field name="attach" type="string" length="25" column="attach" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
     <field name="attachfmt" type="string" column="attachfmt" length="10" nullable="true">
@@ -70,9 +70,11 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="deleteVoicemail" type="string" column="deleteast_voicemail" nullable="true">
+    <field name="deleteVoicemail" type="string" length="25" column="deleteast_voicemail" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
+
       </options>
     </field>
     <field name="saycid" type="string" column="saycid" nullable="true">
@@ -81,29 +83,34 @@
         <option name="default">yes</option>
       </options>
     </field>
-    <field name="sendVoicemail" type="string" column="sendast_voicemail" nullable="true">
+    <field name="sendVoicemail" type="string" length="25" column="sendast_voicemail" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="review" type="string" column="review" nullable="true">
+    <field name="review" type="string" length="25" column="review" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="tempgreetwarn" type="string" column="tempgreetwarn" nullable="true">
+    <field name="tempgreetwarn" type="string" length="25" column="tempgreetwarn" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="operator" type="string" column="operator" nullable="true">
+    <field name="operator" type="string" length="25" column="operator" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="envelope" type="string" column="envelope" nullable="true">
+    <field name="envelope" type="string" length="25" column="envelope" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
     <field name="sayduration" type="integer" column="sayduration" nullable="true">
@@ -111,14 +118,16 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="forcename" type="string" column="forcename" nullable="true">
+    <field name="forcename" type="string" length="25" column="forcename" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
-    <field name="forcegreetings" type="string" column="forcegreetings" nullable="true">
+    <field name="forcegreetings" type="string" length="25" column="forcegreetings" nullable="true">
       <options>
         <option name="fixed"/>
+        <option name="comment">[enum:yes|no]</option>
       </options>
     </field>
     <field name="callback" type="string" column="callback" length="80" nullable="true">
@@ -168,15 +177,10 @@
       </options>
     </field>
     <field name="stamp" type="datetime" column="stamp" nullable="true"/>
-    <many-to-one field="user" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <one-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" inversed-by="astVoicemail" fetch="LAZY">
       <join-columns>
-        <join-column name="userId" referenced-column-name="id" on-delete="CASCADE"/>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="CASCADE"/>
       </join-columns>
-    </many-to-one>
-    <many-to-one field="residentialDevice" target-entity="Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface" fetch="LAZY">
-      <join-columns>
-        <join-column name="residentialDeviceId" referenced-column-name="id" on-delete="CASCADE"/>
-      </join-columns>
-    </many-to-one>
+    </one-to-one>
   </mapped-superclass>
 </doctrine-mapping>

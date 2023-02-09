@@ -30,12 +30,12 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $type = 'group';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $priority;
+    private $priority = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $weight = 1;
 
@@ -47,10 +47,10 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $stopper = false;
 
@@ -62,68 +62,71 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $clid;
+    private $clid = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RoutingPatternDto | null
      */
-    private $routingPattern;
+    private $routingPattern = null;
 
     /**
      * @var RoutingPatternGroupDto | null
      */
-    private $routingPatternGroup;
+    private $routingPatternGroup = null;
 
     /**
      * @var RoutingTagDto | null
      */
-    private $routingTag;
+    private $routingTag = null;
 
     /**
      * @var CountryDto | null
      */
-    private $clidCountry;
+    private $clidCountry = null;
 
     /**
      * @var TpLcrRuleDto | null
      */
-    private $tpLcrRule;
+    private $tpLcrRule = null;
 
     /**
      * @var TrunksLcrRuleDto[] | null
      */
-    private $lcrRules;
+    private $lcrRules = null;
 
     /**
      * @var TrunksLcrRuleTargetDto[] | null
      */
-    private $lcrRuleTargets;
+    private $lcrRuleTargets = null;
 
     /**
      * @var OutgoingRoutingRelCarrierDto[] | null
      */
-    private $relCarriers;
+    private $relCarriers = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -132,7 +135,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -160,9 +163,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'type' => $this->getType(),
@@ -213,7 +216,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->type;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -225,7 +228,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->priority;
     }
 
-    public function setWeight(?int $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
 
@@ -261,7 +264,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->prefix;
     }
 
-    public function setStopper(?bool $stopper): static
+    public function setStopper(bool $stopper): static
     {
         $this->stopper = $stopper;
 
@@ -304,7 +307,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

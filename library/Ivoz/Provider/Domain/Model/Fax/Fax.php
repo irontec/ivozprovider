@@ -13,9 +13,9 @@ class Fax extends FaxAbstract implements FaxInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class Fax extends FaxAbstract implements FaxInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,12 +34,12 @@ class Fax extends FaxAbstract implements FaxInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [fax%d]",
             $this->getName(),
-            $this->getId()
+            (int) $this->getId()
         );
     }
 
@@ -53,9 +53,9 @@ class Fax extends FaxAbstract implements FaxInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+     * @return DdiInterface|null
      */
-    public function getOutgoingDdi(): DdiInterface
+    public function getOutgoingDdi(): ?DdiInterface
     {
         if (!is_null($this->outgoingDdi)) {
             return parent::getOutgoingDdi();

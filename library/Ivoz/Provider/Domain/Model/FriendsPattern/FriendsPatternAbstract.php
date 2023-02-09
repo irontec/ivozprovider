@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\FriendsPattern;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 
@@ -39,48 +40,41 @@ abstract class FriendsPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $regExp
+        string $name,
+        string $regExp
     ) {
         $this->setName($name);
         $this->setRegExp($regExp);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FriendsPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return FriendsPatternDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): FriendsPatternDto
     {
         return new FriendsPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FriendsPatternInterface|null $entity
-     * @param int $depth
-     * @return FriendsPatternDto|null
+     * @param null|FriendsPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FriendsPatternDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class FriendsPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FriendsPatternDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,21 +99,26 @@ abstract class FriendsPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FriendsPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FriendsPatternDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $regExp = $dto->getRegExp();
+        Assertion::notNull($regExp, 'getRegExp value is null, but non null value was expected.');
+        $friend = $dto->getFriend();
+        Assertion::notNull($friend, 'getFriend value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getRegExp()
+            $name,
+            $regExp
         );
 
         $self
-            ->setFriend($fkTransformer->transform($dto->getFriend()));
+            ->setFriend($fkTransformer->transform($friend));
 
         $self->initChangelog();
 
@@ -130,28 +128,32 @@ abstract class FriendsPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param FriendsPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FriendsPatternDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $regExp = $dto->getRegExp();
+        Assertion::notNull($regExp, 'getRegExp value is null, but non null value was expected.');
+        $friend = $dto->getFriend();
+        Assertion::notNull($friend, 'getFriend value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setRegExp($dto->getRegExp())
-            ->setFriend($fkTransformer->transform($dto->getFriend()));
+            ->setName($name)
+            ->setRegExp($regExp)
+            ->setFriend($fkTransformer->transform($friend));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FriendsPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FriendsPatternDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -160,9 +162,9 @@ abstract class FriendsPatternAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -203,7 +205,6 @@ abstract class FriendsPatternAbstract
     {
         $this->friend = $friend;
 
-        /** @var  $this */
         return $this;
     }
 

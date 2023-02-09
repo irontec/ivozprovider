@@ -16,35 +16,38 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $number;
+    private $number = null;
 
     /**
      * @var string|null
      */
-    private $numberE164;
+    private $numberE164 = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $disableCDR = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CountryDto | null
      */
-    private $country;
+    private $country = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -53,7 +56,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -70,9 +73,9 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'number' => $this->getNumber(),
@@ -97,7 +100,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setNumber(?string $number): static
+    public function setNumber(string $number): static
     {
         $this->number = $number;
 
@@ -121,7 +124,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this->numberE164;
     }
 
-    public function setDisableCDR(?int $disableCDR): static
+    public function setDisableCDR(int $disableCDR): static
     {
         $this->disableCDR = $disableCDR;
 
@@ -140,7 +143,7 @@ abstract class SpecialNumberDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

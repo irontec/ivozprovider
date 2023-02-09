@@ -3,10 +3,13 @@
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -16,9 +19,16 @@ interface MatchListInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Check if the given number matches the list rules
@@ -27,6 +37,26 @@ interface MatchListInterface extends LoggableEntityInterface
      * @return bool true if number matches, false otherwise
      */
     public function numberMatches($number);
+
+    public static function createDto(string|int|null $id = null): MatchListDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|MatchListInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MatchListDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param MatchListDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): MatchListDto;
 
     public function getName(): string;
 
@@ -42,7 +72,13 @@ interface MatchListInterface extends LoggableEntityInterface
 
     public function removePattern(MatchListPatternInterface $pattern): MatchListInterface;
 
-    public function replacePatterns(ArrayCollection $patterns): MatchListInterface;
+    /**
+     * @param Collection<array-key, MatchListPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): MatchListInterface;
 
+    /**
+     * @return array<array-key, MatchListPatternInterface>
+     */
     public function getPatterns(?Criteria $criteria = null): array;
 }

@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 
 class SendTrunksLcrReloadRequest implements CarrierLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    protected $trunksClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        TrunksClientInterface $trunksClient
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
@@ -30,7 +27,8 @@ class SendTrunksLcrReloadRequest implements CarrierLifecycleEventHandlerInterfac
     public function execute(CarrierInterface $entity)
     {
         $changeSet = $entity->getChangedFields();
-        if (in_array('balance', $changeSet)
+        if (
+            in_array('balance', $changeSet)
             && count($changeSet) === 1
         ) {
             return;

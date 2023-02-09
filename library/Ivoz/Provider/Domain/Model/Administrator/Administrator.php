@@ -2,21 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
-use \Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Administrator
  */
-class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, \Serializable
+class Administrator extends AdministratorAbstract implements AdministratorInterface, UserInterface, LegacyPasswordAuthenticatedUserInterface, \Serializable
 {
     use AdministratorTrait, AdministratorSecurityTrait {
         AdministratorTrait::getRelPublicEntities insteadof AdministratorSecurityTrait;
     }
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -26,7 +28,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,13 +38,14 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function setPass(string $pass = null): static
     {
-        if ($this->isInitialized()
+        if (
+            $this->isInitialized()
             && $pass === $this->getPass()
         ) {
             return $this;
         }
 
-        $salt = substr(md5(random_int(0, mt_getrandmax()), false), 0, 22);
+        $salt = substr(md5((string) random_int(0, mt_getrandmax()), false), 0, 22);
         $cryptPass = crypt(
             $pass,
             '$2a$08$' . $salt . '$' . $salt . '$'
@@ -134,7 +137,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return false;
     }
 
-    public function serialize()
+    public function serialize(): string
     {
         return serialize(array(
             $this->id,
@@ -156,7 +159,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
             ) = unserialize($serialized);
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->getTimezone()) {
             $this->setTimezone(

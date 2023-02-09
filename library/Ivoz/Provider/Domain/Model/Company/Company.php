@@ -5,22 +5,24 @@ namespace Ivoz\Provider\Domain\Model\Company;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
-use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * Company
  */
 class Company extends CompanyAbstract implements CompanyInterface
 {
-    const EMPTY_DOMAIN_EXCEPTION = 2001;
+    public const EMPTY_DOMAIN_EXCEPTION = 2001;
 
     use CompanyTrait;
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         $response = parent::getChangeSet();
         unset($response['currentDayUsage']);
@@ -41,12 +43,12 @@ class Company extends CompanyAbstract implements CompanyInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (!$this->getDefaultTimezone()) {
             $this->setDefaultTimezone(
@@ -54,7 +56,7 @@ class Company extends CompanyAbstract implements CompanyInterface
             );
         }
 
-        if (!$this->getLanguage()) {
+        if (!parent::getLanguage()) {
             $this->setLanguage(
                 // @todo create a shortcut
                 $this->getBrand()->getLanguage()
@@ -145,15 +147,13 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($ddis);
     }
 
-
-    public function getFriend($exten)
+    public function getFriend($exten): ?FriendInterface
     {
         $criteria = Criteria::create();
         $criteria->orderBy(['priority' => Criteria::ASC]);
+        /** @var FriendInterface[] $friends */
         $friends = $this->getFriends($criteria);
-        /**
-         * @var Friend $friend
-         */
+
         foreach ($friends as $friend) {
             if ($friend->checkExtension($exten)) {
                 return $friend;
@@ -216,22 +216,31 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($terminals);
     }
 
-    /**
-     * @return string
-     */
-    public function getLanguageCode()
+    public function getLanguage(): LanguageInterface
     {
-        $language = $this->getLanguage();
-        if (! $language) {
-            return $this->getBrand()->getLanguageCode();
-        }
-        return $language->getIden();
+        /**
+         * @see Company::sanitizeValues
+         * @var LanguageInterface $language
+         */
+        $language = parent::getLanguage();
+
+        return $language;
     }
 
     /**
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getLanguageCode(): string
+    {
+        return $this
+            ->getLanguage()
+            ->getIden();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencySymbol(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -243,7 +252,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @return string
      */
-    public function getCurrencyIden()
+    public function getCurrencyIden(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -400,7 +409,7 @@ class Company extends CompanyAbstract implements CompanyInterface
          * @var FeaturesRelCompany $relFeature
          */
         foreach ($this->getRelFeatures() as $relFeature) {
-            $relFeatureId = $relFeature->getFeature()->getId();
+            $relFeatureId = (int) $relFeature->getFeature()->getId();
             if ($this->getBrand()->hasFeature($relFeatureId)) {
                 array_push($features, $relFeature->getFeature());
             }
@@ -427,10 +436,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         return '';
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    private function getBrandTimezone()
+    private function getBrandTimezone(): TimezoneInterface
     {
         return $this
             ->getBrand()
@@ -440,9 +446,14 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * @return string
      */
-    public function getCgrSubject()
+    public function getCgrSubject(): string
     {
-        return sprintf("c%d", $this->getId());
+        return sprintf("c%d", (int) $this->getId());
+    }
+
+    public function getSubcribeContext(): string
+    {
+        return sprintf("company%d", (int) $this->getId());
     }
 
     public function isVpbx(): bool

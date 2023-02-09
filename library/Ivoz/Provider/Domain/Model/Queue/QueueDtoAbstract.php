@@ -7,7 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
@@ -21,123 +21,126 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var int|null
      */
-    private $maxWaitTime;
+    private $maxWaitTime = null;
 
     /**
      * @var string|null
      */
-    private $timeoutTargetType;
+    private $timeoutTargetType = null;
 
     /**
      * @var string|null
      */
-    private $timeoutNumberValue;
+    private $timeoutNumberValue = null;
 
     /**
      * @var int|null
      */
-    private $maxlen;
+    private $maxlen = null;
 
     /**
      * @var string|null
      */
-    private $fullTargetType;
+    private $fullTargetType = null;
 
     /**
      * @var string|null
      */
-    private $fullNumberValue;
+    private $fullNumberValue = null;
 
     /**
      * @var int|null
      */
-    private $periodicAnnounceFrequency;
+    private $periodicAnnounceFrequency = null;
 
     /**
      * @var int|null
      */
-    private $memberCallRest;
+    private $memberCallRest = null;
 
     /**
      * @var int|null
      */
-    private $memberCallTimeout;
+    private $memberCallTimeout = null;
 
     /**
      * @var string|null
      */
-    private $strategy;
+    private $strategy = null;
 
     /**
      * @var int|null
      */
-    private $weight;
+    private $weight = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $preventMissedCalls = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $periodicAnnounceLocution;
+    private $periodicAnnounceLocution = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $timeoutLocution;
+    private $timeoutLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $timeoutExtension;
+    private $timeoutExtension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $timeoutVoiceMailUser;
+    private $timeoutVoicemail = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $fullLocution;
+    private $fullLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $fullExtension;
+    private $fullExtension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $fullVoiceMailUser;
-
-    /**
-     * @var CountryDto | null
-     */
-    private $timeoutNumberCountry;
+    private $fullVoicemail = null;
 
     /**
      * @var CountryDto | null
      */
-    private $fullNumberCountry;
+    private $timeoutNumberCountry = null;
 
+    /**
+     * @var CountryDto | null
+     */
+    private $fullNumberCountry = null;
+
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -146,7 +149,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -171,19 +174,19 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'periodicAnnounceLocutionId' => 'periodicAnnounceLocution',
             'timeoutLocutionId' => 'timeoutLocution',
             'timeoutExtensionId' => 'timeoutExtension',
-            'timeoutVoiceMailUserId' => 'timeoutVoiceMailUser',
+            'timeoutVoicemailId' => 'timeoutVoicemail',
             'fullLocutionId' => 'fullLocution',
             'fullExtensionId' => 'fullExtension',
-            'fullVoiceMailUserId' => 'fullVoiceMailUser',
+            'fullVoicemailId' => 'fullVoicemail',
             'timeoutNumberCountryId' => 'timeoutNumberCountry',
             'fullNumberCountryId' => 'fullNumberCountry'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -204,10 +207,10 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'periodicAnnounceLocution' => $this->getPeriodicAnnounceLocution(),
             'timeoutLocution' => $this->getTimeoutLocution(),
             'timeoutExtension' => $this->getTimeoutExtension(),
-            'timeoutVoiceMailUser' => $this->getTimeoutVoiceMailUser(),
+            'timeoutVoicemail' => $this->getTimeoutVoicemail(),
             'fullLocution' => $this->getFullLocution(),
             'fullExtension' => $this->getFullExtension(),
-            'fullVoiceMailUser' => $this->getFullVoiceMailUser(),
+            'fullVoicemail' => $this->getFullVoicemail(),
             'timeoutNumberCountry' => $this->getTimeoutNumberCountry(),
             'fullNumberCountry' => $this->getFullNumberCountry()
         ];
@@ -370,7 +373,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->weight;
     }
 
-    public function setPreventMissedCalls(?int $preventMissedCalls): static
+    public function setPreventMissedCalls(int $preventMissedCalls): static
     {
         $this->preventMissedCalls = $preventMissedCalls;
 
@@ -389,7 +392,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -514,30 +517,30 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setTimeoutVoiceMailUser(?UserDto $timeoutVoiceMailUser): static
+    public function setTimeoutVoicemail(?VoicemailDto $timeoutVoicemail): static
     {
-        $this->timeoutVoiceMailUser = $timeoutVoiceMailUser;
+        $this->timeoutVoicemail = $timeoutVoicemail;
 
         return $this;
     }
 
-    public function getTimeoutVoiceMailUser(): ?UserDto
+    public function getTimeoutVoicemail(): ?VoicemailDto
     {
-        return $this->timeoutVoiceMailUser;
+        return $this->timeoutVoicemail;
     }
 
-    public function setTimeoutVoiceMailUserId($id): static
+    public function setTimeoutVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setTimeoutVoiceMailUser($value);
+        return $this->setTimeoutVoicemail($value);
     }
 
-    public function getTimeoutVoiceMailUserId()
+    public function getTimeoutVoicemailId()
     {
-        if ($dto = $this->getTimeoutVoiceMailUser()) {
+        if ($dto = $this->getTimeoutVoicemail()) {
             return $dto->getId();
         }
 
@@ -604,30 +607,30 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setFullVoiceMailUser(?UserDto $fullVoiceMailUser): static
+    public function setFullVoicemail(?VoicemailDto $fullVoicemail): static
     {
-        $this->fullVoiceMailUser = $fullVoiceMailUser;
+        $this->fullVoicemail = $fullVoicemail;
 
         return $this;
     }
 
-    public function getFullVoiceMailUser(): ?UserDto
+    public function getFullVoicemail(): ?VoicemailDto
     {
-        return $this->fullVoiceMailUser;
+        return $this->fullVoicemail;
     }
 
-    public function setFullVoiceMailUserId($id): static
+    public function setFullVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setFullVoiceMailUser($value);
+        return $this->setFullVoicemail($value);
     }
 
-    public function getFullVoiceMailUserId()
+    public function getFullVoicemailId()
     {
-        if ($dto = $this->getFullVoiceMailUser()) {
+        if ($dto = $this->getFullVoicemail()) {
             return $dto->getId();
         }
 

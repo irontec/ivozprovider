@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -32,8 +33,8 @@ abstract class InvoiceSchedulerAbstract
     protected $name;
 
     /**
-     * comment: enum:week|month|year
      * @var string
+     * comment: enum:week|month|year
      */
     protected $unit = 'month';
 
@@ -48,29 +49,29 @@ abstract class InvoiceSchedulerAbstract
     protected $email;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $lastExecution;
+    protected $lastExecution = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $lastExecutionError;
+    protected $lastExecutionError = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $nextExecution;
+    protected $nextExecution = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
-    protected $taxRate;
+    protected $taxRate = null;
 
     /**
-     * @var InvoiceTemplateInterface | null
+     * @var ?InvoiceTemplateInterface
      */
-    protected $invoiceTemplate;
+    protected $invoiceTemplate = null;
 
     /**
      * @var BrandInterface
@@ -83,18 +84,18 @@ abstract class InvoiceSchedulerAbstract
     protected $company;
 
     /**
-     * @var InvoiceNumberSequenceInterface | null
+     * @var ?InvoiceNumberSequenceInterface
      */
-    protected $numberSequence;
+    protected $numberSequence = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $unit,
-        $frequency,
-        $email
+        string $name,
+        string $unit,
+        int $frequency,
+        string $email
     ) {
         $this->setName($name);
         $this->setUnit($unit);
@@ -102,41 +103,34 @@ abstract class InvoiceSchedulerAbstract
         $this->setEmail($email);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "InvoiceScheduler",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return InvoiceSchedulerDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): InvoiceSchedulerDto
     {
         return new InvoiceSchedulerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceSchedulerInterface|null $entity
-     * @param int $depth
-     * @return InvoiceSchedulerDto|null
+     * @param null|InvoiceSchedulerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceSchedulerDto
     {
         if (!$entity) {
             return null;
@@ -152,8 +146,7 @@ abstract class InvoiceSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceSchedulerDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -162,19 +155,30 @@ abstract class InvoiceSchedulerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceSchedulerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getUnit(),
-            $dto->getFrequency(),
-            $dto->getEmail()
+            $name,
+            $unit,
+            $frequency,
+            $email
         );
 
         $self
@@ -183,8 +187,8 @@ abstract class InvoiceSchedulerAbstract
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()));
 
         $self->initChangelog();
@@ -195,26 +199,38 @@ abstract class InvoiceSchedulerAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceSchedulerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceSchedulerDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setUnit($dto->getUnit())
-            ->setFrequency($dto->getFrequency())
-            ->setEmail($dto->getEmail())
+            ->setName($name)
+            ->setUnit($unit)
+            ->setFrequency($frequency)
+            ->setEmail($email)
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setTaxRate($dto->getTaxRate())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()));
 
         return $this;
@@ -222,10 +238,8 @@ abstract class InvoiceSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return InvoiceSchedulerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): InvoiceSchedulerDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -243,9 +257,9 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -256,10 +270,10 @@ abstract class InvoiceSchedulerAbstract
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'taxRate' => self::getTaxRate(),
-            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
+            'invoiceTemplateId' => self::getInvoiceTemplate()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()->getId(),
-            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
+            'numberSequenceId' => self::getNumberSequence()?->getId()
         ];
     }
 
@@ -328,19 +342,17 @@ abstract class InvoiceSchedulerAbstract
         return $this->email;
     }
 
-    protected function setLastExecution($lastExecution = null): static
+    protected function setLastExecution(string|\DateTimeInterface|null $lastExecution = null): static
     {
         if (!is_null($lastExecution)) {
-            Assertion::notNull(
-                $lastExecution,
-                'lastExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
             );
 
-            if ($this->lastExecution == $lastExecution) {
+            if ($this->isInitialized() && $this->lastExecution == $lastExecution) {
                 return $this;
             }
         }
@@ -371,19 +383,17 @@ abstract class InvoiceSchedulerAbstract
         return $this->lastExecutionError;
     }
 
-    protected function setNextExecution($nextExecution = null): static
+    protected function setNextExecution(string|\DateTimeInterface|null $nextExecution = null): static
     {
         if (!is_null($nextExecution)) {
-            Assertion::notNull(
-                $nextExecution,
-                'nextExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null
             );
 
-            if ($this->nextExecution == $nextExecution) {
+            if ($this->isInitialized() && $this->nextExecution == $nextExecution) {
                 return $this;
             }
         }

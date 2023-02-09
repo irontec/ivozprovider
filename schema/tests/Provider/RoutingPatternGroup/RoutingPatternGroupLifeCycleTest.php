@@ -73,7 +73,7 @@ class RoutingPatternGroupLifeCycleTest extends KernelTestCase
             ->remove($routingPatternGroup);
     }
 
-    
+
     /**
      * @test
      */

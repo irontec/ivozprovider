@@ -3,18 +3,83 @@
 namespace Ivoz\Ast\Domain\Model\Voicemail;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * VoicemailInterface
 */
 interface VoicemailInterface extends LoggableEntityInterface
 {
+    public const ATTACH_YES = 'yes';
+
+    public const ATTACH_NO = 'no';
+
+    public const DELETEVOICEMAIL_YES = 'yes';
+
+    public const DELETEVOICEMAIL_NO = 'no';
+
+    public const SENDVOICEMAIL_YES = 'yes';
+
+    public const SENDVOICEMAIL_NO = 'no';
+
+    public const REVIEW_YES = 'yes';
+
+    public const REVIEW_NO = 'no';
+
+    public const TEMPGREETWARN_YES = 'yes';
+
+    public const TEMPGREETWARN_NO = 'no';
+
+    public const OPERATOR_YES = 'yes';
+
+    public const OPERATOR_NO = 'no';
+
+    public const ENVELOPE_YES = 'yes';
+
+    public const ENVELOPE_NO = 'no';
+
+    public const FORCENAME_YES = 'yes';
+
+    public const FORCENAME_NO = 'no';
+
+    public const FORCEGREETINGS_YES = 'yes';
+
+    public const FORCEGREETINGS_NO = 'no';
+
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): VoicemailDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|VoicemailInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?VoicemailDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param VoicemailDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): VoicemailDto;
 
     public function getContext(): string;
 
@@ -82,9 +147,9 @@ interface VoicemailInterface extends LoggableEntityInterface
 
     public function getStamp(): ?\DateTime;
 
-    public function getUser(): ?UserInterface;
+    public function setVoicemail(?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface $voicemail = null): static;
 
-    public function getResidentialDevice(): ?ResidentialDeviceInterface;
+    public function getVoicemail(): ?\Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 
     public function isInitialized(): bool;
 }

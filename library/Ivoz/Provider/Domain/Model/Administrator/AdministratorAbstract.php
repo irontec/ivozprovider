@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Administrator;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
@@ -29,8 +30,8 @@ abstract class AdministratorAbstract
     protected $username;
 
     /**
-     * comment: password
      * @var string
+     * comment: password
      */
     protected $pass;
 
@@ -47,85 +48,85 @@ abstract class AdministratorAbstract
     /**
      * @var bool
      */
+    protected $internal = false;
+
+    /**
+     * @var bool
+     */
     protected $restricted = false;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $name;
+    protected $name = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $lastname;
+    protected $lastname = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?TimezoneInterface
      */
-    protected $timezone;
+    protected $timezone = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $username,
-        $pass,
-        $email,
-        $active,
-        $restricted
+        string $username,
+        string $pass,
+        string $email,
+        bool $active,
+        bool $internal,
+        bool $restricted
     ) {
         $this->setUsername($username);
         $this->setPass($pass);
         $this->setEmail($email);
         $this->setActive($active);
+        $this->setInternal($internal);
         $this->setRestricted($restricted);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Administrator",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return AdministratorDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): AdministratorDto
     {
         return new AdministratorDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param AdministratorInterface|null $entity
-     * @param int $depth
-     * @return AdministratorDto|null
+     * @param null|AdministratorInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?AdministratorDto
     {
         if (!$entity) {
             return null;
@@ -141,8 +142,7 @@ abstract class AdministratorAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var AdministratorDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -151,20 +151,32 @@ abstract class AdministratorAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param AdministratorDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $pass = $dto->getPass();
+        Assertion::notNull($pass, 'getPass value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $internal = $dto->getInternal();
+        Assertion::notNull($internal, 'getInternal value is null, but non null value was expected.');
+        $restricted = $dto->getRestricted();
+        Assertion::notNull($restricted, 'getRestricted value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getUsername(),
-            $dto->getPass(),
-            $dto->getEmail(),
-            $dto->getActive(),
-            $dto->getRestricted()
+            $username,
+            $pass,
+            $email,
+            $active,
+            $internal,
+            $restricted
         );
 
         $self
@@ -182,20 +194,33 @@ abstract class AdministratorAbstract
     /**
      * @internal use EntityTools instead
      * @param AdministratorDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, AdministratorDto::class);
 
+        $username = $dto->getUsername();
+        Assertion::notNull($username, 'getUsername value is null, but non null value was expected.');
+        $pass = $dto->getPass();
+        Assertion::notNull($pass, 'getPass value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $internal = $dto->getInternal();
+        Assertion::notNull($internal, 'getInternal value is null, but non null value was expected.');
+        $restricted = $dto->getRestricted();
+        Assertion::notNull($restricted, 'getRestricted value is null, but non null value was expected.');
+
         $this
-            ->setUsername($dto->getUsername())
-            ->setPass($dto->getPass())
-            ->setEmail($dto->getEmail())
-            ->setActive($dto->getActive())
-            ->setRestricted($dto->getRestricted())
+            ->setUsername($username)
+            ->setPass($pass)
+            ->setEmail($email)
+            ->setActive($active)
+            ->setInternal($internal)
+            ->setRestricted($restricted)
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
@@ -207,16 +232,15 @@ abstract class AdministratorAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return AdministratorDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): AdministratorDto
     {
         return self::createDto()
             ->setUsername(self::getUsername())
             ->setPass(self::getPass())
             ->setEmail(self::getEmail())
             ->setActive(self::getActive())
+            ->setInternal(self::getInternal())
             ->setRestricted(self::getRestricted())
             ->setName(self::getName())
             ->setLastname(self::getLastname())
@@ -226,21 +250,22 @@ abstract class AdministratorAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'username' => self::getUsername(),
             'pass' => self::getPass(),
             'email' => self::getEmail(),
             'active' => self::getActive(),
+            'internal' => self::getInternal(),
             'restricted' => self::getRestricted(),
             'name' => self::getName(),
             'lastname' => self::getLastname(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'timezoneId' => self::getTimezone()?->getId()
         ];
     }
 
@@ -288,9 +313,6 @@ abstract class AdministratorAbstract
 
     protected function setActive(bool $active): static
     {
-        Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
-        $active = (bool) $active;
-
         $this->active = $active;
 
         return $this;
@@ -301,11 +323,20 @@ abstract class AdministratorAbstract
         return $this->active;
     }
 
+    protected function setInternal(bool $internal): static
+    {
+        $this->internal = $internal;
+
+        return $this;
+    }
+
+    public function getInternal(): bool
+    {
+        return $this->internal;
+    }
+
     protected function setRestricted(bool $restricted): static
     {
-        Assertion::between(intval($restricted), 0, 1, 'restricted provided "%s" is not a valid boolean value.');
-        $restricted = (bool) $restricted;
-
         $this->restricted = $restricted;
 
         return $this;

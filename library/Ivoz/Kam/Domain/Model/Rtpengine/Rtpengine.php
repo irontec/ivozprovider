@@ -16,25 +16,25 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
 
-    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null):  static
+    public function setMediaRelaySet(?MediaRelaySetInterface $mediaRelaySet = null): static
     {
         if (!is_null($mediaRelaySet)) {
             $this->setSetid(
-                (string) $mediaRelaySet->getId()
+                (int) $mediaRelaySet->getId()
             );
         }
 

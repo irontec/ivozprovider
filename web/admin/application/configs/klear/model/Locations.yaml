@@ -1,0 +1,36 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\Location\Location
+  fields:
+    company:
+      title: ngettext('Client', 'Clients', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      default: true
+    description:
+      title: _('Description')
+      type: text
+      trim: both
+      maxLength: 500
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

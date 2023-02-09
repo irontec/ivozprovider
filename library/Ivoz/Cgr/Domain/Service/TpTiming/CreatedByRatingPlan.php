@@ -3,7 +3,6 @@
 namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
-
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -12,22 +11,11 @@ use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInter
 
 class CreatedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * CreatedByTpRatingPlan constructor.
-     *
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

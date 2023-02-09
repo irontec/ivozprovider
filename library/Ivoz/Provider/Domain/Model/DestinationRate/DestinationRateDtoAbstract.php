@@ -18,50 +18,53 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private $cost;
+    private $cost = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private $connectFee;
+    private $connectFee = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $rateIncrement;
+    private $rateIncrement = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $groupIntervalStart = '0s';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DestinationRateGroupDto | null
      */
-    private $destinationRateGroup;
+    private $destinationRateGroup = null;
 
     /**
      * @var DestinationDto | null
      */
-    private $destination;
+    private $destination = null;
 
     /**
      * @var TpRateDto | null
      */
-    private $tpRate;
+    private $tpRate = null;
 
     /**
      * @var TpDestinationRateDto | null
      */
-    private $tpDestinationRate;
+    private $tpDestinationRate = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -70,7 +73,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -90,9 +93,9 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'cost' => $this->getCost(),
@@ -120,7 +123,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setCost(?float $cost): static
+    public function setCost(float $cost): static
     {
         $this->cost = $cost;
 
@@ -132,7 +135,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->cost;
     }
 
-    public function setConnectFee(?float $connectFee): static
+    public function setConnectFee(float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
@@ -144,7 +147,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->connectFee;
     }
 
-    public function setRateIncrement(?string $rateIncrement): static
+    public function setRateIncrement(string $rateIncrement): static
     {
         $this->rateIncrement = $rateIncrement;
 
@@ -156,7 +159,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateIncrement;
     }
 
-    public function setGroupIntervalStart(?string $groupIntervalStart): static
+    public function setGroupIntervalStart(string $groupIntervalStart): static
     {
         $this->groupIntervalStart = $groupIntervalStart;
 
@@ -175,7 +178,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

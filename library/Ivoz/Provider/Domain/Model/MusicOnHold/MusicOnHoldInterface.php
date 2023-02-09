@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Service\TempFile;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
@@ -13,24 +16,31 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 */
 interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const STATUS_PENDING = 'pending';
+    public const STATUS_PENDING = 'pending';
 
-    const STATUS_ENCODING = 'encoding';
+    public const STATUS_ENCODING = 'encoding';
 
-    const STATUS_READY = 'ready';
+    public const STATUS_READY = 'ready';
 
-    const STATUS_ERROR = 'error';
+    public const STATUS_ERROR = 'error';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return string
@@ -42,8 +52,30 @@ interface MusicOnHoldInterface extends LoggableEntityInterface, FileContainerInt
      *
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file);
+
+    public static function createDto(string|int|null $id = null): MusicOnHoldDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|MusicOnHoldInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MusicOnHoldDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param MusicOnHoldDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): MusicOnHoldDto;
 
     public function getName(): string;
 

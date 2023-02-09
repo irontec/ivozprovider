@@ -7,14 +7,11 @@ use Ivoz\Kam\Domain\Service\UsersClientInterface;
 
 class SendUsersPermissionsReloadRequest implements TrustedLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
-
-    protected $usersClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_HIGH;
 
     public function __construct(
-        UsersClientInterface $usersClient
+        private UsersClientInterface $usersClient
     ) {
-        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()

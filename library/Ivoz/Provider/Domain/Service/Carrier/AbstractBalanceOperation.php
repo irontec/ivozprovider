@@ -10,28 +10,16 @@ use Symfony\Bridge\Monolog\Logger;
 
 abstract class AbstractBalanceOperation
 {
-    protected $entityTools;
-    protected $logger;
-    protected $client;
-    protected $carrierRepository;
-    protected $syncBalanceService;
-    protected $lastError;
-    protected $createBalanceMovementByCarrier;
+    private string $lastError;
 
     public function __construct(
-        EntityTools $entityTools,
-        Logger $logger,
-        CarrierBalanceServiceInterface $client,
-        CarrierRepository $carrierRepository,
-        SyncBalances $syncBalanceService,
-        CreateByCarrier $createByCarrier
+        protected EntityTools $entityTools,
+        protected Logger $logger,
+        protected CarrierBalanceServiceInterface $client,
+        protected CarrierRepository $carrierRepository,
+        protected SyncBalances $syncBalanceService,
+        protected CreateByCarrier $createBalanceMovementByCarrier
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->client = $client;
-        $this->carrierRepository = $carrierRepository;
-        $this->syncBalanceService = $syncBalanceService;
-        $this->createBalanceMovementByCarrier = $createByCarrier;
     }
 
     /**
@@ -41,13 +29,7 @@ abstract class AbstractBalanceOperation
      */
     abstract public function execute($carrierId, float $amount);
 
-    /**
-     * @param string $amount
-     * @param array $response
-     * @param CarrierInterface $carrier
-     * @return boolean
-     */
-    protected function handleResponse($amount, array $response, CarrierInterface $carrier)
+    protected function handleResponse(?float $amount, array $response, CarrierInterface $carrier): bool
     {
         if (!empty($response['error'])) {
             $this->lastError = $response['error'];
@@ -57,13 +39,16 @@ abstract class AbstractBalanceOperation
         $success = $response['success'];
 
         if ($success) {
-            $brandId = $carrier->getBrand()->getId();
-            $carrierIds = [$carrier->getId()];
+            $brandId = (int) $carrier->getBrand()->getId();
+            $carrierIds = [(int) $carrier->getId()];
 
             $this->syncBalanceService->updateCarriers($brandId, $carrierIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance($brandId, $carrier->getId());
+            $balance = $this->client->getBalance(
+                $brandId,
+                (int) $carrier->getId()
+            );
 
             // Store this transaction in a BalanceMovement
             $this->createBalanceMovementByCarrier->execute(

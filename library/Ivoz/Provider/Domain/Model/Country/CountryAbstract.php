@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Country\Name;
 use Ivoz\Provider\Domain\Model\Country\Zone;
 
@@ -25,17 +26,17 @@ abstract class CountryAbstract
     protected $code = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $countryCode;
+    protected $countryCode = null;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Zone | null
+     * @var Zone
      */
     protected $zone;
 
@@ -43,50 +44,43 @@ abstract class CountryAbstract
      * Constructor
      */
     protected function __construct(
-        $code,
+        string $code,
         Name $name,
         Zone $zone
     ) {
         $this->setCode($code);
-        $this->setName($name);
-        $this->setZone($zone);
+        $this->name = $name;
+        $this->zone = $zone;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Country",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CountryDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CountryDto
     {
         return new CountryDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CountryInterface|null $entity
-     * @param int $depth
-     * @return CountryDto|null
+     * @param null|CountryInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CountryDto
     {
         if (!$entity) {
             return null;
@@ -102,8 +96,7 @@ abstract class CountryAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CountryDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -112,30 +105,47 @@ abstract class CountryAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CountryDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $zoneEn = $dto->getZoneEn();
+        Assertion::notNull($zoneEn, 'zoneEn value is null, but non null value was expected.');
+        $zoneEs = $dto->getZoneEs();
+        Assertion::notNull($zoneEs, 'zoneEs value is null, but non null value was expected.');
+        $zoneCa = $dto->getZoneCa();
+        Assertion::notNull($zoneCa, 'zoneCa value is null, but non null value was expected.');
+        $zoneIt = $dto->getZoneIt();
+        Assertion::notNull($zoneIt, 'zoneIt value is null, but non null value was expected.');
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $zone = new Zone(
-            $dto->getZoneEn(),
-            $dto->getZoneEs(),
-            $dto->getZoneCa(),
-            $dto->getZoneIt()
+            $zoneEn,
+            $zoneEs,
+            $zoneCa,
+            $zoneIt
         );
 
         $self = new static(
-            $dto->getCode(),
+            $code,
             $name,
             $zone
         );
@@ -151,30 +161,48 @@ abstract class CountryAbstract
     /**
      * @internal use EntityTools instead
      * @param CountryDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CountryDto::class);
 
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $zoneEn = $dto->getZoneEn();
+        Assertion::notNull($zoneEn, 'zoneEn value is null, but non null value was expected.');
+        $zoneEs = $dto->getZoneEs();
+        Assertion::notNull($zoneEs, 'zoneEs value is null, but non null value was expected.');
+        $zoneCa = $dto->getZoneCa();
+        Assertion::notNull($zoneCa, 'zoneCa value is null, but non null value was expected.');
+        $zoneIt = $dto->getZoneIt();
+        Assertion::notNull($zoneIt, 'zoneIt value is null, but non null value was expected.');
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $zone = new Zone(
-            $dto->getZoneEn(),
-            $dto->getZoneEs(),
-            $dto->getZoneCa(),
-            $dto->getZoneIt()
+            $zoneEn,
+            $zoneEs,
+            $zoneCa,
+            $zoneIt
         );
 
         $this
-            ->setCode($dto->getCode())
+            ->setCode($code)
             ->setCountryCode($dto->getCountryCode())
             ->setName($name)
             ->setZone($zone);
@@ -184,10 +212,8 @@ abstract class CountryAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CountryDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CountryDto
     {
         return self::createDto()
             ->setCode(self::getCode())
@@ -203,9 +229,9 @@ abstract class CountryAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'code' => self::getCode(),
@@ -258,7 +284,7 @@ abstract class CountryAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -274,7 +300,7 @@ abstract class CountryAbstract
 
     protected function setZone(Zone $zone): static
     {
-        $isEqual = $this->zone && $this->zone->equals($zone);
+        $isEqual = $this->zone->equals($zone);
         if ($isEqual) {
             return $this;
         }

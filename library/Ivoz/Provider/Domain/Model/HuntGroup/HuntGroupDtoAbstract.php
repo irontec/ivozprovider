@@ -7,9 +7,9 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberDto;
 
 /**
 * HuntGroupDtoAbstract
@@ -20,80 +20,83 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $strategy;
+    private $strategy = null;
 
     /**
      * @var int|null
      */
-    private $ringAllTimeout;
+    private $ringAllTimeout = null;
 
     /**
      * @var string|null
      */
-    private $noAnswerTargetType;
+    private $noAnswerTargetType = null;
 
     /**
      * @var string|null
      */
-    private $noAnswerNumberValue;
+    private $noAnswerNumberValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $preventMissedCalls = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $allowCallForwards = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $noAnswerLocution;
+    private $noAnswerLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $noAnswerExtension;
+    private $noAnswerExtension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $noAnswerVoiceMailUser;
+    private $noAnswerVoicemail = null;
 
     /**
      * @var CountryDto | null
      */
-    private $noAnswerNumberCountry;
+    private $noAnswerNumberCountry = null;
 
     /**
-     * @var HuntGroupsRelUserDto[] | null
+     * @var HuntGroupMemberDto[] | null
      */
-    private $huntGroupsRelUsers;
+    private $huntGroupMembers = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -102,7 +105,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -121,15 +124,15 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'noAnswerLocutionId' => 'noAnswerLocution',
             'noAnswerExtensionId' => 'noAnswerExtension',
-            'noAnswerVoiceMailUserId' => 'noAnswerVoiceMailUser',
+            'noAnswerVoicemailId' => 'noAnswerVoicemail',
             'noAnswerNumberCountryId' => 'noAnswerNumberCountry'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -144,9 +147,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'noAnswerLocution' => $this->getNoAnswerLocution(),
             'noAnswerExtension' => $this->getNoAnswerExtension(),
-            'noAnswerVoiceMailUser' => $this->getNoAnswerVoiceMailUser(),
+            'noAnswerVoicemail' => $this->getNoAnswerVoicemail(),
             'noAnswerNumberCountry' => $this->getNoAnswerNumberCountry(),
-            'huntGroupsRelUsers' => $this->getHuntGroupsRelUsers()
+            'huntGroupMembers' => $this->getHuntGroupMembers()
         ];
 
         if (!$hideSensitiveData) {
@@ -163,7 +166,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -175,7 +178,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -187,7 +190,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setStrategy(?string $strategy): static
+    public function setStrategy(string $strategy): static
     {
         $this->strategy = $strategy;
 
@@ -235,7 +238,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerNumberValue;
     }
 
-    public function setPreventMissedCalls(?int $preventMissedCalls): static
+    public function setPreventMissedCalls(int $preventMissedCalls): static
     {
         $this->preventMissedCalls = $preventMissedCalls;
 
@@ -247,7 +250,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->preventMissedCalls;
     }
 
-    public function setAllowCallForwards(?int $allowCallForwards): static
+    public function setAllowCallForwards(int $allowCallForwards): static
     {
         $this->allowCallForwards = $allowCallForwards;
 
@@ -266,7 +269,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -361,30 +364,30 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setNoAnswerVoiceMailUser(?UserDto $noAnswerVoiceMailUser): static
+    public function setNoAnswerVoicemail(?VoicemailDto $noAnswerVoicemail): static
     {
-        $this->noAnswerVoiceMailUser = $noAnswerVoiceMailUser;
+        $this->noAnswerVoicemail = $noAnswerVoicemail;
 
         return $this;
     }
 
-    public function getNoAnswerVoiceMailUser(): ?UserDto
+    public function getNoAnswerVoicemail(): ?VoicemailDto
     {
-        return $this->noAnswerVoiceMailUser;
+        return $this->noAnswerVoicemail;
     }
 
-    public function setNoAnswerVoiceMailUserId($id): static
+    public function setNoAnswerVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setNoAnswerVoiceMailUser($value);
+        return $this->setNoAnswerVoicemail($value);
     }
 
-    public function getNoAnswerVoiceMailUserId()
+    public function getNoAnswerVoicemailId()
     {
-        if ($dto = $this->getNoAnswerVoiceMailUser()) {
+        if ($dto = $this->getNoAnswerVoicemail()) {
             return $dto->getId();
         }
 
@@ -421,15 +424,15 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setHuntGroupsRelUsers(?array $huntGroupsRelUsers): static
+    public function setHuntGroupMembers(?array $huntGroupMembers): static
     {
-        $this->huntGroupsRelUsers = $huntGroupsRelUsers;
+        $this->huntGroupMembers = $huntGroupMembers;
 
         return $this;
     }
 
-    public function getHuntGroupsRelUsers(): ?array
+    public function getHuntGroupMembers(): ?array
     {
-        return $this->huntGroupsRelUsers;
+        return $this->huntGroupMembers;
     }
 }

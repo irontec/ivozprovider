@@ -8,12 +8,9 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
 {
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -23,10 +20,7 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $isNew = $company->isNew();
         if (!$isNew) {

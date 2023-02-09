@@ -167,7 +167,7 @@
                     self._icons.directions[data.Direction]
                 );
                 $(".copyCallId",_tr).on('click', function () {
-                    self.copyTextToClipboard(data['ID']);
+                    self.copyTextToClipboard(data['Call-ID']);
                 });
 
                 $(".brand",_tr).html(data.Brand);
@@ -223,6 +223,10 @@
                     );
 
                     var hours = parseInt(seconds / 60 / 60);
+                    if (hours >= 3) {
+                        item.parents('tr').remove();
+                        return;
+                    }
                     var minutes = parseInt(seconds / 60);
 
                     minutes -= hours * 60;

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
@@ -25,62 +26,55 @@ abstract class NotificationTemplateAbstract
     protected $name;
 
     /**
-     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
      * @var string
+     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv|maxDailyUsage
      */
     protected $type;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $type
+        string $name,
+        string $type
     ) {
         $this->setName($name);
         $this->setType($type);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "NotificationTemplate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return NotificationTemplateDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): NotificationTemplateDto
     {
         return new NotificationTemplateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param NotificationTemplateInterface|null $entity
-     * @param int $depth
-     * @return NotificationTemplateDto|null
+     * @param null|NotificationTemplateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?NotificationTemplateDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class NotificationTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var NotificationTemplateDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,17 +99,20 @@ abstract class NotificationTemplateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param NotificationTemplateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getType()
+            $name,
+            $type
         );
 
         $self
@@ -130,17 +126,21 @@ abstract class NotificationTemplateAbstract
     /**
      * @internal use EntityTools instead
      * @param NotificationTemplateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setType($dto->getType())
+            ->setName($name)
+            ->setType($type)
             ->setBrand($fkTransformer->transform($dto->getBrand()));
 
         return $this;
@@ -148,10 +148,8 @@ abstract class NotificationTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return NotificationTemplateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): NotificationTemplateDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -160,14 +158,14 @@ abstract class NotificationTemplateAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
             'type' => self::getType(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 

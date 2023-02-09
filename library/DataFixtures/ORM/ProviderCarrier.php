@@ -20,7 +20,7 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Carrier::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Carrier::class);
         (function () use ($fixture) {
             $this->setDescription("CarrierDescription");
@@ -50,7 +50,7 @@ class ProviderCarrier extends Fixture implements DependentFixtureInterface
         $this->addReference('_reference_ProviderCarrier2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
-    
+
         $manager->flush();
     }
 

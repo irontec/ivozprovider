@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
@@ -22,16 +23,16 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     use ChangelogTrait;
 
     /**
-     * @var RoutingPatternInterface | null
+     * @var ?RoutingPatternInterface
      * inversedBy relPatternGroups
      */
-    protected $routingPattern;
+    protected $routingPattern = null;
 
     /**
-     * @var RoutingPatternGroupInterface | null
+     * @var ?RoutingPatternGroupInterface
      * inversedBy relPatterns
      */
-    protected $routingPatternGroup;
+    protected $routingPatternGroup = null;
 
     /**
      * Constructor
@@ -40,41 +41,34 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingPatternGroupsRelPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RoutingPatternGroupsRelPatternDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RoutingPatternGroupsRelPatternDto
     {
         return new RoutingPatternGroupsRelPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingPatternGroupsRelPatternInterface|null $entity
-     * @param int $depth
-     * @return RoutingPatternGroupsRelPatternDto|null
+     * @param null|RoutingPatternGroupsRelPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingPatternGroupsRelPatternDto
     {
         if (!$entity) {
             return null;
@@ -90,8 +84,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingPatternGroupsRelPatternDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -100,12 +93,11 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternGroupsRelPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $self = new static();
@@ -122,12 +114,11 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternGroupsRelPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $this
@@ -139,10 +130,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RoutingPatternGroupsRelPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RoutingPatternGroupsRelPatternDto
     {
         return self::createDto()
             ->setRoutingPattern(RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
@@ -150,13 +139,13 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
+            'routingPatternId' => self::getRoutingPattern()?->getId(),
+            'routingPatternGroupId' => self::getRoutingPatternGroup()?->getId()
         ];
     }
 
@@ -164,7 +153,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
         $this->routingPattern = $routingPattern;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -177,7 +165,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
         $this->routingPatternGroup = $routingPatternGroup;
 
-        /** @var  $this */
         return $this;
     }
 

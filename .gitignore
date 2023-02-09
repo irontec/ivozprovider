@@ -3,12 +3,14 @@
 *.settings
 *.idea
 .idea/*
+.vscode
 
 vendor
 **/coverage/
 storage/*
 mount-storage.sh
 **.phplint-cache
+**.phpunit.result.cache
 
 web/admin/storage
 web/admin/application/cache/*
@@ -21,9 +23,13 @@ web/user/scripts/
 web/user/app/styles/main.css.map
 web/user/app/styles/main.css
 
+web/client/.history
+
 doc/html/*
 doc/doctrees/
 
 kamailio/users/config/kamailio-selfsigned.key
 kamailio/trunks/config/kamailio-selfsigned.key
 
+kamailio/users/config/listeners.cfg
+kamailio/trunks/config/listeners.cfg

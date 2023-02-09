@@ -20,13 +20,12 @@ class CompanyDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($entity, CompanyInterface::class);
 
-        /** @var CompanyDto $dto */
         $dto = $entity->toDto($depth);
 
         if (in_array($context, CompanyDto::CONTEXTS_WITH_FEATURES, true)) {
             $featureIds = array_map(
                 function (FeaturesRelCompany $relFeature) {
-                    return $relFeature
+                    return (int) $relFeature
                         ->getFeature()
                         ->getId();
                 },

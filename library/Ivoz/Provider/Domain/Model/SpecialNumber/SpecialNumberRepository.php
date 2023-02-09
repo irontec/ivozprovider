@@ -7,5 +7,4 @@ use Doctrine\Common\Collections\Selectable;
 
 interface SpecialNumberRepository extends ObjectRepository, Selectable
 {
-
 }

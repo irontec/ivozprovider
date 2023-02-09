@@ -19,53 +19,17 @@ class Encoder
      */
     const RECORDING_SIZE_MIN = 512;
 
-    /**
-     * @var TrunksCdrRepository
-     */
-    protected $trunksCdrRepository;
-
-    /**
-     * @var UsersCdrRepository
-     */
-    protected $usersCdrRepository;
-
-    /**
-     * @var DdiRepository
-     */
-    protected $ddiRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var string
-     */
-    protected $rawRecordingsDir;
-
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
     public function __construct(
-        TrunksCdrRepository $trunksCdrRepository,
-        UsersCdrRepository $usersCdrRepository,
-        DdiRepository $ddiRepository,
-        EntityTools $entityTools,
-        string $rawRecordingsDir,
-        Logger $logger
+        private TrunksCdrRepository $trunksCdrRepository,
+        private UsersCdrRepository $usersCdrRepository,
+        private DdiRepository $ddiRepository,
+        private EntityTools $entityTools,
+        private string $rawRecordingsDir,
+        private Logger $logger
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
-        $this->usersCdrRepository = $usersCdrRepository;
-        $this->entityTools = $entityTools;
-        $this->rawRecordingsDir = $rawRecordingsDir;
-        $this->ddiRepository = $ddiRepository;
-        $this->logger = $logger;
     }
 
-    public function processAction()
+    public function processAction(): void
     {
         // Store statistics
         $stats = array(
@@ -208,7 +172,7 @@ class Encoder
                 $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
 
                 $convertProcess = new Process([
-                    "/usr/bin/avconv",
+                    "/usr/bin/ffmpeg",
                     "-y",
                     "-i",
                     $convertWav,
@@ -270,7 +234,7 @@ class Encoder
                 // Store this Recording
                 $recording = $this->entityTools->persistDto($recordingDto, null, true);
                 $this->logger->info(
-                    sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recording->getId())
+                    sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, (string) $recording->getId())
                 );
                 $stats['encoded']++;
             }

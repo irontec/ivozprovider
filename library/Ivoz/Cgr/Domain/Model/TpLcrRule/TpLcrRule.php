@@ -11,9 +11,9 @@ class TpLcrRule extends TpLcrRuleAbstract implements TpLcrRuleInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -23,7 +23,7 @@ class TpLcrRule extends TpLcrRuleAbstract implements TpLcrRuleInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

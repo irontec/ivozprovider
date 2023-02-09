@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
@@ -9,40 +10,40 @@ use Assert\Assertion;
 * Name
 * @codeCoverageIgnore
 */
-class Name
+final class Name
 {
     /**
+     * @var string
      * column: name_en
-     * @var string | null
      */
-    protected $en;
+    private $en;
 
     /**
+     * @var string
      * column: name_es
-     * @var string | null
      */
-    protected $es;
+    private $es;
 
     /**
+     * @var string
      * column: name_ca
-     * @var string | null
      */
-    protected $ca;
+    private $ca;
 
     /**
+     * @var string
      * column: name_it
-     * @var string | null
      */
-    protected $it;
+    private $it;
 
     /**
      * Constructor
      */
     public function __construct(
-        $en,
-        $es,
-        $ca,
-        $it
+        string $en,
+        string $es,
+        string $ca,
+        string $it
     ) {
         $this->setEn($en);
         $this->setEs($es);
@@ -50,78 +51,72 @@ class Name
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $name)
+    public function equals(self $name): bool
     {
-        return
-            $this->getEn() === $name->getEn() &&
-            $this->getEs() === $name->getEs() &&
-            $this->getCa() === $name->getCa() &&
-            $this->getIt() === $name->getIt();
+        if ($this->getEn() !== $name->getEn()) {
+            return false;
+        }
+        if ($this->getEs() !== $name->getEs()) {
+            return false;
+        }
+        if ($this->getCa() !== $name->getCa()) {
+            return false;
+        }
+        return $this->getIt() === $name->getIt();
     }
 
-    protected function setEn(?string $en = null): static
+    protected function setEn(string $en): static
     {
-        if (!is_null($en)) {
-            Assertion::maxLength($en, 100, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::maxLength($en, 100, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->en = $en;
 
         return $this;
     }
 
-    public function getEn(): ?string
+    public function getEn(): string
     {
         return $this->en;
     }
 
-    protected function setEs(?string $es = null): static
+    protected function setEs(string $es): static
     {
-        if (!is_null($es)) {
-            Assertion::maxLength($es, 100, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::maxLength($es, 100, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->es = $es;
 
         return $this;
     }
 
-    public function getEs(): ?string
+    public function getEs(): string
     {
         return $this->es;
     }
 
-    protected function setCa(?string $ca = null): static
+    protected function setCa(string $ca): static
     {
-        if (!is_null($ca)) {
-            Assertion::maxLength($ca, 100, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::maxLength($ca, 100, 'ca value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ca = $ca;
 
         return $this;
     }
 
-    public function getCa(): ?string
+    public function getCa(): string
     {
         return $this->ca;
     }
 
-    protected function setIt(?string $it = null): static
+    protected function setIt(string $it): static
     {
-        if (!is_null($it)) {
-            Assertion::maxLength($it, 100, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::maxLength($it, 100, 'it value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->it = $it;
 
         return $this;
     }
 
-    public function getIt(): ?string
+    public function getIt(): string
     {
         return $this->it;
     }

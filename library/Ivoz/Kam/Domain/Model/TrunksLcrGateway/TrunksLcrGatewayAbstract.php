@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrGateway;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
 
@@ -20,120 +21,113 @@ abstract class TrunksLcrGatewayAbstract
     use ChangelogTrait;
 
     /**
-     * column: lcr_id
      * @var int
+     * column: lcr_id
      */
     protected $lcrId = 1;
 
     /**
-     * column: gw_name
      * @var string
+     * column: gw_name
      */
     protected $gwName;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $ip;
+    protected $ip = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $hostname;
+    protected $hostname = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $port;
+    protected $port = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $params;
+    protected $params = null;
 
     /**
+     * @var ?int
      * column: uri_scheme
-     * @var int | null
      */
-    protected $uriScheme;
+    protected $uriScheme = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $transport;
+    protected $transport = null;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
-    protected $strip;
+    protected $strip = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $prefix;
+    protected $prefix = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $defunct;
+    protected $defunct = null;
 
     /**
-     * @var CarrierServerInterface | null
+     * @var ?CarrierServerInterface
      * inversedBy lcrGateway
      */
-    protected $carrierServer;
+    protected $carrierServer = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $lcrId,
-        $gwName
+        int $lcrId,
+        string $gwName
     ) {
         $this->setLcrId($lcrId);
         $this->setGwName($gwName);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksLcrGateway",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksLcrGatewayDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksLcrGatewayDto
     {
         return new TrunksLcrGatewayDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksLcrGatewayInterface|null $entity
-     * @param int $depth
-     * @return TrunksLcrGatewayDto|null
+     * @param null|TrunksLcrGatewayInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksLcrGatewayDto
     {
         if (!$entity) {
             return null;
@@ -149,8 +143,7 @@ abstract class TrunksLcrGatewayAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksLcrGatewayDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -159,17 +152,20 @@ abstract class TrunksLcrGatewayAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksLcrGatewayDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $gwName = $dto->getGwName();
+        Assertion::notNull($gwName, 'getGwName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getGwName()
+            $lcrId,
+            $gwName
         );
 
         $self
@@ -193,17 +189,21 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksLcrGatewayDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrGatewayDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $gwName = $dto->getGwName();
+        Assertion::notNull($gwName, 'getGwName value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
-            ->setGwName($dto->getGwName())
+            ->setLcrId($lcrId)
+            ->setGwName($gwName)
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())
@@ -221,10 +221,8 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksLcrGatewayDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksLcrGatewayDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())
@@ -243,9 +241,9 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'lcr_id' => self::getLcrId(),
@@ -260,7 +258,7 @@ abstract class TrunksLcrGatewayAbstract
             'prefix' => self::getPrefix(),
             'tag' => self::getTag(),
             'defunct' => self::getDefunct(),
-            'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
+            'carrierServerId' => self::getCarrierServer()?->getId()
         ];
     }
 
@@ -390,11 +388,6 @@ abstract class TrunksLcrGatewayAbstract
 
     protected function setStrip(?bool $strip = null): static
     {
-        if (!is_null($strip)) {
-            Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
-            $strip = (bool) $strip;
-        }
-
         $this->strip = $strip;
 
         return $this;
@@ -457,7 +450,6 @@ abstract class TrunksLcrGatewayAbstract
     {
         $this->carrierServer = $carrierServer;
 
-        /** @var  $this */
         return $this;
     }
 

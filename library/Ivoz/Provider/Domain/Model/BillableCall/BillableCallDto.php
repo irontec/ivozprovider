@@ -4,14 +4,14 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 
 class BillableCallDto extends BillableCallDtoAbstract
 {
-    const CONTEXT_RATING = 'rating';
-    const CONTEXT_RATING_INTERNAL = 'rating-internal';
+    public const CONTEXT_RATING = 'rating';
+    public const CONTEXT_RATING_INTERNAL = 'rating-internal';
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_RATING_INTERNAL) {
             return [
@@ -56,6 +56,7 @@ class BillableCallDto extends BillableCallDtoAbstract
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
+            $response['priceDetails'] = [];
         }
 
         if ($role === 'ROLE_SUPER_ADMIN') {
@@ -73,7 +74,6 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return $response;
     }
-
 
     /**
      * @param array $response
@@ -108,7 +108,7 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -140,7 +140,7 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

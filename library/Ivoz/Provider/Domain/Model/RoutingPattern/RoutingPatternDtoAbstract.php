@@ -18,75 +18,78 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $nameEn;
-
-    /**
-     * @var string
-     */
-    private $nameEs;
-
-    /**
-     * @var string
-     */
-    private $nameCa;
-
-    /**
-     * @var string
-     */
-    private $nameIt;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $descriptionEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $descriptionEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $descriptionCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $descriptionIt;
+    private $nameIt = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionEn = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionEs = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionCa = null;
+
+    /**
+     * @var string|null
+     */
+    private $descriptionIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     /**
      * @var RoutingPatternGroupsRelPatternDto[] | null
      */
-    private $relPatternGroups;
+    private $relPatternGroups = null;
 
     /**
      * @var TrunksLcrRuleDto[] | null
      */
-    private $lcrRules;
+    private $lcrRules = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -95,7 +98,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -121,9 +124,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'prefix' => $this->getPrefix(),
@@ -160,7 +163,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 
@@ -179,12 +182,12 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -196,7 +199,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -208,7 +211,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -220,7 +223,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 

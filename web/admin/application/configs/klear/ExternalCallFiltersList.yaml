@@ -34,16 +34,18 @@ production:
           welcomeLocution: true
           holidayLocution: true
           outOfScheduleLocution: true
+          holidayEnabled: true
           holidayTargetType: false
           holidayNumberCountry: true
           holidayNumberValue: true
           holidayExtension: true
-          holidayVoiceMailUser: true
+          holidayVoicemail: true
+          outOfScheduleEnabled: true
           outOfScheduleTargetType: false
           outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
           outOfScheduleExtension: true
-          outOfScheduleVoiceMailUser: true
+          outOfScheduleVoicemail: true
           whiteLists: true
           blackLists: true
         order: &externalCallFilters_orderLink
@@ -52,19 +54,21 @@ production:
           whiteLists: true
           blackLists: true
           holidayLocution: true
+          holidayEnabled: true
           holidayTargetType: true
           holidayTarget: true
           holidayNumberCountry: true
           holidayNumberValue: true
           holidayExtension: true
-          holidayVoiceMailUser: true
+          holidayVoicemail: true
+          outOfScheduleEnabled: true
           outOfScheduleLocution: true
           outOfScheduleTargetType: true
           outOfScheduleTarget: true
           outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
           outOfScheduleExtension: true
-          outOfScheduleVoiceMailUser: true
+          outOfScheduleVoicemail: true
           calendars: true
           schedules: true
       options:
@@ -111,24 +115,28 @@ production:
           colsPerRow: 7
           label: _("Holidays configuration")
           fields:
+            holidayEnabled: 2
+            __empty: 4
             calendars: 3
             holidayLocution: 3
             holidayTargetType: 2
             holidayNumberCountry: 2
             holidayNumberValue: 2
             holidayExtension: 3
-            holidayVoiceMailUser: 3
+            holidayVoicemail: 3
         group4:
           colsPerRow: 6
           label: _("Out of schedule configuration")
           fields:
+            outOfScheduleEnabled: 2
+            __empty: 4
             schedules: 3
             outOfScheduleLocution: 3
             outOfScheduleTargetType: 2
             outOfScheduleNumberCountry: 2
             outOfScheduleNumberValue: 2
             outOfScheduleExtension: 3
-            outOfScheduleVoiceMailUser: 3
+            outOfScheduleVoicemail: 3
 
     externalCallFiltersEdit_screen: &externalCallFiltersEdit_screenLink
       <<: *ExternalCallFilters

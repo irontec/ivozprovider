@@ -13,6 +13,7 @@ use Ivoz\Provider\Domain\Model\Language\LanguageDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternDto;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 
 /**
 * FriendDtoAbstract
@@ -23,160 +24,168 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
      * @var string|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $password;
+    private $password = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disallow = 'all';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $allow = 'alaw';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directMediaMethod = 'update';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $calleridUpdateHeader = 'pai';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $updateCallerid = 'yes';
 
     /**
      * @var string|null
      */
-    private $fromUser;
+    private $fromUser = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directConnectivity = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ddiIn = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Passthrough = 'no';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $alwaysApplyTransformations = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $rtpEncryption = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $multiContact = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var CallAclDto | null
      */
-    private $callAcl;
+    private $callAcl = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $interCompany;
+    private $interCompany = null;
 
     /**
      * @var PsEndpointDto | null
      */
-    private $psEndpoint;
+    private $psEndpoint = null;
 
     /**
      * @var PsIdentifyDto | null
      */
-    private $psIdentify;
+    private $psIdentify = null;
 
     /**
      * @var FriendsPatternDto[] | null
      */
-    private $patterns;
+    private $patterns = null;
 
+    /**
+     * @var CallForwardSettingDto[] | null
+     */
+    private $callForwardSettings = null;
+
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -185,7 +194,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -226,9 +235,9 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -261,7 +270,8 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'interCompany' => $this->getInterCompany(),
             'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
-            'patterns' => $this->getPatterns()
+            'patterns' => $this->getPatterns(),
+            'callForwardSettings' => $this->getCallForwardSettings()
         ];
 
         if (!$hideSensitiveData) {
@@ -278,7 +288,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -290,7 +300,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -350,7 +360,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->password;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -362,7 +372,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->priority;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -374,7 +384,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->disallow;
     }
 
-    public function setAllow(?string $allow): static
+    public function setAllow(string $allow): static
     {
         $this->allow = $allow;
 
@@ -386,7 +396,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->allow;
     }
 
-    public function setDirectMediaMethod(?string $directMediaMethod): static
+    public function setDirectMediaMethod(string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
@@ -398,7 +408,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->directMediaMethod;
     }
 
-    public function setCalleridUpdateHeader(?string $calleridUpdateHeader): static
+    public function setCalleridUpdateHeader(string $calleridUpdateHeader): static
     {
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
@@ -410,7 +420,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->calleridUpdateHeader;
     }
 
-    public function setUpdateCallerid(?string $updateCallerid): static
+    public function setUpdateCallerid(string $updateCallerid): static
     {
         $this->updateCallerid = $updateCallerid;
 
@@ -446,7 +456,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->fromDomain;
     }
 
-    public function setDirectConnectivity(?string $directConnectivity): static
+    public function setDirectConnectivity(string $directConnectivity): static
     {
         $this->directConnectivity = $directConnectivity;
 
@@ -458,7 +468,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->directConnectivity;
     }
 
-    public function setDdiIn(?string $ddiIn): static
+    public function setDdiIn(string $ddiIn): static
     {
         $this->ddiIn = $ddiIn;
 
@@ -470,7 +480,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->ddiIn;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -482,7 +492,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->t38Passthrough;
     }
 
-    public function setAlwaysApplyTransformations(?bool $alwaysApplyTransformations): static
+    public function setAlwaysApplyTransformations(bool $alwaysApplyTransformations): static
     {
         $this->alwaysApplyTransformations = $alwaysApplyTransformations;
 
@@ -494,7 +504,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->alwaysApplyTransformations;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -506,7 +516,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->rtpEncryption;
     }
 
-    public function setMultiContact(?bool $multiContact): static
+    public function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 
@@ -525,7 +535,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -810,5 +820,17 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getPatterns(): ?array
     {
         return $this->patterns;
+    }
+
+    public function setCallForwardSettings(?array $callForwardSettings): static
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    public function getCallForwardSettings(): ?array
+    {
+        return $this->callForwardSettings;
     }
 }

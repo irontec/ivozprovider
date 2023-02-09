@@ -11,30 +11,30 @@ class Service extends ServiceAbstract implements ServiceInterface
 {
     use ServiceTrait;
 
-    const DIRECT_PICKUP     = "DirectPickUp";
+    public const DIRECT_PICKUP     = "DirectPickUp";
 
-    const GROUP_PICKUP      = "GroupPickUp";
+    public const GROUP_PICKUP      = "GroupPickUp";
 
-    const VOICEMAIL         = "Voicemail";
+    public const VOICEMAIL         = "Voicemail";
 
-    const RECORD_LOCUTION   = "RecordLocution";
+    public const RECORD_LOCUTION   = "RecordLocution";
 
-    const CLOSE_LOCK        = "CloseLock";
+    public const CLOSE_LOCK        = "CloseLock";
 
-    const OPEN_LOCK         = "OpenLock";
+    public const OPEN_LOCK         = "OpenLock";
 
-    const TOGGLE_LOCK       = "ToggleLock";
+    public const TOGGLE_LOCK       = "ToggleLock";
 
-    const CALL_FORWARD_INCONDITIONAL = "CallForwardInconditional";
+    public const CALL_FORWARD_INCONDITIONAL = "CallForwardInconditional";
 
-    const CALL_FORWARD_BUSY = "CallForwardBusy";
+    public const CALL_FORWARD_BUSY = "CallForwardBusy";
 
-    const CALL_FORWARD_NOANSWER = "CallForwardNoAnswer";
+    public const CALL_FORWARD_NOANSWER = "CallForwardNoAnswer";
 
-    const CALL_FORWARD_UNREACHEABLE = "CallForwardUnreachable";
+    public const CALL_FORWARD_UNREACHEABLE = "CallForwardUnreachable";
 
     // Available services for vPBX clients
-    const VPBX_AVAILABLE_SERVICES = [
+    public const VPBX_AVAILABLE_SERVICES = [
         Service::DIRECT_PICKUP,
         Service::GROUP_PICKUP,
         Service::VOICEMAIL,
@@ -46,9 +46,9 @@ class Service extends ServiceAbstract implements ServiceInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -58,7 +58,7 @@ class Service extends ServiceAbstract implements ServiceInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

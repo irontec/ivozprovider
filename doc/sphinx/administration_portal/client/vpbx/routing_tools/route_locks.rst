@@ -1,4 +1,5 @@
 .. _route_locks:
+.. _route locks:
 
 ###########
 Route locks
@@ -16,8 +17,6 @@ Route lock creation
 ===================
 
 When you add a new route lock in **Route Locks** section, you are asked for the following fields:
-
-.. glossary::
 
     Name
         This name will be used in conditional routes to identify the lock.

@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
@@ -10,14 +11,15 @@ class Ivr extends IvrAbstract implements IvrInterface
 {
     use IvrTrait;
 
-    use RoutableTrait { getTarget as protected;
+    use RoutableTrait {
+        getTarget as protected;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -27,7 +29,7 @@ class Ivr extends IvrAbstract implements IvrInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,7 +38,7 @@ class Ivr extends IvrAbstract implements IvrInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -45,16 +47,18 @@ class Ivr extends IvrAbstract implements IvrInterface
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeRouteValues('NoInput');
         $this->sanitizeRouteValues('Error');
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface[] with key=>value
+     * @return (\Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null)[] with key=>value
+     *
+     * @psalm-return array{welcome: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, noanswer: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, error: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null, success: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface|null}
      */
-    public function getAllLocutions()
+    public function getAllLocutions(): array
     {
         return [
             'welcome' => $this->getWelcomeLocution(),
@@ -99,7 +103,7 @@ class Ivr extends IvrAbstract implements IvrInterface
     /**
      * @return null|string
      */
-    public function getNoInputTarget()
+    public function getNoInputTarget(): ?string
     {
         return $this->getTarget("NoInput");
     }
@@ -107,7 +111,7 @@ class Ivr extends IvrAbstract implements IvrInterface
     /**
      * @return null|string
      */
-    public function getErrorTarget()
+    public function getErrorTarget(): ?string
     {
         return $this->getTarget("Error");
     }

@@ -3,13 +3,16 @@
 namespace Ivoz\Provider\Domain\Model\CalendarPeriod;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -17,17 +20,24 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface CalendarPeriodInterface extends LoggableEntityInterface
 {
-    const ROUTETYPE_NUMBER = 'number';
+    public const ROUTETYPE_NUMBER = 'number';
 
-    const ROUTETYPE_EXTENSION = 'extension';
+    public const ROUTETYPE_EXTENSION = 'extension';
 
-    const ROUTETYPE_VOICEMAIL = 'voicemail';
+    public const ROUTETYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Get the numberValue in E.164 format when routing to 'number'
@@ -36,11 +46,31 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
-    public function isOutOfSchedule();
+    public function isOutOfSchedule(): bool;
 
-    public function getStartDate(): \DateTime;
+    public static function createDto(string|int|null $id = null): CalendarPeriodDto;
 
-    public function getEndDate(): \DateTime;
+    /**
+     * @internal use EntityTools instead
+     * @param null|CalendarPeriodInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CalendarPeriodDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param CalendarPeriodDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CalendarPeriodDto;
+
+    public function getStartDate(): \DateTimeInterface;
+
+    public function getEndDate(): \DateTimeInterface;
 
     public function getRouteType(): ?string;
 
@@ -54,7 +84,7 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function getExtension(): ?ExtensionInterface;
 
-    public function getVoiceMailUser(): ?UserInterface;
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function getNumberCountry(): ?CountryInterface;
 
@@ -64,8 +94,14 @@ interface CalendarPeriodInterface extends LoggableEntityInterface
 
     public function removeRelSchedule(CalendarPeriodsRelScheduleInterface $relSchedule): CalendarPeriodInterface;
 
-    public function replaceRelSchedules(ArrayCollection $relSchedules): CalendarPeriodInterface;
+    /**
+     * @param Collection<array-key, CalendarPeriodsRelScheduleInterface> $relSchedules
+     */
+    public function replaceRelSchedules(Collection $relSchedules): CalendarPeriodInterface;
 
+    /**
+     * @return array<array-key, CalendarPeriodsRelScheduleInterface>
+     */
     public function getRelSchedules(?Criteria $criteria = null): array;
 
     /**

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -25,8 +26,8 @@ abstract class CallAclAbstract
     protected $name;
 
     /**
-     * comment: enum:allow|deny
      * @var string
+     * comment: enum:allow|deny
      */
     protected $defaultPolicy;
 
@@ -39,48 +40,41 @@ abstract class CallAclAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $defaultPolicy
+        string $name,
+        string $defaultPolicy
     ) {
         $this->setName($name);
         $this->setDefaultPolicy($defaultPolicy);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CallAcl",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CallAclDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CallAclDto
     {
         return new CallAclDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CallAclInterface|null $entity
-     * @param int $depth
-     * @return CallAclDto|null
+     * @param null|CallAclInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallAclDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class CallAclAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CallAclDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,21 +99,26 @@ abstract class CallAclAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CallAclDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallAclDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultPolicy = $dto->getDefaultPolicy();
+        Assertion::notNull($defaultPolicy, 'getDefaultPolicy value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDefaultPolicy()
+            $name,
+            $defaultPolicy
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -130,28 +128,32 @@ abstract class CallAclAbstract
     /**
      * @internal use EntityTools instead
      * @param CallAclDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallAclDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultPolicy = $dto->getDefaultPolicy();
+        Assertion::notNull($defaultPolicy, 'getDefaultPolicy value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDefaultPolicy($dto->getDefaultPolicy())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setName($name)
+            ->setDefaultPolicy($defaultPolicy)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CallAclDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CallAclDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -160,9 +162,9 @@ abstract class CallAclAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

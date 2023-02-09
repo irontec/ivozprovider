@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration;
@@ -22,32 +23,32 @@ abstract class TrunksUacregAbstract
     use ChangelogTrait;
 
     /**
-     * column: l_uuid
      * @var string
+     * column: l_uuid
      */
     protected $lUuid = '';
 
     /**
-     * column: l_username
      * @var string
+     * column: l_username
      */
     protected $lUsername = 'unused';
 
     /**
-     * column: l_domain
      * @var string
+     * column: l_domain
      */
     protected $lDomain = 'unused';
 
     /**
-     * column: r_username
      * @var string
+     * column: r_username
      */
     protected $rUsername = '';
 
     /**
-     * column: r_domain
      * @var string
+     * column: r_domain
      */
     protected $rDomain = '';
 
@@ -57,20 +58,20 @@ abstract class TrunksUacregAbstract
     protected $realm = '';
 
     /**
-     * column: auth_username
      * @var string
+     * column: auth_username
      */
     protected $authUsername = '';
 
     /**
-     * column: auth_password
      * @var string
+     * column: auth_password
      */
     protected $authPassword = '';
 
     /**
-     * column: auth_proxy
      * @var string
+     * column: auth_proxy
      */
     protected $authProxy = '';
 
@@ -85,14 +86,14 @@ abstract class TrunksUacregAbstract
     protected $flags = 0;
 
     /**
-     * column: reg_delay
      * @var int
+     * column: reg_delay
      */
     protected $regDelay = 0;
 
     /**
-     * column: auth_ha1
      * @var string
+     * column: auth_ha1
      */
     protected $authHa1 = '';
 
@@ -102,8 +103,8 @@ abstract class TrunksUacregAbstract
     protected $socket = '';
 
     /**
-     * column: contact_addr
      * @var string
+     * column: contact_addr
      */
     protected $contactAddr = '';
 
@@ -122,21 +123,21 @@ abstract class TrunksUacregAbstract
      * Constructor
      */
     protected function __construct(
-        $lUuid,
-        $lUsername,
-        $lDomain,
-        $rUsername,
-        $rDomain,
-        $realm,
-        $authUsername,
-        $authPassword,
-        $authProxy,
-        $expires,
-        $flags,
-        $regDelay,
-        $authHa1,
-        $socket,
-        $contactAddr
+        string $lUuid,
+        string $lUsername,
+        string $lDomain,
+        string $rUsername,
+        string $rDomain,
+        string $realm,
+        string $authUsername,
+        string $authPassword,
+        string $authProxy,
+        int $expires,
+        int $flags,
+        int $regDelay,
+        string $authHa1,
+        string $socket,
+        string $contactAddr
     ) {
         $this->setLUuid($lUuid);
         $this->setLUsername($lUsername);
@@ -155,41 +156,34 @@ abstract class TrunksUacregAbstract
         $this->setContactAddr($contactAddr);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksUacreg",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksUacregDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksUacregDto
     {
         return new TrunksUacregDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksUacregInterface|null $entity
-     * @param int $depth
-     * @return TrunksUacregDto|null
+     * @param null|TrunksUacregInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksUacregDto
     {
         if (!$entity) {
             return null;
@@ -205,8 +199,7 @@ abstract class TrunksUacregAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksUacregDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -215,35 +208,68 @@ abstract class TrunksUacregAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksUacregDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksUacregDto::class);
+        $lUuid = $dto->getLUuid();
+        Assertion::notNull($lUuid, 'getLUuid value is null, but non null value was expected.');
+        $lUsername = $dto->getLUsername();
+        Assertion::notNull($lUsername, 'getLUsername value is null, but non null value was expected.');
+        $lDomain = $dto->getLDomain();
+        Assertion::notNull($lDomain, 'getLDomain value is null, but non null value was expected.');
+        $rUsername = $dto->getRUsername();
+        Assertion::notNull($rUsername, 'getRUsername value is null, but non null value was expected.');
+        $rDomain = $dto->getRDomain();
+        Assertion::notNull($rDomain, 'getRDomain value is null, but non null value was expected.');
+        $realm = $dto->getRealm();
+        Assertion::notNull($realm, 'getRealm value is null, but non null value was expected.');
+        $authUsername = $dto->getAuthUsername();
+        Assertion::notNull($authUsername, 'getAuthUsername value is null, but non null value was expected.');
+        $authPassword = $dto->getAuthPassword();
+        Assertion::notNull($authPassword, 'getAuthPassword value is null, but non null value was expected.');
+        $authProxy = $dto->getAuthProxy();
+        Assertion::notNull($authProxy, 'getAuthProxy value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $regDelay = $dto->getRegDelay();
+        Assertion::notNull($regDelay, 'getRegDelay value is null, but non null value was expected.');
+        $authHa1 = $dto->getAuthHa1();
+        Assertion::notNull($authHa1, 'getAuthHa1 value is null, but non null value was expected.');
+        $socket = $dto->getSocket();
+        Assertion::notNull($socket, 'getSocket value is null, but non null value was expected.');
+        $contactAddr = $dto->getContactAddr();
+        Assertion::notNull($contactAddr, 'getContactAddr value is null, but non null value was expected.');
+        $ddiProviderRegistration = $dto->getDdiProviderRegistration();
+        Assertion::notNull($ddiProviderRegistration, 'getDdiProviderRegistration value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLUuid(),
-            $dto->getLUsername(),
-            $dto->getLDomain(),
-            $dto->getRUsername(),
-            $dto->getRDomain(),
-            $dto->getRealm(),
-            $dto->getAuthUsername(),
-            $dto->getAuthPassword(),
-            $dto->getAuthProxy(),
-            $dto->getExpires(),
-            $dto->getFlags(),
-            $dto->getRegDelay(),
-            $dto->getAuthHa1(),
-            $dto->getSocket(),
-            $dto->getContactAddr()
+            $lUuid,
+            $lUsername,
+            $lDomain,
+            $rUsername,
+            $rDomain,
+            $realm,
+            $authUsername,
+            $authPassword,
+            $authProxy,
+            $expires,
+            $flags,
+            $regDelay,
+            $authHa1,
+            $socket,
+            $contactAddr
         );
 
         $self
-            ->setDdiProviderRegistration($fkTransformer->transform($dto->getDdiProviderRegistration()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setDdiProviderRegistration($fkTransformer->transform($ddiProviderRegistration))
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -253,42 +279,74 @@ abstract class TrunksUacregAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksUacregDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksUacregDto::class);
 
+        $lUuid = $dto->getLUuid();
+        Assertion::notNull($lUuid, 'getLUuid value is null, but non null value was expected.');
+        $lUsername = $dto->getLUsername();
+        Assertion::notNull($lUsername, 'getLUsername value is null, but non null value was expected.');
+        $lDomain = $dto->getLDomain();
+        Assertion::notNull($lDomain, 'getLDomain value is null, but non null value was expected.');
+        $rUsername = $dto->getRUsername();
+        Assertion::notNull($rUsername, 'getRUsername value is null, but non null value was expected.');
+        $rDomain = $dto->getRDomain();
+        Assertion::notNull($rDomain, 'getRDomain value is null, but non null value was expected.');
+        $realm = $dto->getRealm();
+        Assertion::notNull($realm, 'getRealm value is null, but non null value was expected.');
+        $authUsername = $dto->getAuthUsername();
+        Assertion::notNull($authUsername, 'getAuthUsername value is null, but non null value was expected.');
+        $authPassword = $dto->getAuthPassword();
+        Assertion::notNull($authPassword, 'getAuthPassword value is null, but non null value was expected.');
+        $authProxy = $dto->getAuthProxy();
+        Assertion::notNull($authProxy, 'getAuthProxy value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $regDelay = $dto->getRegDelay();
+        Assertion::notNull($regDelay, 'getRegDelay value is null, but non null value was expected.');
+        $authHa1 = $dto->getAuthHa1();
+        Assertion::notNull($authHa1, 'getAuthHa1 value is null, but non null value was expected.');
+        $socket = $dto->getSocket();
+        Assertion::notNull($socket, 'getSocket value is null, but non null value was expected.');
+        $contactAddr = $dto->getContactAddr();
+        Assertion::notNull($contactAddr, 'getContactAddr value is null, but non null value was expected.');
+        $ddiProviderRegistration = $dto->getDdiProviderRegistration();
+        Assertion::notNull($ddiProviderRegistration, 'getDdiProviderRegistration value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setLUuid($dto->getLUuid())
-            ->setLUsername($dto->getLUsername())
-            ->setLDomain($dto->getLDomain())
-            ->setRUsername($dto->getRUsername())
-            ->setRDomain($dto->getRDomain())
-            ->setRealm($dto->getRealm())
-            ->setAuthUsername($dto->getAuthUsername())
-            ->setAuthPassword($dto->getAuthPassword())
-            ->setAuthProxy($dto->getAuthProxy())
-            ->setExpires($dto->getExpires())
-            ->setFlags($dto->getFlags())
-            ->setRegDelay($dto->getRegDelay())
-            ->setAuthHa1($dto->getAuthHa1())
-            ->setSocket($dto->getSocket())
-            ->setContactAddr($dto->getContactAddr())
-            ->setDdiProviderRegistration($fkTransformer->transform($dto->getDdiProviderRegistration()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setLUuid($lUuid)
+            ->setLUsername($lUsername)
+            ->setLDomain($lDomain)
+            ->setRUsername($rUsername)
+            ->setRDomain($rDomain)
+            ->setRealm($realm)
+            ->setAuthUsername($authUsername)
+            ->setAuthPassword($authPassword)
+            ->setAuthProxy($authProxy)
+            ->setExpires($expires)
+            ->setFlags($flags)
+            ->setRegDelay($regDelay)
+            ->setAuthHa1($authHa1)
+            ->setSocket($socket)
+            ->setContactAddr($contactAddr)
+            ->setDdiProviderRegistration($fkTransformer->transform($ddiProviderRegistration))
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksUacregDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksUacregDto
     {
         return self::createDto()
             ->setLUuid(self::getLUuid())
@@ -311,9 +369,9 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'l_uuid' => self::getLUuid(),
@@ -544,7 +602,6 @@ abstract class TrunksUacregAbstract
     {
         $this->ddiProviderRegistration = $ddiProviderRegistration;
 
-        /** @var  $this */
         return $this;
     }
 

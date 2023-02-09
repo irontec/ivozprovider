@@ -13,9 +13,9 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,7 +36,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      * @return string
      */
-    public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting)
+    public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting): string
     {
         $company = $outgoingRouting->getCompany();
 
@@ -44,15 +44,15 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
             // Apply all companies
             return sprintf(
                 '^b%dc[0-9]+$',
-                $outgoingRouting->getBrand()->getId()
+                (int) $outgoingRouting->getBrand()->getId()
             );
         }
 
         // Company specific rule
         return sprintf(
             '^b%dc%d$',
-            $outgoingRouting->getBrand()->getId(),
-            $company->getId()
+            (int) $outgoingRouting->getBrand()->getId(),
+            (int) $company->getId()
         );
     }
 }

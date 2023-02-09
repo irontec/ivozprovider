@@ -31,4 +31,22 @@ class FeaturesRelCompanyRepositoryTest extends KernelTestCase
             $featuresRelCompanyRepository
         );
     }
+
+    public function it_finds_feature_idens_by_company_id()
+    {
+        /** @var FeaturesRelCompanyRepository $repository */
+        $repository = $this
+            ->em
+            ->getRepository(FeaturesRelCompany::class);
+
+        $idens = $repository->findFeatureIdensByCompanyId(1);
+
+        $this->assertIsArray(
+            $idens
+        );
+
+        $this->assertIsString(
+            $idens[0]
+        );
+    }
 }

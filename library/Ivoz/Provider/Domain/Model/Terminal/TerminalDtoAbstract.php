@@ -20,90 +20,93 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disallow = 'all';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $allowAudio = 'alaw';
 
     /**
      * @var string|null
      */
-    private $allowVideo;
+    private $allowVideo = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directMediaMethod = 'update';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $password = '';
 
     /**
      * @var string|null
      */
-    private $mac;
+    private $mac = null;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $lastProvisionDate;
+    private $lastProvisionDate = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Passthrough = 'no';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $rtpEncryption = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var TerminalModelDto | null
      */
-    private $terminalModel;
+    private $terminalModel = null;
 
     /**
      * @var PsEndpointDto | null
      */
-    private $psEndpoint;
+    private $psEndpoint = null;
 
     /**
      * @var PsIdentifyDto | null
      */
-    private $psIdentify;
+    private $psIdentify = null;
 
     /**
      * @var UserDto[] | null
      */
-    private $users;
+    private $users = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -112,7 +115,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -139,9 +142,9 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -177,7 +180,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -189,7 +192,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -201,7 +204,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->disallow;
     }
 
-    public function setAllowAudio(?string $allowAudio): static
+    public function setAllowAudio(string $allowAudio): static
     {
         $this->allowAudio = $allowAudio;
 
@@ -225,7 +228,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->allowVideo;
     }
 
-    public function setDirectMediaMethod(?string $directMediaMethod): static
+    public function setDirectMediaMethod(string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
@@ -237,7 +240,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->directMediaMethod;
     }
 
-    public function setPassword(?string $password): static
+    public function setPassword(string $password): static
     {
         $this->password = $password;
 
@@ -261,19 +264,19 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->mac;
     }
 
-    public function setLastProvisionDate(null|\DateTime|string $lastProvisionDate): static
+    public function setLastProvisionDate(null|\DateTimeInterface|string $lastProvisionDate): static
     {
         $this->lastProvisionDate = $lastProvisionDate;
 
         return $this;
     }
 
-    public function getLastProvisionDate(): \DateTime|string|null
+    public function getLastProvisionDate(): \DateTimeInterface|string|null
     {
         return $this->lastProvisionDate;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -285,7 +288,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->t38Passthrough;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -304,7 +307,7 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

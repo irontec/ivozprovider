@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Timezone;
 
@@ -9,40 +10,40 @@ use Assert\Assertion;
 * Label
 * @codeCoverageIgnore
 */
-class Label
+final class Label
 {
     /**
+     * @var string
      * column: timeZoneLabel_en
-     * @var string
      */
-    protected $en = '';
+    private $en = '';
 
     /**
+     * @var string
      * column: timeZoneLabel_es
-     * @var string
      */
-    protected $es = '';
+    private $es = '';
 
     /**
+     * @var string
      * column: timeZoneLabel_ca
-     * @var string
      */
-    protected $ca = '';
+    private $ca = '';
 
     /**
-     * column: timeZoneLabel_it
      * @var string
+     * column: timeZoneLabel_it
      */
-    protected $it = '';
+    private $it = '';
 
     /**
      * Constructor
      */
     public function __construct(
-        $en,
-        $es,
-        $ca,
-        $it
+        string $en,
+        string $es,
+        string $ca,
+        string $it
     ) {
         $this->setEn($en);
         $this->setEs($es);
@@ -50,16 +51,18 @@ class Label
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $label)
+    public function equals(self $label): bool
     {
-        return
-            $this->getEn() === $label->getEn() &&
-            $this->getEs() === $label->getEs() &&
-            $this->getCa() === $label->getCa() &&
-            $this->getIt() === $label->getIt();
+        if ($this->getEn() !== $label->getEn()) {
+            return false;
+        }
+        if ($this->getEs() !== $label->getEs()) {
+            return false;
+        }
+        if ($this->getCa() !== $label->getCa()) {
+            return false;
+        }
+        return $this->getIt() === $label->getIt();
     }
 
     protected function setEn(string $en): static

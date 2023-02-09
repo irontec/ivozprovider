@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlan;
 
@@ -14,9 +15,9 @@ use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 trait RatingPlanTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TpTimingInterface
@@ -38,35 +39,33 @@ trait RatingPlanTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param RatingPlanDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpTiming())) {
-            $self->setTpTiming(
-                $fkTransformer->transform(
-                    $dto->getTpTiming()
-                )
+            /** @var TpTimingInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpTiming()
             );
+            $self->setTpTiming($entity);
         }
 
         if (!is_null($dto->getTpRatingPlan())) {
-            $self->setTpRatingPlan(
-                $fkTransformer->transform(
-                    $dto->getTpRatingPlan()
-                )
+            /** @var TpRatingPlanInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRatingPlan()
             );
+            $self->setTpRatingPlan($entity);
         }
 
         $self->sanitizeValues();
@@ -81,28 +80,26 @@ trait RatingPlanTrait
     /**
      * @internal use EntityTools instead
      * @param RatingPlanDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpTiming())) {
-            $this->setTpTiming(
-                $fkTransformer->transform(
-                    $dto->getTpTiming()
-                )
+            /** @var TpTimingInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpTiming()
             );
+            $this->setTpTiming($entity);
         }
 
         if (!is_null($dto->getTpRatingPlan())) {
-            $this->setTpRatingPlan(
-                $fkTransformer->transform(
-                    $dto->getTpRatingPlan()
-                )
+            /** @var TpRatingPlanInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRatingPlan()
             );
+            $this->setTpRatingPlan($entity);
         }
         $this->sanitizeValues();
 
@@ -111,10 +108,8 @@ trait RatingPlanTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RatingPlanDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RatingPlanDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -122,9 +117,9 @@ trait RatingPlanTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -135,7 +130,6 @@ trait RatingPlanTrait
     {
         $this->tpTiming = $tpTiming;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -148,7 +142,6 @@ trait RatingPlanTrait
     {
         $this->tpRatingPlan = $tpRatingPlan;
 
-        /** @var  $this */
         return $this;
     }
 

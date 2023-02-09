@@ -25,8 +25,10 @@ Feature: Create external call filter rel calendars
           "id": 2,
           "filter": {
               "name": "testFilter",
+              "holidayEnabled": true,
               "holidayTargetType": null,
               "holidayNumberValue": null,
+              "outOfScheduleEnabled": true,
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
@@ -35,8 +37,8 @@ Feature: Create external call filter rel calendars
               "outOfScheduleLocution": null,
               "holidayExtension": null,
               "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
+              "holidayVoicemail": null,
+              "outOfScheduleVoicemail": null,
               "holidayNumberCountry": null,
               "outOfScheduleNumberCountry": null
           },
@@ -60,8 +62,10 @@ Feature: Create external call filter rel calendars
           "id": 2,
           "filter": {
               "name": "testFilter",
+              "holidayEnabled": true,
               "holidayTargetType": null,
               "holidayNumberValue": null,
+              "outOfScheduleEnabled": true,
               "outOfScheduleTargetType": null,
               "outOfScheduleNumberValue": null,
               "id": 1,
@@ -70,8 +74,8 @@ Feature: Create external call filter rel calendars
               "outOfScheduleLocution": null,
               "holidayExtension": null,
               "outOfScheduleExtension": null,
-              "holidayVoiceMailUser": null,
-              "outOfScheduleVoiceMailUser": null,
+              "holidayVoicemail": null,
+              "outOfScheduleVoicemail": null,
               "holidayNumberCountry": null,
               "outOfScheduleNumberCountry": null
           },

@@ -4,8 +4,6 @@
 DDIs
 ####
 
-.. glossary::
-
     Country
         The country of the new created DDI. Used for E164 standardization.
 

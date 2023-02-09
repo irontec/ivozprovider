@@ -13,28 +13,12 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class AdminTokenAuthenticator extends JWTTokenAuthenticator
 {
-    /**
-     * @var JWTTokenManagerInterface
-     */
-    protected $jwtManager;
-
-
-    protected $tokenStorage;
-
-    /**
-     * @param JWTTokenManagerInterface $jwtManager
-     * @param EventDispatcherInterface $dispatcher
-     * @param TokenExtractorInterface  $tokenExtractor
-     */
     public function __construct(
-        JWTTokenManagerInterface $jwtManager,
+        private JWTTokenManagerInterface $jwtManager,
         EventDispatcherInterface $dispatcher,
         TokenExtractorInterface $tokenExtractor,
-        TokenStorageInterface $tokenStorage
+        private TokenStorageInterface $tokenStorage
     ) {
-        $this->jwtManager = $jwtManager;
-        $this->tokenStorage = $tokenStorage;
-
         parent::__construct($jwtManager, $dispatcher, $tokenExtractor, $tokenStorage);
     }
 

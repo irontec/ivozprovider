@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\IvrExcludedExtension;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Ivr\IvrInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
@@ -22,10 +23,10 @@ abstract class IvrExcludedExtensionAbstract
     use ChangelogTrait;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      * inversedBy excludedExtensions
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
      * @var ExtensionInterface
@@ -39,41 +40,34 @@ abstract class IvrExcludedExtensionAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "IvrExcludedExtension",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return IvrExcludedExtensionDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): IvrExcludedExtensionDto
     {
         return new IvrExcludedExtensionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param IvrExcludedExtensionInterface|null $entity
-     * @param int $depth
-     * @return IvrExcludedExtensionDto|null
+     * @param null|IvrExcludedExtensionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?IvrExcludedExtensionDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class IvrExcludedExtensionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var IvrExcludedExtensionDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class IvrExcludedExtensionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param IvrExcludedExtensionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
+        $extension = $dto->getExtension();
+        Assertion::notNull($extension, 'getExtension value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setIvr($fkTransformer->transform($dto->getIvr()))
-            ->setExtension($fkTransformer->transform($dto->getExtension()));
+            ->setExtension($fkTransformer->transform($extension));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * @internal use EntityTools instead
      * @param IvrExcludedExtensionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, IvrExcludedExtensionDto::class);
+
+        $extension = $dto->getExtension();
+        Assertion::notNull($extension, 'getExtension value is null, but non null value was expected.');
 
         $this
             ->setIvr($fkTransformer->transform($dto->getIvr()))
-            ->setExtension($fkTransformer->transform($dto->getExtension()));
+            ->setExtension($fkTransformer->transform($extension));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return IvrExcludedExtensionDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): IvrExcludedExtensionDto
     {
         return self::createDto()
             ->setIvr(Ivr::entityToDto(self::getIvr(), $depth))
@@ -149,12 +143,12 @@ abstract class IvrExcludedExtensionAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
+            'ivrId' => self::getIvr()?->getId(),
             'extensionId' => self::getExtension()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class IvrExcludedExtensionAbstract
     {
         $this->ivr = $ivr;
 
-        /** @var  $this */
         return $this;
     }
 

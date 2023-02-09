@@ -1,79 +1,61 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const { entityService, row, match } = props;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('Basic Configuration'),
+      fields: [
+        'name',
+        'timeout',
+        'maxDigits',
+        'welcomeLocution',
+        'successLocution',
+      ],
+    },
+    {
+      legend: _('Extension dialing'),
+      fields: ['allowExtensions', 'excludedExtensionIds'],
+    },
+    {
+      legend: _('No input configuration'),
+      fields: [
+        'noInputLocution',
+        'noInputRouteType',
+        'noInputNumberCountry',
+        'noInputNumberValue',
+        'noInputExtension',
+        'noInputVoicemail',
+      ],
+    },
+    {
+      legend: _('Error configuration'),
+      fields: [
+        'errorLocution',
+        'errorRouteType',
+        'errorNumberCountry',
+        'errorNumberValue',
+        'errorExtension',
+        'errorVoicemail',
+      ],
+    },
+  ];
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
-
-    useEffect(
-        () => {
-
-            if (loadingFks) {
-
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            welcomeLocution: options,
-                            noInputLocution: options,
-                            errorLocution: options,
-                            successLocution: options,
-                        }
-                    });
-                });
-
-                //@TODO
-                // excludedExtensions
-
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noInputNumberCountry: options,
-                            errorNumberCountry: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noInputExtension: options,
-                            errorExtension: options,
-                        }
-                    });
-                });
-
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noInputVoiceMailUser: options,
-                            errorVoiceMailUser: options,
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+};
 
 export default Form;

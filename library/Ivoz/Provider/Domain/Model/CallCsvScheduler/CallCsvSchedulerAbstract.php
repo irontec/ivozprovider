@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -46,8 +47,8 @@ abstract class CallCsvSchedulerAbstract
     protected $name;
 
     /**
-     * comment: enum:day|week|month
      * @var string
+     * comment: enum:day|week|month
      */
     protected $unit = 'month';
 
@@ -57,8 +58,8 @@ abstract class CallCsvSchedulerAbstract
     protected $frequency;
 
     /**
+     * @var ?string
      * comment: enum:inbound|outbound
-     * @var string | null
      */
     protected $callDirection = 'outbound';
 
@@ -68,83 +69,83 @@ abstract class CallCsvSchedulerAbstract
     protected $email;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $lastExecution;
+    protected $lastExecution = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $lastExecutionError;
+    protected $lastExecutionError = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $nextExecution;
+    protected $nextExecution = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $ddi;
+    protected $ddi = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?FaxInterface
      */
-    protected $fax;
+    protected $fax = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $unit,
-        $frequency,
-        $email
+        string $name,
+        string $unit,
+        int $frequency,
+        string $email
     ) {
         $this->setName($name);
         $this->setUnit($unit);
@@ -152,41 +153,34 @@ abstract class CallCsvSchedulerAbstract
         $this->setEmail($email);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CallCsvScheduler",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CallCsvSchedulerDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CallCsvSchedulerDto
     {
         return new CallCsvSchedulerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CallCsvSchedulerInterface|null $entity
-     * @param int $depth
-     * @return CallCsvSchedulerDto|null
+     * @param null|CallCsvSchedulerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallCsvSchedulerDto
     {
         if (!$entity) {
             return null;
@@ -202,8 +196,7 @@ abstract class CallCsvSchedulerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CallCsvSchedulerDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -212,19 +205,26 @@ abstract class CallCsvSchedulerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CallCsvSchedulerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getUnit(),
-            $dto->getFrequency(),
-            $dto->getEmail()
+            $name,
+            $unit,
+            $frequency,
+            $email
         );
 
         $self
@@ -252,20 +252,28 @@ abstract class CallCsvSchedulerAbstract
     /**
      * @internal use EntityTools instead
      * @param CallCsvSchedulerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallCsvSchedulerDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $unit = $dto->getUnit();
+        Assertion::notNull($unit, 'getUnit value is null, but non null value was expected.');
+        $frequency = $dto->getFrequency();
+        Assertion::notNull($frequency, 'getFrequency value is null, but non null value was expected.');
+        $email = $dto->getEmail();
+        Assertion::notNull($email, 'getEmail value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setUnit($dto->getUnit())
-            ->setFrequency($dto->getFrequency())
+            ->setName($name)
+            ->setUnit($unit)
+            ->setFrequency($frequency)
             ->setCallDirection($dto->getCallDirection())
-            ->setEmail($dto->getEmail())
+            ->setEmail($email)
             ->setLastExecution($dto->getLastExecution())
             ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
@@ -286,10 +294,8 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CallCsvSchedulerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CallCsvSchedulerDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -314,9 +320,9 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -327,17 +333,17 @@ abstract class CallCsvSchedulerAbstract
             'lastExecution' => self::getLastExecution(),
             'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'ddiId' => self::getDdi() ? self::getDdi()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'ddiId' => self::getDdi()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId()
         ];
     }
 
@@ -429,19 +435,17 @@ abstract class CallCsvSchedulerAbstract
         return $this->email;
     }
 
-    protected function setLastExecution($lastExecution = null): static
+    protected function setLastExecution(string|\DateTimeInterface|null $lastExecution = null): static
     {
         if (!is_null($lastExecution)) {
-            Assertion::notNull(
-                $lastExecution,
-                'lastExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $lastExecution = DateTimeHelper::createOrFix(
                 $lastExecution,
                 null
             );
 
-            if ($this->lastExecution == $lastExecution) {
+            if ($this->isInitialized() && $this->lastExecution == $lastExecution) {
                 return $this;
             }
         }
@@ -472,19 +476,17 @@ abstract class CallCsvSchedulerAbstract
         return $this->lastExecutionError;
     }
 
-    protected function setNextExecution($nextExecution = null): static
+    protected function setNextExecution(string|\DateTimeInterface|null $nextExecution = null): static
     {
         if (!is_null($nextExecution)) {
-            Assertion::notNull(
-                $nextExecution,
-                'nextExecution value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $nextExecution = DateTimeHelper::createOrFix(
                 $nextExecution,
                 null
             );
 
-            if ($this->nextExecution == $nextExecution) {
+            if ($this->isInitialized() && $this->nextExecution == $nextExecution) {
                 return $this;
             }
         }

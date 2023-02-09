@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationDto;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationRepository;
@@ -13,29 +14,11 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterfac
 
 class NotifyMaxDailyUsage
 {
-    /**
-     * @var MaxUsageNotificationRepository
-     */
-    protected $maxUsageNotificationRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var MailerClientInterface
-     */
-    protected $mailer;
-
     public function __construct(
-        MaxUsageNotificationRepository $maxUsageNotificationRepository,
-        EntityTools $entityTools,
-        MailerClientInterface $mailer
+        private MaxUsageNotificationRepository $maxUsageNotificationRepository,
+        private EntityTools $entityTools,
+        private MailerClientInterface $mailer
     ) {
-        $this->maxUsageNotificationRepository = $maxUsageNotificationRepository;
-        $this->entityTools = $entityTools;
-        $this->mailer = $mailer;
     }
 
     /**
@@ -43,7 +26,8 @@ class NotifyMaxDailyUsage
      */
     public function send(
         CompanyInterface $company,
-        NotificationTemplateInterface $notificationTemplate
+        NotificationTemplateInterface $notificationTemplate,
+        LanguageInterface $language
     ) {
         /** @var MaxUsageNotification | null $maxUsageNotification */
         $maxUsageNotification = $this
@@ -56,13 +40,8 @@ class NotifyMaxDailyUsage
             : new MaxUsageNotificationDto();
 
         $language = $company->getLanguage();
-        if (!$language) {
-            $language = $company
-                ->getBrand()
-                ->getLanguage();
-        }
-
-        $notificationTemplateContent = $notificationTemplate->getContentsByLanguage($language);
+        $notificationTemplateContent = $notificationTemplate
+            ->getContentsByLanguage($language);
 
         $subject = $this->parseNotificationSubject(
             $notificationTemplateContent->getSubject(),
@@ -109,7 +88,7 @@ class NotifyMaxDailyUsage
             )
             ->setLastSent(
                 new \DateTime(
-                    null,
+                    'now',
                     new \DateTimeZone('UTC')
                 )
             );
@@ -132,7 +111,7 @@ class NotifyMaxDailyUsage
         return str_replace(array_keys($substitution), array_values($substitution), $content);
     }
 
-    private function parseNotificationBody(string $content, string $name, float $amount): string
+    private function parseNotificationBody(string $content, string $name, int $amount): string
     {
         $substitution = array(
             '${MAXDAILYUSAGE_COMPANY}' => $name,

@@ -16,6 +16,8 @@ Feature: Retrieve fixed costs rel invoice schedulers
       [
           {
               "quantity": 1,
+              "type": "static",
+              "ddisCountryMatch": null,
               "id": 1,
               "fixedCost": {
                   "name": "Monitoring",
@@ -37,7 +39,8 @@ Feature: Retrieve fixed costs rel invoice schedulers
                   "brand": 1,
                   "company": 1,
                   "numberSequence": null
-              }
+              },
+              "ddisCountry": null
           }
       ]
     """
@@ -53,6 +56,8 @@ Feature: Retrieve fixed costs rel invoice schedulers
     """
       {
           "quantity": 1,
+          "type": "static",
+          "ddisCountryMatch": null,
           "id": 1,
           "fixedCost": {
               "name": "Monitoring",
@@ -74,6 +79,7 @@ Feature: Retrieve fixed costs rel invoice schedulers
               "brand": 1,
               "company": 1,
               "numberSequence": null
-          }
+          },
+          "ddisCountry": null
       }
     """

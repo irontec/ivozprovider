@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Service;
 
@@ -9,40 +10,40 @@ use Assert\Assertion;
 * Name
 * @codeCoverageIgnore
 */
-class Name
+final class Name
 {
     /**
+     * @var string
      * column: name_en
-     * @var string
      */
-    protected $en = '';
+    private $en = '';
 
     /**
+     * @var string
      * column: name_es
-     * @var string
      */
-    protected $es = '';
+    private $es = '';
 
     /**
+     * @var string
      * column: name_ca
-     * @var string
      */
-    protected $ca = '';
+    private $ca = '';
 
     /**
-     * column: name_it
      * @var string
+     * column: name_it
      */
-    protected $it = '';
+    private $it = '';
 
     /**
      * Constructor
      */
     public function __construct(
-        $en,
-        $es,
-        $ca,
-        $it
+        string $en,
+        string $es,
+        string $ca,
+        string $it
     ) {
         $this->setEn($en);
         $this->setEs($es);
@@ -50,16 +51,18 @@ class Name
         $this->setIt($it);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $name)
+    public function equals(self $name): bool
     {
-        return
-            $this->getEn() === $name->getEn() &&
-            $this->getEs() === $name->getEs() &&
-            $this->getCa() === $name->getCa() &&
-            $this->getIt() === $name->getIt();
+        if ($this->getEn() !== $name->getEn()) {
+            return false;
+        }
+        if ($this->getEs() !== $name->getEs()) {
+            return false;
+        }
+        if ($this->getCa() !== $name->getCa()) {
+            return false;
+        }
+        return $this->getIt() === $name->getIt();
     }
 
     protected function setEn(string $en): static

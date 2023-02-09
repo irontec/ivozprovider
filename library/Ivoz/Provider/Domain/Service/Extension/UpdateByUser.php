@@ -13,18 +13,12 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
  */
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = 20;
-    const POST_REMOVE_PRIORITY = 10;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const POST_PERSIST_PRIORITY = 20;
+    public const POST_REMOVE_PRIORITY = 10;
 
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

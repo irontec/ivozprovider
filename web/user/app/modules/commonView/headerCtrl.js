@@ -58,6 +58,9 @@ angular
             var userName = localStorage.getItem('userName');
             var voiceMail = localStorage.getItem('voiceMail');
 
+            // https://stackoverflow.com/a/20856346
+            var QrSafeUserName = userName.replace(/[^\x00-\x7F]/g, ' ');
+
             $scope.gsQRCode = true;
             $scope.QRCode = '<?xml version="1.0" encoding="utf-8"?>'
                 + '<AccountConfig version="1"><Account>'
@@ -66,7 +69,7 @@ angular
                 + '<AuthID>' + terminalName + '</AuthID>'
                 + '<AuthPass>' + terminalPassword + '</AuthPass>'
                 + '<AccountName>' + extensionNumber + ' ' + companyName + '</AccountName>'
-                + '<DisplayName>' + userName + '</DisplayName>'
+                + '<DisplayName>' + QrSafeUserName + '</DisplayName>'
                 + '<Voicemail>' + voiceMail + '</Voicemail>'
                 + '</Account>'
                 + '</AccountConfig>';

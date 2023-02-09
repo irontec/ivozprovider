@@ -13,7 +13,7 @@ trait NextExecutionResolverTrait
     /**
      * @var EntityTools
      */
-    protected $entityTools;
+    private $entityTools;
 
     /**
      * @see http://php.net/manual/es/datetime.formats.relative.php
@@ -26,7 +26,7 @@ trait NextExecutionResolverTrait
         $dateTimeZone = new \DateTimeZone($timeZone->getTz());
 
         $nextExecution = new \DateTime(
-            null,
+            'now',
             $dateTimeZone
         );
 
@@ -95,8 +95,9 @@ trait NextExecutionResolverTrait
 
     /**
      * @return void
+     * @param \DateTime|\DateTimeImmutable $nextExecution
      */
-    protected function setNextExecution(SchedulerInterface $scheduler, \DateTime $nextExecution)
+    protected function setNextExecution(SchedulerInterface $scheduler, \DateTimeInterface $nextExecution)
     {
         /** @var InvoiceSchedulerDto $schedulerDto */
         $schedulerDto = $this->entityTools->entityToDto($scheduler);

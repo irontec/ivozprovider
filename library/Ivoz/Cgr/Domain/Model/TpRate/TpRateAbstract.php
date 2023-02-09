@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpRate;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
@@ -26,43 +27,43 @@ abstract class TpRateAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
-     * column: connect_fee
      * @var float
+     * column: connect_fee
      */
     protected $connectFee;
 
     /**
-     * column: rate
      * @var float
+     * column: rate
      */
     protected $rateCost;
 
     /**
-     * column: rate_unit
      * @var string
+     * column: rate_unit
      */
     protected $rateUnit = '60s';
 
     /**
-     * column: rate_increment
      * @var string
+     * column: rate_increment
      */
     protected $rateIncrement;
 
     /**
-     * column: group_interval_start
      * @var string
+     * column: group_interval_start
      */
     protected $groupIntervalStart = '0s';
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
@@ -76,13 +77,13 @@ abstract class TpRateAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $connectFee,
-        $rateCost,
-        $rateUnit,
-        $rateIncrement,
-        $groupIntervalStart,
-        $createdAt
+        string $tpid,
+        float $connectFee,
+        float $rateCost,
+        string $rateUnit,
+        string $rateIncrement,
+        string $groupIntervalStart,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setConnectFee($connectFee);
@@ -93,41 +94,34 @@ abstract class TpRateAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpRate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpRateDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpRateDto
     {
         return new TpRateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpRateInterface|null $entity
-     * @param int $depth
-     * @return TpRateDto|null
+     * @param null|TpRateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpRateDto
     {
         if (!$entity) {
             return null;
@@ -143,8 +137,7 @@ abstract class TpRateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpRateDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -153,27 +146,42 @@ abstract class TpRateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpRateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpRateDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateCost = $dto->getRateCost();
+        Assertion::notNull($rateCost, 'getRateCost value is null, but non null value was expected.');
+        $rateUnit = $dto->getRateUnit();
+        Assertion::notNull($rateUnit, 'getRateUnit value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getConnectFee(),
-            $dto->getRateCost(),
-            $dto->getRateUnit(),
-            $dto->getRateIncrement(),
-            $dto->getGroupIntervalStart(),
-            $dto->getCreatedAt()
+            $tpid,
+            $connectFee,
+            $rateCost,
+            $rateUnit,
+            $rateIncrement,
+            $groupIntervalStart,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         $self->initChangelog();
 
@@ -183,34 +191,48 @@ abstract class TpRateAbstract
     /**
      * @internal use EntityTools instead
      * @param TpRateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpRateDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $connectFee = $dto->getConnectFee();
+        Assertion::notNull($connectFee, 'getConnectFee value is null, but non null value was expected.');
+        $rateCost = $dto->getRateCost();
+        Assertion::notNull($rateCost, 'getRateCost value is null, but non null value was expected.');
+        $rateUnit = $dto->getRateUnit();
+        Assertion::notNull($rateUnit, 'getRateUnit value is null, but non null value was expected.');
+        $rateIncrement = $dto->getRateIncrement();
+        Assertion::notNull($rateIncrement, 'getRateIncrement value is null, but non null value was expected.');
+        $groupIntervalStart = $dto->getGroupIntervalStart();
+        Assertion::notNull($groupIntervalStart, 'getGroupIntervalStart value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destinationRate = $dto->getDestinationRate();
+        Assertion::notNull($destinationRate, 'getDestinationRate value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
-            ->setConnectFee($dto->getConnectFee())
-            ->setRateCost($dto->getRateCost())
-            ->setRateUnit($dto->getRateUnit())
-            ->setRateIncrement($dto->getRateIncrement())
-            ->setGroupIntervalStart($dto->getGroupIntervalStart())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestinationRate($fkTransformer->transform($dto->getDestinationRate()));
+            ->setConnectFee($connectFee)
+            ->setRateCost($rateCost)
+            ->setRateUnit($rateUnit)
+            ->setRateIncrement($rateIncrement)
+            ->setGroupIntervalStart($groupIntervalStart)
+            ->setCreatedAt($createdAt)
+            ->setDestinationRate($fkTransformer->transform($destinationRate));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpRateDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -225,9 +247,9 @@ abstract class TpRateAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -338,15 +360,16 @@ abstract class TpRateAbstract
         return $this->groupIntervalStart;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -364,7 +387,6 @@ abstract class TpRateAbstract
     {
         $this->destinationRate = $destinationRate;
 
-        /** @var  $this */
         return $this;
     }
 

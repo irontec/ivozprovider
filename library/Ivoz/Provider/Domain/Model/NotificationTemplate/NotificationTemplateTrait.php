@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -15,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait NotificationTemplateTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, NotificationTemplateContentInterface> & Selectable<array-key, NotificationTemplateContentInterface>
      * NotificationTemplateContentInterface mappedBy notificationTemplate
      */
     protected $contents;
@@ -34,27 +37,27 @@ trait NotificationTemplateTrait
         $this->contents = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param NotificationTemplateDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getContents())) {
-            $self->replaceContents(
-                $fkTransformer->transformCollection(
-                    $dto->getContents()
-                )
+        $contents = $dto->getContents();
+        if (!is_null($contents)) {
+
+            /** @var Collection<array-key, NotificationTemplateContentInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $contents
             );
+            $self->replaceContents($replacement);
         }
 
         $self->sanitizeValues();
@@ -69,20 +72,20 @@ trait NotificationTemplateTrait
     /**
      * @internal use EntityTools instead
      * @param NotificationTemplateDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getContents())) {
-            $this->replaceContents(
-                $fkTransformer->transformCollection(
-                    $dto->getContents()
-                )
+        $contents = $dto->getContents();
+        if (!is_null($contents)) {
+
+            /** @var Collection<array-key, NotificationTemplateContentInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $contents
             );
+            $this->replaceContents($replacement);
         }
         $this->sanitizeValues();
 
@@ -91,10 +94,8 @@ trait NotificationTemplateTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return NotificationTemplateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): NotificationTemplateDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -102,9 +103,9 @@ trait NotificationTemplateTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -125,25 +126,33 @@ trait NotificationTemplateTrait
         return $this;
     }
 
-    public function replaceContents(ArrayCollection $contents): NotificationTemplateInterface
+    /**
+     * @param Collection<array-key, NotificationTemplateContentInterface> $contents
+     */
+    public function replaceContents(Collection $contents): NotificationTemplateInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($contents as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setNotificationTemplate($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->contents as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->contents->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->contents->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->contents->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -153,6 +162,9 @@ trait NotificationTemplateTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, NotificationTemplateContentInterface>
+     */
     public function getContents(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

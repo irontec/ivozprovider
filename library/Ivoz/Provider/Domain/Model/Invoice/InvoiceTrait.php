@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -15,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait InvoiceTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FixedCostsRelInvoiceInterface> & Selectable<array-key, FixedCostsRelInvoiceInterface>
      * FixedCostsRelInvoiceInterface mappedBy invoice
      * orphanRemoval
      */
@@ -35,27 +38,27 @@ trait InvoiceTrait
         $this->relFixedCosts = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelFixedCosts())) {
-            $self->replaceRelFixedCosts(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFixedCosts()
-                )
+        $relFixedCosts = $dto->getRelFixedCosts();
+        if (!is_null($relFixedCosts)) {
+
+            /** @var Collection<array-key, FixedCostsRelInvoiceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFixedCosts
             );
+            $self->replaceRelFixedCosts($replacement);
         }
 
         $self->sanitizeValues();
@@ -70,20 +73,20 @@ trait InvoiceTrait
     /**
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelFixedCosts())) {
-            $this->replaceRelFixedCosts(
-                $fkTransformer->transformCollection(
-                    $dto->getRelFixedCosts()
-                )
+        $relFixedCosts = $dto->getRelFixedCosts();
+        if (!is_null($relFixedCosts)) {
+
+            /** @var Collection<array-key, FixedCostsRelInvoiceInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relFixedCosts
             );
+            $this->replaceRelFixedCosts($replacement);
         }
         $this->sanitizeValues();
 
@@ -92,10 +95,8 @@ trait InvoiceTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return InvoiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): InvoiceDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -103,9 +104,9 @@ trait InvoiceTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -126,25 +127,33 @@ trait InvoiceTrait
         return $this;
     }
 
-    public function replaceRelFixedCosts(ArrayCollection $relFixedCosts): InvoiceInterface
+    /**
+     * @param Collection<array-key, FixedCostsRelInvoiceInterface> $relFixedCosts
+     */
+    public function replaceRelFixedCosts(Collection $relFixedCosts): InvoiceInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relFixedCosts as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setInvoice($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relFixedCosts as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relFixedCosts->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relFixedCosts->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relFixedCosts->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -154,6 +163,9 @@ trait InvoiceTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FixedCostsRelInvoiceInterface>
+     */
     public function getRelFixedCosts(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

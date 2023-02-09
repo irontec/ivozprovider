@@ -15,45 +15,48 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $setid = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $url;
+    private $url = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $weight = 1;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $disabled = false;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $stamp = '2000-01-01 00:00:00';
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySet;
+    private $mediaRelaySet = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -62,7 +65,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -81,9 +84,9 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'setid' => $this->getSetid(),
@@ -110,7 +113,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSetid(?int $setid): static
+    public function setSetid(int $setid): static
     {
         $this->setid = $setid;
 
@@ -122,7 +125,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->setid;
     }
 
-    public function setUrl(?string $url): static
+    public function setUrl(string $url): static
     {
         $this->url = $url;
 
@@ -134,7 +137,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->url;
     }
 
-    public function setWeight(?int $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
 
@@ -146,7 +149,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->weight;
     }
 
-    public function setDisabled(?bool $disabled): static
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
 
@@ -158,14 +161,14 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this->disabled;
     }
 
-    public function setStamp(null|\DateTime|string $stamp): static
+    public function setStamp(\DateTimeInterface|string $stamp): static
     {
         $this->stamp = $stamp;
 
         return $this;
     }
 
-    public function getStamp(): \DateTime|string|null
+    public function getStamp(): \DateTimeInterface|string|null
     {
         return $this->stamp;
     }
@@ -189,7 +192,7 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

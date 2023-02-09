@@ -5,22 +5,14 @@ namespace Agi\Agents;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 
+/** @psalm-suppress UnusedProperty */
 class FaxAgent implements AgentInterface
 {
     use AgentTrait;
 
-    /** @var Wrapper */
     private $agi;
-
-    /** @var FaxInterface */
     private $fax;
 
-    /**
-     * FaxAgent constructor.
-     *
-     * @param Wrapper $agi
-     * @param FaxInterface $user
-     */
     public function __construct(
         Wrapper $agi,
         FaxInterface $user

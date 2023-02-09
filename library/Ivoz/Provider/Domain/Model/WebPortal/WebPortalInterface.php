@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\WebPortal;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
@@ -12,29 +15,56 @@ use Ivoz\Core\Domain\Service\TempFile;
 */
 interface WebPortalInterface extends LoggableEntityInterface, FileContainerInterface
 {
-    const URLTYPE_GOD = 'god';
+    public const URLTYPE_GOD = 'god';
 
-    const URLTYPE_BRAND = 'brand';
+    public const URLTYPE_BRAND = 'brand';
 
-    const URLTYPE_ADMIN = 'admin';
+    public const URLTYPE_ADMIN = 'admin';
 
-    const URLTYPE_USER = 'user';
+    public const URLTYPE_USER = 'user';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
      * @return array
      */
-    public function getFileObjects(?int $filter = null);
+    public function getFileObjects(?int $filter = null): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @return static
      */
     public function setUrl(string $url): static;
+
+    public static function createDto(string|int|null $id = null): WebPortalDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|WebPortalInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?WebPortalDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param WebPortalDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): WebPortalDto;
 
     public function getUrl(): string;
 

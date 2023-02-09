@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\BannedAddress;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
@@ -11,17 +14,44 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 */
 interface BannedAddressInterface extends LoggableEntityInterface
 {
-    const BLOCKER_ANTIFLOOD = 'antiflood';
+    public const BLOCKER_ANTIFLOOD = 'antiflood';
 
-    const BLOCKER_IPFILTER = 'ipfilter';
+    public const BLOCKER_IPFILTER = 'ipfilter';
 
-    const BLOCKER_ANTIBRUTEFORCE = 'antibruteforce';
+    public const BLOCKER_ANTIBRUTEFORCE = 'antibruteforce';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): BannedAddressDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|BannedAddressInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BannedAddressDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param BannedAddressDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): BannedAddressDto;
 
     public function getIp(): ?string;
 

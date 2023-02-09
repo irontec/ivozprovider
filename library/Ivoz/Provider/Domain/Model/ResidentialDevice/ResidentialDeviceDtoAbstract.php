@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyDto;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
@@ -23,155 +24,158 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
      * @var string|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var int|null
      */
-    private $port;
-
-    /**
-     * @var string
-     */
-    private $authNeeded = 'yes';
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $password;
+    private $password = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $disallow = 'all';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $allow = 'alaw';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directMediaMethod = 'update';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $calleridUpdateHeader = 'pai';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $updateCallerid = 'yes';
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directConnectivity = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ddiIn = 'yes';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxCalls = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Passthrough = 'no';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $rtpEncryption = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $multiContact = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
+
+    /**
+     * @var VoicemailDto | null
+     */
+    private $voicemail = null;
 
     /**
      * @var PsEndpointDto | null
      */
-    private $psEndpoint;
+    private $psEndpoint = null;
 
     /**
      * @var PsIdentifyDto | null
      */
-    private $psIdentify;
+    private $psIdentify = null;
 
     /**
      * @var DdiDto[] | null
      */
-    private $ddis;
+    private $ddis = null;
 
     /**
      * @var CallForwardSettingDto[] | null
      */
-    private $callForwardSettings;
+    private $callForwardSettings = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -180,7 +184,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -192,7 +196,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transport' => 'transport',
             'ip' => 'ip',
             'port' => 'port',
-            'authNeeded' => 'authNeeded',
             'password' => 'password',
             'disallow' => 'disallow',
             'allow' => 'allow',
@@ -213,15 +216,16 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
             'languageId' => 'language',
+            'voicemailId' => 'voicemail',
             'psEndpointId' => 'psEndpoint',
             'psIdentifyId' => 'psIdentify'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -229,7 +233,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transport' => $this->getTransport(),
             'ip' => $this->getIp(),
             'port' => $this->getPort(),
-            'authNeeded' => $this->getAuthNeeded(),
             'password' => $this->getPassword(),
             'disallow' => $this->getDisallow(),
             'allow' => $this->getAllow(),
@@ -250,6 +253,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
+            'voicemail' => $this->getVoicemail(),
             'psEndpoint' => $this->getPsEndpoint(),
             'psIdentify' => $this->getPsIdentify(),
             'ddis' => $this->getDdis(),
@@ -270,7 +274,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -282,7 +286,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -330,18 +334,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->port;
     }
 
-    public function setAuthNeeded(?string $authNeeded): static
-    {
-        $this->authNeeded = $authNeeded;
-
-        return $this;
-    }
-
-    public function getAuthNeeded(): ?string
-    {
-        return $this->authNeeded;
-    }
-
     public function setPassword(?string $password): static
     {
         $this->password = $password;
@@ -354,7 +346,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->password;
     }
 
-    public function setDisallow(?string $disallow): static
+    public function setDisallow(string $disallow): static
     {
         $this->disallow = $disallow;
 
@@ -366,7 +358,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->disallow;
     }
 
-    public function setAllow(?string $allow): static
+    public function setAllow(string $allow): static
     {
         $this->allow = $allow;
 
@@ -378,7 +370,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->allow;
     }
 
-    public function setDirectMediaMethod(?string $directMediaMethod): static
+    public function setDirectMediaMethod(string $directMediaMethod): static
     {
         $this->directMediaMethod = $directMediaMethod;
 
@@ -390,7 +382,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->directMediaMethod;
     }
 
-    public function setCalleridUpdateHeader(?string $calleridUpdateHeader): static
+    public function setCalleridUpdateHeader(string $calleridUpdateHeader): static
     {
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
@@ -402,7 +394,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->calleridUpdateHeader;
     }
 
-    public function setUpdateCallerid(?string $updateCallerid): static
+    public function setUpdateCallerid(string $updateCallerid): static
     {
         $this->updateCallerid = $updateCallerid;
 
@@ -426,7 +418,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->fromDomain;
     }
 
-    public function setDirectConnectivity(?string $directConnectivity): static
+    public function setDirectConnectivity(string $directConnectivity): static
     {
         $this->directConnectivity = $directConnectivity;
 
@@ -438,7 +430,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->directConnectivity;
     }
 
-    public function setDdiIn(?string $ddiIn): static
+    public function setDdiIn(string $ddiIn): static
     {
         $this->ddiIn = $ddiIn;
 
@@ -450,7 +442,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->ddiIn;
     }
 
-    public function setMaxCalls(?int $maxCalls): static
+    public function setMaxCalls(int $maxCalls): static
     {
         $this->maxCalls = $maxCalls;
 
@@ -462,7 +454,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->maxCalls;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -474,7 +466,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->t38Passthrough;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -486,7 +478,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->rtpEncryption;
     }
 
-    public function setMultiContact(?bool $multiContact): static
+    public function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 
@@ -505,7 +497,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -684,6 +676,36 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getLanguageId()
     {
         if ($dto = $this->getLanguage()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setVoicemail(?VoicemailDto $voicemail): static
+    {
+        $this->voicemail = $voicemail;
+
+        return $this;
+    }
+
+    public function getVoicemail(): ?VoicemailDto
+    {
+        return $this->voicemail;
+    }
+
+    public function setVoicemailId($id): static
+    {
+        $value = !is_null($id)
+            ? new VoicemailDto($id)
+            : null;
+
+        return $this->setVoicemail($value);
+    }
+
+    public function getVoicemailId()
+    {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

@@ -18,20 +18,17 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TpDestinationDoctrineRepository extends ServiceEntityRepository implements TpDestinationRepository
 {
-    protected $queryRunner;
-
     public function __construct(
         ManagerRegistry $registry,
-        DoctrineQueryRunner $queryRunner
+        private DoctrineQueryRunner $queryRunner
     ) {
         parent::__construct($registry, TpDestination::class);
-        $this->queryRunner = $queryRunner;
     }
 
     /**
      * @return int affected rows
      */
-    public function syncWithBusiness($brandId)
+    public function syncWithBusiness($brandId): int
     {
         $tpDestinationInsert =
             'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)'

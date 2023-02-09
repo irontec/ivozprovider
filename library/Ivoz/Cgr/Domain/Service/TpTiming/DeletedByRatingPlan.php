@@ -9,22 +9,11 @@ use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInter
 
 class DeletedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * DeletedByTpRatingPlan constructor.
-     *
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -41,7 +30,7 @@ class DeletedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
     {
         $tpTiming = $ratingPlan->getTpTiming();
 
-        $alwaysTimingType = ($ratingPlan->getTimingType() == RatingPlan::TIMING_TYPE_ALWAYS);
+        $alwaysTimingType = ($ratingPlan->getTimingType() == RatingPlan::TIMINGTYPE_ALWAYS);
 
         // Always RatingPlans should not have TpTiming
         if ($tpTiming && $alwaysTimingType) {

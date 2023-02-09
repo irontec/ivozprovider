@@ -22,7 +22,7 @@ class KamRtpengine extends Fixture implements DependentFixtureInterface
         $manager
             ->getClassMetadata(Rtpengine::class)
             ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(Rtpengine::class);
         (function () use ($fixture) {
             $this
@@ -30,11 +30,11 @@ class KamRtpengine extends Fixture implements DependentFixtureInterface
                 ->setUrl('udp:127.0.0.1:22223')
                 ->setWeight(1)
                 ->setDisabled(false)
-                ->setStamp('2000-01-01 00:00:00')
                 ->setDescription('rtpengine01')
                 ->setMediaRelaySet(
                     $fixture->getReference('_reference_ProviderMediaRelaySet1')
                 );
+            $this->stamp = new \DateTime('2000-01-01 00:00:00');
         })->call($item1);
 
         $this->addReference('_reference_KamRtpengine1', $item1);

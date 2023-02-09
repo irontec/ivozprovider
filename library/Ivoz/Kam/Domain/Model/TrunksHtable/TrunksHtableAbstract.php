@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksHtable;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * TrunksHtableAbstract
@@ -18,26 +19,26 @@ abstract class TrunksHtableAbstract
     use ChangelogTrait;
 
     /**
-     * column: key_name
      * @var string
+     * column: key_name
      */
     protected $keyName = '';
 
     /**
-     * column: key_type
      * @var int
+     * column: key_type
      */
     protected $keyType = 0;
 
     /**
-     * column: value_type
      * @var int
+     * column: value_type
      */
     protected $valueType = 0;
 
     /**
-     * column: key_value
      * @var string
+     * column: key_value
      */
     protected $keyValue = '';
 
@@ -50,11 +51,11 @@ abstract class TrunksHtableAbstract
      * Constructor
      */
     protected function __construct(
-        $keyName,
-        $keyType,
-        $valueType,
-        $keyValue,
-        $expires
+        string $keyName,
+        int $keyType,
+        int $valueType,
+        string $keyValue,
+        int $expires
     ) {
         $this->setKeyName($keyName);
         $this->setKeyType($keyType);
@@ -63,41 +64,34 @@ abstract class TrunksHtableAbstract
         $this->setExpires($expires);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksHtable",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksHtableDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksHtableDto
     {
         return new TrunksHtableDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksHtableInterface|null $entity
-     * @param int $depth
-     * @return TrunksHtableDto|null
+     * @param null|TrunksHtableInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksHtableDto
     {
         if (!$entity) {
             return null;
@@ -113,8 +107,7 @@ abstract class TrunksHtableAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksHtableDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -123,20 +116,29 @@ abstract class TrunksHtableAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksHtableDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksHtableDto::class);
+        $keyName = $dto->getKeyName();
+        Assertion::notNull($keyName, 'getKeyName value is null, but non null value was expected.');
+        $keyType = $dto->getKeyType();
+        Assertion::notNull($keyType, 'getKeyType value is null, but non null value was expected.');
+        $valueType = $dto->getValueType();
+        Assertion::notNull($valueType, 'getValueType value is null, but non null value was expected.');
+        $keyValue = $dto->getKeyValue();
+        Assertion::notNull($keyValue, 'getKeyValue value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getKeyName(),
-            $dto->getKeyType(),
-            $dto->getValueType(),
-            $dto->getKeyValue(),
-            $dto->getExpires()
+            $keyName,
+            $keyType,
+            $valueType,
+            $keyValue,
+            $expires
         );
 
         ;
@@ -149,30 +151,38 @@ abstract class TrunksHtableAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksHtableDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksHtableDto::class);
 
+        $keyName = $dto->getKeyName();
+        Assertion::notNull($keyName, 'getKeyName value is null, but non null value was expected.');
+        $keyType = $dto->getKeyType();
+        Assertion::notNull($keyType, 'getKeyType value is null, but non null value was expected.');
+        $valueType = $dto->getValueType();
+        Assertion::notNull($valueType, 'getValueType value is null, but non null value was expected.');
+        $keyValue = $dto->getKeyValue();
+        Assertion::notNull($keyValue, 'getKeyValue value is null, but non null value was expected.');
+        $expires = $dto->getExpires();
+        Assertion::notNull($expires, 'getExpires value is null, but non null value was expected.');
+
         $this
-            ->setKeyName($dto->getKeyName())
-            ->setKeyType($dto->getKeyType())
-            ->setValueType($dto->getValueType())
-            ->setKeyValue($dto->getKeyValue())
-            ->setExpires($dto->getExpires());
+            ->setKeyName($keyName)
+            ->setKeyType($keyType)
+            ->setValueType($valueType)
+            ->setKeyValue($keyValue)
+            ->setExpires($expires);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksHtableDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksHtableDto
     {
         return self::createDto()
             ->setKeyName(self::getKeyName())
@@ -183,9 +193,9 @@ abstract class TrunksHtableAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'key_name' => self::getKeyName(),

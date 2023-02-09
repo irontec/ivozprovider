@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Service;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Service\Name;
 use Ivoz\Provider\Domain\Model\Service\Description;
 
@@ -35,12 +36,12 @@ abstract class ServiceAbstract
     protected $extraArgs = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -48,54 +49,47 @@ abstract class ServiceAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
-        $defaultCode,
-        $extraArgs,
+        string $iden,
+        string $defaultCode,
+        bool $extraArgs,
         Name $name,
         Description $description
     ) {
         $this->setIden($iden);
         $this->setDefaultCode($defaultCode);
         $this->setExtraArgs($extraArgs);
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Service",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ServiceDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ServiceDto
     {
         return new ServiceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ServiceInterface|null $entity
-     * @param int $depth
-     * @return ServiceDto|null
+     * @param null|ServiceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ServiceDto
     {
         if (!$entity) {
             return null;
@@ -111,8 +105,7 @@ abstract class ServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ServiceDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -121,32 +114,53 @@ abstract class ServiceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ServiceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $descriptionEn = $dto->getDescriptionEn();
+        Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
+        $descriptionEs = $dto->getDescriptionEs();
+        Assertion::notNull($descriptionEs, 'descriptionEs value is null, but non null value was expected.');
+        $descriptionCa = $dto->getDescriptionCa();
+        Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
+        $descriptionIt = $dto->getDescriptionIt();
+        Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $defaultCode = $dto->getDefaultCode();
+        Assertion::notNull($defaultCode, 'getDefaultCode value is null, but non null value was expected.');
+        $extraArgs = $dto->getExtraArgs();
+        Assertion::notNull($extraArgs, 'getExtraArgs value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs(),
-            $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $descriptionEn,
+            $descriptionEs,
+            $descriptionCa,
+            $descriptionIt
         );
 
         $self = new static(
-            $dto->getIden(),
-            $dto->getDefaultCode(),
-            $dto->getExtraArgs(),
+            $iden,
+            $defaultCode,
+            $extraArgs,
             $name,
             $description
         );
@@ -161,32 +175,54 @@ abstract class ServiceAbstract
     /**
      * @internal use EntityTools instead
      * @param ServiceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ServiceDto::class);
 
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $descriptionEn = $dto->getDescriptionEn();
+        Assertion::notNull($descriptionEn, 'descriptionEn value is null, but non null value was expected.');
+        $descriptionEs = $dto->getDescriptionEs();
+        Assertion::notNull($descriptionEs, 'descriptionEs value is null, but non null value was expected.');
+        $descriptionCa = $dto->getDescriptionCa();
+        Assertion::notNull($descriptionCa, 'descriptionCa value is null, but non null value was expected.');
+        $descriptionIt = $dto->getDescriptionIt();
+        Assertion::notNull($descriptionIt, 'descriptionIt value is null, but non null value was expected.');
+        $iden = $dto->getIden();
+        Assertion::notNull($iden, 'getIden value is null, but non null value was expected.');
+        $defaultCode = $dto->getDefaultCode();
+        Assertion::notNull($defaultCode, 'getDefaultCode value is null, but non null value was expected.');
+        $extraArgs = $dto->getExtraArgs();
+        Assertion::notNull($extraArgs, 'getExtraArgs value is null, but non null value was expected.');
+
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs(),
-            $dto->getDescriptionCa(),
-            $dto->getDescriptionIt()
+            $descriptionEn,
+            $descriptionEs,
+            $descriptionCa,
+            $descriptionIt
         );
 
         $this
-            ->setIden($dto->getIden())
-            ->setDefaultCode($dto->getDefaultCode())
-            ->setExtraArgs($dto->getExtraArgs())
+            ->setIden($iden)
+            ->setDefaultCode($defaultCode)
+            ->setExtraArgs($extraArgs)
             ->setName($name)
             ->setDescription($description);
 
@@ -195,10 +231,8 @@ abstract class ServiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ServiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ServiceDto
     {
         return self::createDto()
             ->setIden(self::getIden())
@@ -215,9 +249,9 @@ abstract class ServiceAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'iden' => self::getIden(),
@@ -264,9 +298,6 @@ abstract class ServiceAbstract
 
     protected function setExtraArgs(bool $extraArgs): static
     {
-        Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
-        $extraArgs = (bool) $extraArgs;
-
         $this->extraArgs = $extraArgs;
 
         return $this;
@@ -284,7 +315,7 @@ abstract class ServiceAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -300,7 +331,7 @@ abstract class ServiceAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

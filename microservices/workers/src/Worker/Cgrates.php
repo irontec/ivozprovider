@@ -15,30 +15,22 @@ class Cgrates
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $reloadService;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        ReloadService $reloadService,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private ReloadService $reloadService,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private int $redisTimeout,
+        private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->reloadService = $reloadService;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
-    public function reload()
+    public function reload(): Response
     {
         try {
             $this->registerCommand('Worker', 'cgrates');
@@ -91,10 +83,9 @@ class Cgrates
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [RaterReloadInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);

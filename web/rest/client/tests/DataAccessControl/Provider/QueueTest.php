@@ -111,12 +111,12 @@ class QueueTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'timeoutVoiceMailUser',
+                            'timeoutVoicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'timeoutVoiceMailUser',
+                            'timeoutVoicemail',
                             'isNull',
                             null
                         ]
@@ -153,12 +153,12 @@ class QueueTest extends KernelTestCase
                 [
                     'or' => [
                         [
-                            'fullVoiceMailUser',
+                            'fullVoicemail',
                             'in',
-                            'UserRepository([["company","eq","user.getCompany().getId()"]])'
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
                         ],
                         [
-                            'fullVoiceMailUser',
+                            'fullVoicemail',
                             'isNull',
                             null
                         ]

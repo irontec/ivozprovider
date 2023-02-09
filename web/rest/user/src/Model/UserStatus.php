@@ -156,7 +156,7 @@ class UserStatus
     /**
      * @return UserStatus
      */
-    public function setLanguage($language)
+    public function setLanguage(string $language)
     {
         $this->language = $language;
         return $this;

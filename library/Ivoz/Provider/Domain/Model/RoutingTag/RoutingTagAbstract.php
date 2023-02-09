@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
@@ -38,48 +39,41 @@ abstract class RoutingTagAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $tag
+        string $name,
+        string $tag
     ) {
         $this->setName($name);
         $this->setTag($tag);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingTag",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RoutingTagDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RoutingTagDto
     {
         return new RoutingTagDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingTagInterface|null $entity
-     * @param int $depth
-     * @return RoutingTagDto|null
+     * @param null|RoutingTagInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingTagDto
     {
         if (!$entity) {
             return null;
@@ -95,8 +89,7 @@ abstract class RoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingTagDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -105,21 +98,26 @@ abstract class RoutingTagAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $tag = $dto->getTag();
+        Assertion::notNull($tag, 'getTag value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTag()
+            $name,
+            $tag
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -129,28 +127,32 @@ abstract class RoutingTagAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingTagDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingTagDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $tag = $dto->getTag();
+        Assertion::notNull($tag, 'getTag value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setTag($dto->getTag())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setName($name)
+            ->setTag($tag)
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RoutingTagDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RoutingTagDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -159,9 +161,9 @@ abstract class RoutingTagAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

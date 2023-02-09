@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
@@ -36,7 +37,7 @@ abstract class DdiProviderAbstract
     protected $name;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $externallyRated = false;
 
@@ -46,66 +47,59 @@ abstract class DdiProviderAbstract
     protected $brand;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var ProxyTrunkInterface | null
+     * @var ?ProxyTrunkInterface
      */
-    protected $proxyTrunk;
+    protected $proxyTrunk = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySets;
+    protected $mediaRelaySets = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $description,
-        $name
+        string $description,
+        string $name
     ) {
         $this->setDescription($description);
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "DdiProvider",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DdiProviderDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DdiProviderDto
     {
         return new DdiProviderDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DdiProviderInterface|null $entity
-     * @param int $depth
-     * @return DdiProviderDto|null
+     * @param null|DdiProviderInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiProviderDto
     {
         if (!$entity) {
             return null;
@@ -121,8 +115,7 @@ abstract class DdiProviderAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DdiProviderDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -131,22 +124,27 @@ abstract class DdiProviderAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDescription(),
-            $dto->getName()
+            $description,
+            $name
         );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
@@ -159,19 +157,25 @@ abstract class DdiProviderAbstract
     /**
      * @internal use EntityTools instead
      * @param DdiProviderDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiProviderDto::class);
 
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDescription($dto->getDescription())
-            ->setName($dto->getName())
+            ->setDescription($description)
+            ->setName($name)
             ->setExternallyRated($dto->getExternallyRated())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setBrand($fkTransformer->transform($brand))
             ->setTransformationRuleSet($fkTransformer->transform($dto->getTransformationRuleSet()))
             ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()))
             ->setMediaRelaySets($fkTransformer->transform($dto->getMediaRelaySets()));
@@ -181,10 +185,8 @@ abstract class DdiProviderAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DdiProviderDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DdiProviderDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -197,18 +199,18 @@ abstract class DdiProviderAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
             'brandId' => self::getBrand()->getId(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'proxyTrunkId' => self::getProxyTrunk() ? self::getProxyTrunk()->getId() : null,
-            'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'proxyTrunkId' => self::getProxyTrunk()?->getId(),
+            'mediaRelaySetsId' => self::getMediaRelaySets()?->getId()
         ];
     }
 
@@ -242,11 +244,6 @@ abstract class DdiProviderAbstract
 
     protected function setExternallyRated(?bool $externallyRated = null): static
     {
-        if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
-            $externallyRated = (bool) $externallyRated;
-        }
-
         $this->externallyRated = $externallyRated;
 
         return $this;

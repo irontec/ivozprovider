@@ -9,18 +9,11 @@ use Ivoz\Provider\Domain\Model\Brand\BrandRepository;
 
 class ResetDailyUsageCounters
 {
-    private $reassembleTriggerService;
-    private $enableAccountService;
-    private $brandRepository;
-
     public function __construct(
-        ReassembleTriggerService $reassembleTriggerService,
-        EnableAccountService $enableAccountService,
-        BrandRepository $brandRepository
+        private ReassembleTriggerService $reassembleTriggerService,
+        private EnableAccountService $enableAccountService,
+        private BrandRepository $brandRepository
     ) {
-        $this->reassembleTriggerService = $reassembleTriggerService;
-        $this->enableAccountService = $enableAccountService;
-        $this->brandRepository = $brandRepository;
     }
 
     /**

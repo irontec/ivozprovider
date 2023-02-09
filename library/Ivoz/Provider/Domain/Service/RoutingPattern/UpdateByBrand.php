@@ -14,18 +14,11 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCo
 
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
-    protected $entityTools;
-    protected $countryRepository;
-    protected $routingPatternGroupByRoutingPatternAndCountry;
-
     public function __construct(
-        EntityTools $entityTools,
-        CountryRepository $countryRepository,
-        UpdateByRoutingPatternAndCountry $routingPatternGroupByRoutingPatternAndCountry
+        private EntityTools $entityTools,
+        private CountryRepository $countryRepository,
+        private UpdateByRoutingPatternAndCountry $routingPatternGroupByRoutingPatternAndCountry
     ) {
-        $this->entityTools = $entityTools;
-        $this->countryRepository = $countryRepository;
-        $this->routingPatternGroupByRoutingPatternAndCountry = $routingPatternGroupByRoutingPatternAndCountry;
     }
 
     public static function getSubscribedEvents()
@@ -35,10 +28,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @return void
-     */
-    public function execute(BrandInterface $brand)
+    public function execute(BrandInterface $brand): void
     {
         $isNew = $brand->isNew();
         if (!$isNew) {

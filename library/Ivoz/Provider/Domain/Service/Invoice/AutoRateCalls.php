@@ -11,26 +11,15 @@ use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr;
 
 class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = CheckValidity::PRE_PERSIST_PRIORITY - 1;
-
-    protected $billableCallRepository;
-    protected $rerateCallService;
-    protected $migrateFromTrunksCdr;
-    protected $entityTools;
-    protected $trunksClient;
+    public const PRE_PERSIST_PRIORITY = CheckValidity::PRE_PERSIST_PRIORITY - 1;
 
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        RerateCallServiceInterface $rerateCallService,
-        MigrateFromTrunksCdr $migrateFromTrunksCdr,
-        EntityTools $entityTools,
-        TrunksClientInterface $trunksClient
+        private BillableCallRepository $billableCallRepository,
+        private RerateCallServiceInterface $rerateCallService,
+        private MigrateFromTrunksCdr $migrateFromTrunksCdr,
+        private EntityTools $entityTools,
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->rerateCallService = $rerateCallService;
-        $this->migrateFromTrunksCdr = $migrateFromTrunksCdr;
-        $this->entityTools = $entityTools;
-        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
@@ -41,7 +30,7 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
-     * @param InvoiceInterface $invoice
+     * @return void
      */
     public function execute(InvoiceInterface $invoice)
     {
@@ -63,6 +52,8 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
 
     /**
      * @param InvoiceInterface $invoice
+     *
+     * @return void
      */
     private function tryToRateCalls(InvoiceInterface $invoice)
     {
@@ -90,7 +81,7 @@ class AutoRateCalls implements InvoiceLifecycleEventHandlerInterface
             }
 
             $this->entityTools->dispatchQueuedOperations();
-        } catch (\Exception $e) {
+        } catch (\Exception) {
         }
     }
 }

@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 
 class SendTrunksDispatcherReloadRequest implements ApplicationServerLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
-
-    protected $trunksGearmanClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 
     public function __construct(
-        TrunksClientInterface $trunksGearmanClient
+        private TrunksClientInterface $trunksGearmanClient
     ) {
-        $this->trunksGearmanClient = $trunksGearmanClient;
     }
 
     public static function getSubscribedEvents()

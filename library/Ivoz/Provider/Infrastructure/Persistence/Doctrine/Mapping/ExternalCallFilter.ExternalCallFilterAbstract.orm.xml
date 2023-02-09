@@ -9,6 +9,12 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="holidayEnabled" type="boolean" column="holidayEnabled" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
     <field name="holidayTargetType" type="string" column="holidayTargetType" length="25" nullable="true">
       <options>
         <option name="fixed"/>
@@ -18,6 +24,12 @@
     <field name="holidayNumberValue" type="string" column="holidayNumberValue" length="25" nullable="true">
       <options>
         <option name="fixed"/>
+      </options>
+    </field>
+    <field name="outOfScheduleEnabled" type="boolean" column="outOfScheduleEnabled" nullable="false">
+      <options>
+        <option name="default">0</option>
+        <option name="unsigned">1</option>
       </options>
     </field>
     <field name="outOfScheduleTargetType" type="string" column="outOfScheduleTargetType" length="25" nullable="true">
@@ -61,14 +73,14 @@
         <join-column name="outOfScheduleExtensionId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="holidayVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="holidayVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="holidayVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="holidayVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="outOfScheduleVoiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="outOfScheduleVoicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="outOfScheduleVoiceMailUserId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
+        <join-column name="outOfScheduleVoicemailId" referenced-column-name="id" on-delete="SET NULL" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="holidayNumberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">

@@ -7,6 +7,8 @@ use Agi\Action\QueueTimeoutAction;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
+use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
+use Ivoz\Provider\Domain\Model\Queue\QueueRepository;
 use RouteHandlerAbstract;
 
 class QueueStatus extends RouteHandlerAbstract
@@ -58,15 +60,14 @@ class QueueStatus extends RouteHandlerAbstract
     {
         $queueId = $this->agi->getVariable("QUEUE_ID");
 
-        /** @var \Ivoz\Provider\Domain\Model\Queue\QueueRepository $queueRepository */
+        /** @var QueueRepository $queueRepository */
         $queueRepository = $this->em->getRepository(Queue::class);
 
-        /** @var \Ivoz\Ast\Domain\Model\Queue\QueueInterface $queue */
+        /** @var QueueInterface $queue */
         $queue = $queueRepository->find($queueId);
 
         // Get queue call end status
         $queueStatus = $this->agi->getVariable("QUEUESTATUS");
-
 
         if ($queueStatus == 'TIMEOUT') {
             $this->queueTimeoutAction

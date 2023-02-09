@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
@@ -56,10 +57,10 @@ abstract class AdministratorRelPublicEntityAbstract
      * Constructor
      */
     protected function __construct(
-        $create,
-        $read,
-        $update,
-        $delete
+        bool $create,
+        bool $read,
+        bool $update,
+        bool $delete
     ) {
         $this->setCreate($create);
         $this->setRead($read);
@@ -67,41 +68,34 @@ abstract class AdministratorRelPublicEntityAbstract
         $this->setDelete($delete);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "AdministratorRelPublicEntity",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return AdministratorRelPublicEntityDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): AdministratorRelPublicEntityDto
     {
         return new AdministratorRelPublicEntityDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param AdministratorRelPublicEntityInterface|null $entity
-     * @param int $depth
-     * @return AdministratorRelPublicEntityDto|null
+     * @param null|AdministratorRelPublicEntityInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?AdministratorRelPublicEntityDto
     {
         if (!$entity) {
             return null;
@@ -117,8 +111,7 @@ abstract class AdministratorRelPublicEntityAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var AdministratorRelPublicEntityDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -127,24 +120,35 @@ abstract class AdministratorRelPublicEntityAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param AdministratorRelPublicEntityDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, AdministratorRelPublicEntityDto::class);
+        $create = $dto->getCreate();
+        Assertion::notNull($create, 'getCreate value is null, but non null value was expected.');
+        $read = $dto->getRead();
+        Assertion::notNull($read, 'getRead value is null, but non null value was expected.');
+        $update = $dto->getUpdate();
+        Assertion::notNull($update, 'getUpdate value is null, but non null value was expected.');
+        $delete = $dto->getDelete();
+        Assertion::notNull($delete, 'getDelete value is null, but non null value was expected.');
+        $administrator = $dto->getAdministrator();
+        Assertion::notNull($administrator, 'getAdministrator value is null, but non null value was expected.');
+        $publicEntity = $dto->getPublicEntity();
+        Assertion::notNull($publicEntity, 'getPublicEntity value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCreate(),
-            $dto->getRead(),
-            $dto->getUpdate(),
-            $dto->getDelete()
+            $create,
+            $read,
+            $update,
+            $delete
         );
 
         $self
-            ->setAdministrator($fkTransformer->transform($dto->getAdministrator()))
-            ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()));
+            ->setAdministrator($fkTransformer->transform($administrator))
+            ->setPublicEntity($fkTransformer->transform($publicEntity));
 
         $self->initChangelog();
 
@@ -154,31 +158,41 @@ abstract class AdministratorRelPublicEntityAbstract
     /**
      * @internal use EntityTools instead
      * @param AdministratorRelPublicEntityDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, AdministratorRelPublicEntityDto::class);
 
+        $create = $dto->getCreate();
+        Assertion::notNull($create, 'getCreate value is null, but non null value was expected.');
+        $read = $dto->getRead();
+        Assertion::notNull($read, 'getRead value is null, but non null value was expected.');
+        $update = $dto->getUpdate();
+        Assertion::notNull($update, 'getUpdate value is null, but non null value was expected.');
+        $delete = $dto->getDelete();
+        Assertion::notNull($delete, 'getDelete value is null, but non null value was expected.');
+        $administrator = $dto->getAdministrator();
+        Assertion::notNull($administrator, 'getAdministrator value is null, but non null value was expected.');
+        $publicEntity = $dto->getPublicEntity();
+        Assertion::notNull($publicEntity, 'getPublicEntity value is null, but non null value was expected.');
+
         $this
-            ->setCreate($dto->getCreate())
-            ->setRead($dto->getRead())
-            ->setUpdate($dto->getUpdate())
-            ->setDelete($dto->getDelete())
-            ->setAdministrator($fkTransformer->transform($dto->getAdministrator()))
-            ->setPublicEntity($fkTransformer->transform($dto->getPublicEntity()));
+            ->setCreate($create)
+            ->setRead($read)
+            ->setUpdate($update)
+            ->setDelete($delete)
+            ->setAdministrator($fkTransformer->transform($administrator))
+            ->setPublicEntity($fkTransformer->transform($publicEntity));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return AdministratorRelPublicEntityDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): AdministratorRelPublicEntityDto
     {
         return self::createDto()
             ->setCreate(self::getCreate())
@@ -190,9 +204,9 @@ abstract class AdministratorRelPublicEntityAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'create' => self::getCreate(),
@@ -206,9 +220,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setCreate(bool $create): static
     {
-        Assertion::between(intval($create), 0, 1, 'create provided "%s" is not a valid boolean value.');
-        $create = (bool) $create;
-
         $this->create = $create;
 
         return $this;
@@ -221,9 +232,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setRead(bool $read): static
     {
-        Assertion::between(intval($read), 0, 1, 'read provided "%s" is not a valid boolean value.');
-        $read = (bool) $read;
-
         $this->read = $read;
 
         return $this;
@@ -236,9 +244,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setUpdate(bool $update): static
     {
-        Assertion::between(intval($update), 0, 1, 'update provided "%s" is not a valid boolean value.');
-        $update = (bool) $update;
-
         $this->update = $update;
 
         return $this;
@@ -251,9 +256,6 @@ abstract class AdministratorRelPublicEntityAbstract
 
     protected function setDelete(bool $delete): static
     {
-        Assertion::between(intval($delete), 0, 1, 'delete provided "%s" is not a valid boolean value.');
-        $delete = (bool) $delete;
-
         $this->delete = $delete;
 
         return $this;
@@ -268,7 +270,6 @@ abstract class AdministratorRelPublicEntityAbstract
     {
         $this->administrator = $administrator;
 
-        /** @var  $this */
         return $this;
     }
 

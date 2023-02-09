@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\Name;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
@@ -23,49 +24,49 @@ abstract class TransformationRuleSetAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $internationalCode = '00';
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $trunkPrefix = '';
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $areaCode = '';
 
     /**
-     * @var int | null
+     * @var ?int
      */
     protected $nationalLen = 9;
 
     /**
-     * @var bool | null
+     * @var ?bool
      */
     protected $generateRules = false;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
      * Constructor
@@ -73,44 +74,37 @@ abstract class TransformationRuleSetAbstract
     protected function __construct(
         Name $name
     ) {
-        $this->setName($name);
+        $this->name = $name;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TransformationRuleSet",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TransformationRuleSetDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TransformationRuleSetDto
     {
         return new TransformationRuleSetDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TransformationRuleSetInterface|null $entity
-     * @param int $depth
-     * @return TransformationRuleSetDto|null
+     * @param null|TransformationRuleSetInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TransformationRuleSetDto
     {
         if (!$entity) {
             return null;
@@ -126,8 +120,7 @@ abstract class TransformationRuleSetAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TransformationRuleSetDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -136,19 +129,26 @@ abstract class TransformationRuleSetAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TransformationRuleSetDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $self = new static(
@@ -173,19 +173,27 @@ abstract class TransformationRuleSetAbstract
     /**
      * @internal use EntityTools instead
      * @param TransformationRuleSetDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TransformationRuleSetDto::class);
 
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $this
@@ -204,10 +212,8 @@ abstract class TransformationRuleSetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TransformationRuleSetDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TransformationRuleSetDto
     {
         return self::createDto()
             ->setDescription(self::getDescription())
@@ -225,9 +231,9 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'description' => self::getDescription(),
@@ -240,8 +246,8 @@ abstract class TransformationRuleSetAbstract
             'nameEs' => self::getName()->getEs(),
             'nameCa' => self::getName()->getCa(),
             'nameIt' => self::getName()->getIt(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'countryId' => self::getCountry()?->getId()
         ];
     }
 
@@ -327,11 +333,6 @@ abstract class TransformationRuleSetAbstract
 
     protected function setGenerateRules(?bool $generateRules = null): static
     {
-        if (!is_null($generateRules)) {
-            Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
-            $generateRules = (bool) $generateRules;
-        }
-
         $this->generateRules = $generateRules;
 
         return $this;
@@ -349,7 +350,7 @@ abstract class TransformationRuleSetAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }

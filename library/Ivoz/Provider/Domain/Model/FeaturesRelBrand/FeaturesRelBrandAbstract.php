@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelBrand;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -22,10 +23,10 @@ abstract class FeaturesRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy relFeatures
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var FeatureInterface
@@ -39,41 +40,34 @@ abstract class FeaturesRelBrandAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FeaturesRelBrand",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return FeaturesRelBrandDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): FeaturesRelBrandDto
     {
         return new FeaturesRelBrandDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FeaturesRelBrandInterface|null $entity
-     * @param int $depth
-     * @return FeaturesRelBrandDto|null
+     * @param null|FeaturesRelBrandInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FeaturesRelBrandDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class FeaturesRelBrandAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FeaturesRelBrandDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class FeaturesRelBrandAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FeaturesRelBrandDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class FeaturesRelBrandAbstract
     /**
      * @internal use EntityTools instead
      * @param FeaturesRelBrandDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeaturesRelBrandDto::class);
+
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
 
         $this
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FeaturesRelBrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FeaturesRelBrandDto
     {
         return self::createDto()
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
@@ -149,12 +143,12 @@ abstract class FeaturesRelBrandAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'featureId' => self::getFeature()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class FeaturesRelBrandAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

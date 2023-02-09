@@ -5,7 +5,7 @@ namespace Agi\Action;
 use Agi\Wrapper;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
-use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
+use Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMemberInterface;
 
 class HuntGroupAction
 {
@@ -52,21 +52,21 @@ class HuntGroupAction
 
         $this->agi->notice("Processing %s HuntGroup %s", $huntGroup->getStrategy(), $huntGroup);
 
-        /** @var HuntGroupsRelUserInterface[] $huntGroupEntries */
-        $huntGroupEntries = $huntGroup->getHuntGroupsRelUsers(
+        /** @var HuntGroupMemberInterface[] $huntGroupMembers */
+        $huntGroupMembers = $huntGroup->getHuntGroupMembers(
             Criteria::create()->orderBy(['priority' => Criteria::ASC])
         );
 
         // Shuffle entries in random huntgroups
         if ($huntGroup->getStrategy() == HuntGroupInterface::STRATEGY_RANDOM) {
-            shuffle($huntGroupEntries);
+            shuffle($huntGroupMembers);
         }
 
         // Check huntgroup users
         $huntGroupEndpoints = array();
         $huntGroupTimeouts = array();
 
-        foreach ($huntGroupEntries as $entry) {
+        foreach ($huntGroupMembers as $entry) {
             array_push($huntGroupEndpoints, 'Local/' . $entry->getId() . '@call-huntgroup-member');
             array_push($huntGroupTimeouts, $entry->getTimeoutTime());
         }

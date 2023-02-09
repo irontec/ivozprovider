@@ -17,60 +17,63 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $sentTo = '';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $inDate;
+    private $inDate = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $outDate;
+    private $outDate = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $createdOn;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $createdOn = null;
 
     /**
      * @var int|null
      */
-    private $csvFileSize;
+    private $id = null;
+
+    /**
+     * @var int|null
+     */
+    private $csvFileSize = null;
 
     /**
      * @var string|null
      */
-    private $csvMimeType;
+    private $csvMimeType = null;
 
     /**
      * @var string|null
      */
-    private $csvBaseName;
+    private $csvBaseName = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CallCsvSchedulerDto | null
      */
-    private $callCsvScheduler;
+    private $callCsvScheduler = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -79,7 +82,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -103,9 +106,9 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'sentTo' => $this->getSentTo(),
@@ -137,7 +140,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSentTo(?string $sentTo): static
+    public function setSentTo(string $sentTo): static
     {
         $this->sentTo = $sentTo;
 
@@ -149,38 +152,38 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this->sentTo;
     }
 
-    public function setInDate(null|\DateTime|string $inDate): static
+    public function setInDate(\DateTimeInterface|string $inDate): static
     {
         $this->inDate = $inDate;
 
         return $this;
     }
 
-    public function getInDate(): \DateTime|string|null
+    public function getInDate(): \DateTimeInterface|string|null
     {
         return $this->inDate;
     }
 
-    public function setOutDate(null|\DateTime|string $outDate): static
+    public function setOutDate(\DateTimeInterface|string $outDate): static
     {
         $this->outDate = $outDate;
 
         return $this;
     }
 
-    public function getOutDate(): \DateTime|string|null
+    public function getOutDate(): \DateTimeInterface|string|null
     {
         return $this->outDate;
     }
 
-    public function setCreatedOn(null|\DateTime|string $createdOn): static
+    public function setCreatedOn(\DateTimeInterface|string $createdOn): static
     {
         $this->createdOn = $createdOn;
 
         return $this;
     }
 
-    public function getCreatedOn(): \DateTime|string|null
+    public function getCreatedOn(): \DateTimeInterface|string|null
     {
         return $this->createdOn;
     }
@@ -192,7 +195,7 @@ abstract class CallCsvReportDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -47,7 +47,7 @@ class UpdateByUserSpec extends ObjectBehavior
         $this
             ->entityTools
             ->entityToDto($extension)
-            ->willReturn(new ExtensionDto);
+            ->willReturn(new ExtensionDto());
 
         $entity
             ->hasChanged('id')

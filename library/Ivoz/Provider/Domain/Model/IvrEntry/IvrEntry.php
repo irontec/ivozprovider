@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\IvrEntry;
 
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
@@ -13,9 +14,9 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,12 +26,12 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         // Set Routable options to avoid naming collision
         $this->routeTypes = [

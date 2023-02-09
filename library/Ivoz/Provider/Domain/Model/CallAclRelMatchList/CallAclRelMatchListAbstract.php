@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
@@ -27,16 +28,16 @@ abstract class CallAclRelMatchListAbstract
     protected $priority;
 
     /**
-     * comment: enum:allow|deny
      * @var string
+     * comment: enum:allow|deny
      */
     protected $policy;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      * inversedBy relMatchLists
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
      * @var MatchListInterface
@@ -47,48 +48,41 @@ abstract class CallAclRelMatchListAbstract
      * Constructor
      */
     protected function __construct(
-        $priority,
-        $policy
+        int $priority,
+        string $policy
     ) {
         $this->setPriority($priority);
         $this->setPolicy($policy);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CallAclRelMatchList",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CallAclRelMatchListDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CallAclRelMatchListDto
     {
         return new CallAclRelMatchListDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CallAclRelMatchListInterface|null $entity
-     * @param int $depth
-     * @return CallAclRelMatchListDto|null
+     * @param null|CallAclRelMatchListInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallAclRelMatchListDto
     {
         if (!$entity) {
             return null;
@@ -104,8 +98,7 @@ abstract class CallAclRelMatchListAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CallAclRelMatchListDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -114,22 +107,27 @@ abstract class CallAclRelMatchListAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CallAclRelMatchListDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $policy = $dto->getPolicy();
+        Assertion::notNull($policy, 'getPolicy value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getPriority(),
-            $dto->getPolicy()
+            $priority,
+            $policy
         );
 
         $self
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
+            ->setMatchList($fkTransformer->transform($matchList));
 
         $self->initChangelog();
 
@@ -139,29 +137,33 @@ abstract class CallAclRelMatchListAbstract
     /**
      * @internal use EntityTools instead
      * @param CallAclRelMatchListDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CallAclRelMatchListDto::class);
 
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $policy = $dto->getPolicy();
+        Assertion::notNull($policy, 'getPolicy value is null, but non null value was expected.');
+        $matchList = $dto->getMatchList();
+        Assertion::notNull($matchList, 'getMatchList value is null, but non null value was expected.');
+
         $this
-            ->setPriority($dto->getPriority())
-            ->setPolicy($dto->getPolicy())
+            ->setPriority($priority)
+            ->setPolicy($policy)
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
-            ->setMatchList($fkTransformer->transform($dto->getMatchList()));
+            ->setMatchList($fkTransformer->transform($matchList));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CallAclRelMatchListDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CallAclRelMatchListDto
     {
         return self::createDto()
             ->setPriority(self::getPriority())
@@ -171,14 +173,14 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'priority' => self::getPriority(),
             'policy' => self::getPolicy(),
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
+            'callAclId' => self::getCallAcl()?->getId(),
             'matchListId' => self::getMatchList()->getId()
         ];
     }
@@ -221,7 +223,6 @@ abstract class CallAclRelMatchListAbstract
     {
         $this->callAcl = $callAcl;
 
-        /** @var  $this */
         return $this;
     }
 

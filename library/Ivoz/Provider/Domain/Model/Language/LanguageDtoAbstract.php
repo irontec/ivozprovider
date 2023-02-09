@@ -14,35 +14,38 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameEn = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameEs = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameCa = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $nameIt = '';
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -51,7 +54,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -70,9 +73,9 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'iden' => $this->getIden(),
@@ -99,7 +102,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -118,12 +121,12 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -135,7 +138,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -147,7 +150,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -159,7 +162,7 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 

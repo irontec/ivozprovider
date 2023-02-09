@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include HuntGroupsRelUsersList.yaml
+#include HuntGroupMembersList.yaml
 #include CallForwardSettingsList.yaml
 #include DDIsList.yaml
 
@@ -31,7 +31,7 @@ production:
           screens:
             usersEdit_screen: $[${auth.acls.Users.update} && ${auth.companyVPBX}]
             callForwardSettingsList_screen: $[${auth.acls.CallForwardSettings.read} && ${auth.companyVPBX}]
-            huntGroupsRelUsersList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
+            huntGroupMembersList_screen: $[${auth.acls.HuntGroupMembers.read} && ${auth.companyVPBX}]
           dialogs:
             usersDel_dialog: $[${auth.acls.Users.delete} && ${auth.companyVPBX}]
           default: usersEdit_screen
@@ -51,7 +51,6 @@ production:
           outgoingDdi: true
           statusIcon: true
           callACL: true
-          voicemailEnabled: true
           isBoss: true
           bossAssistant: true
           bossAssistantWhiteList: true
@@ -68,18 +67,15 @@ production:
           callACL: true
           bossAssistant: true
           bossAssistantWhiteList: true
-          HuntGroupsRelUsers: true
+          HuntGroupMembers: true
           PickUpRelUsers: true
           timeout: true
           isBoss: true
           maxCalls: true
           tokenKey: true
-          voicemailEnabled: true
-          voicemailLocution: true
-          voicemailAttachSound: true
-          voicemailSendMail: true
           transformationRuleSet: true
           language: true
+          location: true
           externalIpCalls: true
           outgoingDdiRule: true
           rejectCallMethod: true
@@ -106,7 +102,7 @@ production:
         order:
           <<: *Users_orderLink
         blacklist:
-          HuntGroupsRelUsers: true
+          HuntGroupMembers: true
           tokenKey: true
           active: true
           doNotDisturb: true
@@ -121,11 +117,8 @@ production:
           isBoss: true
           maxCalls: true
           tokenKey: true
-          voicemailEnabled: true
-          voicemailLocution: true
-          voicemailAttachSound: true
-          voicemailSendMail: true
           language: true
+          location: true
           transformationRuleSet: true
           externalIpCalls: true
           statusIcon: true
@@ -175,7 +168,8 @@ production:
           fields:
             language: 6
             timezone: 6
-            transformationRuleSet: 8
+            transformationRuleSet: 6
+            location: 6
         group2:
           label: _("Login Info")
           colsPerRow: 3
@@ -205,25 +199,17 @@ production:
             multiContact: 6
             _empty: 6
             rejectCallMethod: 10
-        group5:
-          label: _("Voicemail")
-          colsPerRow: 2
-          fields:
-            voicemailEnabled: 1
-            voicemailLocution: 1
-            voicemailSendMail: 1
-            voicemailAttachSound: 1
         group6:
           label: _("Group belonging")
           colsPerRow: 3
           fields:
             PickUpRelUsers: 3
-            HuntGroupsRelUsers: 3
+            HuntGroupMembers: 3
 
-    #HuntGroupsRelUsers
-    <<: *huntGroupsRelUsers_screensLink
-    huntGroupsRelUsersList_screen:
-      <<: *huntGroupsRelUsersList_screenLink
+    #HuntGroupMembers
+    <<: *huntGroupMembers_screensLink
+    huntGroupMembersList_screen:
+      <<: *huntGroupMembersList_screenLink
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
       filterField: User
       parentOptionCustomizer:
@@ -232,12 +218,12 @@ production:
         options:
           title: _("Options")
           dialogs:
-            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-          default: huntGroupsRelUsersEdit_screen
+            huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+          default: huntGroupMembersEdit_screen
       options:
         title: _("Options")
         dialogs:
-          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
+          huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
 
     #CallForwardSettings
     <<: *callForwardSettings_screensLink
@@ -299,10 +285,10 @@ production:
       forcedValues:
         company: *forcedCompany
 
-    #HuntGroupsRelUsers
-    <<: *huntGroupsRelUsers_dialogsLink
-    huntGroupsRelUsersDel_dialog:
-      <<: *huntGroupsRelUsersDel_dialogLink
+    #HuntGroupMembers
+    <<: *huntGroupMembers_dialogsLink
+    huntGroupMembersDel_dialog:
+      <<: *huntGroupMembersDel_dialogLink
       title: _("Delete %s", ngettext('Hunt Group', 'Hunt Groups', 1))
       description: _("Do you want to delete this %s?", ngettext('Hunt Group', 'Hunt Groups', 1))
       message: _("%s successfully deleted.", ngettext('Hunt Group', 'Hunt Groups', 1))

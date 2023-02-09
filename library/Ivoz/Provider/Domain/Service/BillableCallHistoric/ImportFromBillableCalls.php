@@ -8,21 +8,14 @@ use Psr\Log\LoggerInterface;
 
 class ImportFromBillableCalls
 {
-    const SYNC_CHUNK_SIZE = 500;
-    const SLEEP_BETWEEN_LOOPS = 2;
-
-    protected $billableCallRepository;
-    protected $billableCallHistoricRepository;
-    protected $logger;
+    public const SYNC_CHUNK_SIZE = 500;
+    public const SLEEP_BETWEEN_LOOPS = 2;
 
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        BillableCallHistoricRepository $billableCallHistoricRepository,
-        LoggerInterface $logger
+        private BillableCallRepository $billableCallRepository,
+        private BillableCallHistoricRepository $billableCallHistoricRepository,
+        private LoggerInterface $logger
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->billableCallHistoricRepository = $billableCallHistoricRepository;
-        $this->logger = $logger;
     }
 
     /**
@@ -34,6 +27,7 @@ class ImportFromBillableCalls
 
         do {
             $fromId = $this->billableCallHistoricRepository->getMaxId();
+            /** @psalm-suppress UndefinedVariable */
             if (!isset($untilId)) {
                 $untilId = $this->getRotateUntilId(
                     $fromId
@@ -75,7 +69,7 @@ class ImportFromBillableCalls
     private function getRotateUntilId(int $fromId): int
     {
         $utc =  new \DateTimeZone('UTC');
-        $now = new \DateTime(null, $utc);
+        $now = new \DateTime('now', $utc);
         $yearAgo = (clone $now)->modify('-1 year');
 
         $fromDate = $this->billableCallRepository->getMinStartTime($fromId);

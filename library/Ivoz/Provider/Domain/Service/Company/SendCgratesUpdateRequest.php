@@ -10,23 +10,15 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SendCgratesUpdateRequest extends CgratesReloadNotificator implements CompanyLifecycleEventHandlerInterface
 {
-    protected $tpAccountActionRepository;
-    protected $setMaxUsageThresholdService;
-
     public function __construct(
-        TpAccountActionRepository $tpAccountActionRepository,
-        SetMaxUsageThresholdService $setMaxUsageThresholdService,
+        private TpAccountActionRepository $tpAccountActionRepository,
+        private SetMaxUsageThresholdService $setMaxUsageThresholdService,
         RaterReloadInterface $cgratesReloadJob
     ) {
-        $this->tpAccountActionRepository = $tpAccountActionRepository;
-        $this->setMaxUsageThresholdService = $setMaxUsageThresholdService;
         parent::__construct($cgratesReloadJob);
     }
 
-    /**
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         if ($company->hasBeenDeleted()) {
             return;
@@ -58,13 +50,16 @@ class SendCgratesUpdateRequest extends CgratesReloadNotificator implements Compa
             );
     }
 
+    /**
+     * @return void
+     */
     private function sendReloadJob(
         CompanyInterface $company
     ) {
         $tpAccountAction = $this
             ->tpAccountActionRepository
             ->findByCompany(
-                $company->getId()
+                (int) $company->getId()
             );
 
         if (!$tpAccountAction) {

@@ -18,7 +18,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     /**
      * @var string|null
      */
-    private $toAddress;
+    private $toAddress = null;
 
     /**
      * @var float|null
@@ -26,25 +26,28 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     private $threshold = 0;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $lastSent;
+    private $lastSent = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $notificationTemplate;
+    private $notificationTemplate = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -53,7 +56,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -70,9 +73,9 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'toAddress' => $this->getToAddress(),
@@ -121,14 +124,14 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this->threshold;
     }
 
-    public function setLastSent(null|\DateTime|string $lastSent): static
+    public function setLastSent(null|\DateTimeInterface|string $lastSent): static
     {
         $this->lastSent = $lastSent;
 
         return $this;
     }
 
-    public function getLastSent(): \DateTime|string|null
+    public function getLastSent(): \DateTimeInterface|string|null
     {
         return $this->lastSent;
     }
@@ -140,7 +143,7 @@ abstract class MaxUsageNotificationDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

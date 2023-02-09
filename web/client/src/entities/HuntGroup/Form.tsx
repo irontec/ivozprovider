@@ -1,69 +1,47 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import LocutionSelectOptions from 'entities/Locution/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import ExtensionSelectOptions from 'entities/Extension/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const { entityService, row, match } = props;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('Basic Configuration'),
+      fields: [
+        'name',
+        'description',
+        'preventMissedCalls',
+        'allowCallForwards',
+        'strategy',
+        'ringAllTimeout',
+      ],
+    },
+    {
+      legend: _('No answer configuration'),
+      fields: [
+        'noAnswerLocution',
+        'noAnswerTargetType',
+        'noAnswerNumberCountry',
+        'noAnswerNumberValue',
+        'noAnswerExtension',
+        'noAnswerVoicemail',
+      ],
+    },
+  ];
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
-
-    useEffect(
-        () => {
-            if (loadingFks) {
-
-                LocutionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerLocution: options,
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerNumberCountry: options,
-                        }
-                    });
-                });
-
-                ExtensionSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerExtension: options,
-                        }
-                    });
-                });
-
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            noAnswerVoiceMailUser: options,
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+};
 
 export default Form;

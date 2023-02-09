@@ -54,7 +54,7 @@ Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod:
               calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
         - or:
           - inheritedOrNull:
-              voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+              voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
         - or:
           - inheritedOrNull:
               extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
@@ -189,6 +189,7 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport:
     swagger_context:
       required:
       - company
+Ivoz\Provider\Domain\Model\CallCsvReport\Csv: ~
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   itemOperations:
@@ -209,6 +210,8 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
         - inherited:
             residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
         - inherited:
+            friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+        - inherited:
             retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
     write_access_control:
       ROLE_COMPANY_ADMIN:
@@ -220,13 +223,16 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
             residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
       - or:
         - inheritedOrNull:
+            friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+      - or:
+        - inheritedOrNull:
             retailAccount: 'Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount'
       - or:
         - inheritedOrNull:
             extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
 
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:
@@ -324,7 +330,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
             ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
       - or:
         - inheritedOrNull:
-            voicemailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -458,10 +464,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
     delete: ~
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -481,6 +489,7 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
+      && user.companyHasFeature('conferences')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -574,8 +583,40 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     access_control: 'FALSE'
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/extensions/{id}'
+      requirements:
+        id: '\d+'
+    put: ~
+    delete: ~
   collectionOperations:
     get: ~
+    get_extensions_unassigned:
+      method: 'GET'
+      path: 'extensions/unassigned'
+      route_name: 'get_extensions_unassigned'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: _includeId
+            in: query
+            type: integer
+            required: false
+            description: 'Ensure certain extension id is included'
+          - name: _properties
+            in: query
+            type: array
+            required: false
+            items:
+              type: string
+            collectionFormat: 'multi'
+            description: "Allows you to reduce the response to contain only the properties you need"
     post: ~
   attributes:
     access_control: >-
@@ -609,6 +650,9 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       - or:
         - inheritedOrNull:
             conferenceRoom: 'Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom'
+      - or:
+        - inheritedOrNull:
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -655,10 +699,10 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
             outOfScheduleExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            holidayVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            holidayVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
-            outOfScheduleVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            outOfScheduleVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             holidayLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -761,16 +805,40 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteLi
 Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   itemOperations:
     get: ~
+    delete: ~
   collectionOperations:
     get: ~
+    post: ~
+  properties:
+    calldate:
+      attributes:
+        swagger_context:
+          readOnly: true
+    status:
+      attributes:
+        swagger_context:
+          readOnly: true
+    src:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
       inherited:
         fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+    write_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+      type:
+        eq: '"Out"'
+    delete_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
     swagger_context:
       required:
       - fax
+Ivoz\Provider\Domain\Model\FaxesInOut\File: ~
 
 Ivoz\Provider\Domain\Model\Fax\Fax:
   attributes:
@@ -804,6 +872,9 @@ Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
   collectionOperations:
     get:
       depth: 1
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
     read_access_control:
@@ -822,6 +893,7 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
+      && user.companyHasFeature('friends')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -892,7 +964,7 @@ Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
             extension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -922,12 +994,12 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
             noAnswerExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            noAnswerVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            noAnswerVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
 
-Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
+Ivoz\Provider\Domain\Model\HuntGroupMember\HuntGroupMember:
   collectionOperations:
     get:
       depth: 1
@@ -942,9 +1014,12 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
       inherited:
         huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
     write_access_control:
-      inherited:
-        user: 'Ivoz\Provider\Domain\Model\User\User'
-        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - and:
+        - inherited:
+            huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
     swagger_context:
       required:
       - user
@@ -952,11 +1027,12 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
 
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   itemOperations: []
-  collectionOperations: []
+  collectionOperations:
+    get: ~
   attributes:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
-      && user.companyHasFeature('invoices')
+      && user.getCompany().getShowInvoices()
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
@@ -968,6 +1044,8 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
     swagger_context:
       required:
       - company
+
+Ivoz\Provider\Domain\Model\Invoice\Pdf: ~
 
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
@@ -991,7 +1069,7 @@ Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
             conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
       - or:
         - inheritedOrNull:
-            voiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - ivr
@@ -1041,10 +1119,10 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
             successLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
       - or:
         - inheritedOrNull:
-            noInputVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            noInputVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
-            errorVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            errorVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             noInputExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
@@ -1084,6 +1162,20 @@ Ivoz\Provider\Domain\Model\Language\Language:
     access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 Ivoz\Provider\Domain\Model\Language\Name:
 
+Ivoz\Provider\Domain\Model\Location\Location:
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isVpbxAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    swagger_context:
+      required:
+      - company
+
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
     access_control: >-
@@ -1097,6 +1189,9 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
     swagger_context:
       required:
       - company
+
+Ivoz\Provider\Domain\Model\Locution\OriginalFile: ~
+Ivoz\Provider\Domain\Model\Locution\EncodedFile: ~
 
 Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
   itemOperations: []
@@ -1288,6 +1383,7 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
     access_control: >-
       "ROLE_COMPANY_ADMIN" in roles
       && user.isVpbxAdmin()
+      && user.companyHasFeature('queues')
       && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       company:
@@ -1308,7 +1404,7 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
             timeoutExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            timeoutVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            timeoutVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
       - or:
         - inheritedOrNull:
             fullLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
@@ -1317,7 +1413,7 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
             fullExtension: 'Ivoz\Provider\Domain\Model\Extension\Extension'
       - or:
         - inheritedOrNull:
-            fullVoiceMailUser: 'Ivoz\Provider\Domain\Model\User\User'
+            fullVoicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
     swagger_context:
       required:
       - company
@@ -1341,6 +1437,8 @@ Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Name: ~
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Description: ~
 
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   itemOperations:
@@ -1382,6 +1480,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
     swagger_context:
       required:
       - company
+Ivoz\Provider\Domain\Model\Recording\RecordedFile: ~
 
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
@@ -1425,11 +1524,16 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
         groups: ['status']
 
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          readOnly: true
   attributes:
     access_control: >-
-        "ROLE_COMPANY_ADMIN" in roles
-        && user.isRetailAdmin()
-        && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+      "ROLE_COMPANY_ADMIN" in roles
+      && user.isRetailAdmin()
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
@@ -1545,10 +1649,16 @@ Ivoz\Provider\Domain\Model\Service\Service:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\Service\Name: ~
+Ivoz\Provider\Domain\Model\Service\Description: ~
 
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
   itemOperations:
-    get: ~
+    get:
+      method: 'GET'
+      path: '/terminals/{id}'
+      requirements:
+        id: '\d+'
     get_status_item:
       method: 'GET'
       path: 'terminals/{id}/status'
@@ -1558,13 +1668,37 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     put: ~
     delete: ~
   collectionOperations:
-    get: ~
     get_status_collection:
       method: 'GET'
       path: 'terminals/status'
       operation_normalization_context: 'status'
       normalization_context:
         groups: ['status']
+    get_terminals_unassigned:
+      method: 'GET'
+      path: 'terminals/unassigned'
+      route_name: 'get_terminals_unassigned'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: _includeId
+            in: query
+            type: integer
+            required: false
+            description: 'Ensure certain terminal id is included'
+          - name: _properties
+            in: query
+            type: array
+            required: false
+            items:
+              type: string
+            collectionFormat: 'multi'
+            description: "Allows you to reduce the response to contain only the properties you need"
+    get: ~
     post: ~
   attributes:
     access_control: >-
@@ -1606,6 +1740,7 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\Timezone\Label: ~
 
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
@@ -1625,6 +1760,7 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
     write_access_control:
       ROLE_COMPANY_ADMIN:
         raw: 'FALSE'
+Ivoz\Provider\Domain\Model\TransformationRuleSet\Name: ~
 
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
@@ -1635,6 +1771,37 @@ Ivoz\Provider\Domain\Model\User\User:
     delete: ~
   collectionOperations:
     get: ~
+    get_hunt_group_users_available:
+      method: 'GET'
+      path: '/hunt_groups/{id}/users_available'
+      requirements:
+        id: '\d+'
+      route_name: 'get_hunt_group_users_available'
+      pagination_enabled: false
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - Provider
+        parameters:
+          - name: id
+            in: path
+            type: integer
+            required: true
+            description: 'Hunt group id'
+          - name: _includeId
+            in: query
+            type: integer
+            required: false
+            description: 'Ensure certain user id is included'
+          - name: _properties
+            in: query
+            type: array
+            required: false
+            items:
+              type: string
+            collectionFormat: 'multi'
+            description: "Allows you to reduce the response to contain only the properties you need"
     post:
       operation_normalization_context: 'withPickupGroups'
       depth: 1
@@ -1663,9 +1830,6 @@ Ivoz\Provider\Domain\Model\User\User:
             outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
       - or:
         - inheritedOrNull:
-            voicemailLocution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
-      - or:
-        - inheritedOrNull:
             bossAssistantWhiteList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
       - or:
         - inheritedOrNull:
@@ -1676,6 +1840,53 @@ Ivoz\Provider\Domain\Model\User\User:
       - or:
         - inheritedOrNull:
             outgoingDdi: 'Ivoz\Provider\Domain\Model\Ddi\Ddi'
+      - or:
+        - inheritedOrNull:
+            location: 'Ivoz\Provider\Domain\Model\Location\Location'
     swagger_context:
       required:
       - company
+
+Ivoz\Provider\Domain\Model\Voicemail\Voicemail:
+  attributes:
+    access_control: >-
+      "ROLE_COMPANY_ADMIN" in roles
+      && (user.isVpbxAdmin() || user.isResidentialAdmin())
+      && user.hasAccessPrivileges(_api_resource_class, request.getMethod())
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+    write_access_control:
+    - and:
+      - company:
+          eq: "user.getCompany().getId()"
+      - or:
+        - inheritedOrNull:
+            user: 'Ivoz\Provider\Domain\Model\User\User'
+      - or:
+        - inheritedOrNull:
+            residentialDevice: 'Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice'
+      - or:
+        - inheritedOrNull:
+            locution: 'Ivoz\Provider\Domain\Model\Locution\Locution'
+    swagger_context:
+      required:
+      - company
+
+Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessage:
+  itemOperations:
+    get: ~
+    delete: ~
+  collectionOperations:
+    get: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
+    read_access_control:
+      inherited:
+        voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+    write_access_control:
+      inherited:
+        voicemail: 'Ivoz\Provider\Domain\Model\Voicemail\Voicemail'
+
+Ivoz\Provider\Domain\Model\VoicemailMessage\RecordingFile: ~

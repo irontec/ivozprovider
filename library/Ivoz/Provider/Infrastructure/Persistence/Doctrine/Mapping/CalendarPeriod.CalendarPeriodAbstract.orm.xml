@@ -29,9 +29,9 @@
         <join-column name="extensionId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="SET NULL"/>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="SET NULL"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="numberCountry" target-entity="Ivoz\Provider\Domain\Model\Country\CountryInterface" fetch="LAZY">

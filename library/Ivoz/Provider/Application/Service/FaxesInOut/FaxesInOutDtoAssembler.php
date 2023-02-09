@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 
 class FaxesInOutDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -28,7 +25,6 @@ class FaxesInOutDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($faxesInOut, FaxesInOutInterface::class);
 
-        /** @var FaxesInOutDto $dto */
         $dto = $faxesInOut->toDto($depth);
         $id = $faxesInOut->getId();
 

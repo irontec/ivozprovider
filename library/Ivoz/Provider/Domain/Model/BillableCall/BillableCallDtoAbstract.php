@@ -25,72 +25,72 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $callid;
+    private $callid = null;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $startTime;
+    private $startTime = null;
 
     /**
-     * @var float
+     * @var float|null
      */
     private $duration = 0;
 
     /**
      * @var string|null
      */
-    private $caller;
+    private $caller = null;
 
     /**
      * @var string|null
      */
-    private $callee;
+    private $callee = null;
 
     /**
      * @var float|null
      */
-    private $cost;
+    private $cost = null;
 
     /**
      * @var float|null
      */
-    private $price;
+    private $price = null;
 
     /**
      * @var array|null
      */
-    private $priceDetails;
+    private $priceDetails = null;
 
     /**
      * @var string|null
      */
-    private $carrierName;
+    private $carrierName = null;
 
     /**
      * @var string|null
      */
-    private $destinationName;
+    private $destinationName = null;
 
     /**
      * @var string|null
      */
-    private $ratingPlanName;
+    private $ratingPlanName = null;
 
     /**
      * @var string|null
      */
-    private $endpointType;
+    private $endpointType = null;
 
     /**
      * @var int|null
      */
-    private $endpointId;
+    private $endpointId = null;
 
     /**
      * @var string|null
      */
-    private $endpointName;
+    private $endpointName = null;
 
     /**
      * @var string|null
@@ -98,55 +98,58 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $direction = 'outbound';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var DestinationDto | null
      */
-    private $destination;
+    private $destination = null;
 
     /**
      * @var RatingPlanGroupDto | null
      */
-    private $ratingPlanGroup;
+    private $ratingPlanGroup = null;
 
     /**
      * @var InvoiceDto | null
      */
-    private $invoice;
+    private $invoice = null;
 
     /**
      * @var TrunksCdrDto | null
      */
-    private $trunksCdr;
+    private $trunksCdr = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -155,7 +158,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -191,9 +194,9 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'callid' => $this->getCallid(),
@@ -249,19 +252,19 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->callid;
     }
 
-    public function setStartTime(null|\DateTime|string $startTime): static
+    public function setStartTime(null|\DateTimeInterface|string $startTime): static
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    public function getStartTime(): \DateTime|string|null
+    public function getStartTime(): \DateTimeInterface|string|null
     {
         return $this->startTime;
     }
 
-    public function setDuration(?float $duration): static
+    public function setDuration(float $duration): static
     {
         $this->duration = $duration;
 
@@ -405,7 +408,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this->endpointName;
     }
 
-    public function setDirection(?string $direction): static
+    public function setDirection(string $direction): static
     {
         $this->direction = $direction;
 
@@ -424,7 +427,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

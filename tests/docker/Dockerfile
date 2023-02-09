@@ -17,7 +17,8 @@ RUN apt-get install --assume-yes --force-yes \
         sqlite3 \
         sphinx-intl \
         nodejs \
-		npm \
+        npm \
+        mysql-client \
         php8.0 \
         php8.0-cli \
         php8.0-mysql \
@@ -32,7 +33,8 @@ RUN apt-get install --assume-yes --force-yes \
         php8.0-mailparse \
         php8.0-imagick \
         php8.0-xdebug \
-        php8.0-zip
+        php8.0-zip \
+        yarnpkg
 RUN apt-get clean
 
 # Create jenkins user (configurable)
@@ -57,7 +59,7 @@ RUN wget https://github.com/sebastianbergmann/phpunit/archive/6.5.14.zip -O /opt
 RUN unzip /opt/phpunit/phpunit.zip -d /opt/phpunit/
 
 # Get dependencies
-RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress --ignore-platform-reqs
+RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor

@@ -21,6 +21,9 @@ class FaxesInOutAssembler implements CustomEntityAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    /**
+     * @return void
+     */
     public function fromDto(
         DataTransferObjectInterface $faxesInOutDto,
         EntityInterface $faxesInOut,

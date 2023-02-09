@@ -11,22 +11,10 @@ use Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleEventHandle
 
 class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        PsEndpointRepository $psEndpointRepository
+        private EntityTools $entityTools,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
 
     public static function getSubscribedEvents()
@@ -44,7 +32,7 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
     public function execute(RetailAccountInterface $entity)
     {
         $endpoint = $this->psEndpointRepository->findOneByRetailAccountId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         // If not found create a new one

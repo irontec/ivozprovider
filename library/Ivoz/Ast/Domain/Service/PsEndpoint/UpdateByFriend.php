@@ -13,22 +13,10 @@ use Ivoz\Provider\Domain\Service\Friend\FriendLifecycleEventHandlerInterface;
 
 class UpdateByFriend implements FriendLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        PsEndpointRepository $psEndpointRepository
+        private EntityPersisterInterface $entityPersister,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
 
     public static function getSubscribedEvents()
@@ -45,7 +33,7 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
     {
         // Replicate Terminal into ast_ps_endpoint
         $endpoint = $this->psEndpointRepository->findOneByFriendId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         if (is_null($endpoint)) {
@@ -55,7 +43,6 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
                 ->setSendDiversion("yes")
                 ->setSendPai("yes");
         } else {
-            /** @var PsEndpointDto $endPointDto */
             $endPointDto = $endpoint->toDto();
         }
 

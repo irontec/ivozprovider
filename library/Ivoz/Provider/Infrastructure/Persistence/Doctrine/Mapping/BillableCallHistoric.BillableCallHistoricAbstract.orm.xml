@@ -31,7 +31,7 @@
         </field>
         <field name="cost" type="decimal" column="cost" precision="20" scale="4" nullable="true"/>
         <field name="price" type="decimal" column="price" precision="20" scale="4" nullable="true"/>
-        <field name="priceDetails" type="json_array" column="priceDetails" nullable="true"/>
+        <field name="priceDetails" type="json" column="priceDetails" nullable="true"/>
         <field name="carrierName" type="string" column="carrierName" length="200" nullable="true">
             <options>
                 <option name="fixed"/>

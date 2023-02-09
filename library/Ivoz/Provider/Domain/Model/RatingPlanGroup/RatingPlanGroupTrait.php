@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -15,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait RatingPlanGroupTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, RatingPlanInterface> & Selectable<array-key, RatingPlanInterface>
      * RatingPlanInterface mappedBy ratingPlanGroup
      */
     protected $ratingPlan;
@@ -34,27 +37,27 @@ trait RatingPlanGroupTrait
         $this->ratingPlan = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param RatingPlanGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRatingPlan())) {
-            $self->replaceRatingPlan(
-                $fkTransformer->transformCollection(
-                    $dto->getRatingPlan()
-                )
+        $ratingPlan = $dto->getRatingPlan();
+        if (!is_null($ratingPlan)) {
+
+            /** @var Collection<array-key, RatingPlanInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ratingPlan
             );
+            $self->replaceRatingPlan($replacement);
         }
 
         $self->sanitizeValues();
@@ -69,20 +72,20 @@ trait RatingPlanGroupTrait
     /**
      * @internal use EntityTools instead
      * @param RatingPlanGroupDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRatingPlan())) {
-            $this->replaceRatingPlan(
-                $fkTransformer->transformCollection(
-                    $dto->getRatingPlan()
-                )
+        $ratingPlan = $dto->getRatingPlan();
+        if (!is_null($ratingPlan)) {
+
+            /** @var Collection<array-key, RatingPlanInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ratingPlan
             );
+            $this->replaceRatingPlan($replacement);
         }
         $this->sanitizeValues();
 
@@ -91,10 +94,8 @@ trait RatingPlanGroupTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RatingPlanGroupDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RatingPlanGroupDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -102,9 +103,9 @@ trait RatingPlanGroupTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -125,25 +126,33 @@ trait RatingPlanGroupTrait
         return $this;
     }
 
-    public function replaceRatingPlan(ArrayCollection $ratingPlan): RatingPlanGroupInterface
+    /**
+     * @param Collection<array-key, RatingPlanInterface> $ratingPlan
+     */
+    public function replaceRatingPlan(Collection $ratingPlan): RatingPlanGroupInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ratingPlan as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setRatingPlanGroup($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ratingPlan as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ratingPlan->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ratingPlan->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ratingPlan->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -153,6 +162,9 @@ trait RatingPlanGroupTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RatingPlanInterface>
+     */
     public function getRatingPlan(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

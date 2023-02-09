@@ -56,11 +56,12 @@ production:
         order:
           name: true
           description: true
-          open: true
         blacklist:
           status: true
           openExtension: true
           closeExtension: true
+          toggleExtension: true
+          open: true
       fixedPositions:
         group0:
           colsPerRow: 12

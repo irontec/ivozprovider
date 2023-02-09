@@ -4,18 +4,27 @@ namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 class CallCsvReportDto extends CallCsvReportDtoAbstract
 {
+    /** @var ?string */
     private $csvPath;
 
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
                 'id' => 'id',
                 'inDate' => 'inDate',
                 'outDate' => 'outDate',
+                'csv' => [
+                    'fileSize',
+                    'mimeType',
+                    'baseName',
+                ],
+                'createdOn' => 'createdOn',
+                'sentTo' => 'sentTo',
+                'callCsvSchedulerId' => 'callCsvScheduler',
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -32,7 +41,7 @@ class CallCsvReportDto extends CallCsvReportDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -64,14 +73,18 @@ class CallCsvReportDto extends CallCsvReportDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
         );
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'csv'
@@ -89,7 +102,7 @@ class CallCsvReportDto extends CallCsvReportDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getCsvPath()
     {

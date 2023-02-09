@@ -1,0 +1,32 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			count: 1
+			path: src/Recording/Encoder.php
+
+		-
+			message: "#^Parameter \\#1 \\$ddiE164 of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiRepository\\:\\:findOneByDdiE164\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Recording/Encoder.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 3
+			path: src/Recording/Encoder.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
+			count: 1
+			path: src/Service/Encoder.php
+
+		-
+			message: "#^Parameter \\#1 \\$ddiE164 of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiRepository\\:\\:findOneByDdiE164\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Service/Encoder.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 3
+			path: src/Service/Encoder.php
+

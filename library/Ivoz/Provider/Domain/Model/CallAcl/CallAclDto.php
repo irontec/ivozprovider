@@ -7,7 +7,7 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class CallAclDto extends CallAclDtoAbstract
 {
-    const CONTEXT_WITH_MATCHLIST = 'withMatchListIds';
+    public const CONTEXT_WITH_MATCHLIST = 'withMatchListIds';
 
     /**
      * @var int[]
@@ -17,13 +17,13 @@ class CallAclDto extends CallAclDtoAbstract
      *     description="MatchList ids"
      * )
      */
-    protected $matchListIds = [];
+    private $matchListIds = [];
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -46,7 +46,7 @@ class CallAclDto extends CallAclDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -60,7 +60,7 @@ class CallAclDto extends CallAclDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -80,7 +80,7 @@ class CallAclDto extends CallAclDtoAbstract
     /**
      * @param int[] $ids
      */
-    public function setMatchListIds(array $ids)
+    public function setMatchListIds(array $ids): void
     {
         $this->matchListIds = $ids;
 

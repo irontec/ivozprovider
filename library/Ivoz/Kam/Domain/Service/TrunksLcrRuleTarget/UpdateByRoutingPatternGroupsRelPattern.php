@@ -13,21 +13,11 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGr
  */
 class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = LcrRuleUpdateByRoutingPatternGroupsRelPattern::POST_PERSIST_PRIORITY + 10;
+    public const POST_PERSIST_PRIORITY = LcrRuleUpdateByRoutingPatternGroupsRelPattern::POST_PERSIST_PRIORITY + 10;
 
-    /**
-     * @var TrunksLcrRuleTargetFactory
-     */
-    protected $trunksLcrRuleTargetFactory;
-
-    /**
-     * UpdateByRoutingPatternGroupsRelPattern constructor.
-     * @param TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
-     */
     public function __construct(
-        TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
+        private TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
     ) {
-        $this->trunksLcrRuleTargetFactory = $trunksLcrRuleTargetFactory;
     }
 
     public static function getSubscribedEvents()

@@ -19,7 +19,7 @@ class ProviderApplicationServer extends Fixture
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(ApplicationServer::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(ApplicationServer::class);
         (function () use ($fixture) {
             $this->setIp("127.0.0.1");
@@ -40,7 +40,7 @@ class ProviderApplicationServer extends Fixture
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
-    
+
         $manager->flush();
     }
 }

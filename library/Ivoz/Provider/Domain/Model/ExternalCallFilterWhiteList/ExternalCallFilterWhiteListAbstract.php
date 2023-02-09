@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
@@ -22,10 +23,10 @@ abstract class ExternalCallFilterWhiteListAbstract
     use ChangelogTrait;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      * inversedBy whiteLists
      */
-    protected $filter;
+    protected $filter = null;
 
     /**
      * @var MatchListInterface
@@ -39,41 +40,34 @@ abstract class ExternalCallFilterWhiteListAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ExternalCallFilterWhiteList",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ExternalCallFilterWhiteListDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ExternalCallFilterWhiteListDto
     {
         return new ExternalCallFilterWhiteListDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ExternalCallFilterWhiteListInterface|null $entity
-     * @param int $depth
-     * @return ExternalCallFilterWhiteListDto|null
+     * @param null|ExternalCallFilterWhiteListInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExternalCallFilterWhiteListDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class ExternalCallFilterWhiteListAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ExternalCallFilterWhiteListDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class ExternalCallFilterWhiteListAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ExternalCallFilterWhiteListDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class ExternalCallFilterWhiteListAbstract
     /**
      * @internal use EntityTools instead
      * @param ExternalCallFilterWhiteListDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ExternalCallFilterWhiteListDto::class);
+
+        $matchlist = $dto->getMatchlist();
+        Assertion::notNull($matchlist, 'getMatchlist value is null, but non null value was expected.');
 
         $this
             ->setFilter($fkTransformer->transform($dto->getFilter()))
-            ->setMatchlist($fkTransformer->transform($dto->getMatchlist()));
+            ->setMatchlist($fkTransformer->transform($matchlist));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ExternalCallFilterWhiteListDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ExternalCallFilterWhiteListDto
     {
         return self::createDto()
             ->setFilter(ExternalCallFilter::entityToDto(self::getFilter(), $depth))
@@ -149,12 +143,12 @@ abstract class ExternalCallFilterWhiteListAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'filterId' => self::getFilter() ? self::getFilter()->getId() : null,
+            'filterId' => self::getFilter()?->getId(),
             'matchlistId' => self::getMatchlist()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class ExternalCallFilterWhiteListAbstract
     {
         $this->filter = $filter;
 
-        /** @var  $this */
         return $this;
     }
 

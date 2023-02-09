@@ -3,6 +3,9 @@
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -13,31 +16,80 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 */
 interface PsEndpointInterface extends LoggableEntityInterface
 {
-    const DIRECTMEDIAMETHOD_UPDATE = 'update';
+    public const DIRECTMEDIA_YES = 'yes';
 
-    const DIRECTMEDIAMETHOD_INVITE = 'invite';
+    public const DIRECTMEDIA_NO = 'no';
 
-    const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
+    public const DIRECTMEDIAMETHOD_UPDATE = 'update';
 
-    const T38UDPTL_YES = 'yes';
+    public const DIRECTMEDIAMETHOD_INVITE = 'invite';
 
-    const T38UDPTL_NO = 'no';
+    public const DIRECTMEDIAMETHOD_REINVITE = 'reinvite';
 
-    const T38UDPTLEC_NONE = 'none';
+    public const SENDDIVERSION_YES = 'yes';
 
-    const T38UDPTLEC_FEC = 'fec';
+    public const SENDDIVERSION_NO = 'no';
 
-    const T38UDPTLEC_REDUNDANCY = 'redundancy';
+    public const SENDPAI_YES = 'yes';
 
-    const T38UDPTLNAT_YES = 'yes';
+    public const SENDPAI_NO = 'no';
 
-    const T38UDPTLNAT_NO = 'no';
+    public const ONEHUNDREDREL_NO = 'no';
+
+    public const ONEHUNDREDREL_REQUIRED = 'required';
+
+    public const ONEHUNDREDREL_YES = 'yes';
+
+    public const TRUSTIDINBOUND_NO = 'no';
+
+    public const TRUSTIDINBOUND_YES = 'yes';
+
+    public const T38UDPTL_YES = 'yes';
+
+    public const T38UDPTL_NO = 'no';
+
+    public const T38UDPTLEC_NONE = 'none';
+
+    public const T38UDPTLEC_FEC = 'fec';
+
+    public const T38UDPTLEC_REDUNDANCY = 'redundancy';
+
+    public const T38UDPTLNAT_YES = 'yes';
+
+    public const T38UDPTLNAT_NO = 'no';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): PsEndpointDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|PsEndpointInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PsEndpointDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param PsEndpointDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): PsEndpointDto;
 
     public function getSorceryId(): string;
 
@@ -60,6 +112,10 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getMailboxes(): ?string;
 
     public function getNamedPickupGroup(): ?string;
+
+    public function getSubscribeContext(): ?string;
+
+    public function getHintExtension(): ?string;
 
     public function getSendDiversion(): ?string;
 

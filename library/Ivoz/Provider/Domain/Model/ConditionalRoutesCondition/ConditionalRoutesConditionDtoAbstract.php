@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
@@ -27,100 +28,103 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 1;
 
     /**
      * @var string|null
      */
-    private $routeType;
+    private $routeType = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $numberValue = null;
 
     /**
      * @var string|null
      */
-    private $friendValue;
+    private $friendValue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var HuntGroupDto | null
      */
-    private $huntGroup;
+    private $huntGroup = null;
+
+    /**
+     * @var VoicemailDto | null
+     */
+    private $voicemail = null;
 
     /**
      * @var UserDto | null
      */
-    private $voicemailUser;
-
-    /**
-     * @var UserDto | null
-     */
-    private $user;
+    private $user = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ConferenceRoomDto | null
      */
-    private $conferenceRoom;
+    private $conferenceRoom = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var ConditionalRoutesConditionsRelMatchlistDto[] | null
      */
-    private $relMatchlists;
+    private $relMatchlists = null;
 
     /**
      * @var ConditionalRoutesConditionsRelScheduleDto[] | null
      */
-    private $relSchedules;
+    private $relSchedules = null;
 
     /**
      * @var ConditionalRoutesConditionsRelCalendarDto[] | null
      */
-    private $relCalendars;
+    private $relCalendars = null;
 
     /**
      * @var ConditionalRoutesConditionsRelRouteLockDto[] | null
      */
-    private $relRouteLocks;
+    private $relRouteLocks = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -129,7 +133,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -144,7 +148,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             'conditionalRouteId' => 'conditionalRoute',
             'ivrId' => 'ivr',
             'huntGroupId' => 'huntGroup',
-            'voicemailUserId' => 'voicemailUser',
+            'voicemailId' => 'voicemail',
             'userId' => 'user',
             'queueId' => 'queue',
             'locutionId' => 'locution',
@@ -155,9 +159,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'priority' => $this->getPriority(),
@@ -168,7 +172,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             'conditionalRoute' => $this->getConditionalRoute(),
             'ivr' => $this->getIvr(),
             'huntGroup' => $this->getHuntGroup(),
-            'voicemailUser' => $this->getVoicemailUser(),
+            'voicemail' => $this->getVoicemail(),
             'user' => $this->getUser(),
             'queue' => $this->getQueue(),
             'locution' => $this->getLocution(),
@@ -195,7 +199,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $response;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -250,7 +254,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -345,30 +349,30 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return null;
     }
 
-    public function setVoicemailUser(?UserDto $voicemailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voicemailUser = $voicemailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoicemailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voicemailUser;
+        return $this->voicemail;
     }
 
-    public function setVoicemailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoicemailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoicemailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoicemailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

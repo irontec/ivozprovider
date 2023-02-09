@@ -14,25 +14,28 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $iden;
+    private $iden = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $name = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -41,7 +44,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -56,9 +59,9 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'iden' => $this->getIden(),
@@ -81,7 +84,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $response;
     }
 
-    public function setIden(?string $iden): static
+    public function setIden(string $iden): static
     {
         $this->iden = $iden;
 
@@ -93,7 +96,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $this->iden;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -105,7 +108,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -124,7 +127,7 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

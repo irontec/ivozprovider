@@ -16,32 +16,35 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $address = explode('/', $this->getSourceAddress());
         $ip = array_shift($address);
         $mask = array_shift($address);
+        if ($mask) {
+            $mask = (int) $mask;
+        }
 
         // Save validated values
         $this->setIpAddr($ip);
         $this->setMask($mask);
     }
 
-    public function setIpAddr(?string $ipAddr = null):  static
+    public function setIpAddr(?string $ipAddr = null): static
     {
         if (!is_null($ipAddr)) {
             Assertion::ip($ipAddr);
@@ -50,7 +53,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         return parent::setIpAddr($ipAddr);
     }
 
-    public function setMask(int $mask = null):  static
+    public function setMask(int $mask = null): static
     {
         $mask = $mask ?? 32;
 

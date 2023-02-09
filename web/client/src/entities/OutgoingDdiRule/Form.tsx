@@ -1,38 +1,33 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const { entityService, row, match } = props;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const groups: Array<FieldsetGroups> = [
+    {
+      legend: _('Basic Configuration'),
+      fields: ['name'],
+    },
+    {
+      legend: _('Action Configuration'),
+      fields: ['defaultAction', 'forcedDdi'],
+    },
+  ];
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
-
-    useEffect(
-        () => {
-            if (loadingFks) {
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            forcedDdi: options
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+};
 
 export default Form;

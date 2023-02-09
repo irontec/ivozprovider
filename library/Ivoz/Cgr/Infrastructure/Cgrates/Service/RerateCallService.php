@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Infrastructure\Cgrates\Service;
 
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
@@ -14,32 +15,39 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     /**
      * @var TrunksCdrRepository
      */
-    protected $trunksCdrRepository;
+    private $trunksCdrRepository;
+
+    /**
+     * @var TpCdrRepository
+     */
+    protected $tpCdrRepository;
 
     /**
      * @var BillableCallRepository
      */
-    protected $billableCallRepository;
+    private $billableCallRepository;
 
     /**
      * @var ProcessExternalCdr
      */
-    protected $processExternalCdr;
+    private $processExternalCdr;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    private $logger;
 
     public function __construct(
         ClientInterface $jsonRpcClient,
         BillableCallRepository $billableCallRepository,
         TrunksCdrRepository $trunksCdrRepository,
+        TpCdrRepository $tpCdrRepository,
         ProcessExternalCdr $processExternalCdr,
         LoggerInterface $logger
     ) {
         $this->billableCallRepository = $billableCallRepository;
         $this->trunksCdrRepository = $trunksCdrRepository;
+        $this->tpCdrRepository = $tpCdrRepository;
         $this->processExternalCdr = $processExternalCdr;
         $this->logger = $logger;
 
@@ -55,6 +63,23 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
     public function execute(array $pks)
     {
         $error = false;
+
+        $cgrids = $this->trunksCdrRepository->getCgridsByBillableCallIds(
+            $pks
+        );
+
+        $this
+            ->tpCdrRepository
+            ->fixCorruptedByCgrids(
+                $cgrids
+            );
+
+        $this
+            ->trunksCdrRepository
+            ->resetOrphanCgrids(
+                $cgrids
+            );
+
         $cgrIds = $this
             ->billableCallRepository
             ->findRerateableCgridsInGroup($pks);

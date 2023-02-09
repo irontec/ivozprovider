@@ -12,22 +12,11 @@ use Ivoz\Provider\Domain\Service\OutgoingRoutingRelCarrier\OutgoingRoutingRelCar
  */
 class CreatedByOutgoingRoutingRelCarrierBinding implements OutgoingRoutingRelCarrierLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var CreatedByOutgoingRoutingRelCarrier
-     */
-    protected $createByOutgoingRoutingRelCarrier;
-
-    /**
-     * CreatedByOutgoingRoutingRelCarrierBinding constructor.
-     *
-     * @param CreatedByOutgoingRoutingRelCarrier $createByOutgoingRouting
-     */
     public function __construct(
-        CreatedByOutgoingRoutingRelCarrier $createByOutgoingRouting
+        private CreatedByOutgoingRoutingRelCarrier $createByOutgoingRoutingRelCarrier
     ) {
-        $this->createByOutgoingRoutingRelCarrier = $createByOutgoingRouting;
     }
 
     public static function getSubscribedEvents()

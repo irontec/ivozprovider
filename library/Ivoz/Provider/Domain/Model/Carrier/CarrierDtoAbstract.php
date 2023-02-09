@@ -24,14 +24,14 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var bool|null
@@ -49,60 +49,63 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $calculateCost = false;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var ProxyTrunkDto | null
      */
-    private $proxyTrunk;
+    private $proxyTrunk = null;
 
     /**
      * @var MediaRelaySetDto | null
      */
-    private $mediaRelaySets;
+    private $mediaRelaySets = null;
 
     /**
      * @var OutgoingRoutingDto[] | null
      */
-    private $outgoingRoutings;
+    private $outgoingRoutings = null;
 
     /**
      * @var OutgoingRoutingRelCarrierDto[] | null
      */
-    private $outgoingRoutingsRelCarriers;
+    private $outgoingRoutingsRelCarriers = null;
 
     /**
      * @var CarrierServerDto[] | null
      */
-    private $servers;
+    private $servers = null;
 
     /**
      * @var RatingProfileDto[] | null
      */
-    private $ratingProfiles;
+    private $ratingProfiles = null;
 
     /**
      * @var TpCdrStatDto[] | null
      */
-    private $tpCdrStats;
+    private $tpCdrStats = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -111,7 +114,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -133,9 +136,9 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'description' => $this->getDescription(),
@@ -170,7 +173,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -182,7 +185,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->description;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -237,7 +240,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

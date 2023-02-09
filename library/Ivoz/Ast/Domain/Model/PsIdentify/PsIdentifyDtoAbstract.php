@@ -18,55 +18,58 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $sorceryId;
+    private $sorceryId = null;
 
     /**
      * @var string|null
      */
-    private $endpoint;
+    private $endpoint = null;
 
     /**
      * @var string|null
      */
-    private $match;
+    private $match = null;
 
     /**
      * @var string|null
      */
-    private $matchHeader;
+    private $matchHeader = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $srvLookups = 'false';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var TerminalDto | null
      */
-    private $terminal;
+    private $terminal = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -75,7 +78,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -96,9 +99,9 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'sorceryId' => $this->getSorceryId(),
@@ -127,7 +130,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setSorceryId(?string $sorceryId): static
+    public function setSorceryId(string $sorceryId): static
     {
         $this->sorceryId = $sorceryId;
 
@@ -175,7 +178,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
         return $this->matchHeader;
     }
 
-    public function setSrvLookups(?string $srvLookups): static
+    public function setSrvLookups(string $srvLookups): static
     {
         $this->srvLookups = $srvLookups;
 
@@ -194,7 +197,7 @@ abstract class PsIdentifyDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

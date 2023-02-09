@@ -15,15 +15,9 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterfa
  */
 class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -78,11 +72,16 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         );
 
         // Set new callerid with updated extension number
-        $endpointDto->setCallerid($callerId);
+        $endpointDto
+            ->setCallerid($callerId)
+            ->setHintExtension($extension->getNumber());
+
+        // Update user voicemail
+        $voicemail = $user->getVoicemail();
 
         // Update endpoint voicemail mailbox@context
-        if ($user->getVoicemailEnabled()) {
-            $endpointDto->setMailboxes($user->getVoiceMail());
+        if ($voicemail) {
+            $endpointDto->setMailboxes($voicemail->getVoicemailName());
         }
 
         // Update endpoint pickup groups

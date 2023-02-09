@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Service\DdiProviderRegistration\DdiProviderRegistrationLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkRepository;
 
 /**
  * Class CreatedByDdiProviderRegistration
@@ -13,21 +14,12 @@ use Ivoz\Provider\Domain\Service\DdiProviderRegistration\DdiProviderRegistration
  */
 class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * CreatedByDdiProviderRegistration constructor.
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools,
+        private ProxyTrunkRepository $proxyTrunkRepository
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -63,6 +55,21 @@ class CreatedByDdiProviderRegistration implements DdiProviderRegistrationLifecyc
             ->setAuthPassword($ddiProviderRegistration->getAuthPassword())
             ->setAuthProxy($ddiProviderRegistration->getAuthProxy())
             ->setExpires($ddiProviderRegistration->getExpires());
+
+        // Set socket and contactAddr depending on DDIProvider proxytrunks address
+        $trunks = $ddiProviderRegistration->getDdiProvider()->getProxyTrunk();
+        if (is_null($trunks)) {
+            $trunks = $this->proxyTrunkRepository->getProxyMainAddress();
+        }
+
+        $trunksIp  = $trunks->getIp();
+
+        $socket = 'udp:' . $trunksIp . ':5060';
+        $contactAddr = $trunksIp . ':5060';
+
+        $trunksUacregDto
+            ->setSocket($socket)
+            ->setContactAddr($contactAddr);
 
         // Update registration contact if required
         $contactUsernameChanged = $ddiProviderRegistration->hasChanged('multiDdi')

@@ -4,37 +4,26 @@ namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEventHandlerInterface;
 
 class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var PsEndpointRepository
-     */
-    protected $psEndpointRepository;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        PsEndpointRepository $psEndpointRepository
+        private EntityTools $entityTools,
+        private PsEndpointRepository $psEndpointRepository
     ) {
-        //@todo use entityTools instead
-        $this->entityPersister = $entityPersister;
-        $this->psEndpointRepository = $psEndpointRepository;
     }
+
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
@@ -46,7 +35,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
     public function execute(ResidentialDeviceInterface $entity)
     {
         $endpoint = $this->psEndpointRepository->findOneByResidentialDeviceId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         // If not found create a new one
@@ -58,7 +47,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
                 ->setSendPai('yes');
         } else {
             // @todo use entityTools here
-            /** @var PsEndpointDto $endpointDto */
             $endpointDto  = $endpoint->toDto();
         }
 
@@ -66,6 +54,9 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         $fromDomain = $entity->getFromDomain()
             ? $entity->getFromDomain()
             : $entity->getDomain()->getDomain();
+
+        // Get Residential Voicemail
+        $voicemail = $entity->getVoicemail();
 
         // Update/Insert endpoint data
         $endpointDto
@@ -79,7 +70,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setTrustIdInbound('yes')
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setT38Udptl($entity->getT38Passthrough())
-            ->setMailboxes($entity->getVoiceMail())
+            ->setMailboxes($voicemail?->getVoicemailName())
             ->setDirectMediaMethod('invite');
 
         // Disable direct media for T.38 capable devices
@@ -89,6 +80,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             $endpointDto->setDirectMedia('yes');
         }
 
-        $this->entityPersister->persistDto($endpointDto, $endpoint);
+        $this->entityTools->persistDto($endpointDto, $endpoint);
     }
 }

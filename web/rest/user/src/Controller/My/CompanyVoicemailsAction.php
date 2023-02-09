@@ -3,27 +3,16 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Provider\Domain\Model\User\UserRepository;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class CompanyVoicemailsAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        UserRepository $userRepository
+        private TokenStorageInterface $tokenStorage,
+        private VoicemailRepository $voicemailRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->userRepository = $userRepository;
     }
 
     public function __invoke()
@@ -34,8 +23,11 @@ class CompanyVoicemailsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
+        /** @var UserInterface $user */
+        $user = $token->getUser();
+
         return $this
-            ->userRepository
-            ->getAvailableVoicemails($token->getUser());
+            ->voicemailRepository
+            ->getAvailableVoicemailsForUser($user);
     }
 }

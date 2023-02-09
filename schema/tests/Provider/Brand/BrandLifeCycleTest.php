@@ -1,7 +1,9 @@
 <?php
+
 namespace Tests\Provider\Brand;
 
-use Ivoz\Provider\Domain\Model\Changelog\Changelog;
+use Ivoz\Provider\Domain\Model\Administrator\Administrator;
+use Ivoz\Core\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrand;
@@ -184,7 +186,9 @@ class BrandLifeCycleTest extends KernelTestCase
             ->setInvoiceTown('InvoiceTown')
             ->setInvoiceProvince('InvoiceProvince')
             ->setInvoiceCountry('InvoiceCountry')
-            ->setDefaultTimezoneId(1);
+            ->setDefaultTimezoneId(1)
+            ->setLanguageId(1)
+            ->setCurrencyId(1);
 
         /** @var Brand $brand */
         $brand = $this->entityTools
@@ -232,6 +236,7 @@ class BrandLifeCycleTest extends KernelTestCase
             BrandService::class,
             TpDerivedCharger::class,
             RoutingPatternGroupsRelPattern::class,
+            Administrator::class,
         ]);
     }
 

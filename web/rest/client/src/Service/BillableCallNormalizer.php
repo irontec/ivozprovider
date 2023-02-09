@@ -10,15 +10,10 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class BillableCallNormalizer implements NormalizerInterface
 {
-    protected $decoratedNormalizer;
-    protected $tokenStorage;
-
     public function __construct(
-        NormalizerInterface $decoratedNormalizer,
-        TokenStorageInterface $tokenStorage
+        private NormalizerInterface $decoratedNormalizer,
+        private TokenStorageInterface $tokenStorage
     ) {
-        $this->decoratedNormalizer = $decoratedNormalizer;
-        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -40,7 +35,8 @@ class BillableCallNormalizer implements NormalizerInterface
             ->decoratedNormalizer
             ->normalize(...func_get_args());
 
-        if (! $object instanceof BillableCallInterface
+        if (
+            ! $object instanceof BillableCallInterface
             && !$object instanceof BillableCallDto
         ) {
             return $response;

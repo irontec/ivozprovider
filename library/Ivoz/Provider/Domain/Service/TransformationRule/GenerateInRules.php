@@ -8,22 +8,15 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 
 class GenerateInRules
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        private EntityPersisterInterface $entityPersister
     ) {
-        $this->entityPersister = $entityPersister;
     }
 
     /**
      * @return void
      */
-    public function execute(TransformationRuleSetInterface $entity, $type)
+    public function execute(TransformationRuleSetInterface $entity, string $type)
     {
         // Get RuleSet data
         $internationalCode = $entity->getInternationalCode();

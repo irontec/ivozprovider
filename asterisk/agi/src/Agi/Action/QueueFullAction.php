@@ -65,7 +65,7 @@ class QueueFullAction
         $this->routerAction
             ->setRouteType($queue->getFullTargetType())
             ->setRouteExtension($queue->getFullExtension())
-            ->setRouteVoicemailUser($queue->getFullVoiceMailUser())
+            ->setRouteVoicemail($queue->getFullVoicemail())
             ->setRouteExternal($queue->getFullNumberValueE164())
             ->route();
     }

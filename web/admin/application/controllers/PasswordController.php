@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Ivan Alonso <kaian@irontec.com>
  * @author Luis Felipe García <lfgarcia@irontec.com>
@@ -10,7 +11,7 @@ class PasswordController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->_helper->layout->disableLayout();
-        
+
         $this->_helper->ContextSwitch()
             ->addActionContext('generate', 'json')
             ->initContext('json');

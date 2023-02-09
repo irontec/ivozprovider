@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpDerivedCharger;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -51,13 +52,13 @@ abstract class TpDerivedChargerAbstract
     protected $account = '*any';
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $subject = '*any';
 
     /**
+     * @var ?string
      * column: destination_ids
-     * @var string | null
      */
     protected $destinationIds = '*any';
 
@@ -67,104 +68,104 @@ abstract class TpDerivedChargerAbstract
     protected $runid = 'carrier';
 
     /**
-     * column: run_filters
      * @var string
+     * column: run_filters
      */
     protected $runFilters = '';
 
     /**
-     * column: req_type_field
      * @var string
+     * column: req_type_field
      */
     protected $reqTypeField = '^*postpaid';
 
     /**
-     * column: direction_field
      * @var string
+     * column: direction_field
      */
     protected $directionField = '*default';
 
     /**
-     * column: tenant_field
      * @var string
+     * column: tenant_field
      */
     protected $tenantField = '*default';
 
     /**
-     * column: category_field
      * @var string
+     * column: category_field
      */
     protected $categoryField = '*default';
 
     /**
-     * column: account_field
      * @var string
+     * column: account_field
      */
     protected $accountField = 'carrierId';
 
     /**
-     * column: subject_field
      * @var string
+     * column: subject_field
      */
     protected $subjectField = 'carrierId';
 
     /**
-     * column: destination_field
      * @var string
+     * column: destination_field
      */
     protected $destinationField = '*default';
 
     /**
-     * column: setup_time_field
      * @var string
+     * column: setup_time_field
      */
     protected $setupTimeField = '*default';
 
     /**
-     * column: pdd_field
      * @var string
+     * column: pdd_field
      */
     protected $pddField = '*default';
 
     /**
-     * column: answer_time_field
      * @var string
+     * column: answer_time_field
      */
     protected $answerTimeField = '*default';
 
     /**
-     * column: usage_field
      * @var string
+     * column: usage_field
      */
     protected $usageField = '*default';
 
     /**
-     * column: supplier_field
      * @var string
+     * column: supplier_field
      */
     protected $supplierField = '*default';
 
     /**
-     * column: disconnect_cause_field
      * @var string
+     * column: disconnect_cause_field
      */
     protected $disconnectCauseField = '*default';
 
     /**
-     * column: rated_field
      * @var string
+     * column: rated_field
      */
     protected $ratedTimeField = '*default';
 
     /**
-     * column: cost_field
      * @var string
+     * column: cost_field
      */
     protected $costField = '*default';
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
@@ -177,30 +178,30 @@ abstract class TpDerivedChargerAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $loadid,
-        $direction,
-        $tenant,
-        $category,
-        $account,
-        $runid,
-        $runFilters,
-        $reqTypeField,
-        $directionField,
-        $tenantField,
-        $categoryField,
-        $accountField,
-        $subjectField,
-        $destinationField,
-        $setupTimeField,
-        $pddField,
-        $answerTimeField,
-        $usageField,
-        $supplierField,
-        $disconnectCauseField,
-        $ratedTimeField,
-        $costField,
-        $createdAt
+        string $tpid,
+        string $loadid,
+        string $direction,
+        string $tenant,
+        string $category,
+        string $account,
+        string $runid,
+        string $runFilters,
+        string $reqTypeField,
+        string $directionField,
+        string $tenantField,
+        string $categoryField,
+        string $accountField,
+        string $subjectField,
+        string $destinationField,
+        string $setupTimeField,
+        string $pddField,
+        string $answerTimeField,
+        string $usageField,
+        string $supplierField,
+        string $disconnectCauseField,
+        string $ratedTimeField,
+        string $costField,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setLoadid($loadid);
@@ -228,41 +229,34 @@ abstract class TpDerivedChargerAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpDerivedCharger",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpDerivedChargerDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpDerivedChargerDto
     {
         return new TpDerivedChargerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpDerivedChargerInterface|null $entity
-     * @param int $depth
-     * @return TpDerivedChargerDto|null
+     * @param null|TpDerivedChargerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpDerivedChargerDto
     {
         if (!$entity) {
             return null;
@@ -278,8 +272,7 @@ abstract class TpDerivedChargerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpDerivedChargerDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -288,45 +281,94 @@ abstract class TpDerivedChargerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpDerivedChargerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDerivedChargerDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $runid = $dto->getRunid();
+        Assertion::notNull($runid, 'getRunid value is null, but non null value was expected.');
+        $runFilters = $dto->getRunFilters();
+        Assertion::notNull($runFilters, 'getRunFilters value is null, but non null value was expected.');
+        $reqTypeField = $dto->getReqTypeField();
+        Assertion::notNull($reqTypeField, 'getReqTypeField value is null, but non null value was expected.');
+        $directionField = $dto->getDirectionField();
+        Assertion::notNull($directionField, 'getDirectionField value is null, but non null value was expected.');
+        $tenantField = $dto->getTenantField();
+        Assertion::notNull($tenantField, 'getTenantField value is null, but non null value was expected.');
+        $categoryField = $dto->getCategoryField();
+        Assertion::notNull($categoryField, 'getCategoryField value is null, but non null value was expected.');
+        $accountField = $dto->getAccountField();
+        Assertion::notNull($accountField, 'getAccountField value is null, but non null value was expected.');
+        $subjectField = $dto->getSubjectField();
+        Assertion::notNull($subjectField, 'getSubjectField value is null, but non null value was expected.');
+        $destinationField = $dto->getDestinationField();
+        Assertion::notNull($destinationField, 'getDestinationField value is null, but non null value was expected.');
+        $setupTimeField = $dto->getSetupTimeField();
+        Assertion::notNull($setupTimeField, 'getSetupTimeField value is null, but non null value was expected.');
+        $pddField = $dto->getPddField();
+        Assertion::notNull($pddField, 'getPddField value is null, but non null value was expected.');
+        $answerTimeField = $dto->getAnswerTimeField();
+        Assertion::notNull($answerTimeField, 'getAnswerTimeField value is null, but non null value was expected.');
+        $usageField = $dto->getUsageField();
+        Assertion::notNull($usageField, 'getUsageField value is null, but non null value was expected.');
+        $supplierField = $dto->getSupplierField();
+        Assertion::notNull($supplierField, 'getSupplierField value is null, but non null value was expected.');
+        $disconnectCauseField = $dto->getDisconnectCauseField();
+        Assertion::notNull($disconnectCauseField, 'getDisconnectCauseField value is null, but non null value was expected.');
+        $ratedTimeField = $dto->getRatedTimeField();
+        Assertion::notNull($ratedTimeField, 'getRatedTimeField value is null, but non null value was expected.');
+        $costField = $dto->getCostField();
+        Assertion::notNull($costField, 'getCostField value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getLoadid(),
-            $dto->getDirection(),
-            $dto->getTenant(),
-            $dto->getCategory(),
-            $dto->getAccount(),
-            $dto->getRunid(),
-            $dto->getRunFilters(),
-            $dto->getReqTypeField(),
-            $dto->getDirectionField(),
-            $dto->getTenantField(),
-            $dto->getCategoryField(),
-            $dto->getAccountField(),
-            $dto->getSubjectField(),
-            $dto->getDestinationField(),
-            $dto->getSetupTimeField(),
-            $dto->getPddField(),
-            $dto->getAnswerTimeField(),
-            $dto->getUsageField(),
-            $dto->getSupplierField(),
-            $dto->getDisconnectCauseField(),
-            $dto->getRatedTimeField(),
-            $dto->getCostField(),
-            $dto->getCreatedAt()
+            $tpid,
+            $loadid,
+            $direction,
+            $tenant,
+            $category,
+            $account,
+            $runid,
+            $runFilters,
+            $reqTypeField,
+            $directionField,
+            $tenantField,
+            $categoryField,
+            $accountField,
+            $subjectField,
+            $destinationField,
+            $setupTimeField,
+            $pddField,
+            $answerTimeField,
+            $usageField,
+            $supplierField,
+            $disconnectCauseField,
+            $ratedTimeField,
+            $costField,
+            $createdAt
         );
 
         $self
             ->setSubject($dto->getSubject())
             ->setDestinationIds($dto->getDestinationIds())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -336,52 +378,100 @@ abstract class TpDerivedChargerAbstract
     /**
      * @internal use EntityTools instead
      * @param TpDerivedChargerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDerivedChargerDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $direction = $dto->getDirection();
+        Assertion::notNull($direction, 'getDirection value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $category = $dto->getCategory();
+        Assertion::notNull($category, 'getCategory value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $runid = $dto->getRunid();
+        Assertion::notNull($runid, 'getRunid value is null, but non null value was expected.');
+        $runFilters = $dto->getRunFilters();
+        Assertion::notNull($runFilters, 'getRunFilters value is null, but non null value was expected.');
+        $reqTypeField = $dto->getReqTypeField();
+        Assertion::notNull($reqTypeField, 'getReqTypeField value is null, but non null value was expected.');
+        $directionField = $dto->getDirectionField();
+        Assertion::notNull($directionField, 'getDirectionField value is null, but non null value was expected.');
+        $tenantField = $dto->getTenantField();
+        Assertion::notNull($tenantField, 'getTenantField value is null, but non null value was expected.');
+        $categoryField = $dto->getCategoryField();
+        Assertion::notNull($categoryField, 'getCategoryField value is null, but non null value was expected.');
+        $accountField = $dto->getAccountField();
+        Assertion::notNull($accountField, 'getAccountField value is null, but non null value was expected.');
+        $subjectField = $dto->getSubjectField();
+        Assertion::notNull($subjectField, 'getSubjectField value is null, but non null value was expected.');
+        $destinationField = $dto->getDestinationField();
+        Assertion::notNull($destinationField, 'getDestinationField value is null, but non null value was expected.');
+        $setupTimeField = $dto->getSetupTimeField();
+        Assertion::notNull($setupTimeField, 'getSetupTimeField value is null, but non null value was expected.');
+        $pddField = $dto->getPddField();
+        Assertion::notNull($pddField, 'getPddField value is null, but non null value was expected.');
+        $answerTimeField = $dto->getAnswerTimeField();
+        Assertion::notNull($answerTimeField, 'getAnswerTimeField value is null, but non null value was expected.');
+        $usageField = $dto->getUsageField();
+        Assertion::notNull($usageField, 'getUsageField value is null, but non null value was expected.');
+        $supplierField = $dto->getSupplierField();
+        Assertion::notNull($supplierField, 'getSupplierField value is null, but non null value was expected.');
+        $disconnectCauseField = $dto->getDisconnectCauseField();
+        Assertion::notNull($disconnectCauseField, 'getDisconnectCauseField value is null, but non null value was expected.');
+        $ratedTimeField = $dto->getRatedTimeField();
+        Assertion::notNull($ratedTimeField, 'getRatedTimeField value is null, but non null value was expected.');
+        $costField = $dto->getCostField();
+        Assertion::notNull($costField, 'getCostField value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setLoadid($dto->getLoadid())
-            ->setDirection($dto->getDirection())
-            ->setTenant($dto->getTenant())
-            ->setCategory($dto->getCategory())
-            ->setAccount($dto->getAccount())
+            ->setTpid($tpid)
+            ->setLoadid($loadid)
+            ->setDirection($direction)
+            ->setTenant($tenant)
+            ->setCategory($category)
+            ->setAccount($account)
             ->setSubject($dto->getSubject())
             ->setDestinationIds($dto->getDestinationIds())
-            ->setRunid($dto->getRunid())
-            ->setRunFilters($dto->getRunFilters())
-            ->setReqTypeField($dto->getReqTypeField())
-            ->setDirectionField($dto->getDirectionField())
-            ->setTenantField($dto->getTenantField())
-            ->setCategoryField($dto->getCategoryField())
-            ->setAccountField($dto->getAccountField())
-            ->setSubjectField($dto->getSubjectField())
-            ->setDestinationField($dto->getDestinationField())
-            ->setSetupTimeField($dto->getSetupTimeField())
-            ->setPddField($dto->getPddField())
-            ->setAnswerTimeField($dto->getAnswerTimeField())
-            ->setUsageField($dto->getUsageField())
-            ->setSupplierField($dto->getSupplierField())
-            ->setDisconnectCauseField($dto->getDisconnectCauseField())
-            ->setRatedTimeField($dto->getRatedTimeField())
-            ->setCostField($dto->getCostField())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setRunid($runid)
+            ->setRunFilters($runFilters)
+            ->setReqTypeField($reqTypeField)
+            ->setDirectionField($directionField)
+            ->setTenantField($tenantField)
+            ->setCategoryField($categoryField)
+            ->setAccountField($accountField)
+            ->setSubjectField($subjectField)
+            ->setDestinationField($destinationField)
+            ->setSetupTimeField($setupTimeField)
+            ->setPddField($pddField)
+            ->setAnswerTimeField($answerTimeField)
+            ->setUsageField($usageField)
+            ->setSupplierField($supplierField)
+            ->setDisconnectCauseField($disconnectCauseField)
+            ->setRatedTimeField($ratedTimeField)
+            ->setCostField($costField)
+            ->setCreatedAt($createdAt)
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpDerivedChargerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpDerivedChargerDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -414,9 +504,9 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -803,15 +893,16 @@ abstract class TpDerivedChargerAbstract
         return $this->costField;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

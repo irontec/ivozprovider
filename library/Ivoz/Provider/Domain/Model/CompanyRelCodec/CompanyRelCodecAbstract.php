@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelCodec;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Codec\CodecInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -22,10 +23,10 @@ abstract class CompanyRelCodecAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relCodecs
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var CodecInterface
@@ -39,41 +40,34 @@ abstract class CompanyRelCodecAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CompanyRelCodec",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CompanyRelCodecDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CompanyRelCodecDto
     {
         return new CompanyRelCodecDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CompanyRelCodecInterface|null $entity
-     * @param int $depth
-     * @return CompanyRelCodecDto|null
+     * @param null|CompanyRelCodecInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CompanyRelCodecDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class CompanyRelCodecAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CompanyRelCodecDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class CompanyRelCodecAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CompanyRelCodecDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
+        $codec = $dto->getCodec();
+        Assertion::notNull($codec, 'getCodec value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCodec($fkTransformer->transform($dto->getCodec()));
+            ->setCodec($fkTransformer->transform($codec));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class CompanyRelCodecAbstract
     /**
      * @internal use EntityTools instead
      * @param CompanyRelCodecDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyRelCodecDto::class);
+
+        $codec = $dto->getCodec();
+        Assertion::notNull($codec, 'getCodec value is null, but non null value was expected.');
 
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCodec($fkTransformer->transform($dto->getCodec()));
+            ->setCodec($fkTransformer->transform($codec));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CompanyRelCodecDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CompanyRelCodecDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -149,12 +143,12 @@ abstract class CompanyRelCodecAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'codecId' => self::getCodec()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class CompanyRelCodecAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

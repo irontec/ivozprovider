@@ -1,4 +1,5 @@
 .. _external_filters:
+.. _external call filters:
 
 #####################
 External call filters
@@ -12,8 +13,6 @@ in what we call **External call filter**.
 
 The client admin can configure them in the following screen:
 
-
-.. glossary::
 
     Name
         Descriptive name that will reference this filter in DDIs configuration.
@@ -33,6 +32,9 @@ The client admin can configure them in the following screen:
         destination, skipping the filter process. Take into account that black
         listed are checked before white lists.
 
+    Holiday enabled
+        Set this to no to totally ignore holidays filtering.
+
     Holiday locution
         The locution will be  played when the day is marked as holiday in any
         of the calendars associated with the filter **if the calendar entry has
@@ -43,6 +45,9 @@ The client admin can configure them in the following screen:
         to a voicemail, external number or internal extension. For example, the
         filter of the image will redirect calls during holidays to the external
         number 676 676 676.
+
+    Out of schedule enabled
+        Set this to no to totally ignore out of schedule filtering.
 
     Out of schedule locution
         The locution will be played when, not being holiday, the current time

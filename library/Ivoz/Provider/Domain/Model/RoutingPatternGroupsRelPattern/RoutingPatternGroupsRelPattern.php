@@ -9,7 +9,11 @@ class RoutingPatternGroupsRelPattern extends RoutingPatternGroupsRelPatternAbstr
 {
     use RoutingPatternGroupsRelPatternTrait;
 
-    public function getChangeSet()
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -19,7 +23,7 @@ class RoutingPatternGroupsRelPattern extends RoutingPatternGroupsRelPatternAbstr
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

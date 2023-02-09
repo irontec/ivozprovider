@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntityInterface;
 
@@ -13,9 +16,36 @@ interface AdministratorRelPublicEntityInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): AdministratorRelPublicEntityDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|AdministratorRelPublicEntityInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?AdministratorRelPublicEntityDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param AdministratorRelPublicEntityDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): AdministratorRelPublicEntityDto;
 
     public function getCreate(): bool;
 

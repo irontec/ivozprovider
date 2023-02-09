@@ -1,4 +1,5 @@
 <?php
+
 namespace IvozProvider\Klear\Auth;
 
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntity;
@@ -6,7 +7,6 @@ use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPubl
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Company\Company;
-
 use Ivoz\Provider\Domain\Model\Administrator\Administrator as AdministratorEntity;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorDto;
 use Ivoz\Provider\Domain\Model\PublicEntity\PublicEntity;

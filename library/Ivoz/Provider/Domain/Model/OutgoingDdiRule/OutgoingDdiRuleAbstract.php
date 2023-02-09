@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -27,8 +28,8 @@ abstract class OutgoingDdiRuleAbstract
     protected $name;
 
     /**
-     * comment: enum:keep|force
      * @var string
+     * comment: enum:keep|force
      */
     protected $defaultAction;
 
@@ -38,56 +39,49 @@ abstract class OutgoingDdiRuleAbstract
     protected $company;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $forcedDdi;
+    protected $forcedDdi = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $defaultAction
+        string $name,
+        string $defaultAction
     ) {
         $this->setName($name);
         $this->setDefaultAction($defaultAction);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "OutgoingDdiRule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return OutgoingDdiRuleDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): OutgoingDdiRuleDto
     {
         return new OutgoingDdiRuleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param OutgoingDdiRuleInterface|null $entity
-     * @param int $depth
-     * @return OutgoingDdiRuleDto|null
+     * @param null|OutgoingDdiRuleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingDdiRuleDto
     {
         if (!$entity) {
             return null;
@@ -103,8 +97,7 @@ abstract class OutgoingDdiRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var OutgoingDdiRuleDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -113,21 +106,26 @@ abstract class OutgoingDdiRuleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingDdiRuleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRuleDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultAction = $dto->getDefaultAction();
+        Assertion::notNull($defaultAction, 'getDefaultAction value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getDefaultAction()
+            $name,
+            $defaultAction
         );
 
         $self
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
         $self->initChangelog();
@@ -138,18 +136,24 @@ abstract class OutgoingDdiRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param OutgoingDdiRuleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRuleDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $defaultAction = $dto->getDefaultAction();
+        Assertion::notNull($defaultAction, 'getDefaultAction value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setDefaultAction($dto->getDefaultAction())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setName($name)
+            ->setDefaultAction($defaultAction)
+            ->setCompany($fkTransformer->transform($company))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
         return $this;
@@ -157,10 +161,8 @@ abstract class OutgoingDdiRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return OutgoingDdiRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): OutgoingDdiRuleDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -170,15 +172,15 @@ abstract class OutgoingDdiRuleAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
             'defaultAction' => self::getDefaultAction(),
             'companyId' => self::getCompany()->getId(),
-            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
+            'forcedDdiId' => self::getForcedDdi()?->getId()
         ];
     }
 

@@ -1,160 +1,86 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import ExternalCallFilterSelectOptions from 'entities/ExternalCallFilter/SelectOptions';
-import UserSelectOptions from 'entities/User/SelectOptions';
-import IvrSelectOptions from 'entities/Ivr/SelectOptions';
-import HuntGroupSelectOptions from 'entities/HuntGroup/SelectOptions';
-import FaxSelectOptions from 'entities/Fax/SelectOptions';
-import ConferenceRoomSelectOptions from 'entities/ConferenceRoom/SelectOptions';
-import ResidentialDeviceSelectOptions from 'entities/ResidentialDevice/SelectOptions';
-import DdiProviderSelectOptions from 'entities/DdiProvider/SelectOptions';
-import CountrySelectOptions from 'entities/Country/SelectOptions';
-import LanguageSelectOptions from 'entities/Language/SelectOptions';
-import QueueSelectOptions from 'entities/Queue/SelectOptions';
-import ConditionalRouteSelectOptions from 'entities/ConditionalRoute/SelectOptions';
-import RetailAccountSelectOptions from 'entities/RetailAccount/SelectOptions';
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
+import { DdiPropertyList } from './DdiProperties';
+import { foreignKeyGetter } from './foreignKeyGetter';
+import RetailAccount from '../RetailAccount/RetailAccount';
 
-const Form = (props:any) => {
+const Form = (props: EntityFormProps): JSX.Element => {
+  const { entityService, row, match } = props;
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
+  const retailAccountPath = match.path.includes(RetailAccount.path);
 
-    useEffect(
-        () => {
-
-            if (loadingFks) {
-
-                ExternalCallFilterSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            externalCallFilter: options
-                        }
-                    });
-                });
-
-                UserSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            user: options
-                        }
-                    });
-                });
-
-                IvrSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            ivr: options
-                        }
-                    });
-                });
-
-                HuntGroupSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            huntGroup: options
-                        }
-                    });
-                });
-
-                FaxSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            fax: options
-                        }
-                    });
-                });
-
-                ConferenceRoomSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            conferenceRoom: options
-                        }
-                    });
-                });
-
-                ResidentialDeviceSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            residentialDevice: options
-                        }
-                    });
-                });
-
-                DdiProviderSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            ddiProvider: options
-                        }
-                    });
-                });
-
-                CountrySelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            country: options
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            language: options
-                        }
-                    });
-                });
-
-                QueueSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            queue: options
-                        }
-                    });
-                });
-
-                ConditionalRouteSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            conditionalRoute: options
-                        }
-                    });
-                });
-
-                RetailAccountSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            retailAccount: options
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
+  const skip: Array<string> = [];
+  if (!aboutMe?.vpbx) {
+    skip.push(
+      ...[
+        'user',
+        'ivr',
+        'huntGroup',
+        'conditionalRoute',
+        'conferenceRoom',
+        'queue',
+        'fax',
+        'externalCallFilter',
+      ]
     );
+  }
 
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  if (!aboutMe?.residential) {
+    skip.push(...['residentialDevice']);
+  }
+
+  if (!aboutMe?.retail) {
+    skip.push(...['retailAccount']);
+  }
+
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices: DdiPropertyList<any> = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+    skip,
+  });
+
+  const groups: Array<FieldsetGroups | false> = [
+    {
+      legend: _('Number data'),
+      fields: ['country', 'ddi', 'displayName', 'language'],
+    },
+    !aboutMe?.retail && {
+      legend: _('Filters data'),
+      fields: ['externalCallFilter'],
+    },
+    !retailAccountPath && {
+      legend: _('Routing configuration'),
+      fields: [
+        'routeType',
+        'user',
+        'fax',
+        'ivr',
+        'huntGroup',
+        'conferenceRoom',
+        'friendValue',
+        'queue',
+        'residentialDevice',
+        'conditionalRoute',
+        'retailAccount',
+      ],
+    },
+    {
+      legend: _('Recording data'),
+      fields: [aboutMe?.features.includes('recordings') && 'recordCalls'],
+    },
+  ];
+
+  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+};
 
 export default Form;

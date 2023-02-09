@@ -27,15 +27,15 @@ Source code is licensed under GPLv3 or later, so you can download, modify and di
 ### I would like to try, where should I start?
 
 We provide a standalone iso to test the solution in a single machine. These environments are not
-recommended for production. You will also find [online docs](https://irontec.github.io/ivozprovider/en/artemis/)
+recommended for production. You will also find [online docs](https://irontec.github.io/ivozprovider/en/halliday/)
 with detailed information of every section.
 
 ### What release should I use?
 
-Current stable release is called oasis. Stable releases have frozen features, so they won't evolve too much in time.
+Current stable release is called artemis. Stable releases have frozen features, so they won't evolve too much in time.
 This provides the required stability that telephony solutions demands.
 
-If you're interested in testing newest features, you can use artemis release. Take into account that artemis release is
+If you're interested in testing newest features, you can use halliday release. Take into account that halliday release is
 not yet considered stable and bugs can arise, so use it at your own risk.
 
 ### Can I use IvozProvider without public IP address?

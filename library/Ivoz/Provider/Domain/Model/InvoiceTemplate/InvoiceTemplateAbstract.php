@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\InvoiceTemplate;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
@@ -25,9 +26,9 @@ abstract class InvoiceTemplateAbstract
     protected $name;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
      * @var string
@@ -35,66 +36,59 @@ abstract class InvoiceTemplateAbstract
     protected $template;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $templateHeader;
+    protected $templateHeader = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $templateFooter;
+    protected $templateFooter = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $template
+        string $name,
+        string $template
     ) {
         $this->setName($name);
         $this->setTemplate($template);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "InvoiceTemplate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return InvoiceTemplateDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): InvoiceTemplateDto
     {
         return new InvoiceTemplateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceTemplateInterface|null $entity
-     * @param int $depth
-     * @return InvoiceTemplateDto|null
+     * @param null|InvoiceTemplateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceTemplateDto
     {
         if (!$entity) {
             return null;
@@ -110,8 +104,7 @@ abstract class InvoiceTemplateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceTemplateDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -120,17 +113,20 @@ abstract class InvoiceTemplateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceTemplateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $template = $dto->getTemplate();
+        Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getTemplate()
+            $name,
+            $template
         );
 
         $self
@@ -147,18 +143,22 @@ abstract class InvoiceTemplateAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceTemplateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceTemplateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $template = $dto->getTemplate();
+        Assertion::notNull($template, 'getTemplate value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription())
-            ->setTemplate($dto->getTemplate())
+            ->setTemplate($template)
             ->setTemplateHeader($dto->getTemplateHeader())
             ->setTemplateFooter($dto->getTemplateFooter())
             ->setBrand($fkTransformer->transform($dto->getBrand()));
@@ -168,10 +168,8 @@ abstract class InvoiceTemplateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return InvoiceTemplateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): InvoiceTemplateDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -183,9 +181,9 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -193,7 +191,7 @@ abstract class InvoiceTemplateAbstract
             'template' => self::getTemplate(),
             'templateHeader' => self::getTemplateHeader(),
             'templateFooter' => self::getTemplateFooter(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'brandId' => self::getBrand()?->getId()
         ];
     }
 

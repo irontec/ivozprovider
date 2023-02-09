@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\User;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
@@ -18,7 +19,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Location\LocationInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Model\User\User;
@@ -30,7 +31,7 @@ use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Timezone\Timezone;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
-use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Location\Location;
 
 /**
 * UserAbstract
@@ -51,15 +52,15 @@ abstract class UserAbstract
     protected $lastname;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $email;
+    protected $email = null;
 
     /**
+     * @var ?string
      * comment: password
-     * @var string | null
      */
-    protected $pass;
+    protected $pass = null;
 
     /**
      * @var bool
@@ -82,31 +83,16 @@ abstract class UserAbstract
     protected $maxCalls = 0;
 
     /**
-     * comment: enum:0|1|2|3
      * @var string
+     * comment: enum:0|1|2|3
      */
     protected $externalIpCalls = '0';
 
     /**
-     * comment: enum:rfc|486|600
      * @var string
+     * comment: enum:rfc|486|600
      */
     protected $rejectCallMethod = 'rfc';
-
-    /**
-     * @var bool
-     */
-    protected $voicemailEnabled = true;
-
-    /**
-     * @var bool
-     */
-    protected $voicemailSendMail = false;
-
-    /**
-     * @var bool
-     */
-    protected $voicemailAttachSound = true;
 
     /**
      * @var bool
@@ -124,79 +110,77 @@ abstract class UserAbstract
     protected $company;
 
     /**
-     * @var CallAclInterface | null
+     * @var ?CallAclInterface
      */
-    protected $callAcl;
+    protected $callAcl = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $bossAssistant;
+    protected $bossAssistant = null;
 
     /**
-     * @var MatchListInterface | null
+     * @var ?MatchListInterface
      */
-    protected $bossAssistantWhiteList;
+    protected $bossAssistantWhiteList = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var TerminalInterface | null
+     * @var ?TerminalInterface
      * inversedBy users
      */
-    protected $terminal;
+    protected $terminal = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      * inversedBy users
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var TimezoneInterface | null
+     * @var ?TimezoneInterface
      */
-    protected $timezone;
+    protected $timezone = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $outgoingDdi;
+    protected $outgoingDdi = null;
 
     /**
-     * @var OutgoingDdiRuleInterface | null
+     * @var ?OutgoingDdiRuleInterface
      */
-    protected $outgoingDdiRule;
+    protected $outgoingDdiRule = null;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocationInterface
+     * inversedBy users
      */
-    protected $voicemailLocution;
+    protected $location = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $lastname,
-        $doNotDisturb,
-        $isBoss,
-        $active,
-        $maxCalls,
-        $externalIpCalls,
-        $rejectCallMethod,
-        $voicemailEnabled,
-        $voicemailSendMail,
-        $voicemailAttachSound,
-        $multiContact,
-        $gsQRCode
+        string $name,
+        string $lastname,
+        bool $doNotDisturb,
+        bool $isBoss,
+        bool $active,
+        int $maxCalls,
+        string $externalIpCalls,
+        string $rejectCallMethod,
+        bool $multiContact,
+        bool $gsQRCode
     ) {
         $this->setName($name);
         $this->setLastname($lastname);
@@ -206,48 +190,38 @@ abstract class UserAbstract
         $this->setMaxCalls($maxCalls);
         $this->setExternalIpCalls($externalIpCalls);
         $this->setRejectCallMethod($rejectCallMethod);
-        $this->setVoicemailEnabled($voicemailEnabled);
-        $this->setVoicemailSendMail($voicemailSendMail);
-        $this->setVoicemailAttachSound($voicemailAttachSound);
         $this->setMultiContact($multiContact);
         $this->setGsQRCode($gsQRCode);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "User",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return UserDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): UserDto
     {
         return new UserDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UserInterface|null $entity
-     * @param int $depth
-     * @return UserDto|null
+     * @param null|UserInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UserDto
     {
         if (!$entity) {
             return null;
@@ -263,8 +237,7 @@ abstract class UserAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UserDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -273,34 +246,52 @@ abstract class UserAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UserDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UserDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $lastname = $dto->getLastname();
+        Assertion::notNull($lastname, 'getLastname value is null, but non null value was expected.');
+        $doNotDisturb = $dto->getDoNotDisturb();
+        Assertion::notNull($doNotDisturb, 'getDoNotDisturb value is null, but non null value was expected.');
+        $isBoss = $dto->getIsBoss();
+        Assertion::notNull($isBoss, 'getIsBoss value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $externalIpCalls = $dto->getExternalIpCalls();
+        Assertion::notNull($externalIpCalls, 'getExternalIpCalls value is null, but non null value was expected.');
+        $rejectCallMethod = $dto->getRejectCallMethod();
+        Assertion::notNull($rejectCallMethod, 'getRejectCallMethod value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $gsQRCode = $dto->getGsQRCode();
+        Assertion::notNull($gsQRCode, 'getGsQRCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getLastname(),
-            $dto->getDoNotDisturb(),
-            $dto->getIsBoss(),
-            $dto->getActive(),
-            $dto->getMaxCalls(),
-            $dto->getExternalIpCalls(),
-            $dto->getRejectCallMethod(),
-            $dto->getVoicemailEnabled(),
-            $dto->getVoicemailSendMail(),
-            $dto->getVoicemailAttachSound(),
-            $dto->getMultiContact(),
-            $dto->getGsQRCode()
+            $name,
+            $lastname,
+            $doNotDisturb,
+            $isBoss,
+            $active,
+            $maxCalls,
+            $externalIpCalls,
+            $rejectCallMethod,
+            $multiContact,
+            $gsQRCode
         );
 
         $self
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setCompany($fkTransformer->transform($company))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
             ->setBossAssistantWhiteList($fkTransformer->transform($dto->getBossAssistantWhiteList()))
@@ -311,7 +302,7 @@ abstract class UserAbstract
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
-            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()));
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
         $self->initChangelog();
 
@@ -321,31 +312,50 @@ abstract class UserAbstract
     /**
      * @internal use EntityTools instead
      * @param UserDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UserDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $lastname = $dto->getLastname();
+        Assertion::notNull($lastname, 'getLastname value is null, but non null value was expected.');
+        $doNotDisturb = $dto->getDoNotDisturb();
+        Assertion::notNull($doNotDisturb, 'getDoNotDisturb value is null, but non null value was expected.');
+        $isBoss = $dto->getIsBoss();
+        Assertion::notNull($isBoss, 'getIsBoss value is null, but non null value was expected.');
+        $active = $dto->getActive();
+        Assertion::notNull($active, 'getActive value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $externalIpCalls = $dto->getExternalIpCalls();
+        Assertion::notNull($externalIpCalls, 'getExternalIpCalls value is null, but non null value was expected.');
+        $rejectCallMethod = $dto->getRejectCallMethod();
+        Assertion::notNull($rejectCallMethod, 'getRejectCallMethod value is null, but non null value was expected.');
+        $multiContact = $dto->getMultiContact();
+        Assertion::notNull($multiContact, 'getMultiContact value is null, but non null value was expected.');
+        $gsQRCode = $dto->getGsQRCode();
+        Assertion::notNull($gsQRCode, 'getGsQRCode value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setLastname($dto->getLastname())
+            ->setName($name)
+            ->setLastname($lastname)
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
-            ->setDoNotDisturb($dto->getDoNotDisturb())
-            ->setIsBoss($dto->getIsBoss())
-            ->setActive($dto->getActive())
-            ->setMaxCalls($dto->getMaxCalls())
-            ->setExternalIpCalls($dto->getExternalIpCalls())
-            ->setRejectCallMethod($dto->getRejectCallMethod())
-            ->setVoicemailEnabled($dto->getVoicemailEnabled())
-            ->setVoicemailSendMail($dto->getVoicemailSendMail())
-            ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
-            ->setMultiContact($dto->getMultiContact())
-            ->setGsQRCode($dto->getGsQRCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setDoNotDisturb($doNotDisturb)
+            ->setIsBoss($isBoss)
+            ->setActive($active)
+            ->setMaxCalls($maxCalls)
+            ->setExternalIpCalls($externalIpCalls)
+            ->setRejectCallMethod($rejectCallMethod)
+            ->setMultiContact($multiContact)
+            ->setGsQRCode($gsQRCode)
+            ->setCompany($fkTransformer->transform($company))
             ->setCallAcl($fkTransformer->transform($dto->getCallAcl()))
             ->setBossAssistant($fkTransformer->transform($dto->getBossAssistant()))
             ->setBossAssistantWhiteList($fkTransformer->transform($dto->getBossAssistantWhiteList()))
@@ -356,17 +366,15 @@ abstract class UserAbstract
             ->setTimezone($fkTransformer->transform($dto->getTimezone()))
             ->setOutgoingDdi($fkTransformer->transform($dto->getOutgoingDdi()))
             ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
-            ->setVoicemailLocution($fkTransformer->transform($dto->getVoicemailLocution()));
+            ->setLocation($fkTransformer->transform($dto->getLocation()));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return UserDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): UserDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -379,9 +387,6 @@ abstract class UserAbstract
             ->setMaxCalls(self::getMaxCalls())
             ->setExternalIpCalls(self::getExternalIpCalls())
             ->setRejectCallMethod(self::getRejectCallMethod())
-            ->setVoicemailEnabled(self::getVoicemailEnabled())
-            ->setVoicemailSendMail(self::getVoicemailSendMail())
-            ->setVoicemailAttachSound(self::getVoicemailAttachSound())
             ->setMultiContact(self::getMultiContact())
             ->setGsQRCode(self::getGsQRCode())
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -395,13 +400,13 @@ abstract class UserAbstract
             ->setTimezone(Timezone::entityToDto(self::getTimezone(), $depth))
             ->setOutgoingDdi(Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setOutgoingDdiRule(OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
-            ->setVoicemailLocution(Locution::entityToDto(self::getVoicemailLocution(), $depth));
+            ->setLocation(Location::entityToDto(self::getLocation(), $depth));
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -414,23 +419,20 @@ abstract class UserAbstract
             'maxCalls' => self::getMaxCalls(),
             'externalIpCalls' => self::getExternalIpCalls(),
             'rejectCallMethod' => self::getRejectCallMethod(),
-            'voicemailEnabled' => self::getVoicemailEnabled(),
-            'voicemailSendMail' => self::getVoicemailSendMail(),
-            'voicemailAttachSound' => self::getVoicemailAttachSound(),
             'multiContact' => self::getMultiContact(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany()->getId(),
-            'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
-            'bossAssistantId' => self::getBossAssistant() ? self::getBossAssistant()->getId() : null,
-            'bossAssistantWhiteListId' => self::getBossAssistantWhiteList() ? self::getBossAssistantWhiteList()->getId() : null,
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null,
-            'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
-            'voicemailLocutionId' => self::getVoicemailLocution() ? self::getVoicemailLocution()->getId() : null
+            'callAclId' => self::getCallAcl()?->getId(),
+            'bossAssistantId' => self::getBossAssistant()?->getId(),
+            'bossAssistantWhiteListId' => self::getBossAssistantWhiteList()?->getId(),
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'terminalId' => self::getTerminal()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'timezoneId' => self::getTimezone()?->getId(),
+            'outgoingDdiId' => self::getOutgoingDdi()?->getId(),
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule()?->getId(),
+            'locationId' => self::getLocation()?->getId()
         ];
     }
 
@@ -496,9 +498,6 @@ abstract class UserAbstract
 
     protected function setDoNotDisturb(bool $doNotDisturb): static
     {
-        Assertion::between(intval($doNotDisturb), 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
-        $doNotDisturb = (bool) $doNotDisturb;
-
         $this->doNotDisturb = $doNotDisturb;
 
         return $this;
@@ -511,9 +510,6 @@ abstract class UserAbstract
 
     protected function setIsBoss(bool $isBoss): static
     {
-        Assertion::between(intval($isBoss), 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
-        $isBoss = (bool) $isBoss;
-
         $this->isBoss = $isBoss;
 
         return $this;
@@ -526,9 +522,6 @@ abstract class UserAbstract
 
     protected function setActive(bool $active): static
     {
-        Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
-        $active = (bool) $active;
-
         $this->active = $active;
 
         return $this;
@@ -600,56 +593,8 @@ abstract class UserAbstract
         return $this->rejectCallMethod;
     }
 
-    protected function setVoicemailEnabled(bool $voicemailEnabled): static
-    {
-        Assertion::between(intval($voicemailEnabled), 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
-        $voicemailEnabled = (bool) $voicemailEnabled;
-
-        $this->voicemailEnabled = $voicemailEnabled;
-
-        return $this;
-    }
-
-    public function getVoicemailEnabled(): bool
-    {
-        return $this->voicemailEnabled;
-    }
-
-    protected function setVoicemailSendMail(bool $voicemailSendMail): static
-    {
-        Assertion::between(intval($voicemailSendMail), 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
-        $voicemailSendMail = (bool) $voicemailSendMail;
-
-        $this->voicemailSendMail = $voicemailSendMail;
-
-        return $this;
-    }
-
-    public function getVoicemailSendMail(): bool
-    {
-        return $this->voicemailSendMail;
-    }
-
-    protected function setVoicemailAttachSound(bool $voicemailAttachSound): static
-    {
-        Assertion::between(intval($voicemailAttachSound), 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
-        $voicemailAttachSound = (bool) $voicemailAttachSound;
-
-        $this->voicemailAttachSound = $voicemailAttachSound;
-
-        return $this;
-    }
-
-    public function getVoicemailAttachSound(): bool
-    {
-        return $this->voicemailAttachSound;
-    }
-
     protected function setMultiContact(bool $multiContact): static
     {
-        Assertion::between(intval($multiContact), 0, 1, 'multiContact provided "%s" is not a valid boolean value.');
-        $multiContact = (bool) $multiContact;
-
         $this->multiContact = $multiContact;
 
         return $this;
@@ -662,9 +607,6 @@ abstract class UserAbstract
 
     protected function setGsQRCode(bool $gsQRCode): static
     {
-        Assertion::between(intval($gsQRCode), 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');
-        $gsQRCode = (bool) $gsQRCode;
-
         $this->gsQRCode = $gsQRCode;
 
         return $this;
@@ -751,7 +693,6 @@ abstract class UserAbstract
     {
         $this->terminal = $terminal;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -764,7 +705,6 @@ abstract class UserAbstract
     {
         $this->extension = $extension;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -809,15 +749,15 @@ abstract class UserAbstract
         return $this->outgoingDdiRule;
     }
 
-    protected function setVoicemailLocution(?LocutionInterface $voicemailLocution = null): static
+    public function setLocation(?LocationInterface $location = null): static
     {
-        $this->voicemailLocution = $voicemailLocution;
+        $this->location = $location;
 
         return $this;
     }
 
-    public function getVoicemailLocution(): ?LocutionInterface
+    public function getLocation(): ?LocationInterface
     {
-        return $this->voicemailLocution;
+        return $this->location;
     }
 }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\Logo;
 use Ivoz\Provider\Domain\Model\Brand\Invoice;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -35,20 +36,20 @@ abstract class BrandAbstract
     protected $name;
 
     /**
+     * @var ?string
      * column: domain_users
-     * @var string | null
      */
-    protected $domainUsers;
+    protected $domainUsers = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $recordingsLimitMB;
+    protected $recordingsLimitMB = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $recordingsLimitEmail;
+    protected $recordingsLimitEmail = null;
 
     /**
      * @var int
@@ -56,22 +57,22 @@ abstract class BrandAbstract
     protected $maxCalls = 0;
 
     /**
-     * @var Logo | null
+     * @var Logo
      */
     protected $logo;
 
     /**
-     * @var Invoice | null
+     * @var Invoice
      */
     protected $invoice;
 
     /**
-     * @var DomainInterface | null
+     * @var ?DomainInterface
      */
-    protected $domain;
+    protected $domain = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var LanguageInterface
      */
     protected $language;
 
@@ -81,85 +82,78 @@ abstract class BrandAbstract
     protected $defaultTimezone;
 
     /**
-     * @var CurrencyInterface | null
+     * @var CurrencyInterface
      */
     protected $currency;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $voicemailNotificationTemplate;
+    protected $voicemailNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $faxNotificationTemplate;
+    protected $faxNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $invoiceNotificationTemplate;
+    protected $invoiceNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $callCsvNotificationTemplate;
+    protected $callCsvNotificationTemplate = null;
 
     /**
-     * @var NotificationTemplateInterface | null
+     * @var ?NotificationTemplateInterface
      */
-    protected $maxDailyUsageNotificationTemplate;
+    protected $maxDailyUsageNotificationTemplate = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $maxCalls,
+        string $name,
+        int $maxCalls,
         Logo $logo,
         Invoice $invoice
     ) {
         $this->setName($name);
         $this->setMaxCalls($maxCalls);
-        $this->setLogo($logo);
-        $this->setInvoice($invoice);
+        $this->logo = $logo;
+        $this->invoice = $invoice;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Brand",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return BrandDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): BrandDto
     {
         return new BrandDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BrandInterface|null $entity
-     * @param int $depth
-     * @return BrandDto|null
+     * @param null|BrandInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BrandDto
     {
         if (!$entity) {
             return null;
@@ -175,8 +169,7 @@ abstract class BrandAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BrandDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -185,13 +178,34 @@ abstract class BrandAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BrandDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
+        $invoiceNif = $dto->getInvoiceNif();
+        Assertion::notNull($invoiceNif, 'invoiceNif value is null, but non null value was expected.');
+        $invoicePostalAddress = $dto->getInvoicePostalAddress();
+        Assertion::notNull($invoicePostalAddress, 'invoicePostalAddress value is null, but non null value was expected.');
+        $invoicePostalCode = $dto->getInvoicePostalCode();
+        Assertion::notNull($invoicePostalCode, 'invoicePostalCode value is null, but non null value was expected.');
+        $invoiceTown = $dto->getInvoiceTown();
+        Assertion::notNull($invoiceTown, 'invoiceTown value is null, but non null value was expected.');
+        $invoiceProvince = $dto->getInvoiceProvince();
+        Assertion::notNull($invoiceProvince, 'invoiceProvince value is null, but non null value was expected.');
+        $invoiceCountry = $dto->getInvoiceCountry();
+        Assertion::notNull($invoiceCountry, 'invoiceCountry value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $language = $dto->getLanguage();
+        Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
+        $defaultTimezone = $dto->getDefaultTimezone();
+        Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
+        $currency = $dto->getCurrency();
+        Assertion::notNull($currency, 'getCurrency value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -200,18 +214,18 @@ abstract class BrandAbstract
         );
 
         $invoice = new Invoice(
-            $dto->getInvoiceNif(),
-            $dto->getInvoicePostalAddress(),
-            $dto->getInvoicePostalCode(),
-            $dto->getInvoiceTown(),
-            $dto->getInvoiceProvince(),
-            $dto->getInvoiceCountry(),
+            $invoiceNif,
+            $invoicePostalAddress,
+            $invoicePostalCode,
+            $invoiceTown,
+            $invoiceProvince,
+            $invoiceCountry,
             $dto->getInvoiceRegistryData()
         );
 
         $self = new static(
-            $dto->getName(),
-            $dto->getMaxCalls(),
+            $name,
+            $maxCalls,
             $logo,
             $invoice
         );
@@ -221,9 +235,9 @@ abstract class BrandAbstract
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setLanguage($fkTransformer->transform($language))
+            ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
+            ->setCurrency($fkTransformer->transform($currency))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
@@ -238,13 +252,35 @@ abstract class BrandAbstract
     /**
      * @internal use EntityTools instead
      * @param BrandDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BrandDto::class);
+
+        $invoiceNif = $dto->getInvoiceNif();
+        Assertion::notNull($invoiceNif, 'invoiceNif value is null, but non null value was expected.');
+        $invoicePostalAddress = $dto->getInvoicePostalAddress();
+        Assertion::notNull($invoicePostalAddress, 'invoicePostalAddress value is null, but non null value was expected.');
+        $invoicePostalCode = $dto->getInvoicePostalCode();
+        Assertion::notNull($invoicePostalCode, 'invoicePostalCode value is null, but non null value was expected.');
+        $invoiceTown = $dto->getInvoiceTown();
+        Assertion::notNull($invoiceTown, 'invoiceTown value is null, but non null value was expected.');
+        $invoiceProvince = $dto->getInvoiceProvince();
+        Assertion::notNull($invoiceProvince, 'invoiceProvince value is null, but non null value was expected.');
+        $invoiceCountry = $dto->getInvoiceCountry();
+        Assertion::notNull($invoiceCountry, 'invoiceCountry value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $maxCalls = $dto->getMaxCalls();
+        Assertion::notNull($maxCalls, 'getMaxCalls value is null, but non null value was expected.');
+        $language = $dto->getLanguage();
+        Assertion::notNull($language, 'getLanguage value is null, but non null value was expected.');
+        $defaultTimezone = $dto->getDefaultTimezone();
+        Assertion::notNull($defaultTimezone, 'getDefaultTimezone value is null, but non null value was expected.');
+        $currency = $dto->getCurrency();
+        Assertion::notNull($currency, 'getCurrency value is null, but non null value was expected.');
 
         $logo = new Logo(
             $dto->getLogoFileSize(),
@@ -253,27 +289,27 @@ abstract class BrandAbstract
         );
 
         $invoice = new Invoice(
-            $dto->getInvoiceNif(),
-            $dto->getInvoicePostalAddress(),
-            $dto->getInvoicePostalCode(),
-            $dto->getInvoiceTown(),
-            $dto->getInvoiceProvince(),
-            $dto->getInvoiceCountry(),
+            $invoiceNif,
+            $invoicePostalAddress,
+            $invoicePostalCode,
+            $invoiceTown,
+            $invoiceProvince,
+            $invoiceCountry,
             $dto->getInvoiceRegistryData()
         );
 
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDomainUsers($dto->getDomainUsers())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
-            ->setMaxCalls($dto->getMaxCalls())
+            ->setMaxCalls($maxCalls)
             ->setLogo($logo)
             ->setInvoice($invoice)
             ->setDomain($fkTransformer->transform($dto->getDomain()))
-            ->setLanguage($fkTransformer->transform($dto->getLanguage()))
-            ->setDefaultTimezone($fkTransformer->transform($dto->getDefaultTimezone()))
-            ->setCurrency($fkTransformer->transform($dto->getCurrency()))
+            ->setLanguage($fkTransformer->transform($language))
+            ->setDefaultTimezone($fkTransformer->transform($defaultTimezone))
+            ->setCurrency($fkTransformer->transform($currency))
             ->setVoicemailNotificationTemplate($fkTransformer->transform($dto->getVoicemailNotificationTemplate()))
             ->setFaxNotificationTemplate($fkTransformer->transform($dto->getFaxNotificationTemplate()))
             ->setInvoiceNotificationTemplate($fkTransformer->transform($dto->getInvoiceNotificationTemplate()))
@@ -285,10 +321,8 @@ abstract class BrandAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return BrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): BrandDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -318,9 +352,9 @@ abstract class BrandAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -338,15 +372,15 @@ abstract class BrandAbstract
             'invoiceProvince' => self::getInvoice()->getProvince(),
             'invoiceCountry' => self::getInvoice()->getCountry(),
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
-            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
+            'domainId' => self::getDomain()?->getId(),
+            'languageId' => self::getLanguage()->getId(),
             'defaultTimezoneId' => self::getDefaultTimezone()->getId(),
-            'currencyId' => self::getCurrency() ? self::getCurrency()->getId() : null,
-            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
-            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
-            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
-            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null,
-            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate() ? self::getMaxDailyUsageNotificationTemplate()->getId() : null
+            'currencyId' => self::getCurrency()->getId(),
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate()?->getId(),
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate()?->getId(),
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate()?->getId(),
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate()?->getId(),
+            'maxDailyUsageNotificationTemplateId' => self::getMaxDailyUsageNotificationTemplate()?->getId()
         ];
     }
 
@@ -429,7 +463,7 @@ abstract class BrandAbstract
 
     protected function setLogo(Logo $logo): static
     {
-        $isEqual = $this->logo && $this->logo->equals($logo);
+        $isEqual = $this->logo->equals($logo);
         if ($isEqual) {
             return $this;
         }
@@ -445,7 +479,7 @@ abstract class BrandAbstract
 
     protected function setInvoice(Invoice $invoice): static
     {
-        $isEqual = $this->invoice && $this->invoice->equals($invoice);
+        $isEqual = $this->invoice->equals($invoice);
         if ($isEqual) {
             return $this;
         }
@@ -466,14 +500,14 @@ abstract class BrandAbstract
         return $this->domain;
     }
 
-    protected function setLanguage(?LanguageInterface $language = null): static
+    protected function setLanguage(LanguageInterface $language): static
     {
         $this->language = $language;
 
         return $this;
     }
 
-    public function getLanguage(): ?LanguageInterface
+    public function getLanguage(): LanguageInterface
     {
         return $this->language;
     }
@@ -490,14 +524,14 @@ abstract class BrandAbstract
         return $this->defaultTimezone;
     }
 
-    protected function setCurrency(?CurrencyInterface $currency = null): static
+    protected function setCurrency(CurrencyInterface $currency): static
     {
         $this->currency = $currency;
 
         return $this;
     }
 
-    public function getCurrency(): ?CurrencyInterface
+    public function getCurrency(): CurrencyInterface
     {
         return $this->currency;
     }

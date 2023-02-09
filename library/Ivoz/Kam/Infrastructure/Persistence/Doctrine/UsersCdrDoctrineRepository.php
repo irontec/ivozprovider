@@ -25,14 +25,13 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
      * @param int $userId
      * @return int
      */
-    public function countByUserId($userId) :int
+    public function countByUserId($userId): int
     {
         $qb = $this->createQueryBuilder('self');
 
         return $qb
             ->select('count(self.id)')
             ->where($qb->expr()->eq('self.user', $userId))
-            ->andWhere($qb->expr()->eq('self.hidden', 0))
             ->getQuery()
             ->getSingleScalarResult();
     }

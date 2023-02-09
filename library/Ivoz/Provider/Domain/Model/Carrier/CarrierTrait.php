@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
@@ -19,36 +22,36 @@ use Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface;
 trait CarrierTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingRoutingInterface> & Selectable<array-key, OutgoingRoutingInterface>
      * OutgoingRoutingInterface mappedBy carrier
      */
     protected $outgoingRoutings;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, OutgoingRoutingRelCarrierInterface> & Selectable<array-key, OutgoingRoutingRelCarrierInterface>
      * OutgoingRoutingRelCarrierInterface mappedBy carrier
      */
     protected $outgoingRoutingsRelCarriers;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, CarrierServerInterface> & Selectable<array-key, CarrierServerInterface>
      * CarrierServerInterface mappedBy carrier
      */
     protected $servers;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, RatingProfileInterface> & Selectable<array-key, RatingProfileInterface>
      * RatingProfileInterface mappedBy carrier
      */
     protected $ratingProfiles;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, TpCdrStatInterface> & Selectable<array-key, TpCdrStatInterface>
      * TpCdrStatInterface mappedBy carrier
      */
     protected $tpCdrStats;
@@ -66,59 +69,67 @@ trait CarrierTrait
         $this->tpCdrStats = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param CarrierDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $self->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $self->replaceOutgoingRoutings($replacement);
         }
 
-        if (!is_null($dto->getOutgoingRoutingsRelCarriers())) {
-            $self->replaceOutgoingRoutingsRelCarriers(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutingsRelCarriers()
-                )
+        $outgoingRoutingsRelCarriers = $dto->getOutgoingRoutingsRelCarriers();
+        if (!is_null($outgoingRoutingsRelCarriers)) {
+
+            /** @var Collection<array-key, OutgoingRoutingRelCarrierInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutingsRelCarriers
             );
+            $self->replaceOutgoingRoutingsRelCarriers($replacement);
         }
 
-        if (!is_null($dto->getServers())) {
-            $self->replaceServers(
-                $fkTransformer->transformCollection(
-                    $dto->getServers()
-                )
+        $servers = $dto->getServers();
+        if (!is_null($servers)) {
+
+            /** @var Collection<array-key, CarrierServerInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $servers
             );
+            $self->replaceServers($replacement);
         }
 
-        if (!is_null($dto->getRatingProfiles())) {
-            $self->replaceRatingProfiles(
-                $fkTransformer->transformCollection(
-                    $dto->getRatingProfiles()
-                )
+        $ratingProfiles = $dto->getRatingProfiles();
+        if (!is_null($ratingProfiles)) {
+
+            /** @var Collection<array-key, RatingProfileInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ratingProfiles
             );
+            $self->replaceRatingProfiles($replacement);
         }
 
-        if (!is_null($dto->getTpCdrStats())) {
-            $self->replaceTpCdrStats(
-                $fkTransformer->transformCollection(
-                    $dto->getTpCdrStats()
-                )
+        $tpCdrStats = $dto->getTpCdrStats();
+        if (!is_null($tpCdrStats)) {
+
+            /** @var Collection<array-key, TpCdrStatInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $tpCdrStats
             );
+            $self->replaceTpCdrStats($replacement);
         }
 
         $self->sanitizeValues();
@@ -133,52 +144,60 @@ trait CarrierTrait
     /**
      * @internal use EntityTools instead
      * @param CarrierDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getOutgoingRoutings())) {
-            $this->replaceOutgoingRoutings(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutings()
-                )
+        $outgoingRoutings = $dto->getOutgoingRoutings();
+        if (!is_null($outgoingRoutings)) {
+
+            /** @var Collection<array-key, OutgoingRoutingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutings
             );
+            $this->replaceOutgoingRoutings($replacement);
         }
 
-        if (!is_null($dto->getOutgoingRoutingsRelCarriers())) {
-            $this->replaceOutgoingRoutingsRelCarriers(
-                $fkTransformer->transformCollection(
-                    $dto->getOutgoingRoutingsRelCarriers()
-                )
+        $outgoingRoutingsRelCarriers = $dto->getOutgoingRoutingsRelCarriers();
+        if (!is_null($outgoingRoutingsRelCarriers)) {
+
+            /** @var Collection<array-key, OutgoingRoutingRelCarrierInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $outgoingRoutingsRelCarriers
             );
+            $this->replaceOutgoingRoutingsRelCarriers($replacement);
         }
 
-        if (!is_null($dto->getServers())) {
-            $this->replaceServers(
-                $fkTransformer->transformCollection(
-                    $dto->getServers()
-                )
+        $servers = $dto->getServers();
+        if (!is_null($servers)) {
+
+            /** @var Collection<array-key, CarrierServerInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $servers
             );
+            $this->replaceServers($replacement);
         }
 
-        if (!is_null($dto->getRatingProfiles())) {
-            $this->replaceRatingProfiles(
-                $fkTransformer->transformCollection(
-                    $dto->getRatingProfiles()
-                )
+        $ratingProfiles = $dto->getRatingProfiles();
+        if (!is_null($ratingProfiles)) {
+
+            /** @var Collection<array-key, RatingProfileInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $ratingProfiles
             );
+            $this->replaceRatingProfiles($replacement);
         }
 
-        if (!is_null($dto->getTpCdrStats())) {
-            $this->replaceTpCdrStats(
-                $fkTransformer->transformCollection(
-                    $dto->getTpCdrStats()
-                )
+        $tpCdrStats = $dto->getTpCdrStats();
+        if (!is_null($tpCdrStats)) {
+
+            /** @var Collection<array-key, TpCdrStatInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $tpCdrStats
             );
+            $this->replaceTpCdrStats($replacement);
         }
         $this->sanitizeValues();
 
@@ -187,10 +206,8 @@ trait CarrierTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CarrierDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CarrierDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -198,9 +215,9 @@ trait CarrierTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -221,25 +238,33 @@ trait CarrierTrait
         return $this;
     }
 
-    public function replaceOutgoingRoutings(ArrayCollection $outgoingRoutings): CarrierInterface
+    /**
+     * @param Collection<array-key, OutgoingRoutingInterface> $outgoingRoutings
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings): CarrierInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($outgoingRoutings as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->outgoingRoutings as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->outgoingRoutings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->outgoingRoutings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->outgoingRoutings->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -249,6 +274,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingInterface>
+     */
     public function getOutgoingRoutings(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -272,25 +300,33 @@ trait CarrierTrait
         return $this;
     }
 
-    public function replaceOutgoingRoutingsRelCarriers(ArrayCollection $outgoingRoutingsRelCarriers): CarrierInterface
+    /**
+     * @param Collection<array-key, OutgoingRoutingRelCarrierInterface> $outgoingRoutingsRelCarriers
+     */
+    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers): CarrierInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($outgoingRoutingsRelCarriers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->outgoingRoutingsRelCarriers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->outgoingRoutingsRelCarriers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->outgoingRoutingsRelCarriers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->outgoingRoutingsRelCarriers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -300,6 +336,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getOutgoingRoutingsRelCarriers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -323,25 +362,33 @@ trait CarrierTrait
         return $this;
     }
 
-    public function replaceServers(ArrayCollection $servers): CarrierInterface
+    /**
+     * @param Collection<array-key, CarrierServerInterface> $servers
+     */
+    public function replaceServers(Collection $servers): CarrierInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($servers as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->servers as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->servers->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->servers->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->servers->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -351,6 +398,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, CarrierServerInterface>
+     */
     public function getServers(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -374,25 +424,33 @@ trait CarrierTrait
         return $this;
     }
 
-    public function replaceRatingProfiles(ArrayCollection $ratingProfiles): CarrierInterface
+    /**
+     * @param Collection<array-key, RatingProfileInterface> $ratingProfiles
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles): CarrierInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($ratingProfiles as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->ratingProfiles as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->ratingProfiles->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->ratingProfiles->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->ratingProfiles->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -402,6 +460,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, RatingProfileInterface>
+     */
     public function getRatingProfiles(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -425,25 +486,33 @@ trait CarrierTrait
         return $this;
     }
 
-    public function replaceTpCdrStats(ArrayCollection $tpCdrStats): CarrierInterface
+    /**
+     * @param Collection<array-key, TpCdrStatInterface> $tpCdrStats
+     */
+    public function replaceTpCdrStats(Collection $tpCdrStats): CarrierInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($tpCdrStats as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCarrier($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->tpCdrStats as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->tpCdrStats->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->tpCdrStats->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->tpCdrStats->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -453,6 +522,9 @@ trait CarrierTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, TpCdrStatInterface>
+     */
     public function getTpCdrStats(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

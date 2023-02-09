@@ -7,14 +7,11 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    protected $cgratesReloadJob;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        RaterReloadInterface $cgratesReloadJob
+        private RaterReloadInterface $cgratesReloadJob
     ) {
-        $this->cgratesReloadJob = $cgratesReloadJob;
     }
 
     /**
@@ -30,8 +27,10 @@ abstract class CgratesReloadNotificator implements LifecycleEventHandlerInterfac
     /**
      * @param string $tpid
      * @param bool $disableDestinations
+     *
+     * @return void
      */
-    protected function reload(string $tpid, bool $disableDestinations = true)
+    protected function reload(string $tpid, bool $disableDestinations = true): void
     {
         $this
             ->cgratesReloadJob

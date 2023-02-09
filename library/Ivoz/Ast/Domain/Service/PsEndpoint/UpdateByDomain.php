@@ -13,15 +13,9 @@ use Ivoz\Provider\Domain\Service\Domain\DomainLifecycleEventHandlerInterface;
 
 class UpdateByDomain implements DomainLifecycleEventHandlerInterface
 {
-    /**
-     * @todo replace by EntityTools
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    public function __construct(EntityPersisterInterface $entityPersister)
-    {
-        $this->entityPersister = $entityPersister;
+    public function __construct(
+        private EntityPersisterInterface $entityPersister
+    ) {
     }
 
     public static function getSubscribedEvents()
@@ -70,9 +64,12 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
     /**
      * @return void
      */
-    private function updateEndpoint(PsEndpointInterface $endpoint, $fromdomain)
+    private function updateEndpoint(?PsEndpointInterface $endpoint, string $fromdomain)
     {
-        /** @var PsEndpointDto $endpointDto */
+        if (!$endpoint) {
+            return;
+        }
+
         $endpointDto = $endpoint->toDto();
         $endpointDto->setFromDomain($fromdomain);
 

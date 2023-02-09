@@ -4,7 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Assert\Assertion;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
-use \Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 
 /**
  * Ddi
@@ -16,9 +17,9 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -28,7 +29,7 @@ class Ddi extends DdiAbstract implements DdiInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -37,7 +38,7 @@ class Ddi extends DdiAbstract implements DdiInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -46,7 +47,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if (! $this->getCountry()) {
             $this->setCountry(
@@ -61,7 +62,8 @@ class Ddi extends DdiAbstract implements DdiInterface
         );
 
         // If billInboundCalls is set, carrier must have externallyRated to 1
-        if ($this->getBillInboundCalls()
+        if (
+            $this->getBillInboundCalls()
             && !$this->getDdiProvider()->getExternallyRated()
         ) {
             throw new \DomainException(
@@ -80,10 +82,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         return parent::setDdi($ddi);
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
-     */
-    public function getDomain()
+    public function getDomain(): ?DomainInterface
     {
         $company = $this->getCompany();
         $brand = $company->getBrand();
@@ -91,7 +90,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $brand->getDomain();
     }
 
-    public function getLanguageCode()
+    public function getLanguageCode(): string
     {
         $language = $this->getLanguage();
         if (!$language) {

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\Name;
 use Ivoz\Provider\Domain\Model\RoutingPattern\Description;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -27,12 +28,12 @@ abstract class RoutingPatternAbstract
     protected $prefix;
 
     /**
-     * @var Name | null
+     * @var Name
      */
     protected $name;
 
     /**
-     * @var Description | null
+     * @var Description
      */
     protected $description;
 
@@ -45,50 +46,43 @@ abstract class RoutingPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $prefix,
+        string $prefix,
         Name $name,
         Description $description
     ) {
         $this->setPrefix($prefix);
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->name = $name;
+        $this->description = $description;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RoutingPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RoutingPatternDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RoutingPatternDto
     {
         return new RoutingPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RoutingPatternInterface|null $entity
-     * @param int $depth
-     * @return RoutingPatternDto|null
+     * @param null|RoutingPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RoutingPatternDto
     {
         if (!$entity) {
             return null;
@@ -104,8 +98,7 @@ abstract class RoutingPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RoutingPatternDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -114,19 +107,30 @@ abstract class RoutingPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RoutingPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
@@ -137,13 +141,13 @@ abstract class RoutingPatternAbstract
         );
 
         $self = new static(
-            $dto->getPrefix(),
+            $prefix,
             $name,
             $description
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -153,19 +157,31 @@ abstract class RoutingPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param RoutingPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RoutingPatternDto::class);
 
+        $nameEn = $dto->getNameEn();
+        Assertion::notNull($nameEn, 'nameEn value is null, but non null value was expected.');
+        $nameEs = $dto->getNameEs();
+        Assertion::notNull($nameEs, 'nameEs value is null, but non null value was expected.');
+        $nameCa = $dto->getNameCa();
+        Assertion::notNull($nameCa, 'nameCa value is null, but non null value was expected.');
+        $nameIt = $dto->getNameIt();
+        Assertion::notNull($nameIt, 'nameIt value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs(),
-            $dto->getNameCa(),
-            $dto->getNameIt()
+            $nameEn,
+            $nameEs,
+            $nameCa,
+            $nameIt
         );
 
         $description = new Description(
@@ -176,20 +192,18 @@ abstract class RoutingPatternAbstract
         );
 
         $this
-            ->setPrefix($dto->getPrefix())
+            ->setPrefix($prefix)
             ->setName($name)
             ->setDescription($description)
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RoutingPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RoutingPatternDto
     {
         return self::createDto()
             ->setPrefix(self::getPrefix())
@@ -205,9 +219,9 @@ abstract class RoutingPatternAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'prefix' => self::getPrefix(),
@@ -244,7 +258,7 @@ abstract class RoutingPatternAbstract
 
     protected function setName(Name $name): static
     {
-        $isEqual = $this->name && $this->name->equals($name);
+        $isEqual = $this->name->equals($name);
         if ($isEqual) {
             return $this;
         }
@@ -260,7 +274,7 @@ abstract class RoutingPatternAbstract
 
     protected function setDescription(Description $description): static
     {
-        $isEqual = $this->description && $this->description->equals($description);
+        $isEqual = $this->description->equals($description);
         if ($isEqual) {
             return $this;
         }

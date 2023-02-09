@@ -15,22 +15,17 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
     /**
      * @var EntityTools
      */
-    protected $entityTools;
-
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
+    private $entityTools;
 
     /**
      * @var CompanyRepository
      */
-    protected $companyRepository;
+    private $companyRepository;
 
     /**
      * @var CompanyServiceRepository
      */
-    protected $companyServiceRepository;
+    private $companyServiceRepository;
 
     function __construct(
         EntityTools $entityTools,
@@ -56,13 +51,13 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
     {
         /** @var int[] $companyIds */
         $companyIds = $this->companyRepository->findIdsByBrandId(
-            $entity->getBrand()->getId()
+            (int) $entity->getBrand()->getId()
         );
 
         foreach ($companyIds as $companyId) {
             $companyService = $this->companyServiceRepository->findCompanyService(
                 $companyId,
-                $entity->getService()->getId()
+                (int) $entity->getService()->getId()
             );
 
             // Delete custom company service code

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
@@ -14,9 +15,9 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 trait DestinationRateTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var TpRateInterface
@@ -38,35 +39,33 @@ trait DestinationRateTrait
         parent::__construct(...func_get_args());
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param DestinationRateDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRate())) {
-            $self->setTpRate(
-                $fkTransformer->transform(
-                    $dto->getTpRate()
-                )
+            /** @var TpRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRate()
             );
+            $self->setTpRate($entity);
         }
 
         if (!is_null($dto->getTpDestinationRate())) {
-            $self->setTpDestinationRate(
-                $fkTransformer->transform(
-                    $dto->getTpDestinationRate()
-                )
+            /** @var TpDestinationRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpDestinationRate()
             );
+            $self->setTpDestinationRate($entity);
         }
 
         $self->sanitizeValues();
@@ -81,28 +80,26 @@ trait DestinationRateTrait
     /**
      * @internal use EntityTools instead
      * @param DestinationRateDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getTpRate())) {
-            $this->setTpRate(
-                $fkTransformer->transform(
-                    $dto->getTpRate()
-                )
+            /** @var TpRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpRate()
             );
+            $this->setTpRate($entity);
         }
 
         if (!is_null($dto->getTpDestinationRate())) {
-            $this->setTpDestinationRate(
-                $fkTransformer->transform(
-                    $dto->getTpDestinationRate()
-                )
+            /** @var TpDestinationRateInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getTpDestinationRate()
             );
+            $this->setTpDestinationRate($entity);
         }
         $this->sanitizeValues();
 
@@ -111,10 +108,8 @@ trait DestinationRateTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DestinationRateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DestinationRateDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -122,9 +117,9 @@ trait DestinationRateTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -135,7 +130,6 @@ trait DestinationRateTrait
     {
         $this->tpRate = $tpRate;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -148,7 +142,6 @@ trait DestinationRateTrait
     {
         $this->tpDestinationRate = $tpDestinationRate;
 
-        /** @var  $this */
         return $this;
     }
 

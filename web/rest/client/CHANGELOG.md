@@ -1,5 +1,249 @@
 # Changelog
 
+## 3.0.0
+* Disclaimer: The API schema will not be considered stable until version 3.1 and may receive new breaking changes
+* Endpoints:
+  - Extracted every user endpoint to it's own API 
+  - Added not equal [neq] filters
+  - Added exits[fldName] filters
+  - Fixed downloadable file spec
+  - Fixed embeddable model spec
+  - /calendar_periods:
+    - Renamed voiceMailUser filter parameter to voicemail
+  - /call_forward_settings:
+    - Renamed voiceMailUser filter parameter to voicemail
+  - /conditional_routes
+    - Renamed voiceMailUser filter parameter to voicemail
+  - /conditional_routes_conditions:
+    - Renamed voiceMailUser filter parameter to voicemail
+  - /extensions/unassigned
+    - Added [GET] endpoint
+  - /external_call_filters:
+    - Renamed outOfScheduleVoiceMailUser filter parameter to outOfScheduleVoicemail
+  - /external_call_filter_rel_calendars:
+    - Renamed holidayVoiceMailUser filter parameter to outOfScheduleVoicemail
+  - /external_call_filter_rel_schedules:
+    - Renamed holidayVoiceMailUser filter parameter to holidayVoicemail
+    - Renamed outOfScheduleVoiceMailUser filter parameter to outOfScheduleVoicemail
+  - /external_call_filter_white_lists:
+    - Renamed holidayVoiceMailUser filter parameter to holidayVoicemail
+  - /external_call_filters:
+    - Renamed holidayVoiceMailUser filter parameter to holidayVoicemail
+    - Renamed outOfScheduleVoiceMailUser filter parameter to outOfScheduleVoicemail
+  - /faxes_in_outs/{id}:
+    - Added [DELETE] endpoint
+  - /features_rel_companies:
+    - Changed [GET] response model from FeaturesRelCompany-collection to FeaturesRelCompany-detailedCollection
+  - /holiday_dates:
+    - Renamed voiceMailUser filter parameter to voicemail
+  - /hunt_group_members:
+    - Added endpoint 
+  - /hunt_groups:
+    - Renamed noAnswerVoiceMailUser filter parameter to noAnswerVoicemail
+  - /hunt_groups/{id}/users_available:
+    - Added endpoint
+  - /hunt_groups_rel_users
+    - Removed method (replaced by /hunt_group_members)
+  - /invoices:
+    - Added [GET] endpoint
+  - /ivr_entries:
+    - Renamed voiceMailUser filter parameter to voicemail
+  - /ivrs:
+    - Renamed errorVoiceMailUser filter parameter to errorVoicemail
+    - Renamed noInputVoiceMailUser filter parameter to noInputVoicemail
+  - /locations:
+    - Added endpoint
+  - /queues:
+    - Renamed fullVoiceMailUser filter parameter to fullVoicemail
+    - Renamed timeoutVoiceMailUser filter parameter to timeoutVoicemail
+  - /terminals/unassigned:
+    - Added [GET] endpoint
+  - /users:
+    - Removed voicemailLocution filter parameter
+  - /voicemail_messages
+    - Added [GET|DELETE] endpoint
+  - /voicemail_messages/{id}/metadatafile: 
+    - Added [GET] method
+  - /voicemail_messages/{id}/recordingfile:
+    - Added [GET] method
+* Models:
+    - Many properties added into collection response (not listed below unless they involve a BC)
+    - BillableCall-, BillableCall-collection:
+      - Set direction as required property
+    - CalendarPeriod, CalendarPeriod-detailed:
+      - Added scheduleIds property
+      - Removed voiceMailUser property
+      - Added voicemail property
+      - Set calendar as required property
+    - CallForwardSetting:
+      - Removed voiceMailUser property
+      - Added voicemail property
+    - CallForwardSetting-detailed:
+      - Added friend property
+      - Added voicemail property
+      - Removed voiceMailUser property
+    - CallForwardSetting-detailedCollection:
+      - Removed model
+    - ConditionalRoute, ConditionalRoute-detailed:
+      - Removed voicemailUser property
+      - Added voicemail property
+    - ConditionalRoutesCondition, ConditionalRoutesCondition-detailed, ConditionalRoutesCondition-withInverseRelationships:
+      - Removed voicemailUser property
+      - Added voicemail property
+    - Extension, Extension-collection:
+      - Added voicemail choice into routeType property
+      - Added voicemail property
+    - ExternalCallFilter, ExternalCallFilter-collection, ExternalCallFilter-detailed, ExternalCallFilter-withInverseRelationships:
+      - Added holidayEnabled required property
+      - Removed holidayVoiceMailUser property
+      - Added holidayVoicemail property
+      - Added outOfScheduleEnabled required property
+      - Removed outOfScheduleVoiceMailUser property
+      - Added outOfScheduleVoicemail property
+    - FaxesInOut, FaxesInOut-detailed:
+      - Set status property as enum
+    - FeaturesRelCompany:
+      - Replaced FeaturesRelCompany-collection model by FeaturesRelCompany-detailedCollection model
+    - HolidayDate, HolidayDate-detailed:
+      - Removed voiceMailUser property
+      - Added voicemail property
+    - HuntGroup, HuntGroup-detailed:
+      - Removed noAnswerVoicemail property
+      - Added noAnswerVoiceMailUser property
+    - HuntGroupsRelUser:
+      - Removed model
+    - HuntGroupMember:
+      - Added model
+    - Invoice-collection:
+      - Added model
+    - Ivr, Ivr-collection, Ivr-detailed, Ivr-withExcludedExtensions:
+      - Removed errorVoiceMailUser property
+      - Added errorVoicemail property
+      - Removed noInputVoiceMailUser property
+      - Added noInputVoicemail property
+    - IvrEntry, IvrEntry-detailed:
+      - Removed voiceMailUser property
+      - Added voicemail property
+    - Location:
+      - Added model
+    - Profile:
+      - Added model
+    - ProfileAcl:
+      - Added model
+    - Queue, Queue-collection, Queue-detailed:
+      - Removed fullVoiceMailUser property
+      - Added fullVoicemail property
+      - Set strategy as enum
+      - Removed timeoutVoiceMailUser
+      - Added timeoutVoicemail property
+    - RegistrationSummary:
+      - Removed model
+    - RetailAccount:
+      - Set name as read only
+    - RouteLock:
+      - Changed open property default value from 0 to 1
+    - User, User-detailed:
+      - Removed voicemailAttachSound property
+      - Removed voicemailEnabled property
+      - Removed voicemailLocution property
+      - Removed voicemailSendMail property
+      - Added voicemail property
+    - Voicemail:
+      - Added model
+    - VoicemailMessage:
+      - Added model
+
+## 2.20.1
+* Models:
+    - ResidentialDevice:
+        - Name property is readonly now
+
+## 2.20.0
+* Endpoints:
+    - /call_forward_settings:
+        - Added friend[] and friend[exists] filter parameters
+        - Added numberValue[start|end|exact|exists|partial] filter parameters
+        - Added _order[numberValue] querystring argument
+
+    - /conditional_routes_conditions:
+        - Added friendValue[start|end|exact|exists|partial] filter parameters
+        - Added numberValue[start|end|exact|exists|partial] filter parameters
+        - Added _order[friendValue] querystring argument
+        - Added _order[numberValue] querystring argument
+
+    - /hunt_groups_rel_users:
+        - Added user.location filter parameters
+
+    - /ivr_entries:
+        - Added numberValue[start|end|exact|exists|partial] filter parameters
+        - Added _order[numberValue] querystring argument
+
+    - /locations:
+        - Added [GET|POST|PUT|DELETE] endpoints
+
+    - /pick_up_rel_users:
+        - Added user.location filter parameters
+
+    - /queue_members:
+        - Added user.location filter parameters
+
+    - /users:
+        - Added location[] and location[exists] filter parameters
+
+* Models:
+    - CallForwardSetting:
+        - Added friend property
+    - CallForwardSetting-collection:
+        - Added numberValue property
+        - Added numberCountry property
+        - Added user property
+        - Added voiceMailUser property
+        - Added extension property
+        - Added residentialDevice property
+        - Added retailAccount property
+        - Added cfwToRetailAccount property
+        - Added ddi property
+    - CallForwardSetting-detailed:
+        - Added friend property
+    - ConditionalRoutesCondition-collection:
+        - Added locution property
+        - Added numberCountry property
+        - Added numberValue property
+        - Added ivr property
+        - Added user property
+        - Added huntGroup property
+        - Added voicemailUser property
+        - Added friendValue property
+        - Added queue property
+        - Added conferenceRoom property
+        - Added extension property
+    - IvrEntry-collection:
+        - Added ivr property
+        - Added welcomeLocution property
+        - Added numberCountry property
+        - Added numberValue property
+        - Added extension property
+        - Added voiceMailUser property
+        - Added conditionalRoute property
+    - Location:
+        - Added model
+    - Location-collection:
+        - Added model
+    - Location-detailed:
+        - Added model
+    - RetailAccount:
+        - Name property is readonly now
+    - RetailAccount-collection:
+        - Name property is readonly now
+    - RetailAccount-detailed:
+        - Name property is readonly now
+    - RetailAccount-status:
+        - Name property is readonly now
+    - User:
+        - Added location property
+    - User-detailed:
+        - Added location property
+
 ## 2.18.1
 * Endpoints:
   - /call_csv_schedulers:

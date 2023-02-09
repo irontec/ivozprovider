@@ -5,13 +5,18 @@ declare(strict_types=1);
 namespace Application\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\LoggableMigration;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210305121251 extends AbstractMigration
+final class Version20210305121251 extends LoggableMigration
 {
+    public function isTransactional() : bool
+    {
+        return false;
+    }
+
     public function getDescription() : string
     {
         return '';

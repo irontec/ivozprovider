@@ -20,7 +20,7 @@ class ProviderBrandService extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(BrandService::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(BrandService::class);
         (function () use ($fixture) {
             $this->setCode("94");

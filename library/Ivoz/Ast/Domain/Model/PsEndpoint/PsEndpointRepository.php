@@ -36,4 +36,12 @@ interface PsEndpointRepository extends ObjectRepository, Selectable
      * @return PsEndpointInterface | null
      */
     public function findOneBySorceryId($sorceryId);
+
+    /**
+     * @inheritdoc
+     * @return PsEndpointInterface[]
+     * @throws \Doctrine\ORM\Query\QueryException
+     * @see PsEndpointRepository::getEndpointsWithExtensionOrderByContext
+     */
+    public function getEndpointsWithExtensionOrderByContext(): array;
 }

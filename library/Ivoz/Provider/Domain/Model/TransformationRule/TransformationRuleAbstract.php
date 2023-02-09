@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\TransformationRule;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 
@@ -20,8 +21,8 @@ abstract class TransformationRuleAbstract
     use ChangelogTrait;
 
     /**
-     * comment: enum:callerin|calleein|callerout|calleeout
      * @var string
+     * comment: enum:callerin|calleein|callerout|calleeout
      */
     protected $type;
 
@@ -31,72 +32,65 @@ abstract class TransformationRuleAbstract
     protected $description = '';
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $priority;
+    protected $priority = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $matchExpr;
+    protected $matchExpr = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $replaceExpr;
+    protected $replaceExpr = null;
 
     /**
-     * @var TransformationRuleSetInterface | null
+     * @var ?TransformationRuleSetInterface
      * inversedBy rules
      */
-    protected $transformationRuleSet;
+    protected $transformationRuleSet = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $type,
-        $description
+        string $type,
+        string $description
     ) {
         $this->setType($type);
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TransformationRule",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TransformationRuleDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TransformationRuleDto
     {
         return new TransformationRuleDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TransformationRuleInterface|null $entity
-     * @param int $depth
-     * @return TransformationRuleDto|null
+     * @param null|TransformationRuleInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TransformationRuleDto
     {
         if (!$entity) {
             return null;
@@ -112,8 +106,7 @@ abstract class TransformationRuleAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TransformationRuleDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -122,17 +115,20 @@ abstract class TransformationRuleAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TransformationRuleDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getDescription()
+            $type,
+            $description
         );
 
         $self
@@ -149,17 +145,21 @@ abstract class TransformationRuleAbstract
     /**
      * @internal use EntityTools instead
      * @param TransformationRuleDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TransformationRuleDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
-            ->setDescription($dto->getDescription())
+            ->setType($type)
+            ->setDescription($description)
             ->setPriority($dto->getPriority())
             ->setMatchExpr($dto->getMatchExpr())
             ->setReplaceExpr($dto->getReplaceExpr())
@@ -170,10 +170,8 @@ abstract class TransformationRuleAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TransformationRuleDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TransformationRuleDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -185,9 +183,9 @@ abstract class TransformationRuleAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'type' => self::getType(),
@@ -195,7 +193,7 @@ abstract class TransformationRuleAbstract
             'priority' => self::getPriority(),
             'matchExpr' => self::getMatchExpr(),
             'replaceExpr' => self::getReplaceExpr(),
-            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet()?->getId()
         ];
     }
 
@@ -289,7 +287,6 @@ abstract class TransformationRuleAbstract
     {
         $this->transformationRuleSet = $transformationRuleSet;
 
-        /** @var  $this */
         return $this;
     }
 

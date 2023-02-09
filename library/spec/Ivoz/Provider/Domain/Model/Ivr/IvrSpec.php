@@ -10,9 +10,9 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\User\UserDto;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -68,19 +68,19 @@ class IvrSpec extends ObjectBehavior
         );
         $timeoutExtensionDto = new ExtensionDto();
 
-        $timeoutVoiceMailUser = $this->getInstance(
-            User::class
+        $timeoutVoicemail = $this->getInstance(
+            Voicemail::class
         );
-        $timeoutVoiceMailUserDto = new UserDto();
+        $timeoutVoicemailDto = new VoicemailDto();
 
         $this
             ->dto
             ->setNoInputNumberValue('1234')
             ->setNoInputExtension($timeoutExtensionDto)
-            ->setNoInputVoiceMailUser($timeoutVoiceMailUserDto);
+            ->setNoInputVoicemail($timeoutVoicemailDto);
 
         $this->transformer->appendFixedTransforms([
-            [$timeoutVoiceMailUserDto, $timeoutVoiceMailUser],
+            [$timeoutVoicemailDto, $timeoutVoicemail],
             [$timeoutExtensionDto, $timeoutExtension]
         ]);
 
@@ -89,7 +89,7 @@ class IvrSpec extends ObjectBehavior
             ->shouldBe(null);
 
         $this
-            ->getNoInputVoiceMailUser()
+            ->getNoInputVoicemail()
             ->shouldBe(null);
     }
 
@@ -100,19 +100,19 @@ class IvrSpec extends ObjectBehavior
         );
         $timeoutExtensionDto = new ExtensionDto();
 
-        $timeoutVoiceMailUser = $this->getInstance(
-            User::class
+        $timeoutVoicemail = $this->getInstance(
+            Voicemail::class
         );
-        $timeoutVoiceMailUserDto = new UserDto();
+        $timeoutVoicemailDto = new VoicemailDto();
 
         $this
             ->dto
             ->setNoInputNumberValue('1234')
             ->setNoInputExtension($timeoutExtensionDto)
-            ->setNoInputVoiceMailUser($timeoutVoiceMailUserDto);
+            ->setNoInputVoicemail($timeoutVoicemailDto);
 
         $this->transformer->appendFixedTransforms([
-            [$timeoutVoiceMailUserDto, $timeoutVoiceMailUser],
+            [$timeoutVoicemailDto, $timeoutVoicemail],
             [$timeoutExtensionDto, $timeoutExtension]
         ]);
 
@@ -121,7 +121,7 @@ class IvrSpec extends ObjectBehavior
             ->shouldBe(null);
 
         $this
-            ->getErrorVoiceMailUser()
+            ->getErrorVoicemail()
             ->shouldBe(null);
     }
 }

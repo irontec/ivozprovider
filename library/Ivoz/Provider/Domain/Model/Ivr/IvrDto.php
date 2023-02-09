@@ -7,9 +7,9 @@ use Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionDto;
 
 class IvrDto extends IvrDtoAbstract
 {
-    const CONTEXT_WITH_EXCLUDED_EXTENSIONS = 'withExcludedExtensions';
+    public const CONTEXT_WITH_EXCLUDED_EXTENSIONS = 'withExcludedExtensions';
 
-    const CONTEXTS_WITH_EXCLUDED_EXTENSIONS = [
+    public const CONTEXTS_WITH_EXCLUDED_EXTENSIONS = [
         self::CONTEXT_WITH_EXCLUDED_EXTENSIONS,
         self::CONTEXT_DETAILED
     ];
@@ -22,13 +22,13 @@ class IvrDto extends IvrDtoAbstract
      *     description="Excluded extensions"
      * )
      */
-    protected $excludedExtensionIds = [];
+    private $excludedExtensionIds = [];
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -45,8 +45,8 @@ class IvrDto extends IvrDtoAbstract
                 'successLocutionId' => 'successLocution',
                 'noInputExtensionId' => 'noInputExtension',
                 'errorExtensionId' => 'errorExtension',
-                'noInputVoiceMailUserId' => 'noInputVoiceMailUser',
-                'errorVoiceMailUserId' => 'errorVoiceMailUser',
+                'noInputVoicemailId' => 'noInputVoicemail',
+                'errorVoicemailId' => 'errorVoicemail',
                 'noInputNumberCountryId' => 'noInputNumberCountry',
                 'errorNumberCountryId' => 'errorNumberCountry'
             ];
@@ -65,7 +65,7 @@ class IvrDto extends IvrDtoAbstract
         return $response;
     }
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(
             $context,
@@ -79,7 +79,7 @@ class IvrDto extends IvrDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -94,8 +94,10 @@ class IvrDto extends IvrDtoAbstract
 
     /**
      * @param int[] $extensionIds
+     *
+     * @return void
      */
-    public function setExcludedExtensionIds(array $extensionIds)
+    public function setExcludedExtensionIds(array $extensionIds): void
     {
         $this->excludedExtensionIds = $extensionIds;
 

@@ -1,3 +1,5 @@
+.. _rating plans:
+
 #############
 Rating plans
 #############
@@ -12,8 +14,6 @@ Rating plan definition
 some destinations with different prices at different times of the day.
 
 This are the fields that define a Rating plan:
-
-.. glossary::
 
     Name
         Name that will be use to reference this rating plan.
@@ -32,8 +32,6 @@ Adding Destination rates to Rating Plan
 
 Rating plans group several :ref:`destination rates` to allow flexible configuration that rate destinations differently
 at different times of the day (**List of destination rates** subsection).
-
-.. glossary::
 
     Destination rate
         Adds selected destination rate to rating plan
@@ -61,6 +59,8 @@ list will charge for that call.
 
 .. tip:: Rating plans can be linked to both Clients (for price calculation) and Carriers (for cost calculation).
 
+.. _assigning rating plans to clients:
+
 *********************************
 Assigning rating plans to clients
 *********************************
@@ -80,6 +80,8 @@ in the rating plan list and check the price it will imply. This way, we can be s
 that the configuration is ok.
 
 .. tip:: Active rating plan of a given client will be used to set Price for its calls.
+
+.. _assigning rating plans to carriers:
 
 **********************************
 Assigning rating plans to carriers

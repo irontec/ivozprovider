@@ -1,1 +1,1 @@
-.. include:: ../../platform/active_calls.rst
+.. include:: ../../shared/active_calls.rst.inc

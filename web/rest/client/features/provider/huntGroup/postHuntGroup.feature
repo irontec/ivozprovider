@@ -20,7 +20,7 @@ Feature: Create hunt groups
           "id": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": 1,
-          "noAnswerVoiceMailUser": null,
+          "noAnswerVoicemail": null,
           "noAnswerNumberCountry": null
       }
     """
@@ -41,7 +41,7 @@ Feature: Create hunt groups
           "id": 2,
           "noAnswerLocution": null,
           "noAnswerExtension": 1,
-          "noAnswerVoiceMailUser": null,
+          "noAnswerVoicemail": null,
           "noAnswerNumberCountry": null
       }
     """
@@ -79,7 +79,7 @@ Feature: Create hunt groups
               "conditionalRoute": null,
               "numberCountry": null
           },
-          "noAnswerVoiceMailUser": null,
+          "noAnswerVoicemail": null,
           "noAnswerNumberCountry": null
       }
     """

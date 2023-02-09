@@ -12,31 +12,25 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
     use RatingPlanTrait;
 
     /**
-     * @deprecated
-     */
-    const TIMING_TYPE_ALWAYS = self::TIMINGTYPE_ALWAYS;
-
-    /**
-     * @deprecated
-     */
-    const TIMING_TYPE_CUSTOM = self::TIMINGTYPE_CUSTOM;
-
-    /**
      * Get id
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getChangeSet()
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getTimingType() == self::TIMINGTYPE_ALWAYS) {
             $this
@@ -68,7 +62,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
             7 => $this->getSunday(),
         ];
 
-        $weekDays = array_filter($daysMap, function ($v) {
+        $weekDays = array_filter($daysMap, function ($v): bool {
             return $v !== 0;
         });
 
@@ -84,7 +78,7 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      *
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return $this
             ->getRatingPlanGroup()
@@ -98,14 +92,14 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      */
     public function getCgrTimingTag()
     {
-        if ($this->getTimingType() == self::TIMING_TYPE_ALWAYS) {
+        if ($this->getTimingType() == self::TIMINGTYPE_ALWAYS) {
             return TpTiming::TIMING_ANY;
         }
 
         return sprintf(
             "b%dtm%d",
-            $this->getRatingPlanGroup()->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getRatingPlanGroup()->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 }

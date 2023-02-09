@@ -12,38 +12,14 @@ use Psr\Log\LoggerInterface;
 
 class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var CallCsvNotificationTemplateByCallCsvReport
-     */
-    protected $callCsvNotificationTemplateByCallCsvReport;
-
-    /**
-     * @var MailerClientInterface
-     */
-    protected $mailer;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_LOW;
 
     public function __construct(
-        EntityTools $entityTools,
-        CallCsvNotificationTemplateByCallCsvReport $callCsvNotificationTemplateByCallCsvReport,
-        MailerClientInterface $mailer,
-        LoggerInterface $logger
+        private EntityTools $entityTools,
+        private CallCsvNotificationTemplateByCallCsvReport $callCsvNotificationTemplateByCallCsvReport,
+        private MailerClientInterface $mailer,
+        private LoggerInterface $logger
     ) {
-        $this->entityTools = $entityTools;
-        $this->callCsvNotificationTemplateByCallCsvReport = $callCsvNotificationTemplateByCallCsvReport;
-        $this->mailer = $mailer;
-        $this->logger = $logger;
     }
 
     public static function getSubscribedEvents()
@@ -78,6 +54,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         $notificationTemplateContent = $this
             ->callCsvNotificationTemplateByCallCsvReport
             ->execute($callCsvReport);
+
+        if (!$notificationTemplateContent) {
+            return;
+        }
 
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();

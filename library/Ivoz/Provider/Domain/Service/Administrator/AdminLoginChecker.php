@@ -9,10 +9,19 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 
 class AdminLoginChecker implements UserCheckerInterface
 {
+    /**
+     * @return void
+     */
     public function checkPreAuth(SymfonyUserInterface $admin)
     {
         if (!$admin instanceof AdministratorInterface) {
             return;
+        }
+
+        if ($admin->getInternal()) {
+            throw new CustomUserMessageAccountStatusException(
+                'Unable to login as an internal admin'
+            );
         }
 
         if (!$admin->isEnabled()) {
@@ -22,6 +31,9 @@ class AdminLoginChecker implements UserCheckerInterface
         }
     }
 
+    /**
+     * @return void
+     */
     public function checkPostAuth(SymfonyUserInterface $user)
     {
     }

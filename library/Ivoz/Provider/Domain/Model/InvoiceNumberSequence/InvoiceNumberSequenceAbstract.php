@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\InvoiceNumberSequence;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 
@@ -40,7 +41,7 @@ abstract class InvoiceNumberSequenceAbstract
     protected $increment;
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $latestValue = '';
 
@@ -63,12 +64,12 @@ abstract class InvoiceNumberSequenceAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $prefix,
-        $sequenceLength,
-        $increment,
-        $iteration,
-        $version
+        string $name,
+        string $prefix,
+        int $sequenceLength,
+        int $increment,
+        int $iteration,
+        int $version
     ) {
         $this->setName($name);
         $this->setPrefix($prefix);
@@ -78,41 +79,34 @@ abstract class InvoiceNumberSequenceAbstract
         $this->setVersion($version);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "InvoiceNumberSequence",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return InvoiceNumberSequenceDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): InvoiceNumberSequenceDto
     {
         return new InvoiceNumberSequenceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceNumberSequenceInterface|null $entity
-     * @param int $depth
-     * @return InvoiceNumberSequenceDto|null
+     * @param null|InvoiceNumberSequenceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceNumberSequenceDto
     {
         if (!$entity) {
             return null;
@@ -128,8 +122,7 @@ abstract class InvoiceNumberSequenceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceNumberSequenceDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -138,26 +131,39 @@ abstract class InvoiceNumberSequenceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceNumberSequenceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $sequenceLength = $dto->getSequenceLength();
+        Assertion::notNull($sequenceLength, 'getSequenceLength value is null, but non null value was expected.');
+        $increment = $dto->getIncrement();
+        Assertion::notNull($increment, 'getIncrement value is null, but non null value was expected.');
+        $iteration = $dto->getIteration();
+        Assertion::notNull($iteration, 'getIteration value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getPrefix(),
-            $dto->getSequenceLength(),
-            $dto->getIncrement(),
-            $dto->getIteration(),
-            $dto->getVersion()
+            $name,
+            $prefix,
+            $sequenceLength,
+            $increment,
+            $iteration,
+            $version
         );
 
         $self
             ->setLatestValue($dto->getLatestValue())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setBrand($fkTransformer->transform($brand));
 
         $self->initChangelog();
 
@@ -167,33 +173,45 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceNumberSequenceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $sequenceLength = $dto->getSequenceLength();
+        Assertion::notNull($sequenceLength, 'getSequenceLength value is null, but non null value was expected.');
+        $increment = $dto->getIncrement();
+        Assertion::notNull($increment, 'getIncrement value is null, but non null value was expected.');
+        $iteration = $dto->getIteration();
+        Assertion::notNull($iteration, 'getIteration value is null, but non null value was expected.');
+        $version = $dto->getVersion();
+        Assertion::notNull($version, 'getVersion value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setPrefix($dto->getPrefix())
-            ->setSequenceLength($dto->getSequenceLength())
-            ->setIncrement($dto->getIncrement())
+            ->setName($name)
+            ->setPrefix($prefix)
+            ->setSequenceLength($sequenceLength)
+            ->setIncrement($increment)
             ->setLatestValue($dto->getLatestValue())
-            ->setIteration($dto->getIteration())
-            ->setVersion($dto->getVersion())
-            ->setBrand($fkTransformer->transform($dto->getBrand()));
+            ->setIteration($iteration)
+            ->setVersion($version)
+            ->setBrand($fkTransformer->transform($brand));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return InvoiceNumberSequenceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): InvoiceNumberSequenceDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -207,9 +225,9 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

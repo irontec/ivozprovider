@@ -144,6 +144,7 @@ services:
       $keepExtension: true
 
   ##########################################
+
   ## DestinationRateGroup
   ##########################################
   Service\StoragePathResolverCollection::DestinationRateGroup:
@@ -151,10 +152,33 @@ services:
      calls:
       - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::DestinationRateGroupFile']]
      public: true
-
   Service\CommonStoragePathResolver::DestinationRateGroupFile:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_destination_rates.file'
       $keepExtension: true
+
+  ##########################################
+  ## VoicemailMessage
+  ##########################################
+  Service\StoragePathResolverCollection::VoicemailMessage:
+    class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+    calls:
+      - [addPathResolver, ['RecordingFile', '@Service\CommonStoragePathResolver::VoicemailMessageRecordingFile']]
+      - [addPathResolver, ['MetadataFile', '@Service\CommonStoragePathResolver::VoicemailMessageMetadataFile']]
+    public: true
+
+  Ivoz\Provider\Application\Service\VoicemailMessage\StoragePathResolver: ~
+
+  Service\CommonStoragePathResolver::VoicemailMessageRecordingFile:
+    class: Ivoz\Provider\Application\Service\VoicemailMessage\StoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'asterisk/spool/voicemail'
+
+  Service\CommonStoragePathResolver::VoicemailMessageMetadataFile:
+    class: Ivoz\Provider\Application\Service\VoicemailMessage\StoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'asterisk/spool/voicemail'

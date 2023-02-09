@@ -4,11 +4,11 @@ namespace Ivoz\Cgr\Domain\Job;
 
 interface RaterReloadInterface
 {
-    const CHANNEL = 'CgratesReload';
+    public const CHANNEL = 'CgratesReload';
 
     public function setTpid(string $tpid): self;
 
-    public function getTpid(): string;
+    public function getTpid(): ?string;
 
     public function setNotifyThresholdForAccount(?string $notifyThresholdForAccount): self;
 

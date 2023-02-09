@@ -15,24 +15,13 @@ use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
 {
-    private $entityTools;
-    protected $logger;
-    protected $fixedCostsRelInvoiceByScheduler;
-    protected $updateLastExecutionDate;
-    protected $setExecutionError;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
-        UpdateLastExecutionDate $updateLastExecutionDate,
-        SetExecutionError $setExecutionError
+        private EntityTools $entityTools,
+        private LoggerInterface $logger,
+        private FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
+        private UpdateLastExecutionDate $updateLastExecutionDate,
+        private SetExecutionError $setExecutionError
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->fixedCostsRelInvoiceByScheduler = $fixedCostsRelInvoiceByScheduler;
-        $this->updateLastExecutionDate = $updateLastExecutionDate;
-        $this->setExecutionError = $setExecutionError;
     }
 
     /**
@@ -77,23 +66,24 @@ class CreateByScheduler
     {
         $brand = $scheduler->getBrand();
         $outDate = $scheduler->getNextExecution();
-        $outDate->setTimezone(
+        $outDate = $outDate->setTimezone(
             new \DateTimeZone(
                 $brand->getDefaultTimezone()->getTz()
             )
         );
-        $outDate->setTime(0, 0, 0);
-        $outDate->modify('1 second ago');
+        $outDate = $outDate
+            ->setTime(0, 0, 0)
+            ->modify('1 second ago');
 
         $inDate = DateTimeHelper::sub(
             $outDate,
             $scheduler->getInterval()
         );
-        $inDate->modify('+1 second');
+        $inDate = $inDate->modify('+1 second');
 
         // Back to UTC
-        $outDate->setTimezone(new \DateTimeZone('UTC'));
-        $inDate->setTimezone(new \DateTimeZone('UTC'));
+        $outDate = $outDate->setTimezone(new \DateTimeZone('UTC'));
+        $inDate = $inDate->setTimezone(new \DateTimeZone('UTC'));
 
         $company = $scheduler->getCompany();
         $invoiceDto = new InvoiceDto();

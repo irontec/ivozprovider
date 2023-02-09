@@ -17,7 +17,18 @@ Feature: Retrieve conditional routes conditions
           {
               "priority": 1,
               "routeType": null,
-              "id": 1
+              "numberValue": null,
+              "friendValue": null,
+              "id": 1,
+              "ivr": null,
+              "huntGroup": null,
+              "voicemail": null,
+              "user": null,
+              "queue": null,
+              "locution": null,
+              "conferenceRoom": null,
+              "extension": null,
+              "numberCountry": null
           }
       ]
     """
@@ -45,7 +56,7 @@ Feature: Retrieve conditional routes conditions
               "id": 1,
               "ivr": null,
               "huntGroup": null,
-              "voicemailUser": null,
+              "voicemail": null,
               "user": 1,
               "queue": null,
               "locution": null,
@@ -55,7 +66,7 @@ Feature: Retrieve conditional routes conditions
           },
           "ivr": null,
           "huntGroup": null,
-          "voicemailUser": null,
+          "voicemail": null,
           "user": null,
           "queue": null,
           "locution": null,
@@ -63,16 +74,16 @@ Feature: Retrieve conditional routes conditions
           "extension": null,
           "numberCountry": null,
           "matchListIds": [
-            1
+              1
           ],
           "scheduleIds": [
-            1
+              1
           ],
           "calendarIds": [
-            1
+              1
           ],
           "routeLockIds": [
-            1
+              1
           ]
       }
     """

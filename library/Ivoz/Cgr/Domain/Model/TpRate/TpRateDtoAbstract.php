@@ -15,55 +15,58 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private $connectFee;
+    private $connectFee = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private $rateCost;
+    private $rateCost = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $rateUnit = '60s';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $rateIncrement;
+    private $rateIncrement = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $groupIntervalStart = '0s';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DestinationRateDto | null
      */
-    private $destinationRate;
+    private $destinationRate = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -72,7 +75,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -93,9 +96,9 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tpid' => $this->getTpid(),
@@ -124,7 +127,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -148,7 +151,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setConnectFee(?float $connectFee): static
+    public function setConnectFee(float $connectFee): static
     {
         $this->connectFee = $connectFee;
 
@@ -160,7 +163,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->connectFee;
     }
 
-    public function setRateCost(?float $rateCost): static
+    public function setRateCost(float $rateCost): static
     {
         $this->rateCost = $rateCost;
 
@@ -172,7 +175,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateCost;
     }
 
-    public function setRateUnit(?string $rateUnit): static
+    public function setRateUnit(string $rateUnit): static
     {
         $this->rateUnit = $rateUnit;
 
@@ -184,7 +187,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateUnit;
     }
 
-    public function setRateIncrement(?string $rateIncrement): static
+    public function setRateIncrement(string $rateIncrement): static
     {
         $this->rateIncrement = $rateIncrement;
 
@@ -196,7 +199,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rateIncrement;
     }
 
-    public function setGroupIntervalStart(?string $groupIntervalStart): static
+    public function setGroupIntervalStart(string $groupIntervalStart): static
     {
         $this->groupIntervalStart = $groupIntervalStart;
 
@@ -208,14 +211,14 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->groupIntervalStart;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
@@ -227,7 +230,7 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

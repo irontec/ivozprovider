@@ -18,8 +18,11 @@ Feature: Update calendar periods
           "calendar": 1,
           "locution": null,
           "extension": 1,
-          "voiceMailUser": null,
-          "numberCountry": null
+          "voicemail": null,
+          "numberCountry": null,
+          "scheduleIds": [
+              2
+          ]
       }
     """
     Then the response status code should be 200
@@ -36,7 +39,10 @@ Feature: Update calendar periods
           "calendar": 1,
           "locution": null,
           "extension": 1,
-          "voiceMailUser": null,
-          "numberCountry": null
+          "voicemail": null,
+          "numberCountry": null,
+          "scheduleIds": [
+              2
+          ]
       }
     """

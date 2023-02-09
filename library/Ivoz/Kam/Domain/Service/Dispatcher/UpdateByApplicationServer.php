@@ -15,22 +15,10 @@ use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleEve
  */
 class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var KamDispatcherRepository
-     */
-    protected $dispatcherRepository;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        KamDispatcherRepository $dispatcherRepository
+        private EntityPersisterInterface $entityPersister,
+        private KamDispatcherRepository $dispatcherRepository
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->dispatcherRepository = $dispatcherRepository;
     }
 
     public static function getSubscribedEvents()
@@ -50,7 +38,7 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
          * @var KamDispatcher $kamDispatcher
          */
         $kamDispatcher = $this->dispatcherRepository->findOneByApplicationServerId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         $kamDispatcherDto = $entity->isNew()

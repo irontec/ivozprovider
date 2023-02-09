@@ -22,115 +22,118 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $description = '';
 
     /**
      * @var string|null
      */
-    private $transport;
+    private $transport = null;
 
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var int|null
      */
-    private $port;
+    private $port = null;
 
     /**
      * @var string|null
      */
-    private $password;
+    private $password = null;
 
     /**
      * @var string|null
      */
-    private $fromDomain;
+    private $fromDomain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $directConnectivity = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ddiIn = 'yes';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $t38Passthrough = 'no';
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $rtpEncryption = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $multiContact = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var DomainDto | null
      */
-    private $domain;
+    private $domain = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var TransformationRuleSetDto | null
      */
-    private $transformationRuleSet;
+    private $transformationRuleSet = null;
 
     /**
      * @var DdiDto | null
      */
-    private $outgoingDdi;
+    private $outgoingDdi = null;
 
     /**
      * @var PsEndpointDto | null
      */
-    private $psEndpoint;
+    private $psEndpoint = null;
 
     /**
      * @var PsIdentifyDto | null
      */
-    private $psIdentify;
+    private $psIdentify = null;
 
     /**
      * @var DdiDto[] | null
      */
-    private $ddis;
+    private $ddis = null;
 
     /**
      * @var CallForwardSettingDto[] | null
      */
-    private $callForwardSettings;
+    private $callForwardSettings = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -139,7 +142,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -170,9 +173,9 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -213,7 +216,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -225,7 +228,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -297,7 +300,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->fromDomain;
     }
 
-    public function setDirectConnectivity(?string $directConnectivity): static
+    public function setDirectConnectivity(string $directConnectivity): static
     {
         $this->directConnectivity = $directConnectivity;
 
@@ -309,7 +312,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->directConnectivity;
     }
 
-    public function setDdiIn(?string $ddiIn): static
+    public function setDdiIn(string $ddiIn): static
     {
         $this->ddiIn = $ddiIn;
 
@@ -321,7 +324,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->ddiIn;
     }
 
-    public function setT38Passthrough(?string $t38Passthrough): static
+    public function setT38Passthrough(string $t38Passthrough): static
     {
         $this->t38Passthrough = $t38Passthrough;
 
@@ -333,7 +336,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->t38Passthrough;
     }
 
-    public function setRtpEncryption(?bool $rtpEncryption): static
+    public function setRtpEncryption(bool $rtpEncryption): static
     {
         $this->rtpEncryption = $rtpEncryption;
 
@@ -345,7 +348,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->rtpEncryption;
     }
 
-    public function setMultiContact(?bool $multiContact): static
+    public function setMultiContact(bool $multiContact): static
     {
         $this->multiContact = $multiContact;
 
@@ -364,7 +367,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

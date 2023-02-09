@@ -18,43 +18,46 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
      * @var string|null
      */
-    private $fromName;
+    private $fromName = null;
 
     /**
      * @var string|null
      */
-    private $fromAddress;
+    private $fromAddress = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $subject;
+    private $subject = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $body;
+    private $body = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $bodyType = 'text/plain';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $notificationTemplate;
+    private $notificationTemplate = null;
 
     /**
      * @var LanguageDto | null
      */
-    private $language;
+    private $language = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -63,7 +66,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -82,9 +85,9 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'fromName' => $this->getFromName(),
@@ -135,7 +138,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->fromAddress;
     }
 
-    public function setSubject(?string $subject): static
+    public function setSubject(string $subject): static
     {
         $this->subject = $subject;
 
@@ -147,7 +150,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->subject;
     }
 
-    public function setBody(?string $body): static
+    public function setBody(string $body): static
     {
         $this->body = $body;
 
@@ -159,7 +162,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this->body;
     }
 
-    public function setBodyType(?string $bodyType): static
+    public function setBodyType(string $bodyType): static
     {
         $this->bodyType = $bodyType;
 
@@ -178,7 +181,7 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -20,10 +20,11 @@ class ProviderIvrEntry extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(IvrEntry::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(IvrEntry::class);
         (function () use ($fixture) {
             $this->setEntry("test");
+            $this->setDisplayName("Entry display name");
             $this->setRouteType("number");
             $this->setNumberValue("946002050");
             $this->setIvr($fixture->getReference('_reference_ProviderIvr1'));
@@ -35,7 +36,7 @@ class ProviderIvrEntry extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+
         $manager->flush();
     }
 

@@ -53,7 +53,7 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
                     );
 
                     $companyId = $calendarDto->getCompanyId();
-                    $this->_condition[] = "self::company = '".$companyId."'";
+                    $this->_condition[] = "self::company = '" . $companyId . "'";
                 }
                 break;
         }

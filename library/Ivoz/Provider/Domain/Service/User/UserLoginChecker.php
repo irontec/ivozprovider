@@ -10,6 +10,9 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class UserLoginChecker implements UserCheckerInterface
 {
+    /**
+     * @return void
+     */
     public function checkPreAuth(SymfonyUserInterface $admin)
     {
         $isTargetClass =
@@ -28,6 +31,9 @@ class UserLoginChecker implements UserCheckerInterface
         }
     }
 
+    /**
+     * @return void
+     */
     public function checkPostAuth(SymfonyUserInterface $user)
     {
     }

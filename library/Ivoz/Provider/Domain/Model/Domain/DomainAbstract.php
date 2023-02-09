@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Domain;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * DomainAbstract
@@ -24,60 +25,54 @@ abstract class DomainAbstract
 
     /**
      * @var string
+     * comment: enum:proxyusers|proxytrunks
      */
     protected $pointsTo = 'proxyusers';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $domain,
-        $pointsTo
+        string $domain,
+        string $pointsTo
     ) {
         $this->setDomain($domain);
         $this->setPointsTo($pointsTo);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Domain",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DomainDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DomainDto
     {
         return new DomainDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DomainInterface|null $entity
-     * @param int $depth
-     * @return DomainDto|null
+     * @param null|DomainInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DomainDto
     {
         if (!$entity) {
             return null;
@@ -93,8 +88,7 @@ abstract class DomainAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DomainDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -103,17 +97,20 @@ abstract class DomainAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DomainDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DomainDto::class);
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $pointsTo = $dto->getPointsTo();
+        Assertion::notNull($pointsTo, 'getPointsTo value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDomain(),
-            $dto->getPointsTo()
+            $domain,
+            $pointsTo
         );
 
         $self
@@ -127,17 +124,21 @@ abstract class DomainAbstract
     /**
      * @internal use EntityTools instead
      * @param DomainDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DomainDto::class);
 
+        $domain = $dto->getDomain();
+        Assertion::notNull($domain, 'getDomain value is null, but non null value was expected.');
+        $pointsTo = $dto->getPointsTo();
+        Assertion::notNull($pointsTo, 'getPointsTo value is null, but non null value was expected.');
+
         $this
-            ->setDomain($dto->getDomain())
-            ->setPointsTo($dto->getPointsTo())
+            ->setDomain($domain)
+            ->setPointsTo($pointsTo)
             ->setDescription($dto->getDescription());
 
         return $this;
@@ -145,10 +146,8 @@ abstract class DomainAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DomainDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DomainDto
     {
         return self::createDto()
             ->setDomain(self::getDomain())
@@ -157,9 +156,9 @@ abstract class DomainAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'domain' => self::getDomain(),
@@ -184,6 +183,16 @@ abstract class DomainAbstract
 
     protected function setPointsTo(string $pointsTo): static
     {
+        Assertion::maxLength($pointsTo, 25, 'pointsTo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $pointsTo,
+            [
+                DomainInterface::POINTSTO_PROXYUSERS,
+                DomainInterface::POINTSTO_PROXYTRUNKS,
+            ],
+            'pointsTovalue "%s" is not an element of the valid values: %s'
+        );
+
         $this->pointsTo = $pointsTo;
 
         return $this;

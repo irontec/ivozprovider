@@ -17,50 +17,53 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
      * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
      * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
      * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var TpDestinationDto | null
      */
-    private $tpDestination;
+    private $tpDestination = null;
 
     /**
      * @var DestinationRateDto[] | null
      */
-    private $destinationRates;
+    private $destinationRates = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -69,7 +72,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -90,9 +93,9 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'prefix' => $this->getPrefix(),
@@ -122,7 +125,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 
@@ -141,7 +144,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

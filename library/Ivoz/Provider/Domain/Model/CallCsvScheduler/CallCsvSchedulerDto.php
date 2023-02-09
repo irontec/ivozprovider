@@ -6,10 +6,10 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
 {
-    /** @var string */
-    protected $type;
+    /** @var ?string */
+    private $type;
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $data = $this->filterReadOnlyFields($data);
 
@@ -48,7 +48,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -80,9 +80,11 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
+     *
+     * @return null|string
      */
-    public function getCompanyType()
+    public function getCompanyType(): ?string
     {
         $company = $this->getCompany();
         if (!$company) {
@@ -93,9 +95,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setCompanyType(string $type = null)
+    public function setCompanyType(string $type = null): static
     {
         $this->type = $type;
         switch ($type) {
@@ -135,7 +137,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
     public function getVpbxId()
     {
@@ -143,9 +145,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setVpbxId($id)
+    public function setVpbxId($id): static
     {
         if ($this->type === CompanyInterface::TYPE_VPBX) {
             $this->setCompanyId($id);
@@ -155,7 +157,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
     public function getRetailId()
     {
@@ -163,9 +165,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setRetailId($id)
+    public function setRetailId($id): static
     {
         if ($this->type === CompanyInterface::TYPE_RETAIL) {
             $this->setCompanyId($id);
@@ -175,7 +177,7 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
     public function getResidentialId()
     {
@@ -183,9 +185,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setResidentialId($id)
+    public function setResidentialId($id): static
     {
         if ($this->type === CompanyInterface::TYPE_RESIDENTIAL) {
             $this->setCompanyId($id);
@@ -195,7 +197,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
+     *
+     * @return null|string
      */
     public function getEndpointType()
     {
@@ -215,15 +219,17 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setEndpointType($type)
+    public function setEndpointType(): static
     {
         return $this;
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
+     *
+     * @return null|string
      */
     public function getResidentialEndpointType()
     {
@@ -239,9 +245,9 @@ class CallCsvSchedulerDto extends CallCsvSchedulerDtoAbstract
     }
 
     /**
-     * TODO: Remove this as soon as klear is dead
+     * @TODO: Remove this as soon as klear is dead
      */
-    public function setResidentialEndpointType($type)
+    public function setResidentialEndpointType(): static
     {
         return $this;
     }

@@ -20,7 +20,7 @@ class KamUsersAddress extends Fixture implements DependentFixtureInterface
         $fixture = $this;
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(UsersAddress::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstance(UsersAddress::class);
         (function () use ($fixture) {
             $this->setSourceAddress("127.0.0.1");

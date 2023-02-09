@@ -2,11 +2,32 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper (>=9.2),
-    nodejs, npm, ruby-dev, git, openssh-client, curl, php8.0,
-    python3, make, python3-sphinx-rtd-theme, gettext,
-    python3-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
-    libjs-jquery (>=1.11.3), python3-alabaster (>=0.7.8), composer,
-    php8.0-mbstring, php8.0-xml, php8.0-zip, php8.0-mailparse
+    composer,
+    curl,
+    gettext,
+    git,
+    libjs-jquery (>=1.11.3),
+    libjs-sphinxdoc (>=1.4.6),
+    make,
+    nodejs,
+    npm,
+    openssh-client,
+    php8.0,
+    php8.0-cli,
+    php8.0-common,
+    php8.0-mailparse,
+    php8.0-mbstring,
+    php8.0-opcache,
+    php8.0-readline,
+    php8.0-xml,
+    php8.0-zip,
+    python3,
+    python3-alabaster (>=0.7.8),
+    python3-sphinx (>=1.4.6),
+    python3-sphinx-rtd-theme,
+    ruby-dev,
+    sphinx-common (>=1.4.6),
+    yarnpkg
 Standards-Version: 3.9.6
 Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
@@ -67,6 +88,7 @@ Pre-Depends: bind9, mysql-server
 Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-schema (=${binary:Version}),
     ivozprovider-balances (=${binary:Version}),
+    python3-mysql.connector,
     libstring-crc32-perl,
     redis-server,
     redis-sentinel
@@ -87,6 +109,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ssl-cert,
     ghostscript,
     php8.0,
+    php8.0-fpm,
     php8.0-igbinary,
     php8.0-mysql,
     php8.0-imagick,
@@ -97,6 +120,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     php8.0-zip,
     ivozprovider-web-admin (=${binary:Version}),
     ivozprovider-web-user (=${binary:Version}),
+    ivozprovider-web-client (=${binary:Version}),
     supervisor,
     ffmpeg,
     sox,
@@ -115,13 +139,13 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
         redis-tools,
         netcat-openbsd,
         ssl-cert,
+        libdbd-mysql-perl,
         ivozprovider-kamailio,
         ivozprovider-kamailio-json-modules,
         ivozprovider-kamailio-mysql-modules,
         ivozprovider-kamailio-tls-modules,
         ivozprovider-kamailio-xml-modules,
         ivozprovider-kamailio-websocket-modules,
-        ivozprovider-kamailio-presence-modules,
         ivozprovider-kamailio-extra-modules,
         ivozprovider-kamailio-utils-modules,
         ivozprovider-kamailio-redis-modules,
@@ -200,6 +224,17 @@ Description: IVOZ Provider - Admin Web - Klear based web interface
  Portals using klear and zendframework 1
  .
 
+Package: ivozprovider-web-client
+Architecture: all
+Section: php
+Priority: optional
+Conflicts: ivozprovider-userweb
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Client Web - React based client web interface
+ Client webapp using React and Bootstrap
+ .
+
+
 Package: ivozprovider-web-user
 Architecture: all
 Section: php
@@ -223,7 +258,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php8.0-cli, php8.0-mysql, php8.0-mbstring, php8.0-xml, acl, klear-library, php8.0-mailparse, php8.0-intl
+Depends: php8.0-cli, php8.0-mysql, php8.0-mbstring, php8.0-xml, acl, klear-library, php8.0-mailparse, php8.0-intl, php8.0-redis
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Ast\Domain\Model\Queue;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
 
 /**
@@ -24,51 +25,54 @@ abstract class QueueAbstract
     protected $name;
 
     /**
+     * @var ?string
      * column: periodic_announce
-     * @var string | null
      */
-    protected $periodicAnnounce;
+    protected $periodicAnnounce = null;
 
     /**
+     * @var ?int
      * column: periodic_announce_frequency
-     * @var int | null
      */
-    protected $periodicAnnounceFrequency;
+    protected $periodicAnnounceFrequency = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $timeout;
+    protected $timeout = null;
 
     /**
      * @var string
+     * comment: enum:yes|no|all
      */
     protected $autopause = 'no';
 
     /**
      * @var string
+     * comment: enum:yes|no
      */
     protected $ringinuse = 'no';
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $wrapuptime;
+    protected $wrapuptime = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $maxlen;
+    protected $maxlen = null;
 
     /**
-     * @var string | null
+     * @var ?string
+     * comment: enum:ringall|leastrecent|fewestcalls|random|rrmemory|linear|wrandom|rrordered
      */
-    protected $strategy;
+    protected $strategy = null;
 
     /**
-     * @var int | null
+     * @var ?int
      */
-    protected $weight;
+    protected $weight = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Queue\QueueInterface
@@ -79,50 +83,43 @@ abstract class QueueAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $autopause,
-        $ringinuse
+        string $name,
+        string $autopause,
+        string $ringinuse
     ) {
         $this->setName($name);
         $this->setAutopause($autopause);
         $this->setRinginuse($ringinuse);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Queue",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return QueueDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): QueueDto
     {
         return new QueueDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param QueueInterface|null $entity
-     * @param int $depth
-     * @return QueueDto|null
+     * @param null|QueueInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?QueueDto
     {
         if (!$entity) {
             return null;
@@ -138,8 +135,7 @@ abstract class QueueAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var QueueDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -148,18 +144,25 @@ abstract class QueueAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param QueueDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $autopause = $dto->getAutopause();
+        Assertion::notNull($autopause, 'getAutopause value is null, but non null value was expected.');
+        $ringinuse = $dto->getRinginuse();
+        Assertion::notNull($ringinuse, 'getRinginuse value is null, but non null value was expected.');
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getAutopause(),
-            $dto->getRinginuse()
+            $name,
+            $autopause,
+            $ringinuse
         );
 
         $self
@@ -170,7 +173,7 @@ abstract class QueueAbstract
             ->setMaxlen($dto->getMaxlen())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setQueue($fkTransformer->transform($dto->getQueue()));
+            ->setQueue($fkTransformer->transform($queue));
 
         $self->initChangelog();
 
@@ -180,36 +183,42 @@ abstract class QueueAbstract
     /**
      * @internal use EntityTools instead
      * @param QueueDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, QueueDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $autopause = $dto->getAutopause();
+        Assertion::notNull($autopause, 'getAutopause value is null, but non null value was expected.');
+        $ringinuse = $dto->getRinginuse();
+        Assertion::notNull($ringinuse, 'getRinginuse value is null, but non null value was expected.');
+        $queue = $dto->getQueue();
+        Assertion::notNull($queue, 'getQueue value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
-            ->setAutopause($dto->getAutopause())
-            ->setRinginuse($dto->getRinginuse())
+            ->setAutopause($autopause)
+            ->setRinginuse($ringinuse)
             ->setWrapuptime($dto->getWrapuptime())
             ->setMaxlen($dto->getMaxlen())
             ->setStrategy($dto->getStrategy())
             ->setWeight($dto->getWeight())
-            ->setQueue($fkTransformer->transform($dto->getQueue()));
+            ->setQueue($fkTransformer->transform($queue));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return QueueDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): QueueDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -226,9 +235,9 @@ abstract class QueueAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -301,6 +310,17 @@ abstract class QueueAbstract
 
     protected function setAutopause(string $autopause): static
     {
+        Assertion::maxLength($autopause, 25, 'autopause value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $autopause,
+            [
+                QueueInterface::AUTOPAUSE_YES,
+                QueueInterface::AUTOPAUSE_NO,
+                QueueInterface::AUTOPAUSE_ALL,
+            ],
+            'autopausevalue "%s" is not an element of the valid values: %s'
+        );
+
         $this->autopause = $autopause;
 
         return $this;
@@ -313,6 +333,16 @@ abstract class QueueAbstract
 
     protected function setRinginuse(string $ringinuse): static
     {
+        Assertion::maxLength($ringinuse, 25, 'ringinuse value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $ringinuse,
+            [
+                QueueInterface::RINGINUSE_YES,
+                QueueInterface::RINGINUSE_NO,
+            ],
+            'ringinusevalue "%s" is not an element of the valid values: %s'
+        );
+
         $this->ringinuse = $ringinuse;
 
         return $this;
@@ -349,6 +379,24 @@ abstract class QueueAbstract
 
     protected function setStrategy(?string $strategy = null): static
     {
+        if (!is_null($strategy)) {
+            Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $strategy,
+                [
+                    QueueInterface::STRATEGY_RINGALL,
+                    QueueInterface::STRATEGY_LEASTRECENT,
+                    QueueInterface::STRATEGY_FEWESTCALLS,
+                    QueueInterface::STRATEGY_RANDOM,
+                    QueueInterface::STRATEGY_RRMEMORY,
+                    QueueInterface::STRATEGY_LINEAR,
+                    QueueInterface::STRATEGY_WRANDOM,
+                    QueueInterface::STRATEGY_RRORDERED,
+                ],
+                'strategyvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->strategy = $strategy;
 
         return $this;

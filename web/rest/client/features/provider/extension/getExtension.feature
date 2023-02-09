@@ -26,7 +26,8 @@ Feature: Retrieve extensions
               "user": 1,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           },
           {
               "number": "102",
@@ -40,7 +41,8 @@ Feature: Retrieve extensions
               "user": 2,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": null
+              "numberCountry": null,
+              "voicemail": null
           },
           {
               "number": "12346",
@@ -54,7 +56,23 @@ Feature: Retrieve extensions
               "user": null,
               "queue": null,
               "conditionalRoute": null,
-              "numberCountry": 68
+              "numberCountry": 68,
+              "voicemail": null
+          },
+          {
+              "number": "987",
+              "routeType": null,
+              "numberValue": null,
+              "friendValue": null,
+              "id": 4,
+              "ivr": null,
+              "huntGroup": null,
+              "conferenceRoom": null,
+              "user": null,
+              "queue": null,
+              "conditionalRoute": null,
+              "numberCountry": null,
+              "voicemail": null
           }
       ]
     """
@@ -80,6 +98,7 @@ Feature: Retrieve extensions
           "user": "~",
           "queue": null,
           "conditionalRoute": null,
-          "numberCountry": null
+          "numberCountry": null,
+          "voicemail": null
       }
     """

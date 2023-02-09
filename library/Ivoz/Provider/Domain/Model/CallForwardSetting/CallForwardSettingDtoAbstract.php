@@ -5,7 +5,9 @@ namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
@@ -20,80 +22,88 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $callTypeFilter;
-
-    /**
-     * @var string
-     */
-    private $callForwardType;
+    private $callTypeFilter = null;
 
     /**
      * @var string|null
      */
-    private $targetType;
+    private $callForwardType = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $targetType = null;
 
     /**
-     * @var int
+     * @var string|null
+     */
+    private $numberValue = null;
+
+    /**
+     * @var int|null
      */
     private $noAnswerTimeout = 10;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $enabled = true;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
+
+    /**
+     * @var FriendDto | null
+     */
+    private $friend = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $voiceMailUser;
+    private $voicemail = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $cfwToRetailAccount;
+    private $cfwToRetailAccount = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -102,7 +112,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -117,8 +127,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'enabled' => 'enabled',
             'id' => 'id',
             'userId' => 'user',
+            'friendId' => 'friend',
             'extensionId' => 'extension',
-            'voiceMailUserId' => 'voiceMailUser',
+            'voicemailId' => 'voicemail',
             'numberCountryId' => 'numberCountry',
             'residentialDeviceId' => 'residentialDevice',
             'retailAccountId' => 'retailAccount',
@@ -128,9 +139,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'callTypeFilter' => $this->getCallTypeFilter(),
@@ -141,8 +152,9 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'enabled' => $this->getEnabled(),
             'id' => $this->getId(),
             'user' => $this->getUser(),
+            'friend' => $this->getFriend(),
             'extension' => $this->getExtension(),
-            'voiceMailUser' => $this->getVoiceMailUser(),
+            'voicemail' => $this->getVoicemail(),
             'numberCountry' => $this->getNumberCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
             'retailAccount' => $this->getRetailAccount(),
@@ -164,7 +176,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $response;
     }
 
-    public function setCallTypeFilter(?string $callTypeFilter): static
+    public function setCallTypeFilter(string $callTypeFilter): static
     {
         $this->callTypeFilter = $callTypeFilter;
 
@@ -176,7 +188,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->callTypeFilter;
     }
 
-    public function setCallForwardType(?string $callForwardType): static
+    public function setCallForwardType(string $callForwardType): static
     {
         $this->callForwardType = $callForwardType;
 
@@ -212,7 +224,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->numberValue;
     }
 
-    public function setNoAnswerTimeout(?int $noAnswerTimeout): static
+    public function setNoAnswerTimeout(int $noAnswerTimeout): static
     {
         $this->noAnswerTimeout = $noAnswerTimeout;
 
@@ -224,7 +236,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->noAnswerTimeout;
     }
 
-    public function setEnabled(?bool $enabled): static
+    public function setEnabled(bool $enabled): static
     {
         $this->enabled = $enabled;
 
@@ -243,7 +255,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -272,6 +284,36 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setFriend(?FriendDto $friend): static
+    {
+        $this->friend = $friend;
+
+        return $this;
+    }
+
+    public function getFriend(): ?FriendDto
+    {
+        return $this->friend;
+    }
+
+    public function setFriendId($id): static
+    {
+        $value = !is_null($id)
+            ? new FriendDto($id)
+            : null;
+
+        return $this->setFriend($value);
+    }
+
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
             return $dto->getId();
         }
 
@@ -308,30 +350,30 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 
-    public function setVoiceMailUser(?UserDto $voiceMailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
-    public function setVoiceMailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoiceMailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoiceMailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoiceMailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

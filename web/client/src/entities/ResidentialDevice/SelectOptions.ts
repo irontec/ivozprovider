@@ -1,20 +1,24 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import ResidentialDevice from './ResidentialDevice';
 
-const ResidentialDeviceSelectOptions = (callback: Function) => {
+const ResidentialDeviceSelectOptions: SelectOptionsType = ({
+  callback,
+  cancelToken,
+}): Promise<unknown> => {
+  return defaultEntityBehavior.fetchFks(
+    ResidentialDevice.path,
+    ['id', 'name'],
+    (data: any) => {
+      const options: any = {};
+      for (const item of data) {
+        options[item.id] = item.name;
+      }
 
-    defaultEntityBehavior.fetchFks(
-        '/residential_devices',
-        ['id', 'name'],
-        (data:any) => {
-
-            const options:any = {};
-            for (const item of data) {
-                options[item.id] = item.name;
-            }
-
-            callback(options);
-        }
-    );
-}
+      callback(options);
+    },
+    cancelToken
+  );
+};
 
 export default ResidentialDeviceSelectOptions;

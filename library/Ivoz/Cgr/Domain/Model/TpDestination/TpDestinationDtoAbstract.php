@@ -15,35 +15,38 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DestinationDto | null
      */
-    private $destination;
+    private $destination = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -52,7 +55,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -69,9 +72,9 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tpid' => $this->getTpid(),
@@ -96,7 +99,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -120,7 +123,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->tag;
     }
 
-    public function setPrefix(?string $prefix): static
+    public function setPrefix(string $prefix): static
     {
         $this->prefix = $prefix;
 
@@ -132,14 +135,14 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->prefix;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
@@ -151,7 +154,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

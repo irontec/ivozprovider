@@ -48,8 +48,10 @@ class ActiveCalls
 
     /**
      * @param int $inbound
+     *
+     * @return void
      */
-    public function setInbound(int $inbound)
+    public function setInbound(int $inbound): void
     {
         $this->inbound = $inbound;
     }
@@ -64,8 +66,10 @@ class ActiveCalls
 
     /**
      * @param int $outbound
+     *
+     * @return void
      */
-    public function setOutbound(int $outbound)
+    public function setOutbound(int $outbound): void
     {
         $this->outbound = $outbound;
     }

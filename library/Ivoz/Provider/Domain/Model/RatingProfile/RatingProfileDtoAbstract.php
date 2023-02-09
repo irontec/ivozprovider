@@ -19,40 +19,43 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $activationTime = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RatingPlanGroupDto | null
      */
-    private $ratingPlanGroup;
+    private $ratingPlanGroup = null;
 
     /**
      * @var RoutingTagDto | null
      */
-    private $routingTag;
+    private $routingTag = null;
 
     /**
      * @var TpRatingProfileDto[] | null
      */
-    private $tpRatingProfiles;
+    private $tpRatingProfiles = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -61,7 +64,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -78,9 +81,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'activationTime' => $this->getActivationTime(),
@@ -106,14 +109,14 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setActivationTime(null|\DateTime|string $activationTime): static
+    public function setActivationTime(\DateTimeInterface|string $activationTime): static
     {
         $this->activationTime = $activationTime;
 
         return $this;
     }
 
-    public function getActivationTime(): \DateTime|string|null
+    public function getActivationTime(): \DateTimeInterface|string|null
     {
         return $this->activationTime;
     }
@@ -125,7 +128,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

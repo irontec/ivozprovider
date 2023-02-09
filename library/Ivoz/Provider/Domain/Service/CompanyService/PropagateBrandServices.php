@@ -11,27 +11,12 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
-/**
- * Class PropagateBrandServices
- */
 class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var BrandServiceRepository
-     */
-    protected $brandServiceRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        BrandServiceRepository $brandServiceRepository
+        private EntityTools $entityTools,
+        private BrandServiceRepository $brandServiceRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->brandServiceRepository = $brandServiceRepository;
     }
 
     public static function getSubscribedEvents()
@@ -41,12 +26,7 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    /**
-     * @param CompanyInterface $company
-     *
-     * @return void
-     */
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $isNew = $company->isNew();
         if (!$isNew) {
@@ -60,7 +40,7 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
         }
 
         $services = $this->brandServiceRepository->findByBrandId(
-            $company->getBrand()->getId()
+            (int) $company->getBrand()->getId()
         );
 
         /**

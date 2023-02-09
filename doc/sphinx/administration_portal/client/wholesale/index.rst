@@ -1,3 +1,6 @@
+.. _wholesale clients:
+.. _clientes wholesale:
+
 #################
 Wholesale clients
 #################

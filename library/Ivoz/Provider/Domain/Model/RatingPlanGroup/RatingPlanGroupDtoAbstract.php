@@ -17,65 +17,68 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEn;
+    private $nameEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameEs;
+    private $nameEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameCa;
+    private $nameCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $nameIt;
+    private $nameIt = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEn;
+    private $descriptionEn = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionEs;
+    private $descriptionEs = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionCa;
+    private $descriptionCa = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $descriptionIt;
+    private $descriptionIt = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CurrencyDto | null
      */
-    private $currency;
+    private $currency = null;
 
     /**
      * @var RatingPlanDto[] | null
      */
-    private $ratingPlan;
+    private $ratingPlan = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -84,7 +87,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -110,9 +113,9 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'id' => $this->getId(),
@@ -154,12 +157,12 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNameEn(?string $nameEn): static
+    public function setNameEn(string $nameEn): static
     {
         $this->nameEn = $nameEn;
 
@@ -171,7 +174,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->nameEn;
     }
 
-    public function setNameEs(?string $nameEs): static
+    public function setNameEs(string $nameEs): static
     {
         $this->nameEs = $nameEs;
 
@@ -183,7 +186,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 
-    public function setNameCa(?string $nameCa): static
+    public function setNameCa(string $nameCa): static
     {
         $this->nameCa = $nameCa;
 
@@ -195,7 +198,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->nameCa;
     }
 
-    public function setNameIt(?string $nameIt): static
+    public function setNameIt(string $nameIt): static
     {
         $this->nameIt = $nameIt;
 
@@ -207,7 +210,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->nameIt;
     }
 
-    public function setDescriptionEn(?string $descriptionEn): static
+    public function setDescriptionEn(string $descriptionEn): static
     {
         $this->descriptionEn = $descriptionEn;
 
@@ -219,7 +222,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionEn;
     }
 
-    public function setDescriptionEs(?string $descriptionEs): static
+    public function setDescriptionEs(string $descriptionEs): static
     {
         $this->descriptionEs = $descriptionEs;
 
@@ -231,7 +234,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionEs;
     }
 
-    public function setDescriptionCa(?string $descriptionCa): static
+    public function setDescriptionCa(string $descriptionCa): static
     {
         $this->descriptionCa = $descriptionCa;
 
@@ -243,7 +246,7 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionCa;
     }
 
-    public function setDescriptionIt(?string $descriptionIt): static
+    public function setDescriptionIt(string $descriptionIt): static
     {
         $this->descriptionIt = $descriptionIt;
 

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunk;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * ProxyTrunkAbstract
@@ -18,9 +19,9 @@ abstract class ProxyTrunkAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $name;
+    protected $name = null;
 
     /**
      * @var string
@@ -31,46 +32,39 @@ abstract class ProxyTrunkAbstract
      * Constructor
      */
     protected function __construct(
-        $ip
+        string $ip
     ) {
         $this->setIp($ip);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ProxyTrunk",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ProxyTrunkDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ProxyTrunkDto
     {
         return new ProxyTrunkDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ProxyTrunkInterface|null $entity
-     * @param int $depth
-     * @return ProxyTrunkDto|null
+     * @param null|ProxyTrunkInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ProxyTrunkDto
     {
         if (!$entity) {
             return null;
@@ -86,8 +80,7 @@ abstract class ProxyTrunkAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ProxyTrunkDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -96,16 +89,17 @@ abstract class ProxyTrunkAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ProxyTrunkDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIp()
+            $ip
         );
 
         $self
@@ -119,27 +113,27 @@ abstract class ProxyTrunkAbstract
     /**
      * @internal use EntityTools instead
      * @param ProxyTrunkDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ProxyTrunkDto::class);
+
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
 
         $this
             ->setName($dto->getName())
-            ->setIp($dto->getIp());
+            ->setIp($ip);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ProxyTrunkDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ProxyTrunkDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -147,9 +141,9 @@ abstract class ProxyTrunkAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

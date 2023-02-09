@@ -9,15 +9,9 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -41,6 +35,11 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
             ->entityTools
             ->entityToDto($endpoint);
 
+        $voicemail = $user->getVoicemail();
+        $mailbox = $voicemail
+            ? $voicemail->getVoicemailName()
+            : null;
+
         $callerId = sprintf(
             '%s <%s>',
             $user->getFullName(),
@@ -49,7 +48,8 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
 
         $endpointDto
             ->setCallerid($callerId)
-            ->setMailboxes($user->getVoiceMail())
+            ->setMailboxes($mailbox)
+            ->setHintExtension($user->getExtensionNumber())
             ->setNamedPickupGroup($user->getPickUpGroupsIds());
 
         $this

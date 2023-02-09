@@ -3,6 +3,7 @@
   <mapped-superclass name="Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelAbstract" table="terminal_model_abstract">
     <unique-constraints>
       <unique-constraint name="terminalModel_iden" columns="iden"/>
+      <unique-constraint name="terminalModel_genericUrlPattern" columns="genericUrlPattern"/>
     </unique-constraints>
     <field name="iden" type="string" column="iden" length="100" nullable="false">
       <options>

@@ -4,10 +4,10 @@ Debian packages install
 
 IvozProvider is designed to be installed and updated using Debian packages.
 More exactly, the current release is ready to be installed on
-`Debian Stretch 9 <https://www.debian.org/releases/stretch>`_.
+`Debian Bullseye 11 <https://www.debian.org/releases/bullseye>`_.
 
 It's recommended to use one of the `official installation guides
-<https://www.debian.org/releases/stretch/installmanual>`_ to install the minimum
+<https://www.debian.org/releases/bullseye/installmanual>`_ to install the minimum
 base system. The rest of required  dependencies will be installed automatically
 with IvozProvider meta packages.
 
@@ -20,12 +20,12 @@ APT Repository configuration
 ****************************
 
 Right now, two different repositories are used for the latest IvozProvider
-release (called artemis) and it's frontend Klear release (called tayler).
+release (called halliday) and it's frontend Klear release (called tayler).
 
 .. code-block:: console
 
     cd /etc/apt/sources.list.d
-    echo deb http://packages.irontec.com/debian artemis main extra > ivozprovider.list
+    echo deb http://packages.irontec.com/debian halliday main extra > ivozprovider.list
     echo deb http://packages.irontec.com/debian tayler main > klear.list
 
 Optionally, we can add the repository key to check signed packages:
@@ -33,6 +33,9 @@ Optionally, we can add the repository key to check signed packages:
 .. code-block:: console
 
     wget http://packages.irontec.com/public.key -q -O - | apt-key add -
+
+.. _installing profile package:
+.. _instalar el paquete del rol:
 
 **************************
 Installing profile package
@@ -87,4 +90,4 @@ It's possible to change any of this values anytime by running:
    **admin / changeme**.
 
 .. important:: You must reboot your machine after a package installation in order to start
-   all required sevices.
+   all required services.

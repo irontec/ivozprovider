@@ -46,6 +46,16 @@ services:
         arguments:
             $parser: '@PhpMimeMailParser\Parser'
             $mailer: '@mailer'
+            $localStoragePath: '%local_storage_path%/asterisk/spool/voicemail'
+
+    Hints\Generator:
+        arguments: ~
+
+    Hints\ExtensionHintsGenerator:
+        arguments: ~
+
+    Hints\RouteLockHintsGenerator:
+        arguments: ~
 
     ##################################
     ## Handlers
@@ -66,6 +76,9 @@ services:
         arguments: ~
 
     Dialplan\Friends:
+        arguments: ~
+
+    Dialplan\FriendStatus:
         arguments: ~
 
     Dialplan\UserStatus:
@@ -141,6 +154,10 @@ services:
         lazy: true
         arguments: ~
 
+    Agi\Action\FriendStatusAction:
+        lazy: true
+        arguments: ~
+
     Agi\Action\HuntGroupAction:
         lazy: true
         arguments: ~
@@ -213,6 +230,6 @@ services:
         lazy: true
         arguments: ~
 
-    Agi\Action\VoiceMailAction:
+    Agi\Action\VoicemailAction:
         lazy: true
         arguments: ~

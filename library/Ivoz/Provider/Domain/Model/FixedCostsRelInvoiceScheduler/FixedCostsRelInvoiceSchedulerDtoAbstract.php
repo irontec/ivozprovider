@@ -6,6 +6,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
+use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
 /**
 * FixedCostsRelInvoiceSchedulerDtoAbstract
@@ -18,23 +19,41 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     /**
      * @var int|null
      */
-    private $quantity;
+    private $quantity = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $type = 'static';
+
+    /**
+     * @var string|null
+     */
+    private $ddisCountryMatch = 'all';
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var FixedCostDto | null
      */
-    private $fixedCost;
+    private $fixedCost = null;
 
     /**
      * @var InvoiceSchedulerDto | null
      */
-    private $invoiceScheduler;
+    private $invoiceScheduler = null;
 
+    /**
+     * @var CountryDto | null
+     */
+    private $ddisCountry = null;
+
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -43,7 +62,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -51,22 +70,28 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
 
         return [
             'quantity' => 'quantity',
+            'type' => 'type',
+            'ddisCountryMatch' => 'ddisCountryMatch',
             'id' => 'id',
             'fixedCostId' => 'fixedCost',
-            'invoiceSchedulerId' => 'invoiceScheduler'
+            'invoiceSchedulerId' => 'invoiceScheduler',
+            'ddisCountryId' => 'ddisCountry'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'quantity' => $this->getQuantity(),
+            'type' => $this->getType(),
+            'ddisCountryMatch' => $this->getDdisCountryMatch(),
             'id' => $this->getId(),
             'fixedCost' => $this->getFixedCost(),
-            'invoiceScheduler' => $this->getInvoiceScheduler()
+            'invoiceScheduler' => $this->getInvoiceScheduler(),
+            'ddisCountry' => $this->getDdisCountry()
         ];
 
         if (!$hideSensitiveData) {
@@ -95,6 +120,30 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this->quantity;
     }
 
+    public function setType(string $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setDdisCountryMatch(?string $ddisCountryMatch): static
+    {
+        $this->ddisCountryMatch = $ddisCountryMatch;
+
+        return $this;
+    }
+
+    public function getDdisCountryMatch(): ?string
+    {
+        return $this->ddisCountryMatch;
+    }
+
     public function setId($id): static
     {
         $this->id = $id;
@@ -102,7 +151,7 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -161,6 +210,36 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     public function getInvoiceSchedulerId()
     {
         if ($dto = $this->getInvoiceScheduler()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    public function setDdisCountry(?CountryDto $ddisCountry): static
+    {
+        $this->ddisCountry = $ddisCountry;
+
+        return $this;
+    }
+
+    public function getDdisCountry(): ?CountryDto
+    {
+        return $this->ddisCountry;
+    }
+
+    public function setDdisCountryId($id): static
+    {
+        $value = !is_null($id)
+            ? new CountryDto($id)
+            : null;
+
+        return $this->setDdisCountry($value);
+    }
+
+    public function getDdisCountryId()
+    {
+        if ($dto = $this->getDdisCountry()) {
             return $dto->getId();
         }
 

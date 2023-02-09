@@ -82,7 +82,7 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
-                stage ('phpstan') {
+                stage ('static analysis') {
                     agent {
                         docker {
                             image 'ironartemis/ivozprovider-testing-base:halliday'
@@ -92,6 +92,7 @@ pipeline {
                     }
                     steps {
                         sh '/opt/irontec/ivozprovider/library/bin/test-phpstan'
+                        sh '/opt/irontec/ivozprovider/library/bin/test-psalm'
                     }
                     post {
                         success { notifySuccessGithub() }
@@ -107,8 +108,7 @@ pipeline {
                         }
                     }
                     steps {
-                        sh '/opt/irontec/ivozprovider/library/bin/test-codestyle --branch'
-                        sh '/opt/irontec/ivozprovider/library/bin/php-cs-fixer'
+                        sh '/opt/irontec/ivozprovider/library/bin/test-codestyle --full'
                     }
                     post {
                         success { notifySuccessGithub() }
@@ -215,6 +215,23 @@ pipeline {
                         failure { notifyFailureGithub() }
                     }
                 }
+                stage ('web-client') {
+                    agent {
+                        docker {
+                            image 'ironartemis/ivozprovider-testing-base:halliday'
+                            args '--user jenkins --volume ${WORKSPACE}:/opt/irontec/ivozprovider'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh '/opt/irontec/ivozprovider/web/client/bin/test-lint'
+                        sh '/opt/irontec/ivozprovider/web/client/bin/test-build'
+                    }
+                    post {
+                        success { notifySuccessGithub() }
+                        failure { notifyFailureGithub() }
+                    }
+                }
                 stage ('orm') {
                     agent {
                         docker {
@@ -257,7 +274,7 @@ pipeline {
                                     sh 'while ! mysqladmin ping -hdata.ivozprovider.local --silent; do sleep 1; done'
                                 }
                                 docker.image('ironartemis/ivozprovider-testing-base:halliday')
-                                      .inside("--volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
+                                      .inside("--env MYSQL_PWD=changeme --volume ${WORKSPACE}:/opt/irontec/ivozprovider --link ${c.id}:data.ivozprovider.local") {
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-schema'
                                     sh '/opt/irontec/ivozprovider/schema/bin/test-duplicate-keys'
                                 }

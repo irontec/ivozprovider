@@ -18,73 +18,74 @@ use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
  */
 class SimulatedCall
 {
-    const ERROR_UNAUTHORIZED_DESTINATION = 1;
-    const ERROR_UNAUTHORIZED_DESTINATION_MSG = 'SERVER_ERROR: UNAUTHORIZED_DESTINATION';
-    const ERROR_NO_RATING_PLAN = 2;
-    const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
-    const FALLBACK_ERROR_MSG = 'There was a problem';
+    public const ERROR_UNAUTHORIZED_DESTINATION = 1;
+    public const ERROR_UNAUTHORIZED_DESTINATION_MSG = 'SERVER_ERROR: UNAUTHORIZED_DESTINATION';
+    public const ERROR_NO_RATING_PLAN = 2;
+    public const ERROR_NO_RATING_PLAN_MSG = 'NOT_FOUND:RatingPlanId:';
+    public const FALLBACK_ERROR_MSG = 'There was a problem';
 
-    protected $errorCode;
+    /** @var int|string|null */
+    private $errorCode;
 
     /**
      * @var string
      */
-    protected $errorMessage;
+    private $errorMessage;
 
     /**
      * @var \DateTime
      */
-    protected $callDate;
+    private $callDate;
 
     /**
      * @var int
      */
-    protected $callDuration;
+    private $callDuration;
 
     /**
      * @var RatingPlanGroupDto
      */
-    protected $ratingPlanGroupDto;
+    private $ratingPlanGroupDto;
 
     /**
      * @var TpRatingPlanDto
      */
-    protected $tpRatingPlanDto;
+    private $tpRatingPlanDto;
 
     /**
      * @var string
      */
-    protected $patternName;
+    private $patternName;
 
     /**
      * @var string
      */
-    protected $prefix;
+    private $prefix;
 
     /**
      * @var string
      */
-    protected $intervalStart;
+    private $intervalStart;
 
     /**
      * @var float
      */
-    protected $connectionFee;
+    private $connectionFee;
 
     /**
      * @var int
      */
-    protected $chargePeriod;
+    private $chargePeriod;
 
     /**
      * @var float
      */
-    protected $rate;
+    private $rate;
 
     /**
      * @var float
      */
-    protected $cost;
+    private $cost;
 
     /**
      * @param string $response
@@ -97,7 +98,7 @@ class SimulatedCall
         int $duration,
         EntityTools $entityTools
     ) {
-        $response = json_decode($response);
+        $response = json_decode($response, null, 512, JSON_THROW_ON_ERROR);
 
         /** @var TpRatingPlanRepository $tpRatingPlanRepository */
         $tpRatingPlanRepository = $entityTools->getRepository(TpRatingPlan::class);
@@ -222,7 +223,7 @@ class SimulatedCall
         }
 
         $emptyDestinationRateMsg = self::ERROR_NO_RATING_PLAN_MSG;
-        if (substr($errorMsg, 0, strlen($emptyDestinationRateMsg)) === $emptyDestinationRateMsg) {
+        if (str_starts_with($errorMsg, $emptyDestinationRateMsg)) {
             $instance->errorCode = self::ERROR_NO_RATING_PLAN;
 
             return $instance;
@@ -232,7 +233,7 @@ class SimulatedCall
     }
 
     /**
-     * @return int | null
+     * @return int | string | null
      */
     public function getErrorCode()
     {
@@ -248,9 +249,9 @@ class SimulatedCall
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|\DateTimeImmutable
      */
-    public function getCallDate(): \DateTime
+    public function getCallDate(): \DateTimeInterface
     {
         return $this->callDate;
     }
@@ -290,7 +291,7 @@ class SimulatedCall
     /**
      * @return string
      */
-    public function getIntervalStart() :string
+    public function getIntervalStart(): string
     {
         return $this->intervalStart;
     }

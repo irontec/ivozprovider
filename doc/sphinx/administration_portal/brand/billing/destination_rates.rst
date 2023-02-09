@@ -1,4 +1,4 @@
-.. _destination_rate:
+.. _destination rates:
 
 #################
 Destination Rates
@@ -7,8 +7,6 @@ Destination Rates
 A *Destination rate* groups some prefixes with their cost details.
 
 They only have two fields:
-
-.. glossary::
 
     Name
         Name to reference the destination rate
@@ -77,14 +75,13 @@ This is underlying logic:
 
 This setting guarantees a minimal cost of 0.01.
 
+.. _add rates manually:
 
 ******************
 Add rates manually
 ******************
 
 Brand operator can add rates by hand, filling these fields (**List of rates** subsection):
-
-.. glossary::
 
     Destination
         Pre-created destination that specifies a concrete prefix.
@@ -114,6 +111,8 @@ Call cost/price is increased by (*Per minute rate* / 60 ) * *charge period* ever
 
 - If *billing period* is set to 60, every minute the price will be increased
   *price per minute* (bill by minutes).
+
+.. _importing a csv file:
 
 ********************
 Importing a CSV file

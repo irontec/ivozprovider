@@ -9,6 +9,9 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotification;
 use Ivoz\Provider\Domain\Model\MaxUsageNotification\MaxUsageNotificationRepository;
 
+/**
+ * @template-extends ServiceEntityRepository<MaxUsageNotification>
+ */
 class MaxUsageNotificationDoctrineRepository extends ServiceEntityRepository implements MaxUsageNotificationRepository
 {
     public function __construct(ManagerRegistry $registry)

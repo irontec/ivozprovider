@@ -9,17 +9,11 @@ use Ivoz\Provider\Domain\Service\Administrator\AdministratorLifecycleEventHandle
 
 final class RemoveAcls implements AdministratorLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    private $administratorRelPublicEntityRepository;
-    private $entityTools;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository,
-        EntityTools $entityTools
+        private AdministratorRelPublicEntityRepository $administratorRelPublicEntityRepository,
     ) {
-        $this->administratorRelPublicEntityRepository = $administratorRelPublicEntityRepository;
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -46,7 +40,7 @@ final class RemoveAcls implements AdministratorLifecycleEventHandlerInterface
         $this
             ->administratorRelPublicEntityRepository
             ->removeByAdministratorId(
-                $admin->getId()
+                (int) $admin->getId()
             );
     }
 }

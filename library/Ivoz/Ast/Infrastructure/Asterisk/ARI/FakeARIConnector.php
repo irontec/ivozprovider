@@ -12,4 +12,11 @@ class FakeARIConnector extends ARIConnector
     public function sendFaxfileRequest(FaxesInOutInterface $faxFile)
     {
     }
+
+    /**
+     * @return void
+     */
+    public function sendDialplanReloadRequest()
+    {
+    }
 }

@@ -235,7 +235,7 @@ class UserCallAction
             }
         }
 
-        return ($timeout)?:"10800";
+        return ($timeout) ?: "10800";
     }
 
     /**

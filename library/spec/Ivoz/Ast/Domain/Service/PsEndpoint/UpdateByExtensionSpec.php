@@ -9,6 +9,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use PhpSpec\ObjectBehavior;
 
 class UpdateByExtensionSpec extends ObjectBehavior
@@ -69,6 +70,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
         ExtensionInterface $extension,
         UserInterface $user,
         TerminalInterface $terminal,
+        VoicemailInterface $voicemail,
         PsEndpointInterface $psEndpoint,
         PsEndpointDto $psEndpointDto
     ) {
@@ -95,10 +97,6 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->willReturn($psEndpoint)
             ->shouldBeCalled();
 
-        $user
-            ->getVoicemailEnabled()
-            ->willReturn(true);
-
         $this
             ->entityTools
             ->entityToDto($psEndpoint)
@@ -113,17 +111,31 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->getExtensionNumber()
             ->willReturn('ExtensionNumber');
 
+        $extension
+            ->getNumber()
+            ->willReturn('ExtensionNumber')
+            ->shouldBecalled();
+
         $psEndpointDto
             ->setCallerid('Name <ExtensionNumber>')
             ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 
+        $psEndpointDto
+            ->setHintExtension('ExtensionNumber')
+            ->willReturn($psEndpointDto)
+            ->shouldBeCalled();
+
         $user
-            ->getVoiceMail()
-            ->willReturn('userVoiceMail');
+            ->getVoicemail()
+            ->willReturn($voicemail)
+            ->shouldBeCalled();
+
+        $voicemail->getVoicemailName()
+            ->willReturn('name1@company2');
 
         $psEndpointDto
-            ->setMailboxes('userVoiceMail')
+            ->setMailboxes('name1@company2')
             ->willReturn($psEndpointDto)
             ->shouldBeCalled();
 

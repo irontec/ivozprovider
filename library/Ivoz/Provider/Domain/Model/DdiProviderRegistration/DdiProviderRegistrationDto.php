@@ -8,19 +8,20 @@ use Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus;
 class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
 {
     /**
+     * @var ?DdiProviderRegistrationStatus
      * @AttributeDefinition(
      *     type="object",
      *     class="Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus",
      *     description="Registration status"
      * )
      */
-    protected $status;
+    private $status;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         $response =  parent::getPropertyMap(...func_get_args());
 
@@ -44,7 +45,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
     }
 
 
-    public function normalize(string $context, string $role = '')
+    public function normalize(string $context, string $role = ''): array
     {
         $response = parent::normalize(...func_get_args());
 
@@ -61,7 +62,7 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
         return $response;
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['status'] = $this->status;
@@ -69,8 +70,10 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
         return $response;
     }
 
-    public function setStatus(DdiProviderRegistrationStatus $status)
+    public function setStatus(DdiProviderRegistrationStatus $status): static
     {
         $this->status = $status;
+
+        return $this;
     }
 }

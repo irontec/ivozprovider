@@ -32,9 +32,10 @@ production:
           numberCountry: true
           numberValue: true
           extension: true
-          voiceMailUser: true
+          voicemail: true
           noAnswerTimeout: true
           user: true
+          friend: true
           residentialDevice: true
           cfwToretailAccount: true
       options:
@@ -58,8 +59,9 @@ production:
         blacklist: &callForwardSettingsNewBlacklist_Link
           targetTypeValue: true
           user: true
+          friend: true
           residentialDevice: true
-          voiceMailUser: ${auth.companyResidential}
+          voicemail: ${auth.companyResidential}
         order: &callForwardSettingsOrder_Link
           enabled: true
           targetType: true
@@ -81,7 +83,7 @@ production:
             numberCountry: 2
             numberValue: 2
             extension: 3
-            voiceMailUser: 3
+            voicemail: 3
             cfwToretailAccount: 3
 
     callForwardSettingsEdit_screen: &callForwardSettingsEdit_screenLink 
@@ -97,7 +99,8 @@ production:
           targetTypeValue: true
           user: true
           residentialDevice: true
-          voiceMailUser: ${auth.companyResidential}
+          voicemail: ${auth.companyResidential}
+          friend: true
         order:
           <<: *callForwardSettingsOrder_Link
       fixedPositions:

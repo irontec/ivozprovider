@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
@@ -9,49 +10,49 @@ use Assert\Assertion;
 * OriginalFile
 * @codeCoverageIgnore
 */
-class OriginalFile
+final class OriginalFile
 {
     /**
+     * @var ?int
      * column: originalFileFileSize
      * comment: FSO:keepExtension
-     * @var int | null
      */
-    protected $fileSize;
+    private $fileSize = null;
 
     /**
+     * @var ?string
      * column: originalFileMimeType
-     * @var string | null
      */
-    protected $mimeType;
+    private $mimeType = null;
 
     /**
+     * @var ?string
      * column: originalFileBaseName
-     * @var string | null
      */
-    protected $baseName;
+    private $baseName = null;
 
     /**
      * Constructor
      */
     public function __construct(
-        $fileSize,
-        $mimeType,
-        $baseName
+        ?int $fileSize,
+        ?string $mimeType,
+        ?string $baseName
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
         $this->setBaseName($baseName);
     }
 
-    /**
-     * Equals
-     */
-    public function equals(self $originalFile)
+    public function equals(self $originalFile): bool
     {
-        return
-            $this->getFileSize() === $originalFile->getFileSize() &&
-            $this->getMimeType() === $originalFile->getMimeType() &&
-            $this->getBaseName() === $originalFile->getBaseName();
+        if ($this->getFileSize() !== $originalFile->getFileSize()) {
+            return false;
+        }
+        if ($this->getMimeType() !== $originalFile->getMimeType()) {
+            return false;
+        }
+        return $this->getBaseName() === $originalFile->getBaseName();
     }
 
     protected function setFileSize(?int $fileSize = null): static

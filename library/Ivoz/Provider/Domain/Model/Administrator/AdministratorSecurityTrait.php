@@ -116,7 +116,7 @@ trait AdministratorSecurityTrait
                     return true;
                 }
             }
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return false;
         }
 
@@ -157,6 +157,8 @@ trait AdministratorSecurityTrait
 
     /**
      * @see UserInterface::eraseCredentials()
+     *
+     * @return void
      */
     public function eraseCredentials()
     {

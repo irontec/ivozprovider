@@ -8,12 +8,9 @@ use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 
 class SetExecutionError
 {
-    private $entityTools;
-
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**

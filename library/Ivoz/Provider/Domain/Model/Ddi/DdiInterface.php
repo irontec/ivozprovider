@@ -3,6 +3,10 @@
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
@@ -24,51 +28,55 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 */
 interface DdiInterface extends LoggableEntityInterface
 {
-    const RECORDCALLS_NONE = 'none';
+    public const RECORDCALLS_NONE = 'none';
 
-    const RECORDCALLS_ALL = 'all';
+    public const RECORDCALLS_ALL = 'all';
 
-    const RECORDCALLS_INBOUND = 'inbound';
+    public const RECORDCALLS_INBOUND = 'inbound';
 
-    const RECORDCALLS_OUTBOUND = 'outbound';
+    public const RECORDCALLS_OUTBOUND = 'outbound';
 
-    const ROUTETYPE_USER = 'user';
+    public const ROUTETYPE_USER = 'user';
 
-    const ROUTETYPE_IVR = 'ivr';
+    public const ROUTETYPE_IVR = 'ivr';
 
-    const ROUTETYPE_HUNTGROUP = 'huntGroup';
+    public const ROUTETYPE_HUNTGROUP = 'huntGroup';
 
-    const ROUTETYPE_FAX = 'fax';
+    public const ROUTETYPE_FAX = 'fax';
 
-    const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
+    public const ROUTETYPE_CONFERENCEROOM = 'conferenceRoom';
 
-    const ROUTETYPE_FRIEND = 'friend';
+    public const ROUTETYPE_FRIEND = 'friend';
 
-    const ROUTETYPE_QUEUE = 'queue';
+    public const ROUTETYPE_QUEUE = 'queue';
 
-    const ROUTETYPE_CONDITIONAL = 'conditional';
+    public const ROUTETYPE_CONDITIONAL = 'conditional';
 
-    const ROUTETYPE_RESIDENTIAL = 'residential';
+    public const ROUTETYPE_RESIDENTIAL = 'residential';
 
-    const ROUTETYPE_RETAIL = 'retail';
+    public const ROUTETYPE_RETAIL = 'retail';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * {@inheritDoc}
      */
     public function setDdi(string $ddi): static;
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface | null
-     */
-    public function getDomain();
+    public function getDomain(): ?DomainInterface;
 
-    public function getLanguageCode();
+    public function getLanguageCode(): string;
 
     public function setRouteType(?string $routeType = null): static;
 
@@ -76,6 +84,26 @@ interface DdiInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDdie164(): string;
+
+    public static function createDto(string|int|null $id = null): DdiDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|DdiInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param DdiDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): DdiDto;
 
     public function getDdi(): string;
 

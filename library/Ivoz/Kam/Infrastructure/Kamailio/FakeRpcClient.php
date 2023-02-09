@@ -5,10 +5,11 @@ namespace Ivoz\Kam\Infrastructure\Kamailio;
 use Graze\GuzzleHttp\JsonRpc\Message\Request;
 use Graze\GuzzleHttp\JsonRpc\Message\RequestInterface;
 use Graze\GuzzleHttp\JsonRpc\Message\Response;
+use GuzzleHttp\Promise\Promise;
 
 class FakeRpcClient extends RpcClient
 {
-    public function notification($method, array $params = null)
+    public function notification($method, array $params = null): Request
     {
         $reflection = new \ReflectionClass(
             \Graze\GuzzleHttp\JsonRpc\Message\Request::class
@@ -17,7 +18,7 @@ class FakeRpcClient extends RpcClient
         return $reflection->newInstanceWithoutConstructor();
     }
 
-    public function request($id, $method, array $params = null)
+    public function request($id, $method, array $params = null): Request
     {
         $params =
         $params['id'] = $id;
@@ -35,11 +36,11 @@ class FakeRpcClient extends RpcClient
             'POST',
             '/uri',
             [],
-            json_encode($body)
+            json_encode($body, JSON_THROW_ON_ERROR)
         );
     }
 
-    public function send(RequestInterface $request)
+    public function send(RequestInterface $request): Response
     {
         return new Response(
             200,
@@ -48,10 +49,10 @@ class FakeRpcClient extends RpcClient
         );
     }
 
-    public function sendAsync(RequestInterface $request)
+    public function sendAsync(RequestInterface $request): Promise
     {
         $reflection = new \ReflectionClass(
-            \GuzzleHttp\Promise\Promise::class
+            Promise::class
         );
 
         return $reflection->newInstanceWithoutConstructor();
@@ -60,7 +61,7 @@ class FakeRpcClient extends RpcClient
     public function sendAll(array $requests)
     {
         $reflection = new \ReflectionClass(
-            \Graze\GuzzleHttp\JsonRpc\Message\Response::class
+            Response::class
         );
 
         return [
@@ -68,10 +69,10 @@ class FakeRpcClient extends RpcClient
         ];
     }
 
-    public function sendAllAsync(array $requests)
+    public function sendAllAsync(array $requests): Promise
     {
         $reflection = new \ReflectionClass(
-            \GuzzleHttp\Promise\Promise::class
+            Promise::class
         );
 
         return $reflection->newInstanceWithoutConstructor();

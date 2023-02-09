@@ -11,7 +11,6 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 class IvozProvider_Klear_Ghost_SchedulerSuccess extends KlearMatrix_Model_Field_Ghost_Abstract
 {
-
     /** @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto $model */
     public function getCallCsvSchedulerLastExecutionReport($model)
     {

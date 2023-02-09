@@ -4,6 +4,10 @@ namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
@@ -21,33 +25,58 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 */
 interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
-    const UNIT_DAY = 'day';
+    public const UNIT_DAY = 'day';
 
-    const UNIT_WEEK = 'week';
+    public const UNIT_WEEK = 'week';
 
-    const UNIT_MONTH = 'month';
+    public const UNIT_MONTH = 'month';
 
-    const CALLDIRECTION_INBOUND = 'inbound';
+    public const CALLDIRECTION_INBOUND = 'inbound';
 
-    const CALLDIRECTION_OUTBOUND = 'outbound';
+    public const CALLDIRECTION_OUTBOUND = 'outbound';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
      */
-    public function getTimezone();
+    public function getId(): ?int;
+
+    public function getTimezone(): ?TimezoneInterface;
 
     public function getSchedulerDateTimeZone(): \DateTimeZone;
 
     /**
      * @return \DateInterval
      */
-    public function getInterval();
+    public function getInterval(): \DateInterval;
+
+    /**
+     * @internal use EntityTools instead
+     * @return CallCsvSchedulerDto
+     */
+    public function toDto(int $depth = 0): CallCsvSchedulerDto;
+
+    public static function createDto(string|int|null $id = null): CallCsvSchedulerDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CallCsvSchedulerInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallCsvSchedulerDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param CallCsvSchedulerDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
 
     public function getName(): string;
 

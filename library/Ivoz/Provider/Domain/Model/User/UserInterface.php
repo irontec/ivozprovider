@@ -6,6 +6,9 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
@@ -13,9 +16,10 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Provider\Domain\Model\Location\LocationInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
@@ -25,26 +29,34 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 */
 interface UserInterface extends LoggableEntityInterface
 {
-    const EXTERNALIPCALLS_0 = '0';
+    public const EXTERNALIPCALLS_0 = '0';
 
-    const EXTERNALIPCALLS_1 = '1';
+    public const EXTERNALIPCALLS_1 = '1';
 
-    const EXTERNALIPCALLS_2 = '2';
+    public const EXTERNALIPCALLS_2 = '2';
 
-    const EXTERNALIPCALLS_3 = '3';
+    public const EXTERNALIPCALLS_3 = '3';
 
-    const REJECTCALLMETHOD_RFC = 'rfc';
+    public const REJECTCALLMETHOD_RFC = 'rfc';
 
-    const REJECTCALLMETHOD_486 = '486';
+    public const REJECTCALLMETHOD_486 = '486';
 
-    const REJECTCALLMETHOD_600 = '600';
+    public const REJECTCALLMETHOD_600 = '600';
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
-    public function serialize();
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
+
+    public function serialize(): string;
 
     public function unserialize($serialized);
 
@@ -64,21 +76,6 @@ interface UserInterface extends LoggableEntityInterface
      * @return string | null
      */
     public function getUserTerminalInterface();
-
-    /**
-     * @return string with the voicemail
-     */
-    public function getVoiceMail();
-
-    /**
-     * @return string with the voicemail user
-     */
-    public function getVoiceMailUser();
-
-    /**
-     * @return string with the voicemail context
-     */
-    public function getVoiceMailContext();
 
     /**
      * @return string | null
@@ -113,14 +110,16 @@ interface UserInterface extends LoggableEntityInterface
     public function isAllowedToCall($exten);
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface[]
+     * @return (\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null)[]
+     *
+     * @psalm-return array<array-key, \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface|null>
      */
-    public function getPickUpGroups();
+    public function getPickUpGroups(): array;
 
     /**
      * @return string comma separated pickup group ids
      */
-    public function getPickUpGroupsIds();
+    public function getPickUpGroupsIds(): string;
 
     /**
      * @return string
@@ -138,11 +137,9 @@ interface UserInterface extends LoggableEntityInterface
     public function canBeCalled();
 
     /**
-     * Get user language
      * returns company language if empty
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
-    public function getLanguage(): ?LanguageInterface;
+    public function getLanguage(): LanguageInterface;
 
     /**
      * Get User language code.
@@ -156,7 +153,27 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * @return string
      */
-    public function getFullNameExtension();
+    public function getFullNameExtension(): string;
+
+    public static function createDto(string|int|null $id = null): UserDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|UserInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UserDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param UserDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): UserDto;
 
     public function getName(): string;
 
@@ -177,12 +194,6 @@ interface UserInterface extends LoggableEntityInterface
     public function getExternalIpCalls(): string;
 
     public function getRejectCallMethod(): string;
-
-    public function getVoicemailEnabled(): bool;
-
-    public function getVoicemailSendMail(): bool;
-
-    public function getVoicemailAttachSound(): bool;
 
     public function getMultiContact(): bool;
 
@@ -208,32 +219,56 @@ interface UserInterface extends LoggableEntityInterface
 
     public function getTimezone(): ?TimezoneInterface;
 
-    public function getVoicemailLocution(): ?LocutionInterface;
+    public function setLocation(?LocationInterface $location = null): static;
+
+    public function getLocation(): ?LocationInterface;
 
     public function isInitialized(): bool;
+
+    public function setVoicemail(VoicemailInterface $voicemail): static;
+
+    public function getVoicemail(): ?VoicemailInterface;
 
     public function addPickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
     public function removePickUpRelUser(PickUpRelUserInterface $pickUpRelUser): UserInterface;
 
-    public function replacePickUpRelUsers(ArrayCollection $pickUpRelUsers): UserInterface;
+    /**
+     * @param Collection<array-key, PickUpRelUserInterface> $pickUpRelUsers
+     */
+    public function replacePickUpRelUsers(Collection $pickUpRelUsers): UserInterface;
 
+    /**
+     * @return array<array-key, PickUpRelUserInterface>
+     */
     public function getPickUpRelUsers(?Criteria $criteria = null): array;
 
     public function addQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
     public function removeQueueMember(QueueMemberInterface $queueMember): UserInterface;
 
-    public function replaceQueueMembers(ArrayCollection $queueMembers): UserInterface;
+    /**
+     * @param Collection<array-key, QueueMemberInterface> $queueMembers
+     */
+    public function replaceQueueMembers(Collection $queueMembers): UserInterface;
 
+    /**
+     * @return array<array-key, QueueMemberInterface>
+     */
     public function getQueueMembers(?Criteria $criteria = null): array;
 
     public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
     public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): UserInterface;
 
-    public function replaceCallForwardSettings(ArrayCollection $callForwardSettings): UserInterface;
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): UserInterface;
 
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
     public function getCallForwardSettings(?Criteria $criteria = null): array;
 
     /**

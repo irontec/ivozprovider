@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Recording;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Recording\RecordedFile;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -22,9 +23,9 @@ abstract class RecordingAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callid;
+    protected $callid = null;
 
     /**
      * @var \DateTime
@@ -32,8 +33,8 @@ abstract class RecordingAbstract
     protected $calldate;
 
     /**
-     * comment: enum:ondemand|ddi
      * @var string
+     * comment: enum:ondemand|ddi
      */
     protected $type = 'ddi';
 
@@ -43,22 +44,22 @@ abstract class RecordingAbstract
     protected $duration = 0;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $caller;
+    protected $caller = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callee;
+    protected $callee = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $recorder;
+    protected $recorder = null;
 
     /**
-     * @var RecordedFile | null
+     * @var RecordedFile
      */
     protected $recordedFile;
 
@@ -72,52 +73,45 @@ abstract class RecordingAbstract
      * Constructor
      */
     protected function __construct(
-        $calldate,
-        $type,
-        $duration,
+        \DateTimeInterface|string $calldate,
+        string $type,
+        float $duration,
         RecordedFile $recordedFile
     ) {
         $this->setCalldate($calldate);
         $this->setType($type);
         $this->setDuration($duration);
-        $this->setRecordedFile($recordedFile);
+        $this->recordedFile = $recordedFile;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Recording",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RecordingDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RecordingDto
     {
         return new RecordingDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RecordingInterface|null $entity
-     * @param int $depth
-     * @return RecordingDto|null
+     * @param null|RecordingInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RecordingDto
     {
         if (!$entity) {
             return null;
@@ -133,8 +127,7 @@ abstract class RecordingAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RecordingDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -143,13 +136,20 @@ abstract class RecordingAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RecordingDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $recordedFile = new RecordedFile(
             $dto->getRecordedFileFileSize(),
@@ -158,9 +158,9 @@ abstract class RecordingAbstract
         );
 
         $self = new static(
-            $dto->getCalldate(),
-            $dto->getType(),
-            $dto->getDuration(),
+            $calldate,
+            $type,
+            $duration,
             $recordedFile
         );
 
@@ -169,7 +169,7 @@ abstract class RecordingAbstract
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -179,13 +179,21 @@ abstract class RecordingAbstract
     /**
      * @internal use EntityTools instead
      * @param RecordingDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RecordingDto::class);
+
+        $calldate = $dto->getCalldate();
+        Assertion::notNull($calldate, 'getCalldate value is null, but non null value was expected.');
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $recordedFile = new RecordedFile(
             $dto->getRecordedFileFileSize(),
@@ -195,24 +203,22 @@ abstract class RecordingAbstract
 
         $this
             ->setCallid($dto->getCallid())
-            ->setCalldate($dto->getCalldate())
-            ->setType($dto->getType())
-            ->setDuration($dto->getDuration())
+            ->setCalldate($calldate)
+            ->setType($type)
+            ->setDuration($duration)
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setRecordedFile($recordedFile)
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RecordingDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RecordingDto
     {
         return self::createDto()
             ->setCallid(self::getCallid())
@@ -229,9 +235,9 @@ abstract class RecordingAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'callid' => self::getCallid(),
@@ -264,15 +270,16 @@ abstract class RecordingAbstract
         return $this->callid;
     }
 
-    protected function setCalldate($calldate): static
+    protected function setCalldate(string|\DateTimeInterface $calldate): static
     {
 
+        /** @var \Datetime */
         $calldate = DateTimeHelper::createOrFix(
             $calldate,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->calldate == $calldate) {
+        if ($this->isInitialized() && $this->calldate == $calldate) {
             return $this;
         }
 
@@ -288,6 +295,7 @@ abstract class RecordingAbstract
 
     protected function setType(string $type): static
     {
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $type,
             [
@@ -374,7 +382,7 @@ abstract class RecordingAbstract
 
     protected function setRecordedFile(RecordedFile $recordedFile): static
     {
-        $isEqual = $this->recordedFile && $this->recordedFile->equals($recordedFile);
+        $isEqual = $this->recordedFile->equals($recordedFile);
         if ($isEqual) {
             return $this;
         }
@@ -387,7 +395,6 @@ abstract class RecordingAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

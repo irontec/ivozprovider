@@ -25,8 +25,6 @@ Configuration of internal friends
 
 These are the configurable settings of *internal friends*:
 
-.. glossary::
-
     Description
         Optional. Extra information for this **friend**.
 

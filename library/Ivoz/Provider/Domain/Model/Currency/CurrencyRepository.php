@@ -7,5 +7,4 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface CurrencyRepository extends ObjectRepository, Selectable
 {
-
 }

@@ -5,26 +5,12 @@ namespace Ivoz\Provider\Domain\Service\InvoiceScheduler;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
-use Ivoz\Provider\Domain\Service\FixedCostsRelInvoice\CreateByScheduler as FixedCostsRelInvoiceByScheduler;
-use Psr\Log\LoggerInterface;
 
 class SetExecutionError
 {
-    private $entityTools;
-    protected $logger;
-    protected $fixedCostsRelInvoiceByScheduler;
-    protected $updateLastExecutionDate;
-
     public function __construct(
-        EntityTools $entityTools,
-        LoggerInterface $logger,
-        FixedCostsRelInvoiceByScheduler $fixedCostsRelInvoiceByScheduler,
-        UpdateLastExecutionDate $updateLastExecutionDate
+        private EntityTools $entityTools,
     ) {
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->fixedCostsRelInvoiceByScheduler = $fixedCostsRelInvoiceByScheduler;
-        $this->updateLastExecutionDate = $updateLastExecutionDate;
     }
 
     /**
@@ -35,7 +21,7 @@ class SetExecutionError
      */
     public function execute(
         InvoiceSchedulerInterface $scheduler,
-        $error = null
+        ?string $error = null
     ) {
         /** @var InvoiceSchedulerDto $invoiceSchedulerDto */
         $invoiceSchedulerDto = $this

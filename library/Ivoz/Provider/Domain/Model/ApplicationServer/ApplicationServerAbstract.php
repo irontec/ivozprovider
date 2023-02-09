@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ApplicationServer;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * ApplicationServerAbstract
@@ -23,7 +24,7 @@ abstract class ApplicationServerAbstract
     protected $ip;
 
     /**
-     * @var string | null
+     * @var string
      */
     protected $name;
 
@@ -31,46 +32,41 @@ abstract class ApplicationServerAbstract
      * Constructor
      */
     protected function __construct(
-        $ip
+        string $ip,
+        string $name
     ) {
         $this->setIp($ip);
+        $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ApplicationServer",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ApplicationServerDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ApplicationServerDto
     {
         return new ApplicationServerDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ApplicationServerInterface|null $entity
-     * @param int $depth
-     * @return ApplicationServerDto|null
+     * @param null|ApplicationServerInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ApplicationServerDto
     {
         if (!$entity) {
             return null;
@@ -86,8 +82,7 @@ abstract class ApplicationServerAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ApplicationServerDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -96,20 +91,23 @@ abstract class ApplicationServerAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ApplicationServerDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getIp()
+            $ip,
+            $name
         );
 
-        $self
-            ->setName($dto->getName());
+        ;
 
         $self->initChangelog();
 
@@ -119,27 +117,29 @@ abstract class ApplicationServerAbstract
     /**
      * @internal use EntityTools instead
      * @param ApplicationServerDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
+        $ip = $dto->getIp();
+        Assertion::notNull($ip, 'getIp value is null, but non null value was expected.');
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $this
-            ->setIp($dto->getIp())
-            ->setName($dto->getName());
+            ->setIp($ip)
+            ->setName($name);
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ApplicationServerDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ApplicationServerDto
     {
         return self::createDto()
             ->setIp(self::getIp())
@@ -147,9 +147,9 @@ abstract class ApplicationServerAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'ip' => self::getIp(),
@@ -171,18 +171,16 @@ abstract class ApplicationServerAbstract
         return $this->ip;
     }
 
-    protected function setName(?string $name = null): static
+    protected function setName(string $name): static
     {
-        if (!is_null($name)) {
-            Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }

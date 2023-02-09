@@ -1,4 +1,5 @@
 <?php
+
 namespace IvozProvider\Klear\Dynamic\Config;
 
 class MainOperator extends Base
@@ -11,7 +12,7 @@ class MainOperator extends Base
     public function postInit()
     {
         if ($this->_user) {
-            $this->_subTitle = "Operator: <strong>". $this->_user->getLogin()."</strong>";
+            $this->_subTitle = "Operator: <strong>" . $this->_user->getLogin() . "</strong>";
 
             if ($this->_user->brandId) {
                 $this->_subTitle .= sprintf('<br />Emulated brand: <strong>%s</strong>', $this->_user->brandName);

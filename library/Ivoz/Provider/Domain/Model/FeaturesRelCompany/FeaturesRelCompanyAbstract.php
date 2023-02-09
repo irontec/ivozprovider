@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelCompany;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -22,10 +23,10 @@ abstract class FeaturesRelCompanyAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relFeatures
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var FeatureInterface
@@ -39,41 +40,34 @@ abstract class FeaturesRelCompanyAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "FeaturesRelCompany",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return FeaturesRelCompanyDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): FeaturesRelCompanyDto
     {
         return new FeaturesRelCompanyDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param FeaturesRelCompanyInterface|null $entity
-     * @param int $depth
-     * @return FeaturesRelCompanyDto|null
+     * @param null|FeaturesRelCompanyInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FeaturesRelCompanyDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class FeaturesRelCompanyAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var FeaturesRelCompanyDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class FeaturesRelCompanyAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param FeaturesRelCompanyDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * @internal use EntityTools instead
      * @param FeaturesRelCompanyDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, FeaturesRelCompanyDto::class);
+
+        $feature = $dto->getFeature();
+        Assertion::notNull($feature, 'getFeature value is null, but non null value was expected.');
 
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setFeature($fkTransformer->transform($dto->getFeature()));
+            ->setFeature($fkTransformer->transform($feature));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FeaturesRelCompanyDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FeaturesRelCompanyDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -149,12 +143,12 @@ abstract class FeaturesRelCompanyAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'featureId' => self::getFeature()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class FeaturesRelCompanyAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

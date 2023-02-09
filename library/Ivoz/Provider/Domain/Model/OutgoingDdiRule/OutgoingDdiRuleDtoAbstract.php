@@ -17,35 +17,38 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $defaultAction;
+    private $defaultAction = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var DdiDto | null
      */
-    private $forcedDdi;
+    private $forcedDdi = null;
 
     /**
      * @var OutgoingDdiRulesPatternDto[] | null
      */
-    private $patterns;
+    private $patterns = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -54,7 +57,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -70,9 +73,9 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -97,7 +100,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -109,7 +112,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setDefaultAction(?string $defaultAction): static
+    public function setDefaultAction(string $defaultAction): static
     {
         $this->defaultAction = $defaultAction;
 
@@ -128,7 +131,7 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

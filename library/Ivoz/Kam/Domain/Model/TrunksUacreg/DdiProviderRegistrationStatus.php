@@ -7,19 +7,22 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 class DdiProviderRegistrationStatus
 {
    /**
+    * @var bool
     * @AttributeDefinition(type="bool")
     */
-    protected $registered = false;
+    private $registered = false;
 
     /**
+     * @var bool
      * @AttributeDefinition(type="bool")
      */
-    protected $inProgress = false;
+    private $inProgress = false;
 
     /**
+     * @var ?int
      * @AttributeDefinition(type="int", required=false)
      */
-    protected $expires;
+    private $expires;
 
     public function __construct(
         int $statusCode,
@@ -50,7 +53,7 @@ class DdiProviderRegistrationStatus
         return $this->registered;
     }
 
-    private function setRegistered(bool $registered):  static
+    private function setRegistered(bool $registered): static
     {
         $this->registered = $registered;
 
@@ -62,7 +65,7 @@ class DdiProviderRegistrationStatus
         return $this->inProgress;
     }
 
-    private function setInProgress(bool $inProgress):  static
+    private function setInProgress(bool $inProgress): static
     {
         $this->inProgress = $inProgress;
 
@@ -70,14 +73,14 @@ class DdiProviderRegistrationStatus
     }
 
     /**
-     * @return string | null
+     * @return int | null
      */
     public function getExpires()
     {
         return $this->expires;
     }
 
-    private function setExpires(int $expires = null):  static
+    private function setExpires(?int $expires = null): static
     {
         $this->expires = $expires;
 

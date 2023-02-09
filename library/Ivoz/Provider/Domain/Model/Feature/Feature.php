@@ -12,24 +12,24 @@ class Feature extends FeatureAbstract implements FeatureInterface
     /**
      * Available features Ids
      */
-    const QUEUES            = 1;
-    const RECORDINGS        = 2;
-    const FAXES             = 3;
-    const FRIENDS           = 4;
-    const CONFERENCES       = 5;
-    const BILLING           = 6;
-    const INVOICES          = 7;
-    const PROGRESS          = 8;
-    const RESIDENTIAL       = 9;
-    const WHOLESALE         = 10;
-    const RETAIL            = 11;
-    const VPBX              = 12;
+    public const QUEUES            = 1;
+    public const RECORDINGS        = 2;
+    public const FAXES             = 3;
+    public const FRIENDS           = 4;
+    public const CONFERENCES       = 5;
+    public const BILLING           = 6;
+    public const INVOICES          = 7;
+    public const PROGRESS          = 8;
+    public const RESIDENTIAL       = 9;
+    public const WHOLESALE         = 10;
+    public const RETAIL            = 11;
+    public const VPBX              = 12;
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -39,7 +39,7 @@ class Feature extends FeatureAbstract implements FeatureInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

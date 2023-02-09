@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\MediaRelaySet;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 
 /**
 * MediaRelaySetAbstract
@@ -23,54 +24,47 @@ abstract class MediaRelaySetAbstract
     protected $name = '0';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name
+        string $name
     ) {
         $this->setName($name);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "MediaRelaySet",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return MediaRelaySetDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): MediaRelaySetDto
     {
         return new MediaRelaySetDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param MediaRelaySetInterface|null $entity
-     * @param int $depth
-     * @return MediaRelaySetDto|null
+     * @param null|MediaRelaySetInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?MediaRelaySetDto
     {
         if (!$entity) {
             return null;
@@ -86,8 +80,7 @@ abstract class MediaRelaySetAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var MediaRelaySetDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -96,16 +89,17 @@ abstract class MediaRelaySetAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param MediaRelaySetDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName()
+            $name
         );
 
         $self
@@ -119,16 +113,18 @@ abstract class MediaRelaySetAbstract
     /**
      * @internal use EntityTools instead
      * @param MediaRelaySetDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
+            ->setName($name)
             ->setDescription($dto->getDescription());
 
         return $this;
@@ -136,10 +132,8 @@ abstract class MediaRelaySetAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return MediaRelaySetDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): MediaRelaySetDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -147,9 +141,9 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),

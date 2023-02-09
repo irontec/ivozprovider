@@ -1,0 +1,108 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: huntGroupMembersList_screen
+  screens: &huntGroupMembers_screensLink
+    huntGroupMembersList_screen: &huntGroupMembersList_screenLink
+      controller: list
+      class: ui-silk-group-go
+      pagination:
+        items: 25
+      <<: *HuntGroupMembers
+      title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
+      fields: &huntGroupMembersList_fields
+        order:
+          routeType: true
+          target: true
+        blacklist:
+          numberCountry: true
+          numberValue: true
+          user: true
+        options:
+          title: _("Options")
+          screens:
+            huntGroupMembersEdit_screen: ${auth.acls.HuntGroupMembers.update}
+          dialogs:
+            huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+          default: huntGroupMembersEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          huntGroupMembersNew_screen: ${auth.acls.HuntGroupMembers.create}
+        dialogs:
+          huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+    huntGroupMembersNew_screen: &huntGroupMembersNew_screenLink
+      <<: *HuntGroupMembers
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Hunt Group', 'Hunt Groups', 1))
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields:
+        blacklist:
+          target: true
+      shortcutOption: N
+      fixedPositions: &huntGroupMembersFixedPositions_link
+        group1:
+          label: _("Routing configuration")
+          colsPerRow: 12
+          fields:
+            routeType: 4
+            numberCountry: 4
+            numberValue: 4
+            user: 4
+            target: 4
+        group0:
+          label: _("Entry information")
+          colsPerRow: 8
+          fields:
+            timeoutTime: 4
+            priority: 4
+
+    huntGroupMembersEdit_screen: &huntGroupMembersEdit_screenLink
+      <<: *HuntGroupMembers
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Hunt Group', 'Hunt Groups', 1), "[format| (%parent%)]")
+      defaultValues:
+        numberCountry: ${auth.companyCountryId}
+      fields:
+        blacklist:
+          user: true
+          numberValue: true
+          numberCountry: true
+        readOnly:
+          routeType: true
+          target: true
+      fixedPositions:
+        <<: *huntGroupMembersFixedPositions_link
+
+  dialogs: &huntGroupMembers_dialogsLink
+    huntGroupMembersDel_dialog: &huntGroupMembersDel_dialogLink
+      <<: *HuntGroupMembers
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Hunt Group', 'Hunt Groups', 1))
+      description: _("Do you want to delete this %s?", ngettext('Hunt Group', 'Hunt Groups', 1))
+      message: _("%s successfully deleted.", ngettext('Hunt Group', 'Hunt Groups', 1))
+      multiItem: 1
+      labelOnList: 1
+
+    #HuntGroups
+#    <<: *huntGroups_dialogsLink
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

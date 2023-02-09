@@ -16,16 +16,16 @@ class Trusted extends TrustedAbstract implements TrustedInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -34,7 +34,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
      * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         // Set tag with companyId value
         $company = $this->getCompany();
@@ -42,7 +42,7 @@ class Trusted extends TrustedAbstract implements TrustedInterface
         $this->setProto('any');
     }
 
-    public function setSrcIp(?string $srcIp = null):  static
+    public function setSrcIp(?string $srcIp = null): static
     {
         try {
             Assertion::ip($srcIp);

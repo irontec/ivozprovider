@@ -43,7 +43,7 @@
     </field>
     <field name="maxCost" type="decimal" column="max_cost" precision="10" scale="4" nullable="false">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="maxCostStrategy" type="string" column="max_cost_strategy" length="16" nullable="false">

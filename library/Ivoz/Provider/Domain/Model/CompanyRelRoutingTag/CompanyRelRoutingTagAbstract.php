@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelRoutingTag;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -22,10 +23,10 @@ abstract class CompanyRelRoutingTagAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relRoutingTags
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var RoutingTagInterface
@@ -40,41 +41,34 @@ abstract class CompanyRelRoutingTagAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CompanyRelRoutingTag",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CompanyRelRoutingTagDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CompanyRelRoutingTagDto
     {
         return new CompanyRelRoutingTagDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CompanyRelRoutingTagInterface|null $entity
-     * @param int $depth
-     * @return CompanyRelRoutingTagDto|null
+     * @param null|CompanyRelRoutingTagInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CompanyRelRoutingTagDto
     {
         if (!$entity) {
             return null;
@@ -90,8 +84,7 @@ abstract class CompanyRelRoutingTagAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CompanyRelRoutingTagDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -100,19 +93,20 @@ abstract class CompanyRelRoutingTagAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CompanyRelRoutingTagDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
+        $routingTag = $dto->getRoutingTag();
+        Assertion::notNull($routingTag, 'getRoutingTag value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
+            ->setRoutingTag($fkTransformer->transform($routingTag));
 
         $self->initChangelog();
 
@@ -122,27 +116,27 @@ abstract class CompanyRelRoutingTagAbstract
     /**
      * @internal use EntityTools instead
      * @param CompanyRelRoutingTagDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyRelRoutingTagDto::class);
+
+        $routingTag = $dto->getRoutingTag();
+        Assertion::notNull($routingTag, 'getRoutingTag value is null, but non null value was expected.');
 
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
+            ->setRoutingTag($fkTransformer->transform($routingTag));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CompanyRelRoutingTagDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CompanyRelRoutingTagDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -150,12 +144,12 @@ abstract class CompanyRelRoutingTagAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'routingTagId' => self::getRoutingTag()->getId()
         ];
     }
@@ -164,7 +158,6 @@ abstract class CompanyRelRoutingTagAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -177,7 +170,6 @@ abstract class CompanyRelRoutingTagAbstract
     {
         $this->routingTag = $routingTag;
 
-        /** @var  $this */
         return $this;
     }
 

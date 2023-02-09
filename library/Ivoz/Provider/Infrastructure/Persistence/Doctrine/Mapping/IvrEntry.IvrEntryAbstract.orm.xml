@@ -9,6 +9,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="displayName" type="string" column="displayName" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="routeType" type="string" column="routeType" length="25" nullable="false">
       <options>
         <option name="fixed"/>
@@ -35,9 +40,9 @@
         <join-column name="extensionId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="voiceMailUser" target-entity="Ivoz\Provider\Domain\Model\User\UserInterface" fetch="LAZY">
+    <many-to-one field="voicemail" target-entity="Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface" fetch="LAZY">
       <join-columns>
-        <join-column name="voiceMailUserId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
+        <join-column name="voicemailId" referenced-column-name="id" on-delete="CASCADE" nullable="1"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="conditionalRoute" target-entity="Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface" fetch="LAZY">

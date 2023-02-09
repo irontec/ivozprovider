@@ -3,13 +3,16 @@
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface;
@@ -20,23 +23,30 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterR
 */
 interface ExternalCallFilterInterface extends LoggableEntityInterface
 {
-    const HOLIDAYTARGETTYPE_NUMBER = 'number';
+    public const HOLIDAYTARGETTYPE_NUMBER = 'number';
 
-    const HOLIDAYTARGETTYPE_EXTENSION = 'extension';
+    public const HOLIDAYTARGETTYPE_EXTENSION = 'extension';
 
-    const HOLIDAYTARGETTYPE_VOICEMAIL = 'voicemail';
+    public const HOLIDAYTARGETTYPE_VOICEMAIL = 'voicemail';
 
-    const OUTOFSCHEDULETARGETTYPE_NUMBER = 'number';
+    public const OUTOFSCHEDULETARGETTYPE_NUMBER = 'number';
 
-    const OUTOFSCHEDULETARGETTYPE_EXTENSION = 'extension';
+    public const OUTOFSCHEDULETARGETTYPE_EXTENSION = 'extension';
 
-    const OUTOFSCHEDULETARGETTYPE_VOICEMAIL = 'voicemail';
+    public const OUTOFSCHEDULETARGETTYPE_VOICEMAIL = 'voicemail';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * Check if the given number matches External Filter black list
@@ -83,34 +93,58 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      *
      * @return null|string
      */
-    public function getHolidayTarget();
+    public function getHolidayTarget(): ?string;
 
     /**
      * Alias for getHolidayTargetType
      *
      * @todo rename holidayTagetType field to holidayRouteType
      */
-    public function getHolidayRouteType();
+    public function getHolidayRouteType(): ?string;
 
     /**
      * Get Target destination for Out of schedule
      *
      * @return null|string
      */
-    public function getOutOfScheduleTarget();
+    public function getOutOfScheduleTarget(): ?string;
 
     /**
      * Alias for getOutOfScheduleTargetType
      *
      * @todo rename outOfScheduleTargetType field to outOfScheduleRouteType
      */
-    public function getOutOfScheduleRouteType();
+    public function getOutOfScheduleRouteType(): ?string;
+
+    public static function createDto(string|int|null $id = null): ExternalCallFilterDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|ExternalCallFilterInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ExternalCallFilterDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param ExternalCallFilterDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): ExternalCallFilterDto;
 
     public function getName(): string;
+
+    public function getHolidayEnabled(): bool;
 
     public function getHolidayTargetType(): ?string;
 
     public function getHolidayNumberValue(): ?string;
+
+    public function getOutOfScheduleEnabled(): bool;
 
     public function getOutOfScheduleTargetType(): ?string;
 
@@ -128,9 +162,9 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function getOutOfScheduleExtension(): ?ExtensionInterface;
 
-    public function getHolidayVoiceMailUser(): ?UserInterface;
+    public function getHolidayVoicemail(): ?VoicemailInterface;
 
-    public function getOutOfScheduleVoiceMailUser(): ?UserInterface;
+    public function getOutOfScheduleVoicemail(): ?VoicemailInterface;
 
     public function getHolidayNumberCountry(): ?CountryInterface;
 
@@ -142,32 +176,56 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
 
     public function removeCalendar(ExternalCallFilterRelCalendarInterface $calendar): ExternalCallFilterInterface;
 
-    public function replaceCalendars(ArrayCollection $calendars): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterRelCalendarInterface> $calendars
+     */
+    public function replaceCalendars(Collection $calendars): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterRelCalendarInterface>
+     */
     public function getCalendars(?Criteria $criteria = null): array;
 
     public function addBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface;
 
     public function removeBlackList(ExternalCallFilterBlackListInterface $blackList): ExternalCallFilterInterface;
 
-    public function replaceBlackLists(ArrayCollection $blackLists): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterBlackListInterface> $blackLists
+     */
+    public function replaceBlackLists(Collection $blackLists): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterBlackListInterface>
+     */
     public function getBlackLists(?Criteria $criteria = null): array;
 
     public function addWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface;
 
     public function removeWhiteList(ExternalCallFilterWhiteListInterface $whiteList): ExternalCallFilterInterface;
 
-    public function replaceWhiteLists(ArrayCollection $whiteLists): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterWhiteListInterface> $whiteLists
+     */
+    public function replaceWhiteLists(Collection $whiteLists): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterWhiteListInterface>
+     */
     public function getWhiteLists(?Criteria $criteria = null): array;
 
     public function addSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface;
 
     public function removeSchedule(ExternalCallFilterRelScheduleInterface $schedule): ExternalCallFilterInterface;
 
-    public function replaceSchedules(ArrayCollection $schedules): ExternalCallFilterInterface;
+    /**
+     * @param Collection<array-key, ExternalCallFilterRelScheduleInterface> $schedules
+     */
+    public function replaceSchedules(Collection $schedules): ExternalCallFilterInterface;
 
+    /**
+     * @return array<array-key, ExternalCallFilterRelScheduleInterface>
+     */
     public function getSchedules(?Criteria $criteria = null): array;
 
     /**

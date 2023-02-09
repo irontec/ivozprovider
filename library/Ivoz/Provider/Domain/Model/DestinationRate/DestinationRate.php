@@ -13,9 +13,9 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -33,7 +33,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
     /**
      * @return string
      */
-    public function getCgrTag()
+    public function getCgrTag(): string
     {
         return $this->getDestinationRateGroup()->getCgrTag();
     }
@@ -41,19 +41,19 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
     /**
      * @return string
      */
-    public function getCgrRatesTag()
+    public function getCgrRatesTag(): string
     {
         return sprintf(
             "b%drt%d",
-            $this->getDestinationRateGroup()->getBrand()->getId(),
-            $this->getId()
+            (int) $this->getDestinationRateGroup()->getBrand()->getId(),
+            (int) $this->getId()
         );
     }
 
     /**
      * @return string
      */
-    public function getCgrDestinationsTag()
+    public function getCgrDestinationsTag(): string
     {
         return $this->getDestination()->getCgrTag();
     }

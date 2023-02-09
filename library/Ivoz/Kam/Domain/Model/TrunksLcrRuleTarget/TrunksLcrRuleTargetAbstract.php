@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
@@ -24,8 +25,8 @@ abstract class TrunksLcrRuleTargetAbstract
     use ChangelogTrait;
 
     /**
-     * column: lcr_id
      * @var int
+     * column: lcr_id
      */
     protected $lcrId = 1;
 
@@ -59,50 +60,43 @@ abstract class TrunksLcrRuleTargetAbstract
      * Constructor
      */
     protected function __construct(
-        $lcrId,
-        $priority,
-        $weight
+        int $lcrId,
+        int $priority,
+        int $weight
     ) {
         $this->setLcrId($lcrId);
         $this->setPriority($priority);
         $this->setWeight($weight);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TrunksLcrRuleTarget",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TrunksLcrRuleTargetDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TrunksLcrRuleTargetDto
     {
         return new TrunksLcrRuleTargetDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TrunksLcrRuleTargetInterface|null $entity
-     * @param int $depth
-     * @return TrunksLcrRuleTargetDto|null
+     * @param null|TrunksLcrRuleTargetInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TrunksLcrRuleTargetDto
     {
         if (!$entity) {
             return null;
@@ -118,8 +112,7 @@ abstract class TrunksLcrRuleTargetAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TrunksLcrRuleTargetDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -128,24 +121,35 @@ abstract class TrunksLcrRuleTargetAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TrunksLcrRuleTargetDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleTargetDto::class);
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $rule = $dto->getRule();
+        Assertion::notNull($rule, 'getRule value is null, but non null value was expected.');
+        $gw = $dto->getGw();
+        Assertion::notNull($gw, 'getGw value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getLcrId(),
-            $dto->getPriority(),
-            $dto->getWeight()
+            $lcrId,
+            $priority,
+            $weight
         );
 
         $self
-            ->setRule($fkTransformer->transform($dto->getRule()))
-            ->setGw($fkTransformer->transform($dto->getGw()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setRule($fkTransformer->transform($rule))
+            ->setGw($fkTransformer->transform($gw))
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         $self->initChangelog();
 
@@ -155,31 +159,41 @@ abstract class TrunksLcrRuleTargetAbstract
     /**
      * @internal use EntityTools instead
      * @param TrunksLcrRuleTargetDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TrunksLcrRuleTargetDto::class);
 
+        $lcrId = $dto->getLcrId();
+        Assertion::notNull($lcrId, 'getLcrId value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $rule = $dto->getRule();
+        Assertion::notNull($rule, 'getRule value is null, but non null value was expected.');
+        $gw = $dto->getGw();
+        Assertion::notNull($gw, 'getGw value is null, but non null value was expected.');
+        $outgoingRouting = $dto->getOutgoingRouting();
+        Assertion::notNull($outgoingRouting, 'getOutgoingRouting value is null, but non null value was expected.');
+
         $this
-            ->setLcrId($dto->getLcrId())
-            ->setPriority($dto->getPriority())
-            ->setWeight($dto->getWeight())
-            ->setRule($fkTransformer->transform($dto->getRule()))
-            ->setGw($fkTransformer->transform($dto->getGw()))
-            ->setOutgoingRouting($fkTransformer->transform($dto->getOutgoingRouting()));
+            ->setLcrId($lcrId)
+            ->setPriority($priority)
+            ->setWeight($weight)
+            ->setRule($fkTransformer->transform($rule))
+            ->setGw($fkTransformer->transform($gw))
+            ->setOutgoingRouting($fkTransformer->transform($outgoingRouting));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TrunksLcrRuleTargetDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TrunksLcrRuleTargetDto
     {
         return self::createDto()
             ->setLcrId(self::getLcrId())
@@ -191,9 +205,9 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'lcr_id' => self::getLcrId(),
@@ -275,7 +289,6 @@ abstract class TrunksLcrRuleTargetAbstract
     {
         $this->outgoingRouting = $outgoingRouting;
 
-        /** @var  $this */
         return $this;
     }
 

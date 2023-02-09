@@ -27,17 +27,13 @@ angular
     $scope.callForwardTypeNoAnswer = false;
     $scope.numberValueShow = false;
     $scope.extensionShow = false;
-    $scope.voiceMailUserShow = false;
+    $scope.voicemailShow = false;
 
     $http.get(
         appConfig.urlRest + 'my/company_voicemails',
         {headers: {accept: 'application/json'}}
-    ).then(function(users) {
-        $scope.users = users.data;
-
-        for (var idx in $scope.users) {
-            $scope.users[idx].fullName = $scope.users[idx].name + " " + $scope.users[idx].lastname;
-        }
+    ).then(function(voicemails) {
+        $scope.voicemails = voicemails.data;
 
         var extensionPromise = $http.get(
             appConfig.urlRest + 'my/company_extensions',
@@ -88,8 +84,8 @@ angular
             case 'extension':
                 $scope.detour.numberValue = '';
                 $scope.numberValueShow = false;
-                $scope.detour.voiceMailUser = null;
-                $scope.voiceMailUserShow = false;
+                $scope.detour.voicemail = null;
+                $scope.voicemailShow = false;
                 $scope.detour.extension = null;
                 $scope.extensionShow = true;
                 break;
@@ -99,9 +95,8 @@ angular
                 $scope.extensionShow = false;
                 $scope.detour.numberValue = '';
                 $scope.numberValueShow = false;
-
-                $scope.detour.voiceMailUser = null;
-                $scope.voiceMailUserShow = true;
+                $scope.detour.voicemail = null;
+                $scope.voicemailShow = true;
                 break;
 
             case 'number':
@@ -109,13 +104,12 @@ angular
                 $scope.numberValueShow = true;
                 $scope.detour.extension = null;
                 $scope.extensionShow = false;
-                
-                $scope.detour.voiceMailUser = null;
-                $scope.voiceMailUserShow = false;
+                $scope.detour.voicemail = null;
+                $scope.voicemailShow = false;
                 break;
 
             default:
-                $scope.voiceMailUserShow = false;
+                $scope.voicemailShow = false;
                 $scope.numberValueShow = false;
                 $scope.extensionShow = false;
                 $scope.detour.targetType = null;

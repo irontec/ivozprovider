@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 class InvoiceDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -28,7 +25,6 @@ class InvoiceDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($invoice, InvoiceInterface::class);
 
-        /** @var InvoiceDto $dto */
         $dto = $invoice->toDto($depth);
         $id = $invoice->getId();
 

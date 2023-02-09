@@ -15,55 +15,58 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $status;
-
-    /**
-     * @var int
-     */
-    private $id;
+    private $status = null;
 
     /**
      * @var int|null
      */
-    private $encodedFileFileSize;
-
-    /**
-     * @var string|null
-     */
-    private $encodedFileMimeType;
-
-    /**
-     * @var string|null
-     */
-    private $encodedFileBaseName;
+    private $id = null;
 
     /**
      * @var int|null
      */
-    private $originalFileFileSize;
+    private $encodedFileFileSize = null;
 
     /**
      * @var string|null
      */
-    private $originalFileMimeType;
+    private $encodedFileMimeType = null;
 
     /**
      * @var string|null
      */
-    private $originalFileBaseName;
+    private $encodedFileBaseName = null;
+
+    /**
+     * @var int|null
+     */
+    private $originalFileFileSize = null;
+
+    /**
+     * @var string|null
+     */
+    private $originalFileMimeType = null;
+
+    /**
+     * @var string|null
+     */
+    private $originalFileBaseName = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -72,7 +75,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -97,9 +100,9 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -132,7 +135,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -163,7 +166,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

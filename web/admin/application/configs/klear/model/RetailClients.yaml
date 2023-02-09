@@ -233,6 +233,12 @@ production:
             fields:
               - iden
             template: '%iden%'
+      info:
+        type: box
+        position: left
+        icon: error
+        text: _("Do NOT select any codec before reading <a href=/doc/en/administration_portal/brand/clients/retail.html target=_blank>documentation</a>.")
+        label: _("Need help?")
     relRoutingTags:
       title: ngettext('Routing Tag', 'Routing Tags', 0)
       type: multiselect

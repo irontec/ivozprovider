@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\Service\ServiceDto;
 
 class IvozProvider_Klear_Ghost_RouteLock extends KlearMatrix_Model_Field_Ghost_Abstract
 {
-
     /**
      * Draw icon based on lock status
      *

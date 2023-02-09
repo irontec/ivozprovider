@@ -18,36 +18,12 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class RatingPlanPricesAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var RatingPlanGroupRepository
-     */
-    protected $ratingPlanGroupRepository;
-
-    /**
-     * @var CollectionExtensionList
-     */
-    protected $collectionExtensions;
-
-    /**
-     * @var RequestStack
-     */
-    protected $requestStack;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        RatingPlanGroupRepository $ratingPlanGroupRepository,
-        CollectionExtensionList $collectionExtensions,
-        RequestStack $requestStack
+        private TokenStorageInterface $tokenStorage,
+        private RatingPlanGroupRepository $ratingPlanGroupRepository,
+        private CollectionExtensionList $collectionExtensions,
+        private RequestStack $requestStack
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->ratingPlanGroupRepository = $ratingPlanGroupRepository;
-        $this->collectionExtensions = $collectionExtensions;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke()
@@ -125,7 +101,7 @@ class RatingPlanPricesAction
         $generator = $this
             ->ratingPlanGroupRepository
             ->getAllRatesByRatingPlanId(
-                $ratingPlanGroup->getId(),
+                (int) $ratingPlanGroup->getId(),
                 10000,
                 $queryModifier
             );
@@ -135,7 +111,7 @@ class RatingPlanPricesAction
         fwrite(
             $tmpfile,
             '"rating plan", name, prefix, "connection fee", cost'
-            .', "rate increment", "group interval start", "time in", days'
+            . ', "rate increment", "group interval start", "time in", days'
             . "\n"
         );
         foreach ($generator as $batch) {
@@ -170,10 +146,10 @@ class RatingPlanPricesAction
     }
 
     /**
-     * @param array $fields
+     * @param array<array-key, \Stringable|null|scalar> $fields
      * @return string
      */
-    private function array2csv(array $fields) : string
+    private function array2csv(array $fields): string
     {
         unset($fields['weight']);
 

@@ -12,12 +12,13 @@ Feature: Update IVR entries
     """
       {
           "entry": "test",
+          "displayName": "New display name",
           "routeType": "voicemail",
           "numberValue": null,
           "ivr": 1,
           "welcomeLocution": 1,
           "extension": null,
-          "voiceMailUser": 1,
+          "voicemail": 1,
           "conditionalRoute": null,
           "numberCountry": 2
       }
@@ -29,13 +30,14 @@ Feature: Update IVR entries
     """
      {
           "entry": "test",
+          "displayName": "New display name",
           "routeType": "voicemail",
           "numberValue": null,
           "id": 1,
           "ivr": 1,
           "welcomeLocution": 1,
           "extension": null,
-          "voiceMailUser": 1,
+          "voicemail": 1,
           "conditionalRoute": null,
           "numberCountry": null
       }

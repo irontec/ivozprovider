@@ -14,8 +14,6 @@ There are **special services** that can be accessed by calling to some codes
 There are the following **special services** available in the section **Global
 configuration** > **Services**:
 
-.. glossary::
-
     Direct pickup
         This service allows capturing a ringing call from another terminal by
         calling the code followed by the extension from the target user.

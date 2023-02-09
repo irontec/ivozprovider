@@ -1,4 +1,5 @@
 .. _routes_weights:
+.. _outgoing routings:
 
 *****************
 Outgoing Routings
@@ -7,8 +8,6 @@ Outgoing Routings
 This is the main section in which routing policies are defined.
 
 These are the fields that define an outgoing routing:
-
-.. glossary::
 
     Client
         Should this route apply to all clients or just to one specific client?

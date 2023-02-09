@@ -4,12 +4,13 @@ namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
 {
+    /** @var ?string */
     private $filePath;
 
     /**
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -31,7 +32,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -48,7 +49,12 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
         );
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'file'
@@ -66,7 +72,7 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getFilePath()
     {

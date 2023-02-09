@@ -2,6 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\BalanceNotification;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
+
 /**
  * BalanceNotification
  */
@@ -11,9 +14,9 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -23,25 +26,31 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         /**
          * @todo ensure carrier or company to have value
          */
+        if (
+            !$this->getCarrier()
+            && !$this->getCompany()
+        ) {
+            throw new \DomainException(
+                'Either company or carrier is required'
+            );
+        }
+
         if ($this->getCarrier()) {
             $this->setCompany(null);
         }
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface | null
-     */
-    public function getLanguage()
+    public function getLanguage(): LanguageInterface
     {
         $carrier = $this->getCarrier();
         if ($carrier) {
@@ -50,23 +59,13 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
                 ->getLanguage();
         }
 
+        /**
+         * @see BalanceNotification::sanitizeValues
+         * @var CompanyInterface $company
+         */
         $company = $this->getCompany();
-        $language = $company
-            ? $company->getLanguage()
-            : null;
 
-        if (!$language && $company) {
-
-            /**
-             * @todo remove this. Company will already have brand language
-             * @see Company::sanitizeValues()
-             */
-            $language = $company
-                ->getBrand()
-                ->getLanguage();
-        }
-
-        return $language;
+        return $company->getLanguage();
     }
 
     /**

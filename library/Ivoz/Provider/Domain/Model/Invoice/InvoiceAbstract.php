@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Invoice\Pdf;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
@@ -30,55 +31,55 @@ abstract class InvoiceAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $number;
+    protected $number = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $inDate;
+    protected $inDate = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTime
      */
-    protected $outDate;
+    protected $outDate = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
-    protected $total;
+    protected $total = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
-    protected $taxRate;
+    protected $taxRate = null;
 
     /**
-     * @var float | null
+     * @var ?float
      */
-    protected $totalWithTax;
+    protected $totalWithTax = null;
 
     /**
+     * @var ?string
      * comment: enum:waiting|processing|created|error
-     * @var string | null
      */
-    protected $status;
+    protected $status = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $statusMsg;
+    protected $statusMsg = null;
 
     /**
-     * @var Pdf | null
+     * @var Pdf
      */
     protected $pdf;
 
     /**
-     * @var InvoiceTemplateInterface | null
+     * @var ?InvoiceTemplateInterface
      */
-    protected $invoiceTemplate;
+    protected $invoiceTemplate = null;
 
     /**
      * @var BrandInterface
@@ -91,14 +92,14 @@ abstract class InvoiceAbstract
     protected $company;
 
     /**
-     * @var InvoiceNumberSequenceInterface | null
+     * @var ?InvoiceNumberSequenceInterface
      */
-    protected $numberSequence;
+    protected $numberSequence = null;
 
     /**
-     * @var InvoiceSchedulerInterface | null
+     * @var ?InvoiceSchedulerInterface
      */
-    protected $scheduler;
+    protected $scheduler = null;
 
     /**
      * Constructor
@@ -106,44 +107,37 @@ abstract class InvoiceAbstract
     protected function __construct(
         Pdf $pdf
     ) {
-        $this->setPdf($pdf);
+        $this->pdf = $pdf;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Invoice",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return InvoiceDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): InvoiceDto
     {
         return new InvoiceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param InvoiceInterface|null $entity
-     * @param int $depth
-     * @return InvoiceDto|null
+     * @param null|InvoiceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?InvoiceDto
     {
         if (!$entity) {
             return null;
@@ -159,8 +153,7 @@ abstract class InvoiceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var InvoiceDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -169,13 +162,16 @@ abstract class InvoiceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
@@ -197,8 +193,8 @@ abstract class InvoiceAbstract
             ->setStatus($dto->getStatus())
             ->setStatusMsg($dto->getStatusMsg())
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
@@ -210,13 +206,17 @@ abstract class InvoiceAbstract
     /**
      * @internal use EntityTools instead
      * @param InvoiceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, InvoiceDto::class);
+
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
@@ -235,8 +235,8 @@ abstract class InvoiceAbstract
             ->setStatusMsg($dto->getStatusMsg())
             ->setPdf($pdf)
             ->setInvoiceTemplate($fkTransformer->transform($dto->getInvoiceTemplate()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
+            ->setBrand($fkTransformer->transform($brand))
+            ->setCompany($fkTransformer->transform($company))
             ->setNumberSequence($fkTransformer->transform($dto->getNumberSequence()))
             ->setScheduler($fkTransformer->transform($dto->getScheduler()));
 
@@ -245,10 +245,8 @@ abstract class InvoiceAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return InvoiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): InvoiceDto
     {
         return self::createDto()
             ->setNumber(self::getNumber())
@@ -270,9 +268,9 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'number' => self::getNumber(),
@@ -286,11 +284,11 @@ abstract class InvoiceAbstract
             'pdfFileSize' => self::getPdf()->getFileSize(),
             'pdfMimeType' => self::getPdf()->getMimeType(),
             'pdfBaseName' => self::getPdf()->getBaseName(),
-            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
+            'invoiceTemplateId' => self::getInvoiceTemplate()?->getId(),
             'brandId' => self::getBrand()->getId(),
             'companyId' => self::getCompany()->getId(),
-            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null,
-            'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
+            'numberSequenceId' => self::getNumberSequence()?->getId(),
+            'schedulerId' => self::getScheduler()?->getId()
         ];
     }
 
@@ -310,19 +308,17 @@ abstract class InvoiceAbstract
         return $this->number;
     }
 
-    protected function setInDate($inDate = null): static
+    protected function setInDate(string|\DateTimeInterface|null $inDate = null): static
     {
         if (!is_null($inDate)) {
-            Assertion::notNull(
-                $inDate,
-                'inDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $inDate = DateTimeHelper::createOrFix(
                 $inDate,
                 null
             );
 
-            if ($this->inDate == $inDate) {
+            if ($this->isInitialized() && $this->inDate == $inDate) {
                 return $this;
             }
         }
@@ -337,19 +333,17 @@ abstract class InvoiceAbstract
         return !is_null($this->inDate) ? clone $this->inDate : null;
     }
 
-    protected function setOutDate($outDate = null): static
+    protected function setOutDate(string|\DateTimeInterface|null $outDate = null): static
     {
         if (!is_null($outDate)) {
-            Assertion::notNull(
-                $outDate,
-                'outDate value "%s" is null, but non null value was expected.'
-            );
+
+            /** @var ?\Datetime */
             $outDate = DateTimeHelper::createOrFix(
                 $outDate,
                 null
             );
 
-            if ($this->outDate == $outDate) {
+            if ($this->isInitialized() && $this->outDate == $outDate) {
                 return $this;
             }
         }
@@ -461,7 +455,7 @@ abstract class InvoiceAbstract
 
     protected function setPdf(Pdf $pdf): static
     {
-        $isEqual = $this->pdf && $this->pdf->equals($pdf);
+        $isEqual = $this->pdf->equals($pdf);
         if ($isEqual) {
             return $this;
         }

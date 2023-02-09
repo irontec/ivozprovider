@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 
 class CheckValidCurrency implements RatingProfileLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public static function getSubscribedEvents()
     {

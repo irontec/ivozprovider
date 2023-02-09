@@ -19,33 +19,26 @@ class Multimedia
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $em;
-    private $entityTools;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityManagerInterface $em,
-        EntityTools $entityTools,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        Logger $logger
+        private EntityManagerInterface $em,
+        private EntityTools $entityTools,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private int $redisTimeout,
+        private Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->em = $em;
-        $this->entityTools = $entityTools;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
-    public function encode()
+    /**
+     * @return Response|false
+     */
+    public function encode(): bool|Response
     {
         try {
             $this->registerCommand('Worker', 'multimedia');
@@ -56,12 +49,7 @@ class Multimedia
             $entityName = $job['entityName'];
             $entityNameSegments = explode('\\', $entityName);
             $entityClass = end($entityNameSegments);
-
             $repository = $this->em->getRepository($entityName);
-            if (!$repository) {
-                $this->logger->error(sprintf("Unable to find repository for %s", $entityName));
-                return false;
-            }
 
             /** @var LocutionInterface | null $entity */
             $entity = $repository->find($entityId);
@@ -80,10 +68,10 @@ class Multimedia
             $originalFile = $entityDto->getOriginalFilePath();
             $originalFileNoExt = pathinfo($entityDto->getOriginalFileBaseName(), PATHINFO_FILENAME);
 
-            // Convert original file to raw wav using avconv
+            // Convert original file to raw wav using ffmpeg
             $dumpWavFile = sprintf("/tmp/%s%draw.wav", $entityClass, $entityId);
             $process = new Process([
-                "avconv",
+                "/usr/bin/ffmpeg",
                 "-i", $originalFile,
                 "-b:a", "64k",
                 "-ar", "8000",
@@ -124,6 +112,8 @@ class Multimedia
             $this->entityTools->persistDto($entityDto, $entity);
             $this->logger->info(sprintf("Successfully encoded %s", $entity));
         } catch (\Exception $e) {
+
+            /** @phpstan-ignore-next-line  */
             if (!isset($entity)) {
                 $this->logger->error($e->getMessage());
                 exit(1);
@@ -156,10 +146,9 @@ class Multimedia
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [RecoderJobInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);

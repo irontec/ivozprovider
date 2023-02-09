@@ -20,31 +20,25 @@ class KamRpc
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $em;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
+    /** @todo retryInterval should be a constant */
     private $retryInterval = 180;
 
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityManagerInterface $em,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        Logger $logger
+        private EntityManagerInterface $em,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private int $redisTimeout,
+        private Logger $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->em = $em;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
-    public function send()
+    public function send(): Response
     {
         try {
             $this->registerCommand('Worker', 'rpc::immediate');
@@ -69,7 +63,7 @@ class KamRpc
         return new Response('');
     }
 
-    public function delayed()
+    public function delayed(): Response
     {
         try {
             $this->registerCommand('Worker', 'rpc::delayed');
@@ -189,10 +183,9 @@ class KamRpc
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [$channel],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             $data = end($response);

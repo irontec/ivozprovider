@@ -8,12 +8,9 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
 {
-    protected $recoder;
-
     public function __construct(
-        RecoderJobInterface $recoder
+        private RecoderJobInterface $recoder
     ) {
-        $this->recoder = $recoder;
     }
 
     public static function getSubscribedEvents()

@@ -25,8 +25,8 @@ class KamUsersCdr extends Fixture implements DependentFixtureInterface
         /** @var UsersCdrInterface $item1 */
         $item1 = $this->createEntityInstance(UsersCdr::class);
         (function () use ($fixture) {
-            $this->setStartTime(new \DateTime('2018-11-22 16:54:49'));
-            $this->setEndTime(new \DateTime('2018-11-22 16:54:54'));
+            $this->startTime = new \DateTime('2018-11-22 16:54:49');
+            $this->endTime = new \DateTime('2018-11-22 16:54:54');
             $this->setDuration(4.539);
             $this->setDirection('outbound');
             $this->setCaller('102');
@@ -45,12 +45,8 @@ class KamUsersCdr extends Fixture implements DependentFixtureInterface
         /** @var UsersCdrInterface $item2 */
         $item2 = $this->createEntityInstance(UsersCdr::class);
         (function () use ($fixture) {
-            $this->setStartTime(
-                new \DateTime('2018-11-23 16:54:49')
-            );
-            $this->setEndTime(
-                new \DateTime('2018-11-23 17:54:49')
-            );
+            $this->startTime = new \DateTime('2018-11-23 16:54:49');
+            $this->endTime = new \DateTime('2018-11-23 17:54:49');
             $this->setDuration(3600);
             $this->setDirection('outbound');
             $this->setCaller('102');

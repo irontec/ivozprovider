@@ -54,7 +54,8 @@ class UsersLocationDoctrineRepository extends ServiceEntityRepository implements
                     [ 'username', 'eq', $username ],
                     [ 'expires', 'gte', $now->getTimestamp() ]
                 ])
-            );
+            )
+            ->orderBy('self.expires', 'DESC');
 
         return $qb->getQuery()->getResult();
     }
@@ -111,7 +112,7 @@ class UsersLocationDoctrineRepository extends ServiceEntityRepository implements
      * @param UsersLocationInterface[] $results
      * @return UsersLocationInterface[]
      */
-    private function filterByExpires($results)
+    private function filterByExpires(array $results): array
     {
         $response = [];
         foreach ($results as $result) {

@@ -1,21 +1,33 @@
-import SettingsApplications from '@material-ui/icons/SettingsApplications';
-import EntityInterface, { PropertiesList } from 'entities/EntityInterface';
-import _ from 'services/Translations/translate';
-import defaultEntityBehavior from 'entities/DefaultEntityBehavior';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { MatchListProperties } from './MatchListProperties';
+import selectOptions from './SelectOptions';
 
-const properties:PropertiesList = {
-    'name': {
-        label: _('Name'),
-    },
+const properties: MatchListProperties = {
+  name: {
+    label: _('Name'),
+  },
 };
 
-const terminal:EntityInterface = {
-    ...defaultEntityBehavior,
-    icon: <SettingsApplications />,
-    iden: 'MatchList',
-    title: _('Match List', {count: 2}),
-    path: '/match_lists',
-    properties
+const matchList: EntityInterface = {
+  ...defaultEntityBehavior,
+  icon: FormatListBulletedIcon,
+  iden: 'MatchList',
+  title: _('Match List', { count: 2 }),
+  path: '/match_lists',
+  properties,
+  acl: {
+    ...defaultEntityBehavior.acl,
+    iden: 'MatchLists',
+  },
+  toStr: (item: MatchListProperties) => {
+    return (item.name as string) || '';
+  },
+  selectOptions: (props, customProps) => {
+    return selectOptions(props, customProps);
+  },
 };
 
-export default terminal;
+export default matchList;

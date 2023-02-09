@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ConferenceRoom;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -30,9 +31,9 @@ abstract class ConferenceRoomAbstract
     protected $pinProtected = false;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $pinCode;
+    protected $pinCode = null;
 
     /**
      * @var int
@@ -48,50 +49,43 @@ abstract class ConferenceRoomAbstract
      * Constructor
      */
     protected function __construct(
-        $name,
-        $pinProtected,
-        $maxMembers
+        string $name,
+        bool $pinProtected,
+        int $maxMembers
     ) {
         $this->setName($name);
         $this->setPinProtected($pinProtected);
         $this->setMaxMembers($maxMembers);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ConferenceRoom",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ConferenceRoomDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ConferenceRoomDto
     {
         return new ConferenceRoomDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ConferenceRoomInterface|null $entity
-     * @param int $depth
-     * @return ConferenceRoomDto|null
+     * @param null|ConferenceRoomInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ConferenceRoomDto
     {
         if (!$entity) {
             return null;
@@ -107,8 +101,7 @@ abstract class ConferenceRoomAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ConferenceRoomDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -117,23 +110,30 @@ abstract class ConferenceRoomAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ConferenceRoomDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $pinProtected = $dto->getPinProtected();
+        Assertion::notNull($pinProtected, 'getPinProtected value is null, but non null value was expected.');
+        $maxMembers = $dto->getMaxMembers();
+        Assertion::notNull($maxMembers, 'getMaxMembers value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getPinProtected(),
-            $dto->getMaxMembers()
+            $name,
+            $pinProtected,
+            $maxMembers
         );
 
         $self
             ->setPinCode($dto->getPinCode())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -143,30 +143,36 @@ abstract class ConferenceRoomAbstract
     /**
      * @internal use EntityTools instead
      * @param ConferenceRoomDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $pinProtected = $dto->getPinProtected();
+        Assertion::notNull($pinProtected, 'getPinProtected value is null, but non null value was expected.');
+        $maxMembers = $dto->getMaxMembers();
+        Assertion::notNull($maxMembers, 'getMaxMembers value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setPinProtected($dto->getPinProtected())
+            ->setName($name)
+            ->setPinProtected($pinProtected)
             ->setPinCode($dto->getPinCode())
-            ->setMaxMembers($dto->getMaxMembers())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setMaxMembers($maxMembers)
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ConferenceRoomDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ConferenceRoomDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -177,9 +183,9 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -206,9 +212,6 @@ abstract class ConferenceRoomAbstract
 
     protected function setPinProtected(bool $pinProtected): static
     {
-        Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
-        $pinProtected = (bool) $pinProtected;
-
         $this->pinProtected = $pinProtected;
 
         return $this;

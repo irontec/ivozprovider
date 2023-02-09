@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\Dispatcher;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer;
 
@@ -58,12 +59,12 @@ abstract class DispatcherAbstract
      * Constructor
      */
     protected function __construct(
-        $setid,
-        $destination,
-        $flags,
-        $priority,
-        $attrs,
-        $description
+        int $setid,
+        string $destination,
+        int $flags,
+        int $priority,
+        string $attrs,
+        string $description
     ) {
         $this->setSetid($setid);
         $this->setDestination($destination);
@@ -73,41 +74,34 @@ abstract class DispatcherAbstract
         $this->setDescription($description);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Dispatcher",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DispatcherDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DispatcherDto
     {
         return new DispatcherDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DispatcherInterface|null $entity
-     * @param int $depth
-     * @return DispatcherDto|null
+     * @param null|DispatcherInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DispatcherDto
     {
         if (!$entity) {
             return null;
@@ -123,8 +117,7 @@ abstract class DispatcherAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DispatcherDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -133,25 +126,38 @@ abstract class DispatcherAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DispatcherDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $attrs = $dto->getAttrs();
+        Assertion::notNull($attrs, 'getAttrs value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $applicationServer = $dto->getApplicationServer();
+        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSetid(),
-            $dto->getDestination(),
-            $dto->getFlags(),
-            $dto->getPriority(),
-            $dto->getAttrs(),
-            $dto->getDescription()
+            $setid,
+            $destination,
+            $flags,
+            $priority,
+            $attrs,
+            $description
         );
 
         $self
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
+            ->setApplicationServer($fkTransformer->transform($applicationServer));
 
         $self->initChangelog();
 
@@ -161,32 +167,44 @@ abstract class DispatcherAbstract
     /**
      * @internal use EntityTools instead
      * @param DispatcherDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DispatcherDto::class);
 
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+        $flags = $dto->getFlags();
+        Assertion::notNull($flags, 'getFlags value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $attrs = $dto->getAttrs();
+        Assertion::notNull($attrs, 'getAttrs value is null, but non null value was expected.');
+        $description = $dto->getDescription();
+        Assertion::notNull($description, 'getDescription value is null, but non null value was expected.');
+        $applicationServer = $dto->getApplicationServer();
+        Assertion::notNull($applicationServer, 'getApplicationServer value is null, but non null value was expected.');
+
         $this
-            ->setSetid($dto->getSetid())
-            ->setDestination($dto->getDestination())
-            ->setFlags($dto->getFlags())
-            ->setPriority($dto->getPriority())
-            ->setAttrs($dto->getAttrs())
-            ->setDescription($dto->getDescription())
-            ->setApplicationServer($fkTransformer->transform($dto->getApplicationServer()));
+            ->setSetid($setid)
+            ->setDestination($destination)
+            ->setFlags($flags)
+            ->setPriority($priority)
+            ->setAttrs($attrs)
+            ->setDescription($description)
+            ->setApplicationServer($fkTransformer->transform($applicationServer));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DispatcherDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DispatcherDto
     {
         return self::createDto()
             ->setSetid(self::getSetid())
@@ -199,9 +217,9 @@ abstract class DispatcherAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'setid' => self::getSetid(),

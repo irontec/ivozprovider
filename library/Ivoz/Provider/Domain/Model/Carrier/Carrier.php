@@ -13,9 +13,9 @@ class Carrier extends CarrierAbstract implements CarrierInterface
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -25,7 +25,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -34,7 +34,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     /**
      * @inheritdoc
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         if ($this->getExternallyRated()) {
             $this->setCalculateCost(false);
@@ -48,15 +48,15 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     /**
      * @return string
      */
-    public function getCgrSubject()
+    public function getCgrSubject(): string
     {
-        return sprintf("cr%d", $this->getId());
+        return sprintf("cr%d", (int) $this->getId());
     }
 
     /**
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getCurrencySymbol(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {
@@ -68,7 +68,7 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     /**
      * @return string
      */
-    public function getCurrencyIden()
+    public function getCurrencyIden(): string
     {
         $currency = $this->getCurrency();
         if (!$currency) {

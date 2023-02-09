@@ -11,7 +11,6 @@ use RouteHandlerAbstract;
 
 class FaxSend extends RouteHandlerAbstract
 {
-
     /**
      * @var Wrapper
      */

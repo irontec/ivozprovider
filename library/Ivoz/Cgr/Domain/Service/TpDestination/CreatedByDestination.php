@@ -11,21 +11,11 @@ use Ivoz\Provider\Domain\Service\Destination\DestinationLifecycleEventHandlerInt
 
 class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * CreatedByTpDestinationRate constructor.
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -63,7 +53,7 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
             ->setDestinationId($destination->getId())
             ->setTag($destination->getCgrTag());
 
-        $tpDestination = $this->entityTools->persistDto(
+        $this->entityTools->persistDto(
             $tpDestinationDto,
             $tpDestination,
             true

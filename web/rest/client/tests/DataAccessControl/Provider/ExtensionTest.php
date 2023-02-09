@@ -149,7 +149,21 @@ class ExtensionTest extends KernelTestCase
                             null
                         ]
                     ]
-                ]
+                ],
+                [
+                    'or' => [
+                        [
+                            'voicemail',
+                            'in',
+                            'VoicemailRepository([["company","eq","user.getCompany().getId()"]])'
+                        ],
+                        [
+                            'voicemail',
+                            'isNull',
+                            null
+                        ]
+                    ]
+                ],
             ]
         );
     }

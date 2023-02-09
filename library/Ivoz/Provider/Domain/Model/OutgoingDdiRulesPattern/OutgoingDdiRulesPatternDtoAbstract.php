@@ -17,45 +17,48 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $type;
+    private $type = null;
 
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $action;
+    private $action = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $priority = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var OutgoingDdiRuleDto | null
      */
-    private $outgoingDdiRule;
+    private $outgoingDdiRule = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchList;
+    private $matchList = null;
 
     /**
      * @var DdiDto | null
      */
-    private $forcedDdi;
+    private $forcedDdi = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -64,7 +67,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -83,9 +86,9 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'type' => $this->getType(),
@@ -112,7 +115,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $response;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -136,7 +139,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->prefix;
     }
 
-    public function setAction(?string $action): static
+    public function setAction(string $action): static
     {
         $this->action = $action;
 
@@ -148,7 +151,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->action;
     }
 
-    public function setPriority(?int $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 
@@ -167,7 +170,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

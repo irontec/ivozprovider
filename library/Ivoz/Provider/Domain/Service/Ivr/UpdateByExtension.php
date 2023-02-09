@@ -15,24 +15,12 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterfa
  */
 class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 {
-    const PRE_REMOVE_PRIORITY = 10;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var IvrRepository
-     */
-    protected $ivrRepository;
+    public const PRE_REMOVE_PRIORITY = 10;
 
     public function __construct(
-        EntityTools $entityTools,
-        IvrRepository $ivrRepository
+        private EntityTools $entityTools,
+        private IvrRepository $ivrRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->ivrRepository = $ivrRepository;
     }
 
     public static function getSubscribedEvents()

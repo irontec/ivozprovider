@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -15,12 +18,12 @@ use Doctrine\Common\Collections\Criteria;
 trait MatchListTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, MatchListPatternInterface> & Selectable<array-key, MatchListPatternInterface>
      * MatchListPatternInterface mappedBy matchList
      */
     protected $patterns;
@@ -34,27 +37,27 @@ trait MatchListTrait
         $this->patterns = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param MatchListDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPatterns())) {
-            $self->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, MatchListPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $self->replacePatterns($replacement);
         }
 
         $self->sanitizeValues();
@@ -69,20 +72,20 @@ trait MatchListTrait
     /**
      * @internal use EntityTools instead
      * @param MatchListDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getPatterns())) {
-            $this->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, MatchListPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $this->replacePatterns($replacement);
         }
         $this->sanitizeValues();
 
@@ -91,10 +94,8 @@ trait MatchListTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return MatchListDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): MatchListDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -102,9 +103,9 @@ trait MatchListTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -125,25 +126,33 @@ trait MatchListTrait
         return $this;
     }
 
-    public function replacePatterns(ArrayCollection $patterns): MatchListInterface
+    /**
+     * @param Collection<array-key, MatchListPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): MatchListInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($patterns as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setMatchList($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->patterns as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->patterns->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->patterns->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->patterns->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -153,6 +162,9 @@ trait MatchListTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, MatchListPatternInterface>
+     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

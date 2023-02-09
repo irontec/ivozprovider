@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 
 /**
  * CallCsvReport
@@ -15,9 +16,9 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -27,7 +28,7 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -35,7 +36,7 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'Csv' => [
@@ -49,10 +50,7 @@ class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterf
         );
     }
 
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone()
+    public function getTimezone(): ?TimezoneInterface
     {
         $timeZone = $this->getBrand()
             ? $this->getBrand()->getDefaultTimezone()

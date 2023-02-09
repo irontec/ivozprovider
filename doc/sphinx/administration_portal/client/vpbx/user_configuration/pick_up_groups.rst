@@ -10,8 +10,6 @@ notification, etc) the users must know that the call is ringing elsewhere.
 
 IvozProvider supports two kind of call pickups:
 
-.. glossary::
-
     Direct pickup
         In this type of pickup, the user that is trying to capture the ringing 
         call must include the extension of the target phone after the service 

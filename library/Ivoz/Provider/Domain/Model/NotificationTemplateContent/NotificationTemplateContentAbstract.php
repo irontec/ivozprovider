@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\NotificationTemplateContent;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
@@ -22,14 +23,14 @@ abstract class NotificationTemplateContentAbstract
     use ChangelogTrait;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $fromName;
+    protected $fromName = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $fromAddress;
+    protected $fromAddress = null;
 
     /**
      * @var string
@@ -42,8 +43,8 @@ abstract class NotificationTemplateContentAbstract
     protected $body;
 
     /**
-     * comment: enum:text/plain|text/html
      * @var string
+     * comment: enum:text/plain|text/html
      */
     protected $bodyType = 'text/plain';
 
@@ -54,58 +55,51 @@ abstract class NotificationTemplateContentAbstract
     protected $notificationTemplate;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $subject,
-        $body,
-        $bodyType
+        string $subject,
+        string $body,
+        string $bodyType
     ) {
         $this->setSubject($subject);
         $this->setBody($body);
         $this->setBodyType($bodyType);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "NotificationTemplateContent",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return NotificationTemplateContentDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): NotificationTemplateContentDto
     {
         return new NotificationTemplateContentDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param NotificationTemplateContentInterface|null $entity
-     * @param int $depth
-     * @return NotificationTemplateContentDto|null
+     * @param null|NotificationTemplateContentInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?NotificationTemplateContentDto
     {
         if (!$entity) {
             return null;
@@ -121,8 +115,7 @@ abstract class NotificationTemplateContentAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var NotificationTemplateContentDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -131,24 +124,31 @@ abstract class NotificationTemplateContentAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param NotificationTemplateContentDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateContentDto::class);
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $body = $dto->getBody();
+        Assertion::notNull($body, 'getBody value is null, but non null value was expected.');
+        $bodyType = $dto->getBodyType();
+        Assertion::notNull($bodyType, 'getBodyType value is null, but non null value was expected.');
+        $notificationTemplate = $dto->getNotificationTemplate();
+        Assertion::notNull($notificationTemplate, 'getNotificationTemplate value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSubject(),
-            $dto->getBody(),
-            $dto->getBodyType()
+            $subject,
+            $body,
+            $bodyType
         );
 
         $self
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
-            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setNotificationTemplate($fkTransformer->transform($notificationTemplate))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
         $self->initChangelog();
@@ -159,21 +159,29 @@ abstract class NotificationTemplateContentAbstract
     /**
      * @internal use EntityTools instead
      * @param NotificationTemplateContentDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, NotificationTemplateContentDto::class);
+
+        $subject = $dto->getSubject();
+        Assertion::notNull($subject, 'getSubject value is null, but non null value was expected.');
+        $body = $dto->getBody();
+        Assertion::notNull($body, 'getBody value is null, but non null value was expected.');
+        $bodyType = $dto->getBodyType();
+        Assertion::notNull($bodyType, 'getBodyType value is null, but non null value was expected.');
+        $notificationTemplate = $dto->getNotificationTemplate();
+        Assertion::notNull($notificationTemplate, 'getNotificationTemplate value is null, but non null value was expected.');
 
         $this
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
-            ->setSubject($dto->getSubject())
-            ->setBody($dto->getBody())
-            ->setBodyType($dto->getBodyType())
-            ->setNotificationTemplate($fkTransformer->transform($dto->getNotificationTemplate()))
+            ->setSubject($subject)
+            ->setBody($body)
+            ->setBodyType($bodyType)
+            ->setNotificationTemplate($fkTransformer->transform($notificationTemplate))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()));
 
         return $this;
@@ -181,10 +189,8 @@ abstract class NotificationTemplateContentAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return NotificationTemplateContentDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): NotificationTemplateContentDto
     {
         return self::createDto()
             ->setFromName(self::getFromName())
@@ -197,9 +203,9 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'fromName' => self::getFromName(),
@@ -208,7 +214,7 @@ abstract class NotificationTemplateContentAbstract
             'body' => self::getBody(),
             'bodyType' => self::getBodyType(),
             'notificationTemplateId' => self::getNotificationTemplate()->getId(),
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
+            'languageId' => self::getLanguage()?->getId()
         ];
     }
 
@@ -298,7 +304,6 @@ abstract class NotificationTemplateContentAbstract
     {
         $this->notificationTemplate = $notificationTemplate;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -12,9 +12,10 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     use TerminalTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         $response = parent::getChangeSet();
         unset($response['lastProvisionDate']);
@@ -27,7 +28,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -36,7 +37,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      * Return string representation of this entity
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s [%s]",
@@ -45,7 +46,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         );
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->setDomain(
             $this
@@ -73,6 +74,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      */
     public function setPassword(string $password): static
     {
+        $password = trim($password);
         Assertion::regex(
             $password,
             '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
@@ -81,7 +83,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         return parent::setPassword($password);
     }
 
-    public static function randomPassword()
+    public static function randomPassword(): string
     {
         $uppers = "ABCDEFGHJKLMNPQRSTUVWXYZ";
         $lowers = "abcdefghijkmnopqrstuvwxyz";
@@ -90,15 +92,15 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
         $randStr = '';
         for ($i = 0; $i < 3; $i++) {
-            $randStr .= $uppers[rand(0, strlen($uppers) - 1)];
+            $randStr .= $uppers[random_int(0, strlen($uppers) - 1)];
         }
         for ($i = 0; $i < 3; $i++) {
-            $randStr .= $lowers[rand(0, strlen($lowers) - 1)];
+            $randStr .= $lowers[random_int(0, strlen($lowers) - 1)];
         }
         for ($i = 0; $i < 3; $i++) {
-            $randStr .= $numbers[rand(0, strlen($numbers) - 1)];
+            $randStr .= $numbers[random_int(0, strlen($numbers) - 1)];
         }
-        $randStr.= $symbols[rand(0, strlen($symbols) - 1)];
+        $randStr .= $symbols[random_int(0, strlen($symbols) - 1)];
 
         return str_shuffle($randStr);
     }
@@ -114,7 +116,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     /**
      * @return string
      */
-    public function getContact()
+    public function getContact(): string
     {
         return sprintf(
             'sip:%s@%s',
@@ -126,13 +128,13 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     /**
      * @return string
      */
-    public function getSorcery()
+    public function getSorcery(): string
     {
         return sprintf(
             'b%dc%dt%d_%s',
-            $this->getCompany()->getBrand()->getId(),
-            $this->getCompany()->getId(),
-            $this->getId(),
+            (int) $this->getCompany()->getBrand()->getId(),
+            (int) $this->getCompany()->getId(),
+            (int) $this->getId(),
             $this->getName()
         );
     }

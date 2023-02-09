@@ -17,60 +17,63 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $lcrId = 1;
 
     /**
      * @var string|null
      */
-    private $prefix;
+    private $prefix = null;
 
     /**
      * @var string|null
      */
-    private $fromUri;
+    private $fromUri = null;
 
     /**
      * @var string|null
      */
-    private $requestUri;
+    private $requestUri = null;
 
     /**
      * @var string|null
      */
-    private $mtTvalue;
+    private $mtTvalue = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $stopper = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $enabled = 1;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RoutingPatternDto | null
      */
-    private $routingPattern;
+    private $routingPattern = null;
 
     /**
      * @var RoutingPatternGroupsRelPatternDto | null
      */
-    private $routingPatternGroupsRelPattern;
+    private $routingPatternGroupsRelPattern = null;
 
     /**
      * @var OutgoingRoutingDto | null
      */
-    private $outgoingRouting;
+    private $outgoingRouting = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -79,7 +82,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -101,9 +104,9 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'lcrId' => $this->getLcrId(),
@@ -133,7 +136,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setLcrId(?int $lcrId): static
+    public function setLcrId(int $lcrId): static
     {
         $this->lcrId = $lcrId;
 
@@ -193,7 +196,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->mtTvalue;
     }
 
-    public function setStopper(?int $stopper): static
+    public function setStopper(int $stopper): static
     {
         $this->stopper = $stopper;
 
@@ -205,7 +208,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->stopper;
     }
 
-    public function setEnabled(?int $enabled): static
+    public function setEnabled(int $enabled): static
     {
         $this->enabled = $enabled;
 
@@ -224,7 +227,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

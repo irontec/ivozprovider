@@ -4,7 +4,7 @@ Feature: Create users
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a schedule
+  Scenario: Create a user
     Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
@@ -20,9 +20,6 @@ Feature: Create users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
-          "voicemailEnabled": true,
-          "voicemailSendMail": true,
-          "voicemailAttachSound": true,
           "gsQRCode": false,
           "callAcl": 1,
           "bossAssistant": null,
@@ -34,7 +31,6 @@ Feature: Create users
           "timezone": 145,
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null,
           "pickupGroupIds": [
             1
           ]
@@ -55,9 +51,6 @@ Feature: Create users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
-          "voicemailEnabled": true,
-          "voicemailSendMail": true,
-          "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 3,
           "callAcl": {
@@ -95,14 +88,14 @@ Feature: Create users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null,
+          "voicemail": null,
           "pickupGroupIds": [
               1
           ]
       }
     """
 
-  Scenario: Retrieve created schedule
+  Scenario: Retrieve created user
     Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/users/3"
@@ -121,9 +114,6 @@ Feature: Create users
           "active": true,
           "maxCalls": 1,
           "externalIpCalls": "0",
-          "voicemailEnabled": true,
-          "voicemailSendMail": true,
-          "voicemailAttachSound": true,
           "gsQRCode": false,
           "id": 3,
           "callAcl": {
@@ -175,7 +165,7 @@ Feature: Create users
           },
           "outgoingDdi": null,
           "outgoingDdiRule": null,
-          "voicemailLocution": null,
+          "voicemail": null,
           "pickupGroupIds": [
             1
           ]

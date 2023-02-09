@@ -12,9 +12,10 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
     use CarrierServerTrait;
 
     /**
-     * @return array
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -24,19 +25,19 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         $this->sanitizeBrandByCarrier();
         $this->sanitizeAuth();
         $this->sanitizeProxyLogic();
     }
 
-    protected function sanitizeBrandByCarrier()
+    protected function sanitizeBrandByCarrier(): void
     {
         $isNew = !$this->getId();
         $isNotNewAndCarrierHasChanged =
@@ -52,7 +53,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         }
     }
 
-    protected function sanitizeAuth()
+    protected function sanitizeAuth(): void
     {
         if ($this->getAuthNeeded() === 'no') {
             $this->setAuthUser(null);
@@ -60,7 +61,7 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         }
     }
 
-    protected function sanitizeProxyLogic()
+    protected function sanitizeProxyLogic(): void
     {
         $sip_proxy = explode(':', $this->getSipProxy());
         $hostname = array_shift($sip_proxy);
@@ -98,14 +99,23 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
         return parent::setIp($ip);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return
             sprintf(
                 'b%dc%ds%d',
-                $this->getBrand()->getId(),
-                $this->getCarrier()->getId(),
-                $this->getId()
+                (int) $this->getBrand()->getId(),
+                (int) $this->getCarrier()->getId(),
+                (int) $this->getId()
             );
+    }
+
+    protected function setAuthPassword(?string $authPassword = null): static
+    {
+        if ($authPassword) {
+            $authPassword = trim($authPassword);
+        }
+
+        return parent::setAuthPassword($authPassword);
     }
 }

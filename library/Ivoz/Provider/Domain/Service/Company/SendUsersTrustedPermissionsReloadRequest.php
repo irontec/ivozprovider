@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class SendUsersTrustedPermissionsReloadRequest implements CompanyLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    protected $usersClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        UsersClientInterface $usersClient
+        private UsersClientInterface $usersClient
     ) {
-        $this->usersClient = $usersClient;
     }
 
     public static function getSubscribedEvents()
@@ -24,7 +21,7 @@ class SendUsersTrustedPermissionsReloadRequest implements CompanyLifecycleEventH
         ];
     }
 
-    public function execute(CompanyInterface $company)
+    public function execute(CompanyInterface $company): void
     {
         $wasRemoved = $company->hasBeenDeleted();
         if (!$wasRemoved) {

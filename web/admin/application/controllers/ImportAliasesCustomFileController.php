@@ -57,8 +57,10 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
         /**
          * Initialize action controller here
          */
-        if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
-            (!is_object($this->_mainRouter))) {
+        if (
+            (!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) ||
+            (!is_object($this->_mainRouter))
+        ) {
             throw new Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
@@ -154,7 +156,7 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
         $file = file_get_contents($filePath);
         $lines = explode(PHP_EOL, trim($file));
 
-        if (count($lines)<=0) {
+        if (count($lines) <= 0) {
             return false;
         }
 
@@ -164,7 +166,7 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
             $lineFields = str_getcsv(trim($line), $this->_delimiter, $this->_enclosure, $this->_scape);
             $linesArray[] = $lineFields;
             $counter++;
-            if (!is_null($limit) && $counter==$limit) {
+            if (!is_null($limit) && $counter == $limit) {
                 break;
             }
         }
@@ -191,9 +193,9 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
     ';
 
         $help = '<div class="parseHelp">';
-        $help.= '<p>'.$this->_helper->translate("Import file").". ".$this->_helper->translate("Set column configuration and continue.").'</p>';
-        $help.= '<p>'.$this->_helper->translate("Fields with * are required").'.</p><br/>';
-        $help.= '<ul>';
+        $help .= '<p>' . $this->_helper->translate("Import file") . ". " . $this->_helper->translate("Set column configuration and continue.") . '</p>';
+        $help .= '<p>' . $this->_helper->translate("Fields with * are required") . '.</p><br/>';
+        $help .= '<ul>';
 
         foreach ($this->_availableFields as $key => $fieldInfo) {
             if (isset($this->_forcedValues[$key])) {
@@ -210,12 +212,12 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
                 $fieldHelp = \Klear_Model_Gettext::gettextCheck($fieldInfo['help']);
             }
 
-            $help.='<li>'.$fieldLabel.$required.'<em>'.$fieldHelp.'</em></li>';
+            $help .= '<li>' . $fieldLabel . $required . '<em>' . $fieldHelp . '</em></li>';
         }
 
-        $help.= '</ul></div>';
+        $help .= '</ul></div>';
         $table = $help . '<div class="tableBox"><table class="kMatrix parsedValues">';
-        $table.= "<tr>";
+        $table .= "<tr>";
 
         $availableFieldsKeys = array_keys($this->_availableFields);
         foreach ($availableFieldsKeys as $idf => $xfield) {
@@ -230,22 +232,22 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
             $table .= "<th class='ui-widget-header multiItem notSortable' style='min-width:150px;'>" . $xfieldLabel . "</th>";
         }
 
-        $table.= "</tr>";
+        $table .= "</tr>";
         foreach ($lines as $line) {
-            $table.= "<tr>";
+            $table .= "<tr>";
             foreach ($line as $idPart => $part) {
-                $table.="<td class='ui-widget-content'>" . $part . "</td>";
+                $table .= "<td class='ui-widget-content'>" . $part . "</td>";
             }
-            $table.= "</tr>";
+            $table .= "</tr>";
         }
-        $table .="</table>";
+        $table .= "</table>";
         $form .= $table . '</div><br />';
         $ignoreFirst = $this->getRequest()->getParam("ingoreFirst", null);
         $checked = '';
         if (!is_null($ignoreFirst) && $ignoreFirst == "on") {
             $checked = 'checked="checked"';
         }
-        $form .= '<label><input type="checkbox" name="ingoreFirst" '.$checked.'/> ' . $this->_helper->translate("Ignore first line.").'</label>';
+        $form .= '<label><input type="checkbox" name="ingoreFirst" ' . $checked . '/> ' . $this->_helper->translate("Ignore first line.") . '</label>';
         $update = $this->getRequest()->getParam("update", null);
         $form .= '';
 
@@ -259,7 +261,7 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
 
         $lines = $this->_parseFile($filePath, 3);
 
-        if ($lines===false) {
+        if ($lines === false) {
             $this->_generalError();
             return;
         }
@@ -277,7 +279,7 @@ class ImportAliasesCustomFileController extends Zend_Controller_Action
         $form = $this->_buildForm($lines);
         $data = array(
             'title' => $this->_helper->translate("Import file"),
-            'message' => $message."<br>".$form,
+            'message' => $message . "<br>" . $form,
             'buttons' => array(
                 $this->_helper->translate('Close') => array(
                     'recall' => false,

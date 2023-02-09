@@ -12,12 +12,9 @@ use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterfac
 
 class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
 {
-    protected $storagePathResolver;
-
     public function __construct(
-        StoragePathResolverCollection $storagePathResolver
+        private StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -28,7 +25,6 @@ class DestinationRateGroupDtoAssembler implements CustomDtoAssemblerInterface
     {
         Assertion::isInstanceOf($destinationRateGroup, DestinationRateGroupInterface::class);
 
-        /** @var DestinationRateGroupDto $dto */
         $dto = $destinationRateGroup->toDto($depth);
         $id = $destinationRateGroup->getId();
 

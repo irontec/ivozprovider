@@ -25,19 +25,19 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $unit = 'month';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $frequency;
+    private $frequency = null;
 
     /**
      * @var string|null
@@ -45,85 +45,88 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $callDirection = 'outbound';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $email;
+    private $email = null;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $lastExecution;
+    private $lastExecution = null;
 
     /**
      * @var string|null
      */
-    private $lastExecutionError;
+    private $lastExecutionError = null;
 
     /**
-     * @var \DateTime|string|null
+     * @var \DateTimeInterface|string|null
      */
-    private $nextExecution;
+    private $nextExecution = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var BrandDto | null
      */
-    private $brand;
+    private $brand = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var NotificationTemplateDto | null
      */
-    private $callCsvNotificationTemplate;
+    private $callCsvNotificationTemplate = null;
 
     /**
      * @var DdiDto | null
      */
-    private $ddi;
+    private $ddi = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
     /**
      * @var RetailAccountDto | null
      */
-    private $retailAccount;
+    private $retailAccount = null;
 
     /**
      * @var ResidentialDeviceDto | null
      */
-    private $residentialDevice;
+    private $residentialDevice = null;
 
     /**
      * @var UserDto | null
      */
-    private $user;
+    private $user = null;
 
     /**
      * @var FaxDto | null
      */
-    private $fax;
+    private $fax = null;
 
     /**
      * @var FriendDto | null
      */
-    private $friend;
+    private $friend = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -132,7 +135,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -163,9 +166,9 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -204,7 +207,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -216,7 +219,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->name;
     }
 
-    public function setUnit(?string $unit): static
+    public function setUnit(string $unit): static
     {
         $this->unit = $unit;
 
@@ -228,7 +231,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->unit;
     }
 
-    public function setFrequency(?int $frequency): static
+    public function setFrequency(int $frequency): static
     {
         $this->frequency = $frequency;
 
@@ -252,7 +255,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->callDirection;
     }
 
-    public function setEmail(?string $email): static
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 
@@ -264,14 +267,14 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->email;
     }
 
-    public function setLastExecution(null|\DateTime|string $lastExecution): static
+    public function setLastExecution(null|\DateTimeInterface|string $lastExecution): static
     {
         $this->lastExecution = $lastExecution;
 
         return $this;
     }
 
-    public function getLastExecution(): \DateTime|string|null
+    public function getLastExecution(): \DateTimeInterface|string|null
     {
         return $this->lastExecution;
     }
@@ -288,14 +291,14 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->lastExecutionError;
     }
 
-    public function setNextExecution(null|\DateTime|string $nextExecution): static
+    public function setNextExecution(null|\DateTimeInterface|string $nextExecution): static
     {
         $this->nextExecution = $nextExecution;
 
         return $this;
     }
 
-    public function getNextExecution(): \DateTime|string|null
+    public function getNextExecution(): \DateTimeInterface|string|null
     {
         return $this->nextExecution;
     }
@@ -307,7 +310,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

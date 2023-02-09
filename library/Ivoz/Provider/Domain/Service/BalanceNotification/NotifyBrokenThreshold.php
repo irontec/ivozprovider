@@ -16,36 +16,12 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateReposito
 
 class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 {
-    /**
-     * @var NotificationTemplateRepository
-     */
-    protected $notificationTemplateRepository;
-
-    /**
-     * @var BalanceNotificationRepository
-     */
-    protected $balanceNotificationRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var MailerClientInterface
-     */
-    protected $mailer;
-
     public function __construct(
-        NotificationTemplateRepository $notificationTemplateRepository,
-        BalanceNotificationRepository $balanceNotificationRepository,
-        EntityTools $entityTools,
-        MailerClientInterface $mailer
+        private NotificationTemplateRepository $notificationTemplateRepository,
+        private BalanceNotificationRepository $balanceNotificationRepository,
+        private EntityTools $entityTools,
+        private MailerClientInterface $mailer
     ) {
-        $this->notificationTemplateRepository = $notificationTemplateRepository;
-        $this->balanceNotificationRepository = $balanceNotificationRepository;
-        $this->entityTools = $entityTools;
-        $this->mailer = $mailer;
     }
 
     /**
@@ -80,14 +56,18 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         $balanceNotification = $this->balanceNotificationRepository
             ->find($event->getBalanceNotificationId());
 
-        /** @var NotificationTemplateInterface $notificationTemplate */
-        $notificationTemplate = $this->notificationTemplateRepository
-            ->findTemplateByBalanceNotification($balanceNotification);
-
-        $name = $balanceNotification->getEntityName();
         $language = $balanceNotification->getLanguage();
 
+        $notificationTemplate = $this
+            ->notificationTemplateRepository
+            ->findTemplateByBalanceNotification(
+                $balanceNotification,
+                $language
+            );
+
+        $name = $balanceNotification->getEntityName();
         $notificationContent = $notificationTemplate->getContentsByLanguage($language);
+
         $subject = $this->parseNotificationContent(
             $notificationContent->getSubject(),
             $name,
@@ -119,7 +99,12 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 
         /** @var BalanceNotificationDto $balanceNotificationDto */
         $balanceNotificationDto = $this->entityTools->entityToDto($balanceNotification);
-        $balanceNotificationDto->setLastSent(new \DateTime(null, new \DateTimeZone('UTC')));
+        $balanceNotificationDto->setLastSent(
+            new \DateTime(
+                'now',
+                new \DateTimeZone('UTC')
+            )
+        );
         $this->entityTools->persistDto(
             $balanceNotificationDto,
             $balanceNotification,

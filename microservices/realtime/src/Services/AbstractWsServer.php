@@ -11,7 +11,8 @@ use Swoole\Http\Request as HttpRequest;
 
 abstract class AbstractWsServer
 {
-    const REDIS_KEYS_TTL = 60*60*3+30;
+    const REDIS_KEYS_IN_CALL_TTL = 60 * 60 * 3 + 30;
+    const REDIS_KEYS_TTL = 60 * 2;
 
     /** @var Server */
     protected $server;

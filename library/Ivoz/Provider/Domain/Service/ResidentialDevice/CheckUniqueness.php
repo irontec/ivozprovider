@@ -2,10 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\ResidentialDevice;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountRepository;
-use Zend\EventManager\Exception\DomainException;
 
 /**
  * Class CheckUniqueness
@@ -13,22 +11,11 @@ use Zend\EventManager\Exception\DomainException;
  */
 class CheckUniqueness implements ResidentialDeviceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var RetailAccountRepository
-     */
-    protected $retailAccountRepository;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        RetailAccountRepository $retailAccountRepository
+        private RetailAccountRepository $retailAccountRepository
     ) {
-        $this->retailAccountRepository = $retailAccountRepository;
     }
 
     public static function getSubscribedEvents()
@@ -54,7 +41,7 @@ class CheckUniqueness implements ResidentialDeviceLifecycleEventHandlerInterface
             );
 
         if ($retailAccount) {
-            throw new DomainException("There is already a retail account with that name.", 30005);
+            throw new \DomainException("There is already a retail account with that name.", 30005);
         }
     }
 }

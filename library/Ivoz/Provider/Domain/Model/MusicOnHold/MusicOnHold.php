@@ -12,14 +12,15 @@ use Ivoz\Core\Domain\Service\TempFile;
 class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface, MusicOnHoldInterface
 {
     use MusicOnHoldTrait;
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    use TempFileContainnerTrait {
+        addTmpFile as protected _addTmpFile;
     }
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -27,7 +28,7 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
     /**
      * @return array
      */
-    public function getFileObjects(int $filter = null)
+    public function getFileObjects(int $filter = null): array
     {
         $fileObjects = [
             'OriginalFile' => [
@@ -50,12 +51,12 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
         foreach ($this->getTempFiles() as $tmpFile) {
             $tmpPath = $tmpFile->getTmpPath();
@@ -87,6 +88,8 @@ class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface,
      *
      * @param string $fldName
      * @param \Ivoz\Core\Domain\Service\TempFile $file
+     *
+     * @return void
      */
     public function addTmpFile(string $fldName, TempFile $file)
     {

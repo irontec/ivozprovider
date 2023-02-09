@@ -4,6 +4,9 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -12,7 +15,7 @@ use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface;
@@ -22,17 +25,30 @@ use Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarri
 */
 interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
-    const ROUTINGMODE_STATIC = 'static';
+    public const TYPE_PATTERN = 'pattern';
 
-    const ROUTINGMODE_LCR = 'lcr';
+    public const TYPE_GROUP = 'group';
 
-    const ROUTINGMODE_BLOCK = 'block';
+    public const TYPE_FAX = 'fax';
+
+    public const ROUTINGMODE_STATIC = 'static';
+
+    public const ROUTINGMODE_LCR = 'lcr';
+
+    public const ROUTINGMODE_BLOCK = 'block';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @todo awkward return type
@@ -45,20 +61,40 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      *
      * @return string
      */
-    public function getCgrCategory();
+    public function getCgrCategory(): string;
 
     /**
      * Return CGRates tag for LCR rating plan category
      *
      * @return string
      */
-    public function getCgrRpCategory();
+    public function getCgrRpCategory(): string;
 
     /**
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern
      * @return bool
      */
     public function hasRoutingPattern(RoutingPatternInterface $pattern);
+
+    public static function createDto(string|int|null $id = null): OutgoingRoutingDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|OutgoingRoutingInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingRoutingDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param OutgoingRoutingDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): OutgoingRoutingDto;
 
     public function getType(): ?string;
 
@@ -110,23 +146,41 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
 
     public function removeLcrRule(TrunksLcrRuleInterface $lcrRule): OutgoingRoutingInterface;
 
-    public function replaceLcrRules(ArrayCollection $lcrRules): OutgoingRoutingInterface;
+    /**
+     * @param Collection<array-key, TrunksLcrRuleInterface> $lcrRules
+     */
+    public function replaceLcrRules(Collection $lcrRules): OutgoingRoutingInterface;
 
+    /**
+     * @return array<array-key, TrunksLcrRuleInterface>
+     */
     public function getLcrRules(?Criteria $criteria = null): array;
 
     public function addLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
     public function removeLcrRuleTarget(TrunksLcrRuleTargetInterface $lcrRuleTarget): OutgoingRoutingInterface;
 
-    public function replaceLcrRuleTargets(ArrayCollection $lcrRuleTargets): OutgoingRoutingInterface;
+    /**
+     * @param Collection<array-key, TrunksLcrRuleTargetInterface> $lcrRuleTargets
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets): OutgoingRoutingInterface;
 
+    /**
+     * @return array<array-key, TrunksLcrRuleTargetInterface>
+     */
     public function getLcrRuleTargets(?Criteria $criteria = null): array;
 
     public function addRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
     public function removeRelCarrier(OutgoingRoutingRelCarrierInterface $relCarrier): OutgoingRoutingInterface;
 
-    public function replaceRelCarriers(ArrayCollection $relCarriers): OutgoingRoutingInterface;
+    /**
+     * @param Collection<array-key, OutgoingRoutingRelCarrierInterface> $relCarriers
+     */
+    public function replaceRelCarriers(Collection $relCarriers): OutgoingRoutingInterface;
 
+    /**
+     * @return array<array-key, OutgoingRoutingRelCarrierInterface>
+     */
     public function getRelCarriers(?Criteria $criteria = null): array;
 }

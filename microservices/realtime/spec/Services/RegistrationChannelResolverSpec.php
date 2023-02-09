@@ -2,7 +2,10 @@
 
 namespace spec\Services;
 
+use Doctrine\DBAL\Exception\ConnectionLost;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\DBAL\Driver\Mysqli\Exception\ConnectionFailed;
+use Doctrine\DBAL\Query;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -37,11 +40,13 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
     function let()
     {
         $this->em = $this->getTestDouble(
-            EntityManagerInterface::class
+            EntityManagerInterface::class,
+            false
         );
 
         $this->connection = $this->getTestDouble(
-            \Doctrine\DBAL\Connection::class
+            \Doctrine\DBAL\Connection::class,
+            false
         );
 
         $this->administratorRepository = $this->getTestDouble(
@@ -76,18 +81,23 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         );
     }
 
-    function it_reconnectes_if_necessary()
+    function it_reconnects_if_necessary()
     {
         $this
             ->em
             ->getConnection()
-            ->wilLReturn($this->connection)
+            ->willReturn($this->connection)
             ->shouldBeCalled();
 
         $this
-            ->connection
-            ->ping()
-            ->willReturn(false)
+            ->administratorRepository
+            ->find(0)
+            ->willThrow(
+                new ConnectionLost(
+                    new ConnectionFailed('something'),
+                    new Query('my query', [], [])
+                )
+            )
             ->shouldBeCalled();
 
         $this
@@ -275,13 +285,12 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         $this
             ->em
             ->getConnection()
-            ->wilLReturn($this->connection)
+            ->willReturn($this->connection)
             ->shouldBeCalled();
 
         $this
-            ->connection
-            ->ping()
-            ->willReturn(true)
+            ->administratorRepository
+            ->find(0)
             ->shouldBeCalled();
     }
 
@@ -290,13 +299,13 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         $filters
     ) {
         $username = $tokenPayload['username'];
-        list(
+        [
             ,
             $brandId,
             $companyId,
             $carrierId,
             $ddiProviderId
-        ) = $filters;
+        ] = $filters;
 
         $brand = $brandId
             ? $this->getInstance(Brand::class, ['id' => $brandId])
@@ -394,7 +403,7 @@ class RegistrationChannelResolverSpec extends ObjectBehavior
         int $company = null,
         int $carrier = null,
         int $ddiProvider = null
-    ):array {
+    ): array {
 
         $filters = [];
 

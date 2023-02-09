@@ -16,65 +16,68 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $tpid = 'ivozprovider';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $loadid = 'DATABASE';
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $tenant;
-
-    /**
-     * @var string
-     */
-    private $account;
+    private $tenant = null;
 
     /**
      * @var string|null
      */
-    private $actionPlanTag;
+    private $account = null;
 
     /**
      * @var string|null
      */
-    private $actionTriggersTag;
+    private $actionPlanTag = null;
 
     /**
-     * @var bool
+     * @var string|null
+     */
+    private $actionTriggersTag = null;
+
+    /**
+     * @var bool|null
      */
     private $allowNegative = false;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $disabled = false;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
     /**
      * @var CarrierDto | null
      */
-    private $carrier;
+    private $carrier = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -83,7 +86,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -106,9 +109,9 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'tpid' => $this->getTpid(),
@@ -139,7 +142,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setTpid(?string $tpid): static
+    public function setTpid(string $tpid): static
     {
         $this->tpid = $tpid;
 
@@ -151,7 +154,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->tpid;
     }
 
-    public function setLoadid(?string $loadid): static
+    public function setLoadid(string $loadid): static
     {
         $this->loadid = $loadid;
 
@@ -163,7 +166,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->loadid;
     }
 
-    public function setTenant(?string $tenant): static
+    public function setTenant(string $tenant): static
     {
         $this->tenant = $tenant;
 
@@ -175,7 +178,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->tenant;
     }
 
-    public function setAccount(?string $account): static
+    public function setAccount(string $account): static
     {
         $this->account = $account;
 
@@ -211,7 +214,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->actionTriggersTag;
     }
 
-    public function setAllowNegative(?bool $allowNegative): static
+    public function setAllowNegative(bool $allowNegative): static
     {
         $this->allowNegative = $allowNegative;
 
@@ -223,7 +226,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->allowNegative;
     }
 
-    public function setDisabled(?bool $disabled): static
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
 
@@ -235,14 +238,14 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this->disabled;
     }
 
-    public function setCreatedAt(null|\DateTime|string $createdAt): static
+    public function setCreatedAt(\DateTimeInterface|string $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime|string|null
+    public function getCreatedAt(): \DateTimeInterface|string|null
     {
         return $this->createdAt;
     }
@@ -254,7 +257,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

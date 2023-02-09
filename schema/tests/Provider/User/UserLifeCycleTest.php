@@ -3,12 +3,13 @@
 namespace Tests\Provider\User;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
-use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\Voicemail as AstVoicemail;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
@@ -31,9 +32,6 @@ class UserLifeCycleTest extends KernelTestCase
             ->setIsBoss(false)
             ->setActive(true)
             ->setMaxCalls(1)
-            ->setVoicemailEnabled(true)
-            ->setVoicemailSendMail(true)
-            ->setVoicemailAttachSound(true)
             ->setGsQRCode(false)
             ->setCompanyId(1)
             ->setTransformationRuleSetId(1)
@@ -92,7 +90,7 @@ class UserLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_persists_transformation_rule_set()
+    public function it_persists_user()
     {
         $userRepository = $this->em
             ->getRepository(User::class);
@@ -121,6 +119,7 @@ class UserLifeCycleTest extends KernelTestCase
             Voicemail::class,
             PsEndpoint::class,
             Extension::class,
+            AstVoicemail::class,
         ]);
     }
 
@@ -135,6 +134,7 @@ class UserLifeCycleTest extends KernelTestCase
             Voicemail::class,
             PsEndpoint::class,
             Extension::class,
+            AstVoicemail::class,
         ]);
     }
 
@@ -149,7 +149,6 @@ class UserLifeCycleTest extends KernelTestCase
             PickUpRelUser::class, // Orphan removal
             User::class,
             Extension::class,
-            Ivr::class,
         ]);
     }
 }

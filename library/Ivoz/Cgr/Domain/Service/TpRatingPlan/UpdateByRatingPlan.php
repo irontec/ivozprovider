@@ -11,17 +11,11 @@ use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInter
 
 class UpdateByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()

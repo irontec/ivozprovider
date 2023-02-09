@@ -25,8 +25,13 @@ Model\Token:
         - name: username
           in: formData
           type: string
-          required: true
+          required: false
           description: 'Target client admin user name'
+        - name: clientId
+          in: formData
+          type: integer
+          required: false
+          description: 'Target client ID'
 
 Model\RatingPlanPrices:
   attributes:
@@ -62,5 +67,25 @@ Model\ActiveCalls:
         - 'application/json'
         tags:
         - My
+        parameters: []
+  collectionOperations: []
+
+Model\ProfileAcl:
+  itemOperations: []
+  collectionOperations: []
+
+Model\Profile:
+  itemOperations:
+    get_my_profile:
+      access_control: '"ROLE_COMPANY_ADMIN" in roles'
+      depth: 2
+      method: 'GET'
+      path: '/my/profile'
+      route_name: 'get_my_profile'
+      swagger_context:
+        produces:
+          - 'application/json'
+        tags:
+          - My
         parameters: []
   collectionOperations: []

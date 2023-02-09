@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Ddi;
 
 class DdiDto extends DdiDtoAbstract
 {
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
 
@@ -25,7 +25,7 @@ class DdiDto extends DdiDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -130,7 +130,7 @@ class DdiDto extends DdiDtoAbstract
     {
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

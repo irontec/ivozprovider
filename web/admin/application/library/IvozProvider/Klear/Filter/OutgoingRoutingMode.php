@@ -3,6 +3,7 @@
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 
 /**
  * Class IvozProvider_Klear_Filter_OutgoingRoutingMode
@@ -59,17 +60,17 @@ class IvozProvider_Klear_Filter_OutgoingRoutingMode implements KlearMatrix_Model
 
         if ($this->outgoingRouting) {
             switch ($this->outgoingRouting->getRoutingMode()) {
-                case OutgoingRouting::MODE_LCR:
-                    $excludedRoutingModes[] = OutgoingRouting::MODE_STATIC;
-                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_BLOCK;
+                case OutgoingRoutingInterface::ROUTINGMODE_LCR:
+                    $excludedRoutingModes[] = OutgoingRoutingInterface::ROUTINGMODE_STATIC;
+                    $excludedRoutingModes[] = OutgoingRoutingInterface::ROUTINGMODE_BLOCK;
                     break;
-                case OutgoingRouting::MODE_STATIC:
-                    $excludedRoutingModes[] = OutgoingRouting::MODE_LCR;
-                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_BLOCK;
+                case OutgoingRoutingInterface::ROUTINGMODE_STATIC:
+                    $excludedRoutingModes[] = OutgoingRoutingInterface::ROUTINGMODE_LCR;
+                    $excludedRoutingModes[] = OutgoingRoutingInterface::ROUTINGMODE_BLOCK;
                     break;
-                case OutgoingRouting::ROUTINGMODE_BLOCK:
-                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_STATIC;
-                    $excludedRoutingModes[] = OutgoingRouting::ROUTINGMODE_LCR;
+                case OutgoingRoutingInterface::ROUTINGMODE_BLOCK:
+                    $excludedRoutingModes[] = OutgoingRoutingInterface::ROUTINGMODE_STATIC;
+                    $excludedRoutingModes[] = OutgoingRoutingInterface::ROUTINGMODE_LCR;
                     break;
             }
         }

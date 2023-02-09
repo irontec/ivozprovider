@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
@@ -13,6 +15,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
 {
     use LifecycleServiceCollectionTrait;
 
+    /** @var array<array-key, array> $bindedBaseServices */
     public static $bindedBaseServices = [
         "pre_persist" =>
         [
@@ -24,6 +27,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
             \Ivoz\Provider\Domain\Service\MaxUsageNotification\SearchBrokenMaxDailyUsage::class => 10,
             \Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany::class => 20,
             \Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices::class => 30,
+            \Ivoz\Provider\Domain\Service\Administrator\CreatedByCompany::class => 200,
         ],
         "post_remove" =>
         [
@@ -38,7 +42,7 @@ class CompanyLifecycleServiceCollection implements LifecycleServiceCollectionInt
         ],
     ];
 
-    protected function addService(string $event, $service): void
+    protected function addService(string $event, LifecycleEventHandlerInterface|DomainEventSubscriberInterface $service): void
     {
         Assertion::isInstanceOf($service, CompanyLifecycleEventHandlerInterface::class);
         $this->services[$event][] = $service;

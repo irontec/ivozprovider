@@ -12,29 +12,11 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class WebThemeAction
 {
-    /**
-     * @var DtoAssembler
-     */
-    protected $dtoAssembler;
-
-    /**
-     * @var WebPortalRepository
-     */
-    protected $webPortalRepository;
-
-    /**
-     * @var RequestStack
-     */
-    protected $requestStack;
-
     public function __construct(
-        DtoAssembler $dtoAssembler,
-        WebPortalRepository $webPortalRepository,
-        RequestStack $requestStack
+        private DtoAssembler $dtoAssembler,
+        private WebPortalRepository $webPortalRepository,
+        private RequestStack $requestStack
     ) {
-        $this->dtoAssembler = $dtoAssembler;
-        $this->webPortalRepository = $webPortalRepository;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke()
@@ -56,7 +38,7 @@ class WebThemeAction
             'https://'
             . $request->server->get('SERVER_NAME')
             . '/fso/webPortal/'
-            . $webPortalDto->getId()
+            . (string) $webPortalDto->getId()
             . '-'
             . urlencode($webPortalDto->getLogoBaseName());
 

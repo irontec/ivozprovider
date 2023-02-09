@@ -16,65 +16,30 @@ use Monolog\Logger;
 
 class Generator
 {
-    const DATE_FORMAT = 'd-m-Y';
-    const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
+    public const DATE_FORMAT = 'd-m-Y';
+    public const DATE_TIME_FORMAT = 'd-m-Y H:i:s';
 
-    const LOGGER_PREFIX = '[Invoices][Generator]';
+    public const LOGGER_PREFIX = '[Invoices][Generator]';
 
-    protected $invoiceId;
-    protected $fixedCostTotal = 0;
-    protected $fixedCosts = array();
-    protected $totals = array();
+    /** @var int */
+    private $invoiceId;
+    /** @var int float */
+    private $fixedCostTotal = 0;
+    /** @var array<array-key, array>  */
+    private $fixedCosts = array();
+    /** @var array<array-key, float> */
+    private $totals = array();
 
-    /**
-     * @var InvoiceRepository
-     */
-    protected $invoiceRepository;
-
-    /**
-     * @var BillableCallRepository
-     */
-    protected $billableCallRepository;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var Logger
-     */
-    protected $logger;
-
-    /**
-     * @var string
-     */
-    protected $vendorDir;
-
-    /**
-     * Generator constructor.
-     *
-     * @param InvoiceRepository $invoiceRepository
-     * @param BillableCallRepository $billableCallRepository
-     * @param EntityTools $entityTools
-     * @param Logger $logger
-     * @param string $vendorDir
-     */
     public function __construct(
-        InvoiceRepository $invoiceRepository,
-        BillableCallRepository $billableCallRepository,
-        EntityTools $entityTools,
-        Logger $logger,
-        string $vendorDir
+        private InvoiceRepository $invoiceRepository,
+        private BillableCallRepository $billableCallRepository,
+        private EntityTools $entityTools,
+        private Logger $logger,
+        private string $vendorDir
     ) {
-        $this->invoiceRepository = $invoiceRepository;
-        $this->billableCallRepository = $billableCallRepository;
-        $this->entityTools = $entityTools;
-        $this->logger = $logger;
-        $this->vendorDir = $vendorDir;
     }
 
-    public function setInvoiceId($id): self
+    public function setInvoiceId(int $id): self
     {
         $this->invoiceId = $id;
         return $this;
@@ -90,7 +55,7 @@ class Generator
      * @return string
      * @throws \Exception
      */
-    public function getInvoicePDFContents(int $invoiceId)
+    public function getInvoicePDFContents(int $invoiceId): string
     {
         $this->setInvoiceId($invoiceId);
         return $this->_createInvoice();
@@ -122,10 +87,10 @@ class Generator
         $invoiceDate->setTimezone($invoiceTz);
 
         $inDate = $invoice->getInDate();
-        $inDate->setTimezone($invoiceTz);
+        $inDate = $inDate->setTimezone($invoiceTz);
 
         $outDate = $invoice->getOutDate();
-        $outDate->setTimezone($invoiceTz);
+        $outDate = $outDate->setTimezone($invoiceTz);
 
         $invoiceDto = $this->entityTools->entityToDto($invoice);
 
@@ -154,7 +119,7 @@ class Generator
         }
 
         $this->logger->debug(self::LOGGER_PREFIX . ' Preparing templates');
-        $templateEngine = new Handlebars;
+        $templateEngine = new Handlebars();
 
         $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
         $body = $templateEngine->render($templateModel->getTemplate(), $variables);
@@ -297,9 +262,9 @@ class Generator
         }
 
         $total = $callSumaryTotals['totalPrice'] + $this->fixedCostTotal;
-        $total = ceil($total*100) / 100;
+        $total = ceil($total * 100) / 100;
 
-        $totalTaxex = ceil(($total*$invoice->getTaxRate()/100)*100)/100;
+        $totalTaxex = ceil(($total * $invoice->getTaxRate() / 100) * 100) / 100;
         $totalWithTaxex = $totalTaxex + $total;
 
         $this->totals = array(
@@ -324,11 +289,11 @@ class Generator
     }
 
     /**
-     * @param string|number $value
-     * @param string|number $value2
+     * @param string|float|int $value
+     * @param string|float|int $value2
      * @return string
      */
-    protected function sumAndFormat($value, $value2)
+    protected function sumAndFormat($value, $value2): string
     {
         return $this->formatNumber(
             $this->sumConcepts($value, $value2)
@@ -336,8 +301,8 @@ class Generator
     }
 
     /**
-     * @param string|number $value
-     * @param string|number $value2
+     * @param string|float|int $value
+     * @param string|float|int $value2
      * @return float
      */
     protected function sumConcepts($value, $value2)
@@ -355,11 +320,11 @@ class Generator
     }
 
     /**
-     * @param string|number $value
+     * @param string|float|int $value
      * @param int $decimals
      * @return string
      */
-    protected function roundAndFormat($value, $decimals = 4)
+    protected function roundAndFormat($value, $decimals = 4): string
     {
         return $this->formatNumber(
             $this->roundNumber($value, $decimals)
@@ -367,7 +332,7 @@ class Generator
     }
 
     /**
-     * @param string|number $value
+     * @param string|float|int $value
      * @param int $decimals
      * @return float
      */
@@ -381,7 +346,7 @@ class Generator
      * @param float $number
      * @return string
      */
-    protected function formatNumber($number)
+    protected function formatNumber($number): string
     {
         return number_format(
             $number,
@@ -391,7 +356,10 @@ class Generator
         );
     }
 
-    protected function _timeFormat($seconds): string
+    /**
+     * @param float|int $seconds
+     */
+    protected function _timeFormat(int|float $seconds): string
     {
         $hours = floor($seconds / 3600);
         $mins = floor($seconds / 60 % 60);

@@ -2,20 +2,19 @@
 
 namespace Ivoz\Provider\Domain\Service\BannedAddress;
 
-use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Infrastructure\Kamailio\UsersClient;
 use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressInterface;
-use Ivoz\Provider\Domain\Model\BannedAddress\BannedAddressRepository;
 use Psr\Log\LoggerInterface;
 
 class Unban implements BannedAddressLifecycleEventHandlerInterface
 {
-    const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
+    public const PRE_REMOVE_PRIORITY = self::PRIORITY_HIGH;
 
-    protected $entityTools;
-    protected $bannedAddressRepository;
-    protected $kamUsersClient;
-    protected $logger;
+    public function __construct(
+        private UsersClient $kamUsersClient,
+        private LoggerInterface $logger
+    ) {
+    }
 
     public static function getSubscribedEvents()
     {
@@ -24,19 +23,7 @@ class Unban implements BannedAddressLifecycleEventHandlerInterface
         ];
     }
 
-    public function __construct(
-        EntityTools $entityTools,
-        BannedAddressRepository $bannedAddressRepository,
-        UsersClient $kamUsersClient,
-        LoggerInterface $logger
-    ) {
-        $this->entityTools = $entityTools;
-        $this->bannedAddressRepository = $bannedAddressRepository;
-        $this->kamUsersClient = $kamUsersClient;
-        $this->logger = $logger;
-    }
-
-    public function execute(BannedAddressInterface $bannedAddress)
+    public function execute(BannedAddressInterface $bannedAddress): void
     {
         $blockedByAntibruteForce = $bannedAddress->getBlocker() === BannedAddressInterface::BLOCKER_ANTIBRUTEFORCE;
         if (! $blockedByAntibruteForce) {

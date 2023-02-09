@@ -16,20 +16,23 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var RoutingPatternDto | null
      */
-    private $routingPattern;
+    private $routingPattern = null;
 
     /**
      * @var RoutingPatternGroupDto | null
      */
-    private $routingPatternGroup;
+    private $routingPatternGroup = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -38,7 +41,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -52,9 +55,9 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'id' => $this->getId(),
@@ -83,7 +86,7 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

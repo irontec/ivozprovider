@@ -1,3 +1,5 @@
+.. _ddi providers:
+
 *************
 DDI Providers
 *************
@@ -7,8 +9,6 @@ DDI Providers are the SIP entities that will contact the platform when someone c
 This are the fields that define a carrier:
 
 .. hint:: Some fields described below may not be visible depending on enabled features.
-
-.. glossary::
 
     Name
         Used to reference this Carrier.
@@ -36,8 +36,6 @@ DDI Provider Addresses
 
 The platform will recognize a DDI provider comparing SIP message's source address with the addresses in this list:
 
-.. glossary::
-
     IP address
         Used to reference this Carrier.
 
@@ -61,8 +59,6 @@ to process our outgoing calls through their services.
    session and periodic registers) and simplifies its configuration, leaving this list empty.
 
 To define a registration, these fields are shown:
-
-.. glossary::
 
     Username
         Account number or similar provider by the provider that requires SIP

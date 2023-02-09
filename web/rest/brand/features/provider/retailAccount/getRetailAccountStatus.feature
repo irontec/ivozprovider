@@ -16,12 +16,17 @@ Feature: Retrieve retail accounts status
       [
           {
               "name": "testRetailAccount",
+              "description": "",
+              "directConnectivity": "no",
               "id": 1,
               "company": 3,
               "domainName": "retail.irontec.com",
               "status": [
                   {
                       "contact": "sip:yealinktest@10.10.1.109:5060",
+                      "publicContact": false,
+                      "received": "sip:212.64.172.26:5060",
+                      "publicReceived": true,
                       "expires": "2031-01-01 00:59:59",
                       "userAgent": "Yealink SIP-T23G 44.80.0.130"
                   }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
@@ -7,17 +8,17 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Calendar\Calendar;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
-use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Country\Country;
 
 /**
@@ -34,7 +35,7 @@ abstract class HolidayDateAbstract
     protected $name;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     protected $eventDate;
 
@@ -44,25 +45,25 @@ abstract class HolidayDateAbstract
     protected $wholeDayEvent = true;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTimeInterface
      */
-    protected $timeIn;
+    protected $timeIn = null;
 
     /**
-     * @var \DateTime | null
+     * @var ?\DateTimeInterface
      */
-    protected $timeOut;
+    protected $timeOut = null;
 
     /**
+     * @var ?string
      * comment: enum:number|extension|voicemail
-     * @var string | null
      */
-    protected $routeType;
+    protected $routeType = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $numberValue;
+    protected $numberValue = null;
 
     /**
      * @var CalendarInterface
@@ -71,73 +72,66 @@ abstract class HolidayDateAbstract
     protected $calendar;
 
     /**
-     * @var LocutionInterface | null
+     * @var ?LocutionInterface
      */
-    protected $locution;
+    protected $locution = null;
 
     /**
-     * @var ExtensionInterface | null
+     * @var ?ExtensionInterface
      */
-    protected $extension;
+    protected $extension = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?VoicemailInterface
      */
-    protected $voiceMailUser;
+    protected $voicemail = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $numberCountry;
+    protected $numberCountry = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $name,
-        $eventDate,
-        $wholeDayEvent
+        string $name,
+        \DateTimeInterface $eventDate,
+        bool $wholeDayEvent
     ) {
         $this->setName($name);
         $this->setEventDate($eventDate);
         $this->setWholeDayEvent($wholeDayEvent);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "HolidayDate",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return HolidayDateDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): HolidayDateDto
     {
         return new HolidayDateDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param HolidayDateInterface|null $entity
-     * @param int $depth
-     * @return HolidayDateDto|null
+     * @param null|HolidayDateInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?HolidayDateDto
     {
         if (!$entity) {
             return null;
@@ -153,8 +147,7 @@ abstract class HolidayDateAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var HolidayDateDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -163,18 +156,25 @@ abstract class HolidayDateAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param HolidayDateDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $eventDate = $dto->getEventDate();
+        Assertion::notNull($eventDate, 'getEventDate value is null, but non null value was expected.');
+        $wholeDayEvent = $dto->getWholeDayEvent();
+        Assertion::notNull($wholeDayEvent, 'getWholeDayEvent value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getName(),
-            $dto->getEventDate(),
-            $dto->getWholeDayEvent()
+            $name,
+            $eventDate,
+            $wholeDayEvent
         );
 
         $self
@@ -182,10 +182,10 @@ abstract class HolidayDateAbstract
             ->setTimeOut($dto->getTimeOut())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         $self->initChangelog();
@@ -196,26 +196,34 @@ abstract class HolidayDateAbstract
     /**
      * @internal use EntityTools instead
      * @param HolidayDateDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, HolidayDateDto::class);
 
+        $name = $dto->getName();
+        Assertion::notNull($name, 'getName value is null, but non null value was expected.');
+        $eventDate = $dto->getEventDate();
+        Assertion::notNull($eventDate, 'getEventDate value is null, but non null value was expected.');
+        $wholeDayEvent = $dto->getWholeDayEvent();
+        Assertion::notNull($wholeDayEvent, 'getWholeDayEvent value is null, but non null value was expected.');
+        $calendar = $dto->getCalendar();
+        Assertion::notNull($calendar, 'getCalendar value is null, but non null value was expected.');
+
         $this
-            ->setName($dto->getName())
-            ->setEventDate($dto->getEventDate())
-            ->setWholeDayEvent($dto->getWholeDayEvent())
+            ->setName($name)
+            ->setEventDate($eventDate)
+            ->setWholeDayEvent($wholeDayEvent)
             ->setTimeIn($dto->getTimeIn())
             ->setTimeOut($dto->getTimeOut())
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
-            ->setCalendar($fkTransformer->transform($dto->getCalendar()))
+            ->setCalendar($fkTransformer->transform($calendar))
             ->setLocution($fkTransformer->transform($dto->getLocution()))
             ->setExtension($fkTransformer->transform($dto->getExtension()))
-            ->setVoiceMailUser($fkTransformer->transform($dto->getVoiceMailUser()))
+            ->setVoicemail($fkTransformer->transform($dto->getVoicemail()))
             ->setNumberCountry($fkTransformer->transform($dto->getNumberCountry()));
 
         return $this;
@@ -223,10 +231,8 @@ abstract class HolidayDateAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return HolidayDateDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): HolidayDateDto
     {
         return self::createDto()
             ->setName(self::getName())
@@ -239,14 +245,14 @@ abstract class HolidayDateAbstract
             ->setCalendar(Calendar::entityToDto(self::getCalendar(), $depth))
             ->setLocution(Locution::entityToDto(self::getLocution(), $depth))
             ->setExtension(Extension::entityToDto(self::getExtension(), $depth))
-            ->setVoiceMailUser(User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setVoicemail(Voicemail::entityToDto(self::getVoicemail(), $depth))
             ->setNumberCountry(Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'name' => self::getName(),
@@ -257,10 +263,10 @@ abstract class HolidayDateAbstract
             'routeType' => self::getRouteType(),
             'numberValue' => self::getNumberValue(),
             'calendarId' => self::getCalendar()->getId(),
-            'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'locutionId' => self::getLocution()?->getId(),
+            'extensionId' => self::getExtension()?->getId(),
+            'voicemailId' => self::getVoicemail()?->getId(),
+            'numberCountryId' => self::getNumberCountry()?->getId()
         ];
     }
 
@@ -278,23 +284,31 @@ abstract class HolidayDateAbstract
         return $this->name;
     }
 
-    protected function setEventDate($eventDate): static
+    protected function setEventDate(string|\DateTimeInterface $eventDate): static
     {
+
+        /** @var \Datetime */
+        $eventDate = DateTimeHelper::createOrFix(
+            $eventDate,
+            null
+        );
+
+        if ($this->isInitialized() && $this->eventDate == $eventDate) {
+            return $this;
+        }
+
         $this->eventDate = $eventDate;
 
         return $this;
     }
 
-    public function getEventDate(): \DateTime
+    public function getEventDate(): \DateTimeInterface
     {
-        return clone $this->eventDate;
+        return $this->eventDate;
     }
 
     protected function setWholeDayEvent(bool $wholeDayEvent): static
     {
-        Assertion::between(intval($wholeDayEvent), 0, 1, 'wholeDayEvent provided "%s" is not a valid boolean value.');
-        $wholeDayEvent = (bool) $wholeDayEvent;
-
         $this->wholeDayEvent = $wholeDayEvent;
 
         return $this;
@@ -305,28 +319,54 @@ abstract class HolidayDateAbstract
         return $this->wholeDayEvent;
     }
 
-    protected function setTimeIn($timeIn = null): static
+    protected function setTimeIn(string|\DateTimeInterface|null $timeIn = null): static
     {
+        if (!is_null($timeIn)) {
+
+            /** @var ?\Datetime */
+            $timeIn = DateTimeHelper::createOrFix(
+                $timeIn,
+                null
+            );
+
+            if ($this->isInitialized() && $this->timeIn == $timeIn) {
+                return $this;
+            }
+        }
+
         $this->timeIn = $timeIn;
 
         return $this;
     }
 
-    public function getTimeIn(): ?\DateTime
+    public function getTimeIn(): ?\DateTimeInterface
     {
-        return !is_null($this->timeIn) ? clone $this->timeIn : null;
+        return $this->timeIn;
     }
 
-    protected function setTimeOut($timeOut = null): static
+    protected function setTimeOut(string|\DateTimeInterface|null $timeOut = null): static
     {
+        if (!is_null($timeOut)) {
+
+            /** @var ?\Datetime */
+            $timeOut = DateTimeHelper::createOrFix(
+                $timeOut,
+                null
+            );
+
+            if ($this->isInitialized() && $this->timeOut == $timeOut) {
+                return $this;
+            }
+        }
+
         $this->timeOut = $timeOut;
 
         return $this;
     }
 
-    public function getTimeOut(): ?\DateTime
+    public function getTimeOut(): ?\DateTimeInterface
     {
-        return !is_null($this->timeOut) ? clone $this->timeOut : null;
+        return $this->timeOut;
     }
 
     protected function setRouteType(?string $routeType = null): static
@@ -374,7 +414,6 @@ abstract class HolidayDateAbstract
     {
         $this->calendar = $calendar;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -407,16 +446,16 @@ abstract class HolidayDateAbstract
         return $this->extension;
     }
 
-    protected function setVoiceMailUser(?UserInterface $voiceMailUser = null): static
+    protected function setVoicemail(?VoicemailInterface $voicemail = null): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserInterface
+    public function getVoicemail(): ?VoicemailInterface
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
     protected function setNumberCountry(?CountryInterface $numberCountry = null): static

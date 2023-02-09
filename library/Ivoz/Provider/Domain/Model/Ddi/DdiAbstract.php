@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
@@ -48,33 +49,33 @@ abstract class DdiAbstract
     use ChangelogTrait;
 
     /**
-     * column: Ddi
      * @var string
+     * column: Ddi
      */
     protected $ddi;
 
     /**
+     * @var ?string
      * column: DdiE164
-     * @var string | null
      */
-    protected $ddie164;
+    protected $ddie164 = null;
 
     /**
-     * comment: enum:none|all|inbound|outbound
      * @var string
+     * comment: enum:none|all|inbound|outbound
      */
     protected $recordCalls = 'none';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $displayName;
+    protected $displayName = null;
 
     /**
+     * @var ?string
      * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
-     * @var string | null
      */
-    protected $routeType;
+    protected $routeType = null;
 
     /**
      * @var bool
@@ -82,9 +83,9 @@ abstract class DdiAbstract
     protected $billInboundCalls = false;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $friendValue;
+    protected $friendValue = null;
 
     /**
      * @var CompanyInterface
@@ -98,120 +99,113 @@ abstract class DdiAbstract
     protected $brand;
 
     /**
-     * @var ConferenceRoomInterface | null
+     * @var ?ConferenceRoomInterface
      */
-    protected $conferenceRoom;
+    protected $conferenceRoom = null;
 
     /**
-     * @var LanguageInterface | null
+     * @var ?LanguageInterface
      */
-    protected $language;
+    protected $language = null;
 
     /**
-     * @var QueueInterface | null
+     * @var ?QueueInterface
      */
-    protected $queue;
+    protected $queue = null;
 
     /**
-     * @var ExternalCallFilterInterface | null
+     * @var ?ExternalCallFilterInterface
      */
-    protected $externalCallFilter;
+    protected $externalCallFilter = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      */
-    protected $user;
+    protected $user = null;
 
     /**
-     * @var IvrInterface | null
+     * @var ?IvrInterface
      */
-    protected $ivr;
+    protected $ivr = null;
 
     /**
-     * @var HuntGroupInterface | null
+     * @var ?HuntGroupInterface
      */
-    protected $huntGroup;
+    protected $huntGroup = null;
 
     /**
-     * @var FaxInterface | null
+     * @var ?FaxInterface
      */
-    protected $fax;
+    protected $fax = null;
 
     /**
-     * @var DdiProviderInterface | null
+     * @var ?DdiProviderInterface
      */
-    protected $ddiProvider;
+    protected $ddiProvider = null;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy ddis
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var ConditionalRouteInterface | null
+     * @var ?ConditionalRouteInterface
      */
-    protected $conditionalRoute;
+    protected $conditionalRoute = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy ddis
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $ddi,
-        $recordCalls,
-        $billInboundCalls
+        string $ddi,
+        string $recordCalls,
+        bool $billInboundCalls
     ) {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
         $this->setBillInboundCalls($billInboundCalls);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Ddi",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return DdiDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): DdiDto
     {
         return new DdiDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param DdiInterface|null $entity
-     * @param int $depth
-     * @return DdiDto|null
+     * @param null|DdiInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?DdiDto
     {
         if (!$entity) {
             return null;
@@ -227,8 +221,7 @@ abstract class DdiAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var DdiDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -237,18 +230,27 @@ abstract class DdiAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param DdiDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiDto::class);
+        $ddi = $dto->getDdi();
+        Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
+        $recordCalls = $dto->getRecordCalls();
+        Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
+        $billInboundCalls = $dto->getBillInboundCalls();
+        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getDdi(),
-            $dto->getRecordCalls(),
-            $dto->getBillInboundCalls()
+            $ddi,
+            $recordCalls,
+            $billInboundCalls
         );
 
         $self
@@ -256,8 +258,8 @@ abstract class DdiAbstract
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($company))
+            ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
@@ -280,24 +282,34 @@ abstract class DdiAbstract
     /**
      * @internal use EntityTools instead
      * @param DdiDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, DdiDto::class);
 
+        $ddi = $dto->getDdi();
+        Assertion::notNull($ddi, 'getDdi value is null, but non null value was expected.');
+        $recordCalls = $dto->getRecordCalls();
+        Assertion::notNull($recordCalls, 'getRecordCalls value is null, but non null value was expected.');
+        $billInboundCalls = $dto->getBillInboundCalls();
+        Assertion::notNull($billInboundCalls, 'getBillInboundCalls value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+
         $this
-            ->setDdi($dto->getDdi())
+            ->setDdi($ddi)
             ->setDdie164($dto->getDdie164())
-            ->setRecordCalls($dto->getRecordCalls())
+            ->setRecordCalls($recordCalls)
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
-            ->setBillInboundCalls($dto->getBillInboundCalls())
+            ->setBillInboundCalls($billInboundCalls)
             ->setFriendValue($dto->getFriendValue())
-            ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
+            ->setCompany($fkTransformer->transform($company))
+            ->setBrand($fkTransformer->transform($brand))
             ->setConferenceRoom($fkTransformer->transform($dto->getConferenceRoom()))
             ->setLanguage($fkTransformer->transform($dto->getLanguage()))
             ->setQueue($fkTransformer->transform($dto->getQueue()))
@@ -317,10 +329,8 @@ abstract class DdiAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return DdiDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): DdiDto
     {
         return self::createDto()
             ->setDdi(self::getDdi())
@@ -348,9 +358,9 @@ abstract class DdiAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'Ddi' => self::getDdi(),
@@ -362,19 +372,19 @@ abstract class DdiAbstract
             'friendValue' => self::getFriendValue(),
             'companyId' => self::getCompany()->getId(),
             'brandId' => self::getBrand()->getId(),
-            'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
-            'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'externalCallFilterId' => self::getExternalCallFilter() ? self::getExternalCallFilter()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
-            'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
-            'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'conferenceRoomId' => self::getConferenceRoom()?->getId(),
+            'languageId' => self::getLanguage()?->getId(),
+            'queueId' => self::getQueue()?->getId(),
+            'externalCallFilterId' => self::getExternalCallFilter()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'ivrId' => self::getIvr()?->getId(),
+            'huntGroupId' => self::getHuntGroup()?->getId(),
+            'faxId' => self::getFax()?->getId(),
+            'ddiProviderId' => self::getDdiProvider()?->getId(),
+            'countryId' => self::getCountry()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'conditionalRouteId' => self::getConditionalRoute()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 
@@ -482,9 +492,6 @@ abstract class DdiAbstract
 
     protected function setBillInboundCalls(bool $billInboundCalls): static
     {
-        Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
-        $billInboundCalls = (bool) $billInboundCalls;
-
         $this->billInboundCalls = $billInboundCalls;
 
         return $this;
@@ -515,7 +522,6 @@ abstract class DdiAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -660,7 +666,6 @@ abstract class DdiAbstract
     {
         $this->residentialDevice = $residentialDevice;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -685,7 +690,6 @@ abstract class DdiAbstract
     {
         $this->retailAccount = $retailAccount;
 
-        /** @var  $this */
         return $this;
     }
 

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpAccountAction;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -43,20 +44,20 @@ abstract class TpAccountActionAbstract
     protected $account;
 
     /**
+     * @var ?string
      * column: action_plan_tag
-     * @var string | null
      */
-    protected $actionPlanTag;
+    protected $actionPlanTag = null;
 
     /**
+     * @var ?string
      * column: action_triggers_tag
-     * @var string | null
      */
-    protected $actionTriggersTag;
+    protected $actionTriggersTag = null;
 
     /**
-     * column: allow_negative
      * @var bool
+     * column: allow_negative
      */
     protected $allowNegative = false;
 
@@ -66,32 +67,32 @@ abstract class TpAccountActionAbstract
     protected $disabled = false;
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $loadid,
-        $tenant,
-        $account,
-        $allowNegative,
-        $disabled,
-        $createdAt
+        string $tpid,
+        string $loadid,
+        string $tenant,
+        string $account,
+        bool $allowNegative,
+        bool $disabled,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setLoadid($loadid);
@@ -102,41 +103,34 @@ abstract class TpAccountActionAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpAccountAction",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpAccountActionDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpAccountActionDto
     {
         return new TpAccountActionDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpAccountActionInterface|null $entity
-     * @param int $depth
-     * @return TpAccountActionDto|null
+     * @param null|TpAccountActionInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpAccountActionDto
     {
         if (!$entity) {
             return null;
@@ -152,8 +146,7 @@ abstract class TpAccountActionAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpAccountActionDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -162,22 +155,35 @@ abstract class TpAccountActionAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpAccountActionDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $allowNegative = $dto->getAllowNegative();
+        Assertion::notNull($allowNegative, 'getAllowNegative value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getLoadid(),
-            $dto->getTenant(),
-            $dto->getAccount(),
-            $dto->getAllowNegative(),
-            $dto->getDisabled(),
-            $dto->getCreatedAt()
+            $tpid,
+            $loadid,
+            $tenant,
+            $account,
+            $allowNegative,
+            $disabled,
+            $createdAt
         );
 
         $self
@@ -194,24 +200,38 @@ abstract class TpAccountActionAbstract
     /**
      * @internal use EntityTools instead
      * @param TpAccountActionDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpAccountActionDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $loadid = $dto->getLoadid();
+        Assertion::notNull($loadid, 'getLoadid value is null, but non null value was expected.');
+        $tenant = $dto->getTenant();
+        Assertion::notNull($tenant, 'getTenant value is null, but non null value was expected.');
+        $account = $dto->getAccount();
+        Assertion::notNull($account, 'getAccount value is null, but non null value was expected.');
+        $allowNegative = $dto->getAllowNegative();
+        Assertion::notNull($allowNegative, 'getAllowNegative value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
-            ->setLoadid($dto->getLoadid())
-            ->setTenant($dto->getTenant())
-            ->setAccount($dto->getAccount())
+            ->setTpid($tpid)
+            ->setLoadid($loadid)
+            ->setTenant($tenant)
+            ->setAccount($account)
             ->setActionPlanTag($dto->getActionPlanTag())
             ->setActionTriggersTag($dto->getActionTriggersTag())
-            ->setAllowNegative($dto->getAllowNegative())
-            ->setDisabled($dto->getDisabled())
-            ->setCreatedAt($dto->getCreatedAt())
+            ->setAllowNegative($allowNegative)
+            ->setDisabled($disabled)
+            ->setCreatedAt($createdAt)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()));
 
@@ -220,10 +240,8 @@ abstract class TpAccountActionAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpAccountActionDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpAccountActionDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -240,9 +258,9 @@ abstract class TpAccountActionAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -254,8 +272,8 @@ abstract class TpAccountActionAbstract
             'allow_negative' => self::getAllowNegative(),
             'disabled' => self::getDisabled(),
             'created_at' => self::getCreatedAt(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId()
         ];
     }
 
@@ -349,9 +367,6 @@ abstract class TpAccountActionAbstract
 
     protected function setAllowNegative(bool $allowNegative): static
     {
-        Assertion::between(intval($allowNegative), 0, 1, 'allowNegative provided "%s" is not a valid boolean value.');
-        $allowNegative = (bool) $allowNegative;
-
         $this->allowNegative = $allowNegative;
 
         return $this;
@@ -364,9 +379,6 @@ abstract class TpAccountActionAbstract
 
     protected function setDisabled(bool $disabled): static
     {
-        Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
-        $disabled = (bool) $disabled;
-
         $this->disabled = $disabled;
 
         return $this;
@@ -377,15 +389,16 @@ abstract class TpAccountActionAbstract
         return $this->disabled;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 

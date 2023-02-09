@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
@@ -26,26 +27,26 @@ abstract class PsEndpointAbstract
     use ChangelogTrait;
 
     /**
-     * column: sorcery_id
      * @var string
+     * column: sorcery_id
      */
     protected $sorceryId;
 
     /**
+     * @var ?string
      * column: from_domain
-     * @var string | null
      */
-    protected $fromDomain;
+    protected $fromDomain = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $aors;
+    protected $aors = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callerid;
+    protected $callerid = null;
 
     /**
      * @var string
@@ -63,123 +64,140 @@ abstract class PsEndpointAbstract
     protected $allow = 'all';
 
     /**
+     * @var ?string
      * column: direct_media
-     * @var string | null
+     * comment: enum:yes|no
      */
     protected $directMedia = 'yes';
 
     /**
+     * @var ?string
      * column: direct_media_method
      * comment: enum:update|invite|reinvite
-     * @var string | null
      */
     protected $directMediaMethod = 'update';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $mailboxes;
+    protected $mailboxes = null;
 
     /**
+     * @var ?string
      * column: named_pickup_group
-     * @var string | null
      */
-    protected $namedPickupGroup;
+    protected $namedPickupGroup = null;
 
     /**
+     * @var ?string
+     * column: subscribe_context
+     */
+    protected $subscribeContext = null;
+
+    /**
+     * @var ?string
+     * column: hint_extension
+     */
+    protected $hintExtension = null;
+
+    /**
+     * @var ?string
      * column: send_diversion
-     * @var string | null
+     * comment: enum:yes|no
      */
     protected $sendDiversion = 'yes';
 
     /**
+     * @var ?string
      * column: send_pai
-     * @var string | null
+     * comment: enum:yes|no
      */
     protected $sendPai = 'yes';
 
     /**
-     * column: 100rel
      * @var string
+     * column: 100rel
+     * comment: enum:no|required|yes
      */
     protected $oneHundredRel = 'no';
 
     /**
+     * @var ?string
      * column: outbound_proxy
-     * @var string | null
      */
-    protected $outboundProxy;
+    protected $outboundProxy = null;
 
     /**
+     * @var ?string
      * column: trust_id_inbound
-     * @var string | null
+     * comment: enum:no|yes
      */
-    protected $trustIdInbound;
+    protected $trustIdInbound = null;
 
     /**
+     * @var string
      * column: t38_udptl
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38Udptl = 'no';
 
     /**
+     * @var string
      * column: t38_udptl_ec
      * comment: enum:none|fec|redundancy
-     * @var string
      */
     protected $t38UdptlEc = 'redundancy';
 
     /**
-     * column: t38_udptl_maxdatagram
      * @var int
+     * column: t38_udptl_maxdatagram
      */
     protected $t38UdptlMaxdatagram = 1440;
 
     /**
+     * @var string
      * column: t38_udptl_nat
      * comment: enum:yes|no
-     * @var string
      */
     protected $t38UdptlNat = 'no';
 
     /**
-     * @var TerminalInterface | null
+     * @var ?TerminalInterface
      * inversedBy psEndpoint
      */
-    protected $terminal;
+    protected $terminal = null;
 
     /**
-     * @var FriendInterface | null
+     * @var ?FriendInterface
      * inversedBy psEndpoint
      */
-    protected $friend;
+    protected $friend = null;
 
     /**
-     * @var ResidentialDeviceInterface | null
+     * @var ?ResidentialDeviceInterface
      * inversedBy psEndpoint
      */
-    protected $residentialDevice;
+    protected $residentialDevice = null;
 
     /**
-     * @var RetailAccountInterface | null
+     * @var ?RetailAccountInterface
      * inversedBy psEndpoint
      */
-    protected $retailAccount;
+    protected $retailAccount = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $sorceryId,
-        $context,
-        $disallow,
-        $allow,
-        $oneHundredRel,
-        $t38Udptl,
-        $t38UdptlEc,
-        $t38UdptlMaxdatagram,
-        $t38UdptlNat
+        string $sorceryId,
+        string $context,
+        string $disallow,
+        string $allow,
+        string $oneHundredRel,
+        string $t38Udptl,
+        string $t38UdptlEc,
+        int $t38UdptlMaxdatagram,
+        string $t38UdptlNat
     ) {
         $this->setSorceryId($sorceryId);
         $this->setContext($context);
@@ -192,41 +210,34 @@ abstract class PsEndpointAbstract
         $this->setT38UdptlNat($t38UdptlNat);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PsEndpoint",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return PsEndpointDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): PsEndpointDto
     {
         return new PsEndpointDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PsEndpointInterface|null $entity
-     * @param int $depth
-     * @return PsEndpointDto|null
+     * @param null|PsEndpointInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PsEndpointDto
     {
         if (!$entity) {
             return null;
@@ -242,8 +253,7 @@ abstract class PsEndpointAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PsEndpointDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -252,24 +262,41 @@ abstract class PsEndpointAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PsEndpointDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $context = $dto->getContext();
+        Assertion::notNull($context, 'getContext value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $oneHundredRel = $dto->getOneHundredRel();
+        Assertion::notNull($oneHundredRel, 'getOneHundredRel value is null, but non null value was expected.');
+        $t38Udptl = $dto->getT38Udptl();
+        Assertion::notNull($t38Udptl, 'getT38Udptl value is null, but non null value was expected.');
+        $t38UdptlEc = $dto->getT38UdptlEc();
+        Assertion::notNull($t38UdptlEc, 'getT38UdptlEc value is null, but non null value was expected.');
+        $t38UdptlMaxdatagram = $dto->getT38UdptlMaxdatagram();
+        Assertion::notNull($t38UdptlMaxdatagram, 'getT38UdptlMaxdatagram value is null, but non null value was expected.');
+        $t38UdptlNat = $dto->getT38UdptlNat();
+        Assertion::notNull($t38UdptlNat, 'getT38UdptlNat value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSorceryId(),
-            $dto->getContext(),
-            $dto->getDisallow(),
-            $dto->getAllow(),
-            $dto->getOneHundredRel(),
-            $dto->getT38Udptl(),
-            $dto->getT38UdptlEc(),
-            $dto->getT38UdptlMaxdatagram(),
-            $dto->getT38UdptlNat()
+            $sorceryId,
+            $context,
+            $disallow,
+            $allow,
+            $oneHundredRel,
+            $t38Udptl,
+            $t38UdptlEc,
+            $t38UdptlMaxdatagram,
+            $t38UdptlNat
         );
 
         $self
@@ -280,6 +307,8 @@ abstract class PsEndpointAbstract
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
             ->setNamedPickupGroup($dto->getNamedPickupGroup())
+            ->setSubscribeContext($dto->getSubscribeContext())
+            ->setHintExtension($dto->getHintExtension())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
             ->setOutboundProxy($dto->getOutboundProxy())
@@ -297,35 +326,55 @@ abstract class PsEndpointAbstract
     /**
      * @internal use EntityTools instead
      * @param PsEndpointDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PsEndpointDto::class);
 
+        $sorceryId = $dto->getSorceryId();
+        Assertion::notNull($sorceryId, 'getSorceryId value is null, but non null value was expected.');
+        $context = $dto->getContext();
+        Assertion::notNull($context, 'getContext value is null, but non null value was expected.');
+        $disallow = $dto->getDisallow();
+        Assertion::notNull($disallow, 'getDisallow value is null, but non null value was expected.');
+        $allow = $dto->getAllow();
+        Assertion::notNull($allow, 'getAllow value is null, but non null value was expected.');
+        $oneHundredRel = $dto->getOneHundredRel();
+        Assertion::notNull($oneHundredRel, 'getOneHundredRel value is null, but non null value was expected.');
+        $t38Udptl = $dto->getT38Udptl();
+        Assertion::notNull($t38Udptl, 'getT38Udptl value is null, but non null value was expected.');
+        $t38UdptlEc = $dto->getT38UdptlEc();
+        Assertion::notNull($t38UdptlEc, 'getT38UdptlEc value is null, but non null value was expected.');
+        $t38UdptlMaxdatagram = $dto->getT38UdptlMaxdatagram();
+        Assertion::notNull($t38UdptlMaxdatagram, 'getT38UdptlMaxdatagram value is null, but non null value was expected.');
+        $t38UdptlNat = $dto->getT38UdptlNat();
+        Assertion::notNull($t38UdptlNat, 'getT38UdptlNat value is null, but non null value was expected.');
+
         $this
-            ->setSorceryId($dto->getSorceryId())
+            ->setSorceryId($sorceryId)
             ->setFromDomain($dto->getFromDomain())
             ->setAors($dto->getAors())
             ->setCallerid($dto->getCallerid())
-            ->setContext($dto->getContext())
-            ->setDisallow($dto->getDisallow())
-            ->setAllow($dto->getAllow())
+            ->setContext($context)
+            ->setDisallow($disallow)
+            ->setAllow($allow)
             ->setDirectMedia($dto->getDirectMedia())
             ->setDirectMediaMethod($dto->getDirectMediaMethod())
             ->setMailboxes($dto->getMailboxes())
             ->setNamedPickupGroup($dto->getNamedPickupGroup())
+            ->setSubscribeContext($dto->getSubscribeContext())
+            ->setHintExtension($dto->getHintExtension())
             ->setSendDiversion($dto->getSendDiversion())
             ->setSendPai($dto->getSendPai())
-            ->setOneHundredRel($dto->getOneHundredRel())
+            ->setOneHundredRel($oneHundredRel)
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setTrustIdInbound($dto->getTrustIdInbound())
-            ->setT38Udptl($dto->getT38Udptl())
-            ->setT38UdptlEc($dto->getT38UdptlEc())
-            ->setT38UdptlMaxdatagram($dto->getT38UdptlMaxdatagram())
-            ->setT38UdptlNat($dto->getT38UdptlNat())
+            ->setT38Udptl($t38Udptl)
+            ->setT38UdptlEc($t38UdptlEc)
+            ->setT38UdptlMaxdatagram($t38UdptlMaxdatagram)
+            ->setT38UdptlNat($t38UdptlNat)
             ->setTerminal($fkTransformer->transform($dto->getTerminal()))
             ->setFriend($fkTransformer->transform($dto->getFriend()))
             ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
@@ -336,10 +385,8 @@ abstract class PsEndpointAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return PsEndpointDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): PsEndpointDto
     {
         return self::createDto()
             ->setSorceryId(self::getSorceryId())
@@ -353,6 +400,8 @@ abstract class PsEndpointAbstract
             ->setDirectMediaMethod(self::getDirectMediaMethod())
             ->setMailboxes(self::getMailboxes())
             ->setNamedPickupGroup(self::getNamedPickupGroup())
+            ->setSubscribeContext(self::getSubscribeContext())
+            ->setHintExtension(self::getHintExtension())
             ->setSendDiversion(self::getSendDiversion())
             ->setSendPai(self::getSendPai())
             ->setOneHundredRel(self::getOneHundredRel())
@@ -369,9 +418,9 @@ abstract class PsEndpointAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'sorcery_id' => self::getSorceryId(),
@@ -385,6 +434,8 @@ abstract class PsEndpointAbstract
             'direct_media_method' => self::getDirectMediaMethod(),
             'mailboxes' => self::getMailboxes(),
             'named_pickup_group' => self::getNamedPickupGroup(),
+            'subscribe_context' => self::getSubscribeContext(),
+            'hint_extension' => self::getHintExtension(),
             'send_diversion' => self::getSendDiversion(),
             'send_pai' => self::getSendPai(),
             '100rel' => self::getOneHundredRel(),
@@ -394,10 +445,10 @@ abstract class PsEndpointAbstract
             't38_udptl_ec' => self::getT38UdptlEc(),
             't38_udptl_maxdatagram' => self::getT38UdptlMaxdatagram(),
             't38_udptl_nat' => self::getT38UdptlNat(),
-            'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'terminalId' => self::getTerminal()?->getId(),
+            'friendId' => self::getFriend()?->getId(),
+            'residentialDeviceId' => self::getResidentialDevice()?->getId(),
+            'retailAccountId' => self::getRetailAccount()?->getId()
         ];
     }
 
@@ -507,6 +558,18 @@ abstract class PsEndpointAbstract
 
     protected function setDirectMedia(?string $directMedia = null): static
     {
+        if (!is_null($directMedia)) {
+            Assertion::maxLength($directMedia, 25, 'directMedia value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $directMedia,
+                [
+                    PsEndpointInterface::DIRECTMEDIA_YES,
+                    PsEndpointInterface::DIRECTMEDIA_NO,
+                ],
+                'directMediavalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->directMedia = $directMedia;
 
         return $this;
@@ -520,6 +583,7 @@ abstract class PsEndpointAbstract
     protected function setDirectMediaMethod(?string $directMediaMethod = null): static
     {
         if (!is_null($directMediaMethod)) {
+            Assertion::maxLength($directMediaMethod, 25, 'directMediaMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice(
                 $directMediaMethod,
                 [
@@ -573,8 +637,52 @@ abstract class PsEndpointAbstract
         return $this->namedPickupGroup;
     }
 
+    protected function setSubscribeContext(?string $subscribeContext = null): static
+    {
+        if (!is_null($subscribeContext)) {
+            Assertion::maxLength($subscribeContext, 40, 'subscribeContext value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->subscribeContext = $subscribeContext;
+
+        return $this;
+    }
+
+    public function getSubscribeContext(): ?string
+    {
+        return $this->subscribeContext;
+    }
+
+    protected function setHintExtension(?string $hintExtension = null): static
+    {
+        if (!is_null($hintExtension)) {
+            Assertion::maxLength($hintExtension, 10, 'hintExtension value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->hintExtension = $hintExtension;
+
+        return $this;
+    }
+
+    public function getHintExtension(): ?string
+    {
+        return $this->hintExtension;
+    }
+
     protected function setSendDiversion(?string $sendDiversion = null): static
     {
+        if (!is_null($sendDiversion)) {
+            Assertion::maxLength($sendDiversion, 25, 'sendDiversion value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $sendDiversion,
+                [
+                    PsEndpointInterface::SENDDIVERSION_YES,
+                    PsEndpointInterface::SENDDIVERSION_NO,
+                ],
+                'sendDiversionvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->sendDiversion = $sendDiversion;
 
         return $this;
@@ -587,6 +695,18 @@ abstract class PsEndpointAbstract
 
     protected function setSendPai(?string $sendPai = null): static
     {
+        if (!is_null($sendPai)) {
+            Assertion::maxLength($sendPai, 25, 'sendPai value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $sendPai,
+                [
+                    PsEndpointInterface::SENDPAI_YES,
+                    PsEndpointInterface::SENDPAI_NO,
+                ],
+                'sendPaivalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->sendPai = $sendPai;
 
         return $this;
@@ -599,6 +719,17 @@ abstract class PsEndpointAbstract
 
     protected function setOneHundredRel(string $oneHundredRel): static
     {
+        Assertion::maxLength($oneHundredRel, 25, 'oneHundredRel value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice(
+            $oneHundredRel,
+            [
+                PsEndpointInterface::ONEHUNDREDREL_NO,
+                PsEndpointInterface::ONEHUNDREDREL_REQUIRED,
+                PsEndpointInterface::ONEHUNDREDREL_YES,
+            ],
+            'oneHundredRelvalue "%s" is not an element of the valid values: %s'
+        );
+
         $this->oneHundredRel = $oneHundredRel;
 
         return $this;
@@ -627,6 +758,18 @@ abstract class PsEndpointAbstract
 
     protected function setTrustIdInbound(?string $trustIdInbound = null): static
     {
+        if (!is_null($trustIdInbound)) {
+            Assertion::maxLength($trustIdInbound, 25, 'trustIdInbound value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice(
+                $trustIdInbound,
+                [
+                    PsEndpointInterface::TRUSTIDINBOUND_NO,
+                    PsEndpointInterface::TRUSTIDINBOUND_YES,
+                ],
+                'trustIdInboundvalue "%s" is not an element of the valid values: %s'
+            );
+        }
+
         $this->trustIdInbound = $trustIdInbound;
 
         return $this;
@@ -639,6 +782,7 @@ abstract class PsEndpointAbstract
 
     protected function setT38Udptl(string $t38Udptl): static
     {
+        Assertion::maxLength($t38Udptl, 25, 't38Udptl value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $t38Udptl,
             [
@@ -660,6 +804,7 @@ abstract class PsEndpointAbstract
 
     protected function setT38UdptlEc(string $t38UdptlEc): static
     {
+        Assertion::maxLength($t38UdptlEc, 25, 't38UdptlEc value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $t38UdptlEc,
             [
@@ -696,6 +841,7 @@ abstract class PsEndpointAbstract
 
     protected function setT38UdptlNat(string $t38UdptlNat): static
     {
+        Assertion::maxLength($t38UdptlNat, 25, 't38UdptlNat value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice(
             $t38UdptlNat,
             [
@@ -719,7 +865,6 @@ abstract class PsEndpointAbstract
     {
         $this->terminal = $terminal;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -732,7 +877,6 @@ abstract class PsEndpointAbstract
     {
         $this->friend = $friend;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -745,7 +889,6 @@ abstract class PsEndpointAbstract
     {
         $this->residentialDevice = $residentialDevice;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -758,7 +901,6 @@ abstract class PsEndpointAbstract
     {
         $this->retailAccount = $retailAccount;
 
-        /** @var  $this */
         return $this;
     }
 

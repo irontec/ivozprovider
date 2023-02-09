@@ -7,7 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 
@@ -20,55 +20,63 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $entry;
-
-    /**
-     * @var string
-     */
-    private $routeType;
+    private $entry = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $displayName = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $routeType = null;
+
+    /**
+     * @var string|null
+     */
+    private $numberValue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var IvrDto | null
      */
-    private $ivr;
+    private $ivr = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $welcomeLocution;
+    private $welcomeLocution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $voiceMailUser;
+    private $voicemail = null;
 
     /**
      * @var ConditionalRouteDto | null
      */
-    private $conditionalRoute;
+    private $conditionalRoute = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -77,7 +85,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -85,32 +93,34 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
 
         return [
             'entry' => 'entry',
+            'displayName' => 'displayName',
             'routeType' => 'routeType',
             'numberValue' => 'numberValue',
             'id' => 'id',
             'ivrId' => 'ivr',
             'welcomeLocutionId' => 'welcomeLocution',
             'extensionId' => 'extension',
-            'voiceMailUserId' => 'voiceMailUser',
+            'voicemailId' => 'voicemail',
             'conditionalRouteId' => 'conditionalRoute',
             'numberCountryId' => 'numberCountry'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'entry' => $this->getEntry(),
+            'displayName' => $this->getDisplayName(),
             'routeType' => $this->getRouteType(),
             'numberValue' => $this->getNumberValue(),
             'id' => $this->getId(),
             'ivr' => $this->getIvr(),
             'welcomeLocution' => $this->getWelcomeLocution(),
             'extension' => $this->getExtension(),
-            'voiceMailUser' => $this->getVoiceMailUser(),
+            'voicemail' => $this->getVoicemail(),
             'conditionalRoute' => $this->getConditionalRoute(),
             'numberCountry' => $this->getNumberCountry()
         ];
@@ -129,7 +139,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setEntry(?string $entry): static
+    public function setEntry(string $entry): static
     {
         $this->entry = $entry;
 
@@ -141,7 +151,19 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this->entry;
     }
 
-    public function setRouteType(?string $routeType): static
+    public function setDisplayName(?string $displayName): static
+    {
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
+    }
+
+    public function setRouteType(string $routeType): static
     {
         $this->routeType = $routeType;
 
@@ -172,7 +194,7 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -267,30 +289,30 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setVoiceMailUser(?UserDto $voiceMailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
-    public function setVoiceMailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoiceMailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoiceMailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoiceMailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

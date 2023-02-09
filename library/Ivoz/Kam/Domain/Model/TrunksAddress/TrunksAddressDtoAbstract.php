@@ -15,40 +15,43 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $grp = 1;
 
     /**
      * @var string|null
      */
-    private $ipAddr;
+    private $ipAddr = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $mask = 32;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $port = 0;
 
     /**
      * @var string|null
      */
-    private $tag;
+    private $tag = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderAddressDto | null
      */
-    private $ddiProviderAddress;
+    private $ddiProviderAddress = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -57,7 +60,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -75,9 +78,9 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'grp' => $this->getGrp(),
@@ -103,7 +106,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setGrp(?int $grp): static
+    public function setGrp(int $grp): static
     {
         $this->grp = $grp;
 
@@ -127,7 +130,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this->ipAddr;
     }
 
-    public function setMask(?int $mask): static
+    public function setMask(int $mask): static
     {
         $this->mask = $mask;
 
@@ -139,7 +142,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this->mask;
     }
 
-    public function setPort(?int $port): static
+    public function setPort(int $port): static
     {
         $this->port = $port;
 
@@ -170,7 +173,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -3,35 +3,22 @@
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
-use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
+    public const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
 
-    const UNMETERED_CALLS = 50001;
-    const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
-    const SENSELESS_IN_OUT_DATE = 50005;
-    const FORBIDDEN_FUTURE_DATES = 50006;
-
-    /**
-     * @var BillableCallRepository
-     */
-    protected $billableCallRepository;
-
-    /**
-     * @var InvoiceRepository
-     */
-    protected $invoiveRepository;
+    public const UNMETERED_CALLS = 50001;
+    public const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
+    public const SENSELESS_IN_OUT_DATE = 50005;
+    public const FORBIDDEN_FUTURE_DATES = 50006;
 
     public function __construct(
-        BillableCallRepository $billableCallRepository,
-        InvoiceRepository $invoiveRepository
+        private BillableCallRepository $billableCallRepository,
+        private InvoiceRepository $invoiveRepository
     ) {
-        $this->billableCallRepository = $billableCallRepository;
-        $this->invoiveRepository = $invoiveRepository;
     }
 
     public static function getSubscribedEvents()
@@ -42,10 +29,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
-     * @param InvoiceInterface $invoice
-     *
      * @throws \Exception
-     *
      * @return void
      */
     public function execute(InvoiceInterface $invoice)
@@ -84,14 +68,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $this->assertNoInvoiceInDateRange($invoice, $utcInDate, $utcOutDate);
     }
 
-    /**
-     * @param \DateTimeZone $invoiceTz
-     * @param \DateTime $inDate
-     * @param \DateTime $outDate
-     *
-     * @return void
-     */
-    private function assertNoFutureDates($invoiceTz, $inDate, $outDate)
+    private function assertNoFutureDates(\DateTimeZone $invoiceTz, \DateTimeInterface $inDate, \DateTimeInterface $outDate): void
     {
         $now = (new \DateTime())->setTimezone($invoiceTz);
         $today = $now->setTime(0, 0, 0);
@@ -101,15 +78,11 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
-     * @param InvoiceInterface $invoice
-     *
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\Query\QueryException
-     *
-     * @return void
      */
-    private function assertNoUnmeteredCalls(InvoiceInterface $invoice)
+    private function assertNoUnmeteredCalls(InvoiceInterface $invoice): void
     {
 
         $unratedCallNum = $this
@@ -123,18 +96,11 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         }
     }
 
-    /**
-     * @param InvoiceInterface $invoice
-     * @param \DateTime $utcInDate
-     * @param \DateTime $utcOutDate
-     *
-     * @return void
-     */
-    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTime $utcInDate, \DateTime $utcOutDate)
+    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, \DateTimeInterface $utcInDate, \DateTimeInterface $utcOutDate): void
     {
         $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
-            $invoice->getCompany()->getId(),
-            $invoice->getBrand()->getId(),
+            (int) $invoice->getCompany()->getId(),
+            (int) $invoice->getBrand()->getId(),
             $utcInDate->format('Y-m-d H:i:s'),
             $utcOutDate->format('Y-m-d H:i:s'),
             $invoice->getId()

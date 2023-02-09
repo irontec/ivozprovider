@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\PickUpRelUser;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup;
@@ -22,16 +23,16 @@ abstract class PickUpRelUserAbstract
     use ChangelogTrait;
 
     /**
-     * @var PickUpGroupInterface | null
+     * @var ?PickUpGroupInterface
      * inversedBy relUsers
      */
-    protected $pickUpGroup;
+    protected $pickUpGroup = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?UserInterface
      * inversedBy pickUpRelUsers
      */
-    protected $user;
+    protected $user = null;
 
     /**
      * Constructor
@@ -40,41 +41,34 @@ abstract class PickUpRelUserAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "PickUpRelUser",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return PickUpRelUserDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): PickUpRelUserDto
     {
         return new PickUpRelUserDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param PickUpRelUserInterface|null $entity
-     * @param int $depth
-     * @return PickUpRelUserDto|null
+     * @param null|PickUpRelUserInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?PickUpRelUserDto
     {
         if (!$entity) {
             return null;
@@ -90,8 +84,7 @@ abstract class PickUpRelUserAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var PickUpRelUserDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -100,12 +93,11 @@ abstract class PickUpRelUserAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param PickUpRelUserDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PickUpRelUserDto::class);
 
         $self = new static();
@@ -122,12 +114,11 @@ abstract class PickUpRelUserAbstract
     /**
      * @internal use EntityTools instead
      * @param PickUpRelUserDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, PickUpRelUserDto::class);
 
         $this
@@ -139,10 +130,8 @@ abstract class PickUpRelUserAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return PickUpRelUserDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): PickUpRelUserDto
     {
         return self::createDto()
             ->setPickUpGroup(PickUpGroup::entityToDto(self::getPickUpGroup(), $depth))
@@ -150,13 +139,13 @@ abstract class PickUpRelUserAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'pickUpGroupId' => self::getPickUpGroup() ? self::getPickUpGroup()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null
+            'pickUpGroupId' => self::getPickUpGroup()?->getId(),
+            'userId' => self::getUser()?->getId()
         ];
     }
 
@@ -164,7 +153,6 @@ abstract class PickUpRelUserAbstract
     {
         $this->pickUpGroup = $pickUpGroup;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -177,7 +165,6 @@ abstract class PickUpRelUserAbstract
     {
         $this->user = $user;
 
-        /** @var  $this */
         return $this;
     }
 

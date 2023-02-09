@@ -13,12 +13,7 @@ class NextExecutionResolver implements CallCsvSchedulerLifecycleEventHandlerInte
 {
     use NextExecutionResolverTrait;
 
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
         EntityTools $entityTools

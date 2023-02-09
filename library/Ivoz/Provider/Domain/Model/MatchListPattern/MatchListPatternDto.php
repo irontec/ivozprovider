@@ -8,7 +8,7 @@ class MatchListPatternDto extends MatchListPatternDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -16,7 +16,9 @@ class MatchListPatternDto extends MatchListPatternDtoAbstract
                 'description' => 'description',
                 'type' => 'type',
                 'regexp' => 'regexp',
-                'numbervalue' => 'numbervalue'
+                'numbervalue' => 'numbervalue',
+                'numberCountryId' => 'numberCountry',
+                'matchListId' => 'matchList',
             ];
         }
 

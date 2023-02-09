@@ -15,35 +15,38 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $pinProtected = false;
 
     /**
      * @var string|null
      */
-    private $pinCode;
+    private $pinCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $maxMembers = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var CompanyDto | null
      */
-    private $company;
+    private $company = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -52,7 +55,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -69,9 +72,9 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -96,7 +99,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -108,7 +111,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->name;
     }
 
-    public function setPinProtected(?bool $pinProtected): static
+    public function setPinProtected(bool $pinProtected): static
     {
         $this->pinProtected = $pinProtected;
 
@@ -132,7 +135,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this->pinCode;
     }
 
-    public function setMaxMembers(?int $maxMembers): static
+    public function setMaxMembers(int $maxMembers): static
     {
         $this->maxMembers = $maxMembers;
 
@@ -151,7 +154,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
@@ -32,16 +33,16 @@ abstract class RatingProfileAbstract
     protected $activationTime;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy ratingProfiles
      */
-    protected $company;
+    protected $company = null;
 
     /**
-     * @var CarrierInterface | null
+     * @var ?CarrierInterface
      * inversedBy ratingProfiles
      */
-    protected $carrier;
+    protected $carrier = null;
 
     /**
      * @var RatingPlanGroupInterface
@@ -49,54 +50,47 @@ abstract class RatingProfileAbstract
     protected $ratingPlanGroup;
 
     /**
-     * @var RoutingTagInterface | null
+     * @var ?RoutingTagInterface
      */
-    protected $routingTag;
+    protected $routingTag = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $activationTime
+        \DateTimeInterface|string $activationTime
     ) {
         $this->setActivationTime($activationTime);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "RatingProfile",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RatingProfileDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RatingProfileDto
     {
         return new RatingProfileDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RatingProfileInterface|null $entity
-     * @param int $depth
-     * @return RatingProfileDto|null
+     * @param null|RatingProfileInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RatingProfileDto
     {
         if (!$entity) {
             return null;
@@ -112,8 +106,7 @@ abstract class RatingProfileAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RatingProfileDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -122,22 +115,25 @@ abstract class RatingProfileAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RatingProfileDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getActivationTime()
+            $activationTime
         );
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         $self->initChangelog();
@@ -148,19 +144,23 @@ abstract class RatingProfileAbstract
     /**
      * @internal use EntityTools instead
      * @param RatingProfileDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
+        $activationTime = $dto->getActivationTime();
+        Assertion::notNull($activationTime, 'getActivationTime value is null, but non null value was expected.');
+        $ratingPlanGroup = $dto->getRatingPlanGroup();
+        Assertion::notNull($ratingPlanGroup, 'getRatingPlanGroup value is null, but non null value was expected.');
+
         $this
-            ->setActivationTime($dto->getActivationTime())
+            ->setActivationTime($activationTime)
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setCarrier($fkTransformer->transform($dto->getCarrier()))
-            ->setRatingPlanGroup($fkTransformer->transform($dto->getRatingPlanGroup()))
+            ->setRatingPlanGroup($fkTransformer->transform($ratingPlanGroup))
             ->setRoutingTag($fkTransformer->transform($dto->getRoutingTag()));
 
         return $this;
@@ -168,10 +168,8 @@ abstract class RatingProfileAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RatingProfileDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RatingProfileDto
     {
         return self::createDto()
             ->setActivationTime(self::getActivationTime())
@@ -182,28 +180,29 @@ abstract class RatingProfileAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'activationTime' => self::getActivationTime(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
+            'carrierId' => self::getCarrier()?->getId(),
             'ratingPlanGroupId' => self::getRatingPlanGroup()->getId(),
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
+            'routingTagId' => self::getRoutingTag()?->getId()
         ];
     }
 
-    protected function setActivationTime($activationTime): static
+    protected function setActivationTime(string|\DateTimeInterface $activationTime): static
     {
 
+        /** @var \Datetime */
         $activationTime = DateTimeHelper::createOrFix(
             $activationTime,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->activationTime == $activationTime) {
+        if ($this->isInitialized() && $this->activationTime == $activationTime) {
             return $this;
         }
 
@@ -221,7 +220,6 @@ abstract class RatingProfileAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -234,7 +232,6 @@ abstract class RatingProfileAbstract
     {
         $this->carrier = $carrier;
 
-        /** @var  $this */
         return $this;
     }
 

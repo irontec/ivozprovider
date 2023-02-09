@@ -51,6 +51,7 @@ production:
                 - friendValue
                 - queue
                 - conditionalRoute
+                - voicemail
           'user':
             title: ngettext('User', 'Users', 1)
             visualFilter:
@@ -97,6 +98,12 @@ production:
             title: _('Conditional Route')
             visualFilter:
               show: [ conditionalRoute ]
+              hide:
+                <<: *routableFields
+          'voicemail':
+            title: _('Voicemail')
+            visualFilter:
+              show: [ voicemail ]
               hide:
                 <<: *routableFields
     numberCountry:
@@ -224,7 +231,22 @@ production:
           order:
             ConditionalRoute.name: asc
         'null': _("Unassigned")
-
+    voicemail:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Voicemail\Voicemail
+          filterClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Voicemail.name: asc
+        'null': _("Unassigned")
     target:
       title: _('Target')
       type: ghost

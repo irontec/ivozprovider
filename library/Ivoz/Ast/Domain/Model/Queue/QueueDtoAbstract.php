@@ -15,65 +15,68 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $name;
+    private $name = null;
 
     /**
      * @var string|null
      */
-    private $periodicAnnounce;
+    private $periodicAnnounce = null;
 
     /**
      * @var int|null
      */
-    private $periodicAnnounceFrequency;
+    private $periodicAnnounceFrequency = null;
 
     /**
      * @var int|null
      */
-    private $timeout;
+    private $timeout = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $autopause = 'no';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ringinuse = 'no';
 
     /**
      * @var int|null
      */
-    private $wrapuptime;
+    private $wrapuptime = null;
 
     /**
      * @var int|null
      */
-    private $maxlen;
+    private $maxlen = null;
 
     /**
      * @var string|null
      */
-    private $strategy;
+    private $strategy = null;
 
     /**
      * @var int|null
      */
-    private $weight;
+    private $weight = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var QueueDto | null
      */
-    private $queue;
+    private $queue = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -82,7 +85,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -105,9 +108,9 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'name' => $this->getName(),
@@ -138,7 +141,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setName(?string $name): static
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -186,7 +189,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeout;
     }
 
-    public function setAutopause(?string $autopause): static
+    public function setAutopause(string $autopause): static
     {
         $this->autopause = $autopause;
 
@@ -198,7 +201,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->autopause;
     }
 
-    public function setRinginuse(?string $ringinuse): static
+    public function setRinginuse(string $ringinuse): static
     {
         $this->ringinuse = $ringinuse;
 
@@ -265,7 +268,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

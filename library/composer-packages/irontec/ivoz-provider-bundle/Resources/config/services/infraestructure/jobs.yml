@@ -46,3 +46,12 @@ services:
   Ivoz\Kam\Infrastructure\Redis\Job\UserRpcJob:
     arguments:
       $redisDb: '%redis_jobs_db%'
+
+  # Asterisk ARI calls
+  Ivoz\Ast\Infrastructure\Redis\Job\DialplanReloadJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'
+
+  Ivoz\Ast\Infrastructure\Redis\Job\HintUpdateJob:
+    arguments:
+      $redisDb: '%redis_jobs_db%'

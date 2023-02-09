@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\BrandService;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -41,46 +42,39 @@ abstract class BrandServiceAbstract
      * Constructor
      */
     protected function __construct(
-        $code
+        string $code
     ) {
         $this->setCode($code);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "BrandService",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return BrandServiceDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): BrandServiceDto
     {
         return new BrandServiceDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param BrandServiceInterface|null $entity
-     * @param int $depth
-     * @return BrandServiceDto|null
+     * @param null|BrandServiceInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?BrandServiceDto
     {
         if (!$entity) {
             return null;
@@ -96,8 +90,7 @@ abstract class BrandServiceAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var BrandServiceDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -106,21 +99,26 @@ abstract class BrandServiceAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param BrandServiceDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getCode()
+            $code
         );
 
         $self
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setBrand($fkTransformer->transform($brand))
+            ->setService($fkTransformer->transform($service));
 
         $self->initChangelog();
 
@@ -130,28 +128,32 @@ abstract class BrandServiceAbstract
     /**
      * @internal use EntityTools instead
      * @param BrandServiceDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
 
+        $code = $dto->getCode();
+        Assertion::notNull($code, 'getCode value is null, but non null value was expected.');
+        $brand = $dto->getBrand();
+        Assertion::notNull($brand, 'getBrand value is null, but non null value was expected.');
+        $service = $dto->getService();
+        Assertion::notNull($service, 'getService value is null, but non null value was expected.');
+
         $this
-            ->setCode($dto->getCode())
-            ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setService($fkTransformer->transform($dto->getService()));
+            ->setCode($code)
+            ->setBrand($fkTransformer->transform($brand))
+            ->setService($fkTransformer->transform($service));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return BrandServiceDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): BrandServiceDto
     {
         return self::createDto()
             ->setCode(self::getCode())
@@ -160,9 +162,9 @@ abstract class BrandServiceAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'code' => self::getCode(),
@@ -189,7 +191,6 @@ abstract class BrandServiceAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

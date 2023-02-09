@@ -11,7 +11,11 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
 {
     use RoutingPatternTrait;
 
-    public function getChangeSet()
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -21,7 +25,7 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -29,7 +33,7 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
     /**
      * {@inheritDoc}
      */
-    public function setPrefix(string$prefix = null): static
+    public function setPrefix(string $prefix = null): static
     {
         if (!empty($prefix)) {
             Assertion::regex($prefix, '/^\+[0-9]*/');

@@ -4,6 +4,7 @@ pushd /opt/irontec/ivozprovider/microservices/scheduler/bin
 
 ./run-call-csv-to-email
 ./run-invoice-scheduler
+./run-voicemail-messages
 
 popd
 

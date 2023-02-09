@@ -11,21 +11,11 @@ use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHa
 
 class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * CreatedByTpDestinationRate constructor.
-     * @param EntityTools $entityTools
-     */
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     /**
@@ -65,7 +55,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             ->setRateIncrement($destinationRate->getRateIncrement())
             ->setGroupIntervalStart($destinationRate->getGroupIntervalStart());
 
-        $tpRate = $this
+        $this
             ->entityTools
             ->persistDto(
                 $tpRateDto,

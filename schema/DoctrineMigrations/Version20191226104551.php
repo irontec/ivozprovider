@@ -10,7 +10,12 @@ use Doctrine\DBAL\Schema\Schema;
  */
 class Version20191226104551 extends LoggableMigration
 {
-    public function up(Schema $schema)
+    public function isTransactional() : bool
+    {
+        return false;
+    }
+
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql',
@@ -748,7 +753,7 @@ class Version20191226104551 extends LoggableMigration
 
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
 
     }

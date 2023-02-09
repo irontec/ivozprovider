@@ -10,9 +10,9 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CsvExporter
 {
-    const API_ENDPOINT = 'billable_calls';
+    public const API_ENDPOINT = 'billable_calls';
 
-    const CLIENT_PROPERTIES = [
+    public const CLIENT_PROPERTIES = [
         'callid',
         'startTime',
         'direction',
@@ -29,7 +29,7 @@ class CsvExporter
         'friendId',
     ];
 
-    const BRAND_PROPERTIES = [
+    public const BRAND_PROPERTIES = [
         'callid',
         'startTime',
         'direction',
@@ -53,24 +53,23 @@ class CsvExporter
         'friendId',
     ];
 
-    protected $apiClient;
-
     public function __construct(
-        ApiClientInterface $apiClient
+        private ApiClientInterface $apiClient
     ) {
-        $this->apiClient = $apiClient;
     }
 
     /**
      * @return string
+     * @param \DateTime|\DateTimeImmutable $inDate
+     * @param \DateTime|\DateTimeImmutable $outDate
      */
     public function execute(
-        \DateTime $inDate,
-        \DateTime $outDate,
+        \DateTimeInterface $inDate,
+        \DateTimeInterface $outDate,
         CompanyInterface $company = null,
         BrandInterface $brand = null,
         CallCsvSchedulerInterface $scheduler
-    ) {
+    ): string {
         $timezone = 'UTC';
         if ($company) {
             $timezone = $company->getDefaultTimezone()->getTz();
@@ -79,8 +78,8 @@ class CsvExporter
         }
         $dateTimeZone = new \DateTimeZone($timezone);
 
-        $inDate->setTimezone($dateTimeZone);
-        $outDate->setTimezone($dateTimeZone);
+        $inDate = $inDate->setTimezone($dateTimeZone);
+        $outDate = $outDate->setTimezone($dateTimeZone);
 
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),

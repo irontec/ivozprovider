@@ -8,7 +8,6 @@ use IvozProvider\Utils\SizeFormatter;
 
 class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_Abstract
 {
-
     /**
      * @param BrandDto $model
      * @return string

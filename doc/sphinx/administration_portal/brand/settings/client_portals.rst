@@ -1,4 +1,5 @@
 .. _client_portals:
+.. _client portals:
 
 ##############
 Client Portals

@@ -18,38 +18,41 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string|null
      */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $type;
+    private $description = null;
 
     /**
      * @var string|null
      */
-    private $regexp;
+    private $type = null;
 
     /**
      * @var string|null
      */
-    private $numbervalue;
+    private $regexp = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numbervalue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var MatchListDto | null
      */
-    private $matchList;
+    private $matchList = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -58,7 +61,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -76,9 +79,9 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'description' => $this->getDescription(),
@@ -116,7 +119,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->description;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -159,7 +162,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

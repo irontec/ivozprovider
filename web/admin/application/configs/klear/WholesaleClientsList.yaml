@@ -109,6 +109,7 @@ production:
           callCsvNotificationTemplate: true
           externallyExtraOpts: true
           maxDailyUsageNotificationTemplate: true
+          relCodecs: true
         order: &wholesaleClientsOrder_Link
           id: true
           name: true

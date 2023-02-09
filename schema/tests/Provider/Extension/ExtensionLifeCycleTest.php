@@ -3,11 +3,12 @@
 namespace Tests\Provider\Extension;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
-use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\Voicemail as AstVoicemail;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 
@@ -90,7 +91,9 @@ class ExtensionLifeCycleTest extends KernelTestCase
         $this->assetChangedEntities([
             Extension::class,
             PsEndpoint::class,
-            User::class
+            User::class,
+            Voicemail::class,
+            AstVoicemail::class
         ]);
     }
 
@@ -139,7 +142,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
         $this->assertEquals(
             $changelogEntries[1]->getData(),
             [
-                'extensionId' => 4
+                'extensionId' => 5
             ]
         );
     }
@@ -155,6 +158,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
             PsEndpoint::class,
             User::class,
             Voicemail::class,
+            AstVoicemail::class,
         ]);
     }
 
@@ -200,21 +204,10 @@ class ExtensionLifeCycleTest extends KernelTestCase
             $changelogEntries[0]->getData(),
             [
                 'callerid' => 'Bob Bobson <104>',
-                'mailboxes' => 'user2@company1'
+                'mailboxes' => 'user2@company1',
+                'hint_extension' => '104',
             ]
         );
-    }
-
-    /**
-     * @test
-     */
-    public function it_triggers_remove_lifecycle_services()
-    {
-        $this->removeExtension();
-        $this->assetChangedEntities([
-            Extension::class,
-            Ivr::class,
-        ]);
     }
 
     /////////////////////////////////////////
@@ -268,7 +261,8 @@ class ExtensionLifeCycleTest extends KernelTestCase
                 [
                     'callerid' => 'Alice Allison <104>',
                     'mailboxes' => 'user1@company1',
-                    'named_pickup_group' => '1'
+                    'named_pickup_group' => '1',
+                    'hint_extension' => '104',
                 ]
             );
         }

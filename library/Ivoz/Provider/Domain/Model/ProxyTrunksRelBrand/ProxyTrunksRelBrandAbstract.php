@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
@@ -22,10 +23,10 @@ abstract class ProxyTrunksRelBrandAbstract
     use ChangelogTrait;
 
     /**
-     * @var BrandInterface | null
+     * @var ?BrandInterface
      * inversedBy relProxyTrunks
      */
-    protected $brand;
+    protected $brand = null;
 
     /**
      * @var ProxyTrunkInterface
@@ -39,41 +40,34 @@ abstract class ProxyTrunksRelBrandAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "ProxyTrunksRelBrand",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return ProxyTrunksRelBrandDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): ProxyTrunksRelBrandDto
     {
         return new ProxyTrunksRelBrandDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param ProxyTrunksRelBrandInterface|null $entity
-     * @param int $depth
-     * @return ProxyTrunksRelBrandDto|null
+     * @param null|ProxyTrunksRelBrandInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?ProxyTrunksRelBrandDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class ProxyTrunksRelBrandAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var ProxyTrunksRelBrandDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class ProxyTrunksRelBrandAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param ProxyTrunksRelBrandDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
+        $proxyTrunk = $dto->getProxyTrunk();
+        Assertion::notNull($proxyTrunk, 'getProxyTrunk value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($proxyTrunk));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class ProxyTrunksRelBrandAbstract
     /**
      * @internal use EntityTools instead
      * @param ProxyTrunksRelBrandDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, ProxyTrunksRelBrandDto::class);
+
+        $proxyTrunk = $dto->getProxyTrunk();
+        Assertion::notNull($proxyTrunk, 'getProxyTrunk value is null, but non null value was expected.');
 
         $this
             ->setBrand($fkTransformer->transform($dto->getBrand()))
-            ->setProxyTrunk($fkTransformer->transform($dto->getProxyTrunk()));
+            ->setProxyTrunk($fkTransformer->transform($proxyTrunk));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ProxyTrunksRelBrandDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ProxyTrunksRelBrandDto
     {
         return self::createDto()
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
@@ -149,12 +143,12 @@ abstract class ProxyTrunksRelBrandAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'brandId' => self::getBrand()?->getId(),
             'proxyTrunkId' => self::getProxyTrunk()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class ProxyTrunksRelBrandAbstract
     {
         $this->brand = $brand;
 
-        /** @var  $this */
         return $this;
     }
 

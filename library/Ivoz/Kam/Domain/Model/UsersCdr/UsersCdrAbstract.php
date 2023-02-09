@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\UsersCdr;
 
@@ -7,20 +8,16 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
 
 /**
 * UsersCdrAbstract
@@ -31,14 +28,14 @@ abstract class UsersCdrAbstract
     use ChangelogTrait;
 
     /**
-     * column: start_time
      * @var \DateTime
+     * column: start_time
      */
     protected $startTime;
 
     /**
-     * column: end_time
      * @var \DateTime
+     * column: end_time
      */
     protected $endTime;
 
@@ -48,135 +45,111 @@ abstract class UsersCdrAbstract
     protected $duration = 0;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $direction;
+    protected $direction = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $caller;
+    protected $caller = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callee;
+    protected $callee = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $diversion;
+    protected $diversion = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $referee;
+    protected $referee = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $referrer;
+    protected $referrer = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callid;
+    protected $callid = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $callidHash;
+    protected $callidHash = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $xcallid;
+    protected $xcallid = null;
 
     /**
-     * @var bool
+     * @var ?BrandInterface
      */
-    protected $hidden = false;
+    protected $brand = null;
 
     /**
-     * @var BrandInterface | null
+     * @var ?CompanyInterface
      */
-    protected $brand;
+    protected $company = null;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?UserInterface
      */
-    protected $company;
+    protected $user = null;
 
     /**
-     * @var UserInterface | null
+     * @var ?FriendInterface
      */
-    protected $user;
-
-    /**
-     * @var FriendInterface | null
-     */
-    protected $friend;
-
-    /**
-     * @var ResidentialDeviceInterface | null
-     */
-    protected $residentialDevice;
-
-    /**
-     * @var RetailAccountInterface | null
-     */
-    protected $retailAccount;
+    protected $friend = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $startTime,
-        $endTime,
-        $duration,
-        $hidden
+        \DateTimeInterface|string $startTime,
+        \DateTimeInterface|string $endTime,
+        float $duration
     ) {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
-        $this->setHidden($hidden);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersCdr",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return UsersCdrDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): UsersCdrDto
     {
         return new UsersCdrDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersCdrInterface|null $entity
-     * @param int $depth
-     * @return UsersCdrDto|null
+     * @param null|UsersCdrInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersCdrDto
     {
         if (!$entity) {
             return null;
@@ -192,8 +165,7 @@ abstract class UsersCdrAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersCdrDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -202,19 +174,23 @@ abstract class UsersCdrAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersCdrDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getStartTime(),
-            $dto->getEndTime(),
-            $dto->getDuration(),
-            $dto->getHidden()
+            $startTime,
+            $endTime,
+            $duration
         );
 
         $self
@@ -230,9 +206,7 @@ abstract class UsersCdrAbstract
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setFriend($fkTransformer->transform($dto->getFriend()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setFriend($fkTransformer->transform($dto->getFriend()));
 
         $self->initChangelog();
 
@@ -242,18 +216,24 @@ abstract class UsersCdrAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersCdrDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersCdrDto::class);
 
+        $startTime = $dto->getStartTime();
+        Assertion::notNull($startTime, 'getStartTime value is null, but non null value was expected.');
+        $endTime = $dto->getEndTime();
+        Assertion::notNull($endTime, 'getEndTime value is null, but non null value was expected.');
+        $duration = $dto->getDuration();
+        Assertion::notNull($duration, 'getDuration value is null, but non null value was expected.');
+
         $this
-            ->setStartTime($dto->getStartTime())
-            ->setEndTime($dto->getEndTime())
-            ->setDuration($dto->getDuration())
+            ->setStartTime($startTime)
+            ->setEndTime($endTime)
+            ->setDuration($duration)
             ->setDirection($dto->getDirection())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
@@ -263,23 +243,18 @@ abstract class UsersCdrAbstract
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setHidden($dto->getHidden())
             ->setBrand($fkTransformer->transform($dto->getBrand()))
             ->setCompany($fkTransformer->transform($dto->getCompany()))
             ->setUser($fkTransformer->transform($dto->getUser()))
-            ->setFriend($fkTransformer->transform($dto->getFriend()))
-            ->setResidentialDevice($fkTransformer->transform($dto->getResidentialDevice()))
-            ->setRetailAccount($fkTransformer->transform($dto->getRetailAccount()));
+            ->setFriend($fkTransformer->transform($dto->getFriend()));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return UsersCdrDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): UsersCdrDto
     {
         return self::createDto()
             ->setStartTime(self::getStartTime())
@@ -294,19 +269,16 @@ abstract class UsersCdrAbstract
             ->setCallid(self::getCallid())
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
-            ->setHidden(self::getHidden())
             ->setBrand(Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
             ->setUser(User::entityToDto(self::getUser(), $depth))
-            ->setFriend(Friend::entityToDto(self::getFriend(), $depth))
-            ->setResidentialDevice(ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
-            ->setRetailAccount(RetailAccount::entityToDto(self::getRetailAccount(), $depth));
+            ->setFriend(Friend::entityToDto(self::getFriend(), $depth));
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'start_time' => self::getStartTime(),
@@ -321,25 +293,23 @@ abstract class UsersCdrAbstract
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
-            'hidden' => self::getHidden(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
+            'brandId' => self::getBrand()?->getId(),
+            'companyId' => self::getCompany()?->getId(),
+            'userId' => self::getUser()?->getId(),
+            'friendId' => self::getFriend()?->getId()
         ];
     }
 
-    protected function setStartTime($startTime): static
+    protected function setStartTime(string|\DateTimeInterface $startTime): static
     {
 
+        /** @var \Datetime */
         $startTime = DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->startTime == $startTime) {
+        if ($this->isInitialized() && $this->startTime == $startTime) {
             return $this;
         }
 
@@ -353,15 +323,16 @@ abstract class UsersCdrAbstract
         return clone $this->startTime;
     }
 
-    protected function setEndTime($endTime): static
+    protected function setEndTime(string|\DateTimeInterface $endTime): static
     {
 
+        /** @var \Datetime */
         $endTime = DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->endTime == $endTime) {
+        if ($this->isInitialized() && $this->endTime == $endTime) {
             return $this;
         }
 
@@ -527,21 +498,6 @@ abstract class UsersCdrAbstract
         return $this->xcallid;
     }
 
-    protected function setHidden(bool $hidden): static
-    {
-        Assertion::between(intval($hidden), 0, 1, 'hidden provided "%s" is not a valid boolean value.');
-        $hidden = (bool) $hidden;
-
-        $this->hidden = $hidden;
-
-        return $this;
-    }
-
-    public function getHidden(): bool
-    {
-        return $this->hidden;
-    }
-
     protected function setBrand(?BrandInterface $brand = null): static
     {
         $this->brand = $brand;
@@ -588,29 +544,5 @@ abstract class UsersCdrAbstract
     public function getFriend(): ?FriendInterface
     {
         return $this->friend;
-    }
-
-    protected function setResidentialDevice(?ResidentialDeviceInterface $residentialDevice = null): static
-    {
-        $this->residentialDevice = $residentialDevice;
-
-        return $this;
-    }
-
-    public function getResidentialDevice(): ?ResidentialDeviceInterface
-    {
-        return $this->residentialDevice;
-    }
-
-    protected function setRetailAccount(?RetailAccountInterface $retailAccount = null): static
-    {
-        $this->retailAccount = $retailAccount;
-
-        return $this;
-    }
-
-    public function getRetailAccount(): ?RetailAccountInterface
-    {
-        return $this->retailAccount;
     }
 }

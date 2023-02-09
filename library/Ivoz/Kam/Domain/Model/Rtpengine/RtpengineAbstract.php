@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 use Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet;
@@ -46,24 +47,24 @@ abstract class RtpengineAbstract
     protected $stamp;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
-     * @var MediaRelaySetInterface | null
+     * @var ?MediaRelaySetInterface
      */
-    protected $mediaRelaySet;
+    protected $mediaRelaySet = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $setid,
-        $url,
-        $weight,
-        $disabled,
-        $stamp
+        int $setid,
+        string $url,
+        int $weight,
+        bool $disabled,
+        \DateTimeInterface|string $stamp
     ) {
         $this->setSetid($setid);
         $this->setUrl($url);
@@ -72,41 +73,34 @@ abstract class RtpengineAbstract
         $this->setStamp($stamp);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Rtpengine",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return RtpengineDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): RtpengineDto
     {
         return new RtpengineDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param RtpengineInterface|null $entity
-     * @param int $depth
-     * @return RtpengineDto|null
+     * @param null|RtpengineInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?RtpengineDto
     {
         if (!$entity) {
             return null;
@@ -122,8 +116,7 @@ abstract class RtpengineAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var RtpengineDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -132,20 +125,29 @@ abstract class RtpengineAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param RtpengineDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $stamp = $dto->getStamp();
+        Assertion::notNull($stamp, 'getStamp value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSetid(),
-            $dto->getUrl(),
-            $dto->getWeight(),
-            $dto->getDisabled(),
-            $dto->getStamp()
+            $setid,
+            $url,
+            $weight,
+            $disabled,
+            $stamp
         );
 
         $self
@@ -160,20 +162,30 @@ abstract class RtpengineAbstract
     /**
      * @internal use EntityTools instead
      * @param RtpengineDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, RtpengineDto::class);
 
+        $setid = $dto->getSetid();
+        Assertion::notNull($setid, 'getSetid value is null, but non null value was expected.');
+        $url = $dto->getUrl();
+        Assertion::notNull($url, 'getUrl value is null, but non null value was expected.');
+        $weight = $dto->getWeight();
+        Assertion::notNull($weight, 'getWeight value is null, but non null value was expected.');
+        $disabled = $dto->getDisabled();
+        Assertion::notNull($disabled, 'getDisabled value is null, but non null value was expected.');
+        $stamp = $dto->getStamp();
+        Assertion::notNull($stamp, 'getStamp value is null, but non null value was expected.');
+
         $this
-            ->setSetid($dto->getSetid())
-            ->setUrl($dto->getUrl())
-            ->setWeight($dto->getWeight())
-            ->setDisabled($dto->getDisabled())
-            ->setStamp($dto->getStamp())
+            ->setSetid($setid)
+            ->setUrl($url)
+            ->setWeight($weight)
+            ->setDisabled($disabled)
+            ->setStamp($stamp)
             ->setDescription($dto->getDescription())
             ->setMediaRelaySet($fkTransformer->transform($dto->getMediaRelaySet()));
 
@@ -182,10 +194,8 @@ abstract class RtpengineAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return RtpengineDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): RtpengineDto
     {
         return self::createDto()
             ->setSetid(self::getSetid())
@@ -198,9 +208,9 @@ abstract class RtpengineAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'setid' => self::getSetid(),
@@ -209,7 +219,7 @@ abstract class RtpengineAbstract
             'disabled' => self::getDisabled(),
             'stamp' => self::getStamp(),
             'description' => self::getDescription(),
-            'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
+            'mediaRelaySetId' => self::getMediaRelaySet()?->getId()
         ];
     }
 
@@ -255,9 +265,6 @@ abstract class RtpengineAbstract
 
     protected function setDisabled(bool $disabled): static
     {
-        Assertion::between(intval($disabled), 0, 1, 'disabled provided "%s" is not a valid boolean value.');
-        $disabled = (bool) $disabled;
-
         $this->disabled = $disabled;
 
         return $this;
@@ -268,15 +275,16 @@ abstract class RtpengineAbstract
         return $this->disabled;
     }
 
-    protected function setStamp($stamp): static
+    protected function setStamp(string|\DateTimeInterface $stamp): static
     {
 
+        /** @var \Datetime */
         $stamp = DateTimeHelper::createOrFix(
             $stamp,
             '2000-01-01 00:00:00'
         );
 
-        if ($this->stamp == $stamp) {
+        if ($this->isInitialized() && $this->stamp == $stamp) {
             return $this;
         }
 

@@ -3,9 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
@@ -13,21 +16,48 @@ use Doctrine\Common\Collections\Criteria;
 */
 interface CallAclInterface extends LoggableEntityInterface
 {
-    const DEFAULTPOLICY_ALLOW = 'allow';
+    public const DEFAULTPOLICY_ALLOW = 'allow';
 
-    const DEFAULTPOLICY_DENY = 'deny';
+    public const DEFAULTPOLICY_DENY = 'deny';
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
+
+    /**
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
+     */
+    public function getId(): ?int;
 
     /**
      * @param string $dst
      * @return bool
      */
     public function dstIsCallable($dst);
+
+    public static function createDto(string|int|null $id = null): CallAclDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|CallAclInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CallAclDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param CallAclDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): CallAclDto;
 
     public function getName(): string;
 
@@ -41,7 +71,13 @@ interface CallAclInterface extends LoggableEntityInterface
 
     public function removeRelMatchList(CallAclRelMatchListInterface $relMatchList): CallAclInterface;
 
-    public function replaceRelMatchLists(ArrayCollection $relMatchLists): CallAclInterface;
+    /**
+     * @param Collection<array-key, CallAclRelMatchListInterface> $relMatchLists
+     */
+    public function replaceRelMatchLists(Collection $relMatchLists): CallAclInterface;
 
+    /**
+     * @return array<array-key, CallAclRelMatchListInterface>
+     */
     public function getRelMatchLists(?Criteria $criteria = null): array;
 }

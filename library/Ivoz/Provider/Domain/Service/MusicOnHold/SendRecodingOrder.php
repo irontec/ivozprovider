@@ -8,14 +8,11 @@ use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
 
 class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    protected $recoder;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        RecoderJobInterface $recoder
+        private RecoderJobInterface $recoder
     ) {
-        $this->recoder = $recoder;
     }
 
     public static function getSubscribedEvents()

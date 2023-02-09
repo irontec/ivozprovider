@@ -7,14 +7,11 @@ use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 
 class SendTrunksAddressPermissionsReloadRequest implements DdiProviderLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    protected $trunksClient;
+    public const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        TrunksClientInterface $trunksClient
+        private TrunksClientInterface $trunksClient
     ) {
-        $this->trunksClient = $trunksClient;
     }
 
     public static function getSubscribedEvents()
@@ -24,7 +21,7 @@ class SendTrunksAddressPermissionsReloadRequest implements DdiProviderLifecycleE
         ];
     }
 
-    public function execute(DdiProviderInterface $ddiProvider)
+    public function execute(DdiProviderInterface $ddiProvider): void
     {
         $wasRemoved = $ddiProvider->hasBeenDeleted();
         if (!$wasRemoved) {

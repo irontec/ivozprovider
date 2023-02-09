@@ -6,14 +6,16 @@ use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 class MusicOnHoldDto extends MusicOnHoldDtoAbstract
 {
+    /** @var ?string */
     private $originalFilePath;
+    /** @var ?string */
     private $encodedFilePath;
 
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
@@ -33,7 +35,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -60,7 +62,7 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getOriginalFilePath()
     {
@@ -77,14 +79,19 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
     }
 
     /**
-     * @return string
+     * @return ?string
      */
     public function getEncodedFilePath()
     {
         return $this->encodedFilePath;
     }
 
-    public function getFileObjects()
+    /**
+     * @return string[]
+     *
+     * @psalm-return array{0: string, 1: string}
+     */
+    public function getFileObjects(): array
     {
         return [
             'encodedFile',

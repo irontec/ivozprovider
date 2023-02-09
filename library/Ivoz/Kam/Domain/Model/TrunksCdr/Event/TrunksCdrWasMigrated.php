@@ -15,12 +15,12 @@ class TrunksCdrWasMigrated extends Event implements StoppableDomainEventInterfac
     /**
      * @var TrunksCdrInterface
      */
-    protected $trunksCdr;
+    private $trunksCdr;
 
     /**
      * @var BillableCallInterface
      */
-    protected $billableCall;
+    private $billableCall;
 
     public function __construct(
         TrunksCdrInterface $trunksCdr,
@@ -32,12 +32,12 @@ class TrunksCdrWasMigrated extends Event implements StoppableDomainEventInterfac
         $this->billableCall = $billableCall;
     }
 
-    public function getTrunksCdr()
+    public function getTrunksCdr(): TrunksCdrInterface
     {
         return $this->trunksCdr;
     }
 
-    public function getBillableCall()
+    public function getBillableCall(): BillableCallInterface
     {
         return $this->billableCall;
     }

@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 {
-    const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS = 'status';
 
     /**
      * @var RegistrationStatus[]
@@ -17,7 +17,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,26 +26,26 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
-    public function addStatus(RegistrationStatus $status)
+    public function addStatus(RegistrationStatus $status): static
     {
         $this->status[] = $status;
 
         return $this;
     }
 
-    public function setDomainName(string $name)
+    public function setDomainName(string $name): void
     {
         $this->domainName = $name;
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
         $response['status'] = array_map(
-            function (RegistrationStatus $registrationStatus) {
+            function (RegistrationStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status
@@ -58,7 +58,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_STATUS) {
             $baseAttributes = [
@@ -67,6 +67,8 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
                 'domainName' => 'domainName',
                 'status' => [[
                     'contact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
@@ -83,8 +85,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             $response = [
                 'id' => 'id',
                 'name' => 'name',
-                'transport' => 'transport',
-                'authNeeded' => 'authNeeded'
+                'transport' => 'transport'
             ];
         } else {
             $response = parent::getPropertyMap(...func_get_args());
@@ -105,7 +106,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -132,7 +133,6 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'transport',
             'ip',
             'port',
-            'authNeeded',
             'password',
             'allow',
             'fromDomain',
@@ -149,7 +149,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -170,12 +170,14 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
             'outgoingDdiId',
             'languageId',
             'transport',
+            'ip',
+            'port',
             'password',
         ];
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

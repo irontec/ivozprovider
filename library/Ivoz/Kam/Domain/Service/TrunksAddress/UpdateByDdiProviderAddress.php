@@ -14,17 +14,11 @@ use Ivoz\Provider\Domain\Service\DdiProviderAddress\DdiProviderAddressLifecycleE
  */
 class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        EntityTools $entityTools
+        private EntityTools $entityTools
     ) {
-        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -49,10 +43,10 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
         // Update/Create Trunks Address for this DDI Provider Address
         $trunksAddressDto
             ->setIpAddr($ddiProviderAddress->getIp())
-            ->setGrp($ddiProviderAddress->getDdiProvider()->getId())
+            ->setGrp((int) $ddiProviderAddress->getDdiProvider()->getId())
             ->setDdiProviderAddressId($ddiProviderAddress->getId());
 
-        $trunksAddress = $this->entityTools->persistDto(
+        $this->entityTools->persistDto(
             $trunksAddressDto,
             $trunksAddress,
             true

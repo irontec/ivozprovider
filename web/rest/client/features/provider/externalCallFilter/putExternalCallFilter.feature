@@ -12,8 +12,10 @@ Feature: Update external call filters
     """
       {
           "name": "updatedFilter",
+          "holidayEnabled": true,
           "holidayTargetType": "number",
           "holidayNumberValue": "946002021",
+          "outOfScheduleEnabled": true,
           "outOfScheduleTargetType": "number",
           "outOfScheduleNumberValue": "946002022",
           "id": 1,
@@ -22,8 +24,8 @@ Feature: Update external call filters
           "outOfScheduleLocution": null,
           "holidayExtension": null,
           "outOfScheduleExtension": null,
-          "holidayVoiceMailUser": null,
-          "outOfScheduleVoiceMailUser": null,
+          "holidayVoicemail": null,
+          "outOfScheduleVoicemail": null,
           "holidayNumberCountry": 68,
           "outOfScheduleNumberCountry": 68,
           "scheduleIds": [],
@@ -45,8 +47,10 @@ Feature: Update external call filters
     """
       {
           "name": "updatedFilter",
+          "holidayEnabled": true,
           "holidayTargetType": "number",
           "holidayNumberValue": "946002021",
+          "outOfScheduleEnabled": true,
           "outOfScheduleTargetType": "number",
           "outOfScheduleNumberValue": "946002022",
           "id": 1,
@@ -55,8 +59,8 @@ Feature: Update external call filters
           "outOfScheduleLocution": null,
           "holidayExtension": null,
           "outOfScheduleExtension": null,
-          "holidayVoiceMailUser": null,
-          "outOfScheduleVoiceMailUser": null,
+          "holidayVoicemail": null,
+          "outOfScheduleVoicemail": null,
           "holidayNumberCountry": 68,
           "outOfScheduleNumberCountry": 68,
           "scheduleIds": [],

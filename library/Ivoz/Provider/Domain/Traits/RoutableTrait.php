@@ -11,7 +11,7 @@ trait RoutableTrait
     /**
      * Available Route types
      *
-     * @var array
+     * @var string[]
      */
     protected $routeTypes = [
         'ivr',
@@ -81,15 +81,11 @@ trait RoutableTrait
                 return $this->{$friendGetter}();
 
             case 'voicemail':
-                $voicemailGetter = 'get' . $prefix . 'VoicemailUser';
+                $voicemailGetter = 'get' . $prefix . 'Voicemail';
                 if (!$this->{$voicemailGetter}()) {
                     return "";
                 }
-                return sprintf(
-                    "%s %s",
-                    $this->{$voicemailGetter}()->getName(),
-                    $this->{$voicemailGetter}()->getLastname()
-                );
+                return $this->{$voicemailGetter}()->getName();
 
             case 'residential':
                 $residentialGetter = 'get' . $prefix . 'ResidentialDevice';
@@ -139,7 +135,7 @@ trait RoutableTrait
             'number'         => [ 'NumberValue', 'NumberCountry' ],
             'friend'         => 'FriendValue',
             'queue'          => 'Queue',
-            'voicemail'      => 'VoicemailUser',
+            'voicemail'      => 'Voicemail',
             'extension'      => 'Extension',
             'residential'    => 'ResidentialDevice',
             'conditional'    => 'ConditionalRoute',

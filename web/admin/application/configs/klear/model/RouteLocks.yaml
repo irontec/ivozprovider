@@ -28,7 +28,7 @@ production:
     open:
       title: _('Status')
       type: select
-      defaultValue: 0
+      defaultValue: 1
       source:
         data: inline
         values:

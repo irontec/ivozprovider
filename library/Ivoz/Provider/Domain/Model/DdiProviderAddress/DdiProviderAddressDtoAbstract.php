@@ -18,28 +18,31 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     /**
      * @var string|null
      */
-    private $ip;
+    private $ip = null;
 
     /**
      * @var string|null
      */
-    private $description;
+    private $description = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
     /**
      * @var DdiProviderDto | null
      */
-    private $ddiProvider;
+    private $ddiProvider = null;
 
     /**
      * @var TrunksAddressDto | null
      */
-    private $trunksAddress;
+    private $trunksAddress = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -48,7 +51,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -64,9 +67,9 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'ip' => $this->getIp(),
@@ -121,7 +124,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

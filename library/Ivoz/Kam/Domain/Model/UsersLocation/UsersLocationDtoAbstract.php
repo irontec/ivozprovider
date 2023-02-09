@@ -14,120 +14,123 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ruid = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $username = '';
 
     /**
      * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $contact = '';
 
     /**
      * @var string|null
      */
-    private $received;
+    private $received = null;
 
     /**
      * @var string|null
      */
-    private $path;
+    private $path = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $expires = '2030-05-28 21:32:15';
 
     /**
-     * @var float
+     * @var float|null
      */
     private $q = 1;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $callid = 'Default-Call-ID';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $cseq = 1;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $flags = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $cflags = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $userAgent = '';
 
     /**
      * @var string|null
      */
-    private $socket;
+    private $socket = null;
 
     /**
      * @var int|null
      */
-    private $methods;
+    private $methods = null;
 
     /**
      * @var string|null
      */
-    private $instance;
+    private $instance = null;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $regId = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $serverId = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $connectionId = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $keepalive = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
     private $partition = 0;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -136,7 +139,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -170,9 +173,9 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'ruid' => $this->getRuid(),
@@ -214,7 +217,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setRuid(?string $ruid): static
+    public function setRuid(string $ruid): static
     {
         $this->ruid = $ruid;
 
@@ -226,7 +229,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->ruid;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -250,7 +253,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-    public function setContact(?string $contact): static
+    public function setContact(string $contact): static
     {
         $this->contact = $contact;
 
@@ -286,19 +289,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->path;
     }
 
-    public function setExpires(null|\DateTime|string $expires): static
+    public function setExpires(\DateTimeInterface|string $expires): static
     {
         $this->expires = $expires;
 
         return $this;
     }
 
-    public function getExpires(): \DateTime|string|null
+    public function getExpires(): \DateTimeInterface|string|null
     {
         return $this->expires;
     }
 
-    public function setQ(?float $q): static
+    public function setQ(float $q): static
     {
         $this->q = $q;
 
@@ -310,7 +313,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->q;
     }
 
-    public function setCallid(?string $callid): static
+    public function setCallid(string $callid): static
     {
         $this->callid = $callid;
 
@@ -322,7 +325,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->callid;
     }
 
-    public function setCseq(?int $cseq): static
+    public function setCseq(int $cseq): static
     {
         $this->cseq = $cseq;
 
@@ -334,19 +337,19 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->cseq;
     }
 
-    public function setLastModified(null|\DateTime|string $lastModified): static
+    public function setLastModified(\DateTimeInterface|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    public function getLastModified(): \DateTime|string|null
+    public function getLastModified(): \DateTimeInterface|string|null
     {
         return $this->lastModified;
     }
 
-    public function setFlags(?int $flags): static
+    public function setFlags(int $flags): static
     {
         $this->flags = $flags;
 
@@ -358,7 +361,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->flags;
     }
 
-    public function setCflags(?int $cflags): static
+    public function setCflags(int $cflags): static
     {
         $this->cflags = $cflags;
 
@@ -370,7 +373,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->cflags;
     }
 
-    public function setUserAgent(?string $userAgent): static
+    public function setUserAgent(string $userAgent): static
     {
         $this->userAgent = $userAgent;
 
@@ -418,7 +421,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->instance;
     }
 
-    public function setRegId(?int $regId): static
+    public function setRegId(int $regId): static
     {
         $this->regId = $regId;
 
@@ -430,7 +433,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->regId;
     }
 
-    public function setServerId(?int $serverId): static
+    public function setServerId(int $serverId): static
     {
         $this->serverId = $serverId;
 
@@ -442,7 +445,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->serverId;
     }
 
-    public function setConnectionId(?int $connectionId): static
+    public function setConnectionId(int $connectionId): static
     {
         $this->connectionId = $connectionId;
 
@@ -454,7 +457,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->connectionId;
     }
 
-    public function setKeepalive(?int $keepalive): static
+    public function setKeepalive(int $keepalive): static
     {
         $this->keepalive = $keepalive;
 
@@ -466,7 +469,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this->keepalive;
     }
 
-    public function setPartition(?int $partition): static
+    public function setPartition(int $partition): static
     {
         $this->partition = $partition;
 
@@ -485,7 +488,7 @@ abstract class UsersLocationDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

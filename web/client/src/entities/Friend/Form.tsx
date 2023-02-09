@@ -1,71 +1,80 @@
-import defaultEntityBehavior from '../DefaultEntityBehavior';
-import { useEffect, useState } from 'react';
-import CallAclSelectOptions from 'entities/CallAcl/SelectOptions';
-import TransformationRuleSetSelectOptions from 'entities/TransformationRuleSet/SelectOptions';
-import DdiSelectOptions from 'entities/Ddi/SelectOptions';
-import LanguageSelectOptions from 'entities/Language/SelectOptions';
-const Form = (props:any) => {
+import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
+import defaultEntityBehavior, {
+  EntityFormProps,
+  FieldsetGroups,
+} from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { foreignKeyGetter } from './foreignKeyGetter';
 
-    const DefaultEntityForm = defaultEntityBehavior.Form;
+const Form = (props: EntityFormProps): JSX.Element => {
+  const edit = props.edit || false;
+  const { entityService, row, match } = props;
+  const DefaultEntityForm = defaultEntityBehavior.Form;
+  const fkChoices = useFkChoices({
+    foreignKeyGetter,
+    entityService,
+    row,
+    match,
+  });
 
-    const [fkChoices, setFkChoices] = useState<any>({});
-    const [, setMounted] = useState<boolean>(true);
-    const [loadingFks, setLoadingFks] = useState<boolean>(true);
+  const interVpbxEdition = edit && row?.directConnectivity === 'intervpbx';
+  const readOnlyProperties = {
+    directConnectivity: interVpbxEdition,
+    priority: interVpbxEdition,
+    description: interVpbxEdition,
+  };
 
-    useEffect(
-        () => {
-            if (loadingFks) {
+  const groups: Array<FieldsetGroups | false> = [
+    {
+      legend: _('Basic Configuration'),
+      fields: [
+        'directConnectivity',
+        'priority',
+        'description',
+        'name',
+        'password',
+        'transport',
+        'ip',
+        'port',
+        'alwaysApplyTransformations',
+      ],
+    },
+    edit &&
+      !interVpbxEdition && {
+        legend: _('Geographic Configuration'),
+        fields: ['language', 'transformationRuleSet'],
+      },
+    edit &&
+      !interVpbxEdition && {
+        legend: _('Outgoing Configuration'),
+        fields: ['callAcl', 'outgoingDdi'],
+      },
+    !interVpbxEdition && {
+      legend: _('Advanced Configuration'),
+      fields: [
+        edit && 'fromUser',
+        edit && 'fromDomain',
+        edit && 'allow',
+        edit && 'ddiIn',
+        edit && 't38Passthrough',
+        edit && 'rtpEncryption',
+        'multiContact',
+      ],
+    },
+    {
+      legend: '',
+      fields: [edit && 'statusIcon'],
+    },
+  ];
 
-                //@TODO domain
-                //@TODO interCompany
-
-                CallAclSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            callACL: options,
-                        }
-                    });
-                });
-
-                TransformationRuleSetSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            transformationRuleSet: options,
-                        }
-                    });
-                });
-
-                DdiSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            outgoingDdi: options,
-                        }
-                    });
-                });
-
-                LanguageSelectOptions((options:any) => {
-                    setFkChoices((fkChoices:any) => {
-                        return {
-                            ...fkChoices,
-                            language: options,
-                        }
-                    });
-                });
-
-                setLoadingFks(false);
-            }
-
-            return function umount() {
-                setMounted(false);
-            };
-        },
-        [loadingFks, fkChoices]
-    );
-
-    return (<DefaultEntityForm fkChoices={fkChoices} {...props}  />);
-}
+  return (
+    <DefaultEntityForm
+      {...props}
+      fkChoices={fkChoices}
+      groups={groups}
+      readOnlyProperties={readOnlyProperties}
+    />
+  );
+};
 
 export default Form;

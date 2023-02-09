@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class RetailAccountDto extends RetailAccountDtoAbstract
 {
-    const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS = 'status';
 
     /**
      * @var RegistrationStatus[]
@@ -17,7 +17,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,26 +26,26 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
-    public function addStatus(RegistrationStatus $status)
+    public function addStatus(RegistrationStatus $status): static
     {
         $this->status[] = $status;
 
         return $this;
     }
 
-    public function setDomainName(string $name)
+    public function setDomainName(string $name): void
     {
         $this->domainName = $name;
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
         $response['status'] = array_map(
-            function (RegistrationStatus $registrationStatus) {
+            function (RegistrationStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status
@@ -58,15 +58,28 @@ class RetailAccountDto extends RetailAccountDtoAbstract
      * @codeCoverageIgnore
      * @inheritdoc
      */
-    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null)
+    public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE, string $role = null): array
     {
-        if ($context === self::CONTEXT_STATUS) {
+        $showStatus = in_array(
+            $context,
+            [
+                RetailAccountDto::CONTEXT_STATUS,
+                RetailAccountDto::CONTEXT_COLLECTION,
+            ]
+        );
+
+        if ($showStatus) {
             $baseAttributes = [
                 'id' => 'id',
                 'name' => 'name',
                 'domainName' => 'domainName',
+                'directConnectivity' => 'directConnectivity',
+                'description' => 'description',
                 'status' => [[
                     'contact',
+                    'publicContact',
+                    'received',
+                    'publicReceived',
                     'expires',
                     'userAgent'
                 ]]
@@ -79,14 +92,24 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             return $baseAttributes;
         }
 
-        if ($context === self::CONTEXT_COLLECTION) {
-            $response = [
-                'id' => 'id',
-                'name' => 'name',
-                'transport' => 'transport'
-            ];
-        } else {
-            $response = parent::getPropertyMap($context);
+        $response = parent::getPropertyMap($context);
+
+        $showStatus = in_array(
+            $context,
+            [
+                RetailAccountDto::CONTEXT_SIMPLE,
+                RetailAccountDto::CONTEXT_DETAILED,
+            ]
+        );
+        if ($showStatus) {
+            $response['status'] = [[
+                'contact',
+                'publicContact',
+                'received',
+                'publicReceived',
+                'expires',
+                'userAgent'
+            ]];
         }
 
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -100,7 +123,7 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -135,12 +158,13 @@ class RetailAccountDto extends RetailAccountDtoAbstract
             'id',
             'companyId',
             'transformationRuleSetId',
-            'outgoingDdiId'
+            'outgoingDdiId',
+            'status',
         ];
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY
@@ -156,16 +180,20 @@ class RetailAccountDto extends RetailAccountDtoAbstract
         $allowedFields = [
             'name',
             'description',
+            'directConnectivity',
             'transport',
+            'ip',
+            'port',
             'id',
             'transformationRuleSetId',
             'outgoingDdiId',
             'password',
+            'status',
         ];
 
         return array_filter(
             $response,
-            function ($key) use ($allowedFields) {
+            function ($key) use ($allowedFields): bool {
                 return in_array($key, $allowedFields, true);
             },
             ARRAY_FILTER_USE_KEY

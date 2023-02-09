@@ -26,6 +26,11 @@
         <option name="default">1</option>
       </options>
     </field>
+    <field name="internal" type="boolean" column="internal" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
     <field name="restricted" type="boolean" column="restricted" nullable="false">
       <options>
         <option name="default">0</option>

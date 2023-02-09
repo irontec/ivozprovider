@@ -8,21 +8,14 @@ use Service\Encoder;
 
 class EncoderController
 {
-    protected $encoder;
-    protected $domainEventPublisher;
-    protected $requestId;
-
     public function __construct(
-        Encoder $encoder,
-        DomainEventPublisher $domainEventPublisher,
-        RequestId $requestId
+        private Encoder $encoder,
+        private DomainEventPublisher $domainEventPublisher,
+        private RequestId $requestId
     ) {
-        $this->encoder = $encoder;
-        $this->domainEventPublisher = $domainEventPublisher;
-        $this->requestId = $requestId;
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
         $this->registerCommand();
 
@@ -35,7 +28,7 @@ class EncoderController
         ]);
     }
 
-    private function registerCommand()
+    private function registerCommand(): void
     {
         $event = new CommandWasExecuted(
             $this->requestId->toString(),

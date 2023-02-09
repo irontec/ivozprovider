@@ -7,7 +7,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\RegistrationStatus;
 
 class TerminalDto extends TerminalDtoAbstract
 {
-    const CONTEXT_STATUS = 'status';
+    public const CONTEXT_STATUS = 'status';
 
     /**
      * @var RegistrationStatus[]
@@ -17,7 +17,7 @@ class TerminalDto extends TerminalDtoAbstract
      *     description="Registration status"
      * )
      */
-    protected $status = [];
+    private $status = [];
 
     /**
      * @var string
@@ -26,16 +26,16 @@ class TerminalDto extends TerminalDtoAbstract
      *     description="Registration domain"
      * )
      */
-    protected $domainName;
+    private $domainName;
 
-    public function addStatus(RegistrationStatus $status)
+    public function addStatus(RegistrationStatus $status): static
     {
         $this->status[] = $status;
 
         return $this;
     }
 
-    public function setDomainName(string $name)
+    public function setDomainName(string $name): void
     {
         $this->domainName = $name;
     }
@@ -44,7 +44,7 @@ class TerminalDto extends TerminalDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_STATUS) {
             $baseAttributes = [
@@ -53,8 +53,10 @@ class TerminalDto extends TerminalDtoAbstract
                 'domainName' => 'domainName',
                 'status' => [[
                     'contact',
+                    'received',
+                    'publicReceived',
                     'expires',
-                    'userAgent'
+                    'userAgent',
                 ]]
             ];
 
@@ -72,11 +74,29 @@ class TerminalDto extends TerminalDtoAbstract
                 'mac' => 'mac',
                 'lastProvisionDate' => 'lastProvisionDate',
                 'domainId' => 'domain',
-                'terminalModelId' => 'terminalModel'
+                'terminalModelId' => 'terminalModel',
+                'domainName' => 'domainName',
+                'status' => [[
+                    'contact',
+                    'received',
+                    'publicReceived',
+                    'expires',
+                    'userAgent',
+                ]]
             ];
         }
 
         $response = parent::getPropertyMap(...func_get_args());
+
+        if (in_array($context, [self::CONTEXT_DETAILED])) {
+            $response['status'] = [[
+                'contact',
+                'received',
+                'publicReceived',
+                'expires',
+                'userAgent',
+            ]];
+        }
 
         if (array_key_exists('domainId', $response)) {
             unset($response['domainId']);
@@ -89,7 +109,7 @@ class TerminalDto extends TerminalDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_COMPANY_ADMIN') {
@@ -102,12 +122,12 @@ class TerminalDto extends TerminalDtoAbstract
         );
     }
 
-    public function toArray($hideSensitiveData = false)
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = parent::toArray($hideSensitiveData);
         $response['domainName'] = $this->domainName;
         $response['status'] = array_map(
-            function (RegistrationStatus $registrationStatus) {
+            function (RegistrationStatus $registrationStatus): array {
                 return $registrationStatus->toArray();
             },
             $this->status

@@ -8,7 +8,7 @@
     </field>
     <field name="threshold" type="decimal" column="threshold" precision="10" scale="4" nullable="true">
       <options>
-        <option name="default">0</option>
+        <option name="default">0.0000</option>
       </options>
     </field>
     <field name="lastSent" type="datetime" column="lastSent" nullable="true"/>

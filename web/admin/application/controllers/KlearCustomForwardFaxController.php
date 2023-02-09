@@ -5,20 +5,20 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
 class KlearCustomForwardFaxController extends Zend_Controller_Action
 {
     protected $_mainRouter;
-    
+
     public function init()
     {
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter))) {
             throw new Zend_Exception('', Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
-    
+
         $this->_helper->ContextSwitch()
              ->addActionContext('forward-fax', 'json')
              ->initContext('json');
-  
+
         $this->_helper->layout->disableLayout();
     }
-    
+
     public function forwardFaxAction()
     {
         $pk = $this->getRequest()->getParam("pk");
@@ -37,8 +37,8 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
         }
 
         $bodyMsg = '
-                <p><strong>'.$this->_helper->translate("Resend to").':</strong> '.$modelFax->getDst().'</p>
-                <p><strong>'.$this->_helper->translate("File").':</strong> '.$modelFax->getFileBaseName().'</p>
+                <p><strong>' . $this->_helper->translate("Resend to") . ':</strong> ' . $modelFax->getDst() . '</p>
+                <p><strong>' . $this->_helper->translate("File") . ':</strong> ' . $modelFax->getFileBaseName() . '</p>
         ';
 
         if ($this->getRequest()->getParam("forward")) {
@@ -51,8 +51,8 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
 
             $data = array(
                 'title' => $this->_helper->translate("Fax resent"),
-                'message'=> $bodyMsg,
-                'buttons'=>array(
+                'message' => $bodyMsg,
+                'buttons' => array(
                     $this->_helper->translate('Accept') => array(
                         'reloadParent' => true,
                         'recall' => false,
@@ -62,8 +62,8 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
         } else {
             $data = array(
                 'title' => $this->_helper->translate("Resend fax"),
-                'message'=> $bodyMsg,
-                'buttons'=>array(
+                'message' => $bodyMsg,
+                'buttons' => array(
                     $this->_helper->translate('Cancel') => array(
                         'reloadParent' => false,
                         'recall' => false,

@@ -19,7 +19,7 @@ Feature: Update hunt groups
           "noAnswerNumberValue": null,
           "noAnswerLocution": null,
           "noAnswerExtension": null,
-          "noAnswerVoiceMailUser": 1,
+          "noAnswerVoicemail": 1,
           "noAnswerNumberCountry": null
       }
     """
@@ -40,7 +40,7 @@ Feature: Update hunt groups
           "id": 1,
           "noAnswerLocution": null,
           "noAnswerExtension": null,
-          "noAnswerVoiceMailUser": 1,
+          "noAnswerVoicemail": 1,
           "noAnswerNumberCountry": null
       }
     """

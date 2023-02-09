@@ -14,30 +14,12 @@ use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHa
  */
 class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    public const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var TrunksLcrRuleFactory
-     */
-    protected $lcrRuleFactory;
-
-    /**
-     * UpdateByOutgoingRouting constructor.
-     *
-     * @param EntityTools $entityTools
-     * @param TrunksLcrRuleFactory $lcrRuleFactory
-     */
     public function __construct(
-        EntityTools $entityTools,
-        TrunksLcrRuleFactory $lcrRuleFactory
+        private EntityTools $entityTools,
+        private TrunksLcrRuleFactory $lcrRuleFactory
     ) {
-        $this->entityTools = $entityTools;
-        $this->lcrRuleFactory = $lcrRuleFactory;
     }
 
     public static function getSubscribedEvents()

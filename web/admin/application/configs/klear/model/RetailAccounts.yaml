@@ -85,7 +85,7 @@ production:
       title: _('Password')
       type: text
       pattern: "^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$"
-      required: true
+      trim: both
       info:
         type: box
         position: left

@@ -40,13 +40,14 @@ class ResidentialDeviceSpec extends ObjectBehavior
         $dto->setName('Name')
             ->setDescription('Desc')
             ->setTransport('udp')
-            ->setAuthNeeded('yes')
             ->setDisallow('none')
             ->setAllow('all')
             ->setDirectMediaMethod('invite')
             ->setCalleridUpdateHeader('pai')
             ->setUpdateCallerid('yes')
             ->setDirectConnectivity('yes')
+            ->setIp('1.2.3.4')
+            ->setPort('1234')
             ->setCompany($companyDto)
             ->setBrand($brandDto);
 

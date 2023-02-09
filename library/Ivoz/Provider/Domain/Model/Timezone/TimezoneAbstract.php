@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Timezone;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Timezone\Label;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
@@ -26,66 +27,59 @@ abstract class TimezoneAbstract
     protected $tz;
 
     /**
-     * @var string | null
+     * @var ?string
      */
     protected $comment = '';
 
     /**
-     * @var Label | null
+     * @var Label
      */
     protected $label;
 
     /**
-     * @var CountryInterface | null
+     * @var ?CountryInterface
      */
-    protected $country;
+    protected $country = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $tz,
+        string $tz,
         Label $label
     ) {
         $this->setTz($tz);
-        $this->setLabel($label);
+        $this->label = $label;
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "Timezone",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TimezoneDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TimezoneDto
     {
         return new TimezoneDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TimezoneInterface|null $entity
-     * @param int $depth
-     * @return TimezoneDto|null
+     * @param null|TimezoneInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TimezoneDto
     {
         if (!$entity) {
             return null;
@@ -101,8 +95,7 @@ abstract class TimezoneAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TimezoneDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -111,23 +104,32 @@ abstract class TimezoneAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TimezoneDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
+        $labelEn = $dto->getLabelEn();
+        Assertion::notNull($labelEn, 'labelEn value is null, but non null value was expected.');
+        $labelEs = $dto->getLabelEs();
+        Assertion::notNull($labelEs, 'labelEs value is null, but non null value was expected.');
+        $labelCa = $dto->getLabelCa();
+        Assertion::notNull($labelCa, 'labelCa value is null, but non null value was expected.');
+        $labelIt = $dto->getLabelIt();
+        Assertion::notNull($labelIt, 'labelIt value is null, but non null value was expected.');
+        $tz = $dto->getTz();
+        Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
 
         $label = new Label(
-            $dto->getLabelEn(),
-            $dto->getLabelEs(),
-            $dto->getLabelCa(),
-            $dto->getLabelIt()
+            $labelEn,
+            $labelEs,
+            $labelCa,
+            $labelIt
         );
 
         $self = new static(
-            $dto->getTz(),
+            $tz,
             $label
         );
 
@@ -143,23 +145,33 @@ abstract class TimezoneAbstract
     /**
      * @internal use EntityTools instead
      * @param TimezoneDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TimezoneDto::class);
 
+        $labelEn = $dto->getLabelEn();
+        Assertion::notNull($labelEn, 'labelEn value is null, but non null value was expected.');
+        $labelEs = $dto->getLabelEs();
+        Assertion::notNull($labelEs, 'labelEs value is null, but non null value was expected.');
+        $labelCa = $dto->getLabelCa();
+        Assertion::notNull($labelCa, 'labelCa value is null, but non null value was expected.');
+        $labelIt = $dto->getLabelIt();
+        Assertion::notNull($labelIt, 'labelIt value is null, but non null value was expected.');
+        $tz = $dto->getTz();
+        Assertion::notNull($tz, 'getTz value is null, but non null value was expected.');
+
         $label = new Label(
-            $dto->getLabelEn(),
-            $dto->getLabelEs(),
-            $dto->getLabelCa(),
-            $dto->getLabelIt()
+            $labelEn,
+            $labelEs,
+            $labelCa,
+            $labelIt
         );
 
         $this
-            ->setTz($dto->getTz())
+            ->setTz($tz)
             ->setComment($dto->getComment())
             ->setLabel($label)
             ->setCountry($fkTransformer->transform($dto->getCountry()));
@@ -169,10 +181,8 @@ abstract class TimezoneAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TimezoneDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TimezoneDto
     {
         return self::createDto()
             ->setTz(self::getTz())
@@ -185,9 +195,9 @@ abstract class TimezoneAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tz' => self::getTz(),
@@ -196,7 +206,7 @@ abstract class TimezoneAbstract
             'labelEs' => self::getLabel()->getEs(),
             'labelCa' => self::getLabel()->getCa(),
             'labelIt' => self::getLabel()->getIt(),
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null
+            'countryId' => self::getCountry()?->getId()
         ];
     }
 
@@ -237,7 +247,7 @@ abstract class TimezoneAbstract
 
     protected function setLabel(Label $label): static
     {
-        $isEqual = $this->label && $this->label->equals($label);
+        $isEqual = $this->label->equals($label);
         if ($isEqual) {
             return $this;
         }

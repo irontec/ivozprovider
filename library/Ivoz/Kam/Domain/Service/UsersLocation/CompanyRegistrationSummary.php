@@ -4,7 +4,6 @@ namespace Ivoz\Kam\Domain\Service\UsersLocation;
 
 use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
@@ -13,30 +12,14 @@ use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 
 class CompanyRegistrationSummary
 {
-    protected $domainRepository;
-    protected $usersLocationRepository;
-    protected $companyRepository;
-    protected $terminalRepository;
-    protected $friendRepository;
-    protected $residentialDeviceRepository;
-    protected $retailAccountRepository;
-
     public function __construct(
-        DomainRepository $domainRepository,
-        UsersLocationRepository $usersLocationRepository,
-        CompanyRepository $companyRepository,
-        TerminalRepository $terminalRepository,
-        FriendRepository $friendRepository,
-        ResidentialDeviceRepository $residentialDeviceRepository,
-        RetailAccountRepository $retailAccountRepository
+        private DomainRepository $domainRepository,
+        private UsersLocationRepository $usersLocationRepository,
+        private TerminalRepository $terminalRepository,
+        private FriendRepository $friendRepository,
+        private ResidentialDeviceRepository $residentialDeviceRepository,
+        private RetailAccountRepository $retailAccountRepository
     ) {
-        $this->domainRepository = $domainRepository;
-        $this->usersLocationRepository = $usersLocationRepository;
-        $this->companyRepository = $companyRepository;
-        $this->terminalRepository = $terminalRepository;
-        $this->friendRepository = $friendRepository;
-        $this->residentialDeviceRepository = $residentialDeviceRepository;
-        $this->retailAccountRepository = $retailAccountRepository;
     }
 
     /**
@@ -46,7 +29,7 @@ class CompanyRegistrationSummary
     public function getUsersLocations(CompanyInterface $company): array
     {
         $domain = $this->domainRepository->findByCompanyId(
-            $company->getId()
+            (int) $company->getId()
         );
 
         if (!$domain) {
@@ -64,9 +47,9 @@ class CompanyRegistrationSummary
         );
     }
 
-    public function getDeviceNumber(CompanyInterface $company)
+    public function getDeviceNumber(CompanyInterface $company): int
     {
-        $ids = [$company->getId()];
+        $ids = [(int) $company->getId()];
 
         if ($company->isWholesale()) {
             return 0;
@@ -91,12 +74,12 @@ class CompanyRegistrationSummary
         return $total;
     }
 
-    private function getDeviceNames(CompanyInterface $company):array
+    private function getDeviceNames(CompanyInterface $company): array
     {
         if ($company->isWholesale()) {
             return [];
         }
-        $companyId = $company->getId();
+        $companyId = (int) $company->getId();
 
         if ($company->isResidential()) {
             return $this

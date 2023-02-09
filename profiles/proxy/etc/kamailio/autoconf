@@ -1,0 +1,78 @@
+#!/usr/bin/perl
+
+use v5.10;
+use strict;
+use DBI;
+
+my $MYSQL_FILE = "/etc/mysql/conf.d/kamailio.cnf";
+my $database = 'ivozprovider';
+my $data_source = "dbi:mysql:$database" .
+    ";mysql_read_default_file=$MYSQL_FILE" .
+    ";mysql_read_default_group=kamailio";
+
+my $PROXY;
+my $LISTENERS_FILE;
+
+sub printListeners() {
+    my %listeners;
+
+    my $mysql_table = $PROXY eq "users" ? "ProxyUsers" : "ProxyTrunks";
+
+    my $dbh = DBI->connect($data_source, undef, undef) or die "$!";
+    my $sql = "SELECT name, ip FROM $mysql_table WHERE id > 1 ORDER BY id ASC";
+    my $sth = $dbh->prepare($sql);
+    $sth->execute();
+
+    unlink $LISTENERS_FILE;
+
+    if ($PROXY eq 'trunks' && $sth->rows > 0) {
+        open my $FILE, ">>", $LISTENERS_FILE;
+        say $FILE "#!define WITH_MULTISOCKET\n";
+        close $FILE;
+    }
+
+    &printListener('main', $PROXY);
+
+    while (my @socket = $sth->fetchrow_array) {
+        my $name = $socket[0];
+        my $ip = $socket[1];
+        &printListener($socket[0], $socket[1]);
+    }
+
+    $sth->finish();
+    $dbh->disconnect();
+
+    return \%listeners;
+}
+
+sub printListener() {
+    my ($name, $ip) = @_;
+
+    open my $FILE, ">>", $LISTENERS_FILE;
+
+    say $FILE "# $name";
+    say $FILE "listen=udp:$ip:SIP_PORT";
+    say $FILE "listen=tcp:$ip:SIP_PORT";
+    say $FILE "listen=tls:$ip:SIPS_PORT";
+    say $FILE "listen=tcp:$ip:RPC_PORT";
+    if ($PROXY eq "users") {
+        say $FILE "listen=tcp:$ip:WS_PORT";
+        say $FILE "listen=tls:$ip:WSS_PORT\n";
+    } else {
+        say $FILE "listen=tcp:$ip:XMLRPC_PORT\n";
+    }
+
+    close $FILE;
+}
+
+if (@ARGV != 1 || ($ARGV[0] ne "users" && $ARGV[0] ne "trunks")) {
+    die "One parameter needed: users/trunks\n";
+    exit(-1);
+}
+
+$PROXY = shift @ARGV;
+$LISTENERS_FILE = "/etc/kamailio/proxy$PROXY/listeners.cfg";
+
+&printListeners();
+
+exit(0);

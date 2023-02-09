@@ -4,15 +4,15 @@ namespace Ivoz\Kam\Domain\Service;
 
 interface UsersClientInterface
 {
-    const DISPATCHER_RELOAD_ACTION = 'dispatcher.reload';
-    const DOMAIN_RELOAD_ACTION = 'domain.reload';
-    const PERMISSIONS_TRUSTED_RELOAD_ACTION = 'permissions.trustedReload';
-    const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
-    const DIALPLAN_RELOAD_ACTION = 'dialplan.reload';
-    const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
-    const BANNED_ADDRESS_UNBAN = 'htable.delete';
+    public const DISPATCHER_RELOAD_ACTION = 'dispatcher.reload';
+    public const DOMAIN_RELOAD_ACTION = 'domain.reload';
+    public const PERMISSIONS_TRUSTED_RELOAD_ACTION = 'permissions.trustedReload';
+    public const PERMISSIONS_ADDRESS_RELOAD_ACTION = 'permissions.addressReload';
+    public const DIALPLAN_RELOAD_ACTION = 'dialplan.reload';
+    public const RTPENGINE_RELOAD_ACTION = 'rtpengine.reload';
+    public const BANNED_ADDRESS_UNBAN = 'htable.delete';
 
-    const USERS_ACTIONS = [
+    public const USERS_ACTIONS = [
         self::DISPATCHER_RELOAD_ACTION,
         self::DOMAIN_RELOAD_ACTION,
         self::PERMISSIONS_TRUSTED_RELOAD_ACTION,

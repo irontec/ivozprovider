@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include HuntGroupsRelUsersList.yaml
+#include HuntGroupMembersList.yaml
 
 production:
   main:
@@ -25,9 +25,9 @@ production:
           title: _("Options")
           screens:
             huntGroupsEdit_screen: $[${auth.acls.HuntGroups.update} && ${auth.companyVPBX}]
-            huntGroupsRelUsersList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
-            huntGroupsRelUsersFilterRingAllList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
-            huntGroupsRelUsersFilterRandomList_screen: $[${auth.acls.HuntGroupsRelUsers.read} && ${auth.companyVPBX}]
+            huntGroupMembersList_screen: $[${auth.acls.HuntGroupMembers.read} && ${auth.companyVPBX}]
+            huntGroupMembersFilterRingAllList_screen: $[${auth.acls.HuntGroupMembers.read} && ${auth.companyVPBX}]
+            huntGroupMembersFilterRandomList_screen: $[${auth.acls.HuntGroupMembers.read} && ${auth.companyVPBX}]
           dialogs:
             huntGroupsDel_dialog: $[${auth.acls.HuntGroups.delete} && ${auth.companyVPBX}]
           default: huntGroupsEdit_screen
@@ -38,7 +38,7 @@ production:
           noAnswerNumberCountry: true
           noAnswerNumberValue: true
           noAnswerExtension: true
-          noAnswerVoiceMailUser: true
+          noAnswerVoicemail: true
           preventMissedCalls: true
           allowCallForwards: true
       options:
@@ -81,7 +81,7 @@ production:
             noAnswerNumberCountry: 2
             noAnswerNumberValue: 2
             noAnswerExtension: 3
-            noAnswerVoiceMailUser: 3
+            noAnswerVoicemail: 3
     huntGroupsEdit_screen: &huntGroupsEdit_screenLink
       <<: *HuntGroups
       controller: edit
@@ -98,10 +98,10 @@ production:
       fixedPositions:
         <<: *huntGroupsFixedPositions_Link
 
-    # HuntGroupRelUsers
-    <<: *huntGroupsRelUsers_screensLink
-    huntGroupsRelUsersList_screen:
-      <<: *huntGroupsRelUsersList_screenLink
+    # HuntGroupMembers
+    <<: *huntGroupMembers_screensLink
+    huntGroupMembersList_screen:
+      <<: *huntGroupMembersList_screenLink
       title: _("List of %s %2s", ngettext('Member', 'Members', 0), "[format| (%parent%)]")
       class: ui-silk-group-go
       filterField: HuntGroup
@@ -109,19 +109,19 @@ production:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForHuntGroup
         - recordCount
 
-    huntGroupsRelUsersEdit_screen:
-      <<: *huntGroupsRelUsersEdit_screenLink
+    huntGroupMembersEdit_screen:
+      <<: *huntGroupMembersEdit_screenLink
       title: _("Edit %s", ngettext('Member', 'Members', 1))
       filterField: HuntGroup
 
-    huntGroupsRelUsersNew_screen:
-      <<: *huntGroupsRelUsersNew_screenLink
+    huntGroupMembersNew_screen:
+      <<: *huntGroupMembersNew_screenLink
       title: _("Add %s %2s", ngettext('Member', 'Members', 1), "[format| (%parent%)]")
       filterField: HuntGroup
 
-    # HuntGroupRelUsers filter by "ringAll"
-    huntGroupsRelUsersFilterRingAllList_screen:
-      <<: *huntGroupsRelUsersList_screenLink
+    # HuntGroupMembers filter by "ringAll"
+    huntGroupMembersFilterRingAllList_screen:
+      <<: *huntGroupMembersList_screenLink
       title: _("List of %s %2s", ngettext('Member', 'Members', 0), "[format| (%parent%)]")
       class: ui-silk-group-go
       filterField: HuntGroup
@@ -141,18 +141,18 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersFilterRingAllEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
+            huntGroupMembersFilterRingAllEdit_screen: ${auth.acls.HuntGroupMembers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-          default: huntGroupsRelUsersFilterRingAllEdit_screen
+            huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+          default: huntGroupMembersFilterRingAllEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersFilterRingAllNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
+          huntGroupMembersFilterRingAllNew_screen: ${auth.acls.HuntGroupMembers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-    huntGroupsRelUsersFilterRingAllEdit_screen:
-      <<: *huntGroupsRelUsersEdit_screenLink
+          huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+    huntGroupMembersFilterRingAllEdit_screen:
+      <<: *huntGroupMembersEdit_screenLink
       title: _("Edit %s", ngettext('Member', 'Members', 1))
       filterField: HuntGroup
       fields:
@@ -166,8 +166,8 @@ production:
           target: true
           routeType: true
 
-    huntGroupsRelUsersFilterRingAllNew_screen:
-      <<: *huntGroupsRelUsersNew_screenLink
+    huntGroupMembersFilterRingAllNew_screen:
+      <<: *huntGroupMembersNew_screenLink
       title: _("Add %s %2s", ngettext('Member', 'Members', 1), "[format| (%parent%)]")
       filterField: HuntGroup
       fields:
@@ -176,9 +176,9 @@ production:
           priority: true
           target: true
 
-    # HuntGroupRelUsers filter by "random"
-    huntGroupsRelUsersFilterRandomList_screen:
-      <<: *huntGroupsRelUsersList_screenLink
+    # HuntGroupMembers filter by "random"
+    huntGroupMembersFilterRandomList_screen:
+      <<: *huntGroupMembersList_screenLink
       title: _("List of %s %2s", ngettext('Member', 'Members', 0), "[format| (%parent%)]")
       class: ui-silk-group-go
       filterField: HuntGroup
@@ -197,18 +197,18 @@ production:
         options:
           title: _("Options")
           screens:
-            huntGroupsRelUsersFilterRandomEdit_screen: ${auth.acls.HuntGroupsRelUsers.update}
+            huntGroupMembersFilterRandomEdit_screen: ${auth.acls.HuntGroupMembers.update}
           dialogs:
-            huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-          default: huntGroupsRelUsersFilterRandomEdit_screen
+            huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+          default: huntGroupMembersFilterRandomEdit_screen
       options:
         title: _("Options")
         screens:
-          huntGroupsRelUsersFilterRandomNew_screen: ${auth.acls.HuntGroupsRelUsers.create}
+          huntGroupMembersFilterRandomNew_screen: ${auth.acls.HuntGroupMembers.create}
         dialogs:
-          huntGroupsRelUsersDel_dialog: ${auth.acls.HuntGroupsRelUsers.delete}
-    huntGroupsRelUsersFilterRandomEdit_screen:
-      <<: *huntGroupsRelUsersEdit_screenLink
+          huntGroupMembersDel_dialog: ${auth.acls.HuntGroupMembers.delete}
+    huntGroupMembersFilterRandomEdit_screen:
+      <<: *huntGroupMembersEdit_screenLink
       title: _("Edit %s", ngettext('Member', 'Members', 1))
       filterField: HuntGroup
       fields:
@@ -224,8 +224,8 @@ production:
           target: true
           routeType: true
 
-    huntGroupsRelUsersFilterRandomNew_screen:
-      <<: *huntGroupsRelUsersNew_screenLink
+    huntGroupMembersFilterRandomNew_screen:
+      <<: *huntGroupMembersNew_screenLink
       title: _("Add %s %2s", ngettext('Member', 'Members', 1), "[format| (%parent%)]")
       filterField: HuntGroup
       fields:
@@ -245,9 +245,9 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    <<: *huntGroupsRelUsers_dialogsLink
-    huntGroupsRelUsersDel_dialog:
-      <<: *huntGroupsRelUsersDel_dialogLink
+    <<: *huntGroupMembers_dialogsLink
+    huntGroupMembersDel_dialog:
+      <<: *huntGroupMembersDel_dialogLink
       title: _("Delete %s", ngettext('Member', 'Members', 1))
 
 staging:

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -20,16 +21,16 @@ abstract class UsersAddressAbstract
     use ChangelogTrait;
 
     /**
-     * column: source_address
      * @var string
+     * column: source_address
      */
     protected $sourceAddress;
 
     /**
+     * @var ?string
      * column: ip_addr
-     * @var string | null
      */
-    protected $ipAddr;
+    protected $ipAddr = null;
 
     /**
      * @var int
@@ -42,14 +43,14 @@ abstract class UsersAddressAbstract
     protected $port = 0;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $description;
+    protected $description = null;
 
     /**
      * @var CompanyInterface
@@ -60,50 +61,43 @@ abstract class UsersAddressAbstract
      * Constructor
      */
     protected function __construct(
-        $sourceAddress,
-        $mask,
-        $port
+        string $sourceAddress,
+        int $mask,
+        int $port
     ) {
         $this->setSourceAddress($sourceAddress);
         $this->setMask($mask);
         $this->setPort($port);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "UsersAddress",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return UsersAddressDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): UsersAddressDto
     {
         return new UsersAddressDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param UsersAddressInterface|null $entity
-     * @param int $depth
-     * @return UsersAddressDto|null
+     * @param null|UsersAddressInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersAddressDto
     {
         if (!$entity) {
             return null;
@@ -119,8 +113,7 @@ abstract class UsersAddressAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var UsersAddressDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -129,25 +122,32 @@ abstract class UsersAddressAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param UsersAddressDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersAddressDto::class);
+        $sourceAddress = $dto->getSourceAddress();
+        Assertion::notNull($sourceAddress, 'getSourceAddress value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getSourceAddress(),
-            $dto->getMask(),
-            $dto->getPort()
+            $sourceAddress,
+            $mask,
+            $port
         );
 
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         $self->initChangelog();
 
@@ -157,32 +157,38 @@ abstract class UsersAddressAbstract
     /**
      * @internal use EntityTools instead
      * @param UsersAddressDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, UsersAddressDto::class);
 
+        $sourceAddress = $dto->getSourceAddress();
+        Assertion::notNull($sourceAddress, 'getSourceAddress value is null, but non null value was expected.');
+        $mask = $dto->getMask();
+        Assertion::notNull($mask, 'getMask value is null, but non null value was expected.');
+        $port = $dto->getPort();
+        Assertion::notNull($port, 'getPort value is null, but non null value was expected.');
+        $company = $dto->getCompany();
+        Assertion::notNull($company, 'getCompany value is null, but non null value was expected.');
+
         $this
-            ->setSourceAddress($dto->getSourceAddress())
+            ->setSourceAddress($sourceAddress)
             ->setIpAddr($dto->getIpAddr())
-            ->setMask($dto->getMask())
-            ->setPort($dto->getPort())
+            ->setMask($mask)
+            ->setPort($port)
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
-            ->setCompany($fkTransformer->transform($dto->getCompany()));
+            ->setCompany($fkTransformer->transform($company));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return UsersAddressDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): UsersAddressDto
     {
         return self::createDto()
             ->setSourceAddress(self::getSourceAddress())
@@ -195,9 +201,9 @@ abstract class UsersAddressAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'source_address' => self::getSourceAddress(),

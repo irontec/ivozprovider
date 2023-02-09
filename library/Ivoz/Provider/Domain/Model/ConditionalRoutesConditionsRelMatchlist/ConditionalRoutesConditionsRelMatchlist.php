@@ -8,9 +8,9 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
 
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet()
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -21,7 +21,7 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -11,29 +11,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class CallStatsAction
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    protected $tokenStorage;
-
-    /**
-     * @var CallForwardSettingRepository
-     */
-    protected $callForwardSettingRepository;
-
-    /**
-     * @var UsersCdrRepository
-     */
-    protected $usersCdrRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        CallForwardSettingRepository $callForwardSettingRepository,
-        UsersCdrRepository $usersCdrRepository
+        private TokenStorageInterface $tokenStorage,
+        private CallForwardSettingRepository $callForwardSettingRepository,
+        private UsersCdrRepository $usersCdrRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->callForwardSettingRepository = $callForwardSettingRepository;
-        $this->usersCdrRepository = $usersCdrRepository;
     }
 
     public function __invoke()

@@ -3,12 +3,12 @@
 namespace Ivoz\Kam\Domain\Model\UsersCdr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 
 /**
 * UsersCdrInterface
@@ -16,14 +16,41 @@ use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 interface UsersCdrInterface extends EntityInterface
 {
     /**
-     * @return string
+     * Get id
+     *
+     * @return integer
      */
-    public function getOwner();
+    public function getId(): ?int;
 
     /**
      * @return string
      */
-    public function getParty();
+    public function getOwner(): ?string;
+
+    /**
+     * @return string
+     */
+    public function getParty(): ?string;
+
+    public static function createDto(string|int|null $id = null): UsersCdrDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|UsersCdrInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?UsersCdrDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param UsersCdrDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): UsersCdrDto;
 
     public function getStartTime(): \DateTime;
 
@@ -49,8 +76,6 @@ interface UsersCdrInterface extends EntityInterface
 
     public function getXcallid(): ?string;
 
-    public function getHidden(): bool;
-
     public function getBrand(): ?BrandInterface;
 
     public function getCompany(): ?CompanyInterface;
@@ -58,10 +83,6 @@ interface UsersCdrInterface extends EntityInterface
     public function getUser(): ?UserInterface;
 
     public function getFriend(): ?FriendInterface;
-
-    public function getResidentialDevice(): ?ResidentialDeviceInterface;
-
-    public function getRetailAccount(): ?RetailAccountInterface;
 
     public function isInitialized(): bool;
 }

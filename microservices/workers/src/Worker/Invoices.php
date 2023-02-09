@@ -2,9 +2,11 @@
 
 namespace Worker;
 
+use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
-use Ivoz\Core\Infrastructure\Persistence\Redis\Sentinel;
 use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
@@ -12,48 +14,31 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
 use Psr\Log\LoggerInterface;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class Invoices
 {
     use RegisterCommandTrait;
 
-    private $eventPublisher;
-    private $requestId;
-    private $entityTools;
-    private $invoiceRepository;
-    private $billableCallRepository;
-    private $generator;
-    private $redisMasterFactory;
-    private $redisDb;
-    private $logger;
-
     public function __construct(
         DomainEventPublisher $eventPublisher,
         RequestId $requestId,
-        EntityTools $entityTools,
-        InvoiceRepository $invoiceRepository,
-        BillableCallRepository $billableCallRepository,
-        Generator $generator,
-        RedisMasterFactory $redisMasterFactory,
-        int $redisDb,
-        LoggerInterface $logger
+        private EntityTools $entityTools,
+        private InvoiceRepository $invoiceRepository,
+        private BillableCallRepository $billableCallRepository,
+        private Generator $generator,
+        private RedisMasterFactory $redisMasterFactory,
+        private int $redisDb,
+        private int $redisTimeout,
+        private LoggerInterface $logger
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId;
-        $this->entityTools = $entityTools;
-        $this->invoiceRepository = $invoiceRepository;
-        $this->billableCallRepository = $billableCallRepository;
-        $this->generator = $generator;
-        $this->redisMasterFactory = $redisMasterFactory;
-        $this->redisDb = $redisDb;
-        $this->logger = $logger;
+
+        ini_set('default_socket_timeout', (string) $redisTimeout);
     }
 
-    public function create()
+    public function create(): ?Response
     {
         try {
             $id = $this->getInvoiceId();
@@ -84,7 +69,7 @@ class Invoices
             if (!file_exists($tempPath)) {
                 mkdir($tempPath);
             }
-            $tempPdf = $tempPath."/temp". $invoice->getId() .".pdf";
+            $tempPdf = $tempPath . "/temp" . (string) $invoice->getId() . ".pdf";
             file_put_contents($tempPdf, $content);
 
             $totals = $this->generator->getTotals();
@@ -107,6 +92,7 @@ class Invoices
                 exit(1);
             }
 
+            /** @phpstan-ignore-next-line  */
             if (!isset($invoice)) {
                 exit(1);
             }
@@ -126,7 +112,7 @@ class Invoices
         }
     }
 
-    private function getInvoiceId()
+    private function getInvoiceId(): int
     {
         $redisMaster = $this
             ->redisMasterFactory
@@ -135,10 +121,9 @@ class Invoices
             );
 
         try {
-            $timeoutSeconds = 60 * 60;
             $response = $redisMaster->blPop(
                 [InvoicerJobInterface::CHANNEL],
-                $timeoutSeconds
+                $this->redisTimeout
             );
 
             return intval(end($response));

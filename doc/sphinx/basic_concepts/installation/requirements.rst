@@ -1,3 +1,6 @@
+.. _minimum requirements:
+.. _requisitos mínimos:
+
 ####################
 Minimum requirements
 ####################
@@ -26,6 +29,6 @@ For a StandAlone installation, we recommend at least:
 
 If you're not using a :ref:`Automatic ISO CD image` you will also need:
 
-    * Debian Stretch 9.0 base install
+    * Debian Bullseye 11.0 base install
     * Internet access
 

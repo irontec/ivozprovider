@@ -8,13 +8,21 @@ class IvrEntryDto extends IvrEntryDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
+                'ivrId' => 'ivr',
                 'entry' => 'entry',
-                'routeType' => 'routeType'
+                'displayName' => 'displayName',
+                'welcomeLocutionId' => 'welcomeLocution',
+                'routeType' => 'routeType',
+                'numberCountryId' => 'numberCountry',
+                'numberValue' => 'numberValue',
+                'extensionId' => 'extension',
+                'voicemailId' => 'voicemail',
+                'conditionalRouteId' => 'conditionalRoute',
             ];
         }
 

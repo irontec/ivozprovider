@@ -13,22 +13,10 @@ use Ivoz\Provider\Domain\Service\Queue\QueueLifecycleEventHandlerInterface
 
 class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var AstQueueRepository
-     */
-    protected $astQueueRepository;
-
     public function __construct(
-        EntityTools $entityTools,
-        AstQueueRepository $astQueueRepository
+        private EntityTools $entityTools,
+        private AstQueueRepository $astQueueRepository
     ) {
-        $this->entityTools = $entityTools;
-        $this->astQueueRepository = $astQueueRepository;
     }
 
     public static function getSubscribedEvents()
@@ -61,7 +49,7 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         $astQueueName = $entity->getAstQueueName();
 
         $astQueue = $this->astQueueRepository->findOneByProviderQueueId(
-            $entity->getId()
+            (int) $entity->getId()
         );
 
         /** @var QueueDto $astQueueDto */

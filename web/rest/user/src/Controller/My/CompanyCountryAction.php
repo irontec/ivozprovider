@@ -12,15 +12,10 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class CompanyCountryAction
 {
-    protected $tokenStorage;
-    protected $countryRepository;
-
     public function __construct(
-        TokenStorageInterface $tokenStorage,
-        CountryRepository $countryRepository
+        private TokenStorageInterface $tokenStorage,
+        private CountryRepository $countryRepository
     ) {
-        $this->tokenStorage = $tokenStorage;
-        $this->countryRepository = $countryRepository;
     }
 
     public function __invoke()

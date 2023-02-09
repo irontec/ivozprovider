@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Friend;
 
@@ -9,7 +10,10 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
 /**
 * @codeCoverageIgnore
@@ -17,9 +21,9 @@ use Doctrine\Common\Collections\Criteria;
 trait FriendTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
      * @var PsEndpointInterface
@@ -34,10 +38,16 @@ trait FriendTrait
     protected $psIdentify;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, FriendsPatternInterface> & Selectable<array-key, FriendsPatternInterface>
      * FriendsPatternInterface mappedBy friend
      */
     protected $patterns;
+
+    /**
+     * @var Collection<array-key, CallForwardSettingInterface> & Selectable<array-key, CallForwardSettingInterface>
+     * CallForwardSettingInterface mappedBy friend
+     */
+    protected $callForwardSettings;
 
     /**
      * Constructor
@@ -46,45 +56,56 @@ trait FriendTrait
     {
         parent::__construct(...func_get_args());
         $this->patterns = new ArrayCollection();
+        $this->callForwardSettings = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param FriendDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $self->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $self->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $self->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $self->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getPatterns())) {
-            $self->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, FriendsPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $self->replacePatterns($replacement);
+        }
+
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
+            );
+            $self->replaceCallForwardSettings($replacement);
         }
 
         $self->sanitizeValues();
@@ -99,36 +120,46 @@ trait FriendTrait
     /**
      * @internal use EntityTools instead
      * @param FriendDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
         if (!is_null($dto->getPsEndpoint())) {
-            $this->setPsEndpoint(
-                $fkTransformer->transform(
-                    $dto->getPsEndpoint()
-                )
+            /** @var PsEndpointInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsEndpoint()
             );
+            $this->setPsEndpoint($entity);
         }
 
         if (!is_null($dto->getPsIdentify())) {
-            $this->setPsIdentify(
-                $fkTransformer->transform(
-                    $dto->getPsIdentify()
-                )
+            /** @var PsIdentifyInterface $entity */
+            $entity = $fkTransformer->transform(
+                $dto->getPsIdentify()
             );
+            $this->setPsIdentify($entity);
         }
 
-        if (!is_null($dto->getPatterns())) {
-            $this->replacePatterns(
-                $fkTransformer->transformCollection(
-                    $dto->getPatterns()
-                )
+        $patterns = $dto->getPatterns();
+        if (!is_null($patterns)) {
+
+            /** @var Collection<array-key, FriendsPatternInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $patterns
             );
+            $this->replacePatterns($replacement);
+        }
+
+        $callForwardSettings = $dto->getCallForwardSettings();
+        if (!is_null($callForwardSettings)) {
+
+            /** @var Collection<array-key, CallForwardSettingInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $callForwardSettings
+            );
+            $this->replaceCallForwardSettings($replacement);
         }
         $this->sanitizeValues();
 
@@ -137,10 +168,8 @@ trait FriendTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return FriendDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): FriendDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -148,9 +177,9 @@ trait FriendTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -161,7 +190,6 @@ trait FriendTrait
     {
         $this->psEndpoint = $psEndpoint;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -174,7 +202,6 @@ trait FriendTrait
     {
         $this->psIdentify = $psIdentify;
 
-        /** @var  $this */
         return $this;
     }
 
@@ -197,25 +224,33 @@ trait FriendTrait
         return $this;
     }
 
-    public function replacePatterns(ArrayCollection $patterns): FriendInterface
+    /**
+     * @param Collection<array-key, FriendsPatternInterface> $patterns
+     */
+    public function replacePatterns(Collection $patterns): FriendInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($patterns as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setFriend($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->patterns as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->patterns->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->patterns->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->patterns->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -225,6 +260,9 @@ trait FriendTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, FriendsPatternInterface>
+     */
     public function getPatterns(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -232,5 +270,67 @@ trait FriendTrait
         }
 
         return $this->patterns->toArray();
+    }
+
+    public function addCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface
+    {
+        $this->callForwardSettings->add($callForwardSetting);
+
+        return $this;
+    }
+
+    public function removeCallForwardSetting(CallForwardSettingInterface $callForwardSetting): FriendInterface
+    {
+        $this->callForwardSettings->removeElement($callForwardSetting);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<array-key, CallForwardSettingInterface> $callForwardSettings
+     */
+    public function replaceCallForwardSettings(Collection $callForwardSettings): FriendInterface
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($callForwardSettings as $entity) {
+            /** @var string|int $index */
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setFriend($this);
+        }
+
+        foreach ($this->callForwardSettings as $key => $entity) {
+            $identity = $entity->getId();
+            if (!$identity) {
+                $this->callForwardSettings->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
+                $this->callForwardSettings->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
+            } else {
+                $this->callForwardSettings->remove($key);
+            }
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addCallForwardSetting($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array<array-key, CallForwardSettingInterface>
+     */
+    public function getCallForwardSettings(Criteria $criteria = null): array
+    {
+        if (!is_null($criteria)) {
+            return $this->callForwardSettings->matching($criteria)->toArray();
+        }
+
+        return $this->callForwardSettings->toArray();
     }
 }

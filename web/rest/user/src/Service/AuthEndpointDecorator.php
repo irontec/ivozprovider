@@ -10,19 +10,13 @@ class AuthEndpointDecorator implements NormalizerInterface
     use AuthEndpointTrait;
 
     /**
-     * @var NormalizerInterface
-     */
-    protected $decoratedNormalizer;
-
-    /**
      * @var \ArrayObject
      */
     protected $definitions;
 
     public function __construct(
-        NormalizerInterface $decoratedNormalizer
+        private NormalizerInterface $decoratedNormalizer
     ) {
-        $this->decoratedNormalizer = $decoratedNormalizer;
     }
 
     /**

@@ -7,5 +7,4 @@ use Doctrine\Persistence\ObjectRepository;
 
 interface TpLcrRuleRepository extends ObjectRepository, Selectable
 {
-
 }

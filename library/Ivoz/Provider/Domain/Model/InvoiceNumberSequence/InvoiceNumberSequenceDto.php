@@ -8,7 +8,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -27,7 +27,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {
@@ -43,7 +43,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
     /**
      * @inheritdoc
      */
-    public function setIteration(?int $iteration = null): static
+    public function setIteration(int $iteration): static
     {
         if ($this->getId()) {
             //Do not update this value
@@ -69,7 +69,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
     /**
      * @inheritdoc
      */
-    public function setVersion(?int $version = null): static
+    public function setVersion(int $version): static
     {
         if ($this->getId()) {
             //Do not update this value

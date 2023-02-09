@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\CompanyRelGeoIPCountry;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
@@ -22,10 +23,10 @@ abstract class CompanyRelGeoIPCountryAbstract
     use ChangelogTrait;
 
     /**
-     * @var CompanyInterface | null
+     * @var ?CompanyInterface
      * inversedBy relCountries
      */
-    protected $company;
+    protected $company = null;
 
     /**
      * @var CountryInterface
@@ -39,41 +40,34 @@ abstract class CompanyRelGeoIPCountryAbstract
     {
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "CompanyRelGeoIPCountry",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return CompanyRelGeoIPCountryDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): CompanyRelGeoIPCountryDto
     {
         return new CompanyRelGeoIPCountryDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param CompanyRelGeoIPCountryInterface|null $entity
-     * @param int $depth
-     * @return CompanyRelGeoIPCountryDto|null
+     * @param null|CompanyRelGeoIPCountryInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?CompanyRelGeoIPCountryDto
     {
         if (!$entity) {
             return null;
@@ -89,8 +83,7 @@ abstract class CompanyRelGeoIPCountryAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var CompanyRelGeoIPCountryDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -99,19 +92,20 @@ abstract class CompanyRelGeoIPCountryAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param CompanyRelGeoIPCountryDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $self = new static();
 
         $self
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         $self->initChangelog();
 
@@ -121,27 +115,27 @@ abstract class CompanyRelGeoIPCountryAbstract
     /**
      * @internal use EntityTools instead
      * @param CompanyRelGeoIPCountryDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, CompanyRelGeoIPCountryDto::class);
+
+        $country = $dto->getCountry();
+        Assertion::notNull($country, 'getCountry value is null, but non null value was expected.');
 
         $this
             ->setCompany($fkTransformer->transform($dto->getCompany()))
-            ->setCountry($fkTransformer->transform($dto->getCountry()));
+            ->setCountry($fkTransformer->transform($country));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return CompanyRelGeoIPCountryDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): CompanyRelGeoIPCountryDto
     {
         return self::createDto()
             ->setCompany(Company::entityToDto(self::getCompany(), $depth))
@@ -149,12 +143,12 @@ abstract class CompanyRelGeoIPCountryAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'companyId' => self::getCompany()?->getId(),
             'countryId' => self::getCountry()->getId()
         ];
     }
@@ -163,7 +157,6 @@ abstract class CompanyRelGeoIPCountryAbstract
     {
         $this->company = $company;
 
-        /** @var  $this */
         return $this;
     }
 

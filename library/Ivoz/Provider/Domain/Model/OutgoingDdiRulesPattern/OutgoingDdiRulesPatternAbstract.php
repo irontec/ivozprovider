@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
@@ -24,19 +25,19 @@ abstract class OutgoingDdiRulesPatternAbstract
     use ChangelogTrait;
 
     /**
-     * comment: enum:prefix|destination
      * @var string
+     * comment: enum:prefix|destination
      */
     protected $type;
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $prefix;
+    protected $prefix = null;
 
     /**
-     * comment: enum:keep|force
      * @var string
+     * comment: enum:keep|force
      */
     protected $action;
 
@@ -52,63 +53,56 @@ abstract class OutgoingDdiRulesPatternAbstract
     protected $outgoingDdiRule;
 
     /**
-     * @var MatchListInterface | null
+     * @var ?MatchListInterface
      */
-    protected $matchList;
+    protected $matchList = null;
 
     /**
-     * @var DdiInterface | null
+     * @var ?DdiInterface
      */
-    protected $forcedDdi;
+    protected $forcedDdi = null;
 
     /**
      * Constructor
      */
     protected function __construct(
-        $type,
-        $action,
-        $priority
+        string $type,
+        string $action,
+        int $priority
     ) {
         $this->setType($type);
         $this->setAction($action);
         $this->setPriority($priority);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "OutgoingDdiRulesPattern",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return OutgoingDdiRulesPatternDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): OutgoingDdiRulesPatternDto
     {
         return new OutgoingDdiRulesPatternDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param OutgoingDdiRulesPatternInterface|null $entity
-     * @param int $depth
-     * @return OutgoingDdiRulesPatternDto|null
+     * @param null|OutgoingDdiRulesPatternInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?OutgoingDdiRulesPatternDto
     {
         if (!$entity) {
             return null;
@@ -124,8 +118,7 @@ abstract class OutgoingDdiRulesPatternAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var OutgoingDdiRulesPatternDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -134,23 +127,30 @@ abstract class OutgoingDdiRulesPatternAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param OutgoingDdiRulesPatternDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $action = $dto->getAction();
+        Assertion::notNull($action, 'getAction value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $outgoingDdiRule = $dto->getOutgoingDdiRule();
+        Assertion::notNull($outgoingDdiRule, 'getOutgoingDdiRule value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getType(),
-            $dto->getAction(),
-            $dto->getPriority()
+            $type,
+            $action,
+            $priority
         );
 
         $self
             ->setPrefix($dto->getPrefix())
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setOutgoingDdiRule($fkTransformer->transform($outgoingDdiRule))
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
@@ -162,20 +162,28 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * @internal use EntityTools instead
      * @param OutgoingDdiRulesPatternDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, OutgoingDdiRulesPatternDto::class);
 
+        $type = $dto->getType();
+        Assertion::notNull($type, 'getType value is null, but non null value was expected.');
+        $action = $dto->getAction();
+        Assertion::notNull($action, 'getAction value is null, but non null value was expected.');
+        $priority = $dto->getPriority();
+        Assertion::notNull($priority, 'getPriority value is null, but non null value was expected.');
+        $outgoingDdiRule = $dto->getOutgoingDdiRule();
+        Assertion::notNull($outgoingDdiRule, 'getOutgoingDdiRule value is null, but non null value was expected.');
+
         $this
-            ->setType($dto->getType())
+            ->setType($type)
             ->setPrefix($dto->getPrefix())
-            ->setAction($dto->getAction())
-            ->setPriority($dto->getPriority())
-            ->setOutgoingDdiRule($fkTransformer->transform($dto->getOutgoingDdiRule()))
+            ->setAction($action)
+            ->setPriority($priority)
+            ->setOutgoingDdiRule($fkTransformer->transform($outgoingDdiRule))
             ->setMatchList($fkTransformer->transform($dto->getMatchList()))
             ->setForcedDdi($fkTransformer->transform($dto->getForcedDdi()));
 
@@ -184,10 +192,8 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return OutgoingDdiRulesPatternDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): OutgoingDdiRulesPatternDto
     {
         return self::createDto()
             ->setType(self::getType())
@@ -200,9 +206,9 @@ abstract class OutgoingDdiRulesPatternAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'type' => self::getType(),
@@ -210,8 +216,8 @@ abstract class OutgoingDdiRulesPatternAbstract
             'action' => self::getAction(),
             'priority' => self::getPriority(),
             'outgoingDdiRuleId' => self::getOutgoingDdiRule()->getId(),
-            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null,
-            'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
+            'matchListId' => self::getMatchList()?->getId(),
+            'forcedDdiId' => self::getForcedDdi()?->getId()
         ];
     }
 
@@ -291,7 +297,6 @@ abstract class OutgoingDdiRulesPatternAbstract
     {
         $this->outgoingDdiRule = $outgoingDdiRule;
 
-        /** @var  $this */
         return $this;
     }
 

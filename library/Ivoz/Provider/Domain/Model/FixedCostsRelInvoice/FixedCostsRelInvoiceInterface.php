@@ -3,9 +3,11 @@
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
-use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 /**
 * FixedCostsRelInvoiceInterface
@@ -14,16 +16,36 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getChangeSet();
+    public function getChangeSet(): array;
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
-     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
-     * @return static
+     * Get id
+     * @codeCoverageIgnore
+     * @return integer
      */
-    public static function fromFixedCostsRelInvoiceScheduler(InvoiceInterface $invoice, FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
+    public function getId(): ?int;
+
+    public static function createDto(string|int|null $id = null): FixedCostsRelInvoiceDto;
+
+    /**
+     * @internal use EntityTools instead
+     * @param null|FixedCostsRelInvoiceInterface $entity
+     */
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?FixedCostsRelInvoiceDto;
+
+    /**
+     * Factory method
+     * @internal use EntityTools instead
+     * @param FixedCostsRelInvoiceDto $dto
+     */
+    public static function fromDto(DataTransferObjectInterface $dto, ForeignKeyTransformerInterface $fkTransformer): static;
+
+    /**
+     * @internal use EntityTools instead
+     */
+    public function toDto(int $depth = 0): FixedCostsRelInvoiceDto;
 
     public function getQuantity(): ?int;
 

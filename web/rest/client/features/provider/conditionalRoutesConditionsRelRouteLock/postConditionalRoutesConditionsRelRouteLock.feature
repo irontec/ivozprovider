@@ -22,8 +22,32 @@ Feature: Create conditional routes conditions route lock
     """
       {
           "id": 2,
-          "condition": 1,
-          "routeLock": 2
+          "condition": {
+              "priority": 1,
+              "routeType": null,
+              "numberValue": null,
+              "friendValue": null,
+              "id": 1,
+              "conditionalRoute": 1,
+              "ivr": null,
+              "huntGroup": null,
+              "voicemail": null,
+              "user": null,
+              "queue": null,
+              "locution": null,
+              "conferenceRoom": null,
+              "extension": null,
+              "numberCountry": null
+          },
+          "routeLock": {
+              "name": "Test Lock",
+              "description": "Test Lock",
+              "open": true,
+              "id": 2,
+              "closeExtension": "",
+              "openExtension": "",
+              "toggleExtension": ""
+          }
       }
     """
 
@@ -47,7 +71,7 @@ Feature: Create conditional routes conditions route lock
               "conditionalRoute": 1,
               "ivr": null,
               "huntGroup": null,
-              "voicemailUser": null,
+              "voicemail": null,
               "user": null,
               "queue": null,
               "locution": null,

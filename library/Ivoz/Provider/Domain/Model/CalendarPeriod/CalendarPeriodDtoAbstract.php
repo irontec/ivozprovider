@@ -7,7 +7,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
-use Ivoz\Provider\Domain\Model\User\UserDto;
+use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Model\Country\CountryDto;
 use Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule\CalendarPeriodsRelScheduleDto;
 
@@ -20,60 +20,63 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     use DtoNormalizer;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $startDate;
+    private $startDate = null;
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
-    private $endDate;
-
-    /**
-     * @var string|null
-     */
-    private $routeType;
+    private $endDate = null;
 
     /**
      * @var string|null
      */
-    private $numberValue;
+    private $routeType = null;
 
     /**
-     * @var int
+     * @var string|null
      */
-    private $id;
+    private $numberValue = null;
+
+    /**
+     * @var int|null
+     */
+    private $id = null;
 
     /**
      * @var CalendarDto | null
      */
-    private $calendar;
+    private $calendar = null;
 
     /**
      * @var LocutionDto | null
      */
-    private $locution;
+    private $locution = null;
 
     /**
      * @var ExtensionDto | null
      */
-    private $extension;
+    private $extension = null;
 
     /**
-     * @var UserDto | null
+     * @var VoicemailDto | null
      */
-    private $voiceMailUser;
+    private $voicemail = null;
 
     /**
      * @var CountryDto | null
      */
-    private $numberCountry;
+    private $numberCountry = null;
 
     /**
      * @var CalendarPeriodsRelScheduleDto[] | null
      */
-    private $relSchedules;
+    private $relSchedules = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -82,7 +85,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -97,15 +100,15 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
             'calendarId' => 'calendar',
             'locutionId' => 'locution',
             'extensionId' => 'extension',
-            'voiceMailUserId' => 'voiceMailUser',
+            'voicemailId' => 'voicemail',
             'numberCountryId' => 'numberCountry'
         ];
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'startDate' => $this->getStartDate(),
@@ -116,7 +119,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
             'calendar' => $this->getCalendar(),
             'locution' => $this->getLocution(),
             'extension' => $this->getExtension(),
-            'voiceMailUser' => $this->getVoiceMailUser(),
+            'voicemail' => $this->getVoicemail(),
             'numberCountry' => $this->getNumberCountry(),
             'relSchedules' => $this->getRelSchedules()
         ];
@@ -135,26 +138,26 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $response;
     }
 
-    public function setStartDate(null|\DateTime|string $startDate): static
+    public function setStartDate(\DateTimeInterface|string $startDate): static
     {
         $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getStartDate(): \DateTime|string|null
+    public function getStartDate(): \DateTimeInterface|string|null
     {
         return $this->startDate;
     }
 
-    public function setEndDate(null|\DateTime|string $endDate): static
+    public function setEndDate(\DateTimeInterface|string $endDate): static
     {
         $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function getEndDate(): \DateTime|string|null
+    public function getEndDate(): \DateTimeInterface|string|null
     {
         return $this->endDate;
     }
@@ -190,7 +193,7 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -285,30 +288,30 @@ abstract class CalendarPeriodDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 
-    public function setVoiceMailUser(?UserDto $voiceMailUser): static
+    public function setVoicemail(?VoicemailDto $voicemail): static
     {
-        $this->voiceMailUser = $voiceMailUser;
+        $this->voicemail = $voicemail;
 
         return $this;
     }
 
-    public function getVoiceMailUser(): ?UserDto
+    public function getVoicemail(): ?VoicemailDto
     {
-        return $this->voiceMailUser;
+        return $this->voicemail;
     }
 
-    public function setVoiceMailUserId($id): static
+    public function setVoicemailId($id): static
     {
         $value = !is_null($id)
-            ? new UserDto($id)
+            ? new VoicemailDto($id)
             : null;
 
-        return $this->setVoiceMailUser($value);
+        return $this->setVoicemail($value);
     }
 
-    public function getVoiceMailUserId()
+    public function getVoicemailId()
     {
-        if ($dto = $this->getVoiceMailUser()) {
+        if ($dto = $this->getVoicemail()) {
             return $dto->getId();
         }
 

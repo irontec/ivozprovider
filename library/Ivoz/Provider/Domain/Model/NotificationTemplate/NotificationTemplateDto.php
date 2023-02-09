@@ -4,12 +4,11 @@ namespace Ivoz\Provider\Domain\Model\NotificationTemplate;
 
 class NotificationTemplateDto extends NotificationTemplateDtoAbstract
 {
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
      */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             $response = [
@@ -28,7 +27,7 @@ class NotificationTemplateDto extends NotificationTemplateDtoAbstract
         return $response;
     }
 
-    public function denormalize(array $data, string $context, string $role = '')
+    public function denormalize(array $data, string $context, string $role = ''): void
     {
         $contextProperties = self::getPropertyMap($context, $role);
         if ($role === 'ROLE_BRAND_ADMIN') {

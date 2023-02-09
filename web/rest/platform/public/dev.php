@@ -3,7 +3,7 @@
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
-require dirname(__DIR__).'/config/bootstrap.php';
+require dirname(__DIR__) . '/config/bootstrap.php';
 
 umask(0000);
 Debug::enable();

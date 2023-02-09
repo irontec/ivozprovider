@@ -9,7 +9,11 @@ class TpDestinationRate extends TpDestinationRateAbstract implements TpDestinati
 {
     use TpDestinationRateTrait;
 
-    public function getChangeSet()
+    /**
+     * @codeCoverageIgnore
+     * @return array<string, mixed>
+     */
+    public function getChangeSet(): array
     {
         return parent::getChangeSet();
     }
@@ -19,7 +23,7 @@ class TpDestinationRate extends TpDestinationRateAbstract implements TpDestinati
      * @codeCoverageIgnore
      * @return integer
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Cgr\Domain\Model\TpDestination;
 
@@ -7,7 +8,7 @@ use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use \Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\Destination\Destination;
@@ -26,9 +27,9 @@ abstract class TpDestinationAbstract
     protected $tpid = 'ivozprovider';
 
     /**
-     * @var string | null
+     * @var ?string
      */
-    protected $tag;
+    protected $tag = null;
 
     /**
      * @var string
@@ -36,8 +37,8 @@ abstract class TpDestinationAbstract
     protected $prefix;
 
     /**
-     * column: created_at
      * @var \DateTime
+     * column: created_at
      */
     protected $createdAt;
 
@@ -51,50 +52,43 @@ abstract class TpDestinationAbstract
      * Constructor
      */
     protected function __construct(
-        $tpid,
-        $prefix,
-        $createdAt
+        string $tpid,
+        string $prefix,
+        \DateTimeInterface|string $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setPrefix($prefix);
         $this->setCreatedAt($createdAt);
     }
 
-    abstract public function getId();
+    abstract public function getId(): null|string|int;
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             "%s#%s",
             "TpDestination",
-            $this->getId()
+            (string) $this->getId()
         );
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
-    protected function sanitizeValues()
+    protected function sanitizeValues(): void
     {
     }
 
-    /**
-     * @param mixed $id
-     * @return TpDestinationDto
-     */
-    public static function createDto($id = null)
+    public static function createDto(string|int|null $id = null): TpDestinationDto
     {
         return new TpDestinationDto($id);
     }
 
     /**
      * @internal use EntityTools instead
-     * @param TpDestinationInterface|null $entity
-     * @param int $depth
-     * @return TpDestinationDto|null
+     * @param null|TpDestinationInterface $entity
      */
-    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    public static function entityToDto(?EntityInterface $entity, int $depth = 0): ?TpDestinationDto
     {
         if (!$entity) {
             return null;
@@ -110,8 +104,7 @@ abstract class TpDestinationAbstract
             return static::createDto($entity->getId());
         }
 
-        /** @var TpDestinationDto $dto */
-        $dto = $entity->toDto($depth-1);
+        $dto = $entity->toDto($depth - 1);
 
         return $dto;
     }
@@ -120,23 +113,30 @@ abstract class TpDestinationAbstract
      * Factory method
      * @internal use EntityTools instead
      * @param TpDestinationDto $dto
-     * @return self
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDestinationDto::class);
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
 
         $self = new static(
-            $dto->getTpid(),
-            $dto->getPrefix(),
-            $dto->getCreatedAt()
+            $tpid,
+            $prefix,
+            $createdAt
         );
 
         $self
             ->setTag($dto->getTag())
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setDestination($fkTransformer->transform($destination));
 
         $self->initChangelog();
 
@@ -146,30 +146,36 @@ abstract class TpDestinationAbstract
     /**
      * @internal use EntityTools instead
      * @param TpDestinationDto $dto
-     * @return self
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         Assertion::isInstanceOf($dto, TpDestinationDto::class);
 
+        $tpid = $dto->getTpid();
+        Assertion::notNull($tpid, 'getTpid value is null, but non null value was expected.');
+        $prefix = $dto->getPrefix();
+        Assertion::notNull($prefix, 'getPrefix value is null, but non null value was expected.');
+        $createdAt = $dto->getCreatedAt();
+        Assertion::notNull($createdAt, 'getCreatedAt value is null, but non null value was expected.');
+        $destination = $dto->getDestination();
+        Assertion::notNull($destination, 'getDestination value is null, but non null value was expected.');
+
         $this
-            ->setTpid($dto->getTpid())
+            ->setTpid($tpid)
             ->setTag($dto->getTag())
-            ->setPrefix($dto->getPrefix())
-            ->setCreatedAt($dto->getCreatedAt())
-            ->setDestination($fkTransformer->transform($dto->getDestination()));
+            ->setPrefix($prefix)
+            ->setCreatedAt($createdAt)
+            ->setDestination($fkTransformer->transform($destination));
 
         return $this;
     }
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return TpDestinationDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): TpDestinationDto
     {
         return self::createDto()
             ->setTpid(self::getTpid())
@@ -180,9 +186,9 @@ abstract class TpDestinationAbstract
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return [
             'tpid' => self::getTpid(),
@@ -237,15 +243,16 @@ abstract class TpDestinationAbstract
         return $this->prefix;
     }
 
-    protected function setCreatedAt($createdAt): static
+    protected function setCreatedAt(string|\DateTimeInterface $createdAt): static
     {
 
+        /** @var \Datetime */
         $createdAt = DateTimeHelper::createOrFix(
             $createdAt,
             'CURRENT_TIMESTAMP'
         );
 
-        if ($this->createdAt == $createdAt) {
+        if ($this->isInitialized() && $this->createdAt == $createdAt) {
             return $this;
         }
 
@@ -263,7 +270,6 @@ abstract class TpDestinationAbstract
     {
         $this->destination = $destination;
 
-        /** @var  $this */
         return $this;
     }
 

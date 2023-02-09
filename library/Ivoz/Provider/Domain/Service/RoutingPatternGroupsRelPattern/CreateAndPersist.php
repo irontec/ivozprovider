@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
@@ -13,15 +14,9 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
  */
 class CreateAndPersist
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        private EntityPersisterInterface $entityPersister
     ) {
-        $this->entityPersister = $entityPersister;
     }
 
     /**
@@ -29,9 +24,6 @@ class CreateAndPersist
      */
     public function execute(RoutingPatternInterface $routingPattern, RoutingPatternGroupInterface $patternGroup)
     {
-        /**
-         * @var RoutingPatternGroupsRelPatternDTO $routingPatternGroupsRelPatternDto
-         */
         $routingPatternGroupsRelPatternDto = RoutingPatternGroupsRelPattern::createDto();
         $routingPatternGroupsRelPatternDto
             ->setRoutingPatternId($routingPattern->getId())

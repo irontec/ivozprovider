@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
@@ -7,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Selectable;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface;
@@ -18,33 +21,33 @@ use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\Condition
 trait ConditionalRoutesConditionTrait
 {
     /**
-     * @var int
+     * @var ?int
      */
-    protected $id;
+    protected $id = null;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ConditionalRoutesConditionsRelMatchlistInterface> & Selectable<array-key, ConditionalRoutesConditionsRelMatchlistInterface>
      * ConditionalRoutesConditionsRelMatchlistInterface mappedBy condition
      * orphanRemoval
      */
     protected $relMatchlists;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ConditionalRoutesConditionsRelScheduleInterface> & Selectable<array-key, ConditionalRoutesConditionsRelScheduleInterface>
      * ConditionalRoutesConditionsRelScheduleInterface mappedBy condition
      * orphanRemoval
      */
     protected $relSchedules;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ConditionalRoutesConditionsRelCalendarInterface> & Selectable<array-key, ConditionalRoutesConditionsRelCalendarInterface>
      * ConditionalRoutesConditionsRelCalendarInterface mappedBy condition
      * orphanRemoval
      */
     protected $relCalendars;
 
     /**
-     * @var ArrayCollection
+     * @var Collection<array-key, ConditionalRoutesConditionsRelRouteLockInterface> & Selectable<array-key, ConditionalRoutesConditionsRelRouteLockInterface>
      * ConditionalRoutesConditionsRelRouteLockInterface mappedBy condition
      * orphanRemoval
      */
@@ -62,51 +65,57 @@ trait ConditionalRoutesConditionTrait
         $this->relRouteLocks = new ArrayCollection();
     }
 
-    abstract protected function sanitizeValues();
+    abstract protected function sanitizeValues(): void;
 
     /**
      * Factory method
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public static function fromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         /** @var static $self */
         $self = parent::fromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelMatchlists())) {
-            $self->replaceRelMatchlists(
-                $fkTransformer->transformCollection(
-                    $dto->getRelMatchlists()
-                )
+        $relMatchlists = $dto->getRelMatchlists();
+        if (!is_null($relMatchlists)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelMatchlistInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMatchlists
             );
+            $self->replaceRelMatchlists($replacement);
         }
 
-        if (!is_null($dto->getRelSchedules())) {
-            $self->replaceRelSchedules(
-                $fkTransformer->transformCollection(
-                    $dto->getRelSchedules()
-                )
+        $relSchedules = $dto->getRelSchedules();
+        if (!is_null($relSchedules)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelScheduleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relSchedules
             );
+            $self->replaceRelSchedules($replacement);
         }
 
-        if (!is_null($dto->getRelCalendars())) {
-            $self->replaceRelCalendars(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCalendars()
-                )
+        $relCalendars = $dto->getRelCalendars();
+        if (!is_null($relCalendars)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelCalendarInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCalendars
             );
+            $self->replaceRelCalendars($replacement);
         }
 
-        if (!is_null($dto->getRelRouteLocks())) {
-            $self->replaceRelRouteLocks(
-                $fkTransformer->transformCollection(
-                    $dto->getRelRouteLocks()
-                )
+        $relRouteLocks = $dto->getRelRouteLocks();
+        if (!is_null($relRouteLocks)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelRouteLockInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relRouteLocks
             );
+            $self->replaceRelRouteLocks($replacement);
         }
 
         $self->sanitizeValues();
@@ -121,44 +130,50 @@ trait ConditionalRoutesConditionTrait
     /**
      * @internal use EntityTools instead
      * @param ConditionalRoutesConditionDto $dto
-     * @param ForeignKeyTransformerInterface  $fkTransformer
-     * @return static
      */
     public function updateFromDto(
         DataTransferObjectInterface $dto,
         ForeignKeyTransformerInterface $fkTransformer
-    ) {
+    ): static {
         parent::updateFromDto($dto, $fkTransformer);
-        if (!is_null($dto->getRelMatchlists())) {
-            $this->replaceRelMatchlists(
-                $fkTransformer->transformCollection(
-                    $dto->getRelMatchlists()
-                )
+        $relMatchlists = $dto->getRelMatchlists();
+        if (!is_null($relMatchlists)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelMatchlistInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relMatchlists
             );
+            $this->replaceRelMatchlists($replacement);
         }
 
-        if (!is_null($dto->getRelSchedules())) {
-            $this->replaceRelSchedules(
-                $fkTransformer->transformCollection(
-                    $dto->getRelSchedules()
-                )
+        $relSchedules = $dto->getRelSchedules();
+        if (!is_null($relSchedules)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelScheduleInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relSchedules
             );
+            $this->replaceRelSchedules($replacement);
         }
 
-        if (!is_null($dto->getRelCalendars())) {
-            $this->replaceRelCalendars(
-                $fkTransformer->transformCollection(
-                    $dto->getRelCalendars()
-                )
+        $relCalendars = $dto->getRelCalendars();
+        if (!is_null($relCalendars)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelCalendarInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relCalendars
             );
+            $this->replaceRelCalendars($replacement);
         }
 
-        if (!is_null($dto->getRelRouteLocks())) {
-            $this->replaceRelRouteLocks(
-                $fkTransformer->transformCollection(
-                    $dto->getRelRouteLocks()
-                )
+        $relRouteLocks = $dto->getRelRouteLocks();
+        if (!is_null($relRouteLocks)) {
+
+            /** @var Collection<array-key, ConditionalRoutesConditionsRelRouteLockInterface> $replacement */
+            $replacement = $fkTransformer->transformCollection(
+                $relRouteLocks
             );
+            $this->replaceRelRouteLocks($replacement);
         }
         $this->sanitizeValues();
 
@@ -167,10 +182,8 @@ trait ConditionalRoutesConditionTrait
 
     /**
      * @internal use EntityTools instead
-     * @param int $depth
-     * @return ConditionalRoutesConditionDto
      */
-    public function toDto($depth = 0)
+    public function toDto(int $depth = 0): ConditionalRoutesConditionDto
     {
         $dto = parent::toDto($depth);
         return $dto
@@ -178,9 +191,9 @@ trait ConditionalRoutesConditionTrait
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function __toArray()
+    protected function __toArray(): array
     {
         return parent::__toArray() + [
             'id' => self::getId()
@@ -201,25 +214,33 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    public function replaceRelMatchlists(ArrayCollection $relMatchlists): ConditionalRoutesConditionInterface
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelMatchlistInterface> $relMatchlists
+     */
+    public function replaceRelMatchlists(Collection $relMatchlists): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relMatchlists as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relMatchlists as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relMatchlists->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relMatchlists->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relMatchlists->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -229,6 +250,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelMatchlistInterface>
+     */
     public function getRelMatchlists(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -252,25 +276,33 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    public function replaceRelSchedules(ArrayCollection $relSchedules): ConditionalRoutesConditionInterface
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelScheduleInterface> $relSchedules
+     */
+    public function replaceRelSchedules(Collection $relSchedules): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relSchedules as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relSchedules as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relSchedules->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relSchedules->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relSchedules->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -280,6 +312,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelScheduleInterface>
+     */
     public function getRelSchedules(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -303,25 +338,33 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    public function replaceRelCalendars(ArrayCollection $relCalendars): ConditionalRoutesConditionInterface
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelCalendarInterface> $relCalendars
+     */
+    public function replaceRelCalendars(Collection $relCalendars): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relCalendars as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relCalendars as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relCalendars->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relCalendars->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relCalendars->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -331,6 +374,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelCalendarInterface>
+     */
     public function getRelCalendars(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {
@@ -354,25 +400,33 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
-    public function replaceRelRouteLocks(ArrayCollection $relRouteLocks): ConditionalRoutesConditionInterface
+    /**
+     * @param Collection<array-key, ConditionalRoutesConditionsRelRouteLockInterface> $relRouteLocks
+     */
+    public function replaceRelRouteLocks(Collection $relRouteLocks): ConditionalRoutesConditionInterface
     {
         $updatedEntities = [];
         $fallBackId = -1;
         foreach ($relRouteLocks as $entity) {
+            /** @var string|int $index */
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
-        $updatedEntityKeys = array_keys($updatedEntities);
 
         foreach ($this->relRouteLocks as $key => $entity) {
             $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
+            if (!$identity) {
+                $this->relRouteLocks->remove($key);
+                continue;
+            }
+
+            if (array_key_exists($identity, $updatedEntities)) {
                 $this->relRouteLocks->set($key, $updatedEntities[$identity]);
+                unset($updatedEntities[$identity]);
             } else {
                 $this->relRouteLocks->remove($key);
             }
-            unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
@@ -382,6 +436,9 @@ trait ConditionalRoutesConditionTrait
         return $this;
     }
 
+    /**
+     * @return array<array-key, ConditionalRoutesConditionsRelRouteLockInterface>
+     */
     public function getRelRouteLocks(Criteria $criteria = null): array
     {
         if (!is_null($criteria)) {

@@ -14,45 +14,48 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     use DtoNormalizer;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $ruid = '';
 
     /**
-     * @var string
+     * @var string|null
      */
     private $username = '';
 
     /**
      * @var string|null
      */
-    private $domain;
+    private $domain = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $aname = '';
 
     /**
-     * @var int
+     * @var int|null
      */
     private $atype = 0;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $avalue = '';
 
     /**
-     * @var \DateTime|string
+     * @var \DateTimeInterface|string|null
      */
     private $lastModified = '1900-01-01 00:00:01';
 
     /**
-     * @var int
+     * @var int|null
      */
-    private $id;
+    private $id = null;
 
+    /**
+     * @param string|int|null $id
+     */
     public function __construct($id = null)
     {
         $this->setId($id);
@@ -61,7 +64,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     /**
     * @inheritdoc
     */
-    public static function getPropertyMap(string $context = '', string $role = null)
+    public static function getPropertyMap(string $context = '', string $role = null): array
     {
         if ($context === self::CONTEXT_COLLECTION) {
             return ['id' => 'id'];
@@ -80,9 +83,9 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     }
 
     /**
-    * @return array
-    */
-    public function toArray($hideSensitiveData = false)
+     * @return array<string, mixed>
+     */
+    public function toArray(bool $hideSensitiveData = false): array
     {
         $response = [
             'ruid' => $this->getRuid(),
@@ -109,7 +112,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $response;
     }
 
-    public function setRuid(?string $ruid): static
+    public function setRuid(string $ruid): static
     {
         $this->ruid = $ruid;
 
@@ -121,7 +124,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->ruid;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(string $username): static
     {
         $this->username = $username;
 
@@ -145,7 +148,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->domain;
     }
 
-    public function setAname(?string $aname): static
+    public function setAname(string $aname): static
     {
         $this->aname = $aname;
 
@@ -157,7 +160,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->aname;
     }
 
-    public function setAtype(?int $atype): static
+    public function setAtype(int $atype): static
     {
         $this->atype = $atype;
 
@@ -169,7 +172,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->atype;
     }
 
-    public function setAvalue(?string $avalue): static
+    public function setAvalue(string $avalue): static
     {
         $this->avalue = $avalue;
 
@@ -181,14 +184,14 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->avalue;
     }
 
-    public function setLastModified(null|\DateTime|string $lastModified): static
+    public function setLastModified(\DateTimeInterface|string $lastModified): static
     {
         $this->lastModified = $lastModified;
 
         return $this;
     }
 
-    public function getLastModified(): \DateTime|string|null
+    public function getLastModified(): \DateTimeInterface|string|null
     {
         return $this->lastModified;
     }
@@ -200,7 +203,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

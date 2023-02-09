@@ -15,31 +15,13 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 {
-    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
-
-    /**
-     * @var CsvExporter
-     */
-    protected $csvExporter;
-
-    /**
-     * @var Filesystem
-     */
-    protected $fs;
+    public const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     public function __construct(
-        EntityTools $entityTools,
-        CsvExporter $csvExporter,
-        Filesystem $fs
+        private EntityTools $entityTools,
+        private CsvExporter $csvExporter,
+        private Filesystem $fs
     ) {
-        $this->entityTools = $entityTools;
-        $this->csvExporter = $csvExporter;
-        $this->fs = $fs;
     }
 
     public static function getSubscribedEvents()
@@ -101,8 +83,8 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         $timezone = new \DateTimeZone(
             $callCsvReport->getTimezone()->getTz()
         );
-        $inDate->setTimezone($timezone);
-        $outDate->setTimezone($timezone);
+        $inDate = $inDate->setTimezone($timezone);
+        $outDate = $outDate->setTimezone($timezone);
 
         $name = $company
             ? $company->getName()
@@ -128,8 +110,8 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
 
     private function cleanSensitiveDataIfNecessary(
         string $csv,
-        BrandInterface $brand = null,
-        CompanyInterface $company = null
+        ?BrandInterface $brand = null,
+        ?CompanyInterface $company = null
     ): string {
         if ($brand) {
             return $csv;
@@ -148,7 +130,7 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             return $csv;
         }
 
-        foreach ($rows as $key => $val) {
+        foreach (array_keys($rows) as $key) {
             $rows[$key]['price'] = null;
         }
 
