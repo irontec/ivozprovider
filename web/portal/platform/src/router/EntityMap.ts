@@ -18,18 +18,6 @@ const getEntityMap = (): ExtendedRouteMap => {
       label: _('Global Configuration'),
       children: [
         {
-          entity: entities.TerminalManufacturer,
-          children: [
-            {
-              entity: entities.TerminalModel,
-            },
-          ],
-        },
-        { entity: entities.Service },
-        {
-          entity: entities.Currency,
-        },
-        {
           entity: entities.Brand,
           children: [
             {
@@ -37,20 +25,19 @@ const getEntityMap = (): ExtendedRouteMap => {
             },
           ],
         },
-      ],
-    },
-    {
-      label: _('Clients'),
-      children: [
         {
-          entity: entities.Administrator,
-          filterBy: 'company',
+          entity: entities.TerminalManufacturer,
           children: [
             {
-              entity: entities.AdministratorRelPublicEntity,
-              filterBy: 'administrator',
+              entity: entities.TerminalModel,
             },
           ],
+        },
+        {
+          entity: entities.Service,
+        },
+        {
+          entity: entities.Currency,
         },
       ],
     },
@@ -76,15 +63,28 @@ const getEntityMap = (): ExtendedRouteMap => {
     {
       label: _('Settings'),
       children: [
-        { entity: entities.SpecialNumber },
         {
           entity: entities.WebPortal,
+        },
+        { entity: entities.SpecialNumber },
+        {
+          entity: entities.NotificationTemplate,
         },
       ],
     },
     {
       label: _('Views'),
       children: [
+        {
+          entity: entities.Administrator,
+          filterBy: 'company',
+          children: [
+            {
+              entity: entities.AdministratorRelPublicEntity,
+              filterBy: 'administrator',
+            },
+          ],
+        },
         {
           entity: entities.Domain,
         },
@@ -98,6 +98,9 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.ProxyUser,
+        },
+        {
+          entity: entities.ProxyTrunk,
         },
         {
           entity: entities.MediaRelaySet,
