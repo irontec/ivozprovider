@@ -1,6 +1,6 @@
-import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
+import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
 import store from 'store';
 
 const ProxyTrunkSelectOptions: SelectOptionsType = ({
