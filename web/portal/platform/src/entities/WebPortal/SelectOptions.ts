@@ -1,4 +1,4 @@
-import { DropdownChoices } from '@irontec/ivoz-ui';
+import { DropdownChoices, EntityValues } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
@@ -13,10 +13,10 @@ const WebPortalSelectOptions: SelectOptionsType = ({
   return defaultEntityBehavior.fetchFks(
     WebPortal.path + '?_order[name]=ASC',
     ['id', 'name'],
-    (data: any) => {
+    (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id, label: item.name });
+        options.push({ id: item.id as number, label: item.name as string });
       }
 
       callback(options);

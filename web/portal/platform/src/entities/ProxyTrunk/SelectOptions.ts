@@ -3,20 +3,20 @@ import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavi
 import { SelectOptionsType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import store from 'store';
 
-const TerminalModelSelectOptions: SelectOptionsType = ({
+const ProxyTrunkSelectOptions: SelectOptionsType = ({
   callback,
   cancelToken,
 }): Promise<unknown> => {
   const entities = store.getState().entities.entities;
-  const TerminalModel = entities.TerminalModel;
+  const ProxyTrunk = entities.ProxyTrunk;
 
   return defaultEntityBehavior.fetchFks(
-    TerminalModel.path,
-    ['id', 'name'],
+    ProxyTrunk.path + '?_order[ip]=ASC',
+    ['id', 'ip'],
     (data: Array<EntityValues>) => {
       const options: DropdownChoices = [];
       for (const item of data) {
-        options.push({ id: item.id as number, label: item.name as string });
+        options.push({ id: item.id as number, label: item.ip as string });
       }
 
       callback(options);
@@ -25,4 +25,4 @@ const TerminalModelSelectOptions: SelectOptionsType = ({
   );
 };
 
-export default TerminalModelSelectOptions;
+export default ProxyTrunkSelectOptions;

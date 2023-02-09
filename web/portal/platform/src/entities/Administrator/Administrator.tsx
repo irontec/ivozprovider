@@ -6,7 +6,7 @@ import _ from '@irontec/ivoz-ui/services/translations/translate';
 import defaultEntityBehavior, {
   ChildDecorator as DefaultChildDecorator,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
-import { isEntityItem } from '@irontec/ivoz-ui';
+import { EntityValues, isEntityItem } from '@irontec/ivoz-ui';
 import selectOptions from './SelectOptions';
 import Form from './Form';
 import { foreignKeyGetter } from './ForeignKeyGetter';
@@ -79,7 +79,7 @@ const Administrator: EntityInterface = {
   iden: 'Administrator',
   title: _('Administrator', { count: 2 }),
   path: '/administrators',
-  toStr: (row: any) => row.username,
+  toStr: (row: EntityValues): string => row.username as string,
   properties,
   columns: ['username', 'active', 'restricted'],
   ChildDecorator,
