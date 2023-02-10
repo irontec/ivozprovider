@@ -56,11 +56,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string|null
      */
-    private $nif = null;
-
-    /**
-     * @var string|null
-     */
     private $distributeMethod = 'hash';
 
     /**
@@ -82,31 +77,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var string|null
      */
     private $maxDailyUsageEmail = null;
-
-    /**
-     * @var string|null
-     */
-    private $postalAddress = null;
-
-    /**
-     * @var string|null
-     */
-    private $postalCode = null;
-
-    /**
-     * @var string|null
-     */
-    private $town = null;
-
-    /**
-     * @var string|null
-     */
-    private $province = null;
-
-    /**
-     * @var string|null
-     */
-    private $countryName = null;
 
     /**
      * @var bool|null
@@ -162,6 +132,36 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var int|null
      */
     private $id = null;
+
+    /**
+     * @var string|null
+     */
+    private $invoicingNif = '';
+
+    /**
+     * @var string|null
+     */
+    private $invoicingPostalAddress = '';
+
+    /**
+     * @var string|null
+     */
+    private $invoicingPostalCode = '';
+
+    /**
+     * @var string|null
+     */
+    private $invoicingTown = '';
+
+    /**
+     * @var string|null
+     */
+    private $invoicingProvince = '';
+
+    /**
+     * @var string|null
+     */
+    private $invoicingCountryName = '';
 
     /**
      * @var LanguageDto | null
@@ -334,17 +334,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'type' => 'type',
             'name' => 'name',
             'domainUsers' => 'domainUsers',
-            'nif' => 'nif',
             'distributeMethod' => 'distributeMethod',
             'maxCalls' => 'maxCalls',
             'maxDailyUsage' => 'maxDailyUsage',
             'currentDayUsage' => 'currentDayUsage',
             'maxDailyUsageEmail' => 'maxDailyUsageEmail',
-            'postalAddress' => 'postalAddress',
-            'postalCode' => 'postalCode',
-            'town' => 'town',
-            'province' => 'province',
-            'countryName' => 'countryName',
             'ipfilter' => 'ipfilter',
             'onDemandRecord' => 'onDemandRecord',
             'allowRecordingRemoval' => 'allowRecordingRemoval',
@@ -356,6 +350,14 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'balance' => 'balance',
             'showInvoices' => 'showInvoices',
             'id' => 'id',
+            'invoicing' => [
+                'nif',
+                'postalAddress',
+                'postalCode',
+                'town',
+                'province',
+                'countryName',
+            ],
             'languageId' => 'language',
             'mediaRelaySetsId' => 'mediaRelaySets',
             'defaultTimezoneId' => 'defaultTimezone',
@@ -384,17 +386,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'type' => $this->getType(),
             'name' => $this->getName(),
             'domainUsers' => $this->getDomainUsers(),
-            'nif' => $this->getNif(),
             'distributeMethod' => $this->getDistributeMethod(),
             'maxCalls' => $this->getMaxCalls(),
             'maxDailyUsage' => $this->getMaxDailyUsage(),
             'currentDayUsage' => $this->getCurrentDayUsage(),
             'maxDailyUsageEmail' => $this->getMaxDailyUsageEmail(),
-            'postalAddress' => $this->getPostalAddress(),
-            'postalCode' => $this->getPostalCode(),
-            'town' => $this->getTown(),
-            'province' => $this->getProvince(),
-            'countryName' => $this->getCountryName(),
             'ipfilter' => $this->getIpfilter(),
             'onDemandRecord' => $this->getOnDemandRecord(),
             'allowRecordingRemoval' => $this->getAllowRecordingRemoval(),
@@ -406,6 +402,14 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'balance' => $this->getBalance(),
             'showInvoices' => $this->getShowInvoices(),
             'id' => $this->getId(),
+            'invoicing' => [
+                'nif' => $this->getInvoicingNif(),
+                'postalAddress' => $this->getInvoicingPostalAddress(),
+                'postalCode' => $this->getInvoicingPostalCode(),
+                'town' => $this->getInvoicingTown(),
+                'province' => $this->getInvoicingProvince(),
+                'countryName' => $this->getInvoicingCountryName(),
+            ],
             'language' => $this->getLanguage(),
             'mediaRelaySets' => $this->getMediaRelaySets(),
             'defaultTimezone' => $this->getDefaultTimezone(),
@@ -488,18 +492,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->domainUsers;
     }
 
-    public function setNif(string $nif): static
-    {
-        $this->nif = $nif;
-
-        return $this;
-    }
-
-    public function getNif(): ?string
-    {
-        return $this->nif;
-    }
-
     public function setDistributeMethod(string $distributeMethod): static
     {
         $this->distributeMethod = $distributeMethod;
@@ -558,66 +550,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getMaxDailyUsageEmail(): ?string
     {
         return $this->maxDailyUsageEmail;
-    }
-
-    public function setPostalAddress(string $postalAddress): static
-    {
-        $this->postalAddress = $postalAddress;
-
-        return $this;
-    }
-
-    public function getPostalAddress(): ?string
-    {
-        return $this->postalAddress;
-    }
-
-    public function setPostalCode(string $postalCode): static
-    {
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    public function getPostalCode(): ?string
-    {
-        return $this->postalCode;
-    }
-
-    public function setTown(string $town): static
-    {
-        $this->town = $town;
-
-        return $this;
-    }
-
-    public function getTown(): ?string
-    {
-        return $this->town;
-    }
-
-    public function setProvince(string $province): static
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    public function getProvince(): ?string
-    {
-        return $this->province;
-    }
-
-    public function setCountryName(string $countryName): static
-    {
-        $this->countryName = $countryName;
-
-        return $this;
-    }
-
-    public function getCountryName(): ?string
-    {
-        return $this->countryName;
     }
 
     public function setIpfilter(?bool $ipfilter): static
@@ -750,6 +682,78 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setInvoicingNif(string $invoicingNif): static
+    {
+        $this->invoicingNif = $invoicingNif;
+
+        return $this;
+    }
+
+    public function getInvoicingNif(): ?string
+    {
+        return $this->invoicingNif;
+    }
+
+    public function setInvoicingPostalAddress(string $invoicingPostalAddress): static
+    {
+        $this->invoicingPostalAddress = $invoicingPostalAddress;
+
+        return $this;
+    }
+
+    public function getInvoicingPostalAddress(): ?string
+    {
+        return $this->invoicingPostalAddress;
+    }
+
+    public function setInvoicingPostalCode(string $invoicingPostalCode): static
+    {
+        $this->invoicingPostalCode = $invoicingPostalCode;
+
+        return $this;
+    }
+
+    public function getInvoicingPostalCode(): ?string
+    {
+        return $this->invoicingPostalCode;
+    }
+
+    public function setInvoicingTown(string $invoicingTown): static
+    {
+        $this->invoicingTown = $invoicingTown;
+
+        return $this;
+    }
+
+    public function getInvoicingTown(): ?string
+    {
+        return $this->invoicingTown;
+    }
+
+    public function setInvoicingProvince(string $invoicingProvince): static
+    {
+        $this->invoicingProvince = $invoicingProvince;
+
+        return $this;
+    }
+
+    public function getInvoicingProvince(): ?string
+    {
+        return $this->invoicingProvince;
+    }
+
+    public function setInvoicingCountryName(string $invoicingCountryName): static
+    {
+        $this->invoicingCountryName = $invoicingCountryName;
+
+        return $this;
+    }
+
+    public function getInvoicingCountryName(): ?string
+    {
+        return $this->invoicingCountryName;
     }
 
     public function setLanguage(?LanguageDto $language): static
