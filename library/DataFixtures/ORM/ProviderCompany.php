@@ -8,6 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Company\Invoicing;
 
 class ProviderCompany extends Fixture implements DependentFixtureInterface
 {
@@ -25,15 +26,19 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         /** @var CompanyInterface $item1 */
         $item1 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345678A',
+                postalAddress: 'Company Address',
+                postalCode: '54321',
+                town: 'Company Town',
+                province: 'Company Province',
+                countryName: 'Company Country',
+            );
+
             $this->setName("DemoCompany");
             $this->setDomainUsers("127.0.0.1");
-            $this->setNif("12345678A");
             $this->setMaxCalls(0);
-            $this->setPostalAddress("Company Address");
-            $this->setPostalCode("54321");
-            $this->setTown("Company Town");
-            $this->setProvince("Company Province");
-            $this->setCountryName("Company Country");
             $this->setIpfilter(false);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
@@ -48,6 +53,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             $this->setMaxDailyUsageNotificationTemplate(
                 $fixture->getReference('_reference_ProviderNotificationTemplate2')
             );
+            $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
@@ -65,18 +71,23 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
 
         $item2 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345678-Z',
+                postalAddress: 'Postal address',
+                postalCode: 'PC',
+                town: 'Town',
+                province: 'Province',
+                countryName: 'Country',
+            );
+
             $this->setName("Irontec Test Company");
             $this->setDomainUsers("test.irontec.com");
-            $this->setNif("12345678-Z");
             $this->setMaxCalls(0);
-            $this->setPostalAddress("Postal address");
-            $this->setPostalCode("PC");
-            $this->setTown("Town");
-            $this->setProvince("Province");
-            $this->setCountryName("Country");
             $this->setIpfilter(true);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
+            $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
@@ -93,20 +104,20 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
 
         $item3 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345679-Z',
+            );
+
             $this->setName("Retail Company");
             $this->setType("retail");
             $this->setDomainUsers(null);
-            $this->setNif("12345679-Z");
             $this->setMaxCalls(0);
-            $this->setPostalAddress("");
-            $this->setPostalCode("");
-            $this->setTown("");
-            $this->setProvince("");
-            $this->setCountryName("");
             $this->setIpfilter(true);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
             $this->setShowInvoices(true);
+            $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
@@ -123,19 +134,19 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
 
         $item4 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345679-Z',
+            );
+
             $this->setName("Residential Company");
             $this->setType("residential");
             $this->setDomainUsers(null);
-            $this->setNif("12345679-Z");
             $this->setMaxCalls(0);
-            $this->setPostalAddress("");
-            $this->setPostalCode("");
-            $this->setTown("");
-            $this->setProvince("");
-            $this->setCountryName("");
             $this->setIpfilter(true);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
+            $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
@@ -151,19 +162,19 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
 
         $item5 = $this->createEntityInstance(Company::class);
         (function () use ($fixture) {
+
+            $invoicing = new Invoicing(
+                nif: '12345689-Z',
+            );
+
             $this->setName("Wholesale Company");
             $this->setType("wholesale");
             $this->setDomainUsers("wholesale.irontec.com");
-            $this->setNif("12345689-Z");
             $this->setMaxCalls(0);
-            $this->setPostalAddress("");
-            $this->setPostalCode("");
-            $this->setTown("");
-            $this->setProvince("");
-            $this->setCountryName("");
             $this->setIpfilter(true);
             $this->setOnDemandRecord(0);
             $this->setOnDemandRecordCode("");
+            $this->invoicing = $invoicing;
             $this->setLanguage($fixture->getReference('_reference_ProviderLanguage1'));
             $this->setMediaRelaySets($fixture->getReference('_reference_ProviderMediaRelaySet'));
             $this->setDefaultTimezone($fixture->getReference('_reference_ProviderTimezone145'));
