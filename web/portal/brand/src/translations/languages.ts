@@ -2,16 +2,16 @@ import { Languages } from '@irontec/ivoz-ui/components/layout/LanguageSelector/L
 
 export const languagesList: Languages = [
   {
-    name: 'Català',
-    locale: 'ca-ES',
-  },
-  {
     name: 'English',
     locale: 'en-US',
   },
   {
     name: 'Español',
     locale: 'es-ES',
+  },
+  {
+    name: 'Català',
+    locale: 'ca-ES',
   },
   {
     name: 'Italiano',
