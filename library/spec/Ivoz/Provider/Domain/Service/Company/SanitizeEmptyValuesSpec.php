@@ -52,12 +52,12 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
 
         $this
             ->dto
-            ->setNif('12345678-Z')
-            ->setPostalAddress('Postal address')
-            ->setPostalCode('PC')
-            ->setTown('Town')
-            ->setCountryName('Country')
-            ->setProvince('Province')
+            ->setInvoicingNif('12345678-Z')
+            ->setInvoicingPostalAddress('Postal address')
+            ->setInvoicingPostalCode('PC')
+            ->setInvoicingTown('Town')
+            ->setInvoicingCountryName('Country')
+            ->setInvoicingProvince('Province')
             ->setDefaultTimezoneId(1)
             ->setCountryId(70)
             ->setLanguageId(1)
