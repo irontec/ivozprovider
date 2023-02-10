@@ -19,7 +19,7 @@ const Impersonate: ActionFunctionComponent = (props: ActionItemProps) => {
   const queryString = `target=${id}&token=${token}`;
 
   return (
-    <a href={`/client/?${queryString}`} target="_impersonate-client">
+    <a href={`/brand/?${queryString}`} target="_impersonate-brand">
       <Tooltip
         title={_('Impersonate as brand admin')}
         placement="bottom-start"
