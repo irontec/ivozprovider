@@ -17,8 +17,10 @@ Feature: Retrieve companies
           {
               "type": "vpbx",
               "name": "DemoCompany",
-              "nif": "12345678A",
               "id": 1,
+              "invoicing": {
+                  "nif": "12345678A"
+              },
               "domainName": "127.0.0.1"
           }
       ]
@@ -37,10 +39,12 @@ Feature: Retrieve companies
           "type": "vpbx",
           "name": "DemoCompany",
           "domainUsers": "127.0.0.1",
-          "nif": "12345678A",
           "onDemandRecordCode": "",
           "balance": 1.2,
           "id": 1,
+          "invoicing": {
+              "nif": "12345678A"
+          },
           "language": {
               "iden": "es",
               "id": 1,
@@ -97,6 +101,7 @@ Feature: Retrieve companies
               "country": 68
           },
           "outgoingDdi": null,
-          "outgoingDdiRule": null
+          "outgoingDdiRule": null,
+          "domainName": "127.0.0.1"
       }
       """
