@@ -9821,11 +9821,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Carrier/CarrierLifecycleEventHandlerInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Carrier\\\\ForceExternallyRated\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Service/Carrier/ForceExternallyRated.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\Carrier\\\\SearchBrokenThresholds\\:\\:getSubscribedEvents\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Carrier/SearchBrokenThresholds.php
