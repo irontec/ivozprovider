@@ -94,7 +94,7 @@ interface RecordingInterface extends LoggableEntityInterface, FileContainerInter
     public function getTempFiles();
 
     /**
-     * @var string $fldName
+     * @param string $fldName
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);

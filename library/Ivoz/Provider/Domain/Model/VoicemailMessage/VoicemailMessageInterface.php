@@ -84,7 +84,7 @@ interface VoicemailMessageInterface extends LoggableEntityInterface, FileContain
     public function getTempFiles();
 
     /**
-     * @var string $fldName
+     * @param string $fldName
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);

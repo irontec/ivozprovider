@@ -44,7 +44,7 @@ final class File
         ?int $fileSize,
         ?string $mimeType,
         ?string $baseName,
-        ?array $importerArguments
+        ?array $importerArguments = []
     ) {
         $this->setFileSize($fileSize);
         $this->setMimeType($mimeType);
