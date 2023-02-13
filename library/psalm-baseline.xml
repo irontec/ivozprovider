@@ -1508,169 +1508,6 @@
       <code>UsersLocationInterface | null</code>
     </ImplementedReturnTypeMismatch>
   </file>
-  <file src="Ivoz/Provider/Application/Service/Brand/BrandAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$brand</code>
-      <code>$brandDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Brand/BrandDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/CalendarPeriod/CalendarPeriodDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/CallAcl/CallAclDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/CallCsvReport/CallCsvReportAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$callCsvReport</code>
-      <code>$callCsvReportDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/CallCsvReport/CallCsvReportDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$callCsvReport</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="4"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/DdiProviderRegistration/DdiProviderRegistrationDtoAssembler.php">
-    <MixedArgument occurrences="2">
-      <code>$expires</code>
-      <code>$statusCode</code>
-    </MixedArgument>
-    <ParamNameMismatch occurrences="1">
-      <code>$ddiProviderRegistration</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/DestinationRateGroup/DestinationRateGroupAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$destinationRateGroup</code>
-      <code>$destinationRateGroupDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/DestinationRateGroup/DestinationRateGroupDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$destinationRateGroup</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/ExternalCallFilter/ExternalCallFilterDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="4"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/FaxesInOut/FaxesInOutAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$faxesInOut</code>
-      <code>$faxesInOutDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/FaxesInOut/FaxesInOutDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$faxesInOut</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Friend/FriendDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$friend</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Invoice/InvoiceAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$invoice</code>
-      <code>$invoiceDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Invoice/InvoiceDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$invoice</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Ivr/IvrDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Locution/LocutionAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$locution</code>
-      <code>$locutionDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Locution/LocutionDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$locution</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/MusicOnHold/MusicOnHoldAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$musicOnHold</code>
-      <code>$musicOnHoldDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/MusicOnHold/MusicOnHoldDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$musicOnHold</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/MusicOnHold/StoragePathResolver.php">
-    <ImplementedReturnTypeMismatch occurrences="1">
-      <code>null | string</code>
-    </ImplementedReturnTypeMismatch>
-    <PossiblyNullArgument occurrences="1">
-      <code>$this-&gt;originalFileName</code>
-    </PossiblyNullArgument>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/OutgoingRouting/OutgoingRoutingDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/PickUpGroup/PickUpGroupDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Recording/RecordingAssembler.php">
-    <ParamNameMismatch occurrences="2">
-      <code>$recording</code>
-      <code>$recordingDto</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Recording/RecordingDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$recording</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/ResidentialDevice/ResidentialDeviceDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$residentialDevice</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/RetailAccount/RetailAccountDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$retailAccount</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/RoutingPatternGroup/RoutingPatternGroupDtoAssembler.php">
-    <ArgumentTypeCoercion occurrences="1"/>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/Terminal/TerminalDtoAssembler.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$terminal</code>
-    </ParamNameMismatch>
-  </file>
-  <file src="Ivoz/Provider/Application/Service/User/CsvStaticValidator.php">
-    <InvalidOperand occurrences="1">
-      <code>$k</code>
-    </InvalidOperand>
-    <MixedArgument occurrences="2">
-      <code>$fields</code>
-      <code>$fields</code>
-    </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="1">
-      <code>$diff</code>
-    </MixedArgumentTypeCoercion>
-    <MixedOperand occurrences="2">
-      <code>$row[0]</code>
-      <code>$row[1]</code>
-    </MixedOperand>
-  </file>
   <file src="Ivoz/Provider/Application/Service/User/SyncFromCsv.php">
     <MixedArgument occurrences="2">
       <code>$terminalArgs</code>
@@ -1686,7 +1523,154 @@
       <code>$outboundDdiArgs</code>
     </PossiblyNullArgument>
   </file>
-  <file src="Ivoz/Provider/Application/Service/User/UserAssembler.php">
+  <file src="Ivoz/Provider/Domain/Assembler/Brand/BrandAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$brand</code>
+      <code>$brandDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Brand/BrandDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/CalendarPeriod/CalendarPeriodDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/CallAcl/CallAclDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/CallCsvReport/CallCsvReportAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$callCsvReport</code>
+      <code>$callCsvReportDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/CallCsvReport/CallCsvReportDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$callCsvReport</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/ConditionalRoutesCondition/ConditionalRoutesConditionDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="4"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/DdiProviderRegistration/DdiProviderRegistrationDtoAssembler.php">
+    <MixedArgument occurrences="2">
+      <code>$expires</code>
+      <code>$statusCode</code>
+    </MixedArgument>
+    <ParamNameMismatch occurrences="1">
+      <code>$ddiProviderRegistration</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/DestinationRateGroup/DestinationRateGroupAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$destinationRateGroup</code>
+      <code>$destinationRateGroupDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/DestinationRateGroup/DestinationRateGroupDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$destinationRateGroup</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/ExternalCallFilter/ExternalCallFilterDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="4"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/FaxesInOut/FaxesInOutAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$faxesInOut</code>
+      <code>$faxesInOutDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/FaxesInOut/FaxesInOutDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$faxesInOut</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Friend/FriendDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$friend</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Invoice/InvoiceAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$invoice</code>
+      <code>$invoiceDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Invoice/InvoiceDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$invoice</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Ivr/IvrDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Locution/LocutionAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$locution</code>
+      <code>$locutionDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Locution/LocutionDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$locution</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/MusicOnHold/MusicOnHoldAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$musicOnHold</code>
+      <code>$musicOnHoldDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/MusicOnHold/MusicOnHoldDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$musicOnHold</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/MusicOnHold/StoragePathResolver.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>null | string</code>
+    </ImplementedReturnTypeMismatch>
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;originalFileName</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/OutgoingRouting/OutgoingRoutingDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/PickUpGroup/PickUpGroupDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Recording/RecordingAssembler.php">
+    <ParamNameMismatch occurrences="2">
+      <code>$recording</code>
+      <code>$recordingDto</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Recording/RecordingDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$recording</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/ResidentialDevice/ResidentialDeviceDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$residentialDevice</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/RetailAccount/RetailAccountDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$retailAccount</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/RoutingPatternGroup/RoutingPatternGroupDtoAssembler.php">
+    <ArgumentTypeCoercion occurrences="1"/>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/Terminal/TerminalDtoAssembler.php">
+    <ParamNameMismatch occurrences="1">
+      <code>$terminal</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="Ivoz/Provider/Domain/Assembler/User/UserAssembler.php">
     <ParamNameMismatch occurrences="2">
       <code>$user</code>
       <code>$userDto</code>
@@ -1695,10 +1679,10 @@
       <code>$user-&gt;getPass()</code>
     </PossiblyNullArgument>
   </file>
-  <file src="Ivoz/Provider/Application/Service/User/UserDtoAssembler.php">
+  <file src="Ivoz/Provider/Domain/Assembler/User/UserDtoAssembler.php">
     <ArgumentTypeCoercion occurrences="1"/>
   </file>
-  <file src="Ivoz/Provider/Application/Service/VoicemailMessage/StoragePathResolver.php">
+  <file src="Ivoz/Provider/Domain/Assembler/VoicemailMessage/StoragePathResolver.php">
     <ImplementedReturnTypeMismatch occurrences="1">
       <code>null | string</code>
     </ImplementedReturnTypeMismatch>
@@ -1706,24 +1690,24 @@
       <code>$this-&gt;originalFileName</code>
     </PossiblyNullArgument>
   </file>
-  <file src="Ivoz/Provider/Application/Service/VoicemailMessage/VoicemailMessageAssembler.php">
+  <file src="Ivoz/Provider/Domain/Assembler/VoicemailMessage/VoicemailMessageAssembler.php">
     <ParamNameMismatch occurrences="2">
       <code>$voicemailMessage</code>
       <code>$voicemailMessageDto</code>
     </ParamNameMismatch>
   </file>
-  <file src="Ivoz/Provider/Application/Service/VoicemailMessage/VoicemailMessageDtoAssembler.php">
+  <file src="Ivoz/Provider/Domain/Assembler/VoicemailMessage/VoicemailMessageDtoAssembler.php">
     <ParamNameMismatch occurrences="1">
       <code>$voicemailMessage</code>
     </ParamNameMismatch>
   </file>
-  <file src="Ivoz/Provider/Application/Service/WebPortal/WebPortalAssembler.php">
+  <file src="Ivoz/Provider/Domain/Assembler/WebPortal/WebPortalAssembler.php">
     <ParamNameMismatch occurrences="2">
       <code>$webPortal</code>
       <code>$webPortalDto</code>
     </ParamNameMismatch>
   </file>
-  <file src="Ivoz/Provider/Application/Service/WebPortal/WebPortalDtoAssembler.php">
+  <file src="Ivoz/Provider/Domain/Assembler/WebPortal/WebPortalDtoAssembler.php">
     <ParamNameMismatch occurrences="1">
       <code>$webPortal</code>
     </ParamNameMismatch>
@@ -2198,15 +2182,9 @@
     </MixedPropertyTypeCoercion>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
     <MissingReturnType occurrences="1">
       <code>getRecordingsDiskUsage</code>
     </MissingReturnType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Brand/BrandTrait.php">
     <MixedArgument occurrences="1">
@@ -2497,14 +2475,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
   <file src="Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportTrait.php">
     <MixedArgument occurrences="1">
@@ -4007,14 +3977,6 @@
       <code>$destinationRates</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -4474,14 +4436,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
   <file src="Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutTrait.php">
     <MixedArgument occurrences="1">
@@ -5049,14 +5003,6 @@
       <code>$relFixedCosts</code>
     </MixedPropertyTypeCoercion>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Invoice/InvoiceTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5475,14 +5421,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/Locution/LocutionInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/Locution/LocutionTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -5660,14 +5598,6 @@
       <code>$id</code>
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
   <file src="Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldTrait.php">
     <MixedArgument occurrences="1">
@@ -6460,14 +6390,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/Recording/RecordingInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
   <file src="Ivoz/Provider/Domain/Model/Recording/RecordingTrait.php">
     <MixedArgument occurrences="1">
@@ -7414,14 +7336,6 @@
       <code>$id</code>
     </MixedArgument>
   </file>
-  <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
-  </file>
   <file src="Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageTrait.php">
     <MixedArgument occurrences="1">
       <code>func_get_args()</code>
@@ -7464,14 +7378,6 @@
     <MixedArgument occurrences="1">
       <code>$id</code>
     </MixedArgument>
-  </file>
-  <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalInterface.php">
-    <MissingParamType occurrences="1">
-      <code>$fldName</code>
-    </MissingParamType>
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
   <file src="Ivoz/Provider/Domain/Model/WebPortal/WebPortalTrait.php">
     <MixedArgument occurrences="1">
@@ -8466,6 +8372,22 @@
       <code>$this-&gt;services[$event][]</code>
     </MixedArrayAssignment>
   </file>
+  <file src="Ivoz/Provider/Domain/Service/User/CsvStaticValidator.php">
+    <InvalidOperand occurrences="1">
+      <code>$k</code>
+    </InvalidOperand>
+    <MixedArgument occurrences="2">
+      <code>$fields</code>
+      <code>$fields</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$diff</code>
+    </MixedArgumentTypeCoercion>
+    <MixedOperand occurrences="2">
+      <code>$row[0]</code>
+      <code>$row[1]</code>
+    </MixedOperand>
+  </file>
   <file src="Ivoz/Provider/Domain/Service/User/PersistErrorHandler.php">
     <UndefinedClass occurrences="1">
       <code>PDOException</code>
@@ -8720,10 +8642,5 @@
     <UndefinedMethod occurrences="1">
       <code>fetchAll</code>
     </UndefinedMethod>
-  </file>
-  <file src="vendor/irontec/ivoz-core/Domain/Model/TempFileContainnerTrait.php">
-    <PossiblyInvalidDocblockTag occurrences="1">
-      <code>@var string $fldName</code>
-    </PossiblyInvalidDocblockTag>
   </file>
 </files>

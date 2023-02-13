@@ -2,7 +2,7 @@
 
 namespace Services;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 
 class TemplateRenderer
 {

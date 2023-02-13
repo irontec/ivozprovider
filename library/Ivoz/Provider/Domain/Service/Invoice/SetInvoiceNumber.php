@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Service\InvoiceNumberSequence\NextValGenerator;

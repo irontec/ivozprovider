@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\ProxyTrunksRelBrand;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderRepository;
 use Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand\ProxyTrunksRelBrandInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;

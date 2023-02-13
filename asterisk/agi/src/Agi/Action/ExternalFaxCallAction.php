@@ -4,7 +4,7 @@ namespace Agi\Action;
 
 use Agi\ChannelInfo;
 use Agi\Wrapper;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 

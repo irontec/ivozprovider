@@ -1426,11 +1426,6 @@ parameters:
 			path: Ivoz/Kam/Domain/Model/UsersAddress/UsersAddressRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Kam\\\\Domain\\\\Model\\\\UsersCdr\\\\UsersCdrDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Kam/Domain/Model/UsersCdr/UsersCdrDtoAbstract.php
@@ -1856,31 +1851,6 @@ parameters:
 			path: Ivoz/Kam/Infrastructure/Persistence/Doctrine/UsersLocationDoctrineRepository.php
 
 		-
-			message: "#^Cannot call method getLUuid\\(\\) on Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/DdiProviderRegistration/DdiProviderRegistrationDtoAssembler.php
-
-		-
-			message: "#^Parameter \\#1 \\$path of function pathinfo expects string, string\\|null given\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/MusicOnHold/StoragePathResolver.php
-
-		-
-			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/PickUpGroup/PickUpGroupDtoAssembler.php
-
-		-
-			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/RoutingPatternGroup/RoutingPatternGroupDtoAssembler.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Application\\\\Service\\\\User\\\\CsvStaticValidator\\:\\:execute\\(\\) has parameter \\$rows with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/User/CsvStaticValidator.php
-
-		-
 			message: "#^Parameter \\#1 \\$array of function array_shift expects array, array\\|string given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Application/Service/User/SyncFromCsv.php
@@ -1896,19 +1866,39 @@ parameters:
 			path: Ivoz/Provider/Application/Service/User/SyncFromCsv.php
 
 		-
-			message: "#^Parameter \\#2 \\$hash of function password_verify expects string, string\\|null given\\.$#"
+			message: "#^Cannot call method getLUuid\\(\\) on Ivoz\\\\Kam\\\\Domain\\\\Model\\\\TrunksUacreg\\\\TrunksUacregInterface\\|null\\.$#"
 			count: 1
-			path: Ivoz/Provider/Application/Service/User/UserAssembler.php
-
-		-
-			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupInterface\\|null\\.$#"
-			count: 1
-			path: Ivoz/Provider/Application/Service/User/UserDtoAssembler.php
+			path: Ivoz/Provider/Domain/Assembler/DdiProviderRegistration/DdiProviderRegistrationDtoAssembler.php
 
 		-
 			message: "#^Parameter \\#1 \\$path of function pathinfo expects string, string\\|null given\\.$#"
 			count: 1
-			path: Ivoz/Provider/Application/Service/VoicemailMessage/StoragePathResolver.php
+			path: Ivoz/Provider/Domain/Assembler/MusicOnHold/StoragePathResolver.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserInterface\\|null\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Assembler/PickUpGroup/PickUpGroupDtoAssembler.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternInterface\\|null\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Assembler/RoutingPatternGroup/RoutingPatternGroupDtoAssembler.php
+
+		-
+			message: "#^Parameter \\#2 \\$hash of function password_verify expects string, string\\|null given\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Assembler/User/UserAssembler.php
+
+		-
+			message: "#^Cannot call method getId\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupInterface\\|null\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Assembler/User/UserDtoAssembler.php
+
+		-
+			message: "#^Parameter \\#1 \\$path of function pathinfo expects string, string\\|null given\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Assembler/VoicemailMessage/StoragePathResolver.php
 
 		-
 			message: "#^Parameter \\#1 \\$threshold of method Ivoz\\\\Provider\\\\Domain\\\\Events\\\\AbstractBalanceThresholdWasBroken\\:\\:setThreshold\\(\\) expects float, float\\|null given\\.$#"
@@ -1944,11 +1934,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$string of function crypt expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Administrator/Administrator.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Administrator/AdministratorDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Administrator\\\\AdministratorDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -2566,11 +2551,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandDto\\:\\:filterFieldsForBrandAdmin\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandDto.php
@@ -2781,11 +2761,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Brand/BrandInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Brand/BrandInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandRepository.php
@@ -2794,11 +2769,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Brand/BrandRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -2834,11 +2804,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\BrandService\\\\BrandServiceRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/BrandService/BrandServiceRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Calendar/CalendarDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Calendar\\\\CalendarDtoAbstract\\:\\:getCalendarPeriods\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -3011,11 +2976,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CalendarPeriodsRelSchedule/CalendarPeriodsRelScheduleRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallAcl\\\\CallAclDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallAcl/CallAclDto.php
@@ -3106,11 +3066,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReport.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportDto\\:\\:filterFieldsForBrandAdmin\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportDto.php
@@ -3161,11 +3116,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvReport\\\\CallCsvReportRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvReport/CallCsvReportRepository.php
@@ -3194,11 +3144,6 @@ parameters:
 			message: "#^Cannot call method getTz\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Timezone\\\\TimezoneInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvScheduler.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CallCsvScheduler/CallCsvSchedulerDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CallCsvScheduler\\\\CallCsvSchedulerDto\\:\\:filterReadOnlyFields\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -3506,11 +3451,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Carrier/Carrier.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Carrier\\\\CarrierDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Carrier/CarrierDtoAbstract.php
@@ -3646,11 +3586,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServer.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CarrierServer\\\\CarrierServerDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CarrierServer/CarrierServerDtoAbstract.php
@@ -3724,11 +3659,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$num of function round expects float\\|int, float\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Company/Company.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Company/CompanyDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyDto\\:\\:filterBrandReadOnlyFields\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -4211,11 +4141,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/CompanyRelRoutingTag/CompanyRelRoutingTagRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\CompanyService\\\\CompanyServiceDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/CompanyService/CompanyServiceDtoAbstract.php
@@ -4254,11 +4179,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRoute.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConditionalRoute/ConditionalRouteDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConditionalRoute\\\\ConditionalRouteDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
@@ -4721,11 +4641,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ConditionalRoutesConditionsRelSchedule/ConditionalRoutesConditionsRelScheduleRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomDtoAbstract.php
@@ -4749,11 +4664,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ConferenceRoom\\\\ConferenceRoomRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ConferenceRoom/ConferenceRoomRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Contact/ContactDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Contact\\\\ContactDto\\:\\:filterUserContactReadOnlyFields\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
@@ -4854,11 +4764,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/Ddi/Ddi.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ddi/DdiDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiDto\\:\\:filterFields\\(\\) has parameter \\$allowedFields with no value type specified in iterable type array\\.$#"
@@ -5071,11 +4976,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Ddi/DdiRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DdiProvider\\\\DdiProviderDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DdiProvider/DdiProviderDtoAbstract.php
@@ -5236,11 +5136,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DdiProviderRegistration/DdiProviderRegistrationRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Destination/DestinationDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Destination\\\\DestinationDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Destination/DestinationDtoAbstract.php
@@ -5376,11 +5271,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupDtoAbstract.php
@@ -5432,11 +5322,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupInterface\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\DestinationRateGroup\\\\DestinationRateGroupInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/DestinationRateGroup/DestinationRateGroupInterface.php
 
@@ -5519,11 +5404,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Extension/Extension.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Extension/ExtensionDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Extension\\\\ExtensionDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
@@ -5654,11 +5534,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilter\\:\\:getCalendarPeriodForToday\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilter.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ExternalCallFilter/ExternalCallFilterDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ExternalCallFilter\\\\ExternalCallFilterDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -5986,11 +5861,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ExternalCallFilterWhiteList/ExternalCallFilterWhiteListRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Fax/FaxDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Fax\\\\FaxDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Fax/FaxDtoAbstract.php
@@ -6071,11 +5941,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FaxesInOut\\\\FaxesInOutRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FaxesInOut/FaxesInOutRepository.php
@@ -6099,11 +5964,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Feature\\\\FeatureRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Feature/FeatureRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelBrand\\\\FeaturesRelBrandDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelBrand\\\\FeaturesRelBrandDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -6141,11 +6001,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/FeaturesRelBrand/FeaturesRelBrandRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelCompany\\\\FeaturesRelCompanyDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelCompany\\\\FeaturesRelCompanyDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyDtoAbstract.php
@@ -6179,11 +6034,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FeaturesRelCompany\\\\FeaturesRelCompanyRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/FeaturesRelCompany/FeaturesRelCompanyRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/FixedCost/FixedCostDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\FixedCost\\\\FixedCostDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -6299,11 +6149,6 @@ parameters:
 			message: "#^Cannot call method getExtension\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Company\\\\CompanyInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/Friend/Friend.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Friend/FriendDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Friend\\\\FriendDto\\:\\:filterFieldsForBrandAdmin\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
@@ -6556,11 +6401,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroup.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\HuntGroup\\\\HuntGroupDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/HuntGroup/HuntGroupDtoAbstract.php
@@ -6696,11 +6536,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Invoice/Invoice.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceDtoAbstract.php
@@ -6771,11 +6606,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceRepository.php
@@ -6784,11 +6614,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Invoice\\\\InvoiceRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Invoice/InvoiceRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceNumberSequence/InvoiceNumberSequenceDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceNumberSequence\\\\InvoiceNumberSequenceDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -6891,11 +6716,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/InvoiceScheduler/InvoiceSchedulerRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\InvoiceTemplate\\\\InvoiceTemplateDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/InvoiceTemplate/InvoiceTemplateDto.php
@@ -6929,11 +6749,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/Ivr/Ivr.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Ivr/IvrDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ivr\\\\IvrDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -7226,11 +7041,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Language/LanguageRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Location\\\\LocationDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Location/LocationDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Location\\\\LocationDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Location/LocationDtoAbstract.php
@@ -7276,11 +7086,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionDto\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionDto.php
@@ -7306,11 +7111,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Locution/LocutionInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionRepository.php
@@ -7319,11 +7119,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Locution\\\\LocutionRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Locution/LocutionRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MatchList/MatchListDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -7486,11 +7281,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldDtoAbstract.php
@@ -7521,11 +7311,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldRepository.php
@@ -7534,11 +7319,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MusicOnHold\\\\MusicOnHoldRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/MusicOnHold/MusicOnHoldRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/NotificationTemplate/NotificationTemplateDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\NotificationTemplate\\\\NotificationTemplateDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -7614,11 +7394,6 @@ parameters:
 			message: "#^Cannot call method numberMatches\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\MatchList\\\\MatchListInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRule.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingDdiRule/OutgoingDdiRuleDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingDdiRule\\\\OutgoingDdiRuleDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
@@ -7719,11 +7494,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRouting\\:\\:getRoutingPatterns\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRouting.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/OutgoingRouting/OutgoingRoutingDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\OutgoingRouting\\\\OutgoingRoutingDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -7911,11 +7681,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/OutgoingRoutingRelCarrier/OutgoingRoutingRelCarrierRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\PickUpGroup\\\\PickUpGroupDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/PickUpGroup/PickUpGroupDto.php
@@ -8074,11 +7839,6 @@ parameters:
 			message: "#^Cannot call method getCountryCode\\(\\) on Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Country\\\\CountryInterface\\|null\\.$#"
 			count: 2
 			path: Ivoz/Provider/Domain/Model/Queue/Queue.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Queue/QueueDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Queue\\\\QueueDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
@@ -8306,11 +8066,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RatingPlan/RatingPlanRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupDtoAbstract.php
@@ -8364,11 +8119,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingPlanGroup\\\\RatingPlanGroupRepository\\:\\:getAllRatesByRatingPlanId\\(\\) return type has no value type specified in iterable type Generator\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RatingPlanGroup/RatingPlanGroupRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RatingProfile/RatingProfileDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RatingProfile\\\\RatingProfileDto\\:\\:filterFieldsForCompanyAdmin\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
@@ -8451,11 +8201,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Recording/Recording.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Recording/RecordingDtoAbstract.php
@@ -8472,11 +8217,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingInterface\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Recording/RecordingInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Recording\\\\RecordingInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Recording/RecordingInterface.php
 
@@ -8499,11 +8239,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDevice\\:\\:getDdi\\(\\) should return Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface but returns Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Ddi\\\\DdiInterface\\|null\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDevice.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\ResidentialDevice\\\\ResidentialDeviceDto\\:\\:filterFieldsForBrandAdmin\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
@@ -8656,11 +8391,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/ResidentialDevice/ResidentialDeviceRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RetailAccount\\\\RetailAccountDto\\:\\:filterFieldsForBrandAdmin\\(\\) has parameter \\$response with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountDto.php
@@ -8786,11 +8516,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RetailAccount/RetailAccountRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RouteLock\\\\RouteLockDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RouteLock/RouteLockDtoAbstract.php
@@ -8819,11 +8544,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$prefix of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternAbstract\\:\\:setPrefix\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPattern.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
@@ -8879,11 +8599,6 @@ parameters:
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPattern\\\\RoutingPatternRepository extends generic interface Doctrine\\\\Persistence\\\\ObjectRepository but does not specify its types\\: T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingPattern/RoutingPatternRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingPatternGroup/RoutingPatternGroupDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingPatternGroup\\\\RoutingPatternGroupDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -8971,11 +8686,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/RoutingPatternGroupsRelPattern/RoutingPatternGroupsRelPatternRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\RoutingTag\\\\RoutingTagDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/RoutingTag/RoutingTagDtoAbstract.php
@@ -9026,11 +8736,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/Schedule/Schedule.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Schedule\\\\ScheduleDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Schedule/ScheduleDtoAbstract.php
@@ -9074,11 +8779,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Service\\\\ServiceRepository\\:\\:getServicesInGroup\\(\\) has parameter \\$ids with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Service/ServiceRepository.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/SpecialNumber/SpecialNumberDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\SpecialNumber\\\\SpecialNumberDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -9129,11 +8829,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$name of method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalAbstract\\:\\:setName\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/Terminal/Terminal.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/Terminal/TerminalDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Terminal\\\\TerminalDtoAbstract\\:\\:getCompanyId\\(\\) has no return typehint specified\\.$#"
@@ -9341,11 +9036,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/TransformationRule/TransformationRuleRepository.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\TransformationRuleSet\\\\TransformationRuleSetDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/TransformationRuleSet/TransformationRuleSetDtoAbstract.php
@@ -9419,11 +9109,6 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\User\\:\\:toArrayPortalForm\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/User/User.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/User/UserDto.php
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\User\\\\UserDto\\:\\:normalize\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -9766,11 +9451,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageInterface.php
-
-		-
 			message: "#^Interface Ivoz\\\\Provider\\\\Domain\\\\Model\\\\VoicemailMessage\\\\VoicemailMessageRepository extends generic interface Doctrine\\\\Common\\\\Collections\\\\Selectable but does not specify its types\\: TKey, T$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/VoicemailMessage/VoicemailMessageRepository.php
@@ -9791,11 +9471,6 @@ parameters:
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDto.php
 
 		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDto\\:\\:denormalize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDto.php
-
-		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalDtoAbstract\\:\\:getBrandId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalDtoAbstract.php
@@ -9812,11 +9487,6 @@ parameters:
 
 		-
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalInterface\\:\\:getFileObjects\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalInterface.php
-
-		-
-			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Model\\\\WebPortal\\\\WebPortalInterface\\:\\:getTempFileByFieldName\\(\\) has parameter \\$fldName with no typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Model/WebPortal/WebPortalInterface.php
 
@@ -10636,7 +10306,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
 
 		-
-			message: "#^Call to an undefined method Ivoz\\\\Core\\\\Application\\\\DataTransferObjectInterface\\:\\:getLogoPath\\(\\)\\.$#"
+			message: "#^Call to an undefined method Ivoz\\\\Core\\\\Domain\\\\DataTransferObjectInterface\\:\\:getLogoPath\\(\\)\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/Invoice/Generator.php
 
@@ -10851,7 +10521,7 @@ parameters:
 			path: Ivoz/Provider/Domain/Service/ProxyTrunksRelBrand/AvoidRemovingInUseAddresses.php
 
 		-
-			message: "#^Parameter \\#1 \\$entity of method Ivoz\\\\Core\\\\Application\\\\Service\\\\EntityTools\\:\\:isScheduledForRemoval\\(\\) expects Ivoz\\\\Core\\\\Domain\\\\Model\\\\EntityInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$entity of method Ivoz\\\\Core\\\\Domain\\\\Service\\\\EntityTools\\:\\:isScheduledForRemoval\\(\\) expects Ivoz\\\\Core\\\\Domain\\\\Model\\\\EntityInterface, Ivoz\\\\Provider\\\\Domain\\\\Model\\\\Brand\\\\BrandInterface\\|null given\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/ProxyTrunksRelBrand/AvoidRemovingInUseAddresses.php
 
@@ -11089,6 +10759,11 @@ parameters:
 			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\TransformationRuleSet\\\\TransformationRuleSetLifecycleEventHandlerInterface\\:\\:execute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: Ivoz/Provider/Domain/Service/TransformationRuleSet/TransformationRuleSetLifecycleEventHandlerInterface.php
+
+		-
+			message: "#^Method Ivoz\\\\Provider\\\\Domain\\\\Service\\\\User\\\\CsvStaticValidator\\:\\:execute\\(\\) has parameter \\$rows with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: Ivoz/Provider/Domain/Service/User/CsvStaticValidator.php
 
 		-
 			message: "#^Call to method getErrorCode\\(\\) on an unknown class Doctrine\\\\DBAL\\\\Driver\\\\PDOException\\.$#"

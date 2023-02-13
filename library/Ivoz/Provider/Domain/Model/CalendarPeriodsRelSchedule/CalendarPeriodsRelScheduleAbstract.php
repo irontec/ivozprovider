@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ivoz\Provider\Domain\Model\CalendarPeriodsRelSchedule;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriodInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Provider\Domain\Model\CalendarPeriod\CalendarPeriod;

@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ProxyTrunksRelBrand;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkDto;
 

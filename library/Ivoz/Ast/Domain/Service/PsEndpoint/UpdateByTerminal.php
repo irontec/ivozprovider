@@ -5,7 +5,7 @@ namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleEventHandlerInterface;

@@ -5,7 +5,7 @@ namespace Ivoz\Ast\Domain\Service\Queue;
 use Ivoz\Ast\Domain\Model\Queue\Queue;
 use Ivoz\Ast\Domain\Model\Queue\QueueDto;
 use Ivoz\Ast\Domain\Model\Queue\QueueRepository as AstQueueRepository;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface as IvozQueueInterface;
 use Ivoz\Provider\Domain\Service\Queue\QueueLifecycleEventHandlerInterface

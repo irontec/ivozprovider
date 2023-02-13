@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Company;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementDto;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Company\Company;

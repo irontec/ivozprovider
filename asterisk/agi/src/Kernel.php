@@ -71,10 +71,10 @@ class Kernel extends BaseKernel
         /** @var \Ivoz\Core\Domain\Service\DomainEventPublisher $eventPublisher */
         $eventPublisher = $this->container->get('Ivoz\Core\Domain\Service\DomainEventPublisher');
 
-        /** @var \Ivoz\Core\Application\RequestId $requestId */
-        $requestId = $this->container->get('Ivoz\Core\Application\RequestId');
+        /** @var \Ivoz\Core\Domain\RequestId $requestId */
+        $requestId = $this->container->get('Ivoz\Core\Domain\RequestId');
 
-        $event = new \Ivoz\Core\Application\Event\CommandWasExecuted(
+        $event = new \Ivoz\Core\Domain\Event\CommandWasExecuted(
             $requestId->toString(),
             'AGI:' . $service,
             'process',

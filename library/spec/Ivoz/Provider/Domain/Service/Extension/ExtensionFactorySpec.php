@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\Extension;
 
 use Doctrine\ORM\UnitOfWork;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
 use Ivoz\Provider\Domain\Model\Extension\Extension;

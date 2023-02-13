@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Carrier;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Service\BalanceMovement\CreateByCarrier;

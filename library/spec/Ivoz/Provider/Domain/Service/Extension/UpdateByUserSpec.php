@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Extension;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;

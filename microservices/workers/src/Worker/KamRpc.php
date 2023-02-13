@@ -3,8 +3,8 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Kam\Domain\Job\RpcJobInterface;

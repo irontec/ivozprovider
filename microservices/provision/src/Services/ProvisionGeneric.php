@@ -2,7 +2,7 @@
 
 namespace Services;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
 
 class ProvisionGeneric

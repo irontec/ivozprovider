@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpAccountAction;
 
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierLifecycleEventHandlerInterface;
 

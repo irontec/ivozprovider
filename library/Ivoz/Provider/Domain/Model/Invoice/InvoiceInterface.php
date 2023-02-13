@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -138,7 +138,7 @@ interface InvoiceInterface extends LoggableEntityInterface, FileContainerInterfa
     public function getTempFiles();
 
     /**
-     * @var string $fldName
+     * @param string $fldName
      * @return null | \Ivoz\Core\Domain\Service\TempFile
      */
     public function getTempFileByFieldName($fldName);

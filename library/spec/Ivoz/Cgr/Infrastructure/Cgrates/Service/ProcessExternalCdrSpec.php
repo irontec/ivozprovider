@@ -5,7 +5,7 @@ namespace spec\Ivoz\Cgr\Infrastructure\Cgrates\Service;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Infrastructure\Cgrates\Service\ProcessExternalCdr;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ApiClient;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;

@@ -5,7 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpAccountAction;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionDto;
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionRepository;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;

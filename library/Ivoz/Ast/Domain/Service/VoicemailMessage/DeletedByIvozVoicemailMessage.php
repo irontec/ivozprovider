@@ -2,7 +2,7 @@
 
 namespace Ivoz\Ast\Domain\Service\VoicemailMessage;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface as IvozVoicemailMessageInterface;
 use Ivoz\Provider\Domain\Service\VoicemailMessage\VoicemailMessageLifecycleEventHandlerInterface as IvozVoicemailMessageLifecycleEventHandlerInterface;
 

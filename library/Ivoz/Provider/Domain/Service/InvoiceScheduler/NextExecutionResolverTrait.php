@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\InvoiceScheduler;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Helper\DateTimeHelper;
 use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;

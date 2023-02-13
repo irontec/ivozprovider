@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksHtable;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 
 /**
 * TrunksHtableDtoAbstract

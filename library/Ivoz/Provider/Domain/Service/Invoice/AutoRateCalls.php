@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;

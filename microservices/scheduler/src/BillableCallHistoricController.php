@@ -1,7 +1,7 @@
 <?php
 
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Provider\Domain\Service\BillableCallHistoric\ImportFromBillableCalls;
 use Psr\Log\LoggerInterface;

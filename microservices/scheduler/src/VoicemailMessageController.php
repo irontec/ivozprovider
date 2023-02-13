@@ -3,8 +3,8 @@
 use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\VoicemailMessage\MigrateFromUnparsedAstVoicemailMessages as VoicemailMessageFromAstVoicemailMessage;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
 use Psr\Log\LoggerInterface;
 
 class VoicemailMessageController

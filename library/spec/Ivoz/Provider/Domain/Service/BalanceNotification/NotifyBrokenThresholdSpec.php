@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BalanceNotification;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\MailerClientInterface;

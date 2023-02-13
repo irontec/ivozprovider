@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Provider\Domain\Service\Carrier\SyncBalances as SyncCarrierBalances;
 use Ivoz\Provider\Domain\Service\Company\SyncBalances;

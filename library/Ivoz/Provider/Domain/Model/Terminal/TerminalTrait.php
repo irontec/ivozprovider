@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsIdentify\PsIdentifyInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;

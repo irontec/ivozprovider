@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Service\Voicemail;
 
 use Ivoz\Provider\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEventHandlerInterface;

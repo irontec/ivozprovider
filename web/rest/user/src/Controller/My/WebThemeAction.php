@@ -3,7 +3,7 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
+use Ivoz\Core\Domain\Service\Assembler\DtoAssembler;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortal;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalDto;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalRepository;

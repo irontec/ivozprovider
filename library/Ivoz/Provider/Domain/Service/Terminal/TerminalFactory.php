@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Terminal;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;

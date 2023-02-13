@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Psr\Log\LoggerInterface;

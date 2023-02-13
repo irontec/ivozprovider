@@ -7,8 +7,8 @@ use Services\Provision;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
 
 class ProvisionController
 {

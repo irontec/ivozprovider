@@ -6,7 +6,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Cgr\Domain\Service\TpRate\UpdatedByDestinationRate as TpRateUpdatedByDestinationRate;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHandlerInterface;

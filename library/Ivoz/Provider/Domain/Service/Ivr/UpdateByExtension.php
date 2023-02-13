@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Ivr;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\Ivr\IvrDto;

@@ -4,7 +4,7 @@ namespace Ivoz\Ast\Domain\Service\VoicemailMessage;
 
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageDto;
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 
 class SetParsed
 {

@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\BrandService;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;

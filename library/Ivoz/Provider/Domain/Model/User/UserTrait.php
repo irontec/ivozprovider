@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\User;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Model\Contact\ContactInterface;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;

@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\RoutingPattern;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;

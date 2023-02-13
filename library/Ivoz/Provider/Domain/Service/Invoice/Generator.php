@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
 use Handlebars\Handlebars;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;

@@ -5,7 +5,7 @@ namespace spec\Ivoz\Cgr\Domain\Service\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateDto;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
 use Ivoz\Cgr\Domain\Service\TpRate\UpdatedByDestinationRate;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;

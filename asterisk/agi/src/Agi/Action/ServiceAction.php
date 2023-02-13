@@ -6,7 +6,7 @@ use Agi\Agents\ResidentialAgent;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;

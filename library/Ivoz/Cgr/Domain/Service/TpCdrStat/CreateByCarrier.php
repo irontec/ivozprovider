@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpCdrStat;
 
 use Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStat;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Service\Carrier\CarrierLifecycleEventHandlerInterface;
 
