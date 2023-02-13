@@ -4,6 +4,14 @@ services:
     autoconfigure: true
     public: false
 
+  Ivoz\Provider\Infrastructure\Api\Client\Client:
+    arguments:
+      $httpClient: '@ivoz.api_platform.http.client'
+      $jwtTokenManager: '@lexik_jwt_authentication.jwt_manager'
+
+  Ivoz\Core\Domain\Service\ApiClientInterface:
+    '@Ivoz\Provider\Infrastructure\Api\Client\Client'
+
   ################################################
   ## Listeners
   ################################################
@@ -11,4 +19,15 @@ services:
     arguments:
       $tokenStorage: '@security.token_storage'
     tags:
-    - { name: kernel.event_listener, event: kernel.request, priority: 5 }
+      - { name: kernel.event_listener, event: kernel.request, priority: 5 }
+
+when@test:
+  services:
+    _defaults:
+      autowire: true
+      autoconfigure: true
+      public: false
+
+    Ivoz\Provider\Infrastructure\Api\Client\FakeClient: ~
+    Ivoz\Core\Domain\Service\ApiClientInterface:
+      '@Ivoz\Provider\Infrastructure\Api\Client\FakeClient'
