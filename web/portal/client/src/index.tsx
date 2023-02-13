@@ -19,7 +19,7 @@ const theme = createTheme(
   {
     palette: {
       primary: {
-        main: '#4383cc',
+        main: '#0277bd',
       },
       secondary: {
         main: '#e53935',
