@@ -25,7 +25,6 @@ Feature: Update ddi providers
       {
             "description": "UpdateDDIProviderDescription",
             "name": "UpdateDDIProviderName",
-            "externallyRated": false,
             "id": 1,
             "transformationRuleSet": 1,
             "proxyTrunk": 1

@@ -13,7 +13,6 @@ Feature: Create carriers
       {
           "description": "Artemis-New",
           "name": "Artemis-New",
-          "externallyRated": false,
           "proxyTrunk": 1,
           "transformationRuleSet": 1
       }
@@ -26,7 +25,6 @@ Feature: Create carriers
       {
             "description": "Artemis-New",
             "name": "Artemis-New",
-            "externallyRated": false,
             "balance": 0,
             "calculateCost": false,
             "id": 3,
@@ -48,7 +46,6 @@ Feature: Create carriers
       {
           "description": "Artemis-New",
           "name": "Artemis-New",
-          "externallyRated": false,
           "calculateCost": false,
           "id": 3,
           "transformationRuleSet": {

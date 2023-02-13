@@ -36,7 +36,6 @@ Feature: Retrieve ddi providers
       {
           "description": "DDIProviderDescription",
           "name": "DDIProviderName",
-          "externallyRated": false,
           "id": 1,
           "transformationRuleSet": {
               "description": "Brand 1 transformation for Spain",

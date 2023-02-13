@@ -13,7 +13,6 @@ Feature: Update carriers
       {
           "description": "Artemis-Updated",
           "name": "Artemis-Updated",
-          "externallyRated": true,
           "transformationRuleSet": 1
       }
       """
@@ -22,12 +21,11 @@ Feature: Update carriers
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
       """
-         {
+      {
           "description": "Artemis-Updated",
           "name": "Artemis-Updated",
-          "externallyRated": true,
           "balance": 0,
-          "calculateCost": false,
+          "calculateCost": true,
           "id": 1,
           "transformationRuleSet": 1,
           "currency": null,

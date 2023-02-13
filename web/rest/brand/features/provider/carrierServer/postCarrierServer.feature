@@ -81,7 +81,6 @@ Feature: Create carrier servers
           "carrier": {
               "description": "CarrierDescription",
               "name": "CarrierName",
-              "externallyRated": false,
               "id": 1,
               "transformationRuleSet": 1
           }
