@@ -3,9 +3,9 @@
 namespace spec;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 class DtoToEntityFakeTransformer implements ForeignKeyTransformerInterface
 {

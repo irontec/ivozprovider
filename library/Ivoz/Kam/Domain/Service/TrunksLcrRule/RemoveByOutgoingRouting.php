@@ -2,7 +2,7 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
 use Ivoz\Kam\Infrastructure\Persistence\Doctrine\TrunksLcrRuleDoctrineRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;

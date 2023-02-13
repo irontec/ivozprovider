@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\InvoiceScheduler;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;

@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\AdministratorRelPublicEntity;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\AdministratorRelPublicEntity\AdministratorRelPublicEntityRepository;
 use Ivoz\Provider\Domain\Service\Administrator\AdministratorLifecycleEventHandlerInterface;

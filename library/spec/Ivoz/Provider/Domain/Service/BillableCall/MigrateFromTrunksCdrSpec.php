@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Kam\Domain\Model\TrunksCdr\Event\TrunksCdrWasMigrated;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;

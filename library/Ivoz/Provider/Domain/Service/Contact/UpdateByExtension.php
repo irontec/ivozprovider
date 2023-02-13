@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Contact;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Contact\ContactDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterface;

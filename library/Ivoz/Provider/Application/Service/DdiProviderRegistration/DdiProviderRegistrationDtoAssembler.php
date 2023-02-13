@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Application\Service\DdiProviderRegistration;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;

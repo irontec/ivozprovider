@@ -2,7 +2,7 @@
 
 namespace Agi;
 
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
+use Ivoz\Core\Domain\Service\CommonStoragePathResolver;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 /**

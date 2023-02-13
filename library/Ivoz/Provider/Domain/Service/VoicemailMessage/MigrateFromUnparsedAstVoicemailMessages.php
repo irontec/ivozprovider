@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\VoicemailMessage;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageRepository as AstVoicemailMessageRepository;
 use Ivoz\Core\Domain\Model\Commandlog\Commandlog;
 use Psr\Log\LoggerInterface;

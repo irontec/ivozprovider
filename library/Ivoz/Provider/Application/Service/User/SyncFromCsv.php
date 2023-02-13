@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Ivoz\Provider\Application\Service\User;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Ddi\DdiFactory;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionFactory;
 use Ivoz\Provider\Domain\Service\Terminal\TerminalFactory;
+use Ivoz\Provider\Domain\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Domain\Service\User\UserFactory;
 
 class SyncFromCsv

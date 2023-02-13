@@ -10,7 +10,7 @@ services:
   Ivoz\Provider\Domain\Service\Carrier\AbstractBalanceOperation:
     abstract:  true
     arguments:
-      $entityTools: '@Ivoz\Core\Application\Service\EntityTools'
+      $entityTools: '@Ivoz\Core\Domain\Service\EntityTools'
       $logger: '@logger'
       $client: '@Ivoz\Cgr\Infrastructure\Cgrates\Service\CarrierBalanceService'
       $syncBalanceService: '@Ivoz\Provider\Domain\Service\Carrier\SyncBalances'

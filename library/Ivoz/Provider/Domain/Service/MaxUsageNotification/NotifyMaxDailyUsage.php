@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\MaxUsageNotification;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;

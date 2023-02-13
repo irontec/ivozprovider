@@ -13,7 +13,7 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::BrandLogo:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_brands.logo'
@@ -28,7 +28,7 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::WebPortalLogo:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_brandurls.logo'
@@ -43,7 +43,7 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::CallCsvReportCsv:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_call_csv_report.csv'
@@ -59,14 +59,14 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::LocutionOriginalFile:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_locutions.originalfile'
       $keepExtension: true
 
   Service\CommonStoragePathResolver::LocutionEncodedFile:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_locutions.encodedfile'
@@ -82,7 +82,7 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::FaxesInOutFile:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_faxesinout.file'
@@ -97,7 +97,7 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::InvoicePdf:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_invoice.pdf'
@@ -137,7 +137,7 @@ services:
     public: true
 
   Service\CommonStoragePathResolver::RecordingRecordedFile:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_recordings.recordedfile'
@@ -153,7 +153,7 @@ services:
       - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::DestinationRateGroupFile']]
     public: true
   Service\CommonStoragePathResolver::DestinationRateGroupFile:
-    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    class: Ivoz\Core\Domain\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_destination_rates.file'
@@ -163,7 +163,7 @@ services:
   ## VoicemailMessage
   ##########################################
   Service\StoragePathResolverCollection::VoicemailMessage:
-    class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+    class: Ivoz\Core\Domain\Service\StoragePathResolverCollection
     calls:
       - [addPathResolver, ['RecordingFile', '@Service\CommonStoragePathResolver::VoicemailMessageRecordingFile']]
       - [addPathResolver, ['MetadataFile', '@Service\CommonStoragePathResolver::VoicemailMessageMetadataFile']]

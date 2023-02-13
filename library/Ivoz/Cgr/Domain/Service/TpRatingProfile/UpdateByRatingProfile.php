@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use Ivoz\Provider\Domain\Service\RatingProfile\RatingProfileLifecycleEventHandlerInterface;
 

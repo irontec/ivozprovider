@@ -2,8 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Model\DtoNormalizer;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\DtoNormalizer;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;

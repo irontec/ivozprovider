@@ -5,7 +5,7 @@ namespace spec\Ivoz\Cgr\Domain\Service\TpLcrRule;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
 use Ivoz\Cgr\Domain\Service\TpLcrRule\CreatedByOutgoingRouting;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use PhpSpec\ObjectBehavior;

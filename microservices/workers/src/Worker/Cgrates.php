@@ -7,8 +7,8 @@ use Ivoz\Cgr\Infrastructure\Cgrates\Service\ReloadService;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Psr\Log\LoggerInterface;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
 use Symfony\Component\HttpFoundation\Response;
 
 class Cgrates

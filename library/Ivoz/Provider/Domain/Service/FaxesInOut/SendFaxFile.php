@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\FaxesInOut;
 
 use Ivoz\Ast\Infrastructure\Asterisk\ARI\ARIConnector;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 

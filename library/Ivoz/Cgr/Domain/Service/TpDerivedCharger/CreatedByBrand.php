@@ -3,7 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpDerivedCharger;
 
 use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedCharger;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 

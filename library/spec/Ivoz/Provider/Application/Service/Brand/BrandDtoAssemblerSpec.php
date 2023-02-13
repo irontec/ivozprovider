@@ -2,8 +2,8 @@
 
 namespace spec\Ivoz\Provider\Application\Service\Brand;
 
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
-use Ivoz\Core\Application\Service\StoragePathResolverCollection;
+use Ivoz\Core\Domain\Service\CommonStoragePathResolver;
+use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
 use Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;

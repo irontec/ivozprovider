@@ -4,7 +4,7 @@ namespace Ivoz\Cgr\Domain\Service\TpDestination;
 
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Service\Destination\DestinationLifecycleEventHandlerInterface;

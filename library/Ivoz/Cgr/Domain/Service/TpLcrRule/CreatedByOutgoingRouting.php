@@ -5,7 +5,7 @@ namespace Ivoz\Cgr\Domain\Service\TpLcrRule;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRule;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleDto;
 use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;

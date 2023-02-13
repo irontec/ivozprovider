@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\VoicemailMessage;
 
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
+use Ivoz\Core\Domain\Service\CommonStoragePathResolver;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\VoicemailMessage\VoicemailMessageInterface;
 

@@ -4,8 +4,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\CallCsvReport\CreateByScheduler;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
 
 class CallCsvController
 {

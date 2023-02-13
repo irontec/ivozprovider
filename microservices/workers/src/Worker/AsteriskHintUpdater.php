@@ -4,8 +4,8 @@ namespace Worker;
 
 use Ivoz\Ast\Domain\Job\AriHintUpdateJobInterface;
 use Ivoz\Ast\Infrastructure\Asterisk\ARI\ARIConnector;
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Symfony\Component\HttpFoundation\Response;

@@ -3,9 +3,9 @@
 namespace Ivoz\Provider\Application\Service\DestinationRateGroup;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
-use Ivoz\Core\Application\Service\StoragePathResolverCollection;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Service\Assembler\CustomDtoAssemblerInterface;
+use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 

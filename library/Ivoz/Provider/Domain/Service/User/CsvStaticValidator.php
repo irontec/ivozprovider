@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ivoz\Provider\Application\Service\User;
+namespace Ivoz\Provider\Domain\Service\User;
 
 class CsvStaticValidator
 {

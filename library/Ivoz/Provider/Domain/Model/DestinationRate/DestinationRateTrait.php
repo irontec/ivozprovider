@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 

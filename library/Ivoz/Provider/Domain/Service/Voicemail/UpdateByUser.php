@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Voicemail;
 
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface;
 use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;

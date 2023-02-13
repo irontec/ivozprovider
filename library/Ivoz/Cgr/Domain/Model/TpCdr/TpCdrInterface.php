@@ -3,8 +3,8 @@
 namespace Ivoz\Cgr\Domain\Model\TpCdr;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
 
 /**
 * TpCdrInterface

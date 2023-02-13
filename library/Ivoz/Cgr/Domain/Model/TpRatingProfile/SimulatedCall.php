@@ -9,7 +9,7 @@ use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 

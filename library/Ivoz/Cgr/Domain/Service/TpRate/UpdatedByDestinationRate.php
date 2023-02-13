@@ -4,7 +4,7 @@ namespace Ivoz\Cgr\Domain\Service\TpRate;
 
 use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
 use Ivoz\Cgr\Domain\Model\TpRate\TpRateDto;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
 use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Provider\Domain\Service\DestinationRate\DestinationRateLifecycleEventHandlerInterface;

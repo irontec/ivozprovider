@@ -3,11 +3,11 @@
 namespace Ivoz\Provider\Application\Service\WebPortal;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
-use Ivoz\Core\Application\Service\StoragePathResolverCollection;
-use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\ForeignKeyTransformerInterface;
+use Ivoz\Core\Domain\Service\Assembler\CustomEntityAssemblerInterface;
+use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
+use Ivoz\Core\Domain\Service\Traits\FileContainerEntityAssemblerTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\WebPortal\WebPortalInterface;
 

@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Application\Service\Carrier;
 
 use Assert\Assertion;
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Service\Assembler\CustomDtoAssemblerInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Application\Service\CarrierServer\GetStatusFromLcrGatewayInfo;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;

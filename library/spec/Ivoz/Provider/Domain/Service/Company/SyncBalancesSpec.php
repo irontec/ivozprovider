@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
 use Ivoz\Provider\Domain\Service\Company\SyncBalances;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Psr\Log\LoggerInterface;

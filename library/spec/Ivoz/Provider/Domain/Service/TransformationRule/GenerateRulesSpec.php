@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\TransformationRule;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;

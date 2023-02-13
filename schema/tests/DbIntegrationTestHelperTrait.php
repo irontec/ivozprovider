@@ -3,8 +3,8 @@
 namespace Tests;
 
 use Doctrine\ORM\EntityManager;
-use Ivoz\Core\Application\Event\CommandWasExecuted;
-use Ivoz\Core\Application\RequestId;
+use Ivoz\Core\Domain\Event\CommandWasExecuted;
+use Ivoz\Core\Domain\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Core\Domain\Model\Changelog\Changelog;
@@ -14,7 +14,7 @@ use DMS\PHPUnitExtensions\ArraySubset\Constraint\ArraySubset;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 
 trait DbIntegrationTestHelperTrait
 {

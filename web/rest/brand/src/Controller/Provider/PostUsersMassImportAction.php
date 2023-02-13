@@ -3,7 +3,7 @@
 namespace Controller\Provider;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
-use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\DataTransferObjectInterface;
 use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;

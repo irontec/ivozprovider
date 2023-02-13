@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Application\Service\User;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Provider\Application\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Company\Company;

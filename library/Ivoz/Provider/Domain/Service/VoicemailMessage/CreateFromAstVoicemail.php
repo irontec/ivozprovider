@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\VoicemailMessage;
 
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageInterface as AstVoicemailMessageInterface;
 use Ivoz\Ast\Domain\Model\VoicemailMessage\VoicemailMessageDto as AstVoicemailMessageDto;
 use Ivoz\Provider\Domain\Model\Voicemail\VoicemailDto;

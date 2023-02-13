@@ -2,9 +2,9 @@
 
 namespace Worker;
 
-use Ivoz\Core\Application\RegisterCommandTrait;
-use Ivoz\Core\Application\RequestId;
-use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Domain\RegisterCommandTrait;
+use Ivoz\Core\Domain\RequestId;
+use Ivoz\Core\Domain\Service\EntityTools;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Infrastructure\Persistence\Redis\RedisMasterFactory;
 use Ivoz\Provider\Domain\Job\InvoicerJobInterface;
