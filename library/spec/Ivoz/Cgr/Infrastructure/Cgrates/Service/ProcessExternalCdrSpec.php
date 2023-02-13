@@ -214,11 +214,6 @@ class ProcessExternalCdrSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $carrier
-            ->getExternallyRated()
-            ->willReturn(false);
-
-
-        $carrier
             ->getCalculateCost()
             ->willReturn(true);
 
