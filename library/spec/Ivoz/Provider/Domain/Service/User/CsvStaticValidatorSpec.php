@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Ivoz\Provider\Application\Service\User;
+namespace spec\Ivoz\Provider\Domain\Service\User;
 
-use Ivoz\Provider\Application\Service\User\CsvStaticValidator;
+use Ivoz\Provider\Domain\Service\User\CsvStaticValidator;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

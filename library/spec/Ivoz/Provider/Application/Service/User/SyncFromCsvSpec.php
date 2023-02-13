@@ -3,11 +3,10 @@
 namespace spec\Ivoz\Provider\Application\Service\User;
 
 use Ivoz\Core\Domain\Service\EntityTools;
-use Ivoz\Provider\Application\Service\User\CsvStaticValidator;
+use Ivoz\Provider\Domain\Service\User\CsvStaticValidator;
 use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;

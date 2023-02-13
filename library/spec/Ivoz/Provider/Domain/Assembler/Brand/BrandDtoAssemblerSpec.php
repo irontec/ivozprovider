@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Ivoz\Provider\Application\Service\Brand;
+namespace spec\Ivoz\Provider\Domain\Assembler\Brand;
 
 use Ivoz\Core\Domain\Service\CommonStoragePathResolver;
 use Ivoz\Core\Domain\Service\StoragePathResolverCollection;
-use Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler;
+use Ivoz\Provider\Domain\Assembler\Brand\BrandDtoAssembler;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use PhpSpec\Exception\Example\FailureException;

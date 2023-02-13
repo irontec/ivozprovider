@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Ivoz\Provider\Application\Service\DdiProviderRegistration;
+namespace spec\Ivoz\Provider\Domain\Assembler\DdiProviderRegistration;
 
 use Ivoz\Kam\Domain\Model\TrunksUacreg\DdiProviderRegistrationStatus;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 use Ivoz\Kam\Domain\Service\TrunksClientInterface;
-use Ivoz\Provider\Application\Service\DdiProviderRegistration\DdiProviderRegistrationDtoAssembler;
+use Ivoz\Provider\Domain\Assembler\DdiProviderRegistration\DdiProviderRegistrationDtoAssembler;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto;
 use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use PhpSpec\ObjectBehavior;
