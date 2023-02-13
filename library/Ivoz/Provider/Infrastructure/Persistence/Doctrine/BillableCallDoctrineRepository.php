@@ -112,10 +112,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['self.invoice', 'isNull'],
             ['trunksCdr.cgrid', 'isNull'],
             ['self.direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
-            'or' => [
-                ['carrier.externallyRated', 'eq', 0],
-                ['self.carrier', 'isNUll']
-            ]
+            ['self.carrier', 'isNUll']
         ];
 
         $qb
@@ -142,10 +139,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['id', 'in', $ids],
             ['trunksCdr.cgrid', 'isNotNull'],
             ['self.direction', 'eq', BillableCallInterface::DIRECTION_OUTBOUND],
-            'or' => [
-                ['carrier.externallyRated', 'eq', 0],
-                ['self.carrier', 'isNull']
-            ]
+            ['self.carrier', 'isNull']
         ];
 
         $qb
