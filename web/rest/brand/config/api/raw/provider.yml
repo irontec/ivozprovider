@@ -342,6 +342,7 @@ Ivoz\Provider\Domain\Model\WebPortal\WebPortal:
       - urlType
 Ivoz\Provider\Domain\Model\WebPortal\Logo: ~
 
+Ivoz\Provider\Domain\Model\Company\Invoicing: ~
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations:
     get: ~
