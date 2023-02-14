@@ -147,3 +147,19 @@ post_rating_profiles_simulate_call:
     _controller: Controller\Provider\SimulateCall\SimulateCallRatingProfileAction
     _api_item_operation_name: 'post_rating_profiles_simulate_call'
     _api_receive: false
+
+post_company_modify_balance:
+  path: '/company/{id}/modify_balance'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Company\ModifyCompanyBalanceAction
+    _api_item_operation_name: 'post_company_modify_balance'
+    _api_receive: false
+
+post_carrier_modify_balance:
+  path: '/carrier/{id}/modify_balance'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\Provider\Company\ModifyCarrierBalanceAction
+    _api_item_operation_name: 'post_carrier_modify_balance'
+    _api_receive: false
