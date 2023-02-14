@@ -77,7 +77,7 @@ production:
           relCountries: true
         order:
           name: true
-          nif: true
+          invoicing.nif: true
           billingMethod: true
           outgoingDdiE164: true
           relFeatures: true
@@ -106,14 +106,14 @@ production:
       fields:
         blacklist:
           domainUsers: true
-          nif: true
+          invoicing.nif: true
           type: true
           typeIcon: true
-          postalAddress: true
-          postalCode: true
-          town: true
-          province: true
-          countryName: true
+          invoicing.postalAddress: true
+          invoicing.postalCode: true
+          invoicing.town: true
+          invoicing.province: true
+          invoicing.countryName: true
           onDemandRecord: true
           onDemandRecordCode: true
           ipFilter: false
@@ -181,7 +181,7 @@ production:
       forcedValues:
         type: "residential"
         <<: *forcedBrand
-        nif: '12345678-Z'
+        invoicing.nif: '12345678-Z'
         postalAddress: 'Postal address'
         postalCode: 'PC'
         town: 'Town'
@@ -201,12 +201,12 @@ production:
           mediaRelaySets: ${auth.isNotMainOperator}
           onDemandRecord: ${auth.brandFeatures.recordings.disabled}
           onDemandRecordCode: ${auth.brandFeatures.recordings.disabled}
-          nif: ${auth.brandFeatures.invoices.disabled}
-          postalAddress: ${auth.brandFeatures.invoices.disabled}
-          postalCode: ${auth.brandFeatures.invoices.disabled}
-          town: ${auth.brandFeatures.invoices.disabled}
-          province: ${auth.brandFeatures.invoices.disabled}
-          countryName: ${auth.brandFeatures.invoices.disabled}
+          invoicing.nif: ${auth.brandFeatures.invoices.disabled}
+          invoicing.postalAddress: ${auth.brandFeatures.invoices.disabled}
+          invoicing.postalCode: ${auth.brandFeatures.invoices.disabled}
+          invoicing.town: ${auth.brandFeatures.invoices.disabled}
+          invoicing.province: ${auth.brandFeatures.invoices.disabled}
+          invoicing.countryName: ${auth.brandFeatures.invoices.disabled}
           invoiceNotificationTemplate: ${auth.brandFeatures.invoices.disabled}
           outgoingDdiRule: true
           balance: true
@@ -257,12 +257,12 @@ production:
           label: _("Invoice data")
           fields:
             showInvoices: 6
-            nif: 6
-            postalAddress: 8
-            postalCode: 4
-            town: 4
-            province: 4
-            countryName: 4
+            invoicing.nif: 6
+            invoicing.postalAddress: 8
+            invoicing.postalCode: 4
+            invoicing.town: 4
+            invoicing.province: 4
+            invoicing.countryName: 4
         group5:
           colsPerRow: 12
           label: ngettext('Recording', 'Recordings', 0)
