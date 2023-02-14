@@ -1,0 +1,29 @@
+{
+    "request": {
+        "body": {
+            "username": "admin",
+            "password": "wrong-password"
+        },
+        "headers": {
+            "content-type": "application/json"
+        }
+    },
+    "response": {
+        "statusCode": 401,
+        "headers": {
+            "content-type": "application/json"
+        },
+        "body": {
+            "code":401,
+            "message":"Invalid credentials."
+        }
+    },
+    "matchingRules": {
+        "$.body.code": {
+            "match": "type"
+        },
+        "$.body.message": {
+            "match": "type"
+        }
+    }
+}

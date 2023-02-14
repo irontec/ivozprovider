@@ -1,0 +1,40 @@
+{
+  "body": {
+    "title": "Title1",
+    "iden": "User1",
+    "email": "user1@irontec",
+    "terminal": "terminal_user1",
+    "sipPassword": "9871abc",
+    "acrobitsPassword": "xwxV902YY-",
+    "enabled": "dual",
+    "remoteId": 1,
+    "lastProvisionDate": "2022-05-31 12:00:00",
+    "id": 1,
+    "client": {
+      "iden": "isbc",
+      "customTabUrl": "https://irontec.atlassian.net/wiki/spaces/irontec/docs",
+      "domain": "irontec",
+      "proxyHost": null,
+      "proxyPort": null,
+      "sdes": "required",
+      "desktopLicences": 3,
+      "mobileLicences": 2,
+      "remoteId": 1,
+      "authType": "password",
+      "ldapServer": null,
+      "ldapQuery": null,
+      "description": null,
+      "transport": "tls+sip:",
+      "cardDav": true,
+      "cardDavPass": "-876MSsptL",
+      "id": 1,
+      "platform": 1,
+      "provisioningTemplate": 1,
+      "emailNotificationTemplate": 1
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}
