@@ -21,7 +21,6 @@ const Operator: DestinationProps = (props): JSX.Element | null => {
     }
 
     if (values.routingMode === 'lcr') {
-      //debugger;
       return (
         <ListDecorator
           field={'carrierIds'}

@@ -51,12 +51,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
       legend: _('Invoice data'),
       fields: [
         'showInvoices',
-        'nif',
-        'postalAddress',
-        'postalCode',
-        'town',
-        'province',
-        'countryName',
+        'invoicing.nif',
+        'invoicing.postalAddress',
+        'invoicing.postalCode',
+        'invoicing.town',
+        'invoicing.province',
+        'invoicing.countryName',
       ],
     },
     edit && {
