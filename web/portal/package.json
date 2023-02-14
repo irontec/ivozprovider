@@ -25,6 +25,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@pactflow/pact-cypress-adapter": "https://github.com/mmadariaga/pact-cypress-adapter.git#1eb5ff0cf3db957b9bb5a24b6342f4c34b52290d",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -39,12 +40,13 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
+    "cypress": "^10.8.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "hygen": "^6.2.0",
+    "hygen": "^6.2.11",
     "i18next-parser": "^7.2.0",
     "prettier": "^2.6.2",
     "vite-plugin-html": "^3.2.0"
