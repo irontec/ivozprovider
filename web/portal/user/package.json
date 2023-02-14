@@ -9,6 +9,8 @@
     "lint": "eslint --fix src --ext .js,.ts,.tsx",
     "build": "bin/build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cy:run": "cypress run --browser electron",
+    "cy:open": "cypress open"
   }
 }
