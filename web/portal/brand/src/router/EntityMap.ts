@@ -4,11 +4,14 @@ import routeMapParser, {
   RouteMap,
   RouteMapItem,
 } from '@irontec/ivoz-ui/router/routeMapParser';
+import { EntityAclType } from '@irontec/ivoz-ui';
 import { AboutMe } from '../store/clientSession/aboutMe';
 
 type isAccessibleType = (aboutMe: AboutMe) => boolean;
+type aclOverrideType = (aboutMe: AboutMe) => EntityAclType;
 export type ExtendedRouteMapItem = RouteMapItem & {
   isAccessible?: isAccessibleType;
+  aclOverride?: aclOverrideType;
 };
 export type ExtendedRouteMap = RouteMap<ExtendedRouteMapItem>;
 
@@ -27,6 +30,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.VirtualPbx,
+          isAccessible: (aboutMe) => aboutMe.features.includes('vpbx'),
           filterValues: {
             type: 'vpbx',
           },
@@ -61,6 +65,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Residential,
+          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
           filterValues: {
             type: 'residential',
           },
@@ -88,6 +93,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Retail,
+          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
           filterValues: {
             type: 'retail',
           },
@@ -121,6 +127,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Wholesale,
+          isAccessible: (aboutMe) => aboutMe.features.includes('wholesale'),
           filterValues: {
             type: 'wholesale',
           },
@@ -243,6 +250,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.RatingPlanGroup,
+          isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
           children: [
             {
               entity: entities.RatingPlan,
@@ -252,6 +260,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.DestinationRateGroup,
+          isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
           children: [
             {
               entity: entities.DestinationRate,
@@ -262,9 +271,11 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.Destination,
+          isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
         },
         {
           entity: entities.CompanyBalances,
+          isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
           filterValues: {
             billingMethod: 'prepaid', //@TODO: ['prepaid', 'pseudoprepaid'],
           },
@@ -284,6 +295,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.CompanyCurrentDayUsage,
+          isAccessible: (aboutMe) => aboutMe.features.includes('billing'),
         },
       ],
     },
@@ -292,6 +304,7 @@ const getEntityMap = (): ExtendedRouteMap => {
       children: [
         {
           entity: entities.Invoice,
+          isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
           children: [
             {
               entity: entities.FixedCostsRelInvoice,
@@ -306,6 +319,7 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.InvoiceScheduler,
+          isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
           children: [
             {
               entity: entities.FixedCostsRelInvoiceScheduler,
@@ -330,12 +344,15 @@ const getEntityMap = (): ExtendedRouteMap => {
         },
         {
           entity: entities.InvoiceNumberSequence,
+          isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
         },
         {
           entity: entities.FixedCost,
+          isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
         },
         {
           entity: entities.InvoiceTemplate,
+          isAccessible: (aboutMe) => aboutMe.features.includes('invoices'),
           children: [
             //@TODO template testing
           ],
@@ -444,6 +461,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               read: true,
             },
           },
+          isAccessible: (aboutMe) => aboutMe.features.includes('retail'),
         },
         {
           entity: {
@@ -453,6 +471,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               read: true,
             },
           },
+          isAccessible: (aboutMe) => aboutMe.features.includes('residential'),
         },
         {
           entity: {
@@ -462,6 +481,7 @@ const getEntityMap = (): ExtendedRouteMap => {
               read: true,
             },
           },
+          isAccessible: (aboutMe) => aboutMe.features.includes('vpbx'),
         },
         {
           entity: {
