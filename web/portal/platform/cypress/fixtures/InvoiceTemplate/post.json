@@ -1,0 +1,28 @@
+{
+  "request": {
+    "name": "namefixture2",
+    "description": "descriptionfixture2",
+    "template": "<!DOCTYPE HTML> template </html>\n",
+    "templateFooter": "<!DOCTYPE HTML> templateFooter </html>\n",
+    "templateHeader": "<!DOCTYPE HTML> templateHeader </html>\n"
+  },
+  "response": {
+    "body": {
+      "id": 2,
+      "name": "namefixture2",
+      "description": "descriptionfixture2",
+      "template": "<!DOCTYPE HTML> template </html>\n",
+      "templateFooter": "<!DOCTYPE HTML> templateFooter </html>\n",
+      "templateHeader": "<!DOCTYPE HTML> templateHeader </html>\n"
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
