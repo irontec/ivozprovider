@@ -1,0 +1,11 @@
+{
+  "body": {
+    "id": 1,
+    "name": "namefixture1",
+    "description": "descriptionfixture1"
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "statusCode": 200
+}

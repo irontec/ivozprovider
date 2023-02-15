@@ -1,0 +1,24 @@
+{
+  "request": {
+    "id": 1,
+    "name": "nameedited",
+    "description": "descriptionedited",
+    "template": "<!DOCTYPE HTML> template </html>\n",
+    "templateFooter": "<!DOCTYPE HTML> templateFooter </html>\n",
+    "templateHeader": "<!DOCTYPE HTML> templateHeader </html>\n"
+  },
+  "response": {
+    "body": {
+      "id": 1,
+      "name": "nameedited",
+      "description": "descriptionedited",
+      "template": "<!DOCTYPE HTML> template </html>\n",
+      "templateFooter": "<!DOCTYPE HTML> templateFooter </html>\n",
+      "templateHeader": "<!DOCTYPE HTML> templateHeader </html>\n"
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 200
+  }
+}
