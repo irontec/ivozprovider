@@ -112,6 +112,14 @@
       <code>$definitions</code>
     </PropertyNotSetInConstructor>
   </file>
+  <file src="src/Service/Behat/FeatureContext.php">
+    <DeprecatedInterface occurrences="1">
+      <code>FeatureContext</code>
+    </DeprecatedInterface>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>FeatureContext</code>
+    </PropertyNotSetInConstructor>
+  </file>
   <file src="src/Service/UserProvider.php">
     <MissingParamType occurrences="1">
       <code>$class</code>
