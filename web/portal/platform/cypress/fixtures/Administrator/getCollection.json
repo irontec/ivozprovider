@@ -1,0 +1,21 @@
+{
+  "body": [
+    {
+      "id": 1,
+      "active": true,
+      "email": "admin@example.com",
+      "lastname": "ivozprovider",
+      "name": "admin",
+      "restricted": false,
+      "username": "admin"
+    }
+  ],
+  "headers": {
+    "x-first-page": "/api/platform/administrators?_page=1",
+    "x-last-page": "/api/platform/administrators?_page=1",
+    "x-next-page": "/api/platform/administrators?_page=1",
+    "x-total-items": "1",
+    "x-total-pages": "1"
+  },
+  "statusCode": 200
+}
