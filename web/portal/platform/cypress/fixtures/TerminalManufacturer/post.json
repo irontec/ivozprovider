@@ -1,0 +1,24 @@
+{
+  "request": {
+    "iden": "idenfixture2",
+    "name": "namefixture2",
+    "description": "descriptionfixture2"
+  },
+  "response": {
+    "body": {
+      "id": 2,
+      "iden": "idenfixture2",
+      "name": "namefixture2",
+      "description": "descriptionfixture2"
+    },
+    "headers": {
+      "content-type": "application/json; charset=utf-8"
+    },
+    "statusCode": 201
+  },
+  "matchingRules": {
+    "$.body.id": {
+      "match": "type"
+    }
+  }
+}
