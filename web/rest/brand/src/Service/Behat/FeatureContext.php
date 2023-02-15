@@ -35,4 +35,12 @@ class FeatureContext extends BaseFeatureContext
     {
         $this->exchangeAuthorizationHeader('admin', '__b1_internal');
     }
+
+    /**
+     * @Given I add restricted Brand Authorization header
+     */
+    public function iAddRestrictedBrandAuthorizationHeader(): void
+    {
+        $this->setAuthorizationHeader('restrictedBrandAdmin');
+    }
 }
