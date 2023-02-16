@@ -1,6 +1,0 @@
-{
-  "priority": "1",
-  "description": "E.164 to national",
-  "matchExpr": "^34([0-9]+)$",
-  "replaceExpr": "\\1"
-}
