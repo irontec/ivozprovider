@@ -55,7 +55,7 @@ RUN pip install reformat-gherkin
 # Base project
 USER $UNAME
 RUN mkdir -p /opt/irontec
-RUN git clone -b halliday --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Install phpunit 6.5.14
 RUN mkdir -p /opt/phpunit/
@@ -67,6 +67,9 @@ RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-pr
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
+
+# Get yarn dependencies and store them in the image
+RUN yarn --cwd /opt/irontec/ivozprovider/web/portal --cache-folder /opt/web-node_modules install
 
 # We dont require project files anymore
 RUN rm -fr /opt/irontec/ivozprovider/
