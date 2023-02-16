@@ -1,6 +1,0 @@
-{
-  "priority": "1",
-  "description": "International to E.164",
-  "matchExpr": "^(00|\\+)([0-9]+)$",
-  "replaceExpr": "\\2"
-}
