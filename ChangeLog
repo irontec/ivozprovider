@@ -1,3 +1,19 @@
+Tue, 14 Feb 2023 11:52:55 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.23.0 released
+
+    * Proxies
+        - Added optional push servers configuration to ignore IP filtering
+        - Added outbound DDI type only for outgoing presentation
+
+    * Application Servers
+        - Moved Voicemail app calls from AGIs to asterisk dialplan
+
+    * Portal
+        - Added initial AddressBook support (not used for updating presentation yet)
+        - Fixed a bug in Call CSV scheduler filters
+
+
 Tue, 29 Nov 2022 16:01:55 +0100  IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.22.0 released

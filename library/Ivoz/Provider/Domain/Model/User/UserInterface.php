@@ -346,6 +346,22 @@ interface UserInterface extends LoggableEntityInterface
     public function isInitialized(): bool;
 
     /**
+     * Set contact
+     *
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact
+     *
+     * @return static
+     */
+    public function setContact(\Ivoz\Provider\Domain\Model\Contact\ContactInterface $contact = null);
+
+    /**
+     * Get contact
+     *
+     * @return \Ivoz\Provider\Domain\Model\Contact\ContactInterface | null
+     */
+    public function getContact();
+
+    /**
      * Add pickUpRelUser
      *
      * @param \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface $pickUpRelUser

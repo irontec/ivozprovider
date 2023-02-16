@@ -231,6 +231,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $friends = null;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Contact\ContactDto[] | null
+     */
+    private $contacts = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto[] | null
      */
     private $companyServices = null;
@@ -387,6 +392,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
+            'contacts' => $this->getContacts(),
             'companyServices' => $this->getCompanyServices(),
             'terminals' => $this->getTerminals(),
             'ratingProfiles' => $this->getRatingProfiles(),
@@ -1706,6 +1712,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getFriends()
     {
         return $this->friends;
+    }
+
+    /**
+     * @param array $contacts
+     *
+     * @return static
+     */
+    public function setContacts($contacts = null)
+    {
+        $this->contacts = $contacts;
+
+        return $this;
+    }
+
+    /**
+     * @return array | null
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 
     /**

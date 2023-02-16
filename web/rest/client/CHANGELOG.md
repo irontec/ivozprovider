@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.23.0
+* Endpoints
+    - /contacts:
+        - Added [GET|POST|PUT|DELETE] endpoints
+
+* Models:
+    - User:
+        - Added contact property
+
 ## 2.22.0
 * Endpoints:
     - /billable_calls:

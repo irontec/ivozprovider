@@ -20,6 +20,9 @@ class IvozProvider_Klear_Filter_CallCsvSchedulerEndpointType implements KlearMat
 
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
+        if (!$user->companyId) {
+            return [];
+        }
 
         /** @var CompanyDto $companyDto */
         $companyDto = $dataGateway->find(

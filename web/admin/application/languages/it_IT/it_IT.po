@@ -117,6 +117,11 @@ msgstr "Aggiunta di %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Aggiungi pattern a %2s"
 
+msgid "Address Book"
+msgid_plural "Address Books"
+msgstr[0] "Address Book"
+msgstr[1] "Address Books"
+
 msgid "Address successfully unbanned"
 msgstr "Address successfully unbanned"
 
@@ -631,6 +636,11 @@ msgstr "Costo Connessione"
 
 msgid "Connectivity mode"
 msgstr "Modalità Connessione"
+
+msgid "Contact"
+msgid_plural "Contacts"
+msgstr[0] "Contact"
+msgstr[1] "Contacts"
 
 msgid "Contact Settings"
 msgstr "Impostazioni contatto"
@@ -1543,6 +1553,9 @@ msgstr "In corso"
 msgid "Inbound"
 msgstr "In entrata"
 
+msgid "Inbound & outbound"
+msgstr "Inbound & outbound"
+
 msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
 "Le chiate in entrata non possono essere contabilizzate poichè il Provider "
@@ -1965,6 +1978,11 @@ msgstr ""
 msgid "Minimal length: 2"
 msgstr "Lunghezza minima: 2"
 
+msgid "Mobile Phone"
+msgid_plural "Mobile Phones"
+msgstr[0] "Mobile Phone"
+msgstr[1] "Mobile Phones"
+
 msgid "Monday"
 msgstr "Lunedi"
 
@@ -2128,6 +2146,11 @@ msgstr ""
 "Le origini che corrispondono a questo elenco chiameranno direttamente "
 "l'utente."
 
+msgid "Other Phone"
+msgid_plural "Other Phones"
+msgstr[0] "Other Phone"
+msgstr[1] "Other Phones"
+
 msgid "Out"
 msgstr "Out"
 
@@ -2157,6 +2180,9 @@ msgstr "Il valore IP del proxy in uscita non è valido."
 
 msgid "Outbound configuration"
 msgstr "Configurazione in uscita"
+
+msgid "Outbound only"
+msgstr "Outbound only"
 
 msgid "Outgoing Configuration"
 msgstr "Configurazione in uscita"
@@ -2238,6 +2264,9 @@ msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
 msgstr ""
 "Il numero di telefono deve essere in formato E.164 (preceduto dal simbolo \"+"
 "\")"
+
+msgid "Phones"
+msgstr "Phones"
 
 msgid "Pick Up Groups"
 msgstr "Gruppi di Pick Up"
@@ -3292,6 +3321,11 @@ msgstr "Wholesale specific"
 
 msgid "Will be shown on page footer"
 msgstr "Verrà mostrato a piè di pagina"
+
+msgid "Work Phone"
+msgid_plural "Work Phones"
+msgstr[0] "Work Phone"
+msgstr[1] "Work Phones"
 
 msgid "Write Access"
 msgstr "Accesso in scrittura"

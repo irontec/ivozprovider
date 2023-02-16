@@ -156,6 +156,11 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     private $location;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Contact\ContactDto | null
+     */
+    private $contact;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserDto[] | null
      */
     private $pickUpRelUsers = null;
@@ -216,7 +221,8 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiId' => 'outgoingDdi',
             'outgoingDdiRuleId' => 'outgoingDdiRule',
             'voicemailLocutionId' => 'voicemailLocution',
-            'locationId' => 'location'
+            'locationId' => 'location',
+            'contactId' => 'contact'
         ];
     }
 
@@ -255,6 +261,7 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
             'voicemailLocution' => $this->getVoicemailLocution(),
             'location' => $this->getLocation(),
+            'contact' => $this->getContact(),
             'pickUpRelUsers' => $this->getPickUpRelUsers(),
             'queueMembers' => $this->getQueueMembers(),
             'callForwardSettings' => $this->getCallForwardSettings()
@@ -1186,6 +1193,52 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
     public function getLocationId()
     {
         if ($dto = $this->getLocation()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Contact\ContactDto $contact
+     *
+     * @return static
+     */
+    public function setContact(\Ivoz\Provider\Domain\Model\Contact\ContactDto $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Contact\ContactDto | null
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param mixed | null $id
+     *
+     * @return static
+     */
+    public function setContactId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Contact\ContactDto($id)
+            : null;
+
+        return $this->setContact($value);
+    }
+
+    /**
+     * @return mixed | null
+     */
+    public function getContactId()
+    {
+        if ($dto = $this->getContact()) {
             return $dto->getId();
         }
 
