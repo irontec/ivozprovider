@@ -1,9 +1,11 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
+import { useStoreState } from 'store';
 
 const Form = (props: EntityFormProps): JSX.Element => {
   const { entityService, row, match, foreignKeyGetter, formik } = props;
@@ -18,14 +20,17 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
+  const hasInvoicesFeature = aboutMe?.features.includes('invoices');
+
   const recordingFeatureId = fkChoices.featureIds?.find(
-    (row) => row.extraData.iden === 'recordings'
+    (row: EntityValues) => (row.extraData as EntityValues).iden === 'recordings'
   ).id;
   const recordingEnabled =
     formik.values.featureIds.includes(recordingFeatureId);
 
   const faxFeatureId = fkChoices.featureIds?.find(
-    (row) => row.extraData.iden === 'faxes'
+    (row: EntityValues) => (row.extraData as EntityValues).iden === 'faxes'
   ).id;
   const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
@@ -80,18 +85,19 @@ const Form = (props: EntityFormProps): JSX.Element => {
         legend: _('Platform data'),
         fields: ['outgoingDdi', 'outgoingDdiRule'],
       },
-    edit && {
-      legend: _('Invoice data'),
-      fields: [
-        'showInvoices',
-        'nif',
-        'postalAddress',
-        'postalCode',
-        'town',
-        'province',
-        'countryName',
-      ],
-    },
+    edit &&
+      hasInvoicesFeature && {
+        legend: _('Invoice data'),
+        fields: [
+          'showInvoices',
+          'invoicing.nif',
+          'invoicing.postalAddress',
+          'invoicing.postalCode',
+          'invoicing.town',
+          'invoicing.province',
+          'invoicing.countryName',
+        ],
+      },
     edit &&
       recordingEnabled && {
         legend: _('Recordings'),

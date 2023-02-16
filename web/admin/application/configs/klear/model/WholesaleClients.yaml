@@ -25,11 +25,11 @@ production:
       trim: both
       required: true
       default: true
-    nif:
+    invoicing.nif:
       title: _('Nif')
       type: text
       trim: both
-      required: true
+      defaultValue: ''
     defaultTimezone:
       title: _('Default timezone')
       type: select
@@ -97,35 +97,35 @@ production:
         icon: help
         text: _("Used to notify if max daily usage has been reached")
         label: _("Need help?")
-    postalAddress:
+    invoicing.postalAddress:
       title: _('Postal address')
       type: text
       trim: both
-      required: true
+      defaultValue: ''
       maxLength: 255
-    postalCode:
+    invoicing.postalCode:
       title: ngettext('Postal code', 'Postal codes', 1)
       type: text
       trim: both
-      required: true
+      defaultValue: ''
       maxLength: 10
-    town:
+    invoicing.town:
       title: _('Town')
       type: text
       trim: both
-      required: true
+      defaultValue: ''
       maxLength: 255
-    province:
+    invoicing.province:
       title: ngettext('Province', 'Provinces', 1)
       type: text
       trim: both
-      required: true
+      defaultValue: ''
       maxLength: 255
-    countryName:
+    invoicing.countryName:
       title: ngettext('Country', 'Countries', 1)
       type: text
       trim: both
-      required: true
+      defaultValue: ''
       maxLength: 255
     country:
       title: _('Country code')

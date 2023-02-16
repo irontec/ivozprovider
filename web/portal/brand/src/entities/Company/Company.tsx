@@ -26,9 +26,6 @@ const properties: CompanyProperties = {
     label: _('SIP domain'),
     maxLength: 190,
   },
-  nif: {
-    label: _('Nif'),
-  },
   maxCalls: {
     label: _('Max calls'),
     default: 10,
@@ -48,25 +45,24 @@ const properties: CompanyProperties = {
       'Used to notify if max daily usage has been reached. Leave empty to avoid notification.'
     ),
   },
-  postalAddress: {
+  invoicing: {},
+  'invoicing.nif': {
+    label: _('Nif'),
+  },
+  'invoicing.postalAddress': {
     label: _('Postal address'),
-    maxLength: 255,
   },
-  postalCode: {
+  'invoicing.postalCode': {
     label: _('Postal code'),
-    maxLength: 10,
   },
-  town: {
+  'invoicing.town': {
     label: _('Town'),
-    maxLength: 255,
   },
-  province: {
+  'invoicing.province': {
     label: _('Province'),
-    maxLength: 255,
   },
-  countryName: {
+  'invoicing.countryName': {
     label: _('Country', { count: 1 }),
-    maxLength: 255,
   },
   ipfilter: {
     label: _('Filter by IP address'),
@@ -361,7 +357,7 @@ const Company: EntityInterface = {
   properties,
   columns: [
     'name',
-    'nif',
+    'invoicing.nif',
     'billingMethod',
     'outgoingDdi',
     'domainUsers',

@@ -16,7 +16,13 @@ const Residential = {
   icon: HouseIcon,
   title: _('Residential', { count: 2 }),
   localPath: '/residential',
-  columns: ['name', 'nif', 'billingMethod', 'outgoingDdi', 'featureIds'],
+  columns: [
+    'name',
+    'invocing.nif',
+    'billingMethod',
+    'outgoingDdi',
+    'featureIds',
+  ],
   foreignKeyGetter,
 };
 

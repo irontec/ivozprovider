@@ -8,7 +8,13 @@ const Wholesale = {
   icon: ShoppingCartIcon,
   title: _('Wholesale', { count: 2 }),
   localPath: '/wholesale',
-  columns: ['name', 'nif', 'billingMethod', 'routingTagIds', 'codecIds'],
+  columns: [
+    'name',
+    'invoicing.nif',
+    'billingMethod',
+    'routingTagIds',
+    'codecIds',
+  ],
   Form,
 };
 

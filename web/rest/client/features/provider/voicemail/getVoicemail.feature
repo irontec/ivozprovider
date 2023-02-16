@@ -110,17 +110,21 @@ Feature: Retrieve voicemails
               "timezone": 145,
               "outgoingDdi": null,
               "outgoingDdiRule": null,
-              "voicemail": null
+              "location": null,
+              "voicemail": null,
+              "contact": null
           },
           "residentialDevice": null,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
               "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
               "onDemandRecordCode": "",
               "balance": 1.2,
               "id": 1,
+              "invoicing": {
+                  "nif": "12345678A"
+              },
               "language": 1,
               "defaultTimezone": 145,
               "country": 68,

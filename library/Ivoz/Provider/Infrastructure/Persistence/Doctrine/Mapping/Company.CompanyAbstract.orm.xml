@@ -5,6 +5,7 @@
       <unique-constraint name="domain_unique" columns="domain_users"/>
       <unique-constraint name="company_name_brand" columns="name,brandId"/>
     </unique-constraints>
+    <embedded name="invoicing" class="Ivoz\Provider\Domain\Model\Company\Invoicing" use-column-prefix="false" />
     <field name="type" type="string" column="type" length="25" nullable="false">
       <options>
         <option name="fixed"/>
@@ -18,11 +19,6 @@
       </options>
     </field>
     <field name="domainUsers" type="string" column="domain_users" length="190" nullable="true">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="nif" type="string" column="nif" length="25" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
@@ -52,31 +48,6 @@
       </options>
     </field>
     <field name="maxDailyUsageEmail" type="string" column="maxDailyUsageEmail" length="100" nullable="true">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="postalAddress" type="string" column="postalAddress" length="255" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="postalCode" type="string" column="postalCode" length="10" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="town" type="string" column="town" length="255" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="province" type="string" column="province" length="255" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
-    <field name="countryName" type="string" column="country" length="255" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

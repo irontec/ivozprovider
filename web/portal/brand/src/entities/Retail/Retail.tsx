@@ -19,7 +19,7 @@ const Retail = {
   localPath: '/retail',
   columns: [
     'name',
-    'nif',
+    'invoicing.nif',
     'billingMethod',
     'outgoingDdi',
     'routingTagIds',

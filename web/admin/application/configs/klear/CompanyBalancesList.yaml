@@ -37,11 +37,11 @@ production:
           default: companiesEdit_screen
         blacklist:
           transformationRuleSet: true
-          postalAddress: true
-          postalCode: true
-          town: true
-          province: true
-          countryName: true
+          invoicing.postalAddress: true
+          invoicing.postalCode: true
+          invoicing.town: true
+          invoicing.province: true
+          invoicing.countryName: true
           outgoingDdi: true
           outgoingDdiE164: true
           outgoingDdiRule: true
@@ -64,7 +64,7 @@ production:
           invoiceNotificationTemplate: true
           callCsvNotificationTemplate: true
           language: true
-          nif: true
+          invoicing.nif: true
           country: true
           domainUsers: true
           relFeatures: true

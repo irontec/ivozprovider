@@ -227,8 +227,6 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getDomainUsers(): ?string;
 
-    public function getNif(): string;
-
     public function getDistributeMethod(): string;
 
     public function getMaxCalls(): int;
@@ -238,16 +236,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCurrentDayUsage(): ?float;
 
     public function getMaxDailyUsageEmail(): ?string;
-
-    public function getPostalAddress(): string;
-
-    public function getPostalCode(): string;
-
-    public function getTown(): string;
-
-    public function getProvince(): string;
-
-    public function getCountryName(): string;
 
     public function getIpfilter(): ?bool;
 
@@ -268,6 +256,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBalance(): ?float;
 
     public function getShowInvoices(): ?bool;
+
+    public function getInvoicing(): Invoicing;
 
     public function getMediaRelaySets(): ?MediaRelaySetInterface;
 

@@ -48,6 +48,7 @@ class ProfileAction
         return new Profile(
             $restricted,
             $adminRelPublicEntities,
+            $brand->getFeatures()
         );
     }
 }

@@ -223,7 +223,9 @@ class CompanyDto extends CompanyDtoAbstract
                 'id' => 'id',
                 'name' => 'name',
                 'type' => 'type',
-                'nif' => 'nif',
+                'invoicing' => [
+                    'nif',
+                ],
                 'billingMethod' => 'billingMethod',
                 'currentDayUsage' => 'currentDayUsage',
                 'maxDailyUsage' => 'maxDailyUsage',
@@ -287,13 +289,8 @@ class CompanyDto extends CompanyDtoAbstract
             'type',
             'name',
             'domainUsers',
-            'nif',
+            'invoicing',
             'maxCalls',
-            'postalAddress',
-            'postalCode',
-            'town',
-            'province',
-            'countryName',
             'ipfilter',
             'onDemandRecord',
             'onDemandRecordCode',
@@ -340,7 +337,7 @@ class CompanyDto extends CompanyDtoAbstract
             'type',
             'name',
             'domainUsers',
-            'nif',
+            'invoicing' => ['nif'],
             'onDemandRecordCode',
             'balance',
             'id',
@@ -353,12 +350,39 @@ class CompanyDto extends CompanyDtoAbstract
             'domainName',
         ];
 
-        return array_filter(
+        $response = array_filter(
             $response,
-            function ($key) use ($allowedFields): bool {
-                return in_array($key, $allowedFields, true);
+            function (string $key) use ($allowedFields): bool {
+                return
+                    in_array($key, $allowedFields, true)
+                    || array_key_exists($key, $allowedFields);
             },
             ARRAY_FILTER_USE_KEY
         );
+
+        foreach ($response as $key => $val) {
+            $isEmbedded = is_array($val);
+            if (!$isEmbedded) {
+                continue;
+            }
+
+            if (!isset($allowedFields[$key])) {
+                continue;
+            }
+
+            $validSubKeys = $allowedFields[$key];
+            if (!is_array($validSubKeys)) {
+                throw new \RuntimeException($key . ' context properties were expected to be array');
+            }
+
+            /** @var array<array-key, string> $embeddedValues */
+            $embeddedValues = $response[$key];
+            $response[$key] = array_intersect(
+                $embeddedValues,
+                $validSubKeys
+            );
+        }
+
+        return $response;
     }
 }
