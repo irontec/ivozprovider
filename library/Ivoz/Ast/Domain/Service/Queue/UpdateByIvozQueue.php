@@ -74,6 +74,8 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
             ->setName($astQueueName)
             ->setPeriodicAnnounce($periodicAnnounceLocution)
             ->setPeriodicAnnounceFrequency($entity->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($entity->getAnnouncePosition())
+            ->setAnnounceFrequency($entity->getAnnounceFrequency())
             ->setStrategy($entity->getStrategy())
             ->setTimeout($entity->getMemberCallTimeout())
             ->setWrapuptime($entity->getMemberCallRest())

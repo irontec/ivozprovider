@@ -27,6 +27,7 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
         (function () use ($fixture) {
             $this->setDdi("123");
             $this->setDdie164("+34123");
+            $this->setDescription("Description for DDI 123");
             $this->setDisplayName("");
             $this->setBillInboundCalls(false);
             $this->setFriendValue("");

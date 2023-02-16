@@ -24,6 +24,11 @@ abstract class DdiAbstract
     protected $ddie164;
 
     /**
+     * @var string | null
+     */
+    protected $description;
+
+    /**
      * comment: enum:none|all|inbound|outbound
      * @var string
      */
@@ -214,6 +219,7 @@ abstract class DdiAbstract
 
         $self
             ->setDdie164($dto->getDdie164())
+            ->setDescription($dto->getDescription())
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
             ->setFriendValue($dto->getFriendValue())
@@ -253,6 +259,7 @@ abstract class DdiAbstract
         $this
             ->setDdi($dto->getDdi())
             ->setDdie164($dto->getDdie164())
+            ->setDescription($dto->getDescription())
             ->setRecordCalls($dto->getRecordCalls())
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
@@ -289,6 +296,7 @@ abstract class DdiAbstract
         return self::createDto()
             ->setDdi(self::getDdi())
             ->setDdie164(self::getDdie164())
+            ->setDescription(self::getDescription())
             ->setRecordCalls(self::getRecordCalls())
             ->setDisplayName(self::getDisplayName())
             ->setRouteType(self::getRouteType())
@@ -319,6 +327,7 @@ abstract class DdiAbstract
         return [
             'Ddi' => self::getDdi(),
             'DdiE164' => self::getDdie164(),
+            'description' => self::getDescription(),
             'recordCalls' => self::getRecordCalls(),
             'displayName' => self::getDisplayName(),
             'routeType' => self::getRouteType(),
@@ -396,6 +405,34 @@ abstract class DdiAbstract
     public function getDdie164()
     {
         return $this->ddie164;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description | null
+     *
+     * @return static
+     */
+    protected function setDescription($description = null)
+    {
+        if (!is_null($description)) {
+            Assertion::maxLength($description, 100, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string | null
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

@@ -26,6 +26,7 @@ Feature: Create queue members
           "id": 2,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -33,6 +34,8 @@ Feature: Create queue members
               "fullTargetType": "number",
               "fullNumberValue": "946002021",
               "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
               "memberCallRest": 0,
               "memberCallTimeout": 1,
               "strategy": "rrmemory",
@@ -96,6 +99,7 @@ Feature: Create queue members
           "id": 2,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -103,6 +107,8 @@ Feature: Create queue members
               "fullTargetType": "number",
               "fullNumberValue": "946002021",
               "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
               "memberCallRest": 0,
               "memberCallTimeout": 1,
               "strategy": "rrmemory",

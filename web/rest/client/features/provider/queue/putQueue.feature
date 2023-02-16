@@ -12,6 +12,7 @@ Feature: Update queues
     """
       {
           "name": "updatedQueue",
+          "displayName": "Display Name for updatedQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002222",
@@ -19,6 +20,8 @@ Feature: Update queues
           "fullTargetType": "number",
           "fullNumberValue": "946003333",
           "periodicAnnounceFrequency": 7,
+          "announcePosition": "yes",
+          "announceFrequency": 35,
           "memberCallRest": 0,
           "memberCallTimeout": 1,
           "strategy": "rrmemory",
@@ -41,6 +44,7 @@ Feature: Update queues
     """
       {
           "name": "updatedQueue",
+          "displayName": "Display Name for updatedQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002222",
@@ -48,6 +52,8 @@ Feature: Update queues
           "fullTargetType": "number",
           "fullNumberValue": "946003333",
           "periodicAnnounceFrequency": 7,
+          "announcePosition": "yes",
+          "announceFrequency": 35,
           "memberCallRest": 0,
           "memberCallTimeout": 1,
           "strategy": "rrmemory",

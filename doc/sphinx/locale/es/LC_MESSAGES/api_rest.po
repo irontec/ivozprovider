@@ -1,9 +1,192 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016-2019, Irontec
-# This file is distributed under the same license as the IvozProvider
-# package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-11-03 16:36+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: ../../api_rest/acls.rst:3
+msgid "ACLs"
+msgstr ""
+
+#: ../../api_rest/acls.rst:5
+msgid ""
+"Credentials used for web access can be used with their API corresponding "
+"level. These administrators (global, brand, client) have full access to "
+"all endpoints of their level."
+msgstr ""
+
+#: ../../api_rest/acls.rst:8
+msgid "Since 2.15, it is possible to create **restricted administrators** too."
+msgstr ""
+
+#: ../../api_rest/acls.rst:11
+msgid "Restricted global/brand administrators"
+msgstr ""
+
+#: ../../api_rest/acls.rst:13
+msgid ""
+"Enabling global/brand administrator **Restricted** option makes this "
+"administrator special:"
+msgstr ""
+
+#: ../../api_rest/acls.rst:15
+msgid "Cannot be used anymore to access web portal."
+msgstr ""
+
+#: ../../api_rest/acls.rst:17
+msgid ""
+"Full API endpoint access is restricted to read-only access to those "
+"endpoints."
+msgstr ""
+
+#: ../../api_rest/acls.rst:19
+msgid ""
+"Privileges can be fine-tuned in *List of Administrator access privileges*"
+" subsection, where you can enable/disable for each endpoint:"
+msgstr ""
+
+#: ../../api_rest/acls.rst:23
+msgid "Create privilege"
+msgstr ""
+
+#: ../../api_rest/acls.rst:25
+msgid "Administrator with this privilege can create new items of given endpoint."
+msgstr ""
+
+#: ../../api_rest/acls.rst:26
+msgid "Read privilege"
+msgstr ""
+
+#: ../../api_rest/acls.rst:28
+msgid ""
+"Administrator with this privilege can read existing items of given "
+"endpoint. Just watch existing items, no modification is allowed."
+msgstr ""
+
+#: ../../api_rest/acls.rst:30
+msgid "Update privilege"
+msgstr ""
+
+#: ../../api_rest/acls.rst:32
+msgid ""
+"Administrator with this privilege can modify existing items of given "
+"endpoint."
+msgstr ""
+
+#: ../../api_rest/acls.rst:33
+msgid "Delete privilege"
+msgstr ""
+
+#: ../../api_rest/acls.rst:35
+msgid ""
+"Administrator with this privilege can delete existing items of given "
+"endpoint."
+msgstr ""
+
+#: ../../api_rest/acls.rst:37
+msgid ""
+"Changing a non-rectricted administrator to restricted turns it into a "
+"read-only API-capable administrator."
+msgstr ""
+
+#: ../../api_rest/acls.rst:39
+msgid ""
+"Changing a restricted administrator to non-restricted turns it into a "
+"full access web+API capable administrator."
+msgstr ""
+
+#: ../../api_rest/acls.rst:41
+msgid ""
+"You can easily select multiple endpoints in *List of Administrator access"
+" privileges* and revoke/grant them all."
+msgstr ""
+
+#: ../../api_rest/acls.rst:44
+msgid "Client restricted administrators"
+msgstr ""
+
+#: ../../api_rest/acls.rst:46
+msgid ""
+"Opposed to global/brand administrators, **client restricted "
+"administrators can login into client web portal**. As a consequence, "
+"privileges of a given client administrator apply to:"
+msgstr ""
+
+#: ../../api_rest/acls.rst:49
+#, fuzzy
+msgid "Privileges for API integrations."
+msgstr "Integraciones de terceros"
+
+#: ../../api_rest/acls.rst:50
+msgid "Web access to sections and available operations in those sections."
+msgstr ""
+
+#: ../../api_rest/acls.rst:52
+msgid ""
+"Privileges can be fine-tuned in *List of Administrator access privileges*"
+" subsection too."
+msgstr ""
+
+#: ../../api_rest/acls.rst:55
+msgid "Example 1: Recordings-only client administrator"
+msgstr ""
+
+#: ../../api_rest/acls.rst:56
+msgid "To create a client administrator that only sees Recordings section:"
+msgstr ""
+
+#: ../../api_rest/acls.rst:58
+msgid ""
+"Create a new restricted client administrator or turn a non-rectricted one"
+" into restricted."
+msgstr ""
+
+#: ../../api_rest/acls.rst:59 ../../api_rest/acls.rst:67
+msgid ""
+"Access to **List of Administrator access privileges**, select all "
+"endpoints and press **Revoke access**."
+msgstr ""
+
+#: ../../api_rest/acls.rst:60
+msgid "Edit *Recordings* endpoint and enable Read access."
+msgstr ""
+
+#: ../../api_rest/acls.rst:63
+msgid "Example 2: Fax-only client administrator"
+msgstr ""
+
+#: ../../api_rest/acls.rst:64
+msgid ""
+"To create a client administrator that only sees Fax section and can "
+"send/receive faxes:"
+msgstr ""
+
+#: ../../api_rest/acls.rst:66
+msgid ""
+"Create a new restricted client administrator or turn a non-restricted one"
+" into restricted."
+msgstr ""
+
+#: ../../api_rest/acls.rst:68
+msgid "Edit *Faxes* endpoint and enable Read access."
+msgstr ""
+
+#: ../../api_rest/acls.rst:69
+msgid "Edit *FaxesFiles* endpoint and enable Create/Update access."
+msgstr ""
 
 #: ../../api_rest/integrations.rst:3
 msgid "Third party integrations"
@@ -15,9 +198,9 @@ msgid ""
 "identical to the Swagger 2.0 specification before it was renamed to "
 "\"OpenAPI Specification\")."
 msgstr ""
-"Ivoz Provider hace uso de la especificación **OpenAPI 2.0** (la cual "
-"es idéntica a la especificación Swagger 2.0 antes de que fuera renombrada "
-"a \"OpenAPI\")."
+"Ivoz Provider hace uso de la especificación **OpenAPI 2.0** (la cual es "
+"idéntica a la especificación Swagger 2.0 antes de que fuera renombrada a "
+"\"OpenAPI\")."
 
 #: ../../api_rest/integrations.rst:8
 msgid ""
@@ -27,11 +210,11 @@ msgid ""
 "during the client development. According to their github page the "
 "following language/framework code auto-generation is supported:"
 msgstr ""
-"Las APIs son la manera de integrar aplicaciones de terceros con "
-"Ivoz Provider. Ciertas herramientas de la comunidad, como `swagger-codegen "
-"<https://github.com/swagger-api/swagger-codegen>`_, pueden ser de gran ayuda "
-"durante el desarrollo de clientes. De acuerdo con su página de github, "
-"es compatible con los siguientes languajes/frameworks:"
+"Las APIs son la manera de integrar aplicaciones de terceros con Ivoz "
+"Provider. Ciertas herramientas de la comunidad, como `swagger-codegen "
+"<https://github.com/swagger-api/swagger-codegen>`_, pueden ser de gran "
+"ayuda durante el desarrollo de clientes. De acuerdo con su página de "
+"github, es compatible con los siguientes languajes/frameworks:"
 
 #: ../../api_rest/integrations.rst:12
 msgid "ActionScript"
@@ -188,12 +371,13 @@ msgid ""
 "<https://www.openapis.org/membership/members)>`_."
 msgstr ""
 "Ivoz Provider cuenta con tres APIs REST dirigidas por `hypermedia "
-"<https://en.wikipedia.org/wiki/HATEOAS>`_, una por cada uno de los "
-"roles de administración. Todas ellas han sido construidas sobre `OpenAPI Specification "
-" <https://www.openapis.org/>`_, una especificación abierta liderada por la comunidad "
-"dentro de la iniciativa OpenAPI, un proyecto colaborativo de la Linux Foundation. "
-"Esta iniciativa cuenta con el respaldo de algunas de las compañias tecnológicas más punteras "
-"como Adobe, Google, IBM, Microsoft `y muchas otras "
+"<https://en.wikipedia.org/wiki/HATEOAS>`_, una por cada uno de los roles "
+"de administración. Todas ellas han sido construidas sobre `OpenAPI "
+"Specification  <https://www.openapis.org/>`_, una especificación abierta "
+"liderada por la comunidad dentro de la iniciativa OpenAPI, un proyecto "
+"colaborativo de la Linux Foundation. Esta iniciativa cuenta con el "
+"respaldo de algunas de las compañias tecnológicas más punteras como "
+"Adobe, Google, IBM, Microsoft `y muchas otras "
 "<https://www.openapis.org/membership/members)>`_."
 
 #: ../../api_rest/introduction.rst:10
@@ -232,6 +416,156 @@ msgstr "Orden de resultados"
 msgid "Security layer: Resource and record access control"
 msgstr "Capa de seguridad: Control de acceso a recursos y registros"
 
+#: ../../api_rest/multilevel.rst:3
+msgid "Multi-level API"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:5
+msgid ""
+"IvozProvider API is divided in same three levels as the web "
+"administration portal:"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:7
+msgid "God"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:9
+msgid "Brand"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:11
+msgid "Client"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:13
+msgid ""
+"This split allows different roles with different responsibilities to be "
+"integrated against it without compromising security (read, edit, update "
+"or delete the data they should not)."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:16
+msgid ""
+"If you check out `security policies "
+"<https://github.com/irontec/ivozprovider/blob/bleeding/web/rest/brand/config/api/raw/provider.yml>`_"
+" (read_access_control and write_access_control attributes), you’ll see "
+"that we apply read filters and write validations based on user "
+"information (token). One single API approach would require a complex "
+"validations more prone to failure, introduce errors and require huge "
+"queries that would impact the performance."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:21
+msgid ""
+"That is why we split it into three APIs with **impersonate mechanism** to"
+" move between them. This mechanism is explained in :ref:`Use Case` "
+"section."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:24
+msgid ""
+"In order to access to each level, **you will need a corresponding level "
+"URL and credentials**:"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:27
+msgid "God API access"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:28
+msgid "URL: God URL defined in :ref:`Platform Portals` + /api/platform"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:30
+msgid "Credentials: God credentials defined in :ref:`Main operators`."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:33
+msgid "Brand API access"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:34
+msgid "URL: Brand URL defined in :ref:`Brand Portals` + /api/brand"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:36
+msgid "Credentials: Brand credentials defined in :ref:`Brand operators`."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:39
+msgid "Client API access"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:40
+msgid "URL: Client URL defined in :ref:`Client Portals` + /api/client"
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:42
+msgid ""
+"Credentials: Client credentials defined in :ref:`Additional subsections` "
+"*Client admins*."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:44
+msgid ""
+"All credentials usernames are unique at brand level. This is why "
+"*username + brand URL* duple is needed to identify a user (both in API "
+"and in web portal)."
+msgstr ""
+
+#: ../../api_rest/multilevel.rst:47
+msgid ""
+"As both brand and client URLs are internally linked to the same brand "
+"(client within that brand), it is also possible to access to client API "
+"using a brand URL + /api/client."
+msgstr ""
+
+#: ../../api_rest/use_case.rst:3
+msgid "Use Case"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:5
+msgid ""
+"Let's put a little use case as an example: A platform admin wants to "
+"obtain the companies of one specific brand (companies are exposed on "
+"Brand API only). The operation would be:"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:8
+msgid "On platform API (https://your-domain/api/platform)"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:9
+msgid "Login (request a token) as god admin on /admin_login"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:11
+msgid "Search target brand on /brands"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:13
+msgid "Get it's domain on /web_portals"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:15
+msgid "Get a valid brand administrator on /administrators"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:18
+msgid "On Brand API (https://brand-domain/api/brand)"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:19
+msgid ""
+"Impersonate as a brand admin on Auth> /token/exchange (requires a god "
+"token and a brand administrator user name obtained in 1-d)"
+msgstr ""
+
+#: ../../api_rest/use_case.rst:21
+msgid "Request brand companies using the endpoint /companies"
+msgstr ""
+
 #: ../../api_rest/web_client.rst:3
 msgid "Built-in web client"
 msgstr "Cliente web incorporado"
@@ -241,8 +575,9 @@ msgid ""
 "APIs come with their own web client so that you can test them easily. Go "
 "to `Platform API </api/platform/index.html>`_ for instance."
 msgstr ""
-"Las APIs incluyen su propio cliente web para que puedan ser probadas fácilmente. "
-"`Cliente web de la API de Plataforma </api/platform/index.html>`_ por ejemplo."
+"Las APIs incluyen su propio cliente web para que puedan ser probadas "
+"fácilmente. `Cliente web de la API de Plataforma "
+"</api/platform/index.html>`_ por ejemplo."
 
 #: ../../api_rest/web_client.rst:10
 msgid ""
@@ -252,11 +587,12 @@ msgid ""
 "`execute` to send the request. You should get a response that contains a "
 "token and a refresh token."
 msgstr ""
-"La API requiere solicitar un token de acceso mediante unas credenciales de administrador válidas. "
-"Esto puede ser realizado desde la sección [Auth] > [POST /admin_login] del cliente web. Será necesario "
-"hacer click en el botón `Try it out`, escribir las credenciales en el formulario y pulsar "
-"sobre `execute` para enviar la petición. La respuesta debería contener un token de acceso y un "
-"token de renovación."
+"La API requiere solicitar un token de acceso mediante unas credenciales "
+"de administrador válidas. Esto puede ser realizado desde la sección "
+"[Auth] > [POST /admin_login] del cliente web. Será necesario hacer click "
+"en el botón `Try it out`, escribir las credenciales en el formulario y "
+"pulsar sobre `execute` para enviar la petición. La respuesta debería "
+"contener un token de acceso y un token de renovación."
 
 #: ../../api_rest/web_client.rst:15
 msgid ""
@@ -265,10 +601,11 @@ msgid ""
 "refresh token then to get a new one without sending admin credentials "
 "again."
 msgstr ""
-"Una vez solicitado el token, será necesario copiarlo en el botón `Authorize` que se encuentra en la parte "
-"superior de la página. El tiempo de vida del token es de una hora. Una vez expirado es "
-"posible hacer uso del token de refresco para conseguir un nuevo token de acceso sin la necesidad de "
-"reenviar las credenciales de administrador."
+"Una vez solicitado el token, será necesario copiarlo en el botón "
+"`Authorize` que se encuentra en la parte superior de la página. El tiempo"
+" de vida del token es de una hora. Una vez expirado es posible hacer uso "
+"del token de refresco para conseguir un nuevo token de acceso sin la "
+"necesidad de reenviar las credenciales de administrador."
 
 #: ../../api_rest/web_client.rst:17
 msgid ""
@@ -276,17 +613,19 @@ msgid ""
 " endpoint, `Try it out` and `Execute`. You may want to switch `Response "
 "content type` as well (JSON or LD+JSON for this endpoint)."
 msgstr ""
-"Con el token correctamente introducido, es posible hacer click en [GET /administrators]"
-", `Try it out` y `Execute` para comprobar el correcto funcionamiento de la API. Igualmente, a través de "
-"`Response content type` se puede seleccionar en formato de respuesta deseado entre las opciones facilitadas "
-"(JSON o LD+JSON en este ejemplo)."
+"Con el token correctamente introducido, es posible hacer click en [GET "
+"/administrators], `Try it out` y `Execute` para comprobar el correcto "
+"funcionamiento de la API. Igualmente, a través de `Response content type`"
+" se puede seleccionar en formato de respuesta deseado entre las opciones "
+"facilitadas (JSON o LD+JSON en este ejemplo)."
 
 #: ../../api_rest/web_client.rst:22
 msgid ""
 "It's possible to filter and sort response using `Parameters` input fields"
 " as well."
 msgstr ""
-"También es posible filtrar y ordenar la respuesta mediante los campos de entrada del formulario."
+"También es posible filtrar y ordenar la respuesta mediante los campos de "
+"entrada del formulario."
 
 #: ../../api_rest/web_client.rst:26
 msgid "Specification"
@@ -294,5 +633,7 @@ msgstr "Especificación"
 
 #: ../../api_rest/web_client.rst:27
 msgid "You can check out request and response models from the web client itself."
-msgstr "El cliente web contiene la definición de los modelos de entrada y salida de la API."
+msgstr ""
+"El cliente web contiene la definición de los modelos de entrada y salida "
+"de la API."
 

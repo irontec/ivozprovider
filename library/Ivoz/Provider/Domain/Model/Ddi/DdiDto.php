@@ -33,6 +33,7 @@ class DdiDto extends DdiDtoAbstract
                 'countryId' => 'country',
                 'ddi' => 'ddi',
                 'ddie164' => 'ddie164',
+                'description' => 'description',
                 'externalCallFilterId' => 'externalCallFilter',
                 'routeType' => 'routeType',
                 'friendValue' => 'friendValue',
@@ -90,6 +91,7 @@ class DdiDto extends DdiDtoAbstract
         $allowedFields = [
             'ddi',
             'ddie164',
+            'description',
             'id',
             'companyId',
             'ddiProviderId',
@@ -104,6 +106,7 @@ class DdiDto extends DdiDtoAbstract
         $allowedFields = [
             'ddi',
             'ddie164',
+            'description',
             'recordCalls',
             'displayName',
             'routeType',

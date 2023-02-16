@@ -37,7 +37,7 @@ Feature: Update billable calls
           "callee": "+34633656565",
           "cost": 1.1,
           "price": 2.2,
-          "carrierName": null,
+          "carrierName": "someCarrier",
           "destinationName": "Rate test",
           "ratingPlanName": "RatingPlan Test",
           "endpointType": null,

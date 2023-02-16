@@ -15,8 +15,19 @@ function setup_php()
     /bin/sed -i 's/;*date.timezone =.*/date.timezone = UTC/g'                   /etc/php/7.0/cli/php.ini
 }
 
+function setup_fastagi_server()
+{
+    # Get fastagi sever address from debconf
+    db_get ivozprovider/fastagi_server_address            || true
+    FASTAGI_SERVER=$RET
+
+    # Configure Fastagi server IPs
+    sed -i -r "s/(FASTAGI_SERVER *= *).*/\1$FASTAGI_SERVER/"  /etc/asterisk/extensions.conf
+}
+
 #######################################################################################################################
 #######################################################################################################################
 setup_php
+setup_fastagi_server
 
 :

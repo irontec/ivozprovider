@@ -18,7 +18,7 @@ RUN composer global require phpstan/phpstan-beberlei-assert
 RUN composer global require phpstan/phpstan-symfony
 
 RUN mkdir -p /opt/irontec
-RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b artemis --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Get dependencies
 RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress

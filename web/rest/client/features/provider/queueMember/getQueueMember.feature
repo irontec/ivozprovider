@@ -19,6 +19,7 @@ Feature: Retrieve queue members
               "id": 1,
               "queue": {
                   "name": "testQueue",
+                  "displayName": "testQueue DisplayName",
                   "maxWaitTime": 20,
                   "timeoutTargetType": "number",
                   "timeoutNumberValue": "946002020",
@@ -26,6 +27,8 @@ Feature: Retrieve queue members
                   "fullTargetType": "number",
                   "fullNumberValue": "946002021",
                   "periodicAnnounceFrequency": 7,
+                  "announcePosition": "yes",
+                  "announceFrequency": 10,
                   "memberCallRest": 0,
                   "memberCallTimeout": 1,
                   "strategy": "rrmemory",
@@ -90,6 +93,7 @@ Feature: Retrieve queue members
           "id": 1,
           "queue": {
               "name": "testQueue",
+              "displayName": "testQueue DisplayName",
               "maxWaitTime": 20,
               "timeoutTargetType": "number",
               "timeoutNumberValue": "946002020",
@@ -97,6 +101,8 @@ Feature: Retrieve queue members
               "fullTargetType": "number",
               "fullNumberValue": "946002021",
               "periodicAnnounceFrequency": 7,
+              "announcePosition": "yes",
+              "announceFrequency": 10,
               "memberCallRest": 0,
               "memberCallTimeout": 1,
               "strategy": "rrmemory",

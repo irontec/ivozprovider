@@ -24,6 +24,12 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
       options:
         fixed: false
       column: DdiE164
+    description:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
     recordCalls:
       type: string
       nullable: false

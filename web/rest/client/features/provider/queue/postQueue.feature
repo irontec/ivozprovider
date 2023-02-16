@@ -12,6 +12,7 @@ Feature: Create queues
     """
       {
           "name": "newQueue",
+          "displayName": "Display Name for newQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002121",
@@ -25,6 +26,8 @@ Feature: Create queues
           "weight": 2,
           "preventMissedCalls": 1,
           "periodicAnnounceLocution": 1,
+          "announcePosition": "yes",
+          "announceFrequency": 20,
           "timeoutLocution": 1,
           "timeoutExtension": null,
           "timeoutVoiceMailUser": null,
@@ -42,6 +45,7 @@ Feature: Create queues
     """
       {
           "name": "newQueue",
+          "displayName": "Display Name for newQueue",
           "maxWaitTime": 10,
           "timeoutTargetType": "number",
           "timeoutNumberValue": "946002121",
@@ -49,6 +53,8 @@ Feature: Create queues
           "fullTargetType": "number",
           "fullNumberValue": "946002023",
           "periodicAnnounceFrequency": 7,
+          "announcePosition": "yes",
+          "announceFrequency": 20,
           "memberCallRest": 0,
           "memberCallTimeout": 1,
           "strategy": "rrmemory",

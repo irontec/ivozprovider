@@ -19,6 +19,11 @@ abstract class QueueAbstract
     protected $name;
 
     /**
+     * @var string | null
+     */
+    protected $displayName;
+
+    /**
      * @var integer | null
      */
     protected $maxWaitTime;
@@ -54,6 +59,17 @@ abstract class QueueAbstract
      * @var integer | null
      */
     protected $periodicAnnounceFrequency;
+
+    /**
+     * comment: enum:yes|no
+     * @var string | null
+     */
+    protected $announcePosition;
+
+    /**
+     * @var integer | null
+     */
+    protected $announceFrequency;
 
     /**
      * @var integer | null
@@ -215,6 +231,7 @@ abstract class QueueAbstract
 
         $self
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -222,6 +239,8 @@ abstract class QueueAbstract
             ->setFullTargetType($dto->getFullTargetType())
             ->setFullNumberValue($dto->getFullNumberValue())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setMemberCallRest($dto->getMemberCallRest())
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
@@ -256,6 +275,7 @@ abstract class QueueAbstract
 
         $this
             ->setName($dto->getName())
+            ->setDisplayName($dto->getDisplayName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
             ->setTimeoutNumberValue($dto->getTimeoutNumberValue())
@@ -263,6 +283,8 @@ abstract class QueueAbstract
             ->setFullTargetType($dto->getFullTargetType())
             ->setFullNumberValue($dto->getFullNumberValue())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition($dto->getAnnouncePosition())
+            ->setAnnounceFrequency($dto->getAnnounceFrequency())
             ->setMemberCallRest($dto->getMemberCallRest())
             ->setMemberCallTimeout($dto->getMemberCallTimeout())
             ->setStrategy($dto->getStrategy())
@@ -293,6 +315,7 @@ abstract class QueueAbstract
     {
         return self::createDto()
             ->setName(self::getName())
+            ->setDisplayName(self::getDisplayName())
             ->setMaxWaitTime(self::getMaxWaitTime())
             ->setTimeoutTargetType(self::getTimeoutTargetType())
             ->setTimeoutNumberValue(self::getTimeoutNumberValue())
@@ -300,6 +323,8 @@ abstract class QueueAbstract
             ->setFullTargetType(self::getFullTargetType())
             ->setFullNumberValue(self::getFullNumberValue())
             ->setPeriodicAnnounceFrequency(self::getPeriodicAnnounceFrequency())
+            ->setAnnouncePosition(self::getAnnouncePosition())
+            ->setAnnounceFrequency(self::getAnnounceFrequency())
             ->setMemberCallRest(self::getMemberCallRest())
             ->setMemberCallTimeout(self::getMemberCallTimeout())
             ->setStrategy(self::getStrategy())
@@ -324,6 +349,7 @@ abstract class QueueAbstract
     {
         return [
             'name' => self::getName(),
+            'displayName' => self::getDisplayName(),
             'maxWaitTime' => self::getMaxWaitTime(),
             'timeoutTargetType' => self::getTimeoutTargetType(),
             'timeoutNumberValue' => self::getTimeoutNumberValue(),
@@ -331,6 +357,8 @@ abstract class QueueAbstract
             'fullTargetType' => self::getFullTargetType(),
             'fullNumberValue' => self::getFullNumberValue(),
             'periodicAnnounceFrequency' => self::getPeriodicAnnounceFrequency(),
+            'announcePosition' => self::getAnnouncePosition(),
+            'announceFrequency' => self::getAnnounceFrequency(),
             'memberCallRest' => self::getMemberCallRest(),
             'memberCallTimeout' => self::getMemberCallTimeout(),
             'strategy' => self::getStrategy(),
@@ -376,6 +404,34 @@ abstract class QueueAbstract
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set displayName
+     *
+     * @param string $displayName | null
+     *
+     * @return static
+     */
+    protected function setDisplayName($displayName = null)
+    {
+        if (!is_null($displayName)) {
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * Get displayName
+     *
+     * @return string | null
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
     }
 
     /**
@@ -585,6 +641,67 @@ abstract class QueueAbstract
     public function getPeriodicAnnounceFrequency()
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    /**
+     * Set announcePosition
+     *
+     * @param string $announcePosition | null
+     *
+     * @return static
+     */
+    protected function setAnnouncePosition($announcePosition = null)
+    {
+        if (!is_null($announcePosition)) {
+            Assertion::maxLength($announcePosition, 10, 'announcePosition value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($announcePosition, [
+                QueueInterface::ANNOUNCEPOSITION_YES,
+                QueueInterface::ANNOUNCEPOSITION_NO
+            ], 'announcePositionvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    /**
+     * Get announcePosition
+     *
+     * @return string | null
+     */
+    public function getAnnouncePosition()
+    {
+        return $this->announcePosition;
+    }
+
+    /**
+     * Set announceFrequency
+     *
+     * @param integer $announceFrequency | null
+     *
+     * @return static
+     */
+    protected function setAnnounceFrequency($announceFrequency = null)
+    {
+        if (!is_null($announceFrequency)) {
+            Assertion::integerish($announceFrequency, 'announceFrequency value "%s" is not an integer or a number castable to integer.');
+            $announceFrequency = (int) $announceFrequency;
+        }
+
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    /**
+     * Get announceFrequency
+     *
+     * @return integer | null
+     */
+    public function getAnnounceFrequency()
+    {
+        return $this->announceFrequency;
     }
 
     /**

@@ -16,6 +16,11 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     private $name;
 
     /**
+     * @var string
+     */
+    private $displayName;
+
+    /**
      * @var integer
      */
     private $maxWaitTime;
@@ -49,6 +54,16 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      * @var integer
      */
     private $periodicAnnounceFrequency;
+
+    /**
+     * @var string
+     */
+    private $announcePosition;
+
+    /**
+     * @var integer
+     */
+    private $announceFrequency;
 
     /**
      * @var integer
@@ -149,6 +164,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
 
         return [
             'name' => 'name',
+            'displayName' => 'displayName',
             'maxWaitTime' => 'maxWaitTime',
             'timeoutTargetType' => 'timeoutTargetType',
             'timeoutNumberValue' => 'timeoutNumberValue',
@@ -156,6 +172,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => 'fullTargetType',
             'fullNumberValue' => 'fullNumberValue',
             'periodicAnnounceFrequency' => 'periodicAnnounceFrequency',
+            'announcePosition' => 'announcePosition',
+            'announceFrequency' => 'announceFrequency',
             'memberCallRest' => 'memberCallRest',
             'memberCallTimeout' => 'memberCallTimeout',
             'strategy' => 'strategy',
@@ -182,6 +200,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     {
         $response = [
             'name' => $this->getName(),
+            'displayName' => $this->getDisplayName(),
             'maxWaitTime' => $this->getMaxWaitTime(),
             'timeoutTargetType' => $this->getTimeoutTargetType(),
             'timeoutNumberValue' => $this->getTimeoutNumberValue(),
@@ -189,6 +208,8 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'fullTargetType' => $this->getFullTargetType(),
             'fullNumberValue' => $this->getFullNumberValue(),
             'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
+            'announcePosition' => $this->getAnnouncePosition(),
+            'announceFrequency' => $this->getAnnounceFrequency(),
             'memberCallRest' => $this->getMemberCallRest(),
             'memberCallTimeout' => $this->getMemberCallTimeout(),
             'strategy' => $this->getStrategy(),
@@ -239,6 +260,26 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $displayName
+     *
+     * @return static
+     */
+    public function setDisplayName($displayName = null)
+    {
+        $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
     }
 
     /**
@@ -379,6 +420,46 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
     public function getPeriodicAnnounceFrequency()
     {
         return $this->periodicAnnounceFrequency;
+    }
+
+    /**
+     * @param string $announcePosition
+     *
+     * @return static
+     */
+    public function setAnnouncePosition($announcePosition = null)
+    {
+        $this->announcePosition = $announcePosition;
+
+        return $this;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getAnnouncePosition()
+    {
+        return $this->announcePosition;
+    }
+
+    /**
+     * @param integer $announceFrequency
+     *
+     * @return static
+     */
+    public function setAnnounceFrequency($announceFrequency = null)
+    {
+        $this->announceFrequency = $announceFrequency;
+
+        return $this;
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getAnnounceFrequency()
+    {
+        return $this->announceFrequency;
     }
 
     /**
