@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ServicesUnassignedAction
@@ -17,7 +16,6 @@ class ServicesUnassignedAction
         private TokenStorageInterface $tokenStorage,
         private BrandServiceRepository $brandServiceRepository,
         private ServiceRepository $serviceRepository,
-        private RequestStack $requestStack
     ) {
     }
 
@@ -25,10 +23,8 @@ class ServicesUnassignedAction
      * @return ServiceInterface[]
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke(): array
+    public function __invoke(Request $request): array
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

@@ -9,7 +9,6 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Model\ActiveCalls;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -18,17 +17,13 @@ class ActiveCallsAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private RequestStack $requestStack,
         private TrunksClientInterface $trunksClient,
         private CompanyRepository $companyRepository
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
-
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {
