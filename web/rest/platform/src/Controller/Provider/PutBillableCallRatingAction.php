@@ -6,7 +6,7 @@ use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -16,12 +16,11 @@ class PutBillableCallRatingAction
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private DenormalizerInterface $denormalizer,
-        private RequestStack $requestStack,
         private BillableCallRepository $billableCallRepository
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         $token = $this->tokenStorage->getToken();
 
@@ -29,7 +28,6 @@ class PutBillableCallRatingAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
-        $request = $this->requestStack->getCurrentRequest();
         $content = $request->getContent();
         $format = $request->getRequestFormat();
 
