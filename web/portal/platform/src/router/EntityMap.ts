@@ -23,6 +23,7 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.Administrator,
             },
+            ...Object.values(entities.Brand.customActions),
           ],
         },
         {
