@@ -37,6 +37,7 @@ const properties: CallCsvSchedulerProperties = {
   },
   email: {
     label: _('Email'),
+    required: false,
     helpText: _('Leave empty if no mail is needed (just generate CSV).'),
     default: '',
   },
