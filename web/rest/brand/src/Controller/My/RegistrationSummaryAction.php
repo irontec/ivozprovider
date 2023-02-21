@@ -9,21 +9,19 @@ use Ivoz\Kam\Domain\Service\UsersLocation\CompanyRegistrationSummary;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Model\RegistrationSummary;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class RegistrationSummaryAction
 {
     public function __construct(
-        private RequestStack $requestStack,
         private TokenStorageInterface $tokenStorage,
         private CompanyRegistrationSummary $companyRegistrationSummary,
         private BrandRegistrationSummary $brandRegistrationSummary
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         $token =  $this->tokenStorage->getToken();
 
@@ -39,8 +37,6 @@ class RegistrationSummaryAction
             throw new NotFoundHttpException('Brand not found');
         }
 
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
         $companyId = $request->query->get('company');
 
         if (!$companyId) {

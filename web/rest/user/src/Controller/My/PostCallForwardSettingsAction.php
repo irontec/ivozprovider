@@ -5,7 +5,7 @@ namespace Controller\My;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -13,12 +13,11 @@ class PostCallForwardSettingsAction
 {
     public function __construct(
         private TokenStorageInterface $tokenStorage,
-        private DenormalizerInterface $denormalizer,
-        private RequestStack $requestStack
+        private DenormalizerInterface $denormalizer
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         $token =  $this->tokenStorage->getToken();
 
@@ -28,7 +27,6 @@ class PostCallForwardSettingsAction
 
         /** @var UserInterface $user */
         $user = $token->getUser();
-        $request = $this->requestStack->getCurrentRequest();
 
         /** @phpstan-ignore-next-line */
         $data = $this->denormalizer->decode(

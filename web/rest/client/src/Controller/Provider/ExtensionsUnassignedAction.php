@@ -9,7 +9,6 @@ use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -18,7 +17,6 @@ class ExtensionsUnassignedAction
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private ExtensionRepository $extensionRepository,
-        private RequestStack $requestStack,
         private DenormalizerInterface $denormalizer
     ) {
     }
@@ -27,10 +25,8 @@ class ExtensionsUnassignedAction
      * @return array<int, mixed>
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke(): array
+    public function __invoke(Request $request): array
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

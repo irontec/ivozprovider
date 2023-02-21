@@ -113,9 +113,6 @@
     <PossiblyNullArgument occurrences="1">
       <code>$webPortalDto-&gt;getLogoBaseName()</code>
     </PossiblyNullArgument>
-    <PossiblyNullPropertyFetch occurrences="1">
-      <code>$request-&gt;server</code>
-    </PossiblyNullPropertyFetch>
   </file>
   <file src="src/Kernel.php">
     <DeprecatedClass occurrences="4">

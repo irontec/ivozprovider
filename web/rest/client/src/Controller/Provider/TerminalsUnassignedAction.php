@@ -9,7 +9,6 @@ use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -18,7 +17,6 @@ class TerminalsUnassignedAction
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private TerminalRepository $terminalRepository,
-        private RequestStack $requestStack,
         private DenormalizerInterface $denormalizer
     ) {
     }
@@ -27,10 +25,8 @@ class TerminalsUnassignedAction
      * @return array<int, mixed>
      * @throws ResourceClassNotFoundException
      */
-    public function __invoke(): array
+    public function __invoke(Request $request): array
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

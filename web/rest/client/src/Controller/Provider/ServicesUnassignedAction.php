@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceRepository;
 use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ServicesUnassignedAction
@@ -17,15 +16,12 @@ class ServicesUnassignedAction
         private TokenStorageInterface $tokenStorage,
         private CompanyServiceRepository $companyServiceRepository,
         private BrandServiceRepository $brandServiceRepository,
-        private ServiceRepository $serviceRepository,
-        private RequestStack $requestStack
+        private ServiceRepository $serviceRepository
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
         $token =  $this->tokenStorage->getToken();
 
         if (!$token || !$token->getUser()) {

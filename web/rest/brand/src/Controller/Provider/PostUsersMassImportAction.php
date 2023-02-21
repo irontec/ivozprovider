@@ -8,7 +8,7 @@ use Ivoz\Provider\Application\Service\User\SyncFromCsv;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Model\UsersMassImport;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -17,13 +17,12 @@ class PostUsersMassImportAction
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private DenormalizerInterface $denormalizer,
-        private RequestStack $requestStack,
         private CompanyRepository $companyRepository,
         private SyncFromCsv $syncFromCsv
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         $token = $this->tokenStorage->getToken();
 
@@ -39,7 +38,6 @@ class PostUsersMassImportAction
             throw new ResourceClassNotFoundException('User brand not found');
         }
 
-        $request = $this->requestStack->getCurrentRequest();
         $companyId = $request->request->get('company');
         $company = $this->companyRepository->find($companyId);
         if (!$company) {
