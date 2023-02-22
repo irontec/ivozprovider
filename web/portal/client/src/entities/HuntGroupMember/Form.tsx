@@ -4,6 +4,7 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import useParentRow from '@irontec/ivoz-ui/hooks/useParentRow';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { HuntGroupPropertyList } from '../HuntGroup/HuntGroupProperties';
@@ -12,7 +13,9 @@ import { foreignKeyGetter } from './foreignKeyGetter';
 
 const Form = (props: EntityFormProps): JSX.Element | null => {
   const { entityService, row, match } = props;
-  const values = props.formik.values;
+
+  const formik = useFormHandler(props);
+  const values = formik.values;
   const edit = props.edit || false;
   const create = props.create || false;
 
@@ -64,6 +67,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
       fkChoices={fkChoices}
       groups={groups}
       readOnlyProperties={readOnlyProperties}
+      formik={formik}
     />
   );
 };
