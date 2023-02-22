@@ -4,11 +4,13 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
+
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { useStoreState } from 'store';
 
-const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, row, match, foreignKeyGetter, formik } = props;
+const Form = (props: EntityFormProps): JSX.Element | null => {
+  const { entityService, row, match, foreignKeyGetter } = props;
   const edit = props.edit || false;
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -19,6 +21,8 @@ const Form = (props: EntityFormProps): JSX.Element => {
     row,
     match,
   });
+
+  const formik = useFormHandler(props);
 
   const aboutMe = useStoreState((state) => state.clientSession.aboutMe.profile);
   const hasInvoicesFeature = aboutMe?.features.includes('invoices');
@@ -34,7 +38,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
   ).id;
   const faxEnabled = formik.values.featureIds.includes(faxFeatureId);
 
-  const type = row?.type ?? props.formik.initialValues.type;
+  const type = row?.type ?? formik.initialValues.type;
   const isVpbx = type === 'vpbx';
   const isResidential = type === 'residential';
   const isWholesale = type === 'wholesale';
@@ -123,7 +127,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  return (
+    <DefaultEntityForm
+      {...props}
+      formik={formik}
+      fkChoices={fkChoices}
+      groups={groups}
+    />
+  );
 };
 
 export default Form;

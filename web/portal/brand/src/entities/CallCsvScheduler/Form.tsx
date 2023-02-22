@@ -3,6 +3,7 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 import { useCompanyDdis } from './hook/useCompanyDdis';
@@ -12,8 +13,8 @@ import { useCompanyResidentialDevice } from './hook/useCompanyResidentialDevice'
 import { useCompanyRetailAccount } from './hook/useCompanyRetailAccount';
 import { useCompanyUsers } from './hook/useCompanyUsers';
 
-const Form = (props: EntityFormProps): JSX.Element => {
-  const { entityService, match, formik, row } = props;
+const Form = (props: EntityFormProps): JSX.Element | null => {
+  const { entityService, match, row } = props;
   const edit = props.edit || false;
 
   const DefaultEntityForm = defaultEntityBehavior.Form;
@@ -24,6 +25,7 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
+  const formik = useFormHandler(props);
   const companyId = formik.values[formik.values.companyType];
   const retailId =
     formik.values.companyType === 'retail' ? formik.values.retail : null;
@@ -86,7 +88,14 @@ const Form = (props: EntityFormProps): JSX.Element => {
     },
   ];
 
-  return <DefaultEntityForm {...props} fkChoices={fkChoices} groups={groups} />;
+  return (
+    <DefaultEntityForm
+      {...props}
+      formik={formik}
+      fkChoices={fkChoices}
+      groups={groups}
+    />
+  );
 };
 
 export default Form;

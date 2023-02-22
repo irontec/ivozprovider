@@ -1,4 +1,3 @@
-import useFkChoices from '@irontec/ivoz-ui/entities/data/useFkChoices';
 import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,

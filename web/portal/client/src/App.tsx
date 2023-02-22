@@ -14,7 +14,7 @@ export default function App(): JSX.Element {
   const setLanguages = useStoreActions(
     (actions: any) => actions.i18n.setLanguages
   );
-  const languages = setLanguages(languagesList);
+  setLanguages(languagesList);
 
   const apiSpecStore = useStoreActions((actions: any) => {
     return actions.spec;
