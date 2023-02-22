@@ -65,3 +65,4 @@ when@test:
       public: false
 
     Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCompanyBalanceService: ~
+    Ivoz\Cgr\Infrastructure\Cgrates\Service\FakeCarrierBalanceService: ~
