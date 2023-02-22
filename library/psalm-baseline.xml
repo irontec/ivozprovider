@@ -711,10 +711,6 @@
     <MixedPropertyFetch occurrences="1">
       <code>$payload-&gt;result</code>
     </MixedPropertyFetch>
-    <ParamNameMismatch occurrences="2">
-      <code>$company</code>
-      <code>$company</code>
-    </ParamNameMismatch>
   </file>
   <file src="Ivoz/Cgr/Infrastructure/Cgrates/Service/CompanyBalanceService.php">
     <InvalidPropertyFetch occurrences="4">
