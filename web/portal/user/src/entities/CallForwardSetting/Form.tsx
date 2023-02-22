@@ -3,6 +3,7 @@ import defaultEntityBehavior, {
   EntityFormProps,
   FieldsetGroups,
 } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
+import { useFormHandler } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior/Form/useFormHandler';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import { foreignKeyGetter } from './ForeignKeyGetter';
 
@@ -16,11 +17,12 @@ const Form = (props: EntityFormProps): JSX.Element => {
     match,
   });
 
-  const isCallForwardNoAnswer =
-    props.formik.values?.callForwardType === 'noAnswer';
-  const isNumberTargetType = props.formik.values?.targetType === 'number';
-  const isExtensionTargetType = props.formik.values?.targetType === 'extension';
-  const isVoiceMailTargetType = props.formik.values?.targetType === 'voicemail';
+  const formik = useFormHandler(props);
+
+  const isCallForwardNoAnswer = formik.values?.callForwardType === 'noAnswer';
+  const isNumberTargetType = formik.values?.targetType === 'number';
+  const isExtensionTargetType = formik.values?.targetType === 'extension';
+  const isVoiceMailTargetType = formik.values?.targetType === 'voicemail';
 
   const groups: Array<FieldsetGroups | false> = [
     {
