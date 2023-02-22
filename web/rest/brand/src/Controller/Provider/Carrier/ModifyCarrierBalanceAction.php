@@ -2,10 +2,11 @@
 
 namespace Controller\Provider\Carrier;
 
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 use Ivoz\Provider\Domain\Service\Carrier\DecrementBalance;
 use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class ModifyCarrierBalanceAction
 {
@@ -13,26 +14,32 @@ class ModifyCarrierBalanceAction
     const DECREMENT_OPERATION = 'decrement';
     public function __construct(
         private IncrementBalance $incrementBalance,
-        private DecrementBalance $decrementBalance
+        private DecrementBalance $decrementBalance,
+        private CarrierRepository $carrierRepository
     ) {
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): CarrierInterface
     {
         $carrierId = (int) $request->attributes->get('id');
         $operation = $request->request->get('operation');
-        $balanceValue = (int) $request->request->get('value');
+        $amount = (float) $request->request->get('amount');
 
-        $result = match ($operation) {
-            self::INCREMENT_OPERATION => $this->incrementBalance->execute($carrierId, $balanceValue),
-            self::DECREMENT_OPERATION => $this->decrementBalance->execute($carrierId, $balanceValue),
+        $success = match ($operation) {
+            self::INCREMENT_OPERATION => $this->incrementBalance->execute($carrierId, $amount),
+            self::DECREMENT_OPERATION => $this->decrementBalance->execute($carrierId, $amount),
             default => throw new \DomainException('Unexpected operation value')
         };
 
-        if (!$result) {
-            throw new \DomainException('Cannot increment company balance', 400);
+        if (!$success) {
+            throw new \DomainException('Unable to modify company balance', 400);
         }
 
-        return new Response('Balance Incremented', 200);
+        /** @var CarrierInterface $carrier */
+        $carrier = $this->carrierRepository->find(
+            $carrierId
+        );
+
+        return $carrier;
     }
 }

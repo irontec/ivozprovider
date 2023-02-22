@@ -13,7 +13,7 @@ class IncrementBalance extends AbstractBalanceOperation
     {
         $this->logger->info('Carrier#%s\'s balance will be incremented by ' . $amount);
         $carrier = $this->carrierRepository->find($carrierId);
-        $response = $this->client->incrementBalance($carrier, $amount);
+        $response = $this->carrierBalanceService->incrementBalance($carrier, $amount);
 
         return $this->handleResponse(
             $amount,

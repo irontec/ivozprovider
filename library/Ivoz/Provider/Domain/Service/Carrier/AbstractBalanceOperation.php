@@ -15,7 +15,7 @@ abstract class AbstractBalanceOperation
     public function __construct(
         protected EntityTools $entityTools,
         protected Logger $logger,
-        protected CarrierBalanceServiceInterface $client,
+        protected CarrierBalanceServiceInterface $carrierBalanceService,
         protected CarrierRepository $carrierRepository,
         protected SyncBalances $syncBalanceService,
         protected CreateByCarrier $createBalanceMovementByCarrier
@@ -45,7 +45,7 @@ abstract class AbstractBalanceOperation
             $this->syncBalanceService->updateCarriers($brandId, $carrierIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance(
+            $balance = $this->carrierBalanceService->getBalance(
                 $brandId,
                 (int) $carrier->getId()
             );
