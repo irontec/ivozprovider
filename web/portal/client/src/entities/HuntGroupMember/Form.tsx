@@ -43,6 +43,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
 
   const strategy = parentRow.strategy as string;
   const showPriority = ['linear', 'roundRobin'].includes(strategy);
+  const isRingAll = strategy === 'ringAll';
 
   const groups: Array<FieldsetGroups> = [
     {
@@ -57,7 +58,7 @@ const Form = (props: EntityFormProps): JSX.Element | null => {
     },
     {
       legend: _('Entry information'),
-      fields: ['timeoutTime', showPriority && 'priority'],
+      fields: [!isRingAll && 'timeoutTime', showPriority && 'priority'],
     },
   ];
 
