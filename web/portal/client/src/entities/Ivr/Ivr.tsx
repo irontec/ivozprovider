@@ -29,12 +29,14 @@ const properties: IvrProperties = {
   },
   welcomeLocution: {
     label: _('Welcome locution'),
+    null: _('Unassigned'),
   },
   noInputLocution: {
     label: _('No input locution'),
   },
   errorLocution: {
     label: _('Locution'),
+    null: _('Unassigned'),
   },
   successLocution: {
     label: _('Success locution'),
