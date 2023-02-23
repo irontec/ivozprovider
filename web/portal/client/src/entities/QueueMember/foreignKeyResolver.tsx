@@ -10,7 +10,7 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
 
   for (const row of data) {
     row.userId = row.user;
-    row.userLink = User.path + `/${row.userId}/update`;
+    row.userLink = User.path + `/${row.id}/update`;
     row.user = User.toStr(row.user);
   }
 
