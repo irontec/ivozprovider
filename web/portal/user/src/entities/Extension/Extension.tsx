@@ -1,7 +1,9 @@
+import { EntityValue } from '@irontec/ivoz-ui';
 import defaultEntityBehavior from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import EntityInterface from '@irontec/ivoz-ui/entities/EntityInterface';
 import _ from '@irontec/ivoz-ui/services/translations/translate';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { ExtensionPropertyList } from './ExtensionProperties';
 import selectOptions from './SelectOptions';
 const extension: EntityInterface = {
   ...defaultEntityBehavior,
@@ -14,7 +16,7 @@ const extension: EntityInterface = {
     iden: 'Extension',
   },
   selectOptions,
-  toStr: (row: any) => row.name,
+  toStr: (row: ExtensionPropertyList<EntityValue>) => row.number as string,
 };
 
 export default extension;
