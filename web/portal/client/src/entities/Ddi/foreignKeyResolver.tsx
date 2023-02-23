@@ -1,9 +1,12 @@
+import { EntityValues } from '@irontec/ivoz-ui';
 import { autoForeignKeyResolver } from '@irontec/ivoz-ui/entities/DefaultEntityBehavior';
 import { foreignKeyResolverType } from '@irontec/ivoz-ui/entities/EntityInterface';
 import genericForeignKeyResolver, {
   remapFk,
 } from '@irontec/ivoz-ui/services/api/genericForeigKeyResolver';
+import { CountryPropertyList } from '../Country/CountryProperties';
 import store from 'store';
+import { getI18n } from 'react-i18next';
 import { DdiPropertiesList } from './DdiProperties';
 
 const foreignKeyResolver: foreignKeyResolverType = async function ({
@@ -25,7 +28,13 @@ const foreignKeyResolver: foreignKeyResolverType = async function ({
     genericForeignKeyResolver({
       data,
       fkFld: 'country',
-      entity: Country,
+      entity: {
+        ...Country,
+        toStr: (row: CountryPropertyList<EntityValues>) => {
+          const language = getI18n().language.substring(0, 2);
+          return `${(row.name as EntityValues)[language]} (${row.countryCode})`;
+        },
+      },
       addLink: false,
       cancelToken,
     })
