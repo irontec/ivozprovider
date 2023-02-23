@@ -29,8 +29,6 @@ const Form = (props: EntityFormProps): JSX.Element => {
         'numberValue',
         'extension',
         'voicemail',
-        'conditional',
-        'voicemail',
         'conditionalRoute',
       ],
     },
