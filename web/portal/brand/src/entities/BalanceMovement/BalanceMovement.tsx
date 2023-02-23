@@ -43,7 +43,7 @@ const BalanceMovement: EntityInterface = {
   acl: {
     read: true,
     detail: false,
-    create: true,
+    create: false,
     update: false,
     delete: false,
   },
