@@ -11,6 +11,7 @@ import foreignKeyResolver from './ForeignKeyResolver';
 const properties: DdiProviderProperties = {
   description: {
     label: _('Description'),
+    required: false,
   },
   name: {
     label: _('Name'),
