@@ -207,12 +207,14 @@ Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
     write_access_control:
       ROLE_SUPER_ADMIN:
         raw: "id !== 0"
+
 Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
   itemOperations:
     get: ~
     put: ~
   collectionOperations:
     get: ~
+    post: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles && user.hasAccessPrivileges(_api_resource_class, request.getMethod())'
 
