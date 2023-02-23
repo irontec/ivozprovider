@@ -283,12 +283,10 @@ const getEntityMap = (): ExtendedRouteMap => {
             {
               entity: entities.BalanceMovement,
               filterBy: 'company',
-              //@TODO ${auth.brandFeatures.billing.enabled}
             },
             {
               entity: entities.BalanceNotification,
               filterBy: 'company',
-              //@TODO ${auth.brandFeatures.billing.enabled}
             },
             //@TODO BalanceOperations
           ],

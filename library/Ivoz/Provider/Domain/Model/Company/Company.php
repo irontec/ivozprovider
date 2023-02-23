@@ -56,6 +56,11 @@ class Company extends CompanyAbstract implements CompanyInterface
             );
         }
 
+        $domainUsers = $this->getDomainUsers();
+        if ($this->getType() === self::TYPE_VPBX && empty($domainUsers)) {
+            throw new \DomainException("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
+        }
+
         if (!parent::getLanguage()) {
             $this->setLanguage(
                 // @todo create a shortcut
@@ -295,10 +300,6 @@ class Company extends CompanyAbstract implements CompanyInterface
     {
         if (is_string($domainUsers)) {
             $domainUsers = trim($domainUsers);
-        }
-
-        if ($this->getType() === self::TYPE_VPBX && empty($domainUsers)) {
-            throw new \DomainException("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
         }
 
         return parent::setDomainUsers($domainUsers);
