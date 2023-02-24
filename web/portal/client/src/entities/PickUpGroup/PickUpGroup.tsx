@@ -14,7 +14,8 @@ const properties: PickUpGroupProperties = {
   },
   userIds: {
     label: _('User'),
-    memoize: false,
+    type: 'array',
+    $ref: '#/definitions/User',
   },
 };
 
