@@ -173,6 +173,7 @@ const properties: UserProperties = {
   },
   company: {
     label: _('Client'),
+    $ref: '#/definitions/Company',
   },
   statusIcon: {
     label: _('Status'),
