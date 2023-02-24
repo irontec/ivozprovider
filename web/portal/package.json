@@ -9,7 +9,7 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@irontec/ivoz-ui": "^0.13.4",
+    "@irontec/ivoz-ui": "^0.13.6",
     "@mui/icons-material": "^5.0.1",
     "@mui/lab": "^5.0.0-alpha.48",
     "@mui/material": "^5.0.1",
