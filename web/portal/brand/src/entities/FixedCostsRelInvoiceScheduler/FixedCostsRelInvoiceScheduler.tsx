@@ -16,7 +16,7 @@ const properties: FixedCostsRelInvoiceSchedulerProperties = {
     maximum: 100,
   },
   quantityGhost: {
-    title: _('Quantity'),
+    label: _('Quantity'),
     //@TODO IvozProvider_Klear_Ghost_FixedCostsRelInvoiceSchedulers::getQuantity
   },
   type: {
