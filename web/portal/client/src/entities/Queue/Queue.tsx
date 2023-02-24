@@ -40,6 +40,7 @@ const properties: QueueProperties = {
   },
   timeoutLocution: {
     label: _('Locution'),
+    null: _('Unassigned'),
   },
   timeoutTargetType: {
     label: _('Timeout route'),
@@ -93,6 +94,7 @@ const properties: QueueProperties = {
   },
   fullLocution: {
     label: _('Full queue Locution'),
+    null: _('Unassigned'),
   },
   fullTargetType: {
     label: _('Full queue route'),
