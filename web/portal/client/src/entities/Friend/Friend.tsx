@@ -19,6 +19,7 @@ const properties: FriendProperties = {
   },
   description: {
     label: _('Description'),
+    required: false,
   },
   transport: {
     label: _('Transport'),
