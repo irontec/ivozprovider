@@ -12,6 +12,7 @@ const properties: RoutingPatternGroupProperties = {
   name: {
     label: _('Name'),
     maxLength: 55,
+    required: true,
   },
   description: {
     label: _('Description'),
