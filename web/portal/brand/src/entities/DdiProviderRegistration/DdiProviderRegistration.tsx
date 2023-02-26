@@ -11,17 +11,21 @@ import foreignKeyResolver from './ForeignKeyResolver';
 const properties: DdiProviderRegistrationProperties = {
   username: {
     label: _('Username'),
+    required: true,
   },
   domain: {
     label: _('Domain'),
+    required: true,
   },
   realm: {
     label: _('Realm'),
     helpText: _('Leave empty to use the suggested default'),
+    required: false,
   },
   authUsername: {
     label: _('Auth username'),
     helpText: _("Only if it's different from the Username"),
+    required: false,
   },
   authPassword: {
     label: _('Password'),
@@ -31,6 +35,7 @@ const properties: DdiProviderRegistrationProperties = {
   },
   authProxy: {
     label: _('Registrar Server URI'),
+    required: false,
   },
   expires: {
     label: _('Expire'),
